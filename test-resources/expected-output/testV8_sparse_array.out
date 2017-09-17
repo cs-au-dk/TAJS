@@ -1,0 +1,3 @@
+test-resources/src/v8tests/sparse-array.js:37:5: [definite] Dead assignment, property is never read
+test-resources/src/v8tests/sparse-array.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 453 checks (with 0 expected failures)

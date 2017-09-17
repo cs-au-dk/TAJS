@@ -21,7 +21,6 @@ public class TestClosureContextSensitivity {
 
     @Before
     public void before() {
-        Main.initLogging();
         Main.reset();
         Options.get().enableTest();
         Options.get().enableDeterminacy();
@@ -39,7 +38,6 @@ public class TestClosureContextSensitivity {
 
     @Test
     public void ensureLoopunrollingWorks() {
-        Misc.init();
         Options.get().enableFlowgraph();
         Misc.runSource(
                 "var i = 0;",
@@ -155,7 +153,6 @@ public class TestClosureContextSensitivity {
         for (String string : stringValues) {
             values.add(Value.makeStr(string));
         }
-
         return values;
     }
 

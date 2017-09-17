@@ -1,1 +1,0 @@
-test/v8tests/sparse-array.js:37:5: [definite] Dead assignment, property is never read

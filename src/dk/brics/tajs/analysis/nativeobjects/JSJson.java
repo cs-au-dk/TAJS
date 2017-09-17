@@ -35,7 +35,7 @@ public class JSJson {
                 return makeAnyJSONObject(c);
             }
             case JSON_STRINGIFY: {
-                return Value.makeAnyStr();
+                return Value.makeAnyStr().joinUndef();
             }
             default:
                 return null;

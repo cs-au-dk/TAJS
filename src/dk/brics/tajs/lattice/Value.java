@@ -280,7 +280,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
     }
 
     /**
-     * Put the value into canoncial form.
+     * Put the value into canonical form.
      */
     private static Value canonicalize(Value v) {
         if (Options.get().isDebugOrTestEnabled()) { // checking representation invariants

@@ -1,0 +1,26 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var counter = 0;
+    var incr = function(){ counter++; };
+    var throttledIncr = _.throttle(incr, 60, {trailing: false});
+    throttledIncr(); throttledIncr(); throttledIncr();
+    equal(counter, 1);
+    _.delay(function() {
+      equal(counter, 1);
+      throttledIncr(); throttledIncr();
+      equal(counter, 2);
+      _.delay(function() {
+        equal(counter, 2);
+        start();
+      }, 96);
+    }, 96);
+</script></head><body></body></html>

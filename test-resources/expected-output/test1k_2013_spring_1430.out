@@ -1,0 +1,41 @@
+test-resources/src/1k2013spring/1430.js:35:3: [definite] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:16:6: [definite] Too few parameters to function Node.cloneNode
+test-resources/src/1k2013spring/1430.js:28:3: [definite] Dead assignment, property is never read
+test-resources/src/1k2013spring/1430.js:31:8: [definite] Dead assignment, property x is never read
+test-resources/src/1k2013spring/1430.js:31:19: [definite] Dead assignment, property y is never read
+test-resources/src/1k2013spring/1430.js:31:30: [definite] Dead assignment, property d is never read
+test-resources/src/1k2013spring/1430.js:31:35: [definite] Dead assignment, property e is never read
+test-resources/src/1k2013spring/1430.js:31:40: [definite] Dead assignment, property a is never read
+test-resources/src/1k2013spring/1430.js:31:45: [definite] Dead assignment, property b is never read
+test-resources/src/1k2013spring/1430.js:31:50: [definite] Dead assignment, property g is never read
+test-resources/src/1k2013spring/1430.js:31:55: [definite] Dead assignment, property h is never read
+test-resources/src/1k2013spring/1430.js:31:60: [definite] Dead assignment, property c is never read
+test-resources/src/1k2013spring/1430.js:31:65: [definite] Dead assignment, property f is never read
+test-resources/src/1k2013spring/1430.js:31:70: [definite] Dead assignment, property l is never read
+test-resources/src/1k2013spring/1430.js:32:3: [definite] Dead assignment, property is never read
+test-resources/src/1k2013spring/1430.js:35:3: [definite] Reading absent property ce of host object
+test-resources/src/1k2013spring/1430.js:12:15: [definite] The variable e is never used
+test-resources/src/1k2013spring/1430.js:12:27: [definite] The variable g is never used
+test-resources/src/1k2013spring/1430.js:12:39: [definite] The variable h is never used
+test-resources/src/1k2013spring/1430.js:15:20: [definite] The variable m is never used
+test-resources/src/1k2013spring/1430.js:36:3: [definite] Unreachable code
+test-resources/src/1k2013spring/1430.js:39:9: [definite] The variable b is never used
+test-resources/src/1k2013spring/1430.js:49:11: [definite] The variable f is never used
+test-resources/src/1k2013spring/1430.js:51:13: [definite] The variable d is never used
+test-resources/src/1k2013spring/1430.js:17:6: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:32:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1430.js:35:3: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1430.js:17:6: [maybe] Reading absent property getContext of host object
+test-resources/src/1k2013spring/1430.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1430.js:17:6, test-resources/src/1k2013spring/1430.js:32:3, test-resources/src/1k2013spring/1430.js:35:3, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1430.js:22:5: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:22:16: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:22:16: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1430.js:22:34: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1430.js:25:6: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:25:17: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:25:17: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1430.js:25:35: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1430.js:32:5: [maybe] Conversion to number yields NaN
+Disabling soundness testing for test-resources/src/1k2013spring/1430.js entirely (60 uninspected soundness errors).
+Soundness testing succeeded for 370 checks (with 60 expected failures)

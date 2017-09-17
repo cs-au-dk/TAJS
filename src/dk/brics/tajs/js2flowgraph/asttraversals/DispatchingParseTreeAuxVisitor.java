@@ -97,8 +97,8 @@ public abstract class DispatchingParseTreeAuxVisitor<V, Aux> implements ParseTre
                 return process(node.asComputedPropertySetter(), aux);
             case RETURN_STATEMENT:
                 return process(node.asReturnStatement(), aux);
-            case POSTFIX_EXPRESSION:
-                return process(node.asPostfixExpression(), aux);
+            case UPDATE_EXPRESSION:
+                return process(node.asUpdateExpression(), aux);
             case PROGRAM:
                 return process(node.asProgram(), aux);
             case LITERAL_EXPRESSION: // STRING, NUMBER, TRUE, FALSE, NULL, REGEXP

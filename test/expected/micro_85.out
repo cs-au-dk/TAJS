@@ -1,3 +1,0 @@
-test/micro/test85.js: [definite] Exceptional program exit is unreachable
-test/micro/test85.js:58:1: [info] Abstract value: [@Object#node107]
-Soundness testing succeeded for 135 checks (with 0 expected failures)

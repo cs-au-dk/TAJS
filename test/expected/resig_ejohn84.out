@@ -1,5 +1,0 @@
-test/resig/ejohn84.js:19:1: [maybe] TypeError, accessing property of null/undefined
-test/resig/ejohn84.js:21:1: [maybe] TypeError, call to non-function
-test/resig/ejohn84.js: [maybe] Uncaught exception, constructed at [test/resig/ejohn84.js:19:1, test/resig/ejohn84.js:21:1]
-test/resig/ejohn84.js:22:1: [info] Abstract value: true
-Soundness testing succeeded for 38 checks (with 0 expected failures)

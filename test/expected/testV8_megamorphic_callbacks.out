@@ -1,2 +1,0 @@
-test/v8tests/megamorphic-callbacks.js:41:37: [definite] Dead assignment, property z is never read
-test/v8tests/megamorphic-callbacks.js:52:11: [definite] Dead assignment, property z is never read

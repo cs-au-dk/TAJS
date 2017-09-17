@@ -1,1 +1,0 @@
-test/v8tests/dont-enum-array-holes.js:30:10: [definite] The variable i is never used

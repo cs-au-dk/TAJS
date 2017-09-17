@@ -1,0 +1,8 @@
+[submodule "extras/jalangilogger"]
+	path = extras/jalangilogger
+	url = ../jalangilogger.git
+	branch = master
+[submodule "extras/inspector"]
+	path = extras/inspector
+	url = ../TAJS-Inspector.git
+	branch = master

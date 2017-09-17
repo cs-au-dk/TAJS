@@ -16,71 +16,51 @@ public class TestMakeContextSensitive {
 
     @Test
     public void makecontextsensitive_syntax() {
-        Misc.init();
-        String[] args = {"test/makecontextsensitive/syntax.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/makecontextsensitive/syntax.js");
     }
 
     @Test
     public void makecontextsensitive_syntax2() {
-        Misc.init();
-        String[] args = {"test/makecontextsensitive/syntax2.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/makecontextsensitive/syntax2.js");
     }
 
     @Test
     public void makecontextsensitive_single() {
-        Misc.init();
-        String[] args = {"test/makecontextsensitive/single.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/makecontextsensitive/single.js");
     }
 
     @Test
     public void makecontextsensitive_multi() {
-        Misc.init();
-        String[] args = {"test/makecontextsensitive/multi.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/makecontextsensitive/multi.js");
     }
 
     @Test
     public void makecontextsensitive_confuse() {
-        Misc.init();
-        String[] args = {"test/makecontextsensitive/confuse.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/makecontextsensitive/confuse.js");
     }
 
     @Test
     public void makecontextsensitive_finiteRecursion() {
-        Misc.init();
-        String[] args = {"test/makecontextsensitive/finiteRecursion.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/makecontextsensitive/finiteRecursion.js");
     }
 
     @Test
     public void makecontextsensitive_finiteStringRecursion() {
-        Misc.init();
-        String[] args = {"test/makecontextsensitive/finiteStringRecursion.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/makecontextsensitive/finiteStringRecursion.js");
     }
 
     @Test
     public void makecontextsensitive_objectSensitivity() {
-        Misc.init();
-        String[] args = {"test/makecontextsensitive/objectSensitivity.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/makecontextsensitive/objectSensitivity.js");
     }
 
     @Test
     public void makecontextsensitive_guard() {
-        Misc.init();
-        String[] args = {"test/makecontextsensitive/guard.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/makecontextsensitive/guard.js");
     }
 
     @Test
     public void makecontextsensitive_closureVariables() {
-        Misc.init();
-        String[] args = {"test/makecontextsensitive/closureVariables.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/makecontextsensitive/closureVariables.js");
     }
 }

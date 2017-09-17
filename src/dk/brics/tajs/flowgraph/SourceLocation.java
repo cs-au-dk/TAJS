@@ -22,6 +22,7 @@ import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.DeepImmutable;
 import dk.brics.tajs.util.PathAndURLUtils;
 
+import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.net.URL;
 import java.nio.file.Path;
@@ -195,7 +196,7 @@ public class SourceLocation implements Comparable<SourceLocation>, DeepImmutable
      * Compares source locations first by line number, then by column number.
      */
     @Override
-    public int compareTo(SourceLocation e) {
+    public int compareTo(@Nonnull SourceLocation e) {
 
         int c = kind.compareTo(e.kind);
         if (c != 0) {

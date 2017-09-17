@@ -1,0 +1,16 @@
+test-resources/src/micro/test113.js:5:10: [definite] Too few parameters to function Object.prototype.hasOwnProperty
+test-resources/src/micro/test113.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test113.js:14:5: [definite] The variable zz is never used
+test-resources/src/micro/test113.js:2:10: [maybe] Converting boolean to string
+test-resources/src/micro/test113.js:5:10: [maybe] Converting undefined to string
+test-resources/src/micro/test113.js:16:1: [info] Abstract value: Inf
+test-resources/src/micro/test113.js:17:1: [info] Abstract value: "false true"
+test-resources/src/micro/test113.js:18:1: [info] Abstract value: 2.718281828459045
+test-resources/src/micro/test113.js:19:1: [info] Abstract value: NaN
+test-resources/src/micro/test113.js:20:1: [info] Abstract value: false
+test-resources/src/micro/test113.js:21:1: [info] Abstract value: "[object Math]"
+test-resources/src/micro/test113.js:22:1: [info] Abstract value: 4711.0
+test-resources/src/micro/test113.js:23:1: [info] Abstract value: NaN
+test-resources/src/micro/test113.js:25:1: [info] Abstract value: 111.0
+test-resources/src/micro/test113.js:27:1: [info] Abstract value: [@String#node66{boxed-primitive=""}]
+Soundness testing succeeded for 73 checks (with 0 expected failures)

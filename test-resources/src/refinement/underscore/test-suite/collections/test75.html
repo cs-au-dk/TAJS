@@ -1,0 +1,33 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var parity = _.countBy([1, 2, 3, 4, 5], function(num){ return num % 2 === 0; });
+    equal(parity['true'], 2);
+    equal(parity['false'], 3);
+    var list = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+    var grouped = _.countBy(list, 'length');
+    equal(grouped['3'], 4);
+    equal(grouped['4'], 3);
+    equal(grouped['5'], 3);
+    var context = {};
+    _.countBy([{}], function(){ ok(this === context); }, context);
+    grouped = _.countBy([4.2, 6.1, 6.4], function(num) {
+      return Math.floor(num) > 4 ? 'hasOwnProperty' : 'constructor';
+    });
+    equal(grouped.constructor, 1);
+    equal(grouped.hasOwnProperty, 2);
+    var array = [{}];
+    _.countBy(array, function(value, index, obj){ ok(obj === array); });
+    array = [1, 2, 1, 2, 3];
+    grouped = _.countBy(array);
+    equal(grouped['1'], 2);
+    equal(grouped['3'], 1);
+</script></head><body></body></html>

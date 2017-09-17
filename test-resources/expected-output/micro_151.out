@@ -1,0 +1,4 @@
+test-resources/src/micro/test151.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test151.js:10:6: [maybe] Reading absent property (computed name)
+test-resources/src/micro/test151.js:11:2: [info] Abstract value: Undef|42.0
+Soundness testing succeeded for 23 checks (with 0 expected failures)

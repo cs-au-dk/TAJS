@@ -18,57 +18,41 @@ public class TestAddContextSensitivity {
 
     @Test
     public void addContextSensitivity_syntax() {
-        Misc.init();
-        String[] args = {"test/addcontextsensitivity/syntax.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/addcontextsensitivity/syntax.js");
     }
 
     @Test
     public void addContextSensitivity_syntax2() {
-        Misc.init();
-        String[] args = {"test/addcontextsensitivity/syntax2.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/addcontextsensitivity/syntax2.js");
     }
 
     @Test
     public void addContextSensitivity_single() {
-        Misc.init();
-        String[] args = {"test/addcontextsensitivity/single.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/addcontextsensitivity/single.js");
     }
 
     @Test(expected = AnalysisException.class)
     public void addContextSensitivity_wrongName() {
-        Misc.init();
-        String[] args = {"test/addcontextsensitivity/wrongName.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/addcontextsensitivity/wrongName.js");
     }
 
     @Test
     public void addContextSensitivity_multi() {
-        Misc.init();
-        String[] args = {"test/addcontextsensitivity/multi.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/addcontextsensitivity/multi.js");
     }
 
     @Test
     public void addContextSensitivity_confuse() {
-        Misc.init();
-        String[] args = {"test/addcontextsensitivity/confuse.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/addcontextsensitivity/confuse.js");
     }
 
     @Test
     public void addContextSensitivity_finiteRecursion() {
-        Misc.init();
-        String[] args = {"test/addcontextsensitivity/finiteRecursion.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/addcontextsensitivity/finiteRecursion.js");
     }
 
     @Test
     public void addContextSensitivity_finiteStringRecursion() {
-        Misc.init();
-        String[] args = {"test/addcontextsensitivity/finiteStringRecursion.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/addcontextsensitivity/finiteStringRecursion.js");
     }
 }

@@ -1,0 +1,49 @@
+test-resources/src/chromeexperiments/plasma.html:21:20: [definite] The conditional expression is always false
+test-resources/src/chromeexperiments/plasma.html:21:20: [definite] Variable test2504afjd is null/undefined
+test-resources/src/chromeexperiments/plasma.html:50:11: [definite] The conditional expression is always true
+test-resources/src/chromeexperiments/plasma.html:51:8: [definite] The conditional expression is always true
+test-resources/src/chromeexperiments/plasma.html:53:2: [definite] The conditional expression is always true
+test-resources/src/chromeexperiments/plasma.html:58:6: [definite] The conditional expression is always true
+test-resources/src/chromeexperiments/plasma.html:30:9: [definite] The variable xscale is never used
+test-resources/src/chromeexperiments/plasma.html:30:21: [definite] The variable yscale is never used
+test-resources/src/chromeexperiments/plasma.html:108:14: [definite] The variable pixel is never used
+test-resources/src/chromeexperiments/plasma.html:17:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:53:16: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:54:6: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:54:29: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:55:6: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:55:31: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:56:16: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:58:10: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:59:11: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:59:35: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:59:49: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:69:22: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:70:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:82:27: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:83:27: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:84:27: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:111:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:120:11: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:122:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:129:22: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:138:2: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:145:2: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:148:14: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html:149:14: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/plasma.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/plasma.html:17:5, test-resources/src/chromeexperiments/plasma.html:53:16, test-resources/src/chromeexperiments/plasma.html:54:6, test-resources/src/chromeexperiments/plasma.html:54:29, test-resources/src/chromeexperiments/plasma.html:55:6, test-resources/src/chromeexperiments/plasma.html:55:31, test-resources/src/chromeexperiments/plasma.html:56:16, test-resources/src/chromeexperiments/plasma.html:58:10, test-resources/src/chromeexperiments/plasma.html:59:11, test-resources/src/chromeexperiments/plasma.html:59:35, test-resources/src/chromeexperiments/plasma.html:59:49, test-resources/src/chromeexperiments/plasma.html:69:22, test-resources/src/chromeexperiments/plasma.html:70:3, test-resources/src/chromeexperiments/plasma.html:82:27, test-resources/src/chromeexperiments/plasma.html:83:27, test-resources/src/chromeexperiments/plasma.html:84:27, test-resources/src/chromeexperiments/plasma.html:111:18, test-resources/src/chromeexperiments/plasma.html:120:11, test-resources/src/chromeexperiments/plasma.html:122:18, test-resources/src/chromeexperiments/plasma.html:129:22, test-resources/src/chromeexperiments/plasma.html:138:2, test-resources/src/chromeexperiments/plasma.html:145:2, test-resources/src/chromeexperiments/plasma.html:148:14, test-resources/src/chromeexperiments/plasma.html:149:14]
+test-resources/src/chromeexperiments/plasma.html:17:5: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/plasma.html:82:11: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/plasma.html:83:11: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/plasma.html:84:11: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/plasma.html:95:9: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/plasma.html:131:21: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/plasma.html:131:22: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/plasma.html:131:22: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/plasma.html:132:21: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/plasma.html:132:22: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/plasma.html:132:22: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/plasma.html:133:21: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/plasma.html:133:22: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/plasma.html:133:22: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 474 checks (with 0 expected failures)

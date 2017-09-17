@@ -1,0 +1,5 @@
+test-resources/src/v8tests/newline-in-string.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/newline-in-string.js:40:1: [definite] Unreachable code
+test-resources/src/v8tests/newline-in-string.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test-resources/src/v8tests/newline-in-string.js:40:26):1:7]
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test-resources/src/v8tests/newline-in-string.js, skipping soundness checking

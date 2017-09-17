@@ -1,0 +1,48 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var collection = [
+      'each', 'map', 'filter', 'find',
+      'some', 'every', 'max', 'min', 'reject',
+      'groupBy', 'countBy', 'partition', 'indexBy',
+      'reduce', 'reduceRight'
+    ];
+    var array = [
+      'findIndex', 'findLastIndex'
+    ];
+    var object = [
+      'mapObject', 'findKey', 'pick', 'omit'
+    ];
+    _.each(collection.concat(array), function(method) {
+      var sparseArray = [1, 2, 3];
+      sparseArray.length = 100;
+      var answers = 0;
+      _[method](sparseArray, function(){
+        ++answers;
+        return method === 'every' ? true : null;
+      }, {});
+      equal(answers, 100, method + ' enumerates [0, length)');
+      var growingCollection = [1, 2, 3], count = 0;
+      _[method](growingCollection, function() {
+        if (count < 10) growingCollection.push(count++);
+        return method === 'every' ? true : null;
+      }, {});
+      equal(count, 3, method + ' is resistant to length changes');
+    });
+    _.each(collection.concat(object), function(method) {
+      var changingObject = {0: 0, 1: 1}, count = 0;
+      _[method](changingObject, function(val) {
+        if (count < 10) changingObject[++count] = val + 1;
+        return method === 'every' ? true : null;
+      }, {});
+      equal(count, 2, method + ' is resistant to property changes');
+    });
+</script></head><body></body></html>

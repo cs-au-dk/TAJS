@@ -37,11 +37,14 @@ public class JavaScriptParser {
 
     private final Mode mode;
 
+    private final boolean strict;
+
     /**
      * Constructs a new parser.
      */
-    public JavaScriptParser(Mode languageMode) {
+    public JavaScriptParser(Mode languageMode, boolean strict) {
         mode = languageMode;
+        this.strict = strict;
     }
 
     /**
@@ -68,7 +71,7 @@ public class JavaScriptParser {
 
         ProgramTree programAST = null;
         try {
-            programAST = new Parser(new Parser.Config(mode), errorReporter, new SourceFile(sourceLocationMaker.makeUnspecifiedPosition().toString(), contents)).parseProgram();
+            programAST = new Parser(new Parser.Config(mode, strict), errorReporter, new SourceFile(sourceLocationMaker.makeUnspecifiedPosition().toString(), contents)).parseProgram();
         } catch (Exception e) {
             errors.add(new SyntaxMesssage(String.format("%s: %s", e.getClass(), e.getMessage()), sourceLocationMaker.makeUnspecifiedPosition()));
         }

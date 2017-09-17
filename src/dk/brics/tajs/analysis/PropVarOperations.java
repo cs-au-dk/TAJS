@@ -628,10 +628,11 @@ public class PropVarOperations {
             }
             if (maybeOrdinaryWrite) {
                 if (!value.equals(oldvalue)) { // don't request writable obj if the value doesn't change anyway
+                    Value valueNonAccessor = value.restrictToNotGetterSetter();
                     Value finalValue = value;
                     pt.add(() -> {
                         if (!not_invoke_setters) {
-                            boolean wroteToArrayLength = updateArrayLength(objprop, finalValue, c);
+                            boolean wroteToArrayLength = updateArrayLength(objprop, valueNonAccessor, c);
                             if (wroteToArrayLength) {
                                 return;
                             }
@@ -642,7 +643,7 @@ public class PropVarOperations {
                         boolean writeInternalPrototype = writeInternalPrototype_fixed || writeInternalPrototype_dynamic;
                         if (writeInternalPrototype && !unsoundness.maySkipInternalProtoPropertyWrite(c.getNode(), objprop)) {
                             // TODO: make use of c.getState().writeInternalPrototype(objprop.getObjectLabel(), finalValue) instead? (GitHub #356) + currently ignoring old value of the internal prototype!
-                            c.getState().getObject(objprop.getObjectLabel(), true).setInternalPrototype(finalValue);
+                            c.getState().getObject(objprop.getObjectLabel(), true).setInternalPrototype(valueNonAccessor);
                         }
                         if (writeProperty && !unsoundness.maySkipPropertyWrite(c.getNode(), objprop)) {
                             c.getState().getObject(objprop.getObjectLabel(), true).setValue(objprop, finalValue);
@@ -721,7 +722,7 @@ public class PropVarOperations {
                     if (maybeValid) {
                         // truncate
                         Double num = numvalue.getNum();
-                        if (definitely_length && num != null && old_length != null && old_length - num < 25) { // note: bound to avoid too many iterations
+                        if (definitely_length && num != null && old_length != null && old_length - num < Options.Constants.ARRAY_TRUNCATION_BOUND) { // note: bound to avoid too many iterations
                             for (int i = num.intValue(); i < old_length.intValue(); i++) {
                                 deleteProperty(Collections.singleton(objprop.getObjectLabel()), Value.makeStr(Integer.toString(i)), false);
                             }

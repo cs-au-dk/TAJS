@@ -1,0 +1,15 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var o = _([1, 2, 3, 4]).chain();
+    deepEqual(o.filter(function(i) { return i < 3; }).value(), [1, 2]);
+    deepEqual(o.filter(function(i) { return i > 2; }).value(), [3, 4]);
+</script></head><body></body></html>

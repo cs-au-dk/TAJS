@@ -23,6 +23,7 @@ import dk.brics.tajs.analysis.dom.ajax.XmlHttpRequest;
 import dk.brics.tajs.analysis.dom.core.DOMCharacterData;
 import dk.brics.tajs.analysis.dom.core.DOMConfiguration;
 import dk.brics.tajs.analysis.dom.core.DOMDocument;
+import dk.brics.tajs.analysis.dom.core.DOMDocumentType;
 import dk.brics.tajs.analysis.dom.core.DOMElement;
 import dk.brics.tajs.analysis.dom.core.DOMImplementation;
 import dk.brics.tajs.analysis.dom.core.DOMNamedNodeMap;
@@ -30,6 +31,8 @@ import dk.brics.tajs.analysis.dom.core.DOMNode;
 import dk.brics.tajs.analysis.dom.core.DOMNodeList;
 import dk.brics.tajs.analysis.dom.core.DOMStringList;
 import dk.brics.tajs.analysis.dom.core.DOMText;
+import dk.brics.tajs.analysis.dom.core.DOMTokenList;
+import dk.brics.tajs.analysis.dom.event.CustomEvent;
 import dk.brics.tajs.analysis.dom.event.DocumentEvent;
 import dk.brics.tajs.analysis.dom.event.Event;
 import dk.brics.tajs.analysis.dom.event.EventListener;
@@ -332,6 +335,7 @@ public class DOMFunctions {
             case WINDOW_CLEAR_INTERVAL:
             case WINDOW_CLEAR_TIMEOUT:
             case WINDOW_CONFIRM:
+            case WINDOW_DISPATCHEVENT:
             case WINDOW_ESCAPE:
             case WINDOW_FOCUS:
             case WINDOW_FORWARD:
@@ -339,6 +343,7 @@ public class DOMFunctions {
             case WINDOW_HISTORY_FORWARD:
             case WINDOW_HISTORY_GO:
             case WINDOW_HISTORY_PUSH_STATE:
+            case WINDOW_HISTORY_REPLACE_STATE:
             case WINDOW_HOME:
             case WINDOW_LOCATION_ASSIGN:
             case WINDOW_LOCATION_RELOAD:
@@ -366,6 +371,8 @@ public class DOMFunctions {
             case WINDOW_GET_COMPUTED_STYLE:
             case WINDOW_CANCEL_ANIM_FRAME:
             case WINDOW_CANCEL_ANIMATION_FRAME:
+            case WINDOW_REQUEST_ANIMATION_FRAME:
+            case WINDOW_WEBKIT_REQUEST_ANIMATION_FRAME:
             case WINDOW_MATCH_MEDIA:
                 return DOMWindow.evaluate(nativeObject, call, c);
             case CSSSTYLEDECLARATION_GETPROPERTYVALUE:
@@ -384,12 +391,15 @@ public class DOMFunctions {
             case DOCUMENT_GET_ELEMENT_BY_ID:
             case DOCUMENT_GET_ELEMENTS_BY_TAGNAME:
             case DOCUMENT_GET_ELEMENTS_BY_TAGNAME_NS:
+            case DOCUMENT_EXECCOMMAND:
             case DOCUMENT_QUERY_SELECTOR_ALL:
             case DOCUMENT_QUERY_SELECTOR:
             case DOCUMENT_IMPORT_NODE:
             case DOCUMENT_NORMALIZEDOCUMENT:
             case DOCUMENT_RENAME_NODE:
                 return DOMDocument.evaluate(nativeObject, call, c, DOMBuilder.getAllHtmlObjectLabels());
+            case DOCUMENTTYPE_CONSTRUCTOR:
+                return DOMDocumentType.evaluate(nativeObject, call, c);
             case DOMIMPLEMENTATION_HASFEATURE:
             case DOMIMPLEMENTATION_CREATEDOCUMENTTYPE:
             case DOMIMPLEMENTATION_CREATEDOCUMENT:
@@ -397,6 +407,21 @@ public class DOMFunctions {
                 return DOMImplementation.evaluate(nativeObject, call, c);
             case NODELIST_ITEM:
                 return DOMNodeList.evaluate(nativeObject, call, c);
+            case TOKENLIST_CONSTRUCTOR:
+            case TOKENLIST_PROTOTYPE:
+            case TOKENLIST_INSTANCES:
+            case TOKENLIST_ITEM:
+            case TOKENLIST_CONTAINS:
+            case TOKENLIST_ADD:
+            case TOKENLIST_REMOVE:
+            case TOKENLIST_REPLACE:
+            case TOKENLIST_SUPPORTS:
+            case TOKENLIST_TOGGLE:
+            case TOKENLIST_ENTRIES:
+            case TOKENLIST_FOREACH:
+            case TOKENLIST_KEYS:
+            case TOKENLIST_VALUES:
+                return DOMTokenList.evaluate(nativeObject, call, c);
             case ELEMENT_GET_ATTRIBUTE:
             case ELEMENT_GET_ATTRIBUTE_NS:
             case ELEMENT_GET_ATTRIBUTE_NODE:
@@ -405,8 +430,10 @@ public class DOMFunctions {
             case ELEMENT_GET_ELEMENTS_BY_TAGNAME:
             case ELEMENT_GET_ELEMENTS_BY_TAGNAME_NS:
             case ELEMENT_QUERY_SELECTOR_ALL:
+            case ELEMENT_QUERY_SELECTOR:
             case ELEMENT_HAS_ATTRIBUTE:
             case ELEMENT_HAS_ATTRIBUTE_NS:
+            case ELEMENT_REMOVE:
             case ELEMENT_REMOVE_ATTRIBUTE:
             case ELEMENT_REMOVE_ATTRIBUTE_NS:
             case ELEMENT_REMOVE_ATTRIBUTE_NODE:
@@ -417,6 +444,8 @@ public class DOMFunctions {
             case ELEMENT_SET_ID_ATTRIBUTE:
             case ELEMENT_SET_ID_ATTRIBUTE_NS:
             case ELEMENT_SET_ID_ATTRIBUTE_NODE:
+            case ELEMENT_MATCHES:
+            case ELEMENT_MATCHES_SELECTOR:
                 return DOMElement.evaluate(nativeObject, call, c);
             case CHARACTERDATA_SUBSTRINGDATA:
             case CHARACTERDATA_APPENDDATA:
@@ -442,6 +471,7 @@ public class DOMFunctions {
             case NODE_HAS_ATTRIBUTES:
             case NODE_NORMALIZE:
             case NODE_COMPARE_DOCUMENT_POSITION:
+            case NODE_CONTAINS:
                 return DOMNode.evaluate(nativeObject, call, c);
             case TEXT_SPLIT_TEXT:
             case TEXT_REPLACE_WHOLE_TEXT:
@@ -499,6 +529,7 @@ public class DOMFunctions {
             case HTMLTABLEROWELEMENT_INSERTCELL:
             case HTMLTABLEROWELEMENT_DELETECELL:
                 return HTMLTableRowElement.evaluate(nativeObject, call, c);
+            case HTMLMEDIAELEMENT_CONSTRUCTOR:
             case HTMLMEDIAELEMENT_CAN_PLAY_TYPE:
             case HTMLMEDIAELEMENT_FAST_SEEK:
             case HTMLMEDIAELEMENT_LOAD:
@@ -586,6 +617,7 @@ public class DOMFunctions {
             case STORAGE_REMOVE_ITEM:
                 return StorageElement.evaluate(nativeObject, call, c);
             case STRINGLIST_CONTAINS:
+            case STRINGLIST_CONSTRUCTOR:
             case STRINGLIST_ITEM:
                 return DOMStringList.evaluate(nativeObject, call, c);
             case CONFIGURATION_CAN_SET_PARAMETER:
@@ -598,8 +630,12 @@ public class DOMFunctions {
             case EVENT_CONSTRUCTOR:
             case EVENT_INIT_EVENT:
             case EVENT_PREVENT_DEFAULT:
+            case EVENT_STOP_IMMEDIATE_PROPAGATION:
             case EVENT_STOP_PROPAGATION:
                 return Event.evaluate(nativeObject, call, c);
+            case CUSTOM_EVENT_CONSTRUCTOR:
+            case CUSTOM_EVENT_INIT_CUSTOM_EVENT:
+                return CustomEvent.evaluate(nativeObject, call, c);
             case EVENT_TARGET_ADD_EVENT_LISTENER:
             case WINDOW_ADD_EVENT_LISTENER:
             case EVENT_TARGET_REMOVE_EVENT_LISTENER:
@@ -618,7 +654,6 @@ public class DOMFunctions {
                 return MouseEvent.evaluate(nativeObject, call, c);
             case KEYBOARD_EVENT_GET_MODIFIER_STATE:
             case KEYBOARD_EVENT_INIT_KEYBOARD_EVENT:
-            case KEYBOARD_EVENT_INIT_KEYBOARD_EVENT_NS:
                 return KeyboardEvent.evaluate(nativeObject, call, c);
             case WHEEL_EVENT_INIT_WHEEL_EVENT:
             case WHEEL_EVENT_INIT_WHEEL_EVENT_NS:

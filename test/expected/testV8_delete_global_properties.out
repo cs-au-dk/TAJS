@@ -1,2 +1,0 @@
-test/v8tests/delete-global-properties.js:32:21: [definite] Reading 'this' yields the global object
-test/v8tests/delete-global-properties.js:30:5: [definite] The variable tmp is never used

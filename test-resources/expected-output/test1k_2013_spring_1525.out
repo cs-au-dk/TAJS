@@ -1,0 +1,77 @@
+test-resources/src/1k2013spring/1525.js:62:30: [definite] Reading absent property width of host object
+test-resources/src/1k2013spring/1525.js:17:6: [maybe] ReferenceError, reading absent variable M
+test-resources/src/1k2013spring/1525.js:17:14: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2013spring/1525.js:17:18: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1525.js:22:10: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2013spring/1525.js:22:14: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2013spring/1525.js:26:9: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2013spring/1525.js:27:10: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2013spring/1525.js:28:10: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2013spring/1525.js:33:12: [maybe] ReferenceError, reading absent variable n
+test-resources/src/1k2013spring/1525.js:33:15: [maybe] ReferenceError, reading absent variable u
+test-resources/src/1k2013spring/1525.js:35:5: [maybe] ReferenceError, reading absent variable P
+test-resources/src/1k2013spring/1525.js:37:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1525.js:37:7: [maybe] ReferenceError, reading absent variable f
+test-resources/src/1k2013spring/1525.js:37:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1525.js:37:13: [maybe] ReferenceError, reading absent variable v
+test-resources/src/1k2013spring/1525.js:37:16: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2013spring/1525.js:38:7: [maybe] ReferenceError, reading absent variable f
+test-resources/src/1k2013spring/1525.js:38:13: [maybe] ReferenceError, reading absent variable v
+test-resources/src/1k2013spring/1525.js:38:16: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2013spring/1525.js:40:3: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1525.js:54:2: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2013spring/1525.js:54:10: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2013spring/1525.js:57:25: [maybe] ReferenceError, reading absent variable s
+test-resources/src/1k2013spring/1525.js:59:12: [maybe] ReferenceError, reading absent variable s
+test-resources/src/1k2013spring/1525.js:61:2: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1525.js:61:22: [maybe] ReferenceError, reading absent variable h
+test-resources/src/1k2013spring/1525.js:62:13: [maybe] ReferenceError, reading absent variable s
+test-resources/src/1k2013spring/1525.js:62:15: [maybe] ReferenceError, reading absent variable M
+test-resources/src/1k2013spring/1525.js:62:28: [maybe] ReferenceError, reading absent variable w
+test-resources/src/1k2013spring/1525.js:62:44: [maybe] ReferenceError, reading absent variable s
+test-resources/src/1k2013spring/1525.js:62:59: [maybe] ReferenceError, reading absent variable h
+test-resources/src/1k2013spring/1525.js:62:61: [maybe] ReferenceError, reading absent variable w
+test-resources/src/1k2013spring/1525.js:63:6: [maybe] ReferenceError, reading absent variable n
+test-resources/src/1k2013spring/1525.js:68:26: [maybe] ReferenceError, reading absent variable w
+test-resources/src/1k2013spring/1525.js:68:28: [maybe] ReferenceError, reading absent variable h
+test-resources/src/1k2013spring/1525.js:69:7: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1525.js:70:26: [maybe] ReferenceError, reading absent variable w
+test-resources/src/1k2013spring/1525.js:70:38: [maybe] ReferenceError, reading absent variable w
+test-resources/src/1k2013spring/1525.js:72:13: [maybe] ReferenceError, reading absent variable n
+test-resources/src/1k2013spring/1525.js:72:21: [maybe] ReferenceError, reading absent variable P
+test-resources/src/1k2013spring/1525.js:75:1: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1525.js:37:9: [maybe] Reading absent property X
+test-resources/src/1k2013spring/1525.js:38:9: [maybe] Reading absent property Y
+test-resources/src/1k2013spring/1525.js:42:18: [maybe] Reading absent property t
+test-resources/src/1k2013spring/1525.js:42:22: [maybe] Reading absent property T
+test-resources/src/1k2013spring/1525.js:43:24: [maybe] Reading absent property h
+test-resources/src/1k2013spring/1525.js:43:32: [maybe] Reading absent property s
+test-resources/src/1k2013spring/1525.js:43:41: [maybe] Reading absent property l
+test-resources/src/1k2013spring/1525.js:44:12: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1525.js:44:16: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1525.js:45:12: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1525.js:45:17: [maybe] Reading absent property X
+test-resources/src/1k2013spring/1525.js:45:21: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1525.js:45:26: [maybe] Reading absent property Y
+test-resources/src/1k2013spring/1525.js:47:5: [maybe] Reading absent property t
+test-resources/src/1k2013spring/1525.js:53:4: [maybe] Reading absent property keyCode of host object
+test-resources/src/1k2013spring/1525.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1525.js:17:6, test-resources/src/1k2013spring/1525.js:17:14, test-resources/src/1k2013spring/1525.js:17:18, test-resources/src/1k2013spring/1525.js:22:10, test-resources/src/1k2013spring/1525.js:22:14, test-resources/src/1k2013spring/1525.js:26:9, test-resources/src/1k2013spring/1525.js:27:10, test-resources/src/1k2013spring/1525.js:28:10, test-resources/src/1k2013spring/1525.js:33:12, test-resources/src/1k2013spring/1525.js:33:15, test-resources/src/1k2013spring/1525.js:35:5, test-resources/src/1k2013spring/1525.js:37:3, test-resources/src/1k2013spring/1525.js:37:7, test-resources/src/1k2013spring/1525.js:37:9, test-resources/src/1k2013spring/1525.js:37:13, test-resources/src/1k2013spring/1525.js:37:16, test-resources/src/1k2013spring/1525.js:38:7, test-resources/src/1k2013spring/1525.js:38:13, test-resources/src/1k2013spring/1525.js:38:16, test-resources/src/1k2013spring/1525.js:40:3, test-resources/src/1k2013spring/1525.js:54:2, test-resources/src/1k2013spring/1525.js:54:10, test-resources/src/1k2013spring/1525.js:57:25, test-resources/src/1k2013spring/1525.js:59:12, test-resources/src/1k2013spring/1525.js:61:2, test-resources/src/1k2013spring/1525.js:61:22, test-resources/src/1k2013spring/1525.js:62:13, test-resources/src/1k2013spring/1525.js:62:15, test-resources/src/1k2013spring/1525.js:62:28, test-resources/src/1k2013spring/1525.js:62:44, test-resources/src/1k2013spring/1525.js:62:59, test-resources/src/1k2013spring/1525.js:62:61, test-resources/src/1k2013spring/1525.js:63:6, test-resources/src/1k2013spring/1525.js:68:26, test-resources/src/1k2013spring/1525.js:68:28, test-resources/src/1k2013spring/1525.js:69:7, test-resources/src/1k2013spring/1525.js:70:26, test-resources/src/1k2013spring/1525.js:70:38, test-resources/src/1k2013spring/1525.js:72:13, test-resources/src/1k2013spring/1525.js:72:21, test-resources/src/1k2013spring/1525.js:75:1, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1525.js:18:6: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1525.js:19:6: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1525.js:35:5: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1525.js:37:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1525.js:38:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1525.js:42:18: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1525.js:43:17: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1525.js:44:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1525.js:45:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1525.js:45:21: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1525.js:47:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1525.js:57:28: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1525.js:59:12: [maybe] Converting object to string
+test-resources/src/1k2013spring/1525.js:59:12: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1525.js:59:23: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1525.js:62:28: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1525.js:70:7: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 94 checks (with 2 expected failures)

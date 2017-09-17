@@ -1,0 +1,6 @@
+test-resources/src/micro/test34.js:7:13: [definite] Reading 'this' yields the global object
+test-resources/src/micro/test34.js:8:16: [definite] Reading 'this' yields the global object
+test-resources/src/micro/test34.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test34.js:6:1: [info] Abstract value: 42.0
+test-resources/src/micro/test34.js:8:1: [info] Abstract value: 42.0
+Soundness testing succeeded for 15 checks (with 0 expected failures)

@@ -154,9 +154,9 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitCall(AbstractNode n, boolean maybe_non_function, boolean maybe_function) {
-        m1.visitCall(n, maybe_non_function, maybe_function);
-        m2.visitCall(n, maybe_non_function, maybe_function);
+    public void visitCall(AbstractNode n, Value funval) {
+        m1.visitCall(n, funval);
+        m2.visitCall(n, funval);
     }
 
     @Override

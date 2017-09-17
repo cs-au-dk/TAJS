@@ -4,21 +4,17 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-@Ignore
 public class TestFunctionBind {
 
     @Before
     public void before() {
-        Main.initLogging();
         Main.reset();
         Options.get().enableTest();
         Options.get().enablePolyfillMDN();
     }
 
-    @Ignore
     @Test
     public void receiver() {
         Misc.runSource(
@@ -46,16 +42,33 @@ public class TestFunctionBind {
     }
 
     @Test
-    public void args() {
+    public void boundAllArgs1() {
         Misc.runSource(
-                "function f(v1){TAJS_assert(v1 === 'v1');}",
+                "function f(v1){TAJS_assertEquals('v1', v1);}",
                 "f('v1')",
                 "var fbound = f.bind(undefined, 'v1');",
-                "fbound();",
-                "function g(v1, v2){TAJS_assert(v1 === 'v1'); TAJS_assert(v2 === 'v2');}",
-                "g('v1', 'v2')",
-                "var gbound = g.bind(undefined, 'v1');",
-                "gbound('v2');");
+                "fbound();"
+        );
+    }
+
+    @Test
+    public void boundAllArgs2() {
+        Misc.runSource(
+                "function f(v1, v2){TAJS_assertEquals('v1', v1); TAJS_assertEquals('v2', v2);}",
+                "f('v1', 'v2')",
+                "var fbound = f.bind(undefined, 'v1', 'v2');",
+                "fbound();"
+        );
+    }
+
+    @Test
+    public void boundSomeArgs() {
+        Misc.runSource(
+                "function f(v1, v2){TAJS_assertEquals('v1', v1); TAJS_assertEquals('v2', v2);}",
+                "f('v1', 'v2')",
+                "var fbound = f.bind(undefined, 'v1');",
+                "fbound('v2');"
+        );
     }
 
     @Test
@@ -94,6 +107,6 @@ public class TestFunctionBind {
     public void nonTerminationBug_minimized() {
         Main.reset();
         Options.get().enableTest();
-        Misc.run("test/function-bind/non-termination-bug_minimized.js");
+        Misc.run("test-resources/src/function-bind/non-termination-bug_minimized.js");
     }
 }

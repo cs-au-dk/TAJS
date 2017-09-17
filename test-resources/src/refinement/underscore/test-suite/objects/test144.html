@@ -1,0 +1,18 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(!_.isUndefined(1), 'numbers are defined');
+    ok(!_.isUndefined(null), 'null is defined');
+    ok(!_.isUndefined(false), 'false is defined');
+    ok(!_.isUndefined(NaN), 'NaN is defined');
+    ok(_.isUndefined(), 'nothing is undefined');
+    ok(_.isUndefined(undefined), 'undefined is undefined');
+</script></head><body></body></html>

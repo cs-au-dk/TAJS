@@ -1,5 +1,0 @@
-test/v8tests/call-non-function.js:31:5: [definite] TypeError, call to non-function
-test/v8tests/call-non-function.js:37:5: [definite] TypeError, call to non-function
-test/v8tests/call-non-function.js:47:9: [definite] Reading 'this' yields the global object
-test/v8tests/call-non-function.js:31:5: [maybe] The variable x has values with different types
-test/v8tests/call-non-function.js:37:9: [maybe] The variable x has values with different types

@@ -17,6 +17,7 @@
 package dk.brics.tajs.monitoring.inspector.api;
 
 import dk.brics.inspector.api.InspectorAPI;
+import dk.brics.inspector.api.model.OptionData;
 import dk.brics.inspector.api.model.Optional;
 import dk.brics.inspector.api.model.RelatedLocationKind;
 import dk.brics.inspector.api.model.ids.ContextID;
@@ -29,7 +30,6 @@ import dk.brics.inspector.api.model.locations.ContextSensitiveDescribedLocation;
 import dk.brics.inspector.api.model.locations.DescribedContext;
 import dk.brics.inspector.api.model.locations.DescribedLocation;
 import dk.brics.inspector.api.model.locations.FileDescription;
-import dk.brics.inspector.api.model.options.OptionData;
 import dk.brics.inspector.api.model.values.DescribedProperties;
 import dk.brics.tajs.monitoring.TogglableMonitor.Toggler;
 

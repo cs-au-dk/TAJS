@@ -1,0 +1,4 @@
+test-resources/src/v8tests/touint32.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/touint32.js:29:10: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/touint32.js:29:10: [maybe] The variable x has values with different types
+Soundness testing succeeded for 405 checks (with 0 expected failures)

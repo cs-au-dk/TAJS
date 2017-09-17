@@ -1,0 +1,8 @@
+test-resources/src/micro/test06.js:2:1: [definite] The conditional expression is always false
+test-resources/src/micro/test06.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test06.js:18:7: [maybe] The variable bar has values with different types
+test-resources/src/micro/test06.js:20:16: [maybe] The variable foo has values with different types
+test-resources/src/micro/test06.js:21:13: [maybe] The variable foo has values with different types
+test-resources/src/micro/test06.js:9:1: [info] Abstract value: "jolly1234"
+test-resources/src/micro/test06.js:20:1: [info] Abstract value: 2011.0|"jolly1234"
+Soundness testing succeeded for 23 checks (with 0 expected failures)

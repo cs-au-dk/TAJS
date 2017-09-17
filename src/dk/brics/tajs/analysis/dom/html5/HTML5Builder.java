@@ -47,6 +47,7 @@ public class HTML5Builder {
         MediaQueryList.build(c);
         OfflineResourceList.build(c);
         MutationObserver.build(c);
+        Worker.build(c);
 
         // HTML5 properties on Window
         createDOMProperty(DOMWindow.WINDOW, "localStorage", Value.makeObject(StorageElement.INSTANCES), c);

@@ -1,0 +1,7 @@
+test-resources/src/v8tests/array-join.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/array-join.js:40:28: [definite] Unreachable function
+test-resources/src/v8tests/array-join.js:30:29: [maybe] Converting object to string
+test-resources/src/v8tests/array-join.js:34:30: [maybe] Converting object to string
+test-resources/src/v8tests/array-join.js:38:39: [maybe] Converting object to string
+test-resources/src/v8tests/array-join.js:44:39: [maybe] Converting object to string
+Soundness testing succeeded for 79 checks (with 0 expected failures)

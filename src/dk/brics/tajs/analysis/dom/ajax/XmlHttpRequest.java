@@ -80,6 +80,15 @@ public class XmlHttpRequest {
         /*
          * Properties.
          */
+        createDOMProperty(INSTANCES, "onabort", Value.makeNull(), c);
+        createDOMProperty(INSTANCES, "onerror", Value.makeNull(), c);
+        createDOMProperty(INSTANCES, "onload", Value.makeNull(), c);
+        createDOMProperty(INSTANCES, "onloadstart", Value.makeNull(), c);
+        createDOMProperty(INSTANCES, "onloadend", Value.makeNull(), c);
+        createDOMProperty(INSTANCES, "onprogress", Value.makeNull(), c);
+        createDOMProperty(INSTANCES, "onreadystatechange", Value.makeNull(), c);
+        createDOMProperty(INSTANCES, "ontimeout", Value.makeNull(), c);
+
         createDOMProperty(INSTANCES, "readyState", Value.makeAnyNumUInt().setReadOnly(), c);
         createDOMProperty(INSTANCES, "status", Value.makeAnyNumUInt().setReadOnly(), c);
         createDOMProperty(INSTANCES, "statusText", Value.makeAnyStr().setReadOnly(), c);

@@ -1,0 +1,9 @@
+test-resources/src/v8tests/arguments-indirect.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/arguments-indirect.js:40:19: [definite] TypeError, accessing property of null/undefined
+test-resources/src/v8tests/arguments-indirect.js:40:19: [definite] Reading absent property arguments
+test-resources/src/v8tests/arguments-indirect.js:32:1: [definite] Unreachable function f2
+test-resources/src/v8tests/arguments-indirect.js:40:3: [definite] Unreachable code
+test-resources/src/v8tests/arguments-indirect.js:47:1: [definite] Unreachable code
+test-resources/src/v8tests/arguments-indirect.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/arguments-indirect.js:40:19]
+Disabling soundness testing for test-resources/src/v8tests/arguments-indirect.js entirely (44 uninspected soundness errors).
+Soundness testing succeeded for 77 checks (with 44 expected failures)

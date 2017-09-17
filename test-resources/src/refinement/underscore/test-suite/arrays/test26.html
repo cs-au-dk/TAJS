@@ -1,0 +1,17 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    _.each([-0, +0], function(val) {
+      strictEqual(_.lastIndexOf([1, 2, val, val], val), 3);
+      strictEqual(_.lastIndexOf([1, 2, val, val], -val), 3);
+      strictEqual(_.lastIndexOf([-1, 1, 2], -val), -1);
+    });
+</script></head><body></body></html>

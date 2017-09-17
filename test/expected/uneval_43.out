@@ -1,5 +1,0 @@
-test/uneval/uneval43.js: [definite] Exceptional program exit is unreachable
-test/uneval/uneval43.js:5:1: [definite] The variable a is never used
-test/uneval/uneval43.js:9:1: [info] Abstract value: 3.0
-test/uneval/uneval43.js:10:1: [info] Abstract value: 5.0
-Soundness testing succeeded for 41 checks (with 0 expected failures)

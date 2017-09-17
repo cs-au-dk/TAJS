@@ -1,0 +1,14 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var diff = _.now() - new Date().getTime();
+    ok(diff <= 0 && diff > -5, 'Produces the correct time in milliseconds');//within 5ms
+</script></head><body></body></html>

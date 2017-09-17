@@ -17,6 +17,7 @@
 package dk.brics.tajs.analysis.dom.core;
 
 import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.PropVarOperations;
@@ -91,6 +92,10 @@ public class DOMStringList {
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         State s = c.getState();
         switch (nativeObject) {
+            case STRINGLIST_CONSTRUCTOR: {
+                Exceptions.throwTypeError(c);
+                return Value.makeNone();
+            }
             case STRINGLIST_ITEM: {
                 DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value index =*/

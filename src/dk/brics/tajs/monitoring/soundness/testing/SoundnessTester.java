@@ -39,7 +39,6 @@ import org.apache.log4j.Logger;
 
 import java.net.URL;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Set;
 
@@ -70,7 +69,7 @@ public class SoundnessTester {
      */
     public SoundnessTester(Map<VariableSummary, Value> type_map, Set<SourceLocation> domObjectAllocationSites, Solver.SolverInterface c) {
         this.domObjectAllocationSites = domObjectAllocationSites;
-        this.mainFile = Paths.get(Options.get().getArguments().get(Options.get().getArguments().size() - 1));
+        this.mainFile = Options.get().getArguments().get(Options.get().getArguments().size() - 1);
         this.type_map = type_map;
         this.valueLogLocationInformation = c.getFlowGraph().getValueLogLocationInformation();
         this.c = c;

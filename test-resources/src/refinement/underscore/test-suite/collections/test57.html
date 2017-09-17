@@ -1,0 +1,32 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(!_.some([]), 'the empty set');
+    ok(!_.some([false, false, false]), 'all false values');
+    ok(_.some([false, false, true]), 'one true value');
+    ok(_.some([null, 0, 'yes', false]), 'a string');
+    ok(!_.some([null, 0, '', false]), 'falsy values');
+    ok(!_.some([1, 11, 29], function(num){ return num % 2 === 0; }), 'all odd numbers');
+    ok(_.some([1, 10, 29], function(num){ return num % 2 === 0; }), 'an even number');
+    ok(_.some([1], _.identity) === true, 'cast to boolean - true');
+    ok(_.some([0], _.identity) === false, 'cast to boolean - false');
+    ok(_.some([false, false, true]));
+    var list = [{a: 1, b: 2}, {a: 2, b: 2}, {a: 1, b: 3}, {a: 1, b: 4}];
+    ok(!_.some(list, {a: 5, b: 2}), 'Can be called with object');
+    ok(_.some(list, 'a'), 'String mapped to object property');
+    list = [{a: 1, b: 2}, {a: 2, b: 2, c: true}];
+    ok(_.some(list, {b: 2}), 'Can be called with object');
+    ok(!_.some(list, 'd'), 'String mapped to object property');
+    ok(_.some({a: '1', b: '2', c: '3', d: '4', e: 6}, _.isNumber), 'takes objects');
+    ok(!_.some({a: 1, b: 2, c: 3, d: 4}, _.isObject), 'takes objects');
+    ok(_.some(['a', 'b', 'c', 'd'], _.hasOwnProperty, {a: 1, b: 2, c: 3, d: 4}), 'context works');
+    ok(!_.some(['x', 'y', 'z'], _.hasOwnProperty, {a: 1, b: 2, c: 3, d: 4}), 'context works');
+</script></head><body></body></html>

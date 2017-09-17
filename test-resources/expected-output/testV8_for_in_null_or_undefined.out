@@ -1,0 +1,3 @@
+test-resources/src/v8tests/for-in-null-or-undefined.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/for-in-null-or-undefined.js:31:10: [definite] The variable p is never used
+Soundness testing succeeded for 9 checks (with 0 expected failures)

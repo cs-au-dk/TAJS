@@ -1,0 +1,24 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(_.isObject(arguments), 'the arguments object is object');
+    ok(_.isObject([1, 2, 3]), 'and arrays');
+    if (testElement) {
+      ok(_.isObject(testElement), 'and DOM element');
+    }
+    ok(_.isObject(function () {}), 'and functions');
+    ok(!_.isObject(null), 'but not null');
+    ok(!_.isObject(undefined), 'and not undefined');
+    ok(!_.isObject('string'), 'and not string');
+    ok(!_.isObject(12), 'and not number');
+    ok(!_.isObject(true), 'and not boolean');
+    ok(_.isObject(new String('string')), 'but new String()');
+</script></head><body></body></html>

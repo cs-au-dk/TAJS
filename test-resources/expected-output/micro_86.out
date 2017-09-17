@@ -1,0 +1,3 @@
+test-resources/src/micro/test86.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test86.js:10:1: [info] Abstract value: UIntPos
+Soundness testing succeeded for 36 checks (with 0 expected failures)

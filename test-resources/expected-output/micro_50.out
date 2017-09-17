@@ -1,0 +1,6 @@
+test-resources/src/micro/test50.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test50.js:10:1: [maybe] Converting primitive number to object
+test-resources/src/micro/test50.js:10:11: [maybe] The variable x has values with different types
+test-resources/src/micro/test50.js:5:1: [info] Abstract value: IdentStr|OtherIdentPartsStr
+test-resources/src/micro/test50.js:12:1: [info] Abstract value: IdentStr|OtherIdentPartsStr
+Soundness testing succeeded for 26 checks (with 0 expected failures)

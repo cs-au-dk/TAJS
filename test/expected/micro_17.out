@@ -1,8 +1,0 @@
-test/micro/test17.js:19:16: [definite] Variable u is null/undefined
-test/micro/test17.js:16:16: [maybe] ReferenceError, reading absent variable q
-test/micro/test17.js: [maybe] Uncaught exception, constructed at [test/micro/test17.js:16:16]
-test/micro/test17.js:14:1: [info] Abstract value: Bool
-test/micro/test17.js:16:1: [info] Abstract value: 42.0
-test/micro/test17.js:17:1: [info] Abstract value: Undef|"foo"
-test/micro/test17.js:19:1: [info] Abstract value: Undef
-Soundness testing succeeded for 20 checks (with 0 expected failures)

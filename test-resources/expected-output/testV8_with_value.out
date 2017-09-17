@@ -1,0 +1,3 @@
+test-resources/src/v8tests/with-value.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/with-value.js:32:3: [maybe] Converting primitive number to object
+Soundness testing succeeded for 12 checks (with 0 expected failures)

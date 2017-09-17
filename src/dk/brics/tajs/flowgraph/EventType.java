@@ -30,6 +30,7 @@ import static dk.brics.tajs.util.Collections.newMap;
  */
 public enum EventType { // TODO: (#116) reconsider how to represent HTML event handlers in flowgraphs
 
+    DOM_CONTENT_LOADED("DomContentLoaded"),
     LOAD("LoadEventHandler"),
     UNLOAD("UnloadEventHandler"),
     KEYBOARD("KeyboardEventHandler"),

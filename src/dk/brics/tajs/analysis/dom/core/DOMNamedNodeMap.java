@@ -105,7 +105,7 @@ public class DOMNamedNodeMap {
                 DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 /* Value name =*/
                 Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
-                return Value.makeObject(DOMNode.INSTANCES);
+                return Value.makeObject(DOMNode.INSTANCES).joinObject(DOMAttr.INSTANCES).joinNull();
             }
             case NAMEDNODEMAP_PROTOTYPE_SETNAMEDITEM: {
                 DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);

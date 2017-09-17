@@ -1,0 +1,24 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var vals = [];
+    _.times(3, function (i) { vals.push(i); });
+    deepEqual(vals, [0, 1, 2], 'is 0 indexed');
+    //
+    vals = [];
+    _(3).times(function(i) { vals.push(i); });
+    deepEqual(vals, [0, 1, 2], 'works as a wrapper');
+    // collects return values
+    deepEqual([0, 1, 2], _.times(3, function(i) { return i; }), 'collects return values');
+    deepEqual(_.times(0, _.identity), []);
+    deepEqual(_.times(-1, _.identity), []);
+    deepEqual(_.times(parseFloat('-Infinity'), _.identity), []);
+</script></head><body></body></html>

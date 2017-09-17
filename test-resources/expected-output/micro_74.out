@@ -1,0 +1,9 @@
+test-resources/src/micro/test74.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test74.js:10:11: [maybe] The variable sum has values with different types
+test-resources/src/micro/test74.js:12:16: [maybe] The variable sum has values with different types
+test-resources/src/micro/test74.js:5:1: [info] Abstract value: "crazy"
+test-resources/src/micro/test74.js:9:5: [info] Abstract value: "a"
+test-resources/src/micro/test74.js:9:5: [info] Abstract value: "b"
+test-resources/src/micro/test74.js:9:5: [info] Abstract value: "t"
+test-resources/src/micro/test74.js:12:1: [info] Abstract value: UInt|UIntStr|IdentStr|OtherIdentPartsStr
+Soundness testing succeeded for 29 checks (with 0 expected failures)

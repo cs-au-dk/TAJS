@@ -1,0 +1,22 @@
+test-resources/src/1k2013spring/1316.js:45:2: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1316.js:45:20: [maybe] ReferenceError, reading absent variable w
+test-resources/src/1k2013spring/1316.js:45:23: [maybe] ReferenceError, reading absent variable h
+test-resources/src/1k2013spring/1316.js:49:16: [maybe] ReferenceError, reading absent variable w
+test-resources/src/1k2013spring/1316.js:49:23: [maybe] ReferenceError, reading absent variable h
+test-resources/src/1k2013spring/1316.js:62:15: [maybe] ReferenceError, reading absent variable w
+test-resources/src/1k2013spring/1316.js:62:40: [maybe] ReferenceError, reading absent variable h
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1316.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1316.js:45:2, test-resources/src/1k2013spring/1316.js:45:20, test-resources/src/1k2013spring/1316.js:45:23, test-resources/src/1k2013spring/1316.js:49:16, test-resources/src/1k2013spring/1316.js:49:23, test-resources/src/1k2013spring/1316.js:62:15, test-resources/src/1k2013spring/1316.js:62:40, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1316.js:25:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:42:20: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:43:22: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:44:21: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:50:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:53:20: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:53:32: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:55:22: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:55:34: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:61:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:68:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:70:3: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 232 checks (with 0 expected failures)

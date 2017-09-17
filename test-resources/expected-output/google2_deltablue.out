@@ -1,0 +1,324 @@
+test-resources/src/google2/deltablue.js:98:3: [definite] Dead assignment, property name is never read
+test-resources/src/google2/deltablue.js:539:3: [definite] Dead assignment, property name is never read
+test-resources/src/google2/deltablue.js:113:22: [definite] Unreachable function
+test-resources/src/google2/deltablue.js:240:40: [definite] The variable mark is never used
+test-resources/src/google2/deltablue.js:156:3: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:168:3: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:169:8: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:174:3: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:175:13: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:176:20: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:177:27: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:177:27: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:186:7: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:187:8: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:220:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:229:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:230:41: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:257:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:258:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:259:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:259:27: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:274:30: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:352:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:353:23: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:353:80: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:357:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:358:23: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:358:80: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:362:23: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:362:45: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:363:55: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:367:55: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:377:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:393:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:393:3: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:416:13: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:416:33: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:417:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:417:56: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:419:17: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:430:11: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:431:10: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:435:24: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:436:24: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:463:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:464:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:469:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:470:27: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:471:28: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:475:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:476:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:476:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:484:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:484:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:484:37: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:484:56: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:486:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:486:22: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:486:38: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:486:59: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:496:13: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:496:33: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:497:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:497:56: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:498:26: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:498:45: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:499:17: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:519:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:519:3: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:519:25: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:519:25: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:585:20: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:585:20: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:587:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:602:13: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:603:3: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:604:3: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:610:11: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:613:16: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:649:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:649:9: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:649:36: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:651:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:651:7: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:652:38: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:666:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:666:9: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:666:24: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:691:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:691:9: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:695:5: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:696:36: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:708:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:716:25: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:718:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:718:12: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:724:34: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:724:34: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:725:9: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:726:18: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:734:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:738:29: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:738:29: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:771:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:771:5: [maybe] TypeError, call to non-function
+test-resources/src/google2/deltablue.js:813:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:815:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:842:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:844:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:847:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:852:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:863:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/deltablue.js:156:3: [maybe] Reading absent property addToGraph
+test-resources/src/google2/deltablue.js:168:3: [maybe] Reading absent property chooseMethod
+test-resources/src/google2/deltablue.js:169:8: [maybe] Reading absent property isSatisfied
+test-resources/src/google2/deltablue.js:174:3: [maybe] Reading absent property markInputs
+test-resources/src/google2/deltablue.js:175:13: [maybe] Reading absent property output
+test-resources/src/google2/deltablue.js:177:27: [maybe] Reading absent property markUnsatisfied
+test-resources/src/google2/deltablue.js:186:7: [maybe] Reading absent property isSatisfied
+test-resources/src/google2/deltablue.js:187:8: [maybe] Reading absent property removeFromGraph
+test-resources/src/google2/deltablue.js:220:3: [maybe] Reading absent property myOutput
+test-resources/src/google2/deltablue.js:229:21: [maybe] Reading absent property myOutput
+test-resources/src/google2/deltablue.js:230:41: [maybe] Reading absent property myOutput
+test-resources/src/google2/deltablue.js:237:10: [maybe] Reading absent property satisfied
+test-resources/src/google2/deltablue.js:248:10: [maybe] Reading absent property myOutput
+test-resources/src/google2/deltablue.js:257:3: [maybe] Reading absent property myOutput
+test-resources/src/google2/deltablue.js:258:3: [maybe] Reading absent property myOutput
+test-resources/src/google2/deltablue.js:259:7: [maybe] Reading absent property myOutput
+test-resources/src/google2/deltablue.js:259:27: [maybe] Reading absent property execute
+test-resources/src/google2/deltablue.js:274:7: [maybe] Reading absent property myOutput
+test-resources/src/google2/deltablue.js:274:30: [maybe] Reading absent property myOutput
+test-resources/src/google2/deltablue.js:352:7: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:353:23: [maybe] Reading absent property v2
+test-resources/src/google2/deltablue.js:353:80: [maybe] Reading absent property v2
+test-resources/src/google2/deltablue.js:357:7: [maybe] Reading absent property v2
+test-resources/src/google2/deltablue.js:358:23: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:358:80: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:362:23: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:362:45: [maybe] Reading absent property v2
+test-resources/src/google2/deltablue.js:363:55: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:367:55: [maybe] Reading absent property v2
+test-resources/src/google2/deltablue.js:377:3: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:386:10: [maybe] Reading absent property direction
+test-resources/src/google2/deltablue.js:393:3: [maybe] Reading absent property input
+test-resources/src/google2/deltablue.js:400:11: [maybe] Reading absent property direction
+test-resources/src/google2/deltablue.js:400:50: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:400:60: [maybe] Reading absent property v2
+test-resources/src/google2/deltablue.js:407:11: [maybe] Reading absent property direction
+test-resources/src/google2/deltablue.js:407:50: [maybe] Reading absent property v2
+test-resources/src/google2/deltablue.js:407:60: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:416:13: [maybe] Reading absent property input
+test-resources/src/google2/deltablue.js:416:33: [maybe] Reading absent property output
+test-resources/src/google2/deltablue.js:419:17: [maybe] Reading absent property execute
+test-resources/src/google2/deltablue.js:430:11: [maybe] Reading absent property input
+test-resources/src/google2/deltablue.js:435:7: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:435:24: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:436:7: [maybe] Reading absent property v2
+test-resources/src/google2/deltablue.js:436:24: [maybe] Reading absent property v2
+test-resources/src/google2/deltablue.js:463:3: [maybe] Reading absent property addToGraph
+test-resources/src/google2/deltablue.js:464:3: [maybe] Reading absent property scale
+test-resources/src/google2/deltablue.js:469:3: [maybe] Reading absent property removeFromGraph
+test-resources/src/google2/deltablue.js:470:7: [maybe] Reading absent property scale
+test-resources/src/google2/deltablue.js:470:27: [maybe] Reading absent property scale
+test-resources/src/google2/deltablue.js:471:7: [maybe] Reading absent property offset
+test-resources/src/google2/deltablue.js:471:28: [maybe] Reading absent property offset
+test-resources/src/google2/deltablue.js:475:3: [maybe] Reading absent property markInputs
+test-resources/src/google2/deltablue.js:476:3: [maybe] Reading absent property scale
+test-resources/src/google2/deltablue.js:476:21: [maybe] Reading absent property offset
+test-resources/src/google2/deltablue.js:483:7: [maybe] Reading absent property direction
+test-resources/src/google2/deltablue.js:484:5: [maybe] Reading absent property v2
+test-resources/src/google2/deltablue.js:484:21: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:484:37: [maybe] Reading absent property scale
+test-resources/src/google2/deltablue.js:484:56: [maybe] Reading absent property offset
+test-resources/src/google2/deltablue.js:486:5: [maybe] Reading absent property v1
+test-resources/src/google2/deltablue.js:486:22: [maybe] Reading absent property v2
+test-resources/src/google2/deltablue.js:486:38: [maybe] Reading absent property offset
+test-resources/src/google2/deltablue.js:486:59: [maybe] Reading absent property scale
+test-resources/src/google2/deltablue.js:496:13: [maybe] Reading absent property input
+test-resources/src/google2/deltablue.js:496:33: [maybe] Reading absent property output
+test-resources/src/google2/deltablue.js:498:26: [maybe] Reading absent property scale
+test-resources/src/google2/deltablue.js:498:45: [maybe] Reading absent property offset
+test-resources/src/google2/deltablue.js:499:17: [maybe] Reading absent property execute
+test-resources/src/google2/deltablue.js:519:3: [maybe] Reading absent property output
+test-resources/src/google2/deltablue.js:519:25: [maybe] Reading absent property input
+test-resources/src/google2/deltablue.js:585:20: [maybe] Reading absent property satisfy
+test-resources/src/google2/deltablue.js:602:13: [maybe] Reading absent property output
+test-resources/src/google2/deltablue.js:603:3: [maybe] Reading absent property markUnsatisfied
+test-resources/src/google2/deltablue.js:604:3: [maybe] Reading absent property removeFromGraph
+test-resources/src/google2/deltablue.js:610:11: [maybe] Reading absent property strength
+test-resources/src/google2/deltablue.js:649:9: [maybe] Reading absent property output
+test-resources/src/google2/deltablue.js:649:36: [maybe] Reading absent property inputsKnown
+test-resources/src/google2/deltablue.js:651:7: [maybe] Reading absent property output
+test-resources/src/google2/deltablue.js:652:38: [maybe] Reading absent property output
+test-resources/src/google2/deltablue.js:666:9: [maybe] Reading absent property isInput
+test-resources/src/google2/deltablue.js:666:24: [maybe] Reading absent property isSatisfied
+test-resources/src/google2/deltablue.js:691:9: [maybe] Reading absent property output
+test-resources/src/google2/deltablue.js:695:5: [maybe] Reading absent property recalculate
+test-resources/src/google2/deltablue.js:696:36: [maybe] Reading absent property output
+test-resources/src/google2/deltablue.js:718:12: [maybe] Reading absent property isSatisfied
+test-resources/src/google2/deltablue.js:724:34: [maybe] Reading absent property isSatisfied
+test-resources/src/google2/deltablue.js:725:9: [maybe] Reading absent property recalculate
+test-resources/src/google2/deltablue.js:726:18: [maybe] Reading absent property output
+test-resources/src/google2/deltablue.js:738:29: [maybe] Reading absent property isSatisfied
+test-resources/src/google2/deltablue.js:771:5: [maybe] Reading absent property execute
+test-resources/src/google2/deltablue.js:847:9: [maybe] Reading absent property value
+test-resources/src/google2/deltablue.js:852:9: [maybe] Reading absent property value
+test-resources/src/google2/deltablue.js: [maybe] Uncaught exception, constructed at [test-resources/src/google2/deltablue.js:156:3, test-resources/src/google2/deltablue.js:168:3, test-resources/src/google2/deltablue.js:169:8, test-resources/src/google2/deltablue.js:174:3, test-resources/src/google2/deltablue.js:175:13, test-resources/src/google2/deltablue.js:176:20, test-resources/src/google2/deltablue.js:177:27, test-resources/src/google2/deltablue.js:186:7, test-resources/src/google2/deltablue.js:187:8, test-resources/src/google2/deltablue.js:220:3, test-resources/src/google2/deltablue.js:229:21, test-resources/src/google2/deltablue.js:230:41, test-resources/src/google2/deltablue.js:257:3, test-resources/src/google2/deltablue.js:258:3, test-resources/src/google2/deltablue.js:259:7, test-resources/src/google2/deltablue.js:259:27, test-resources/src/google2/deltablue.js:274:30, test-resources/src/google2/deltablue.js:352:7, test-resources/src/google2/deltablue.js:353:23, test-resources/src/google2/deltablue.js:353:80, test-resources/src/google2/deltablue.js:357:7, test-resources/src/google2/deltablue.js:358:23, test-resources/src/google2/deltablue.js:358:80, test-resources/src/google2/deltablue.js:362:23, test-resources/src/google2/deltablue.js:362:45, test-resources/src/google2/deltablue.js:363:55, test-resources/src/google2/deltablue.js:367:55, test-resources/src/google2/deltablue.js:377:3, test-resources/src/google2/deltablue.js:393:3, test-resources/src/google2/deltablue.js:416:13, test-resources/src/google2/deltablue.js:416:33, test-resources/src/google2/deltablue.js:417:3, test-resources/src/google2/deltablue.js:417:56, test-resources/src/google2/deltablue.js:419:17, test-resources/src/google2/deltablue.js:430:11, test-resources/src/google2/deltablue.js:431:10, test-resources/src/google2/deltablue.js:435:24, test-resources/src/google2/deltablue.js:436:24, test-resources/src/google2/deltablue.js:463:3, test-resources/src/google2/deltablue.js:464:3, test-resources/src/google2/deltablue.js:469:3, test-resources/src/google2/deltablue.js:470:27, test-resources/src/google2/deltablue.js:471:28, test-resources/src/google2/deltablue.js:475:3, test-resources/src/google2/deltablue.js:476:3, test-resources/src/google2/deltablue.js:476:21, test-resources/src/google2/deltablue.js:484:5, test-resources/src/google2/deltablue.js:484:21, test-resources/src/google2/deltablue.js:484:37, test-resources/src/google2/deltablue.js:484:56, test-resources/src/google2/deltablue.js:486:5, test-resources/src/google2/deltablue.js:486:22, test-resources/src/google2/deltablue.js:486:38, test-resources/src/google2/deltablue.js:486:59, test-resources/src/google2/deltablue.js:496:13, test-resources/src/google2/deltablue.js:496:33, test-resources/src/google2/deltablue.js:497:3, test-resources/src/google2/deltablue.js:497:56, test-resources/src/google2/deltablue.js:498:26, test-resources/src/google2/deltablue.js:498:45, test-resources/src/google2/deltablue.js:499:17, test-resources/src/google2/deltablue.js:519:3, test-resources/src/google2/deltablue.js:519:25, test-resources/src/google2/deltablue.js:585:20, test-resources/src/google2/deltablue.js:587:18, test-resources/src/google2/deltablue.js:602:13, test-resources/src/google2/deltablue.js:603:3, test-resources/src/google2/deltablue.js:604:3, test-resources/src/google2/deltablue.js:610:11, test-resources/src/google2/deltablue.js:613:16, test-resources/src/google2/deltablue.js:649:9, test-resources/src/google2/deltablue.js:649:36, test-resources/src/google2/deltablue.js:651:7, test-resources/src/google2/deltablue.js:652:38, test-resources/src/google2/deltablue.js:666:9, test-resources/src/google2/deltablue.js:666:24, test-resources/src/google2/deltablue.js:691:9, test-resources/src/google2/deltablue.js:695:5, test-resources/src/google2/deltablue.js:696:36, test-resources/src/google2/deltablue.js:708:3, test-resources/src/google2/deltablue.js:716:25, test-resources/src/google2/deltablue.js:718:12, test-resources/src/google2/deltablue.js:724:34, test-resources/src/google2/deltablue.js:725:9, test-resources/src/google2/deltablue.js:726:18, test-resources/src/google2/deltablue.js:734:21, test-resources/src/google2/deltablue.js:738:29, test-resources/src/google2/deltablue.js:771:5, test-resources/src/google2/deltablue.js:813:5, test-resources/src/google2/deltablue.js:815:9, test-resources/src/google2/deltablue.js:842:7, test-resources/src/google2/deltablue.js:844:7, test-resources/src/google2/deltablue.js:847:9, test-resources/src/google2/deltablue.js:852:9, test-resources/src/google2/deltablue.js:863:5]
+test-resources/src/google2/deltablue.js:60:10: [maybe] Reading absent property (computed name)
+test-resources/src/google2/deltablue.js:74:17: [maybe] Reading absent property (computed name)
+test-resources/src/google2/deltablue.js:608:45: [maybe] Conversion to number yields NaN
+test-resources/src/google2/deltablue.js:56:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/deltablue.js:56:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:60:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:64:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:73:23: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/deltablue.js:73:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:74:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/deltablue.js:74:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:76:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/deltablue.js:76:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:83:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/deltablue.js:83:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:118:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:168:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:169:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:170:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:174:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:175:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:178:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:179:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:229:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:229:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:230:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:230:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:237:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:248:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:257:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:257:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:258:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:258:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:259:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:259:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:266:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/deltablue.js:266:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:274:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:274:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:274:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:275:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:352:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:353:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:353:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:353:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:353:80: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:357:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:358:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:358:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:358:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:358:80: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:362:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:362:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:363:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:363:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:363:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:367:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:367:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:367:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:386:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:393:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:400:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:400:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:400:60: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:407:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:407:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:407:60: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:416:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:416:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:417:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:419:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:426:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/deltablue.js:426:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:430:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:435:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:435:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:435:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:436:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:436:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:436:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:437:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:469:67: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:470:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:470:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:470:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:471:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:471:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:471:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:475:62: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:476:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:476:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:483:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:484:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:484:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:484:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:484:56: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:486:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:486:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:486:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:486:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:496:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:496:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:497:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:498:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:498:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:499:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:519:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:519:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:547:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/deltablue.js:547:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:554:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/deltablue.js:554:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:555:7: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/deltablue.js:555:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/deltablue.js:555:31: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/deltablue.js:555:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 13042 checks (with 0 expected failures)

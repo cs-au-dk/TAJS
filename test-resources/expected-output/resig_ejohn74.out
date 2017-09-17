@@ -1,0 +1,4 @@
+test-resources/src/resig/ejohn74.js: [definite] Exceptional program exit is unreachable
+test-resources/src/resig/ejohn74.js:10:1: [info] Abstract value: [@Ninja#fun2]
+test-resources/src/resig/ejohn74.js:11:1: [info] Abstract value: [@Ninja#fun2]
+Soundness testing succeeded for 31 checks (with 0 expected failures)

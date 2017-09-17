@@ -1,0 +1,53 @@
+test-resources/src/10k/fractal_landscape.html:51:13: [definite] The conditional expression is always false
+test-resources/src/10k/fractal_landscape.html:51:17: [definite] Reading absent property Count
+test-resources/src/10k/fractal_landscape.html:9:44: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/fractal_landscape.html:11:36: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/fractal_landscape.html:12:31: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/fractal_landscape.html:13:30: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/fractal_landscape.html:14:30: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/fractal_landscape.html:15:28: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/fractal_landscape.html:25:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/fractal_landscape.html:39:17: [maybe] ReferenceError, reading absent variable IntervalCounter
+test-resources/src/10k/fractal_landscape.html:40:40: [maybe] ReferenceError, reading absent variable theCoords
+test-resources/src/10k/fractal_landscape.html:40:51: [maybe] ReferenceError, reading absent variable displacement
+test-resources/src/10k/fractal_landscape.html:42:17: [maybe] ReferenceError, reading absent variable IntervalCounter
+test-resources/src/10k/fractal_landscape.html:45:31: [maybe] ReferenceError, reading absent variable animInterval
+test-resources/src/10k/fractal_landscape.html:73:13: [maybe] ReferenceError, reading absent variable ctx
+test-resources/src/10k/fractal_landscape.html:74:29: [maybe] ReferenceError, reading absent variable lineargradient
+test-resources/src/10k/fractal_landscape.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/fractal_landscape.html:9:44, test-resources/src/10k/fractal_landscape.html:11:36, test-resources/src/10k/fractal_landscape.html:12:31, test-resources/src/10k/fractal_landscape.html:13:30, test-resources/src/10k/fractal_landscape.html:14:30, test-resources/src/10k/fractal_landscape.html:15:28, test-resources/src/10k/fractal_landscape.html:25:13, test-resources/src/10k/fractal_landscape.html:39:17, test-resources/src/10k/fractal_landscape.html:40:40, test-resources/src/10k/fractal_landscape.html:40:51, test-resources/src/10k/fractal_landscape.html:42:17, test-resources/src/10k/fractal_landscape.html:45:31, test-resources/src/10k/fractal_landscape.html:73:13, test-resources/src/10k/fractal_landscape.html:74:29]
+test-resources/src/10k/fractal_landscape.html:39:35: [maybe] The variable detail has values with different types
+test-resources/src/10k/fractal_landscape.html:40:51: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/fractal_landscape.html:40:51: [maybe] Converting object to number
+test-resources/src/10k/fractal_landscape.html:40:67: [maybe] The variable extremity has values with different types
+test-resources/src/10k/fractal_landscape.html:51:17: [maybe] Conversion to number yields NaN
+test-resources/src/10k/fractal_landscape.html:60:39: [maybe] Conversion to number yields NaN
+test-resources/src/10k/fractal_landscape.html:60:39: [maybe] Reading absent property (computed name)
+test-resources/src/10k/fractal_landscape.html:60:58: [maybe] Reading absent property (computed name)
+test-resources/src/10k/fractal_landscape.html:62:33: [maybe] Conversion to number yields NaN
+test-resources/src/10k/fractal_landscape.html:62:33: [maybe] Reading absent property (computed name)
+test-resources/src/10k/fractal_landscape.html:64:32: [maybe] Reading absent property (computed name)
+test-resources/src/10k/fractal_landscape.html:67:28: [maybe] Reading absent property (computed name)
+test-resources/src/10k/fractal_landscape.html:73:13: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/fractal_landscape.html:73:13: [maybe] Converting object to number
+test-resources/src/10k/fractal_landscape.html:73:33: [maybe] The variable xsize has values with different types
+test-resources/src/10k/fractal_landscape.html:73:40: [maybe] The variable ysize has values with different types
+test-resources/src/10k/fractal_landscape.html:76:13: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/fractal_landscape.html:76:13: [maybe] Converting object to number
+test-resources/src/10k/fractal_landscape.html:76:27: [maybe] The variable ysize has values with different types
+test-resources/src/10k/fractal_landscape.html:80:27: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/fractal_landscape.html:80:27: [maybe] Converting object to number
+test-resources/src/10k/fractal_landscape.html:80:27: [maybe] The variable xsize has values with different types
+test-resources/src/10k/fractal_landscape.html:82:26: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/fractal_landscape.html:82:26: [maybe] Converting object to number
+test-resources/src/10k/fractal_landscape.html:82:26: [maybe] The variable ysize has values with different types
+test-resources/src/10k/fractal_landscape.html:82:35: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/fractal_landscape.html:82:35: [maybe] Conversion to number yields NaN
+test-resources/src/10k/fractal_landscape.html:82:35: [maybe] Converting object to number
+test-resources/src/10k/fractal_landscape.html:82:35: [maybe] Reading absent property (computed name)
+test-resources/src/10k/fractal_landscape.html:82:50: [maybe] The variable ysize has values with different types
+test-resources/src/10k/fractal_landscape.html:85:13: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/fractal_landscape.html:85:13: [maybe] Converting object to number
+test-resources/src/10k/fractal_landscape.html:85:24: [maybe] The variable xsize has values with different types
+test-resources/src/10k/fractal_landscape.html:85:31: [maybe] The variable ysize has values with different types
+Disabling soundness testing for test-resources/src/10k/fractal_landscape.html entirely (4 uninspected soundness errors).
+Soundness testing succeeded for 431 checks (with 4 expected failures)

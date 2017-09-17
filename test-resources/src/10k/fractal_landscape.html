@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>A canvas fractal landscape</title>
+    <script type="text/javascript">
+        function createTerrain() {
+            //Set up global stuff
+            var initialHeight = parseFloat(document.getElementById("height").value);
+            theCoords = [initialHeight, initialHeight];
+            extremity = parseFloat(document.getElementById("extremity").value);
+            detail = parseInt(document.getElementById("detail").value);
+            xsize = parseInt(document.getElementById("xsize").value);
+            ysize = parseInt(document.getElementById("ysize").value);
+            var mountain = document.getElementById("mv").selectedIndex;
+            if (mountain == 1) {
+                displacement = 1.0;
+            }
+            else {
+                displacement = -1.0;
+            }
+            IntervalCounter = 0;
+
+            canvas = document.getElementById('landscape');
+            canvas.height = ysize;
+            canvas.width = xsize;
+            // use getContext to use the canvas for drawing
+            ctx = canvas.getContext('2d');
+            lineargradient = ctx.createLinearGradient(xsize / 2, ysize / 2, xsize / 2, ysize);
+            color1 = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")"
+            color2 = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")"
+            lineargradient.addColorStop(0, color1);
+            lineargradient.addColorStop(1, color2);
+
+            animInterval = setInterval("animatedDraw()", 100);
+        }
+
+        function animatedDraw() {
+            if (IntervalCounter < detail) {
+                theCoords = fractalize(theCoords, displacement *= extremity);
+                drawLandscape(theCoords);
+                IntervalCounter++;
+            }
+            else {
+                clearInterval(animInterval);
+            }
+        }
+
+        function fractalize(theCoords, displacement) {
+            //split the line segments up
+            if (theCoords.Count < 2) {
+                alert(">= 2 coordinates required");
+            }
+            var newCoords = new Array();
+            var theLength = theCoords.length - 1;
+            var i;
+            for (i = 0; i < theLength; i++) {
+
+                var mrRandom = Math.random();
+                var displacedCoord = (theCoords[i + 1] - theCoords[i]) / 2.0;
+                var newDisplacement = mrRandom * displacement;
+                var nextCoord = theCoords[i] + displacedCoord + newDisplacement;
+
+                newCoords.push(theCoords[i]);
+                newCoords.push(nextCoord);
+            }
+            newCoords.push(theCoords[theCoords.length - 1]);
+            return newCoords;
+        }
+
+        function drawLandscape(theCoords) {
+
+            ctx.clearRect(0, 0, xsize, ysize);
+            ctx.fillStyle = lineargradient;
+            ctx.beginPath();
+            ctx.moveTo(0, ysize);
+
+            var j;
+            for (j = 0; j < theCoords.length; j++) {
+                xCoord = (xsize / (theCoords.length - 1))
+                xCoord = xCoord * j;
+                yCoord = ysize - (theCoords[j] * ysize);
+                ctx.lineTo(xCoord, yCoord);
+            }
+            ctx.lineTo(xsize, ysize);
+            ctx.fill();
+        }
+
+
+    </script>
+    <style>
+        fieldset {
+            width: 300px;
+        }
+
+        input, select {
+            clear: right;
+            float: right;
+        }
+
+        label {
+            float: left;
+        }
+    </style>
+</head>
+<body onload="createTerrain()">
+
+<form>
+    <fieldset>
+        <label for="ysize">Height (pixels)</label><input id="ysize" value="600" type="text"><br>
+        <label for="xsize">Width (pixels)</label><input id="xsize" value="800" type="text"><br>
+        <label for="extremity">Extremity</label><select id="extremity">
+        <option value="0.0">0</option>
+        <option value="0.1">1</option>
+
+        <option value="0.2">2</option>
+        <option value="0.3">3</option>
+        <option value="0.4">4</option>
+        <option value="0.5">5</option>
+        <option value="0.6" selected="selected">6</option>
+        <option value="0.7">7</option>
+
+        <option value="0.8">8</option>
+        <option value="0.9">9</option>
+        <option value="1">10</option>
+    </select><br>
+        <label for="height">Elevation</label><select id="height">
+        <option value="0.0">0</option>
+
+        <option value="0.1">1</option>
+        <option value="0.2" selected="selected">2</option>
+        <option value="0.3">3</option>
+        <option value="0.4">4</option>
+        <option value="0.5">5</option>
+        <option value="0.6">6</option>
+
+        <option value="0.7">7</option>
+        <option value="0.8">8</option>
+        <option value="0.9">9</option>
+        <option value="1.0">10</option>
+    </select><br>
+        <label for="detail">Detail</label><select id="detail">
+
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+
+        <option value="6" selected="selected">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select><br>
+
+        <label for="mv">Mountain/Valley</label>
+        <select id="mv">
+            <option value="Valley">Valley</option>
+            <option selected="selected" value="Mountain">Mountain</option>
+        </select><br>
+        <input value="BUILD ME A WORLD!!!!!!!!!!!" onclick="createTerrain()" type="button">
+    </fieldset>
+
+</form>
+
+<canvas id="landscape" width="800" height="600"></canvas>
+
+</body>
+</html>

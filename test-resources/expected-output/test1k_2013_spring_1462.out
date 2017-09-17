@@ -1,0 +1,50 @@
+test-resources/src/1k2013spring/1462.js:90:5: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test-resources/src/1k2013spring/1462.js:92:7: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test-resources/src/1k2013spring/1462.js:104:5: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fillRect
+test-resources/src/1k2013spring/1462.js:119:7: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test-resources/src/1k2013spring/1462.js:121:9: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test-resources/src/1k2013spring/1462.js:147:3: [definite] Too many parameters to function Window.setInterval
+test-resources/src/1k2013spring/1462.js:161:11: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test-resources/src/1k2013spring/1462.js:162:13: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test-resources/src/1k2013spring/1462.js:176:13: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test-resources/src/1k2013spring/1462.js:177:15: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test-resources/src/1k2013spring/1462.js:185:15: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test-resources/src/1k2013spring/1462.js:186:17: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test-resources/src/1k2013spring/1462.js:45:21: [definite] Too few parameters to function Node.cloneNode
+test-resources/src/1k2013spring/1462.js:96:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1462.js:165:13: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1462.js:180:15: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1462.js:38:5: [definite] The variable e is never used
+test-resources/src/1k2013spring/1462.js:43:5: [definite] The variable d is never used
+test-resources/src/1k2013spring/1462.js:43:5: [definite] The variable e is never used
+test-resources/src/1k2013spring/1462.js:47:9: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1462.js:94:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1462.js:98:58: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1462.js:108:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1462.js:150:17: [maybe] ReferenceError, reading absent variable H
+test-resources/src/1k2013spring/1462.js:154:9: [maybe] ReferenceError, reading absent variable I
+test-resources/src/1k2013spring/1462.js:157:25: [maybe] ReferenceError, reading absent variable X
+test-resources/src/1k2013spring/1462.js:163:15: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1462.js:165:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1462.js:165:33: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1462.js:173:31: [maybe] ReferenceError, reading absent variable G
+test-resources/src/1k2013spring/1462.js:174:32: [maybe] ReferenceError, reading absent variable G
+test-resources/src/1k2013spring/1462.js:175:31: [maybe] ReferenceError, reading absent variable G
+test-resources/src/1k2013spring/1462.js:178:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1462.js:181:79: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1462.js:187:33: [maybe] ReferenceError, reading absent variable G
+test-resources/src/1k2013spring/1462.js:193:18: [maybe] ReferenceError, reading absent variable N
+test-resources/src/1k2013spring/1462.js:205:23: [maybe] ReferenceError, reading absent variable X
+test-resources/src/1k2013spring/1462.js:206:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1462.js:207:32: [maybe] ReferenceError, reading absent variable P
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1462.js:47:9: [maybe] Reading absent property getContext of host object
+test-resources/src/1k2013spring/1462.js:65:11: [maybe] Reading absent property G of host object
+test-resources/src/1k2013spring/1462.js:150:17: [maybe] Reading absent property G of host object
+test-resources/src/1k2013spring/1462.js:169:21: [maybe] Reading absent property G of host object
+test-resources/src/1k2013spring/1462.js:198:11: [maybe] Reading absent property t
+test-resources/src/1k2013spring/1462.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1462.js:47:9, test-resources/src/1k2013spring/1462.js:65:1, test-resources/src/1k2013spring/1462.js:94:9, test-resources/src/1k2013spring/1462.js:98:58, test-resources/src/1k2013spring/1462.js:108:7, test-resources/src/1k2013spring/1462.js:150:7, test-resources/src/1k2013spring/1462.js:150:17, test-resources/src/1k2013spring/1462.js:154:9, test-resources/src/1k2013spring/1462.js:157:25, test-resources/src/1k2013spring/1462.js:163:15, test-resources/src/1k2013spring/1462.js:165:17, test-resources/src/1k2013spring/1462.js:165:33, test-resources/src/1k2013spring/1462.js:169:11, test-resources/src/1k2013spring/1462.js:173:31, test-resources/src/1k2013spring/1462.js:174:32, test-resources/src/1k2013spring/1462.js:175:31, test-resources/src/1k2013spring/1462.js:178:17, test-resources/src/1k2013spring/1462.js:181:79, test-resources/src/1k2013spring/1462.js:187:33, test-resources/src/1k2013spring/1462.js:193:18, test-resources/src/1k2013spring/1462.js:205:23, test-resources/src/1k2013spring/1462.js:206:18, test-resources/src/1k2013spring/1462.js:207:32, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1462.js:157:25: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1462.js:198:11: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1462.js:205:23: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 119 checks (with 1 expected failures)

@@ -1,0 +1,49 @@
+test-resources/src/1k2012love/1252.js:6:14: [definite] The conditional expression is always true
+test-resources/src/1k2012love/1252.js:58:2: [definite] The conditional expression is always true
+test-resources/src/1k2012love/1252.js:58:6: [definite] The conditional expression is always true
+test-resources/src/1k2012love/1252.js:4:9: [definite] Reading 'this' yields the global object
+test-resources/src/1k2012love/1252.js:27:4: [definite] Dead assignment, property x is never read
+test-resources/src/1k2012love/1252.js:28:4: [definite] Dead assignment, property y is never read
+test-resources/src/1k2012love/1252.js:29:4: [definite] Dead assignment, property j is never read
+test-resources/src/1k2012love/1252.js:30:4: [definite] Dead assignment, property k is never read
+test-resources/src/1k2012love/1252.js:31:4: [definite] Dead assignment, property s is never read
+test-resources/src/1k2012love/1252.js:32:4: [definite] Dead assignment, property r is never read
+test-resources/src/1k2012love/1252.js:33:4: [definite] Dead assignment, property c is never read
+test-resources/src/1k2012love/1252.js:6:86: [definite] Unreachable function
+test-resources/src/1k2012love/1252.js:44:1: [definite] Unreachable function heart
+test-resources/src/1k2012love/1252.js:72:17: [definite] Unreachable function
+test-resources/src/1k2012love/1252.js:20:60: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:20:66: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:23:24: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:24:23: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:29:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1252.js:32:14: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:32:20: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:38:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1252.js:99:7: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:99:13: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:100:7: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:100:13: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:101:8: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:101:14: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:102:8: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:102:14: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1252.js:118:4: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1252.js:97:13: [maybe] Reading 'this' yields the global object
+test-resources/src/1k2012love/1252.js:97:13: [maybe] Reading absent property offsetLeft of host object
+test-resources/src/1k2012love/1252.js:98:13: [maybe] Reading 'this' yields the global object
+test-resources/src/1k2012love/1252.js:98:13: [maybe] Reading absent property offsetTop of host object
+test-resources/src/1k2012love/1252.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1252.js:20:60, test-resources/src/1k2012love/1252.js:20:66, test-resources/src/1k2012love/1252.js:23:24, test-resources/src/1k2012love/1252.js:24:23, test-resources/src/1k2012love/1252.js:29:18, test-resources/src/1k2012love/1252.js:32:14, test-resources/src/1k2012love/1252.js:32:20, test-resources/src/1k2012love/1252.js:38:12, test-resources/src/1k2012love/1252.js:99:7, test-resources/src/1k2012love/1252.js:99:13, test-resources/src/1k2012love/1252.js:100:7, test-resources/src/1k2012love/1252.js:100:13, test-resources/src/1k2012love/1252.js:101:8, test-resources/src/1k2012love/1252.js:101:14, test-resources/src/1k2012love/1252.js:102:8, test-resources/src/1k2012love/1252.js:102:14, test-resources/src/1k2012love/1252.js:118:4, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1252.js:20:11: [maybe] Converting undefined to string
+test-resources/src/1k2012love/1252.js:20:17: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1252.js:23:15: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1252.js:40:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1252.js:94:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1252.js:97:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1252.js:98:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1252.js:115:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1252.js:97:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/1k2012love/1252.js:98:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Disabling soundness testing for test-resources/src/1k2012love/1252.js entirely (128 uninspected soundness errors).
+Soundness testing succeeded for 394 checks (with 128 expected failures)

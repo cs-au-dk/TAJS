@@ -224,7 +224,7 @@ public class Unevalizer {
         // Our input is "s1; s2; ..; sn". Get sn and detach it from the parent for closure compiler reasons.
         Node sn = getLastStmt(getParentOfFirstInterestingNode(comp));
         sn.detachFromParent();
-        comp.reportCodeChange();
+//        comp.reportCodeChange();
 
         // If the last statement in our input doesn't have a value we need to abort (hv(sn))
         // TODO: isExpr needed here? Remove isExpr
@@ -303,7 +303,7 @@ public class Unevalizer {
         while (b) {
             b = constantFoldStrings(root.getLastChild().getLastChild().getLastChild().getLastChild());
         }
-        compiler.reportCodeChange();
+//        compiler.reportCodeChange();
     }
 
     /**
@@ -369,7 +369,7 @@ public class Unevalizer {
         // log("Map of holes: " + map.toString());
         boolean unevalSucceed = contractEvalHelper(callback, comp, stringRoot, map);
         // The helper modifies the AST.
-        comp.reportCodeChange();
+//        comp.reportCodeChange();
 
         if (!unevalSucceed)
             return null;
@@ -444,7 +444,7 @@ public class Unevalizer {
                         // Replace the old node with the newly constructed tree in the AST
                         Node p = n.getParent();
                         p.replaceChild(n, tmpRoot);
-                        comp.reportCodeChange();
+//                        comp.reportCodeChange();
                         n = tmpRoot;
                         if (!fixupParent(callback, comp, p, n, hole, lsub.isEmpty() && rsub.isEmpty()))
                             return false;
@@ -485,7 +485,7 @@ public class Unevalizer {
         // The source is printed "(0, window[..])" instead of window[..] without the FREE_CALL modification.
         // I have no idea why, but we'll leave it there for now.
         parent.putIntProp(Node.FREE_CALL, 0);
-        comp.reportCodeChange();
+//        comp.reportCodeChange();
         return true;
     }
 

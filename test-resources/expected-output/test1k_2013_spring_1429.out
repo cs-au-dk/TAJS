@@ -1,0 +1,12 @@
+test-resources/src/1k2013spring/1429.js:37:9: [maybe] ReferenceError, reading absent variable b
+test-resources/src/1k2013spring/1429.js:56:9: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1429.js:115:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1429.js:116:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1429.js:121:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1429.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1429.js:37:9, test-resources/src/1k2013spring/1429.js:56:9, test-resources/src/1k2013spring/1429.js:115:13, test-resources/src/1k2013spring/1429.js:116:13, test-resources/src/1k2013spring/1429.js:121:17, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1429.js:60:19: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1429.js:115:13: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1429.js:116:13: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1429.js:121:17: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 170 checks (with 4 expected failures)

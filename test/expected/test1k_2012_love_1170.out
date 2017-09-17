@@ -1,3 +1,0 @@
-test/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test/1k2012love/1170.js: [maybe] Uncaught exception, constructed at [test/1k2012love/shim.js:9:5]
-Soundness testing succeeded for 127 checks (with 0 expected failures)

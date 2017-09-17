@@ -1,8 +1,0 @@
-test/v8tests/char-escape.js:32:19: [maybe] TypeError, accessing property of null/undefined
-test/v8tests/char-escape.js:31:13: [maybe] Reading absent property (computed name)
-test/v8tests/char-escape.js:32:19: [maybe] Converting primitive string to object
-test/v8tests/char-escape.js:33:21: [maybe] Converting object to string
-test/v8tests/char-escape.js:33:21: [maybe] Converting primitive string to object
-test/v8tests/char-escape.js:37:10: [maybe] Converting object to string
-test/v8tests/char-escape.js:37:10: [maybe] Converting primitive string to object
-test/v8tests/prologue.js,test/v8tests/char-escape.js: [maybe] Uncaught exception, constructed at [test/v8tests/char-escape.js:32:19]

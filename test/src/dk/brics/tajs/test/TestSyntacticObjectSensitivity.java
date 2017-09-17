@@ -6,54 +6,52 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class TestSyntacticObjectSensitivity {
-	private final String twoObjects = "var a = {v: 42}; var b = {v: 87};";
 
-	@Before
-	public void before() {
+    private final String twoObjects = "var a = {v: 42}; var b = {v: 87};";
+
+    @Before
+    public void before() {
         Main.reset();
         Options.get().enableTest();
     }
 
-	@Test
-	public void isObjectSensitive() {
-		Misc.init();
-		Misc.runSource("", //
-				twoObjects, //
-				"function f(){",
-				"    return this.v;",
-				"}", //
-				"a.f = f; b.f = f;", //
+    @Test
+    public void isObjectSensitive() {
+        Misc.runSource("", //
+                twoObjects, //
+                "function f(){",
+                "    return this.v;",
+                "}", //
+                "a.f = f; b.f = f;", //
                 "TAJS_assert(a.f() == 42);", //
                 "TAJS_assert(b.f() == 87);"
         );
-	}
+    }
 
-	@Test
-	public void isObjectSensitive2() {
-		Misc.init();
-		Misc.runSource("", //
-				twoObjects, //
-				"function f(o){",
-				"    this;", //
-				"    return o.v;",
-				"}", //
-				"a.f = f; b.f = f;", //
+    @Test
+    public void isObjectSensitive2() {
+        Misc.runSource("", //
+                twoObjects, //
+                "function f(o){",
+                "    this;", //
+                "    return o.v;",
+                "}", //
+                "a.f = f; b.f = f;", //
                 "TAJS_assert(a.f(a) == 42);", //
                 "TAJS_assert(b.f(b) == 87);"
         );
     }
 
-	@Test
-	public void isNotObjectSensitive() {
-		Misc.init();
-		Misc.runSource("", //
-				twoObjects, //
-				"function f(o){",
-				"    return o.v;",
-				"}", //
-				"a.f = f; b.f = f;", //
-				"TAJS_assert(a.f(a), 'isMaybeSingleNum', true);", // will be true for first flow
-				"TAJS_assert(b.f(b), 'isMaybeSingleNum', false);" // will not be true for second flow
-		);
-	}
+    @Test
+    public void isNotObjectSensitive() {
+        Misc.runSource("", //
+                twoObjects, //
+                "function f(o){",
+                "    return o.v;",
+                "}", //
+                "a.f = f; b.f = f;", //
+                "TAJS_assert(a.f(a), 'isMaybeSingleNum', true);", // will be true for first flow
+                "TAJS_assert(b.f(b), 'isMaybeSingleNum', false);" // will not be true for second flow
+        );
+    }
 }

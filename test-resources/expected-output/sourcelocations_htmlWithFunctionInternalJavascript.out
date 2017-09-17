@@ -1,0 +1,4 @@
+test-resources/src/sourcelocations/htmlWithFunctionInternalJavaScript.html: [definite] Exceptional program exit is unreachable
+test-resources/src/sourcelocations/htmlWithFunctionInternalJavaScript.html:10:9: [definite] The variable functionVar is never used
+test-resources/src/sourcelocations/htmlWithFunctionInternalJavaScript.html:14:5: [definite] The variable returnVar is never used
+Soundness testing succeeded for 7 checks (with 0 expected failures)

@@ -1,7 +1,0 @@
-test/v8tests/array-splice-webkit.js:31:30: [definite] Too few parameters to function Array.prototype.splice
-test/v8tests/array-splice-webkit.js:33:30: [definite] Too few parameters to function Array.prototype.splice
-test/v8tests/array-splice-webkit.js:37:25: [definite] Too few parameters to function Array.prototype.splice
-test/v8tests/array-splice-webkit.js:39:38: [definite] Too few parameters to function Array.prototype.splice
-test/v8tests/array-splice-webkit.js:43:38: [definite] Too few parameters to function Array.prototype.splice
-test/v8tests/array-splice-webkit.js:47:23: [definite] Too few parameters to function Array.prototype.splice
-test/v8tests/array-splice-webkit.js:49:26: [definite] Too few parameters to function Array.prototype.splice

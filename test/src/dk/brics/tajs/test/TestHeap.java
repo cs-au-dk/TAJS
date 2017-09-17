@@ -15,7 +15,6 @@ public class TestHeap {
 
     @Test
     public void single() {
-        Misc.init();
         Misc.runSource("",
                 "var o = {};",
                 "TAJS_assert(o, 'isMaybeSingleObjectLabel', true);",
@@ -26,7 +25,6 @@ public class TestHeap {
 
     @Test
     public void single_loop() {
-        Misc.init();
         Misc.runSource("",
                 "var o;",
                 "while(Math.random()){",
@@ -40,7 +38,6 @@ public class TestHeap {
 
     @Test
     public void single_loop_summarize() {
-        Misc.init();
         Misc.runSource("",
                 "var o;",
                 "while(Math.random()){",
@@ -58,7 +55,6 @@ public class TestHeap {
 
     @Test
     public void function_single() {
-        Misc.init();
         Misc.runSource("",
                 "var o = (function(){return {};}());",
                 "TAJS_assert(o, 'isMaybeSingleObjectLabel', true);",
@@ -69,7 +65,6 @@ public class TestHeap {
 
     @Test
     public void function_single_loop() {
-        Misc.init();
         Misc.runSource("",
                 "var o = (function(){",
                 "   var o;",
@@ -86,7 +81,6 @@ public class TestHeap {
 
     @Test
     public void function_single_loop_summarize() {
-        Misc.init();
         Misc.runSource("",
                 "var o = (function(){",
                 "   var o;",
@@ -107,7 +101,6 @@ public class TestHeap {
 
     @Test
     public void single_summarize_with_branch() {
-        Misc.init();
         Misc.runSource("",
                 "var o;",
                 "function f(){return {};}",
@@ -126,7 +119,6 @@ public class TestHeap {
 
     @Test
     public void single_summarize_in_function() {
-        Misc.init();
         Misc.runSource("",
                 "var o;",
                 "function f(){var fresh = {}; if(o === undefined || Math.random()){ o = fresh; }}",

@@ -1,0 +1,10 @@
+test-resources/src/v8tests/debug-evaluate-arguments.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/debug-evaluate-arguments.js:30:9: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/debug-evaluate-arguments.js:30:9: [definite] Unreachable code
+test-resources/src/v8tests/debug-evaluate-arguments.js:35:1: [definite] Unreachable function checkArguments
+test-resources/src/v8tests/debug-evaluate-arguments.js:53:1: [definite] Unreachable function listener
+test-resources/src/v8tests/debug-evaluate-arguments.js:77:1: [definite] Unreachable function h
+test-resources/src/v8tests/debug-evaluate-arguments.js:81:1: [definite] Unreachable function g
+test-resources/src/v8tests/debug-evaluate-arguments.js:85:1: [definite] Unreachable function f
+test-resources/src/v8tests/debug-evaluate-arguments.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-evaluate-arguments.js:30:9]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

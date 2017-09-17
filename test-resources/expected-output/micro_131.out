@@ -1,0 +1,8 @@
+test-resources/src/micro/test131.js: [maybe] Uncaught exception: "hep"
+test-resources/src/micro/test131.js:13:17: [maybe] The variable y has values with different types
+test-resources/src/micro/test131.js:14:18: [maybe] The variable y has values with different types
+test-resources/src/micro/test131.js:13:2: [info] Abstract value: "5"
+test-resources/src/micro/test131.js:13:2: [info] Abstract value: 5.0|[@Object#node25]
+test-resources/src/micro/test131.js:14:2: [info] Abstract object: 
+test-resources/src/micro/test131.js:14:2: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 17 checks (with 0 expected failures)

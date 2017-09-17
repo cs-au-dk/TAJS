@@ -1,0 +1,6 @@
+test-resources/src/1k2013spring/1379.js:2:12: [definite] The conditional expression is always true
+test-resources/src/1k2013spring/1379.js:7:6: [definite] Unreachable function
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1379.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1379.js:27:12: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 227 checks (with 0 expected failures)

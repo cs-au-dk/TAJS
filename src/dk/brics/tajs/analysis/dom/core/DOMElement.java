@@ -17,9 +17,9 @@
 package dk.brics.tajs.analysis.dom.core;
 
 import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
-import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMConversion;
@@ -33,8 +33,11 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 
+import java.util.Set;
+
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * The Element interface represents an element in an HTML or XML document.
@@ -58,7 +61,7 @@ public class DOMElement {
         s.newObject(CONSTRUCTOR);
         pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
         pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
-        s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
+        s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(DOMNode.CONSTRUCTOR));
         pv.writeProperty(DOMWindow.WINDOW, "Element", Value.makeObject(CONSTRUCTOR));
 
         // Prototype
@@ -110,9 +113,26 @@ public class DOMElement {
 
         // DOM Level 2
         createDOMProperty(DOMAttr.INSTANCES, "ownerElement", Value.makeObject(INSTANCES).setReadOnly(), c);
+        createDOMFunction(PROTOTYPE, DOMObjects.ELEMENT_MATCHES, "matches", 1, c);
 
         // semistandard
+        // NB: webkit version!
+        createDOMFunction(PROTOTYPE, DOMObjects.ELEMENT_MATCHES_SELECTOR, "webkitMatchesSelector", 1, c);
+
+        // semistandard
+        createDOMFunction(PROTOTYPE, DOMObjects.ELEMENT_REMOVE, "remove", 0, c);
         createDOMFunction(PROTOTYPE, DOMObjects.ELEMENT_QUERY_SELECTOR_ALL, "querySelectorAll", 1, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.ELEMENT_QUERY_SELECTOR, "querySelector", 1, c);
+
+        createDOMProperty(PROTOTYPE, "classList", Value.makeObject(DOMTokenList.INSTANCES), c);
+    }
+
+    public static Value setAttributeModel(Set<ObjectLabel> receivers, Value attributeName, Value attributeValue, Solver.SolverInterface c) {
+        if (attributeName.isMaybeSingleStr() && attributeName.getStr().equals("name")) {
+            PropVarOperations pv = c.getAnalysis().getPropVarOperations();
+            pv.writeProperty(singleton(HTMLCollection.INSTANCES), attributeValue, Value.makeObject(receivers));
+        }
+        return Value.makeUndef();
     }
 
     /**
@@ -130,10 +150,11 @@ public class DOMElement {
             case ELEMENT_SET_ATTRIBUTE: {
                 DOMFunctions.expectParameters(nativeObject, call, c, 2, 2);
                 /* Value name =*/
-                Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
+                Value attributeName = Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 /* Value value =*/
-                Conversion.toString(FunctionCalls.readParameter(call, s, 1), c);
-                return Value.makeUndef();
+                Value attributeValue = Conversion.toString(FunctionCalls.readParameter(call, s, 1), c);
+
+                return setAttributeModel(s.readThisObjects(), attributeName, attributeValue, c);
             }
             case ELEMENT_REMOVE_ATTRIBUTE: {
                 DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
@@ -195,6 +216,10 @@ public class DOMElement {
                 /* Value name =*/
                 Conversion.toString(FunctionCalls.readParameter(call, s, 1), c);
                 return Value.makeAnyBool();
+            }
+            case ELEMENT_REMOVE: {
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                return Value.makeUndef();
             }
             case ELEMENT_REMOVE_ATTRIBUTE_NS: {
                 DOMFunctions.expectParameters(nativeObject, call, c, 2, 2);
@@ -259,6 +284,22 @@ public class DOMElement {
             case ELEMENT_QUERY_SELECTOR_ALL: {
                 DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 return DOMNodeList.makeNaiveInstance();
+            }
+            case ELEMENT_QUERY_SELECTOR: {
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                Value selector = Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
+                return DOMFunctions.makeAnyHTMLElement().joinNull();
+            }
+            case ELEMENT_MATCHES_SELECTOR: {
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                // may throw on bad syntax
+                Exceptions.throwTypeError(c); // FIXME: should be a DOM-Exception
+                return Value.makeAnyBool();
+            }
+            case ELEMENT_MATCHES: {
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                Conversion.toString(FunctionCalls.readParameter(call, c.getState(), 0), c);
+                return Value.makeAnyBool();
             }
             default: {
                 throw new AnalysisException("Unknown Native Object: " + nativeObject);

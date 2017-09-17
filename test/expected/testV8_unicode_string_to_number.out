@@ -1,3 +1,0 @@
-test/v8tests/unicode-string-to-number.js:31:18: [maybe] Conversion from string to number yields NaN
-test/v8tests/unicode-string-to-number.js:38:21: [maybe] Conversion from string to number yields NaN
-test/v8tests/unicode-string-to-number.js:45:18: [maybe] Conversion from string to number yields NaN

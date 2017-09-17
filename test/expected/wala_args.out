@@ -1,5 +1,0 @@
-test/wala/args.js:22:1: [definite] Unreachable function wrong
-test/wala/args.js:5:4: [maybe] TypeError, call to non-function
-test/wala/args.js: [maybe] Uncaught exception, constructed at [test/wala/args.js:5:4]
-test/wala/args.js:5:4: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 55 checks (with 0 expected failures)

@@ -1,0 +1,22 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(!_.isError(1), 'numbers are not Errors');
+    ok(!_.isError(null), 'null is not an Error');
+    ok(!_.isError(Error), 'functions are not Errors');
+    ok(_.isError(new Error()), 'Errors are Errors');
+    ok(_.isError(new EvalError()), 'EvalErrors are Errors');
+    ok(_.isError(new RangeError()), 'RangeErrors are Errors');
+    ok(_.isError(new ReferenceError()), 'ReferenceErrors are Errors');
+    ok(_.isError(new SyntaxError()), 'SyntaxErrors are Errors');
+    ok(_.isError(new TypeError()), 'TypeErrors are Errors');
+    ok(_.isError(new URIError()), 'URIErrors are Errors');
+</script></head><body></body></html>

@@ -1,4 +1,0 @@
-test/resig/ejohn56.js:10:17: [definite] Variable c is null/undefined
-test/resig/ejohn56.js: [definite] Exceptional program exit is unreachable
-test/resig/ejohn56.js:1:5: [definite] The variable a is never used
-Soundness testing succeeded for 40 checks (with 0 expected failures)

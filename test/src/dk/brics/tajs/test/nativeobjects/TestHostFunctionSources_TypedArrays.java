@@ -10,7 +10,6 @@ public class TestHostFunctionSources_TypedArrays {
 
     @Before
     public void before() {
-        Main.initLogging();
         Main.reset();
         Options.get().enableTest();
         Options.get().enablePolyfillTypedArrays();

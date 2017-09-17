@@ -54,6 +54,9 @@ import dk.brics.tajs.analysis.dom.html.HTMLCollection;
 import dk.brics.tajs.analysis.dom.html.HTMLDocument;
 import dk.brics.tajs.analysis.dom.html.HTMLElement;
 import dk.brics.tajs.analysis.dom.html.HTMLHeadElement;
+import dk.brics.tajs.analysis.dom.html.HTMLOptionElement;
+import dk.brics.tajs.analysis.dom.html.HTMLOptionsCollection;
+import dk.brics.tajs.analysis.dom.html.HTMLScriptElement;
 import dk.brics.tajs.analysis.dom.html5.AudioContext;
 import dk.brics.tajs.analysis.dom.html5.AudioDestinationNode;
 import dk.brics.tajs.analysis.dom.html5.HTML5Builder;
@@ -63,6 +66,7 @@ import dk.brics.tajs.analysis.dom.html5.ScriptProcessorNode;
 import dk.brics.tajs.analysis.dom.style.CSSStyleDeclaration;
 import dk.brics.tajs.analysis.dom.style.StyleBuilder;
 import dk.brics.tajs.analysis.dom.view.ViewBuilder;
+import dk.brics.tajs.analysis.dom.xpath.XPathResult;
 import dk.brics.tajs.flowgraph.EventType;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
@@ -109,6 +113,7 @@ import static dk.brics.tajs.util.Collections.singleton;
 public class DOMBuilder {
 
     private static final Set<ObjectLabel> ALL_HTML_OBJECT_LABELS = Collections.newSet();
+    private static final Set<ObjectLabel> ALL_NODE_OBJECT_LABELS = Collections.newSet();
 
     private static boolean isDoneBuildingHTMLObjectLabels = false;
 
@@ -144,11 +149,18 @@ public class DOMBuilder {
         // Build initial views state
         ViewBuilder.build(c);
 
+        // Build initial views state
+        XPathResult.build(c);
+
         // Build initial AJAX state
         AjaxBuilder.build(c);
 
         ALL_HTML_OBJECT_LABELS.addAll(HTML5Builder.HTML5_OBJECT_LABELS);
         ALL_HTML_OBJECT_LABELS.addAll(HTMLBuilder.HTML4_OBJECT_LABELS);
+
+        ALL_NODE_OBJECT_LABELS.addAll(ALL_HTML_OBJECT_LABELS);
+        ALL_NODE_OBJECT_LABELS.add(DOMDocumentType.INSTANCES);
+        ALL_NODE_OBJECT_LABELS.add(DOMText.INSTANCES);
 
         isDoneBuildingHTMLObjectLabels = true;
 
@@ -156,9 +168,9 @@ public class DOMBuilder {
         c.getAnalysis().getPropVarOperations().writeProperty(singleton(HTMLCollection.INSTANCES), Value.makeAnyStrUInt(), Value.makeObject(ALL_HTML_OBJECT_LABELS), false, true);
 
         Value cssProperty = Value.makeObject(CSSStyleDeclaration.INSTANCES).setReadOnly();
+        Value nodesProperty = Value.makeObject(ALL_NODE_OBJECT_LABELS).joinNull().setReadOnly();
         Value htmlElementsProperty = Value.makeObject(ALL_HTML_OBJECT_LABELS).joinNull().setReadOnly();
         Value uintProperty = Value.makeAnyNumUInt().setReadOnly();
-
 
         createDOMProperty(TouchEvent.INSTANCES, "changedTouches", Value.makeObject(DOMTouchList.INSTANCES).setReadOnly(), c);
         createDOMProperty(TouchEvent.INSTANCES, "targetTouches", Value.makeObject(DOMTouchList.INSTANCES).setReadOnly(), c);
@@ -168,15 +180,19 @@ public class DOMBuilder {
         Value nodes = Value.makeObject(getAllDOMNodes()).setReadOnly();
         c.getAnalysis().getPropVarOperations().writeProperty(singleton(DOMNamedNodeMap.INSTANCES), Value.makeAnyStrNotUInt(), nodes);
 
+        c.getAnalysis().getPropVarOperations().writeProperty(singleton(HTMLOptionsCollection.INSTANCES), Value.makeAnyStrUInt(), Value.makeObject(HTMLOptionElement.INSTANCES));
+
         Set<ObjectLabel> htmlAndDOMObjects = newSet(ALL_HTML_OBJECT_LABELS);
         htmlAndDOMObjects.addAll(getAllDOMNodes());
         for (ObjectLabel element : htmlAndDOMObjects) {
             createDOMProperty(element, "parentNode", htmlElementsProperty, c);
+            createDOMProperty(element, "firstChild", nodesProperty, c);
+            createDOMProperty(element, "firstElementChild", htmlElementsProperty, c);
             createDOMProperty(element, "lastChild", htmlElementsProperty, c);
+            createDOMProperty(element, "lastElementChild", htmlElementsProperty, c);
             createDOMProperty(element, "previousSibling", htmlElementsProperty, c);
             createDOMProperty(element, "nextSibling", htmlElementsProperty, c);
             createDOMProperty(element, "children", Value.makeObject(HTMLCollection.INSTANCES), c);
-            createDOMProperty(element, "firstChild", htmlElementsProperty, c);
             createDOMProperty(element, "ownerDocument", Value.makeObject(HTMLDocument.INSTANCES).joinNull().setReadOnly(), c);
             createDOMProperty(element, "textContent", Value.makeAnyStr(), c);
         }
@@ -203,7 +219,8 @@ public class DOMBuilder {
         createDOMProperty(DOMNode.PROTOTYPE, "ownerDocument", Value.makeObject(DOMDocument.INSTANCES).joinNull().setReadOnly(), c);
         createDOMProperty(DOMNode.PROTOTYPE, "parentNode", htmlElementsProperty, c);
 
-        createDOMProperty(DOMDocument.INSTANCES, "activeElement", Value.makeObject(HTMLElement.ELEMENT), c);
+        createDOMProperty(DOMDocument.INSTANCES, "activeElement", htmlElementsProperty, c);
+        createDOMProperty(DOMDocument.INSTANCES, "currentScript", Value.makeObject(HTMLScriptElement.INSTANCES).joinNull(), c);
 
         createDOMProperty(DOMDocumentFragment.INSTANCES, "firstChild", htmlElementsProperty, c);
         createDOMProperty(DOMDocumentFragment.INSTANCES, "lastChild", htmlElementsProperty, c);
@@ -220,8 +237,9 @@ public class DOMBuilder {
                 WheelEvent.INSTANCES,
                 TouchEvent.INSTANCES).forEach(eventInstance -> {
             createDOMProperty(eventInstance, "target", Value.makeObject(getAllDOMEventTargets()), c);
-            createDOMProperty(eventInstance, "currentTarget", htmlElementsProperty, c);
+            createDOMProperty(eventInstance, "srcElement", Value.makeObject(getAllDOMEventTargets()), c);
             createDOMProperty(eventInstance, "fromElement", htmlElementsProperty.joinAbsent(), c);
+            createDOMProperty(eventInstance, "currentTarget", htmlElementsProperty, c);
             createDOMProperty(eventInstance, "toElement", htmlElementsProperty.joinAbsent(), c);
             createDOMProperty(eventInstance, "defaultPrevented", Value.makeAnyBool(), c);
             createDOMProperty(eventInstance, "returnValue", Value.makeAnyBool(), c);
@@ -253,7 +271,7 @@ public class DOMBuilder {
         Collection<ObjectLabel> eventNameContainers = Arrays.asList(HTMLElement.ELEMENT_PROTOTYPE, DOMNamedNodeMap.INSTANCES, DOMWindow.WINDOW);
         writeEventListenerProperties(eventNameContainers, c.getAnalysis().getPropVarOperations());
 
-        c.getAnalysis().getPropVarOperations().writeProperty(singleton(DOMNodeList.INSTANCES), Value.makeAnyStrUInt(), htmlElementsProperty);
+        c.getAnalysis().getPropVarOperations().writeProperty(singleton(DOMNodeList.INSTANCES), Value.makeAnyStrUInt(), nodesProperty);
         if (document != null) {
             registerHTML(document, c);
         }

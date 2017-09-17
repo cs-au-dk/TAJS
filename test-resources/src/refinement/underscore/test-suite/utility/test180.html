@@ -1,0 +1,18 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var count = 0;
+    var template = _.template('<%= f() %>');
+    template({f: function(){ ok(!count++); }});
+    var countEscaped = 0;
+    var templateEscaped = _.template('<%- f() %>');
+    templateEscaped({f: function(){ ok(!countEscaped++); }});
+</script></head><body></body></html>

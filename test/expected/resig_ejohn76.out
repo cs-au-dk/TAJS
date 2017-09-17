@@ -1,4 +1,0 @@
-test/resig/ejohn76.js:8:21: [definite] Dead assignment, property dance is never read
-test/resig/ejohn76.js: [definite] Exceptional program exit is unreachable
-test/resig/ejohn76.js:2:26: [definite] Unreachable function
-Soundness testing succeeded for 45 checks (with 0 expected failures)

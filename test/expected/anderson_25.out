@@ -1,5 +1,0 @@
-test/anderson/anderson25.js:2:2: [definite] Dead assignment, property m is never read
-test/anderson/anderson25.js: [definite] Exceptional program exit is unreachable
-test/anderson/anderson25.js:5:5: [definite] Unreachable function f
-test/anderson/anderson25.js:9:5: [definite] The variable x is never used
-Soundness testing succeeded for 18 checks (with 0 expected failures)

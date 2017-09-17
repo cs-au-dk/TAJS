@@ -67,7 +67,7 @@ public class NativeObjectToString {
                     .collect(Collectors.groupingBy(l -> {
                         boolean isDOMElementInstance = l.isHostObject()
                                 && l.getHostObject().getAPI() == HostAPIs.DOCUMENT_OBJECT_MODEL
-                                && DOMElementInstanceHostObjects.contains(l.getHostObject());
+                                && DOMElementInstanceHostObjects.contains(l.getHostObject()); // FIXME: suspicious call to Set.contains
                         return isDOMElementInstance;
                     }));
 

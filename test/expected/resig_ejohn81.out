@@ -1,6 +1,0 @@
-test/resig/ejohn81.js:15:16: [definite] Reading absent property keys of host object
-test/resig/ejohn81.js: [definite] Exceptional program exit is unreachable
-test/resig/ejohn81.js:11:1: [info] Abstract value: UInt
-test/resig/ejohn81.js:13:1: [info] Abstract value: [@<anonymous>#fun1]
-test/resig/ejohn81.js:15:1: [info] Abstract value: Undef
-Soundness testing succeeded for 43 checks (with 0 expected failures)

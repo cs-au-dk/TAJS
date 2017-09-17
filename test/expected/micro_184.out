@@ -1,5 +1,0 @@
-test/micro/test184.js: [definite] Exceptional program exit is unreachable
-test/micro/test184.js:12:16: [maybe] Converting object to string
-test/micro/test184.js:12:16: [maybe] Converting primitive string to object
-test/micro/test184.js:12:1: [info] Abstract value: "asdf"
-Soundness testing succeeded for 6 checks (with 0 expected failures)

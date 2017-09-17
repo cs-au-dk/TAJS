@@ -1,0 +1,4 @@
+test-resources/src/sourcelocations/htmlWithExternalAndInternalJavascript.html: [definite] Exceptional program exit is unreachable
+test-resources/src/sourcelocations/htmlWithExternalAndInternalJavascript.html:13:5: [definite] The variable htmlVar is never used
+test-resources/src/sourcelocations/javascript.js:1:5: [definite] The variable jsVar is never used
+Soundness testing succeeded for 0 checks (with 0 expected failures)

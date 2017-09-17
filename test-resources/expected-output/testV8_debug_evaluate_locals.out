@@ -1,0 +1,12 @@
+test-resources/src/v8tests/debug-evaluate-locals.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/debug-evaluate-locals.js:30:9: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/debug-evaluate-locals.js:30:9: [definite] Unreachable code
+test-resources/src/v8tests/debug-evaluate-locals.js:36:1: [definite] Unreachable function checkFrame0
+test-resources/src/v8tests/debug-evaluate-locals.js:47:1: [definite] Unreachable function checkFrame1
+test-resources/src/v8tests/debug-evaluate-locals.js:55:1: [definite] Unreachable function checkFrame2
+test-resources/src/v8tests/debug-evaluate-locals.js:67:1: [definite] Unreachable function listener
+test-resources/src/v8tests/debug-evaluate-locals.js:108:1: [definite] Unreachable function h
+test-resources/src/v8tests/debug-evaluate-locals.js:114:1: [definite] Unreachable function g
+test-resources/src/v8tests/debug-evaluate-locals.js:120:1: [definite] Unreachable function f
+test-resources/src/v8tests/debug-evaluate-locals.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-evaluate-locals.js:30:9]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

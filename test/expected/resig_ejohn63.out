@@ -1,3 +1,0 @@
-test/resig/ejohn63.js: [definite] Exceptional program exit is unreachable
-test/resig/ejohn63.js:1:5: [definite] The variable count is never used
-Soundness testing succeeded for 41 checks (with 0 expected failures)

@@ -1,0 +1,22 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(!_.isBoolean(2), 'a number is not a boolean');
+    ok(!_.isBoolean('string'), 'a string is not a boolean');
+    ok(!_.isBoolean('false'), 'the string "false" is not a boolean');
+    ok(!_.isBoolean('true'), 'the string "true" is not a boolean');
+    ok(!_.isBoolean(arguments), 'the arguments object is not a boolean');
+    ok(!_.isBoolean(undefined), 'undefined is not a boolean');
+    ok(!_.isBoolean(NaN), 'NaN is not a boolean');
+    ok(!_.isBoolean(null), 'null is not a boolean');
+    ok(_.isBoolean(true), 'but true is');
+    ok(_.isBoolean(false), 'and so is false');
+</script></head><body></body></html>

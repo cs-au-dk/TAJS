@@ -1,7 +1,0 @@
-test/v8tests/nul-characters.js:30:19: [maybe] Converting primitive string to object
-test/v8tests/nul-characters.js:31:19: [maybe] Converting object to string
-test/v8tests/nul-characters.js:31:19: [maybe] Converting primitive string to object
-test/v8tests/nul-characters.js:34:17: [maybe] Converting primitive string to object
-test/v8tests/nul-characters.js:35:17: [maybe] Converting primitive string to object
-test/v8tests/nul-characters.js:36:17: [maybe] Converting primitive string to object
-test/v8tests/nul-characters.js:38:17: [maybe] Converting primitive string to object

@@ -1,0 +1,27 @@
+test-resources/src/1k2012love/1232.js:29:1: [definite] The variable event is never used
+test-resources/src/1k2012love/1232.js:44:2: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1232.js:57:33: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1232.js:58:31: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1232.js:58:44: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1232.js:58:61: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1232.js:58:74: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1232.js:61:12: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1232.js:62:12: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1232.js:86:13: [maybe] ReferenceError, reading absent variable onClick
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1232.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1232.js:44:2, test-resources/src/1k2012love/1232.js:57:33, test-resources/src/1k2012love/1232.js:58:31, test-resources/src/1k2012love/1232.js:58:44, test-resources/src/1k2012love/1232.js:58:61, test-resources/src/1k2012love/1232.js:58:74, test-resources/src/1k2012love/1232.js:61:12, test-resources/src/1k2012love/1232.js:62:12, test-resources/src/1k2012love/1232.js:86:13, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1232.js:25:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:26:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:39:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:39:9: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:40:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:40:8: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:46:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:57:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:57:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:58:8: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:58:19: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:61:18: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:62:18: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1232.js:64:3: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 300 checks (with 0 expected failures)

@@ -1,0 +1,4 @@
+test-resources/src/sunspider/math-partial-sums.js: [definite] Exceptional program exit is unreachable
+test-resources/src/sunspider/math-partial-sums.js:40:26: [maybe] Converting object to number
+test-resources/src/sunspider/math-partial-sums.js:42:1: [info] Abstract value: UInt|NotUInt
+Soundness testing succeeded for 1953 checks (with 0 expected failures)

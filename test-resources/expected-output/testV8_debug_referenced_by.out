@@ -1,0 +1,16 @@
+test-resources/src/v8tests/debug-referenced-by.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/debug-referenced-by.js:30:9: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/debug-referenced-by.js:30:9: [definite] Unreachable code
+test-resources/src/v8tests/debug-referenced-by.js:33:5: [definite] The variable a is never used
+test-resources/src/v8tests/debug-referenced-by.js:36:5: [definite] The variable mirror is never used
+test-resources/src/v8tests/debug-referenced-by.js:45:5: [definite] The variable b is never used
+test-resources/src/v8tests/debug-referenced-by.js:48:5: [definite] The variable c is never used
+test-resources/src/v8tests/debug-referenced-by.js:53:1: [definite] Unreachable function d
+test-resources/src/v8tests/debug-referenced-by.js:61:1: [definite] Unreachable function closure_simple
+test-resources/src/v8tests/debug-referenced-by.js:62:10: [definite] Unreachable function
+test-resources/src/v8tests/debug-referenced-by.js:73:1: [definite] Unreachable function closure_eval
+test-resources/src/v8tests/debug-referenced-by.js:77:10: [definite] Unreachable function e
+test-resources/src/v8tests/debug-referenced-by.js:89:5: [definite] The variable x is never used
+test-resources/src/v8tests/debug-referenced-by.js:110:10: [definite] The variable i is never used
+test-resources/src/v8tests/debug-referenced-by.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-referenced-by.js:30:9]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

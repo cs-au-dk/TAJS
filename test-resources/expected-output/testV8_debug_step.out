@@ -1,0 +1,9 @@
+test-resources/src/v8tests/debug-step.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/debug-step.js:30:9: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/debug-step.js:30:9: [definite] Unreachable code
+test-resources/src/v8tests/debug-step.js:36:5: [definite] The variable bp1 is never used
+test-resources/src/v8tests/debug-step.js:36:10: [definite] The variable bp2 is never used
+test-resources/src/v8tests/debug-step.js:38:1: [definite] Unreachable function listener
+test-resources/src/v8tests/debug-step.js:58:1: [definite] Unreachable function f
+test-resources/src/v8tests/debug-step.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-step.js:30:9]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

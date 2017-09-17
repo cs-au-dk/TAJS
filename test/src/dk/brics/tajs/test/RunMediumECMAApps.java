@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         TestSunspider.class,
-//        TestV8.class,
+        TestV8.class,
         TestGoogle.class,
         TestGoogle2.class,
 })

@@ -1,0 +1,15 @@
+test-resources/src/micro/testBoolean.js: [definite] Ordinary program exit is unreachable
+test-resources/src/micro/testBoolean.js:5:16: [definite] Reading absent property xy
+test-resources/src/micro/testBoolean.js:20:1: [definite] Unreachable code
+test-resources/src/micro/testBoolean.js:24:5: [definite] The variable i is never used
+test-resources/src/micro/testBoolean.js:19:1: [maybe] TypeError, native function Boolean.prototype.toString called on invalid object kind
+test-resources/src/micro/testBoolean.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/testBoolean.js:19:1]
+test-resources/src/micro/testBoolean.js:2:1: [info] Abstract object: {[[Prototype]]=[@Boolean.prototype[native]],[[Value]]=false}
+test-resources/src/micro/testBoolean.js:4:1: [info] Abstract object: {[[Prototype]]=[@Boolean.prototype[native]],[[Value]]=true}
+test-resources/src/micro/testBoolean.js:5:1: [info] Abstract value: Undef
+test-resources/src/micro/testBoolean.js:7:1: [info] Abstract object: {[[Prototype]]=[@Boolean.prototype[native]],[[Value]]=true}
+test-resources/src/micro/testBoolean.js:9:1: [info] Abstract value: true
+test-resources/src/micro/testBoolean.js:11:1: [info] Abstract value: false
+test-resources/src/micro/testBoolean.js:13:1: [info] Abstract value: "true"
+test-resources/src/micro/testBoolean.js:15:1: [info] Abstract value: true
+Soundness testing succeeded for 74 checks (with 0 expected failures)

@@ -1,0 +1,9 @@
+test-resources/src/v8tests/arguments.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/arguments.js:32:1: [definite] The variable i is never used
+test-resources/src/v8tests/arguments.js:36:1: [definite] The variable i is never used
+test-resources/src/v8tests/arguments.js:36:1: [definite] The variable j is never used
+test-resources/src/v8tests/arguments.js:96:1: [definite] The variable a is never used
+test-resources/src/v8tests/arguments.js:58:10: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/arguments.js:62:10: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/arguments.js:66:10: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 428 checks (with 0 expected failures)

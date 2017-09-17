@@ -563,7 +563,7 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
 
         Set<T> nodes = getNodes(sourceLocation, class1, coreFilter);
 
-        if (nodes.size() == 0) {
+        if (nodes.isEmpty()) {
             return Optional.empty();
         } else if (nodes.size() > 1) {
             throw new AnalysisException(String.format("Ambiguous node query for %s at %s: %s. Add a custom filter?", class1.getSimpleName(), sourceLocation, nodes));

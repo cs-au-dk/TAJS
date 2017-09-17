@@ -1,0 +1,27 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(!_.isArray(arguments), 'arguments object is not an array');
+    ok(_.isArray(_.toArray(arguments)), 'arguments object converted into array');
+    var a = [1, 2, 3];
+    ok(_.toArray(a) !== a, 'array is cloned');
+    deepEqual(_.toArray(a), [1, 2, 3], 'cloned array contains same elements');
+    var numbers = _.toArray({one : 1, two : 2, three : 3});
+    deepEqual(numbers, [1, 2, 3], 'object flattened into array');
+    if (typeof document != 'undefined') {
+      // test in IE < 9
+      var actual;
+      try {
+        actual = _.toArray(document.childNodes);
+      } catch(ex) { }
+      deepEqual(actual, _.map(document.childNodes, _.identity), 'works on NodeList');
+    }
+</script></head><body></body></html>

@@ -1,0 +1,25 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    equal(_.first([1, 2, 3]), 1, 'can pull out the first element of an array');
+    equal(_([1, 2, 3]).first(), 1, 'can perform OO-style "first()"');
+    deepEqual(_.first([1, 2, 3], 0), [], 'can pass an index to first');
+    deepEqual(_.first([1, 2, 3], 2), [1, 2], 'can pass an index to first');
+    deepEqual(_.first([1, 2, 3], 5), [1, 2, 3], 'can pass an index to first');
+    var result = (function(){ return _.first(arguments); }(4, 3, 2, 1));
+    equal(result, 4, 'works on an arguments object.');
+    result = _.map([[1, 2, 3], [1, 2, 3]], _.first);
+    deepEqual(result, [1, 1], 'works well with _.map');
+    result = (function() { return _.first([1, 2, 3], 2); }());
+    deepEqual(result, [1, 2]);
+    equal(_.first(null), undefined, 'handles nulls');
+    strictEqual(_.first([1, 2, 3], -1).length, 0);
+</script></head><body></body></html>

@@ -16,6 +16,8 @@
 
 package dk.brics.tajs.monitoring;
 
+import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.util.AnalysisLimitationException;
 
 /**
@@ -29,41 +31,57 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
 
     private final long secondsTimeLimit;
 
+    private final int nodeTransferLimit;
+
     private final boolean crash;
 
     private long maxNanoTime = -1;
 
+    private int nodeTransfers = 0;
+
     private boolean analysisWasLimited = false;
 
     /**
-     * @param secondsTimeLimit as the number of second the analysis is allowed to run
+     * @param secondsTimeLimit  the number of second the analysis is allowed to run, or -1 if no limit
+     * @param nodeTransferLimit the number of node transfers the analysis is allowed to run, or -1 if no limit
      * @param crashImmediately true if an exception should be thrown when the analysis exceed the time limit
      */
-    public AnalysisTimeLimiter(int secondsTimeLimit, boolean crashImmediately) {
+    public AnalysisTimeLimiter(int secondsTimeLimit, int nodeTransferLimit, boolean crashImmediately) {
         this.secondsTimeLimit = secondsTimeLimit;
+        this.nodeTransferLimit = nodeTransferLimit;
         this.crash = crashImmediately;
     }
 
     public AnalysisTimeLimiter(int secondsTimeLimit) {
-        this(secondsTimeLimit, false);
+        this(secondsTimeLimit, -1, false);
     }
 
     @Override
     public boolean allowNextIteration() {
-        // NB: it has been observed that a single iteration took minutes, so we might overshoot the time limit by a lot!
-        long now = System.nanoTime();
-        boolean timeOut = maxNanoTime != -1 && maxNanoTime < now;
-        if (timeOut) {
-            if (crash) {
-                long overUsed = (now - maxNanoTime);
-                long used = (secondsTimeLimit * nanoFactor) + overUsed;
-                long allowed = secondsTimeLimit * nanoFactor;
-                long milliFactor = 1000;
-                long nanoMilliFactor = nanoFactor / milliFactor;
-                throw new AnalysisLimitationException.AnalysisTimeException(String.format("Analysis exceeded time limit. Used: %dms. Allowed: %dms.", used / nanoMilliFactor, allowed / nanoMilliFactor));
+        if (secondsTimeLimit != -1) {
+            // NB: it has been observed that a single iteration took minutes, so we might overshoot the time limit by a lot!
+            long now = System.nanoTime();
+            boolean timeOut = maxNanoTime != -1 && maxNanoTime < now;
+            if (timeOut) {
+                if (crash) {
+                    long overUsed = (now - maxNanoTime);
+                    long used = (secondsTimeLimit * nanoFactor) + overUsed;
+                    long allowed = secondsTimeLimit * nanoFactor;
+                    long milliFactor = 1000;
+                    long nanoMilliFactor = nanoFactor / milliFactor;
+                    throw new AnalysisLimitationException.AnalysisTimeException(String.format("Analysis exceeded time limit. Used: %dms. Allowed: %dms.", used / nanoMilliFactor, allowed / nanoMilliFactor));
+                }
+                analysisWasLimited = true;
+                return false;
             }
-            analysisWasLimited = true;
-            return false;
+        }
+        if (nodeTransferLimit != -1) {
+            if (nodeTransfers > nodeTransferLimit) {
+                if (crash) {
+                    throw new AnalysisLimitationException.AnalysisTimeException("Analysis exceeded node transfer limit " + nodeTransferLimit);
+                }
+                return false;
+            }
         }
         return true;
     }
@@ -80,10 +98,17 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
         }
     }
 
+    @Override
+    public void visitNodeTransferPre(AbstractNode n, State s) {
+        if (!s.getSolverInterface().isScanning()) {
+            nodeTransfers++;
+        }
+    }
+
     /**
-     * @return true iff the analysis did not spent more time than allowed
+     * @return true iff the analysis did not spent more time or transfers than allowed
      */
-    public boolean analysisNotExceededTimeLimit() {
+    public boolean analysisNotExceededLimit() {
         return !analysisWasLimited;
     }
 }

@@ -1,0 +1,39 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var result;
+    result = _.omit({a: 1, b: 2, c: 3}, 'b');
+    deepEqual(result, {a: 1, c: 3}, 'can omit a single named property');
+    result = _.omit({a: 1, b: 2, c: 3}, 'a', 'c');
+    deepEqual(result, {b: 2}, 'can omit several named properties');
+    result = _.omit({a: 1, b: 2, c: 3}, ['b', 'c']);
+    deepEqual(result, {a: 1}, 'can omit properties named in an array');
+    result = _.omit(['a', 'b'], 0);
+    deepEqual(result, {1: 'b'}, 'can omit numeric properties');
+    deepEqual(_.omit(null, 'a', 'b'), {}, 'non objects return empty object');
+    deepEqual(_.omit(undefined, 'toString'), {}, 'null/undefined return empty object');
+    deepEqual(_.omit(5, 'toString', 'b'), {}, 'returns empty object for primitives');
+    var data = {a: 1, b: 2, c: 3};
+    var callback = function(value, key, object) {
+      strictEqual(key, {1: 'a', 2: 'b', 3: 'c'}[value]);
+      strictEqual(object, data);
+      return value !== this.value;
+    };
+    result = _.omit(data, callback, {value: 2});
+    deepEqual(result, {b: 2}, 'can accept a predicate');
+    var Obj = function(){};
+    Obj.prototype = {a: 1, b: 2, c: 3};
+    var instance = new Obj();
+    deepEqual(_.omit(instance, 'b'), {a: 1, c: 3}, 'include prototype props');
+    deepEqual(_.omit(data, function(val, key) {
+      return this[key] === 3 && this === instance;
+    }, instance), {a: 1, b: 2}, 'function is given context');
+</script></head><body></body></html>

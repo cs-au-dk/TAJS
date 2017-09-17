@@ -1,0 +1,14 @@
+test-resources/src/1k2012love/1027.js:2:5: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1027.js:17:11: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2012love/1027.js:17:17: [maybe] ReferenceError, reading absent variable w
+test-resources/src/1k2012love/1027.js:18:11: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2012love/1027.js:18:17: [maybe] ReferenceError, reading absent variable h
+test-resources/src/1k2012love/1027.js:19:16: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2012love/1027.js:20:13: [maybe] ReferenceError, reading absent variable r
+test-resources/src/1k2012love/1027.js:22:9: [maybe] ReferenceError, reading absent variable e
+test-resources/src/1k2012love/1027.js:30:5: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1027.js:2:5: [maybe] Reading absent property getContext of host object
+test-resources/src/1k2012love/1027.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1027.js:2:5, test-resources/src/1k2012love/1027.js:17:11, test-resources/src/1k2012love/1027.js:17:17, test-resources/src/1k2012love/1027.js:18:11, test-resources/src/1k2012love/1027.js:18:17, test-resources/src/1k2012love/1027.js:19:16, test-resources/src/1k2012love/1027.js:20:13, test-resources/src/1k2012love/1027.js:22:9, test-resources/src/1k2012love/1027.js:30:5, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1027.js:22:9: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 140 checks (with 0 expected failures)

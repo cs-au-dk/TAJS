@@ -1,6 +1,0 @@
-test/v8tests/arguments-indirect.js:40:19: [definite] TypeError, accessing property of null/undefined
-test/v8tests/arguments-indirect.js:40:19: [definite] Reading absent property arguments
-test/v8tests/arguments-indirect.js:32:1: [definite] Unreachable function f2
-test/v8tests/arguments-indirect.js:40:3: [definite] Unreachable code
-test/v8tests/arguments-indirect.js:47:1: [definite] Unreachable code
-test/v8tests/prologue.js,test/v8tests/arguments-indirect.js: [maybe] Uncaught exception, constructed at [test/v8tests/arguments-indirect.js:40:19]

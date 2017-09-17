@@ -18,6 +18,7 @@ package dk.brics.tajs.monitoring;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.util.AnalysisResultException;
 
 import java.util.List;
 import java.util.Set;
@@ -69,7 +70,7 @@ public class ReachabilityChecker extends DefaultAnalysisMonitoring {
         }
         if (!lines.isEmpty()) {
             lines.add(0, "Some nodes are not reachable!");
-            throw new AssertionError(String.join(String.format("%n"), lines));
+            throw new AnalysisResultException(String.join(String.format("%n"), lines));
         }
     }
 }

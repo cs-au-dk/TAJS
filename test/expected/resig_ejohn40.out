@@ -1,9 +1,0 @@
-test/resig/ejohn40.js:4:19: [maybe] TypeError, accessing property of null/undefined
-test/resig/ejohn40.js:12:16: [maybe] Reading absent property city
-test/resig/ejohn40.js: [maybe] Uncaught exception, constructed at [test/resig/ejohn40.js:4:19]
-test/resig/ejohn40.js:3:22: [maybe] Reading absent property (computed name)
-test/resig/ejohn40.js:4:19: [maybe] Reading absent property (computed name)
-test/resig/ejohn40.js:11:1: [info] Abstract value: Undef|"John"
-test/resig/ejohn40.js:12:1: [info] Abstract value: Undef|"Boston"
-test/resig/ejohn40.js:13:1: [info] Abstract object: {city:Undef|"Boston"|absent,name:Undef|"John",[[Prototype]]=[@Object.prototype[native]]}
-Soundness testing succeeded for 46 checks (with 0 expected failures)

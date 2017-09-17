@@ -55,7 +55,6 @@ import com.google.javascript.jscomp.parsing.parser.trees.ObjectLiteralExpression
 import com.google.javascript.jscomp.parsing.parser.trees.ParenExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTreeType;
-import com.google.javascript.jscomp.parsing.parser.trees.PostfixExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ProgramTree;
 import com.google.javascript.jscomp.parsing.parser.trees.PropertyNameAssignmentTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ReturnStatementTree;
@@ -65,6 +64,7 @@ import com.google.javascript.jscomp.parsing.parser.trees.ThisExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ThrowStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.TryStatementTree;
 import com.google.javascript.jscomp.parsing.parser.trees.UnaryExpressionTree;
+import com.google.javascript.jscomp.parsing.parser.trees.UpdateExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.VariableDeclarationListTree;
 import com.google.javascript.jscomp.parsing.parser.trees.VariableDeclarationTree;
 import com.google.javascript.jscomp.parsing.parser.trees.VariableStatementTree;
@@ -1542,11 +1542,6 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
                 }
                 break;
             }
-            case PLUS_PLUS:
-            case MINUS_MINUS: {
-                // ++x and --x
-                return processCompoundAssignmentOperation(true, true, getPrefixPostfixOp(tree.operator.type), tree.operand, makeConstant(1, tree.location), env, makeSourceLocation(tree));
-            }
             default: {
                 // regular unaries
                 AstEnv subEnv = env.makeResultRegister(nextRegister(env));
@@ -1664,8 +1659,8 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
     }
 
     @Override
-    public TranslationResult process(PostfixExpressionTree tree, AstEnv env) {
-        return processCompoundAssignmentOperation(false, true, getPrefixPostfixOp(tree.operator.type), tree.operand, makeConstant(1, tree.location), env, makeSourceLocation(tree));
+    public TranslationResult process(UpdateExpressionTree tree, AstEnv env) {
+        return processCompoundAssignmentOperation(tree.operatorPosition == UpdateExpressionTree.OperatorPosition.PREFIX, true, getPrefixPostfixOp(tree.operator.type), tree.operand, makeConstant(1, tree.location), env, makeSourceLocation(tree));
     }
 
     @Override

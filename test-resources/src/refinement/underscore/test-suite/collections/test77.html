@@ -1,0 +1,23 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var numbers = _.range(10);
+    var allSampled = _.sample(numbers, 10).sort();
+    deepEqual(allSampled, numbers, 'contains the same members before and after sample');
+    allSampled = _.sample(numbers, 20).sort();
+    deepEqual(allSampled, numbers, 'also works when sampling more objects than are present');
+    ok(_.contains(numbers, _.sample(numbers)), 'sampling a single element returns something from the array');
+    strictEqual(_.sample([]), undefined, 'sampling empty array with no number returns undefined');
+    notStrictEqual(_.sample([], 5), [], 'sampling empty array with a number returns an empty array');
+    notStrictEqual(_.sample([1, 2, 3], 0), [], 'sampling an array with 0 picks returns an empty array');
+    deepEqual(_.sample([1, 2], -1), [], 'sampling a negative number of picks returns an empty array');
+    ok(_.contains([1, 2, 3], _.sample({a: 1, b: 2, c: 3})), 'sample one value from an object');
+</script></head><body></body></html>

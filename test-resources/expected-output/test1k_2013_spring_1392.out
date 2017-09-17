@@ -1,0 +1,22 @@
+test-resources/src/1k2013spring/1392.js:23:23: [definite] ReferenceError, reading absent variable Int16Array
+test-resources/src/1k2013spring/1392.js:3:5: [definite] The variable K2 is never used
+test-resources/src/1k2013spring/1392.js:4:5: [definite] The variable K4 is never used
+test-resources/src/1k2013spring/1392.js:18:5: [definite] The variable offsetX is never used
+test-resources/src/1k2013spring/1392.js:19:5: [definite] The variable offsetY is never used
+test-resources/src/1k2013spring/1392.js:23:5: [definite] The variable lookuptable is never used
+test-resources/src/1k2013spring/1392.js:23:34: [definite] Unreachable code
+test-resources/src/1k2013spring/1392.js:25:10: [definite] The variable y is never used
+test-resources/src/1k2013spring/1392.js:26:11: [definite] The variable x is never used
+test-resources/src/1k2013spring/1392.js:27:7: [definite] The variable angle is never used
+test-resources/src/1k2013spring/1392.js:40:5: [definite] The variable flowerScale is never used
+test-resources/src/1k2013spring/1392.js:46:5: [definite] The variable t is never used
+test-resources/src/1k2013spring/1392.js:50:5: [definite] The variable buf is never used
+test-resources/src/1k2013spring/1392.js:51:5: [definite] The variable buf8 is never used
+test-resources/src/1k2013spring/1392.js:52:5: [definite] The variable data32 is never used
+test-resources/src/1k2013spring/1392.js:53:5: [definite] The variable imageData is never used
+test-resources/src/1k2013spring/1392.js:57:5: [definite] The variable intConversion is never used
+test-resources/src/1k2013spring/1392.js:60:1: [definite] Unreachable function render
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1392.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1392.js:23:23, test-resources/src/1k2013spring/shim.js:9:5]
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test-resources/src/1k2013spring/1392.js, skipping soundness checking

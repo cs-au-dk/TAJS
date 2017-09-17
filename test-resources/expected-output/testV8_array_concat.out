@@ -1,0 +1,21 @@
+test-resources/src/v8tests/array-concat.js:84:36: [definite] Property is null/undefined
+test-resources/src/v8tests/array-concat.js:78:36: [definite] Reading absent property ben
+test-resources/src/v8tests/array-concat.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/array-concat.js:89:36: [definite] Reading absent property (computed name)
+test-resources/src/v8tests/array-concat.js:91:36: [definite] Reading absent property (computed name)
+test-resources/src/v8tests/array-concat.js:92:36: [definite] Reading absent property (computed name)
+test-resources/src/v8tests/array-concat.js:37:16: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-concat.js:40:16: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-concat.js:41:36: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/array-concat.js:41:38: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-concat.js:42:23: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/array-concat.js:43:23: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/array-concat.js:43:25: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-concat.js:50:16: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/array-concat.js:58:16: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-concat.js:60:36: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/array-concat.js:60:38: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-concat.js:61:23: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/array-concat.js:62:23: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/array-concat.js:62:25: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 320 checks (with 0 expected failures)

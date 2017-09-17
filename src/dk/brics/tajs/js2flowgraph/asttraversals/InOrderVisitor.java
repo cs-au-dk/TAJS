@@ -81,7 +81,6 @@ import com.google.javascript.jscomp.parsing.parser.trees.OptionalParameterTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParameterizedTypeTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParenExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
-import com.google.javascript.jscomp.parsing.parser.trees.PostfixExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ProgramTree;
 import com.google.javascript.jscomp.parsing.parser.trees.PropertyNameAssignmentTree;
 import com.google.javascript.jscomp.parsing.parser.trees.RecordTypeTree;
@@ -103,6 +102,7 @@ import com.google.javascript.jscomp.parsing.parser.trees.TypeQueryTree;
 import com.google.javascript.jscomp.parsing.parser.trees.TypedParameterTree;
 import com.google.javascript.jscomp.parsing.parser.trees.UnaryExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.UnionTypeTree;
+import com.google.javascript.jscomp.parsing.parser.trees.UpdateExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.VariableDeclarationListTree;
 import com.google.javascript.jscomp.parsing.parser.trees.VariableDeclarationTree;
 import com.google.javascript.jscomp.parsing.parser.trees.VariableStatementTree;
@@ -301,7 +301,7 @@ public abstract class InOrderVisitor extends DispatchingParseTreeVisitor<Void> {
     public void in(ParenExpressionTree tree) {
     }
 
-    public void in(PostfixExpressionTree tree) {
+    public void in(UpdateExpressionTree tree) {
     }
 
     public void in(MemberExpressionTree tree) {
@@ -580,7 +580,7 @@ public abstract class InOrderVisitor extends DispatchingParseTreeVisitor<Void> {
     public void out(ParenExpressionTree tree) {
     }
 
-    public void out(PostfixExpressionTree tree) {
+    public void out(UpdateExpressionTree tree) {
     }
 
     public void out(MemberExpressionTree tree) {
@@ -1103,7 +1103,7 @@ public abstract class InOrderVisitor extends DispatchingParseTreeVisitor<Void> {
     }
 
     @Override
-    public Void process(PostfixExpressionTree tree) {
+    public Void process(UpdateExpressionTree tree) {
         in(tree);
         process(tree.operand);
         out(tree);

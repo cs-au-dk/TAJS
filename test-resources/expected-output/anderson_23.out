@@ -1,0 +1,5 @@
+test-resources/src/anderson/anderson23.js:6:2: [definite] Dead assignment, property m1 is never read
+test-resources/src/anderson/anderson23.js:11:2: [definite] Reading absent property m2
+test-resources/src/anderson/anderson23.js:12:2: [definite] Dead assignment, property m2 is never read
+test-resources/src/anderson/anderson23.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 22 checks (with 0 expected failures)

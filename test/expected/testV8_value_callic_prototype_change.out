@@ -1,3 +1,0 @@
-test/v8tests/value-callic-prototype-change.js:33:18: [maybe] Converting primitive string to object
-test/v8tests/value-callic-prototype-change.js:57:18: [maybe] Converting primitive number to object
-test/v8tests/value-callic-prototype-change.js:79:18: [maybe] Converting primitive boolean to object

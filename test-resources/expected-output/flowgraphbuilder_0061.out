@@ -1,0 +1,47 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js)
+    ->[block 1]
+  block 1:
+    node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 2: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2]
+  block 2:
+    node 3: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3]
+  block 3:
+    node 4: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4]
+  block 4:
+    node 5: function-expr[function(x),v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
+    ->[block 5]
+  block 5:
+    node 6: call[-,v7,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:1)
+    ->[block 6]
+  block 6:
+    node 7: constant[5678.0,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:3:8)
+    node 8: *[v5,v6,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:1)
+    ->[block 7]
+  block 7: [exit-ordinary]
+    node 9: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js)
+    ->[]
+  block 8: [exit-exceptional]
+    node 10: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js)
+    ->[]
+function(x)
+  block 9: [entry]
+    node 11: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
+    ->[block 10]
+  block 10:
+    node 12: constant[777.0,v1]* (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:2:9)
+    ->[block 11]
+  block 11: [exit-ordinary]
+    node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
+    ->[]
+  block 12: [exit-exceptional]
+    node 14: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
+    ->[]
+
+test-resources/src/flowgraphbuilder/flowgraph_builder0061.js: [definite] Exceptional program exit is unreachable
+test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2: [definite] The variable x is never used
+Soundness testing succeeded for 6 checks (with 0 expected failures)

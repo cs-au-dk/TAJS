@@ -1,0 +1,20 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var obj = new String('I am a string object');
+    if (testElement) {
+      ok(!_.isString(testElement), 'an element is not a string');
+    }
+    ok(_.isString([1, 2, 3].join(', ')), 'but strings are');
+    strictEqual(_.isString('I am a string literal'), true, 'string literals are');
+    ok(_.isString(obj), 'so are String objects');
+    strictEqual(_.isString(1), false);
+</script></head><body></body></html>

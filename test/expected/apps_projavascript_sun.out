@@ -1,5 +1,0 @@
-test/apps/projavascript/sun/08-sun.html:25:13: [maybe] TypeError, accessing property of null/undefined
-test/apps/projavascript/sun/08-sun.html:53:5: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
-test/apps/projavascript/sun/08-sun.html:63:7: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
-test/apps/projavascript/sun/08-sun.html:74:3: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
-test/apps/projavascript/sun/08-sun.html: [maybe] Uncaught exception, constructed at [test/apps/projavascript/sun/08-sun.html:25:13]

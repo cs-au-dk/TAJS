@@ -1,0 +1,24 @@
+test-resources/src/v8tests/array-iteration.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/array-iteration.js:58:34: [definite] The variable index is never used
+test-resources/src/v8tests/array-iteration.js:81:13: [definite] The variable n is never used
+test-resources/src/v8tests/array-iteration.js:87:13: [definite] The variable n is never used
+test-resources/src/v8tests/array-iteration.js:101:13: [definite] The variable index is never used
+test-resources/src/v8tests/array-iteration.js:109:13: [definite] The variable n is never used
+test-resources/src/v8tests/array-iteration.js:124:23: [definite] Unreachable function
+test-resources/src/v8tests/array-iteration.js:141:22: [definite] The variable index is never used
+test-resources/src/v8tests/array-iteration.js:180:35: [definite] The variable index is never used
+test-resources/src/v8tests/array-iteration.js:215:22: [definite] The variable index is never used
+test-resources/src/v8tests/array-iteration.js:58:73: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-iteration.js:69:36: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/array-iteration.js:93:56: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-iteration.js:101:52: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-iteration.js:141:61: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-iteration.js:162:56: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-iteration.js:168:56: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-iteration.js:173:78: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-iteration.js:173:92: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-iteration.js:180:85: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-iteration.js:186:34: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-iteration.js:187:36: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/array-iteration.js:210:64: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 932 checks (with 0 expected failures)

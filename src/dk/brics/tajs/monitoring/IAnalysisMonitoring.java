@@ -98,13 +98,11 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
     void visitPhasePost(AnalysisPhase phase);
 
     /**
-     * Invoked when a functin call occurs.
-     *
-     * @param n                  node responsible for the call
-     * @param maybe_non_function if set, this call may involve a non-function value
-     * @param maybe_function     if set, this call may involve a function value
+     * Invoked when a function call occurs.
+     * @param n      node responsible for the call
+     * @param funval the function value
      */
-    void visitCall(AbstractNode n, boolean maybe_non_function, boolean maybe_function);
+    void visitCall(AbstractNode n, Value funval);
 
     /**
      * Invoked when a call to eval occurs.

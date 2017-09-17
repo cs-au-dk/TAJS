@@ -1,0 +1,5 @@
+test-resources/src/resig/ejohn52.js: [definite] Exceptional program exit is unreachable
+test-resources/src/resig/ejohn52.js:5:5: [info] Abstract value: UInt
+test-resources/src/resig/ejohn52.js:8:5: [info] Abstract value: UInt
+test-resources/src/resig/ejohn52.js:9:5: [info] Abstract value: UInt
+Soundness testing succeeded for 32 checks (with 0 expected failures)

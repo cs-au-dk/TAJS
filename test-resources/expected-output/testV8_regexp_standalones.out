@@ -1,0 +1,18 @@
+test-resources/src/v8tests/regexp-standalones.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/regexp-standalones.js:36:14: [maybe] Converting object to string
+test-resources/src/v8tests/regexp-standalones.js:36:14: [maybe] Converting primitive string to object
+test-resources/src/v8tests/regexp-standalones.js:42:10: [maybe] Converting object to string
+test-resources/src/v8tests/regexp-standalones.js:42:10: [maybe] Converting primitive string to object
+test-resources/src/v8tests/regexp-standalones.js:49:10: [maybe] Converting object to string
+test-resources/src/v8tests/regexp-standalones.js:49:10: [maybe] Converting primitive string to object
+test-resources/src/v8tests/regexp-standalones.js:54:10: [maybe] Converting object to string
+test-resources/src/v8tests/regexp-standalones.js:54:10: [maybe] Converting primitive string to object
+test-resources/src/v8tests/regexp-standalones.js:61:10: [maybe] Converting object to string
+test-resources/src/v8tests/regexp-standalones.js:61:10: [maybe] Converting primitive string to object
+test-resources/src/v8tests/regexp-standalones.js:66:10: [maybe] Converting object to string
+test-resources/src/v8tests/regexp-standalones.js:66:10: [maybe] Converting primitive string to object
+test-resources/src/v8tests/regexp-standalones.js:71:10: [maybe] Converting object to string
+test-resources/src/v8tests/regexp-standalones.js:71:10: [maybe] Converting primitive string to object
+test-resources/src/v8tests/regexp-standalones.js:76:10: [maybe] Converting object to string
+test-resources/src/v8tests/regexp-standalones.js:76:10: [maybe] Converting primitive string to object
+Soundness testing succeeded for 230 checks (with 0 expected failures)

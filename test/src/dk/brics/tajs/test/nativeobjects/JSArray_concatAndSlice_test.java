@@ -16,7 +16,6 @@ public class JSArray_concatAndSlice_test {
 
     @Test
     public void jQueryExampleSimplified() {
-        Misc.init();
         Misc.runSource(//
                 "var array = [['a', 'b'], ['c', 'd']];",
                 "var sliced = array.slice(0, 1);",
@@ -29,7 +28,6 @@ public class JSArray_concatAndSlice_test {
 
     @Test
     public void jQueryExampleOrig() {
-        Misc.init();
         Misc.runSource(//
                 "var fxAttrs = [ // height animations",
                 "    [ 'height', 'marginTop', 'marginBottom', 'paddingTop', 'paddingBottom' ], // width animations",

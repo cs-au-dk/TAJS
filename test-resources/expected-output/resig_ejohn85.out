@@ -1,0 +1,5 @@
+test-resources/src/resig/ejohn85.js:20:1: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/resig/ejohn85.js:22:1: [maybe] TypeError, call to non-function
+test-resources/src/resig/ejohn85.js: [maybe] Uncaught exception, constructed at [test-resources/src/resig/ejohn85.js:20:1, test-resources/src/resig/ejohn85.js:22:1]
+test-resources/src/resig/ejohn85.js:23:1: [info] Abstract value: true
+Soundness testing succeeded for 42 checks (with 0 expected failures)

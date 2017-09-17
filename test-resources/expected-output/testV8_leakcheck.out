@@ -1,0 +1,4 @@
+test-resources/src/v8tests/leakcheck.js:45:3: [definite] The conditional expression is always false
+test-resources/src/v8tests/leakcheck.js: [maybe] Uncaught exception: "Error"
+test-resources/src/v8tests/leakcheck.js:44:16: [maybe] Converting primitive string to object
+Soundness testing succeeded for 72 checks (with 0 expected failures)

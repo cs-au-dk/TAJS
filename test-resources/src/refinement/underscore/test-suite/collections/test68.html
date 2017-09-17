@@ -1,0 +1,24 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var list = [{a: 1, b: 2}, {a: 2, b: 2}, {a: 1, b: 3}, {a: 1, b: 4}];
+    var result = _.where(list, {a: 1});
+    equal(result.length, 3);
+    equal(result[result.length - 1].b, 4);
+    result = _.where(list, {b: 2});
+    equal(result.length, 2);
+    equal(result[0].a, 1);
+    result = _.where(list, {});
+    equal(result.length, list.length);
+    function test() {}
+    test.map = _.map;
+    deepEqual(_.where([_, {a: 1, b: 2}, _], test), [_, _], 'checks properties given function');
+</script></head><body></body></html>

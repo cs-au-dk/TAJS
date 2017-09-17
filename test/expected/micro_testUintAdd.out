@@ -1,7 +1,0 @@
-test/micro/testUintAdd.js: [definite] Exceptional program exit is unreachable
-test/micro/testUintAdd.js:13:1: [info] Abstract value: UIntPos
-test/micro/testUintAdd.js:15:1: [info] Abstract value: UIntPos
-test/micro/testUintAdd.js:16:1: [info] Abstract value: UIntPos
-test/micro/testUintAdd.js:18:1: [info] Abstract value: Num
-test/micro/testUintAdd.js:19:1: [info] Abstract value: Num
-Soundness testing succeeded for 45 checks (with 0 expected failures)

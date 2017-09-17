@@ -1,0 +1,64 @@
+test-resources/src/v8tests/regexp-static.js:34:17: [definite] Reading absent property input of host object
+test-resources/src/v8tests/regexp-static.js:36:21: [definite] Reading absent property lastParen of host object
+test-resources/src/v8tests/regexp-static.js:37:21: [definite] Reading absent property leftContext of host object
+test-resources/src/v8tests/regexp-static.js:38:21: [definite] Reading absent property rightContext of host object
+test-resources/src/v8tests/regexp-static.js:40:17: [definite] Reading absent property $_ of host object
+test-resources/src/v8tests/regexp-static.js:41:25: [definite] Reading absent property $& of host object
+test-resources/src/v8tests/regexp-static.js:42:21: [definite] Reading absent property $+ of host object
+test-resources/src/v8tests/regexp-static.js:43:21: [definite] Reading absent property $` of host object
+test-resources/src/v8tests/regexp-static.js:44:21: [definite] Reading absent property $' of host object
+test-resources/src/v8tests/regexp-static.js:62:17: [definite] Reading absent property input of host object
+test-resources/src/v8tests/regexp-static.js:64:21: [definite] Reading absent property lastParen of host object
+test-resources/src/v8tests/regexp-static.js:65:21: [definite] Reading absent property leftContext of host object
+test-resources/src/v8tests/regexp-static.js:66:21: [definite] Reading absent property rightContext of host object
+test-resources/src/v8tests/regexp-static.js:67:17: [definite] Reading absent property $_ of host object
+test-resources/src/v8tests/regexp-static.js:68:25: [definite] Reading absent property $& of host object
+test-resources/src/v8tests/regexp-static.js:69:21: [definite] Reading absent property $+ of host object
+test-resources/src/v8tests/regexp-static.js:70:21: [definite] Reading absent property $` of host object
+test-resources/src/v8tests/regexp-static.js:71:21: [definite] Reading absent property $' of host object
+test-resources/src/v8tests/regexp-static.js:81:17: [definite] Reading absent property input of host object
+test-resources/src/v8tests/regexp-static.js:83:21: [definite] Reading absent property lastParen of host object
+test-resources/src/v8tests/regexp-static.js:84:21: [definite] Reading absent property leftContext of host object
+test-resources/src/v8tests/regexp-static.js:85:21: [definite] Reading absent property rightContext of host object
+test-resources/src/v8tests/regexp-static.js:86:17: [definite] Reading absent property $_ of host object
+test-resources/src/v8tests/regexp-static.js:87:25: [definite] Reading absent property $& of host object
+test-resources/src/v8tests/regexp-static.js:88:21: [definite] Reading absent property $+ of host object
+test-resources/src/v8tests/regexp-static.js:89:21: [definite] Reading absent property $` of host object
+test-resources/src/v8tests/regexp-static.js:90:21: [definite] Reading absent property $' of host object
+test-resources/src/v8tests/regexp-static.js:100:17: [definite] Reading absent property input of host object
+test-resources/src/v8tests/regexp-static.js:102:21: [definite] Reading absent property lastParen of host object
+test-resources/src/v8tests/regexp-static.js:103:21: [definite] Reading absent property leftContext of host object
+test-resources/src/v8tests/regexp-static.js:104:21: [definite] Reading absent property rightContext of host object
+test-resources/src/v8tests/regexp-static.js:105:17: [definite] Reading absent property $_ of host object
+test-resources/src/v8tests/regexp-static.js:106:25: [definite] Reading absent property $& of host object
+test-resources/src/v8tests/regexp-static.js:107:21: [definite] Reading absent property $+ of host object
+test-resources/src/v8tests/regexp-static.js:108:21: [definite] Reading absent property $` of host object
+test-resources/src/v8tests/regexp-static.js:109:21: [definite] Reading absent property $' of host object
+test-resources/src/v8tests/regexp-static.js:35:25: [maybe] Reading absent property lastMatch of host object
+test-resources/src/v8tests/regexp-static.js:46:25: [maybe] Reading absent property $1 of host object
+test-resources/src/v8tests/regexp-static.js:47:21: [maybe] Reading absent property $2 of host object
+test-resources/src/v8tests/regexp-static.js:48:21: [maybe] Reading absent property $3 of host object
+test-resources/src/v8tests/regexp-static.js:63:25: [maybe] Reading absent property lastMatch of host object
+test-resources/src/v8tests/regexp-static.js:73:21: [maybe] Reading absent property $2 of host object
+test-resources/src/v8tests/regexp-static.js:74:21: [maybe] Reading absent property $3 of host object
+test-resources/src/v8tests/regexp-static.js:82:25: [maybe] Reading absent property lastMatch of host object
+test-resources/src/v8tests/regexp-static.js:92:21: [maybe] Reading absent property $2 of host object
+test-resources/src/v8tests/regexp-static.js:93:21: [maybe] Reading absent property $3 of host object
+test-resources/src/v8tests/regexp-static.js:101:25: [maybe] Reading absent property lastMatch of host object
+test-resources/src/v8tests/regexp-static.js:111:21: [maybe] Reading absent property $2 of host object
+test-resources/src/v8tests/regexp-static.js:112:21: [maybe] Reading absent property $3 of host object
+test-resources/src/v8tests/regexp-static.js: [maybe] Uncaught exception, constructed at [HOST(string-replace-model.js):26:41, HOST(string-replace-model.js):33:51, HOST(string-replace-model.js):49:30, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
+test-resources/src/v8tests/regexp-static.js:50:20: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/regexp-static.js:61:1: [maybe] Converting object to string
+test-resources/src/v8tests/regexp-static.js:61:1: [maybe] Converting primitive string to object
+test-resources/src/v8tests/regexp-static.js:76:20: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/regexp-static.js:80:1: [maybe] Converting primitive string to object
+test-resources/src/v8tests/regexp-static.js:95:20: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/regexp-static.js:114:20: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/regexp-static.js:122:22: [maybe] Converting primitive string to object
+test-resources/src/v8tests/regexp-static.js:50:20: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/v8tests/regexp-static.js:76:20: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/v8tests/regexp-static.js:95:20: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/v8tests/regexp-static.js:114:20: [info] Reading from unknown property that may cause loss of precision
+Disabling soundness testing for test-resources/src/v8tests/regexp-static.js entirely (81 uninspected soundness errors).
+Soundness testing succeeded for 644 checks (with 81 expected failures)

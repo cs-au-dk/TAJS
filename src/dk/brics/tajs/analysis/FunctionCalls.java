@@ -332,10 +332,8 @@ public class FunctionCalls {
         Value funval = call.getFunctionValue();
         funval = UnknownValueResolver.getRealValue(funval, caller_state);
         boolean maybe_non_function = funval.isMaybePrimitive();
-        boolean maybe_function = false;
         for (ObjectLabel objlabel : funval.getObjectLabels()) {
             if (objlabel.getKind() == Kind.FUNCTION) {
-                maybe_function = true;
                 if (objlabel.isHostObject()) { // host function
                     c.withState(caller_state.clone(), () -> { // note that the calling context is not affected, even though e.g. 'this' may get a different value
                                 if (!call.isConstructorCall() &&
@@ -373,7 +371,7 @@ public class FunctionCalls {
                 newstate.writeRegister(call.getResultRegister(), Value.makeNone());
             c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(), newstate.getContext());
         }
-        c.getMonitoring().visitCall(c.getNode(), maybe_non_function, maybe_function);
+        c.getMonitoring().visitCall(c.getNode(), funval);
         if (maybe_non_function)
             Exceptions.throwTypeError(c);
     }

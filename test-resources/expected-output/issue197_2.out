@@ -1,0 +1,5 @@
+test-resources/src/micro/issue197_2.html:6:11: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/issue197_2.html: [maybe] Uncaught exception, constructed at [test-resources/src/micro/issue197_2.html:6:11]
+test-resources/src/micro/issue197_2.html:5:3: [info] Abstract value: Null|[*HTMLDivElement instances[dom]]
+test-resources/src/micro/issue197_2.html:7:3: [info] Abstract value: Null|[@HTMLDocument instances[dom], @Document instances[dom]]
+Soundness testing succeeded for 14 checks (with 0 expected failures)

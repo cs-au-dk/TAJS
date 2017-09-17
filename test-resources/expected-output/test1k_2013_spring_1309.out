@@ -1,0 +1,25 @@
+test-resources/src/1k2013spring/1309.js:15:21: [definite] The variable C is never used
+test-resources/src/1k2013spring/1309.js:13:41: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1309.js:14:41: [maybe] ReferenceError, reading absent variable H
+test-resources/src/1k2013spring/1309.js:21:50: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1309.js:42:38: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1309.js:42:44: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1309.js:42:51: [maybe] ReferenceError, reading absent variable H
+test-resources/src/1k2013spring/1309.js:42:57: [maybe] ReferenceError, reading absent variable H
+test-resources/src/1k2013spring/1309.js:48:25: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1309.js:100:17: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1309.js:100:29: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2013spring/1309.js:100:38: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1309.js:100:41: [maybe] ReferenceError, reading absent variable H
+test-resources/src/1k2013spring/1309.js:100:55: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1309.js:100:61: [maybe] ReferenceError, reading absent variable H
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1309.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1309.js:13:41, test-resources/src/1k2013spring/1309.js:14:41, test-resources/src/1k2013spring/1309.js:21:50, test-resources/src/1k2013spring/1309.js:42:38, test-resources/src/1k2013spring/1309.js:42:44, test-resources/src/1k2013spring/1309.js:42:51, test-resources/src/1k2013spring/1309.js:42:57, test-resources/src/1k2013spring/1309.js:48:25, test-resources/src/1k2013spring/1309.js:100:17, test-resources/src/1k2013spring/1309.js:100:29, test-resources/src/1k2013spring/1309.js:100:38, test-resources/src/1k2013spring/1309.js:100:41, test-resources/src/1k2013spring/1309.js:100:55, test-resources/src/1k2013spring/1309.js:100:61, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1309.js:13:41: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1309.js:14:41: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1309.js:21:50: [maybe] Converting object to string
+test-resources/src/1k2013spring/1309.js:21:50: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1309.js:22:45: [maybe] Converting object to string
+test-resources/src/1k2013spring/1309.js:22:45: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1309.js:46:44: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 472 checks (with 0 expected failures)

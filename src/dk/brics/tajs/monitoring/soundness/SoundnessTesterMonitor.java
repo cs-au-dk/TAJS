@@ -88,7 +88,9 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
 
     @Override
     public void visitPhasePre(AnalysisPhase phase) {
-        if (phase == AnalysisPhase.SCAN) {
+        if (phase == AnalysisPhase.ANALYSIS && Options.get().getSoundnessTesterOptions().generateBeforeAnalysis()) {
+            generateLog();
+        } else if (phase == AnalysisPhase.SCAN) {
             scanning = true;
         }
     }
@@ -100,23 +102,31 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
         }
     }
 
-    private void test() {
+    private URL generateLog() {
         LogFileHelper logFileHelper = new LogFileHelper(Options.get());
         Path main = logFileHelper.getMainFile();
         if (KnownUnsoundnesses.isSyntaxFailureFile(main)) {
             log.info(String.format("Log of soundness facts is not available because of syntax errors in source of %s, skipping soundness checking", PathAndURLUtils.toPortableString(main)));
-            return;
+            return null;
         }
 
         URL logFile = logFileHelper.createOrGetLogFile(); // may have the side-effect of creating the log file on disk
         if (logFile == null) {
             log.info(String.format("Log of soundness facts is not available for %s, skipping soundness checking", PathAndURLUtils.toPortableString(main)));
-            return;
+            return null;
         }
+        return logFile;
+    }
+
+    private void test() {
+        URL logFile = generateLog();
+        if (logFile == null) return;
 
         SoundnessTestResult result = new SoundnessTester(type_collector.getTypeInformation(), domObjectAllocationSites, c).test(logFile);
         if (result.success) {
-            log.info(result.message);
+            if (!Options.get().isNoMessages()) {
+                log.info(result.message);
+            }
         } else {
             if (Options.get().getSoundnessTesterOptions().isPrintErrorsWithoutThrowingException()) {
                 System.err.println(result.message);

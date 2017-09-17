@@ -1,0 +1,19 @@
+test-resources/src/micro/test20.js: [definite] Ordinary program exit is unreachable
+test-resources/src/micro/test20.js:22:16: [definite] ReferenceError, reading absent variable bar4
+test-resources/src/micro/test20.js:2:2: [definite] Reading 'this' yields the global object
+test-resources/src/micro/test20.js:17:8: [definite] Reading 'this' yields the global object
+test-resources/src/micro/test20.js:22:1: [definite] Unreachable code
+test-resources/src/micro/test20.js:16:8: [maybe] TypeError, call to non-function
+test-resources/src/micro/test20.js:17:8: [maybe] TypeError, call to non-function
+test-resources/src/micro/test20.js:18:8: [maybe] TypeError, call to non-function
+test-resources/src/micro/test20.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test20.js:16:8, test-resources/src/micro/test20.js:17:8, test-resources/src/micro/test20.js:18:8, test-resources/src/micro/test20.js:22:16]
+test-resources/src/micro/test20.js:3:9: [maybe] Conversion to number yields NaN
+test-resources/src/micro/test20.js:13:16: [maybe] The variable foo has values with different types
+test-resources/src/micro/test20.js:16:8: [maybe] The variable foo has values with different types
+test-resources/src/micro/test20.js:18:8: [maybe] The variable foo has values with different types
+test-resources/src/micro/test20.js:13:1: [info] Abstract value: 44.0|[@foo#fun1]
+test-resources/src/micro/test20.js:14:1: [info] Abstract value: [@foo#fun1]
+test-resources/src/micro/test20.js:19:1: [info] Abstract value: 129.0
+test-resources/src/micro/test20.js:20:1: [info] Abstract value: UIntPos
+test-resources/src/micro/test20.js:21:1: [info] Abstract value: UIntPos|NaN
+Soundness testing succeeded for 59 checks (with 0 expected failures)

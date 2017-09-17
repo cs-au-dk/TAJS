@@ -138,6 +138,12 @@ public class JSNumber {
                 return state.readInternalValue(numberObjects);
             }
 
+            case NUMBER_ISSAFEINTEGER:
+            case NUMBER_ISINTEGER:
+            case NUMBER_ISNAN: {
+                return Value.makeAnyBool();
+            }
+
             default:
                 return null;
         }

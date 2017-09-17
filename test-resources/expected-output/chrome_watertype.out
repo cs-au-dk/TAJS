@@ -1,0 +1,55 @@
+test-resources/src/chromeexperiments/watertype.html:157:21: [definite] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:171:21: [definite] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:23:4: [definite] The variable HEIGHT_HALF is never used
+test-resources/src/chromeexperiments/watertype.html:135:4: [definite] The variable event is never used
+test-resources/src/chromeexperiments/watertype.html:141:4: [definite] The variable event is never used
+test-resources/src/chromeexperiments/watertype.html:157:21: [definite] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:157:46: [definite] Unreachable code
+test-resources/src/chromeexperiments/watertype.html:171:21: [definite] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:171:46: [definite] Unreachable code
+test-resources/src/chromeexperiments/watertype.html:54:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:155:25: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:157:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:169:25: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:171:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:200:5: [maybe] RangeError, assigning invalid value to array 'length' property
+test-resources/src/chromeexperiments/watertype.html:200:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:208:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:222:11: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:240:26: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:242:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:242:28: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:254:16: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:254:99: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:257:6: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:287:19: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:297:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:303:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/watertype.html:155:25: [maybe] Reading absent property touches of host object
+test-resources/src/chromeexperiments/watertype.html:157:21: [maybe] Reading absent property touches of host object
+test-resources/src/chromeexperiments/watertype.html:169:25: [maybe] Reading absent property touches of host object
+test-resources/src/chromeexperiments/watertype.html:171:21: [maybe] Reading absent property touches of host object
+test-resources/src/chromeexperiments/watertype.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/watertype.html:54:5, test-resources/src/chromeexperiments/watertype.html:155:25, test-resources/src/chromeexperiments/watertype.html:157:21, test-resources/src/chromeexperiments/watertype.html:169:25, test-resources/src/chromeexperiments/watertype.html:171:21, test-resources/src/chromeexperiments/watertype.html:200:5, test-resources/src/chromeexperiments/watertype.html:208:5, test-resources/src/chromeexperiments/watertype.html:222:11, test-resources/src/chromeexperiments/watertype.html:240:26, test-resources/src/chromeexperiments/watertype.html:242:12, test-resources/src/chromeexperiments/watertype.html:242:28, test-resources/src/chromeexperiments/watertype.html:254:16, test-resources/src/chromeexperiments/watertype.html:254:99, test-resources/src/chromeexperiments/watertype.html:255:6, test-resources/src/chromeexperiments/watertype.html:257:6, test-resources/src/chromeexperiments/watertype.html:287:19, test-resources/src/chromeexperiments/watertype.html:297:7, test-resources/src/chromeexperiments/watertype.html:303:5]
+test-resources/src/chromeexperiments/watertype.html:222:11: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:242:12: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:242:28: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:254:14: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/watertype.html:254:16: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/watertype.html:254:16: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:254:33: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:254:50: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:254:71: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:254:99: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:287:19: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:288:19: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/watertype.html:288:19: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:294:19: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:294:44: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:294:56: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:296:15: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/watertype.html:297:12: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/watertype.html:297:25: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/watertype.html:298:12: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/watertype.html:298:25: [maybe] Conversion to number yields NaN
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test-resources/src/chromeexperiments/watertype.html, skipping soundness checking

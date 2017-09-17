@@ -38,10 +38,10 @@ import com.google.javascript.jscomp.parsing.parser.trees.MemberLookupExpressionT
 import com.google.javascript.jscomp.parsing.parser.trees.ObjectLiteralExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTreeType;
-import com.google.javascript.jscomp.parsing.parser.trees.PostfixExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ProgramTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ThisExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.UnaryExpressionTree;
+import com.google.javascript.jscomp.parsing.parser.trees.UpdateExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.VariableDeclarationTree;
 import com.google.javascript.jscomp.parsing.parser.trees.WhileStatementTree;
 import com.google.javascript.jscomp.parsing.parser.util.SourcePosition;
@@ -527,7 +527,7 @@ public class ASTInfo {
         }
 
         @Override
-        public void in(PostfixExpressionTree tree) {
+        public void in(UpdateExpressionTree tree) {
             if (tree.operand.type == ParseTreeType.IDENTIFIER_EXPRESSION) {
                 registerVariableRead(tree.operand.asIdentifierExpression());
                 registerVariableWrite(tree.operand.asIdentifierExpression());

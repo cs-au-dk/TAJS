@@ -1,0 +1,19 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var list = [1, 2, 1, 0, 3, 1, 4];
+    deepEqual(_.without(list, 0, 1), [2, 3, 4], 'can remove all instances of an object');
+    var result = (function(){ return _.without(arguments, 0, 1); }(1, 2, 1, 0, 3, 1, 4));
+    deepEqual(result, [2, 3, 4], 'works on an arguments object');
+    list = [{one : 1}, {two : 2}];
+    equal(_.without(list, {one : 1}).length, 2, 'uses real object identity for comparisons.');
+    equal(_.without(list, list[0]).length, 1, 'ditto.');
+</script></head><body></body></html>

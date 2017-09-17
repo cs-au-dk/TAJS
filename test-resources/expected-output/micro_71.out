@@ -1,0 +1,4 @@
+test-resources/src/micro/test71.js:3:3: [definite] ReferenceError, reading absent variable document
+test-resources/src/micro/test71.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test71.js:8:1: [info] Abstract value: true
+Soundness testing succeeded for 7 checks (with 0 expected failures)

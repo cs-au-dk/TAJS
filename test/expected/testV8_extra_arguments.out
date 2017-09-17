@@ -1,9 +1,0 @@
-test/v8tests/extra-arguments.js:35:23: [definite] TypeError, accessing property of null/undefined
-test/v8tests/extra-arguments.js:35:23: [definite] Variable array is null/undefined
-test/v8tests/extra-arguments.js:44:17: [definite] The conditional expression is always true
-test/v8tests/extra-arguments.js:47:19: [definite] The conditional expression is always false
-test/v8tests/extra-arguments.js:34:15: [definite] Reading absent property arguments
-test/v8tests/extra-arguments.js:33:7: [definite] The variable result is never used
-test/v8tests/extra-arguments.js:35:19: [definite] Unreachable code
-test/v8tests/extra-arguments.js:51:48: [definite] Unreachable code
-test/v8tests/prologue.js,test/v8tests/extra-arguments.js: [maybe] Uncaught exception, constructed at [test/v8tests/extra-arguments.js:35:23]

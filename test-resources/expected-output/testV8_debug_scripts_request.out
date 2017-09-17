@@ -1,0 +1,9 @@
+test-resources/src/v8tests/debug-scripts-request.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/debug-scripts-request.js:30:9: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/debug-scripts-request.js:30:9: [definite] Unreachable code
+test-resources/src/v8tests/debug-scripts-request.js:37:5: [definite] The variable base_request is never used
+test-resources/src/v8tests/debug-scripts-request.js:39:1: [definite] Unreachable function safeEval
+test-resources/src/v8tests/debug-scripts-request.js:48:1: [definite] Unreachable function testArguments
+test-resources/src/v8tests/debug-scripts-request.js:59:1: [definite] Unreachable function listener
+test-resources/src/v8tests/debug-scripts-request.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-scripts-request.js:30:9]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

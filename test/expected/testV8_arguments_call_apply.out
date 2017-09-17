@@ -1,5 +1,0 @@
-test/v8tests/arguments-call-apply.js:37:26: [definite] Reading 'this' yields the global object
-test/v8tests/arguments-call-apply.js:40:26: [definite] Reading 'this' yields the global object
-test/v8tests/arguments-call-apply.js:41:27: [definite] Reading 'this' yields the global object
-test/v8tests/arguments-call-apply.js:31:5: [maybe] Conversion to number yields NaN
-test/v8tests/arguments-call-apply.js:31:15: [maybe] Reading absent property (computed name)

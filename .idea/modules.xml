@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/TAJS.iml" filepath="$PROJECT_DIR$/.idea/TAJS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/extras/inspector/inspector.iml" filepath="$PROJECT_DIR$/extras/inspector/inspector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/extras/jalangilogger/jalangilogger.iml" filepath="$PROJECT_DIR$/extras/jalangilogger/jalangilogger.iml" />
     </modules>
   </component>
 </project>

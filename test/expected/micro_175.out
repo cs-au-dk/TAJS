@@ -1,5 +1,0 @@
-test/micro/test175.js: [definite] Exceptional program exit is unreachable
-test/micro/test175.js:2:18: [definite] Unreachable function
-test/micro/test175.js:1:1: [info] Abstract object: {0:1.0,1:2.0,length:2.0,[[Prototype]]=[@Array.prototype[native]]}
-test/micro/test175.js:2:1: [info] Abstract object: {length:0.0,name:"",prototype:[@Object#node10],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-Soundness testing succeeded for 3 checks (with 0 expected failures)

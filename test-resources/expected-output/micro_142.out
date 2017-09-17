@@ -1,0 +1,5 @@
+test-resources/src/micro/test142.js:4:5: [definite] The variable z is never used
+test-resources/src/micro/test142.js:4:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/test142.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test142.js:4:9]
+test-resources/src/micro/test142.js:3:9: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 15 checks (with 0 expected failures)

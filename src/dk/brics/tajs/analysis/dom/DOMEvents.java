@@ -45,6 +45,8 @@ public class DOMEvents {
 
     private static final Logger log = Logger.getLogger(DOMEvents.class);
 
+    private static final Value domContentLoadedEvent;
+
     private static final Value loadEvent;
 
     private static final Value keyboardEvent;
@@ -61,6 +63,7 @@ public class DOMEvents {
 
     static {
         anyEvent = createAnyEvent();
+        domContentLoadedEvent = createAnyDOMContentLoadedEvent();
         loadEvent = createAnyLoadEvent();
         timeoutEvent = Value.makeNone();
         unloadEvent = Value.makeNone();
@@ -103,6 +106,13 @@ public class DOMEvents {
     }
 
     /**
+     * Creates a generic DOMContentLoaded Event
+     */
+    private static Value createAnyDOMContentLoadedEvent() {
+        return Value.makeObject(DOMRegistry.getDOMContentLoadedEventLabel());
+    }
+
+    /**
      * Creates a generic load Event
      */
     private static Value createAnyLoadEvent() {
@@ -135,6 +145,8 @@ public class DOMEvents {
 
     private static DOMRegistry.MaySets mapEventTypeToMaySetKey(EventType kind) {
         switch (kind) {
+            case DOM_CONTENT_LOADED:
+                return DOMRegistry.MaySets.DOM_CONTENT_LOADED_EVENT_HANDLER;
             case LOAD:
                 return DOMRegistry.MaySets.LOAD_EVENT_HANDLER;
             case UNLOAD:
@@ -207,6 +219,8 @@ public class DOMEvents {
 
     public static Value getEvent(EventType type) {
         switch (type) {
+            case DOM_CONTENT_LOADED:
+                return domContentLoadedEvent;
             case LOAD:
                 return loadEvent;
             case UNLOAD:
@@ -228,13 +242,15 @@ public class DOMEvents {
     }
 
     private static void triggerEventHandler(EventType type, Solver.SolverInterface c) {
-        boolean requiresStateCloning = type == EventType.LOAD || type == EventType.UNLOAD;
+        boolean requiresStateCloning = type == EventType.DOM_CONTENT_LOADED || type == EventType.LOAD || type == EventType.UNLOAD;
         DOMRegistry.MaySets maysetKey = convertEventTypeToHandlerKey(type);
         triggerEventHandler(c.getNode(), c.getState(), type, requiresStateCloning, c, c.getState().getExtras().getFromMaySet(maysetKey.name()));
     }
 
     private static DOMRegistry.MaySets convertEventTypeToHandlerKey(EventType type) {
         switch (type) {
+            case DOM_CONTENT_LOADED:
+                return DOMRegistry.MaySets.DOM_CONTENT_LOADED_EVENT_HANDLER;
             case LOAD:
                 return DOMRegistry.MaySets.LOAD_EVENT_HANDLER;
             case UNLOAD:
@@ -257,6 +273,9 @@ public class DOMEvents {
     }
 
     public static void emit(EventDispatcherNode n, Solver.SolverInterface c) {
+        if (n.getType() == EventDispatcherNode.Type.DOM_CONTENT_LOADED) {
+            triggerEventHandler(EventType.DOM_CONTENT_LOADED, c);
+        }
         if (n.getType() == EventDispatcherNode.Type.DOM_LOAD) {
             triggerEventHandler(EventType.LOAD, c);
         }

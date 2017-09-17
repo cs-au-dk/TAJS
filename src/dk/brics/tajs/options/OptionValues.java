@@ -27,6 +27,7 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 
 import java.lang.reflect.Field;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -187,7 +188,7 @@ public class OptionValues {
     @Option(name = "-loop-unrolling", usage = "Enable unrolling of loops up to [n] times")
     private int loopUnrollings = -1;
 
-    @Option(name = "-determinacy", usage = "Enable all of the techniques described in 'Determinacy in Static Analysis of jQuery', OOPSLA 2014")
+    @Option(name = "-determinacy", usage = "Enable the techniques described in 'Determinacy in Static Analysis of jQuery', OOPSLA 2014")
     private boolean determinacy;
 
     @Option(name = "-polyfill-mdn", usage = "Enable use of polyfills from the Mozilla Developer Network web pages")
@@ -196,8 +197,11 @@ public class OptionValues {
     @Option(name = "-polyfill-es6-collections", usage = "Enable use of polyfills for ES6 collections")
     private boolean polyfillES6Collections;
 
-    @Option(name = "-polyfill-typed-arrays", usage = "Enable use of polyfills for typed arrays (Int8Array, Float64Array ...)")
+    @Option(name = "-polyfill-typed-arrays", usage = "Enable use of polyfills for typed arrays (Int8Array, Float64Array, etc.)")
     private boolean polyfillTypedArrays;
+
+    @Option(name = "-polyfill-es6-promises", usage = "Enable use of polyfills for ES6 promises")
+    private boolean polyfillES6Promises;
 
     @Option(name = "-async-events", usage = "Enable execution of asynchronous event handlers with TAJS_asyncListen")
     private boolean asyncEvents;
@@ -235,14 +239,20 @@ public class OptionValues {
     @Option(name = "-time-limit", usage = "Limit how many seconds the analysis is allowed to run")
     private int analysisTimeLimit = -1;
 
+    @Option(name = "-transfer-limit", usage = "Limit how many node transfers the analysis is allowed to perform")
+    private int analysisTransferLimit = -1;
+
     @Option(name = "-do-not-expect-ordinary-exit", usage = "Do not expect the program to reach the ordinary exit (for testing)")
     private boolean doNotExpectOrdinaryExit;
 
     @Option(name = "-inspector", usage = "Start TAJS Inspector after analysis")
     private boolean inspector;
 
+    @Option(name = "-analysis-limitations-warn-only", usage = "If analysis limitation encountered, emit warning but continue (only used with -test)")
+    private boolean analysisLimitationWarnOnly;
+
     @Argument
-    private List<String> arguments = new ArrayList<>();
+    private List<Path> arguments = new ArrayList<>();
 
     private SoundnessTesterOptions soundnessTesterOptions = new SoundnessTesterOptions();
 
@@ -303,6 +313,7 @@ public class OptionValues {
         if (polyfillMDN != that.polyfillMDN) return false;
         if (polyfillES6Collections != that.polyfillES6Collections) return false;
         if (polyfillTypedArrays != that.polyfillTypedArrays) return false;
+        if (polyfillES6Promises != that.polyfillES6Promises) return false;
         if (asyncEvents != that.asyncEvents) return false;
         if (testSoundness != that.testSoundness) return false;
         if (generateLog != that.generateLog) return false;
@@ -380,6 +391,7 @@ public class OptionValues {
         result = 31 * result + (polyfillMDN ? 1 : 0);
         result = 31 * result + (polyfillES6Collections ? 1 : 0);
         result = 31 * result + (polyfillTypedArrays ? 1 : 0);
+        result = 31 * result + (polyfillES6Promises ? 1 : 0);
         result = 31 * result + (asyncEvents ? 1 : 0);
         result = 31 * result + (testSoundness ? 1 : 0);
         result = 31 * result + (generateLog ? 1 : 0);
@@ -410,16 +422,16 @@ public class OptionValues {
                 if (testSoundness) {
                     soundnessTesterOptions.setTest(true);
                     if (logFile == null) {
-                        throw new CmdLineException(parser, "-test-soundness requires -log-file");
+                        throw new CmdLineException(parser, "-test-soundness requires -log-file", null);
                     }
                 }
                 if (generateLog) {
                     soundnessTesterOptions.setGenerate(true);
                     if (logFile == null) {
-                        throw new CmdLineException(parser, "-generate-log requires -log-file");
+                        throw new CmdLineException(parser, "-generate-log requires -log-file", null);
                     }
                     if (!testSoundness) {
-                        throw new CmdLineException(parser, "-generate-log requires -test-soundness"); // TODO: could support -generate-log without -test-soundness (and then without running the static analysis!)
+                        throw new CmdLineException(parser, "-generate-log requires -test-soundness", null); // TODO: could support -generate-log without -test-soundness (and then without running the static analysis!)
                     }
                 }
                 if (logFile != null) {
@@ -441,12 +453,12 @@ public class OptionValues {
                     unsoundness = new UnsoundnessOptionValues(unsoundness, unsoundnessString.split(","));
                 }
             } catch (CmdLineException e) {
-                throw new CmdLineException(null, "Bad arguments: " + e.getMessage());
+                throw new CmdLineException(null, "Bad arguments: " + e.getMessage(), null);
         }
     }
 
     @Override
-    protected OptionValues clone() {
+    public OptionValues clone() {
         OptionValues options = new OptionValues();
         OptionsUtil.cloneAllFields(this, options);
         return options;
@@ -490,7 +502,7 @@ public class OptionValues {
                 sb.append(" ").append(me.getValue());
             }
         }
-        for (String argument : arguments) {
+        for (Path argument : arguments) {
             if (!first) {
                 sb.append(" ");
             } else {
@@ -858,7 +870,7 @@ public class OptionValues {
         ignoreUnreachable = true;
     }
 
-    public List<String> getArguments() {
+    public List<Path> getArguments() {
         return arguments;
     }
 
@@ -1053,7 +1065,7 @@ public class OptionValues {
 
     public void checkConsistency() throws CmdLineException {
         if (arguments == null || arguments.isEmpty()) {
-            throw new CmdLineException(null, "No arguments provided!");
+            throw new CmdLineException(null, "No arguments provided!", null);
         }
     }
 
@@ -1069,6 +1081,10 @@ public class OptionValues {
         polyfillTypedArrays = true;
     }
 
+    public void enablePolyfillES6Promises() {
+        polyfillES6Promises = true;
+    }
+
     public boolean isPolyfillMDNEnabled() {
         return polyfillMDN;
     }
@@ -1079,6 +1095,10 @@ public class OptionValues {
 
     public boolean isPolyfillTypedArraysEnabled() {
         return polyfillTypedArrays;
+    }
+
+    public boolean isPolyfillES6PromisesEnabled() {
+        return polyfillES6Promises;
     }
 
     public void enableAsyncEvents() {
@@ -1165,6 +1185,14 @@ public class OptionValues {
         return analysisTimeLimit;
     }
 
+    public void setAnalysisTransferLimit(int transfers) {
+        analysisTransferLimit = transfers;
+    }
+
+    public int getAnalysisTransferLimit() {
+        return analysisTransferLimit;
+    }
+
     public boolean isDoNotExpectOrdinaryExitEnabled() {
         return doNotExpectOrdinaryExit;
     }
@@ -1183,5 +1211,17 @@ public class OptionValues {
 
     public void enableInspector() {
         inspector = true;
+    }
+
+    public boolean isAnalysisLimitationWarnOnly() {
+        return analysisLimitationWarnOnly;
+    }
+
+    public void enableAnalysisLimitationWarnOnly() {
+        analysisLimitationWarnOnly = true;
+    }
+
+    public void disableAanalysisLimitationWarnOnly() {
+        analysisLimitationWarnOnly = false;
     }
 }

@@ -185,7 +185,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
         specializeMeasurement(measurements, "Context", contexts, "localContext", c -> c.getLocalContext() != null && !c.getLocalContext().getQualifiers().isEmpty());
         specializeMeasurement(measurements, "Context", contexts, "funArgs", c -> c.getFunArgs() != null);
         specializeMeasurement(measurements, "Context", contexts, "specialRegs", c -> c.getSpecialRegisters() != null && !c.getSpecialRegisters().isEmpty());
-        specializeMeasurement(measurements, "Context", contexts, "thisVal", c -> c.getThisVal() != null && !c.getThisVal().isEmpty());
+        specializeMeasurement(measurements, "Context", contexts, "thisVal", c -> c.getThisVal() != null && !c.getThisVal().isNone());
 
         specializeMeasurement(measurements, "Obj", this.objs, "writable", Obj::isWritable);
 

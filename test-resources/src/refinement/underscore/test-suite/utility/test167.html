@@ -1,0 +1,94 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var basicTemplate = _.template("<%= thing %> is gettin' on my noives!");
+    var result = basicTemplate({thing : 'This'});
+    equal(result, "This is gettin' on my noives!", 'can do basic attribute interpolation');
+    var sansSemicolonTemplate = _.template('A <% this %> B');
+    equal(sansSemicolonTemplate(), 'A  B');
+    var backslashTemplate = _.template('<%= thing %> is \\ridanculous');
+    equal(backslashTemplate({thing: 'This'}), 'This is \\ridanculous');
+    var escapeTemplate = _.template('<%= a ? "checked=\\"checked\\"" : "" %>');
+    equal(escapeTemplate({a: true}), 'checked="checked"', 'can handle slash escapes in interpolations.');
+    var fancyTemplate = _.template('<ul><% ' +
+    '  for (var key in people) { ' +
+    '%><li><%= people[key] %></li><% } %></ul>');
+    result = fancyTemplate({people : {moe : 'Moe', larry : 'Larry', curly : 'Curly'}});
+    equal(result, '<ul><li>Moe</li><li>Larry</li><li>Curly</li></ul>', 'can run arbitrary javascript in templates');
+    var escapedCharsInJavascriptTemplate = _.template('<ul><% _.each(numbers.split("\\n"), function(item) { %><li><%= item %></li><% }) %></ul>');
+    result = escapedCharsInJavascriptTemplate({numbers: 'one\ntwo\nthree\nfour'});
+    equal(result, '<ul><li>one</li><li>two</li><li>three</li><li>four</li></ul>', 'Can use escaped characters (e.g. \\n) in JavaScript');
+    var namespaceCollisionTemplate = _.template('<%= pageCount %> <%= thumbnails[pageCount] %> <% _.each(thumbnails, function(p) { %><div class="thumbnail" rel="<%= p %>"></div><% }); %>');
+    result = namespaceCollisionTemplate({
+      pageCount: 3,
+      thumbnails: {
+        1: 'p1-thumbnail.gif',
+        2: 'p2-thumbnail.gif',
+        3: 'p3-thumbnail.gif'
+      }
+    });
+    equal(result, '3 p3-thumbnail.gif <div class="thumbnail" rel="p1-thumbnail.gif"></div><div class="thumbnail" rel="p2-thumbnail.gif"></div><div class="thumbnail" rel="p3-thumbnail.gif"></div>');
+    var noInterpolateTemplate = _.template('<div><p>Just some text. Hey, I know this is silly but it aids consistency.</p></div>');
+    result = noInterpolateTemplate();
+    equal(result, '<div><p>Just some text. Hey, I know this is silly but it aids consistency.</p></div>');
+    var quoteTemplate = _.template("It's its, not it's");
+    equal(quoteTemplate({}), "It's its, not it's");
+    var quoteInStatementAndBody = _.template('<% ' +
+    "  if(foo == 'bar'){ " +
+    "%>Statement quotes and 'quotes'.<% } %>");
+    equal(quoteInStatementAndBody({foo: 'bar'}), "Statement quotes and 'quotes'.");
+    var withNewlinesAndTabs = _.template('This\n\t\tis: <%= x %>.\n\tok.\nend.');
+    equal(withNewlinesAndTabs({x: 'that'}), 'This\n\t\tis: that.\n\tok.\nend.');
+    var template = _.template('<i><%- value %></i>');
+    result = template({value: '<script>'});
+    equal(result, '<i>&lt;script&gt;</i>');
+    var stooge = {
+      name: 'Moe',
+      template: _.template("I'm <%= this.name %>")
+    };
+    equal(stooge.template(), "I'm Moe");
+    template = _.template('\n ' +
+    '  <%\n ' +
+    '  // a comment\n ' +
+    '  if (data) { data += 12345; }; %>\n ' +
+    '  <li><%= data %></li>\n '
+    );
+    equal(template({data : 12345}).replace(/\s/g, ''), '<li>24690</li>');
+    _.templateSettings = {
+      evaluate    : /\{\{([\s\S]+?)\}\}/g,
+      interpolate : /\{\{=([\s\S]+?)\}\}/g
+    };
+    var custom = _.template('<ul>{{ for (var key in people) { }}<li>{{= people[key] }}</li>{{ } }}</ul>');
+    result = custom({people : {moe : 'Moe', larry : 'Larry', curly : 'Curly'}});
+    equal(result, '<ul><li>Moe</li><li>Larry</li><li>Curly</li></ul>', 'can run arbitrary javascript in templates');
+    var customQuote = _.template("It's its, not it's");
+    equal(customQuote({}), "It's its, not it's");
+    quoteInStatementAndBody = _.template("{{ if(foo == 'bar'){ }}Statement quotes and 'quotes'.{{ } }}");
+    equal(quoteInStatementAndBody({foo: 'bar'}), "Statement quotes and 'quotes'.");
+    _.templateSettings = {
+      evaluate    : /<\?([\s\S]+?)\?>/g,
+      interpolate : /<\?=([\s\S]+?)\?>/g
+    };
+    var customWithSpecialChars = _.template('<ul><? for (var key in people) { ?><li><?= people[key] ?></li><? } ?></ul>');
+    result = customWithSpecialChars({people : {moe : 'Moe', larry : 'Larry', curly : 'Curly'}});
+    equal(result, '<ul><li>Moe</li><li>Larry</li><li>Curly</li></ul>', 'can run arbitrary javascript in templates');
+    var customWithSpecialCharsQuote = _.template("It's its, not it's");
+    equal(customWithSpecialCharsQuote({}), "It's its, not it's");
+    quoteInStatementAndBody = _.template("<? if(foo == 'bar'){ ?>Statement quotes and 'quotes'.<? } ?>");
+    equal(quoteInStatementAndBody({foo: 'bar'}), "Statement quotes and 'quotes'.");
+    _.templateSettings = {
+      interpolate : /\{\{(.+?)\}\}/g
+    };
+    var mustache = _.template('Hello {{planet}}!');
+    equal(mustache({planet : 'World'}), 'Hello World!', 'can mimic mustache.js');
+    var templateWithNull = _.template('a null undefined {{planet}}');
+    equal(templateWithNull({planet : 'world'}), 'a null undefined world', 'can handle missing escape and evaluate settings');
+</script></head><body></body></html>

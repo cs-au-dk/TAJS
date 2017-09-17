@@ -17,10 +17,8 @@ public class TestUnrolling {
     @Test
     public void loopunrolling_flowgraph_strings() {
         // reveals ordinary flows
-        Misc.init();
         Options.get().enableFlowgraph();
         Options.get().enableDoNotExpectOrdinaryExit();
-        Misc.captureSystemOutput();
         Misc.runSource(
                 "'PRE'; for('INIT'; 'COND'; 'INC'){ 'BODY'; } 'POST';");
         Misc.checkSystemOutput();
@@ -29,10 +27,8 @@ public class TestUnrolling {
     @Test
     public void loopunrolling_flowgraph_calls() {
         // reveals exceptional flows
-        Misc.init();
         Options.get().enableFlowgraph();
         Options.get().enableDoNotExpectOrdinaryExit();
-        Misc.captureSystemOutput();
         Misc.runSource(
                 "PRE(); for(INIT(); COND(); INC()){ BODY(); } POST();");
         Misc.checkSystemOutput();
@@ -40,10 +36,8 @@ public class TestUnrolling {
 
     @Test
     public void loopunrolling_flowgraph_continueBreak() {
-        Misc.init();
         Options.get().enableFlowgraph();
         Options.get().enableDoNotExpectOrdinaryExit();
-        Misc.captureSystemOutput();
         Misc.runSource(
                 "'PRE'; for('INIT'; 'COND'; 'INC'){ 'BODY0'; if('CONTINUE'){continue;} 'BODY1'; if('BREAK'){break;}; 'BODY2';} 'POST';");
         Misc.checkSystemOutput();
@@ -51,8 +45,6 @@ public class TestUnrolling {
 
     @Test
     public void loopunrolling_flowgraph_continue2() {
-        Misc.init();
-        Misc.captureSystemOutput();
         Options.get().enableFlowgraph();
         Options.get().enableDoNotExpectOrdinaryExit();
         Misc.runSource(
@@ -62,10 +54,7 @@ public class TestUnrolling {
 
     @Test
     public void loopunrolling_flowgraph_labelledcontinue() {
-        Misc.init();
         Options.get().enableFlowgraph();
-        Misc.captureSystemOutput();
-
         Misc.runSource(
                 "function labelled(){label: while('COND'){continue label;}}",
                 "function unlabelled(){while('COND'){continue;}}");
@@ -74,7 +63,6 @@ public class TestUnrolling {
 
     @Test
     public void deadWhileLoop() {
-        Misc.init();
         Misc.runSource(
                 "var v = true;",
                 "while(false){ v = false; }",
@@ -83,7 +71,6 @@ public class TestUnrolling {
 
     @Test
     public void deadForLoop() {
-        Misc.init();
         Misc.runSource(
                 "var v = true;",
                 "while(false){ v = false; }",
@@ -92,7 +79,6 @@ public class TestUnrolling {
 
     @Test
     public void counterWhileLoop() {
-        Misc.init();
         Misc.runSource(
                 "var i = 0;",
                 "while(i < 5){ i++; }",
@@ -101,7 +87,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoop() {
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i === 0; i++){ ",
                 "}",
@@ -110,7 +95,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWLoopVariableFunctionCallRead() {
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 3; i++){ (function(){i;})(); }",
                 "TAJS_assert(i === 3);");
@@ -118,7 +102,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWLoopVariableFunctionCallReadWrite() {
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 3; i++){ (function(){i = i;})(); }",
                 "TAJS_assert(i === 3);");
@@ -126,7 +109,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWObjectAllocation_1() {
-        Misc.init();
         Misc.runSource(
                 "var o;",
                 "for(var i = 0; i < 1; i++){ o = {}; }",
@@ -135,7 +117,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWObjectAllocation_2() {
-        Misc.init();
         Misc.runSource(
                 "var o;",
                 "for(var i = 0; i < 2; i++){ o = {}; }",
@@ -144,7 +125,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWObjectAllocation_3() {
-        Misc.init();
         Misc.runSource(
                 "var o;",
                 "for(var i = 0; i < 3; i++){ o = {}; }",
@@ -153,7 +133,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterWrite() {
-        Misc.init();
         Misc.runSource(
                 "var j = 0;",
                 "for(var i = 0; i < 3; i++){ j = i; }",
@@ -162,7 +141,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWFunctionAllocation() {
-        Misc.init();
         Misc.runSource(
                 "var o;",
                 "for(var i = 0; i < 3; i++){ o = function(){}; }",
@@ -171,7 +149,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWFunctionCall() {
-        Misc.init();
         Misc.runSource(
                 "var o;",
                 "for(var i = 0; i < 3; i++){ o = (function(){ return {};})(); }",
@@ -181,7 +158,6 @@ public class TestUnrolling {
     @Test
     public void smallCounterForLoopWOuterVariableFunctionCallRead() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "var j = 0;",
                 "for(var i = 0; i < 3; i++){ (function(){j;})(); }");
@@ -189,7 +165,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWOuterVariableFunctionCallWriteConstant() {
-        Misc.init();
         Misc.runSource(
                 "var j = 0;",
                 "for(var i = 0; i < 3; i++){ (function(){j = 1;})(); }",
@@ -198,7 +173,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWOuterVariableFunctionCallWrite() {
-        Misc.init();
         Options.get().enableNoPolymorphic();
         Misc.runSource(
                 "var j = 0;",
@@ -208,7 +182,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWOuterVariableFunctionCallReadWrite() {
-        Misc.init();
         Misc.runSource(
                 "var j = 0;",
                 "for(var i = 0; i < 3; i++){ (function(){j++;})(); }",
@@ -218,14 +191,12 @@ public class TestUnrolling {
     @Test
     public void smallCounterForLoopWInnerVariableFunctionCallRead() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 3; i++){ var j = 0; (function(){j;})(); }");
     }
 
     @Test
     public void smallCounterForLoopWInnerVariableFunctionCallWriteConstant() {
-        Misc.init();
         Misc.runSource(
                 "var j = 0;",
                 "for(var i = 0; i < 3; i++){ var j = 0; (function(){j = 1;})(); TAJS_assert(j === 1); }");
@@ -233,7 +204,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWInnerVariableFunctionCallWrite() {
-        Misc.init();
         Misc.runSource(
                 "var j = 0;",
                 "for(var i = 0; i < 3; i++){ var j = 0; (function(){j = i;})(); TAJS_assert(j, 'isMaybeSingleNum||isMaybeNumUInt'); }");
@@ -241,14 +211,12 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterForLoopWInnerVariableFunctionCallReadWrite() {
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 3; i++){ var j = 0; (function(){j++;})(); TAJS_assert(j === 1);}");
     }
 
     @Test
     public void counterForLoop() {
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 5; i++){ }",
                 "TAJS_assert(i === 5);");
@@ -256,7 +224,6 @@ public class TestUnrolling {
 
     @Test
     public void counterForLoopInFunction() {
-        Misc.init();
         Misc.runSource(
                 "(function(){",
                 "   for(var i = 0; i < 5; i++){ }",
@@ -266,7 +233,6 @@ public class TestUnrolling {
 
     @Test
     public void counterForLoopThroughClosures() {
-        Misc.init();
         Misc.runSource(
                 "var i;",
                 "(function(){",
@@ -277,7 +243,6 @@ public class TestUnrolling {
 
     @Test
     public void sequencedCounterForLoops() {
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 5; i++){ }",
                 "for(; i < 10; i++){ }",
@@ -286,7 +251,6 @@ public class TestUnrolling {
 
     @Test
     public void sequencedForLoopThroughClosures() {
-        Misc.init();
         Misc.runSource(
                 "var i;",
                 "(function(){",
@@ -300,7 +264,6 @@ public class TestUnrolling {
 
     @Test
     public void nestedCounterForLoop() {
-        Misc.init();
         Misc.runSource(
                 "var k = 0;",
                 "for(var i = 0; i < 5; i++){",
@@ -315,7 +278,6 @@ public class TestUnrolling {
 
     @Test
     public void nestedCounterForLoopWithCalls() {
-        Misc.init();
         Misc.runSource(
                 "function f(){}",
                 "var k = 0;",
@@ -335,7 +297,6 @@ public class TestUnrolling {
 
     @Test
     public void nestedCounterForLoopWithReadingCalls() {
-        Misc.init();
         Misc.runSource(
                 "var k = 0;",
                 "function f(){k;}",
@@ -355,7 +316,6 @@ public class TestUnrolling {
 
     @Test
     public void nestedDeterminacyChecks() {
-        Misc.init();
         Misc.runSource(
                 "var c1 = true; var c2 = true;",
                 "for(var i = 0; c1; i++){",
@@ -372,7 +332,6 @@ public class TestUnrolling {
 
     @Test
     public void nestedDeterminacyChecks_2() {
-        Misc.init();
         Misc.runSource(
                 "var c1 = true; var c2 = true;",
                 "var c1_copy = c1; var c2_copy = c2;",
@@ -392,7 +351,6 @@ public class TestUnrolling {
 
     @Test
     public void breakInCounterForLoop() {
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 5; i++){",
                 "   if(i === 4){ break; }",
@@ -402,7 +360,6 @@ public class TestUnrolling {
 
     @Test
     public void indeterminateForLoop() {
-        Misc.init();
         Misc.runSource(
                 "var i = 0;",
                 "var R = !!Math.random();",
@@ -413,7 +370,6 @@ public class TestUnrolling {
 
     @Test
     public void indeterminateStdForLoop() {
-        Misc.init();
         Misc.runSource(
                 "var R = !!Math.random();",
                 "for(var i = 0;R; i++){ }",
@@ -423,7 +379,6 @@ public class TestUnrolling {
 
     @Test
     public void indeterminateWhileLoop() {
-        Misc.init();
         Misc.runSource(
                 "var i = 0;",
                 "var R = !!Math.random();",
@@ -434,7 +389,6 @@ public class TestUnrolling {
 
     @Test
     public void indeterminateWhileLoop_InFunction() {
-        Misc.init();
         Misc.runSource(
                 "var i = 0;",
                 "(function(){",
@@ -447,7 +401,6 @@ public class TestUnrolling {
 
     @Test
     public void stringShrinkingWhileLoop_empty() {
-        Misc.init();
         Misc.runSource(
                 "var s = 'abcdefg';",
                 "while(s){ s = s.substring(1); }",
@@ -456,7 +409,6 @@ public class TestUnrolling {
 
     @Test
     public void stringShrinkingWhileLoop_nonEmpty() {
-        Misc.init();
         Misc.runSource(
                 "var s = 'abcdefg';",
                 "while(s.length !== 1){ s = s.substring(1); }",
@@ -465,7 +417,6 @@ public class TestUnrolling {
 
     @Test
     public void closureVariable() {
-        Misc.init();
         Misc.runSource(
                 "var f;",
                 "for(var i = 0; i < 5; i++){",
@@ -478,7 +429,6 @@ public class TestUnrolling {
 
     @Test
     public void fixedClosureVariable() {
-        Misc.init();
         Misc.runSource(
                 "var f;",
                 "for(var i = 0; i < 5; i++){",
@@ -490,7 +440,6 @@ public class TestUnrolling {
 
     @Test
     public void nestedThroughCall_small() {
-        Misc.init();
         Options.get().enableLoopUnrolling(0);
         Misc.runSource(
                 "function f(){",
@@ -504,7 +453,6 @@ public class TestUnrolling {
 
     @Test
     public void nestedThroughCall_big() {
-        Misc.init();
         Options.get().enableLoopUnrolling(10);
         Misc.runSource("function f(){",
                 "   for(var j = 0; j < 5; j++){",
@@ -518,17 +466,14 @@ public class TestUnrolling {
     @Test
     public void loopunrolling_flowgraph_strings_do() {
         // reveals ordinary flows
-        Misc.init();
         Options.get().enableFlowgraph();
         Options.get().enableDoNotExpectOrdinaryExit();
-        Misc.captureSystemOutput();
         Misc.runSource("'PRE'; do { 'BODY'; } while ( 'COND' ) 'POST';");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void almostDeadDoLoop() {
-        Misc.init();
         Misc.runSource("var v = true;",
                 "do{",
                 "   TAJS_assert(v);",
@@ -539,7 +484,6 @@ public class TestUnrolling {
 
     @Test
     public void zeroCounterDoLoop() {
-        Misc.init();
         Misc.runSource("var i = 0;",
                 "do { i++; } while (i < 0)",
                 "TAJS_assert(i === 1);");
@@ -547,7 +491,6 @@ public class TestUnrolling {
 
     @Test
     public void smallCounterDoLoop() {
-        Misc.init();
         Misc.runSource("var i = 0;",
                 "do { i++; } while (i < 1)",
                 "TAJS_assert(i === 1);");
@@ -555,7 +498,6 @@ public class TestUnrolling {
 
     @Test
     public void counterDoLoop() {
-        Misc.init();
         Misc.runSource("var i = 0;",
                 "do { i++; } while (i < 5)",
                 "TAJS_assert(i === 5);");

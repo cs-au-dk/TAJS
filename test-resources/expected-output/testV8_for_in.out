@@ -1,0 +1,9 @@
+test-resources/src/v8tests/for-in.js:69:22: [definite] Variable hest is null/undefined
+test-resources/src/v8tests/for-in.js:76:21: [definite] Dead assignment, property v is never read
+test-resources/src/v8tests/for-in.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/for-in.js:80:17: [definite] Unreachable function
+test-resources/src/v8tests/for-in.js:84:17: [definite] Unreachable function
+test-resources/src/v8tests/for-in.js:84:29: [definite] Unreachable function
+test-resources/src/v8tests/for-in.js:55:3: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/v8tests/for-in.js:30:3: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 2463 checks (with 0 expected failures)

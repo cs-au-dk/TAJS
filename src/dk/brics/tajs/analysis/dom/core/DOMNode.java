@@ -61,7 +61,7 @@ public class DOMNode {
         s.newObject(CONSTRUCTOR);
         pv.writePropertyWithAttributes(CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
         pv.writePropertyWithAttributes(CONSTRUCTOR, "prototype", Value.makeObject(PROTOTYPE).setAttributes(true, true, true));
-        s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
+        s.writeInternalPrototype(CONSTRUCTOR, Value.makeObject(InitialStateBuilder.FUNCTION_PROTOTYPE));
         pv.writeProperty(DOMWindow.WINDOW, "Node", Value.makeObject(CONSTRUCTOR));
 
         // Prototype object.
@@ -75,6 +75,26 @@ public class DOMNode {
         /*
          * Constants.
          */
+        createDOMProperty(CONSTRUCTOR, "ELEMENT_NODE", Value.makeNum(1).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "ATTRIBUTE_NODE", Value.makeNum(2).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "TEXT_NODE", Value.makeNum(3).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "CDATA_SECTION_NODE", Value.makeNum(4).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "ENTITY_REFERENCE_NODE", Value.makeNum(5).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "ENTITY_NODE", Value.makeNum(6).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "PROCESSING_INSTRUCTION_NODE", Value.makeNum(7).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "COMMENT_NODE", Value.makeNum(8).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "DOCUMENT_NODE", Value.makeNum(9).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "DOCUMENT_TYPE_NODE", Value.makeNum(10).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "DOCUMENT_FRAGMENT_NODE", Value.makeNum(11).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "NOTATION_NODE", Value.makeNum(12).setReadOnly(), c);
+
+        createDOMProperty(CONSTRUCTOR, "DOCUMENT_POSITION_DISCONNECTED", Value.makeNum(1).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "DOCUMENT_POSITION_PRECEDING", Value.makeNum(2).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "DOCUMENT_POSITION_FOLLOWING", Value.makeNum(4).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "DOCUMENT_POSITION_CONTAINS", Value.makeNum(8).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "DOCUMENT_POSITION_CONTAINED_BY", Value.makeNum(16).setReadOnly(), c);
+        createDOMProperty(CONSTRUCTOR, "DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC" , Value.makeNum(32).setReadOnly(), c);
+
         createDOMProperty(PROTOTYPE, "ELEMENT_NODE", Value.makeNum(1).setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "ATTRIBUTE_NODE", Value.makeNum(2).setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "TEXT_NODE", Value.makeNum(3).setReadOnly(), c);

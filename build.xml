@@ -3,7 +3,7 @@
 <project name="TAJS" default="all" basedir=".">
 
     <property name="project" value="tajs" />
-    <property name="version" value="0.12" />
+    <property name="version" value="0.13" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
@@ -11,16 +11,23 @@
     <property file="local-development.properties"/>
 
     <path id="classpath">
-        <fileset dir="." includes="lib/*.jar" />
+        <fileset dir=".">
+            <include name="lib/*.jar"/>
+            <include name="extras/jalangilogger/build/libs/*.jar"/>
+            <include name="extras/inspector/dist/*.jar"/>
+        </fileset>
     </path>
 
     <path id="classpath.test">
         <fileset dir=".">
             <include name="lib/*.jar"/>
+            <include name="extras/jalangilogger/build/libs/*.jar"/>
+            <include name="extras/inspector/dist/*.jar"/>
             <include name="lib/test/*.jar"/>
         </fileset>
         <pathelement location="antbuild"/>
         <pathelement location="test-resources"/>
+        <pathelement location="benchmarks"/>
     </path>
 
     <target name="all" depends="clean,jar-all,doc" />
@@ -34,7 +41,7 @@
         <javac srcdir="src" includes="**" destdir="antbuild" optimize="${optimize}"
                 debug="${debug}" includeantruntime="false" source="1.8">
             <classpath refid="classpath" />
-            <compilerarg line="-encoding ISO-8859-1" compiler="modern" />
+            <compilerarg line="-encoding ISO-8859-1 -Xlint:deprecation" compiler="modern" />
             <!--
             <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern" />
             -->
@@ -52,6 +59,8 @@
     <target name="jar-all" depends="jar">
         <jar jarfile="dist/${project}-all.jar">
             <zipgroupfileset dir="lib" includes="*.jar"/>
+            <zipgroupfileset dir="extras/jalangilogger/build/libs" includes="*.jar"/>
+            <zipgroupfileset dir="extras/inspector/dist" includes="*.jar"/>
             <zipfileset src="dist/${project}.jar"/>
             <manifest>
                 <attribute name="Main-Class" value="dk.brics.tajs.Main" />
@@ -121,18 +130,62 @@
         </javac>
     </target>
 
-    <target name="test" depends="compile-test">
-        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" maxmemory="2048m">
+    <target name="test-fast" depends="compile-test">
+        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" failureproperty="test.failed" maxmemory="2048m">
             <classpath refid="classpath.test" />
             <test name="dk.brics.tajs.test.RunFast"/>
+        </junit>    
+        <fail message="tests failed" if="test.failed"/>
+    </target>
+
+    <target name="test-medium" depends="compile-test">
+        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" failureproperty="test.failed" maxmemory="2048m">
+            <classpath refid="classpath.test" />
+            <test name="dk.brics.tajs.test.RunMedium"/>
         </junit>
+        <fail message="tests failed" if="test.failed"/>
+    </target>
+
+    <target name="test-slow" depends="compile-test">
+        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" failureproperty="test.failed" maxmemory="2048m">
+            <classpath refid="classpath.test" />
+            <test name="dk.brics.tajs.test.RunSlow"/>
+        </junit>
+        <fail message="tests failed" if="test.failed"/>
+    </target>
+
+    <target name="test-papers" depends="compile-test">
+        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" failureproperty="test.failed" maxmemory="2048m">
+            <classpath refid="classpath.test" />
+            <test name="dk.brics.tajs.test.RunPapers"/>
+        </junit>
+        <fail message="tests failed" if="test.failed"/>
     </target>
 
     <target name="test-all" depends="compile-test">
-        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" maxmemory="2048m">
+        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" failureproperty="test.failed" maxmemory="2048m">
             <classpath refid="classpath.test" />
             <test name="dk.brics.tajs.test.RunAll" />
         </junit>
+        <fail message="tests failed" if="test.failed"/>
+    </target>
+
+    <target name="test-stats-standard" depends="compile-test">
+        <java classname="dk.brics.tajs.test.Stats$Standard" fork="true" failonerror="true" maxmemory="2048m">
+            <classpath refid="classpath.test" />
+        </java>
+    </target>
+
+    <target name="test-stats-extra" depends="compile-test">
+        <java classname="dk.brics.tajs.test.Stats$Extra" fork="true" failonerror="true" maxmemory="2048m">
+            <classpath refid="classpath.test" />
+        </java>
+    </target>
+
+    <target name="test-stats-libs" depends="compile-test">
+        <java classname="dk.brics.tajs.test.Stats$Libs" fork="true" failonerror="true" maxmemory="8192m">
+            <classpath refid="classpath.test" />
+        </java>
     </target>
 
     <target name="publish" depends="all">

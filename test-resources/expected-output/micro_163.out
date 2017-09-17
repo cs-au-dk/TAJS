@@ -1,0 +1,10 @@
+test-resources/src/micro/test163.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test163.js:7:5: [definite] The variable w is never used
+test-resources/src/micro/test163.js:16:16: [maybe] Converting primitive number to object
+test-resources/src/micro/test163.js:17:16: [maybe] Converting primitive number to object
+test-resources/src/micro/test163.js:3:2: [info] Abstract value: UInt
+test-resources/src/micro/test163.js:12:1: [info] Abstract value: UInt
+test-resources/src/micro/test163.js:14:1: [info] Abstract value: UIntPos
+test-resources/src/micro/test163.js:16:1: [info] Abstract value: UIntStr
+test-resources/src/micro/test163.js:17:1: [info] Abstract value: UIntStr
+Soundness testing succeeded for 46 checks (with 0 expected failures)

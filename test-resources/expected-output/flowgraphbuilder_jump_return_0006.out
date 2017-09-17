@@ -1,0 +1,83 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js)
+    node 1: function-decl[function f(),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 3: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2]
+  block 2:
+    node 4: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3]
+  block 3:
+    node 5: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4]
+  block 4:
+    node 6: read-variable['f',v6,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:7:1)
+    ->[block 5]
+  block 5:
+    node 7: call[v5,v6,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:7:1)
+    ->[block 6]
+  block 6:
+    node 8: read-variable['v',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:8:13)
+    node 9: constant[false,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:8:19)
+    node 10: ===[v10,v11,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:8:13)
+    ->[block 7]
+  block 7:
+    node 11: call[TAJS_assert,v9,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:8:1)
+    ->[block 8]
+  block 8:
+    node 12: typeof['p',v15] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:9:13)
+    node 13: constant["undefined",v16] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:9:26)
+    node 14: ===[v15,v16,v14] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:9:13)
+    ->[block 9]
+  block 9:
+    node 15: call[TAJS_assert,v14,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:9:1)
+    ->[block 10]
+  block 10:
+    node 16: constant["OK",v19] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:11:16)
+    ->[block 11]
+  block 11:
+    node 17: call[TAJS_dumpValue,v19,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:11:1)
+    ->[block 12]
+  block 12: [exit-ordinary]
+    node 18: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js)
+    ->[]
+  block 13: [exit-exceptional]
+    node 19: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js)
+    ->[]
+function f()
+  block 14: [entry]
+    node 20: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:1:1)
+    ->[block 15]
+  block 15:
+    node 21: new[v2] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:10)
+    node 22: constant[false,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:14)
+    node 23: write-property[v2,'p',v3] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:11)
+    node 24: begin-with[v2]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:5)
+    ->[block 16]
+  block 16:
+    node 25: read-variable['p',v5,v4] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:3:13)
+    node 26: write-variable[v5,'v']* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:3:9)
+    node 27: constant[undefined,v1]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:4:9)
+    ->[block 18] ~>[block 17]
+  block 17:
+    node 28: end-with* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:5)
+    ->[block 21]
+  block 18:
+    node 29(~-1): end-with* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:5)
+    ->[block 20]
+  block 19:
+    node 30: end-with* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:2:5)
+    ->[block 20]
+  block 20: [exit-ordinary]
+    node 31: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:1:1)
+    ->[]
+  block 21: [exit-exceptional]
+    node 32: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:1:1)
+    ->[]
+
+test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js: [definite] Exceptional program exit is unreachable
+test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0006.js:11:1: [info] Abstract value: "OK"
+Soundness testing succeeded for 14 checks (with 0 expected failures)

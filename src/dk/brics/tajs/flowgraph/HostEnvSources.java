@@ -92,6 +92,9 @@ public class HostEnvSources {
         if (Options.get().isPolyfillES6CollectionsEnabled()) {
             sourcePaths.add("es6-collections.js");
         }
+        if (Options.get().isPolyfillES6PromisesEnabled()) {
+            sourcePaths.add("es6-promise.js");
+        }
         if (Options.get().isPolyfillTypedArraysEnabled()) {
             sourcePaths.add("typed-arrays-model.js");
         }

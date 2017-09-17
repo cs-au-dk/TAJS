@@ -1,3 +1,0 @@
-test/sourcelocations/eventhandlers.html: [definite] Exceptional program exit is unreachable
-test/sourcelocations/eventhandlers.html:8:19: [definite] The variable varEH is never used
-Soundness testing succeeded for 0 checks (with 0 expected failures)

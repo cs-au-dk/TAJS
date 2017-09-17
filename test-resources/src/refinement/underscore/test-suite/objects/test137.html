@@ -1,0 +1,20 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(!_.isFunction(undefined), 'undefined vars are not functions');
+    ok(!_.isFunction([1, 2, 3]), 'arrays are not functions');
+    ok(!_.isFunction('moe'), 'strings are not functions');
+    ok(_.isFunction(_.isFunction), 'but functions are');
+    ok(_.isFunction(function(){}), 'even anonymous ones');
+    if (testElement) {
+      ok(!_.isFunction(testElement), 'elements are not functions');
+    }
+</script></head><body></body></html>

@@ -1,0 +1,5 @@
+test-resources/src/micro/test55.js:2:16: [definite] Reading absent property xy
+test-resources/src/micro/test55.js:3:13: [definite] Reading absent property xy
+test-resources/src/micro/test55.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test55.js:2:1: [info] Abstract value: Undef
+Soundness testing succeeded for 8 checks (with 0 expected failures)

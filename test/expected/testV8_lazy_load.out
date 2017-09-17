@@ -1,2 +1,0 @@
-test/v8tests/lazy-load.js:29:17: [definite] Reading 'this' yields the global object
-test/v8tests/lazy-load.js:34:5: [definite] The variable re is never used

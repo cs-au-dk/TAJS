@@ -1,6 +1,0 @@
-test/micro/test200.js: [definite] Exceptional program exit is unreachable
-test/micro/test200.js:3:18: [maybe] Converting boolean to string
-test/micro/test200.js:3:3: [info] Abstract value: "0: 42"
-test/micro/test200.js:3:3: [info] Abstract value: "1: foo"
-test/micro/test200.js:3:3: [info] Abstract value: "2: true"
-Soundness testing succeeded for 27 checks (with 0 expected failures)

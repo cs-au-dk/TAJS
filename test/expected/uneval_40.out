@@ -1,4 +1,0 @@
-test/uneval/uneval40.js: [definite] Exceptional program exit is unreachable
-test/uneval/uneval40.js:2:1: [info] Abstract value: 3.0
-test/uneval/uneval40.js:3:1: [info] Abstract value: 9.0
-Soundness testing succeeded for 20 checks (with 0 expected failures)

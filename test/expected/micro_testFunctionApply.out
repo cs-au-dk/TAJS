@@ -1,4 +1,0 @@
-test/micro/testFunctionApply.js:16:1: [definite] Dead assignment, property 0 is never read
-test/micro/testFunctionApply.js: [definite] Exceptional program exit is unreachable
-test/micro/testFunctionApply.js:15:1: [info] Abstract object: {length:2.0,[[Prototype]]=[@Array.prototype[native]]}
-Soundness testing succeeded for 10 checks (with 0 expected failures)

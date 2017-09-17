@@ -45,19 +45,27 @@ import java.util.Set;
  *
  * Composing multiple monitors for each phase should be done with {@link CompositeMonitoring}
  */
-public class PhaseMonitoring implements IAnalysisMonitoring {
+public class PhaseMonitoring<PreScanMonitorType extends IAnalysisMonitoring, ScanMonitorType extends IAnalysisMonitoring> implements IAnalysisMonitoring {
 
-    private final IAnalysisMonitoring preScanMonitor;
+    private final PreScanMonitorType preScanMonitor;
 
-    private final IAnalysisMonitoring scanMonitor;
+    private final ScanMonitorType scanMonitor;
 
     private IAnalysisMonitoring activeMonitor;
 
-    public PhaseMonitoring(IAnalysisMonitoring preScanMonitor, IAnalysisMonitoring scanMonitor) {
+    public PhaseMonitoring(PreScanMonitorType preScanMonitor, ScanMonitorType scanMonitor) {
         this.preScanMonitor = preScanMonitor;
         this.scanMonitor = scanMonitor;
 
         this.activeMonitor = preScanMonitor;
+    }
+
+    public PreScanMonitorType getPreScanMonitor() {
+        return preScanMonitor;
+    }
+
+    public ScanMonitorType getScanMonitor() {
+        return scanMonitor;
     }
 
     @Override
@@ -115,8 +123,8 @@ public class PhaseMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitCall(AbstractNode n, boolean maybe_non_function, boolean maybe_function) {
-        activeMonitor.visitCall(n, maybe_non_function, maybe_function);
+    public void visitCall(AbstractNode n, Value funval) {
+        activeMonitor.visitCall(n, funval);
     }
 
     @Override

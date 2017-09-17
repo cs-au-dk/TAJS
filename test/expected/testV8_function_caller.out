@@ -1,2 +1,0 @@
-test/v8tests/function-caller.js:33:19: [definite] Reading absent property caller
-test/v8tests/function-caller.js:34:23: [definite] Reading absent property caller

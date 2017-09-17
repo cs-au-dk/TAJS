@@ -1,0 +1,17 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var obj = {a: [1, 2, 3]};
+    strictEqual(_.result(obj, 'b', _.constant(5)), 5);
+    strictEqual(_.result(obj, 'b', function() {
+      return this.a;
+    }), obj.a, 'called with context');
+</script></head><body></body></html>

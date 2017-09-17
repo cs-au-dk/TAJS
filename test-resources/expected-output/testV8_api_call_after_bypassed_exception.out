@@ -1,0 +1,3 @@
+test-resources/src/v8tests/api-call-after-bypassed-exception.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/api-call-after-bypassed-exception.js:38:1: [info] Abstract value: "baz"
+Soundness testing succeeded for 9 checks (with 0 expected failures)

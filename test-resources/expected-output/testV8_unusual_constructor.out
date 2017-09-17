@@ -1,0 +1,8 @@
+test-resources/src/v8tests/unusual-constructor.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/unusual-constructor.js:28:5: [definite] The variable obj is never used
+test-resources/src/v8tests/unusual-constructor.js:28:5: [definite] Unreachable code
+test-resources/src/v8tests/unusual-constructor.js:31:5: [definite] The variable threw is never used
+test-resources/src/v8tests/unusual-constructor.js:34:3: [definite] Unreachable code
+test-resources/src/v8tests/unusual-constructor.js:28:11: [maybe] TypeError, Function.prototype can not be as a constructor
+test-resources/src/v8tests/unusual-constructor.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/unusual-constructor.js:28:11]
+Soundness testing succeeded for 6 checks (with 0 expected failures)

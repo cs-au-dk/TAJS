@@ -1,0 +1,20 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var counter = 0;
+    var incr = function(){ return ++counter; };
+    var throttledIncr = _.throttle(incr, 32);
+    var result = throttledIncr();
+    _.delay(function(){
+      equal(result, 1, 'throttled functions return their value');
+      equal(counter, 1, 'incr was called once'); start();
+    }, 64);
+</script></head><body></body></html>

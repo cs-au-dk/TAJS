@@ -1,2 +1,0 @@
-test/v8tests/touint32.js:29:10: [maybe] Conversion from string to number yields NaN
-test/v8tests/touint32.js:29:10: [maybe] The variable x has values with different types

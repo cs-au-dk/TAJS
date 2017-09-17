@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Last Man Standing</title>
+    <style type='text/css'>
+        div {
+            float: left;
+            margin: 20px 30px;
+        }
+
+        canvas {
+            float: left;
+            border: thin solid #333;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Last Man Standing</h1>
+
+    <p>Use the arrow keys to move, and the mind ouse to aim.
+
+    <p>To shoot hold the left button down, and release to reload.</p>
+</div>
+<canvas id='c' width='500px' height='500px'>
+    This text is displayed if your browser does not support HTML5 Canvas.
+</canvas>
+<script type='text/javascript'>
+    var c = [
+        [0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,1,1,0,1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0],
+        [0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,1,1,0,1,0,0,0,0,1,0,1,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,0]
+    ],e = document.getElementById("c"),f = e.getContext("2d");
+    if (!f || !f.putImageData)throw Error("no context");
+    f.font = "normal 12px sans-serif";
+    for (var g = e.clientWidth,h = e.clientHeight,i = g / 2,j = h / 2,k = Array(c.length * 2),l = [],n = 0; n < c.length; n++) {
+        k[n] = f.createImageData(10, 10);
+        k[n + c.length] = f.createImageData(10, 10);
+        for (var o = 0; o < c[n].length; o++)if (c[n][o] !== 0) {
+            var p = o * 4;
+            k[n].data[p + 3] = 255;
+            k[n + c.length].data[p + 1] = 150;
+            k[n + c.length].data[p + 3] = 255
+        }
+    }
+    c = null;
+    function q(a, b, d) {
+        this.x = a;
+        this.y = b;
+        this.s = d;
+        this.e = 15;
+        this.length = 5;
+        this.M = this.length * Math.cos(this.s);
+        this.N = this.length * Math.sin(this.s);
+        this.k = 0.01;
+        this.b = 0;
+        return this
+    }
+    q.prototype = {move:function() {
+        this.b += 0.01;
+        if (!(this.b < this.k)) {
+            this.b = 0;
+            this.x += this.M;
+            this.y += this.N
+        }
+    },c:function() {
+        return this.e <= 0 || this.x < 0 || this.x > g || this.y < 0 || this.y > h
+    }};
+    function r(a, b) {
+        this.x = a;
+        this.y = b;
+        this.e = this.d = 10;
+        this.length = 5;
+        this.f = 0;
+        this.k = 0.05;
+        this.b = 0;
+        return this
+    }
+    r.prototype = {move:function(a) {
+        this.b += 0.01;
+        if (!(this.b < this.k)) {
+            this.b = 0;
+            this.f = Math.abs(this.f + -1);
+            a = Math.atan2(a.y - this.y, a.x - this.x);
+            this.x += this.length * Math.cos(a);
+            this.y += this.length * Math.sin(a)
+        }
+    },u:function(a, b) {
+        return a >= this.x && a <= this.x + 10 && b >= this.y && b <= this.y + 10
+    },c:function() {
+        return this.d <= 0
+    }};
+    function s(a, b) {
+        this.x = a;
+        this.y = b;
+        this.d = this.R = 100;
+        this.length = this.e = 5;
+        this.f = 0;
+        this.k = 0.03;
+        this.b = 0;
+        return this
+    }
+    s.prototype = {move:function() {
+        this.b += 0.01;
+        if (!(this.b < this.k)) {
+            this.b = 0;
+            var a = this.x,b = this.y;
+            this.x += l[37] ? -this.length : l[39] ? this.length : 0;
+            this.y += l[38] ? -this.length : l[40] ? this.length : 0;
+            if (this.x < 5)this.x = 0; else if (this.x > g - 10)this.x = g - 10;
+            if (this.y < 5)this.y = 0; else if (this.y > h - 10)this.y = h - 10;
+            if (!(a === this.x && b === this.y))this.f = Math.abs(this.f + -1)
+        }
+    },u:function(a, b) {
+        return a >= this.x && a <= this.x + 10 && b >= this.y && b <= this.y + 10
+    },c:function() {
+        return this.d <= 0
+    }};
+    function t() {
+        this.t();
+        return this
+    }
+    t.prototype = {q:10,G:0.75,H:0.1,t:function() {
+        this.j = false;
+        this.o = this.n = this.i = 0;
+        this.O = 1;
+        this.r = 0;
+        this.l = {x:0,y:0};
+        this.a = new s(i, j);
+        this.h = [];
+        this.g = [];
+        this.p = false;
+        var a = this;
+        this.I = function() {
+            setTimeout(function() {
+                a.B()
+            }, 33)
+        };
+        this.L = function() {
+            setTimeout(function() {
+                a.C()
+            }, 33)
+        };
+        this.start = function() {
+            e.removeEventListener("click", a.start, false);
+            a.p = true;
+            a.C();
+            a.B()
+        };
+        this.z = function() {
+            a.j = true
+        };
+        this.m = function() {
+            a.j = false
+        };
+        this.A = function(b) {
+            a.l.x = b.offsetX || b.clientX;
+            a.l.y = b.offsetY || b.clientY
+        };
+        this.v = function(b) {
+            l[b.keyCode] = true
+        };
+        this.w = function(b) {
+            l[b.keyCode] = false
+        };
+        e.addEventListener("click", this.start, false);
+        e.addEventListener("mousedown", this.z, false);
+        e.addEventListener("mouseup", this.m, false);
+        e.addEventListener("mouseout", this.m, false);
+        e.addEventListener("mousemove", this.A, false);
+        document.addEventListener("keydown", this.v, false);
+        document.addEventListener("keyup", this.w, false)
+    },reset:function() {
+        e.removeEventListener("mousedown", this.z, false);
+        e.removeEventListener("mouseup", this.m,
+                false);
+        e.removeEventListener("mouseout", this.m, false);
+        e.removeEventListener("mousemove", this.A, false);
+        document.removeEventListener("keydown", this.v, false);
+        document.removeEventListener("keyup", this.w, false)
+    },D:function() {
+        if (this.i !== this.q) {
+            this.n += this.G;
+            if (!(this.n < 1)) {
+                this.n = 0;
+                if (this.j) {
+                    this.i++;
+                    var a = this.a.x + 5,b = this.a.y + 5;
+                    this.h.push(new q(a, b, Math.atan2(this.l.y - b, this.l.x - a)))
+                }
+            }
+        }
+    },F:function() {
+        this.o += this.H;
+        if (!(this.o < 1)) {
+            this.o = 0;
+            var a = (Math.random() < 0.5 ? 0 : 1) * g,b = (Math.random() < 0.5 ? 0 : 1) *
+                    h;
+            if (Math.random() < 0.5)b = Math.random() * 100; else a = Math.random() * 100;
+            this.g.push(new r(Math.abs(a - 10), Math.abs(b - 10)))
+        }
+    },J:function() {
+        for (var a = [],b = 0; b < this.h.length; b++) {
+            var d = this.h[b];
+            if (!d.c()) {
+                f.fillRect(d.x, d.y, 2, 2);
+                a.push(d)
+            }
+        }
+        this.h = a.slice(0)
+    },P:function() {
+        for (var a = this.g.slice(0),b = 0; b < this.h.length; b++) {
+            var d = this.h[b];
+            d.move();
+            var u = a;
+            for (a = []; u.length > 0;) {
+                var m = u.pop();
+                if (m.u(d.x, d.y)) {
+                    var v = m.d;
+                    m.d -= d.e;
+                    d.e -= v
+                }
+                if (m.c())this.r += this.O * 10; else a.push(m)
+            }
+        }
+    },K:function() {
+        for (var a = [],b =
+                0; b < this.g.length; b++) {
+            var d = this.g[b];
+            if (!d.c()) {
+                f.putImageData(k[2 + d.f], d.x, d.y);
+                a.push(d)
+            }
+        }
+        this.g = a.slice(0)
+    },Q:function() {
+        for (var a = 0; a < this.g.length; a++) {
+            var b = this.g[a];
+            if (!b.c()) {
+                b.move(this.a);
+                if (Math.abs(b.x - this.a.x) < 10 && Math.abs(b.y - this.a.y) < 10) {
+                    b.d -= this.a.e;
+                    this.a.d -= b.e
+                }
+            }
+        }
+    },C:function() {
+        if (!this.a.c()) {
+            this.a.move();
+            this.D();
+            this.F();
+            !this.j && this.i > 0 && this.i--;
+            this.Q();
+            this.P();
+            this.p && this.L()
+        }
+    },B:function() {
+        f.clearRect(0, 0, g, h);
+        if (!this.a.c()) {
+            f.putImageData(k[this.a.f], this.a.x,
+                    this.a.y);
+            f.beginPath();
+            f.moveTo(this.a.x + 10, this.a.y + 10);
+            f.lineTo(this.a.x + 10, this.a.y + 10 - this.a.d / 10);
+            f.strokeStyle = "#F00";
+            f.stroke();
+            f.beginPath();
+            f.moveTo(this.a.x - 1, this.a.y + 10);
+            f.lineTo(this.a.x - 1, this.a.y + 10 - (this.q - this.i));
+            f.strokeStyle = "#555";
+            f.stroke()
+        }
+        this.K();
+        this.J();
+        f.textAlign = "left";
+        f.fillText("Score: " + this.r, 2, 12);
+        f.textAlign = "center";
+        if (this.a.c()) {
+            var a = j - 18;
+            f.fillText("GAME OVER!", i, a);
+            f.fillText("SCORE: " + this.r, i, a + 12);
+            this.reset();
+            this.t();
+            f.fillText("CLICK TO RESTART", i,
+                    a + 36)
+        } else {
+            this.i === this.q && this.j && f.fillText("RELOAD!", this.a.x + 5, this.a.y + 23);
+            this.p && !this.a.c() && this.I()
+        }
+    }};
+    new t;
+    f.textAlign = "center";
+    f.fillText("LAST MAN STANDING", i, j - 18);
+    f.fillText("CLICK TO START", i, j + 18);
+</script>
+</body>
+</html>
+

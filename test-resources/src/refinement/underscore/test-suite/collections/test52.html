@@ -1,0 +1,27 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var evenArray = [1, 2, 3, 4, 5, 6];
+    var evenObject = {one: 1, two: 2, three: 3};
+    var isEven = function(num){ return num % 2 === 0; };
+    deepEqual(_.filter(evenArray, isEven), [2, 4, 6]);
+    deepEqual(_.filter(evenObject, isEven), [2], 'can filter objects');
+    deepEqual(_.filter([{}, evenObject, []], 'two'), [evenObject], 'predicate string map to object properties');
+    _.filter([1], function() {
+      equal(this, evenObject, 'given context');
+    }, evenObject);
+    // Can be used like _.where.
+    var list = [{a: 1, b: 2}, {a: 2, b: 2}, {a: 1, b: 3}, {a: 1, b: 4}];
+    deepEqual(_.filter(list, {a: 1}), [{a: 1, b: 2}, {a: 1, b: 3}, {a: 1, b: 4}]);
+    deepEqual(_.filter(list, {b: 2}), [{a: 1, b: 2}, {a: 2, b: 2}]);
+    deepEqual(_.filter(list, {}), list, 'Empty object accepts all items');
+    deepEqual(_(list).filter({}), list, 'OO-filter');
+</script></head><body></body></html>

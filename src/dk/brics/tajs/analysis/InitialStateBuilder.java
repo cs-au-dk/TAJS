@@ -82,6 +82,11 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
     public static ObjectLabel DATE_PROTOTYPE;
 
     /**
+     * Object label for Proxy.prototype.
+     */
+    public static ObjectLabel PROXY_PROTOTYPE;
+
+    /**
      * Object label for RegExp.prototype.
      */
     public static ObjectLabel REGEXP_PROTOTYPE;
@@ -146,6 +151,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         BOOLEAN_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.BOOLEAN_PROTOTYPE, Kind.BOOLEAN);
         NUMBER_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.NUMBER_PROTOTYPE, Kind.NUMBER);
         DATE_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.DATE_PROTOTYPE, Kind.DATE);
+        PROXY_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.PROXY_PROTOTYPE, Kind.OBJECT);
         REGEXP_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.REGEXP_PROTOTYPE, Kind.OBJECT);
         ERROR_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.ERROR_PROTOTYPE, Kind.ERROR);
         EVAL_ERROR_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.EVAL_ERROR_PROTOTYPE, Kind.ERROR);
@@ -201,6 +207,8 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         s.newObject(lNumber);
         ObjectLabel lDate = ObjectLabel.make(ECMAScriptObjects.DATE, Kind.FUNCTION);
         s.newObject(lDate);
+        ObjectLabel lProxy = ObjectLabel.make(ECMAScriptObjects.PROXY, Kind.FUNCTION);
+        s.newObject(lProxy);
         ObjectLabel lRegExp = ObjectLabel.make(ECMAScriptObjects.REGEXP, Kind.FUNCTION);
         s.newObject(lRegExp);
         ObjectLabel lError = ObjectLabel.make(ECMAScriptObjects.ERROR, Kind.FUNCTION);
@@ -238,6 +246,8 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         s.newObject(lNumberProto);
         ObjectLabel lDateProto = DATE_PROTOTYPE;
         s.newObject(lDateProto);
+        ObjectLabel lProxyProto = PROXY_PROTOTYPE;
+        s.newObject(lProxyProto);
         ObjectLabel lRegExpProto = REGEXP_PROTOTYPE;
         s.newObject(lRegExpProto);
         ObjectLabel lErrorProto = ERROR_PROTOTYPE;
@@ -300,11 +310,11 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lJson, lFunProto, ECMAScriptObjects.JSON_PARSE, "parse", 1, c);
         createPrimitiveFunction(lJson, lFunProto, ECMAScriptObjects.JSON_STRINGIFY, "stringify", 1, c);
         
-        
+
         // 15.2.3 Properties of the Object Constructor
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_DEFINE_PROPERTY, "defineProperty", 3, c);
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_CREATE, "create", 1, c);
-        createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_DEFINE_PROPERTIES, "defineProperties", 1, c);
+        createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_DEFINE_PROPERTIES, "defineProperties", 2, c);
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_FREEZE, "freeze", 1, c);
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_GETOWNPROPERTYDESCRIPTOR, "getOwnPropertyDescriptor", 1, c);//
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_GETPROTOTYPEOF, "getPrototypeOf", 1, c);
@@ -315,8 +325,11 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_KEYS, "keys", 1, c);
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_PREVENTEXTENSIONS, "preventExtensions", 1, c);
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_SEAL, "seal", 1, c);
-        createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_GETOWNPROPERTYNAMES, "getOwnPropertyNames", 0, c);
-        
+        createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_GETOWNPROPERTYNAMES, "getOwnPropertyNames", 1, c);
+        createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_IS, "is", 2, c);
+        createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_ASSIGN, "assign", 2, c);
+        createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_VALUES, "values", 1, c);
+
         // 15.2.4 properties of the Object prototype object
         s.writeInternalPrototype(lObjectPrototype, Value.makeNull());
         pv.writePropertyWithAttributes(lObjectPrototype, "constructor", Value.makeObject(lObject).setAttributes(true, false, false));
@@ -328,11 +341,12 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lObjectPrototype, lFunProto, ECMAScriptObjects.OBJECT_PROPERTYISENUMERABLE, "propertyIsEnumerable", 1, c);
         createPrimitiveFunction(lObjectPrototype, lFunProto, ECMAScriptObjects.OBJECT_DEFINEGETTER, "__defineGetter__", 2, c);
         createPrimitiveFunction(lObjectPrototype, lFunProto, ECMAScriptObjects.OBJECT_DEFINESETTER, "__defineSetter__", 2, c);
-        
+
         // 15.3.4 properties of the Function prototype object
         s.writeInternalPrototype(lFunProto, Value.makeObject(lObjectPrototype));
         pv.writePropertyWithAttributes(lFunProto, "constructor", Value.makeObject(lFunction).setAttributes(true, false, false));
         pv.writePropertyWithAttributes(lFunProto, "length", Value.makeNum(0).setAttributes(true, false, true));
+        pv.writePropertyWithAttributes(lFunProto, "name", Value.makeStr("").setAttributes(true, true, true));
         createPrimitiveFunction(lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_TOSTRING, "toString", 0, c);
         createPrimitiveFunction(lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_APPLY, "apply", 2, c);
         createPrimitiveFunction(lFunProto, lFunProto, ECMAScriptObjects.FUNCTION_CALL, "call", 1, c);
@@ -358,9 +372,11 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_SPLICE, "splice", 2, c);
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_UNSHIFT, "unshift", 1, c);
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_INDEXOF, "indexOf", 1, c);
+        createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_VALUES, "values", 0, c);
 
         // 15.5.3 properties of the String constructor
         createPrimitiveFunction(lString, lFunProto, ECMAScriptObjects.STRING_FROMCHARCODE, "fromCharCode", 1, c);
+        createPrimitiveFunction(lString, lFunProto, ECMAScriptObjects.STRING_FROMCODEPOINT, "fromCodePoint", 1, c);
 
         // 15.5.4 properties of the String prototype object
         s.writeInternalPrototype(lStringProto, Value.makeObject(lObjectPrototype));
@@ -388,10 +404,11 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TRIM, "trim", 0, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TRIMLEFT, "trimLeft", 0, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TRIMRIGHT, "trimRight", 0, c);
-        createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_STARTSWITH, "startsWith", 2, c);
-        createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_ENDSWITH, "endsWith", 2, c);
+        createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_STARTSWITH, "startsWith", 1, c);
+        createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_ENDSWITH, "endsWith", 1, c);
 
-
+createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_INCLUDES, "includes", 1, c);
+        createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_CODEPOINTAT, "codePointAt", 1, c);
         // 15.6.4 properties of the Boolean prototype object
         s.writeInternalPrototype(lBooleanProto, Value.makeObject(lObjectPrototype));
         s.writeInternalValue(lBooleanProto, Value.makeBool(false));
@@ -406,6 +423,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         pv.writePropertyWithAttributes(lNumber, "EPSILON", Value.makeAnyNumOther().setAttributes(true, true, true));
         pv.writePropertyWithAttributes(lNumber, "POSITIVE_INFINITY", Value.makeNum(Double.POSITIVE_INFINITY).setAttributes(true, true, true));
         pv.writePropertyWithAttributes(lNumber, "NEGATIVE_INFINITY", Value.makeNum(Double.NEGATIVE_INFINITY).setAttributes(true, true, true));
+        createPrimitiveFunction(lNumber, lFunProto, ECMAScriptObjects.NUMBER_ISFINITE, "isFinite", 1, c);
 
         // 15.7.4 properties of the Number prototype object
         s.writeInternalPrototype(lNumberProto, Value.makeObject(lObjectPrototype));
@@ -418,6 +436,9 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lNumberProto, lFunProto, ECMAScriptObjects.NUMBER_TOEXPONENTIAL, "toExponential", 1, c);
         createPrimitiveFunction(lNumberProto, lFunProto, ECMAScriptObjects.NUMBER_TOPRECISION, "toPrecision", 1, c);
         createPrimitiveFunction(lNumber, lFunProto, ECMAScriptObjects.NUMBER_ISFINITE, "isFinite", 1, c);
+        createPrimitiveFunction(lNumber, lFunProto, ECMAScriptObjects.NUMBER_ISSAFEINTEGER, "isSafeInteger", 1, c);
+        createPrimitiveFunction(lNumber, lFunProto, ECMAScriptObjects.NUMBER_ISINTEGER, "isInteger", 1, c);
+        createPrimitiveFunction(lNumber, lFunProto, ECMAScriptObjects.NUMBER_ISNAN, "isNan", 1, c);
 
         // 15.8 the Math object
         pv.writePropertyWithAttributes(global, "Math", Value.makeObject(lMath).setAttributes(true, false, false));
@@ -448,6 +469,23 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_SIN, "sin", 1, c);
         createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_SQRT, "sqrt", 1, c);
         createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_TAN, "tan", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_IMUL, "imul", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_SIGN, "sign", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_TRUNC, "trunc", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_TANH, "tanh", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_ASINH, "asinh", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_ACOSH, "acosh", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_ATANH, "atanh", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_HYPOT, "hypot", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_FROUND, "fround", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_CLZ32, "clz32", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_CBRT, "cbrt", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_SINH, "sinh", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_COSH, "cosh", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_LOG10, "log10", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_LOG2, "log2", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_LOG1P, "log1p", 1, c);
+        createPrimitiveFunction(lMath, lFunProto, ECMAScriptObjects.MATH_EXPM1, "expm1", 1, c);
 
         // 15.9.4 properties of Date constructor
         createPrimitiveFunction(lDate, lFunProto, ECMAScriptObjects.DATE_PARSE, "parse", 1, c);
@@ -502,7 +540,13 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lDateProto, lFunProto, ECMAScriptObjects.DATE_SETUTCFULLYEAR, "setUTCFullYear", 3, c);
         createPrimitiveFunction(lDateProto, lFunProto, ECMAScriptObjects.DATE_TOUTCSTRING, "toUTCString", 0, c);
         createPrimitiveFunction(lDateProto, lFunProto, ECMAScriptObjects.DATE_TOJSON, "toJSON", 0, c);
-        
+
+        // ES6 Proxy
+        createPrimitiveConstructor(global, lFunProto, lProxyProto, lProxy, "Proxy", 2, c);
+
+        // properties of ES6 Proxy object
+        createPrimitiveFunction(lProxyProto, lFunProto, ECMAScriptObjects.PROXY_TOSTRING, "toString", 0, c);
+
         // properties of RegExp object
         writePropertyWeakly(lRegExp, "lastMatch", Value.makeAnyStr(), c);
         writePropertyWeakly(lRegExp, "$1", Value.makeAnyStr(), c);
@@ -530,6 +574,10 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lRegExpProto, lFunProto, ECMAScriptObjects.REGEXP_TEST, "test", 1, c);
         createPrimitiveFunction(lRegExpProto, lFunProto, ECMAScriptObjects.REGEXP_TOSTRING, "toString", 0, c);
         createPrimitiveFunction(lRegExpProto, lFunProto, ECMAScriptObjects.REGEXP_COMPILE, "compile", 1, c);
+
+        // properties of the Error object
+        pv.writeProperty(lError, "stackTraceLimit", Value.makeAnyNumUInt());
+        createPrimitiveFunction(lError, lFunProto, ECMAScriptObjects.ERROR_CAPTURESTACKTRACE, "captureStackTrace", 2, c);
 
         // 15.11.4 properties of the Error prototype object
         s.writeInternalPrototype(lErrorProto, Value.makeObject(lObjectPrototype));

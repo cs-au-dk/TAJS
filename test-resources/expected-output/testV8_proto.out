@@ -1,0 +1,5 @@
+test-resources/src/v8tests/proto.js:28:12: [definite] Dead assignment, property x is never read
+test-resources/src/v8tests/proto.js:30:12: [definite] Dead assignment, property x is never read
+test-resources/src/v8tests/proto.js:30:19: [definite] Dead assignment, property y is never read
+test-resources/src/v8tests/proto.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 13 checks (with 0 expected failures)

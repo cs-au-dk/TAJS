@@ -1,3 +1,0 @@
-test/micro/test26.js: [definite] Exceptional program exit is unreachable
-test/micro/test26.js:9:1: [info] Abstract value: 2.0
-Soundness testing succeeded for 24 checks (with 0 expected failures)

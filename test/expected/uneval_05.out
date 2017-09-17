@@ -1,3 +1,0 @@
-test/uneval/uneval05.js: [definite] Exceptional program exit is unreachable
-test/uneval/uneval05.js:3:17: [definite] Unreachable code
-Soundness testing succeeded for 1 checks (with 0 expected failures)

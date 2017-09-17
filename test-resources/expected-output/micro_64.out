@@ -1,0 +1,21 @@
+test-resources/src/micro/test64.js:1:10: [definite] Dead assignment, property gh is never read
+test-resources/src/micro/test64.js:1:18: [definite] Dead assignment, property gb is never read
+test-resources/src/micro/test64.js:7:17: [definite] Reading 'this' yields the global object
+test-resources/src/micro/test64.js:9:21: [definite] Reading 'this' yields the global object
+test-resources/src/micro/test64.js:10:23: [definite] Reading 'this' yields the global object
+test-resources/src/micro/test64.js:11:17: [definite] Reading 'this' yields the global object
+test-resources/src/micro/test64.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test64.js:3:1: [info] Abstract object: {gb:10.0,gh:32.0,[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/test64.js:5:1: [info] Abstract object: {gh:32.0,[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/test64.js:7:1: [info] Abstract object: {Object:[@Object[native]],String:[@String[native]],arr:Undef,id:[@id#fun1],p:[@Object#node10],s:Undef,t:Undef,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+test-resources/src/micro/test64.js:9:1: [info] Property attributes: (DontDelete-)(DontEnum+)(ReadOnly-)
+test-resources/src/micro/test64.js:10:1: [info] Abstract value: true
+test-resources/src/micro/test64.js:11:1: [info] Abstract object: {Function:absent,Object:[@Object[native]],String:[@String[native]],arr:Undef,id:[@id#fun1],p:[@Object#node10],s:Undef,t:Undef,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+test-resources/src/micro/test64.js:13:1: [info] Property attributes: (DontDelete+)(DontEnum+)(ReadOnly+)
+test-resources/src/micro/test64.js:14:1: [info] Abstract value: false
+test-resources/src/micro/test64.js:15:1: [info] Abstract object: {length:^(@Number[native].length[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+test-resources/src/micro/test64.js:19:1: [info] Abstract object: {0:0.0,1:1.0,10:34.0,11:55.0,12:89.0,2:1.0,3:2.0,4:3.0,5:5.0,6:8.0,7:13.0,8:"not a fib number",9:21.0,length:13.0,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/test64.js:21:1: [info] Abstract object: {0:0.0,1:1.0,10:34.0,11:55.0,12:89.0,2:1.0,3:2.0,4:3.0,5:5.0,6:8.0,7:13.0,9:21.0,length:13.0,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/test64.js:25:1: [info] Abstract value: "ab"
+test-resources/src/micro/test64.js:27:1: [info] Abstract object: {0:0.0,1:1.0,10:34.0,11:55.0,12:89.0,2:1.0,3:2.0,4:3.0,5:5.0,6:8.0,7:13.0,9:21.0,length:13.0,[[Prototype]]=[@Array.prototype[native]]}
+Soundness testing succeeded for 50 checks (with 1 expected failures)

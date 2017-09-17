@@ -22,6 +22,7 @@ public class CoreBuilder {
 
     public static void build(Solver.SolverInterface c) {
         DOMNodeList.build(c);
+        DOMTokenList.build(c);
         DOMNode.build(c);
         DOMAttr.build(c);
         DOMNamedNodeMap.build(c);

@@ -1,0 +1,3 @@
+test-resources/src/anderson/anderson27.js:9:2: [definite] Reading absent property n
+test-resources/src/anderson/anderson27.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 26 checks (with 0 expected failures)

@@ -1,0 +1,3 @@
+test-resources/src/micro/test170.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test170.js:3:7: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 15 checks (with 0 expected failures)

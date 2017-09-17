@@ -1,0 +1,25 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(!_.isFinite(undefined), 'undefined is not finite');
+    ok(!_.isFinite(null), 'null is not finite');
+    ok(!_.isFinite(NaN), 'NaN is not finite');
+    ok(!_.isFinite(Infinity), 'Infinity is not finite');
+    ok(!_.isFinite(-Infinity), '-Infinity is not finite');
+    ok(_.isFinite('12'), 'Numeric strings are numbers');
+    ok(!_.isFinite('1a'), 'Non numeric strings are not numbers');
+    ok(!_.isFinite(''), 'Empty strings are not numbers');
+    var obj = new Number(5);
+    ok(_.isFinite(obj), 'Number instances can be finite');
+    ok(_.isFinite(0), '0 is finite');
+    ok(_.isFinite(123), 'Ints are finite');
+    ok(_.isFinite(-12.44), 'Floats are finite');
+</script></head><body></body></html>

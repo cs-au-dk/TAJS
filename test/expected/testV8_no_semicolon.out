@@ -1,3 +1,0 @@
-test/v8tests/no-semicolon.js:41:17: [definite] The conditional expression is always true
-test/v8tests/no-semicolon.js:35:5: [definite] Unreachable code
-test/v8tests/no-semicolon.js:41:25: [definite] Unreachable code

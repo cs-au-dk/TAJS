@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;">
+    <title>10k World</title>
+</head>
+<style type="text/css">
+    body {
+        color: #0f0;
+        background: #000;
+    }
+
+    button {
+        width: 200px;
+        clear: both;
+    }
+
+    #legend {
+        font-size: 10pt;
+    }
+
+    div {
+        float: left;
+    }
+</style>
+<body>
+<div style="width: 200px; overflow: hidden; ">
+
+    <h3 id="time">00:00:00:00</h3>
+    <h4 id="count">0</h4>
+    <h4 id="born">0</h4>
+    <h4 id="max">0</h4>
+    <button onclick="w = new World().Init();">Restart</button>
+    <button onclick="w.CureAll();">Cure all</button>
+
+    <button onclick="w.KillAll();">Kill all</button>
+    <p id="legend">
+        Legend:<br/>
+        <b>green</b> - alive<br/>
+        <b style="color: #888">grey</b> - dead<br/>
+
+        <b style="color: #F80">orange</b> - infected<br/>
+        <i>Click on canvas to add creature.</i>
+    </p>
+</div>
+<div style="margin: 0 20px; width: 640px">
+    <canvas id="canv" width="640px" height="480px">
+    </canvas>
+
+    <textarea id="history" style="background: #000; color: #0f0; width: 640px; height: 200px; border: 0;">
+    </textarea>
+    <script type="text/javascript">
+        var w,canv,fps = 10,todeg = 180 / Math.PI,torad = Math.PI / 180;
+        function d(a, e, h, q) {
+            return Math.sqrt(Math.abs(Math.pow(h - a, 2) + Math.pow(q - e, 2)))
+        }
+        function Time() {
+            return(new Date).getTime()
+        }
+        function isObject(a) {
+            return typeof a == "object"
+        }
+        function Floor(a) {
+            return Math.floor(a)
+        }
+        function Random(a) {
+            return Floor(Math.random() * a)
+        }
+        function Message(a) {
+            document.getElementById("history").value = a
+        }
+        function timer(a) {
+            var e = Floor(a / 1E3);
+            a %= 1E3;
+            t = (a > 99 ? "" : "0") + (a > 9 ? "" : "0") + a;
+            a = Floor(e / 60);
+            e %= 60;
+            t = (e > 9 ? "" : "0") + e + ":" + t;
+            e = Floor(a / 60);
+            a %= 60;
+            t = (a > 9 ? "" : "0") + a + ":" + t;
+            a = Floor(e / 60);
+            e %= 60;
+            t = (e > 9 ? "" : "0") + e + ":" + t;
+            return t = a + ":" + t
+        }
+        function GenName() {
+            for (var a = {W:["%C%%F%","%C%%F%","%C%%D%%F%","%C%%D%%F%","%I%%F%","%I%%C%%F%"],I:["mi","jo","bo","st","ol"],C:["ch","d","f","g","h","j","k","l","m","n","p","qu","r","s","sh","t","th","v","w","y"],F:["ob","el","on","an","av","eg","y","en","ei","etr","ery"],D:["aw","ei","ow","ou","ie","ea","ai","oy"]},e = "%W%",h = e.search(/%(\w+)%/); h != -1;) {
+                h = e.charAt(h + 1);
+                e = e.replace("%" + h + "%", a[h][Floor(Random(a[h].length))]);
+                h = e.search(/%(\w+)%/)
+            }
+            return e.charAt(0).toUpperCase() + e.substring(1)
+            // return e[0].toUpperCase() + e.substring(1) // Magnus
+        }
+        function World() {
+            var a,e,h,q,B;
+            this.Init = function() {
+                h = e = B = 0;
+                a = [];
+                q = Time();
+                for (i = 0; i < 10; i++)this.AddThing(Random(20) + 300, Random(20) + 220);
+                return this
+            };
+            this.GetThing = function(f) {
+                return a[f]
+            };
+            this.CureAll = function() {
+                for (i = 0; i < a.length; i++)a[i] != null && a[i].Infect()
+            };
+            this.KillAll = function() {
+                for (i = 0; i < a.length; i++)a[i] != null && a[i].Kill()
+            };
+            this.AddThing = function(f, m) {
+                if (f == undefined)f = Random(620) + 10;
+                if (m == undefined)m = Random(460) + 10;
+                a[e] = (new Creature).Init(e, f, m, (new Generator).Generate(0.5, 0.5));
+                this.LinkThing(e);
+                e++;
+                h++;
+                if (h > B)B = h;
+                return e - 1
+            };
+            this.DelThing = function(f) {
+                a[f] = null;
+                h--
+            };
+            this.LinkThing = function(f) {
+                for (i = 0; i < a.length; i++) {
+                    a[i] && a[i].Link(f);
+                    a[f] && a[f].Link(i)
+                }
+            };
+            this.Draw = function() {
+                document.getElementById("count").innerHTML = h + " creatures";
+                document.getElementById("born").innerHTML = a.length + " born";
+                document.getElementById("max").innerHTML = B + " maximum";
+                if (h) {
+                    var f = Time() - q;
+                    document.getElementById("time").innerHTML = timer(f);
+                    for (f = 0; f < a.length; f++)a[f] != null && a[f].Draw()
+                }
+            };
+            this.Logic = function() {
+                for (i =
+                        0; i < a.length; i++)a[i] && a[i].Logic()
+            }
+        }
+        function Generator() {
+            function a(m) {
+                var C = {childs:[0,0,0,0,0],angle:360};
+                if (f._depth < m)f._depth = m;
+                if (m <= e && B <= h)for (i = 0; i < 5; i++)if (Math.random() >= q) {
+                    f._jCount++;
+                    C.childs[i] = a(m + 1);
+                    B++
+                }
+                return C
+            }
+
+            var e,h,q,B = 0,f = {_root:0,_jCount:0,_depth:0};
+            this.Generate = function(m, C) {
+                e = 8 * C;
+                h = 6;
+                q = 1 - m;
+                f._root = a(1);
+                f._depth++;
+                return f
+            }
+        }
+        function Creature() {
+            function a(b, c) {
+                canv.save();
+                var g = j * 1.5 * c;
+                canv.beginPath();
+                canv.arc(0, 0, g, 0, Math.PI * 2, true);
+                canv.closePath();
+                canv.fill();
+                if (!(c < 1 - (D + 1) / 20))for (g = 0; g < 5; g++)if (b.childs[g] != 0) {
+                    canv.save();
+                    e(b, g, c, false);
+                    canv.restore();
+                    canv.save();
+                    e(b, g, c, true);
+                    canv.restore()
+                }
+                canv.restore()
+            }
+
+            function e(b, c, g, k) {
+                canv.save();
+                ang = c * 45 * torad * (k ? -1 : 1);
+                canv.rotate(-ang);
+                canv.beginPath();
+                canv.lineWidth = j * 0.6;
+                canv.moveTo(0, 0);
+                canv.lineTo(j * 4, 0);
+                canv.stroke();
+                canv.save();
+                canv.translate(j * 4, 0);
+                canv.rotate(ang);
+                a(b.childs[c], g * 0.8);
+                canv.restore();
+                canv.restore()
+            }
+
+            function h() {
+                var b = E.pop();
+                n = b ? b : {type:m}
+            }
+
+            function q(b, c) {
+                E.push({type:b,target:c})
+            }
+
+            function B() {
+                if (o > 0) {
+                    if (H <= 0 && j >= (D + 1) * 1.2) {
+                        Message(z + " acquire offspring!");
+                        for (var b = 0; b < (D + 1) * 2; b++) {
+                            var c = w.AddThing(u, v);
+                            G[c] = 50;
+                            F && Random(10) < 4 && w.GetThing(c).Infect()
+                        }
+                        H = 50;
+                        j -= 0.15
+                    }
+                    I += j * 0.1;
+                    if (J > 0)J -= 1;
+                    M += 0.0050;
+                    if (Floor(M) > D) {
+                        D = Floor(M);
+                        Message(z + " Happy Birthday! Is " + D + " years old!");
+                        j += 0.1
+                    }
+                    if (H > 0)H -= 1;
+                    if (o < 100)o += 1 * D / 100;
+                    if (I > 100)o = 0;
+                    o <= 0 && Message(z + "is die :(");
+                    if (F)j -= j * 0.0050;
+                    if (J > 80)if (n.type != C) {
+                        E = [];
+                        q(C, {x:Random(620) + 10,y:Random(460) + 10})
+                    }
+                    if (j < D / 2 || o < 51 || I > 51)if (n.type != N && n.type != L) {
+                        b = f(0, true);
+                        if (b == -1)b = f(0, false);
+                        if (b == -1)b = f(100, false);
+                        b = b;
+                        if (b > -1) {
+                            Message(z + " want to eat.");
+                            q(L, b)
+                        } else Message(z + " now is alone, and preparing for death.");
+                        h()
+                    }
+                } else j -= 0.01;
+                if (j < 0.3) {
+                    Message(z + " is die! :(");
+                    w.DelThing(K);
+                    //delete this
+                }
+            }
+
+            function f(b, c) {
+                var g = -1,k = 1E3;
+                for (i = 0; i < G.length; i++)if (i != K && G[i] < b) {
+                    var p = w.GetThing(i);
+                    if (p)if (!(c && p.Alive())) {
+                        p = p.GetPos();
+                        p = d(u, v, p.x, p.y);
+                        if (p < k) {
+                            k = p;
+                            g = i
+                        }
+                    }
+                }
+                return g
+            }
+
+            var m = 0,C = 1,L = 3,N = 6,z,K,u,v,x,O,j,D,M,o,I,H,J,E,n,F,G;
+            this.Init = function(b, c, g, k) {
+                K = b;
+                z = GenName();
+                I = 40;
+                H = x = J = D = M = 0;
+                o = 100;
+                u = c;
+                v = g;
+                F = Random(10) < 1;
+                G = [];
+                E = [];
+                n = {type:m};
+                O = k;
+                j = Math.random() + 0.3;
+                Message(z + " is born! :)");
+                return this
+            };
+            this.Alive = function() {
+                return o > 0
+            };
+            this.Infected = function() {
+                return F
+            };
+            this.Infect = function() {
+                F = true
+            };
+            this.Kill = function() {
+                o = 0
+            };
+            this.Nip = function(b, c) {
+                c == K && Message(z + "bit off a part of himself! 0_0");
+                j -= b * 0.05;
+                if (o > 0) {
+                    o -= b * 10;
+                    G[c] -=
+                            1;
+                    J += 100 - o;
+                    if (J < 80) {
+                        E = [];
+                        q(L, c)
+                    }
+                }
+            };
+            this.SetAttitude = function(b, c) {
+                G[b] = c
+            };
+            this.GetPos = function() {
+                return{x:u,y:v}
+            };
+            this.Draw = function() {
+                canv.fillStyle = canv.strokeStyle = o > 0 ? F ? "#F80" : "#0F0" : "#888";
+                canv.save();
+                canv.translate(u, v);
+                canv.rotate(x);
+                a(O._root, 1);
+                canv.restore()
+            };
+            this.Link = function(b) {
+                G[b] = b == K ? 100 : 0
+            };
+            this.PushAction = function(b, c) {
+                E.push({type:b,target:c})
+            };
+            this.Logic = function() {
+                B();
+                if (H <= 0 && o > 0)switch (n.type) {case N:case C:var b = 0,c = 0;if (isObject(n.target)) {
+                    b = n.target.x;
+                    c = n.target.y
+                } else if (creature =
+                        w.GetThing(n.target)) {
+                    pos = creature.GetPos();
+                    b = pos.x;
+                    c = pos.y
+                } else {
+                    E = [];
+                    n = {type:m}
+                }var g;g = 1 / fps * 35 / j * 0.05 * todeg;var k = b,p = c,y = 0,A = d(u, v, k, p);p = d(k, p, u, v + 0.1);if (A > 0 && p > 0) {
+                    y = Math.acos((Math.pow(A, 2) + Math.pow(0.1, 2) - Math.pow(p, 2)) / (2 * A * 0.1));
+                    if (u < k)y = -y
+                }y += 90 * torad;k = y * todeg;y = x * todeg - k;A = k - x * todeg;delta = A < y ? -A : y;if (g >= Math.abs(delta)) {
+                    x = k * torad;
+                    if (x > 360)x -= 360;
+                    g = true
+                } else {
+                    if (delta < 0)x += g * torad; else x -= g * torad;
+                    if (x > 360)x -= 360;
+                    g = false
+                }if (g) {
+                    b = b;
+                    c = c;
+                    g = {x:0,y:0};
+                    k = {x:0,y:0};
+                    y = {x:Math.abs(b - u),y:Math.abs(c -
+                            v)};
+                    A = d(u, v, b, c);
+                    if (A <= 5)c = true; else {
+                        g.x = Math.abs(y.x) / A;
+                        g.y = Math.abs(y.y) / A;
+                        s = 1 / fps * (35 / j);
+                        k.x = g.x * s;
+                        k.y = g.y * s;
+                        u += k.x * (b < u ? -1 : 1);
+                        v += k.y * (c < v ? -1 : 1);
+                        c = false
+                    }
+                    c && h()
+                }break;case L:if (creature = w.GetThing(n.target)) {
+                    pos = creature.GetPos();
+                    if (u > pos.x - 10 && u < pos.x + 10 && v > pos.y - 10 && v < pos.y + 10)if (creature != null) {
+                        c = j;
+                        creature.Nip(c, K);
+                        if (!F)if (F = creature.Infected())Message(z + " picked infection. X_X");
+                        j += c * 0.05;
+                        if (o < 100)o += 0.5 * c;
+                        if (I > 0)I -= 10
+                    } else {
+                        E = [];
+                        n = {type:m}
+                    } else {
+                        q(L, n.target);
+                        q(N, n.target);
+                        h()
+                    }
+                } else {
+                    E = [];
+                    n =
+                    {type:m}
+                }break;case m:h();if (n.type == m) {
+                    q(C, {x:Random(640),y:Random(480)});
+                    h()
+                }break
+                }
+            }
+        }
+        var cont = document.getElementById("canv");
+        cont.onclick = function(a) {
+            w.AddThing(a.pageX - 200, a.pageY)
+        };
+        canv = cont.getContext("2d");
+        w = (new World).Init();
+        function l() {
+            w.Logic();
+            setTimeout("l()", 100)
+        }
+        function r() {
+            try {
+                canv.clearRect(0, 0, 640, 480);
+                w.Draw();
+                setTimeout("r()", 1E3 / fps)
+            } catch(a) {
+                alert("Draw error '" + a.description + "'\n Sorry!")
+            }
+        }
+        r();
+        l();
+    </script>
+</div>
+</body>
+</html>

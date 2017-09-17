@@ -1,0 +1,6 @@
+test-resources/src/v8tests/string-compare-alignment.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/string-compare-alignment.js:34:10: [maybe] Converting object to string
+test-resources/src/v8tests/string-compare-alignment.js:34:10: [maybe] Converting primitive string to object
+test-resources/src/v8tests/string-compare-alignment.js:35:10: [maybe] Converting object to string
+test-resources/src/v8tests/string-compare-alignment.js:35:10: [maybe] Converting primitive string to object
+Soundness testing succeeded for 49 checks (with 0 expected failures)

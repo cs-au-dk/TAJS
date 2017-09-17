@@ -1,0 +1,35 @@
+test-resources/src/v8tests/html-string-funcs.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/html-string-funcs.js:42:16: [definite] TypeError, call to non-function
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function Object.prototype.__defineGetter__
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function Object.prototype.__defineSetter__
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function Object.prototype.hasOwnProperty
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function Object.prototype.isPrototypeOf
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function Object.prototype.propertyIsEnumerable
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function String.prototype.charAt
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function String.prototype.charCodeAt
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function String.prototype.codePointAt
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function String.prototype.endsWith
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function String.prototype.includes
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function String.prototype.indexOf
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function String.prototype.lastIndexOf
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function String.prototype.localeCompare
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function String.prototype.match
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function String.prototype.search
+test-resources/src/v8tests/html-string-funcs.js:32:16: [definite] Too few parameters to function String.prototype.startsWith
+test-resources/src/v8tests/html-string-funcs.js:42:16: [definite] Reading absent property (computed name)
+test-resources/src/v8tests/html-string-funcs.js:42:16: [definite] Unreachable code
+test-resources/src/v8tests/html-string-funcs.js:45:1: [definite] Unreachable code
+test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] TypeError, call to non-function
+test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] Reading absent property toLowerCase
+test-resources/src/v8tests/html-string-funcs.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/html-string-funcs.js:32:16, test-resources/src/v8tests/html-string-funcs.js:42:16]
+test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] Converting object to string
+test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] Converting primitive boolean to object
+test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] Converting primitive number to object
+test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] Converting primitive string to object
+test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] Converting undefined to string
+test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/html-string-funcs.js:42:16: [maybe] Converting primitive string to object
+test-resources/src/v8tests/html-string-funcs.js:32:16: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 23 checks (with 0 expected failures)

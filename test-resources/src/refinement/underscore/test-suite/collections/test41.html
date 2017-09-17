@@ -1,0 +1,17 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    _.each([true, false, 'yes', '', 0, 1, {}], function(context) {
+      _.each([1], function() {
+        equal(this, context);
+      }, context);
+    });
+</script></head><body></body></html>

@@ -5,6 +5,7 @@
 /*
  Polyfills the following:
  - Array.isArray
+ - Array.from
  - Array.prototype.indexOf
  - Array.prototype.lastIndexOf
  - Array.prototype.forEach
@@ -118,24 +119,34 @@ if (!Function.prototype.bind) {
             var fNOP = function () {
             };
 
-            function contextSensitivityHack(fToBind, oThis, aArgs0, aArgs1, aArgs2, aArgs) {
+            function contextSensitivityHack(fToBind, oThis, aArgs0, aArgs1, aArgs2, aArgs3, aArgs4, aArgs5, aArgs6, aArgs7, aArgs) {
                 return function () {
                     aArgs0;
                     aArgs1;
                     aArgs2;
+                    aArgs3;
+                    aArgs4;
+                    aArgs5;
+                    aArgs6;
+                    aArgs7;
                     return fToBind.apply(this instanceof fNOP && oThis
                             ? this
                             : oThis,
                         aArgs.concat(Array.prototype.slice.call(arguments)));
                 }
             }
-            TAJS_makeContextSensitive(contextSensitivityHack, 0);
+
             TAJS_makeContextSensitive(contextSensitivityHack, 1);
             TAJS_makeContextSensitive(contextSensitivityHack, 2);
             TAJS_makeContextSensitive(contextSensitivityHack, 3);
             TAJS_makeContextSensitive(contextSensitivityHack, 4);
+            TAJS_makeContextSensitive(contextSensitivityHack, 5);
+            TAJS_makeContextSensitive(contextSensitivityHack, 6);
+            TAJS_makeContextSensitive(contextSensitivityHack, 7);
+            TAJS_makeContextSensitive(contextSensitivityHack, 8);
+            TAJS_makeContextSensitive(contextSensitivityHack, 9);
 
-            var fBound = contextSensitivityHack(fToBind, oThis, aArgs[0], aArgs[1], aArgs[2], aArgs);
+            var fBound = contextSensitivityHack(fToBind, oThis, aArgs[0], aArgs[1], aArgs[2], aArgs[3], aArgs[4], aArgs[5], aArgs[6], aArgs[7], aArgs);
             TAJS_makeContextSensitive(fBound, -2);
 
             // Make fToBind context sensitive as well, but only inside fBound.
@@ -149,10 +160,15 @@ if (!Function.prototype.bind) {
     });
     TAJS_makeContextSensitive(Function.prototype.bind, 0);
 
-    // some of the optional arguments, we assume 3 is sufficient
+    // some of the optional arguments, we assume 8 is sufficient
     TAJS_makeContextSensitive(Function.prototype.bind, 1);
     TAJS_makeContextSensitive(Function.prototype.bind, 2);
     TAJS_makeContextSensitive(Function.prototype.bind, 3);
+    TAJS_makeContextSensitive(Function.prototype.bind, 4);
+    TAJS_makeContextSensitive(Function.prototype.bind, 5);
+    TAJS_makeContextSensitive(Function.prototype.bind, 6);
+    TAJS_makeContextSensitive(Function.prototype.bind, 7);
+    TAJS_makeContextSensitive(Function.prototype.bind, 8);
 
     TAJS_makeContextSensitive(Function.prototype.bind, -1);
 }
@@ -187,7 +203,6 @@ if ('function' !== typeof Array.prototype.reduceRight) {
         }
     });
 }
-
 
 if (!Array.prototype.forEach) {
     Object.defineProperty(Array.prototype, "forEach", {
@@ -224,6 +239,95 @@ if (!Array.isArray) {
             return Object.prototype.toString.call(arg) === '[object Array]';
         }
     });
+}
+
+if (!Array.from) {
+    Object.defineProperty(Array, "from", {
+        writable: true, enumerable: false, configurable: true,
+        value: (function () {
+            var toStr = Object.prototype.toString;
+            var isCallable = function (fn) {
+                return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+            };
+            var toInteger = function (value) {
+                var number = Number(value);
+                if (isNaN(number)) {
+                    return 0;
+                }
+                if (number === 0 || !isFinite(number)) {
+                    return number;
+                }
+                return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+            };
+            var maxSafeInteger = Math.pow(2, 53) - 1;
+            var toLength = function (value) {
+                var len = toInteger(value);
+                return Math.min(Math.max(len, 0), maxSafeInteger);
+            };
+
+            // The length property of the from method is 1.
+            return function from(arrayLike/*, mapFn, thisArg */) {
+                // 1. Let C be the this value.
+                var C = this;
+
+                // 2. Let items be ToObject(arrayLike).
+                var items = Object(arrayLike);
+
+                // 3. ReturnIfAbrupt(items).
+                if (arrayLike == null) {
+                    throw new TypeError('Array.from requires an array-like object - not null or undefined');
+                }
+
+                // 4. If mapfn is undefined, then let mapping be false.
+                var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+                var T;
+                if (typeof mapFn !== 'undefined') {
+                    // 5. else
+                    // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
+                    if (!isCallable(mapFn)) {
+                        throw new TypeError('Array.from: when provided, the second argument must be a function');
+                    }
+
+                    // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
+                    if (arguments.length > 2) {
+                        T = arguments[2];
+                    }
+                }
+
+                // 10. Let lenValue be Get(items, "length").
+                // 11. Let len be ToLength(lenValue).
+                var len = toLength(items.length);
+
+                // 13. If IsConstructor(C) is true, then
+                // 13. a. Let A be the result of calling the [[Construct]] internal method
+                // of C with an argument list containing the single item len.
+                // 14. a. Else, Let A be ArrayCreate(len).
+                var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+
+                // 16. Let k be 0.
+                var k = 0;
+                // 17. Repeat, while k < len… (also steps a - h)
+                var kValue;
+                while (k < len) {
+                    kValue = items[k];
+                    if (mapFn) {
+                        A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
+                    } else {
+                        A[k] = kValue;
+                    }
+                    k += 1;
+                }
+                // 18. Let putStatus be Put(A, "length", len, true).
+                A.length = len;
+                // 20. Return A.
+                return A;
+            };
+        }())
+    });
+
+    TAJS_makeContextSensitive(Array.from, 0);
+    TAJS_makeContextSensitive(Array.from, 1);
+    TAJS_makeContextSensitive(Array.from, 2);
 }
 
 if (!Array.prototype.some) {

@@ -21,228 +21,153 @@ public class TestSunspider {
 
     @Test
     public void sunspider_3d_cube() throws Exception {  // FIXME: check output
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/3d-cube.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/3d-cube.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_3d_morph() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/3d-morph.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/3d-morph.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_3d_raytrace() throws Exception {  // FIXME: check output
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/3d-raytrace.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/3d-raytrace.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_access_binary_trees() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/access-binary-trees.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/access-binary-trees.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_access_fannkuch() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/access-fannkuch.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/access-fannkuch.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_access_nbody() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/access-nbody.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/access-nbody.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_access_nsieve() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/access-nsieve.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/access-nsieve.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_bitops_3bit_bits_in_byte() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/bitops-3bit-bits-in-byte.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/bitops-3bit-bits-in-byte.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_bitops_bitwise_and() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/bitops-bitwise-and.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/bitops-bitwise-and.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_bitops_nsieve_bits() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/bitops-nsieve-bits.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/bitops-nsieve-bits.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_controlflow_recursive() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/controlflow-recursive.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/controlflow-recursive.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_crypto_aes() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/crypto-aes.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/crypto-aes.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_crypto_md5() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/crypto-md5.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/crypto-md5.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_crypto_sha1() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/crypto-sha1.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/crypto-sha1.js");
         Misc.checkSystemOutput();
     }
 
     @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void sunspider_date_format_tofte() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/date-format-tofte.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/date-format-tofte.js");
         Misc.checkSystemOutput();
     }
 
     @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void sunspider_date_format_xparb() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/date-format-xparb.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/date-format-xparb.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_math_cordic() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/math-cordic.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/math-cordic.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_math_partial_sums() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/math-partial-sums.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/math-partial-sums.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_math_spectral_norm() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/math-spectral-norm.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/math-spectral-norm.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_regexp_dna() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/regexp-dna.js"}; // can't specialize for-in due to r/w conflict (in fact, the output is non-deterministic)
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/regexp-dna.js"); // can't specialize for-in due to r/w conflict (in fact, the output is non-deterministic)
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_string_base64() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/string-base64.js"}; // TODO: known to be buggy (according to Google Aarhus)
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/string-base64.js"); // TODO: known to be buggy (according to Google Aarhus)
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_string_fasta() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/string-fasta.js"}; // can't specialize for-in due to r/w conflict
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/string-fasta.js"); // can't specialize for-in due to r/w conflict
         Misc.checkSystemOutput();
     }
 
     @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void sunspider_string_tagcloud() throws Exception {
-        Misc.init();
         Options.get().enableUnevalizer();
         Options.get().setAnalysisTimeLimit(10);
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/string-tagcloud.js"}; // can't specialize for-in due to r/w conflict
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/string-tagcloud.js"); // can't specialize for-in due to r/w conflict
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_string_unpack_code() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/string-unpack-code.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/string-unpack-code.js");
         Misc.checkSystemOutput();
     }
 
     @Test
     public void sunspider_string_validate_input() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/sunspider/string-validate-input.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sunspider/string-validate-input.js");
         Misc.checkSystemOutput();
     }
 }

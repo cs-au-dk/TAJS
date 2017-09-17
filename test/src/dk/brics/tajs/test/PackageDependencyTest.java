@@ -1,6 +1,7 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
+import dk.brics.tajs.util.PathAndURLUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -58,11 +59,9 @@ public class PackageDependencyTest {
         graph.addNode(TAJSPackage.lattice);
         graph.addNode(TAJSPackage.solver);
         graph.addNode(TAJSPackage.js2flowgraph);
-        graph.addNode(TAJSPackage.htmlparser);
         graph.addNode(TAJSPackage.flowgraph);
         graph.addNode(TAJSPackage.util);
         graph.addNode(TAJSPackage.options);
-
         graph.addEdge(TAJSPackage.analysis, TAJSPackage.monitoring);
         graph.addEdge(TAJSPackage.analysis, TAJSPackage.lattice);
         graph.addEdge(TAJSPackage.analysis, TAJSPackage.solver);
@@ -71,7 +70,6 @@ public class PackageDependencyTest {
         graph.addEdge(TAJSPackage.analysis, TAJSPackage.util);
         graph.addEdge(TAJSPackage.analysis, TAJSPackage.options);
         graph.addEdge(TAJSPackage.analysis, TAJSPackage.unevalizer);
-
         graph.addEdge(TAJSPackage.unevalizer, TAJSPackage.analysis);
         graph.addEdge(TAJSPackage.unevalizer, TAJSPackage.monitoring);
         graph.addEdge(TAJSPackage.unevalizer, TAJSPackage.lattice);
@@ -80,39 +78,26 @@ public class PackageDependencyTest {
         graph.addEdge(TAJSPackage.unevalizer, TAJSPackage.flowgraph);
         graph.addEdge(TAJSPackage.unevalizer, TAJSPackage.util);
         graph.addEdge(TAJSPackage.unevalizer, TAJSPackage.options);
-
         graph.addEdge(TAJSPackage.monitoring, TAJSPackage.analysis);
         graph.addEdge(TAJSPackage.monitoring, TAJSPackage.lattice);
         graph.addEdge(TAJSPackage.monitoring, TAJSPackage.solver);
         graph.addEdge(TAJSPackage.monitoring, TAJSPackage.flowgraph);
         graph.addEdge(TAJSPackage.monitoring, TAJSPackage.util);
         graph.addEdge(TAJSPackage.monitoring, TAJSPackage.options);
-
         graph.addEdge(TAJSPackage.lattice, TAJSPackage.solver);
         graph.addEdge(TAJSPackage.lattice, TAJSPackage.flowgraph);
         graph.addEdge(TAJSPackage.lattice, TAJSPackage.util);
         graph.addEdge(TAJSPackage.lattice, TAJSPackage.options);
-
         graph.addEdge(TAJSPackage.solver, TAJSPackage.flowgraph);
         graph.addEdge(TAJSPackage.solver, TAJSPackage.util);
         graph.addEdge(TAJSPackage.solver, TAJSPackage.options);
-
-        graph.addEdge(TAJSPackage.js2flowgraph, TAJSPackage.htmlparser);
         graph.addEdge(TAJSPackage.js2flowgraph, TAJSPackage.flowgraph);
         graph.addEdge(TAJSPackage.js2flowgraph, TAJSPackage.util);
         graph.addEdge(TAJSPackage.js2flowgraph, TAJSPackage.options);
-
-        graph.addEdge(TAJSPackage.htmlparser, TAJSPackage.flowgraph);
-        graph.addEdge(TAJSPackage.htmlparser, TAJSPackage.util);
-        graph.addEdge(TAJSPackage.htmlparser, TAJSPackage.options);
-
         graph.addEdge(TAJSPackage.flowgraph, TAJSPackage.util);
         graph.addEdge(TAJSPackage.flowgraph, TAJSPackage.options);
-
         graph.addEdge(TAJSPackage.util, TAJSPackage.options);
-
         graph.addEdge(TAJSPackage.options, TAJSPackage.util);
-
 //        // additions that are not present in /misc//package-dependencies.png (yet)
 //        graph.addNode(TAJSPackage.metautil);
 //        graph.addEdge(TAJSPackage.metautil, TAJSPackage.analysis);
@@ -124,7 +109,6 @@ public class PackageDependencyTest {
 //        graph.addEdge(TAJSPackage.metautil, TAJSPackage.util);
 //        graph.addEdge(TAJSPackage.metautil, TAJSPackage.options);
 //        graph.addEdge(TAJSPackage.metautil, TAJSPackage.unevalizer);
-
         return graph;
     }
 
@@ -140,6 +124,7 @@ public class PackageDependencyTest {
      * Tests if a forbidden dependency is reachable from a specific package. Explains all failures.
      */
     private static Optional<String> testAntiDependency_(TAJSPackage target, TAJSPackage antiDependency) throws IOException, InterruptedException {
+        System.out.println("testing that " + target + " does not depend on " + antiDependency);
         boolean DEBUG = false;
         ProcessBuilder pb = new ProcessBuilder();
         String antiDependencyPattern = String.format("%s.*", antiDependency.getCanonicalName());
@@ -170,7 +155,8 @@ public class PackageDependencyTest {
         }
         String headline = String.format("Bad dependency '%s' is present: (output from 'jdeps')", antiDependency.toString());
         String fullOutput = failure.get();
-        throw new AssertionError(String.format("%s%n%s", headline, fullOutput));
+        System.out.format("%s%n%s", headline, fullOutput);
+        throw new AssertionError(headline);
     }
 
     /**
@@ -252,8 +238,6 @@ public class PackageDependencyTest {
 
         public static final TAJSPackage js2flowgraph = new TAJSPackage("js2flowgraph");
 
-        public static final TAJSPackage htmlparser = new TAJSPackage("htmlparser");
-
         public static final TAJSPackage util = new TAJSPackage("util");
 
         public static final TAJSPackage options = new TAJSPackage("options");
@@ -275,7 +259,7 @@ public class PackageDependencyTest {
         }
 
         private String getLocation() {
-            return Main.class.getResource(lastName).getFile();
+            return PathAndURLUtils.toPath(Main.class.getResource(lastName)).toString();
         }
 
         @Override

@@ -1,0 +1,5 @@
+test-resources/src/v8tests/number-string-index-call.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/number-string-index-call.js:32:21: [definite] TypeError, call to non-function
+test-resources/src/v8tests/number-string-index-call.js:32:1: [definite] Unreachable code
+test-resources/src/v8tests/number-string-index-call.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/number-string-index-call.js:32:21]
+Soundness testing succeeded for 27 checks (with 0 expected failures)

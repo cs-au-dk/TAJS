@@ -16,7 +16,6 @@ public class TestBoundedUnrolling {
     @Test
     public void counterWhileLoop_belowBound() {
         Options.get().enableLoopUnrolling(10);
-        Misc.init();
         Misc.runSource(
                 "var i = 0;",
                 "while(i < 5){ i++; }",
@@ -27,7 +26,6 @@ public class TestBoundedUnrolling {
     @Test
     public void counterForLoop_belowBound() {
         Options.get().enableLoopUnrolling(10);
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 5; i++){ }",
                 "TAJS_assert(i === 5);",
@@ -37,7 +35,6 @@ public class TestBoundedUnrolling {
     @Test
     public void sequencedCounterForLoops_belowBound() {
         Options.get().enableLoopUnrolling(10);
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 5; i++){ }",
                 "for(; i < 10; i++){ }",
@@ -48,7 +45,6 @@ public class TestBoundedUnrolling {
     @Test
     public void nestedCounterForLoop_belowBound() {
         Options.get().enableLoopUnrolling(10);
-        Misc.init();
         Misc.runSource(
                 "var k = 0;",
                 "for(var i = 0; i < 5; i++){",
@@ -65,7 +61,6 @@ public class TestBoundedUnrolling {
     @Test
     public void stringShrinkingWhileLoop_belowBound() {
         Options.get().enableLoopUnrolling(10);
-        Misc.init();
         Misc.runSource(
                 "var s = 'abcdefg';",
                 "while(s){ s = s.substring(1); }",
@@ -76,7 +71,6 @@ public class TestBoundedUnrolling {
     @Test
     public void counterWhileLoop_aboveBound() {
         Options.get().enableLoopUnrolling(2);
-        Misc.init();
         Misc.runSource(
                 "var i = 0;",
                 "while(i < 5){ i++; }",
@@ -88,7 +82,6 @@ public class TestBoundedUnrolling {
     @Test
     public void counterForLoop_aboveBound() {
         Options.get().enableLoopUnrolling(2);
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 5; i++){ }",
                 "TAJS_assert(i, 'isMaybeNumUInt');",
@@ -99,7 +92,6 @@ public class TestBoundedUnrolling {
     @Test
     public void sequencedCounterForLoops_aboveBound() {
         Options.get().enableLoopUnrolling(2);
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 5; i++){ }",
                 "for(; i < 10; i++){ }",
@@ -111,7 +103,6 @@ public class TestBoundedUnrolling {
     @Test
     public void nestedCounterForLoop_aboveBound() {
         Options.get().enableLoopUnrolling(2);
-        Misc.init();
         Misc.runSource(
                 "var k = 0;",
                 "for(var i = 0; i < 5; i++){",
@@ -131,7 +122,6 @@ public class TestBoundedUnrolling {
     @Test
     public void stringShrinkingWhileLoop_aboveBound() {
         Options.get().enableLoopUnrolling(2);
-        Misc.init();
         Misc.runSource(
                 "var s = 'abcdefg';",
                 "while(s){ s = s.substring(1); }",

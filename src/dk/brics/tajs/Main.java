@@ -22,8 +22,8 @@ import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.flowgraph.JavaScriptSource.Kind;
 import dk.brics.tajs.flowgraph.SourceLocation;
-import dk.brics.tajs.htmlparser.HTMLParser;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
+import dk.brics.tajs.js2flowgraph.HTMLParser;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
@@ -92,6 +92,9 @@ public class Main {
             run(a);
             System.exit(0);
         } catch (AnalysisException e) {
+            if (Options.get().isDebugOrTestEnabled()) {
+                throw e;
+            }
             log.error("Error: " + e.getMessage());
             //e.printStackTrace();
             System.exit(-2);
@@ -215,8 +218,9 @@ public class Main {
 
         // Analysis timeout monitor
         int timeLimit = Options.get().getAnalysisTimeLimit();
-        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, Options.get().isTestEnabled());
-        if (timeLimit >= 0) {
+        int transferLimit = Options.get().getAnalysisTransferLimit();
+        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, transferLimit, Options.get().isTestEnabled());
+        if (timeLimit >= 0 || transferLimit > 0) {
             extraMonitors.add(timeLimiter);
         }
 
@@ -232,9 +236,9 @@ public class Main {
             extraMonitors.add(SoundnessTesterMonitor.make());
         } else if (Options.get().isTestEnabled()) {
             // (no need to test reachability if using soundness testing)
-            extraMonitors.add(new ProgramExitReachabilityChecker(true, !Options.get().isDoNotExpectOrdinaryExitEnabled(), true, false, true, timeLimiter::analysisNotExceededTimeLimit));
+            extraMonitors.add(new ProgramExitReachabilityChecker(true, !Options.get().isDoNotExpectOrdinaryExitEnabled(), true, false, true, timeLimiter::analysisNotExceededLimit));
         }
-        extraMonitors.add(new TAJSAssertionReachabilityCheckerMonitor(timeLimiter::analysisNotExceededTimeLimit));
+        extraMonitors.add(new TAJSAssertionReachabilityCheckerMonitor(timeLimiter::analysisNotExceededLimit));
 
         // put inspector *after* checking
         if (Options.get().isInspectorEnabled()) {
@@ -248,8 +252,8 @@ public class Main {
         return monitoring;
     }
 
-    private static List<URL> resolveInputs(List<String> files) {
-        return files.stream().map(f -> PathAndURLUtils.normalizeFileURL(PathAndURLUtils.toURL(Paths.get(f)))).collect(Collectors.toList());
+    private static List<URL> resolveInputs(List<Path> files) {
+        return files.stream().map(f -> PathAndURLUtils.normalizeFileURL(PathAndURLUtils.toURL(f))).collect(Collectors.toList());
     }
 
     private static boolean isHTMLFileName(String fileName) {

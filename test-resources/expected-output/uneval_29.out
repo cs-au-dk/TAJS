@@ -1,0 +1,61 @@
+test-resources/src/uneval/uneval29.html:12:19: [definite] ReferenceError, reading absent variable ActiveXObject
+test-resources/src/uneval/uneval29.html:23:19: [definite] ReferenceError, reading absent variable ActiveXObject
+test-resources/src/uneval/uneval29.html:160:28: [definite] TypeError, accessing property of null/undefined
+test-resources/src/uneval/uneval29.html:181:19: [definite] Too many parameters to function HTMLImageElement constructor
+test-resources/src/uneval/uneval29.html:9:5: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval29.html:20:5: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval29.html:31:1: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval29.html:48:1: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval29.html:69:1: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval29.html:86:1: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval29.html:103:1: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval29.html:120:1: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval29.html:149:4: [definite] The conditional expression is always false
+test-resources/src/uneval/uneval29.html:149:4: [definite] Variable targetDiv is null/undefined
+test-resources/src/uneval/uneval29.html:158:30: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval29.html:160:28: [definite] Variable iframe is null/undefined
+test-resources/src/uneval/uneval29.html:185:2: [definite] The conditional expression is always false
+test-resources/src/uneval/uneval29.html:192:1: [definite] The conditional expression is always true
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:32:2):1:45: [definite] The conditional expression is always true
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:32:2):1:45: [definite] Variable peerID_CM is null/undefined
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:308: [definite] The conditional expression is always true
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:308: [definite] Variable obj is null/undefined
+test-resources/src/uneval/uneval29.html:31:12: [definite] Reading absent property getUrlWithPID_CM
+test-resources/src/uneval/uneval29.html:48:12: [definite] Reading absent property mz
+test-resources/src/uneval/uneval29.html:69:12: [definite] Reading absent property addEventHandler_CM
+test-resources/src/uneval/uneval29.html:86:12: [definite] Reading absent property removeEventHandler_CM
+test-resources/src/uneval/uneval29.html:103:12: [definite] Reading absent property position_CM
+test-resources/src/uneval/uneval29.html:120:12: [definite] Reading absent property isInView_CM
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:160: [definite] Dead assignment, property Top is never read
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:214: [definite] Dead assignment, property Left is never read
+test-resources/src/uneval/uneval29.html:12:33: [definite] Unreachable code
+test-resources/src/uneval/uneval29.html:23:33: [definite] Unreachable code
+test-resources/src/uneval/uneval29.html:156:13: [definite] The variable randomNumber is never used
+test-resources/src/uneval/uneval29.html:160:28: [definite] Unreachable code
+test-resources/src/uneval/uneval29.html:170:21: [definite] The variable nextiframe is never used
+test-resources/src/uneval/uneval29.html:175:5: [definite] The variable interval_1162 is never used
+test-resources/src/uneval/uneval29.html:189:3: [definite] Unreachable code
+test-resources/src/uneval/uneval29.html:198:1: [definite] Unreachable function resize_CM_1162
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:32:2):1:1: [definite] The variable split is never used
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:32:2):1:95: [definite] The variable index is never used
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:49:2):1:200: [definite] Unreachable function domz
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:70:2):1:1: [definite] Unreachable function addEventHandler_CM
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:87:2):1:1: [definite] Unreachable function removeEventHandler_CM
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:104:2):1:1: [definite] Unreachable function position_CM
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:350: [definite] The variable width is never used
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:376: [definite] The variable height is never used
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:404: [definite] The variable wh is never used
+test-resources/src/uneval/uneval29.html:148:17: [maybe] <Document.getElementById>("cm1162") did not match any elements
+test-resources/src/uneval/uneval29.html:159:38: [maybe] <Document.getElementById>("i_1162_0") did not match any elements
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:49:2):1:168: [maybe] TypeError, accessing property of null/undefined
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:56: [maybe] TypeError, accessing property of null/undefined
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:277: [maybe] <Document.getElementById>("cm1162") did not match any elements
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:56: [maybe] Reading absent property scrollTop of host object
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:80: [maybe] Reading absent property scrollTop of host object
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:124: [maybe] Reading absent property scrollLeft of host object
+test-resources/src/uneval/uneval29.html: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:49:2):1:168, TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:56]
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:49:2):1:125: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:56: [maybe] Conversion to number yields NaN
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:223: [maybe] Conversion to number yields NaN
+TAJS-dynamic-code(test-resources/src/uneval/uneval29.html:121:2):1:223: [maybe] Converting undefined to string
+Soundness testing succeeded for 96 checks (with 0 expected failures)

@@ -1,5 +1,0 @@
-test/micro/test70.js:1:5: [definite] The variable b is never used
-test/micro/test70.js:9:16: [maybe] ReferenceError, reading absent variable y
-test/micro/test70.js: [maybe] Uncaught exception, constructed at [test/micro/test70.js:9:16]
-test/micro/test70.js:9:1: [info] Abstract value: 42.0
-Soundness testing succeeded for 16 checks (with 0 expected failures)

@@ -76,7 +76,7 @@ public class InspectorFactory {
 
         IAnalysisMonitoring m1 = CompositeMonitoring.buildFromList(timeMonitor, lazyPropagationMonitor, monitoring, visitation, propagationMonitor, contextRegistrationMonitor);
         IAnalysisMonitoring m2 = CompositeMonitoring.buildFromList(monitoring, stateCollector, nonLazyTypeCollectorMonitoring, eventHandlerRegistrationMonitor, allocationCollectingMonitor);
-        PhaseMonitoring collectionMonitors = new PhaseMonitoring(m1, m2);
+        PhaseMonitoring<IAnalysisMonitoring,IAnalysisMonitoring> collectionMonitors = new PhaseMonitoring<>(m1, m2);
         DefaultGutterDataProvider gutterDataProvider = new DefaultGutterDataProvider(eventHandlerRegistrationMonitor, propagationMonitor, contextRegistrationMonitor, allocationCollectingMonitor, timeMonitor, monitoring::getMessages, visitation, typeCollector, lazyPropagationMonitor, stateCollector);
         InspectorDataProvider inspectorDataProvider = new InspectorDataProvider(eventHandlerRegistrationMonitor, propagationMonitor, contextRegistrationMonitor, allocationCollectingMonitor);
         return Pair.make(collectionMonitors, Pair.make(inspectorDataProvider, gutterDataProvider));

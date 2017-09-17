@@ -1,0 +1,15 @@
+test-resources/src/1k2013spring/1334.js:7:5: [definite] The conditional expression is always true
+test-resources/src/1k2013spring/1334.js:56:5: [definite] The conditional expression is always false
+test-resources/src/1k2013spring/1334.js:57:5: [definite] The conditional expression is always false
+test-resources/src/1k2013spring/1334.js:58:5: [definite] The conditional expression is always false
+test-resources/src/1k2013spring/1334.js:59:5: [definite] The conditional expression is always false
+test-resources/src/1k2013spring/1334.js:38:7: [definite] Too few parameters to function Node.cloneNode
+test-resources/src/1k2013spring/1334.js:7:36: [definite] Unreachable function
+test-resources/src/1k2013spring/1334.js:22:1: [definite] The variable v is never used
+test-resources/src/1k2013spring/1334.js:35:29: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2013spring/1334.js:35:42: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1334.js:40:29: [maybe] ReferenceError, reading absent variable g
+test-resources/src/1k2013spring/1334.js:40:42: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1334.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1334.js:35:29, test-resources/src/1k2013spring/1334.js:35:42, test-resources/src/1k2013spring/1334.js:40:29, test-resources/src/1k2013spring/1334.js:40:42, test-resources/src/1k2013spring/shim.js:9:5]
+Soundness testing succeeded for 154 checks (with 0 expected failures)

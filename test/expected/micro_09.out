@@ -1,5 +1,0 @@
-test/micro/test09.js: [definite] Exceptional program exit is unreachable
-test/micro/test09.js:19:5: [definite] The variable bar2 is never used
-test/micro/test09.js:8:1: [info] Abstract value: 11678.0
-test/micro/test09.js:20:1: [info] Abstract value: 6915.0
-Soundness testing succeeded for 46 checks (with 0 expected failures)

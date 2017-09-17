@@ -1,0 +1,39 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var moe = {name: 'Moe Howard', hair: true};
+    var curly = {name: 'Curly Howard', hair: false};
+    equal(_.isMatch(moe, {hair: true}), true, 'Returns a boolean');
+    equal(_.isMatch(curly, {hair: true}), false, 'Returns a boolean');
+    equal(_.isMatch(5, {__x__: undefined}), false, 'can match undefined props on primitives');
+    equal(_.isMatch({__x__: undefined}, {__x__: undefined}), true, 'can match undefined props');
+    equal(_.isMatch(null, {}), true, 'Empty spec called with null object returns true');
+    equal(_.isMatch(null, {a: 1}), false, 'Non-empty spec called with null object returns false');
+    _.each([null, undefined], function(item) { strictEqual(_.isMatch(item, null), true, 'null matches null'); });
+    _.each([null, undefined], function(item) { strictEqual(_.isMatch(item, null), true, 'null matches {}'); });
+    strictEqual(_.isMatch({b: 1}, {a: undefined}), false, 'handles undefined values (1683)');
+    _.each([true, 5, NaN, null, undefined], function(item) {
+      strictEqual(_.isMatch({a: 1}, item), true, 'treats primitives as empty');
+    });
+    function Prototest() {}
+    Prototest.prototype.x = 1;
+    var specObj = new Prototest;
+    equal(_.isMatch({x: 2}, specObj), true, 'spec is restricted to own properties');
+    specObj.y = 5;
+    equal(_.isMatch({x: 1, y: 5}, specObj), true);
+    equal(_.isMatch({x: 1, y: 4}, specObj), false);
+    ok(_.isMatch(specObj, {x: 1, y: 5}), 'inherited and own properties are checked on the test object');
+    Prototest.x = 5;
+    ok(_.isMatch({x: 5, y: 1}, Prototest), 'spec can be a function');
+    //null edge cases
+    var oCon = {'constructor': Object};
+    deepEqual(_.map([null, undefined, 5, {}], _.partial(_.isMatch, _, oCon)), [false, false, false, true], 'doesnt falsey match constructor on undefined/null');
+</script></head><body></body></html>

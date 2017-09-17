@@ -1,0 +1,13 @@
+test-resources/src/v8tests/global-const-var-conflicts.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/global-const-var-conflicts.js:31:5: [definite] The variable caught is never used
+test-resources/src/v8tests/global-const-var-conflicts.js:34:7: [definite] Unreachable code
+test-resources/src/v8tests/global-const-var-conflicts.js:34:24: [definite] Unreachable code
+test-resources/src/v8tests/global-const-var-conflicts.js:36:28: [definite] Unreachable code
+test-resources/src/v8tests/global-const-var-conflicts.js:40:24: [definite] Unreachable code
+test-resources/src/v8tests/global-const-var-conflicts.js:42:28: [definite] Unreachable code
+test-resources/src/v8tests/global-const-var-conflicts.js:46:26: [definite] Unreachable code
+test-resources/src/v8tests/global-const-var-conflicts.js:48:30: [definite] Unreachable code
+test-resources/src/v8tests/global-const-var-conflicts.js:52:26: [definite] Unreachable code
+test-resources/src/v8tests/global-const-var-conflicts.js:54:30: [definite] Unreachable code
+test-resources/src/v8tests/global-const-var-conflicts.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test-resources/src/v8tests/global-const-var-conflicts.js:33:1):1:7]
+Soundness testing succeeded for 2 checks (with 0 expected failures)

@@ -408,15 +408,15 @@ public class JSArray {
                 Value toIndexValue = FunctionCalls.readParameter(call, state, 1);
                 Long toIndex;
                 if (toIndexValue.isMaybeUndef() && !toIndexValue.isMaybeOtherThanUndef()) {
-                    toIndex = Long.MAX_VALUE; // default value: array length, resolved later
+                    toIndex =  Math.round(Math.pow(2, 32)-1); // default value: array length, resolved later
                 } else {
                     Double toIndexNum = Conversion.toNumber(toIndexValue, c).getNum();
-                    toIndex = toIndexNum != null ? Conversion.toUInt32(toIndexNum) : null;
+                    toIndex = toIndexNum != null ? (long) Conversion.toInt32(toIndexNum) : null; //FIXME: Add to conversion a conversion from double to signed integers (long) (github #468)
                 }
 
                 ParallelTransfer.process(state.readThisObjects(), thisObject -> {
                     Value thisLength = readLength(thisObject, c);
-                    if (thisLength.isMaybeSingleNum() && fromIndex != null && toIndex != null) {
+                    if (thisLength.isMaybeSingleNum() && fromIndex != null && toIndex != null && toIndex >= 0) {
                         // precise case: copy individual properties
                         long resolvedToIndex = Math.min(Conversion.toUInt32(thisLength.getNum()), toIndex);
                         long resolvedLength = Math.max(0, resolvedToIndex - fromIndex);
@@ -587,6 +587,10 @@ public class JSArray {
                 if (length == 0 || (n > length && length > 0)) // 15.4.4.14 item 4 and item 6
                     return Value.makeNum(-1);
                 return Value.makeAnyNumNotNaNInf();
+            }
+
+            case ARRAY_VALUES: { // 15.4.4.14
+                throw new AnalysisException("Model for Array.prototype.values not implemented"); // TODO (Github #450):
             }
 
             default:

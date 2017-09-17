@@ -1,0 +1,4 @@
+test-resources/src/resig/ejohn17.js:3:17: [definite] The conditional expression is always true
+test-resources/src/resig/ejohn17.js: [definite] Exceptional program exit is unreachable
+test-resources/src/resig/ejohn17.js:2:10: [definite] Unreachable function
+Soundness testing succeeded for 6 checks (with 0 expected failures)

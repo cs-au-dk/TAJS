@@ -4,6 +4,7 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 @SuppressWarnings("static-method")
@@ -13,153 +14,119 @@ public class TestJSAI2014 {
     public void init() {
         Main.reset();
         Options.get().enableTest();
-        Options.get().setAnalysisTimeLimit(2 * 60);
+        Options.get().setAnalysisTimeLimit(5 * 60);
     }
 
-    @Test
+    @Ignore // throws AnalysisTimeException on fast machines (GitHub #435)
+    @Test(expected = AnalysisLimitationException.class)
     public void JSAI2014_ems_aha() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/ems-aha.js"};
-        Misc.run(args);
+        Options.get().enablePolyfillTypedArrays();
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-aha.js");
     }
 
-    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
+    @Test
     public void JSAI2014_ems_fannkuch() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/ems-fannkuch.js"};
-        Misc.run(args);
+        Options.get().enablePolyfillTypedArrays();
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-fannkuch.js");
     }
 
-    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
+    @Test
     public void JSAI2014_ems_fasta() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/ems-fasta.js"};
-        Misc.run(args);
+        Options.get().enablePolyfillTypedArrays();
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-fasta.js");
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.class)
     public void JSAI2014_ems_fourinarow() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/ems-fourinarow.js"};
-        Misc.run(args);
+        Options.get().enablePolyfillTypedArrays();
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-fourinarow.js");
     }
 
-    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
+    @Test(expected = AnalysisLimitationException.class)
     public void JSAI2014_ems_hashtest() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/ems-hashtest.js"};
-        Misc.run(args);
+        Options.get().enablePolyfillTypedArrays();
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-hashtest.js");
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.class)
     public void JSAI2014_ems_llubenchmark() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/ems-llubenchmark.js"};
-        Misc.run(args);
+        Options.get().enablePolyfillTypedArrays();
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-llubenchmark.js");
     }
 
-    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
+    @Test(expected = AnalysisLimitationException.class)
     public void JSAI2014_ems_sgefa() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/ems-sgefa.js"};
-        Misc.run(args);
+        Options.get().enablePolyfillTypedArrays();
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-sgefa.js");
     }
 
     @Test
     public void JSAI2014_opn_aes() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/opn-aes.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/opn-aes.js");
     }
 
     @Test
     public void JSAI2014_opn_linq_action() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/opn-linq_action.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/opn-linq_action.js");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test(expected = AnalysisLimitationException.class)
     public void JSAI2014_opn_linq_aggregate() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/opn-linq_aggregate.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/opn-linq_aggregate.js");
     }
 
     @Test
     public void JSAI2014_opn_linq_dictionary() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/opn-linq_dictionary.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/opn-linq_dictionary.js");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test
     public void JSAI2014_opn_linq_enumerable() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/opn-linq_enumerable.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/opn-linq_enumerable.js");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test(expected = AnalysisLimitationException.class)
     public void JSAI2014_opn_linq_functional() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/opn-linq_functional.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/opn-linq_functional.js");
     }
 
     @Test
     public void JSAI2014_opn_rsa() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/opn-rsa.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/opn-rsa.js");
     }
 
     @Test
     public void JSAI2014_std_3dcube() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/std-3d-cube.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/std-3d-cube.js");
     }
 
     @Test
     public void JSAI2014_std_3draytrace() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/std-3d-raytrace.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/std-3d-raytrace.js");
     }
 
     @Test
     public void JSAI2014_std_accessNbody() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/std-access-nbody.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/std-access-nbody.js");
     }
 
     @Test
     public void JSAI2014_std_cryptobench() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/std-cryptobench.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/std-cryptobench.js");
     }
 
     @Test
     public void JSAI2014_std_cryptoSha1() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/std-crypto-sha1.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/std-crypto-sha1.js");
     }
 
     @Test
     public void JSAI2014_std_richards() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/std-richards.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/std-richards.js");
     }
 
     @Test
     public void JSAI2014_std_splay() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2014benchmarks/std-splay.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2014benchmarks/std-splay.js");
     }
 }

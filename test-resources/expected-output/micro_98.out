@@ -1,0 +1,5 @@
+test-resources/src/micro/test98.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test98.js:23:16: [maybe] The variable x has values with different types
+test-resources/src/micro/test98.js:21:3: [info] Abstract value: "HERE"
+test-resources/src/micro/test98.js:23:1: [info] Abstract value: true|"foo"
+Soundness testing succeeded for 32 checks (with 0 expected failures)

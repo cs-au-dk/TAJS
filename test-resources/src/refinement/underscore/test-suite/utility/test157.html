@@ -1,0 +1,16 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var stooge = {name : 'moe'};
+    equal(_.property('name')(stooge), 'moe', 'should return the property with the given name');
+    equal(_.property('name')(null), undefined, 'should return undefined for null values');
+    equal(_.property('name')(undefined), undefined, 'should return undefined for undefined values');
+</script></head><body></body></html>

@@ -1,0 +1,55 @@
+test-resources/src/1k2012love/1196.js:65:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.save
+test-resources/src/1k2012love/1196.js:85:4: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
+test-resources/src/1k2012love/1196.js:97:4: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test-resources/src/1k2012love/1196.js:99:5: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.closePath
+test-resources/src/1k2012love/1196.js:109:14: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.clip
+test-resources/src/1k2012love/1196.js:123:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.restore
+test-resources/src/1k2012love/1196.js:131:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.save
+test-resources/src/1k2012love/1196.js:138:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.save
+test-resources/src/1k2012love/1196.js:149:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.restore
+test-resources/src/1k2012love/1196.js:160:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.restore
+test-resources/src/1k2012love/1196.js:91:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2012love/1196.js:94:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2012love/1196.js:49:6: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2012love/1196.js:64:13: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1196.js:67:29: [maybe] ReferenceError, reading absent variable k
+test-resources/src/1k2012love/1196.js:72:18: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1196.js:72:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1196.js:72:29: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1196.js:77:8: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1196.js:116:7: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1196.js:119:19: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1196.js:119:47: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1196.js:125:18: [maybe] ReferenceError, reading absent variable k
+test-resources/src/1k2012love/1196.js:133:26: [maybe] ReferenceError, reading absent variable x
+test-resources/src/1k2012love/1196.js:145:16: [maybe] ReferenceError, reading absent variable k
+test-resources/src/1k2012love/1196.js:146:14: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2012love/1196.js:147:18: [maybe] ReferenceError, reading absent variable k
+test-resources/src/1k2012love/1196.js:151:21: [maybe] ReferenceError, reading absent variable k
+test-resources/src/1k2012love/1196.js:158:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1196.js:162:4: [maybe] ReferenceError, reading absent variable x
+test-resources/src/1k2012love/1196.js:162:9: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1196.js:44:6: [maybe] Reading absent property which of host object
+test-resources/src/1k2012love/1196.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1196.js:49:6, test-resources/src/1k2012love/1196.js:64:13, test-resources/src/1k2012love/1196.js:67:29, test-resources/src/1k2012love/1196.js:72:18, test-resources/src/1k2012love/1196.js:72:21, test-resources/src/1k2012love/1196.js:72:29, test-resources/src/1k2012love/1196.js:77:8, test-resources/src/1k2012love/1196.js:116:7, test-resources/src/1k2012love/1196.js:119:19, test-resources/src/1k2012love/1196.js:119:47, test-resources/src/1k2012love/1196.js:125:18, test-resources/src/1k2012love/1196.js:133:26, test-resources/src/1k2012love/1196.js:145:16, test-resources/src/1k2012love/1196.js:146:14, test-resources/src/1k2012love/1196.js:147:18, test-resources/src/1k2012love/1196.js:151:21, test-resources/src/1k2012love/1196.js:158:3, test-resources/src/1k2012love/1196.js:162:4, test-resources/src/1k2012love/1196.js:162:9, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1196.js:47:6: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:51:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:54:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:67:24: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:72:17: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:72:20: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:72:21: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1196.js:72:29: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1196.js:72:68: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1196.js:91:35: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:91:43: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:94:4: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:94:27: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:116:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:116:9: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:133:15: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:145:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:147:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:158:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1196.js:166:12: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 50 checks (with 1 expected failures)

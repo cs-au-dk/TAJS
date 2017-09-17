@@ -1,0 +1,6 @@
+test-resources/src/micro/toString1.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/toString1.js:4:1: [info] Abstract value: "foobar"
+test-resources/src/micro/toString1.js:5:1: [info] Abstract value: 1.0
+test-resources/src/micro/toString1.js:11:1: [info] Abstract value: "foobar"
+test-resources/src/micro/toString1.js:12:1: [info] Abstract value: 1.0
+Soundness testing succeeded for 28 checks (with 0 expected failures)

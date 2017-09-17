@@ -1,0 +1,19 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    deepEqual(_.initial([1, 2, 3, 4, 5]), [1, 2, 3, 4], 'working initial()');
+    deepEqual(_.initial([1, 2, 3, 4], 2), [1, 2], 'initial can take an index');
+    deepEqual(_.initial([1, 2, 3, 4], 6), [], 'initial can take a large index');
+    var result = (function(){ return _(arguments).initial(); }(1, 2, 3, 4));
+    deepEqual(result, [1, 2, 3], 'initial works on arguments object');
+    result = _.map([[1, 2, 3], [1, 2, 3]], _.initial);
+    deepEqual(_.flatten(result), [1, 2, 1, 2], 'initial works with _.map');
+</script></head><body></body></html>

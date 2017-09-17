@@ -1,0 +1,193 @@
+test-resources/src/10k/defend_yourself.html:202:1: [definite] The conditional expression is always true
+test-resources/src/10k/defend_yourself.html:457:5: [definite] The conditional expression is always true
+test-resources/src/10k/defend_yourself.html:246:1: [definite] The variable e is never used
+test-resources/src/10k/defend_yourself.html:249:1: [definite] The variable e is never used
+test-resources/src/10k/defend_yourself.html:262:1: [definite] The variable e is never used
+test-resources/src/10k/defend_yourself.html:173:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:206:14: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:224:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:253:25: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:254:25: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:268:1: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:272:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:285:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:285:20: [maybe] TypeError, call to non-function
+test-resources/src/10k/defend_yourself.html:300:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:300:34: [maybe] TypeError, call to non-function
+test-resources/src/10k/defend_yourself.html:304:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:304:30: [maybe] TypeError, call to non-function
+test-resources/src/10k/defend_yourself.html:332:25: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:333:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:334:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:335:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:339:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:365:25: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:366:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:367:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:368:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:372:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:379:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:386:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:386:26: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:386:45: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:386:58: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:386:85: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:386:98: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:386:127: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:386:140: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:391:25: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:392:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:392:28: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:392:49: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:392:64: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:392:93: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:392:108: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:392:129: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:392:144: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:399:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:402:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:423:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:424:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:425:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:426:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:439:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:456:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:463:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:465:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:466:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:467:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:470:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:486:25: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:487:29: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:503:1: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:504:1: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:505:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:508:1: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:521:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/defend_yourself.html:441:27: [maybe] Reading absent property firstChild of host object
+test-resources/src/10k/defend_yourself.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/defend_yourself.html:173:9, test-resources/src/10k/defend_yourself.html:206:14, test-resources/src/10k/defend_yourself.html:224:5, test-resources/src/10k/defend_yourself.html:253:25, test-resources/src/10k/defend_yourself.html:254:25, test-resources/src/10k/defend_yourself.html:268:1, test-resources/src/10k/defend_yourself.html:272:5, test-resources/src/10k/defend_yourself.html:285:9, test-resources/src/10k/defend_yourself.html:285:20, test-resources/src/10k/defend_yourself.html:300:21, test-resources/src/10k/defend_yourself.html:300:34, test-resources/src/10k/defend_yourself.html:304:17, test-resources/src/10k/defend_yourself.html:304:30, test-resources/src/10k/defend_yourself.html:332:25, test-resources/src/10k/defend_yourself.html:333:9, test-resources/src/10k/defend_yourself.html:334:9, test-resources/src/10k/defend_yourself.html:335:9, test-resources/src/10k/defend_yourself.html:339:5, test-resources/src/10k/defend_yourself.html:365:25, test-resources/src/10k/defend_yourself.html:366:9, test-resources/src/10k/defend_yourself.html:367:9, test-resources/src/10k/defend_yourself.html:368:9, test-resources/src/10k/defend_yourself.html:372:5, test-resources/src/10k/defend_yourself.html:379:5, test-resources/src/10k/defend_yourself.html:386:13, test-resources/src/10k/defend_yourself.html:386:26, test-resources/src/10k/defend_yourself.html:386:45, test-resources/src/10k/defend_yourself.html:386:58, test-resources/src/10k/defend_yourself.html:386:85, test-resources/src/10k/defend_yourself.html:386:98, test-resources/src/10k/defend_yourself.html:386:127, test-resources/src/10k/defend_yourself.html:386:140, test-resources/src/10k/defend_yourself.html:391:25, test-resources/src/10k/defend_yourself.html:392:13, test-resources/src/10k/defend_yourself.html:392:28, test-resources/src/10k/defend_yourself.html:392:49, test-resources/src/10k/defend_yourself.html:392:64, test-resources/src/10k/defend_yourself.html:392:93, test-resources/src/10k/defend_yourself.html:392:108, test-resources/src/10k/defend_yourself.html:392:129, test-resources/src/10k/defend_yourself.html:392:144, test-resources/src/10k/defend_yourself.html:399:9, test-resources/src/10k/defend_yourself.html:402:13, test-resources/src/10k/defend_yourself.html:423:17, test-resources/src/10k/defend_yourself.html:424:17, test-resources/src/10k/defend_yourself.html:425:17, test-resources/src/10k/defend_yourself.html:426:13, test-resources/src/10k/defend_yourself.html:439:9, test-resources/src/10k/defend_yourself.html:456:5, test-resources/src/10k/defend_yourself.html:463:5, test-resources/src/10k/defend_yourself.html:465:5, test-resources/src/10k/defend_yourself.html:466:5, test-resources/src/10k/defend_yourself.html:467:5, test-resources/src/10k/defend_yourself.html:470:5, test-resources/src/10k/defend_yourself.html:486:25, test-resources/src/10k/defend_yourself.html:487:29, test-resources/src/10k/defend_yourself.html:503:1, test-resources/src/10k/defend_yourself.html:504:1, test-resources/src/10k/defend_yourself.html:505:5, test-resources/src/10k/defend_yourself.html:508:1, test-resources/src/10k/defend_yourself.html:521:5]
+test-resources/src/10k/defend_yourself.html:154:18: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:154:31: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:167:5: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:205:9: [maybe] The variable hS has values with different types
+test-resources/src/10k/defend_yourself.html:206:14: [maybe] Converting object to string
+test-resources/src/10k/defend_yourself.html:206:14: [maybe] Converting primitive string to object
+test-resources/src/10k/defend_yourself.html:206:14: [maybe] The variable hS has values with different types
+test-resources/src/10k/defend_yourself.html:208:29: [maybe] Converting undefined to string
+test-resources/src/10k/defend_yourself.html:208:38: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:231:5: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:232:5: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:242:5: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:273:5: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:277:29: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:278:25: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:279:25: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:279:39: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:280:25: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:280:39: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:292:14: [maybe] The variable nextBulletAt has values with different types
+test-resources/src/10k/defend_yourself.html:292:37: [maybe] The variable nextBulletAt has values with different types
+test-resources/src/10k/defend_yourself.html:293:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:294:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:299:28: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:307:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:309:32: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:311:32: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:315:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:315:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:318:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:325:9: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:333:9: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:334:9: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:335:9: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:345:11: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:353:14: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:353:34: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:354:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:354:41: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:354:59: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:354:79: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:354:97: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:354:117: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:355:24: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:355:39: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:355:56: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:355:76: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:360:14: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:360:34: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:361:24: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:361:39: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:361:56: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:361:76: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:366:9: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:367:9: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:368:9: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:375:5: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:375:19: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:376:5: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:376:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:382:27: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:382:66: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:386:13: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:386:26: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:386:45: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:386:58: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:386:85: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:386:98: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:386:112: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:386:127: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:386:140: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:388:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:392:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:392:13: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:392:28: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:392:49: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:392:49: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:392:64: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:392:93: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:392:93: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:392:108: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:392:129: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:392:129: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:392:144: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:402:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:403:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:419:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:420:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:423:17: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:424:17: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:425:17: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:426:13: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:426:26: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:436:16: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:446:9: [maybe] Converting undefined to string
+test-resources/src/10k/defend_yourself.html:446:23: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:464:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:466:5: [maybe] Converting undefined to string
+test-resources/src/10k/defend_yourself.html:467:5: [maybe] Converting undefined to string
+test-resources/src/10k/defend_yourself.html:469:28: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:470:43: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:474:5: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:475:5: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:488:21: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:488:31: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:153:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:154:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:154:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:156:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:166:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:167:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:168:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:169:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:170:5: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:225:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:226:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:228:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:228:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:228:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:231:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:231:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:232:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:232:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/defend_yourself.html:242:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1276 checks (with 0 expected failures)

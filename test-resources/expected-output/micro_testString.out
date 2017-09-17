@@ -1,0 +1,62 @@
+test-resources/src/micro/testString.js:61:16: [definite] Too few parameters to function String.prototype.localeCompare
+test-resources/src/micro/testString.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/testString.js:4:9: [maybe] Converting boolean to string
+test-resources/src/micro/testString.js:10:16: [maybe] Converting primitive string to object
+test-resources/src/micro/testString.js:13:9: [maybe] Converting boolean to string
+test-resources/src/micro/testString.js:21:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:30:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:31:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:33:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:34:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:37:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:40:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:42:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:45:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:46:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:47:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:49:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:51:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:52:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:53:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:55:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:58:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:59:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:60:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:61:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:61:16: [maybe] Converting undefined to string
+test-resources/src/micro/testString.js:7:1: [info] Abstract value: ""
+test-resources/src/micro/testString.js:8:1: [info] Abstract value: "true"
+test-resources/src/micro/testString.js:9:1: [info] Abstract value: "77"
+test-resources/src/micro/testString.js:10:1: [info] Abstract value: "77"
+test-resources/src/micro/testString.js:16:1: [info] Abstract value: [@String#node37{boxed-primitive=""}]
+test-resources/src/micro/testString.js:17:1: [info] Abstract value: ""
+test-resources/src/micro/testString.js:18:1: [info] Abstract value: 0.0
+test-resources/src/micro/testString.js:19:1: [info] Abstract value: [@String#node41{boxed-primitive="false"}]
+test-resources/src/micro/testString.js:20:1: [info] Abstract value: "false"
+test-resources/src/micro/testString.js:21:1: [info] Abstract value: "FALSE"
+test-resources/src/micro/testString.js:22:1: [info] Abstract value: 5.0
+test-resources/src/micro/testString.js:23:1: [info] Abstract value: [@String#node45{boxed-primitive="77.77"}]
+test-resources/src/micro/testString.js:24:1: [info] Abstract value: "77.77"
+test-resources/src/micro/testString.js:25:1: [info] Abstract value: 5.0
+test-resources/src/micro/testString.js:27:1: [info] Abstract value: ""
+test-resources/src/micro/testString.js:28:1: [info] Abstract value: "ABCDEF"
+test-resources/src/micro/testString.js:30:1: [info] Abstract value: "."
+test-resources/src/micro/testString.js:31:1: [info] Abstract value: ""
+test-resources/src/micro/testString.js:33:1: [info] Abstract value: 46.0
+test-resources/src/micro/testString.js:34:1: [info] Abstract value: NaN
+test-resources/src/micro/testString.js:37:1: [info] Abstract value: 49.0
+test-resources/src/micro/testString.js:40:1: [info] Abstract value: "77.77falsefinish"
+test-resources/src/micro/testString.js:42:1: [info] Abstract value: "42.12542.125"
+test-resources/src/micro/testString.js:45:1: [info] Abstract value: 4.0
+test-resources/src/micro/testString.js:46:1: [info] Abstract value: 8.0
+test-resources/src/micro/testString.js:47:1: [info] Abstract value: -1.0
+test-resources/src/micro/testString.js:49:1: [info] Abstract value: 2.0
+test-resources/src/micro/testString.js:51:1: [info] Abstract value: 8.0
+test-resources/src/micro/testString.js:52:1: [info] Abstract value: 4.0
+test-resources/src/micro/testString.js:53:1: [info] Abstract value: -1.0
+test-resources/src/micro/testString.js:55:1: [info] Abstract value: 2.0
+test-resources/src/micro/testString.js:58:1: [info] Abstract value: 0.0
+test-resources/src/micro/testString.js:59:1: [info] Abstract value: 1.0
+test-resources/src/micro/testString.js:60:1: [info] Abstract value: -1.0
+test-resources/src/micro/testString.js:61:1: [info] Abstract value: -1.0
+Soundness testing succeeded for 278 checks (with 0 expected failures)

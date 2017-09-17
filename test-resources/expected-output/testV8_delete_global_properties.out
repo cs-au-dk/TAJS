@@ -1,0 +1,4 @@
+test-resources/src/v8tests/delete-global-properties.js:32:21: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/delete-global-properties.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/delete-global-properties.js:30:5: [definite] The variable tmp is never used
+Soundness testing succeeded for 28 checks (with 0 expected failures)

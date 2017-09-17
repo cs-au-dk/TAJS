@@ -1,0 +1,13 @@
+test-resources/src/1k2013spring/1360.js:11:2: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1360.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1360.js:11:2, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1360.js:33:15: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1360.js:39:11: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1360.js:43:14: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1360.js:43:23: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1360.js:43:34: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1360.js:48:23: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1360.js:52:15: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1360.js:52:25: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1360.js:56:14: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 374 checks (with 0 expected failures)

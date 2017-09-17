@@ -2,6 +2,7 @@ package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisResultException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +16,6 @@ public class TestStrict {
 
     @Test
     public void callStringThisNonStrict() {
-        Misc.init();
         Misc.runSource(
                 "try { ",
                 "  function f(){TAJS_assert(this instanceof String)};",
@@ -28,7 +28,6 @@ public class TestStrict {
 
     @Test
     public void callStringThisStrict() {
-        Misc.init();
         Misc.runSource(
                 "(function(){",
                 "   'use strict';",
@@ -44,7 +43,6 @@ public class TestStrict {
 
     @Test
     public void callStrictWithoutReceiver() {
-        Misc.init();
         Misc.runSource(
                 "(function(){",
                 "   'use strict';",
@@ -60,7 +58,6 @@ public class TestStrict {
 
     @Test
     public void inheritStrict() {
-        Misc.init();
         Misc.runSource(
                 "(function(){",
                 "   'use strict';",
@@ -76,7 +73,6 @@ public class TestStrict {
 
     @Test
     public void deepInheritStrict() {
-        Misc.init();
         Misc.runSource(
                 "(function(){",
                 "   'use strict';",
@@ -94,7 +90,6 @@ public class TestStrict {
 
     @Test
     public void selfStrict() {
-        Misc.init();
         Misc.runSource(
                 "(function(){",
                 "   try { ",
@@ -107,9 +102,8 @@ public class TestStrict {
         );
     }
 
-    @Test(expected = AssertionError.class /* Top level 'use strict' is not yet supported (for architectural reasons */)
+    @Test(expected = AnalysisResultException.class /* Top level 'use strict' is not yet supported (for architectural reasons */)
     public void topLevelStrict() {
-        Misc.init();
         Misc.runSource(
                 "'use strict';",
                 "try { ",
@@ -123,34 +117,28 @@ public class TestStrict {
 
     @Test
     public void strictUndefined() {
-        Misc.init();
         Misc.runSource(
-                new String[]{
-                        "(function () {",
-                        "   'use strict';",
-                        "   function f() {}",
-                        "   f();",
-                        "})();",
-                });
+                "(function () {",
+                "   'use strict';",
+                "   function f() {}",
+                "   f();",
+                "})();");
     }
 
     @Test
     public void strictUndefinedNullReceivers() {
-        Misc.init();
         Misc.runSource(
-                new String[]{
-                        "(function () {",
-                        "   'use strict';",
-                        "   TAJS_assertEquals(undefined, this);",
-                        "   function f() {",
-                        "       TAJS_assertEquals(undefined, this);",
-                        "   }",
-                        "   function g() {",
-                        "       TAJS_assertEquals(null, this);",
-                        "   }",
-                        "   f();",
-                        "   g.call(null);",
-                        "})();",
-                });
+                "(function () {",
+                "   'use strict';",
+                "   TAJS_assertEquals(undefined, this);",
+                "   function f() {",
+                "       TAJS_assertEquals(undefined, this);",
+                "   }",
+                "   function g() {",
+                "       TAJS_assertEquals(null, this);",
+                "   }",
+                "   f();",
+                "   g.call(null);",
+                "})();");
     }
 }

@@ -1,0 +1,9 @@
+test-resources/src/v8tests/debug-conditional-breakpoints.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/debug-conditional-breakpoints.js:53:17: [definite] ReferenceError, reading absent variable Debug
+test-resources/src/v8tests/debug-conditional-breakpoints.js:34:1: [definite] Unreachable function listener
+test-resources/src/v8tests/debug-conditional-breakpoints.js:45:1: [definite] Unreachable function g
+test-resources/src/v8tests/debug-conditional-breakpoints.js:46:1: [definite] Unreachable function h
+test-resources/src/v8tests/debug-conditional-breakpoints.js:53:17: [definite] Unreachable code
+test-resources/src/v8tests/debug-conditional-breakpoints.js:99:10: [definite] The variable i is never used
+test-resources/src/v8tests/debug-conditional-breakpoints.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-conditional-breakpoints.js:53:17]
+Soundness testing succeeded for 17 checks (with 0 expected failures)

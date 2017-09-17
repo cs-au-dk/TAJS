@@ -1,0 +1,8 @@
+test-resources/src/v8tests/has-own-property.js:29:13: [definite] Dead assignment, property x is never read
+test-resources/src/v8tests/has-own-property.js:30:14: [definite] Dead assignment, property x is never read
+test-resources/src/v8tests/has-own-property.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/has-own-property.js:33:12: [maybe] Converting primitive string to object
+test-resources/src/v8tests/has-own-property.js:34:12: [maybe] Converting primitive string to object
+test-resources/src/v8tests/has-own-property.js:37:13: [maybe] Converting primitive number to object
+test-resources/src/v8tests/has-own-property.js:38:13: [maybe] Converting primitive number to object
+Soundness testing succeeded for 61 checks (with 0 expected failures)

@@ -1,3 +1,0 @@
-test/micro/test135.js: [definite] Exceptional program exit is unreachable
-test/micro/test135.js:5:1: [info] Abstract value: 7.0
-Soundness testing succeeded for 10 checks (with 0 expected failures)

@@ -146,7 +146,7 @@ public class PathAndURLUtils {
      */
     private static Optional<Path> getRelativeToParentTAJS(Path to) {
         try {
-            Path maybeTajs = to.toAbsolutePath();
+            Path maybeTajs = to.toAbsolutePath().toRealPath();
             while (maybeTajs != null) {
                 if (isTAJSRootDirectory(maybeTajs)) {
                     return Optional.of(getRelativeTo(maybeTajs.toAbsolutePath(), to.toRealPath()));

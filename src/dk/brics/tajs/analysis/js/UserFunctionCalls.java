@@ -216,7 +216,7 @@ public class UserFunctionCalls {
                             }
                         }
                     }
-                    HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeActivationAndArgumentsHeapContext(edge_state, obj_f, thisVal.getObjectLabels(), call, c);
+                    HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeActivationAndArgumentsHeapContext(edge_state, obj_f, thisVal, call, c);
 
                     // 10.2.3 enter new execution context, 13.2.1 transfer parameters, 10.1.6/8 provide 'arguments' object
                     ObjectLabel varobj = ObjectLabel.make(f.getEntry().getFirstNode(), Kind.ACTIVATION, heapContext); // better to use entry than invoke here
@@ -252,7 +252,7 @@ public class UserFunctionCalls {
                         pv.writeProperty(singleton(argobj), Value.makeAnyStrUInt(), summarized); // the first arguments will be overwritten below with something more precise
                     }
                     // write argument values to the arguments object and the named parameters
-                    final int numberOfUnknownArgumentsToKeepDisjoint = 10; // number of parameters to keep separate, if the actual number is unknown
+                    final int numberOfUnknownArgumentsToKeepDisjoint = Options.Constants.NUMBER_OF_UNKNOWN_ARGUMENTS_TO_KEEP_DISJOINT; // number of parameters to keep separate, if the actual number is unknown
                     for (int i = 0; i < f.getParameterNames().size() || i < (call.isUnknownNumberOfArgs() ? numberOfUnknownArgumentsToKeepDisjoint : call.getNumberOfArgs()); i++) {
                         Value v = call.getArg(i);
                         Value summarized = v.summarize(extra_summarized);
@@ -272,7 +272,9 @@ public class UserFunctionCalls {
                     edge_state.stackObjectLabels();
                     edge_state.clearRegisters();
 
-                    if (thisVal.getObjectLabels().size() > 1 && Options.get().isContextSpecializationEnabled()) {
+                    if (thisVal.getObjectLabels().size() > 1
+                            && (Options.get().isContextSpecializationEnabled()
+                            && thisVal.getObjectLabels().size() < Options.Constants.MAX_CONTEXT_SPECIALIZATION)) {
                         // specialize edge_state such that 'this' becomes a singleton
                         if (log.isDebugEnabled())
                             log.debug("specializing edge state, this = " + thisVal.getObjectLabels());
@@ -288,7 +290,7 @@ public class UserFunctionCalls {
     }
 
     private static void propagateToFunctionEntry(State edge_state, AbstractNode n, ObjectLabel obj_f, CallInfo callInfo, boolean implicit, Solver.SolverInterface c) {
-        Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge_state, obj_f, callInfo, edge_state.readThisObjects(), c);
+        Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge_state, obj_f, callInfo, edge_state.readThis(), c);
         c.propagateToFunctionEntry(n, edge_state.getContext(), edge_state, edge_context, obj_f.getFunction().getEntry(), implicit);
     }
 

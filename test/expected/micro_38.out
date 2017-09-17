@@ -1,3 +1,0 @@
-test/micro/test38.js: [definite] Exceptional program exit is unreachable
-test/micro/test38.js:14:1: [info] Abstract object: {length:UInt,[[Prototype]]=[@Array.prototype[native]]}
-Soundness testing succeeded for 52 checks (with 0 expected failures)

@@ -1,0 +1,15 @@
+test-resources/src/v8tests/deep-recursion.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/deep-recursion.js:44:19: [maybe] Converting primitive string to object
+test-resources/src/v8tests/deep-recursion.js:44:19: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/deep-recursion.js:49:18: [maybe] Converting object to string
+test-resources/src/v8tests/deep-recursion.js:49:18: [maybe] Converting primitive string to object
+test-resources/src/v8tests/deep-recursion.js:52:12: [maybe] Converting object to string
+test-resources/src/v8tests/deep-recursion.js:52:12: [maybe] Converting primitive string to object
+test-resources/src/v8tests/deep-recursion.js:55:12: [maybe] Converting object to string
+test-resources/src/v8tests/deep-recursion.js:55:12: [maybe] Converting primitive string to object
+test-resources/src/v8tests/deep-recursion.js:60:13: [maybe] Converting object to string
+test-resources/src/v8tests/deep-recursion.js:60:13: [maybe] Converting primitive string to object
+test-resources/src/v8tests/deep-recursion.js:63:19: [maybe] Converting primitive string to object
+test-resources/src/v8tests/deep-recursion.js:63:19: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/deep-recursion.js:64:17: [maybe] Converting primitive string to object
+Soundness testing succeeded for 332 checks (with 0 expected failures)

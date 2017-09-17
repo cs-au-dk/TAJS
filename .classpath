@@ -6,6 +6,8 @@
 	<classpathentry kind="lib" path="lib/log4j-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/jericho-html-3.3.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="lib/closure-compiler-v20160713.jar"/>
+	<classpathentry kind="lib" path="lib/closure-compiler-v20170806.jar"/>
+	<classpathentry kind="lib" path="lib/jetty-all-9.4.1.v20170120-uber.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.8.1.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

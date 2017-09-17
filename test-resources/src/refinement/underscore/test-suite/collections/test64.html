@@ -1,0 +1,25 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var list = [[5, 1, 7], [3, 2, 1]];
+    var result = _.invoke(list, 'sort');
+    deepEqual(result[0], [1, 5, 7], 'first array sorted');
+    deepEqual(result[1], [1, 2, 3], 'second array sorted');
+    _.invoke([{
+      method: function() {
+        deepEqual(_.toArray(arguments), [1, 2, 3], 'called with arguments');
+      }
+    }], 'method', 1, 2, 3);
+    deepEqual(_.invoke([{a: null}, {}, {a: _.constant(1)}], 'a'), [null, void 0, 1], 'handles null & undefined');
+    throws(function() {
+      _.invoke([{a: 1}], 'a');
+    }, TypeError, 'throws for non-functions');
+</script></head><body></body></html>

@@ -2313,7 +2313,7 @@ public class State implements IState<State, Context, CallEdge> {
      * Returns the value of 'this'.
      */
     public Set<ObjectLabel> readThisObjects() {
-        return readThis().getObjectLabels(); // TODO: assert no primitive values?
+        return readThis().getObjectLabels(); // TODO: assert no primitive values (Github #479) ?
     }
 
     /**

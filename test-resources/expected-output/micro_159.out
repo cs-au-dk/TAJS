@@ -1,0 +1,6 @@
+test-resources/src/micro/test159.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test159.js:1:1: [definite] Unreachable function B
+test-resources/src/micro/test159.js:2:1: [maybe] Converting object to string
+test-resources/src/micro/test159.js:2:1: [maybe] Reading absent property (computed name)
+test-resources/src/micro/test159.js:2:1: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 3 checks (with 0 expected failures)

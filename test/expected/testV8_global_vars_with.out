@@ -1,2 +1,0 @@
-test/v8tests/global-vars-with.js:29:1: [definite] Reading 'this' yields the global object
-test/v8tests/global-vars-with.js:37:3: [definite] Reading 'this' yields the global object

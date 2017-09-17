@@ -1,0 +1,4 @@
+test-resources/src/micro/test160.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test160.js:5:3: [info] Abstract object: {0:42.0,length:1.0,push:^(@Array#node8.push[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Array.prototype[native]],[[Value]]=?,[[Scope]]=?}
+test-resources/src/micro/test160.js:10:1: [info] Abstract object: {0:42.0,length:1.0,[[Prototype]]=[@Array.prototype[native]]}
+Soundness testing succeeded for 18 checks (with 0 expected failures)

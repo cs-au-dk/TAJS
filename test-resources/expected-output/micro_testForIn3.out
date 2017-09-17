@@ -1,0 +1,5 @@
+test-resources/src/micro/testForIn3.js:5:2: [definite] Dead assignment, property x is never read
+test-resources/src/micro/testForIn3.js:5:2: [definite] Dead assignment, property y is never read
+test-resources/src/micro/testForIn3.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/testForIn3.js:7:9]
+test-resources/src/micro/testForIn3.js:10:1: [info] Abstract object: {x:1.0|absent,[[Prototype]]=[@Object.prototype[native]]}
+Soundness testing succeeded for 18 checks (with 0 expected failures)

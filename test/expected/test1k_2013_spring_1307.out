@@ -1,7 +1,0 @@
-test/1k2013spring/1307.js:2:11: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1307.js:2:11: [maybe] TypeError, call to non-function
-test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1307.js:2:11: [maybe] Reading absent property getContext of host object
-test/1k2013spring/1307.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1307.js:2:11, test/1k2013spring/shim.js:9:5]
-test/1k2013spring/1307.js:1:14: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 61 checks (with 0 expected failures)

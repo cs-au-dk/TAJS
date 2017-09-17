@@ -1,0 +1,19 @@
+test-resources/src/1k2012love/1240.js:61:2: [definite] Dead assignment, property i is never read
+test-resources/src/1k2012love/1240.js:78:2: [definite] Dead assignment, property u is never read
+test-resources/src/1k2012love/1240.js:101:2: [definite] Dead assignment, property j is never read
+test-resources/src/1k2012love/1240.js:26:1: [definite] Unreachable function A
+test-resources/src/1k2012love/1240.js:27:5: [definite] Unreachable function A
+test-resources/src/1k2012love/1240.js:32:1: [definite] Unreachable function B
+test-resources/src/1k2012love/1240.js:38:1: [definite] Unreachable function C
+test-resources/src/1k2012love/1240.js:44:1: [definite] Unreachable function D
+test-resources/src/1k2012love/1240.js:49:1: [definite] Unreachable function E
+test-resources/src/1k2012love/1240.js:54:1: [definite] Unreachable function F
+test-resources/src/1k2012love/1240.js:61:5: [definite] Unreachable function
+test-resources/src/1k2012love/1240.js:78:5: [definite] Unreachable function
+test-resources/src/1k2012love/1240.js:101:5: [definite] Unreachable function
+test-resources/src/1k2012love/1240.js:110:1: [definite] Unreachable function f
+test-resources/src/1k2012love/1240.js:127:11: [maybe] ReferenceError, reading absent variable t
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1240.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1240.js:127:11, test-resources/src/1k2012love/shim.js:9:5]
+Disabling soundness testing for test-resources/src/1k2012love/1240.js entirely (277 uninspected soundness errors).
+Soundness testing succeeded for 377 checks (with 277 expected failures)

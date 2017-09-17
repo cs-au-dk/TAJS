@@ -83,6 +83,7 @@ public class HTMLBuilder {
         HTMLQuoteElement.build(c);
         HTMLScriptElement.build(c);
         HTMLSelectElement.build(c);
+        HTMLSpanElement.build(c);
         HTMLStyleElement.build(c);
         HTMLTableCaptionElement.build(c);
         HTMLTableCellElement.build(c);
@@ -90,6 +91,7 @@ public class HTMLBuilder {
         HTMLTableRowElement.build(c);
         HTMLTableSectionElement.build(c);
         HTMLTableElement.build(c);
+        HTMLTemplateElement.build(c);
         HTMLTextAreaElement.build(c);
         HTMLTitleElement.build(c);
         HTMLUListElement.build(c);
@@ -139,6 +141,7 @@ public class HTMLBuilder {
         HTML4_OBJECT_LABELS.add(HTMLQuoteElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLScriptElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLSelectElement.INSTANCES);
+        HTML4_OBJECT_LABELS.add(HTMLSpanElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLStyleElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLTableCaptionElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLTableCellElement.INSTANCES);
@@ -146,6 +149,7 @@ public class HTMLBuilder {
         HTML4_OBJECT_LABELS.add(HTMLTableElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLTableRowElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLTableSectionElement.INSTANCES);
+        HTML4_OBJECT_LABELS.add(HTMLTemplateElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLTextAreaElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLTitleElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLUListElement.INSTANCES);

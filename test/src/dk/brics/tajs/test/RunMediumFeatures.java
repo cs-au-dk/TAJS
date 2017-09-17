@@ -1,5 +1,6 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.test.nativeobjects.TestMDNExamples;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -15,14 +16,15 @@ import org.junit.runners.Suite;
         TestSyntacticObjectSensitivity.class,
         TestUnrollingUnknownValueRecovery.class,
         TestUnrollingTermination.class,
+        TestSoundnessTesterAssignments.class,
         TestBoundedUnrolling.class,
         TestMicroStringEscaping.class,
         TestASTInfo.class,
         TestClosureContextSensitivity.class,
         TestLiteralContextSensitivity.class,
         TestSourceLocations.class,
-        TestUtilities.class,
-        TestJQueryPatterns.class
+        TestJQueryPatterns.class,
+        TestMDNExamples.class,
 })
 public class RunMediumFeatures {
 

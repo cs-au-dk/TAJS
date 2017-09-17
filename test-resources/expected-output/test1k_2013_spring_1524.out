@@ -1,0 +1,29 @@
+test-resources/src/1k2013spring/1524.js:52:3: [definite] The conditional expression is always true
+test-resources/src/1k2013spring/1524.js:103:3: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1524.js:55:3: [definite] Unreachable function
+test-resources/src/1k2013spring/1524.js:75:27: [maybe] ReferenceError, reading absent variable horizon
+test-resources/src/1k2013spring/1524.js:75:42: [maybe] ReferenceError, reading absent variable block
+test-resources/src/1k2013spring/1524.js:78:26: [maybe] ReferenceError, reading absent variable block
+test-resources/src/1k2013spring/1524.js:78:33: [maybe] ReferenceError, reading absent variable width
+test-resources/src/1k2013spring/1524.js:78:41: [maybe] ReferenceError, reading absent variable block
+test-resources/src/1k2013spring/1524.js:79:18: [maybe] ReferenceError, reading absent variable height
+test-resources/src/1k2013spring/1524.js:79:27: [maybe] ReferenceError, reading absent variable horizon
+test-resources/src/1k2013spring/1524.js:79:37: [maybe] ReferenceError, reading absent variable block
+test-resources/src/1k2013spring/1524.js:83:20: [maybe] ReferenceError, reading absent variable block
+test-resources/src/1k2013spring/1524.js:103:24: [maybe] ReferenceError, reading absent variable block
+test-resources/src/1k2013spring/1524.js:103:47: [maybe] ReferenceError, reading absent variable pi
+test-resources/src/1k2013spring/1524.js:103:62: [maybe] ReferenceError, reading absent variable pi
+test-resources/src/1k2013spring/1524.js:109:13: [maybe] ReferenceError, reading absent variable block
+test-resources/src/1k2013spring/1524.js:110:33: [maybe] ReferenceError, reading absent variable block
+test-resources/src/1k2013spring/1524.js:110:68: [maybe] ReferenceError, reading absent variable block
+test-resources/src/1k2013spring/1524.js:110:94: [maybe] ReferenceError, reading absent variable block
+test-resources/src/1k2013spring/1524.js:124:3: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1524.js:125:17: [maybe] ReferenceError, reading absent variable block
+test-resources/src/1k2013spring/1524.js:134:17: [maybe] ReferenceError, reading absent variable height
+test-resources/src/1k2013spring/1524.js:134:26: [maybe] ReferenceError, reading absent variable horizon
+test-resources/src/1k2013spring/1524.js:134:35: [maybe] ReferenceError, reading absent variable width
+test-resources/src/1k2013spring/1524.js:134:42: [maybe] ReferenceError, reading absent variable horizon
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1524.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1524.js:75:27, test-resources/src/1k2013spring/1524.js:75:42, test-resources/src/1k2013spring/1524.js:78:26, test-resources/src/1k2013spring/1524.js:78:33, test-resources/src/1k2013spring/1524.js:78:41, test-resources/src/1k2013spring/1524.js:79:18, test-resources/src/1k2013spring/1524.js:79:27, test-resources/src/1k2013spring/1524.js:79:37, test-resources/src/1k2013spring/1524.js:83:20, test-resources/src/1k2013spring/1524.js:103:24, test-resources/src/1k2013spring/1524.js:103:47, test-resources/src/1k2013spring/1524.js:103:62, test-resources/src/1k2013spring/1524.js:109:13, test-resources/src/1k2013spring/1524.js:110:33, test-resources/src/1k2013spring/1524.js:110:68, test-resources/src/1k2013spring/1524.js:110:94, test-resources/src/1k2013spring/1524.js:124:3, test-resources/src/1k2013spring/1524.js:125:17, test-resources/src/1k2013spring/1524.js:134:17, test-resources/src/1k2013spring/1524.js:134:26, test-resources/src/1k2013spring/1524.js:134:35, test-resources/src/1k2013spring/1524.js:134:42, test-resources/src/1k2013spring/shim.js:9:5]
+Disabling soundness testing for test-resources/src/1k2013spring/1524.js entirely (6 uninspected soundness errors).
+Soundness testing succeeded for 372 checks (with 6 expected failures)

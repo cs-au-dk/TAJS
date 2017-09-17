@@ -1,3 +1,0 @@
-test/micro/test51.js: [definite] Exceptional program exit is unreachable
-test/micro/test51.js:5:1: [info] Abstract value: "this should remain"
-Soundness testing succeeded for 6 checks (with 0 expected failures)

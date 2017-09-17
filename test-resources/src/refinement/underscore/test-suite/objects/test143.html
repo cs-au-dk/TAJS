@@ -1,0 +1,15 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(!_.isNull(undefined), 'undefined is not null');
+    ok(!_.isNull(NaN), 'NaN is not null');
+    ok(_.isNull(null), 'but null is');
+</script></head><body></body></html>

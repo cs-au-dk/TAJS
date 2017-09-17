@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>gravity</title>
+    <meta charset="utf-8">
+    <meta name="description" content="a simple game">
+    <link rel='stylesheet' href='css/main.css'>
+</head>
+<body>
+
+<div style="z-index:-1;position:absolute;left:30px;top:30px;width:600px;color:gray">
+    <h1>gravity</h1>
+
+    <p>uh, well, this is supposed to be some kind of game</p>
+
+    <p><i>gravity</i> is its awesomely super duper creative codename</p>
+
+    <h3>how to</h3>
+
+    <p>click anywhere to launch the dot, the velocity is dictated by the distance from the green dot</p>
+
+    <p>once it's been launched, guide the projectile by clicking to drop objects which exert a gravitational field onto
+        the dot</p>
+
+    <h3>made by antimatter15 (http://antimatter15.com)</h3>
+
+    <p>its not much code but at least it uses HTML5 &lt;canvas&gt;</p>
+</div>
+<canvas id="canvas"></canvas>
+<script>
+GRAV_CONSTANT = 20//90;
+
+window.onload = function() {
+    canvas = document.getElementById("canvas");
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+    ctx = canvas.getContext('2d');
+    ctx.lineCap = "round"
+    itercount = 0;
+
+    lastframe = 0;
+
+
+    function circle(x, y, r) {
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2, true);
+        ctx.stroke();
+    }
+
+
+    starttime = 0;
+    var pos = [innerWidth / 2, innerHeight / 2];
+
+    var recent_pos = [];
+
+    var planets = []//[[300,300,15],[300,600,10],[600,500,10],[600,600,10],[200,60,10]];
+    for (var i = 0; i < innerWidth * innerHeight / 314159; i++) {
+        planets.push([Math.random() * innerWidth,Math.random() * innerHeight,10 + Math.random() * 50]);
+    }
+    var gvectors = [];
+    for (var i = 0; i < planets.length; i++) {
+        gvectors[i] = gvect(pos[0], pos[1], planets[i][0], planets[i][1], planets[i][2] * GRAV_CONSTANT)
+    }
+
+
+    document.body.onmousemove = function(e) {
+        if (!window.motion) {
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+            var initial_vector = [(e.clientX - innerWidth / 2) / 10, (e.clientY - innerHeight / 2) / 10];
+            var len = Math.sqrt(initial_vector[0] * initial_vector[0] + initial_vector[1] * initial_vector[1]);
+
+            ctx.strokeStyle = "hsl(" + Math.min(300, Math.floor(15 * len)) + ",100%,20%)";
+            ctx.lineWidth = "2";
+            for (var i = 0; i < planets.length; i++) {
+                circle(planets[i][0], planets[i][1], planets[i][2])
+                circle(planets[i][0], planets[i][1], 2)
+            }
+            ctx.lineWidth = "4";
+
+
+            ctx.strokeStyle = "hsl(" + Math.min(300, Math.floor(15 * len)) + ",100%,40%)";
+
+            ctx.beginPath()
+            ctx.moveTo((innerWidth / 2), (innerHeight / 2));
+            ctx.lineTo((innerWidth / 2) + initial_vector[0] * 10, (innerHeight / 2) + initial_vector[1] * 10);
+            ctx.stroke();
+            ctx.closePath();
+
+            ctx.lineWidth = "1";
+            ctx.fillStyle = "rgb(0,255,0)";
+            circle(innerWidth / 2, innerHeight / 2, 5)
+            ctx.fill()
+        }
+    }
+
+    document.body.onmousemove({
+        clientX: innerWidth / 2,
+        clientY: innerHeight / 2
+    })
+
+    document.body.onclick = function(e) {
+
+        if (!window.motion) {
+            starttime = new Date - 0;
+            var initial_vector = [(e.clientX - innerWidth / 2) / 10, (e.clientY - innerHeight / 2) / 10];
+
+            motion = rvect(pos[0], pos[1], pos[0] + initial_vector[0], pos[1] + initial_vector[1]);
+            gravity = gvect(pos[0], pos[1], 300, 300, 500);
+            next();
+
+        } else {
+            var px = e.clientX, py = e.clientY;
+            circle(px, py, 20)
+            circle(px, py, 2)
+            planets.push([px, py, 20])
+        }
+
+    }
+
+
+    function gvect(x, y, px, py, m) {
+        var dx = px - x, dy = py - y;
+        var dsq = dx * dx + dy * dy;
+        var d = Math.sqrt(dsq);
+        var g = m * 1 / dsq; //newtons law of inverse gravitation
+        //maintain angle, change length?
+        //console.log('gravity', g, 'vectors:', g * dx/d, g * dy/d);
+        return [dx / d * g,  dy / d * g];
+    }
+
+
+    function rvect(x, y, fx, fy) {
+        //console.log('movement vector', fx - x, fy - y);
+        return [fx - x, fy - y]
+    }
+
+    function add(vectors) {
+        var vs = [0, 0];
+        for (var i = 0; i < vectors.length; i++) {
+            vs[0] += vectors[i][0];
+            vs[1] += vectors[i][1];
+        }
+        return vs;
+    }
+
+    function next() {
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+        var fr = 1000 / (new Date - lastframe);
+        var score = Math.floor(0.253329 * itercount + 2.68976);
+
+        lastframe = new Date - 0;
+
+
+        ctx.fillStyle = "#000";
+        ctx.fillText("FPS:" + Math.floor(fr) + "  SCORE:" + score, 10, 20);
+
+
+        itercount++;
+
+        out = add(gvectors.concat([motion]));
+
+        //out = add([motion, gravity]);
+        //ctx.strokeStyle = "rgb("+Math.floor(out[0])+","+Math.floor(out[1])+",0)"
+
+        var len = Math.sqrt(out[0] * out[0] + out[1] * out[1]);
+        ctx.lineWidth = "2";
+        //ctx.lineWidth = Math.ceil(len);
+        ctx.strokeStyle = "hsl(" + Math.min(300, Math.floor(15 * len)) + ",100%,20%)";
+        for (var i = 0; i < planets.length; i++) {
+            circle(planets[i][0], planets[i][1], planets[i][2])
+            circle(planets[i][0], planets[i][1], 2)
+        }
+        ctx.lineWidth = "4";
+
+
+        //ctx.strokeStyle="rgb("+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+","+Math.floor(Math.random()*255)+")";
+        ctx.strokeStyle = "hsl(" + Math.min(300, Math.floor(15 * len)) + ",100%,40%)";
+
+        recent_pos.push(pos);
+        if (recent_pos.length > 10) recent_pos.shift();
+
+        ctx.beginPath();
+        ctx.moveTo(pos[0], pos[1]);
+        for (var i = recent_pos.length; i --;) {
+            var o = recent_pos[i];
+            ctx.lineTo(o[0], o[1]);
+        }
+        ctx.stroke();
+
+
+        ctx.beginPath()
+        ctx.moveTo(pos[0], pos[1]);
+        ctx.lineTo(pos[0] + out[0] * (10 / len), pos[1] + out[1] * (10 / len));
+        ctx.stroke();
+        ctx.closePath();
+
+
+        motion = rvect(pos[0], pos[1], pos[0] + out[0], pos[1] + out[1]);
+        //gravity = gvect(pos[0], pos[1], 300, 300, 2200);
+
+        for (var i = 0; i < planets.length; i++) {
+            gvectors[i] = gvect(pos[0], pos[1], planets[i][0], planets[i][1], planets[i][2] * GRAV_CONSTANT)
+        }
+
+        //pos = [pos[0]+5, pos[1]+5]
+        pos = [pos[0] + out[0] / 3,pos[1] + out[1] / 3];
+
+        if (pos[0] < -200 || pos[0] > innerWidth + 200
+                || pos[1] < -200 || pos[1] > innerHeight + 200) {
+
+
+
+            //alert("Your score: "+Math.floor(((new Date - 0)-starttime)/42))
+
+            alert("Your score: " + Math.floor(score));
+            location.reload()
+            return;
+
+        }
+
+        setTimeout(next, 0);
+    }
+}
+
+</script>
+
+</body>
+</html>

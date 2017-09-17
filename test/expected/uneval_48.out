@@ -1,3 +1,0 @@
-TAJS-dynamic-code(test/uneval/uneval48.js:6:5):1:28: [definite] Reading 'this' yields the global object
-test/uneval/uneval48.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 19 checks (with 0 expected failures)

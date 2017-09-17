@@ -1,0 +1,23 @@
+test-resources/src/sunspider/string-fasta.js:83:5: [definite] The variable ret is never used
+test-resources/src/sunspider/string-fasta.js:68:31: [maybe] RangeError, invalid value of array length
+test-resources/src/sunspider/string-fasta.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/string-fasta.js:68:31]
+test-resources/src/sunspider/string-fasta.js:43:9: [maybe] The variable last has values with different types
+test-resources/src/sunspider/string-fasta.js:43:15: [maybe] Conversion to number yields NaN
+test-resources/src/sunspider/string-fasta.js:43:15: [maybe] Converting null to string
+test-resources/src/sunspider/string-fasta.js:43:15: [maybe] Converting undefined to string
+test-resources/src/sunspider/string-fasta.js:43:15: [maybe] Reading absent property (computed name)
+test-resources/src/sunspider/string-fasta.js:43:27: [maybe] Reading absent property (computed name)
+test-resources/src/sunspider/string-fasta.js:43:33: [maybe] The variable last has values with different types
+test-resources/src/sunspider/string-fasta.js:52:25: [maybe] Converting primitive string to object
+test-resources/src/sunspider/string-fasta.js:53:13: [maybe] Converting object to string
+test-resources/src/sunspider/string-fasta.js:53:13: [maybe] Converting primitive string to object
+test-resources/src/sunspider/string-fasta.js:56:15: [maybe] Converting object to string
+test-resources/src/sunspider/string-fasta.js:56:15: [maybe] Converting primitive string to object
+test-resources/src/sunspider/string-fasta.js:57:23: [maybe] Converting primitive string to object
+test-resources/src/sunspider/string-fasta.js:58:17: [maybe] Converting object to string
+test-resources/src/sunspider/string-fasta.js:58:17: [maybe] Converting primitive string to object
+test-resources/src/sunspider/string-fasta.js:72:17: [maybe] Reading absent property (computed name)
+test-resources/src/sunspider/string-fasta.js:92:26: [maybe] Converting object to number
+test-resources/src/sunspider/string-fasta.js:94:1: [info] Abstract value: UInt|NotUInt
+test-resources/src/sunspider/string-fasta.js:43:27: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 2850 checks (with 0 expected failures)

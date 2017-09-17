@@ -1,0 +1,16 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var delayed = false;
+    _.delay(function(){ delayed = true; }, 100);
+    setTimeout(function(){ ok(!delayed, "didn't delay the function quite yet"); }, 50);
+    setTimeout(function(){ ok(delayed, 'delayed the function'); start(); }, 150);
+</script></head><body></body></html>

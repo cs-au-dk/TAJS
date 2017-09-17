@@ -1,0 +1,38 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    deepEqual(_.keys({one : 1, two : 2}), ['one', 'two'], 'can extract the keys from an object');
+    // the test above is not safe because it relies on for-in enumeration order
+    var a = []; a[1] = 0;
+    deepEqual(_.keys(a), ['1'], 'is not fooled by sparse arrays; see issue #95');
+    deepEqual(_.keys(null), []);
+    deepEqual(_.keys(void 0), []);
+    deepEqual(_.keys(1), []);
+    deepEqual(_.keys('a'), []);
+    deepEqual(_.keys(true), []);
+    // keys that may be missed if the implementation isn't careful
+    var trouble = {
+      'constructor': Object,
+      'valueOf': _.noop,
+      'hasOwnProperty': null,
+      'toString': 5,
+      'toLocaleString': undefined,
+      'propertyIsEnumerable': /a/,
+      'isPrototypeOf': this,
+      '__defineGetter__': Boolean,
+      '__defineSetter__': {},
+      '__lookupSetter__': false,
+      '__lookupGetter__': []
+    };
+    var troubleKeys = ['constructor', 'valueOf', 'hasOwnProperty', 'toString', 'toLocaleString', 'propertyIsEnumerable',
+                  'isPrototypeOf', '__defineGetter__', '__defineSetter__', '__lookupSetter__', '__lookupGetter__'].sort();
+    deepEqual(_.keys(trouble).sort(), troubleKeys, 'matches non-enumerable properties');
+</script></head><body></body></html>

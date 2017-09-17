@@ -40,7 +40,6 @@ import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
-import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Implementation of the heuristics for call- and heap-contexts according to "Determinacy in Static Analysis of jQuery", OOPSLA 2014.
@@ -118,7 +117,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
      * created callee context.
      */
     @Override
-    public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, Set<ObjectLabel> this_objs, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+    public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, Value thisval, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         // Due to implementation details, the callee context is created *after* the activation and argument objects.
         // So the callee-context is computed here (using the same algorithm) as well
         return makeHeapContext(callInfo.getJSSourceNode(), decideCallContextArguments(function, callInfo, state, c)); // TODO: currently not using this_objs...
@@ -139,13 +138,13 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
      * allocation site).
      */
     @Override
-    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Set<ObjectLabel> this_objs, Solver.SolverInterface c) {
+    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Value thisval, Solver.SolverInterface c) {
         assert (function.getKind() == ObjectLabel.Kind.FUNCTION);
-        // set thisval for object sensitivity (unlike traditional object sensitivity we allow sets of object labels)
-        Set<ObjectLabel> thisval = null;
+        // set thisval for object sensitivity (unlike traditional object sensitivity we use abstract values instead of individual object labels)
+        /*Value*/ thisval = null; // FIXME: why not use the thisval argument? (github #479)
         if (!Options.get().isObjectSensitivityDisabled()) {
             if (c.getFlowGraph().getSyntacticInformation().isFunctionWithThisReference(function.getFunction())) {
-                thisval = newSet(state.readThisObjects());
+                thisval = state.readThis();
             }
         }
 
@@ -283,7 +282,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
     }
 
     /**
-     * A value is precise ("determinate") if it is a single string value or a bounded (ideally a single) number of abstract objects.
+     * A value is precise ("determinate") if it is a single string value or a bounded (ideally a single) number of abstract objects, or a single number (addition made to better support require).
      */
     private static class PreciseInterestingValuePredicate {
 
@@ -299,7 +298,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                     return true;
                 }
                 if (value.isMaybeObject()) {
-                    for (ObjectLabel objectLabel : value.getObjectLabels()) {
+                    for (ObjectLabel objectLabel : value.getObjectLabels()) { // FIxME: does not loop
                         switch (objectLabel.getKind()) {
                             case OBJECT: // special case for experiments, limit is 1 in practice
                                 return value.getObjectLabels().size() <= objectLimit;
@@ -307,6 +306,12 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                                 return value.getObjectLabels().size() == 1;
                         }
                     }
+                }
+                if (value.isMaybeSingleNum() && value.getNum() != null) {
+                    return true;
+                }
+                if (!value.isNotBool() && (value.isMaybeTrueButNotFalse() || value.isMaybeFalseButNotTrue())) {
+                    return true;
                 }
             }
             return false;

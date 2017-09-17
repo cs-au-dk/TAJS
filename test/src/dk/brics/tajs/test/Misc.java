@@ -9,10 +9,13 @@ import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 import org.apache.log4j.Appender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
+import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.WriterAppender;
+import org.junit.ComparisonFailure;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -27,10 +30,11 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.Locale;
-
-import static org.junit.Assert.assertEquals;
+import java.util.Properties;
 
 public class Misc {
+
+    private static final boolean RECREATE_EXPECTED_OUTPUT = false; // for quick replacement of all expected outputs
 
     private static Logger log = Logger.getLogger(Misc.class);
 
@@ -40,15 +44,26 @@ public class Misc {
 
     private static Locale oldLocaleDefault;
 
-    public static void init() {
-        Main.initLogging(); // TODO: different log4j configuration for tests?
-        log.info("=========== " + getClassName() + "." + getMethodName() + " ===========");
+    public static void start(String suffix) {
+        String m = getMethodName();
+        if (m.equals("test") && suffix == null) {
+            throw new AnalysisException("Looks like parameterized test, but suffix missing!");
+        }
+        System.out.println("testing " + getClassName() + "." + m + (suffix != null ? "." + suffix : ""));
+        Properties prop = new Properties();
+        prop.put("log4j.rootLogger", "INFO, test");
+        prop.put("log4j.appender.test", "org.apache.log4j.ConsoleAppender");
+        prop.put("log4j.appender.test.layout", "org.apache.log4j.PatternLayout");
+        prop.put("log4j.appender.test.layout.ConversionPattern", "%m%n");
+        PropertyConfigurator.configure(prop);
+        fixLocale();
+        captureSystemOutput();
     }
 
     private static String getMethodName() {
         StackTraceElement[] s = Thread.currentThread().getStackTrace();
         for (int i = s.length - 1; i >= 0; i--) {
-            if (s[i].getClassName().startsWith("dk.brics.tajs.test")) {
+            if (s[i].getClassName().startsWith("dk.brics.tajs.test") && !s[i].getClassName().equals("dk.brics.tajs.test.Misc")) {
                 String m = s[i].getMethodName();
                 if (!m.equals("main")) {
                     return m;
@@ -76,42 +91,55 @@ public class Misc {
     }
 
     public static void run(String... args) throws AnalysisException {
-        run(args, Monitoring.make());
+        runPart(null, Monitoring.make(), args);
     }
 
     public static void run(String arg, IAnalysisMonitoring monitoring) throws AnalysisException {
-        run(new String[]{arg}, monitoring);
+        runPart(null, monitoring, arg);
     }
 
-    public static void run(String[] args, IAnalysisMonitoring monitoring) throws AnalysisException {
+    public static void runPart(String suffix, IAnalysisMonitoring monitoring, String... args) throws AnalysisException {
+        start(suffix);
         try {
-            Options.get().getArguments().addAll(Arrays.asList(args));
+            Options.get().getArguments().addAll(Arrays.stream(args).map(Paths::get).collect(Collectors.toList()));
             Analysis a = Main.init(Options.get(), monitoring, null);
             if (a == null)
                 throw new AnalysisException("Error during initialization");
             Main.run(a);
             Main.reset();
-        } catch (AnalysisException e) {
-            log.info(e.getMessage());
+        } catch (Throwable e) {
+            String msg = e.getMessage();
+            if (msg == null) {
+                msg = e.toString();
+            }
+            System.out.println("ERROR: " + msg);
             throw e;
         }
     }
 
     private static void checkOutput(String actual) {
-        Path file = Paths.get("test/expected/" + getMethodName() + ".out");
+        String m = getMethodName();
+        if (m.equals("test")) {
+            throw new AnalysisException("Looks like parameterized test, can't check output!");
+        }
+        Path file = Paths.get("test-resources/expected-output/" + m + ".out");
         Charset charset = Charset.forName("UTF-8");
         try {
-            boolean RECREATE_EXPECTED_OUTPUT = false; // for quick replacement of all expected outputs
             if (!Files.exists(file) || RECREATE_EXPECTED_OUTPUT) {
                 if (Files.exists(file) && RECREATE_EXPECTED_OUTPUT) {
                     log.warn("Recreating all expected output!");
                 }
                 Files.deleteIfExists(file);
                 Files.write(file, actual.getBytes(charset), StandardOpenOption.CREATE_NEW);
-                log.info(file.toAbsolutePath() + " generated");
+                log.warn(file.toAbsolutePath() + " generated");
             } else {
                 String expected = new String(Files.readAllBytes(file), charset);
-                assertEquals(fix(expected), fix(actual));
+                String fixedexpected = fix(expected);
+                String fixedactual = fix(actual);
+                if (!fixedexpected.equals(fixedactual)) {
+                    System.out.println("TEST FAILED: unexpected output");
+                    throw new ComparisonFailure("unexpected output", fixedexpected, fixedactual);
+                }
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -122,8 +150,11 @@ public class Misc {
         return s.replace(System.getProperty("line.separator"), "\n").replace("\r\n", "\n");
     }
 
-    public static void captureSystemOutput() {
-        fixLocale();
+    private static void captureSystemOutput() {
+        if (ps != null) {
+            ps.close();
+            ps = null;
+        }
         os = new ByteArrayOutputStream();
         try {
             ps = new PrintStream(os, false, "UTF-8");
@@ -151,6 +182,7 @@ public class Misc {
 
     public static void checkSystemOutput() {
         ps.close();
+        ps = null;
         try {
             Misc.checkOutput(fix(os.toString("UTF-8")));
         } catch (UnsupportedEncodingException e) {
@@ -172,22 +204,27 @@ public class Misc {
     }
 
     private static void runSourcePart(String suffix, String[] src, IAnalysisMonitoring monitoring) {
-            File file = makeTempSourceFile(suffix, src);
-            String[] args = {file.getPath()};
-            if (monitoring == null) {
-                Misc.run(args);
-            } else {
-                Misc.run(args, monitoring);
-            }
+        File file = makeTempSourceFile(suffix, src);
+        String[] args = {file.getPath()};
+        if (monitoring == null) {
+            Misc.runPart(suffix, Monitoring.make(), args);
+        } else {
+            Misc.runPart(suffix, monitoring, args);
+        }
     }
 
-    public static File makeTempSourceFile(String suffix, String[] src) {
+    private static File makeTempSourceFile(String suffix, String[] src) {
         try {
             File dir = new File("out/temp-sources/");
             if (!dir.exists()) {
+                //noinspection ResultOfMethodCallIgnored
                 dir.mkdirs();
             }
-            File file = new File(dir, getClassName() + "." + getMethodName() + (suffix != null ? "." + suffix : "") + ".js"); // Windows chokes if reusing file names in one execution
+            String m = getMethodName();
+            if (m.equals("test") && suffix == null) {
+                throw new AnalysisException("Looks like parameterized test, but suffix missing!");
+            }
+            File file = new File(dir, getClassName() + "." + m + (suffix != null ? "." + suffix : "") + ".js"); // Windows chokes if reusing file names in one execution
             file.deleteOnExit();
             try (PrintWriter writer = new PrintWriter(file, "UTF-8")) {
                 for (String aSrc : src) {
@@ -203,10 +240,9 @@ public class Misc {
 
     public static FlowGraph build(String... src) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < src.length; i++) {
-            sb.append(src[i]).append("\n");
+        for (String aSrc : src) {
+            sb.append(aSrc).append("\n");
         }
-
         SourceLocation.SyntheticLocationMaker sourceLocationMaker = new SourceLocation.SyntheticLocationMaker("synthetic");
         FlowGraphBuilder flowGraphBuilder = FlowGraphBuilder.makeForMain(sourceLocationMaker);
         flowGraphBuilder.transformStandAloneCode(sb.toString(), sourceLocationMaker);

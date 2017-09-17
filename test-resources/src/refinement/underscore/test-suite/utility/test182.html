@@ -1,0 +1,14 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var template = _.template('<<\nx\n>>', null, {evaluate: /<<(.*?)>>/g});
+    strictEqual(template(), '<<\nx\n>>');
+</script></head><body></body></html>

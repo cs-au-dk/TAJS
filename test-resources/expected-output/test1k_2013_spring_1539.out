@@ -1,0 +1,11 @@
+test-resources/src/1k2013spring/1539.js:10:6: [definite] Variable canvas is null/undefined
+test-resources/src/1k2013spring/1539.js:11:9: [definite] Unreachable code
+test-resources/src/1k2013spring/1539.js:23:5: [definite] The variable start is never used
+test-resources/src/1k2013spring/1539.js:26:1: [definite] Unreachable function draw
+test-resources/src/1k2013spring/1539.js:65:1: [definite] Unreachable function flower
+test-resources/src/1k2013spring/1539.js:77:25: [definite] Unreachable function
+test-resources/src/1k2013spring/1539.js:86:9: [definite] Unreachable function f
+test-resources/src/1k2013spring/1539.js:8:10: [maybe] <Document.getElementById>("frame") did not match any elements
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1539.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1539.js:10:1, test-resources/src/1k2013spring/shim.js:9:5]
+Soundness testing succeeded for 14 checks (with 0 expected failures)

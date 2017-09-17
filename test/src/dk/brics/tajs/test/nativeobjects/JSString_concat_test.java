@@ -9,16 +9,14 @@ import org.junit.Test;
 @SuppressWarnings("static-method")
 public class JSString_concat_test {
 
-	@Before
+    @Before
     public void before() {
         Main.reset();
-        Main.initLogging();
         Options.get().enableTest();
     }
 
     @Test
     public void noArgs() {
-        Misc.init();
         Misc.runSource("var v = 'foo'.concat();",
                 "TAJS_assert(v === 'foo');");
     }
@@ -46,7 +44,6 @@ public class JSString_concat_test {
         Misc.runSource("var v = 'foo'.concat('x', 'y', 'z', 'a', 'b', 'c');",
                 "TAJS_assert(v === 'fooxyzabc');");
     }
-
 //    @Test
 //    public void manyMultiArgs() {
 //        Misc.runSource("var v = 'foo'.concat('x', 'y', 'z', 'a', 'b', 'c', Math.random()? 0: '0');",

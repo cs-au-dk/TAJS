@@ -1,0 +1,16 @@
+test-resources/src/micro/testFunctionCall.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/testFunctionCall.js:24:10: [maybe] Converting primitive string to object
+test-resources/src/micro/testFunctionCall.js:28:10: [maybe] Converting primitive string to object
+test-resources/src/micro/testFunctionCall.js:28:36: [maybe] Converting primitive string to object
+test-resources/src/micro/testFunctionCall.js:31:29: [maybe] Converting primitive string to object
+test-resources/src/micro/testFunctionCall.js:34:22: [maybe] Converting primitive string to object
+test-resources/src/micro/testFunctionCall.js:37:27: [maybe] Converting primitive string to object
+test-resources/src/micro/testFunctionCall.js:6:1: [info] Abstract value: 21.0
+test-resources/src/micro/testFunctionCall.js:13:1: [info] Abstract value: 100.0
+test-resources/src/micro/testFunctionCall.js:20:1: [info] Abstract value: "hoohoo"
+test-resources/src/micro/testFunctionCall.js:25:1: [info] Abstract value: "xxxyyy"
+test-resources/src/micro/testFunctionCall.js:29:1: [info] Abstract value: "xxxyyy"
+test-resources/src/micro/testFunctionCall.js:32:1: [info] Abstract value: "xxxyyy"
+test-resources/src/micro/testFunctionCall.js:35:1: [info] Abstract value: "xxxyyy"
+test-resources/src/micro/testFunctionCall.js:38:1: [info] Abstract value: "xxxyyy"
+Soundness testing succeeded for 71 checks (with 0 expected failures)

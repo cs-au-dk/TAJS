@@ -22,6 +22,7 @@ import dk.brics.tajs.util.AnalysisException;
 public class DOMRegistry {
 
     public enum MaySets {
+        DOM_CONTENT_LOADED_EVENT_HANDLER,
         LOAD_EVENT_HANDLER,
         UNLOAD_EVENT_HANDLERS,
 
@@ -46,6 +47,8 @@ public class DOMRegistry {
 
     private static ObjectLabel ajaxEvent;
 
+    private static ObjectLabel domContentLoadedEvent;
+
     private static ObjectLabel loadEvent;
 
     private static ObjectLabel mutationEvent;
@@ -59,6 +62,7 @@ public class DOMRegistry {
         keyboardEvent = null;
         mouseEvent = null;
         ajaxEvent = null;
+        domContentLoadedEvent = null;
         loadEvent = null;
         mutationEvent = null;
         wheelEvent = null;
@@ -79,6 +83,10 @@ public class DOMRegistry {
 
     public static void registerAjaxEventLabel(ObjectLabel l) {
         ajaxEvent = l;
+    }
+
+    public static void registerDOMContentLoadedEventLabel(ObjectLabel l) {
+        domContentLoadedEvent = l;
     }
 
     public static void registerLoadEventLabel(ObjectLabel l) {
@@ -123,6 +131,13 @@ public class DOMRegistry {
             throw new AnalysisException("No ajax event object labels registered");
         }
         return ajaxEvent;
+    }
+
+    public static ObjectLabel getDOMContentLoadedEventLabel() {
+        if (domContentLoadedEvent == null) {
+            throw new AnalysisException("No ajax event object labels registered");
+        }
+        return domContentLoadedEvent;
     }
 
     public static ObjectLabel getLoadEventLabel() {

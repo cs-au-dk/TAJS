@@ -1,0 +1,18 @@
+test-resources/src/1k2012love/1010.js:48:5: [definite] The variable q is never used
+test-resources/src/1k2012love/1010.js:10:14: [maybe] ReferenceError, reading absent variable wd
+test-resources/src/1k2012love/1010.js:11:18: [maybe] ReferenceError, reading absent variable ht
+test-resources/src/1k2012love/1010.js:17:27: [maybe] ReferenceError, reading absent variable mc
+test-resources/src/1k2012love/1010.js:34:7: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1010.js:34:38: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1010.js:34:45: [maybe] ReferenceError, reading absent variable y
+test-resources/src/1k2012love/1010.js:35:19: [maybe] ReferenceError, reading absent variable y
+test-resources/src/1k2012love/1010.js:35:21: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2012love/1010.js:39:11: [maybe] ReferenceError, reading absent variable y
+test-resources/src/1k2012love/1010.js:44:7: [maybe] ReferenceError, reading absent variable y
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1010.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1010.js:10:14, test-resources/src/1k2012love/1010.js:11:18, test-resources/src/1k2012love/1010.js:17:27, test-resources/src/1k2012love/1010.js:34:7, test-resources/src/1k2012love/1010.js:34:38, test-resources/src/1k2012love/1010.js:34:45, test-resources/src/1k2012love/1010.js:35:19, test-resources/src/1k2012love/1010.js:35:21, test-resources/src/1k2012love/1010.js:39:11, test-resources/src/1k2012love/1010.js:44:7, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1010.js:10:10: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1010.js:11:14: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1010.js:35:21: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1010.js:40:11: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 186 checks (with 0 expected failures)

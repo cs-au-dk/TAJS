@@ -1,0 +1,10 @@
+test-resources/src/resig/ejohn43.js: [definite] Ordinary program exit is unreachable
+test-resources/src/resig/ejohn43.js:3:10: [definite] TypeError, call to non-function
+test-resources/src/resig/ejohn43.js:3:10: [definite] Reading absent property sort
+test-resources/src/resig/ejohn43.js:1:1: [definite] The variable basex is never used
+test-resources/src/resig/ejohn43.js:3:10: [definite] Unreachable code
+test-resources/src/resig/ejohn43.js:3:25: [definite] Unreachable function
+test-resources/src/resig/ejohn43.js:8:13: [definite] Unreachable code
+test-resources/src/resig/ejohn43.js: [maybe] Uncaught exception, constructed at [test-resources/src/resig/ejohn43.js:3:10]
+test-resources/src/resig/ejohn43.js:2:3: [info] Abstract value: [@arguments#node16]
+Soundness testing succeeded for 20 checks (with 0 expected failures)

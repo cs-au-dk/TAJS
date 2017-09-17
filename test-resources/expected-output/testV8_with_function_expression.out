@@ -1,0 +1,5 @@
+test-resources/src/v8tests/with-function-expression.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/with-function-expression.js:36:5: [definite] The variable res is never used
+test-resources/src/v8tests/with-function-expression.js:36:22: [maybe] Converting object to string
+test-resources/src/v8tests/with-function-expression.js:36:22: [maybe] Converting primitive string to object
+Soundness testing succeeded for 22 checks (with 0 expected failures)

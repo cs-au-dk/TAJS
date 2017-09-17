@@ -1,0 +1,45 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var list = _.reduceRight(['foo', 'bar', 'baz'], function(memo, str){ return memo + str; }, '');
+    equal(list, 'bazbarfoo', 'can perform right folds');
+    list = _.reduceRight(['foo', 'bar', 'baz'], function(memo, str){ return memo + str; });
+    equal(list, 'bazbarfoo', 'default initial value');
+    var sum = _.reduceRight({a: 1, b: 2, c: 3}, function(sum, num){ return sum + num; });
+    equal(sum, 6, 'default initial value on object');
+    ok(_.reduceRight(null, _.noop, 138) === 138, 'handles a null (with initial value) properly');
+    equal(_.reduceRight([_], _.noop), _, 'collection of length one with no initial value returns the first item');
+    equal(_.reduceRight([], _.noop, undefined), undefined, 'undefined can be passed as a special case');
+    equal(_.reduceRight([], _.noop), undefined, 'returns undefined when collection is empty and no initial value');
+    // Assert that the correct arguments are being passed.
+    var args,
+        memo = {},
+        object = {a: 1, b: 2},
+        lastKey = _.keys(object).pop();
+    var expected = lastKey === 'a'
+      ? [memo, 1, 'a', object]
+      : [memo, 2, 'b', object];
+    _.reduceRight(object, function() {
+      if (!args) args = _.toArray(arguments);
+    }, memo);
+    deepEqual(args, expected);
+    // And again, with numeric keys.
+    object = {'2': 'a', '1': 'b'};
+    lastKey = _.keys(object).pop();
+    args = null;
+    expected = lastKey === '2'
+      ? [memo, 'a', '2', object]
+      : [memo, 'b', '1', object];
+    _.reduceRight(object, function() {
+      if (!args) args = _.toArray(arguments);
+    }, memo);
+    deepEqual(args, expected);
+</script></head><body></body></html>

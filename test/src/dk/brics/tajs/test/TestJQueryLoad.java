@@ -20,67 +20,67 @@ public class TestJQueryLoad { // TODO: code contains "dk.brics.tajs.directives.u
 
     @BeforeClass
     public static void beforeClass() {
-        Main.initLogging();
+        Main.reset();
     }
 
     @Test
     public void load_1_0() {
-        Misc.run("test/jquery-load/jquery-1.0.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.0.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_1() {
-        Misc.run("test/jquery-load/jquery-1.1.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_2() {
-        Misc.run("test/jquery-load/jquery-1.2.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_3() {
-        Misc.run("test/jquery-load/jquery-1.3.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.3.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_4() {
-        Misc.run("test/jquery-load/jquery-1.4.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_5() {
-        Misc.run("test/jquery-load/jquery-1.5.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_6() {
-        Misc.run("test/jquery-load/jquery-1.6.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.6.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_7() {
-        Misc.run("test/jquery-load/jquery-1.7.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_8() {
-        Misc.run("test/jquery-load/jquery-1.8.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_9() {
-        Misc.run("test/jquery-load/jquery-1.9.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_10() {
-        Misc.run("test/jquery-load/jquery-1.10.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.10.js-sliced.js", monitor);
     }
 
     @Test
     public void load_1_11() {
-        Misc.run("test/jquery-load/jquery-1.11.0.js-sliced.js", monitor);
+        Misc.run("benchmarks/tajs/src/jquery-load/jquery-1.11.0.js-sliced.js", monitor);
     }
 
     @Before
@@ -90,16 +90,15 @@ public class TestJQueryLoad { // TODO: code contains "dk.brics.tajs.directives.u
         Options.get().enableIncludeDom();
         Options.get().enableUnevalizer();
         Options.get().enableTest();
-
+        Options.get().enableNoStrict(); // soundness testing does not work properly with strict mode
         // Each tests runs in less than 30 seconds on `Intel(R) Core(TM) i7-3520M CPU @ 2.90GHz`
         analysisLimiter = new AnalysisTimeLimiter(1 * 90);
-
         monitor = CompositeMonitoring.buildFromList(Monitoring.make(), analysisLimiter);
     }
 
     @After
     public void after() {
-        if (!analysisLimiter.analysisNotExceededTimeLimit()) {
+        if (!analysisLimiter.analysisNotExceededLimit()) {
             Assert.fail("Analysis exceeded time limit");
         }
     }

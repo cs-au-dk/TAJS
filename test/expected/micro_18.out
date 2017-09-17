@@ -1,2 +1,0 @@
-test/micro/test18.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 12 checks (with 0 expected failures)

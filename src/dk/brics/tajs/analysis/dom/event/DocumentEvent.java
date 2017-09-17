@@ -56,7 +56,7 @@ public class DocumentEvent {
                 DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 /* Value eventType =*/
                 Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
-                return Value.makeObject(Event.INSTANCES);
+                return Value.makeObject(Event.INSTANCES).joinObject(CustomEvent.INSTANCES);
             }
             default:
                 throw new AnalysisException("Unsupported Native Object: " + nativeObject);

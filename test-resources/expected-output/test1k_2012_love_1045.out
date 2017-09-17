@@ -1,0 +1,38 @@
+test-resources/src/1k2012love/1045.js:42:6: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1045.js:43:6: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1045.js:44:6: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1045.js:53:19: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1045.js:54:8: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1045.js:54:32: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1045.js:54:58: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1045.js:63:15: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1045.js:72:8: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1045.js:72:23: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1045.js:73:4: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1045.js:76:23: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1045.js:80:9: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1045.js:83:6: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1045.js:87:6: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1045.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1045.js:42:6, test-resources/src/1k2012love/1045.js:43:6, test-resources/src/1k2012love/1045.js:44:6, test-resources/src/1k2012love/1045.js:53:19, test-resources/src/1k2012love/1045.js:54:8, test-resources/src/1k2012love/1045.js:54:32, test-resources/src/1k2012love/1045.js:54:58, test-resources/src/1k2012love/1045.js:63:15, test-resources/src/1k2012love/1045.js:72:8, test-resources/src/1k2012love/1045.js:72:23, test-resources/src/1k2012love/1045.js:73:4, test-resources/src/1k2012love/1045.js:76:23, test-resources/src/1k2012love/1045.js:80:9, test-resources/src/1k2012love/1045.js:83:6, test-resources/src/1k2012love/1045.js:87:6, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1045.js:26:2: [maybe] Converting undefined to string
+test-resources/src/1k2012love/1045.js:26:13: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1045.js:53:19: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1045.js:54:8: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1045.js:54:32: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1045.js:54:58: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1045.js:63:15: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1045.js:76:23: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1045.js:76:41: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1045.js:78:24: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1045.js:78:27: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1045.js:78:36: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1045.js:83:28: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1045.js:83:40: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1045.js:83:52: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1045.js:87:20: [maybe] Converting undefined to string
+test-resources/src/1k2012love/1045.js:90:5: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1045.js:94:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1045.js:94:8: [maybe] Conversion to number yields NaN
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test-resources/src/1k2012love/1045.js, skipping soundness checking

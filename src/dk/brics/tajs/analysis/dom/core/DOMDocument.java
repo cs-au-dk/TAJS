@@ -28,10 +28,12 @@ import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMRegistry;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.analysis.dom.html.HTMLCollection;
+import dk.brics.tajs.analysis.dom.xpath.XPathResult;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
 
 import java.util.Set;
@@ -77,6 +79,8 @@ public class DOMDocument {
         /*
          * Properties.
          */
+        createDOMProperty(INSTANCES, "onfocus", Value.makeNull(), c);
+
         // DOM LEVEL 1
         createDOMProperty(INSTANCES, "doctype", Value.makeObject(DOMDocumentType.INSTANCES), c);
         // NB: The documentElement property is written by HTMLBuilder (due to cyclic dependency).
@@ -133,7 +137,8 @@ public class DOMDocument {
         createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_RENAME_NODE, "renameNode", 3, c);
 
         // semistandard
-        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_EVALUATE, "evaluate", 2, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_EVALUATE, "evaluate", 5, c);
+        createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_EXECCOMMAND, "execCommand", 3, c);
         createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_QUERY_SELECTOR_ALL, "querySelectorAll", 1, c);
         createDOMFunction(PROTOTYPE, DOMObjects.DOCUMENT_QUERY_SELECTOR, "querySelector", 1, c);
     }
@@ -262,6 +267,15 @@ public class DOMDocument {
             case DOCUMENT_CREATE_DOCUMENTFRAGMENT: {
                 DOMFunctions.expectParameters(nativeobject, call, c, 0, 0);
                 return Value.makeObject(DOMDocumentFragment.INSTANCES);
+            }
+            case DOCUMENT_EVALUATE: {
+                DOMFunctions.expectParameters(nativeobject, call, c, 5, 5);
+                return Value.makeObject(XPathResult.INSTANCES);
+            }
+            case DOCUMENT_EXECCOMMAND: {
+                DOMFunctions.expectParameters(nativeobject, call, c, 3, 3);
+                c.getMonitoring().addMessage(call.getJSSourceNode(), Message.Severity.TAJS_ERROR, "Warning: Calling document.execCommand, but no side-effects have been implemented for it...");
+                return Value.makeAnyBool();
             }
             case DOCUMENT_GET_ELEMENT_BY_ID: {
                 if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() < 1) {

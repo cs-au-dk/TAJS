@@ -1,0 +1,4 @@
+test-resources/src/v8tests/arguments-enum.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/arguments-enum.js:30:12: [definite] The variable prop is never used
+test-resources/src/v8tests/arguments-enum.js:39:12: [definite] The variable prop is never used
+Soundness testing succeeded for 142 checks (with 0 expected failures)

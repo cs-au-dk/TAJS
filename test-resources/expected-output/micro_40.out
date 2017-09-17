@@ -1,0 +1,6 @@
+test-resources/src/micro/test40.js:11:1: [definite] Dead assignment, property 3 is never read
+test-resources/src/micro/test40.js:13:1: [definite] Dead assignment, property 42 is never read
+test-resources/src/micro/test40.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test40.js:6:1: [info] Abstract object: {0:1.0,1:2.0,2:3.0,length:3.0,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/test40.js:15:1: [info] Abstract object: {0:0.0,1:1.0,2:2.0,3:1000.0,4:4.0,42:1000.0,5:5.0,6:6.0,7:7.0,8:8.0,9:9.0,length:43.0,[[Prototype]]=[@Array.prototype[native]]}
+Soundness testing succeeded for 52 checks (with 0 expected failures)

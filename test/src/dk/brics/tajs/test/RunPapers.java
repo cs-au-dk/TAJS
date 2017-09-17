@@ -1,7 +1,4 @@
 package dk.brics.tajs.test;
-/**
- * Medium speed test suite, for thorough testing of TAJS behavior.
- */
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

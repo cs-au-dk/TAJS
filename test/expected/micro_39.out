@@ -1,4 +1,0 @@
-test/micro/test39.js: [definite] Exceptional program exit is unreachable
-test/micro/test39.js:4:1: [info] Abstract value: "1,2,3"
-test/micro/test39.js:5:1: [info] Abstract value: "we--SEP--the--SEP--people--SEP--of the US"
-Soundness testing succeeded for 31 checks (with 0 expected failures)

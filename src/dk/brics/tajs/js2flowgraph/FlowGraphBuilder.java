@@ -78,6 +78,7 @@ import static org.apache.log4j.Logger.getLogger;
  * Converter from JavaScript source code to flow graphs.
  * The order the sources are provided is significant.
  */
+@SuppressWarnings("FieldCanBeLocal")
 public class FlowGraphBuilder {
 
     private static final Logger log = getLogger(FlowGraphBuilder.class);
@@ -85,6 +86,8 @@ public class FlowGraphBuilder {
     private static final boolean showParserWarnings = false;
 
     private final Mode mode = Mode.ES5; // TODO: (#3) currently ES5 mode
+
+    private final boolean strict = false;
 
     private final JavaScriptParser parser;
 
@@ -113,7 +116,7 @@ public class FlowGraphBuilder {
         functionAndBlocksManager = fab;
         astInfo = new ASTInfo();
         initialEnv = env;
-        parser = new JavaScriptParser(mode);
+        parser = new JavaScriptParser(mode, strict);
         processed = TranslationResult.makeAppendBlock(initialEnv.getAppendBlock());
         syntacticInformation = new RawSyntacticInformation();
         valueLogMappingInformation = new ValueLogLocationInformation();
@@ -461,7 +464,8 @@ public class FlowGraphBuilder {
             appendBlock.addNode(nopEntryNode);
 
             if (Options.get().isDOMEnabled()) {
-                BasicBlock lastLoadEventLoopBlock = addAsyncBlocks(Type.DOM_LOAD, true, "Load", location, env.makeAppendBlock(appendBlock));
+                BasicBlock lastDOMContentLoadedEventLoopBlock = addAsyncBlocks(Type.DOM_CONTENT_LOADED, true, "DOMContentLoaded", location, env.makeAppendBlock(appendBlock));
+                BasicBlock lastLoadEventLoopBlock = addAsyncBlocks(Type.DOM_LOAD, true, "Load", location, env.makeAppendBlock(lastDOMContentLoadedEventLoopBlock));
                 BasicBlock lastOtherEventLoopBlock = addAsyncBlocks(Type.DOM_OTHER, true, "Other", location, env.makeAppendBlock(lastLoadEventLoopBlock));
                 BasicBlock lastUnloadEventLoopBlock = addAsyncBlocks(Type.DOM_UNLOAD, true, "Unload", location, env.makeAppendBlock(lastOtherEventLoopBlock));
                 appendBlock = lastUnloadEventLoopBlock;

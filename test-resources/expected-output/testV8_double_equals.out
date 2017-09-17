@@ -1,0 +1,5 @@
+test-resources/src/v8tests/double-equals.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/double-equals.js:70:14: [definite] The variable z is never used
+test-resources/src/v8tests/double-equals.js:76:14: [definite] The variable z is never used
+test-resources/src/v8tests/double-equals.js:82:14: [definite] The variable z is never used
+Soundness testing succeeded for 484 checks (with 0 expected failures)

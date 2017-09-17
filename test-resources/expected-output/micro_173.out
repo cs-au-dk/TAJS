@@ -1,0 +1,5 @@
+test-resources/src/micro/test173.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test173.js:2:16: [maybe] Converting object to string
+test-resources/src/micro/test173.js:2:16: [maybe] Converting primitive string to object
+test-resources/src/micro/test173.js:2:1: [info] Abstract value: ""
+Soundness testing succeeded for 9 checks (with 0 expected failures)

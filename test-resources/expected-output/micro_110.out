@@ -1,0 +1,7 @@
+test-resources/src/micro/test110.js:9:1: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/test110.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test110.js:9:1]
+test-resources/src/micro/test110.js:4:1: [info] Abstract value: 43.0
+test-resources/src/micro/test110.js:6:1: [info] Abstract value: 44.0
+test-resources/src/micro/test110.js:8:1: [info] Abstract value: Null|[@Object#node8]
+test-resources/src/micro/test110.js:10:1: [info] Abstract value: 45.0
+Soundness testing succeeded for 28 checks (with 0 expected failures)

@@ -1,0 +1,192 @@
+test-resources/src/chromeexperiments/voronoi.html:67:3: [definite] The conditional expression is always true
+test-resources/src/chromeexperiments/voronoi.html:247:12: [definite] The conditional expression is always true
+test-resources/src/chromeexperiments/voronoi.html:431:10: [definite] The conditional expression is always true
+test-resources/src/chromeexperiments/voronoi.html:496:10: [definite] The conditional expression is always true
+test-resources/src/chromeexperiments/voronoi.html:330:1: [definite] Dead assignment, property set_right is never read
+test-resources/src/chromeexperiments/voronoi.html:337:1: [definite] Dead assignment, property rnext is never read
+test-resources/src/chromeexperiments/voronoi.html:338:1: [definite] Dead assignment, property dnext is never read
+test-resources/src/chromeexperiments/voronoi.html:341:1: [definite] Dead assignment, property rprev is never read
+test-resources/src/chromeexperiments/voronoi.html:349:1: [definite] Dead assignment, property to_s is never read
+test-resources/src/chromeexperiments/voronoi.html:363:1: [definite] Dead assignment, property to_s is never read
+test-resources/src/chromeexperiments/voronoi.html:63:5: [definite] The variable active_canvas is never used
+test-resources/src/chromeexperiments/voronoi.html:280:1: [definite] The variable e is never used
+test-resources/src/chromeexperiments/voronoi.html:285:1: [definite] The variable e is never used
+test-resources/src/chromeexperiments/voronoi.html:330:28: [definite] Unreachable function
+test-resources/src/chromeexperiments/voronoi.html:337:24: [definite] Unreachable function
+test-resources/src/chromeexperiments/voronoi.html:338:24: [definite] Unreachable function
+test-resources/src/chromeexperiments/voronoi.html:341:24: [definite] Unreachable function
+test-resources/src/chromeexperiments/voronoi.html:349:23: [definite] Unreachable function
+test-resources/src/chromeexperiments/voronoi.html:363:25: [definite] Unreachable function
+test-resources/src/chromeexperiments/voronoi.html:377:1: [definite] Unreachable function dist_sqr
+test-resources/src/chromeexperiments/voronoi.html:397:87: [definite] The variable qq is never used
+test-resources/src/chromeexperiments/voronoi.html:408:22: [definite] The variable cc is never used
+test-resources/src/chromeexperiments/voronoi.html:464:7: [definite] The variable declaration cc shadows a parameter
+test-resources/src/chromeexperiments/voronoi.html:67:6: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:96:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:111:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:176:15: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:187:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:187:47: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:189:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:189:47: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:189:83: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:191:36: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:195:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:195:48: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:197:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:197:47: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:197:83: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:199:36: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:207:63: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:208:64: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:209:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:210:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:219:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:220:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:228:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:229:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:230:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:248:26: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:248:49: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:291:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:304:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:305:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:309:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:310:14: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:316:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:318:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:319:15: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:320:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:320:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:325:42: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:326:43: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:329:44: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:331:43: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:332:41: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:333:43: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:334:41: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:339:44: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:340:44: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:342:44: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:343:44: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:345:55: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:345:81: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:364:58: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:367:22: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:367:29: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:367:38: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:367:54: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:376:37: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:376:44: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:376:51: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:390:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:391:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:396:52: [maybe] ReferenceError, reading absent variable ia
+test-resources/src/chromeexperiments/voronoi.html:396:68: [maybe] ReferenceError, reading absent variable ia
+test-resources/src/chromeexperiments/voronoi.html:396:82: [maybe] ReferenceError, reading absent variable ia
+test-resources/src/chromeexperiments/voronoi.html:397:55: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:410:44: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:423:62: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:430:6: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:432:64: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:433:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:434:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:440:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:441:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:441:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:445:22: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:445:29: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:445:43: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:457:30: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:459:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:464:44: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:467:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:468:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:480:6: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:488:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:495:11: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:497:14: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:498:29: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:509:14: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/voronoi.html:266:29: [maybe] Reading absent property which of host object
+test-resources/src/chromeexperiments/voronoi.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/voronoi.html:67:6, test-resources/src/chromeexperiments/voronoi.html:96:3, test-resources/src/chromeexperiments/voronoi.html:111:13, test-resources/src/chromeexperiments/voronoi.html:176:15, test-resources/src/chromeexperiments/voronoi.html:187:12, test-resources/src/chromeexperiments/voronoi.html:187:47, test-resources/src/chromeexperiments/voronoi.html:189:12, test-resources/src/chromeexperiments/voronoi.html:189:47, test-resources/src/chromeexperiments/voronoi.html:189:83, test-resources/src/chromeexperiments/voronoi.html:191:36, test-resources/src/chromeexperiments/voronoi.html:195:12, test-resources/src/chromeexperiments/voronoi.html:195:48, test-resources/src/chromeexperiments/voronoi.html:197:12, test-resources/src/chromeexperiments/voronoi.html:197:47, test-resources/src/chromeexperiments/voronoi.html:197:83, test-resources/src/chromeexperiments/voronoi.html:199:36, test-resources/src/chromeexperiments/voronoi.html:207:63, test-resources/src/chromeexperiments/voronoi.html:208:64, test-resources/src/chromeexperiments/voronoi.html:209:13, test-resources/src/chromeexperiments/voronoi.html:210:13, test-resources/src/chromeexperiments/voronoi.html:219:18, test-resources/src/chromeexperiments/voronoi.html:220:18, test-resources/src/chromeexperiments/voronoi.html:228:18, test-resources/src/chromeexperiments/voronoi.html:229:18, test-resources/src/chromeexperiments/voronoi.html:230:18, test-resources/src/chromeexperiments/voronoi.html:248:26, test-resources/src/chromeexperiments/voronoi.html:248:49, test-resources/src/chromeexperiments/voronoi.html:291:3, test-resources/src/chromeexperiments/voronoi.html:304:13, test-resources/src/chromeexperiments/voronoi.html:305:13, test-resources/src/chromeexperiments/voronoi.html:309:13, test-resources/src/chromeexperiments/voronoi.html:310:14, test-resources/src/chromeexperiments/voronoi.html:316:13, test-resources/src/chromeexperiments/voronoi.html:318:3, test-resources/src/chromeexperiments/voronoi.html:319:15, test-resources/src/chromeexperiments/voronoi.html:320:3, test-resources/src/chromeexperiments/voronoi.html:320:21, test-resources/src/chromeexperiments/voronoi.html:325:42, test-resources/src/chromeexperiments/voronoi.html:326:43, test-resources/src/chromeexperiments/voronoi.html:329:44, test-resources/src/chromeexperiments/voronoi.html:331:43, test-resources/src/chromeexperiments/voronoi.html:332:41, test-resources/src/chromeexperiments/voronoi.html:333:43, test-resources/src/chromeexperiments/voronoi.html:334:41, test-resources/src/chromeexperiments/voronoi.html:339:44, test-resources/src/chromeexperiments/voronoi.html:340:44, test-resources/src/chromeexperiments/voronoi.html:343:44, test-resources/src/chromeexperiments/voronoi.html:345:55, test-resources/src/chromeexperiments/voronoi.html:345:81, test-resources/src/chromeexperiments/voronoi.html:367:22, test-resources/src/chromeexperiments/voronoi.html:367:29, test-resources/src/chromeexperiments/voronoi.html:367:38, test-resources/src/chromeexperiments/voronoi.html:367:54, test-resources/src/chromeexperiments/voronoi.html:376:37, test-resources/src/chromeexperiments/voronoi.html:376:44, test-resources/src/chromeexperiments/voronoi.html:376:51, test-resources/src/chromeexperiments/voronoi.html:390:5, test-resources/src/chromeexperiments/voronoi.html:391:5, test-resources/src/chromeexperiments/voronoi.html:396:52, test-resources/src/chromeexperiments/voronoi.html:396:68, test-resources/src/chromeexperiments/voronoi.html:396:82, test-resources/src/chromeexperiments/voronoi.html:397:55, test-resources/src/chromeexperiments/voronoi.html:410:44, test-resources/src/chromeexperiments/voronoi.html:423:62, test-resources/src/chromeexperiments/voronoi.html:440:3, test-resources/src/chromeexperiments/voronoi.html:441:3, test-resources/src/chromeexperiments/voronoi.html:441:18, test-resources/src/chromeexperiments/voronoi.html:445:22, test-resources/src/chromeexperiments/voronoi.html:445:29, test-resources/src/chromeexperiments/voronoi.html:445:43, test-resources/src/chromeexperiments/voronoi.html:457:30, test-resources/src/chromeexperiments/voronoi.html:459:3, test-resources/src/chromeexperiments/voronoi.html:464:44, test-resources/src/chromeexperiments/voronoi.html:467:3, test-resources/src/chromeexperiments/voronoi.html:468:3, test-resources/src/chromeexperiments/voronoi.html:480:6, test-resources/src/chromeexperiments/voronoi.html:488:12, test-resources/src/chromeexperiments/voronoi.html:495:11, test-resources/src/chromeexperiments/voronoi.html:497:14, test-resources/src/chromeexperiments/voronoi.html:498:29, test-resources/src/chromeexperiments/voronoi.html:509:14]
+test-resources/src/chromeexperiments/voronoi.html:101:14: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/voronoi.html:102:14: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/voronoi.html:110:18: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/voronoi.html:115:14: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/voronoi.html:116:14: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/voronoi.html:189:169: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/voronoi.html:197:169: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/voronoi.html:237:14: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/voronoi.html:237:15: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/voronoi.html:266:9: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/voronoi.html:390:5: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/voronoi.html:390:15: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/voronoi.html:390:17: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/voronoi.html:391:5: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/voronoi.html:391:16: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/voronoi.html:391:18: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/voronoi.html:396:77: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/voronoi.html:423:4: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/voronoi.html:423:14: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/voronoi.html:423:24: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/voronoi.html:423:52: [maybe] The variable cosmic has values with different types
+test-resources/src/chromeexperiments/voronoi.html:424:10: [maybe] The variable cosmic has values with different types
+test-resources/src/chromeexperiments/voronoi.html:477:8: [maybe] The variable exception has values with different types
+test-resources/src/chromeexperiments/voronoi.html:478:5: [maybe] Converting object to string
+test-resources/src/chromeexperiments/voronoi.html:478:11: [maybe] The variable exception has values with different types
+test-resources/src/chromeexperiments/voronoi.html:304:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:304:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:306:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:306:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:307:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:307:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:315:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:316:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:317:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:318:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:319:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:320:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:321:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:322:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:325:42: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:325:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:326:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:327:42: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:327:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:328:40: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:328:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:329:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:331:43: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:331:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:332:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:332:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:333:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:334:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:335:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:335:65: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:336:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:339:44: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:339:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:340:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:342:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:343:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:344:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:344:70: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:344:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:344:96: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:345:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:345:81: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:346:68: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:346:68: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:346:80: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:346:80: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:347:70: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:347:70: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:347:82: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:347:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:348:67: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:348:79: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:364:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/voronoi.html:364:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 2915 checks (with 0 expected failures)

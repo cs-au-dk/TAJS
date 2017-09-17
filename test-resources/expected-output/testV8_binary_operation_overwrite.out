@@ -1,0 +1,4 @@
+test-resources/src/v8tests/binary-operation-overwrite.js:31:25: [definite] The conditional expression is always true
+test-resources/src/v8tests/binary-operation-overwrite.js:32:25: [definite] The conditional expression is always true
+test-resources/src/v8tests/binary-operation-overwrite.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 61 checks (with 0 expected failures)

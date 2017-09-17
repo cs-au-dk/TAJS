@@ -1,0 +1,25 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0026.js)
+    node 1: vardecl['x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0026.js:1:5)
+    ->[block 1]
+  block 1:
+    node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 3: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2]
+  block 2:
+    node 4: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3]
+  block 3:
+    node 5: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4]
+  block 4: [exit-ordinary]
+    node 6: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0026.js)
+    ->[]
+  block 5: [exit-exceptional]
+    node 7: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0026.js)
+    ->[]
+
+test-resources/src/flowgraphbuilder/flowgraph_builder0026.js: [definite] Exceptional program exit is unreachable
+test-resources/src/flowgraphbuilder/flowgraph_builder0026.js:1:5: [definite] The variable x is never used
+Soundness testing succeeded for 1 checks (with 0 expected failures)

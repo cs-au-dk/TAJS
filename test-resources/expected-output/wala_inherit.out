@@ -1,0 +1,10 @@
+test-resources/src/wala/inherit.js:3:3: [definite] Dead assignment, property edges is never read
+test-resources/src/wala/inherit.js:4:3: [definite] Dead assignment, property regular is never read
+test-resources/src/wala/inherit.js:13:5: [definite] The function Polygon is invoked both as constructor and function
+test-resources/src/wala/inherit.js:15:5: [definite] Dead assignment, property edges is never read
+test-resources/src/wala/inherit.js:27:5: [definite] Dead assignment, property edges is never read
+test-resources/src/wala/inherit.js: [definite] Exceptional program exit is unreachable
+test-resources/src/wala/inherit.js:6:15: [definite] Unreachable function area
+test-resources/src/wala/inherit.js:41:1: [info] Abstract value: 15.0
+test-resources/src/wala/inherit.js:42:1: [info] Abstract value: "rectangle"
+Soundness testing succeeded for 114 checks (with 0 expected failures)

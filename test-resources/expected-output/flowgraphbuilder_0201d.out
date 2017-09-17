@@ -1,0 +1,52 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js)
+    ->[block 1]
+  block 1:
+    node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 2: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2]
+  block 2:
+    node 3: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3]
+  block 3:
+    node 4: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4]
+  block 4:
+    node 5: read-variable['o',v5,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:11)
+    ->[block 6]
+  block 5:
+    node 6: end-for-in(begin-node:7)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:1)
+    ->[block 6]
+  block 6:
+    node 7: begin-for-in[v5,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:1)
+    ->[block 7]
+  block 7:
+    node 8: has-next[v6,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:1)
+    node 9: if[v7](true-block:8,false-block:11) (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:1)
+    ->[block 8,block 11] ~>[block 9]
+  block 8:
+    node 10: next-property[v6,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:6)
+    node 11: write-variable[v8,'p']* (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:6)
+    ->[block 10] ~>[block 9]
+  block 9:
+    node 12: end-for-in(begin-node:7)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:1)
+    ->[block 13]
+  block 10:
+    node 13(~-1): end-for-in(begin-node:7)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:1)
+    ->[block 6]
+  block 11:
+    node 14: end-for-in(begin-node:7)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:1)
+    ->[block 12]
+  block 12: [exit-ordinary]
+    node 15: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js)
+    ->[]
+  block 13: [exit-exceptional]
+    node 16: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js)
+    ->[]
+
+test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js: [definite] Ordinary program exit is unreachable
+test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:11: [definite] ReferenceError, reading absent variable o
+test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:1: [definite] Unreachable code
+test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js: [maybe] Uncaught exception, constructed at [test-resources/src/flowgraphbuilder/flowgraph_builder0201d.js:1:11]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

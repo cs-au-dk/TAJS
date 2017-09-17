@@ -1,0 +1,6 @@
+test-resources/src/v8tests/array-splice-webkit.js:37:25: [definite] Too few parameters to function Array.prototype.splice
+test-resources/src/v8tests/array-splice-webkit.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/array-splice-webkit.js:37:25: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-splice-webkit.js:39:38: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array-splice-webkit.js:52:23: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 223 checks (with 0 expected failures)

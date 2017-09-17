@@ -1,9 +1,0 @@
-test/getterssetters/gs1.js: [definite] Exceptional program exit is unreachable
-test/getterssetters/gs1.js:18:18: [definite] Unreachable code
-test/getterssetters/gs1.js:5:5: [info] Abstract value: [@Object#node6]
-test/getterssetters/gs1.js:9:5: [info] Abstract value: 42.0
-test/getterssetters/gs1.js:13:1: [info] Abstract object: {area:getter [@<anonymous>#fun1]|setter [@<anonymous>#fun2],height:20.0,width:10.0,[[Prototype]]=[@Object.prototype[native]]}
-test/getterssetters/gs1.js:15:1: [info] Abstract value: 200.0
-test/getterssetters/gs1.js:21:3: [info] Abstract value: "I\u2019m sorry Dave, I\u2019m afraid I can\u2019t do that"
-test/getterssetters/gs1.js:23:1: [info] Abstract value: 200.0
-Soundness testing succeeded for 27 checks (with 0 expected failures)

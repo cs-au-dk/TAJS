@@ -217,14 +217,27 @@ public class JSString {
                 return TAJSConcreteSemantics.convertTAJSCall(state.readThis(), "String.prototype.endsWith", 2, call, c, Value::makeAnyBool);
             }
 
+            case STRING_FROMCODEPOINT: {
+                return TAJSConcreteSemantics.convertTAJSCall(Value.makeUndef(), "String.fromCodePoint", -1, call, c, Value::makeAnyStr);
+            }
+
+            case STRING_INCLUDES: {
+                return Value.makeAnyBool();
+            }
+
+            case STRING_CODEPOINTAT: {
+                return Value.makeAnyNumUInt().joinUndef();
+            }
+
             default:
                 return null;
         }
     }
 
     // TODO unused, remove?
-    private static void invokeCallback(Value callback, Solver.SolverInterface c) {
-        for (int i = 0; i < 2; i++) { // 2 enough, we just need the feedback loop
+    private static void invokeCallback(Value callback, Solver.SolverInterface c, boolean withFeedbackLoop) {
+        int iterations = withFeedbackLoop ? 2 /* 2 enough, we just need the feedback loop */ : 1;
+        for (int i = 0; i < iterations; i++) {
             List<Value> result = newList();
             BasicBlock implicitAfterCall = null;
             for (ObjectLabel obj : callback.getObjectLabels()) {
@@ -368,6 +381,21 @@ public class JSString {
             pv.writePropertyWithAttributes(resultArray, "length", Value.makeAnyNumUInt().setAttributes(true, true, false));
             return Value.makeObject(resultArray);
         }
+    }
+
+    private static boolean handleFunctionCallbacks(Value toReplaceWith, CallInfo call, Solver.SolverInterface c, boolean withFeedbackLoop) {
+        boolean anyCallbacks = false;
+        if (toReplaceWith.isMaybeObject()) {
+            for (ObjectLabel objectLabel : toReplaceWith.getObjectLabels()) {
+                if (objectLabel.getKind() == Kind.FUNCTION) {
+                    anyCallbacks = true;
+                }
+            }
+        }
+        if (anyCallbacks) {
+            invokeCallback(toReplaceWith, c, withFeedbackLoop);
+        }
+        return anyCallbacks;
     }
 
     public static Value evaluateToString(Value thisval, Solver.SolverInterface c) {

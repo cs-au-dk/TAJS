@@ -24,7 +24,6 @@ public class TestAssumeNonNullUndef {
     @Before
     public void before() {
         Main.reset();
-        Main.initLogging();
         Options.get().enableTest();
     }
 
@@ -207,7 +206,6 @@ public class TestAssumeNonNullUndef {
         OptionValues baseOptions = new OptionValues();
         baseOptions.enableTest();
         IAnalysisMonitoring monitoring = Monitoring.make();
-
         Misc.runSource(source, monitoring);
         Set<Message> nullUndefWarnings = new HashSet<>();
         for (Message message : monitoring.getMessages()) {

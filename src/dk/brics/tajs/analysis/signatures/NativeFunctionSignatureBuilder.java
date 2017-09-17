@@ -41,6 +41,7 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ARRAY_SPLIC
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ARRAY_TOLOCALESTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ARRAY_TOSTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ARRAY_UNSHIFT;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ARRAY_VALUES;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.BOOLEAN;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.BOOLEAN_TOSTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.BOOLEAN_VALUEOF;
@@ -111,24 +112,44 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.JSON_PARSE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.JSON_STRINGIFY;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_ABS;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_ACOS;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_ACOSH;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_ASIN;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_ASINH;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_ATAN;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_ATAN2;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_ATANH;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_CBRT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_CEIL;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_CLZ32;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_COS;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_COSH;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_EXP;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_EXPM1;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_FLOOR;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_FROUND;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_HYPOT;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_IMUL;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_LOG;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_LOG10;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_LOG1P;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_LOG2;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_MAX;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_MIN;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_POW;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_RANDOM;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_ROUND;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_SIGN;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_SIN;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_SINH;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_SQRT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_TAN;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_TANH;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.MATH_TRUNC;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_ISFINITE;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_ISINTEGER;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_ISNAN;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_ISSAFEINTEGER;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_TOEXPONENTIAL;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_TOFIXED;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_TOLOCALESTRING;
@@ -136,6 +157,7 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_TOPR
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_TOSTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.NUMBER_VALUEOF;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_ASSIGN;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_CREATE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_DEFINEGETTER;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_DEFINESETTER;
@@ -146,6 +168,7 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_GETO
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_GETOWNPROPERTYNAMES;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_GETPROTOTYPEOF;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_HASOWNPROPERTY;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_IS;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_ISEXTENSIBLE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_ISFROZEN;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_ISPROTOTYPEOF;
@@ -158,9 +181,11 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_SETP
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_TOLOCALESTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_TOSTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_VALUEOF;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_VALUES;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.PARSEFLOAT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.PARSEINT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.PRINT;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.PROXY;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.RANGE_ERROR;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.REFERENCE_ERROR;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.REGEXP;
@@ -171,9 +196,12 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.REGEXP_TOST
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_CHARAT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_CHARCODEAT;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_CODEPOINTAT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_CONCAT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_ENDSWITH;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_FROMCHARCODE;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_FROMCODEPOINT;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_INCLUDES;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_INDEXOF;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_LASTINDEXOF;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_LOCALECOMPARE;
@@ -312,6 +340,7 @@ public class NativeFunctionSignatureBuilder {
 
         // STRING FUNCTIONS
         addStaticVarSig(STRING_FROMCHARCODE, OptionalParameters.Number);
+        addStaticVarSig(STRING_FROMCODEPOINT, OptionalParameters.Number);
         addSig(STRING_TOSTRING, Receivers.String);
         addSig(STRING_VALUEOF, Receivers.String);
         addSig(STRING_CHARAT, Receivers.NotNullUndefCoerceString, MandatoryParameters.Number);
@@ -335,9 +364,14 @@ public class NativeFunctionSignatureBuilder {
         addSig(STRING_TRIMRIGHT, Receivers.NotNullUndefCoerceString);
         addSig(STRING_STARTSWITH, Receivers.NotNullUndefCoerceString, MandatoryParameters.NotRegExpCoerceString, OptionalParameters.Integer);
         addSig(STRING_ENDSWITH, Receivers.NotNullUndefCoerceString, MandatoryParameters.NotRegExpCoerceString, OptionalParameters.Integer);
+        addSig(STRING_INCLUDES, Receivers.NotNullUndefCoerceString, MandatoryParameters.StringThrowOnRegExp, OptionalParameters.Integer);
+        addSig(STRING_CODEPOINTAT, Receivers.NotNullUndefCoerceString, MandatoryParameters.Number);
 
         // NUMBER FUNCTIONS
         addStaticSig(NUMBER_ISFINITE, MandatoryParameters.DontCare);
+        addStaticSig(NUMBER_ISSAFEINTEGER, MandatoryParameters.DontCare);
+        addStaticSig(NUMBER_ISINTEGER, MandatoryParameters.DontCare);
+        addStaticSig(NUMBER_ISNAN, MandatoryParameters.DontCare);
         addSig(NUMBER_TOFIXED, Receivers.Number, OptionalParameters.Integer);
         addSig(NUMBER_TOEXPONENTIAL, Receivers.Number, OptionalParameters.Integer);
         addSig(NUMBER_TOPRECISION, Receivers.Number, OptionalParameters.Integer);
@@ -361,6 +395,7 @@ public class NativeFunctionSignatureBuilder {
         addSig(ARRAY_SORT, Receivers.CoerceObject, OptionalParameters.DontCare /* yep, non-functions are silently ignored! */);
         addSig(ARRAY_TOLOCALESTRING, Receivers.CoerceObject);
         addSig(ARRAY_TOSTRING, Receivers.CoerceObject);
+        addSig(ARRAY_VALUES, Receivers.CoerceObject);
 
         addStaticSig(ARRAY_ISARRAY, MandatoryParameters.DontCare);
 
@@ -393,6 +428,9 @@ public class NativeFunctionSignatureBuilder {
         addStaticSig(OBJECT_PREVENTEXTENSIONS, MandatoryParameters.Object);
         addStaticSig(OBJECT_SEAL, MandatoryParameters.Object);
         addStaticSig(OBJECT_SETPROTOTYPEOF, MandatoryParameters.Object, MandatoryParameters.DontCare);
+        addStaticSig(OBJECT_IS, MandatoryParameters.Object, MandatoryParameters.DontCare);
+        addStaticSig(OBJECT_ASSIGN, MandatoryParameters.Object, MandatoryParameters.DontCare);
+        addStaticSig(OBJECT_VALUES, MandatoryParameters.Object);
 
         // FUNCTION FUNCTIONS
         addSig(FUNCTION_TOSTRING, Receivers.Function);
@@ -479,6 +517,23 @@ public class NativeFunctionSignatureBuilder {
         addStaticSig(MATH_SIN, MandatoryParameters.Number);
         addStaticSig(MATH_SQRT, MandatoryParameters.Number);
         addStaticSig(MATH_TAN, MandatoryParameters.Number);
+        addStaticSig(MATH_IMUL, MandatoryParameters.Number);
+        addStaticSig(MATH_SIGN, MandatoryParameters.Number);
+        addStaticSig(MATH_TRUNC, MandatoryParameters.Number);
+        addStaticSig(MATH_TANH, MandatoryParameters.Number);
+        addStaticSig(MATH_ASINH, MandatoryParameters.Number);
+        addStaticSig(MATH_ACOSH, MandatoryParameters.Number);
+        addStaticSig(MATH_ATANH, MandatoryParameters.Number);
+        addStaticSig(MATH_HYPOT, MandatoryParameters.Number);
+        addStaticSig(MATH_FROUND, MandatoryParameters.Number);
+        addStaticSig(MATH_CLZ32, MandatoryParameters.Number);
+        addStaticSig(MATH_CBRT, MandatoryParameters.Number);
+        addStaticSig(MATH_SINH, MandatoryParameters.Number);
+        addStaticSig(MATH_COSH, MandatoryParameters.Number);
+        addStaticSig(MATH_LOG10, MandatoryParameters.Number);
+        addStaticSig(MATH_LOG2, MandatoryParameters.Number);
+        addStaticSig(MATH_LOG1P, MandatoryParameters.Number);
+        addStaticSig(MATH_EXPM1, MandatoryParameters.Number);
 
         addStaticVarSig(MATH_MAX, OptionalParameters.Number);
         addStaticVarSig(MATH_MIN, OptionalParameters.Number);
@@ -497,6 +552,9 @@ public class NativeFunctionSignatureBuilder {
         addStaticSig(PARSEINT, MandatoryParameters.String, OptionalParameters.Integer);
         addStaticSig(PRINT, MandatoryParameters.DontCare);
         addStaticSig(UNESCAPE, MandatoryParameters.String);
+
+        // PROXY SIGNATURES
+        addConstructorSig(PROXY, MandatoryParameters.Object, MandatoryParameters.Object);
     }
 
     public Map<HostObject, Signature> getSignatures() {

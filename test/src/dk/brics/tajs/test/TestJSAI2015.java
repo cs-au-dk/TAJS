@@ -18,57 +18,41 @@ public class TestJSAI2015 {
 
     @Test
     public void JSAI2015_buckets() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2015benchmarks/buckets_many_extra_prints.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2015benchmarks/buckets_many_extra_prints.js");
     }
 
     @Test
     public void JSAI2015_cryptobench() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2015benchmarks/cryptobench_many_extra_prints.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2015benchmarks/cryptobench_many_extra_prints.js");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test
     public void JSAI2015_jsparse() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2015benchmarks/jsparse_many_extra_prints.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2015benchmarks/jsparse_many_extra_prints.js");
     }
 
     @Test
     public void JSAI2015_linq_action() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2015benchmarks/linq_action_many_extra_prints.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2015benchmarks/linq_action_many_extra_prints.js");
     }
 
     @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void JSAI2015_linq_aggregate() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2015benchmarks/linq_aggregate_many_extra_prints.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2015benchmarks/linq_aggregate_many_extra_prints.js");
     }
 
     @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void JSAI2015_linq_functional() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2015benchmarks/linq_functional_many_extra_prints.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2015benchmarks/linq_functional_many_extra_prints.js");
     }
 
     @Test
     public void JSAI2015_md5() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2015benchmarks/md5_many_extra_prints.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2015benchmarks/md5_many_extra_prints.js");
     }
 
     @Test
     public void JSAI2015_numbers() throws Exception {
-        Misc.init();
-        String[] args = {"test/jsai2015benchmarks/numbers_many_extra_prints.js"};
-        Misc.run(args);
+        Misc.run("benchmarks/tajs/src/jsai2015benchmarks/numbers_many_extra_prints.js");
     }
 }

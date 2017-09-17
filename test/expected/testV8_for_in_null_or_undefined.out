@@ -1,2 +1,0 @@
-test/v8tests/for-in-null-or-undefined.js:31:10: [definite] The variable p is never used
-test/v8tests/prologue.js,test/v8tests/for-in-null-or-undefined.js: [maybe] Uncaught exception, constructed at [test/v8tests/for-in-null-or-undefined.js:31:1, test/v8tests/for-in-null-or-undefined.js:32:1]

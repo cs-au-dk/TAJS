@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+		<title>Plane Deformations</title>
+		<style type="text/css">
+			body {
+				background-color: #101010;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			#info {
+				position: absolute;
+				top: 0px;
+				width: 100%;
+				color: #ffffff;
+				padding: 5px;
+				font-family: Monospace;
+				font-size:13px;
+				text-align:center;
+			}
+		</style>
+	</head>
+	<body>
+
+
+		<div id="container"></div>
+		<div id="info">Click for the next effect.</div>
+
+		<script type="text/javascript">
+
+			var QUALITY_X = 5, QUALITY_Y = 5,
+			WIDTH = Math.floor( window.innerWidth / QUALITY_X ),
+			HEIGHT = Math.floor( window.innerHeight / QUALITY_Y ),
+			SIZE = WIDTH * HEIGHT,
+
+			src_canvas, src_context, src_image, src_data,
+			dst_canvas, dst_context, dst_image, dst_data,
+
+			mouseX = 0, mouseY = 0, count = 0, step = Math.floor( Math.random() * 11 );
+
+			init();
+
+			function init() {
+
+				var container;
+
+				container = document.getElementById( 'container' );
+				container.addEventListener( 'click', onContainerClick, false );
+
+				dst_canvas = document.createElement( 'canvas' );
+				dst_canvas.width = WIDTH;
+				dst_canvas.height = HEIGHT;
+				dst_canvas.style.width = window.innerWidth + 'px';
+				dst_canvas.style.height = window.innerHeight + 'px';
+				dst_canvas.style.cursor = 'pointer';
+				container.appendChild(dst_canvas);
+
+				dst_context = dst_canvas.getContext( '2d' );
+				dst_context.fillStyle = '#000';
+				dst_context.fillRect( 0, 0, WIDTH, HEIGHT );
+				dst_image = dst_context.getImageData( 0, 0, WIDTH, HEIGHT );
+				dst_data = dst_image.data;
+
+				var texture = new Image();
+
+				texture.addEventListener('load', function() {
+
+					src_canvas = document.createElement( 'canvas' );
+					src_canvas.width = this.width;
+					src_canvas.height = this.height;
+
+					src_context = src_canvas.getContext( '2d' );
+					src_context.drawImage( this, 0, 0 );
+
+					src_image = src_context.getImageData( 0, 0, this.width, this.height );
+					src_data = src_image.data;
+
+					setInterval( loop, 1000 / 120 );
+
+				}, false);
+
+				texture.src = "disturb.jpg";
+
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+			}
+
+			// Event Handlers
+
+			function onDocumentMouseMove(event) {
+
+				mouseX = event.clientX / QUALITY_X;
+				mouseY = event.clientY / QUALITY_Y;
+			}
+
+			function onContainerClick( event ) {
+
+				event.preventDefault();
+
+				step ++;
+				step %= 11;
+
+			}
+
+			//
+
+			function loop() {
+
+				switch( step ) {
+
+					case 0: stereographic(); break;
+					case 1: stereographic2(); break;
+					case 2: planes(); break;
+					case 3: circles(); break;
+					case 4: rays(); break;
+					case 5: tunnel(); break;
+					case 6: tunnel2(); break;
+					case 7: tunnel3(); break;
+					case 8: tunnel4(); break;
+					case 9: vortex(); break;
+					case 10: waves(); break;
+
+				}
+
+				dst_context.putImageData( dst_image, 0, 0 );
+
+				count += 0.5;
+
+				//stats.update();
+
+			}
+
+			// deformations
+
+			function stereographic() {
+
+				var src_index, dst_index,
+				x, y, u, v, w, a, r, pi = Math.PI;
+
+				for (var yi = 0; yi < HEIGHT; yi++ ) {
+
+					for ( var xi = 0; xi < WIDTH; xi++ ) {
+
+						x = xi - mouseX;
+						y = yi - mouseY;
+
+						a = Math.atan2( y, x );
+						r = Math.sqrt( x * x + y * y );
+
+						u = 5 * Math.cos( a ) / r;
+						v = 5 * Math.sin( a ) / r;
+
+						u = u * 512 + count;
+						v = v * 512 + count;
+
+						u = ( u < 0 ) ? 512 - ( - u % 512 ) : ( u >= 512 ) ? u % 512 : u;
+						v = ( v < 0 ) ? 512 - ( - v % 512 ) : ( v >= 512 ) ? v % 512 : v;
+
+						src_index = ( ( ( u >> 0 ) + ( v >> 0 ) * 512 ) * 4 ) >>> 0;
+						dst_index = ( xi + yi * WIDTH ) * 4;
+
+						dst_data[ dst_index ] = src_data[ src_index ];
+						dst_data[ dst_index + 1 ] = src_data[ src_index + 1 ];
+						dst_data[ dst_index + 2 ] = src_data[ src_index + 2 ];
+
+					}
+
+				}
+
+			}
+
+			function stereographic2() {
+
+				var src_index, dst_index,
+				x, y, u, v, w, a, r, pi = Math.PI;
+
+				for (var yi = 0; yi < HEIGHT; yi++ ) {
+
+					for ( var xi = 0; xi < WIDTH; xi++ ) {
+
+						x = xi - mouseX;
+						y = yi - mouseY;
+
+						a = Math.atan2( y, x );
+						r = Math.sqrt( x * x + y * y ) - 75;
+
+						u = Math.cos( a ) / r;
+						v = Math.sin( a ) / r;
+
+						u = u * 512 + count;
+						v = v * 512 + count;
+
+						u = ( u < 0 ) ? 512 - ( - u % 512 ) : ( u >= 512 ) ? u % 512 : u;
+						v = ( v < 0 ) ? 512 - ( - v % 512 ) : ( v >= 512 ) ? v % 512 : v;
+
+						src_index = ( ( ( u >> 0 ) + ( v >> 0 ) * 512 ) * 4 ) >>> 0;
+						dst_index = ( xi + yi * WIDTH ) * 4;
+
+						dst_data[ dst_index ] = src_data[ src_index ];
+						dst_data[ dst_index + 1 ] = src_data[ src_index + 1 ];
+						dst_data[ dst_index + 2 ] = src_data[ src_index + 2 ];
+
+					}
+
+				}
+
+			}
+
+			function planes() {
+
+				var src_index, dst_index,
+				x, y, u, v, w, a, r, pi = Math.PI;
+
+				for (var yi = 0; yi < HEIGHT; yi++ ) {
+
+					for ( var xi = 0; xi < WIDTH; xi++ ) {
+
+						x = xi - mouseX;
+						y = yi - mouseY;
+
+						u = 3 / Math.abs( y );
+						v = .1 * x / Math.abs( y );
+						w = Math.abs( y * .02 );
+
+						u = u * 512 + (count * 2);
+						v = v * 512;
+
+						u = ( u < 0 ) ? 512 - ( - u % 512 ) : ( u >= 512 ) ? u % 512 : u;
+						v = ( v < 0 ) ? 512 - ( - v % 512 ) : ( v >= 512 ) ? v % 512 : v;
+
+						src_index = ( ( ( u >> 0 ) + ( v >> 0 ) * 512 ) * 4 ) >>> 0;
+						dst_index = ( xi + yi * WIDTH ) * 4;
+
+						dst_data[ dst_index ] = src_data[ src_index ] * w;
+						dst_data[ dst_index + 1 ] = src_data[ src_index + 1 ] * w;
+						dst_data[ dst_index + 2 ] = src_data[ src_index + 2 ] * w;
+
+					}
+
+				}
+
+			}
+
+			function circles() {
+
+				var src_index, dst_index,
+				x, y, u, v, w, a, r, pi = Math.PI;
+
+				for (var yi = 0; yi < HEIGHT; yi++ ) {
+
+					for ( var xi = 0; xi < WIDTH; xi++ ) {
+
+						x = xi - mouseX;
+						y = yi - mouseY;
+
+						r = Math.sqrt( x * x + y * y );
+
+						u = r / 200;
+						v = r / 200;
+
+						u = u * 512 + (count * 2);
+						v = v * 512;
+
+						u = ( u < 0 ) ? 512 - ( - u % 512 ) : ( u >= 512 ) ? u % 512 : u;
+						v = ( v < 0 ) ? 512 - ( - v % 512 ) : ( v >= 512 ) ? v % 512 : v;
+
+						src_index = ( ( ( u >> 0 ) + ( v >> 0 ) * 512 ) * 4 ) >>> 0;
+						dst_index = ( xi + yi * WIDTH ) * 4;
+
+						dst_data[ dst_index ] = src_data[ src_index ];
+						dst_data[ dst_index + 1 ] = src_data[ src_index + 1 ];
+						dst_data[ dst_index + 2 ] = src_data[ src_index + 2 ];
+
+					}
+
+				}
+
+			}
+
+			function rays() {
+
+				var src_index, dst_index,
+				x, y, u, v, w, a, r, pi = Math.PI;
+
+				for (var yi = 0; yi < HEIGHT; yi++ ) {
+
+					for ( var xi = 0; xi < WIDTH; xi++ ) {
+
+						x = xi - mouseX;
+						y = yi - mouseY;
+
+						a = Math.atan2( y, x );
+						r = Math.sqrt( x * x + y * y );
+
+						u = a;
+						v = a;
+						w = 1 / Math.pow( r, .5 );
+
+						u = u * 512 + (count * 2);
+						v = v * 512;
+						w = w * 32;
+
+						u = ( u < 0 ) ? 512 - ( - u % 512 ) : ( u >= 512 ) ? u % 512 : u;
+						v = ( v < 0 ) ? 512 - ( - v % 512 ) : ( v >= 512 ) ? v % 512 : v;
+
+						src_index = ( ( ( u >> 0 ) + ( v >> 0 ) * 512 ) * 4 ) >>> 0;
+						dst_index = ( xi + yi * WIDTH ) * 4;
+
+						dst_data[ dst_index ] = src_data[ src_index ] * w;
+						dst_data[ dst_index + 1 ] = src_data[ src_index + 1 ] * w;
+						dst_data[ dst_index + 2 ] = src_data[ src_index + 2 ] * w;
+
+					}
+
+				}
+
+			}
+
+			function tunnel() {
+
+				var src_index, dst_index,
+				x, y, u, v, w, a, r, pi = Math.PI;
+
+				for (var yi = 0; yi < HEIGHT; yi++ ) {
+
+					for ( var xi = 0; xi < WIDTH; xi++ ) {
+
+						x = xi - mouseX;
+						y = yi - mouseY;
+
+						a = Math.atan2( y, x );
+						r = Math.sqrt( x * x + y * y );
+
+						u = 20 / r;
+						v = 0.5 * a / pi;
+						w = r * 0.01;
+
+						u = u * 512 + (count * 4);
+						v = v * 512;
+
+						u = ( u < 0 ) ? 512 - ( - u % 512 ) : ( u >= 512 ) ? u % 512 : u;
+						v = ( v < 0 ) ? 512 - ( - v % 512 ) : ( v >= 512 ) ? v % 512 : v;
+
+						src_index = ( ( ( u >> 0 ) + ( v >> 0 ) * 512 ) * 4 ) >>> 0;
+						dst_index = ( xi + yi * WIDTH ) * 4;
+
+						dst_data[ dst_index ] = src_data[ src_index ] * w;
+						dst_data[ dst_index + 1 ] = src_data[ src_index + 1 ] * w;
+						dst_data[ dst_index + 2 ] = src_data[ src_index + 2 ] * w;
+
+					}
+
+				}
+
+			}
+
+			function tunnel2() {
+
+				var src_index, dst_index,
+				x, y, u, v, w, a, r, pi = Math.PI;
+
+				for (var yi = 0; yi < HEIGHT; yi++ ) {
+
+					for ( var xi = 0; xi < WIDTH; xi++ ) {
+
+						x = xi - mouseX;
+						y = yi - mouseY;
+
+						a = Math.atan2( y, x );
+						r = Math.sqrt( x * x + y * y );
+
+						u = 10 / ( r + 10 + 50 * Math.sin( 5 * a ) );
+						v = 0.5 * a / pi;
+						w = 0.01 * ( r + 50 + 50 * Math.sin( 5 * a ) );
+
+						u = u * 512 + (count * 3);
+						v = v * 512;
+
+						u = ( u < 0 ) ? 512 - ( - u % 512 ) : ( u >= 512 ) ? u % 512 : u;
+						v = ( v < 0 ) ? 512 - ( - v % 512 ) : ( v >= 512 ) ? v % 512 : v;
+
+						src_index = ( ( ( u >> 0 ) + ( v >> 0 ) * 512 ) * 4 ) >>> 0;
+						dst_index = ( xi + yi * WIDTH ) * 4;
+
+						dst_data[ dst_index ] = src_data[ src_index ] * w;
+						dst_data[ dst_index + 1 ] = src_data[ src_index + 1 ] * w;
+						dst_data[ dst_index + 2 ] = src_data[ src_index + 2 ] * w;
+
+					}
+
+				}
+
+			}
+
+			function tunnel3() {
+
+				var src_index, dst_index,
+				x, y, u, v, w, a, r, pi = Math.PI;
+
+				for (var yi = 0; yi < HEIGHT; yi++ ) {
+
+					for ( var xi = 0; xi < WIDTH; xi++ ) {
+
+						x = xi - mouseX;
+						y = yi - mouseY;
+
+						a = Math.atan2( y, x );
+						r = Math.sqrt( x * x + y * y );
+
+						u = ( 40 / r ) + 0.1 * Math.sin( 8 * a );
+						v = .5 + .5 * a / pi;
+						w = r * 0.01;
+
+						u = u * 512 + (count * 5);
+						v = v * 512;
+
+						u = ( u < 0 ) ? 512 - ( - u % 512 ) : ( u >= 512 ) ? u % 512 : u;
+						v = ( v < 0 ) ? 512 - ( - v % 512 ) : ( v >= 512 ) ? v % 512 : v;
+
+						src_index = ( ( ( u >> 0 ) + ( v >> 0 ) * 512 ) * 4 ) >>> 0;
+						dst_index = ( xi + yi * WIDTH ) * 4;
+
+						dst_data[ dst_index ] = src_data[ src_index ] * w;
+						dst_data[ dst_index + 1 ] = src_data[ src_index + 1 ] * w;
+						dst_data[ dst_index + 2 ] = src_data[ src_index + 2 ] * w;
+
+					}
+
+				}
+
+			}
+
+			function tunnel4() {
+
+				var src_index, dst_index,
+				x, y, u, v, w, a, r, pi = Math.PI;
+
+				for (var yi = 0; yi < HEIGHT; yi++ ) {
+
+					for ( var xi = 0; xi < WIDTH; xi++ ) {
+
+						x = xi - mouseX;
+						y = yi - mouseY;
+
+						a = Math.atan2( y, x );
+						r = Math.sqrt( x * x + y * y );
+
+						u = 0.3 * a / pi;
+						v = 10 * Math.abs( Math.cos( 1.5 * a ) / r );
+						w = 0.2 + 100 * Math.abs( Math.cos( 1.5 * a ) / r );
+
+						u = u * 512 + (count * 2);
+						v = v * 512;
+
+						u = ( u < 0 ) ? 512 - ( - u % 512 ) : ( u >= 512 ) ? u % 512 : u;
+						v = ( v < 0 ) ? 512 - ( - v % 512 ) : ( v >= 512 ) ? v % 512 : v;
+
+						src_index = ( ( ( u >> 0 ) + ( v >> 0 ) * 512 ) * 4 ) >>> 0;
+						dst_index = ( xi + yi * WIDTH ) * 4;
+
+						dst_data[ dst_index ] = src_data[ src_index ] * w;
+						dst_data[ dst_index + 1 ] = src_data[ src_index + 1 ] * w;
+						dst_data[ dst_index + 2 ] = src_data[ src_index + 2 ] * w;
+
+					}
+
+				}
+
+			}
+
+			function vortex() {
+
+				var src_index, dst_index,
+				x, y, u, v, w, a, r, pi = Math.PI;
+
+				for (var yi = 0; yi < HEIGHT; yi++ ) {
+
+					for ( var xi = 0; xi < WIDTH; xi++ ) {
+
+						x = xi - mouseX;
+						y = yi - mouseY;
+
+						a = Math.atan2( y, x );
+						r = Math.sqrt( x * x + y * y );
+
+						u = 1 * a / pi + 0.005 * r;
+						v = 40 * Math.pow( r, 0.01 );
+
+						u = u * 512;
+						v = v * 512 + (count * 10);
+
+						u = ( u < 0 ) ? 512 - ( - u % 512 ) : ( u >= 512 ) ? u % 512 : u;
+						v = ( v < 0 ) ? 512 - ( - v % 512 ) : ( v >= 512 ) ? v % 512 : v;
+
+						src_index = ( ( ( u >> 0 ) + ( v >> 0 ) * 512 ) * 4 ) >>> 0;
+						dst_index = ( xi + yi * WIDTH ) * 4;
+
+						dst_data[ dst_index ] = src_data[ src_index ];
+						dst_data[ dst_index + 1 ] = src_data[ src_index + 1 ];
+						dst_data[ dst_index + 2 ] = src_data[ src_index + 2 ];
+
+					}
+
+				}
+
+			}
+
+			function waves() {
+
+				var src_index, dst_index,
+				x, y, u, v, w, a, r, pi = Math.PI;
+
+				for (var yi = 0; yi < HEIGHT; yi++ ) {
+
+					for ( var xi = 0; xi < WIDTH; xi++ ) {
+
+						x = xi - mouseX;
+						y = yi - mouseY;
+
+						a = Math.atan2( y, x );
+						r = Math.sqrt( x * x + y * y );
+
+						u = 0.5 * a / pi;
+						v = Math.sin( 0.04 * r );
+						w = 0.7 + 0.3 * Math.sin( 0.04 * r );
+
+						u = u * 512;
+						v = v * 512 + (count * 10);
+
+						u = ( u < 0 ) ? 512 - ( - u % 512 ) : ( u >= 512 ) ? u % 512 : u;
+						v = ( v < 0 ) ? 512 - ( - v % 512 ) : ( v >= 512 ) ? v % 512 : v;
+
+						src_index = ( ( ( u >> 0 ) + ( v >> 0 ) * 512 ) * 4 ) >>> 0;
+						dst_index = ( xi + yi * WIDTH ) * 4;
+
+						dst_data[ dst_index ] = src_data[ src_index ] * w;
+						dst_data[ dst_index + 1 ] = src_data[ src_index + 1 ] * w;
+						dst_data[ dst_index + 2 ] = src_data[ src_index + 2 ] * w;
+
+					}
+
+				}
+
+			}
+
+
+		</script>
+	</body>
+</html>

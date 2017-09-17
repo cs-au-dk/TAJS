@@ -1,0 +1,4 @@
+test-resources/src/micro/test66.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test66.js:4:1: [info] Abstract value: "string1000"
+test-resources/src/micro/test66.js:12:1: [info] Abstract value: 1.0
+Soundness testing succeeded for 21 checks (with 0 expected failures)

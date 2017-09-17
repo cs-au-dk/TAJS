@@ -1,0 +1,4 @@
+test-resources/src/wala/functions.js: [definite] Exceptional program exit is unreachable
+test-resources/src/wala/functions.js:3:7: [definite] The variable local is never used
+test-resources/src/wala/functions.js:17:1: [info] Abstract value: 10.0
+Soundness testing succeeded for 39 checks (with 0 expected failures)

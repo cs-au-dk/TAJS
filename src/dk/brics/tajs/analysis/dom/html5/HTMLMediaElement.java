@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.analysis.dom.html5;
 
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.PropVarOperations;
@@ -74,7 +75,8 @@ public class HTMLMediaElement {
     public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
         switch (nativeObject) {
             case HTMLMEDIAELEMENT_CONSTRUCTOR: {
-                return Value.makeObject(INSTANCES);
+                Exceptions.throwTypeError(c);
+                return Value.makeNone();
             }
             case HTMLMEDIAELEMENT_CAN_PLAY_TYPE:
                 return Value.makeAnyStr();

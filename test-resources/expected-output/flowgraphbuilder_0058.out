@@ -1,0 +1,48 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js)
+    node 1: function-decl[function f(),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js:1:1)
+    ->[block 1]
+  block 1:
+    node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 3: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2]
+  block 2:
+    node 4: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3]
+  block 3:
+    node 5: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4]
+  block 4:
+    node 6: read-variable['f',v7,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js:2:1)
+    ->[block 5]
+  block 5:
+    node 7: call[v6,v7,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js:2:1)
+    ->[block 6]
+  block 6:
+    node 8: if[v5](true-block:7,false-block:8) (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js:2:1)
+    ->[block 7,block 8]
+  block 7:
+    node 9: constant[true,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js:2:15)
+    node 10: typeof[v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js:2:8)
+    ->[block 8]
+  block 8: [exit-ordinary]
+    node 11: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js)
+    ->[]
+  block 9: [exit-exceptional]
+    node 12: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js)
+    ->[]
+function f()
+  block 10: [entry]
+    node 13: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js:1:1)
+    ->[block 11]
+  block 11: [exit-ordinary]
+    node 14: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js:1:1)
+    ->[]
+  block 12: [exit-exceptional]
+    node 15: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0058.js:1:1)
+    ->[]
+
+test-resources/src/flowgraphbuilder/flowgraph_builder0058.js:2:1: [definite] The conditional expression is always false
+test-resources/src/flowgraphbuilder/flowgraph_builder0058.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 7 checks (with 0 expected failures)

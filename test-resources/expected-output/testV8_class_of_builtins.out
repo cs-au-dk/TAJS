@@ -1,0 +1,3 @@
+test-resources/src/v8tests/class-of-builtins.js: [definite] Exceptional program exit is unreachable
+TAJS-dynamic-code(test-resources/src/v8tests/class-of-builtins.js:44:49):1:1: [definite] Unreachable function
+Soundness testing succeeded for 319 checks (with 0 expected failures)

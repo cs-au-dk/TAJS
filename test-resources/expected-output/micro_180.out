@@ -1,0 +1,23 @@
+test-resources/src/micro/test180.js:14:3: [maybe] RangeError, assigning invalid value to array 'length' property
+test-resources/src/micro/test180.js:21:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/test180.js:22:3: [maybe] RangeError, assigning invalid value to array 'length' property
+test-resources/src/micro/test180.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test180.js:14:3, test-resources/src/micro/test180.js:21:18, test-resources/src/micro/test180.js:22:3]
+test-resources/src/micro/test180.js:10:13: [maybe] Reading absent property (computed name)
+test-resources/src/micro/test180.js:14:3: [maybe] Conversion from string to number yields NaN
+test-resources/src/micro/test180.js:14:3: [maybe] Converting object to number
+test-resources/src/micro/test180.js:19:13: [maybe] Reading absent property (computed name)
+test-resources/src/micro/test180.js:22:3: [maybe] Conversion from string to number yields NaN
+test-resources/src/micro/test180.js:22:3: [maybe] Conversion to number yields NaN
+test-resources/src/micro/test180.js:22:3: [maybe] Converting object to number
+test-resources/src/micro/test180.js:8:3: [info] Abstract value: UInt|NotUInt
+test-resources/src/micro/test180.js:9:3: [info] Abstract value: [@Object#node165, *Object#node165]
+test-resources/src/micro/test180.js:18:3: [info] Abstract value: UInt|NotUInt
+test-resources/src/micro/test180.js:21:3: [info] Abstract value: Undef|Null|[@Object#node165, *Object#node165]
+test-resources/src/micro/test180.js:28:3: [info] Abstract value: UInt|NotUInt
+test-resources/src/micro/test180.js:29:3: [info] Abstract value: UInt|NotUInt
+test-resources/src/micro/test180.js:35:3: [info] Abstract value: UInt|NotUInt
+test-resources/src/micro/test180.js:36:3: [info] Abstract value: UInt|NotUInt
+test-resources/src/micro/test180.js:41:5: [info] Abstract value: UInt|NotUInt
+test-resources/src/micro/test180.js:58:1: [info] Abstract value: UIntPos
+test-resources/src/micro/test180.js:61:1: [info] Abstract object: {length:UInt,[[DefaultArray]]=Undef|Null|[@Object#node165, *Object#node165]|absent,[[DefaultNonArray]]=Null|[*Object#node165]|absent,[[Prototype]]=[@Array.prototype[native]]}
+Soundness testing succeeded for 444 checks (with 0 expected failures)

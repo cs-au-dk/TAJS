@@ -33,96 +33,113 @@ import static dk.brics.tajs.util.Collections.newSet;
 /**
  * Monitor for printing progress during analysis.
  */
-public class ProgressMonitor extends PhaseMonitoring {
+public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProgressMonitor, DefaultAnalysisMonitoring> {
 
     private static Logger log = Logger.getLogger(ProgressMonitor.class);
 
     public ProgressMonitor() {
-        super(new DefaultAnalysisMonitoring() {
+        super(new PreScanProgressMonitor(), new DefaultAnalysisMonitoring());
+    }
 
-            private int nodeTransfers = 0;
+    public static class PreScanProgressMonitor extends DefaultAnalysisMonitoring {
 
-            private long lastPrintProgress = 0;
+        private int nodeTransfers = 0;
 
-            private long stateSize = 0;
+        private long lastPrintProgress = 0;
 
-            private long preStateSize;
+        private long stateSize = 0;
 
-            private Set<AbstractNode> visitedNonHostNodes = newSet();
+        private long preStateSize;
 
-            private Solver.SolverInterface c;
+        private Set<AbstractNode> visitedNonHostNodes = newSet();
 
-            @Override
-            public void setSolverInterface(Solver.SolverInterface c){
-                this.c = c;
-            }
+        private Solver.SolverInterface c;
 
-            @Override
-            public void visitNodeTransferPre(AbstractNode n, State s) {
-                nodeTransfers++;
-                if (c.getFlowGraph().isUserCode(n))
-                    visitedNonHostNodes.add(n);
-            }
+        public int getNodeTransfers() {
+            return nodeTransfers;
+        }
 
-            @Override
-            public void visitPropagationPre(BlockAndContext<Context> from, BlockAndContext<Context> to) {
-                State s = c.getAnalysisLatticeElement().getState(to);
-                if (s != null)
-                    preStateSize = getStateSize(s);
-                else
-                    preStateSize = 0;
-            }
+        public long getStateSize() {
+            return stateSize;
+        }
 
-            @Override
-            public void visitPropagationPost(BlockAndContext<Context> from, BlockAndContext<Context> to, boolean changed) {
-                State s = c.getAnalysisLatticeElement().getState(to);
-                if (s != null)
-                    stateSize += getStateSize(s) - preStateSize;
-            }
+        public Set<AbstractNode> getVisitedNonHostNodes() {
+            return visitedNonHostNodes;
+        }@Override
+        public void setSolverInterface(Solver.SolverInterface c){
+            this.c = c;
+        }
 
-            /**
-             * Quick'n'dirty measurement of the "size" of an abstract state.
-             */
-            private int getStateSize(State s) {
-                return s.getStore().values().stream().flatMap(o -> Stream.concat(o.getProperties().values().stream(),
-                        Stream.of(o.getDefaultArrayProperty(), o.getDefaultNonArrayProperty(), o.getInternalPrototype(), o.getInternalValue())))
-                        .mapToInt(p -> p.getAllObjectLabels().size() + p.typeSize()).sum();
-            }
+        @Override
+        public void visitNodeTransferPre(AbstractNode n, State s) {
+            nodeTransfers++;
+            if (c.getFlowGraph().isUserCode(n))
+                visitedNonHostNodes.add(n);
+        }
 
-            @Override
-            public void visitBlockTransferPre(BasicBlock b, State s) {
-                if (log.isDebugEnabled()) {
-                    log.debug("Selecting worklist entry for block " + b.getIndex() + " at " + b.getSourceLocation());
-                    log.debug("Worklist: " + c.getWorklist());
-                    log.debug("Visiting " + b);
+        @Override
+        public void visitPropagationPre(BlockAndContext<Context> from, BlockAndContext<Context> to) {
+            State s = c.getAnalysisLatticeElement().getState(to);
+            if (s != null)
+                preStateSize = getStateSize(s);
+            else
+                preStateSize = 0;
+        }
+
+        @Override
+        public void visitPropagationPost(BlockAndContext<Context> from, BlockAndContext<Context> to, boolean changed) {
+            State s = c.getAnalysisLatticeElement().getState(to);
+            if (s != null)
+                stateSize += getStateSize(s) - preStateSize;
+        }
+
+        /**
+         * Quick'n'dirty measurement of the "size" of an abstract state.
+         */
+        private int getStateSize(State s) {
+            return s.getStore().values().stream().flatMap(o -> Stream.concat(o.getProperties().values().stream(),
+                    Stream.of(o.getDefaultArrayProperty(), o.getDefaultNonArrayProperty(), o.getInternalPrototype(), o.getInternalValue())))
+                    .mapToInt(p -> p.getAllObjectLabels().size() + p.typeSize()).sum();
+        }
+
+        @Override
+        public void visitBlockTransferPre(BasicBlock b, State s) {
+            if (log.isDebugEnabled()) {
+                log.debug("Selecting worklist entry for block " + b.getIndex() + " at " + b.getSourceLocation());
+                log.debug("Worklist: " + c.getWorklist());
+                log.debug("Visiting " + b);
 //    		    	log.debug("Number of abstract states at this block: " + the_analysis_lattice_element.getSize(block));
-                    log.debug("Context: " + s.getContext());
-                }
+                log.debug("Context: " + s.getContext());
             }
+        }
 
-            @Override
-            public void visitBlockTransferPost(BasicBlock b, State s) {
-                if (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && !Options.get().isTestEnabled() && !Options.get().isIntermediateStatesEnabled()) {
-                    long t = System.currentTimeMillis();
-                    if (t - lastPrintProgress > 100 || c.getWorklist().isEmpty()) {
-                        System.out.printf("\rNode transfers: %-7d Visited/total nodes: %6d/%-6d Abstract states: %-6d Avg. state size: %-8.2f Call edges: %-6d Worklist size: %-5d          ",
-                                nodeTransfers + 1, visitedNonHostNodes.size(), c.getFlowGraph().getNumberOfUserCodeNodes(),
-                                c.getAnalysisLatticeElement().getNumberOfStates(),
-                                ((double)stateSize) / c.getAnalysisLatticeElement().getNumberOfStates(),
-                                c.getAnalysisLatticeElement().getCallGraph().size(),
-                                c.getWorklist().size());
-                        System.out.flush();
-                        lastPrintProgress = t;
-                    }
+        @Override
+        public void visitBlockTransferPost(BasicBlock b, State s) {
+            if (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() ) {
+                long t = System.currentTimeMillis();
+                if (t - lastPrintProgress > 100 && ! c.getWorklist().isEmpty()) {
+                    printProgress();
+                    lastPrintProgress = t;
                 }
             }
+        }
 
-            @Override
-            public void visitIterationDone() {
-                if (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && !Options.get().isTestEnabled() && !Options.get().isIntermediateStatesEnabled()) {
-                    System.out.println(); // needed due to '\r' in printProgress
-                }
+        private void printProgress() {
+            System.out.printf("\rNode transfers: %-7d Visited/total nodes: %6d/%-6d Abstract states: %-6d Avg. state size: %-8.2f Call edges: %-6d Worklist size: %-5d          ",
+                    nodeTransfers, visitedNonHostNodes.size(), c.getFlowGraph().getNumberOfUserCodeNodes(),
+                    c.getAnalysisLatticeElement().getNumberOfStates(),
+                    ((double)stateSize) / c.getAnalysisLatticeElement().getNumberOfStates(),
+                    c.getAnalysisLatticeElement().getCallGraph().size(),
+                    c.getWorklist().size());
+            System.out.flush();
+        }
+
+        @Override
+        public void visitIterationDone() {
+            if (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled()) {
+                printProgress();
+                System.out.println(); // needed due to '\r' in printProgress
             }
-        }, new DefaultAnalysisMonitoring());
+        }
     }
 }

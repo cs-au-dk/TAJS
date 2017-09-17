@@ -1,0 +1,127 @@
+test-resources/src/10k/last_man_standing.html:35:5: [definite] The conditional expression is always false
+test-resources/src/10k/last_man_standing.html:35:9: [definite] The conditional expression is always false
+test-resources/src/10k/last_man_standing.html:97:18: [definite] Dead assignment, property R is never read
+test-resources/src/10k/last_man_standing.html:115:7: [definite] Dead assignment, property u is never read
+test-resources/src/10k/last_man_standing.html:115:9: [definite] Unreachable function
+test-resources/src/10k/last_man_standing.html:34:44: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:40:29: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:40:50: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:42:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:43:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:44:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:109:23: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:146:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:162:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:165:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:167:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:175:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:206:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:206:18: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:215:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:215:13: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:219:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:219:21: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:224:21: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:231:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:231:18: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:232:17: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/10k/last_man_standing.html:232:32: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:240:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:240:18: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:241:17: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:249:14: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:250:13: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:259:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:260:14: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:261:28: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/10k/last_man_standing.html:279:13: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:289:24: [maybe] TypeError, call to non-function
+test-resources/src/10k/last_man_standing.html:206:18: [maybe] Reading absent property c
+test-resources/src/10k/last_man_standing.html:215:13: [maybe] Reading absent property move
+test-resources/src/10k/last_man_standing.html:219:21: [maybe] Reading absent property u
+test-resources/src/10k/last_man_standing.html:224:21: [maybe] Reading absent property c
+test-resources/src/10k/last_man_standing.html:231:18: [maybe] Reading absent property c
+test-resources/src/10k/last_man_standing.html:240:18: [maybe] Reading absent property c
+test-resources/src/10k/last_man_standing.html:241:17: [maybe] Reading absent property move
+test-resources/src/10k/last_man_standing.html:249:14: [maybe] Reading absent property c
+test-resources/src/10k/last_man_standing.html:250:13: [maybe] Reading absent property move
+test-resources/src/10k/last_man_standing.html:260:14: [maybe] Reading absent property c
+test-resources/src/10k/last_man_standing.html:279:13: [maybe] Reading absent property c
+test-resources/src/10k/last_man_standing.html:289:24: [maybe] Reading absent property c
+test-resources/src/10k/last_man_standing.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/last_man_standing.html:34:44, test-resources/src/10k/last_man_standing.html:40:29, test-resources/src/10k/last_man_standing.html:40:50, test-resources/src/10k/last_man_standing.html:42:13, test-resources/src/10k/last_man_standing.html:43:13, test-resources/src/10k/last_man_standing.html:44:13, test-resources/src/10k/last_man_standing.html:109:23, test-resources/src/10k/last_man_standing.html:146:13, test-resources/src/10k/last_man_standing.html:162:13, test-resources/src/10k/last_man_standing.html:165:13, test-resources/src/10k/last_man_standing.html:167:9, test-resources/src/10k/last_man_standing.html:175:9, test-resources/src/10k/last_man_standing.html:206:18, test-resources/src/10k/last_man_standing.html:215:13, test-resources/src/10k/last_man_standing.html:219:21, test-resources/src/10k/last_man_standing.html:224:21, test-resources/src/10k/last_man_standing.html:231:18, test-resources/src/10k/last_man_standing.html:232:32, test-resources/src/10k/last_man_standing.html:240:18, test-resources/src/10k/last_man_standing.html:241:17, test-resources/src/10k/last_man_standing.html:249:14, test-resources/src/10k/last_man_standing.html:250:13, test-resources/src/10k/last_man_standing.html:259:9, test-resources/src/10k/last_man_standing.html:260:14, test-resources/src/10k/last_man_standing.html:261:28, test-resources/src/10k/last_man_standing.html:279:13, test-resources/src/10k/last_man_standing.html:289:24]
+test-resources/src/10k/last_man_standing.html:40:29: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:40:50: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:42:13: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:43:13: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:44:13: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:85:28: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:85:42: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:109:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:109:23: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:109:46: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:110:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:110:23: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:110:46: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:111:58: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:111:74: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:112:58: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:112:74: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:189:29: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:189:46: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:198:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:198:59: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:205:21: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:214:21: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:230:21: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:232:32: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:239:21: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:242:30: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:242:63: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:259:9: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:261:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:261:28: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:264:22: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:264:37: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:265:22: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:265:37: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:269:22: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:269:36: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:270:22: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:270:36: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:280:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:281:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:282:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:285:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:288:66: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:288:80: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:61:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:62:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:62:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:63:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:64:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:64:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:65:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:65:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:68:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:68:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:68:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:68:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:68:73: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:81:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:82:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:82:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:83:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:84:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:84:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:85:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:85:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:86:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:86:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:87:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:87:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:90:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:90:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:90:56: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:90:71: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/last_man_standing.html:92:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1103 checks (with 0 expected failures)

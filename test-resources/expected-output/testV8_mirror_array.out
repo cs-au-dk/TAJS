@@ -1,0 +1,19 @@
+test-resources/src/v8tests/mirror-array.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/mirror-array.js:33:16: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/mirror-array.js:31:1: [definite] The variable a is never used
+test-resources/src/v8tests/mirror-array.js:31:1: [definite] The variable names is never used
+test-resources/src/v8tests/mirror-array.js:33:7: [definite] The variable mirror is never used
+test-resources/src/v8tests/mirror-array.js:33:16: [definite] Unreachable code
+test-resources/src/v8tests/mirror-array.js:34:7: [definite] The variable json is never used
+test-resources/src/v8tests/mirror-array.js:52:7: [definite] The variable indexedValueMirrors is never used
+test-resources/src/v8tests/mirror-array.js:54:12: [definite] The variable i is never used
+test-resources/src/v8tests/mirror-array.js:62:7: [definite] The variable fromJSON is never used
+test-resources/src/v8tests/mirror-array.js:71:9: [definite] The variable index is never used
+test-resources/src/v8tests/mirror-array.js:79:11: [definite] The variable found is never used
+test-resources/src/v8tests/mirror-array.js:80:16: [definite] The variable j is never used
+test-resources/src/v8tests/mirror-array.js:95:1: [definite] Unreachable code
+test-resources/src/v8tests/mirror-array.js:97:23: [definite] Unreachable function
+test-resources/src/v8tests/mirror-array.js:105:5: [definite] Unreachable function
+test-resources/src/v8tests/mirror-array.js:108:5: [definite] The variable a is never used
+test-resources/src/v8tests/mirror-array.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/mirror-array.js:33:16]
+Soundness testing succeeded for 9 checks (with 0 expected failures)

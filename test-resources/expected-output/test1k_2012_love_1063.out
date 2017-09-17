@@ -1,0 +1,64 @@
+test-resources/src/1k2012love/1063.js:98:7: [definite] The variable interval is never used
+test-resources/src/1k2012love/1063.js:63:3: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2012love/1063.js:65:3: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1063.js:67:13: [maybe] ReferenceError, reading absent variable p_array
+test-resources/src/1k2012love/1063.js:69:4: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1063.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1063.js:63:3, test-resources/src/1k2012love/1063.js:65:3, test-resources/src/1k2012love/1063.js:67:13, test-resources/src/1k2012love/1063.js:69:4, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1063.js:68:12: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1063.js:77:8: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1063.js:26:49: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:26:66: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:27:8: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:27:35: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:28:10: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:28:37: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:29:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:29:38: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:30:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:30:38: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:31:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:31:38: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:32:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:32:38: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:33:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:42:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:42:15: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:42:30: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:42:43: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:42:52: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:42:67: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:42:79: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:43:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:43:15: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:43:30: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:43:43: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:43:52: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:43:67: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:43:79: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:44:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:44:16: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:44:31: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:45:4: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:45:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:45:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:46:4: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:48:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:48:15: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:48:30: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:49:4: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:49:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:49:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:50:4: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:54:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:54:18: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:55:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:55:18: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:56:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:56:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:56:23: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:57:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:57:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:57:23: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/1k2012love/1063.js:58:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+Soundness testing succeeded for 292 checks (with 0 expected failures)

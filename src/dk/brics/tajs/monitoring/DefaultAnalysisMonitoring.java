@@ -88,7 +88,7 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitCall(AbstractNode n, boolean maybe_non_function, boolean maybe_function) {
+    public void visitCall(AbstractNode n, Value funval) {
     }
 
     @Override

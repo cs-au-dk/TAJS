@@ -1,0 +1,52 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js)
+    node 1: vardecl['q']* (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:1:5)
+    ->[block 1]
+  block 1:
+    node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 3: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2]
+  block 2:
+    node 4: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3]
+  block 3:
+    node 5: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4]
+  block 4:
+    node 6: function-expr[function(x),v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:1:10)
+    node 7: constant[1234.0,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:3:4)
+    ->[block 5]
+  block 5:
+    node 8: call[-,v8,v9,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:1:9)
+    ->[block 6]
+  block 6:
+    node 9: constant[5678.0,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:3:12)
+    node 10: *[v6,v7,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:1:9)
+    node 11: write-variable[v5,'q']* (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:1:5)
+    ->[block 7]
+  block 7: [exit-ordinary]
+    node 12: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js)
+    ->[]
+  block 8: [exit-exceptional]
+    node 13: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js)
+    ->[]
+function(x)
+  block 9: [entry]
+    node 14: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:1:10)
+    ->[block 10]
+  block 10:
+    node 15: read-variable['x',v3,v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:2:9)
+    node 16: constant[777.0,v4] (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:2:13)
+    node 17: +[v3,v4,v1]* (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:2:9)
+    ->[block 11]
+  block 11: [exit-ordinary]
+    node 18: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:1:10)
+    ->[]
+  block 12: [exit-exceptional]
+    node 19: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:1:10)
+    ->[]
+
+test-resources/src/flowgraphbuilder/flowgraph_builder0050.js: [definite] Exceptional program exit is unreachable
+test-resources/src/flowgraphbuilder/flowgraph_builder0050.js:1:5: [definite] The variable q is never used
+Soundness testing succeeded for 10 checks (with 0 expected failures)

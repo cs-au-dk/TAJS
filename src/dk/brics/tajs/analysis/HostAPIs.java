@@ -22,6 +22,7 @@ import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptFunctions;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.analysis.nativeobjects.TAJSFunction;
+import dk.brics.tajs.analysis.nativeobjects.TAJSFunctionEvaluator;
 import dk.brics.tajs.analysis.signatures.NativeFunctionSignatureChecker;
 import dk.brics.tajs.lattice.HostAPI;
 import dk.brics.tajs.lattice.HostObject;

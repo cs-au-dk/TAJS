@@ -1,0 +1,16 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var instance = _([1, 2, 3]).chain();
+    deepEqual(instance.pop().value(), [1, 2]);
+    deepEqual(instance.pop().value(), [1]);
+    deepEqual(instance.pop().value(), [], '#397 Can create empty array');
+</script></head><body></body></html>

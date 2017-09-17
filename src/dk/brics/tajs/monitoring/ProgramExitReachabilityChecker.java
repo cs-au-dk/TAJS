@@ -19,6 +19,7 @@ package dk.brics.tajs.monitoring;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.util.AnalysisResultException;
 
 import java.util.function.Supplier;
 
@@ -65,17 +66,17 @@ public class ProgramExitReachabilityChecker extends DefaultAnalysisMonitoring {
         if (makeAssertionErrorInScanPhase && phase == AnalysisPhase.SCAN) {
             if (analysisReachedFixedPoint.get()) {
                 if (requireOrdinaryExit && !seenOrdinaryExit) {
-                    throw new AssertionError("Did not observe flow to ordinary program exit!");
+                    throw new AnalysisResultException("Did not observe flow to ordinary program exit!");
                 }
                 if (requireExceptionalExit && !seenExceptionalExit) {
-                    throw new AssertionError("Did not observe flow to exceptional program exit!");
+                    throw new AnalysisResultException("Did not observe flow to exceptional program exit!");
                 }
             }
             if (!allowOrdinaryExit && seenOrdinaryExit) {
-                throw new AssertionError("Observed flow to ordinary program exit!");
+                throw new AnalysisResultException("Observed flow to ordinary program exit!");
             }
             if (!allowExceptionalExit && seenExceptionalExit) {
-                throw new AssertionError("Observed flow to exceptional program exit!");
+                throw new AnalysisResultException("Observed flow to exceptional program exit!");
             }
         }
     }

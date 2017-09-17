@@ -1,0 +1,42 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0214.js)
+    ->[block 1]
+  block 1:
+    node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 2: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2]
+  block 2:
+    node 3: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3]
+  block 3:
+    node 4: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4]
+  block 4:
+    node 5: read-variable['a',v5,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0214.js:1:9)
+    node 6: read-variable['b',v6,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0214.js:2:11)
+    node 7: ===[v5,v6,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0214.js:1:1)
+    node 8: if[v7](true-block:5,false-block:8) (test-resources/src/flowgraphbuilder/flowgraph_builder0214.js:1:1)
+    ->[block 5,block 8]
+  block 5:
+    node 9: read-variable['Array',v9,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0214.js:3:13)
+    node 10: read-variable['d',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0214.js:3:14)
+    ->[block 6]
+  block 6:
+    node 11: construct[-,v9,v10,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0214.js:3:13)
+    ->[block 7]
+  block 7:
+    node 12: write-variable[v8,'c']* (test-resources/src/flowgraphbuilder/flowgraph_builder0214.js:3:9)
+    ->[block 8]
+  block 8: [exit-ordinary]
+    node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0214.js)
+    ->[]
+  block 9: [exit-exceptional]
+    node 14: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0214.js)
+    ->[]
+
+test-resources/src/flowgraphbuilder/flowgraph_builder0214.js: [definite] Ordinary program exit is unreachable
+test-resources/src/flowgraphbuilder/flowgraph_builder0214.js:1:9: [definite] ReferenceError, reading absent variable a
+test-resources/src/flowgraphbuilder/flowgraph_builder0214.js:2:11: [definite] Unreachable code
+test-resources/src/flowgraphbuilder/flowgraph_builder0214.js: [maybe] Uncaught exception, constructed at [test-resources/src/flowgraphbuilder/flowgraph_builder0214.js:1:9]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

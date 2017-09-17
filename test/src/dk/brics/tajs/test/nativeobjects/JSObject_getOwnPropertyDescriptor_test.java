@@ -11,7 +11,6 @@ public class JSObject_getOwnPropertyDescriptor_test {
     @Before
     public void before() {
         Main.reset();
-        Main.initLogging();
         Options.get().enableTest();
     }
 

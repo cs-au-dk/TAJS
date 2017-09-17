@@ -1,9 +1,0 @@
-test/wala/simpler.js:4:3: [definite] The conditional expression is always true
-test/wala/simpler.js:14:3: [definite] The conditional expression is always true
-test/wala/simpler.js:57:3: [definite] The conditional expression is always false
-test/wala/simpler.js: [definite] Exceptional program exit is unreachable
-test/wala/simpler.js:11:1: [definite] The variable one is never used
-test/wala/simpler.js:50:1: [definite] Unreachable function fib
-test/wala/simpler.js:54:1: [definite] The variable two is never used
-test/wala/simpler.js:88:1: [info] Abstract value: Num
-Soundness testing succeeded for 183 checks (with 0 expected failures)

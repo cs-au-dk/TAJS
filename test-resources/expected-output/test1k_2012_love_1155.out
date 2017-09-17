@@ -1,0 +1,10 @@
+test-resources/src/1k2012love/1155.js:2:15: [definite] The conditional expression is always false
+test-resources/src/1k2012love/1155.js:41:3: [definite] The conditional expression is always true
+test-resources/src/1k2012love/1155.js:2:7: [definite] The variable DEBUG is never used
+test-resources/src/1k2012love/1155.js:3:3: [definite] Unreachable function log
+test-resources/src/1k2012love/1155.js:4:3: [definite] Unreachable function match
+test-resources/src/1k2012love/1155.js:11:3: [definite] Unreachable function p
+test-resources/src/1k2012love/1155.js:12:12: [definite] Unreachable function
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1155.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/shim.js:9:5]
+Soundness testing succeeded for 11 checks (with 0 expected failures)

@@ -1,0 +1,3 @@
+test-resources/src/v8tests/array-functions-prototype.js:35:15: [definite] Dead assignment, property length is never read
+test-resources/src/v8tests/array-functions-prototype.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 445 checks (with 0 expected failures)

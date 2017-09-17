@@ -1,0 +1,35 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    equal(Infinity, _.min(null), 'can handle null/undefined');
+    equal(Infinity, _.min(undefined), 'can handle null/undefined');
+    equal(Infinity, _.min(null, _.identity), 'can handle null/undefined');
+    equal(1, _.min([1, 2, 3]), 'can perform a regular Math.min');
+    var neg = _.min([1, 2, 3], function(num){ return -num; });
+    equal(neg, 3, 'can perform a computation-based min');
+    equal(Infinity, _.min({}), 'Minimum value of an empty object');
+    equal(Infinity, _.min([]), 'Minimum value of an empty array');
+    equal(_.min({'a': 'a'}), Infinity, 'Minimum value of a non-numeric collection');
+    var now = new Date(9999999999);
+    var then = new Date(0);
+    equal(_.min([now, then]), then);
+    equal(1, _.min(_.range(1, 300000)), 'Minimum value of a too-big array');
+    equal(1, _.min([1, 2, 3, 'test']), 'Finds correct min in array starting with num and containing a NaN');
+    equal(1, _.min(['test', 1, 2, 3]), 'Finds correct min in array starting with NaN');
+    var a = {x: Infinity};
+    var b = {x: Infinity};
+    var iterator = function(o){ return o.x; };
+    equal(_.min([a, b], iterator), a, 'Respects iterator return value of Infinity');
+    deepEqual(_.min([{'a': 1}, {'a': 0, 'b': 3}, {'a': 4}, {'a': 2}], 'a'), {'a': 0, 'b': 3}, 'String keys use property iterator');
+    deepEqual(_.min([0, 2], function(a){ return a * this.x; }, {x: -1}), 2, 'Iterator context');
+    deepEqual(_.min([[1], [2, 3], [-1, 4], [5]], 0), [-1, 4], 'Lookup falsy iterator');
+    deepEqual(_.min([{0: 1}, {0: 2}, {0: -1}, {a: 1}], 0), {0: -1}, 'Lookup falsy iterator');
+</script></head><body></body></html>

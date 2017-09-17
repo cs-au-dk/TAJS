@@ -1,0 +1,29 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var sum = _.reduce([1, 2, 3], function(sum, num){ return sum + num; }, 0);
+    equal(sum, 6, 'can sum up an array');
+    var context = {multiplier : 3};
+    sum = _.reduce([1, 2, 3], function(sum, num){ return sum + num * this.multiplier; }, 0, context);
+    equal(sum, 18, 'can reduce with a context object');
+    sum = _.inject([1, 2, 3], function(sum, num){ return sum + num; }, 0);
+    equal(sum, 6, 'aliased as "inject"');
+    sum = _([1, 2, 3]).reduce(function(sum, num){ return sum + num; }, 0);
+    equal(sum, 6, 'OO-style reduce');
+    sum = _.reduce([1, 2, 3], function(sum, num){ return sum + num; });
+    equal(sum, 6, 'default initial value');
+    var prod = _.reduce([1, 2, 3, 4], function(prod, num){ return prod * num; });
+    equal(prod, 24, 'can reduce via multiplication');
+    ok(_.reduce(null, _.noop, 138) === 138, 'handles a null (with initial value) properly');
+    equal(_.reduce([], _.noop, undefined), undefined, 'undefined can be passed as a special case');
+    equal(_.reduce([_], _.noop), _, 'collection of length one with no initial value returns the first item');
+    equal(_.reduce([], _.noop), undefined, 'returns undefined when collection is empty and no initial value');
+</script></head><body></body></html>

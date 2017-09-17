@@ -1,0 +1,51 @@
+test-resources/src/1k2013spring/1358.js:41:15: [definite] The variable e is never used
+test-resources/src/1k2013spring/1358.js:2:2: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1358.js:2:21: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2013spring/1358.js:10:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1358.js:11:14: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1358.js:11:24: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1358.js:11:35: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1358.js:11:46: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1358.js:15:2: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1358.js:16:2: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1358.js:23:1: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1358.js:27:6: [maybe] Reading absent property which of host object
+test-resources/src/1k2013spring/1358.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1358.js:2:2, test-resources/src/1k2013spring/1358.js:2:21, test-resources/src/1k2013spring/1358.js:10:17, test-resources/src/1k2013spring/1358.js:11:14, test-resources/src/1k2013spring/1358.js:11:24, test-resources/src/1k2013spring/1358.js:11:35, test-resources/src/1k2013spring/1358.js:11:46, test-resources/src/1k2013spring/1358.js:15:2, test-resources/src/1k2013spring/1358.js:16:2, test-resources/src/1k2013spring/1358.js:23:1, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1358.js:6:13: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1358.js:7:13: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1358.js:8:13: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1358.js:10:17: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1358.js:10:17: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1358.js:10:17: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1358.js:11:3: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1358.js:11:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1358.js:11:14: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1358.js:11:14: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1358.js:11:14: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1358.js:11:24: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1358.js:11:24: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1358.js:11:24: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1358.js:11:35: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1358.js:11:35: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1358.js:11:35: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1358.js:11:46: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1358.js:11:46: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1358.js:11:46: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1358.js:28:5: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1358.js:29:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1358.js:30:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1358.js:31:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1358.js:32:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1358.js:33:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1358.js:34:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1358.js:35:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1358.js:36:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1358.js:18:9: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1358.js:9:2: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1358.js:10:17: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1358.js:11:14: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1358.js:11:24: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1358.js:11:35: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1358.js:11:46: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 33 checks (with 0 expected failures)

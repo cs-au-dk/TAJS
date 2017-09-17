@@ -67,7 +67,7 @@ public class SoundnessTesterStatistics {
                 .flatMap(r -> get.apply(r).entrySet().stream())
                 .collect(Collectors.groupingBy(Map.Entry::getKey, summingInt(Map.Entry::getValue)));
 
-        System.out.printf("%sTotal count: %d%n", indentation, kindSums.values().stream().mapToInt(e -> e.intValue()).sum());
+        System.out.printf("%sTotal count: %d%n", indentation, kindSums.values().stream().mapToInt(e -> e).sum());
         System.out.printf("%sClassification counts:%n", indentation);
         kindSums.entrySet().stream().sorted(Comparator.comparing(Map.Entry::getKey)).forEach(kv -> System.out.printf("%s\t%s: %d%n", indentation, kv.getKey(), kv.getValue()));
     }
@@ -87,7 +87,7 @@ public class SoundnessTesterStatistics {
                 @SuppressWarnings("unchecked")
                 Map<String, TestResult> stringMap = (Map<String, TestResult>) in.readObject();
                 Map<Path, TestResult> results = newMap();
-                stringMap.forEach((k, v) -> results.put(Paths.get(k.toString()), v));
+                stringMap.forEach((k, v) -> results.put(Paths.get(k), v));
                 return new SoundnessTesterStatistics(results);
             } catch (IOException | ClassNotFoundException e) {
                 throw new RuntimeException(e);

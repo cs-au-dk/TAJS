@@ -1,0 +1,7 @@
+test-resources/src/v8tests/mirror-unresolved-function.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/mirror-unresolved-function.js:31:18: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/mirror-unresolved-function.js:31:5: [definite] The variable mirror is never used
+test-resources/src/v8tests/mirror-unresolved-function.js:31:18: [definite] Unreachable code
+test-resources/src/v8tests/mirror-unresolved-function.js:32:5: [definite] The variable json is never used
+test-resources/src/v8tests/mirror-unresolved-function.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/mirror-unresolved-function.js:31:18]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

@@ -1,0 +1,4 @@
+test-resources/src/v8tests/throw-exception-for-null-access.js:31:3: [definite] TypeError, accessing property of null/undefined
+test-resources/src/v8tests/throw-exception-for-null-access.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/throw-exception-for-null-access.js:32:3: [definite] Unreachable code
+Soundness testing succeeded for 16 checks (with 0 expected failures)

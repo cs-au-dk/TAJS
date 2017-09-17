@@ -1,9 +1,0 @@
-test/v8tests/fun-as-prototype.js:31:17: [definite] Reading absent property length
-test/v8tests/fun-as-prototype.js:32:23: [definite] Reading absent property name
-test/v8tests/fun-as-prototype.js:33:31: [definite] Reading absent property prototype
-test/v8tests/fun-as-prototype.js:36:17: [definite] Reading absent property length
-test/v8tests/fun-as-prototype.js:29:1: [definite] Unreachable function Funky
-test/v8tests/fun-as-prototype.js:31:17: [maybe] Converting primitive number to object
-test/v8tests/fun-as-prototype.js:32:23: [maybe] Converting primitive number to object
-test/v8tests/fun-as-prototype.js:33:31: [maybe] Converting primitive number to object
-test/v8tests/fun-as-prototype.js:36:17: [maybe] Converting primitive number to object

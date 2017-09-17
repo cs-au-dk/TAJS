@@ -98,6 +98,7 @@ public class Event {
         /*
          * Functions.
          */
+        createDOMFunction(PROTOTYPE, DOMObjects.EVENT_STOP_IMMEDIATE_PROPAGATION, "stopImmediatePropagation", 0, c);
         createDOMFunction(PROTOTYPE, DOMObjects.EVENT_STOP_PROPAGATION, "stopPropagation", 0, c);
         createDOMFunction(PROTOTYPE, DOMObjects.EVENT_PREVENT_DEFAULT, "preventDefault", 0, c);
         createDOMFunction(PROTOTYPE, DOMObjects.EVENT_INIT_EVENT, "initEvent", 3, c);
@@ -127,6 +128,10 @@ public class Event {
                 return Value.makeUndef();
             }
             case EVENT_PREVENT_DEFAULT: {
+                DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
+                return Value.makeUndef();
+            }
+            case EVENT_STOP_IMMEDIATE_PROPAGATION: {
                 DOMFunctions.expectParameters(nativeObject, call, c, 0, 0);
                 return Value.makeUndef();
             }

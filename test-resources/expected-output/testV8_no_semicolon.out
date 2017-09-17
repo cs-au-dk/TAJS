@@ -1,0 +1,5 @@
+test-resources/src/v8tests/no-semicolon.js:41:17: [definite] The conditional expression is always true
+test-resources/src/v8tests/no-semicolon.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/no-semicolon.js:35:5: [definite] Unreachable code
+test-resources/src/v8tests/no-semicolon.js:41:25: [definite] Unreachable code
+Soundness testing succeeded for 62 checks (with 0 expected failures)

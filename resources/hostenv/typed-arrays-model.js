@@ -37,16 +37,14 @@
 
             Object.defineProperty(this, 'byteLength', {value: _bytes.length});
             Object.defineProperty(this, '_bytes', {value: _bytes});
-        }
-
-        ArrayBuffer.prototype.slice = function slice(begin, end) {
-            var arraybuffer = new ArrayBuffer(0);
-
-            arraybuffer._data = this._data.slice(begin, end);
-            arraybuffer.byteLength = arraybuffer._data.length;
-
-            return arraybuffer;
         };
+        Object.defineProperty(ArrayBuffer.prototype, 'slice', {
+            value: function slice(begin, end) {
+                var result = new ArrayBuffer(TAJS.UInt);
+                result[TAJS.UInt] = this[TAJS.UInt];
+                return result;
+            }
+        });
 
         function $TypedArray$(obj) {
             if (obj && obj.length) {
@@ -226,17 +224,21 @@
             Object.defineProperty(TypedArray.prototype, 'BYTES_PER_ELEMENT', {value: TypedArray.BYTES_PER_ELEMENT});
 
             return TypedArray;
-        }
+        };
 
-        Int8Array = makeTypedArray();
-        Uint8Array = makeTypedArray();
-        Uint8ClampedArray = makeTypedArray();
-        Int16Array = makeTypedArray();
-        Uint16Array = makeTypedArray();
-        Int32Array = makeTypedArray();
-        Uint32Array = makeTypedArray();
-        Float32Array = makeTypedArray();
-        Float64Array = makeTypedArray();
+        // Make `makeTypedArray` context sensitive on its first argument, and pass different arguments below...
+        TAJS_makeContextSensitive(makeTypedArray, 0);
+        TAJS_makeContextSensitive(makeTypedArray, 1);
+
+        Int8Array = makeTypedArray('Int8Array');
+        Uint8Array = makeTypedArray('Uint8Array');
+        Uint8ClampedArray = makeTypedArray('Uint8ClampedArray');
+        Int16Array = makeTypedArray('Int16Array');
+        Uint16Array = makeTypedArray('Uint16Array');
+        Int32Array = makeTypedArray('Int32Array');
+        Uint32Array = makeTypedArray('Uint32Array');
+        Float32Array = makeTypedArray('Float32Array');
+        Float64Array = makeTypedArray('Float64Array');
     })();
 
     // DataView
@@ -249,7 +251,7 @@
 
         function getter() {
             return TAJS.Num;
-        }
+        };
 
         Object.defineProperty(DataView.prototype, 'getUint8', {value: getter});
         Object.defineProperty(DataView.prototype, 'getInt8', {value: getter});
@@ -262,7 +264,7 @@
 
         function setter() {
 
-        }
+        };
 
         Object.defineProperty(DataView.prototype, 'setUint8', {value: setter});
         Object.defineProperty(DataView.prototype, 'setInt8', {value: setter});

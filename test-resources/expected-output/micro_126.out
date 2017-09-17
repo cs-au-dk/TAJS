@@ -1,0 +1,8 @@
+test-resources/src/micro/test126.js: [definite] Ordinary program exit is unreachable
+test-resources/src/micro/test126.js:12:20: [definite] ReferenceError, reading absent variable gt
+test-resources/src/micro/test126.js:4:23: [definite] Dead assignment, property b is never read
+test-resources/src/micro/test126.js:4:30: [definite] Dead assignment, property c is never read
+test-resources/src/micro/test126.js:12:5: [definite] Unreachable code
+test-resources/src/micro/test126.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test126.js:12:20]
+test-resources/src/micro/test126.js:11:5: [info] Abstract value: "funny"
+Soundness testing succeeded for 15 checks (with 0 expected failures)

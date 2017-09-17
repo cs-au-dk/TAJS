@@ -28,7 +28,6 @@ public class TestLiteralContextSensitivity {
 
     @Before
     public void before() {
-        Main.initLogging();
         Main.reset();
         Options.get().enableTest();
         Options.get().enableDeterminacy();
@@ -94,7 +93,6 @@ public class TestLiteralContextSensitivity {
         for (String string : stringValues) {
             values.add(Value.makeStr(string));
         }
-
         return values;
     }
 

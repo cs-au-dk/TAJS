@@ -1,0 +1,26 @@
+test-resources/src/uneval/uneval30.html:11:5: [definite] The variable subPointArr_0 is never used
+test-resources/src/uneval/uneval30.html:12:5: [definite] The variable subPointArr_1 is never used
+test-resources/src/uneval/uneval30.html:13:5: [definite] The variable subPointArr_2 is never used
+test-resources/src/uneval/uneval30.html:14:5: [definite] The variable subPointArr_3 is never used
+test-resources/src/uneval/uneval30.html:15:5: [definite] The variable subPointArr_4 is never used
+test-resources/src/uneval/uneval30.html:16:5: [definite] The variable subPointArr_5 is never used
+test-resources/src/uneval/uneval30.html:43:1: [definite] Unreachable function showHidePoints
+test-resources/src/uneval/uneval30.html:29:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/uneval/uneval30.html:31:77: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/uneval/uneval30.html:33:93: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/uneval/uneval30.html: [maybe] Uncaught exception, constructed at [test-resources/src/uneval/uneval30.html:29:12, test-resources/src/uneval/uneval30.html:31:77, test-resources/src/uneval/uneval30.html:33:93]
+test-resources/src/uneval/uneval30.html:22:17: [maybe] Converting undefined to string
+test-resources/src/uneval/uneval30.html:22:471: [maybe] Reading absent property (computed name)
+test-resources/src/uneval/uneval30.html:26:17: [maybe] Converting undefined to string
+test-resources/src/uneval/uneval30.html:26:455: [maybe] Reading absent property (computed name)
+test-resources/src/uneval/uneval30.html:31:12: [maybe] Converting undefined to string
+test-resources/src/uneval/uneval30.html:31:77: [maybe] Reading absent property (computed name)
+test-resources/src/uneval/uneval30.html:33:12: [maybe] Converting undefined to string
+test-resources/src/uneval/uneval30.html:33:93: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test-resources/src/uneval/uneval30.html:29:12):1:15: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test-resources/src/uneval/uneval30.html:31:77):1:15: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test-resources/src/uneval/uneval30.html:33:93):1:15: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(test-resources/src/uneval/uneval30.html:29:12):1:15: [info] Reading from unknown property that may cause loss of precision
+TAJS-dynamic-code(test-resources/src/uneval/uneval30.html:31:77):1:15: [info] Reading from unknown property that may cause loss of precision
+TAJS-dynamic-code(test-resources/src/uneval/uneval30.html:33:93):1:15: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 145 checks (with 0 expected failures)

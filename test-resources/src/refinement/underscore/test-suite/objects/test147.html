@@ -1,0 +1,23 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var obj = {foo: 'bar', func: function(){}};
+    ok(_.has(obj, 'foo'), 'has() checks that the object has a property.');
+    ok(!_.has(obj, 'baz'), "has() returns false if the object doesn't have the property.");
+    ok(_.has(obj, 'func'), 'has() works for functions too.');
+    obj.hasOwnProperty = null;
+    ok(_.has(obj, 'foo'), 'has() works even when the hasOwnProperty method is deleted.');
+    var child = {};
+    child.prototype = obj;
+    ok(!_.has(child, 'foo'), 'has() does not check the prototype chain for a property.');
+    strictEqual(_.has(null, 'foo'), false, 'has() returns false for null');
+    strictEqual(_.has(undefined, 'foo'), false, 'has() returns false for undefined');
+</script></head><body></body></html>

@@ -1,0 +1,10 @@
+test-resources/src/v8tests/debug-step-stub-callfunction.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/debug-step-stub-callfunction.js:30:9: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/debug-step-stub-callfunction.js:30:9: [definite] Unreachable code
+test-resources/src/v8tests/debug-step-stub-callfunction.js:33:5: [definite] The variable break_break_point_hit_count is never used
+test-resources/src/v8tests/debug-step-stub-callfunction.js:34:1: [definite] Unreachable function listener
+test-resources/src/v8tests/debug-step-stub-callfunction.js:49:1: [definite] Unreachable function f
+test-resources/src/v8tests/debug-step-stub-callfunction.js:62:1: [definite] Unreachable function g
+test-resources/src/v8tests/debug-step-stub-callfunction.js:63:3: [definite] Unreachable function h
+test-resources/src/v8tests/debug-step-stub-callfunction.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-step-stub-callfunction.js:30:9]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

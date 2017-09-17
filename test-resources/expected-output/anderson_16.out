@@ -1,0 +1,4 @@
+test-resources/src/anderson/anderson16.js:5:2: [definite] Reading 'this' yields the global object
+test-resources/src/anderson/anderson16.js: [definite] Exceptional program exit is unreachable
+test-resources/src/anderson/anderson16.js:8:5: [definite] The variable x is never used
+Soundness testing succeeded for 17 checks (with 0 expected failures)

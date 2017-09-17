@@ -1,0 +1,17 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var obj = {first: 'Moe', second: 'Larry', third: 'Curly'};
+    deepEqual(_.keys(_.invert(obj)), ['Moe', 'Larry', 'Curly'], 'can invert an object');
+    deepEqual(_.invert(_.invert(obj)), obj, 'two inverts gets you back where you started');
+    obj = {length: 3};
+    equal(_.invert(obj)['3'], 'length', 'can invert an object with "length"');
+</script></head><body></body></html>

@@ -1,0 +1,15 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(!_.isDate(100), 'numbers are not dates');
+    ok(!_.isDate({}), 'objects are not dates');
+    ok(_.isDate(new Date()), 'but dates are');
+</script></head><body></body></html>

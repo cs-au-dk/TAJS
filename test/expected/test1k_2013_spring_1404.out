@@ -1,8 +1,0 @@
-test/1k2013spring/1404.js:40:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test/1k2013spring/1404.js:46:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test/1k2013spring/1404.js:58:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test/1k2013spring/1404.js:65:9: [definite] Reading 'this' yields the global object
-test/1k2013spring/1404.js:21:7: [maybe] ReferenceError, reading absent variable a
-test/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test/1k2013spring/1404.js: [maybe] Uncaught exception, constructed at [test/1k2013spring/1404.js:21:7, test/1k2013spring/shim.js:9:5]
-Soundness testing succeeded for 188 checks (with 0 expected failures)

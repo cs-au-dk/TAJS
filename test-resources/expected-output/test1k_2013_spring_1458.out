@@ -1,0 +1,91 @@
+test-resources/src/1k2013spring/1458.js:120:5: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1458.js:64:1: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:64:14: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:64:27: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:69:3: [maybe] ReferenceError, reading absent variable V
+test-resources/src/1k2013spring/1458.js:69:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:69:27: [maybe] ReferenceError, reading absent variable X
+test-resources/src/1k2013spring/1458.js:70:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:70:27: [maybe] ReferenceError, reading absent variable Y
+test-resources/src/1k2013spring/1458.js:76:3: [maybe] ReferenceError, reading absent variable V
+test-resources/src/1k2013spring/1458.js:76:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:76:27: [maybe] ReferenceError, reading absent variable X
+test-resources/src/1k2013spring/1458.js:77:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:77:27: [maybe] ReferenceError, reading absent variable Y
+test-resources/src/1k2013spring/1458.js:84:7: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1458.js:88:27: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1458.js:89:7: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1458.js:94:3: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2013spring/1458.js:94:13: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2013spring/1458.js:101:13: [maybe] ReferenceError, reading absent variable V
+test-resources/src/1k2013spring/1458.js:102:9: [maybe] ReferenceError, reading absent variable V
+test-resources/src/1k2013spring/1458.js:105:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:105:14: [maybe] ReferenceError, reading absent variable M
+test-resources/src/1k2013spring/1458.js:105:26: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:105:32: [maybe] ReferenceError, reading absent variable E
+test-resources/src/1k2013spring/1458.js:105:37: [maybe] ReferenceError, reading absent variable E
+test-resources/src/1k2013spring/1458.js:106:32: [maybe] ReferenceError, reading absent variable E
+test-resources/src/1k2013spring/1458.js:106:37: [maybe] ReferenceError, reading absent variable E
+test-resources/src/1k2013spring/1458.js:113:21: [maybe] ReferenceError, reading absent variable A
+test-resources/src/1k2013spring/1458.js:116:5: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1458.js:116:33: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1458.js:120:11: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:120:18: [maybe] ReferenceError, reading absent variable X
+test-resources/src/1k2013spring/1458.js:120:28: [maybe] ReferenceError, reading absent variable Y
+test-resources/src/1k2013spring/1458.js:120:36: [maybe] ReferenceError, reading absent variable A
+test-resources/src/1k2013spring/1458.js:120:40: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1458.js:129:23: [maybe] ReferenceError, reading absent variable X
+test-resources/src/1k2013spring/1458.js:129:33: [maybe] ReferenceError, reading absent variable Y
+test-resources/src/1k2013spring/1458.js:130:16: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:130:23: [maybe] ReferenceError, reading absent variable X
+test-resources/src/1k2013spring/1458.js:130:33: [maybe] ReferenceError, reading absent variable Y
+test-resources/src/1k2013spring/1458.js:145:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:145:15: [maybe] ReferenceError, reading absent variable D
+test-resources/src/1k2013spring/1458.js:146:15: [maybe] ReferenceError, reading absent variable D
+test-resources/src/1k2013spring/1458.js:152:13: [maybe] ReferenceError, reading absent variable T
+test-resources/src/1k2013spring/1458.js:152:18: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1458.js:156:15: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:158:15: [maybe] ReferenceError, reading absent variable M
+test-resources/src/1k2013spring/1458.js:160:30: [maybe] ReferenceError, reading absent variable A
+test-resources/src/1k2013spring/1458.js:160:39: [maybe] ReferenceError, reading absent variable A
+test-resources/src/1k2013spring/1458.js:161:28: [maybe] ReferenceError, reading absent variable C
+test-resources/src/1k2013spring/1458.js:161:37: [maybe] ReferenceError, reading absent variable B
+test-resources/src/1k2013spring/1458.js:169:22: [maybe] ReferenceError, reading absent variable T
+test-resources/src/1k2013spring/1458.js:169:31: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1458.js:176:11: [maybe] ReferenceError, reading absent variable M
+test-resources/src/1k2013spring/1458.js:184:7: [maybe] ReferenceError, reading absent variable T
+test-resources/src/1k2013spring/1458.js:185:9: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1458.js:187:16: [maybe] ReferenceError, reading absent variable V
+test-resources/src/1k2013spring/1458.js:190:7: [maybe] ReferenceError, reading absent variable V
+test-resources/src/1k2013spring/1458.js:190:9: [maybe] ReferenceError, reading absent variable I
+test-resources/src/1k2013spring/1458.js:191:9: [maybe] ReferenceError, reading absent variable V
+test-resources/src/1k2013spring/1458.js:191:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:192:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:205:3: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1458.js:84:12: [maybe] Reading absent property which of host object
+test-resources/src/1k2013spring/1458.js:88:7: [maybe] Reading absent property which of host object
+test-resources/src/1k2013spring/1458.js:89:13: [maybe] Reading absent property which of host object
+test-resources/src/1k2013spring/1458.js:89:31: [maybe] Reading absent property which of host object
+test-resources/src/1k2013spring/1458.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1458.js:64:1, test-resources/src/1k2013spring/1458.js:64:14, test-resources/src/1k2013spring/1458.js:64:27, test-resources/src/1k2013spring/1458.js:69:3, test-resources/src/1k2013spring/1458.js:69:27, test-resources/src/1k2013spring/1458.js:70:3, test-resources/src/1k2013spring/1458.js:70:27, test-resources/src/1k2013spring/1458.js:76:3, test-resources/src/1k2013spring/1458.js:76:27, test-resources/src/1k2013spring/1458.js:77:3, test-resources/src/1k2013spring/1458.js:77:27, test-resources/src/1k2013spring/1458.js:84:7, test-resources/src/1k2013spring/1458.js:88:27, test-resources/src/1k2013spring/1458.js:89:7, test-resources/src/1k2013spring/1458.js:94:3, test-resources/src/1k2013spring/1458.js:94:13, test-resources/src/1k2013spring/1458.js:101:13, test-resources/src/1k2013spring/1458.js:102:9, test-resources/src/1k2013spring/1458.js:105:7, test-resources/src/1k2013spring/1458.js:105:14, test-resources/src/1k2013spring/1458.js:105:26, test-resources/src/1k2013spring/1458.js:105:32, test-resources/src/1k2013spring/1458.js:105:37, test-resources/src/1k2013spring/1458.js:106:32, test-resources/src/1k2013spring/1458.js:106:37, test-resources/src/1k2013spring/1458.js:113:21, test-resources/src/1k2013spring/1458.js:116:5, test-resources/src/1k2013spring/1458.js:116:33, test-resources/src/1k2013spring/1458.js:120:11, test-resources/src/1k2013spring/1458.js:120:18, test-resources/src/1k2013spring/1458.js:120:28, test-resources/src/1k2013spring/1458.js:120:36, test-resources/src/1k2013spring/1458.js:120:40, test-resources/src/1k2013spring/1458.js:129:23, test-resources/src/1k2013spring/1458.js:129:33, test-resources/src/1k2013spring/1458.js:130:16, test-resources/src/1k2013spring/1458.js:130:23, test-resources/src/1k2013spring/1458.js:130:33, test-resources/src/1k2013spring/1458.js:145:7, test-resources/src/1k2013spring/1458.js:145:15, test-resources/src/1k2013spring/1458.js:146:15, test-resources/src/1k2013spring/1458.js:152:13, test-resources/src/1k2013spring/1458.js:152:18, test-resources/src/1k2013spring/1458.js:156:15, test-resources/src/1k2013spring/1458.js:158:15, test-resources/src/1k2013spring/1458.js:160:30, test-resources/src/1k2013spring/1458.js:160:39, test-resources/src/1k2013spring/1458.js:161:28, test-resources/src/1k2013spring/1458.js:161:37, test-resources/src/1k2013spring/1458.js:169:22, test-resources/src/1k2013spring/1458.js:169:31, test-resources/src/1k2013spring/1458.js:176:11, test-resources/src/1k2013spring/1458.js:184:7, test-resources/src/1k2013spring/1458.js:185:9, test-resources/src/1k2013spring/1458.js:187:16, test-resources/src/1k2013spring/1458.js:190:7, test-resources/src/1k2013spring/1458.js:190:9, test-resources/src/1k2013spring/1458.js:191:9, test-resources/src/1k2013spring/1458.js:192:9, test-resources/src/1k2013spring/1458.js:205:3, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1458.js:64:1: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:64:14: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:64:27: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:69:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:70:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:76:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:77:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:84:7: [maybe] The variable S has values with different types
+test-resources/src/1k2013spring/1458.js:88:27: [maybe] The variable S has values with different types
+test-resources/src/1k2013spring/1458.js:102:9: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:116:33: [maybe] The variable S has values with different types
+test-resources/src/1k2013spring/1458.js:126:11: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:144:11: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:152:18: [maybe] The variable S has values with different types
+test-resources/src/1k2013spring/1458.js:152:23: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:155:15: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:161:18: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:185:9: [maybe] The variable S has values with different types
+test-resources/src/1k2013spring/1458.js:191:9: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:192:9: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 410 checks (with 0 expected failures)

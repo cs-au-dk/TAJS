@@ -1,0 +1,31 @@
+test-resources/src/1k2013spring/1506.js:54:19: [definite] ReferenceError, reading absent variable webkitAudioContext
+test-resources/src/1k2013spring/1506.js:49:5: [definite] The variable ev is never used
+test-resources/src/1k2013spring/1506.js:50:5: [definite] The variable step is never used
+test-resources/src/1k2013spring/1506.js:51:5: [definite] The variable SAMPLELENGTH is never used
+test-resources/src/1k2013spring/1506.js:52:5: [definite] The variable wl is never used
+test-resources/src/1k2013spring/1506.js:54:5: [definite] The variable context is never used
+test-resources/src/1k2013spring/1506.js:54:15: [definite] Unreachable code
+test-resources/src/1k2013spring/1506.js:55:5: [definite] The variable comp is never used
+test-resources/src/1k2013spring/1506.js:59:5: [definite] The variable EMPTY is never used
+test-resources/src/1k2013spring/1506.js:60:5: [definite] The variable BPM_AND_STEPS is never used
+test-resources/src/1k2013spring/1506.js:61:5: [definite] The variable INPUT is never used
+test-resources/src/1k2013spring/1506.js:63:1: [definite] Unreachable function createElement
+test-resources/src/1k2013spring/1506.js:70:5: [definite] The variable noisetable is never used
+test-resources/src/1k2013spring/1506.js:71:5: [definite] The variable i is never used
+test-resources/src/1k2013spring/1506.js:75:5: [definite] The variable tracksel is never used
+test-resources/src/1k2013spring/1506.js:77:5: [definite] The variable config is never used
+test-resources/src/1k2013spring/1506.js:79:13: [definite] Unreachable function
+test-resources/src/1k2013spring/1506.js:80:13: [definite] Unreachable function
+test-resources/src/1k2013spring/1506.js:84:12: [definite] Unreachable function
+test-resources/src/1k2013spring/1506.js:89:6: [definite] The variable o is never used
+test-resources/src/1k2013spring/1506.js:94:1: [definite] Unreachable function Track
+test-resources/src/1k2013spring/1506.js:100:19: [definite] Unreachable function
+test-resources/src/1k2013spring/1506.js:102:7: [definite] Unreachable function
+test-resources/src/1k2013spring/1506.js:109:7: [definite] Unreachable function
+test-resources/src/1k2013spring/1506.js:123:38: [definite] Unreachable function
+test-resources/src/1k2013spring/1506.js:130:38: [definite] Unreachable function
+test-resources/src/1k2013spring/1506.js:139:11: [definite] Unreachable function
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1506.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1506.js:54:19, test-resources/src/1k2013spring/shim.js:9:5]
+Disabling soundness testing for test-resources/src/1k2013spring/1506.js entirely (52 uninspected soundness errors).
+Soundness testing succeeded for 77 checks (with 52 expected failures)

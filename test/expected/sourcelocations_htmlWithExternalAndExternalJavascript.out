@@ -1,4 +1,0 @@
-test/sourcelocations/htmlWithExternalAndExternalJavascript.html: [definite] Exceptional program exit is unreachable
-test/sourcelocations/javascript.js:1:5: [definite] The variable jsVar is never used
-test/sourcelocations/javascript2.js:2:5: [definite] The variable jsVar2 is never used
-Soundness testing succeeded for 0 checks (with 0 expected failures)

@@ -21,6 +21,7 @@ import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
+import dk.brics.tajs.analysis.dom.core.DOMDocument;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
@@ -79,5 +80,7 @@ public class HTMLScriptElement {
          * Functions.
          */
         // No functions
+
+        createDOMProperty(DOMDocument.INSTANCES, "currentScript", Value.makeObject(INSTANCES).joinNull().setReadOnly(), c);
     }
 }

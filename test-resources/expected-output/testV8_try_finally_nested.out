@@ -1,0 +1,6 @@
+test-resources/src/v8tests/try-finally-nested.js:33:12: [definite] The conditional expression is always true
+test-resources/src/v8tests/try-finally-nested.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/try-finally-nested.js:37:20: [definite] Unreachable code
+test-resources/src/v8tests/try-finally-nested.js:39:7: [definite] Unreachable code
+test-resources/src/v8tests/try-finally-nested.js:43:10: [definite] Unreachable code
+Soundness testing succeeded for 23 checks (with 0 expected failures)

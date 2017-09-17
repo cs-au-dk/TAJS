@@ -1,0 +1,29 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var options = {zero: 0, one: 1, empty: '', nan: NaN, nothing: null};
+    _.defaults(options, {zero: 1, one: 10, twenty: 20, nothing: 'str'});
+    equal(options.zero, 0, 'value exists');
+    equal(options.one, 1, 'value exists');
+    equal(options.twenty, 20, 'default applied');
+    equal(options.nothing, null, "null isn't overridden");
+    _.defaults(options, {empty: 'full'}, {nan: 'nan'}, {word: 'word'}, {word: 'dog'});
+    equal(options.empty, '', 'value exists');
+    ok(_.isNaN(options.nan), "NaN isn't overridden");
+    equal(options.word, 'word', 'new value is added, first one wins');
+    try {
+      options = {};
+      _.defaults(options, null, undefined, {a: 1});
+    } catch(ex) {}
+    equal(options.a, 1, 'should not error on `null` or `undefined` sources');
+    strictEqual(_.defaults(null, {a: 1}), null, 'result is null if destination is null');
+    strictEqual(_.defaults(undefined, {a: 1}), undefined, 'result is undefined if destination is undefined');
+</script></head><body></body></html>

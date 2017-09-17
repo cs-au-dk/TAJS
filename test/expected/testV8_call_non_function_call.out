@@ -1,3 +1,0 @@
-test/v8tests/call-non-function-call.js:33:3: [definite] Unreachable code
-test/v8tests/call-non-function-call.js:32:3: [maybe] TypeError, call to non-function
-test/v8tests/call-non-function-call.js:32:3: [maybe] Too few parameters to function Function.prototype.call

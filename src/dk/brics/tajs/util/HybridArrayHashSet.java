@@ -16,6 +16,9 @@
 
 package dk.brics.tajs.util;
 
+import dk.brics.tajs.options.Options;
+
+import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -41,7 +44,7 @@ public final class HybridArrayHashSet<V> implements Set<V>, Serializable {
     /**
      * Default threshold for the number of items necessary for the array to become a hash set.
      */
-    private static final int ARRAY_SIZE = 8;
+    private static final int ARRAY_SIZE = Options.Constants.HYBRID_ARRAY_HASH_SET_ARRAY_SIZE;
 
     /**
      * The singleton value. Null if not a singleton.
@@ -169,7 +172,7 @@ public final class HybridArrayHashSet<V> implements Set<V>, Serializable {
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean addAll(Collection<? extends V> c) {
+    public boolean addAll(@Nonnull  Collection<? extends V> c) {
         int c_size = c.size();
         if (c_size == 0)
             return false;
@@ -250,7 +253,7 @@ public final class HybridArrayHashSet<V> implements Set<V>, Serializable {
     }
 
     @Override
-    public boolean containsAll(Collection<?> c) {
+    public boolean containsAll(@Nonnull Collection<?> c) {
         for (Object o : c)
             if (!contains(o))
                 return false;
@@ -355,7 +358,7 @@ public final class HybridArrayHashSet<V> implements Set<V>, Serializable {
     }
 
     @Override
-    public boolean removeAll(Collection<?> c) {
+    public boolean removeAll(@Nonnull Collection<?> c) {
         boolean changed = false;
         for (Object o : c)
             changed |= remove(o);
@@ -363,7 +366,7 @@ public final class HybridArrayHashSet<V> implements Set<V>, Serializable {
     }
 
     @Override
-    public boolean retainAll(Collection<?> c) {
+    public boolean retainAll(@Nonnull Collection<?> c) {
         boolean changed = false;
         for (Iterator<V> it = iterator(); it.hasNext(); )
             if (!c.contains(it.next())) {
@@ -373,6 +376,7 @@ public final class HybridArrayHashSet<V> implements Set<V>, Serializable {
         return changed;
     }
 
+    @Nonnull
     @Override
     public Object[] toArray() {
         if (singleton != null) {
@@ -394,8 +398,9 @@ public final class HybridArrayHashSet<V> implements Set<V>, Serializable {
     }
 
     @SuppressWarnings("unchecked")
+    @Nonnull
     @Override
-    public <T> T[] toArray(T[] a) {
+    public <T> T[] toArray(@Nonnull T[] a) {
         if (singleton != null) {
             if (a.length < 1)
                 a = (T[]) Array.newInstance(a.getClass().getComponentType(), 1);

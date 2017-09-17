@@ -16,6 +16,8 @@
 
 package dk.brics.tajs.analysis.dom.core;
 
+import dk.brics.tajs.analysis.Exceptions;
+import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
@@ -84,5 +86,18 @@ public class DOMDocumentType {
          * Functions
          */
         // No functions.
+    }
+
+    public static Value evaluate(DOMObjects nativeObject, FunctionCalls.CallInfo call, Solver.SolverInterface c) {
+        State s = c.getState();
+        switch (nativeObject) {
+            case DOCUMENTTYPE_CONSTRUCTOR: {
+                Exceptions.throwTypeError(c);
+                return Value.makeNone();
+            }
+            default: {
+                throw new UnsupportedOperationException("Unsupported Native Object " + nativeObject);
+            }
+        }
     }
 }

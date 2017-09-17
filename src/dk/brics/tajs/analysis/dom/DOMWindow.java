@@ -21,6 +21,7 @@ import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.html5.MediaQueryList;
 import dk.brics.tajs.analysis.dom.style.CSSStyleDeclaration;
@@ -52,6 +53,12 @@ public class DOMWindow {
 
     public static ObjectLabel WINDOW;
 
+    public static ObjectLabel WINDOW_CONSTRUCTOR;
+
+    public static ObjectLabel WINDOW_PROTOTYPE;
+
+    public static ObjectLabel CHROME;
+
     public static ObjectLabel HISTORY;
 
     public static ObjectLabel LOCATION;
@@ -64,6 +71,11 @@ public class DOMWindow {
 
     public static void build(Solver.SolverInterface c) {
         State s = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
+
+        WINDOW_CONSTRUCTOR = ObjectLabel.make(DOMObjects.WINDOW_CONSTRUCTOR, Kind.FUNCTION);
+        WINDOW_PROTOTYPE = ObjectLabel.make(DOMObjects.WINDOW_PROTOTYPE, Kind.OBJECT);
+        CHROME = ObjectLabel.make(DOMObjects.WINDOW_CHROME, Kind.OBJECT);
         HISTORY = ObjectLabel.make(DOMObjects.WINDOW_HISTORY, Kind.OBJECT);
         LOCATION = ObjectLabel.make(DOMObjects.WINDOW_LOCATION, Kind.OBJECT);
         NAVIGATOR = ObjectLabel.make(DOMObjects.WINDOW_NAVIGATOR, Kind.OBJECT);
@@ -71,6 +83,13 @@ public class DOMWindow {
         SCREEN = ObjectLabel.make(DOMObjects.WINDOW_SCREEN, Kind.OBJECT);
 
         // NB: The WINDOW object has already been instantiated.
+
+        // Window constructor Object
+        s.newObject(WINDOW_CONSTRUCTOR);
+        pv.writePropertyWithAttributes(WINDOW_CONSTRUCTOR, "length", Value.makeNum(0).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(WINDOW_CONSTRUCTOR, "prototype", Value.makeObject(WINDOW_PROTOTYPE).setAttributes(true, true, true));
+        s.writeInternalPrototype(WINDOW_CONSTRUCTOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
+        createDOMProperty(WINDOW, "Window", Value.makeObject(WINDOW_CONSTRUCTOR), c);
 
         /*
          * Properties.
@@ -80,6 +99,7 @@ public class DOMWindow {
         createDOMProperty(WINDOW, "innerWidth", Value.makeAnyNumUInt(), c);
         createDOMProperty(WINDOW, "length", Value.makeAnyNumUInt(), c);
         createDOMProperty(WINDOW, "name", Value.makeAnyStr(), c);
+        createDOMProperty(WINDOW, "opener", Value.makeNull(), c);
         createDOMProperty(WINDOW, "outerHeight", Value.makeAnyNumUInt(), c);
         createDOMProperty(WINDOW, "outerWidth", Value.makeAnyNumUInt(), c);
         createDOMProperty(WINDOW, "pageXOffset", Value.makeAnyNumUInt(), c);
@@ -96,6 +116,7 @@ public class DOMWindow {
         createDOMProperty(WINDOW, "top", Value.makeObject(WINDOW), c);
         createDOMProperty(WINDOW, "window", Value.makeObject(WINDOW), c);
 
+        createDOMProperty(WINDOW, "onfocus", Value.makeNull(), c);
         createDOMProperty(WINDOW, "ontransitionend", Value.makeNull(), c);
         createDOMProperty(WINDOW, "onwebkittransitionend", Value.makeNull(), c);
         createDOMProperty(WINDOW, "onanimationend", Value.makeNull(), c);
@@ -114,6 +135,7 @@ public class DOMWindow {
         createDOMFunction(WINDOW, DOMObjects.WINDOW_CLEAR_TIMEOUT, "clearTimeout", 0, c);
         createDOMFunction(WINDOW, DOMObjects.WINDOW_CLOSE, "close", 0, c);
         createDOMFunction(WINDOW, DOMObjects.WINDOW_CONFIRM, "confirm", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_DISPATCHEVENT, "dispatchEvent", 1, c);
         createDOMFunction(WINDOW, DOMObjects.WINDOW_ESCAPE, "escape", 1, c);
         createDOMFunction(WINDOW, DOMObjects.WINDOW_FOCUS, "focus", 0, c);
         createDOMFunction(WINDOW, DOMObjects.WINDOW_FORWARD, "forward", 0, c);
@@ -142,7 +164,21 @@ public class DOMWindow {
 
         createDOMFunction(WINDOW, DOMObjects.WINDOW_CANCEL_ANIM_FRAME, "cancelAnimFrame", 1, c);
         createDOMFunction(WINDOW, DOMObjects.WINDOW_CANCEL_ANIMATION_FRAME, "cancelAnimationFrame", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_REQUEST_ANIMATION_FRAME, "requestAnimationFrame", 1, c);
+        createDOMFunction(WINDOW, DOMObjects.WINDOW_WEBKIT_REQUEST_ANIMATION_FRAME, "webkitRequestAnimationFrame", 1, c);
         createDOMFunction(WINDOW, DOMObjects.WINDOW_MATCH_MEDIA, "matchMedia", 1, c);
+
+        /*
+         * WINDOW CHROME object
+         */
+        s.newObject(CHROME);
+        s.writeInternalPrototype(CHROME, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
+
+        // Properties
+        createDOMProperty(WINDOW, "chrome", Value.makeObject(CHROME), c);
+
+        // Functions
+        createDOMFunction(CHROME, DOMObjects.WINDOW_CHROME_LOAD_TIMES, "loadTimes", 0, c);
 
         /*
          * WINDOW HISTORY object
@@ -157,6 +193,7 @@ public class DOMWindow {
         createDOMFunction(HISTORY, DOMObjects.WINDOW_HISTORY_FORWARD, "forward", 0, c);
         createDOMFunction(HISTORY, DOMObjects.WINDOW_HISTORY_GO, "go", 1, c);
         createDOMFunction(HISTORY, DOMObjects.WINDOW_HISTORY_PUSH_STATE, "pushState", 3, c);
+        createDOMFunction(HISTORY, DOMObjects.WINDOW_HISTORY_REPLACE_STATE, "replaceState", 3, c);
 
         /*
          * WINDOW LOCATION object
@@ -170,6 +207,7 @@ public class DOMWindow {
         createDOMProperty(LOCATION, "host", Value.makeAnyStr(), c);
         createDOMProperty(LOCATION, "hostname", Value.makeAnyStr(), c);
         createDOMProperty(LOCATION, "href", Value.makeAnyStr(), c);
+        createDOMProperty(LOCATION, "origin", Value.makeAnyStr(), c);
         createDOMProperty(LOCATION, "pathname", Value.makeAnyStr(), c);
         createDOMProperty(LOCATION, "port", Value.makeAnyStr(), c);
         createDOMProperty(LOCATION, "protocol", Value.makeAnyStr(), c);
@@ -187,11 +225,25 @@ public class DOMWindow {
         s.newObject(NAVIGATOR);
         s.writeInternalPrototype(NAVIGATOR, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         createDOMProperty(WINDOW, "navigator", Value.makeObject(NAVIGATOR), c);
+
         // Properties.
-        createDOMProperty(NAVIGATOR, "product", Value.makeAnyStr(), c);
         createDOMProperty(NAVIGATOR, "appName", Value.makeAnyStr(), c);
         createDOMProperty(NAVIGATOR, "appVersion", Value.makeAnyStr(), c);
+        createDOMProperty(NAVIGATOR, "language", Value.makeAnyStr(), c);
+        createDOMProperty(NAVIGATOR, "platform", Value.makeAnyStr(), c);
+        createDOMProperty(NAVIGATOR, "product", Value.makeAnyStr(), c);
         createDOMProperty(NAVIGATOR, "userAgent", Value.makeAnyStr(), c);
+        createDOMProperty(NAVIGATOR, "vendor", Value.makeAnyStr(), c);
+
+        /*
+         * WINDOW PERFORMANCE object
+         */
+        s.newObject(PERFORMANCE);
+        s.writeInternalPrototype(PERFORMANCE, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
+        createDOMProperty(WINDOW, "performance", Value.makeObject(PERFORMANCE), c);
+
+        // Functions.
+        createDOMFunction(PERFORMANCE, DOMObjects.WINDOW_PERFORMANCE_NOW, "now", 0, c);
 
         /*
          * WINDOW PERFORMANCE object
@@ -271,6 +323,10 @@ public class DOMWindow {
                 Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
                 return Value.makeAnyBool();
             }
+            case WINDOW_DISPATCHEVENT: {
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                return Value.makeAnyBool();
+            }
             case WINDOW_ESCAPE: {
                 DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
@@ -299,6 +355,10 @@ public class DOMWindow {
                 return Value.makeUndef();
             }
             case WINDOW_HISTORY_PUSH_STATE: {
+                DOMFunctions.expectParameters(nativeObject, call, c, 2, 3);
+                return Value.makeUndef();
+            }
+            case WINDOW_HISTORY_REPLACE_STATE: {
                 DOMFunctions.expectParameters(nativeObject, call, c, 2, 3);
                 return Value.makeUndef();
             }
@@ -469,6 +529,11 @@ public class DOMWindow {
                 return Value.makeUndef();
             }
             case WINDOW_CANCEL_ANIMATION_FRAME: {
+                DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
+                return Value.makeUndef();
+            }
+            case WINDOW_REQUEST_ANIMATION_FRAME:
+            case WINDOW_WEBKIT_REQUEST_ANIMATION_FRAME: {
                 DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 return Value.makeUndef();
             }

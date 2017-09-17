@@ -1,0 +1,27 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var counter = 0;
+    var incr = function(){ counter++; };
+    var throttledIncr = _.throttle(incr, 100);
+    var origNowFunc = _.now;
+    throttledIncr();
+    equal(counter, 1);
+    _.now = function () {
+      return new Date(2013, 0, 1, 1, 1, 1);
+    };
+    _.delay(function() {
+      throttledIncr();
+      equal(counter, 2);
+      start();
+      _.now = origNowFunc;
+    }, 200);
+</script></head><body></body></html>

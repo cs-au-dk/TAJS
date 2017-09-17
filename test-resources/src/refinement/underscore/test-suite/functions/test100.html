@@ -1,0 +1,32 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var sequence = [
+      ['b1', 'b2'],
+      ['c1', 'c2']
+    ];
+    var value = '';
+    var throttledAppend;
+    var append = function(arg){
+      value += this + arg;
+      var args = sequence.pop();
+      if (args) {
+        throttledAppend.call(args[0], args[1]);
+      }
+    };
+    throttledAppend = _.throttle(append, 32);
+    throttledAppend.call('a1', 'a2');
+    equal(value, 'a1a2');
+    _.delay(function(){
+      equal(value, 'a1a2c1c2b1b2', 'append was throttled successfully');
+      start();
+    }, 100);
+</script></head><body></body></html>

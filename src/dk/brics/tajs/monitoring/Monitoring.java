@@ -1107,6 +1107,7 @@ public class Monitoring implements IAnalysisMonitoring {
     @Override
     public void visitPropertyWrite(Node n, Set<ObjectLabel> objs, Str propertystr) {
         if (!scan_phase) {
+            checkValueSuspicious(n, Value.makeObject(objs));
             return;
         }
         // warn about potential loss of precision
@@ -1200,10 +1201,13 @@ public class Monitoring implements IAnalysisMonitoring {
      * Checks for call/construct to a non-function value causing a TypeError.
      */
     @Override
-    public void visitCall(AbstractNode n, boolean maybe_non_function, boolean maybe_function) {
+    public void visitCall(AbstractNode n, Value funval) {
         if (!scan_phase) {
+            checkValueSuspicious(n, funval);
             return;
         }
+        boolean maybe_non_function = funval.isMaybePrimitive() || funval.getObjectLabels().stream().anyMatch(objlabel -> objlabel.getKind() != Kind.FUNCTION);
+        boolean maybe_function = funval.getObjectLabels().stream().anyMatch(objlabel -> objlabel.getKind() == Kind.FUNCTION);
         Status s = maybe_non_function ? (maybe_function ? Status.MAYBE : Status.CERTAIN) : Status.NONE;
         if (s != Status.NONE) {
             call_to_non_function.add(n);
@@ -1263,6 +1267,7 @@ public class Monitoring implements IAnalysisMonitoring {
     @Override
     public void visitRead(Node n, Value v, State state) {
         if (!scan_phase) {
+            checkValueSuspicious(n, v);
             return;
         }
         v = UnknownValueResolver.getRealValue(v, state); // it is not important to preserve polymorphic values during the scan phase
@@ -1611,5 +1616,29 @@ public class Monitoring implements IAnalysisMonitoring {
     @Override
     public void visitIterationDone() {
         // ignore
+    }
+
+    private void checkValueSuspicious(AbstractNode n, Value v) {
+        if (Options.get().isTestEnabled() || Options.get().isQuietEnabled())
+            return;
+        boolean anyHostFunction = false;
+        boolean anyUserFunction = false;
+        for (ObjectLabel objlabel : v.getObjectLabels()) {
+            if (objlabel.getKind() == ObjectLabel.Kind.FUNCTION) {
+                if (objlabel.isHostObject()) {
+                    anyHostFunction = true;
+                } else {
+                    anyUserFunction = true;
+                }
+                if (anyHostFunction && anyUserFunction) {
+                    if (!log.isDebugEnabled() && log.isInfoEnabled()) {
+                        System.out.print("\r");
+                    }
+                    log.warn("Likely significant loss of precision (mix of native and non-native functions) at " +
+                            n.getClass().getSimpleName() + " " + n.getSourceLocation());
+                    return;
+                }
+            }
+        }
     }
 }

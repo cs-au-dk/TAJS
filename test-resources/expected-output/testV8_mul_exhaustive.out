@@ -1,0 +1,4 @@
+test-resources/src/v8tests/mul-exhaustive.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/mul-exhaustive.js:29:5: [definite] The variable y is never used
+test-resources/src/v8tests/mul-exhaustive.js:30:5: [definite] The variable a is never used
+Soundness testing succeeded for 27950 checks (with 0 expected failures)

@@ -1,0 +1,19 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    _.mixin({
+      myReverse: function(string) {
+        return string.split('').reverse().join('');
+      }
+    });
+    equal(_.myReverse('panacea'), 'aecanap', 'mixed in a function to _');
+    equal(_('champ').myReverse(), 'pmahc', 'mixed in a function to the OOP wrapper');
+</script></head><body></body></html>

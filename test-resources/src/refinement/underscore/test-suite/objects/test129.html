@@ -1,0 +1,30 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(!_([1]).isEmpty(), '[1] is not empty');
+    ok(_.isEmpty([]), '[] is empty');
+    ok(!_.isEmpty({one : 1}), '{one : 1} is not empty');
+    ok(_.isEmpty({}), '{} is empty');
+    ok(_.isEmpty(new RegExp('')), 'objects with prototype properties are empty');
+    ok(_.isEmpty(null), 'null is empty');
+    ok(_.isEmpty(), 'undefined is empty');
+    ok(_.isEmpty(''), 'the empty string is empty');
+    ok(!_.isEmpty('moe'), 'but other strings are not');
+    var obj = {one : 1};
+    delete obj.one;
+    ok(_.isEmpty(obj), 'deleting all the keys from an object empties it');
+    var args = function(){ return arguments; };
+    ok(_.isEmpty(args()), 'empty arguments object is empty');
+    ok(!_.isEmpty(args('')), 'non-empty arguments object is not empty');
+    // covers collecting non-enumerable properties in IE < 9
+    var nonEnumProp = {'toString': 5};
+    ok(!_.isEmpty(nonEnumProp), 'non-enumerable property is not empty');
+</script></head><body></body></html>

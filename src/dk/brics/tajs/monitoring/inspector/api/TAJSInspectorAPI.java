@@ -17,6 +17,7 @@
 package dk.brics.tajs.monitoring.inspector.api;
 
 import dk.brics.inspector.api.InspectorAPI;
+import dk.brics.inspector.api.model.OptionData;
 import dk.brics.inspector.api.model.RelatedLocationKind;
 import dk.brics.inspector.api.model.ids.ContextID;
 import dk.brics.inspector.api.model.ids.FileID;
@@ -29,9 +30,6 @@ import dk.brics.inspector.api.model.locations.ContextSensitiveDescribedLocation;
 import dk.brics.inspector.api.model.locations.DescribedContext;
 import dk.brics.inspector.api.model.locations.DescribedLocation;
 import dk.brics.inspector.api.model.locations.FileDescription;
-import dk.brics.inspector.api.model.options.BoxedExperimentalOption;
-import dk.brics.inspector.api.model.options.BoxedOptionValues;
-import dk.brics.inspector.api.model.options.OptionData;
 import dk.brics.inspector.api.model.values.CompositeValue;
 import dk.brics.inspector.api.model.values.DescribedProperties;
 import dk.brics.tajs.analysis.Solver;
@@ -52,7 +50,6 @@ import dk.brics.tajs.monitoring.inspector.dataprocessing.LineValueComputer;
 import dk.brics.tajs.monitoring.inspector.dataprocessing.SyntaxMatcher;
 import dk.brics.tajs.monitoring.inspector.gutters.GutterProvider;
 import dk.brics.tajs.options.ExperimentalOptions;
-import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
@@ -180,12 +177,11 @@ public class TAJSInspectorAPI implements InspectorAPI {
 
     @Override
     public OptionData getOptions() {
-        Set<BoxedExperimentalOption> enabled = ExperimentalOptions.ExperimentalOptionsManager.get().getEnabled().stream()
-                .map(e -> new BoxedExperimentalOption(e.getClass().getSimpleName(), e.toString()))
-                .collect(Collectors.toSet());
-        OptionValues optionValues = Options.get();
-        BoxedOptionValues boxed = new BoxedOptionValues();
-        return new OptionData(boxed, enabled);
+        Map<String, String> map = Options.get().getOptionValues().entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue() + ""));
+        ExperimentalOptions.ExperimentalOptionsManager.get().getEnabled().stream()
+                .forEach(e -> map.put("XXX-ExperimentalOption:" + e.getClass().getSimpleName(), e.toString()));
+        return new OptionData(map);
     }
 
     @Override
@@ -214,6 +210,11 @@ public class TAJSInspectorAPI implements InspectorAPI {
         CompositeValue nonArray = mapper.makeCompositeValue(valueFromStates(states, state -> UnknownValueResolver.getDefaultNonArrayProperty(label, state)));
         CompositeValue prototype = mapper.makeCompositeValue(valueFromStates(states, state -> UnknownValueResolver.getInternalPrototype(label, state, false)));
         CompositeValue internal = mapper.makeCompositeValue(valueFromStates(states, state -> UnknownValueResolver.getInternalValue(label, state, false)));
+        Map<String, CompositeValue> metaProperties = newMap();
+        metaProperties.put("<array>", array);
+        metaProperties.put("<non-array>", nonArray);
+        metaProperties.put("<prototype>", prototype);
+        metaProperties.put("<internal>", internal);
 
         Map<String, Set<Value>> multiProperties = newMap();
         states.forEach(state ->
@@ -225,7 +226,8 @@ public class TAJSInspectorAPI implements InspectorAPI {
 
         Map<String, CompositeValue> properties = multiProperties.entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, e -> mapper.makeCompositeValue(Value.join(e.getValue()))));
-        return new DescribedProperties(prototype, internal, array, nonArray, properties);
+
+        return new DescribedProperties(metaProperties, properties);
     }
 
     private Set<State> convertLocationIDToStates(LocationID locationID) {
@@ -242,7 +244,7 @@ public class TAJSInspectorAPI implements InspectorAPI {
     }
 
     private Value valueFromStates(Set<State> states, Function<State, Value> read) {
-        return Value.join(states.stream().map(read::apply).collect(Collectors.toList()));
+        return Value.join(states.stream().map(read).collect(Collectors.toList()));
     }
 
     @Override

@@ -1,5 +1,4 @@
 package dk.brics.tajs.test;
-
 // import static org.junit.Assert.fail;
 
 import dk.brics.tajs.Main;
@@ -10,157 +9,125 @@ import org.junit.Test;
 @SuppressWarnings("static-method")
 public class TestWala {
 
-	public static void main(String[] args) {
-		org.junit.runner.JUnitCore.main("dk.brics.tajs.test.TestWala");
-	}
-	
-	@Before
-	public void init() {
-		Main.reset();
-		Options.get().enableTest();
-		// Options.get().enableNoLazy();
-	}
+    public static void main(String[] args) {
+        org.junit.runner.JUnitCore.main("dk.brics.tajs.test.TestWala");
+    }
 
-	@Test
-	public void wala_forin() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/forin.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Before
+    public void init() {
+        Main.reset();
+        Options.get().enableTest();
+        // Options.get().enableNoLazy();
+    }
 
-	@Test
-	public void wala_forinct() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/forin.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
-
-	@Test
-	public void wala_functions() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/functions.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
-
-	@Test
-	public void wala_inherit() throws Exception { 
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/inherit.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
-
-	@Test
-	public void wala_more_control_flow() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/more-control-flow.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
-
-	@Test
-	public void wala_newfn() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-        Options.get().enableUnevalizer();
-		String[] args = {"test/wala/newfn.js"};
-		Misc.run(args);
+    @Test
+    public void wala_forin() throws Exception {
+        String[] args = {"test-resources/src/wala/forin.js"};
+        Misc.run(args);
         Misc.checkSystemOutput();
-	}
+    }
 
-	@Test
-	public void wala_objects() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/objects.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Test
+    public void wala_forinct() throws Exception {
+        String[] args = {"test-resources/src/wala/forin.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
-	@Test
-	public void wala_portal_example_simple() throws Exception {
-		Misc.init();
-		String[] args = {"test/wala/portal-example-simple.html"};
-		Misc.run(args);
-	}
+    @Test
+    public void wala_functions() throws Exception {
+        String[] args = {"test-resources/src/wala/functions.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
-	@Test
-	public void wala_simple_lexical() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/simple-lexical.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Test
+    public void wala_inherit() throws Exception {
+        String[] args = {"test-resources/src/wala/inherit.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
-	@Test
-	public void wala_simple() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/simple.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Test
+    public void wala_more_control_flow() throws Exception {
+        String[] args = {"test-resources/src/wala/more-control-flow.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
-	@Test
-	public void wala_simpler() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/simpler.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Test
+    public void wala_newfn() throws Exception {
+        Options.get().enableUnevalizer();
+        String[] args = {"test-resources/src/wala/newfn.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
-	@Test
-	public void wala_string_op() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/string-op.js"}; //note: bug in assumption
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Test
+    public void wala_objects() throws Exception {
+        String[] args = {"test-resources/src/wala/objects.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
-	@Test
-	public void wala_string_prims() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/string-prims.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Test
+    public void wala_portal_example_simple() throws Exception {
+        String[] args = {"test-resources/src/wala/portal-example-simple.html"};
+        Misc.run(args);
+    }
 
+    @Test
+    public void wala_simple_lexical() throws Exception {
+        String[] args = {"test-resources/src/wala/simple-lexical.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
-	@Test
-	public void wala_try() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/try.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Test
+    public void wala_simple() throws Exception {
+        String[] args = {"test-resources/src/wala/simple.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
-	@Test
-	public void wala_upward() throws Exception {
-		Misc.init();
-		Misc.captureSystemOutput();
-		String[] args = {"test/wala/upward.js"};
-		Misc.run(args);
-		Misc.checkSystemOutput();
-	}
+    @Test
+    public void wala_simpler() throws Exception {
+        String[] args = {"test-resources/src/wala/simpler.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void wala_string_op() throws Exception {
+        String[] args = {"test-resources/src/wala/string-op.js"}; //note: bug in assumption
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void wala_string_prims() throws Exception {
+        String[] args = {"test-resources/src/wala/string-prims.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void wala_try() throws Exception {
+        String[] args = {"test-resources/src/wala/try.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void wala_upward() throws Exception {
+        String[] args = {"test-resources/src/wala/upward.js"};
+        Misc.run(args);
+        Misc.checkSystemOutput();
+    }
 
     @Test
     public void wala_args() throws Exception {
-        Misc.init();
-        Misc.captureSystemOutput();
-        String[] args = {"test/wala/args.js"};
+        String[] args = {"test-resources/src/wala/args.js"};
         Misc.run(args);
         Misc.checkSystemOutput();
     }

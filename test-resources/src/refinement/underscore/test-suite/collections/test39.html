@@ -1,0 +1,43 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    _.each([1, 2, 3], function(num, i) {
+      equal(num, i + 1, 'each iterators provide value and iteration count');
+    });
+    var answers = [];
+    _.each([1, 2, 3], function(num){ answers.push(num * this.multiplier);}, {multiplier : 5});
+    deepEqual(answers, [5, 10, 15], 'context object property accessed');
+    answers = [];
+    _.each([1, 2, 3], function(num){ answers.push(num); });
+    deepEqual(answers, [1, 2, 3], 'aliased as "forEach"');
+    answers = [];
+    var obj = {one : 1, two : 2, three : 3};
+    obj.constructor.prototype.four = 4;
+    _.each(obj, function(value, key){ answers.push(key); });
+    deepEqual(answers, ['one', 'two', 'three'], 'iterating over objects works, and ignores the object prototype.');
+    delete obj.constructor.prototype.four;
+    // ensure the each function is JITed
+    _(1000).times(function() { _.each([], function(){}); });
+    var count = 0;
+    obj = {1 : 'foo', 2 : 'bar', 3 : 'baz'};
+    _.each(obj, function(value, key){ count++; });
+    equal(count, 3, 'the fun should be called only 3 times');
+    var answer = null;
+    _.each([1, 2, 3], function(num, index, arr){ if (_.include(arr, num)) answer = true; });
+    ok(answer, 'can reference the original collection from inside the iterator');
+    answers = 0;
+    _.each(null, function(){ ++answers; });
+    equal(answers, 0, 'handles a null properly');
+    _.each(false, function(){});
+    var a = [1, 2, 3];
+    strictEqual(_.each(a, function(){}), a);
+    strictEqual(_.each(null, function(){}), null);
+</script></head><body></body></html>

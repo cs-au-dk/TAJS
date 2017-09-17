@@ -1,0 +1,9 @@
+test-resources/src/v8tests/debug-constructed-by.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/debug-constructed-by.js:30:9: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/debug-constructed-by.js:30:9: [definite] Unreachable code
+test-resources/src/v8tests/debug-constructed-by.js:33:1: [definite] Unreachable function Point
+test-resources/src/v8tests/debug-constructed-by.js:36:5: [definite] The variable ctor is never used
+test-resources/src/v8tests/debug-constructed-by.js:45:5: [definite] The variable p is never used
+test-resources/src/v8tests/debug-constructed-by.js:54:10: [definite] The variable i is never used
+test-resources/src/v8tests/debug-constructed-by.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-constructed-by.js:30:9]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

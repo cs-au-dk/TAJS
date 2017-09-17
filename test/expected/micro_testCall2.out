@@ -1,3 +1,0 @@
-test/micro/testCall2.js: [definite] Exceptional program exit is unreachable
-test/micro/testCall2.js:5:2: [info] Abstract value: 42.0
-Soundness testing succeeded for 13 checks (with 6 expected failures)

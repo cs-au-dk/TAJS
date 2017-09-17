@@ -1,4 +1,0 @@
-test/resig/ejohn26.js:4:23: [definite] Reading 'this' yields the global object
-test/resig/ejohn26.js:5:24: [definite] Reading 'this' yields the global object
-test/resig/ejohn26.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 15 checks (with 0 expected failures)

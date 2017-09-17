@@ -22,13 +22,12 @@ import dk.au.cs.casa.jer.Logger;
 import dk.au.cs.casa.jer.Metadata;
 import dk.au.cs.casa.jer.RawLogFile;
 import dk.brics.tajs.analysis.KnownUnsoundnesses;
-import dk.brics.tajs.htmlparser.HTMLParser;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.options.SoundnessTesterOptions;
 import dk.brics.tajs.options.TAJSEnvironmentConfig;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Pair;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.PathAndURLUtils;
 
 import java.io.BufferedInputStream;
@@ -45,6 +44,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -52,14 +52,12 @@ import java.util.WeakHashMap;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import static dk.brics.tajs.util.Collections.newSet;
-
 /**
  * Utility class for creating, finding, or parsing the log file for a specific application.
  */
 public class LogFileHelper {
 
-    private static final String jalangiLogFileDirectoryName = "jalangilogfiles";
+    private final static boolean DEBUG = false;
 
     private static final org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(LogFileHelper.class);
 
@@ -75,8 +73,16 @@ public class LogFileHelper {
 
     private final OptionValues options;
 
+    private final ResourceMap[] sourceToLogMapping = {
+            new ResourceMap("test-resources/src", "test-resources", "logs"),
+            new ResourceMap("benchmarks/tajs/src", "benchmarks", "tajs/logs"),
+            new ResourceMap("out/temp-sources", "test-resources", "logs/temp-sources")
+    };
+
     public LogFileHelper(OptionValues options) {
         this.options = options;
+        if (Arrays.stream(sourceToLogMapping).map(m -> m.subpath).collect(Collectors.toSet()).size() != sourceToLogMapping.length)
+            throw new AnalysisException("Subpaths are used by the class loader to resolve the correct resource folder, hence they must be distinct");
     }
 
     public static LogParser makeLogParser(URL logFile) {
@@ -116,18 +122,6 @@ public class LogFileHelper {
         return new RawLogFile(logFileLines);
     }
 
-    /**
-     * Utility for computing value logger inputs for multi file html applications.
-     */
-    public static Pair<Set<Path>, Path> getOnlyIncludeAndDirectoryForHTML(Path mainHtmlFile) {
-        Set<Path> relevantFiles = newSet();
-        relevantFiles.add(mainHtmlFile);
-        relevantFiles.addAll(HTMLParser.getScriptsInHTMLFile(mainHtmlFile));
-        Path commonAncestorDirectory = PathAndURLUtils.getCommonAncestorDirectory(relevantFiles);
-        Path commonAncestorRelativeToMainDirectory = mainHtmlFile.getParent().relativize(commonAncestorDirectory);
-        return Pair.make(relevantFiles, commonAncestorRelativeToMainDirectory);
-    }
-
     public URL getLogFile() {
         return getAllLogFilePositions().runtimeLocation;
     }
@@ -140,7 +134,10 @@ public class LogFileHelper {
         }
 
         URL runtimeLocation = logFileLocations.runtimeLocation;
-        if (PathAndURLUtils.isConsumable(runtimeLocation) && !isEmptyContent(runtimeLocation) && verifySha(logFileLocations, getMainFile())) {
+        boolean isConsumable = false, isEmpty = true;
+        if ((isConsumable = PathAndURLUtils.isConsumable(runtimeLocation))
+                && (!(isEmpty = isEmptyContent(runtimeLocation)))
+                && (verifySha(logFileLocations, getMainFile()))) {
             return runtimeLocation;
         }
 
@@ -148,14 +145,22 @@ public class LogFileHelper {
         boolean canProduceLogAtAll = SoundnessTesterOptions.isLogCreationPossible();
         boolean isAllowedToProduceLog = options.getSoundnessTesterOptions().isGenerate();
 
+        if(DEBUG) {
+            System.out.println(String.format("Log creation info \n" +
+                            "    runtime-path: %s, \n" +
+                            "    persistent-path: %s, \n" +
+                            "    consumable: %b, empty: %b, unloggable-main-file: %b, log-creation-possible: %b, allowed-to-produce: %b)",
+                    logFileLocations.runtimeLocation, logFileLocations.persistentLocation, isConsumable, isEmpty, canProduceLogForFile, canProduceLogAtAll, isAllowedToProduceLog));
+        }
+
         boolean createLog = canProduceLogAtAll && canProduceLogForFile && isAllowedToProduceLog;
 
         if (!canProduceLogForFile) {
             warn("Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)");
         } else if (!isAllowedToProduceLog) {
-            warn("Could not create value log file: creation of new log files is not enabled");
+            throw new LogFileException("Could not create value log file: creation of new log files is not enabled");
         } else if (!canProduceLogAtAll) {
-            warn("Could not create value log file: missing jalangilogger installation (see README)");
+            throw new LogFileException("Could not create value log file: missing jalangilogger installation (see README)");
         }
 
         if (createLog) {
@@ -177,7 +182,8 @@ public class LogFileHelper {
                 if (!persistentPath.equals(runtimePath)) {
                     try (InputStream persistentStream = runtimeLocation.openStream()) {
                         Files.createDirectories(persistentPath.getParent());
-                        Files.copy(persistentStream, persistentPath, StandardCopyOption.REPLACE_EXISTING);
+                        if (Files.copy(persistentStream, persistentPath, StandardCopyOption.REPLACE_EXISTING) <= 0)
+                            throw new RuntimeException("No byte written when persisting a copy of the log file");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -217,7 +223,7 @@ public class LogFileHelper {
     }
 
     public Path getMainFile() {
-        return Paths.get(options.getArguments().get(Options.get().getArguments().size() - 1));
+        return options.getArguments().get(Options.get().getArguments().size() - 1);
     }
 
     private Metadata getMetaData(URL firstLogFile) {
@@ -254,15 +260,14 @@ public class LogFileHelper {
     }
 
     /**
-     * Infers all the locations of a log file for soundness testing of a JavaScript file.
+     * Infers all the locations of a log file for soundness testing of a JavaScript file using the source to log mapping.
      * When invoked in an IDE, both the build folder resource folder and the original resource folder are taken into account.
      * If the one in the original resource folder one is not available for any reason, the the only one returned is the one
      * accessible through resources.
      * <p>
      * Examples:
      * <pre>
-     *     test/foo/bar/baz.js -> <logfile-root>/test/foo/bar/baz.log
-     *     test/foo/bar/baz.html -> <logfile-root>/test/foo/bar/baz.log
+     *     test-resources/src/bar/baz.js -> test-resources/logs/bar/baz.js.log
      * </pre>
      */
     private LogFileLocations inferLogFilePosition() {
@@ -272,27 +277,21 @@ public class LogFileHelper {
         }
 
         String suffix = options.getSoundnessTesterOptions().isUseUncompressedLogFileForInference() ? logSuffix : loggzipSuffix;
-        Path logFile = Paths.get(makeLogFileNameFromPrefix(mainFile, suffix));
 
-        URL runtimeLogFileLocation = inferRuntimeLogFileLocation(logFile);
-        Optional<URL> persistentLogFileLocation = inferPersistentLogFileLocation(logFile);
+        Path preMappedLogFile = Paths.get(makeLogFileNameFromPrefix(mainFile, suffix));
+        List<ResourceMap> mappers = Arrays.stream(sourceToLogMapping)
+                .filter(m -> m.map(preMappedLogFile).isPresent())
+                .collect(Collectors.toList());
+
+        if(mappers.size() != 1)
+            throw new AnalysisException("Expected to be able to map " + mainFile + " to its logs location, viable mappers: " + mappers);
+
+        Path mappedLogFilePath = mappers.get(0).map(preMappedLogFile).get();
+        URL runtimeLogFileLocation = mappers.get(0).mapToResource(preMappedLogFile).get();
+
+        Optional<URL> persistentLogFileLocation = inferPersistentLogFileLocation(mappedLogFilePath);
 
         return new LogFileLocations(persistentLogFileLocation, runtimeLogFileLocation);
-    }
-
-    private URL inferRuntimeLogFileLocation(Path logFile) {
-        // Use resource based resolution
-        URL directoryURL = LogFileHelper.class.getResource("/" + jalangiLogFileDirectoryName + "/");
-        if (directoryURL == null) {
-            throw new AnalysisException("Could not find directory with log files at " + jalangiLogFileDirectoryName);
-        }
-        URL runtimeLogFileLocation;
-        try {
-            runtimeLogFileLocation = new URL(directoryURL, logFile.toString());
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-        return runtimeLogFileLocation;
     }
 
     private String makeLogFileNameFromPrefix(Path mainFile, String suffix) {
@@ -320,8 +319,8 @@ public class LogFileHelper {
         if (!TAJSEnvironmentConfig.get().hasProperty(tajsConfigPropertyName)) {
             return Optional.empty();
         }
-        Path persistentFileRoot = Paths.get(TAJSEnvironmentConfig.get().getCustom(tajsConfigPropertyName)).resolve("test-resources").resolve(jalangiLogFileDirectoryName);
-        return Optional.of(PathAndURLUtils.toURL(persistentFileRoot.resolve(logFile)));
+        Path persistentFilePath = Paths.get(TAJSEnvironmentConfig.get().getCustom(tajsConfigPropertyName)).resolve(logFile);
+        return Optional.of(PathAndURLUtils.toURL(persistentFilePath));
     }
 
     private RawLogFile generateLogFile(Path testFile) {
@@ -356,12 +355,12 @@ public class LogFileHelper {
     }
 
     private List<Path> getPreambles() {
-        List<String> args = options.getArguments();
+        List<Path> args = options.getArguments();
         List<Path> preambles = new ArrayList<>();
         //The last element in args is the main file
         //Everything else is assumed to be a preamble
         for (int i = 0; i < args.size() - 1; i++) {
-            Path preamble = Paths.get(args.get(i)).toAbsolutePath();
+            Path preamble = args.get(i).toAbsolutePath();
             preambles.add(preamble);
         }
         return preambles;
@@ -380,10 +379,14 @@ public class LogFileHelper {
         String expectedSha = metadata.getSha();
         Path rootDirectoryFromMain = getCustomRootDirectoryForTest(jsFile);
         String currentSha;
-        if (rootDirectoryFromMain == null) {
-            currentSha = HashUtil.shaDirOrFile(jsFile);
+        if (Options.get().getSoundnessTesterOptions().getOnlyIncludesForInstrumentation().isPresent()) {
+            currentSha = HashUtil.shaDirOrFile(Options.get().getSoundnessTesterOptions().getOnlyIncludesForInstrumentation().get());
         } else {
-            currentSha = HashUtil.shaDirOrFile(getCustomRootDirectoryForTest(jsFile));
+            if (rootDirectoryFromMain == null) {
+                currentSha = HashUtil.shaDirOrFile(jsFile);
+            } else {
+                currentSha = HashUtil.shaDirOrFile(getCustomRootDirectoryForTest(jsFile));
+            }
         }
 
         if (currentSha.equals(expectedSha)) {
@@ -459,5 +462,68 @@ public class LogFileHelper {
             super(s, t);
         }
 
+    }
+
+    private static class ResourceMap {
+
+        /**
+         * The substring of the path that is mapped.
+         */
+        Path originalPathPart;
+
+        /**
+         * Name of resource folder, used when transorming a path of the form
+         * <p>
+         * test-resources/subpath...
+         * <p>
+         * into a resource path
+         * <p>
+         * /subpath...
+         */
+        Path resourceFolder;
+
+        /**
+         * The subpath from the resource folder.
+         */
+        Path subpath;
+
+        ResourceMap(String originalPathPart, String resourceFolder, String subpath) {
+            this.originalPathPart = Paths.get(originalPathPart);
+            this.resourceFolder = Paths.get(resourceFolder);
+            this.subpath = Paths.get(subpath);
+            if (!this.resourceFolder.resolve(this.subpath).normalize().startsWith(resourceFolder))
+                throw new AnalysisException("Subpath cannot point to a parent of the resource folder");
+            if (this.resourceFolder.resolve(this.subpath).equals(this.resourceFolder))
+                throw new AnalysisException("Need to specify a subfolder as subpath");
+        }
+
+        public Optional<Path> map(Path p) {
+            Path mapping = resourceFolder.resolve(subpath);
+            if (p.startsWith(originalPathPart)) {
+                return Optional.of(mapping.resolve(originalPathPart.relativize(p)));
+            }
+            return Optional.empty();
+        }
+
+        public Optional<URL> mapToResource(Path p) {
+            Optional<Path> mapped = map(p);
+            return mapped.map(m -> {
+                Path folderInResourceFolder = resourceFolder.resolve(subpath);
+                URL containing = Thread.currentThread().getContextClassLoader().getResource(subpath + "/");
+                if (containing == null)
+                    throw new AnalysisException("Could not find folder in resource folder " + subpath);
+                Path relative = folderInResourceFolder.relativize(m);
+                try {
+                    return new URL(containing, relative.toString());
+                } catch (MalformedURLException e) {
+                    throw new AnalysisException("Malformed URL: " + folderInResourceFolder + "/" + relative);
+                }
+            });
+        }
+
+        @Override
+        public String toString() {
+            return originalPathPart + " -> " + resourceFolder.resolve(subpath);
+        }
     }
 }

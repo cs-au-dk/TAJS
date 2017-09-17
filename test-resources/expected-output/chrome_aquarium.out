@@ -1,0 +1,65 @@
+test-resources/src/chromeexperiments/aquarium.html:27:16: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:85:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/chromeexperiments/aquarium.html:107:2: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:120:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:120:23: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:121:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:121:23: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:124:6: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:125:6: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:127:6: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:128:6: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:132:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:133:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:136:4: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:137:4: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:140:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:141:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:154:2: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/aquarium.html:159:1: [maybe] TypeError, non-function event handler
+test-resources/src/chromeexperiments/aquarium.html:161:1: [maybe] TypeError, non-function event handler
+test-resources/src/chromeexperiments/aquarium.html:35:23: [maybe] Reading absent property width of host object
+test-resources/src/chromeexperiments/aquarium.html:36:23: [maybe] Reading absent property height of host object
+test-resources/src/chromeexperiments/aquarium.html:62:21: [maybe] Reading absent property width of host object
+test-resources/src/chromeexperiments/aquarium.html:63:21: [maybe] Reading absent property height of host object
+test-resources/src/chromeexperiments/aquarium.html:111:19: [maybe] Reading absent property width of host object
+test-resources/src/chromeexperiments/aquarium.html:111:40: [maybe] Reading absent property height of host object
+test-resources/src/chromeexperiments/aquarium.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/aquarium.html:27:16, test-resources/src/chromeexperiments/aquarium.html:107:2, test-resources/src/chromeexperiments/aquarium.html:120:12, test-resources/src/chromeexperiments/aquarium.html:120:23, test-resources/src/chromeexperiments/aquarium.html:121:12, test-resources/src/chromeexperiments/aquarium.html:121:23, test-resources/src/chromeexperiments/aquarium.html:124:6, test-resources/src/chromeexperiments/aquarium.html:125:6, test-resources/src/chromeexperiments/aquarium.html:127:6, test-resources/src/chromeexperiments/aquarium.html:128:6, test-resources/src/chromeexperiments/aquarium.html:132:17, test-resources/src/chromeexperiments/aquarium.html:133:17, test-resources/src/chromeexperiments/aquarium.html:136:4, test-resources/src/chromeexperiments/aquarium.html:137:4, test-resources/src/chromeexperiments/aquarium.html:140:3, test-resources/src/chromeexperiments/aquarium.html:141:3, test-resources/src/chromeexperiments/aquarium.html:154:2]
+test-resources/src/chromeexperiments/aquarium.html:35:9: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/aquarium.html:36:9: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/aquarium.html:62:21: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/aquarium.html:63:21: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/aquarium.html:111:2: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/aquarium.html:120:12: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:120:23: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:121:12: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:121:23: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:124:6: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:125:6: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:127:6: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:128:6: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:132:10: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/aquarium.html:132:17: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:133:10: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/aquarium.html:133:17: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:136:4: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:137:4: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:140:3: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:141:3: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/aquarium.html:51:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:51:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:52:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:52:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:53:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:54:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:55:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:56:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:62:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:62:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:63:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:63:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:83:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:83:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:84:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/chromeexperiments/aquarium.html:84:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1176 checks (with 0 expected failures)

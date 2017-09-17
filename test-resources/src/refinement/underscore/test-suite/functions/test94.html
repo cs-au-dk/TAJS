@@ -1,0 +1,26 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var counter = 0;
+    var limit = 48;
+    var incr = function(){ counter++; };
+    var throttledIncr = _.throttle(incr, 32);
+    var stamp = new Date;
+    while (new Date - stamp < limit) {
+      throttledIncr();
+    }
+    var lastCount = counter;
+    ok(counter > 1);
+    _.delay(function() {
+      ok(counter > lastCount);
+      start();
+    }, 96);
+</script></head><body></body></html>

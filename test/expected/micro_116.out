@@ -1,5 +1,0 @@
-test/micro/test116.js: [definite] Exceptional program exit is unreachable
-test/micro/test116.js:2:1: [info] Abstract value: 256.0
-test/micro/test116.js:4:5: [info] Abstract value: UInt|NotUInt
-test/micro/test116.js:6:1: [info] Abstract value: UInt|NotUInt
-Soundness testing succeeded for 411 checks (with 0 expected failures)

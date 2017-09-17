@@ -1,9 +1,0 @@
-test/micro/test104.js: [definite] Ordinary program exit is unreachable
-test/micro/test104.js:12:24: [definite] ReferenceError, reading absent variable a
-test/micro/test104.js:12:24: [definite] Unreachable code
-test/micro/test104.js:15:5: [definite] The variable ta is never used
-test/micro/test104.js:16:5: [definite] The variable tb is never used
-test/micro/test104.js:17:5: [definite] The variable tc is never used
-test/micro/test104.js:17:5: [definite] Unreachable code
-test/micro/test104.js: [maybe] Uncaught exception, constructed at [test/micro/test104.js:12:24]
-Soundness testing succeeded for 29 checks (with 0 expected failures)

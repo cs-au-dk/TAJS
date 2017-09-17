@@ -21,7 +21,6 @@ import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.DeepImmutable;
 
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Context for context sensitive analysis.
@@ -34,7 +33,7 @@ public final class Context implements IContext<Context>, DeepImmutable {
      */
     private final int hashcode;
 
-    private final Set<ObjectLabel> thisval; // TODO: canonicalize? (#140)
+    private final Value thisval;
 
     /**
      * Values of function arguments at function entry, or null if none.
@@ -60,7 +59,7 @@ public final class Context implements IContext<Context>, DeepImmutable {
     /**
      * Constructs a new context object.
      */
-    private Context(Set<ObjectLabel> thisval, ContextArguments funArgs, Map<Integer, Value> specialRegs,
+    private Context(Value thisval, ContextArguments funArgs, Map<Integer, Value> specialRegs,
                     LocalContext localContext, LocalContext localContextAtEntry) {
         // ensure canonical representation of empty maps
         if (localContext != null && localContext.getQualifiers().isEmpty()) {
@@ -86,7 +85,7 @@ public final class Context implements IContext<Context>, DeepImmutable {
         this.hashcode = hashcode;
     }
 
-    public static Context make(Set<ObjectLabel> thisval, ContextArguments funArgs, Map<Integer, Value> specialRegs,
+    public static Context make(Value thisval, ContextArguments funArgs, Map<Integer, Value> specialRegs,
                                LocalContext localContext, LocalContext localContextAtEntry) {
         return Canonicalizer.get().canonicalize(new Context(thisval, funArgs, specialRegs, localContext, localContextAtEntry));
     }
@@ -94,7 +93,7 @@ public final class Context implements IContext<Context>, DeepImmutable {
     /**
      * Returns the this-value.
      */
-    public Set<ObjectLabel> getThisVal() {
+    public Value getThisVal() {
         return thisval;
     }
 

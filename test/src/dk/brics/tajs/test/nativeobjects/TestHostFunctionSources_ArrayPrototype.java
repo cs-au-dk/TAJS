@@ -8,10 +8,8 @@ import org.junit.Test;
 
 public class TestHostFunctionSources_ArrayPrototype {
 
-
     @Before
     public void before() {
-        Main.initLogging();
         Main.reset();
         Options.get().enableTest();
         Options.get().enableLoopUnrolling(100);

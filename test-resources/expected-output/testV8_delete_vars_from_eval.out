@@ -1,0 +1,2 @@
+test-resources/src/v8tests/delete-vars-from-eval.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 42 checks (with 6 expected failures)

@@ -1,0 +1,32 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    equal(-Infinity, _.max(null), 'can handle null/undefined');
+    equal(-Infinity, _.max(undefined), 'can handle null/undefined');
+    equal(-Infinity, _.max(null, _.identity), 'can handle null/undefined');
+    equal(3, _.max([1, 2, 3]), 'can perform a regular Math.max');
+    var neg = _.max([1, 2, 3], function(num){ return -num; });
+    equal(neg, 1, 'can perform a computation-based max');
+    equal(-Infinity, _.max({}), 'Maximum value of an empty object');
+    equal(-Infinity, _.max([]), 'Maximum value of an empty array');
+    equal(_.max({'a': 'a'}), -Infinity, 'Maximum value of a non-numeric collection');
+    equal(299999, _.max(_.range(1, 300000)), 'Maximum value of a too-big array');
+    equal(3, _.max([1, 2, 3, 'test']), 'Finds correct max in array starting with num and containing a NaN');
+    equal(3, _.max(['test', 1, 2, 3]), 'Finds correct max in array starting with NaN');
+    var a = {x: -Infinity};
+    var b = {x: -Infinity};
+    var iterator = function(o){ return o.x; };
+    equal(_.max([a, b], iterator), a, 'Respects iterator return value of -Infinity');
+    deepEqual(_.max([{'a': 1}, {'a': 0, 'b': 3}, {'a': 4}, {'a': 2}], 'a'), {'a': 4}, 'String keys use property iterator');
+    deepEqual(_.max([0, 2], function(a){ return a * this.x; }, {x: 1}), 2, 'Iterator context');
+    deepEqual(_.max([[1], [2, 3], [-1, 4], [5]], 0), [5], 'Lookup falsy iterator');
+    deepEqual(_.max([{0: 1}, {0: 2}, {0: -1}, {a: 1}], 0), {0: 2}, 'Lookup falsy iterator');
+</script></head><body></body></html>

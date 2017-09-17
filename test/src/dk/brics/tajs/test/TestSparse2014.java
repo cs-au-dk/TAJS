@@ -16,85 +16,61 @@ public class TestSparse2014 {
 
     @Test
     public void Sparse2014_3dcube() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/3d-cube.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/3d-cube.js");
     }
 
     @Test
     public void Sparse2014_3draytrace() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/3d-raytrace.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/3d-raytrace.js");
     }
 
     @Test
     public void Sparse2014accessnbody() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/access-nbody.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/access-nbody.js");
     }
 
     @Test
     public void Sparse2014cryptoaes() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/crypto-aes.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/crypto-aes.js");
     }
 
     @Test
     public void Sparse2014cryptomd5() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/crypto-md5.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/crypto-md5.js");
     }
 
     @Test
     public void Sparse2014deltablue() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/deltablue.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/deltablue.js");
     }
 
     @Test
     public void Sparse2014garbochess() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/garbochess.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/garbochess.js");
     }
 
     @Test
     public void Sparse2014javap() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/javap.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/javap.js");
     }
 
     @Test
     public void Sparse2014jpg() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/jpg.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/jpg.js");
     }
 
     @Test
     public void Sparse2014richards() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/richards.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/richards.js");
     }
 
     @Test
     public void Sparse2014simplex() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/simplex.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/simplex.js");
     }
 
     @Test
     public void Sparse2014splay() throws Exception {
-        Misc.init();
-        String[] args = {"test/sparse2014benchmarks/splay.js"};
-        Misc.run(args);
+        Misc.run("test-resources/src/sparse2014benchmarks/splay.js");
     }
 }

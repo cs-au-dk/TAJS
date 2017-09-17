@@ -3,6 +3,7 @@ package dk.brics.tajs.test;
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisResultException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,9 +17,7 @@ public class TestTAJSFunctions {
 
     @Test
     public void asyncEvents2() {
-        Misc.init();
         Options.get().enableAsyncEvents();
-        Misc.captureSystemOutput();
         Misc.runSource(
                 "function f(){TAJS_dumpValue('executed');}",
                 "TAJS_asyncListen(f);",
@@ -73,5 +72,24 @@ public class TestTAJSFunctions {
     @Test(expected = AnalysisException.class)
     public void tajsAssertEqualsFail4() throws Exception {
         Misc.runSource("TAJS_assertEquals(true, true, 'foo');");
+    }
+
+    @Test(expected = AnalysisResultException.class)
+    public void uninvoked__TAJS_assert() {
+        Misc.runSource(
+                "if(false)TAJS_assert(true);"
+        );
+    }
+
+    @Test(expected = AnalysisResultException.class)
+    public void uninvoked__TAJS_assertEquals() {
+        Misc.runSource(
+                "if(false)TAJS_assertEquals(true, true);"
+        );
+    }
+
+    @Test
+    public void uninvoked__TAJS_assertFalse() {
+        Misc.runSource("if(false)TAJS_assert(false);");
     }
 }

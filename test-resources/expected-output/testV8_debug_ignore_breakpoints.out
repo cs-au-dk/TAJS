@@ -1,0 +1,8 @@
+test-resources/src/v8tests/debug-ignore-breakpoints.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/debug-ignore-breakpoints.js:30:9: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/debug-ignore-breakpoints.js:30:9: [definite] Unreachable code
+test-resources/src/v8tests/debug-ignore-breakpoints.js:33:5: [definite] The variable break_point_hit_count is never used
+test-resources/src/v8tests/debug-ignore-breakpoints.js:35:1: [definite] Unreachable function listener
+test-resources/src/v8tests/debug-ignore-breakpoints.js:45:1: [definite] Unreachable function f
+test-resources/src/v8tests/debug-ignore-breakpoints.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-ignore-breakpoints.js:30:9]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

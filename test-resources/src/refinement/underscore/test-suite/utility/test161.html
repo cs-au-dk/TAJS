@@ -1,0 +1,15 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var ids = [], i = 0;
+    while (i++ < 100) ids.push(_.uniqueId());
+    equal(_.uniq(ids).length, ids.length, 'can generate a globally-unique stream of ids');
+</script></head><body></body></html>

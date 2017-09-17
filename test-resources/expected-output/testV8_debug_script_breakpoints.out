@@ -1,0 +1,11 @@
+test-resources/src/v8tests/debug-script-breakpoints.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/debug-script-breakpoints.js:30:9: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/debug-script-breakpoints.js:30:9: [definite] Unreachable code
+test-resources/src/v8tests/debug-script-breakpoints.js:33:5: [definite] The variable sbp is never used
+test-resources/src/v8tests/debug-script-breakpoints.js:42:5: [definite] The variable sbp1 is never used
+test-resources/src/v8tests/debug-script-breakpoints.js:43:5: [definite] The variable sbp2 is never used
+test-resources/src/v8tests/debug-script-breakpoints.js:44:5: [definite] The variable sbp3 is never used
+test-resources/src/v8tests/debug-script-breakpoints.js:48:10: [definite] The variable i is never used
+test-resources/src/v8tests/debug-script-breakpoints.js:49:7: [definite] The variable x is never used
+test-resources/src/v8tests/debug-script-breakpoints.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-script-breakpoints.js:30:9]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

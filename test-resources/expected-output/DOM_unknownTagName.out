@@ -1,0 +1,4 @@
+test-resources/src/micro/unknownTagName.html: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/unknownTagName.html:3:9: [info] Abstract value: "OK: element"
+test-resources/src/micro/unknownTagName.html:6:24: [info] Abstract value: "OK: attribute"
+Soundness testing succeeded for 1 checks (with 0 expected failures)

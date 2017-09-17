@@ -1,0 +1,143 @@
+<html>
+<head>
+    <title>TAJS Statistics</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"
+            integrity="sha256-eXHLyyVI+v6X1wbfg9NB05IWqOqY4E9185nHZgeDIhg=" crossorigin="anonymous"></script>
+    <style>
+        td {white-space: nowrap}
+        .search {width: 200px}
+        .good {background: #afa}
+        .medium {background: #ffa}
+        .bad {background: #faa}
+        table,.search input {font-size: 10px}
+        th {font-size: 13px}
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <h1>TAJS Statistics</h1>
+    <table id="table" class="table table-sm" data-show-columns="true">
+        <thead>
+        <tr>
+            <th data-field="name" data-sortable="true" data-switchable="false" data-toggle="tooltip" title="Path of the benchmark">Name</th>
+            <th data-field="options" data-sortable="true" data-switchable="false" data-toggle="tooltip" title="Analysis options">Options</th>
+            <th data-field="time" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Analysis time in seconds">Time</th>
+            <th data-field="error" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Analysis errors, if any">Error</th>
+            <th data-field="node_transfers" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of node transfers">Node transfers</th>
+            <th data-field="total_usercode_nodes" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of nodes">Nodes</th>
+            <th data-field="total_call_nodes" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of call nodes">Call nodes</th>
+            <th data-field="visited_usercode_node" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of visited nodes">Visited nodes</th>
+            <th data-field="abstract_states" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of abstract states (at basic block entries, for different contexts)">Abstract states</th>
+            <th data-field="callgraph_edges" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of call graph edges (counted with context-sensitivity)">Call graph edges</th>
+            <th data-field="visited_div_total_nodes" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Fraction of nodes that have been visited">Visited/total nodes</th>
+            <th data-field="transfers_per_visited_node" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average number of node transfers per visited node">Transfers per visited node</th>
+            <th data-field="states_per_block" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average number of abstract states per basic block">States per block</th>
+            <th data-field="average_state_size" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average size of all abstract states (counting object labels and number of different types for all object properties, context-sensitively)">Average state size</th>
+            <th data-field="average_node_transfer_time" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average number of milliseconds per node transfer">Average node transfer time</th>
+            <th data-field="callnodes_to_nonfunction" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke a non-function value (including 'undefined')">Non-function calls</th>
+            <th data-field="callnodes_to_native_and_user_functions" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke both native and user-defined functions">Native and user-function calls</th>
+            <th data-field="callnodes_to_multiple_native_functions" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke multiple native functions">Multiple native function calls</th>
+            <th data-field="callnodes_polymorphic" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke multiple user-defined functions (ignoring callee contexts)">Polymorphic calls</th>
+            <th data-field="callnodes_megamorphic" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke more than 10 user-defined functions (ignoring callee contexts)">Megamorphic calls</th>
+        </tr>
+        </thead>
+    </table>
+    <p id="msg"></p>
+</div>
+<script>
+
+var q = window.location.search;
+if (q.startsWith("?")) {
+    var s = document.createElement('script');
+    s.src = q.substring(1) + ".jsonp";
+    s.type = "text/javascript";
+    s.onload = function() {
+        $('#table').bootstrapTable({data: data, search: true}).bootstrapTable('hideLoading');
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    document.getElementsByTagName('body')[0].appendChild(s);
+} else {
+    $(function () {
+        $('#msg').text("Data file name missing in URL");
+    });
+}
+
+function twodecimals(v) {
+    return v !== undefined ? v.toFixed(2) : "";
+}
+
+function cellStyle(value, row, index, field) {
+  var status = '';
+  if (field == 'transfers_per_visited_node') {
+    if (value > 20)
+        status = 'bad';
+    else if (value > 10)
+        status = 'medium';
+    else
+        status = 'good';
+  } else if (field == 'states_per_block') {
+    if (value > 5)
+        status = 'bad';
+    else if (value > 3)
+        status = 'medium';
+    else
+        status = 'good';
+  } else if (field == 'average_state_size') {
+    if (value > 500)
+        status = 'bad';
+    else if (value > 200)
+        status = 'medium';
+    else
+        status = 'good';
+  } else if (field == 'visited_div_total_nodes') {
+    if (value < 0.3)
+        status = 'bad';
+    else if (value < 0.7)
+        status = 'medium';
+    else
+        status = 'good';
+  } else if (field == 'error') {
+    if (value)
+        status = 'bad';
+    else
+        status = 'good';
+  } else if (field == 'callnodes_to_nonfunction') {
+    if (value > 0.2)
+        status = 'bad';
+    else if (value > 0.1)
+        status = 'medium';
+    else
+        status = 'good';
+  } else if (field == 'callnodes_to_native_and_user_functions' ||
+             field == 'callnodes_to_multiple_native_functions' ||
+             field == 'callnodes_polymorphic' ||
+             field == 'callnodes_megamorphic') {
+    if (value > 5)
+        status = 'bad';
+    else if (value > 0)
+        status = 'medium';
+    else
+        status = 'good';
+  } else if (field = 'average_node_transfer_time') {
+    if (value > 25)
+        status = 'bad';
+    else if (value > 5)
+        status = 'medium';
+    else
+        status = 'good';
+  }
+  return {
+    classes: status,
+  };
+}
+
+</script>
+</body>
+</html>

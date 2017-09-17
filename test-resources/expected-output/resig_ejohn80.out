@@ -1,0 +1,10 @@
+test-resources/src/resig/ejohn80.js: [definite] Exceptional program exit is unreachable
+test-resources/src/resig/ejohn80.js:3:8: [maybe] Reading absent property (computed name)
+test-resources/src/resig/ejohn80.js:17:8: [maybe] Reading absent property (computed name)
+test-resources/src/resig/ejohn80.js:9:3: [info] Abstract value: Undef|IdentStr
+test-resources/src/resig/ejohn80.js:10:3: [info] Abstract value: UInt
+test-resources/src/resig/ejohn80.js:11:3: [info] Abstract value: 3.0
+test-resources/src/resig/ejohn80.js:23:3: [info] Abstract value: Undef|IdentStr
+test-resources/src/resig/ejohn80.js:24:3: [info] Abstract value: UInt
+test-resources/src/resig/ejohn80.js:25:3: [info] Abstract value: 3.0
+Soundness testing succeeded for 139 checks (with 0 expected failures)

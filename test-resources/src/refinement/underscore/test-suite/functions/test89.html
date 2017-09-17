@@ -1,0 +1,19 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var value = 0;
+    var update = function(val){ value = val; };
+    var throttledUpdate = _.throttle(update, 32);
+    throttledUpdate(1); throttledUpdate(2);
+    _.delay(function(){ throttledUpdate(3); }, 64);
+    equal(value, 1, 'updated to latest value');
+    _.delay(function(){ equal(value, 3, 'updated to latest value'); start(); }, 96);
+</script></head><body></body></html>

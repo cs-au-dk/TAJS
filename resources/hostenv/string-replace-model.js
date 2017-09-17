@@ -30,7 +30,7 @@ Object.defineProperty(String.prototype, 'replace', {
                     callbackArguments.push(matchThatIsFound.input);
                     matches.push(callbackArguments);
                 }
-            } while (matchThatIsFound !== null && searchValue.global)
+            } while (matchThatIsFound !== null && matchThatIsFound[0] != "" && searchValue.global)
         } else {
             searchValue = searchValue + '';
             var callbackArguments = TAJS_newArray();

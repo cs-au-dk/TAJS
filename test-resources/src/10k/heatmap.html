@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Client side heatmap computation.">
+    <title>10K Heatmap</title>
+    <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen">
+
+</head>
+<body>
+<div class="content">
+    <h1>Real-time HEATMAP</h1>
+
+    <p>
+
+        This application compute and displays an heatmap using HTML5 <code>canvas</code> element.
+    </p>
+
+    <p>
+        Javascript code is less than 4K and framework agnostic.
+        This application could be a base for any applications that need to deliver real-time heatmap visitors to their
+        customers.
+        HTML5 allows to run this heavy computation client side!
+    </p>
+
+    <p>
+        <span class='h'>Move your mouse on the fake web page below</span> to generate and view heatmap.
+        A real application should track mouse click instead of mouse move. It's just for the demo. (Or check it out on
+        iPhone or iPad :) )
+    </p>
+
+    <p>
+        Heatmap opacity: <select id="opacity">
+        <option>100 %</option>
+        <option>75 %</option>
+        <option>50 %</option>
+        <option>25 %</option>
+    </select>
+        Style:<select id="scheme">
+        <option>Classic</option>
+        <option>Fire</option>
+    </select>
+    </p>
+    <div id="fake_title">Fake web page</div>
+
+    <div id="container" class="container">
+    </div>
+</div>
+<script type="text/javascript">
+    Heatmap = function(c) {
+        var buffer = new Canvas({width: c.w(), height: c.h()}),
+                dot, scheme = [], current = 0;
+
+        preload("images/dot2.png", function(data) {
+            dot = data;
+        });
+        preload("images/classic.png", function(data) {
+            scheme[0] = data;
+        });
+        preload("images/fire.png", function(data) {
+            scheme[1] = data;
+        });
+
+        buffer.clear();
+
+        function add(x, y) {
+            if (!dot)    return;
+
+            var dotPix = dot.data,
+                    x = x - dot.width / 2,
+                    y = y - dot.height / 2,
+                    data = buffer.getImageData(x, y, dot.width, dot.height);
+            dataPix = data.data
+
+            for (var i = 0, n = dataPix.length; i < n; i += 4) {
+                var s = dotPix[i] / 255;
+                s = (1 - (1 - s) / 3);
+                dataPix[i] *= s;
+                dataPix[i + 1] *= s;
+                dataPix[i + 2] *= s;
+            }
+            buffer.putImageData(data, x, y);
+            redraw(x, y, dot.width, dot.height);
+        }
+
+        function preload(imageName, callback) {
+            var i = new Image();
+            i.src = imageName;
+            i.onload = function(event) {
+                var b = new Canvas({width: i.width, height: i.height});
+                b.drawImage(i, 0, 0);
+                callback(b.getImageData(0, 0, i.width, i.height));
+            };
+        }
+
+        function redraw(x, y, width, height) {
+            if (!scheme[current])    return;
+
+            var data = buffer.getImageData(x, y, width, height),
+                    pix = data.data,
+                    s = scheme[current].data;
+            for (var i = 0, n = pix.length; i < n; i += 4) {
+                var value = pix[i], heatValue = value << 2;
+                pix[i  ] = s[heatValue];
+                pix[i + 1] = s[heatValue + 1];
+                pix[i + 2] = s[heatValue + 2];
+                pix[i + 3] = value < 200 ? 255 : 255 - value;
+            }
+            c.putImageData(data, x, y);
+        }
+
+        function setScheme(i) {
+            current = i;
+            redraw(0, 0, c.w(), c.h());
+        }
+
+        return {add: add, setScheme:setScheme}
+    };
+
+</script>
+<script type="text/javascript">
+    Canvas = function(element, options) {
+        this.init(element, options);
+    }
+    Canvas.prototype = {
+        init: function(options) {
+            this.options = options;
+            this._createCanvasFromElement();
+        },
+        getContext: function() {
+            return this.cx;
+        },
+        getHTMLElement: function() {
+            return this.c;
+        },
+        w: function() {
+            return this.c.width;
+        },
+        h: function() {
+            return this.c.height;
+        },
+        clear: function(color) {
+            var c = this.cx;
+            c.globalCompositeOperation = "source-over";
+            c.fillStyle = color || "#FFF";
+            c.fillRect(0, 0, this.w(), this.h());
+        },
+        drawImage: function(image, x, y) {
+            this.cx.drawImage(image, x, y);
+        },
+        putImageData: function(data, x, y) {
+            this.cx.putImageData(data, x, y);
+        },
+        getImageData: function(x, y, width, height) {
+            return this.cx.getImageData(x, y, width, height);
+        },
+
+        _createCanvasFromElement: function() {
+            var canvas = document.createElement('canvas'),
+                    element = this.options.element;
+            canvas.className = 'heatmap';
+            if (element) {
+                canvas.width = element.offsetWidth;
+                canvas.height = element.offsetHeight;
+            } else {
+                canvas.width = this.options.width;
+                canvas.height = this.options.height;
+            }
+            this.c = canvas;
+            this.cx = canvas.getContext('2d');
+        }
+    }
+
+
+</script>
+<script type="text/javascript">
+    (function() {
+        function loremIpsum() {
+            var text = ['<h1>Lorem ipsum dolor sit amet</h1>',
+                '<h2>Consectetur adipiscing elit</h2>',
+                '<p>Eset eiusmod tempor incidunt et labore et dolore magna aliquam. Ut enim ad minim veniam,',
+                ' quis nostrud exerc. Irure dolor in reprehend incididunt ut labore et dolore magna aliqua.',
+                ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                ' Duis aute irure dolor in reprehenderit in voluptate velit esse molestaie cillum.',
+                ' Tia non ob ea soluad incommod quae egen ium improb fugiend.</p>'];
+            return text.join('');
+        }
+
+        function $(id) {
+            return document.getElementById(id)
+        }
+
+        var c = $('container'), o = $('opacity'), s = $('scheme');
+        for (var i = 0; i < 10; i++) {
+            c.innerHTML += loremIpsum();
+        }
+
+        function idle() {
+            timer = setTimeout(idle, 100);
+            h.add(lx, ly);
+        }
+
+        function add(event) {
+            if (event.targetTouches) {
+                event.preventDefault();
+                var x = event.targetTouches[0].pageX - c.offsetLeft - c.parentNode.offsetLeft,
+                        y = event.targetTouches[0].pageY - c.offsetTop - c.parentNode.offsetTop;
+                h.add(x, y);
+            }
+            else {
+                var x = parseInt(event.layerX), y = parseInt(event.layerY);
+                if (Math.abs(x - lx) > 3 || Math.abs(y - ly) > 3) {
+                    lx = x;
+                    ly = y;
+                    h.add(x, y);
+                }
+            }
+        }
+
+        var canvas = new Canvas({element: c}),
+                h = new Heatmap(canvas),
+                e = canvas.getHTMLElement(),
+                lx = 0,
+                ly = 0,
+                timer;
+
+        c.appendChild(e);
+
+        if ('createTouch' in document) { // Thanks Thomas!
+            e.addEventListener("touchstart", add, false);
+        } else {
+            e.addEventListener("mousemove", function (event) {
+                add(event);
+                clearTimeout(timer);
+                timer = setTimeout(idle, 100);
+            }, false);
+        }
+        e.addEventListener('mouseout', function() {
+            clearTimeout(timer)
+        }, false);
+
+        o.addEventListener('change', function() {
+            e.style.opacity = (100 - (o.selectedIndex * 25)) / 100;
+        }, false);
+        s.addEventListener('change', function() {
+            h.setScheme(s.selectedIndex)
+        }, false);
+    })();
+</script>
+</body>
+</html>
+
+
+

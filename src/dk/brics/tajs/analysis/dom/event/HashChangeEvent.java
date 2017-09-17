@@ -51,7 +51,7 @@ public class HashChangeEvent {
         createDOMProperty(INSTANCES, "cancelable", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "newURL", Value.makeAnyStr().setReadOnly(), c);
         createDOMProperty(INSTANCES, "oldURL", Value.makeAnyStr().setReadOnly(), c);
-        createDOMProperty(INSTANCES, "type", Value.makeNone().joinAnyStrIdentifier().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeStr("hashchange").setReadOnly(), c);
 
         // DOM Registry
         DOMRegistry.registerHashChangeEventLabel(INSTANCES);

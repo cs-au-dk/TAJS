@@ -1,0 +1,3 @@
+test-resources/src/sourcelocations/eventhandlerWithMultiLineEvents.html: [definite] Exceptional program exit is unreachable
+test-resources/src/sourcelocations/eventhandlerWithMultiLineEvents.html:8:86: [definite] The variable loooooooooooongVarName is never used
+Soundness testing succeeded for 0 checks (with 0 expected failures)

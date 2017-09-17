@@ -1,0 +1,5 @@
+test-resources/src/v8tests/fun_name.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/fun_name.js:32:37: [definite] Unreachable function
+TAJS-dynamic-code(test-resources/src/v8tests/fun_name.js:33:45):1:1: [definite] Unreachable function
+test-resources/src/v8tests/fun_name.js:29:10: [maybe] Converting primitive string to object
+Soundness testing succeeded for 47 checks (with 0 expected failures)

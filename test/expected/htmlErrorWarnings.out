@@ -1,7 +1,0 @@
-test/micro/bad-html.html:2:1: StartTag missing required end tag
-test/micro/bad-html.html:3:2: StartTag missing required end tag
-test/micro/bad-html.html:4:5: StartTag missing required end tag
-test/micro/bad-html.html:5:1: StartTag missing required end tag
-test/micro/bad-html.html:5:4: StartTag missing required end tag
-test/micro/bad-html.html: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 0 checks (with 0 expected failures)

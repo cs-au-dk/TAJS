@@ -23,7 +23,7 @@ public class TestCollections {
 
     @BeforeClass
     public static void beforeClass() {
-        Main.initLogging();
+        Main.reset();
     }
 
     @Before
@@ -52,10 +52,8 @@ public class TestCollections {
     @Test
     public void hybridSetBug() {
         assertEquals(1, 1);
-
         Set<Integer> byConstructor = new HybridArrayHashSet<>(newList(Arrays.asList(1, 1)));
         assertEquals(1, byConstructor.size());
-
         Set<Integer> byAddAll = new HybridArrayHashSet<>();
         byAddAll.addAll(newList(Arrays.asList(1, 1)));
         assertEquals(1, byAddAll.size());
@@ -74,17 +72,14 @@ public class TestCollections {
         List<SourceLocation> list = newList();
         try {
             SourceLocation.StaticLocationMaker m1 = new SourceLocation.StaticLocationMaker(mkURL("file:/test1.js"));
-            list.add(m1.make(1, 1, 1,1));
-            list.add(m1.make(1, 1, 1,1));
-
+            list.add(m1.make(1, 1, 1, 1));
+            list.add(m1.make(1, 1, 1, 1));
             SourceLocation.StaticLocationMaker m2 = new SourceLocation.StaticLocationMaker(mkURL("file:/test2.js"));
-            list.add(m2.make(1, 1, 1,1));
-            list.add(m2.make(1, 1, 1,1));
-
+            list.add(m2.make(1, 1, 1, 1));
+            list.add(m2.make(1, 1, 1, 1));
             SourceLocation.StaticLocationMaker m3 = new SourceLocation.StaticLocationMaker(mkURL("file:/test3.js"));
-            list.add(m3.make(1, 1, 1,1));
-            list.add(m3.make(1, 1, 1,1));
-
+            list.add(m3.make(1, 1, 1, 1));
+            list.add(m3.make(1, 1, 1, 1));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }

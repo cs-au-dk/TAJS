@@ -41,6 +41,9 @@ public enum ECMAScriptObjects implements HostObject {
     OBJECT_KEYS("Object.keys"),
     OBJECT_PREVENTEXTENSIONS("Object.preventExtensions"),
     OBJECT_SEAL("Object.seal"),
+    OBJECT_IS("Object.is"),
+    OBJECT_ASSIGN("Object.assign"),
+    OBJECT_VALUES("Object.values"),
 
     OBJECT_PROTOTYPE("Object.prototype"),
     OBJECT_TOSTRING("Object.prototype.toString"),
@@ -74,10 +77,12 @@ public enum ECMAScriptObjects implements HostObject {
     ARRAY_SPLICE("Array.prototype.splice"),
     ARRAY_UNSHIFT("Array.prototype.unshift"),
     ARRAY_INDEXOF("Array.prototype.indexOf"),
+    ARRAY_VALUES("Array.prototype.values"),
 
     STRING("String"),
     STRING_PROTOTYPE("String.prototype"),
     STRING_FROMCHARCODE("String.fromCharCode"),
+    STRING_FROMCODEPOINT("String.fromCodePoint"),
     STRING_TOSTRING("String.prototype.toString"),
     STRING_VALUEOF("String.prototype.valueOf"),
     STRING_CHARAT("String.prototype.charAt"),
@@ -101,6 +106,8 @@ public enum ECMAScriptObjects implements HostObject {
     STRING_TRIMRIGHT("String.prototype.trimRight"),
     STRING_STARTSWITH("String.prototype.startsWith"),
     STRING_ENDSWITH("String.prototype.endsWith"),
+    STRING_INCLUDES("String.prototype.includes"),
+    STRING_CODEPOINTAT("String.prototype.codePointAt"),
 
     BOOLEAN("Boolean"),
     BOOLEAN_PROTOTYPE("Boolean.prototype"),
@@ -116,6 +123,9 @@ public enum ECMAScriptObjects implements HostObject {
     NUMBER_TOEXPONENTIAL("Number.prototype.toExponential"),
     NUMBER_TOPRECISION("Number.prototype.toPrecision"),
     NUMBER_ISFINITE("Number.isFinite"),
+    NUMBER_ISSAFEINTEGER("Number.isSafeInteger"),
+    NUMBER_ISINTEGER("Number.isInteger"),
+    NUMBER_ISNAN("Number.isNan"),
 
     MATH("Math"),
     MATH_MAX("Math.max"),
@@ -136,6 +146,23 @@ public enum ECMAScriptObjects implements HostObject {
     MATH_EXP("Math.exp"),
     MATH_FLOOR("Math.floor"),
     MATH_LOG("Math.log"),
+    MATH_IMUL("Math.imul"),
+    MATH_SIGN("Math.sign"),
+    MATH_TRUNC("Math.trunc"),
+    MATH_TANH("Math.tanh"),
+    MATH_ASINH("Math.asinh"),
+    MATH_ACOSH("Math.acosh"),
+    MATH_ATANH("Math.atanh"),
+    MATH_HYPOT("Math.hypot"),
+    MATH_FROUND("Math.fround"),
+    MATH_CLZ32("Math.clz32"),
+    MATH_CBRT("Math.cbrt"),
+    MATH_SINH("Math.sinh"),
+    MATH_COSH("Math.cosh"),
+    MATH_LOG10("Math.log10"),
+    MATH_LOG2("Math.log2"),
+    MATH_LOG1P("Math.log1p"),
+    MATH_EXPM1("Math.expm1"),
 
     DATE("Date"),
     DATE_PARSE("Date.parse"),
@@ -188,6 +215,10 @@ public enum ECMAScriptObjects implements HostObject {
     DATE_SETYEAR("Date.prototype.setYear"),
     DATE_TOGMTSTRING("Date.prototype.toGMTString"),
 
+    PROXY("Proxy"),
+    PROXY_PROTOTYPE("Proxy.prototype"),
+    PROXY_TOSTRING("Proxy.prototype.toString"),
+
     REGEXP("RegExp"),
     REGEXP_PROTOTYPE("RegExp.prototype"),
     REGEXP_COMPILE("RegExp.prototype.compile"),
@@ -198,6 +229,7 @@ public enum ECMAScriptObjects implements HostObject {
 
     ERROR("Error"),
     ERROR_PROTOTYPE("Error.prototype"),
+    ERROR_CAPTURESTACKTRACE("Error.captureStackTrace"),
     ERROR_TOSTRING("Error.toString"),
     EVAL_ERROR("EvalError"),
     EVAL_ERROR_PROTOTYPE("EvalError.prototype"),
@@ -213,6 +245,7 @@ public enum ECMAScriptObjects implements HostObject {
     URI_ERROR_PROTOTYPE("URIError.prototype"),
 
     JSON("JSON"),
+    JSON_OBJECT("JSONObject"),
     JSON_PARSE("JSON.parse"),
     JSON_STRINGIFY("JSON.stringify"),
 

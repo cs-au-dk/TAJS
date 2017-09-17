@@ -26,8 +26,8 @@ import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.JavaScriptSource.Kind;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.SourceLocation.DynamicLocationMaker;
-import dk.brics.tajs.htmlparser.HTMLParser;
 import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
+import dk.brics.tajs.js2flowgraph.HTMLParser;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Str;
@@ -46,12 +46,21 @@ public enum DOMObjects implements HostObject {
     // /////////////////////////////////////////////////////////////////////////
     // / WINDOW ///
     // /////////////////////////////////////////////////////////////////////////
+
+    WINDOW_CONSTRUCTOR("Window"),
+    WINDOW_PROTOTYPE("Window.prototype"),
+
+    // WINDOW CHROME
+    WINDOW_CHROME("Window.chrome"),
+    WINDOW_CHROME_LOAD_TIMES("Window.chrome.loadTimes"),
+
     // DOM LEVEL 0: WINDOW HISTORY
     WINDOW_HISTORY("Window.history"),
     WINDOW_HISTORY_BACK("Window.history.back"),
     WINDOW_HISTORY_FORWARD("Window.history.forward"),
     WINDOW_HISTORY_GO("Window.history.go"),
     WINDOW_HISTORY_PUSH_STATE("Window.history.pushState"),
+    WINDOW_HISTORY_REPLACE_STATE("Window.history.replaceState"),
 
     // DOM LEVEL 0: WINDOW LOCATION
     WINDOW_LOCATION("Window.location"),
@@ -80,6 +89,7 @@ public enum DOMObjects implements HostObject {
     WINDOW_CLEAR_TIMEOUT("Window.clearTimeout"),
     WINDOW_CLOSE("Window.close"),
     WINDOW_CONFIRM("Window.confirm"),
+    WINDOW_DISPATCHEVENT("Window.dispatchEvent"),
     WINDOW_ESCAPE("Window.escape"),
     WINDOW_FOCUS("Window.focus"),
     WINDOW_FORWARD("Window.forward"),
@@ -113,8 +123,8 @@ public enum DOMObjects implements HostObject {
     WINDOW_CANCEL_ANIMATION_FRAME("Window.cancelAnimationFrame"),
     WINDOW_CANCEL_ANIM_FRAME("Window.cancelAnimFrame"),
     WINDOW_MATCH_MEDIA("Window.matchMedia"),
-
-
+    WINDOW_REQUEST_ANIMATION_FRAME("Window.requestAnimationFram"),
+    WINDOW_WEBKIT_REQUEST_ANIMATION_FRAME("Window.webkitRequestAnimationFrame"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / DOCUMENT ///
@@ -148,16 +158,35 @@ public enum DOMObjects implements HostObject {
 
     // semistandard
     DOCUMENT_EVALUATE("Document.evaluate"),
+    DOCUMENT_EXECCOMMAND("Document.execCommand"),
     DOCUMENT_QUERY_SELECTOR_ALL("Document.querySelectorAll"),
     DOCUMENT_QUERY_SELECTOR("Document.querySelector"),
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / XPathResult ///
+    // /////////////////////////////////////////////////////////////////////////
+
+    XPATH_RESULT_CONSTRUCTOR("XPathResult constructor"),
+    XPATH_RESULT_INSTANCES("XPathResult"),
+    XPATH_RESULT_PROTOTYPE("XPathResult.prototype"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / EVENT ///
     // /////////////////////////////////////////////////////////////////////////
 
+    COMPOSITION_EVENT_CONSTRUCTOR("CompositionEvent"),
+    COMPOSITION_EVENT_PROTOTYPE("CompositionEvent.prototype"),
+    COMPOSITION_EVENT_INSTANCES("CompositionEvent instances"),
+
+    CUSTOM_EVENT_CONSTRUCTOR("CustomEvent constructor"),
+    CUSTOM_EVENT_INSTANCES("CustomEvent"),
+    CUSTOM_EVENT_PROTOTYPE("CustomEvent.prototype"),
+    CUSTOM_EVENT_INIT_CUSTOM_EVENT("CustomEvent.initCustomEvent"),
+
     EVENT_CONSTRUCTOR("Event constructor"),
     EVENT_PROTOTYPE("Event.prototype"),
     EVENT_INSTANCES("Event instances"),
+    EVENT_STOP_IMMEDIATE_PROPAGATION("Event.stopImmediatePropagation"),
     EVENT_STOP_PROPAGATION("Event.stopPropagation"),
     EVENT_PREVENT_DEFAULT("Event.preventDefault"),
     EVENT_INIT_EVENT("Event.initEvent"),
@@ -221,8 +250,10 @@ public enum DOMObjects implements HostObject {
     ELEMENT_GET_ELEMENTS_BY_TAGNAME("Element.getElementsByTagName"),
     ELEMENT_GET_ELEMENTS_BY_TAGNAME_NS("Element.getElementsByTagNameNS"),
     ELEMENT_QUERY_SELECTOR_ALL("Element.querySelectorAll"),
+    ELEMENT_QUERY_SELECTOR("Element.querySelector"),
     ELEMENT_HAS_ATTRIBUTE("Element.hasAttribute"),
     ELEMENT_HAS_ATTRIBUTE_NS("Element.hasAttributeNS"),
+    ELEMENT_REMOVE("Element.remove"),
     ELEMENT_REMOVE_ATTRIBUTE("Element.removeAttribute"),
     ELEMENT_REMOVE_ATTRIBUTE_NS("Element.removeAttributeNS"),
     ELEMENT_REMOVE_ATTRIBUTE_NODE("Element.removeAttributeNode"),
@@ -233,6 +264,8 @@ public enum DOMObjects implements HostObject {
     ELEMENT_SET_ID_ATTRIBUTE("Element.setIdAttributeNode"),
     ELEMENT_SET_ID_ATTRIBUTE_NS("Element.setIdAttributeNodeNS"),
     ELEMENT_SET_ID_ATTRIBUTE_NODE("Element.setIdAttributeNodeNode"),
+    ELEMENT_MATCHES("Element.matches"),
+    ELEMENT_MATCHES_SELECTOR("Element.webkitMatchesSelector"),
 
     ATTR_CONSTRUCTOR("Attr constructor"),
     ATTR_PROTOTYPE("Attr.prototype"),
@@ -283,6 +316,21 @@ public enum DOMObjects implements HostObject {
     NODELIST_PROTOTYPE("NodeList.prototype"),
     NODELIST_INSTANCES("NodeList instances"),
     NODELIST_ITEM("NodeList.item"),
+
+    TOKENLIST_CONSTRUCTOR("DOMTokenList constructor"),
+    TOKENLIST_PROTOTYPE("DOMTokenList.prototype"),
+    TOKENLIST_INSTANCES("DOMTokenList instances"),
+    TOKENLIST_ITEM("DOMTokenList.item"),
+    TOKENLIST_CONTAINS("DOMTokenList.contains"),
+    TOKENLIST_ADD("DOMTokenList.add"),
+    TOKENLIST_REMOVE("DOMTokenList.remove"),
+    TOKENLIST_REPLACE("DOMTokenList.replace"),
+    TOKENLIST_SUPPORTS("DOMTokenList.supports"),
+    TOKENLIST_TOGGLE("DOMTokenList.toggle"),
+    TOKENLIST_ENTRIES("DOMTokenList.entries"),
+    TOKENLIST_FOREACH("DOMTokenList.forEach"),
+    TOKENLIST_KEYS("DOMTokenList.keys"),
+    TOKENLIST_VALUES("DOMTokenList.values"),
 
     PROCESSINGINSTRUCTION_CONSTRUCTOR("ProcessingInstruction constructor"),
     PROCESSINGINSTRUCTION_PROTOTYPE("ProcessingInstruction.prototype"),
@@ -502,6 +550,9 @@ public enum DOMObjects implements HostObject {
     HTMLSELECTELEMENT_REMOVE("HTMLSelectElement.prototype.remove"),
     HTMLSELECTELEMENT_BLUR("HTMLSelectElement.prototype.blur"),
     HTMLSELECTELEMENT_FOCUS("HTMLSelectElement.prototype.focus"),
+    HTMLSPANELEMENT_CONSTRUCTOR("HTMLSpanElement constructor"),
+    HTMLSPANELEMENT_PROTOTYPE("HTMLSpanElement.prototype"),
+    HTMLSPANELEMENT_INSTANCES("HTMLSpanElement instances"),
     HTMLSTYLEELEMENT_CONSTRUCTOR("HTMLStyleElement constructor"),
     HTMLSTYLEELEMENT_PROTOTYPE("HTMLStyleElement.prototype"),
     HTMLSTYLEELEMENT_INSTANCES("HTMLStyleElement instances"),
@@ -535,6 +586,9 @@ public enum DOMObjects implements HostObject {
     HTMLTABLESECTIONELEMENT_INSTANCES("HTMLTableSectionElement instances"),
     HTMLTABLESECTIONELEMENT_INSERTROW("HTMLTableSectionElement.prototype.insertRow"),
     HTMLTABLESECTIONELEMENT_DELETEROW("HTMLTableSectionElement.prototype.deleteRow"),
+    HTMLTEMPLATEELEMENT_CONSTRUCTOR("HTMLTemplateElement constructor"),
+    HTMLTEMPLATEELEMENT_PROTOTYPE("HTMLTemplateElement.prototype"),
+    HTMLTEMPLATEELEMENT_INSTANCES("HTMLTemplateElement instances"),
     HTMLTEXTAREAELEMENT_CONSTRUCTOR("HTMLTextAreaElement constructor"),
     HTMLTEXTAREAELEMENT_PROTOTYPE("HTMLTextAreaElement.prototype"),
     HTMLTEXTAREAELEMENT_INSTANCES("HTMLTextAreaElement instances"),
@@ -547,9 +601,9 @@ public enum DOMObjects implements HostObject {
     HTMLULISTELEMENT_CONSTRUCTOR("HTMLUListElement constructor"),
     HTMLULISTELEMENT_PROTOTYPE("HTMLUListElement.prototype"),
     HTMLULISTELEMENT_INSTANCES("HTMLUListElement instances"),
-    HTMLUNKNOWNELEMENT_CONSTRUCTOR("HTMLUnkownElement constructor"),
-    HTMLUNKNOWNELEMENT_PROTOTYPE("HTMLUnkownElement.prototype"),
-    HTMLUNKNOWNELEMENT_INSTANCES("HTMLUnkownElement instances"),
+    HTMLUNKNOWNELEMENT_CONSTRUCTOR("HTMLUnknownElement constructor"),
+    HTMLUNKNOWNELEMENT_PROTOTYPE("HTMLUnknownElement.prototype"),
+    HTMLUNKNOWNELEMENT_INSTANCES("HTMLUnknownElement instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / NON-STANDARD HTML OBJECTS ///
@@ -736,6 +790,13 @@ public enum DOMObjects implements HostObject {
     STORAGE_GET_ITEM("Storage.prototype.getItem"),
     STORAGE_SET_ITEM("Storage.prototype.setItem"),
     STORAGE_REMOVE_ITEM("Storage.prototype.removeItem"),
+
+    // /////////////////////////////////////////////////////////////////////////
+    // / HTML5 WORKER ///
+    // /////////////////////////////////////////////////////////////////////////
+    WORKER_CONSTRUCTOR("Worker constructor"),
+    WORKER_PROTOTYPE("Worker.prototype"),
+    WORKER_INSTANCES("Worker instances"),
 
     // /////////////////////////////////////////////////////////////////////////
     // / AJAX ///

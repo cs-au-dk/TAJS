@@ -100,6 +100,11 @@ public class SoundnessTesterOptions {
      */
     private boolean forceUpdateSha = false;
 
+    /**
+     * Generates the log files before performing the analysis
+     */
+    private boolean generateBeforeAnalysis = false;
+
     public static Path getJalangiLogger() {
         return ExternalDependencies.getJalangiLoggerDirectory().get();
     }
@@ -121,6 +126,7 @@ public class SoundnessTesterOptions {
         if (nonInteractive != that.nonInteractive) return false;
         if (ignoreShaDifference != that.ignoreShaDifference) return false;
         if (useUncompressedLogFileForInference != that.useUncompressedLogFileForInference) return false;
+        if (generateBeforeAnalysis != that.generateBeforeAnalysis) return false;
         if (rootDirFromMainDirectory != null ? !rootDirFromMainDirectory.equals(that.rootDirFromMainDirectory) : that.rootDirFromMainDirectory != null)
             return false;
         if (explicitSoundnessLogFile != null ? !explicitSoundnessLogFile.equals(that.explicitSoundnessLogFile) : that.explicitSoundnessLogFile != null)
@@ -148,6 +154,7 @@ public class SoundnessTesterOptions {
         result = 31 * result + (onlyIncludesForInstrumentation != null ? onlyIncludesForInstrumentation.hashCode() : 0);
         result = 31 * result + (ignoreShaDifference ? 1 : 0);
         result = 31 * result + (useUncompressedLogFileForInference ? 1 : 0);
+        result = 31 * result + (generateBeforeAnalysis ? 1 : 0);
         return result;
     }
 
@@ -257,5 +264,13 @@ public class SoundnessTesterOptions {
 
     public void setForceUpdateSha(boolean forceUpdateSha) {
         this.forceUpdateSha = forceUpdateSha;
+    }
+
+    public boolean generateBeforeAnalysis() {
+        return generateBeforeAnalysis;
+    }
+
+    public void setGenerateBeforeAnalysis(boolean b) {
+        generateBeforeAnalysis = true;
     }
 }

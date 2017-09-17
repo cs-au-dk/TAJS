@@ -1,0 +1,10 @@
+test-resources/src/v8tests/this-in-callbacks.js:35:22: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/this-in-callbacks.js:43:10: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/this-in-callbacks.js:32:5: [definite] The variable my_identity is never used
+test-resources/src/v8tests/this-in-callbacks.js:34:1: [definite] The variable x is never used
+test-resources/src/v8tests/this-in-callbacks.js:34:1: [definite] The variable y is never used
+test-resources/src/v8tests/this-in-callbacks.js:42:1: [definite] The variable x is never used
+test-resources/src/v8tests/this-in-callbacks.js: [maybe] Uncaught exception, constructed at [HOST(string-replace-model.js):49:30, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
+test-resources/src/v8tests/this-in-callbacks.js:46:20: [maybe] Converting primitive string to object
+test-resources/src/v8tests/this-in-callbacks.js:47:20: [maybe] Converting primitive string to object
+Soundness testing succeeded for 49 checks (with 0 expected failures)

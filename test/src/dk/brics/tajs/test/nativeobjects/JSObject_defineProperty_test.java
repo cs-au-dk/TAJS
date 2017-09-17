@@ -3,6 +3,7 @@ package dk.brics.tajs.test.nativeobjects;
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
+import dk.brics.tajs.util.AnalysisResultException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +12,6 @@ public class JSObject_defineProperty_test {
     @Before
     public void before() {
         Main.reset();
-        Main.initLogging();
         Options.get().enableTest();
     }
 
@@ -64,16 +64,16 @@ public class JSObject_defineProperty_test {
     @Test
     public void enumerable() {
         Misc.runSource(
-                        "var o1 = {};",
-                        "Object.defineProperty(o1, 'p', {enumerable: true});",
-                        "TAJS_assert(Object.keys(o1).length === 1);",
-                        "var o2 = {};",
-                        "Object.defineProperty(o2, 'p', {enumerable: false});",
-                        "TAJS_assert(Object.keys(o2).length === 0);",
-                        // default false
-                        "var o3 = {};",
-                        "Object.defineProperty(o3, 'p', {enumerable: false});",
-                        "TAJS_assert(Object.keys(o3).length === 0);");
+                "var o1 = {};",
+                "Object.defineProperty(o1, 'p', {enumerable: true});",
+                "TAJS_assert(Object.keys(o1).length === 1);",
+                "var o2 = {};",
+                "Object.defineProperty(o2, 'p', {enumerable: false});",
+                "TAJS_assert(Object.keys(o2).length === 0);",
+                // default false
+                "var o3 = {};",
+                "Object.defineProperty(o3, 'p', {enumerable: false});",
+                "TAJS_assert(Object.keys(o3).length === 0);");
     }
 
     @Test
@@ -125,7 +125,7 @@ public class JSObject_defineProperty_test {
                 "TAJS_assert(o3.p === 42);");
     }
 
-    @Test(expected = AssertionError.class) // TODO: GitHub #291
+    @Test(expected = AnalysisResultException.class) // TODO: GitHub #291
     public void configurable4() {
         Misc.runSource(
                 "var o4 = {};",

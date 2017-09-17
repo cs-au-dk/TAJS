@@ -1,9 +1,0 @@
-test/anderson/anderson1.js: [definite] Ordinary program exit is unreachable
-test/anderson/anderson1.js:18:5: [definite] TypeError, accessing property of null/undefined
-test/anderson/anderson1.js:4:5: [definite] Dead assignment, property value is never read
-test/anderson/anderson1.js:5:5: [definite] Dead assignment, property disabled is never read
-test/anderson/anderson1.js:18:5: [definite] Reading absent property submi
-test/anderson/anderson1.js:27:5: [definite] Dead assignment, property submit is never read
-test/anderson/anderson1.js:19:5: [definite] Unreachable code
-test/anderson/anderson1.js: [maybe] Uncaught exception, constructed at [test/anderson/anderson1.js:18:5]
-Soundness testing succeeded for 48 checks (with 0 expected failures)

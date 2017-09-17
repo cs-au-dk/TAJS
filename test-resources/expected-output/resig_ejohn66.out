@@ -1,0 +1,4 @@
+test-resources/src/resig/ejohn66.js:8:1: [definite] Dead assignment, property swingSword is never read
+test-resources/src/resig/ejohn66.js: [definite] Exceptional program exit is unreachable
+test-resources/src/resig/ejohn66.js:8:30: [definite] Unreachable function
+Soundness testing succeeded for 20 checks (with 0 expected failures)

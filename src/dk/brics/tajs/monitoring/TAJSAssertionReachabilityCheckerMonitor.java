@@ -23,6 +23,7 @@ import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.TAJSFunctionName;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.util.AnalysisResultException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -74,7 +75,7 @@ public class TAJSAssertionReachabilityCheckerMonitor extends DefaultAnalysisMoni
     @SuppressWarnings("unchecked")
     @Override
     public void visitNodeTransferPre(AbstractNode n, State s) {
-        if (assertionCallNodes.contains(n) && !s.isNone()) {
+        if (assertionCallNodes.contains(n) && !s.isNone()) { // FIXME: suspicious call to Set.contains
             reachableAssertionCallNodes.add((CallNode) n); // safe cast due to set containment
         }
     }
@@ -98,7 +99,7 @@ public class TAJSAssertionReachabilityCheckerMonitor extends DefaultAnalysisMoni
             unreachable.removeAll(reachableAssertionCallNodes);
             if (!unreachable.isEmpty()) {
                 List<String> sourceLocationStrings = unreachable.stream().map(AbstractNode::getSourceLocation).sorted().map(SourceLocation::toString).collect(Collectors.toList());
-                throw new AssertionError("Some TAJS assertions were not invoked: " + String.join(", ", sourceLocationStrings));
+                throw new AnalysisResultException("Some TAJS assertions were not invoked: " + String.join(", ", sourceLocationStrings));
             }
         }
     }

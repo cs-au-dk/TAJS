@@ -1,0 +1,10 @@
+test-resources/src/v8tests/instanceof.js:38:3: [definite] Dead assignment, property __proto__ is never read
+test-resources/src/v8tests/instanceof.js:39:3: [definite] Dead assignment, property __proto__ is never read
+test-resources/src/v8tests/instanceof.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/instanceof.js:41:3: [definite] Unreachable function F
+test-resources/src/v8tests/instanceof.js:88:3: [definite] Unreachable function G
+test-resources/src/v8tests/instanceof.js:76:13: [maybe] TypeError, non-function object at 'instanceof'
+test-resources/src/v8tests/instanceof.js:76:13: [maybe] TypeError, non-object prototype at 'instanceof'
+test-resources/src/v8tests/instanceof.js:76:13: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/instanceof.js:76:33: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 346 checks (with 0 expected failures)

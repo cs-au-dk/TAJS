@@ -1,0 +1,15 @@
+test-resources/src/v8tests/in.js:37:11: [definite] Dead assignment, property x is never read
+test-resources/src/v8tests/in.js:43:11: [definite] Dead assignment, property x is never read
+test-resources/src/v8tests/in.js:43:18: [definite] Dead assignment, property y is never read
+test-resources/src/v8tests/in.js:85:1: [definite] Dead assignment, property 1 is never read
+test-resources/src/v8tests/in.js:100:3: [definite] Dead assignment, property is never read
+test-resources/src/v8tests/in.js:109:1: [definite] Dead assignment, property 1073741823 is never read
+test-resources/src/v8tests/in.js:110:1: [definite] Dead assignment, property 2147483647 is never read
+test-resources/src/v8tests/in.js:111:1: [definite] Dead assignment, property 1 is never read
+test-resources/src/v8tests/in.js:134:1: [definite] Dead assignment, property 1073741823 is never read
+test-resources/src/v8tests/in.js:135:1: [definite] Dead assignment, property 2147483647 is never read
+test-resources/src/v8tests/in.js:136:1: [definite] Dead assignment, property 1 is never read
+test-resources/src/v8tests/in.js:158:1: [definite] Dead assignment, property -1 is never read
+test-resources/src/v8tests/in.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/in.js:100:3: [info] Writing to unknown property that may cause loss of precision
+Soundness testing succeeded for 1375 checks (with 0 expected failures)

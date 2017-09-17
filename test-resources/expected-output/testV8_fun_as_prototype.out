@@ -1,0 +1,7 @@
+test-resources/src/v8tests/fun-as-prototype.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/fun-as-prototype.js:29:1: [definite] Unreachable function Funky
+test-resources/src/v8tests/fun-as-prototype.js:31:17: [maybe] Converting primitive number to object
+test-resources/src/v8tests/fun-as-prototype.js:32:23: [maybe] Converting primitive number to object
+test-resources/src/v8tests/fun-as-prototype.js:33:31: [maybe] Converting primitive number to object
+test-resources/src/v8tests/fun-as-prototype.js:36:17: [maybe] Converting primitive number to object
+Soundness testing succeeded for 43 checks (with 0 expected failures)

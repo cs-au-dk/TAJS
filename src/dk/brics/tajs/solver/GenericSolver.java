@@ -371,7 +371,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                             try {
                                 analysis.getNodeTransferFunctions().transfer(current_node);
                             } catch (AnalysisLimitationException e) {
-                                if (Options.get().isTestEnabled()) {
+                                if (Options.get().isTestEnabled() && !Options.get().isAnalysisLimitationWarnOnly()) {
                                     throw e;
                                 } else {
                                     terminatedEarly = String.format("Stopping analysis prematurely: %s", e.getMessage());
@@ -454,7 +454,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                             try {
                                 analysis.getNodeTransferFunctions().transfer(node);
                             } catch (AnalysisLimitationException e) {
-                                if (Options.get().isTestEnabled()) {
+                                if (Options.get().isTestEnabled() && !Options.get().isAnalysisLimitationWarnOnly()) {
                                     throw e;
                                 }
                             } finally {

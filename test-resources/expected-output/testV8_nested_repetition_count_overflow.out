@@ -1,0 +1,2 @@
+test-resources/src/v8tests/nested-repetition-count-overflow.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 108 checks (with 0 expected failures)

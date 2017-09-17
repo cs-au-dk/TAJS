@@ -1,6 +1,0 @@
-test/resig/ejohn19.js: [definite] Exceptional program exit is unreachable
-test/resig/ejohn19.js:4:8: [maybe] Reading absent property (computed name)
-test/resig/ejohn19.js:5:15: [maybe] Reading absent property (computed name)
-test/resig/ejohn19.js:15:1: [info] Abstract value: [*HTMLCollection instances[dom]]
-test/resig/ejohn19.js:18:1: [info] Abstract value: Undef|[*HTMLCollection instances[dom]]
-Soundness testing succeeded for 41 checks (with 0 expected failures)

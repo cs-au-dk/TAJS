@@ -9,22 +9,19 @@ import org.junit.Test;
 @SuppressWarnings("static-method")
 public class JSRegExp_exec_test {
 
-	@Before
+    @Before
     public void before() {
         Main.reset();
-        Main.initLogging();
         Options.get().enableTest();
     }
 
     @Test
     public void noArgs() { // should fail!
-        Misc.init();
         Misc.runSource("var v = /foo/.exec();");
     }
 
     @Test
     public void init() {
-        Misc.init();
         Misc.runSource("var v = /f/.exec('foo');",
                 "TAJS_assert(v.length === 1);",
                 "TAJS_assert(v[0] === 'f');"
@@ -33,14 +30,12 @@ public class JSRegExp_exec_test {
 
     @Test
     public void notFound() {
-        Misc.init();
         Misc.runSource("var v = /x/.exec('foo');",
                 "TAJS_assert(v, 'isMaybeNull||isMaybeUndef');");
     }
 
     @Test
     public void init2() {
-        Misc.init();
         Misc.runSource("var v = /fo/.exec('foo');",
                 "TAJS_assert(v.length === 1);",
                 "TAJS_assert(v[0] === 'fo');"
@@ -49,7 +44,6 @@ public class JSRegExp_exec_test {
 
     @Test
     public void notInit() {
-        Misc.init();
         Misc.runSource("var v = /oo/.exec('foo');",
                 "TAJS_assert(v.length === 1);",
                 "TAJS_assert(v[0] === 'oo');"
@@ -58,7 +52,6 @@ public class JSRegExp_exec_test {
 
     @Test
     public void regex() {
-        Misc.init();
         Misc.runSource("var v = /[^f]o/.exec('foo');",
                 "TAJS_assert(v.length === 1);",
                 "TAJS_assert(v[0] === 'oo');"
@@ -67,7 +60,6 @@ public class JSRegExp_exec_test {
 
     @Test
     public void multimatch_but_one_result() {
-        Misc.init();
         Misc.runSource("var v = /o/g.exec('foo');",
                 "TAJS_assert(v.length === 1);",
                 "TAJS_assert(v[0] === 'o');"
@@ -76,7 +68,6 @@ public class JSRegExp_exec_test {
 
     @Test
     public void groupMatch() {
-        Misc.init();
         Misc.runSource("var v =/(o)(.)/.exec('foxoy')",
                 "TAJS_assert(v.length === 3);",
                 "TAJS_assert(v[0] === 'ox');",
@@ -87,7 +78,6 @@ public class JSRegExp_exec_test {
 
     @Test
     public void match_not_global_do_not_advance_lastIndex() {
-        Misc.init();
         Misc.runSource("var r = /o/; var v = r.exec('foo');",
                 "TAJS_assert(r.lastIndex === 0);"
         );
@@ -95,7 +85,6 @@ public class JSRegExp_exec_test {
 
     @Test
     public void match_global_advance_lastIndex() {
-        Misc.init();
         Misc.runSource("var r = /o/g; var v = r.exec('foo');",
                 "TAJS_assertEquals(2, r.lastIndex);"
         );
@@ -103,7 +92,6 @@ public class JSRegExp_exec_test {
 
     @Test
     public void match_global_advance_lastIndex_fuzzy() {
-        Misc.init();
         Misc.runSource("var r = /o/g; var v = r.exec(TAJS_make('AnyStr'));",
                 "TAJS_assert(r.lastIndex, 'isMaybeNumUInt');"
         );
@@ -111,7 +99,6 @@ public class JSRegExp_exec_test {
 
     @Test
     public void unknown() {
-        Misc.init();
         Misc.runSource("var v = /foo/.exec(Math.random()? 'foo': 'bar');",
                 "TAJS_assert(v, 'isMaybeObject || isMaybeNull');");
     }

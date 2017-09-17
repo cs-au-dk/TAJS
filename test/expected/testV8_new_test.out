@@ -1,6 +1,0 @@
-test/v8tests/new.js:54:5: [definite] Unreachable function
-test/v8tests/new.js:28:32: [maybe] The variable x has values with different types
-test/v8tests/new.js:32:13: [maybe] Conversion from string to number yields NaN
-test/v8tests/new.js:33:13: [maybe] Conversion from string to number yields NaN
-test/v8tests/new.js:34:13: [maybe] Conversion from string to number yields NaN
-test/v8tests/new.js:36:13: [maybe] Conversion from string to number yields NaN

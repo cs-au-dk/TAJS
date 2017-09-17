@@ -1,0 +1,14 @@
+test-resources/src/micro/test59.js:18:16: [definite] Reading absent property dfg
+test-resources/src/micro/test59.js:22:13: [definite] Reading absent property dfg
+test-resources/src/micro/test59.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test59.js:19:16: [definite] Reading absent property (computed name)
+test-resources/src/micro/test59.js:20:16: [definite] Reading absent property (computed name)
+test-resources/src/micro/test59.js:23:13: [definite] Reading absent property (computed name)
+test-resources/src/micro/test59.js:24:13: [definite] Reading absent property (computed name)
+test-resources/src/micro/test59.js:9:1: [info] Abstract value: PrefixStr[a]
+test-resources/src/micro/test59.js:16:1: [info] Abstract object: {ab:"hello",[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/test59.js:18:1: [info] Abstract value: Undef
+test-resources/src/micro/test59.js:19:1: [info] Abstract value: Undef
+test-resources/src/micro/test59.js:20:1: [info] Abstract value: Undef
+test-resources/src/micro/test59.js:21:1: [info] Abstract value: "hello"
+Soundness testing succeeded for 50 checks (with 0 expected failures)

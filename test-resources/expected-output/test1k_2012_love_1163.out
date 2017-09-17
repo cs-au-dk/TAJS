@@ -1,0 +1,15 @@
+test-resources/src/1k2012love/1163.js:80:4: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1163.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1163.js:80:4, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1163.js:41:9: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1163.js:74:15: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1163.js:86:22: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1163.js:87:4: [maybe] Converting undefined to string
+test-resources/src/1k2012love/1163.js:87:20: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1163.js:92:31: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1163.js:100:16: [maybe] Converting undefined to string
+test-resources/src/1k2012love/1163.js:100:16: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1163.js:100:53: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1163.js:104:3: [maybe] Converting undefined to string
+test-resources/src/1k2012love/1163.js:105:3: [maybe] Converting undefined to string
+Soundness testing succeeded for 186 checks (with 0 expected failures)

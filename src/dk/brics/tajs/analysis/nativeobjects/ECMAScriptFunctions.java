@@ -64,6 +64,12 @@ public class ECMAScriptFunctions {
             case OBJECT_GETOWNPROPERTYDESCRIPTOR:
             case OBJECT_GETPROTOTYPEOF:
             case OBJECT_SETPROTOTYPEOF:
+            case OBJECT_IS:
+            case OBJECT_ASSIGN:
+            case OBJECT_ISFROZEN:
+            case OBJECT_PREVENTEXTENSIONS:
+            case OBJECT_SEAL:
+            case OBJECT_VALUES:
                 res = JSObject.evaluate(nativeobject, call, c);
                 break;
 
@@ -95,6 +101,7 @@ public class ECMAScriptFunctions {
             case ARRAY_UNSHIFT:
             case ARRAY_INDEXOF:
             case ARRAY_ISARRAY:
+            case ARRAY_VALUES:
                 res = JSArray.evaluate(nativeobject, call, c);
                 break;
 
@@ -106,6 +113,9 @@ public class ECMAScriptFunctions {
             case NUMBER_TOSTRING:
             case NUMBER_VALUEOF:
             case NUMBER_ISFINITE:
+            case NUMBER_ISSAFEINTEGER:
+            case NUMBER_ISINTEGER:
+            case NUMBER_ISNAN:
                 res = JSNumber.evaluate(nativeobject, call, c);
                 break;
 
@@ -116,6 +126,7 @@ public class ECMAScriptFunctions {
             case TYPE_ERROR:
             case URI_ERROR:
             case ERROR:
+            case ERROR_CAPTURESTACKTRACE:
             case ERROR_TOSTRING:
                 res = JSError.evaluate(nativeobject, call, c);
                 break;
@@ -197,6 +208,7 @@ public class ECMAScriptFunctions {
             case STRING_INDEXOF:
             case STRING_CONCAT:
             case STRING_FROMCHARCODE:
+            case STRING_FROMCODEPOINT:
             case STRING_CHARCODEAT:
             case STRING_CHARAT:
             case STRING_TRIM:
@@ -204,6 +216,8 @@ public class ECMAScriptFunctions {
             case STRING_TRIMRIGHT:
             case STRING_ENDSWITH:
             case STRING_STARTSWITH:
+            case STRING_INCLUDES:
+            case STRING_CODEPOINTAT:
                 res = JSString.evaluate(nativeobject, call, c);
                 break;
 
@@ -231,6 +245,23 @@ public class ECMAScriptFunctions {
             case MATH_MAX:
             case MATH_MIN:
             case MATH_RANDOM:
+            case MATH_IMUL:
+            case MATH_SIGN:
+            case MATH_TRUNC:
+            case MATH_TANH:
+            case MATH_ASINH:
+            case MATH_ACOSH:
+            case MATH_ATANH:
+            case MATH_HYPOT:
+            case MATH_FROUND:
+            case MATH_CLZ32:
+            case MATH_CBRT:
+            case MATH_SINH:
+            case MATH_COSH:
+            case MATH_LOG10:
+            case MATH_LOG2:
+            case MATH_LOG1P:
+            case MATH_EXPM1:
                 res = JSMath.evaluate(nativeobject, call, c);
                 break;
 
@@ -248,6 +279,11 @@ public class ECMAScriptFunctions {
             case ESCAPE:
             case UNESCAPE:
                 res = JSGlobal.evaluate(nativeobject, call, c);
+                break;
+
+            case PROXY:
+            case PROXY_TOSTRING:
+                res = JSProxy.evaluate(nativeobject, call, c);
                 break;
 
             case ARRAY_PROTOTYPE:

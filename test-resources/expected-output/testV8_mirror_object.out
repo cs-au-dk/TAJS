@@ -1,0 +1,27 @@
+test-resources/src/v8tests/mirror-object.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/mirror-object.js:33:16: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/mirror-object.js:31:1: [definite] The variable cls_name is never used
+test-resources/src/v8tests/mirror-object.js:31:1: [definite] The variable ctor_name is never used
+test-resources/src/v8tests/mirror-object.js:31:1: [definite] The variable hasSpecialProperties is never used
+test-resources/src/v8tests/mirror-object.js:31:1: [definite] The variable o is never used
+test-resources/src/v8tests/mirror-object.js:33:7: [definite] The variable mirror is never used
+test-resources/src/v8tests/mirror-object.js:33:16: [definite] Unreachable code
+test-resources/src/v8tests/mirror-object.js:34:7: [definite] The variable json is never used
+test-resources/src/v8tests/mirror-object.js:52:7: [definite] The variable names is never used
+test-resources/src/v8tests/mirror-object.js:53:7: [definite] The variable properties is never used
+test-resources/src/v8tests/mirror-object.js:55:12: [definite] The variable i is never used
+test-resources/src/v8tests/mirror-object.js:62:12: [definite] The variable p is never used
+test-resources/src/v8tests/mirror-object.js:63:9: [definite] The variable property_mirror is never used
+test-resources/src/v8tests/mirror-object.js:76:7: [definite] The variable fromJSON is never used
+test-resources/src/v8tests/mirror-object.js:92:9: [definite] The variable name is never used
+test-resources/src/v8tests/mirror-object.js:94:9: [definite] The variable found is never used
+test-resources/src/v8tests/mirror-object.js:95:14: [definite] The variable j is never used
+test-resources/src/v8tests/mirror-object.js:127:1: [definite] Unreachable function Point
+test-resources/src/v8tests/mirror-object.js:135:1: [definite] Unreachable code
+test-resources/src/v8tests/mirror-object.js:136:43: [definite] Unreachable function pow
+test-resources/src/v8tests/mirror-object.js:155:25: [definite] Unreachable function
+test-resources/src/v8tests/mirror-object.js:156:25: [definite] Unreachable function
+test-resources/src/v8tests/mirror-object.js:157:25: [definite] Unreachable function
+test-resources/src/v8tests/mirror-object.js:158:25: [definite] Unreachable function
+test-resources/src/v8tests/mirror-object.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/mirror-object.js:33:16]
+Soundness testing succeeded for 13 checks (with 0 expected failures)

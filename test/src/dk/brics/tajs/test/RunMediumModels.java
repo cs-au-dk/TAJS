@@ -3,6 +3,8 @@ package dk.brics.tajs.test;
 import dk.brics.tajs.test.nativeobjects.JSArray_concatAndSlice_test;
 import dk.brics.tajs.test.nativeobjects.JSArray_concat_test;
 import dk.brics.tajs.test.nativeobjects.JSArray_slice_test;
+import dk.brics.tajs.test.nativeobjects.JSObject_assign_test;
+import dk.brics.tajs.test.nativeobjects.JSObject_defineProperties_test;
 import dk.brics.tajs.test.nativeobjects.JSObject_defineProperty_test;
 import dk.brics.tajs.test.nativeobjects.JSObject_getOwnPropertyDescriptor_test;
 import dk.brics.tajs.test.nativeobjects.JSRegExp_exec_test;
@@ -20,7 +22,11 @@ import dk.brics.tajs.test.nativeobjects.JSString_splitTest;
 import dk.brics.tajs.test.nativeobjects.JSString_substr_test;
 import dk.brics.tajs.test.nativeobjects.JSString_substring_test;
 import dk.brics.tajs.test.nativeobjects.JSString_toLowerUpperCase_test;
+import dk.brics.tajs.test.nativeobjects.JSString_trim_trimLeft_trimRight_test;
 import dk.brics.tajs.test.nativeobjects.TestFunctionBind;
+import dk.brics.tajs.test.nativeobjects.TestHostFunctionSources_ArrayPrototype;
+import dk.brics.tajs.test.nativeobjects.TestHostFunctionSources_ES6Collections;
+import dk.brics.tajs.test.nativeobjects.TestHostFunctionSources_TypedArrays;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -31,11 +37,12 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses(value = {
         TestFlowgraphBuilder.class,
         TestUneval.class,
-//        TestHostFunctionSources_ArrayPrototype.class,
-//        TestHostFunctionSources_ES6Collections.class,
-//        TestHostFunctionSources_TypedArrays.class,
+        TestHostFunctionSources_ArrayPrototype.class,
+        TestHostFunctionSources_ES6Collections.class,
+        TestHostFunctionSources_TypedArrays.class,
         TestFunctionBind.class,
         JSRegExp_exec_test.class,
+//        JSObject_keysAndOwnPropertyNames_test.class, // enable when github #448 is fixed
         JSRegExp_test_test.class,
         JSString_charAt_charCodeAt_test.class,
         JSString_concat_test.class,
@@ -50,11 +57,14 @@ import org.junit.runners.Suite;
         JSString_substr_test.class,
         JSString_substring_test.class,
         JSString_toLowerUpperCase_test.class,
+        JSString_trim_trimLeft_trimRight_test.class,
         JSArray_concat_test.class,
         JSArray_slice_test.class,
         JSArray_concatAndSlice_test.class,
         JSObject_defineProperty_test.class,
-        JSObject_getOwnPropertyDescriptor_test.class
+        JSObject_defineProperties_test.class,
+        JSObject_getOwnPropertyDescriptor_test.class,
+        JSObject_assign_test.class,
 })
 public class RunMediumModels {
 

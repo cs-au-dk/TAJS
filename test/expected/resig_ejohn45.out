@@ -1,5 +1,0 @@
-test/resig/ejohn45.js: [definite] Exceptional program exit is unreachable
-test/resig/ejohn45.js:3:12: [maybe] Conversion to number yields NaN
-test/resig/ejohn45.js:12:16: [maybe] Reading absent property (computed name)
-test/resig/ejohn45.js:12:1: [info] Abstract value: Undef|UIntPos
-Soundness testing succeeded for 71 checks (with 0 expected failures)

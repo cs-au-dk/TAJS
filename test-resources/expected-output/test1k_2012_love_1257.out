@@ -1,0 +1,12 @@
+test-resources/src/1k2012love/1257.js:18:46: [maybe] ReferenceError, reading absent variable rn
+test-resources/src/1k2012love/1257.js:18:68: [maybe] ReferenceError, reading absent variable rn
+test-resources/src/1k2012love/1257.js:32:23: [maybe] ReferenceError, reading absent variable rn
+test-resources/src/1k2012love/1257.js:32:30: [maybe] ReferenceError, reading absent variable rn
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1257.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1257.js:18:46, test-resources/src/1k2012love/1257.js:18:68, test-resources/src/1k2012love/1257.js:32:23, test-resources/src/1k2012love/1257.js:32:30, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1257.js:18:7: [maybe] Converting undefined to string
+test-resources/src/1k2012love/1257.js:18:20: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1257.js:23:38: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1257.js:25:23: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1257.js:30:38: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 161 checks (with 0 expected failures)

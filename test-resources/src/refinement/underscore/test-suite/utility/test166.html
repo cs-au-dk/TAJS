@@ -1,0 +1,37 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    // test & (&amp;) seperately obviously
+    var escapeCharacters = ['<', '>', '"', '\'', '`'];
+    _.each(escapeCharacters, function(escapeChar) {
+      var str = 'a ' + escapeChar + ' string escaped';
+      var escaped = _.escape(str);
+      notEqual(str, escaped, escapeChar + ' is escaped');
+      equal(str, _.unescape(escaped), escapeChar + ' can be unescaped');
+      str = 'a ' + escapeChar + escapeChar + escapeChar + 'some more string' + escapeChar;
+      escaped = _.escape(str);
+      equal(escaped.indexOf(escapeChar), -1, 'can escape multiple occurances of ' + escapeChar);
+      equal(_.unescape(escaped), str, 'multiple occurrences of ' + escapeChar + ' can be unescaped');
+    });
+    // handles multiple escape characters at once
+    var joiner = ' other stuff ';
+    var allEscaped = escapeCharacters.join(joiner);
+    allEscaped += allEscaped;
+    ok(_.every(escapeCharacters, function(escapeChar) {
+      return allEscaped.indexOf(escapeChar) !== -1;
+    }), 'handles multiple characters');
+    ok(allEscaped.indexOf(joiner) >= 0, 'can escape multiple escape characters at the same time');
+    // test & -> &amp;
+    var str = 'some string & another string & yet another';
+    var escaped = _.escape(str);
+    ok(escaped.indexOf('&') !== -1, 'handles & aka &amp;');
+    equal(_.unescape(str), str, 'can unescape &amp;');
+</script></head><body></body></html>

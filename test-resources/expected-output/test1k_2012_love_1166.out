@@ -1,0 +1,18 @@
+test-resources/src/1k2012love/1166.js:34:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
+test-resources/src/1k2012love/1166.js:11:2: [definite] Dead assignment, property x is never read
+test-resources/src/1k2012love/1166.js:12:2: [definite] Dead assignment, property y is never read
+test-resources/src/1k2012love/1166.js:13:2: [definite] Dead assignment, property s is never read
+test-resources/src/1k2012love/1166.js:17:5: [maybe] ReferenceError, reading absent variable M
+test-resources/src/1k2012love/1166.js:19:3: [maybe] ReferenceError, reading absent variable T
+test-resources/src/1k2012love/1166.js:32:20: [maybe] ReferenceError, reading absent variable u
+test-resources/src/1k2012love/1166.js:32:20: [maybe] Too many parameters to function CanvasRenderingContext2D.prototype.bezierCurveTo
+test-resources/src/1k2012love/1166.js:43:3: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2012love/1166.js:43:11: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2012love/1166.js:44:3: [maybe] ReferenceError, reading absent variable h
+test-resources/src/1k2012love/1166.js:46:5: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1166.js:47:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1166.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1166.js:17:5, test-resources/src/1k2012love/1166.js:19:3, test-resources/src/1k2012love/1166.js:32:20, test-resources/src/1k2012love/1166.js:43:3, test-resources/src/1k2012love/1166.js:43:11, test-resources/src/1k2012love/1166.js:44:3, test-resources/src/1k2012love/1166.js:46:5, test-resources/src/1k2012love/1166.js:47:5, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1166.js:20:157: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1166.js:32:20: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 231 checks (with 0 expected failures)

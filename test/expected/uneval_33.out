@@ -1,4 +1,0 @@
-test/uneval/uneval33.html: [definite] Exceptional program exit is unreachable
-test/uneval/uneval33.html:14:1: [info] Abstract value: UInt|NotUInt
-test/uneval/uneval33.html:15:1: [info] Abstract value: UInt|NotUInt
-Soundness testing succeeded for 45 checks (with 0 expected failures)

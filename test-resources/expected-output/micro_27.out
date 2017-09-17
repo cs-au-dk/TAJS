@@ -1,0 +1,15 @@
+test-resources/src/micro/test27.js: [definite] Ordinary program exit is unreachable
+test-resources/src/micro/test27.js:13:10: [definite] ReferenceError, reading absent variable baz
+test-resources/src/micro/test27.js:1:20: [definite] Variable foo is null/undefined
+test-resources/src/micro/test27.js:1:12: [definite] Dead assignment, property a is never read
+test-resources/src/micro/test27.js:1:18: [definite] Dead assignment, property b is never read
+test-resources/src/micro/test27.js:1:25: [definite] Dead assignment, property c is never read
+test-resources/src/micro/test27.js:1:27: [definite] Reading 'this' yields the global object
+test-resources/src/micro/test27.js:1:33: [definite] Dead assignment, property d is never read
+test-resources/src/micro/test27.js:4:16: [definite] Reading 'this' yields the global object
+test-resources/src/micro/test27.js:13:8: [definite] Unreachable code
+test-resources/src/micro/test27.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test27.js:13:10]
+test-resources/src/micro/test27.js:2:1: [info] Abstract object: {a:42.0,b:Undef,c:[@<the global object>[native]],d:^(@<the global object>[native].Math[present]),[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/test27.js:4:1: [info] Abstract value: [@<the global object>[native]]
+test-resources/src/micro/test27.js:11:1: [info] Abstract value: 42.0
+Soundness testing succeeded for 18 checks (with 0 expected failures)

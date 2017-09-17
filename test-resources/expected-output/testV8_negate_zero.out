@@ -1,0 +1,2 @@
+test-resources/src/v8tests/negate-zero.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 75 checks (with 0 expected failures)

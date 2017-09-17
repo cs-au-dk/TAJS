@@ -7,18 +7,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 @SuppressWarnings("static-method")
-
 public class JSString_match_test {
+
     @Before
     public void before() {
         Main.reset();
-        Main.initLogging();
         Options.get().enableTest();
     }
 
     @Test
     public void noArgs() {
-        Misc.init();
         Misc.runSource("var v = 'foo'.match();",
                 "TAJS_assert(v.length === 1);",
                 "TAJS_assert(v[0] === '');"
@@ -27,7 +25,6 @@ public class JSString_match_test {
 
     @Test
     public void init() {
-        Misc.init();
         Misc.runSource("var v = 'foo'.match('f');",
                 "TAJS_assert(v.length === 1);",
                 "TAJS_assert(v[0] === 'f');"
@@ -36,14 +33,12 @@ public class JSString_match_test {
 
     @Test
     public void notFound() {
-        Misc.init();
         Misc.runSource("var v = 'foo'.match('x');",
                 "TAJS_assert(v, 'isMaybeNull||isMaybeUndef');");
     }
 
     @Test
     public void init2() {
-        Misc.init();
         Misc.runSource("var v = 'foo'.match('fo');",
                 "TAJS_assert(v.length === 1);",
                 "TAJS_assert(v[0] === 'fo');"
@@ -52,17 +47,14 @@ public class JSString_match_test {
 
     @Test
     public void notInit() {
-        Misc.init();
         Misc.runSource("var v = 'foo'.match('oo');",
                 "TAJS_assert(v.length === 1);",
                 "TAJS_assert(v[0] === 'oo');"
         );
     }
 
-
     @Test
     public void regex() {
-        Misc.init();
         Misc.runSource("var v = 'foo'.match('[^f]o');",
                 "TAJS_assert(v.length === 1);",
                 "TAJS_assert(v[0] === 'oo');"
@@ -71,7 +63,6 @@ public class JSString_match_test {
 
     @Test
     public void multiMatch() {
-        Misc.init();
         Misc.runSource("var v = 'foo'.match(/o/g);",
                 "TAJS_assert(v.length === 2);",
                 "TAJS_assert(v[0] === 'o');",
@@ -81,7 +72,6 @@ public class JSString_match_test {
 
     @Test
     public void unknown() {
-        Misc.init();
         Misc.runSource("var v = 'foo'.match(Math.random()? 'foo': 'bar');",
                 "TAJS_assert(v, 'isMaybeObject || isMaybeNull', true);");
     }

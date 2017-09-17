@@ -1,0 +1,26 @@
+test-resources/src/1k2013spring/1438.js:75:5: [definite] TypeError, call to non-function
+test-resources/src/1k2013spring/1438.js:2:12: [definite] The conditional expression is always true
+test-resources/src/1k2013spring/1438.js:61:9: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1438.js:7:9: [definite] Unreachable function
+test-resources/src/1k2013spring/1438.js:27:5: [definite] Unreachable code
+test-resources/src/1k2013spring/1438.js:21:5: [maybe] ReferenceError, reading absent variable b
+test-resources/src/1k2013spring/1438.js:23:5: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2013spring/1438.js:33:5: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2013spring/1438.js:42:5: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1438.js:54:32: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1438.js:56:20: [maybe] ReferenceError, reading absent variable colorIntv
+test-resources/src/1k2013spring/1438.js:58:13: [maybe] ReferenceError, reading absent variable colorIntv
+test-resources/src/1k2013spring/1438.js:61:36: [maybe] ReferenceError, reading absent variable phase
+test-resources/src/1k2013spring/1438.js:61:75: [maybe] ReferenceError, reading absent variable phase
+test-resources/src/1k2013spring/1438.js:71:13: [maybe] ReferenceError, reading absent variable phase
+test-resources/src/1k2013spring/1438.js:71:37: [maybe] ReferenceError, reading absent variable phase
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1438.js:21:5: [maybe] Reading absent property margin of host object
+test-resources/src/1k2013spring/1438.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1438.js:21:5, test-resources/src/1k2013spring/1438.js:23:5, test-resources/src/1k2013spring/1438.js:33:5, test-resources/src/1k2013spring/1438.js:42:5, test-resources/src/1k2013spring/1438.js:54:32, test-resources/src/1k2013spring/1438.js:56:20, test-resources/src/1k2013spring/1438.js:58:13, test-resources/src/1k2013spring/1438.js:61:36, test-resources/src/1k2013spring/1438.js:61:75, test-resources/src/1k2013spring/1438.js:71:13, test-resources/src/1k2013spring/1438.js:71:37, test-resources/src/1k2013spring/1438.js:75:5, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1438.js:49:21: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1438.js:51:32: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1438.js:51:62: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1438.js:66:5: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1438.js:68:9: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1438.js:70:35: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 217 checks (with 0 expected failures)

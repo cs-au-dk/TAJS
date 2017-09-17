@@ -28,69 +28,59 @@ public class TestNoFlowNodeInsertion {
 
     @Test
     public void canBuild() {
-        Misc.init();
         assertNotNull(build("var x;"));
         assertNotNull(build("var x;", "if(x){x++;}"));
     }
 
     @Test
     public void parses() {
-        Misc.init();
         build("\"dk.brics.tajs.directives.unreachable\";");
     }
 
     @Test
     public void recognizes() {
-        Misc.init();
         FlowGraph fg = build("\"dk.brics.tajs.directives.unreachable\";");
         assertEquals(1, countNoFlowNodes(fg));
     }
 
     @Test
     public void ignoresOtherDirectives() {
-        Misc.init();
         FlowGraph fg = build("'some-other-directive';");
         assertEquals(0, countNoFlowNodes(fg));
     }
 
     @Test
     public void recognizesMultiple() {
-        Misc.init();
         FlowGraph fg = build("\"dk.brics.tajs.directives.unreachable\";", "\"dk.brics.tajs.directives.unreachable\";");
         assertEquals(2, countNoFlowNodes(fg));
     }
 
     @Test
     public void doesNotConfuseWithStringConstants() {
-        Misc.init();
         FlowGraph fg = build("var x = \"dk.brics.tajs.directives.unreachable\";");
         assertEquals(0, countNoFlowNodes(fg));
     }
 
     @Test
     public void worksInConditionals() {
-        Misc.init();
         FlowGraph fg = build("if(x){\"dk.brics.tajs.directives.unreachable\";}");
         assertEquals(1, countNoFlowNodes(fg));
     }
 
     @Test
     public void worksInConditionalsAlternative() {
-        Misc.init();
         FlowGraph fg = build("if(x){}else{\"dk.brics.tajs.directives.unreachable\";}");
         assertEquals(1, countNoFlowNodes(fg));
     }
 
     @Test
     public void worksAfterConditionals() {
-        Misc.init();
         FlowGraph fg = build("if(x){}\"dk.brics.tajs.directives.unreachable\";");
         assertEquals(1, countNoFlowNodes(fg));
     }
 
     @Test
     public void replacesDirective() {
-        Misc.init();
         FlowGraph fg = build("\"dk.brics.tajs.directives.unreachable\"; var x = 'foo';");
         int stringCount = countNodes(fg, new NodePredicate() {
             @Override

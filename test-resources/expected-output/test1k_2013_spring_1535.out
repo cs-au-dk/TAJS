@@ -1,0 +1,82 @@
+test-resources/src/1k2013spring/1535.js:37:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1535.js:38:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1535.js:39:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1535.js:41:2: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1535.js:59:4: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1535.js:65:2: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1535.js:70:3: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1535.js:70:11: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1535.js:78:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1535.js:129:26: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1535.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1535.js:37:3, test-resources/src/1k2013spring/1535.js:38:3, test-resources/src/1k2013spring/1535.js:39:3, test-resources/src/1k2013spring/1535.js:41:2, test-resources/src/1k2013spring/1535.js:59:4, test-resources/src/1k2013spring/1535.js:65:2, test-resources/src/1k2013spring/1535.js:70:3, test-resources/src/1k2013spring/1535.js:70:11, test-resources/src/1k2013spring/1535.js:78:7, test-resources/src/1k2013spring/1535.js:129:26, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1535.js:35:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:37:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:38:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:39:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:51:23: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:51:47: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:51:62: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:51:88: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:54:7: [maybe] The variable color has values with different types
+test-resources/src/1k2013spring/1535.js:57:22: [maybe] The variable color has values with different types
+test-resources/src/1k2013spring/1535.js:58:19: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:70:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:70:3: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1535.js:70:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:70:3: [maybe] The variable v1 has values with different types
+test-resources/src/1k2013spring/1535.js:70:11: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1535.js:70:11: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:70:11: [maybe] The variable v2 has values with different types
+test-resources/src/1k2013spring/1535.js:71:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:71:3: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1535.js:71:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:71:3: [maybe] The variable v1 has values with different types
+test-resources/src/1k2013spring/1535.js:71:11: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1535.js:71:11: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:71:11: [maybe] The variable v2 has values with different types
+test-resources/src/1k2013spring/1535.js:72:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:72:3: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1535.js:72:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:72:3: [maybe] The variable v1 has values with different types
+test-resources/src/1k2013spring/1535.js:72:11: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1535.js:72:11: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:72:11: [maybe] The variable v2 has values with different types
+test-resources/src/1k2013spring/1535.js:78:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:78:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1535.js:78:7: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:78:7: [maybe] The variable v has values with different types
+test-resources/src/1k2013spring/1535.js:79:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:79:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1535.js:79:7: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:79:7: [maybe] The variable v has values with different types
+test-resources/src/1k2013spring/1535.js:80:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:80:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1535.js:80:7: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:80:7: [maybe] The variable v has values with different types
+test-resources/src/1k2013spring/1535.js:94:19: [maybe] The variable p1 has values with different types
+test-resources/src/1k2013spring/1535.js:94:23: [maybe] The variable p2 has values with different types
+test-resources/src/1k2013spring/1535.js:99:18: [maybe] The variable v1 has values with different types
+test-resources/src/1k2013spring/1535.js:99:31: [maybe] The variable v2 has values with different types
+test-resources/src/1k2013spring/1535.js:106:29: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:107:6: [maybe] The variable q has values with different types
+test-resources/src/1k2013spring/1535.js:108:25: [maybe] The variable q has values with different types
+test-resources/src/1k2013spring/1535.js:110:9: [maybe] The variable q has values with different types
+test-resources/src/1k2013spring/1535.js:112:14: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:117:5: [maybe] The variable p has values with different types
+test-resources/src/1k2013spring/1535.js:118:20: [maybe] The variable p has values with different types
+test-resources/src/1k2013spring/1535.js:118:49: [maybe] The variable p has values with different types
+test-resources/src/1k2013spring/1535.js:121:31: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:126:35: [maybe] The variable p has values with different types
+test-resources/src/1k2013spring/1535.js:127:6: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1535.js:127:6: [maybe] The variable color has values with different types
+test-resources/src/1k2013spring/1535.js:129:26: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:148:48: [maybe] The variable p has values with different types
+test-resources/src/1k2013spring/1535.js:148:61: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:149:7: [maybe] The variable reflection_color has values with different types
+test-resources/src/1k2013spring/1535.js:150:17: [maybe] The variable color has values with different types
+test-resources/src/1k2013spring/1535.js:150:24: [maybe] The variable reflection_color has values with different types
+test-resources/src/1k2013spring/1535.js:153:10: [maybe] The variable color has values with different types
+test-resources/src/1k2013spring/1535.js:169:21: [maybe] Conversion to number yields NaN
+Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
+Log of soundness facts is not available for test-resources/src/1k2013spring/1535.js, skipping soundness checking

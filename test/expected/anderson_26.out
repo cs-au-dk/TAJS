@@ -1,3 +1,0 @@
-test/anderson/anderson26.js:8:2: [definite] Dead assignment, property n is never read
-test/anderson/anderson26.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 26 checks (with 0 expected failures)

@@ -1,0 +1,22 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    equal(_.last([1, 2, 3]), 3, 'can pull out the last element of an array');
+    deepEqual(_.last([1, 2, 3], 0), [], 'can pass an index to last');
+    deepEqual(_.last([1, 2, 3], 2), [2, 3], 'can pass an index to last');
+    deepEqual(_.last([1, 2, 3], 5), [1, 2, 3], 'can pass an index to last');
+    var result = (function(){ return _(arguments).last(); }(1, 2, 3, 4));
+    equal(result, 4, 'works on an arguments object');
+    result = _.map([[1, 2, 3], [1, 2, 3]], _.last);
+    deepEqual(result, [3, 3], 'works well with _.map');
+    equal(_.last(null), undefined, 'handles nulls');
+    strictEqual(_.last([1, 2, 3], -1).length, 0);
+</script></head><body></body></html>

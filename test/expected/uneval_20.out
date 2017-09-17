@@ -1,2 +1,0 @@
-test/uneval/uneval20.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 19 checks (with 0 expected failures)

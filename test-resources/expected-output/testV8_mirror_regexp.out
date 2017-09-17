@@ -1,0 +1,8 @@
+test-resources/src/v8tests/mirror-regexp.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/mirror-regexp.js:31:22: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/mirror-regexp.js:31:5: [definite] The variable all_attributes is never used
+test-resources/src/v8tests/mirror-regexp.js:31:22: [definite] Unreachable code
+test-resources/src/v8tests/mirror-regexp.js:34:5: [definite] The variable expected_attributes is never used
+test-resources/src/v8tests/mirror-regexp.js:42:1: [definite] Unreachable function testRegExpMirror
+test-resources/src/v8tests/mirror-regexp.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/mirror-regexp.js:31:22]
+Soundness testing succeeded for 1 checks (with 0 expected failures)

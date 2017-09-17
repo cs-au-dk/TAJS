@@ -1,0 +1,18 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var args = (function(){ return arguments; }(1, 2, 3));
+    ok(!_.isArguments('string'), 'a string is not an arguments object');
+    ok(!_.isArguments(_.isArguments), 'a function is not an arguments object');
+    ok(_.isArguments(args), 'but the arguments object is an arguments object');
+    ok(!_.isArguments(_.toArray(args)), 'but not when it\'s converted into an array');
+    ok(!_.isArguments([1, 2, 3]), 'and not vanilla arrays.');
+</script></head><body></body></html>

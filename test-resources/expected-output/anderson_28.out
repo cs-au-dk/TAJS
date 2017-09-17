@@ -1,0 +1,4 @@
+test-resources/src/anderson/anderson28.js:4:7: [definite] Dead assignment, property r is never read
+test-resources/src/anderson/anderson28.js:9:2: [definite] Dead assignment, property n is never read
+test-resources/src/anderson/anderson28.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 40 checks (with 0 expected failures)

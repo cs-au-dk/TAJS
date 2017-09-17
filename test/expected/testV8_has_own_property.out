@@ -1,6 +1,0 @@
-test/v8tests/has-own-property.js:29:13: [definite] Dead assignment, property x is never read
-test/v8tests/has-own-property.js:30:14: [definite] Dead assignment, property x is never read
-test/v8tests/has-own-property.js:33:12: [maybe] Converting primitive string to object
-test/v8tests/has-own-property.js:34:12: [maybe] Converting primitive string to object
-test/v8tests/has-own-property.js:37:13: [maybe] Converting primitive number to object
-test/v8tests/has-own-property.js:38:13: [maybe] Converting primitive number to object

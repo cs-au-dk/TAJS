@@ -1,0 +1,19 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    ok(!_.isNumber('string'), 'a string is not a number');
+    ok(!_.isNumber(arguments), 'the arguments object is not a number');
+    ok(!_.isNumber(undefined), 'undefined is not a number');
+    ok(_.isNumber(3 * 4 - 7 / 10), 'but numbers are');
+    ok(_.isNumber(NaN), 'NaN *is* a number');
+    ok(_.isNumber(Infinity), 'Infinity is a number');
+    ok(!_.isNumber('1'), 'numeric strings are not numbers');
+</script></head><body></body></html>

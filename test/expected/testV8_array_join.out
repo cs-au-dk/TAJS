@@ -1,5 +1,0 @@
-test/v8tests/array-join.js:40:28: [definite] Unreachable function
-test/v8tests/array-join.js:30:29: [maybe] Converting object to string
-test/v8tests/array-join.js:34:30: [maybe] Converting object to string
-test/v8tests/array-join.js:38:39: [maybe] Converting object to string
-test/v8tests/array-join.js:44:39: [maybe] Converting object to string

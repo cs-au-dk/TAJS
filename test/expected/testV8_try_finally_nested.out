@@ -1,4 +1,0 @@
-test/v8tests/try-finally-nested.js:33:12: [definite] The conditional expression is always true
-test/v8tests/try-finally-nested.js:37:20: [definite] Unreachable code
-test/v8tests/try-finally-nested.js:39:7: [definite] Unreachable code
-test/v8tests/try-finally-nested.js:43:10: [definite] Unreachable code

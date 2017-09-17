@@ -1,2 +1,0 @@
-test/v8tests/binary-operation-overwrite.js:31:25: [definite] The conditional expression is always true
-test/v8tests/binary-operation-overwrite.js:32:25: [definite] The conditional expression is always true

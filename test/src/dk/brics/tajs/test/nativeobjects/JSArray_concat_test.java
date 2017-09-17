@@ -16,7 +16,6 @@ public class JSArray_concat_test {
 
     @Test
     public void noneNone() {
-        Misc.init();
         Misc.runSource(//
                 "var concatenated = [].concat();",
                 "TAJS_assert(concatenated.length === 0);",
@@ -25,7 +24,6 @@ public class JSArray_concat_test {
 
     @Test
     public void noneOne() {
-        Misc.init();
         Misc.runSource(//
                 "var concatenated = [].concat('x');",
                 "TAJS_assert(concatenated.length === 1);",
@@ -35,7 +33,6 @@ public class JSArray_concat_test {
 
     @Test
     public void oneNone() {
-        Misc.init();
         Misc.runSource(//
                 "var concatenated = ['x'].concat();",
                 "TAJS_assert(concatenated.length === 1);",
@@ -45,7 +42,6 @@ public class JSArray_concat_test {
 
     @Test
     public void oneOne() {
-        Misc.init();
         Misc.runSource(//
                 "var concatenated = ['x'].concat('y');",
                 "TAJS_assert(concatenated.length === 2);",
@@ -56,7 +52,6 @@ public class JSArray_concat_test {
 
     @Test
     public void twoOne() {
-        Misc.init();
         Misc.runSource(//
                 "var concatenated = ['x', 'y'].concat('z');",
                 "TAJS_assert(concatenated.length === 3);",
@@ -68,7 +63,6 @@ public class JSArray_concat_test {
 
     @Test
     public void oneTwo() {
-        Misc.init();
         Misc.runSource(//
                 "var concatenated = ['x'].concat('y', 'z');",
                 "TAJS_assert(concatenated.length === 3);",
@@ -80,7 +74,6 @@ public class JSArray_concat_test {
 
     @Test
     public void oneArrayOne() {
-        Misc.init();
         Misc.runSource(//
                 "var concatenated = ['x'].concat(['y']);",
                 "TAJS_assert(concatenated.length === 2);",
@@ -91,7 +84,6 @@ public class JSArray_concat_test {
 
     @Test
     public void oneArrayTwo() {
-        Misc.init();
         Misc.runSource(//
                 "var concatenated = ['x'].concat(['y', 'z']);",
                 "TAJS_assert(concatenated.length === 3);",
@@ -103,7 +95,6 @@ public class JSArray_concat_test {
 
     @Test
     public void oneTwoArrays() {
-        Misc.init();
         Misc.runSource(//
                 "var concatenated = ['x'].concat(['y'], ['z']);",
                 "TAJS_assert(concatenated.length === 3);",
@@ -115,7 +106,6 @@ public class JSArray_concat_test {
 
     @Test
     public void oneMixedArrays() {
-        Misc.init();
         Misc.runSource(//
                 "var concatenated = ['x'].concat(['y'], 'z');",
                 "TAJS_assert(concatenated.length === 3);",
@@ -127,7 +117,6 @@ public class JSArray_concat_test {
 
     @Test
     public void oneNestedArray() {
-        Misc.init();
         Misc.runSource(//
                 "var concatenated = ['x'].concat([['y', 'z']]);",
                 "TAJS_assert(concatenated.length === 2);",
@@ -138,7 +127,6 @@ public class JSArray_concat_test {
 
     @Test
     public void lazyAndArrayConcat() {
-        Misc.init();
         Misc.runSource(//
                 "var array = [",
                 "    [ 'a', 'b', 'c'],",
@@ -152,7 +140,6 @@ public class JSArray_concat_test {
                 "TAJS_assert(array1[0] === array[1][0]);",
                 "TAJS_assert(array1[1] === array[1][1]);",
                 "TAJS_assert(array1[2] === array[1][2]);",
-
                 "function f() {",
                 "    var sliced = array.slice(1, 2);",
                 "    var array1 = array.concat.apply([], sliced);",
@@ -168,7 +155,6 @@ public class JSArray_concat_test {
 
     @Test
     public void precisePrefix() {
-        Misc.init();
         Misc.runSource(//
                 "var imprecise = [];",
                 "imprecise[TAJS_make('AnyNum')] = false;",

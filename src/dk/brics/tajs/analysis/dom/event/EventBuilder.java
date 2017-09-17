@@ -35,10 +35,14 @@ public class EventBuilder {
         EventTarget.build(c);
         EventListener.build(c);
         EventException.build(c);
+
+        // Other Events that "inherit" from Event
+        CustomEvent.build(c);
         DocumentEvent.build(c);
         HashChangeEvent.build(c);
         MutationEvent.build(c);
         UIEvent.build(c);
+        CompositionEvent.build(c); // Must be after UIEvent
         KeyboardEvent.build(c);
         MouseEvent.build(c);
         WheelEvent.build(c);

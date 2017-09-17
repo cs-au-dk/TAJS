@@ -1,0 +1,7 @@
+test-resources/src/v8tests/delete.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/delete.js:30:36: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/delete.js:30:38: [maybe] The variable k has values with different types
+test-resources/src/v8tests/delete.js:65:3: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/v8tests/delete.js:66:3: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/v8tests/delete.js:30:36: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 6137 checks (with 0 expected failures)

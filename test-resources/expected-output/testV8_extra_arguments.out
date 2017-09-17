@@ -1,0 +1,12 @@
+test-resources/src/v8tests/extra-arguments.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/extra-arguments.js:35:23: [definite] TypeError, accessing property of null/undefined
+test-resources/src/v8tests/extra-arguments.js:35:23: [definite] Variable array is null/undefined
+test-resources/src/v8tests/extra-arguments.js:44:17: [definite] The conditional expression is always true
+test-resources/src/v8tests/extra-arguments.js:47:19: [definite] The conditional expression is always false
+test-resources/src/v8tests/extra-arguments.js:34:15: [definite] Reading absent property arguments
+test-resources/src/v8tests/extra-arguments.js:33:7: [definite] The variable result is never used
+test-resources/src/v8tests/extra-arguments.js:35:19: [definite] Unreachable code
+test-resources/src/v8tests/extra-arguments.js:51:48: [definite] Unreachable code
+test-resources/src/v8tests/extra-arguments.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/extra-arguments.js:35:23]
+Disabling soundness testing for test-resources/src/v8tests/extra-arguments.js entirely (514 uninspected soundness errors).
+Soundness testing succeeded for 550 checks (with 514 expected failures)

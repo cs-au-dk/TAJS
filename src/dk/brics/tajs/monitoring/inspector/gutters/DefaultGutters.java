@@ -41,7 +41,6 @@ import org.apache.log4j.Logger;
 
 import java.net.URL;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
@@ -60,8 +59,6 @@ import static dk.brics.tajs.util.PathAndURLUtils.normalizeFileURL;
 public class DefaultGutters implements GutterProvider {
 
     private static final Logger log = Logger.getLogger(DefaultGutters.class);
-
-    private static final boolean IS_VALUE_LOGGER_GUTTERS_ENABLED = false; // TODO implement rendering for boolean gutters and enable this (remove the flag entirely)
 
     private final DefaultGutterDataProvider dataCreator;
 
@@ -160,7 +157,7 @@ public class DefaultGutters implements GutterProvider {
                             Severity severity = message.getSeverity();
                             Severity uncounditionalSeverity = severity == Severity.MEDIUM_IF_CERTAIN_NONE_OTHERWISE ? Severity.MEDIUM : severity; // non-certain cases has been eliminated already
                             SourceLocation sourceLocation = message.getNode().getSourceLocation();
-                            return new LineMessage(domainMapper.makeFromSourceLocation(sourceLocation), message.getMessage(), domainMapper.makeSeverity(uncounditionalSeverity), domainMapper.makeStatus(message.getStatus()));
+                            return new LineMessage(domainMapper.makeFromSourceLocation(sourceLocation), message.getMessage(), domainMapper.makeMessageLevel(uncounditionalSeverity), domainMapper.makeMessageSource(uncounditionalSeverity), domainMapper.makeMessageCertainty(message.getStatus()));
                         }, Collectors.toSet())));
 
         return new LineMap<>(map);
@@ -233,9 +230,7 @@ public class DefaultGutters implements GutterProvider {
                 ))
         );
 
-        if(IS_VALUE_LOGGER_GUTTERS_ENABLED) {
-            gutters.addAll(addValueLogGutters(url, data));
-        }
+        gutters.addAll(addValueLogGutters(url, data));
 
         gutters.add(new Gutter<>(GutterKind.STRING, "Messages", "messages", makeMessages(url, data)));
         return gutters;
@@ -267,7 +262,7 @@ public class DefaultGutters implements GutterProvider {
             return newSet();
         }
         if (logFile != null) {
-            Path main = Paths.get(Options.get().getArguments().get(Options.get().getArguments().size() - 1));
+            Path main = Options.get().getArguments().get(Options.get().getArguments().size() - 1);
             Path mainDir = main.getParent();
             Set<Integer> concreteLiveLines = LogFileHelper.makeLogParser(logFile).getEntries().stream()
                     .map(e -> Pair.make(normalizeFileURL(PathAndURLUtils.toURL(mainDir.resolve(e.getSourceLocation().getFileName()))), e.getSourceLocation().getLineNumber()))
@@ -286,11 +281,10 @@ public class DefaultGutters implements GutterProvider {
             spuriousLiveLines.removeAll(concreteLiveLines);
             spuriousDeadLines.removeAll(liveLines);
 
-            // TODO add support for boolean gutters
-            gutters.add(new Gutter<>(GutterKind.NUMBER, "Observed concrete", "source code line is observed in concrete execution", convertToBooleanLikeLineMap(liveLines)));
+            gutters.add(new Gutter<>(GutterKind.BOOLEAN, "Observed concrete", "source code line is observed in concrete execution", convertToBooleanLikeLineMap(liveLines)));
 //            gutters.add(new Gutter<>(GutterKind.NUMBER, "Non-visited concrete", "source code line is not visited in concrete execution", convertToBooleanLikeLineMap(deadLines)));
-            gutters.add(new Gutter<>(GutterKind.NUMBER, "Non-observed concrete, reachable abstract", "source code line is not observed in concrete execution, but reachable according to analysis", convertToBooleanLikeLineMap(spuriousDeadLines)));
-            gutters.add(new Gutter<>(GutterKind.NUMBER, "Observed concrete, unreachable abstract", "source code line is observed in concrete execution, but unreachable according to analysis (unsound!)", convertToBooleanLikeLineMap(spuriousLiveLines)));
+            gutters.add(new Gutter<>(GutterKind.BOOLEAN, "Non-observed concrete, reachable abstract", "source code line is not observed in concrete execution, but reachable according to analysis", convertToBooleanLikeLineMap(spuriousDeadLines)));
+            gutters.add(new Gutter<>(GutterKind.BOOLEAN, "Observed concrete, unreachable abstract", "source code line is observed in concrete execution, but unreachable according to analysis (unsound!)", convertToBooleanLikeLineMap(spuriousLiveLines)));
         }
         return gutters;
     }

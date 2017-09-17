@@ -1,0 +1,6 @@
+test-resources/src/v8tests/string-flatten.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/string-flatten.js:34:7: [maybe] Converting object to string
+test-resources/src/v8tests/string-flatten.js:34:7: [maybe] Converting primitive string to object
+test-resources/src/v8tests/string-flatten.js:37:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-flatten.js:37:18: [maybe] Converting primitive string to object
+Soundness testing succeeded for 3590 checks (with 0 expected failures)

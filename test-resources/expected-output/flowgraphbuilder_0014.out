@@ -1,0 +1,26 @@
+fg2: <main> function()
+  block 0: [entry]
+    node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0014.js)
+    ->[block 1]
+  block 1:
+    node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
+    node 2: constant[true,v3] (host-environment-sources-loader)
+    ->[block 2]
+  block 2:
+    node 3: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
+    ->[block 3]
+  block 3:
+    node 4: call[-,v4,-] (host-environment-sources-loader)
+    ->[block 4]
+  block 4:
+    node 5: constant[false,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0014.js:1:1)
+    ->[block 5]
+  block 5: [exit-ordinary]
+    node 6: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0014.js)
+    ->[]
+  block 6: [exit-exceptional]
+    node 7: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0014.js)
+    ->[]
+
+test-resources/src/flowgraphbuilder/flowgraph_builder0014.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 1 checks (with 0 expected failures)

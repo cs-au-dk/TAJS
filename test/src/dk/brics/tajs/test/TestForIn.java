@@ -19,7 +19,6 @@ public class TestForIn {
 
     @Test
     public void noProperties() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "for(var p in {}){",
@@ -30,7 +29,6 @@ public class TestForIn {
 
     @Test
     public void oneProperty() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "for(var p in {a: 'a'}){",
@@ -43,7 +41,6 @@ public class TestForIn {
 
     @Test
     public void twoProperties() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "for(var p in {a: 'a', b: 'b'}){",
@@ -57,7 +54,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesCopying() {
-        Misc.init();
         Misc.runSource("",
                 "var o1 = {};",
                 "var o2 = {a: 'a', b: 'b'};",
@@ -86,7 +82,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesContinue() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "for(var p in {a: 'a', b: 'b'}){",
@@ -101,7 +96,6 @@ public class TestForIn {
 
     @Test
     public void onePropertyBreak() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "for(var p in {a: 'a'}){",
@@ -115,7 +109,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesBreak() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "for(var p in {a: 'a', b: 'b'}){",
@@ -130,7 +123,6 @@ public class TestForIn {
 
     @Test
     public void throwing() {
-        Misc.init();
         Misc.runSource("",
                 "for(var p in {a: 'a'}){",
                 "   throw 42;",
@@ -139,7 +131,6 @@ public class TestForIn {
 
     @Test
     public void catching() {
-        Misc.init();
         Misc.runSource("",
                 "try {",
                 "   for(var p in {a: 'a'}){",
@@ -151,7 +142,6 @@ public class TestForIn {
 
     @Test
     public void breaking() {
-        Misc.init();
         Misc.runSource("",
                 "for(var p in {a: 'a'}){",
                 "   break;",
@@ -160,7 +150,6 @@ public class TestForIn {
 
     @Test
     public void returning() {
-        Misc.init();
         Misc.runSource("",
                 "(function(){",
                 "   for(var p in {a: 'a'}){",
@@ -171,7 +160,6 @@ public class TestForIn {
 
     @Test
     public void throwingAndCatchingValue() {
-        Misc.init();
         Misc.runSource("",
                 "try {",
                 "   for(var p in {a: 'a'}){",
@@ -185,7 +173,6 @@ public class TestForIn {
 
     @Test
     public void throwingValueThroughFunction() {
-        Misc.init();
         Misc.runSource("",
                 "try {",
                 "   (function(){",
@@ -201,7 +188,6 @@ public class TestForIn {
 
     @Test
     public void returningValue() {
-        Misc.init();
         Misc.runSource("",
                 "var v = (function(){",
                 "   for(var p in {a: 'a'}){",
@@ -214,7 +200,6 @@ public class TestForIn {
 
     @Test
     public void onePropertyThrow() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "try{",
@@ -230,7 +215,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesThrow() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "try{",
@@ -247,7 +231,6 @@ public class TestForIn {
 
     @Test
     public void onePropertyReturnConstant() {
-        Misc.init();
         Misc.runSource("",
                 "function f(){",
                 "   for(var p in {a: 'a'}){",
@@ -262,7 +245,6 @@ public class TestForIn {
 
     @Test
     public void onePropertyReturn() {
-        Misc.init();
         Misc.runSource("",
                 "function f(){",
                 "   var x;",
@@ -279,7 +261,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesReturn() {
-        Misc.init();
         Misc.runSource("",
                 "function f(){",
                 "   var x;",
@@ -297,7 +278,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesMaybeContinue() {
-        Misc.init();
         Misc.runSource("",
                 "var u = Math.random() === 0;",
                 "var x;",
@@ -315,7 +295,6 @@ public class TestForIn {
 
     @Test
     public void readingVariablesFromOutSideLoop_bug() {
-        Misc.init();
         Misc.runSource("",
                 "(function(){",
                 "var u = Math.random();",
@@ -330,7 +309,6 @@ public class TestForIn {
 
     @Test
     public void readingPropertiesFromOutSideLoop_bug() {
-        Misc.init();
         Misc.runSource("",
                 "var o = { u: Math.random() };",
                 "for(var p in {a: 'a'}){",
@@ -343,7 +321,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesMaybeBreak() {
-        Misc.init();
         Misc.runSource("",
                 "var u = Math.random() === 0;",
                 "var x;",
@@ -361,7 +338,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesContinueOnSpecific() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "for(var p in {a: 'a', b: 'b'}){",
@@ -379,7 +355,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesBreakOnSpecific() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "for(var p in {a: 'a', b: 'b'}){",
@@ -395,7 +370,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesBreakOnSpecific_weakOtherIterations() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "var o = {}",
@@ -414,7 +388,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesBreakOnSpecific_weakOtherIterations_buggy() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "var o = {}",
@@ -434,7 +407,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesConflict1() {
-        Misc.init();
         Misc.runSource("",
                 "var x = '';",
                 "for(var p in {a: 'a', b: 'b'}){",
@@ -446,7 +418,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesConflict2() {
-        Misc.init();
         Misc.runSource("",
                 "var x = '';",
                 "var o = {a: 'a', a: 'b'};",
@@ -459,7 +430,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesConflict3() {
-        Misc.init();
         Misc.runSource("",
                 "var x = 0;",
                 "var o = {a: 1, b: 2};",
@@ -472,7 +442,6 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesConflict3_continue() {
-        Misc.init();
         Misc.runSource("",
                 "var x = 0;",
                 "var o = {a: 1, b: 2};",
@@ -486,7 +455,6 @@ public class TestForIn {
 
     @Test
     public void addingProperties() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "var o = {a: 'a'};",
@@ -502,7 +470,6 @@ public class TestForIn {
 
     @Test
     public void deletingProperties1() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "var o = {a: 'a', b: 'b'};",
@@ -518,7 +485,6 @@ public class TestForIn {
 
     @Test
     public void deletingProperties2() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "var o = {a: 'a', b: 'b'};",
@@ -534,7 +500,6 @@ public class TestForIn {
 
     @Test
     public void mutatingProperty() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "var o = {a: 'a'};",
@@ -550,7 +515,6 @@ public class TestForIn {
 
     @Test
     public void mutatingProperties() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "var o = {a: 'a', b: 'b'};",
@@ -566,7 +530,6 @@ public class TestForIn {
 
     @Test
     public void arrayProperties() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "for(var p in ['a', 'b']){",
@@ -580,7 +543,6 @@ public class TestForIn {
 
     @Test
     public void repeatedAllocations() {
-        Misc.init();
         Misc.runSource("",
                 "var o;",
                 "for(var p in {a: 'a', b: 'b'}){",
@@ -598,7 +560,6 @@ public class TestForIn {
 
     @Test
     public void repeatedGuardedAllocations() {
-        Misc.init();
         Misc.runSource("",
                 "var o;",
                 "for(var p in {a: 'a', b: 'b'}){",
@@ -616,7 +577,6 @@ public class TestForIn {
 
     @Test
     public void defaultArrayProperties() {
-        Misc.init();
         Misc.runSource("",
                 "var o = {};",
                 "var x = {a: 'a', b: 'b'};",
@@ -635,7 +595,6 @@ public class TestForIn {
 
     @Test
     public void defaultNonArrayProperties() {
-        Misc.init();
         Misc.runSource("",
                 "var o = {};",
                 "var x = {0: 0, 1: 1};",
@@ -654,7 +613,6 @@ public class TestForIn {
 
     @Test
     public void twoMaybeProperties() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "var o = {};",
@@ -671,7 +629,6 @@ public class TestForIn {
 
     @Test
     public void nestedForIns() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "var o = {};",
@@ -691,7 +648,6 @@ public class TestForIn {
 
     @Test
     public void forInRegularLoop() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "var n = 0;",
@@ -710,7 +666,6 @@ public class TestForIn {
 
     @Test
     public void assignmentToLoopVariable() {
-        Misc.init();
         Misc.runSource("",
                 "for(var p in {a: 'a'}){",
                 "   p = 42;",
@@ -719,7 +674,6 @@ public class TestForIn {
 
     @Test
     public void statementAfterContinue() {
-        Misc.init();
         Misc.runSource("",
                 "for(var p in {a: 'a'}){",
                 "   continue;",
@@ -729,7 +683,6 @@ public class TestForIn {
 
     @Test
     public void assignmentToLoopVariableAfterContiue() {
-        Misc.init();
         Misc.runSource("",
                 "for(var p in {a: 'a'}){",
                 "   continue;",
@@ -739,7 +692,6 @@ public class TestForIn {
 
     @Test
     public void twoProperties_propertyAssignment() {
-        Misc.init();
         Misc.runSource("",
                 "var x;",
                 "var o = {};",
@@ -754,7 +706,6 @@ public class TestForIn {
 
     @Test
     public void lhsEvaluatedInsideLoop() {
-        Misc.init();
         Misc.runSource("",
                 "function lhs(){ TAJS_assert(false); }",
                 "for(lhs().p in {}){",
@@ -763,7 +714,6 @@ public class TestForIn {
 
     @Test
     public void lhsEvaluatedAfterRhsLoop() {
-        Misc.init();
         Misc.runSource("",
                 "function lhs(){ TAJS_assert(isAfterRhs === true); goesIntoLoop = true; return {};}",
                 "var isAfterRhs = false;",
@@ -778,7 +728,6 @@ public class TestForIn {
 
     @Test
     public void regression_NullPointerException() {
-        Misc.init();
         Misc.runSource("",
                 "function merge(root){",
                 "  for ( var i = 0; i < arguments.length; i++ )",
@@ -790,7 +739,6 @@ public class TestForIn {
 
     @Test
     public void iterateUndefined() {
-        Misc.init();
         // should not crash
         Misc.runSource("",
                 "for(var key in undefined);");
@@ -798,7 +746,6 @@ public class TestForIn {
 
     @Test
     public void iterateNull() {
-        Misc.init();
         // should not crash
         Misc.runSource("",
                 "for(var key in null);");
@@ -806,7 +753,6 @@ public class TestForIn {
 
     @Test
     public void iterateNumber() {
-        Misc.init();
         // should not crash
         Misc.runSource("",
                 "for(var key in 42);");
@@ -814,7 +760,6 @@ public class TestForIn {
 
     @Test
     public void iterateTrueEmpty() {
-        Misc.init();
         // should not crash
         Misc.runSource("",
                 "for(var key in Object.create(null));");
@@ -822,7 +767,6 @@ public class TestForIn {
 
     @Test
     public void iterateEmpty() {
-        Misc.init();
         // should not crash
         Misc.runSource("",
                 "for(var key in {});");
@@ -830,7 +774,6 @@ public class TestForIn {
 
     @Test
     public void iterateEmptyArray() {
-        Misc.init();
         // should not crash
         Misc.runSource("",
                 "for(var key in []);");
@@ -839,7 +782,6 @@ public class TestForIn {
     @Test
     public void nestedForIn() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "var o = {x: 'x'};",
                 "for(var p1 in o){",
@@ -850,7 +792,6 @@ public class TestForIn {
     @Test
     public void sequencedForIn() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "var o = {x: 'x'};",
                 "for(var p1 in o){}",
@@ -860,7 +801,6 @@ public class TestForIn {
     @Test
     public void breakingForIn() {
         // should not crash
-        Misc.init();
         Misc.runSource("",
                 "for(var p in {a: 'a'}){",
                 "   break;",
@@ -870,7 +810,6 @@ public class TestForIn {
     @Test
     public void continuingForIn() {
         // should not crash
-        Misc.init();
         Misc.runSource("",
                 "for(var p in {a: 'a'}){",
                 "   continue;",
@@ -880,7 +819,6 @@ public class TestForIn {
     @Test
     public void concatenateIdentifierString() {
         // should not crash
-        Misc.init();
         Misc.runSource("",
                 "var s = 'a';",
                 "for(var p in {b: 'b', c: 'c'}){",
@@ -893,7 +831,6 @@ public class TestForIn {
     @Test
     public void concatenateNumberStrings() {
         // should not crash
-        Misc.init();
         Misc.runSource("",
                 "var s = '1';",
                 "for(var p in {2: '2', 3: '3'}){",
@@ -904,8 +841,6 @@ public class TestForIn {
 
     @Test
     public void unorderedForInImplementation_withLazyPropagation() {
-        Misc.init();
-        Misc.captureSystemOutput();
         Misc.runSource(
                 "var o1 = {x: 'A', y: 'A'};",
                 "var o2 = {};",
@@ -920,8 +855,6 @@ public class TestForIn {
 
     @Test
     public void unorderedForInImplementation_withSemiLazyPropagation() {
-        Misc.init();
-        Misc.captureSystemOutput();
         Misc.runSource(
                 "var o1 = {x: 'A', y: 'A'};",
                 "var o2 = {};",
@@ -937,7 +870,6 @@ public class TestForIn {
 
     @Test
     public void exceptionInBody() {
-        Misc.init();
         Misc.runSource(
                 "var v = true;",
                 "for(var p in {'a': 'a'}){",
@@ -950,7 +882,6 @@ public class TestForIn {
     @Test
     public void functionWithForInAndLazyPropagationRecovery() {
         // should not crash
-        Misc.init();
         Misc.runSource("",
                 "var o1 = {};",
                 "function f(o2) {",
@@ -964,16 +895,14 @@ public class TestForIn {
     @Test
     public void allocationInBody() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "for(var p in {'a': 'a', b: 'b'}){",
                 "   ({});",
                 "}");
     }
-
 //    @Test
 //    public void copyUnknownProperties_unpresent() {
-//        Misc.init();
+//
 //        Misc.runSource("function x(){};",
 //                "function y(){};",
 //                "function UNKNOWN(){};",
@@ -995,10 +924,9 @@ public class TestForIn {
 //                "TAJS_assert(o2.y === y);",
 //                "TAJS_assert(o2.z === UNKNOWN);");
 //    }
-
 //    @Test
 //    public void copyUnknownProperties_present() {
-//        Misc.init();
+//
 //        Misc.runSource("function x(){};",
 //                "function y(){};",
 //                "function UNKNOWN(){};",
@@ -1020,10 +948,9 @@ public class TestForIn {
 //                "TAJS_assert(o2.y === y);",
 //                "TAJS_assert(o2.z === UNKNOWN);");
 //    }
-
 //    @Test
 //    public void copyUnknownProperties_presentAsUnknown() {
-//        Misc.init();
+//
 //        Misc.runSource("function x(){};",
 //                "function y(){};",
 //                "function UNKNOWN(){};",
@@ -1049,10 +976,9 @@ public class TestForIn {
 //                "TAJS_assert(o2.y === y);",
 //                "TAJS_assert(o2.z === UNKNOWN_ORIG, 'isMaybeAnyBool')");
 //    }
-
 //    @Test
 //    public void copyUnknownProperties_presentPrototype() {
-//        Misc.init();
+//
 //        Misc.runSource("function x(){};",
 //                "function y(){};",
 //                "function UNKNOWN(){};",
@@ -1073,10 +999,9 @@ public class TestForIn {
 //                "TAJS_assertEquals(TAJS_join(y, undefined), o2.y);",
 //                "TAJS_assertEquals(TAJS_join(UNKNOWN, undefined), o2.z);");
 //    }
-
 //    @Test
 //    public void copyUnknownProperties_array() {
-//        Misc.init();
+//
 //        Misc.runSource("function x(){};",
 //                "function y(){};",
 //                "function UNKNOWN(){};",
@@ -1096,10 +1021,9 @@ public class TestForIn {
 //                "TAJS_assert(o2[1] === y);",
 //                "TAJS_assert(o2[2] === UNKNOWN);");
 //    }
-
 //    @Test
 //    public void copyUnknownProperties_arrayNaN() {
-//        Misc.init();
+//
 //        Misc.runSource("function x(){};",
 //                "function y(){};",
 //                "function UNKNOWN(){};",
@@ -1120,10 +1044,9 @@ public class TestForIn {
 //                "TAJS_assert(o2[1] === y);",
 //                "TAJS_assert(o2[NaN] === UNKNOWN);");
 //    }
-
 //    @Test
 //    public void copyUnknownProperties_arrayNaN_repeated() {
-//        Misc.init();
+//
 //        Misc.runSource("function x(){};",
 //                "function y(){};",
 //                "function UNKNOWN(){};",
@@ -1159,7 +1082,6 @@ public class TestForIn {
 
     @Test
     public void compatibleWithLoopUnrolling1() {
-        Misc.init();
         Options.get().enableLoopUnrolling(50);
         Misc.runSource("",
                 "for(var p in {a: 'a', b: 'b'}){",
@@ -1171,7 +1093,6 @@ public class TestForIn {
 
     @Test
     public void compatibleWithLoopUnrolling2() {
-        Misc.init();
         Options.get().enableLoopUnrolling(50);
         Misc.runSource("",
                 "for(var i = 0; i < 3; i++){",
@@ -1183,7 +1104,6 @@ public class TestForIn {
 
     @Test
     public void compatibleWithLoopUnrolling1_whenDisabled() {
-        Misc.init();
         Options.get().enableLoopUnrolling(50);
         Options.get().enableNoForInSpecialization();
         Misc.runSource("",
@@ -1196,7 +1116,6 @@ public class TestForIn {
 
     @Test
     public void compatibleWithLoopUnrolling2_whenDisabled() {
-        Misc.init();
         Options.get().enableLoopUnrolling(50);
         Options.get().enableNoForInSpecialization();
         Misc.runSource("",
@@ -1209,153 +1128,142 @@ public class TestForIn {
 
     @Test
     public void missingPropertyBug() {
-        Misc.init();
         Misc.runSource("var loopEntered = false;",
-                        "function keys(o){for(var k in o){loopEntered = true;}}",
-                        "",
-                        "var o1 = {};",
-                        "keys({});",
-                        "o1.foo = 42;",
-                        "keys(o1);",
-                        "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
+                "function keys(o){for(var k in o){loopEntered = true;}}",
+                "",
+                "var o1 = {};",
+                "keys({});",
+                "o1.foo = 42;",
+                "keys(o1);",
+                "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
     }
 
     @Test
     public void missingPropertyBug_fixedWithoutLazy() {
         Options.get().enableNoLazy();
-        Misc.init();
         Misc.runSource("var loopEntered = false;",
-                        "function keys(o){for(var k in o){loopEntered = true;}}",
-                        "",
-                        "var o1 = {};",
-                        "keys({});",
-                        "o1.foo = 42;",
-                        "keys(o1);",
-                        "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
+                "function keys(o){for(var k in o){loopEntered = true;}}",
+                "",
+                "var o1 = {};",
+                "keys({});",
+                "o1.foo = 42;",
+                "keys(o1);",
+                "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
     }
 
     @Test
     public void missingPropertyBug_fixedWithAssignmentLocation() {
-        Misc.init();
         Misc.runSource("var loopEntered = false;",
-                        "function keys(o){for(var k in o){loopEntered = true;}}",
-                        "",
-                        "keys({});",
-                        "var o1 = {};",
-                        "o1.foo = 42;",
-                        "keys(o1);",
-                        "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
+                "function keys(o){for(var k in o){loopEntered = true;}}",
+                "",
+                "keys({});",
+                "var o1 = {};",
+                "o1.foo = 42;",
+                "keys(o1);",
+                "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
     }
 
     @Test
     public void missingPropertyBug_v2() {
-        Misc.init();
         Misc.runSource("var loopEntered = false;",
-                        "var o = {};",
-                        "function baseFor(object) {keys(object);}",
-                        "function shimKeys(object) {keysIn(object);}",
-                        "var keys = shimKeys;",
-                        "function keysIn(object) { for (var key in object) {loopEntered = true;}}",
-                        "keys();",
-                        "o.foo = 42;",
-                        "baseFor(o);",
-                        "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
+                "var o = {};",
+                "function baseFor(object) {keys(object);}",
+                "function shimKeys(object) {keysIn(object);}",
+                "var keys = shimKeys;",
+                "function keysIn(object) { for (var key in object) {loopEntered = true;}}",
+                "keys();",
+                "o.foo = 42;",
+                "baseFor(o);",
+                "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
     }
 
     @Test
     public void missingPropertyBug_fixedWithoutLazy_v2() {
         Options.get().enableNoLazy();
-        Misc.init();
         Misc.runSource("var loopEntered = false;",
-                        "var o = {};",
-                        "function baseFor(object) {keys(object);}",
-                        "function shimKeys(object) {keysIn(object);}",
-                        "var keys = shimKeys;",
-                        "function keysIn(object) { for (var key in object) {loopEntered = true;}}",
-                        "keys();",
-                        "o.foo = 42;",
-                        "baseFor(o);",
-                        "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
+                "var o = {};",
+                "function baseFor(object) {keys(object);}",
+                "function shimKeys(object) {keysIn(object);}",
+                "var keys = shimKeys;",
+                "function keysIn(object) { for (var key in object) {loopEntered = true;}}",
+                "keys();",
+                "o.foo = 42;",
+                "baseFor(o);",
+                "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
     }
 
     @Test
     public void missingPropertyBug_fixedWithAssignmentLocation_v2() {
-        Misc.init();
         Misc.runSource("var loopEntered = false;",
-                        "function baseFor(object) {keys(object);}",
-                        "function shimKeys(object) {keysIn(object);}",
-                        "var keys = shimKeys;",
-                        "function keysIn(object) { for (var key in object) {loopEntered = true;}}",
-                        "keys();",
-                        "var o = {};",
-                        "o.foo = 42;",
-                        "baseFor(o);",
-                        "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
+                "function baseFor(object) {keys(object);}",
+                "function shimKeys(object) {keysIn(object);}",
+                "var keys = shimKeys;",
+                "function keysIn(object) { for (var key in object) {loopEntered = true;}}",
+                "keys();",
+                "var o = {};",
+                "o.foo = 42;",
+                "baseFor(o);",
+                "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
     }
 
     @Test
     public void missingPropertyBug_v2_minimized() {
-        Misc.init();
         Misc.runSource("var loopEntered = false;",
-                        "var o = {};",
-                        "function iterateIndirectIndirect(object) {iterateIndirect(object);}",
-                        "function iterateIndirect(object) {iterate(object);}",
-                        "function iterate(object) { for (var key in object) { loopEntered = true;} }",
-                        "iterateIndirect();",
-                        "o.foo = 42;",
-                        "iterateIndirectIndirect(o);",
-                        "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
+                "var o = {};",
+                "function iterateIndirectIndirect(object) {iterateIndirect(object);}",
+                "function iterateIndirect(object) {iterate(object);}",
+                "function iterate(object) { for (var key in object) { loopEntered = true;} }",
+                "iterateIndirect();",
+                "o.foo = 42;",
+                "iterateIndirectIndirect(o);",
+                "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
     }
 
     @Test
     public void missingPropertyBug_v2_minimized_fixedWithInliningA() {
-        Misc.init();
         Misc.runSource("var loopEntered = false;",
-                        "var o = {};",
-                        "function iterateIndirect(object) {iterate(object);}",
-                        "function iterate(object) { for (var key in object) { loopEntered = true;} }",
-                        "iterateIndirect();",
-                        "o.foo = 42;",
-                        "iterateIndirect(o);",
-                        "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
+                "var o = {};",
+                "function iterateIndirect(object) {iterate(object);}",
+                "function iterate(object) { for (var key in object) { loopEntered = true;} }",
+                "iterateIndirect();",
+                "o.foo = 42;",
+                "iterateIndirect(o);",
+                "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
     }
 
     @Test
     public void missingPropertyBug_v2_minimized_fixedWithInliningB() {
-        Misc.init();
         Misc.runSource("var loopEntered = false;",
-                        "var o = {};",
-                        "function iterateIndirectIndirect(object) {iterateIndirect(object);}",
-                        "function iterateIndirect(object) {iterate(object);}",
-                        "function iterate(object) { for (var key in object) { loopEntered = true;} }",
-                        "iterate();",
-                        "o.foo = 42;",
-                        "iterateIndirectIndirect(o);",
-                        "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
+                "var o = {};",
+                "function iterateIndirectIndirect(object) {iterateIndirect(object);}",
+                "function iterateIndirect(object) {iterate(object);}",
+                "function iterate(object) { for (var key in object) { loopEntered = true;} }",
+                "iterate();",
+                "o.foo = 42;",
+                "iterateIndirectIndirect(o);",
+                "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
     }
 
     @Test
     public void missingPropertyBug_v2_minimized_fixedWithInliningAB() {
-        Misc.init();
         Misc.runSource("var loopEntered = false;",
-                        "var o = {};",
-                        "function iterateIndirect(object) {iterate(object);}",
-                        "function iterate(object) { for (var key in object) { loopEntered = true;} }",
-                        "iterate();",
-                        "o.foo = 42;",
-                        "iterateIndirect(o);",
-                        "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
+                "var o = {};",
+                "function iterateIndirect(object) {iterate(object);}",
+                "function iterate(object) { for (var key in object) { loopEntered = true;} }",
+                "iterate();",
+                "o.foo = 42;",
+                "iterateIndirect(o);",
+                "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
     }
 
     @Test
     public void missingPropertyBug_v2_minimized_fixedWithInliningABFull() {
-        Misc.init();
         Misc.runSource("var loopEntered = false;",
-                        "var o = {};",
-                        "function iterate(object) { for (var key in object) { loopEntered = true;} }",
-                        "iterate();",
-                        "o.foo = 42;",
-                        "iterate(o);",
-                        "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
+                "var o = {};",
+                "function iterate(object) { for (var key in object) { loopEntered = true;} }",
+                "iterate();",
+                "o.foo = 42;",
+                "iterate(o);",
+                "TAJS_assert(loopEntered, 'isMaybeAnyBool')");
     }
 }

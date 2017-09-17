@@ -1,0 +1,44 @@
+test-resources/src/v8tests/try.js:71:22: [definite] ReferenceError, reading absent variable gc
+test-resources/src/v8tests/try.js:73:22: [definite] ReferenceError, reading absent variable gc
+test-resources/src/v8tests/try.js:91:10: [definite] Variable o is null/undefined
+test-resources/src/v8tests/try.js:100:19: [definite] Property is null/undefined
+test-resources/src/v8tests/try.js:144:7: [definite] The conditional expression is always false
+test-resources/src/v8tests/try.js:162:7: [definite] The conditional expression is always false
+test-resources/src/v8tests/try.js:182:7: [definite] The conditional expression is always false
+test-resources/src/v8tests/try.js:201:7: [definite] The conditional expression is always false
+test-resources/src/v8tests/try.js:245:9: [definite] The conditional expression is always false
+test-resources/src/v8tests/try.js:268:9: [definite] The conditional expression is always false
+test-resources/src/v8tests/try.js:293:9: [definite] The conditional expression is always false
+test-resources/src/v8tests/try.js:317:9: [definite] The conditional expression is always false
+test-resources/src/v8tests/try.js:52:63: [definite] The variable x is never used
+test-resources/src/v8tests/try.js:64:67: [definite] The variable x is never used
+test-resources/src/v8tests/try.js:71:22: [definite] Unreachable code
+test-resources/src/v8tests/try.js:73:22: [definite] Unreachable code
+test-resources/src/v8tests/try.js:109:7: [definite] Unreachable code
+test-resources/src/v8tests/try.js:112:5: [definite] Unreachable code
+test-resources/src/v8tests/try.js:146:7: [definite] Unreachable code
+test-resources/src/v8tests/try.js:167:5: [definite] Unreachable code
+test-resources/src/v8tests/try.js:185:7: [definite] Unreachable code
+test-resources/src/v8tests/try.js:207:5: [definite] Unreachable code
+test-resources/src/v8tests/try.js:222:7: [definite] Unreachable code
+test-resources/src/v8tests/try.js:226:5: [definite] Unreachable code
+test-resources/src/v8tests/try.js:247:9: [definite] Unreachable code
+test-resources/src/v8tests/try.js:250:7: [definite] Unreachable code
+test-resources/src/v8tests/try.js:276:5: [definite] Unreachable code
+test-resources/src/v8tests/try.js:296:9: [definite] Unreachable code
+test-resources/src/v8tests/try.js:299:7: [definite] Unreachable code
+test-resources/src/v8tests/try.js:326:5: [definite] Unreachable code
+test-resources/src/v8tests/try.js:340:11: [definite] Unreachable code
+test-resources/src/v8tests/try.js:341:3: [definite] Unreachable code
+test-resources/src/v8tests/try.js:32:39: [maybe] TypeError, call to non-function
+test-resources/src/v8tests/try.js:37:42: [maybe] TypeError, call to non-function
+test-resources/src/v8tests/try.js:58:17: [maybe] Reading absent property bar
+test-resources/src/v8tests/try.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/try.js:32:39, test-resources/src/v8tests/try.js:37:42, test-resources/src/v8tests/try.js:71:22, test-resources/src/v8tests/try.js:73:22]
+test-resources/src/v8tests/try.js:32:41: [maybe] The variable o has values with different types
+test-resources/src/v8tests/try.js:33:10: [maybe] The variable r has values with different types
+test-resources/src/v8tests/try.js:37:44: [maybe] The variable o has values with different types
+test-resources/src/v8tests/try.js:46:69: [maybe] The variable x has values with different types
+test-resources/src/v8tests/try.js:47:77: [maybe] The variable x has values with different types
+test-resources/src/v8tests/try.js:60:53: [maybe] The variable o has values with different types
+test-resources/src/v8tests/try.js:56:51: [info] Writing to unknown property that may cause loss of precision
+Soundness testing succeeded for 728 checks (with 0 expected failures)

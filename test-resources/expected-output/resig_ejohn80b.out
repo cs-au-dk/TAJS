@@ -1,0 +1,8 @@
+test-resources/src/resig/ejohn80b.js:1:1: [definite] The conditional expression is always true
+test-resources/src/resig/ejohn80b.js:1:6: [definite] Reading absent property forEach2 of host object
+test-resources/src/resig/ejohn80b.js: [definite] Exceptional program exit is unreachable
+test-resources/src/resig/ejohn80b.js:4:11: [maybe] Reading absent property (computed name)
+test-resources/src/resig/ejohn80b.js:11:3: [info] Abstract value: Undef|IdentStr
+test-resources/src/resig/ejohn80b.js:12:3: [info] Abstract value: UInt
+test-resources/src/resig/ejohn80b.js:13:3: [info] Abstract value: 3.0
+Soundness testing succeeded for 73 checks (with 0 expected failures)

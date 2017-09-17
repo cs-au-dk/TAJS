@@ -30,7 +30,7 @@ public class ExternalDependencies {
     public static Optional<Path> getJalangiLoggerDirectory() {
         return getExternalDependency(
                 "jalangilogger",
-                Paths.get("node_modules").resolve("jalangilogger"));
+                Paths.get("javascript"));
     }
 
     /**
@@ -45,7 +45,7 @@ public class ExternalDependencies {
         if (hasTAJS) {
             Path dependencyContainer = Paths.get(TAJSEnvironmentConfig.get()
                     .getCustom("tajs"))
-                    .resolve("external-dependencies")
+                    .resolve("extras")
                     .resolve(dependencyName);
             Path actualDependency = dependencyContainer.resolve(pathInDependencyContainer);
             if (Files.exists(actualDependency)) {

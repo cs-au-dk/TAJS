@@ -25,6 +25,8 @@ import dk.brics.tajs.monitoring.inspector.datacollection.InspectorFactory;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 
+import java.nio.file.Paths;
+
 /**
  * Quick-and-dirty tester method for {@link dk.brics.tajs.monitoring.inspector.datacollection.monitors.InspectorMonitor}.
  */
@@ -48,7 +50,7 @@ public class QuickShow {
         TestInit();
         IAnalysisMonitoring inspector = InspectorFactory.createInspectorMonitor();
         String target = "test/google/richards.js";
-        Options.get().getArguments().add(target);
+        Options.get().getArguments().add(Paths.get(target));
         Analysis a = Main.init(Options.get(), new CompositeMonitoring(inspector, new AnalysisTimeLimiter(30)), null);
         if (a == null)
             throw new AnalysisException("Error during initialization");

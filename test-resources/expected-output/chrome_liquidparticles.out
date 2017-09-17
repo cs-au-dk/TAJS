@@ -1,0 +1,23 @@
+test-resources/src/chromeexperiments/liquidparticles.html:30:5: [definite] The conditional expression is always true
+test-resources/src/chromeexperiments/liquidparticles.html:190:14: [definite] The conditional expression is always true
+test-resources/src/chromeexperiments/liquidparticles.html:57:9: [definite] Dead assignment, property size is never read
+test-resources/src/chromeexperiments/liquidparticles.html:218:5: [definite] Dead assignment, property size is never read
+test-resources/src/chromeexperiments/liquidparticles.html:12:5: [definite] The variable canvasDiv is never used
+test-resources/src/chromeexperiments/liquidparticles.html:13:5: [definite] The variable outerDiv is never used
+test-resources/src/chromeexperiments/liquidparticles.html:195:1: [definite] The variable e is never used
+test-resources/src/chromeexperiments/liquidparticles.html:201:1: [definite] The variable e is never used
+test-resources/src/chromeexperiments/liquidparticles.html:225:1: [definite] Unreachable function rect
+test-resources/src/chromeexperiments/liquidparticles.html:30:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/liquidparticles.html:58:9: [maybe] RangeError, assigning invalid value to array 'length' property
+test-resources/src/chromeexperiments/liquidparticles.html:68:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/liquidparticles.html:95:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/liquidparticles.html:239:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/chromeexperiments/liquidparticles.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/liquidparticles.html:30:9, test-resources/src/chromeexperiments/liquidparticles.html:58:9, test-resources/src/chromeexperiments/liquidparticles.html:68:5, test-resources/src/chromeexperiments/liquidparticles.html:95:17, test-resources/src/chromeexperiments/liquidparticles.html:239:5]
+test-resources/src/chromeexperiments/liquidparticles.html:58:9: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/liquidparticles.html:58:9: [maybe] Converting object to number
+test-resources/src/chromeexperiments/liquidparticles.html:73:15: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/liquidparticles.html:74:15: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/liquidparticles.html:94:17: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/liquidparticles.html:100:18: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/liquidparticles.html:101:18: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 576 checks (with 0 expected failures)

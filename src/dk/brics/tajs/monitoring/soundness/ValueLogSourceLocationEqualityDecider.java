@@ -21,7 +21,9 @@ import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
+import org.apache.log4j.Logger;
 
+import java.net.URL;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,6 +34,8 @@ import static dk.brics.tajs.util.Collections.singleton;
  * Decision procedure for deciding if a TAJS and log-entry source location are equal.
  */
 public class ValueLogSourceLocationEqualityDecider {
+
+    private static final Logger log = Logger.getLogger(ValueLogSourceLocationEqualityDecider.class);
 
     private final Set<Pair<dk.au.cs.casa.jer.entries.SourceLocation, SourceLocation>> sourceLocationEqualities;
 
@@ -50,12 +54,23 @@ public class ValueLogSourceLocationEqualityDecider {
 
     private Set<Pair<dk.au.cs.casa.jer.entries.SourceLocation, SourceLocation>> makeSourceLocationEqualities(Map<SourceLocation, Set<SourceLocation>> tajsLocation2jalangiLocation, FlowGraph flowGraph) {
         Set<Pair<dk.au.cs.casa.jer.entries.SourceLocation, SourceLocation>> equalities = newSet();
+        Set<URL> unconvertableLocations = newSet();
         getAllSourceLocations(flowGraph).stream()
                 .filter(l -> !flowGraph.isHostEnvironmentSource(l))
                 .forEach(n -> {
                     Set<SourceLocation> aliases = tajsLocation2jalangiLocation.getOrDefault(n, singleton(n));
-                    aliases.forEach(alias -> equalities.add(Pair.make(ValueLoggerSourceLocationMapper.makeLoggerSourceLocation(alias), alias)));
+                    aliases.forEach(alias -> {
+                        try {
+                            dk.au.cs.casa.jer.entries.SourceLocation loggerSourceLocation = ValueLoggerSourceLocationMapper.makeLoggerSourceLocation(alias);
+                            equalities.add(Pair.make(loggerSourceLocation, alias));
+                        } catch (Exception e) {
+                            unconvertableLocations.add(alias.getLocation());
+                        }
+                    });
                 });
+        if (!unconvertableLocations.isEmpty()) {
+            log.warn(String.format("Skipping soundness testing of %s (file name can not be converted reliably).", unconvertableLocations));
+        }
         return equalities;
     }
 

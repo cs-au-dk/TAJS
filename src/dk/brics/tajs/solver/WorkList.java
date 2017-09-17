@@ -19,6 +19,7 @@ package dk.brics.tajs.solver;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import org.apache.log4j.Logger;
 
+import javax.annotation.Nonnull;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Set;
@@ -173,7 +174,7 @@ public class WorkList<ContextType extends IContext<?>> {
          * This method defines the work list priority using the work list strategy.
          */
         @Override
-        public int compareTo(Entry p) {
+        public int compareTo(@Nonnull  Entry p) {
             return worklist_strategy.compare(this, p);
         }
 

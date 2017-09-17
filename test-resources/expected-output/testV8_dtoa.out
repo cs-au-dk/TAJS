@@ -1,0 +1,3 @@
+test-resources/src/v8tests/dtoa.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/dtoa.js:33:1: [info] Abstract value: 0.0
+Soundness testing succeeded for 2 checks (with 0 expected failures)

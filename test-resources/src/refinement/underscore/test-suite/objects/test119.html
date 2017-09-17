@@ -1,0 +1,17 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var obj = {a : 'dash', b : _.map, c : /yo/, d : _.reduce};
+    deepEqual(['b', 'd'], _.functions(obj), 'can grab the function names of any passed-in object');
+    var Animal = function(){};
+    Animal.prototype.run = function(){};
+    deepEqual(_.functions(new Animal), ['run'], 'also looks up functions on the prototype');
+</script></head><body></body></html>

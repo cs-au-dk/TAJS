@@ -1,2 +1,0 @@
-test/v8tests/date-parse.js:49:14: [maybe] TypeError, accessing property of null/undefined
-test/v8tests/prologue.js,test/v8tests/date-parse.js: [maybe] Uncaught exception, constructed at [test/v8tests/date-parse.js:49:14]

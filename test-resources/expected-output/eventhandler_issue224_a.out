@@ -1,0 +1,3 @@
+test-resources/src/micro/eventhandler_issue224_a.html: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/eventhandler_issue224_a.html:5:14: [info] Abstract value: "OK: attribute"
+Soundness testing succeeded for 0 checks (with 0 expected failures)

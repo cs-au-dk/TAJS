@@ -1,0 +1,39 @@
+test-resources/src/1k2012love/1176.js:26:13: [definite] Dead assignment, property 0 is never read
+test-resources/src/1k2012love/1176.js:29:13: [definite] The function is invoked both as constructor and function
+test-resources/src/1k2012love/1176.js:7:9: [definite] The variable g is never used
+test-resources/src/1k2012love/1176.js:8:9: [definite] The variable aux is never used
+test-resources/src/1k2012love/1176.js:15:13: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1176.js:22:23: [maybe] ReferenceError, reading absent variable i
+test-resources/src/1k2012love/1176.js:31:22: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2012love/1176.js:52:22: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2012love/1176.js:54:25: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2012love/1176.js:61:20: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1176.js:61:36: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1176.js:64:66: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1176.js:75:97: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2012love/1176.js:75:109: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2012love/1176.js:80:21: [maybe] ReferenceError, reading absent variable v
+test-resources/src/1k2012love/1176.js:83:25: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1176.js:89:13: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2012love/1176.js:89:21: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2012love/1176.js:89:29: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2012love/1176.js:90:9: [maybe] ReferenceError, reading absent variable c
+test-resources/src/1k2012love/1176.js:91:9: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1176.js:93:20: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1176.js:74:56: [maybe] Reading absent property which of host object
+test-resources/src/1k2012love/1176.js:75:59: [maybe] Reading absent property which of host object
+test-resources/src/1k2012love/1176.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1176.js:15:13, test-resources/src/1k2012love/1176.js:22:23, test-resources/src/1k2012love/1176.js:31:22, test-resources/src/1k2012love/1176.js:52:22, test-resources/src/1k2012love/1176.js:54:25, test-resources/src/1k2012love/1176.js:61:20, test-resources/src/1k2012love/1176.js:61:36, test-resources/src/1k2012love/1176.js:64:66, test-resources/src/1k2012love/1176.js:75:97, test-resources/src/1k2012love/1176.js:75:109, test-resources/src/1k2012love/1176.js:80:21, test-resources/src/1k2012love/1176.js:83:25, test-resources/src/1k2012love/1176.js:89:13, test-resources/src/1k2012love/1176.js:89:21, test-resources/src/1k2012love/1176.js:89:29, test-resources/src/1k2012love/1176.js:90:9, test-resources/src/1k2012love/1176.js:91:9, test-resources/src/1k2012love/1176.js:93:20, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1176.js:61:20: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1176.js:61:36: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1176.js:63:33: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1176.js:75:84: [maybe] The variable paused has values with different types
+test-resources/src/1k2012love/1176.js:78:12: [maybe] The variable paused has values with different types
+test-resources/src/1k2012love/1176.js:93:20: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1176.js:34:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/1k2012love/1176.js:45:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/1k2012love/1176.js:49:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/1k2012love/1176.js:61:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/1k2012love/1176.js:64:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/1k2012love/1176.js:64:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 281 checks (with 0 expected failures)

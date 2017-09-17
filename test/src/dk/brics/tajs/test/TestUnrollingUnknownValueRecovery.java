@@ -17,7 +17,6 @@ public class TestUnrollingUnknownValueRecovery {
     @Test
     public void onlyLocals1() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 1; i++){ }",
                 "");
@@ -26,7 +25,6 @@ public class TestUnrollingUnknownValueRecovery {
     @Test
     public void onlyLocals2() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 1; i++){ }",
                 "i;",
@@ -36,7 +34,6 @@ public class TestUnrollingUnknownValueRecovery {
     @Test
     public void globalProperty_ReadBefore() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "toString;",
                 "for(var i = 0; i < 1; i++){ }",
@@ -46,7 +43,6 @@ public class TestUnrollingUnknownValueRecovery {
     @Test
     public void globalProperty_ReadBeforeReadAfter() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "toString;",
                 "for(var i = 0; i < 1; i++){ }",
@@ -57,7 +53,6 @@ public class TestUnrollingUnknownValueRecovery {
     @Test
     public void globalProperty_WriteBeforeReadAfter() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "toString = 42;",
                 "for(var i = 0; i < 1; i++){ }",
@@ -68,7 +63,6 @@ public class TestUnrollingUnknownValueRecovery {
     @Test
     public void globalProperty_WriteBeforeWriteInsideReadAfter() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "toString = 42;",
                 "for(var i = 0; i < 1; i++){ toString = 87; }",
@@ -79,7 +73,6 @@ public class TestUnrollingUnknownValueRecovery {
     @Test
     public void globalProperty_ReadAfter() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 1; i++){ }",
                 "toString;",
@@ -89,7 +82,6 @@ public class TestUnrollingUnknownValueRecovery {
     @Test
     public void globalProperty_ReadInsideReadAfter() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 1; i++){ toString; }",
                 "toString;",
@@ -99,7 +91,6 @@ public class TestUnrollingUnknownValueRecovery {
     @Test
     public void globalProperty_WriteInsideReadAfter() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 1; i++){ toString = 42; }",
                 "toString;",
@@ -109,7 +100,6 @@ public class TestUnrollingUnknownValueRecovery {
     @Test
     public void globalProperty_ReadInside() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 1; i++){ toString; }",
                 "");
@@ -118,7 +108,6 @@ public class TestUnrollingUnknownValueRecovery {
     @Test
     public void globalProperty_WriteInside() {
         // should not crash
-        Misc.init();
         Misc.runSource(
                 "for(var i = 0; i < 1; i++){ toString = 42; }",
                 "");
@@ -126,7 +115,6 @@ public class TestUnrollingUnknownValueRecovery {
 
     @Test
     public void localVariable_WriteInsideNestedBodyReadAfter() {
-        Misc.init();
         Misc.runSource(
                 "var k = 0;",
                 "for(var i = 0; i < 5; i++){",
@@ -140,7 +128,6 @@ public class TestUnrollingUnknownValueRecovery {
 
     @Test
     public void localVariable_ReadInNestedConditionWriteInsideNestedBodyReadAfterLoops() {
-        Misc.init();
         Misc.runSource(
                 "var k = true;",
                 "for(var i = 0; i < 2; i++){",
@@ -154,7 +141,6 @@ public class TestUnrollingUnknownValueRecovery {
 
     @Test
     public void localVariable_WriteInsideCopyToLocalInsideReadAfter() {
-        Misc.init();
         Misc.runSource(
                 "var k = true; var l = true;",
                 "while(l){",
@@ -167,7 +153,6 @@ public class TestUnrollingUnknownValueRecovery {
 
     @Test
     public void localVariable_WriteInsideNestedCopyToLocalInsideNestedReadAfter() {
-        Misc.init();
         Misc.runSource(
                 "var k = true; var l = k;",
                 "for(var i = 0; i < 2; i++){",

@@ -1,9 +1,0 @@
-test/micro/test42.js: [definite] Ordinary program exit is unreachable
-test/micro/test42.js:11:9: [definite] TypeError, call to non-function
-test/micro/test42.js:11:5: [definite] The variable x is never used
-test/micro/test42.js:11:5: [definite] Unreachable code
-test/micro/test42.js: [maybe] Uncaught exception, constructed at [test/micro/test42.js:11:9]
-test/micro/test42.js:10:16: [maybe] The variable f has values with different types
-test/micro/test42.js:11:9: [maybe] The variable f has values with different types
-test/micro/test42.js:10:1: [info] Abstract value: 1.0|"sdf"|[@Object#node28]
-Soundness testing succeeded for 13 checks (with 0 expected failures)

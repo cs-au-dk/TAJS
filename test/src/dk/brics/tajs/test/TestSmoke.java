@@ -30,12 +30,10 @@ public class TestSmoke {
     @Parameterized.Parameters(name = "{0}")
     public static List<Configuration> configurations() {
         List<String> files = Arrays.asList(
-                "test/sunspider/3d-cube.js",
-                "test/google/delta-blue.js"
+                "test-resources/src/sunspider/3d-cube.js",
+                "test-resources/src/google/delta-blue.js"
         );
-
         Set<Set<Feature>> featureSets = powerSet(newSet(Arrays.asList(Feature.values())));
-
         List<Configuration> configurations = newList();
         files.forEach(f ->
                 featureSets.forEach(featureSet ->
@@ -88,7 +86,7 @@ public class TestSmoke {
 
     @BeforeClass
     public static void beforeClass() {
-        Main.initLogging();
+        Main.reset();
     }
 
     @Before
@@ -140,18 +138,17 @@ public class TestSmoke {
 
     private boolean requiresDOM(String file) {
         Set<String> domFiles = newSet(Arrays.asList(
-                "test/chromeexperiments/3ddemo.html",
-                "test/apps/minesweeper/minesweeper.html",
-                "test/10k/10k_snake.html",
-                "test/jquery-load/jquery-1.0.js-orig.js",
-                "test/sunspider/3d-cube.js"
+                "test-resources/src/chromeexperiments/3ddemo.html",
+                "benchmarks/tajs/src/apps/minesweeper/minesweeper.html",
+                "test-resources/src/10k/10k_snake.html",
+                "benchmarks/tajs/src/jquery-load/jquery-1.0.js-orig.js",
+                "test-resources/src/sunspider/3d-cube.js"
         ));
-
         return domFiles.contains(file);
     }
 
     private boolean requiresMDNPolyFill(String file) {
-        return "test/chromeexperiments/3ddemo.html".equals(file);
+        return "test-resources/src/chromeexperiments/3ddemo.html".equals(file);
     }
 
     private enum Feature {
@@ -178,9 +175,7 @@ public class TestSmoke {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-
             Configuration that = (Configuration) o;
-
             if (file != null ? !file.equals(that.file) : that.file != null) return false;
             return features != null ? features.equals(that.features) : that.features == null;
         }

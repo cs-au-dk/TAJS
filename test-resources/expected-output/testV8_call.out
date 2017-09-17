@@ -1,0 +1,20 @@
+test-resources/src/v8tests/call.js:32:12: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:34:12: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:34:29: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:35:12: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:35:29: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:36:12: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:36:29: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:38:12: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:39:12: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:40:12: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:42:12: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:43:12: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:44:12: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:82:25: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:85:25: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:86:25: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js:87:25: [definite] Reading 'this' yields the global object
+test-resources/src/v8tests/call.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/call.js:29:10: [maybe] Reading 'this' yields the global object
+Soundness testing succeeded for 324 checks (with 0 expected failures)

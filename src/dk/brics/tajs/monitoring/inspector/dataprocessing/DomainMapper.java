@@ -18,8 +18,9 @@ package dk.brics.tajs.monitoring.inspector.dataprocessing;
 
 import dk.brics.inspector.api.model.ids.FileID;
 import dk.brics.inspector.api.model.ids.ObjectID;
-import dk.brics.inspector.api.model.lines.MessageSeverity;
-import dk.brics.inspector.api.model.lines.MessageStatus;
+import dk.brics.inspector.api.model.lines.MessageCertainty;
+import dk.brics.inspector.api.model.lines.MessageLevel;
+import dk.brics.inspector.api.model.lines.MessageSource;
 import dk.brics.inspector.api.model.locations.ContextInsensitiveDescribedLocation;
 import dk.brics.inspector.api.model.locations.ContextSensitiveDescribedLocation;
 import dk.brics.inspector.api.model.locations.DescribedContext;
@@ -27,7 +28,6 @@ import dk.brics.inspector.api.model.locations.SourceRange;
 import dk.brics.inspector.api.model.values.CompositeValue;
 import dk.brics.inspector.api.model.values.DescribedObject;
 import dk.brics.inspector.api.model.values.DescribedPrimitive;
-import dk.brics.inspector.api.model.values.ObjectKind;
 import dk.brics.inspector.api.model.values.SingleValue;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.SourceLocation;
@@ -35,6 +35,7 @@ import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message;
+import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 
@@ -113,73 +114,57 @@ public class DomainMapper {
     }
 
     public DescribedObject makeObject(ObjectLabel label, ObjectID id) {
-        return new DescribedObject(label.toString(), makeObjectKind(label.getKind()), id);
+        return new DescribedObject(label.toString(), decideInvokable(label.getKind()), id);
     }
 
-    private ObjectKind makeObjectKind(ObjectLabel.Kind kind) {
-        switch (kind) {
-            case OBJECT:
-                return ObjectKind.OBJECT;
-            case FUNCTION:
-                return ObjectKind.FUNCTION;
-            case ARRAY:
-                return ObjectKind.ARRAY;
-            case REGEXP:
-                return ObjectKind.REGEXP;
-            case DATE:
-                return ObjectKind.DATE;
-            case STRING:
-                return ObjectKind.STRING;
-            case NUMBER:
-                return ObjectKind.NUMBER;
-            case BOOLEAN:
-                return ObjectKind.BOOLEAN;
-            case ERROR:
-                return ObjectKind.ERROR;
-            case MATH:
-                return ObjectKind.MATH;
-            case ACTIVATION:
-                return ObjectKind.ACTIVATION;
-            case ARGUMENTS:
-                return ObjectKind.ARGUMENTS;
-            default:
-                throw new RuntimeException("Unhandled enum: " + kind);
-        }
+    private boolean decideInvokable(ObjectLabel.Kind kind) {
+        return kind == ObjectLabel.Kind.FUNCTION;
     }
 
-    public MessageSeverity makeSeverity(Message.Severity severity) {
+    public MessageLevel makeMessageLevel(Message.Severity severity) {
         switch (severity) {
             case TAJS_ERROR:
-                return MessageSeverity.TAJS_ERROR;
-            case HIGH:
-                return MessageSeverity.HIGH;
-            case MEDIUM_IF_CERTAIN_NONE_OTHERWISE:
-                return MessageSeverity.MEDIUM_IF_CERTAIN_NONE_OTHERWISE;
-            case MEDIUM:
-                return MessageSeverity.MEDIUM;
-            case LOW:
-                return MessageSeverity.LOW;
-            case TAJS_META:
-                return MessageSeverity.TAJS_META;
             case TAJS_UNSOUNDNESS:
-                return MessageSeverity.TAJS_UNSOUNDNESS;
+            case HIGH:
+                return MessageLevel.ERROR;
+            case MEDIUM_IF_CERTAIN_NONE_OTHERWISE:
+            case MEDIUM:
+                return MessageLevel.WARN;
+            case LOW:
+            case TAJS_META:
+                return MessageLevel.INFO;
             default:
                 throw new RuntimeException("Unhandled enum: " + severity);
         }
     }
 
-    public MessageStatus makeStatus(Message.Status status) {
+    public dk.brics.inspector.api.model.Optional<MessageCertainty> makeMessageCertainty(Message.Status status) {
         switch (status) {
             case CERTAIN:
-                return MessageStatus.CERTAIN;
+                return new dk.brics.inspector.api.model.Optional<>(MessageCertainty.CERTAIN);
             case MAYBE:
-                return MessageStatus.MAYBE;
+                return new dk.brics.inspector.api.model.Optional<>(MessageCertainty.MAYBE);
             case INFO:
-                return MessageStatus.INFO;
             case NONE:
-                return MessageStatus.NONE;
+                return new dk.brics.inspector.api.model.Optional<>();
             default:
                 throw new RuntimeException("Unhandled enum: " + status);
+        }
+    }
+
+    public MessageSource makeMessageSource(Message.Severity uncounditionalSeverity) {
+        switch (uncounditionalSeverity){
+            case TAJS_ERROR:
+            case TAJS_META:
+            case TAJS_UNSOUNDNESS:
+                return MessageSource.ANALYSIS_BEHAVIOR;
+            case HIGH:
+            case MEDIUM:
+            case LOW:
+            case MEDIUM_IF_CERTAIN_NONE_OTHERWISE:
+                return MessageSource.ANALYSIS_RESULT;
+            default:
+                throw new AnalysisException("Unhandled enum: " + uncounditionalSeverity);
         }
     }
 }

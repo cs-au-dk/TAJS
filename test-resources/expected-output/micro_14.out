@@ -1,0 +1,5 @@
+test-resources/src/micro/test14.js:31:16: [maybe] ReferenceError, reading absent variable xxx
+test-resources/src/micro/test14.js:32:13: [maybe] ReferenceError, reading absent variable xxx
+test-resources/src/micro/test14.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test14.js:31:16, test-resources/src/micro/test14.js:32:13]
+test-resources/src/micro/test14.js:31:1: [info] Abstract value: "fail"
+Soundness testing succeeded for 61 checks (with 0 expected failures)

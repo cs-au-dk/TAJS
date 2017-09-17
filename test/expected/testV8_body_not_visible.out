@@ -1,2 +1,0 @@
-TAJS-dynamic-code(test/v8tests/body-not-visible.js:33:4):1:31: [definite] ReferenceError, reading absent variable body
-test/v8tests/body-not-visible.js:34:3: [definite] Unreachable code

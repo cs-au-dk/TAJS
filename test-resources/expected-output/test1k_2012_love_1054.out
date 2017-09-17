@@ -1,0 +1,41 @@
+test-resources/src/1k2012love/1054.js:66:17: [definite] The variable p is never used
+test-resources/src/1k2012love/1054.js:38:14: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:43:18: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:43:22: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:44:17: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:44:21: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:45:17: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:45:21: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:46:17: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:46:21: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:47:30: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:48:28: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:49:28: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:49:32: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:50:28: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:55:26: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1054.js:61:10: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1054.js:61:24: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1054.js:68:20: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:69:14: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:69:25: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:69:38: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:69:49: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1054.js:70:7: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1054.js:70:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1054.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1054.js:38:14, test-resources/src/1k2012love/1054.js:43:18, test-resources/src/1k2012love/1054.js:43:22, test-resources/src/1k2012love/1054.js:44:17, test-resources/src/1k2012love/1054.js:44:21, test-resources/src/1k2012love/1054.js:45:17, test-resources/src/1k2012love/1054.js:45:21, test-resources/src/1k2012love/1054.js:46:17, test-resources/src/1k2012love/1054.js:46:21, test-resources/src/1k2012love/1054.js:47:30, test-resources/src/1k2012love/1054.js:48:28, test-resources/src/1k2012love/1054.js:49:28, test-resources/src/1k2012love/1054.js:49:32, test-resources/src/1k2012love/1054.js:50:28, test-resources/src/1k2012love/1054.js:55:26, test-resources/src/1k2012love/1054.js:61:10, test-resources/src/1k2012love/1054.js:61:24, test-resources/src/1k2012love/1054.js:68:20, test-resources/src/1k2012love/1054.js:69:14, test-resources/src/1k2012love/1054.js:69:25, test-resources/src/1k2012love/1054.js:69:38, test-resources/src/1k2012love/1054.js:69:49, test-resources/src/1k2012love/1054.js:70:7, test-resources/src/1k2012love/1054.js:70:21, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1054.js:27:19: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1054.js:27:29: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1054.js:27:39: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1054.js:27:49: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1054.js:34:28: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1054.js:35:14: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1054.js:35:30: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1054.js:54:4: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1054.js:61:24: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1054.js:66:32: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1054.js:70:21: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1054.js:71:24: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1054.js:71:40: [maybe] Conversion to number yields NaN
+Soundness testing succeeded for 524 checks (with 0 expected failures)

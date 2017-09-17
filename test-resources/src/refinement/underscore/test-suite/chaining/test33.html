@@ -1,0 +1,21 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var numbers = [1, 2, 3, 4, 5];
+    numbers = _(numbers).chain()
+      .reverse()
+      .concat([5, 5, 5])
+      .unshift(17)
+      .pop()
+      .map(function(n){ return n * 2; })
+      .value();
+    deepEqual(numbers, [34, 10, 8, 6, 4, 2, 10, 10], 'can chain together array functions.');
+</script></head><body></body></html>

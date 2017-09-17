@@ -1,0 +1,24 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var testAfter = function(afterAmount, timesCalled) {
+      var afterCalled = 0;
+      var after = _.after(afterAmount, function() {
+        afterCalled++;
+      });
+      while (timesCalled--) after();
+      return afterCalled;
+    };
+    equal(testAfter(5, 5), 1, 'after(N) should fire after being called N times');
+    equal(testAfter(5, 4), 0, 'after(N) should not fire unless called N times');
+    equal(testAfter(0, 0), 0, 'after(0) should not fire immediately');
+    equal(testAfter(0, 1), 1, 'after(0) should fire when first invoked');
+</script></head><body></body></html>

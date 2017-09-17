@@ -1,0 +1,23 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    equal(_.size({one : 1, two : 2, three : 3}), 3, 'can compute the size of an object');
+    equal(_.size([1, 2, 3]), 3, 'can compute the size of an array');
+    equal(_.size({length: 3, 0: 0, 1: 0, 2: 0}), 3, 'can compute the size of Array-likes');
+    var func = function() {
+      return _.size(arguments);
+    };
+    equal(func(1, 2, 3, 4), 4, 'can test the size of the arguments object');
+    equal(_.size('hello'), 5, 'can compute the size of a string literal');
+    equal(_.size(new String('hello')), 5, 'can compute the size of string object');
+    equal(_.size(null), 0, 'handles nulls');
+    equal(_.size(0), 0, 'handles numbers');
+</script></head><body></body></html>

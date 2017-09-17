@@ -1,5 +1,0 @@
-test/micro/test121.js: [definite] Exceptional program exit is unreachable
-test/micro/test121.js:6:3: [maybe] Conversion to number yields NaN
-test/micro/test121.js:6:8: [maybe] Reading absent property (computed name)
-test/micro/test121.js:11:1: [info] Abstract value: UInt|NaN
-Soundness testing succeeded for 24 checks (with 0 expected failures)

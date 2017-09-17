@@ -1,0 +1,4 @@
+test-resources/src/micro/testForIn7.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/testForIn7.js:2:13: [definite] The variable k is never used
+test-resources/src/micro/testForIn7.js:6:1: [info] Abstract value: "HERE"
+Soundness testing succeeded for 10 checks (with 0 expected failures)

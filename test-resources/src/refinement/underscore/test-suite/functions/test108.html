@@ -1,0 +1,23 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var greet = function(name){ return 'hi: ' + name; };
+    var backwards = _.wrap(greet, function(func, name){ return func(name) + ' ' + name.split('').reverse().join(''); });
+    equal(backwards('moe'), 'hi: moe eom', 'wrapped the salutation function');
+    var inner = function(){ return 'Hello '; };
+    var obj   = {name : 'Moe'};
+    obj.hi    = _.wrap(inner, function(fn){ return fn() + this.name; });
+    equal(obj.hi(), 'Hello Moe');
+    var noop    = function(){};
+    var wrapped = _.wrap(noop, function(){ return Array.prototype.slice.call(arguments, 0); });
+    var ret     = wrapped(['whats', 'your'], 'vector', 'victor');
+    deepEqual(ret, [noop, ['whats', 'your'], 'vector', 'victor']);
+</script></head><body></body></html>

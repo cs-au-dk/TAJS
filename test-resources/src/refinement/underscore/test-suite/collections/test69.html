@@ -1,0 +1,30 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var list = [{a: 1, b: 2}, {a: 2, b: 2}, {a: 1, b: 3}, {a: 1, b: 4}, {a: 2, b: 4}];
+    var result = _.findWhere(list, {a: 1});
+    deepEqual(result, {a: 1, b: 2});
+    result = _.findWhere(list, {b: 4});
+    deepEqual(result, {a: 1, b: 4});
+    result = _.findWhere(list, {c: 1});
+    ok(_.isUndefined(result), 'undefined when not found');
+    result = _.findWhere([], {c: 1});
+    ok(_.isUndefined(result), 'undefined when searching empty list');
+    function test() {}
+    test.map = _.map;
+    equal(_.findWhere([_, {a: 1, b: 2}, _], test), _, 'checks properties given function');
+    function TestClass() {
+      this.y = 5;
+      this.x = 'foo';
+    }
+    var expect = {c: 1, x: 'foo', y: 5};
+    deepEqual(_.findWhere([{y: 5, b: 6}, expect], new TestClass()), expect, 'uses class instance properties');
+</script></head><body></body></html>

@@ -1,0 +1,2 @@
+test-resources/src/resig/ejohn15.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 36 checks (with 0 expected failures)

@@ -18,10 +18,10 @@ import org.junit.runners.Suite;
         TestUnrolling.class,
         TestAssumeNonNullUndef.class,
         TestGettersSetters.class,
-
+        TestStrict.class,
+        TestConversion.class,
         // misc. tests
         TestMicro.class,
-
         // application tests
         TestAnderson.class,
         TestJQueryEach.class,
@@ -31,6 +31,6 @@ import org.junit.runners.Suite;
 public class RunFast {
 
     public static void main(String[] args) {
-            org.junit.runner.JUnitCore.main("dk.brics.tajs.test.RunFast");
+        org.junit.runner.JUnitCore.main("dk.brics.tajs.test.RunFast");
     }
 }

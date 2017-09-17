@@ -22,7 +22,6 @@ import dk.brics.tajs.util.PathAndURLUtils;
 
 import java.net.URL;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static dk.brics.tajs.util.PathAndURLUtils.normalizeFileURL;
 
@@ -40,7 +39,7 @@ public class ValueLoggerSourceLocationMapper {
     }
 
     private static Path getMainDir() {
-        return Paths.get(Options.get().getArguments().get(Options.get().getArguments().size() - 1)).getParent();
+        return Options.get().getArguments().get(Options.get().getArguments().size() - 1).getParent();
     }
 
     /**

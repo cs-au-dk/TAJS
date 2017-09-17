@@ -1,0 +1,25 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var a, b;
+    var counter = 0;
+    var incr = function(){ return ++counter; };
+    var debouncedIncr = _.debounce(incr, 64, true);
+    a = debouncedIncr();
+    b = debouncedIncr();
+    equal(a, 1);
+    equal(b, 1);
+    equal(counter, 1, 'incr was called immediately');
+    _.delay(debouncedIncr, 16);
+    _.delay(debouncedIncr, 32);
+    _.delay(debouncedIncr, 48);
+    _.delay(function(){ equal(counter, 1, 'incr was debounced'); start(); }, 128);
+</script></head><body></body></html>

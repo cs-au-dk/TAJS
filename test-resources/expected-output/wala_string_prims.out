@@ -1,0 +1,9 @@
+test-resources/src/wala/string-prims.js: [definite] Exceptional program exit is unreachable
+test-resources/src/wala/string-prims.js:4:13: [maybe] Converting object to string
+test-resources/src/wala/string-prims.js:8:22: [maybe] Converting object to string
+test-resources/src/wala/string-prims.js:8:22: [maybe] Converting primitive string to object
+test-resources/src/wala/string-prims.js:10:1: [info] Abstract value: "this is a string of words"
+test-resources/src/wala/string-prims.js:11:1: [info] Abstract object: {0:"this",1:"is",2:"a",3:"string",4:"of",5:"words",length:6.0,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/wala/string-prims.js:12:1: [info] Abstract value: "this"
+test-resources/src/wala/string-prims.js:13:1: [info] Abstract value: "THIS"
+Soundness testing succeeded for 34 checks (with 0 expected failures)

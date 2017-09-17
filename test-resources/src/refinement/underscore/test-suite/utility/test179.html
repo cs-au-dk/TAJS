@@ -1,0 +1,24 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var template = _.template('<%=x%>');
+    strictEqual(template({x: null}), '');
+    strictEqual(template({x: undefined}), '');
+    var templateEscaped = _.template('<%-x%>');
+    strictEqual(templateEscaped({x: null}), '');
+    strictEqual(templateEscaped({x: undefined}), '');
+    var templateWithProperty = _.template('<%=x.foo%>');
+    strictEqual(templateWithProperty({x: {}}), '');
+    strictEqual(templateWithProperty({x: {}}), '');
+    var templateWithPropertyEscaped = _.template('<%-x.foo%>');
+    strictEqual(templateWithPropertyEscaped({x: {}}), '');
+    strictEqual(templateWithPropertyEscaped({x: {}}), '');
+</script></head><body></body></html>

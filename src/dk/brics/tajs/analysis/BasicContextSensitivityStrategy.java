@@ -41,7 +41,6 @@ import java.util.Set;
 import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
-import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Basic call and heap context sensitivities.
@@ -61,8 +60,8 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
     }
 
     @Override
-    public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, Set<ObjectLabel> this_objs, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
-        return makeHeapContext(makeContextArgumentsForCall(function, state, callInfo)); // TODO: currently ignoring this_objs (recency abstraction avoids some of the precision loss...)
+    public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, Value thisval, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+        return makeHeapContext(makeContextArgumentsForCall(function, state, callInfo)); // TODO: currently ignoring thisval (recency abstraction avoids some of the precision loss...)
     }
 
     @Override
@@ -123,13 +122,13 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
     }
 
     @Override
-    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Set<ObjectLabel> this_objs, Solver.SolverInterface c) {
+    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Value thisval, Solver.SolverInterface c) {
         assert (function.getKind() == ObjectLabel.Kind.FUNCTION);
-        // set thisval for object sensitivity (unlike traditional object sensitivity we allow sets of object labels)
-        Set<ObjectLabel> thisval = null;
+        // set thisval for object sensitivity (unlike traditional object sensitivity we use abstract values instead of individual object labels)
+        /*Value*/ thisval = null; // FIXME: why not use the thisval argument? (github #479)
         if (!Options.get().isObjectSensitivityDisabled()) {
             if (c.getFlowGraph().getSyntacticInformation().isFunctionWithThisReference(function.getFunction())) {
-                thisval = newSet(state.readThisObjects());
+                thisval = state.readThis();
             }
         }
         ContextArguments contextArguments = makeContextArgumentsForCall(function, state, callInfo);

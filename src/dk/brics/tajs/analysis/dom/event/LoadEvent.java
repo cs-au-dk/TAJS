@@ -52,9 +52,10 @@ public class LoadEvent {
         createDOMProperty(INSTANCES, "bubbles", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "cancelable", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "detail", Value.makeAnyNum().setReadOnly(), c);
-        createDOMProperty(INSTANCES, "view", Value.makeObject(DOMWindow.WINDOW).setReadOnly(), c);
+        createDOMProperty(INSTANCES, "view", Value.makeObject(DOMWindow.WINDOW).setReadOnly().joinAbsent(), c);
 
         // DOM Registry
+        DOMRegistry.registerDOMContentLoadedEventLabel(INSTANCES);
         DOMRegistry.registerLoadEventLabel(INSTANCES);
     }
 }

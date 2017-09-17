@@ -50,6 +50,8 @@ public class TouchEvent {
         createDOMProperty(INSTANCES, "ctrlKey", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "metaKey", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "shiftKey", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().setReadOnly(), c);
+
         
         // Multiplied Object
         s.multiplyObject(INSTANCES);

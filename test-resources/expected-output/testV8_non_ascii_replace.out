@@ -1,0 +1,4 @@
+test-resources/src/v8tests/non-ascii-replace.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/non-ascii-replace.js:29:14: [maybe] Converting primitive string to object
+test-resources/src/v8tests/non-ascii-replace.js:30:14: [maybe] Converting primitive string to object
+Soundness testing succeeded for 25 checks (with 0 expected failures)

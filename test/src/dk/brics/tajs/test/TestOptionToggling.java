@@ -33,7 +33,6 @@ public class TestOptionToggling {
         prop.put("log4j.rootLogger", "INFO, tajs");
         prop.put("log4j.appender.tajs", "org.apache.log4j.varia.NullAppender");
         PropertyConfigurator.configure(prop);
-
         return Arrays.stream(OptionValues.class.getDeclaredMethods())
                 .filter(m -> m.getName().startsWith("enable"))
                 .filter(m -> !m.getName().equals("enableDebug"))
@@ -62,31 +61,30 @@ public class TestOptionToggling {
     @Test
     public void plain_debug() throws Exception {
         Options.get().enableDebug();
-        test("test/google/richards.js");
+        test("test-resources/src/google/richards.js");
     }
 
     @Test
     public void dom_debug() throws Exception {
         Options.get().enableDebug();
-        test("test/chromeexperiments/3ddemo.html");
+        test("test-resources/src/chromeexperiments/3ddemo.html");
     }
 
     @Test
     public void plain() throws Exception {
-        test("test/google/richards.js");
+        test("test-resources/src/google/richards.js");
     }
 
     @Test
     public void dom() throws Exception {
-        test("test/chromeexperiments/3ddemo.html");
+        test("test-resources/src/chromeexperiments/3ddemo.html");
     }
 
     public void test(String file) {
-        String[] args = {file};
         try {
             Options.get().setAnalysisTimeLimit(30);
             Options.get().getSoundnessTesterOptions().setTest(false);
-            Misc.run(args);
+            Misc.run(file);
         } catch (AnalysisLimitationException e) {
             // ignore
         }

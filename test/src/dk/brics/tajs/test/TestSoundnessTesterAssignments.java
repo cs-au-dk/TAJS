@@ -1,6 +1,7 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
+import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,20 +23,19 @@ public class TestSoundnessTesterAssignments {
 
     @Parameterized.Parameters(name = "{0}")
     public static List<Path> files() throws IOException {
-        Path root = Paths.get("test/soundnessTester/assignments/");
-        return Files.list(root).collect(Collectors.toList());
+        Path root = Paths.get("test-resources/src/soundnesstester/");
+        return Files.list(root).sorted().collect(Collectors.toList());
     }
 
     @Before
     public void before() {
-        Main.initLogging();
         Main.reset();
         Options.get().enableTest();
     }
 
     @Test
     public void test() throws IOException {
-        System.out.println(String.join("\n", Files.readAllLines(file)));
-        Misc.run(new String[]{file.toString()});
+//        System.out.println(String.join("\n", Files.readAllLines(file)));
+        Misc.runPart("[" + file.getFileName() + "]", Monitoring.make(), file.toString());
     }
 }

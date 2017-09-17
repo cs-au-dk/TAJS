@@ -51,7 +51,9 @@ public class JSMath {
             case MATH_ROUND: // 15.8.2.15
             case MATH_SIN: // 15.8.2.16
             case MATH_SQRT: // 15.8.2.17
-            case MATH_TAN: { // 15.8.2.18
+            case MATH_TAN: // 15.8.2.18
+            case MATH_SIGN:
+            case MATH_LOG10: {
                 Value num = Conversion.toNumber(FunctionCalls.readParameter(call, state, 0), c);
                 if (num.isMaybeSingleNum()) {
                     double d = num.getNum();
@@ -95,6 +97,12 @@ public class JSMath {
                             break;
                         case MATH_TAN:
                             res = Math.tan(d);
+                            break;
+                        case MATH_SIGN:
+                            res = Math.signum(d);
+                            break;
+                        case MATH_LOG10:
+                            res = Math.log10(d);
                             break;
                         default:
                             throw new AnalysisException();
@@ -179,6 +187,27 @@ public class JSMath {
 
             case MATH_RANDOM: { // 15.8.2.14
                 return Value.makeAnyNumNotNaNInf();
+            }
+
+            case MATH_IMUL: {
+                return Value.makeAnyNumUInt();
+            }
+
+            case MATH_TRUNC:
+            case MATH_TANH:
+            case MATH_ASINH:
+            case MATH_ACOSH:
+            case MATH_ATANH:
+            case MATH_HYPOT:
+            case MATH_FROUND:
+            case MATH_CLZ32:
+            case MATH_CBRT:
+            case MATH_SINH:
+            case MATH_COSH:
+            case MATH_LOG2:
+            case MATH_LOG1P:
+            case MATH_EXPM1: {
+                return Value.makeAnyNum();
             }
 
             default:

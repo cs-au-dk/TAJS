@@ -1,0 +1,10 @@
+test-resources/src/micro/test103.js:6:16: [definite] Variable y1 is null/undefined
+test-resources/src/micro/test103.js:7:16: [definite] Variable y2 is null/undefined
+test-resources/src/micro/test103.js:2:10: [definite] Reading absent property a
+test-resources/src/micro/test103.js:3:10: [definite] Reading absent property b
+test-resources/src/micro/test103.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test103.js:6:1: [info] Abstract value: Undef
+test-resources/src/micro/test103.js:7:1: [info] Abstract value: Undef
+test-resources/src/micro/test103.js:8:1: [info] Abstract value: 42.0
+test-resources/src/micro/test103.js:9:1: [info] Abstract value: 42.0
+Soundness testing succeeded for 22 checks (with 0 expected failures)

@@ -1,0 +1,10 @@
+test-resources/src/v8tests/for-in-special-cases.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/for-in-special-cases.js:54:3: [definite] ReferenceError, reading absent variable gc
+test-resources/src/v8tests/for-in-special-cases.js:52:17: [definite] The conditional expression is always true
+test-resources/src/v8tests/for-in-special-cases.js:32:14: [definite] The variable x is never used
+test-resources/src/v8tests/for-in-special-cases.js:35:5: [definite] Unreachable code
+test-resources/src/v8tests/for-in-special-cases.js:41:1: [definite] Unreachable function for_in_undefined
+test-resources/src/v8tests/for-in-special-cases.js:54:3: [definite] Unreachable code
+test-resources/src/v8tests/for-in-special-cases.js:57:10: [definite] The variable j is never used
+test-resources/src/v8tests/for-in-special-cases.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/for-in-special-cases.js:54:3]
+Soundness testing succeeded for 14 checks (with 0 expected failures)

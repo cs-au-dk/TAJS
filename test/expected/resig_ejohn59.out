@@ -1,3 +1,0 @@
-test/resig/ejohn59.js: [definite] Exceptional program exit is unreachable
-test/resig/ejohn59.js:3:4: [info] Abstract value: UInt
-Soundness testing succeeded for 39 checks (with 0 expected failures)

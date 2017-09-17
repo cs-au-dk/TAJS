@@ -32,6 +32,12 @@ public class EventDispatcherNode extends Node {
      * Different kinds of event dispatching.
      */
     public enum Type {
+
+        /**
+         * Content loaded event.
+         */
+        DOM_CONTENT_LOADED,
+
         /**
          * Load DOM event.
          */

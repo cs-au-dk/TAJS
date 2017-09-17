@@ -1,0 +1,26 @@
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:24:1: [definite] Dead assignment, property p3 is never read
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:25:1: [definite] Dead assignment, property 3 is never read
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:28:1: [definite] Dead assignment, property is never read
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:29:1: [definite] Dead assignment, property is never read
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:48:1: [definite] Dead assignment, property is never read
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:57:1: [definite] Dead assignment, property is never read
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:52:1: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:53:1: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:57:1: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:34:1: [maybe] Reading absent property p5
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/testDeadAssignmentsAndDPAs.js:52:1, test-resources/src/micro/testDeadAssignmentsAndDPAs.js:53:1, test-resources/src/micro/testDeadAssignmentsAndDPAs.js:57:1]
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:20:1: [maybe] Reading absent property (computed name)
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:21:1: [maybe] Reading absent property (computed name)
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:35:1: [maybe] Reading absent property (computed name)
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:40:1: [maybe] Reading absent property (computed name)
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:41:1: [maybe] Reading absent property (computed name)
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:45:1: [maybe] Reading absent property (computed name)
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:52:1: [maybe] Reading absent property (computed name)
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:53:1: [maybe] Reading absent property (computed name)
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:57:1: [maybe] Reading absent property (computed name)
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:28:1: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:32:1: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:38:1: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:20:1: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/micro/testDeadAssignmentsAndDPAs.js:40:1: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 76 checks (with 0 expected failures)

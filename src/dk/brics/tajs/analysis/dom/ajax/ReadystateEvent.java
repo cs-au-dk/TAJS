@@ -55,6 +55,7 @@ public class ReadystateEvent {
         createDOMProperty(INSTANCES, "cancelable", Value.makeBool(false).setReadOnly(), c);
         createDOMProperty(INSTANCES, "bubbles", Value.makeBool(false).setReadOnly(), c);
         createDOMProperty(INSTANCES, "target", Value.makeObject(XmlHttpRequest.INSTANCES).setReadOnly(), c); // TODO: bound to a specific XMLHttpRequest object...
+        createDOMProperty(INSTANCES, "type", Value.makeStr("readystatechange").setReadOnly(), c);
 
         /*
          *  ResponseText + ResponseXML (TODO)

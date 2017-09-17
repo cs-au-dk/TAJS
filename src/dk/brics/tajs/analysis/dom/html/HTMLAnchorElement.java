@@ -76,6 +76,7 @@ public class HTMLAnchorElement {
         createDOMProperty(INSTANCES, "hostname", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "href", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "hreflang", Value.makeAnyStr(), c);
+        createDOMProperty(INSTANCES, "origin", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "rel", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "rev", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "shape", Value.makeAnyStr(), c);

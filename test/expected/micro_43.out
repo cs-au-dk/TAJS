@@ -1,6 +1,0 @@
-test/micro/test43.js: [definite] Exceptional program exit is unreachable
-test/micro/test43.js:3:9: [maybe] Converting primitive number to object
-test/micro/test43.js:6:9: [maybe] Converting primitive number to object
-test/micro/test43.js:4:1: [info] Abstract value: "42.66"
-test/micro/test43.js:7:1: [info] Abstract value: 42.66
-Soundness testing succeeded for 18 checks (with 0 expected failures)

@@ -25,6 +25,8 @@ import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.DeepImmutable;
 
+import javax.annotation.Nonnull;
+
 /**
  * Label of abstract object.
  * Immutable.
@@ -307,7 +309,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel>, DeepImmutable
      * The source location is used as primary key, and toString is used as secondary key.
      */
     @Override
-    public int compareTo(ObjectLabel objlabel) {
+    public int compareTo(@Nonnull ObjectLabel objlabel) {
         int c = getSourceLocation().compareTo(objlabel.getSourceLocation());
         if (c != 0)
             return c;

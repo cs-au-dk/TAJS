@@ -1,0 +1,2 @@
+test-resources/src/micro/test149.js: [definite] Exceptional program exit is unreachable
+Soundness testing succeeded for 55 checks (with 0 expected failures)

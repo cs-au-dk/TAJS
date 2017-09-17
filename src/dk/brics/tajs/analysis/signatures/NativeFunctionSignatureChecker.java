@@ -210,7 +210,7 @@ public class NativeFunctionSignatureChecker {
             Arrays.asList(simpleSignatures).forEach(sig -> signatures.put(Pair.make(sig.minArguments, sig.maxArguments), sig));
 
             if (signatures.size() != simpleSignatures.length) {
-                throw new AnalysisException("Ambiguous overloading: " + simpleSignatures);
+                throw new AnalysisException("Ambiguous overloading: " + Arrays.toString(simpleSignatures));
             }
         }
 

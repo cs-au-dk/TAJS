@@ -1,0 +1,31 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var sequence = [
+      ['b1', 'b2']
+    ];
+    var value = '';
+    var debouncedAppend;
+    var append = function(arg){
+      value += this + arg;
+      var args = sequence.pop();
+      if (args) {
+        debouncedAppend.call(args[0], args[1]);
+      }
+    };
+    debouncedAppend = _.debounce(append, 32);
+    debouncedAppend.call('a1', 'a2');
+    equal(value, '');
+    _.delay(function(){
+      equal(value, 'a1a2b1b2', 'append was debounced successfully');
+      start();
+    }, 100);
+</script></head><body></body></html>

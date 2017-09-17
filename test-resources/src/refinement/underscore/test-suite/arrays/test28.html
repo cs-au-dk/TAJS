@@ -1,0 +1,45 @@
+<html><head><title></title>
+<script src='../../libraries/underscore-1.8.3.js'></script>
+<script>// START OF QUNIT mock
+function equal() {};
+function deepEqual() {};
+function strictEqual() {};
+function ok() {};
+function notStrictEqual() {};
+function start() {};
+// END OF QUNIT mock
+
+    var objects = [
+      {'a': 0, 'b': 0},
+      {'a': 1, 'b': 1},
+      {'a': 2, 'b': 2},
+      {'a': 0, 'b': 0}
+    ];
+    equal(_.findLastIndex(objects, function(obj) {
+      return obj.a === 0;
+    }), 3);
+    equal(_.findLastIndex(objects, function(obj) {
+      return obj.b * obj.a === 4;
+    }), 2);
+    equal(_.findLastIndex(objects, 'a'), 2, 'Uses lookupIterator');
+    equal(_.findLastIndex(objects, function(obj) {
+      return obj.b * obj.a === 5;
+    }), -1);
+    equal(_.findLastIndex(null, _.noop), -1);
+    strictEqual(_.findLastIndex(objects, function(a) {
+      return a.foo === null;
+    }), -1);
+    _.findLastIndex([{a: 1}], function(a, key, obj) {
+      equal(key, 0);
+      deepEqual(obj, [{a: 1}]);
+      strictEqual(this, objects, 'called with context');
+    }, objects);
+    var sparse = [];
+    sparse[20] = {'a': 2, 'b': 2};
+    equal(_.findLastIndex(sparse, function(obj) {
+      return obj && obj.b * obj.a === 4;
+    }), 20, 'Works with sparse arrays');
+    var array = [1, 2, 3, 4];
+    array.match = 55;
+    strictEqual(_.findLastIndex(array, function(x) { return x === 55; }), -1, 'doesn\'t match array-likes keys');
+</script></head><body></body></html>

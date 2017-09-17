@@ -1,0 +1,15 @@
+test-resources/src/v8tests/debug-backtrace-text.js: [definite] Ordinary program exit is unreachable
+test-resources/src/v8tests/debug-backtrace-text.js:59:9: [definite] ReferenceError, reading absent variable debug
+test-resources/src/v8tests/debug-backtrace-text.js:32:3: [definite] Dead assignment, property x is never read
+test-resources/src/v8tests/debug-backtrace-text.js:33:3: [definite] Dead assignment, property y is never read
+test-resources/src/v8tests/debug-backtrace-text.js:36:1: [definite] Dead assignment, property distanceTo is never read
+test-resources/src/v8tests/debug-backtrace-text.js:44:1: [definite] Dead assignment, property distanceTo is never read
+test-resources/src/v8tests/debug-backtrace-text.js:36:30: [definite] Unreachable function
+test-resources/src/v8tests/debug-backtrace-text.js:44:17: [definite] Unreachable function
+test-resources/src/v8tests/debug-backtrace-text.js:48:1: [definite] Unreachable function distance
+test-resources/src/v8tests/debug-backtrace-text.js:52:1: [definite] Unreachable function createPoint
+test-resources/src/v8tests/debug-backtrace-text.js:59:9: [definite] Unreachable code
+test-resources/src/v8tests/debug-backtrace-text.js:65:1: [definite] Unreachable function safeEval
+test-resources/src/v8tests/debug-backtrace-text.js:73:1: [definite] Unreachable function listener
+test-resources/src/v8tests/debug-backtrace-text.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-backtrace-text.js:59:9]
+Soundness testing succeeded for 37 checks (with 0 expected failures)

@@ -1,9 +1,0 @@
-test/wala/more-control-flow.js:4:3: [definite] The conditional expression is always false
-test/wala/more-control-flow.js:26:3: [definite] The conditional expression is always false
-test/wala/more-control-flow.js:49:5: [definite] The conditional expression is always false
-test/wala/more-control-flow.js:51:10: [definite] The conditional expression is always false
-test/wala/more-control-flow.js:55:12: [definite] The conditional expression is always false
-test/wala/more-control-flow.js:85:3: [definite] The conditional expression is always true
-test/wala/more-control-flow.js:92:10: [definite] The conditional expression is always true
-test/wala/more-control-flow.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 194 checks (with 0 expected failures)
