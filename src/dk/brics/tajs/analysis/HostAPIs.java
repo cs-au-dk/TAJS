@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ public enum HostAPIs implements HostAPI {
 
     public static Value evaluate(HostObject hostobject, CallInfo call, Solver.SolverInterface c) {
         if (NativeFunctionSignatureChecker.get().shouldStopPropagation(hostobject, call, c)) {
-            c.getState().setToNone();
+            c.getState().setToBottom();
             return Value.makeNone();
         }
         switch ((HostAPIs) hostobject.getAPI()) {

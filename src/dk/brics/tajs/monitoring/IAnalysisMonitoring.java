@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,8 @@ import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ILatticeMonitoring;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PKeys;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
@@ -175,19 +175,19 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
      *
      * @param n             the node responsible for the read
      * @param objs          the objects being read from
-     * @param propertystr   description of the property name
+     * @param propertyname  description of the property name
      * @param check_unknown if set, warn about reads from unknown properties
      */
-    void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown);
+    void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, PKeys propertyname, State state, boolean check_unknown);
 
     /**
      * Invoked when a property write operation cccurs.
      *
-     * @param n           the node responsible for the write
-     * @param objs        the objects being written to
-     * @param propertystr description of the property name
+     * @param n            the node responsible for the write
+     * @param objs         the objects being written to
+     * @param propertyname description of the property name
      */
-    void visitPropertyWrite(Node n, Set<ObjectLabel> objs, Str propertystr);
+    void visitPropertyWrite(Node n, Set<ObjectLabel> objs, PKeys propertyname);
 
     /**
      * Invoked when a variable or property read operation cccurs.
@@ -205,15 +205,15 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
     /**
      * Invoked when a property read operation cccurs.
      *
-     * @param n           read property operation
-     * @param objlabels   objects being read from
-     * @param propertystr description of the property name
-     * @param maybe       if there may be more than one value
-     * @param state       current abstract state
-     * @param v           property value with attributes
-     * @param global_obj  the global object
+     * @param n            read property operation
+     * @param objlabels    objects being read from
+     * @param propertyname description of the property name
+     * @param maybe        if there may be more than one value
+     * @param state        current abstract state
+     * @param v            property value with attributes
+     * @param global_obj   the global object
      */
-    void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v, ObjectLabel global_obj); // TODO these checks should be done for CallNodes as well!
+    void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, PKeys propertyname, boolean maybe, State state, Value v, ObjectLabel global_obj); // TODO these checks should be done for CallNodes as well!
     // TODO: we have both visitReadProperty and visitPropertyRead - merge them, or give them better names?
 
     /**

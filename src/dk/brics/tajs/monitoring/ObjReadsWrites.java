@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 package dk.brics.tajs.monitoring;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.lattice.PKey;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -50,7 +51,7 @@ class ObjReadsWrites {
     /**
      * Map describing which nodes write to which properties.
      */
-    private Map<String, Set<AbstractNode>> definite_write_nodes;
+    private Map<PKey, Set<AbstractNode>> definite_write_nodes;
 
     /**
      * Set of nodes where a default write occurs.
@@ -60,12 +61,12 @@ class ObjReadsWrites {
     /**
      * Read and write status of each property.
      */
-    private Map<String, R_Status> reads;
+    private Map<PKey, R_Status> reads;
 
     /**
      * Read and write status of each property.
      */
-    private Map<String, W_Status> writes;
+    private Map<PKey, W_Status> writes;
 
     /**
      * Indicates if a read from an unknown property has been done.
@@ -95,14 +96,14 @@ class ObjReadsWrites {
     /**
      * Indicates that the given property has definitely been read.
      */
-    public void readDefinite(String prop) {
+    public void readDefinite(PKey prop) {
         reads.put(prop, R_Status.READ);
     }
 
     /**
      * Indicate that the given property has maybe been read.
      */
-    public void readMaybe(String prop) {
+    public void readMaybe(PKey prop) {
         R_Status r = reads.get(prop);
         if (r != null && r == R_Status.READ) {
             return;
@@ -113,7 +114,7 @@ class ObjReadsWrites {
     /**
      * Indicates that the given property has definitely been read.
      */
-    public void writeDefinite(String prop, AbstractNode write_node) {
+    public void writeDefinite(PKey prop, AbstractNode write_node) {
         writes.put(prop, W_Status.WRITTEN);
         addToMapSet(definite_write_nodes, prop, write_node);
     }
@@ -121,7 +122,7 @@ class ObjReadsWrites {
     /**
      * Indicates that the given property has maybe been read.
      */
-    public void writeMaybe(String prop) {
+    public void writeMaybe(PKey prop) {
         W_Status r = writes.get(prop);
         if (r != null && r == W_Status.WRITTEN) {
             return;
@@ -133,7 +134,7 @@ class ObjReadsWrites {
      * Indicates that some unknown property maybe has been read.
      */
     public void readUnknown() {
-        for (Entry<String, R_Status> g : new HashMap<>(reads).entrySet()) {
+        for (Entry<PKey, R_Status> g : new HashMap<>(reads).entrySet()) {
             if (g.getValue() == R_Status.NOT_READ) {
                 reads.put(g.getKey(), R_Status.MAYBE_READ);
             }
@@ -145,7 +146,7 @@ class ObjReadsWrites {
      * Indicates that some unknown property has been written at the given node.
      */
     public void writeUnknown(AbstractNode write_node) {
-        for (Entry<String, W_Status> g : new HashMap<>(writes).entrySet()) {
+        for (Entry<PKey, W_Status> g : new HashMap<>(writes).entrySet()) {
             if (g.getValue() == W_Status.NOT_WRITTEN) {
                 writes.put(g.getKey(), W_Status.MAYBE_WRITTEN);
             }
@@ -157,7 +158,7 @@ class ObjReadsWrites {
     /**
      * Returns the read status of the given property.
      */
-    public R_Status getReadStatus(String prop) {
+    public R_Status getReadStatus(PKey prop) {
         R_Status r = reads.get(prop);
         r = r == null ? R_Status.NOT_READ : r;
         if (r == R_Status.NOT_READ && unknown_read) {
@@ -169,7 +170,7 @@ class ObjReadsWrites {
     /**
      * Returns the write status of the given property.
      */
-    public W_Status getWriteStatus(String prop) {
+    public W_Status getWriteStatus(PKey prop) {
         W_Status w = writes.get(prop);
         w = w == null ? W_Status.NOT_WRITTEN : w;
         if (w == W_Status.NOT_WRITTEN && unknown_written) {
@@ -181,7 +182,7 @@ class ObjReadsWrites {
     /**
      * Returns the set of locations where the given property is definitely written.
      */
-    public Set<AbstractNode> getDefiniteWriteLocations(String prop) {
+    public Set<AbstractNode> getDefiniteWriteLocations(PKey prop) {
         if (definite_write_nodes.containsKey(prop)) {
             return Collections.unmodifiableSet(definite_write_nodes.get(prop));
         }
@@ -192,8 +193,8 @@ class ObjReadsWrites {
      * Get all properties that are read or written (definitely/maybe),
      * ignoring unknown reads/writes.
      */
-    public Set<String> getProperties() {
-        Set<String> res = newSet();
+    public Set<PKey> getProperties() {
+        Set<PKey> res = newSet();
         res.addAll(reads.keySet());
         res.addAll(writes.keySet());
         return Collections.unmodifiableSet(res);

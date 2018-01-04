@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@ public class StateExtras {
     private boolean writable_may_maps;
 
     protected StateExtras() {
-        setToNone();
+        setToBottom();
     }
 
     protected StateExtras(StateExtras x) {
@@ -95,7 +95,7 @@ public class StateExtras {
     /**
      * Resets all maps.
      */
-    public void setToNone() {
+    public void setToBottom() {
         if (Options.get().isCopyOnWriteDisabled()) {
             may_sets = newMap();
             writable_may_sets = true;

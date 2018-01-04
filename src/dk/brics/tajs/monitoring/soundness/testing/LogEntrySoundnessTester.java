@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,6 +49,8 @@ import dk.brics.tajs.flowgraph.jsnodes.ConstantNode;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PKey;
+import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
@@ -278,11 +280,11 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
             }
             if (isApply && cn.getNumberOfArgs() > 1) {
                 int statArgRegister = cn.getArgRegister(1);
-                Value argArrayLengthValue = readProperty(cn, statArgRegister, "length", AbstractNode.NO_VALUE);
+                Value argArrayLengthValue = readProperty(cn, statArgRegister, StringPKey.make("length"), AbstractNode.NO_VALUE);
                 if (argArrayLengthValue.isMaybeSingleNum() && !argArrayLengthValue.isMaybeOtherThanNum()) {
                     int argArrayLength = argArrayLengthValue.getNum().intValue();
                     for (int i = 0; i < argArrayLength; i++) {
-                        staticArgumentsApply.add(readProperty(cn, statArgRegister, "" + i, AbstractNode.NO_VALUE));
+                        staticArgumentsApply.add(readProperty(cn, statArgRegister, StringPKey.make("" + i), AbstractNode.NO_VALUE));
                     }
                 } else {
                     return; // TODO support unknown length of arguments array to .apply
@@ -324,7 +326,7 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
             BasicBlock block = cn.getBlock();
             int staticBaseRegister = cn.getBaseRegister();
             if (staticBaseRegister == AbstractNode.NO_VALUE) {
-                return Value.makeObject(InitialStateBuilder.GLOBAL);
+                return Value.makeObject(InitialStateBuilder.GLOBAL).joinUndef(); //TODO: see #473
             } else {
                 Value staticBase = readRegister(block, staticBaseRegister);
                 if (staticBase.getObjectLabels().stream().allMatch(l -> l.getKind() == ObjectLabel.Kind.ACTIVATION)) {
@@ -337,6 +339,12 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
 
                 // the valuelogger provides unboxed values for call bases - unbox the TAJS value if possible
                 staticBase = staticBase.join(getInnerValueIfBoxed(block, staticBase));
+
+                if (staticBase.getObjectLabels().stream().anyMatch((o) ->  o == InitialStateBuilder.GLOBAL)) { //TODO: see #473
+                    staticBase = staticBase.joinUndef();
+                }
+
+
                 return staticBase;
             }
         }).collect(Collectors.toSet());
@@ -350,7 +358,8 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
                     if (functionRegister != AbstractNode.NO_VALUE) {
                         return readRegister(block, functionRegister);
                     } else if (cn.getPropertyString() != null || cn.getPropertyRegister() != AbstractNode.NO_VALUE) {
-                        return readProperty(cn, cn.getBaseRegister(), cn.getPropertyString(), cn.getPropertyRegister());
+                        StringPKey k = cn.getPropertyString() != null ? StringPKey.make(cn.getPropertyString()) : null;
+                        return readProperty(cn, cn.getBaseRegister(), k, cn.getPropertyRegister());
                     } else {
                         throw new AnalysisException("Unhandled CallNode case!?!");
                     }
@@ -470,13 +479,12 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
         return result;
     }
 
-    private Value readProperty(AbstractNode node, int base, String propName, int propertyNameRegister) {
+    private Value readProperty(AbstractNode node, int base, PKey propName, int propertyNameRegister) {
         Map<Context, State> states = c.getAnalysisLatticeElement().getStates(node.getBlock());
         List<Value> values = states.values().stream().map(s -> {
-            State oldState = c.getState();
             Value result = c.withStateAndNode(s, node, () -> {
                 Set<ObjectLabel> baseObjects = Conversion.toObject(node, UnknownValueResolver.getRealValue(s.readRegister(base), s), c).getObjectLabels();
-                Set<Value> allPropertyNames = singleton(propName != null ? Value.makeStr(propName) : Conversion.toString(UnknownValueResolver.getRealValue(s.readRegister(propertyNameRegister), s), c));
+                Set<Value> allPropertyNames = singleton(propName != null ? propName.toValue() : Conversion.toString(UnknownValueResolver.getRealValue(s.readRegister(propertyNameRegister), s), c));
                 Set<Value> propertyValues = allPropertyNames.stream()
                         .map(name -> {
                             Value value = c.getAnalysis().getPropVarOperations().readPropertyValue(baseObjects, name);
@@ -501,7 +509,7 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
     private Value readRegister(BasicBlock block, int register) {
         Map<Context, State> states = c.getAnalysisLatticeElement().getStates(block);
         List<Value> values = states.values().stream().map(s ->
-                s.isNone() ? Value.makeNone() : UnknownValueResolver.getRealValue(s.readRegister(register), s)
+                s.isBottom() ? Value.makeNone() : UnknownValueResolver.getRealValue(s.readRegister(register), s)
         ).collect(Collectors.toList());
         Value result = Value.join(values);
         if (log.isDebugEnabled()) {

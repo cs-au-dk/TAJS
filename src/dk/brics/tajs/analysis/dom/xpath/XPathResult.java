@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,8 +79,8 @@ public class XPathResult {
          */
         createDOMProperty(PROTOTYPE, "booleanValue", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "invalidIteratorState", Value.makeAnyBool().setReadOnly(), c);
-        createDOMProperty(PROTOTYPE, "numberValue", Value.makeNull().makeAnyNum(), c); // FIXME: supposed to be join?
-        createDOMProperty(PROTOTYPE, "resultType", Value.makeNull().makeAnyNumUInt(), c); // FIXME: supposed to be join?
+        createDOMProperty(PROTOTYPE, "numberValue", Value.makeNull().makeAnyNum(), c); // FIXME: supposed to be join? (github #502)
+        createDOMProperty(PROTOTYPE, "resultType", Value.makeNull().makeAnyNumUInt(), c); // FIXME: supposed to be join? (github #502)
         createDOMProperty(PROTOTYPE, "singleNodeValue", Value.makeNull().setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "snapshotLength", Value.makeAnyNumUInt().setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "stringValue", Value.makeAnyStr().setReadOnly(), c);

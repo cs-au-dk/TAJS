@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -201,5 +201,23 @@ public class PathAndURLUtils {
      */
     public static String toPortableString(Path path) {
         return path.toString().replace(File.separatorChar, '/');
+    }
+
+    /**
+     * Converts a string to an URL.
+     */
+    public static URL toURL(String str) {
+        URL url;
+        try {
+            url = new URL(str);
+        } catch (MalformedURLException e) {
+            Path strAsPath = Paths.get(str);
+            if (Files.exists(strAsPath)) {
+                url = PathAndURLUtils.toURL(strAsPath);
+            } else {
+                throw new RuntimeException(e);
+            }
+        }
+        return url;
     }
 }

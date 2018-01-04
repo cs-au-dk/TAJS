@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,8 @@
 
 package dk.brics.tajs.lattice;
 
+import dk.brics.tajs.lattice.PKey.SymbolPKey;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Strings;
 
 /**
  * An object property.
@@ -25,9 +25,7 @@ import dk.brics.tajs.util.Strings;
  */
 public class Property {
 
-    public static final String __PROTO__ = "__proto__";
-
-    private String propertyname;
+    private PKey propertyname;
 
     private int hashcode;
 
@@ -55,7 +53,7 @@ public class Property {
 
     private static Property theInternalScopeProperty =  new Property(Kind.INTERNAL_SCOPE, null);
 
-    private Property(Kind kind, String propertyname) {
+    private Property(Kind kind, PKey propertyname) {
         this.kind = kind;
         this.propertyname = propertyname;
         hashcode = kind.hashCode() * 5 + (propertyname != null ? propertyname.hashCode() * 31 : 0);
@@ -64,7 +62,7 @@ public class Property {
     /**
      * Constructs an ordinary property.
      */
-    public static Property makeOrdinaryProperty(String propertyname) {
+    public static Property makeOrdinaryProperty(PKey propertyname) {
         return new Property(Kind.ORDINARY, propertyname);
     }
 
@@ -141,13 +139,13 @@ public class Property {
     }
 
     /**
-     * Checks whether the property refers to default-array/nonarray.
+     * Checks whether the property refers to default-array/nonarray or a summary symbol.
      * Should not be invoked with an internal property reference.
      */
     public boolean isFuzzy() {
         switch (kind) {
             case ORDINARY:
-                return false;
+                return propertyname instanceof SymbolPKey && !((SymbolPKey) propertyname).getObjectLabel().isSingleton();
             case DEFAULT_ARRAY:
             case DEFAULT_NONARRAY:
                 return true;
@@ -159,7 +157,7 @@ public class Property {
     /**
      * Returns the property name (for ordinary properties).
      */
-    public String getPropertyName() {
+    public PKey getPropertyName() {
         if (kind != Kind.ORDINARY) {
             throw new AnalysisException("Call to getPropertyName on non-ORDINARY property");
         }
@@ -167,12 +165,12 @@ public class Property {
     }
 
     /**
-     * Converts this property to a {@link Str}.
+     * Converts this property to a {@link Value}.
      */
-    public Str toStr() {
+    public Value toValue() {
         switch (kind) {
             case ORDINARY:
-                return Value.makeStr(propertyname);
+                return propertyname.toValue();
             case DEFAULT_ARRAY:
                 return Value.makeAnyStrUInt();
             case DEFAULT_NONARRAY:
@@ -189,7 +187,7 @@ public class Property {
     public String toString() {
         switch (kind) {
             case ORDINARY:
-                return Strings.escape(propertyname);
+                return propertyname.toStringEscaped();
             case DEFAULT_ARRAY:
                 return "[[default-array]]";
             case DEFAULT_NONARRAY:

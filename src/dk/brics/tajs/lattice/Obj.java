@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,9 @@
 
 package dk.brics.tajs.lattice;
 
+import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.Strings;
 
 import java.util.Collections;
 import java.util.Map;
@@ -34,7 +34,7 @@ import static dk.brics.tajs.util.Collections.sortedEntries;
  */
 public final class Obj {
 
-    private Map<String, Value> properties;
+    private Map<PKey, Value> properties;
 
     private boolean writable_properties; // for copy-on-write (for properties, not this object)
 
@@ -268,8 +268,19 @@ public final class Obj {
     public Obj summarize(Summarized s) {
         Obj res = new Obj();
         res.properties = newMap();
-        for (Entry<String, Value> me : properties.entrySet())
-            res.properties.put(me.getKey(), me.getValue().summarize(s));
+        for (Entry<PKey, Value> me : properties.entrySet()) {
+            Set<PKey> summarized_key = me.getKey().summarize(s);
+            Value summarized_value = me.getValue().summarize(s);
+            for (PKey k : summarized_key) {
+                Value old_value = res.properties.get(k);
+                Value new_value;
+                if (old_value == null)
+                    new_value = summarized_value;
+                else
+                    new_value = old_value.join(summarized_value);
+                res.properties.put(k, new_value);
+            }
+        }
         res.writable_properties = true;
         res.default_array_property = default_array_property.summarize(s);
         res.default_nonarray_property = default_nonarray_property.summarize(s);
@@ -285,23 +296,21 @@ public final class Obj {
      */
     public void replaceNonModifiedParts(Obj other) {
         checkWritable();
-        Map<String, Value> newproperties = newMap();
-        for (Entry<String, Value> me : properties.entrySet()) {
+        Map<PKey, Value> newproperties = newMap();
+        for (Entry<PKey, Value> me : properties.entrySet()) {
             Value v = me.getValue();
-            if (!v.isMaybeModified()) // property is definitely not modified, so replace it (don't consider the defaults here)
-                v = other.properties.get(me.getKey());
-            if (v != null) // if the property is definitely not modified *and* it doesn't appear in the other object, then remove it
-                newproperties.put(me.getKey(), v);
+            if (!v.isMaybeModified()) { // property is definitely not modified, so replace it
+                v = other.getProperty(me.getKey());
+            }
+            newproperties.put(me.getKey(), v);
         }
         boolean default_array_property_maybe_modified = default_array_property.isMaybeModified();
         boolean default_nonarray_property_maybe_modified = default_nonarray_property.isMaybeModified();
         if (!default_array_property_maybe_modified || !default_nonarray_property_maybe_modified)
-            for (Entry<String, Value> me : other.properties.entrySet())
+            for (Entry<PKey, Value> me : other.properties.entrySet())
                 if (!newproperties.containsKey(me.getKey())
-                        && (Strings.isArrayIndex(me.getKey()) ? !default_array_property_maybe_modified : !default_nonarray_property_maybe_modified))
+                        && (me.getKey().isArrayIndex() ? !default_array_property_maybe_modified : !default_nonarray_property_maybe_modified))
                     newproperties.put(me.getKey(), me.getValue());
-        properties = newproperties;
-        writable_properties = true;
         if (!default_array_property_maybe_modified)
             default_array_property = other.default_array_property;
         if (!default_nonarray_property_maybe_modified)
@@ -314,6 +323,10 @@ public final class Obj {
             scope = other.scope;
             scope_unknown = false;
         }
+        // remove properties that are equal to the default (semantic reduction)
+        newproperties.entrySet().removeIf(me -> me.getValue().equals(me.getKey().isArrayIndex() ? default_array_property : default_nonarray_property));
+        properties = newproperties;
+        writable_properties = true;
         if (isSomeNone())
             setToNone();
     }
@@ -361,8 +374,8 @@ public final class Obj {
      */
     public void clearModified() {
         checkWritable();
-        Map<String, Value> new_properties = newMap();
-        for (Entry<String, Value> me : properties.entrySet())
+        Map<PKey, Value> new_properties = newMap();
+        for (Entry<PKey, Value> me : properties.entrySet())
             new_properties.put(me.getKey(), me.getValue().restrictToNotModified());
         properties = new_properties;
         writable_properties = true;
@@ -376,10 +389,10 @@ public final class Obj {
      * Returns the value of the given property, considering defaults if necessary.
      * Never returns null, may return 'unknown'.
      */
-    public Value getProperty(String propertyname) {
+    public Value getProperty(PKey propertyname) {
         Value v = properties.get(propertyname);
         if (v == null)
-            if (Strings.isArrayIndex(propertyname))
+            if (propertyname.isArrayIndex())
                 v = getDefaultArrayProperty();
             else
                 v = getDefaultNonArrayProperty();
@@ -389,7 +402,7 @@ public final class Obj {
     /**
      * Sets the given property.
      */
-    public void setProperty(String propertyname, Value v) {
+    public void setProperty(PKey propertyname, Value v) {
         checkWritable();
         makeWritableProperties();
         properties.put(propertyname, v);
@@ -398,7 +411,7 @@ public final class Obj {
     /**
      * Returns all property names, excluding the defaults and internal properties.
      */
-    public Set<String> getPropertyNames() {
+    public Set<PKey> getPropertyNames() {
         return properties.keySet();
     }
 
@@ -406,14 +419,14 @@ public final class Obj {
      * Returns all properties, excluding the defaults and internal properties.
      * The returned map is *only* for reading.
      */
-    public Map<String, Value> getProperties() {
+    public Map<PKey, Value> getProperties() {
         return properties;
     }
 
     /**
      * Sets the property map.
      */
-    public void setProperties(Map<String, Value> properties) {
+    public void setProperties(Map<PKey, Value> properties) {
         checkWritable();
         this.properties = properties;
         writable_properties = true;
@@ -539,9 +552,9 @@ public final class Obj {
      */
     public void replaceObjectLabel(ObjectLabel oldlabel, ObjectLabel newlabel, Map<ScopeChain, ScopeChain> cache) {
         checkWritable();
-        Map<String, Value> newproperties = newMap();
-        for (Entry<String, Value> me : properties.entrySet())
-            newproperties.put(me.getKey(), me.getValue().replaceObjectLabel(oldlabel, newlabel));
+        Map<PKey, Value> newproperties = newMap();
+        for (Entry<PKey, Value> me : properties.entrySet())
+            newproperties.put(me.getKey().replaceObjectLabel(oldlabel, newlabel), me.getValue().replaceObjectLabel(oldlabel, newlabel));
         properties = newproperties;
         scope = ScopeChain.replaceObjectLabel(scope, oldlabel, newlabel, cache);
         default_nonarray_property = default_nonarray_property.replaceObjectLabel(oldlabel, newlabel);
@@ -578,7 +591,7 @@ public final class Obj {
      * and that no explicit property has been moved to default_array_property or default_nonarray_property.
      */
     public void diff(Obj old, StringBuilder b) {
-        for (Entry<String, Value> me : sortedEntries(properties)) {
+        for (Entry<PKey, Value> me : sortedEntries(properties)) {
             Value v = old.properties.get(me.getKey());
             if (v == null) {
                 b.append("\n        new property: ").append(me.getKey());
@@ -647,17 +660,17 @@ public final class Obj {
             any = true;
             b.append("<none>");
         }
-        for (Entry<String, Value> me : sortedEntries(properties)) {
+        for (Entry<PKey, Value> me : sortedEntries(properties)) {
             Value v = me.getValue();
-            if (v == (Strings.isArrayIndex(me.getKey()) ? default_array_property : default_nonarray_property))
+            if (v == (me.getKey().isArrayIndex() ? default_array_property : default_nonarray_property))
                 continue;
-            if (me.getKey().equals(Property.__PROTO__))
+            if (me.getKey().equals(StringPKey.__PROTO__))
                 continue;
             if (any)
                 b.append(",");
             else
                 any = true;
-            b.append(Strings.escape(me.getKey())).append(":").append(v);
+            b.append(me.getKey().toStringEscaped()).append(":").append(v);
         }
         if (default_array_property.isMaybePresentOrUnknown()) {
             if (any)
@@ -708,13 +721,13 @@ public final class Obj {
      */
     public String printModified() {
         StringBuilder b = new StringBuilder();
-        for (Entry<String, Value> me : sortedEntries(properties)) {
+        for (Entry<PKey, Value> me : sortedEntries(properties)) {
             Value v = me.getValue();
-            if (me.getKey().equals(Property.__PROTO__)) {
+            if (me.getKey().equals(StringPKey.__PROTO__)) {
                 continue;
             }
             if (v.isMaybeModified() && v.isMaybePresentOrUnknown())
-                b.append("\n    ").append(Strings.escape(me.getKey())).append(": ").append(v);
+                b.append("\n    ").append(me.getKey().toStringEscaped()).append(": ").append(v);
         }
         if ((default_array_property.isMaybeModified()) && default_array_property.isMaybePresentOrUnknown())
             b.append("\n    ").append("[[DefaultArray]] = ").append(default_array_property);
@@ -753,8 +766,8 @@ public final class Obj {
                 internal_value.containsObjectLabel(objlabel)) {
             return true;
         }
-        for (Value v : properties.values())
-            if (v.containsObjectLabel(objlabel))
+        for (Map.Entry<PKey, Value> me : properties.entrySet())
+            if (me.getKey().containsObjectLabel(objlabel) || me.getValue().containsObjectLabel(objlabel))
                 return true;
         return ScopeChain.containsObjectLabels(scope, objlabel);
     }
@@ -813,7 +826,7 @@ public final class Obj {
         checkWritable();
         makeWritableProperties();
         // materialize properties before changing the default properties
-        for (String propertyname : obj.properties.keySet()) {
+        for (PKey propertyname : obj.properties.keySet()) {
             properties.put(propertyname, getProperty(propertyname));
         }
         // reduce those properties that are unknown or polymorphic in obj
@@ -826,9 +839,9 @@ public final class Obj {
         internal_prototype = UnknownValueResolver.localize(internal_prototype, obj.internal_prototype, s,
                 ObjectProperty.makeInternalPrototype(objlabel));
         UnknownValueResolver.localizeScopeChain(objlabel, this, obj, s);
-        Map<String, Value> new_properties = newMap();
-        for (Entry<String, Value> me : properties.entrySet()) { // obj is writable, so materializations from defaults will appear here
-            String propertyname = me.getKey();
+        Map<PKey, Value> new_properties = newMap();
+        for (Entry<PKey, Value> me : properties.entrySet()) { // obj is writable, so materializations from defaults will appear here
+            PKey propertyname = me.getKey();
             Value v = me.getValue();
             Value obj_v = obj.getProperty(propertyname);
             new_properties.put(propertyname, UnknownValueResolver.localize(v, obj_v, s,

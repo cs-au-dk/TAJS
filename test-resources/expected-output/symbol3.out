@@ -1,0 +1,4 @@
+out/temp-sources/TestMicro.symbol3.js: [definite] Exceptional program exit is unreachable
+out/temp-sources/TestMicro.symbol3.js:3:1: [info] Abstract value: [@Symbol#node27]
+out/temp-sources/TestMicro.symbol3.js:5:1: [info] Abstract value: [@Symbol#node27]
+Soundness testing succeeded for 27 checks (with 0 expected failures)

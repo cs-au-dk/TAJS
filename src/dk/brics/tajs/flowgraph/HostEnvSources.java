@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ import static dk.brics.tajs.util.Collections.newList;
  */
 public class HostEnvSources {
 
-    private static final String PROTOCOL_NAME = "tajs-host-env";
+    public static final String PROTOCOL_NAME = "tajs-host-env";
 
     static {
         registerProtocol();
@@ -54,16 +54,6 @@ public class HostEnvSources {
                         @Override
                         public InputStream getInputStream() throws IOException {
                             return resolve(url.getPath()).openConnection().getInputStream();
-                        }
-
-                        private URL resolve(String path) {
-                            String root = "/hostenv";
-                            String fullSourcePath = root + "/" + path;
-                            URL resource = HostEnvSources.class.getResource(fullSourcePath);
-                            if (resource == null) {
-                                throw new AnalysisException("Can't find resource " + fullSourcePath);
-                            }
-                            return resource;
                         }
                     };
                 }
@@ -104,6 +94,11 @@ public class HostEnvSources {
         if (Options.get().isConsoleModelEnabled()) {
             sourcePaths.add("console-model.js");
         }
+
+        if (Options.get().isNodeJS()) {
+            sourcePaths.add("nodejs/simple-bootstrap-node.js");
+        }
+
         return sourcePaths.stream().map(s -> {
             try {
                 return new URL(PROTOCOL_NAME, null, s);
@@ -111,5 +106,15 @@ public class HostEnvSources {
                 throw new RuntimeException(e);
             }
         }).collect(Collectors.toList());
+    }
+
+    public static URL resolve(String path) {
+        String root = "/hostenv";
+        String fullSourcePath = root + "/" + path;
+        URL resource = HostEnvSources.class.getResource(fullSourcePath);
+        if (resource == null) {
+            throw new AnalysisException("Can't find resource " + fullSourcePath);
+        }
+        return resource;
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -181,14 +181,14 @@ public class UnevalizerAPI {
         FlowGraph currFg = c.getFlowGraph();
         NormalForm nf = UnevalTools.rebuildNormalForm(currFg, callNode, s, c);
 
-        String uneval_input = callbackSourceCode.getStr() != null ? "\"" + Strings.escapeSource(callbackSourceCode.getStr()) + "\"" : nf.getNormalForm();
+        String uneval_input = callbackSourceCode.isMaybeSingleStr() ? "\"" + Strings.escapeSource(callbackSourceCode.getStr()) + "\"" : nf.getNormalForm();
         String unevaled = new Unevalizer().uneval(UnevalTools.unevalizerCallback(currFg, c, callNode, nf, false), uneval_input, false, null, call.getSourceNode(), c);
         if (unevaled == null) {
             return UnevalizerLimitations.handle("Could not uneval setTimeout/setInterval string (you should use higher-order functions instead): " + uneval_input, call.getSourceNode(), Value.makeNone(), c);
         }
         log.debug("Unevalized:" + unevaled);
 
-        if (callbackSourceCode.getStr() == null) // Called with non-constant.
+        if (!callbackSourceCode.isMaybeSingleStr()) // Called with non-constant.
             unevaled = UnevalTools.rebuildFullFromMapping(currFg, unevaled, nf.getMapping(), callNode);
 
         EvalCache evalCache = c.getAnalysis().getEvalCache(); // TODO: refactor to avoid duplicated code (see JSFunction.FUNCTION and JSGlobal.EVAL)

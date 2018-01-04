@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,7 @@ public enum ECMAScriptObjects implements HostObject {
     OBJECT_SEAL("Object.seal"),
     OBJECT_IS("Object.is"),
     OBJECT_ASSIGN("Object.assign"),
+    OBJECT_GETOWNPROPERTYSYMBOLS("Object.getOwnPropertySymbols"),
     OBJECT_VALUES("Object.values"),
 
     OBJECT_PROTOTYPE("Object.prototype"),
@@ -226,6 +227,27 @@ public enum ECMAScriptObjects implements HostObject {
     REGEXP_LASTINDEX("RegExp.prototype.lastIndex"),
     REGEXP_TEST("RegExp.prototype.test"),
     REGEXP_TOSTRING("RegExp.prototype.toString"),
+
+    SYMBOL("Symbol"),
+    SYMBOL_INSTANCES("Symbol instances"), // TODO: what is this? and why the name "Symbol instances"? - github #512
+    SYMBOL_PROTOTYPE("Symbol.prototype"),
+    SYMBOL_TOSTRING("Symbol.prototype.toString"),
+    SYMBOL_TOSOURCE("Symbol.prototype.toSource"),
+    SYMBOL_VALUEOF("Symbol.prototype.valueOf"),
+    SYMBOL_PROTOTYPE_TOPRIMITIVE("Symbol.prototype[@@toPrimitive]"),
+    SYMBOL_FOR("Symbol.for"),
+    SYMBOL_KEYFOR("Symbol.keyFor"),
+    SYMBOL_HAS_INSTANCE("Symbol.hasInstance"), // TODO: not yet wired to the native functions - github #511
+    SYMBOL_IS_CONCAT_SPREADABLE("Symbol.isConcatSpreadable"), // TODO: not yet wired to the native functions - github #511
+    SYMBOL_ITERATOR("Symbol.iterator"), // TODO: not yet wired to the native functions - github #511
+    SYMBOL_MATCH("Symbol.match"), // TODO: not yet wired to the native functions - github #511
+    SYMBOL_REPLACE("Symbol.replace"), // TODO: not yet wired to the native functions - github #511
+    SYMBOL_SEARCH("Symbol.search"), // TODO: not yet wired to the native functions - github #511
+    SYMBOL_SPECIES("Symbol.species"), // TODO: not yet wired to the native functions - github #511
+    SYMBOL_SPLIT("Symbol.split"), // TODO: not yet wired to the native functions - github #511
+    SYMBOL_TO_PRIMITIVE("Symbol.toPrimitive"), // TODO: not yet wired to the native functions - github #511
+    SYMBOL_TO_STRING_TAG("Symbol.toStringTag"), // TODO: not yet wired to the native functions - github #511
+    SYMBOL_UNSCOPABLES("Symbol.unscopables"), // TODO: not yet wired to the native functions - github #511
 
     ERROR("Error"),
     ERROR_PROTOTYPE("Error.prototype"),

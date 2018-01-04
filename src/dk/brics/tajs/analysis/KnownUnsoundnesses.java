@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -123,7 +123,6 @@ public class KnownUnsoundnesses {
 
                 // ES6 Symbol
                 "benchmarks/tajs/src/libraries/jquery/jquery-1.12.0.js",
-                "test-resources/src/mdnexamples/Object.assign_7.js",
 
                 // Minor ES3 legacy, catch no longer introduces a new with-like scope object
                 "test-resources/src/flowgraphbuilder/flowgraph_builder0123.js",
@@ -437,8 +436,6 @@ public class KnownUnsoundnesses {
                         make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 3, 4),
                         make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 4, 4),
                         make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 5, 8),
-                        make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 7, 4),
-                        make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 8, 8),
                         make("test-resources/src/sparse2014benchmarks/jpg.js", 27, 18),
                         make("test-resources/src/sparse2014benchmarks/jpg.js", 522, 7),
                         make("test-resources/src/jsai2015benchmarks/buckets_many_extra_prints.js", 3, 2),

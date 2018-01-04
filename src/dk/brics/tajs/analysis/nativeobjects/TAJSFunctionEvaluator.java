@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,17 +42,25 @@ import dk.brics.tajs.lattice.ContextArguments;
 import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.AnalysisResultException;
 import dk.brics.tajs.util.Collectors;
+import dk.brics.tajs.util.PathAndURLUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -76,16 +84,22 @@ import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_FIRST_ORDER_STRING_R
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_GET_AJAX_EVENT;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_GET_EVENT_LISTENER;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_GET_KEYBOARD_EVENT;
+import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_GET_MAIN;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_GET_MOUSE_EVENT;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_GET_UI_EVENT;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_GET_WHEEL_EVENT;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_JOIN;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_LOAD;
+import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_LOAD_JSON;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MAKE;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MAKE_CONTEXT_SENSITIVE;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MAKE_PARTIAL;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NEW_ARRAY;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NEW_OBJECT;
+import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NODE_PARENT_DIR;
+import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NODE_REQUIRE_RESOLVE;
+import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NODE_UNURL;
+import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NOT_IMPLEMENTED;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -200,7 +214,7 @@ public class TAJSFunctionEvaluator {
                         c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Calling dumpAttributes with non-constant property name");
                     else {
                         String propertyname = p.getStr();
-                        Value v = c.getAnalysis().getPropVarOperations().readPropertyDirect(x.getObjectLabels(), propertyname);
+                        Value v = c.getAnalysis().getPropVarOperations().readPropertyDirect(x.getObjectLabels(), StringPKey.make(propertyname));
                         c.getMonitoring().addMessageInfo(c.getNode(), Severity.HIGH, "Property attributes: " + v.printAttributes() /*+ " (context: " + c.getState().getContext() + ")"*/);
                     }
                 });
@@ -258,7 +272,7 @@ public class TAJSFunctionEvaluator {
                     } else if (call.getNumberOfArgs() == 2) { // function given as first parameter
                         Value funval = FunctionCalls.readParameter(call, state, 0);
                         Set<ObjectLabel> objlabels = funval.getObjectLabels();
-                        if (funval.isMaybeOtherThanObject())
+                        if (funval.isMaybePrimitiveOrSymbol())
                             throw new AnalysisException("Calling TAJS_addContextSensitivity with non-fixed argument: " + funval);
                         function = null;
                         for (ObjectLabel objlabel : objlabels) {
@@ -481,7 +495,7 @@ public class TAJSFunctionEvaluator {
                 "String file, Boolean isHostEnvironment, String ... parameterNames",
                 "Function",
                 "Loads a JavaScript file as a function with the chosen parameter names, and optionally marks the function as a host-environment function. " +
-                        "If the file is a relative path, it is resolvde relative to the file containing the call. " +
+                        "If the file is a relative path, it is resolved relative to the file containing the call. " +
                         "Semantically the function behaves as if it was created with `new Function(parameterName1, parameterName2, ... , <content-of-file>)`",
                 (call, state, pv, c) -> {
                     Value target = FunctionCalls.readParameter(call, state, 0);
@@ -522,6 +536,92 @@ public class TAJSFunctionEvaluator {
                         JSRegExp.makeFuzzyLastIndexOfAnyGlobalRegexes(FunctionCalls.readParameter(call, c.getState(), 0), c);
                         return Value.makeAnyStr();
                     });
+                });
+        register(implementations,
+                TAJS_GET_MAIN,
+                "",
+                "Value",
+                "Returns the absolute path to the main file",
+                (call, state, pv, c) ->
+                    Value.makeStr(Options.get().getArguments().get(Options.get().getArguments().size() - 1).toAbsolutePath().toString())
+                );
+        register(implementations,
+                TAJS_NOT_IMPLEMENTED,
+                "",
+                "Placeholder for not-implemented function. Throws AnalysisModelLimitationException if called",
+                (call, state, pv, c) -> {
+                    throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getSourceNode().getSourceLocation() + ": " + FunctionCalls.readParameter(call, state, 0).getStr());
+                });
+        register(implementations,
+                TAJS_LOAD_JSON,
+                "String filename",
+                "Value",
+                "Loads the JSON file with the given filename (currently just modeled as any-JSON-data)",
+                (call, state, pv, c) -> JSJson.makeAnyJSONObject(c)); //TODO: improve precision by actually loading the json file
+        register(implementations,
+                TAJS_NODE_REQUIRE_RESOLVE,
+                "String filename, [String parent = null]",
+                "Value",
+                "Performs NodeJS require.resolve of the module given as filename",
+                (call, state, pv, c) -> {
+                    Value filename = FunctionCalls.readParameter(call, state, 0);
+                    if (filename.isMaybeFuzzyStr() || filename.isNotStr()) {
+                        throw new AnalysisLimitationException.AnalysisPrecisionLimitationException(call.getSourceNode().getSourceLocation() + ": Only constant-string requires supported: " + filename);
+                    }
+                    Value parentFilename = FunctionCalls.readParameter(call, state, 1);
+                    if (parentFilename.isMaybeNull() && !parentFilename.isMaybeOtherThanNull()){
+                        parentFilename = Value.makeStr(call.getJSSourceNode().getSourceLocation().getLocation().toString());
+                    }
+                    if (parentFilename.isMaybeFuzzyStr() || parentFilename.isNotStr()) {
+                        throw new AnalysisLimitationException.AnalysisPrecisionLimitationException(call.getSourceNode().getSourceLocation() +  ": Only constant-string requires supported: " + parentFilename);
+                    }
+                    String filenameString = filename.getStr();
+                    URL resolved;
+                    if (Paths.get(filenameString).isAbsolute()) {
+                        resolved = PathAndURLUtils.toURL(Paths.get(filenameString)); // trivially resolved
+                    } else {
+                        URL parent = PathAndURLUtils.toURL(parentFilename.getStr());
+                        resolved = NodeJSRequire.get().resolve(filenameString, parent);
+                        if (resolved == null) {
+                            // We could report an JavaScript error here instead.
+                            // But that is an unlikely JavaScript error, it is much more likely that there is a bug in TAJS...
+                            throw new AnalysisException(
+                                    String.format("Failed to resolve TAJS_nodeRequireResolve('%s', '%s')!?!", filenameString, parent)
+                            );
+                        }
+                    }
+                    return Value.makeStr(resolved.toString());
+                });
+        register(implementations,
+                TAJS_NODE_PARENT_DIR,
+                "filename",
+                "Value",
+                "Returns the location of the parent directory",
+                (call, state, pv, c) -> {
+                    Value fileName = FunctionCalls.readParameter(call, state, 0);
+                    try {
+                        Path parent = Paths.get(new URL(fileName.getStr()).toURI()).getParent();
+                        return Value.makeStr(parent.toUri().toString());
+                    } catch (URISyntaxException | MalformedURLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+        register(implementations,
+                TAJS_NODE_UNURL,
+                "url",
+                "Value",
+                "Changes a file URL to an absolute path (Str-Value), changes non-file URLs to null (Null-Value)",
+                (call, state, pv, c) -> {
+                    Value urlValue = FunctionCalls.readParameter(call, state, 0);
+                    URL url = PathAndURLUtils.toURL(urlValue.getStr());
+                    if (url.getProtocol().equals("file")) {
+                        String path = url.getPath();
+                        if (path.endsWith("/")) {
+                            path = path.substring(0, path.length() - 1 /* skip trailing slash */);
+                        }
+                        return Value.makeStr(path);
+                    }
+                    return Value.makeNull();
                 });
         Set<TAJSFunctionName> missingRegistrations = newSet(Arrays.asList(TAJSFunctionName.values()));
         missingRegistrations.removeAll(implementations.keySet());

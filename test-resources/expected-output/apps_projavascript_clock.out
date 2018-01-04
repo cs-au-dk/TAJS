@@ -1,0 +1,3 @@
+benchmarks/tajs/src/apps/projavascript/clock/07-clock.html:23:13: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/apps/projavascript/clock/07-clock.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/apps/projavascript/clock/07-clock.html:23:13]
+Soundness testing succeeded for 746 checks (with 0 expected failures)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
@@ -34,6 +35,9 @@ import dk.brics.tajs.solver.IInitialStateBuilder;
 import dk.brics.tajs.util.Collections;
 import net.htmlparser.jericho.Source;
 
+import java.util.Set;
+
+import static dk.brics.tajs.util.Collections.newSet;
 import static dk.brics.tajs.util.Collections.singleton;
 
 /**
@@ -96,6 +100,11 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
      */ // TODO: use ES5 semantics of RegExp.prototype object kind?
 
     /**
+     * Object label for Symbol.prototype.
+     */
+    public static ObjectLabel SYMBOL_PROTOTYPE;
+
+    /**
      * Object label for Error.prototype.
      */
     public static ObjectLabel ERROR_PROTOTYPE;
@@ -136,6 +145,22 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
     public static ObjectLabel JSON_OBJECT;
 
     /**
+     * Well-known EC6 Symbols
+     */
+    public static ObjectLabel UNKNOWN_SYMBOL_INSTANCES;
+    public static ObjectLabel WELLKNOWN_SYMBOL_HAS_INSTANCE;
+    public static ObjectLabel WELLKNOWN_SYMBOL_IS_CONCAT_SPREADABLE;
+    public static ObjectLabel WELLKNOWN_SYMBOL_ITERATOR;
+    public static ObjectLabel WELLKNOWN_SYMBOL_MATCH;
+    public static ObjectLabel WELLKNOWN_SYMBOL_REPLACE;
+    public static ObjectLabel WELLKNOWN_SYMBOL_SEARCH;
+    public static ObjectLabel WELLKNOWN_SYMBOL_SPECIES;
+    public static ObjectLabel WELLKNOWN_SYMBOL_SPLIT;
+    public static ObjectLabel WELLKNOWN_SYMBOL_TO_PRIMITIVE;
+    public static ObjectLabel WELLKNOWN_SYMBOL_TO_STRING_TAG;
+    public static ObjectLabel WELLKNOWN_SYMBOL_UNSCOPABLES;
+
+    /**
      * Constructs a new InitialStateBuilder object.
      */
     public InitialStateBuilder() {
@@ -153,6 +178,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         DATE_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.DATE_PROTOTYPE, Kind.DATE);
         PROXY_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.PROXY_PROTOTYPE, Kind.OBJECT);
         REGEXP_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.REGEXP_PROTOTYPE, Kind.OBJECT);
+        SYMBOL_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.SYMBOL_PROTOTYPE, Kind.OBJECT);
         ERROR_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.ERROR_PROTOTYPE, Kind.ERROR);
         EVAL_ERROR_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.EVAL_ERROR_PROTOTYPE, Kind.ERROR);
         RANGE_ERROR_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.RANGE_ERROR_PROTOTYPE, Kind.ERROR);
@@ -161,6 +187,18 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         TYPE_ERROR_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.TYPE_ERROR_PROTOTYPE, Kind.ERROR);
         URI_ERROR_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.URI_ERROR_PROTOTYPE, Kind.ERROR);
         JSON_OBJECT = ObjectLabel.make(ECMAScriptObjects.JSON, Kind.OBJECT);
+        UNKNOWN_SYMBOL_INSTANCES = ObjectLabel.make(ECMAScriptObjects.SYMBOL_INSTANCES, Kind.SYMBOL);
+        WELLKNOWN_SYMBOL_HAS_INSTANCE = ObjectLabel.make(ECMAScriptObjects.SYMBOL_HAS_INSTANCE, Kind.SYMBOL);
+        WELLKNOWN_SYMBOL_IS_CONCAT_SPREADABLE = ObjectLabel.make(ECMAScriptObjects.SYMBOL_IS_CONCAT_SPREADABLE, Kind.SYMBOL);
+        WELLKNOWN_SYMBOL_ITERATOR = ObjectLabel.make(ECMAScriptObjects.SYMBOL_ITERATOR, Kind.SYMBOL);
+        WELLKNOWN_SYMBOL_MATCH = ObjectLabel.make(ECMAScriptObjects.SYMBOL_MATCH, Kind.SYMBOL);
+        WELLKNOWN_SYMBOL_REPLACE = ObjectLabel.make(ECMAScriptObjects.SYMBOL_REPLACE, Kind.SYMBOL);
+        WELLKNOWN_SYMBOL_SEARCH = ObjectLabel.make(ECMAScriptObjects.SYMBOL_SEARCH, Kind.SYMBOL);
+        WELLKNOWN_SYMBOL_SPECIES = ObjectLabel.make(ECMAScriptObjects.SYMBOL_SPECIES, Kind.SYMBOL);
+        WELLKNOWN_SYMBOL_SPLIT = ObjectLabel.make(ECMAScriptObjects.SYMBOL_SPLIT, Kind.SYMBOL);
+        WELLKNOWN_SYMBOL_TO_PRIMITIVE = ObjectLabel.make(ECMAScriptObjects.SYMBOL_TO_PRIMITIVE, Kind.SYMBOL);
+        WELLKNOWN_SYMBOL_TO_STRING_TAG = ObjectLabel.make(ECMAScriptObjects.SYMBOL_TO_STRING_TAG, Kind.SYMBOL);
+        WELLKNOWN_SYMBOL_UNSCOPABLES = ObjectLabel.make(ECMAScriptObjects.SYMBOL_UNSCOPABLES, Kind.SYMBOL);
     }
 
     /**
@@ -211,6 +249,8 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         s.newObject(lProxy);
         ObjectLabel lRegExp = ObjectLabel.make(ECMAScriptObjects.REGEXP, Kind.FUNCTION);
         s.newObject(lRegExp);
+        ObjectLabel lSymb = ObjectLabel.make(ECMAScriptObjects.SYMBOL, Kind.FUNCTION);
+        s.newObject(lSymb);
         ObjectLabel lError = ObjectLabel.make(ECMAScriptObjects.ERROR, Kind.FUNCTION);
         s.newObject(lError);
         ObjectLabel lEvalError = ObjectLabel.make(ECMAScriptObjects.EVAL_ERROR, Kind.FUNCTION);
@@ -250,6 +290,8 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         s.newObject(lProxyProto);
         ObjectLabel lRegExpProto = REGEXP_PROTOTYPE;
         s.newObject(lRegExpProto);
+        ObjectLabel lSymbProto = SYMBOL_PROTOTYPE;
+        s.newObject(lSymbProto);
         ObjectLabel lErrorProto = ERROR_PROTOTYPE;
         s.newObject(lErrorProto);
         ObjectLabel lEvalErrorProto = EVAL_ERROR_PROTOTYPE;
@@ -306,6 +348,9 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveConstructor(global, lFunProto, lTypeErrorProto, lTypeError, "TypeError", 1, c);
         createPrimitiveConstructor(global, lFunProto, lURIErrorProto, lURIError, "URIError", 1, c);
 
+        // EC6 Symbol
+        createPrimitiveConstructor(global, lFunProto, lSymbProto, lSymb, "Symbol", 1, c);
+
         pv.writePropertyWithAttributes(global, "JSON", Value.makeObject(lJson).setAttributes(true, false, false));
         createPrimitiveFunction(lJson, lFunProto, ECMAScriptObjects.JSON_PARSE, "parse", 1, c);
         createPrimitiveFunction(lJson, lFunProto, ECMAScriptObjects.JSON_STRINGIFY, "stringify", 1, c);
@@ -328,6 +373,7 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_GETOWNPROPERTYNAMES, "getOwnPropertyNames", 1, c);
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_IS, "is", 2, c);
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_ASSIGN, "assign", 2, c);
+        createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_GETOWNPROPERTYSYMBOLS, "getOwnPropertySymbols", 1, c);
         createPrimitiveFunction(lObject, lFunProto, ECMAScriptObjects.OBJECT_VALUES, "values", 1, c);
 
         // 15.2.4 properties of the Object prototype object
@@ -374,6 +420,9 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_INDEXOF, "indexOf", 1, c);
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_VALUES, "values", 0, c);
 
+        pv.writePropertyWithAttributes(lArrayProto, PKey.SymbolPKey.make(WELLKNOWN_SYMBOL_ITERATOR),
+                pv.readPropertyValue(singleton(lArrayProto), Value.makeStr("values")).setAttributes(true, false, false));
+
         // 15.5.3 properties of the String constructor
         createPrimitiveFunction(lString, lFunProto, ECMAScriptObjects.STRING_FROMCHARCODE, "fromCharCode", 1, c);
         createPrimitiveFunction(lString, lFunProto, ECMAScriptObjects.STRING_FROMCODEPOINT, "fromCodePoint", 1, c);
@@ -407,8 +456,9 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_STARTSWITH, "startsWith", 1, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_ENDSWITH, "endsWith", 1, c);
 
-createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_INCLUDES, "includes", 1, c);
+        createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_INCLUDES, "includes", 1, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_CODEPOINTAT, "codePointAt", 1, c);
+
         // 15.6.4 properties of the Boolean prototype object
         s.writeInternalPrototype(lBooleanProto, Value.makeObject(lObjectPrototype));
         s.writeInternalValue(lBooleanProto, Value.makeBool(false));
@@ -574,6 +624,57 @@ createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_INCLUD
         createPrimitiveFunction(lRegExpProto, lFunProto, ECMAScriptObjects.REGEXP_TEST, "test", 1, c);
         createPrimitiveFunction(lRegExpProto, lFunProto, ECMAScriptObjects.REGEXP_TOSTRING, "toString", 0, c);
         createPrimitiveFunction(lRegExpProto, lFunProto, ECMAScriptObjects.REGEXP_COMPILE, "compile", 1, c);
+
+        // properties of the Error object
+        pv.writeProperty(lError, "stackTraceLimit", Value.makeAnyNumUInt());
+        createPrimitiveFunction(lError, lFunProto, ECMAScriptObjects.ERROR_CAPTURESTACKTRACE, "captureStackTrace", 2, c);
+
+        // ES6 Symbol properties
+        pv.writePropertyWithAttributes(global, "Symbol", Value.makeObject(lSymb).setAttributes(true, false, false));
+
+        pv.writePropertyWithAttributes(lSymb, "length", Value.makeNum(0).setAttributes(true, true, true));
+
+        pv.writeProperty(lSymb, "hasInstance", Value.makeSymbol(WELLKNOWN_SYMBOL_HAS_INSTANCE).setAttributes(true, true, true));
+        pv.writeProperty(lSymb, "isConcatSpreadable", Value.makeSymbol(WELLKNOWN_SYMBOL_IS_CONCAT_SPREADABLE).setAttributes(true, true, true));
+        pv.writeProperty(lSymb, "iterator", Value.makeSymbol(WELLKNOWN_SYMBOL_ITERATOR).setAttributes(true, true, true));
+        pv.writeProperty(lSymb, "match", Value.makeSymbol(WELLKNOWN_SYMBOL_MATCH).setAttributes(true, true, true));
+        pv.writeProperty(lSymb, "replace", Value.makeSymbol(WELLKNOWN_SYMBOL_REPLACE).setAttributes(true, true, true));
+        pv.writeProperty(lSymb, "search", Value.makeSymbol(WELLKNOWN_SYMBOL_SEARCH).setAttributes(true, true, true));
+        pv.writeProperty(lSymb, "species", Value.makeSymbol(WELLKNOWN_SYMBOL_SPECIES).setAttributes(true, true, true));
+        pv.writeProperty(lSymb, "split", Value.makeSymbol(WELLKNOWN_SYMBOL_SPLIT).setAttributes(true, true, true));
+        pv.writeProperty(lSymb, "toPrimitive", Value.makeSymbol(WELLKNOWN_SYMBOL_TO_PRIMITIVE).setAttributes(true, true, true));
+        pv.writeProperty(lSymb, "toStringTag", Value.makeSymbol(WELLKNOWN_SYMBOL_TO_STRING_TAG).setAttributes(true, true, true));
+        pv.writeProperty(lSymb, "unscopables", Value.makeSymbol(WELLKNOWN_SYMBOL_UNSCOPABLES).setAttributes(true, true, true));
+
+        createPrimitiveFunction(lSymb, lFunProto, ECMAScriptObjects.SYMBOL_FOR, "for", 1, c);
+        createPrimitiveFunction(lSymb, lFunProto, ECMAScriptObjects.SYMBOL_KEYFOR, "keyFor", 1, c);
+
+        createPrimitiveFunction(lSymbProto, lFunProto, ECMAScriptObjects.SYMBOL_TOSTRING, "toString", 0, c);
+        createPrimitiveFunction(lSymbProto, lFunProto, ECMAScriptObjects.SYMBOL_TOSOURCE, "toSource", 0, c);
+        createPrimitiveFunction(lSymbProto, lFunProto, ECMAScriptObjects.SYMBOL_VALUEOF, "valueOf", 0, c);
+        //createPrimitiveFunction(lSymbProto, lFunProto, ECMAScriptObjects.SYMBOL_PROTOTYPE_TOPRIMITIVE, SymbolPKey.make(ECMAScriptObjects.SYMBOL_TO_PRIMITIVE)), 0, c); // FIXME: github 515 (name is a string, key is a symbol)
+        pv.writeProperty(lSymbProto, "constructor", Value.makeObject(lSymb));
+
+        // ES6 Symbol instance properties
+
+        Set<ObjectLabel> allSymbols = newSet();
+        allSymbols.add(UNKNOWN_SYMBOL_INSTANCES);
+        allSymbols.add(WELLKNOWN_SYMBOL_HAS_INSTANCE);
+        allSymbols.add(WELLKNOWN_SYMBOL_IS_CONCAT_SPREADABLE);
+        allSymbols.add(WELLKNOWN_SYMBOL_ITERATOR);
+        allSymbols.add(WELLKNOWN_SYMBOL_MATCH);
+        allSymbols.add(WELLKNOWN_SYMBOL_REPLACE);
+        allSymbols.add(WELLKNOWN_SYMBOL_SEARCH);
+        allSymbols.add(WELLKNOWN_SYMBOL_SPECIES);
+        allSymbols.add(WELLKNOWN_SYMBOL_SPLIT);
+        allSymbols.add(WELLKNOWN_SYMBOL_TO_PRIMITIVE);
+        allSymbols.add(WELLKNOWN_SYMBOL_TO_STRING_TAG);
+        allSymbols.add(WELLKNOWN_SYMBOL_UNSCOPABLES);
+
+        for (ObjectLabel l : allSymbols) {
+            s.newObject(l);
+            s.writeInternalPrototype(l, Value.makeObject(InitialStateBuilder.SYMBOL_PROTOTYPE));
+        }
 
         // properties of the Error object
         pv.writeProperty(lError, "stackTraceLimit", Value.makeAnyNumUInt());

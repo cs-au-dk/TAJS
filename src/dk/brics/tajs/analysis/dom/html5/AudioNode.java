@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,7 +78,7 @@ public class AudioNode {
         switch (nativeObject) {
             case AUDIONODE_CONSTRUCTOR:
                 Exceptions.throwTypeError(c);
-                s.setToNone();
+                s.setToBottom();
             case AUDIONODE_CONNECT:
             case AUDIONODE_DISCONNECT:
                 return Value.makeUndef();

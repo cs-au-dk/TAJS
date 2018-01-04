@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,6 +50,7 @@ public final class ObjectLabel implements Comparable<ObjectLabel>, DeepImmutable
 
         OBJECT("Object"),
         FUNCTION("Function"),
+        SYMBOL("Symbol"),
         ARRAY("Array"),
         REGEXP("RegExp"),
         DATE("Date"),

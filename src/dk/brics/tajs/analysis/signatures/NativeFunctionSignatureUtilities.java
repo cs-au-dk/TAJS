@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -100,6 +100,14 @@ public class NativeFunctionSignatureUtilities {
 
         public static boolean stringIfNotUndefined(Value v, Solver.SolverInterface c) {
             Value left = v.restrictToNotUndef();
+            if (left.isNone()) {
+                return false;
+            }
+            return string(left, c);
+        }
+
+        public static boolean stringIfNotSymbol(Value v, Solver.SolverInterface c) {
+            Value left = v.restrictToNotSymbol();
             if (left.isNone()) {
                 return false;
             }
@@ -251,6 +259,10 @@ public class NativeFunctionSignatureUtilities {
         public static final Mandatory NotRegExpCoerceString = new Mandatory(new ValueDescriptionImpl(java.util.Optional.of(Requirements.isNotRegExp), java.util.Optional.of(Coercions::string)));
 
         public static final Mandatory Function = new Mandatory(new ValueDescriptionImpl(java.util.Optional.of(Requirements.isFunction), java.util.Optional.empty()));
+
+        public static final Mandatory Symbol = new Mandatory(new ValueDescriptionImpl(java.util.Optional.of(Requirements.isSymbol), java.util.Optional.empty()));
+
+        public static final Mandatory StringOrSymbol = new Mandatory(new ValueDescriptionImpl(java.util.Optional.empty(), java.util.Optional.of(Coercions::stringIfNotSymbol)));
     }
 
     /**
@@ -287,6 +299,10 @@ public class NativeFunctionSignatureUtilities {
         public static final Optional DontCare = MandatoryParameters.DontCare.toMaybe();
 
         public static final Optional NotRegExpCoerceString = MandatoryParameters.NotRegExpCoerceString.toMaybe();
+
+        public static final Optional Symbol = MandatoryParameters.Symbol.toMaybe();
+
+        public static final Optional StringOrSymbol = MandatoryParameters.StringOrSymbol.toMaybe();
     }
 
     /**
@@ -382,7 +398,7 @@ public class NativeFunctionSignatureUtilities {
 
             @Override
             public boolean maybeNotSatisfied(Value v) {
-                return v.isMaybeOtherThanObject() ||
+                return v.isMaybePrimitiveOrSymbol() ||
                         v.getObjectLabels().stream()
                                 .anyMatch(l -> l.getKind() != ObjectLabel.Kind.REGEXP);
             }
@@ -396,7 +412,7 @@ public class NativeFunctionSignatureUtilities {
 
             @Override
             public boolean maybeNotSatisfied(Value v) {
-                return v.isMaybeOtherThanObject();
+                return v.isMaybePrimitiveOrSymbol();
             }
         };
 
@@ -409,7 +425,7 @@ public class NativeFunctionSignatureUtilities {
 
             @Override
             public boolean maybeNotSatisfied(Value v) {
-                return v.isMaybeOtherThanObject() ||
+                return v.isMaybePrimitiveOrSymbol() ||
                         v.getObjectLabels().stream()
                                 .anyMatch(l -> l.getKind() != ObjectLabel.Kind.FUNCTION);
             }
@@ -424,9 +440,21 @@ public class NativeFunctionSignatureUtilities {
 
             @Override
             public boolean maybeNotSatisfied(Value v) {
-                return v.isMaybeOtherThanObject() ||
+                return v.isMaybePrimitiveOrSymbol() ||
                         v.getObjectLabels().stream()
                                 .anyMatch(l -> l.getKind() != ObjectLabel.Kind.DATE);
+            }
+        };
+
+        public static Requirement isSymbol = new Requirement() {
+            @Override
+            public boolean maybeSatisfied(Value v) {
+                return v.isMaybeSymbol();
+            }
+
+            @Override
+            public boolean maybeNotSatisfied(Value v) {
+                return v.isMaybeOtherThanSymbol();
             }
         };
     }
@@ -453,5 +481,7 @@ public class NativeFunctionSignatureUtilities {
         public static final ValueDescription CoerceObject = new ValueDescriptionImpl(java.util.Optional.empty(), java.util.Optional.of(Coercions::object));
 
         public static final ValueDescription DontCare = new ValueDescriptionImpl(java.util.Optional.empty(), java.util.Optional.empty());
+
+        public static final ValueDescription Symbol = new ValueDescriptionImpl(java.util.Optional.of(Requirements.isSymbol), java.util.Optional.empty());
     }
 }

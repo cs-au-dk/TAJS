@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -130,7 +130,7 @@ public class DOMElement {
     public static Value setAttributeModel(Set<ObjectLabel> receivers, Value attributeName, Value attributeValue, Solver.SolverInterface c) {
         if (attributeName.isMaybeSingleStr() && attributeName.getStr().equals("name")) {
             PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-            pv.writeProperty(singleton(HTMLCollection.INSTANCES), attributeValue, Value.makeObject(receivers));
+            pv.writeProperty(singleton(HTMLCollection.INSTANCES), Conversion.toString(attributeValue, c), Value.makeObject(receivers));
         }
         return Value.makeUndef();
     }

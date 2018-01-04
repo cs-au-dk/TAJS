@@ -74,7 +74,7 @@ public class TestValue {
         log.info("isMaybeOtherThanNum = " + v.isMaybeOtherThanNum());
         log.info("isMaybeOtherThanStr = " + v.isMaybeOtherThanStr());
         log.info("isNotStr = " + v.isNotStr());
-        log.info("getStr = " + v.getStr());
+        log.info("getStr = " + (v.isMaybeSingleStr() ? v.getStr() : "null"));
         log.info("isMaybeStrUInt = " + v.isMaybeStrUInt());
         log.info("isObject = " + v.isMaybeObject());
         log.info("getObjectLabels = " + v.getObjectLabels());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -380,7 +380,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                             } finally {
                                 analysis.getMonitoring().visitNodeTransferPost(current_node, current_state);
                             }
-                            if (current_state.isNone()) {
+                            if (current_state.isBottom()) {
                                 log.debug("No non-exceptional flow");
                                 continue block_loop;
                             }
@@ -448,7 +448,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                             current_node = node;
                             if (log.isDebugEnabled())
                                 log.debug("node " + current_node.getIndex() + ": " + current_node);
-                            if (current_state.isNone())
+                            if (current_state.isBottom())
                                 continue block_loop; // unreachable, so skip the rest of the block
                             analysis.getMonitoring().visitNodeTransferPre(current_node, current_state);
                             try {

@@ -11,7 +11,6 @@ test-resources/src/1k2013spring/1377.js:98:9: [maybe] TypeError, accessing prope
 test-resources/src/1k2013spring/1377.js:99:9: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2013spring/1377.js:99:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1377.js:100:9: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1377.js:100:9: [maybe] TypeError, call to non-function
 test-resources/src/1k2013spring/1377.js:107:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1377.js:116:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1377.js:137:32: [maybe] TypeError, accessing property of null/undefined

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,9 +60,11 @@ import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.PKey;
+import dk.brics.tajs.lattice.PKey.StringPKey;
+import dk.brics.tajs.lattice.PKeys;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.ObjReadsWrites.R_Status;
@@ -297,11 +299,11 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     private void reportDeadAssignments() {
-        Set<Pair<AbstractNode, String>> potentiallyDeadWrites = newSet();
-        Set<Pair<AbstractNode, String>> undeadWrites = newSet();
+        Set<Pair<AbstractNode, PKey>> potentiallyDeadWrites = newSet();
+        Set<Pair<AbstractNode, PKey>> undeadWrites = newSet();
         for (Entry<ObjectLabel, ObjReadsWrites> entry : obj_reads_writes.entrySet()) {
             ObjReadsWrites rw = entry.getValue();
-            for (String s : rw.getProperties()) {
+            for (PKey s : rw.getProperties()) {
                 // flag if definitely written and definitely not read (excluding 'length' and any-string properties)
                 if (rw.getWriteStatus(s) == W_Status.WRITTEN) {
                     for (AbstractNode definiteWriteLocation : rw.getDefiniteWriteLocations(s)) {
@@ -322,10 +324,10 @@ public class Monitoring implements IAnalysisMonitoring {
                 }
             }
         }
-        Set<Pair<AbstractNode, String>> deadWrites = newSet();
+        Set<Pair<AbstractNode, PKey>> deadWrites = newSet();
         deadWrites.addAll(potentiallyDeadWrites);
         deadWrites.removeAll(undeadWrites);
-        for (Pair<AbstractNode, String> deadWrite : deadWrites) {
+        for (Pair<AbstractNode, PKey> deadWrite : deadWrites) {
             String m_s = "Dead assignment, property " + deadWrite.getSecond() + " is never read";
             Message m = new Message(deadWrite.getFirst(), Status.CERTAIN, m_s, Severity.MEDIUM, true);
             messages.put(m, m);
@@ -734,6 +736,8 @@ public class Monitoring implements IAnalysisMonitoring {
      */
     @Override
     public void visitUnknownValueResolve(AbstractNode node, boolean partial, boolean scanning) {
+        if (!Options.get().isStatisticsEnabled())
+            return;
         if (scanning) {
             if (partial)
                 unknown_value_resolve_scanning_partial++;
@@ -981,7 +985,7 @@ public class Monitoring implements IAnalysisMonitoring {
      * Checks whether the property read operation accesses an absent property and whether the operation returns null/undefined.
      */
     @Override
-    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v, ObjectLabel global_obj) {
+    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, PKeys propertyname, boolean maybe, State state, Value v, ObjectLabel global_obj) {
         if (!scan_phase) {
             return;
         }
@@ -1028,18 +1032,17 @@ public class Monitoring implements IAnalysisMonitoring {
      * Properties named 'length' on array objects are ignored.
      */
     @Override
-    public void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown) {
+    public void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, PKeys propertyname, State state, boolean check_unknown) {
         if (!scan_phase) {
             return;
         }
         // warn about potential loss of precision
-        if (check_unknown && checkPropertyNameMayInterfereWithBuiltInProperties(propertystr)) {
+        if (check_unknown && checkPropertyNameMayInterfereWithBuiltInProperties(propertyname)) {
             addMessage(n, Status.INFO, Severity.LOW,
                     "Reading from unknown property that may cause loss of precision"); // ...but still sound!
         }
         // register read operation on abstract object
-        String propertyname = propertystr.getStr();
-        if (propertyname != null && propertyname.equals("length")) {
+        if (propertyname.isMaybeSingleStr() && propertyname.getStr().equals("length")) {
             // Proceed if we find an object label that is *not* an array.
             boolean only_array_length = true;
             for (ObjectLabel ol : objs)
@@ -1056,7 +1059,7 @@ public class Monitoring implements IAnalysisMonitoring {
         for (ObjectLabel objlabel : objs) {
             // TODO: objlabel.isHostObject() exists, but does not do precisely the same thing. Figure out what the correct behavior is.
             if (objlabel.getNode() != null) {
-                for (ObjectLabel oo : (propertyname == null ? state.getPrototypeWithProperty(objlabel, Value.makeAnyStr()) : state.getPrototypeWithProperty(objlabel, propertyname) /* TODO replace this expression with a lookup using the *coerced* property name! */)) { // TODO: this is also used for ReadVariableNode?
+                for (ObjectLabel oo : (!propertyname.isMaybeSingleStr() ? state.getPrototypeWithProperty(objlabel, Value.makeAnyStr()) : state.getPrototypeWithProperty(objlabel, propertyname) /* TODO replace this expression with a lookup using the *coerced* property name! */)) { // TODO: this is also used for ReadVariableNode?
                     if (oo.getNode() != null) { // TODO: Only give warnings for user objects, others maybe DOM or similar with side effects
                         os.add(oo.makeSingleton());
                     }
@@ -1064,17 +1067,17 @@ public class Monitoring implements IAnalysisMonitoring {
             }
         }
         for (ObjectLabel objlabel : os) {
-            // Record reading of arguments[propertystr] as reading of the actual function arguments as well.
+            // Record reading of arguments[propertyname] as reading of the actual function arguments as well.
             if (objlabel.getKind() == Kind.ARGUMENTS) {
                 Function f = n.getBlock().getFunction();
                 List<String> args = f.getParameterNames();
                 // Fall through if there are no arguments to the function or reading something
                 // other than an array index.
-                if (args == null || propertyname != null && !Strings.isArrayIndex(propertyname))
+                if (args == null || propertyname.isMaybeSingleStr() && !Strings.isArrayIndex(propertyname.getStr()))
                     continue;
                 String arg = null;
-                if (propertyname != null && Integer.valueOf(propertyname) < args.size())
-                    arg = args.get(Integer.valueOf(propertyname));
+                if (propertyname.isMaybeSingleStr() && Integer.valueOf(propertyname.getStr()) < args.size())
+                    arg = args.get(Integer.valueOf(propertyname.getStr()));
                 // Add all arguments if we aren't sure which we read.
                 if (arg == null)
                     addAllToMapSet(read_variables, f, args);
@@ -1082,20 +1085,20 @@ public class Monitoring implements IAnalysisMonitoring {
                     addToMapSet(read_variables, f, arg);
             }
             ObjReadsWrites i = obj_reads_writes.computeIfAbsent(objlabel, k -> new ObjReadsWrites());
-            if (propertyname == null) {
+            if (!propertyname.isMaybeSingleStr()) {
                 i.readUnknown();
             } else if (os.size() == 1) {
-                i.readDefinite(propertyname);
+                i.readDefinite(StringPKey.make(propertyname.getStr()));
             } else {
-                i.readMaybe(propertyname);
+                i.readMaybe(StringPKey.make(propertyname.getStr()));
             }
         }
     }
 
-    private static boolean checkPropertyNameMayInterfereWithBuiltInProperties(Str propertystr) {
-        return !propertystr.isMaybeSingleStr() &&
-                (propertystr.isMaybeStrIdentifier() || propertystr.isMaybeStrOtherIdentifierParts() ||
-                        propertystr.isMaybeStrPrefix() || propertystr.isMaybeStrJSON()); // TODO: more precise pattern of what may interfere?
+    private static boolean checkPropertyNameMayInterfereWithBuiltInProperties(PKeys propertyname) {
+        return !propertyname.isMaybeSingleStr() &&
+                (propertyname.isMaybeStrIdentifier() || propertyname.isMaybeStrOtherIdentifierParts() ||
+                        propertyname.isMaybeStrPrefix() || propertyname.isMaybeStrJSON()); // TODO: more precise pattern of what may interfere?
     }
 
     /**
@@ -1105,21 +1108,20 @@ public class Monitoring implements IAnalysisMonitoring {
      * Writes to the arguments object are also ignored.
      */
     @Override
-    public void visitPropertyWrite(Node n, Set<ObjectLabel> objs, Str propertystr) {
+    public void visitPropertyWrite(Node n, Set<ObjectLabel> objs, PKeys propertyname) {
         if (!scan_phase) {
             checkValueSuspicious(n, Value.makeObject(objs));
             return;
         }
         // warn about potential loss of precision
-        if (checkPropertyNameMayInterfereWithBuiltInProperties(propertystr)) {
+        if (checkPropertyNameMayInterfereWithBuiltInProperties(propertyname)) {
             addMessage(n,
                     Status.INFO,
                     Severity.MEDIUM,
                     "Writing to unknown property that may cause loss of precision"); // ...but still sound!
         }
         // register write operation on abstract object
-        String propertyname = propertystr.getStr();
-        if (propertyname != null && propertyname.equals("length")) {
+        if (propertyname.isMaybeSingleStr() && propertyname.getStr().equals("length")) {
             // Proceed if we find an object label that is *not* an array.
             boolean only_array_length = true;
             for (ObjectLabel ol : objs)
@@ -1140,12 +1142,12 @@ public class Monitoring implements IAnalysisMonitoring {
         }
         for (ObjectLabel objlabel : os) {
             ObjReadsWrites i = obj_reads_writes.computeIfAbsent(objlabel, k -> new ObjReadsWrites());
-            if (propertyname == null) {
+            if (!propertyname.isMaybeSingleStr()) {
                 i.writeUnknown(n);
             } else if (objs.size() == 1) {
-                i.writeDefinite(propertyname, n);
+                i.writeDefinite(StringPKey.make(propertyname.getStr()), n);
             } else {
-                i.writeMaybe(propertyname);
+                i.writeMaybe(StringPKey.make(propertyname.getStr()));
             }
         }
     }
@@ -1308,6 +1310,9 @@ public class Monitoring implements IAnalysisMonitoring {
         if (v.isMaybeObject() || v.isMaybeNull()) {
             i++;
         }
+        if (v.isMaybeSymbol()) {
+            i++;
+        }
         if (i > 1) {
             s = Status.MAYBE;
         } else {
@@ -1321,6 +1326,8 @@ public class Monitoring implements IAnalysisMonitoring {
      */
     @Override
     public void visitRecoveryGraph(AbstractNode node, int size) {
+        if (!Options.get().isStatisticsEnabled())
+            return;
         Integer count = recovery_graph_sizes.get(size);
         if (count == null)
             count = 0;
@@ -1621,20 +1628,20 @@ public class Monitoring implements IAnalysisMonitoring {
     private void checkValueSuspicious(AbstractNode n, Value v) {
         if (Options.get().isTestEnabled() || Options.get().isQuietEnabled())
             return;
-        boolean anyHostFunction = false;
-        boolean anyUserFunction = false;
+        int native_functions = 0;
+        int user_functions = 0;
         for (ObjectLabel objlabel : v.getObjectLabels()) {
             if (objlabel.getKind() == ObjectLabel.Kind.FUNCTION) {
                 if (objlabel.isHostObject()) {
-                    anyHostFunction = true;
+                    native_functions++;
                 } else {
-                    anyUserFunction = true;
+                    user_functions++;
                 }
-                if (anyHostFunction && anyUserFunction) {
+                if (native_functions >= 2 && user_functions >= 1) {
                     if (!log.isDebugEnabled() && log.isInfoEnabled()) {
                         System.out.print("\r");
                     }
-                    log.warn("Likely significant loss of precision (mix of native and non-native functions) at " +
+                    log.warn("Likely significant loss of precision (mix of multiple native and non-native functions) at " +
                             n.getClass().getSimpleName() + " " + n.getSourceLocation());
                     return;
                 }

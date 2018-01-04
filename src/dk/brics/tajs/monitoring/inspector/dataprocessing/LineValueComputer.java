@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -210,8 +210,8 @@ public class LineValueComputer {
             Set<ObjectLabel> base = Conversion.toObjectLabels(node, uncoercedBase, false, null);
             propertyName = UnknownValueResolver.getRealValue(propertyName, state);
             // TODO Unify the string-coercion implementation for dynamic property-names (GitHub #402)
-//             Set<Value> propertyNames = new SplittingUtil(SplittingUtil.Strategies::kinds, SplittingUtil.Strategies::singletons).getToStringCoercions(propertyName, false, SplittingUtil.Purpose.DPA, c);
-            Set<Value> propertyNames = singleton(Conversion.toString(propertyName, c)); // TODO: replace with previous line to use splitting
+//             Set<Value> propertyNames = new SplittingUtil(SplittingUtil.Strategies::kinds, SplittingUtil.Strategies::singletons).getToPropertyCoercions(propertyName, false, SplittingUtil.Purpose.DPA, c);
+            Set<Value> propertyNames = singleton(Conversion.toProperty(propertyName, c)); // TODO: replace with previous line to use splitting
             Set<Value> values = propertyNames.stream()
                     .map(name -> c.getAnalysis().getPropVarOperations().readPropertyValue(base, name)).collect(Collectors.toSet());
             return UnknownValueResolver.join(values, state);

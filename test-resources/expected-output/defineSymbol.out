@@ -1,0 +1,4 @@
+out/temp-sources/TestMicro.defineSymbol.js: [definite] Exceptional program exit is unreachable
+out/temp-sources/TestMicro.defineSymbol.js:1:1: [info] Abstract value: [@Symbol.species[native]]
+out/temp-sources/TestMicro.defineSymbol.js:9:1: [info] Abstract value: 4.0
+Soundness testing succeeded for 21 checks (with 0 expected failures)

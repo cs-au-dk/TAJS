@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,18 +53,24 @@ public class Operators {
         boolean maybe_string = !v.isNotStr();
         boolean maybe_undefined = v.isMaybeUndef() || base_maybe_null;
         boolean maybe_object = v.isMaybeNull();
+        boolean maybe_symbol = false;
         boolean maybe_function = false;
-        for (ObjectLabel objlabel : v.getObjectLabels())
-            if (objlabel.getKind() == Kind.FUNCTION)
+        for (ObjectLabel objlabel : v.getObjectLabels()) {
+            if (objlabel.getKind() == Kind.FUNCTION) {
                 maybe_function = true;
-            else
+            } else if (objlabel.getKind() == Kind.SYMBOL) {
+                maybe_symbol = true;
+            } else {
                 maybe_object = true;
+            }
+        }
         int count = (maybe_boolean ? 1 : 0)
                 + (maybe_number ? 1 : 0)
                 + (maybe_string ? 1 : 0)
                 + (maybe_undefined ? 1 : 0)
                 + (maybe_object ? 1 : 0)
-                + (maybe_function ? 1 : 0);
+                + (maybe_function ? 1 : 0)
+                + (maybe_symbol ? 1 : 0);
         if (count > 1)
             return Value.makeAnyStr();
         else { // table p. 47
@@ -81,6 +87,8 @@ public class Operators {
                 s = "object";
             else if (maybe_function)
                 s = "function";
+            else if (maybe_symbol)
+                s = "symbol";
             else
                 return Value.makeNone();
             return Value.makeStr(s);
@@ -568,14 +576,14 @@ public class Operators {
         //  15.3.5.3 step 1-4
         Value v2_prototype = c.getAnalysis().getPropVarOperations().readPropertyValue(v2_objlabels, "prototype");
         v2_prototype = UnknownValueResolver.getRealValue(v2_prototype, c.getState());
-        boolean maybe_v2_prototype_primitive = v2_prototype.isMaybePrimitive();
-        boolean maybe_v2_prototype_nonprimitive = v2_prototype.isMaybeObject();
+        boolean maybe_v2_prototype_nonobject = v2_prototype.isMaybePrimitiveOrSymbol();
+        boolean maybe_v2_prototype_object = v2_prototype.isMaybeObject();
         c.getMonitoring().visitInstanceof(c.getNode(), maybe_v2_non_function, maybe_v2_function,
-                maybe_v2_prototype_primitive, maybe_v2_prototype_nonprimitive);
-        if (maybe_v2_non_function || maybe_v2_prototype_primitive) {
+                maybe_v2_prototype_nonobject, maybe_v2_prototype_object);
+        if (maybe_v2_non_function || maybe_v2_prototype_nonobject) {
             Exceptions.throwTypeError(c);
             if ((maybe_v2_non_function && !maybe_v2_function)
-                    || (maybe_v2_prototype_nonprimitive && !maybe_v2_prototype_primitive))
+                    || (maybe_v2_prototype_object && !maybe_v2_prototype_nonobject))
                 return Value.makeNone();
         }
         return c.getState().hasInstance(v2_prototype.getObjectLabels(), v1);
@@ -587,7 +595,7 @@ public class Operators {
     public static Value in(Value v1, Value v2, Solver.SolverInterface c) {
         // 11.8.7 step 5
         boolean maybe_v2_object = v2.isMaybeObject();
-        boolean maybe_v2_nonobject = v2.isMaybePrimitive();
+        boolean maybe_v2_nonobject = v2.isMaybePrimitiveOrSymbol();
         c.getMonitoring().visitIn(c.getNode(), maybe_v2_object, maybe_v2_nonobject);
         if (maybe_v2_nonobject) {
             Exceptions.throwTypeError(c);
@@ -595,11 +603,8 @@ public class Operators {
                 return Value.makeNone();
         }
         // 11.8.7 step 6-8
-        Value v1_str = Conversion.toString(v1, c);
-        if (v1_str.isMaybeSingleStr())
-            return Value.makeBool(c.getAnalysis().getPropVarOperations().hasProperty(v2.getObjectLabels(), v1_str.getStr()));
-        else // TODO: could return false if all objects in v2 are empty
-            return Value.makeAnyBool();
+        Value v1_strorsymbol = Conversion.toString(v1.restrictToNotSymbol(), c).join(v1.restrictToSymbol());
+        return Value.makeBool(c.getAnalysis().getPropVarOperations().hasProperty(v2.getObjectLabels(), v1_strorsymbol));
     }
 
     /**
@@ -632,7 +637,7 @@ public class Operators {
                 r = r.joinBool(false);
             if (!v2.isNotStr())
                 r = r.joinBool(false);
-            if (v2.isMaybeObject())
+            if (v2.isMaybeObjectOrSymbol())
                 r = r.joinBool(false);
         }
         if (v1.isMaybeNull()) {
@@ -646,7 +651,7 @@ public class Operators {
                 r = r.joinBool(false);
             if (!v2.isNotStr())
                 r = r.joinBool(false);
-            if (v2.isMaybeObject())
+            if (v2.isMaybeObjectOrSymbol())
                 r = r.joinBool(false);
         }
         if (!v1.isNotBool()) {
@@ -661,7 +666,8 @@ public class Operators {
             }
             if (!v2.isNotNum()) {
                 Num n1 = Conversion.fromBooltoNum(v1);
-                r = abstractNumberEquality(r, n1, v2);
+                Value n2 = v2.restrictToNum();
+                r = abstractNumberEquality(r, n1, n2);
             }
             if (!v2.isNotStr()) {
                 Num n1 = Conversion.fromBooltoNum(v1);
@@ -670,7 +676,12 @@ public class Operators {
             }
             if (v2.isMaybeObject()) {
                 Num n1 = Conversion.fromBooltoNum(v1);
-                Num n2 = Conversion.toNumber(weakToPrimitive(Value.makeObject(v2.getObjectLabels()), Hint.NUM, r, c), c);
+                Num n2 = Conversion.toNumber(weakToPrimitive(v2.restrictToObject(), Hint.NUM, r, c), c);
+                r = abstractNumberEquality(r, n1, n2);
+            }
+            if (v2.isMaybeSymbol()) {
+                Num n1 = Conversion.fromBooltoNum(v1);
+                Num n2 = v2.restrictToSymbol();
                 r = abstractNumberEquality(r, n1, n2);
             }
         }
@@ -691,9 +702,12 @@ public class Operators {
                 r = abstractNumberEquality(r, v1, n2);
             }
             if (v2.isMaybeObject()) {
-                Value arg1 = v1.restrictToNum();
-                Value arg2 = weakToPrimitive(Value.makeObject(v2.getObjectLabels()), Hint.NONE, r, c);
-                r = r.join(abstractEqualityComparison(arg1, arg2, c));
+                Value n1 = v1.restrictToNum();
+                Value n2 = weakToPrimitive(v2.restrictToObject(), Hint.NONE, r, c);
+                r = r.join(abstractEqualityComparison(n1, n2, c));
+            }
+            if (v2.isMaybeSymbol()) {
+                r = r.joinBool(false);
             }
         }
         if (!v1.isNotStr()) {
@@ -714,32 +728,67 @@ public class Operators {
                 r = r.join(stringEqualityComparison(v1, v2));
             }
             if (v2.isMaybeObject()) {
-                Value arg1 = v1.restrictToStr();
-                Value arg2 = weakToPrimitive(Value.makeObject(v2.getObjectLabels()), Hint.NONE, r, c);
-                r = r.join(abstractEqualityComparison(arg1, arg2, c));
+                Value n1 = v1.restrictToStr();
+                Value n2 = weakToPrimitive(v2.restrictToObject(), Hint.NONE, r, c);
+                r = r.join(abstractEqualityComparison(n1, n2, c));
+            }
+            if (v2.isMaybeSymbol()) {
+                r = r.joinBool(false);
+            }
+        }
+        if (v1.isMaybeSymbol()) {
+            if (v2.isMaybeUndef())
+                r = r.joinBool(false);
+            if (v2.isMaybeNull())
+                r = r.joinBool(false);
+            if (!v2.isNotBool()) {
+                Value n1 = v1.restrictToSymbol();
+                Num n2 = Conversion.fromBooltoNum(v2);
+                r = abstractNumberEquality(r, n1, n2);
+            }
+            if (!v2.isNotNum()) {
+                r = r.joinBool(false);
+            }
+            if (!v2.isNotStr()) {
+                r = r.joinBool(false);
+            }
+            if (v2.isMaybeObject()) {
+                Value n1 = v1.restrictToSymbol();
+                Value n2 = weakToPrimitive(v2.restrictToObject(), Hint.NONE, r, c);
+                r = r.join(abstractEqualityComparison(n1, n2, c));
+            }
+            if (v2.isMaybeSymbol()) {
+                r = eqObjectOrSymbol(r, v1.getSymbols(), v2.getSymbols());
             }
         }
         if (v1.isMaybeObject()) {
-            if (v2.isMaybeUndef()) r = r.joinBool(false);
-            if (v2.isMaybeNull()) r = r.joinBool(false);
-            Value vv1 = Value.makeObject(v1.getObjectLabels());
+            if (v2.isMaybeUndef())
+                r = r.joinBool(false);
+            if (v2.isMaybeNull())
+                r = r.joinBool(false);
+            Value vv1 = v1.restrictToObject();
             if (!v2.isNotBool()) {
                 Num n1 = Conversion.toNumber(weakToPrimitive(vv1, Hint.NUM, r, c), c);
                 Num n2 = Conversion.fromBooltoNum(v2);
                 r = abstractNumberEquality(r, n1, n2);
             }
             if (!v2.isNotNum()) {
-                Value arg1 = weakToPrimitive(vv1, Hint.NONE, r, c);
-                Value arg2 = v2.restrictToNum();
-                r = r.join(abstractEqualityComparison(arg1, arg2, c));
+                Value n1 = weakToPrimitive(vv1, Hint.NONE, r, c);
+                Value n2 = v2.restrictToNum();
+                r = r.join(abstractEqualityComparison(n1, n2, c));
             }
             if (!v2.isNotStr()) {
-                Value arg1 = weakToPrimitive(vv1, Hint.NONE, r, c);
-                Value arg2 = v2.restrictToStr();
-                r = r.join(abstractEqualityComparison(arg1, arg2, c));
+                Value n1 = weakToPrimitive(vv1, Hint.NONE, r, c);
+                Value n2 = v2.restrictToStr();
+                r = r.join(abstractEqualityComparison(n1, n2, c));
             }
             if (v2.isMaybeObject()) {
-                r = eqObject(r, v1.getObjectLabels(), v2.getObjectLabels());
+                r = eqObjectOrSymbol(r, vv1.getObjectLabels(), v2.restrictToObject().getObjectLabels());
+            }
+            if (v2.isMaybeSymbol()) {
+                Value n1 = weakToPrimitive(vv1, Hint.NONE, r, c);
+                Value n2 = v2.restrictToSymbol();
+                r = r.join(abstractEqualityComparison(n1, n2, c));
             }
         }
         return r;
@@ -760,7 +809,7 @@ public class Operators {
     /**
      * Part of 11.9.3 The Abstract Equality Comparison Algorithm and 11.9.6 The Strict Equality Comparison Algorithm.
      */
-    private static Value eqObject(Bool r, Collection<ObjectLabel> labels1, Collection<ObjectLabel> labels2) {
+    private static Value eqObjectOrSymbol(Bool r, Collection<ObjectLabel> labels1, Collection<ObjectLabel> labels2) {
         Set<ObjectLabel> labelsInBoth = newSet();
         labelsInBoth.addAll(labels1);
         labelsInBoth.retainAll(labels2);
@@ -822,7 +871,7 @@ public class Operators {
                 r = r.joinBool(false);
             if (!v2.isNotStr())
                 r = r.joinBool(false);
-            if (v2.isMaybeObject())
+            if (v2.isMaybeObjectOrSymbol())
                 r = r.joinBool(false);
         }
         if (r.isMaybeAnyBool()) {
@@ -839,7 +888,7 @@ public class Operators {
                 r = r.joinBool(false);
             if (!v2.isNotStr())
                 r = r.joinBool(false);
-            if (v2.isMaybeObject())
+            if (v2.isMaybeObjectOrSymbol())
                 r = r.joinBool(false);
         }
         if (r.isMaybeAnyBool()) {
@@ -862,7 +911,7 @@ public class Operators {
                 r = r.joinBool(false);
             if (!v2.isNotStr())
                 r = r.joinBool(false);
-            if (v2.isMaybeObject())
+            if (v2.isMaybeObjectOrSymbol())
                 r = r.joinBool(false);
         }
         if (r.isMaybeAnyBool()) {
@@ -879,7 +928,7 @@ public class Operators {
                 r = abstractNumberEquality(r, v1, v2);
             if (!v2.isNotStr())
                 r = r.joinBool(false);
-            if (v2.isMaybeObject())
+            if (v2.isMaybeObjectOrSymbol())
                 r = r.joinBool(false);
         }
         if (r.isMaybeAnyBool()) {
@@ -897,13 +946,13 @@ public class Operators {
             if (!v2.isNotStr()) {
                 r = r.join(stringEqualityComparison(v1, v2));
             }
-            if (v2.isMaybeObject())
+            if (v2.isMaybeObjectOrSymbol())
                 r = r.joinBool(false);
         }
         if (r.isMaybeAnyBool()) {
             return r;
         }
-        if (v1.isMaybeObject()) {
+        if (v1.isMaybeObjectOrSymbol()) {
             if (v2.isMaybeUndef())
                 r = r.joinBool(false);
             if (v2.isMaybeNull())
@@ -914,13 +963,13 @@ public class Operators {
                 r = r.joinBool(false);
             if (!v2.isNotStr())
                 r = r.joinBool(false);
-            if (v2.isMaybeObject())
-                r = eqObject(r, v1.getObjectLabels(), v2.getObjectLabels());
+            if (v2.isMaybeObjectOrSymbol())
+                r = eqObjectOrSymbol(r, v1.getObjectLabels(), v2.getObjectLabels());
         }
         return r;
     }
 
-    private static Value stringEqualityComparison(Value v1, Value v2) {
+    private static Value stringEqualityComparison(Str v1, Str v2) {
         if (!v1.isMaybeFuzzyStr() && !v2.isMaybeFuzzyStr()) {
             return Value.makeBool(v1.getStr().equals(v2.getStr()));
         }
@@ -933,11 +982,11 @@ public class Operators {
         return Value.makeAnyBool();
     }
 
-    private static boolean doesSingleStringAndAbstractStringDisagree(Value v1, Value v2) {
+    private static boolean doesSingleStringAndAbstractStringDisagree(Str v1, Str v2) {
         return v1.isMaybeSingleStr() && !v2.isMaybeStr(v1.getStr());
     }
 
-    private static boolean doesStrUIntAndStrIdentifierDisagree(Value v1, Value v2) {
+    private static boolean doesStrUIntAndStrIdentifierDisagree(Str v1, Str v2) {
         return v1.isMaybeStrUInt() && !v1.isMaybeAnyStr() && v2.isStrIdentifier();
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -79,9 +79,11 @@ public class Conversion {
 
     /**
      * 8.6.2.6 [[DefaultValue]].
-     * Can only return primitive values.
+     * Can only return primitive values and symbols.
      */
     private static Value defaultValue(ObjectLabel obj, Hint hint, Solver.SolverInterface c) {
+        if (obj.getKind() == Kind.SYMBOL)
+            return Value.makeObject(obj);
         // When the [[DefaultValue]] method of O is called with no hint, then it behaves as if the hint were Number,
         // unless O is a Date object (section 15.9), in which case it behaves as if the hint were String.
         if (hint == Hint.NONE)
@@ -110,7 +112,7 @@ public class Conversion {
             result = UnknownValueResolver.getRealValue(result, tostringState);
             c.setState(s);
             if (!isMaybeNonCallable(tostring)) {
-                s.setToNone(); // TODO: skip this if we decide to skip the cloning above
+                s.setToBottom(); // TODO: skip this if we decide to skip the cloning above
             }
             s.propagate(tostringState, false);
             if (isMaybeNonCallable(tostring) || result.isMaybeObject()) {
@@ -124,7 +126,7 @@ public class Conversion {
                 result = result.restrictToNotObject().join(result2);
                 c.setState(s);
                 if (!isMaybeNonCallable(valueof)) {
-                    s.setToNone(); // TODO: skip this if we decide to skip the cloning above
+                    s.setToBottom(); // TODO: skip this if we decide to skip the cloning above
                 }
                 s.propagate(valueOfState, false);
                 if (isMaybeNonCallable(valueof) || result.isMaybeObject())
@@ -150,7 +152,7 @@ public class Conversion {
             result = UnknownValueResolver.getRealValue(result, valueofState);
             c.setState(s);
             if (!isMaybeNonCallable(valueof)) {
-                s.setToNone(); // TODO: skip this if we decide to skip the cloning above
+                s.setToBottom(); // TODO: skip this if we decide to skip the cloning above
             }
             s.propagate(valueofState, false);
             if (isMaybeNonCallable(valueof) || result.isMaybeObject()) {
@@ -164,7 +166,7 @@ public class Conversion {
                 result = result.restrictToNotObject().join(result2);
                 c.setState(s);
                 if (!isMaybeNonCallable(tostring)) {
-                    s.setToNone(); // TODO: skip this if we decide to skip the cloning above
+                    s.setToBottom(); // TODO: skip this if we decide to skip the cloning above
                 }
                 s.propagate(toStringState, false);
                 if (isMaybeNonCallable(tostring) || result.isMaybeObject())
@@ -280,7 +282,7 @@ public class Conversion {
 
     /**
      * 9.1 ToPrimitive.
-     * Converts a value to a primitive value according to the hint.
+     * Converts a value to a primitive value (or symbol) according to the hint.
      * Has no effect on primitive types but transforms wrapper objects to their wrapped values.
      * May have side-effects on the current state.
      */
@@ -294,7 +296,7 @@ public class Conversion {
         boolean first = true;
         State res = null;
         State orig = c.getState();
-        for (Iterator<ObjectLabel> it = v.getObjectLabels().iterator(); it.hasNext(); ) {
+        for (Iterator<ObjectLabel> it = v.restrictToObject().getObjectLabels().iterator(); it.hasNext(); ) {
             ObjectLabel ol = it.next();
             boolean last = !it.hasNext();
             // Return a default value for the Object. The default value of an object is
@@ -381,7 +383,7 @@ public class Conversion {
             else
                 result = result.joinBool(true);
         }
-        if (v.isMaybeObject()) {
+        if (v.isMaybeObjectOrSymbol()) {
             // true
             result = result.joinBool(true);
         }
@@ -396,6 +398,9 @@ public class Conversion {
             // Call ToPrimitive(input argument, hint Number).
             v = toPrimitive(v, Hint.NUM, c);
             c.getMonitoring().addMessage(c.getNode(), Severity.LOW, "Converting object to number");
+        }
+        if (v.isMaybeSymbol()) {
+            Exceptions.throwTypeError(c);
         }
         Value result = v.restrictToNum(); // The result equals the input argument (no conversion).
         if (v.isMaybeUndef()) {
@@ -454,7 +459,7 @@ public class Conversion {
                 v = Value.makeAnyNumUInt();
             } else if (str.isMaybeStrOtherNum()) {
                 v = Value.makeAnyNumOther().joinNumNaN().joinNumInf();
-            } else if ((str.isMaybeStrPrefix())) {
+            } else if (str.isMaybeStrPrefix()) {
                 v = Value.makeAnyNum();
                 String prefix = str.getPrefix().trim();
                 if (!prefix.startsWith("I")) {
@@ -540,6 +545,10 @@ public class Conversion {
      */
     public static Value toString(Value v, Solver.SolverInterface c) {
         v = UnknownValueResolver.getRealValue(v, c.getState());
+        if (v.isMaybeSymbol()) {
+            Exceptions.throwTypeError(c);
+            v = v.restrictToNotSymbol();
+        }
         // object to string
         if (v.isMaybeObject()) {
             // Call ToPrimitive(input argument, hint String).
@@ -620,6 +629,15 @@ public class Conversion {
     }
 
     /**
+     * ToProperty.
+     */
+    public static Value toProperty(Value v, Solver.SolverInterface c) {
+        Value notSymb = v.restrictToNotSymbol();
+        Value toStringed = Conversion.toString(notSymb, c); // FIXME: may summarize object labels in notSymb and v (github #514)
+        return toStringed.join(v.restrictToSymbol());
+    }
+
+    /**
      * Conversion of numbers to strings according to a concrete JavaScript semantics. Is only required for the special cases, such as formatting of very large or small numbers.
      */
     private static String specialNumberToString(double dbl, Solver.SolverInterface c) {
@@ -660,6 +678,7 @@ public class Conversion {
         State state = c != null ? c.getState() : null;
         // Object: The result is the input argument (no conversion).
         result.addAll(v.getObjectLabels());
+        // FIXME: ToObject of symbol should create *new* Symbol object (see https://www.ecma-international.org/ecma-262/#sec-toobject) - github #516
         // primitive number to object
         if (!v.isNotNum()) {
             // Create a new Number object whose [[value]] property is set to the value of the number.

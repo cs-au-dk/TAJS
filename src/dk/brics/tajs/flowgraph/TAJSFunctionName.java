@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,14 @@ public enum TAJSFunctionName {
     TAJS_MAKE_PARTIAL("makePartial"),
 
     TAJS_NEW_ARRAY("newArray"),
-    TAJS_NEW_OBJECT("newObject");
+    TAJS_NEW_OBJECT("newObject"),
+
+    TAJS_GET_MAIN("getMain"),
+    TAJS_NOT_IMPLEMENTED("NOT_IMPLEMENTED"),
+    TAJS_LOAD_JSON("loadJSON"),
+    TAJS_NODE_REQUIRE_RESOLVE("nodeRequireResolve"),
+    TAJS_NODE_PARENT_DIR("parentDir"),
+    TAJS_NODE_UNURL("unURL");
 
     private String string;
 

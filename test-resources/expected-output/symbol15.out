@@ -1,0 +1,4 @@
+out/temp-sources/TestMicro.symbol15.js: [definite] Exceptional program exit is unreachable
+out/temp-sources/TestMicro.symbol15.js:10:1: [info] Abstract value: 5.0
+out/temp-sources/TestMicro.symbol15.js:12:1: [info] Abstract value: "foo"
+Soundness testing succeeded for 45 checks (with 0 expected failures)

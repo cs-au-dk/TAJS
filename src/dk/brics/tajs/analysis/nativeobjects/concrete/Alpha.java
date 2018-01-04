@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import dk.brics.tajs.analysis.nativeobjects.JSRegExp;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.Value;
 
 import java.util.Map;
@@ -42,7 +43,7 @@ public class Alpha {
         map.put("<CONCRETE>", Value.makeStr(array.toSourceCode()));
         ObjectLabel label = JSArray.makeArray(sourceNode, Value.makeNum(array.getLength()), HeapContext.make(null, map), c);
         Set<ObjectLabel> labels = singleton(label);
-        array.getExtraProperties().forEach((String k, ConcreteValue v) -> pv.writeProperty(labels, Value.makeTemporaryStr(k), toValue(v, c), false, true));
+        array.getExtraProperties().forEach((PKey k, ConcreteValue v) -> pv.writeProperty(labels, k.toValue(), toValue(v, c), false, true));
         for (int i = 0; i < array.getLength(); i++) {
             final Value index = Value.makeStr(String.valueOf(i));
             ConcreteValue concreteValue = array.get(i);
@@ -53,7 +54,6 @@ public class Alpha {
     }
 
     private static Value createNewRegExpValue(ConcreteRegularExpression regExp, AbstractNode sourceNode, Solver.SolverInterface c) {
-        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         final Map<String, Value> map = newMap();
         map.put("<CONCRETE>", Value.makeStr(regExp.toSourceCode()));
         ObjectLabel label = JSRegExp.makeRegExp(sourceNode, regExp.getSource().getString(), regExp.getGlobal().getBooleanValue(), regExp.getIgnoreCase().getBooleanValue(), regExp.getMultiline().getBooleanValue(), regExp.getLastIndex().getNumber(), HeapContext.make(null, map), c);

@@ -77,7 +77,7 @@ jQuery.each(
         };
     });
 TAJS_assert(jQuery.fn.ajaxStop, "isMaybeObject");
-TAJS_assert(jQuery.fn.ajaxStop, "isMaybeOtherThanObject", false);
+TAJS_assert(jQuery.fn.ajaxStop, "isMaybePrimitiveOrSymbol", false);
 
 jQuery.each(
     {
@@ -96,4 +96,4 @@ jQuery.each(
         };
     });
 TAJS_assert(jQuery.fn.ajaxStop, "isMaybeObject");
-TAJS_assert(jQuery.fn.ajaxStop, "isMaybeOtherThanObject", false);
+TAJS_assert(jQuery.fn.ajaxStop, "isMaybePrimitiveOrSymbol", false);

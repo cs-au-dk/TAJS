@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,8 @@ import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectProperty;
-import dk.brics.tajs.lattice.Property;
+import dk.brics.tajs.lattice.PKey;
+import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.UnsoundnessOptionValues;
@@ -84,11 +85,11 @@ public class Unsoundness {
     /**
      * Decides if a dynamic property read should consider a particular property name.
      */
-    public boolean maySkipSpecificDynamicPropertyRead(AbstractNode node, String concretePropertyName) {
+    public boolean maySkipSpecificDynamicPropertyRead(AbstractNode node, PKey concretePropertyName) {
         if (!options.isIgnoreUnlikelyPropertyReads()) {
             return false;
         }
-        Set<String> skippable = newSet(Arrays.asList(Property.__PROTO__, "constructor"));
+        Set<PKey> skippable = newSet(Arrays.asList(StringPKey.__PROTO__, StringPKey.make("constructor")));
         return addMessageIfUnsound(
                 node,
                 skippable.contains(concretePropertyName),

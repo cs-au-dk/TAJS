@@ -10,7 +10,7 @@ test-resources/src/micro/test65.js:13:1: [info] Abstract value: 42.0|"foo"
 test-resources/src/micro/test65.js:20:1: [info] Abstract value: 487.0
 test-resources/src/micro/test65.js:25:1: [info] Abstract value: false
 test-resources/src/micro/test65.js:28:1: [info] Abstract value: true
-test-resources/src/micro/test65.js:29:1: [info] Abstract value: Bool
+test-resources/src/micro/test65.js:29:1: [info] Abstract value: false
 test-resources/src/micro/test65.js:30:1: [info] Abstract value: false
 test-resources/src/micro/test65.js:32:1: [info] Abstract value: "number"
 test-resources/src/micro/test65.js:43:1: [info] Abstract object: {a:123.0,[[Prototype]]=[@Object.prototype[native]]}

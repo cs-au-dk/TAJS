@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ public class ObjectProperty {
     /**
      * Constructs an ObjectProperty for an ordinary property.
      */
-    public static ObjectProperty makeOrdinary(ObjectLabel objlabel, String propertyname) {
+    public static ObjectProperty makeOrdinary(ObjectLabel objlabel, PKey propertyname) {
         return new ObjectProperty(objlabel, Property.makeOrdinaryProperty(propertyname));
     }
 
@@ -140,7 +140,7 @@ public class ObjectProperty {
     /**
      * Returns the kind.
      */
-    public Property.Kind getKind() {
+    public Property.Kind getKind() { // FIXME: inline all calls?
         return property.getKind();
     }
 
@@ -152,9 +152,9 @@ public class ObjectProperty {
     }
 
     /**
-     * Returns the property name (for ordinary properties).
+     * Returns the property key (for ordinary properties).
      */
-    public String getPropertyName() {
+    public PKey getPropertyName() {
         return property.getPropertyName();
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -297,8 +297,8 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                 if (SingleGamma.isConcreteString(value, c)) {
                     return true;
                 }
-                if (value.isMaybeObject()) {
-                    for (ObjectLabel objectLabel : value.getObjectLabels()) { // FIxME: does not loop
+                if (value.isMaybeObjectOrSymbol()) {
+                    for (ObjectLabel objectLabel : value.getObjectLabels()) { // FIxME: does not loop (github #501)
                         switch (objectLabel.getKind()) {
                             case OBJECT: // special case for experiments, limit is 1 in practice
                                 return value.getObjectLabels().size() <= objectLimit;

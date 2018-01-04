@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,7 +77,7 @@ public class DomainMapper {
         Set<SingleValue> nonCompositeValues = values.stream().map(v -> {
             assert v.getObjectLabels().size() < 2;
             assert v.typeSize() < 2;
-            if (v.isMaybeObject()) {
+            if (v.isMaybeObjectOrSymbol()) {
                 ObjectLabel label = v.getObjectLabels().iterator().next()  /* singleton by now! */;
                 return makeObject(label, idManager.make(label));
             }

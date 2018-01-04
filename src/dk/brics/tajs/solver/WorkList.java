@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -174,7 +174,7 @@ public class WorkList<ContextType extends IContext<?>> {
          * This method defines the work list priority using the work list strategy.
          */
         @Override
-        public int compareTo(@Nonnull  Entry p) {
+        public int compareTo(@Nonnull Entry p) {
             return worklist_strategy.compare(this, p);
         }
 

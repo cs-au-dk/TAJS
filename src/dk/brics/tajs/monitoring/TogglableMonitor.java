@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,8 @@ import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PKeys;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.Message;
@@ -206,13 +206,13 @@ public class TogglableMonitor implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown) {
-        active.visitPropertyRead(n, objs, propertystr, state, check_unknown);
+    public void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, PKeys propertyname, State state, boolean check_unknown) {
+        active.visitPropertyRead(n, objs, propertyname, state, check_unknown);
     }
 
     @Override
-    public void visitPropertyWrite(Node n, Set<ObjectLabel> objs, Str propertystr) {
-        active.visitPropertyWrite(n, objs, propertystr);
+    public void visitPropertyWrite(Node n, Set<ObjectLabel> objs, PKeys propertyname) {
+        active.visitPropertyWrite(n, objs, propertyname);
     }
 
     @Override
@@ -226,8 +226,8 @@ public class TogglableMonitor implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v, ObjectLabel global_objv) {
-        active.visitReadProperty(n, objlabels, propertystr, maybe, state, v, global_objv);
+    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, PKeys propertyname, boolean maybe, State state, Value v, ObjectLabel global_objv) {
+        active.visitReadProperty(n, objlabels, propertyname, maybe, state, v, global_objv);
     }
 
     @Override

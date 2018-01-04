@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,8 @@ import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PKey;
+import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
@@ -93,13 +95,14 @@ public class UnevalTools {
             AbstractNode n = ns.get(idx);
 
             if (!effects_only && n instanceof LoadNode && ((LoadNode) n).getResultRegister() == var) {
-                String varStr = s.isRegisterDefined(var) ? Conversion.toString(UnknownValueResolver.getRealValue(s.readRegister(var), s), c).getStr() : null;
-
-                if (varStr != null) {
-                    // We know the value of the register but we still need to traverse the rest of the flow graph to get
-                    // the proper context sensitivity set up.  We don't care about the return value though; throw it away.
-                    p_build_nf(var, node, dr, mapping, arguments, seen_blocks, s, c, true);
-                    return "\"" + Strings.escapeSource(varStr) + "\"";
+                if (s.isRegisterDefined(var)) {
+                    Value v = Conversion.toString(UnknownValueResolver.getRealValue(s.readRegister(var), s), c);
+                    if (v.isMaybeSingleStr()) {
+                        // We know the value of the register but we still need to traverse the rest of the flow graph to get
+                        // the proper context sensitivity set up.  We don't care about the return value though; throw it away.
+                        p_build_nf(var, node, dr, mapping, arguments, seen_blocks, s, c, true);
+                        return "\"" + Strings.escapeSource(v.getStr()) + "\"";
+                    }
                 }
             }
 
@@ -377,9 +380,10 @@ public class UnevalTools {
                         if (!l.equals(InitialStateBuilder.GLOBAL)) {
                             if (UnknownValueResolver.getDefaultNonArrayProperty(l, state).isNotAbsent()) // TODO: javadoc
                                 return null;
-                            for (String propertyname : UnknownValueResolver.getProperties(l, state).keySet())
+                            for (PKey propertyname : UnknownValueResolver.getProperties(l, state).keySet())
                                 if (UnknownValueResolver.getProperty(l, propertyname, state, true).isMaybePresent())
-                                    res.add(propertyname);
+                                    if (propertyname instanceof StringPKey)
+                                        res.add(((StringPKey)propertyname).getStr());
                         }
                 return res;
             }

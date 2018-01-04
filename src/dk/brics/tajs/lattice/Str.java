@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,12 +110,14 @@ public interface Str {
     boolean isMaybeFuzzyStr();
 
     /**
-     * Returns the singleton string value, or null if definitely not a singleton string.
+     * Returns the singleton string value.
+     * Only to be called if {@link #isMaybeSingleStr()} returns true.
      */
     String getStr();
 
     /**
-     * Returns the prefix value, or null if definitely not a fixed nonempty prefix string.
+     * Returns the prefix value.
+     * Only to be called if {@link #isMaybeStrPrefix()} returns true.
      */
     String getPrefix();
 

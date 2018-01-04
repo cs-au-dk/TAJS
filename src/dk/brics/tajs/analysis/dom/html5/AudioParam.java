@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,7 +97,7 @@ public class AudioParam {
         switch (nativeObject) {
             case AUDIOPARAM_CONSTRUCTOR:
                 Exceptions.throwTypeError(c);
-                s.setToNone();
+                s.setToBottom();
             case AUDIOPARAM_TAJS_UNSUPPORTED_FUNCTION:
                 throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getJSSourceNode().getSourceLocation() + ": This function from AudioParam is not yet supported: " + call.getJSSourceNode().getSourceLocation());
             default: {

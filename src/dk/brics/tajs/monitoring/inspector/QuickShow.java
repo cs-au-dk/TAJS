@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ public class QuickShow {
     public static void main(String[] args) throws Exception {
         TestInit();
         IAnalysisMonitoring inspector = InspectorFactory.createInspectorMonitor();
-        String target = "test/google/richards.js";
+        String target = "test-resources/src/google/richards.js";
         Options.get().getArguments().add(Paths.get(target));
         Analysis a = Main.init(Options.get(), new CompositeMonitoring(inspector, new AnalysisTimeLimiter(30)), null);
         if (a == null)

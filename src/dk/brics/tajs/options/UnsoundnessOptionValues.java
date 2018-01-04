@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,41 +29,41 @@ import org.kohsuke.args4j.Option;
  */
 public class UnsoundnessOptionValues {
 
-    @Option(name = "no-implicit-global-var-declarations", usage = "Allows ignoring implicit declaration of global variables")
+    @Option(name = "-no-implicit-global-var-declarations", usage = "Allows ignoring implicit declaration of global variables")
     private boolean noImplicitGlobalVarDeclarations;
 
-    @Option(name = "ignore-missing-native-models", usage = "Allows ignoring invocations of unmodeled native functions")
+    @Option(name = "-ignore-missing-native-models", usage = "Allows ignoring invocations of unmodeled native functions")
     private boolean ignoreMissingNativeModels;
 
-    @Option(name = "use-precise-function-toString", usage = "Allows Function.prototype.toString to produce a deterministic value")
+    @Option(name = "-use-precise-function-toString", usage = "Allows Function.prototype.toString to produce a deterministic value")
     private boolean usePreciseFunctionToString;
 
-    @Option(name = "ignore-imprecise-evals", usage = "Allows ignoring imprecise calls to eval")
+    @Option(name = "-ignore-imprecise-evals", usage = "Allows ignoring imprecise calls to eval")
     private boolean ignoreImpreciseEvals;
 
-    @Option(name = "ignore-async-evals", usage = "Allows ignoring eval as an event handler")
+    @Option(name = "-ignore-async-evals", usage = "Allows ignoring eval as an event handler")
     private boolean ignoreAsyncEvals;
 
-    @Option(name = "use-ordered-object-keys", usage = "Allows a determistic ordering of the Object.keys array")
+    @Option(name = "-use-ordered-object-keys", usage = "Allows a determistic ordering of the Object.keys array")
     private boolean useOrderedObjectKeys;
 
-    @Option(name = "ignore-locale", usage = "Allows the use of a fixed locale for locale specific functions")
+    @Option(name = "-ignore-locale", usage = "Allows the use of a fixed locale for locale specific functions")
     private boolean ignoreLocale;
 
     // TODO: this should be true by default, but old TAJS behaviour assumes false (GitHub #355)
-    @Option(name = "warn-about-all-string-coercions", usage = "Allows omitting some warnings about toString coercions")
+    @Option(name = "-warn-about-all-string-coercions", usage = "Allows omitting some warnings about toString coercions")
     private boolean warnAboutAllStringCoercions;
 
-    @Option(name = "ignore-imprecise-function-constructor", usage = "Allows ignoring imprecise calls to Function")
+    @Option(name = "-ignore-imprecise-function-constructor", usage = "Allows ignoring imprecise calls to Function")
     private boolean ignoreImpreciseFunctionConstructor;
 
-    @Option(name = "ignore-unlikely-property-reads", usage = "Allows ignoring some unlikely properties during a dynamic property read")
+    @Option(name = "-ignore-unlikely-property-reads", usage = "Allows ignoring some unlikely properties during a dynamic property read")
     private boolean ignoreUnlikelyPropertyReads;
 
-    @Option(name = "show-unsoundness-usage", usage = "Shows all the usages of unsoundness")
+    @Option(name = "-show-unsoundness-usage", usage = "Shows all the usages of unsoundness")
     private boolean showUnsoundnessUsage;
 
-    @Option(name = "ignore-some-prototypes-during-dynamic-property-reads", usage = "Allows ignoring some unlikely prototypes during a dynamic property read")
+    @Option(name = "-ignore-some-prototypes-during-dynamic-property-reads", usage = "Allows ignoring some unlikely prototypes during a dynamic property read")
     private boolean ignoreSomePrototypesDuringDynamicPropertyReads;
 
     public UnsoundnessOptionValues(UnsoundnessOptionValues base, String[] args) {

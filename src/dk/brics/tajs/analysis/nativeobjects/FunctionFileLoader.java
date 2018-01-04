@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.js2flowgraph.FlowGraphMutator;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -54,10 +55,8 @@ public class FunctionFileLoader {
     public static Value loadFunction(String target, boolean isHostEnvironment, List<String> parameterNames, Solver.SolverInterface c) {
         URL url;
         try {
-            // Target is already a URL
             url = new URL(target);
         } catch (MalformedURLException e1) {
-            // Assume the target is a path
             Path likelyPath = Paths.get(target);
             if (!likelyPath.isAbsolute()) {
                 // resolve relative to the file the loading occurs from
@@ -66,19 +65,19 @@ public class FunctionFileLoader {
                 if (location == null) {
                     throw new AnalysisException(c.getNode() + ": Cannot load relative path from unknown physical location: " + c.getNode().getSourceLocation());
                 } else {
+                    if (HostEnvSources.PROTOCOL_NAME.equals(location.getProtocol())) {
+                        location = HostEnvSources.resolve(location.getPath());
+                    }
                     callDirectory = PathAndURLUtils.toPath(location).getParent();
                 }
                 likelyPath = callDirectory.resolve(target);
             }
-
             if (!Files.exists(likelyPath)) {
                 throw new AnalysisException("File to be loaded does not exist (could be an error in the analyzed program)", new NoSuchFileException(likelyPath.toAbsolutePath().toString()));
             }
-
             // now we have a valid URL
             url = PathAndURLUtils.toURL(likelyPath);
         }
-
         url = normalizeFileURL(url);
         final SourceLocation.SourceLocationMaker sourceLocationMaker;
         if (isHostEnvironment) {
@@ -87,9 +86,7 @@ public class FunctionFileLoader {
         } else {
             sourceLocationMaker = new SourceLocation.StaticLocationMaker(url);
         }
-
         Function function = FlowGraphMutator.extendFlowGraphWithTopLevelFunction(parameterNames, url, isHostEnvironment, c.getFlowGraph(), sourceLocationMaker);
-
         ObjectLabel functionLabel = UserFunctionCalls.instantiateFunction(function, ScopeChain.make(InitialStateBuilder.GLOBAL), c.getNode(), c.getState(), c);
         return Value.makeObject(functionLabel);
     }

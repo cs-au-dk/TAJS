@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -166,6 +166,7 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_DEFI
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_FREEZE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_GETOWNPROPERTYDESCRIPTOR;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_GETOWNPROPERTYNAMES;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_GETOWNPROPERTYSYMBOLS;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_GETPROTOTYPEOF;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_HASOWNPROPERTY;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.OBJECT_IS;
@@ -221,6 +222,12 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIM
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMLEFT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMRIGHT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_VALUEOF;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.SYMBOL;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.SYMBOL_FOR;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.SYMBOL_KEYFOR;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.SYMBOL_TOSOURCE;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.SYMBOL_TOSTRING;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.SYMBOL_VALUEOF;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.SYNTAX_ERROR;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.TYPE_ERROR;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.UNESCAPE;
@@ -316,7 +323,7 @@ public class NativeFunctionSignatureBuilder {
         ValueDescription none = None;
 
         // CONSTRUCTORS
-        addConstructorSig(STRING, OptionalParameters.String);
+        addConstructorSig(STRING, OptionalParameters.StringOrSymbol);
         addConstructorSig(NUMBER, OptionalParameters.Number);
         addConstructorSig(REGEXP, OptionalParameters.StringIfNotRegExpOfUndefined, OptionalParameters.StringIfNotUndefined);
         addConstructorVarSig(ARRAY, OptionalParameters.DontCare);
@@ -416,10 +423,11 @@ public class NativeFunctionSignatureBuilder {
 
         addStaticSig(OBJECT_CREATE, MandatoryParameters.DontCare, OptionalParameters.Object);
         addStaticSig(OBJECT_DEFINE_PROPERTIES, MandatoryParameters.ObjectNoCoercion, MandatoryParameters.Object);
-        addStaticSig(OBJECT_DEFINE_PROPERTY, MandatoryParameters.ObjectNoCoercion, MandatoryParameters.String, MandatoryParameters.Object);
+        addStaticSig(OBJECT_DEFINE_PROPERTY, MandatoryParameters.ObjectNoCoercion, MandatoryParameters.StringOrSymbol, MandatoryParameters.Object);
         addStaticSig(OBJECT_FREEZE, MandatoryParameters.Object);
         addStaticSig(OBJECT_GETOWNPROPERTYDESCRIPTOR, MandatoryParameters.ObjectNoCoercion, MandatoryParameters.String);
         addStaticSig(OBJECT_GETOWNPROPERTYNAMES, MandatoryParameters.Object);
+        addStaticSig(OBJECT_GETOWNPROPERTYSYMBOLS, MandatoryParameters.Object);
         addStaticSig(OBJECT_GETPROTOTYPEOF, MandatoryParameters.Object);
         addStaticSig(OBJECT_ISEXTENSIBLE, MandatoryParameters.Object);
         addStaticSig(OBJECT_ISFROZEN, MandatoryParameters.Object);
@@ -443,6 +451,14 @@ public class NativeFunctionSignatureBuilder {
         // BOOLEAN FUNCTIONS
         addSig(BOOLEAN_TOSTRING, Receivers.Boolean);
         addSig(BOOLEAN_VALUEOF, Receivers.Boolean);
+
+        // SYMBOLS FUNCTIONS
+        addStaticSig(SYMBOL, OptionalParameters.String);
+        addStaticSig(SYMBOL_FOR, OptionalParameters.String);
+        addStaticSig(SYMBOL_KEYFOR, MandatoryParameters.Symbol);
+        addSig(SYMBOL_VALUEOF, Receivers.Symbol);
+        addSig(SYMBOL_TOSTRING, Receivers.Symbol);
+        addSig(SYMBOL_TOSOURCE, Receivers.Symbol);
 
         // DATE FUNCTIONS
         addSig(DATE_GETDATE, Receivers.Date);

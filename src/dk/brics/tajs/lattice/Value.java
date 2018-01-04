@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import dk.brics.tajs.util.DeepImmutable;
 import dk.brics.tajs.util.Strings;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
 
@@ -34,7 +35,7 @@ import static dk.brics.tajs.util.Collections.newSet;
  * Abstract value.
  * Value objects are immutable.
  */
-public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
+public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable {
 
     private final static int BOOL_TRUE = 0x00000001; // true
 
@@ -204,7 +205,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
     private ObjectProperty var; // polymorphic if non-null
 
     /**
-     * Possible values regarding object references.
+     * Possible values regarding object references and symbols.
      */
     private Set<ObjectLabel> object_labels;
 
@@ -537,7 +538,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
      */
     public Value restrictToGetterSetter() {
         checkNotPolymorphicOrUnknown();
-        if (!isMaybePrimitive() && !isMaybeObject())
+        if (!isMaybePrimitive() && !isMaybeObjectOrSymbol())
             return this;
         Value r = new Value(this);
         r.flags &= ~PRIMITIVE;
@@ -976,7 +977,9 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
     /**
      * Constructs a value as the join of the given collection of values.
      */
-    public static Value join(Iterable<Value> values) {
+    public static Value join(Collection<Value> values) {
+        if (values.size() == 1)
+            return values.iterator().next();
         Value r = null;
         boolean first = true;
         for (Value v : values)
@@ -1150,7 +1153,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
     }
 
     /**
-     * Returns the source locations of the objects in this value.
+     * Returns the source locations of the objects and symbols in this value.
      */
     public Set<SourceLocation> getObjectSourceLocations() {
         Set<SourceLocation> res = newSet();
@@ -2348,6 +2351,73 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
     }
 
     @Override
+    public boolean isMaybeSymbol() {
+        checkNotPolymorphicOrUnknown();
+        return object_labels != null && object_labels.stream().anyMatch(x -> x.getKind() == Kind.SYMBOL);
+    }
+
+    @Override
+    public boolean isMaybeFuzzyStrOrSymbol() {
+        checkNotPolymorphicOrUnknown();
+        return (!isNotStr() && isMaybeSymbol()) ||
+                isMaybeFuzzyStr() ||
+                (object_labels != null && object_labels.stream().filter(x -> x.getKind() == Kind.SYMBOL).count() > 1) ||
+                (object_labels != null && object_labels.stream().filter(x -> x.getKind() == Kind.SYMBOL && !x.isSingleton()).count() > 0);
+    }
+
+    public boolean isMaybeOtherThanSymbol() {
+        checkNotPolymorphicOrUnknown();
+        if (isMaybePrimitive() || isMaybeGetterOrSetter()) {
+            return true;
+        }
+        return object_labels != null && object_labels.stream().anyMatch(x -> x.getKind() != Kind.SYMBOL);
+    }
+
+    public boolean isMaybeOtherThanStrOrSymbol() {
+        checkNotPolymorphicOrUnknown();
+        if ((flags & (UNDEF | NULL | BOOL | NUM)) != 0 || num != null || getters != null || setters != null) {
+            return true;
+        }
+        return object_labels != null && object_labels.stream().anyMatch(x -> x.getKind() != Kind.SYMBOL);
+    }
+
+    /**
+     * Constructs a value as a copy of this value but definitely not a symbol.
+     */
+    public Value restrictToNotSymbol() {
+        if (object_labels == null)
+            return this;
+        Value r = new Value(this);
+        r.object_labels = newSet();
+        for (ObjectLabel objlabel : object_labels)
+            if (objlabel.getKind() != Kind.SYMBOL)
+                r.object_labels.add(objlabel);
+        if (r.object_labels.isEmpty())
+            r.object_labels = null;
+        return canonicalize(r);
+    }
+
+    /**
+     * Constructs a value as a copy of this value but definitely a symbol.
+     */
+    public Value restrictToSymbol() {
+        checkNotPolymorphicOrUnknown();
+        Value r = new Value(this);
+        r.flags &= ~PRIMITIVE;
+        r.num = null;
+        r.str = null;
+        r.getters = r.setters = null;
+        r.object_labels = newSet();
+        if (object_labels != null)
+            for (ObjectLabel objlabel : object_labels)
+                if (objlabel.getKind() == Kind.SYMBOL)
+                    r.object_labels.add(objlabel);
+        if (r.object_labels.isEmpty())
+            r.object_labels = null;
+        return canonicalize(r);
+    }
+
+    @Override
     public boolean isMaybeFuzzyStr() {
         checkNotPolymorphicOrUnknown();
         return (flags & STR) != 0;
@@ -2356,8 +2426,8 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
     @Override
     public String getStr() {
         checkNotPolymorphicOrUnknown();
-        if (isMaybeStrPrefix())
-            return null;
+        if (str == null || isMaybeStrPrefix())
+            throw new AnalysisException("Invoked getStr on a non-single string value");
         return str;
     }
 
@@ -2365,7 +2435,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
     public String getPrefix() {
         checkNotPolymorphicOrUnknown();
         if (!isMaybeStrPrefix())
-            return null;
+            throw new AnalysisException("Invoked getPrefix on a non-prefix string value");
         return str;
     }
 
@@ -2662,7 +2732,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
      * Constructs a temporary value describing the given string.
      * The object is not canonicalized and should therefore not be stored in abstract states.
      */
-    public static Str makeTemporaryStr(String s) {
+    public static Value makeTemporaryStr(String s) {
         Value r = new Value();
         r.str = s;
         return r;
@@ -2767,6 +2837,17 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
     }
 
     /**
+     * Constructs the value describing the given symbol object label.
+     */
+    public static Value makeSymbol(ObjectLabel v) {
+        if (v == null)
+            throw new NullPointerException();
+        if (v.getKind() != Kind.SYMBOL)
+            throw new RuntimeException("Creating symbol value with a non-symbol");
+        return Value.makeObject(v);
+    }
+
+    /**
      * Constructs the value describing the given object labels.
      */
     public static Value makeObject(Set<ObjectLabel> v) {
@@ -2793,22 +2874,29 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
     }
 
     /**
-     * Constructs a value as a copy of this value but only with object values.
+     * Constructs a value as a copy of this value but only with object values. (Symbols are not objects.)
      */
     public Value restrictToObject() {
         checkNotPolymorphicOrUnknown();
-        if (!isMaybePrimitive() && !isMaybeGetterOrSetter())
+        if (!isMaybePrimitiveOrSymbol() && !isMaybeGetterOrSetter())
             return this;
         Value r = new Value(this);
         r.flags &= ~PRIMITIVE;
         r.num = null;
         r.str = null;
         r.getters = r.setters = null;
+        r.object_labels = newSet();
+        if (object_labels != null)
+            for (ObjectLabel objlabel : object_labels)
+                if (objlabel.getKind() != Kind.SYMBOL)
+                    r.object_labels.add(objlabel);
+        if (r.object_labels.isEmpty())
+            r.object_labels = null;
         return canonicalize(r);
     }
 
     /**
-     * Constructs a value as a copy of this value but only with non-object values.
+     * Constructs a value as a copy of this value but only with non-object values. (Symbols are not objects.)
      * Unknown and polymorphic values are returned unmodified.
      * @throws AnalysisException if the value contains getters or setters.
      */
@@ -2817,7 +2905,13 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
         if (object_labels == null)
             return this;
         Value r = new Value(this);
-        r.object_labels = null;
+        r.object_labels = newSet();
+        if (object_labels != null)
+            for (ObjectLabel objlabel : object_labels)
+                if (objlabel.getKind() == Kind.SYMBOL)
+                    r.object_labels.add(objlabel);
+        if (r.object_labels.isEmpty())
+            r.object_labels = null;
         return canonicalize(r);
     }
 
@@ -2965,6 +3059,14 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
      */
     public boolean isMaybeObject() {
         checkNotPolymorphicOrUnknown();
+        return object_labels != null && object_labels.stream().anyMatch(x -> x.getKind() != Kind.SYMBOL);
+    }
+
+    /**
+     * Returns true if this value maybe represents an object or a symbol.
+     */
+    public boolean isMaybeObjectOrSymbol() {
+        checkNotPolymorphicOrUnknown();
         return object_labels != null;
     }
 
@@ -2993,15 +3095,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
     }
 
     /**
-     * Returns true if this value maybe represents something that isn't a object.
-     */
-    public boolean isMaybeOtherThanObject() {
-        checkNotPolymorphicOrUnknown();
-        return (flags & (NULL | UNDEF | BOOL | NUM | STR)) != 0 || num != null || str != null;
-    }
-
-    /**
-     * Returns true if this value may be a non-object, including undefined and null.
+     * Returns true if this value may be a primitive, including undefined, null.
      */
     public boolean isMaybePrimitive() {
         checkNotPolymorphicOrUnknown();
@@ -3009,7 +3103,14 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
     }
 
     /**
-     * Returns the (immutable) set of object labels.
+     * Returns true if this value may be a non-object, including undefined, null, and symbols.
+     */
+    public boolean isMaybePrimitiveOrSymbol() {
+        return isMaybePrimitive() || isMaybeSymbol();
+    }
+
+    /**
+     * Returns the (immutable) set of object labels (including symbols).
      * Returns the empty set for polymorphic and 'unknown' values.
      * Getters and setters are ignored (see {@link #getAllObjectLabels()}).
      */
@@ -3040,6 +3141,20 @@ public final class Value implements Undef, Null, Bool, Num, Str, DeepImmutable {
             s.addAll(setters);
         if (Options.get().isDebugOrTestEnabled())
             return Collections.unmodifiableSet(s);
+        return s;
+    }
+
+    /**
+     * Returns the (immutable) set of object labels representing symbols.
+     */
+    @Override
+    public Set<ObjectLabel> getSymbols() {
+        if (object_labels == null)
+            return Collections.emptySet();
+        Set<ObjectLabel> s = newSet();
+        for (ObjectLabel objlabel : object_labels)
+            if (objlabel.getKind() == Kind.SYMBOL)
+                s.add(objlabel);
         return s;
     }
 

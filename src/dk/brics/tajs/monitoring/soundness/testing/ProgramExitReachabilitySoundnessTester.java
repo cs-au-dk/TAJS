@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,7 +68,7 @@ public class ProgramExitReachabilitySoundnessTester {
 
     private boolean testReachable(BasicBlock block, String description, Set<SoundnessCheck> checks, Solver.SolverInterface c) {
         Map<Context, State> states = c.getAnalysisLatticeElement().getStates(block);
-        boolean unreachable = states.values().stream().allMatch(State::isNone);
+        boolean unreachable = states.values().stream().allMatch(State::isBottom);
         checks.add(new ReachabilityCheck(block.getSourceLocation(), description, unreachable));
         return unreachable;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,7 +97,7 @@ public class WebGLRenderingContext {
         switch (nativeObject) {
             case WEBGLRENDERINGCONTEXT_CONSTRCUTOR:
                 Exceptions.throwTypeError(c);
-                s.setToNone();
+                s.setToBottom();
             case WEBGLRENDERINGCONTEXT_TAJS_UNSUPPORTED_FUNCTION:
                 throw new AnalysisException("This function from WebGLRenderingContext is not yet supported: " + call.getJSSourceNode().getSourceLocation());
             default: {

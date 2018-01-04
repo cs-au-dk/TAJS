@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,10 +74,17 @@ public class JSString {
 
             case STRING: { // 15.5.1/2
                 Value s;
+                Value paramValue = FunctionCalls.readParameter(call, state, 0);
+                Set<ObjectLabel> symbols = paramValue.getSymbols();
+                paramValue = paramValue.restrictToNotSymbol();
                 if (call.isUnknownNumberOfArgs())
-                    s = Conversion.toString(FunctionCalls.readParameter(call, state, 0), c).joinStr("");
+                    s = Conversion.toString(paramValue, c).joinStr("");
                 else
-                    s = call.getNumberOfArgs() >= 1 ? Conversion.toString(FunctionCalls.readParameter(call, state, 0), c) : Value.makeStr("");
+                    s = call.getNumberOfArgs() >= 1 ? Conversion.toString(paramValue, c) : Value.makeStr("");
+
+                if (!symbols.isEmpty()) { // TODO: could improve precision here if we didn't abstract away the symbol names (see JSSymbol.SYMBOL) - github #513
+                    s = s.joinAnyStr();
+                }
 
                 if (s.isNone()) {
                     // we might be waiting for implicit toString calls

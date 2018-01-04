@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,12 +41,9 @@ public interface IState
     boolean propagate(StateType s, boolean funentry);
 
     /**
-     * Checks whether this abstract state represents the empty set of concrete states.
-     * This is an approximation in the sense that not all possible inconsistencies may be discovered,
-     * i.e. if true is returned then the abstract state definitely represents the empty set of concrete states
-     * but maybe not the other way around.
+     * Checks whether this abstract state is the bottom abstract state.
      */
-    boolean isNone();
+    boolean isBottom();
 
     /**
      * Returns a brief description of the state.

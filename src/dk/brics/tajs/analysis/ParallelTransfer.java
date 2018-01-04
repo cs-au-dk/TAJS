@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,7 +75,7 @@ public class ParallelTransfer {
         State state = c.getState();
         if (functions.isEmpty()) {
             if (!Options.get().isPropagateDeadFlow()) {
-                state.setToNone();
+                state.setToBottom();
             }
         } else if (functions.size() == 1) { // special case of last else case
             functions.iterator().next().call();

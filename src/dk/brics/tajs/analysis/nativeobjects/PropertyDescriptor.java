@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,7 +70,7 @@ public class PropertyDescriptor {
         }
         if (!obj.isMaybeObject()) {
             Exceptions.throwTypeError(c); // FIXME: should also throw type error if *maybe* non-object? (but in that case only weakly)  (GitHub #354)
-            c.getState().setToNone();
+            c.getState().setToBottom();
         }
 
         Set<ObjectLabel> objects = obj.getObjectLabels();
@@ -200,7 +200,7 @@ public class PropertyDescriptor {
         }
 
         Set<ObjectLabel> labels = f.getObjectLabels();
-        boolean maybeNonCallable = f.isMaybeOtherThanObject() || labels.stream().anyMatch(l -> l.getKind() != ObjectLabel.Kind.FUNCTION);
+        boolean maybeNonCallable = f.isMaybePrimitiveOrSymbol() || labels.stream().anyMatch(l -> l.getKind() != ObjectLabel.Kind.FUNCTION);
         boolean onlyNonCallable = !f.isMaybeObject() || labels.stream().allMatch(l -> l.getKind() != ObjectLabel.Kind.FUNCTION);
 
         if (maybeNonCallable) {
@@ -217,7 +217,7 @@ public class PropertyDescriptor {
     private static Value readProperty(Set<ObjectLabel> objects, String propertyName, boolean coerceToBoolean, Solver.SolverInterface c) {
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         Value result = Value.makeNone();
-        Bool hasPropertyName = pv.hasProperty(objects, propertyName);
+        Bool hasPropertyName = pv.hasProperty(objects, Value.makeTemporaryStr(propertyName));
         if (hasPropertyName.isMaybeTrue()) {
             // opportunity for small precision gain: the property can be assumed not to be absent
             Value propertyValue = UnknownValueResolver.getRealValue(pv.readPropertyValue(objects, propertyName), c.getState());

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -75,7 +75,7 @@ public class TAJSAssertionReachabilityCheckerMonitor extends DefaultAnalysisMoni
     @SuppressWarnings("unchecked")
     @Override
     public void visitNodeTransferPre(AbstractNode n, State s) {
-        if (assertionCallNodes.contains(n) && !s.isNone()) { // FIXME: suspicious call to Set.contains
+        if (assertionCallNodes.contains(n) && !s.isBottom()) { // FIXME: suspicious call to Set.contains (github #503)
             reachableAssertionCallNodes.add((CallNode) n); // safe cast due to set containment
         }
     }

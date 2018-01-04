@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,6 +39,8 @@ import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.ObjectProperty;
+import dk.brics.tajs.lattice.PKey;
+import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Summarized;
@@ -176,7 +178,7 @@ public class UserFunctionCalls {
         State caller_state = c.getState();
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         ScopeChain obj_f_sc = caller_state.readObjectScope(obj_f);
-        Value prototype = pv.readPropertyDirect(Collections.singleton(obj_f), "prototype");
+        Value prototype = pv.readPropertyDirect(Collections.singleton(obj_f), StringPKey.PROTOTYPE);
         if (obj_f_sc == null || prototype.isNone())
             return; // must be spurious dataflow
 
@@ -200,7 +202,7 @@ public class UserFunctionCalls {
                         thisVal = Value.makeObject(new_obj);
                         // 13.2.2.3-5 provide [[Prototype]]
                         Value prototypeFinal = UnknownValueResolver.getRealValue(prototype, edge_state);
-                        if (prototypeFinal.isMaybePrimitive())
+                        if (prototypeFinal.isMaybePrimitiveOrSymbol())
                             prototypeFinal = prototypeFinal.restrictToObject().joinObject(InitialStateBuilder.OBJECT_PROTOTYPE);
                         edge_state.writeInternalPrototype(new_obj, prototypeFinal);
                     } else { // see ES5 10.4.3
@@ -256,7 +258,7 @@ public class UserFunctionCalls {
                     for (int i = 0; i < f.getParameterNames().size() || i < (call.isUnknownNumberOfArgs() ? numberOfUnknownArgumentsToKeepDisjoint : call.getNumberOfArgs()); i++) {
                         Value v = call.getArg(i);
                         Value summarized = v.summarize(extra_summarized);
-                        pv.writeProperty(argobj, Integer.toString(i), summarized); // from ES5 Annex E: "In Edition 5 the array indexed properties of argument objects that correspond to actual formal parameters are enumerable. In Edition 3, such properties were not enumerable."
+                        pv.writeProperty(argobj, StringPKey.make(Integer.toString(i)), summarized); // from ES5 Annex E: "In Edition 5 the array indexed properties of argument objects that correspond to actual formal parameters are enumerable. In Edition 3, such properties were not enumerable."
                         if (i < f.getParameterNames().size()) {
                             if (summarized.isMaybeAbsent())
                                 summarized = summarized.restrictToNotAbsent().joinUndef(); // convert absent to undefined
@@ -369,7 +371,7 @@ public class UserFunctionCalls {
         c.returnFromFunctionExit(state, node, caller_context, f.getEntry(), edge_context, implicit);
         returnval = state.readRegister(0);
         state.clearRegisters();
-        if (state.isNone())
+        if (state.isBottom())
             return; // flow was cancelled, probably something needs to be recomputed
 
         // merge newstate with caller state and call edge state
@@ -409,7 +411,7 @@ public class UserFunctionCalls {
             returnval = UnknownValueResolver.getRealValue(returnval, state);
             if (!returnval.isNone()) { // skip if no value (can happen when propagateToFunctionEntry calls transferReturn)
 
-                if (is_constructor && returnval.isMaybePrimitive()) {
+                if (is_constructor && returnval.isMaybePrimitiveOrSymbol()) {
                     // 13.2.2.7-8 replace non-object by the new object (which is kept in 'this' at the call edge)
                     returnval = returnval.restrictToObject().join(calledge_state.getExecutionContext().getThis());
                 }
@@ -510,8 +512,8 @@ public class UserFunctionCalls {
                                                  State calledge_state,
                                                  State caller_entry_state,
                                                  State return_state) {
-        Map<String, Value> newproperties = newMap();
-        for (Map.Entry<String, Value> me : obj.getProperties().entrySet()) {
+        Map<PKey, Value> newproperties = newMap();
+        for (Map.Entry<PKey, Value> me : obj.getProperties().entrySet()) {
             Value v = me.getValue();
             v = replacePolymorphicValue(v, calledge_state, caller_entry_state, return_state);
             newproperties.put(me.getKey(), v);
@@ -649,7 +651,7 @@ public class UserFunctionCalls {
         if (implicitAfterCall != null) {
             List<Value> registers = dk.brics.tajs.util.Collections.newList(c.getState().getRegisters());
             if (!weak) {
-                c.getState().setToNone();
+                c.getState().setToBottom();
             }
             State s = c.getAnalysisLatticeElement().getState(implicitAfterCall, c.getState().getContext());
             if (s != null) {

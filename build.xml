@@ -3,7 +3,7 @@
 <project name="TAJS" default="all" basedir=".">
 
     <property name="project" value="tajs" />
-    <property name="version" value="0.13" />
+    <property name="version" value="0.14" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
@@ -30,7 +30,14 @@
         <pathelement location="benchmarks"/>
     </path>
 
-    <target name="all" depends="clean,jar-all,doc" />
+    <path id="classpath.run">
+        <fileset dir=".">
+            <include name="lib/*.jar"/>
+        </fileset>
+        <pathelement location="antbuild"/>
+    </path>
+
+    <target name="all" depends="clean,jar-all,tajs-functions,doc" />
 
     <target name="compile">
         <!--
@@ -49,6 +56,12 @@
         <copy todir="antbuild">
             <fileset dir="resources"/>
         </copy>
+    </target>
+
+    <target name="tajs-functions" depends="compile">
+        <java classname="dk.brics.tajs.analysis.nativeobjects.TAJSFunctionEvaluator" fork="true" failonerror="true" maxmemory="2048m" output="TAJS-functions.md">
+            <classpath refid="classpath.run" />
+        </java>
     </target>
 
     <target name="jar" depends="clean,compile">
@@ -82,7 +95,7 @@
             <doctitle>
                 <![CDATA[Type Analyzer for JavaScript (TAJS) API Specification]]>
             </doctitle>
-            <bottom><![CDATA[<i> Copyright &#169; 2009-2017 Aarhus University </i>]]></bottom>
+            <bottom><![CDATA[<i> Copyright &#169; 2009-2018 Aarhus University </i>]]></bottom>
             <link href="http://docs.oracle.com/javase/8/docs/api/"/>
             <link href="http://www.mozilla.org/rhino/apidocs/" />
             <classpath refid="classpath" />
@@ -98,7 +111,7 @@
         <property name="dir" value="${project}-${version}" />
         <mkdir dir="${dir}" />
         <copy todir="${dir}">
-            <fileset dir="." includes="README.md,LICENSE,build.xml" />
+            <fileset dir="." includes="README.md,LICENSE,build.xml,TAJS-functions.md" />
         </copy>
         <copy file="dist/${project}.jar" todir="${dir}/dist" />
         <mkdir dir="${dir}/doc" />

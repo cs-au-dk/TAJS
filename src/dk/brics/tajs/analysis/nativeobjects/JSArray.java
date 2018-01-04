@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@ import dk.brics.tajs.lattice.Bool;
 import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
@@ -337,11 +338,11 @@ public class JSArray {
                         if (near_start.isNotPresent())
                             pv.deleteProperty(thisobj, Value.makeStr(s2), false);
                         else if (near_start.isMaybePresent())
-                            pv.writePropertyWithAttributes(thisobj, s2, near_start);
+                            pv.writePropertyWithAttributes(thisobj, StringPKey.make(s2), near_start);
                         if (near_end.isNotPresent())
                             pv.deleteProperty(thisobj, Value.makeStr(s1), false);
                         else if (near_end.isMaybePresent())
-                            pv.writePropertyWithAttributes(thisobj, s1, near_end);
+                            pv.writePropertyWithAttributes(thisobj, StringPKey.make(s1), near_end);
                     }
                 } else {
                     Value v = pv.readPropertyWithAttributes(thisobj, Value.makeAnyStrUInt());
@@ -366,7 +367,7 @@ public class JSArray {
                         // precise case: length is known
                         for (int i = 1; i < length; i++) { // TODO: this may be bad if the array length is high
                             String s = Integer.toString(i);
-                            Bool is_def = pv.hasProperty(thisObj, s);
+                            Bool is_def = pv.hasProperty(thisObj, Value.makeTemporaryStr(s));
                             if (is_def.isMaybeTrue()) {
                                 Value elem = pv.readPropertyWithAttributes(thisObj, s);
                                 pv.writeProperty(thisObj, Value.makeTemporaryStr(Integer.toString(i - 1)), elem, moreThanOneArray);
@@ -430,7 +431,7 @@ public class JSArray {
                         // imprecise case: merge all properties (could be special cased for a little extra precision (e.g. known length of output, precise prefix of output...)
                         Value read = pv.readPropertyValue(singleton(thisObject), Value.makeAnyStrUInt());
                         if (read.isNone()) {
-                            c.getState().setToNone();
+                            c.getState().setToBottom();
                         } else {
                             pv.writeProperty(singleton(resultArray), Value.makeAnyStrUInt(), read);
                             writeLength(resultArray, Value.makeAnyNumUInt(), c);
@@ -552,7 +553,7 @@ public class JSArray {
                         // precise case: length is known
                         for (long i = length - 1; i >= 0; i--) { // TODO: this may be bad if the array length is high
                             String s = Long.toString(i);
-                            Bool is_def = pv.hasProperty(thisObj, s);
+                            Bool is_def = pv.hasProperty(thisObj, Value.makeTemporaryStr(s));
                             if (is_def.isMaybeTrue()) {
                                 Value elem = pv.readPropertyWithAttributes(thisObj, s);
                                 pv.writeProperty(thisObj, Value.makeTemporaryStr(Long.toString(i + 1)), elem, moreThanOneArray);
@@ -700,7 +701,7 @@ public class JSArray {
             boolean hasNonCallable = false;
             boolean hasArrayJoin = false;
             boolean hasOtherCallable = false;
-            if (join.isMaybeOtherThanObject()) {
+            if (join.isMaybePrimitiveOrSymbol()) {
                 hasNonCallable = true;
             }
             for (ObjectLabel joinObj : join.getObjectLabels()) {
@@ -742,7 +743,8 @@ public class JSArray {
             if (separatorValue.isMaybeUndef() && !is_toLocaleString) {
                 separatorValue = separatorValue.restrictToNotUndef().joinStr(",");
             }
-            String separator = Conversion.toString(separatorValue, c).getStr();
+            Value v = Conversion.toString(separatorValue, c);
+            String separator = v.isMaybeSingleStr() ? v.getStr() : null;
             if ((length != 1 && separator == null /* = sep is a fuzzy string */))
                 return Value.makeAnyStr();
 
@@ -765,7 +767,8 @@ public class JSArray {
                     }
                     try {
                         cyclicJoinGuard.push(objlabels);
-                        string = Conversion.toString(prop.restrictToNotNullNotUndef(), c).getStr();
+                        Value v2 = Conversion.toString(prop.restrictToNotNullNotUndef(), c);
+                        string = v2.isMaybeSingleStr() ? v2.getStr() : null;
                     } finally {
                         cyclicJoinGuard.pop();
                     }

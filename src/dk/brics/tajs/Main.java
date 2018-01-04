@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 package dk.brics.tajs;
 
 import dk.brics.tajs.analysis.Analysis;
+import dk.brics.tajs.analysis.nativeobjects.NodeJSRequire;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
@@ -113,6 +114,7 @@ public class Main {
         Obj.reset();
         Strings.reset();
         ScopeChain.reset();
+        NodeJSRequire.reset();
     }
 
     /**
@@ -171,7 +173,14 @@ public class Main {
 
             FlowGraphBuilder builder = FlowGraphBuilder.makeForMain(new SourceLocation.StaticLocationMaker(resolvedFiles.get(resolvedFiles.size() - 1)));
             builder.addLoadersForHostFunctionSources(HostEnvSources.getAccordingToOptions());
-            if (!js_files.isEmpty()) {
+            if (Options.get().isNodeJS()) {
+                NodeJSRequire.init();
+                if (resolvedFiles.size() != 1 || htmlFile != null) {
+                    throw new AnalysisException("A single JavaScript file is expected for NodeJS analysis");
+                }
+                // noop, the bootstrapping has been done by addLoadersForHostFunctionSources above
+            }
+            else if (!js_files.isEmpty()) {
                 if (htmlFile != null)
                     throw new AnalysisException("Cannot analyze an HTML file and JavaScript files at the same time");
                 // build flowgraph for JS files
@@ -332,7 +341,7 @@ public class Main {
     private static void showHeader() {
         if (!Options.get().isQuietEnabled()) {
             log.info("TAJS - Type Analyzer for JavaScript\n" +
-                "Copyright 2009-2017 Aarhus University\n");
+                "Copyright 2009-2018 Aarhus University\n");
         }
     }
 

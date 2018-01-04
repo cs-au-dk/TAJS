@@ -1,0 +1,17 @@
+benchmarks/tajs/src/apps/simplecalc/math2.html:48:17: [definite] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/apps/simplecalc/math2.html:48:17: [definite] Reading absent property calculator of host object
+benchmarks/tajs/src/apps/simplecalc/math2.html:6:5: [definite] The variable Result is never used
+benchmarks/tajs/src/apps/simplecalc/math2.html:6:15: [definite] The variable Operator is never used
+benchmarks/tajs/src/apps/simplecalc/math2.html:6:27: [definite] The variable Second is never used
+benchmarks/tajs/src/apps/simplecalc/math2.html:6:37: [definite] The variable Ready is never used
+benchmarks/tajs/src/apps/simplecalc/math2.html:6:46: [definite] The variable Done is never used
+benchmarks/tajs/src/apps/simplecalc/math2.html:6:54: [definite] The variable Complete is never used
+benchmarks/tajs/src/apps/simplecalc/math2.html:6:66: [definite] The variable Integer is never used
+benchmarks/tajs/src/apps/simplecalc/math2.html:6:75: [definite] The variable CurrentValue is never used
+benchmarks/tajs/src/apps/simplecalc/math2.html:8:1: [definite] Unreachable function reset
+benchmarks/tajs/src/apps/simplecalc/math2.html:18:1: [definite] Unreachable function SetValue
+benchmarks/tajs/src/apps/simplecalc/math2.html:44:1: [definite] The variable Caption is never used
+benchmarks/tajs/src/apps/simplecalc/math2.html:48:17: [definite] Unreachable code
+benchmarks/tajs/src/apps/simplecalc/math2.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/apps/simplecalc/math2.html:48:17]
+Disabling soundness testing for benchmarks/tajs/src/apps/simplecalc/math2.html entirely (536 uninspected soundness errors).
+Soundness testing succeeded for 756 checks (with 536 expected failures)

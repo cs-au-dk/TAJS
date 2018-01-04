@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -336,7 +336,7 @@ public class LogFileHelper {
                         (options.getSoundnessTesterOptions().isNonInteractive() ?
                                 Logger.Environment.DRIVEN_BROWSER : Logger.Environment.BROWSER)
                         :
-                        Logger.Environment.NODE_GLOBAL);
+                        Options.get().isNodeJS() ? Logger.Environment.NODE : Logger.Environment.NODE_GLOBAL);
         Integer timeLimit = explicitTimeLimit.orElse(30);
         Integer instrumentationTimeLimit = explicitInstrumentationTimeLimit.orElse(30);
         try {

@@ -3740,4 +3740,249 @@ public class TestMicro {
     public void httpURLInHTMLFile() {
         Misc.run("test-resources/src/micro/http-url.html");
     }
+
+    @Test
+    public void objectAssignWithParameterValue() {
+        Misc.runSource("function inherit(properties) {\n" +
+                "    Object.assign({}, properties);\n" +
+                "}\n" +
+                "inherit({});");
+    }
+
+    @Test
+    public void symbol1() {
+        Misc.runSource(
+                "var o1 = Symbol(\"gen-symbol\");",
+                "var o2 = Symbol.iterator;",
+                "var o3 = Symbol.unscopables;",
+                "var o4 = Symbol.species;",
+                "TAJS_dumpValue(o1);",
+                "TAJS_dumpValue(o2);",
+                "TAJS_dumpValue(o3);",
+                "TAJS_dumpValue(o4);",
+                "TAJS_assert(true);");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol2() {
+        Misc.runSource(
+                "var o1 = Symbol(\"gen-symbol\");",
+                "TAJS_dumpValue(o1);",
+                "var obj = {};",
+                "obj[o1] = 5;",
+                "TAJS_dumpValue(obj);",
+                "TAJS_assertEquals(obj[o1],obj[o1]);");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol2b() {
+        Misc.runSource(
+                "var o1 = Symbol(\"gen-symbol\");",
+                "if (Math.random()) o1 = Symbol(\"2\");",
+                "TAJS_dumpValue(o1);",
+                "var obj = {};",
+                "obj[o1] = 5;",
+                "TAJS_dumpValue(obj);",
+                "TAJS_assertEquals(obj[o1],obj[o1]);");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol3() {
+        Misc.runSource(
+                "function mk() { return Symbol(\"gen-symbol\"); }",
+                "var s1 = mk();",
+                "TAJS_dumpValue(s1);",
+                "var s2 = mk();",
+                "TAJS_dumpValue(s2);",
+                "TAJS_assertEquals(s1, s2, false);"
+        );
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol4() {
+        Misc.runSource(
+                "var o1 = {};",
+                "var x = Symbol.iterator;",
+                "o1[x] = 5;",
+                "TAJS_assertEquals(o1[Symbol.iterator], 5);");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol4bis() {
+        Misc.runSource(
+                "var o1 = {};",
+                "o1[Symbol.iterator] = 5;",
+                "TAJS_assertEquals(o1[Symbol.iterator], 5);");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol5() {
+        Misc.runSource(
+                "var o1 = {};",
+                "TAJS_dumpValue(typeof o1[Symbol.iterator]);",
+                "TAJS_assert(typeof o1[Symbol.iterator] == 'undefined');");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol6() {
+        Misc.runSource(
+                "var o1 = {};",
+                "o1[Symbol.iterator] = 5;",
+                "TAJS_dumpObject(o1);",
+                "TAJS_assertEquals(o1[Symbol.iterator], 5);",
+                "TAJS_assert(typeof o1[Symbol.iterator] != 'undefined');",
+                "delete o1[Symbol.iterator];",
+                "TAJS_dumpValue(o1[Symbol.iterator]);",
+                "TAJS_assert(typeof o1[Symbol.iterator] == 'undefined');");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol7() {
+        Misc.runSource(
+                "var o1 = {};",
+                "o1[Symbol.iterator] = 5;",
+                "o1['s'] = 6;",
+                "for(var k in o1) {",
+                "  TAJS_assert(k == 's');",
+                "}");
+        Misc.checkSystemOutput();
+    }
+
+
+    @Test
+    public void symbol8() {
+        Misc.runSource(
+                "var o1 = {};",
+                "o1[Symbol.iterator] = 5;",
+                "var r = Symbol.iterator in o1;",
+                "TAJS_dumpValue(r);");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol9() {
+        Misc.runSource("var COLOR_RED    = Symbol('Red');",
+                "var COLOR_ORANGE = Symbol('Orange');",
+                "var COLOR_YELLOW = Symbol('Yellow');",
+                "var COLOR_GREEN  = Symbol('Green');",
+                "var COLOR_BLUE   = Symbol('Blue');",
+                "var COLOR_VIOLET = Symbol('Violet');",
+                "function getComplement(color) {",
+                "  switch (color) {",
+                "    case COLOR_RED:",
+                "      return COLOR_GREEN;",
+                "    case COLOR_ORANGE:",
+                "      return COLOR_BLUE;",
+                "    case COLOR_YELLOW:",
+                "      return COLOR_VIOLET;",
+                "    case COLOR_GREEN:",
+                "      return COLOR_RED;",
+                "    case COLOR_BLUE:",
+                "      return COLOR_ORANGE;",
+                "    case COLOR_VIOLET:",
+                "      return COLOR_YELLOW;",
+                "    default:",
+                "      throw new Exception('Unknown color: '+color);",
+                "  }",
+                "}",
+                "TAJS_assert(getComplement(COLOR_GREEN) == COLOR_RED);");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol10() {
+        Misc.runSource(
+                "var sym = Symbol('desc');",
+                "try {",
+                "  var str1 = 'astring' + sym; // TypeError",
+                "}", "catch(e) {",
+                "  TAJS_dumpValue('Here');",
+                "}");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol11() {
+        Misc.runSource(
+                "var o1 = {};",
+                "o1[Symbol.iterator] = 5;",
+                "TAJS_dumpValue(typeof Object.keys(o1)[0] == 'undefined');");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol12() {
+        Misc.runSource(
+                "var s = Symbol();",
+                "TAJS_assert(typeof s == 'symbol');");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol13() {
+        Misc.runSource(
+                "var sym = Symbol('desc');",
+                "TAJS_dumpValue(sym);",
+                "TAJS_dumpValue(typeof sym);",
+                "TAJS_dumpValue(String(sym));",
+                "TAJS_assert(typeof String(sym) == 'string');");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol14() {
+        Misc.runSource(
+                "var p = Object.getPrototypeOf(Symbol('66'));",
+                "TAJS_dumpValue(p);",
+                "var c = p.constructor;",
+                "TAJS_dumpValue(c);",
+                "var s = Symbol;",
+                "TAJS_dumpValue(s);",
+                "TAJS_assert(c == s)");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void symbol15() {
+        Misc.runSource(
+                "function mkSym() {",
+                "  return Symbol(\"test\");",
+                "}",
+                "var o1 = mkSym();",
+                "var obj = {};",
+                "obj[o1] = 5;",
+                "var o2 = mkSym();",
+                "obj[o2] = \"foo\";",
+                "var t = obj[o1];",
+                "TAJS_dumpValue(t);",
+                "var t2 = obj[o2];",
+                "TAJS_dumpValue(t2);",
+                "TAJS_assertEquals(obj[o1],obj[o1]);",
+                "TAJS_assertEquals(obj[o2],obj[o2]);");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void defineSymbol() {
+        Misc.runSource(
+                "TAJS_dumpValue(Symbol.species);",
+                "var o = {}",
+                "var p = Symbol.species",
+                "Object.defineProperty(o, p, {",
+                "    configurable: true,",
+                "    enumerable: false,",
+                "    value: 4",
+                "});",
+                "TAJS_dumpValue(o[p]);"
+        );
+        Misc.checkSystemOutput();
+    }
 }

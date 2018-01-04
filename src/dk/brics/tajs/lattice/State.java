@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@ package dk.brics.tajs.lattice;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.PKey.StringPKey;
+import dk.brics.tajs.lattice.PKey.SymbolPKey;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
@@ -42,7 +44,6 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Predicate;
 
-import static dk.brics.tajs.lattice.Property.__PROTO__;
 import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
@@ -128,7 +129,7 @@ public class State implements IState<State, Context, CallEdge> {
         this.block = block;
         summarized = new Summarized();
         extras = new StateExtras();
-        setToNone();
+        setToBottom();
         number_of_states_created++;
     }
 
@@ -139,6 +140,22 @@ public class State implements IState<State, Context, CallEdge> {
         c = x.c;
         block = x.block;
         context = x.context;
+        setToState(x);
+        number_of_states_created++;
+    }
+
+    /**
+     * Constructs a new state as a copy of this state.
+     */
+    @Override
+    public State clone() {
+        return new State(this);
+    }
+
+    /**
+     * Sets this state to the same as the given one.
+     */
+    private void setToState(State x) {
         summarized = new Summarized(x.summarized);
         store_default = x.store_default.freeze();
         extras = new StateExtras(x.extras);
@@ -164,15 +181,6 @@ public class State implements IState<State, Context, CallEdge> {
 //            x.writable_registers = writable_registers = false;
 //            x.writable_stacked_objlabels = writable_stacked_objlabels = false;
 //        }
-        number_of_states_created++;
-    }
-
-    /**
-     * Constructs a new state as a copy of this state.
-     */
-    @Override
-    public State clone() {
-        return new State(this);
     }
 
     /**
@@ -449,13 +457,13 @@ public class State implements IState<State, Context, CallEdge> {
     }
 
     /**
-     * Sets this state to the none-state (representing the empty set of concrete states).
+     * Sets this state to the bottom abstract state.
      * Used for representing 'no flow'.
      */
-    public void setToNone() {
+    public void setToBottom() {
         basis_store = null;
         summarized.clear();
-        extras.setToNone();
+        extras.setToBottom();
 //        if (Options.get().isCopyOnWriteDisabled()) {
         store = newMap();
         writable_store = true;
@@ -490,7 +498,7 @@ public class State implements IState<State, Context, CallEdge> {
 //    }
 
     @Override
-    public boolean isNone() {
+    public boolean isBottom() {
         return execution_context.isEmpty();
     }
 
@@ -533,7 +541,7 @@ public class State implements IState<State, Context, CallEdge> {
 //            ObjectLabel objlabel = me.getKey();
 //            Obj reads_other_obj = me.getValue();
 //            Obj reads_obj = reads.getObject(objlabel, true);
-//            for (Map.Entry<String, Value> me2 : reads_other_obj.getProperties().entrySet()) {
+//            for (Map.Entry<PKey, Value> me2 : reads_other_obj.getProperties().entrySet()) {
 //                String propertyname = me2.getKey();
 //                Value other_val = me2.getValue();
 //                if (!other_val.isUnknown()) {
@@ -546,9 +554,9 @@ public class State implements IState<State, Context, CallEdge> {
 //            if (!reads_other_defaultarray_val.isUnknown()) {
 //                reads_obj.setDefaultArrayProperty(reads_other_defaultarray_val);
 //                // also merge with the explicit array properties in reads_obj that are not already handled
-//                for (Map.Entry<String, Value> me2 : reads_obj.getProperties().entrySet()) {
-//                    String propertyname = me2.getKey();
-//                    if (Strings.isArrayIndex(propertyname) && !reads_other_obj.getProperties().containsKey(propertyname)) {
+//                for (Map.Entry<PKey, Value> me2 : reads_obj.getProperties().entrySet()) {
+//                    PKey propertyname = me2.getKey();
+//                    if (propertyname.isArrayIndex() && !reads_other_obj.getProperties().containsKey(propertyname)) {
 //                        Value reads_val = me2.getValue();
 //                        Value new_reads_val = reads_val.join(reads_other_defaultarray_val);
 //                        reads_obj.setProperty(propertyname, new_reads_val);
@@ -559,9 +567,9 @@ public class State implements IState<State, Context, CallEdge> {
 //            if (!reads_other_defaultnonarray_val.isUnknown()) {
 //                reads_obj.setDefaultNonArrayProperty(reads_other_defaultnonarray_val);
 //                // also merge with the explicit array properties in reads_obj that are not already handled
-//                for (Map.Entry<String, Value> me2 : reads_obj.getProperties().entrySet()) {
-//                    String propertyname = me2.getKey();
-//                    if (!Strings.isArrayIndex(propertyname) && !reads_other_obj.getProperties().containsKey(propertyname)) {
+//                for (Map.Entry<PKey, Value> me2 : reads_obj.getProperties().entrySet()) {
+//                    PKey propertyname = me2.getKey();
+//                    if (!propertyname.isArrayIndex() && !reads_other_obj.getProperties().containsKey(propertyname)) {
 //                        Value reads_val = me2.getValue();
 //                        Value new_reads_val = reads_val.join(reads_other_defaultnonarray_val);
 //                        reads_obj.setProperty(propertyname, new_reads_val);
@@ -596,8 +604,8 @@ public class State implements IState<State, Context, CallEdge> {
 //            Obj other_obj = me.getValue();
 //            Obj this_obj = getObject(objlabel, true);
 //            // merge properties of other_obj into this_obj
-//            for (Map.Entry<String, Value> me2 : other_obj.getProperties().entrySet()) {
-//                String propertyname = me2.getKey();
+//            for (Map.Entry<PKey, Value> me2 : other_obj.getProperties().entrySet()) {
+//                PKey propertyname = me2.getKey();
 //                Value other_val = me2.getValue();
 //                if (other_val.isMaybeModified()) {
 //                    Value this_val = this_obj.getProperty(propertyname);
@@ -611,9 +619,9 @@ public class State implements IState<State, Context, CallEdge> {
 //                Value new_this_defaultarray_val = mergeForInSpecializationValue(this_defaultarray_val, other_defaultarray_val, other, mergeWritesWeakly, overrideWrites);
 //                this_obj.setDefaultArrayProperty(new_this_defaultarray_val);
 //                // also merge with the explicit array properties in this_obj that are not already handled
-//                for (Map.Entry<String, Value> me2 : this_obj.getProperties().entrySet()) {
-//                    String propertyname = me2.getKey();
-//                    if (Strings.isArrayIndex(propertyname) && !other_obj.getProperties().containsKey(propertyname)) {
+//                for (Map.Entry<PKey, Value> me2 : this_obj.getProperties().entrySet()) {
+//                    PKey propertyname = me2.getKey();
+//                    if (propertyname.isArrayIndex() && !other_obj.getProperties().containsKey(propertyname)) {
 //                        Value this_val = me2.getValue();
 //                        Value new_this_val = mergeForInSpecializationValue(this_val, other_defaultarray_val, other, mergeWritesWeakly, overrideWrites);
 //                        this_obj.setProperty(propertyname, new_this_val);
@@ -626,9 +634,9 @@ public class State implements IState<State, Context, CallEdge> {
 //                Value new_this_defaultnonarray_val = mergeForInSpecializationValue(this_defaultnonarray_val, other_defaultnonarray_val, other, mergeWritesWeakly, overrideWrites);
 //                this_obj.setDefaultNonArrayProperty(new_this_defaultnonarray_val);
 //                // also merge with the explicit array properties in this_obj that are not already handled
-//                for (Map.Entry<String, Value> me2 : this_obj.getProperties().entrySet()) {
-//                    String propertyname = me2.getKey();
-//                    if (!Strings.isArrayIndex(propertyname) && !other_obj.getProperties().containsKey(propertyname)) {
+//                for (Map.Entry<PKey, Value> me2 : this_obj.getProperties().entrySet()) {
+//                    PKey propertyname = me2.getKey();
+//                    if (!propertyname.isArrayIndex() && !other_obj.getProperties().containsKey(propertyname)) {
 //                        Value this_val = me2.getValue();
 //                        Value new_this_val = mergeForInSpecializationValue(this_val, other_defaultarray_val, other, mergeWritesWeakly, overrideWrites);
 //                        this_obj.setProperty(propertyname, new_this_val);
@@ -672,8 +680,8 @@ public class State implements IState<State, Context, CallEdge> {
 //            ObjectLabel objlabel = me.getKey();
 //            Obj writes_obj = me.getValue();
 //            Obj reads_obj = reads.getObject(objlabel, true);
-//            for (Map.Entry<String, Value> me2 : writes_obj.getProperties().entrySet()) {
-//                String propertyname = me2.getKey();
+//            for (Map.Entry<PKey, Value> me2 : writes_obj.getProperties().entrySet()) {
+//                PKey propertyname = me2.getKey();
 //                Value writes_val = me2.getValue();
 //                if (writes_val.isMaybeModified()) {
 //                    Value reads_val = reads_obj.getProperty(propertyname);
@@ -693,9 +701,9 @@ public class State implements IState<State, Context, CallEdge> {
 //                    return true;
 //                }
 //                // also check the explicit array properties in reads_obj that are not already handled
-//                for (Map.Entry<String, Value> me2 : reads_obj.getProperties().entrySet()) {
-//                    String propertyname = me2.getKey();
-//                    if (Strings.isArrayIndex(propertyname) && !writes_obj.getProperties().containsKey(propertyname)) {
+//                for (Map.Entry<PKey, Value> me2 : reads_obj.getProperties().entrySet()) {
+//                    PKey propertyname = me2.getKey();
+//                    if (propertyname.isArrayIndex() && !writes_obj.getProperties().containsKey(propertyname)) {
 //                        Value reads_val = me2.getValue();
 //                        if (checkReadWriteConflictValue(writes_defaultarray_val, reads_val)) {
 //                            if (log.isDebugEnabled())
@@ -714,9 +722,9 @@ public class State implements IState<State, Context, CallEdge> {
 //                    return true;
 //                }
 //                // also check the explicit nonarray properties in reads_obj that are not already handled
-//                for (Map.Entry<String, Value> me2 : reads_obj.getProperties().entrySet()) {
-//                    String propertyname = me2.getKey();
-//                    if (!Strings.isArrayIndex(propertyname) && !writes_obj.getProperties().containsKey(propertyname)) {
+//                for (Map.Entry<PKey, Value> me2 : reads_obj.getProperties().entrySet()) {
+//                    PKey propertyname = me2.getKey();
+//                    if (!propertyname.isArrayIndex() && !writes_obj.getProperties().containsKey(propertyname)) {
 //                        Value reads_val = me2.getValue();
 //                        if (checkReadWriteConflictValue(writes_defaultnonarray_val, reads_val)) {
 //                            if (log.isDebugEnabled())
@@ -813,10 +821,17 @@ public class State implements IState<State, Context, CallEdge> {
             log.debug("join this state: " + this);
             log.debug("join other state: " + s);
         }
-        if (s.isNone()) {
+        if (s.isBottom()) {
+            if (log.isDebugEnabled())
+                log.debug("propagate(...) - other is bottom");
             return false;
         }
-        boolean thisIsNone = isNone();
+        if (isBottom()) {
+            setToState(s);
+            if (log.isDebugEnabled())
+                log.debug("propagate(...) - this is bottom, other is non-bottom");
+            return true; // s is not none
+        }
         makeWritableStore();
         makeWritableExecutionContext();
         makeWritableRegisters();
@@ -849,12 +864,7 @@ public class State implements IState<State, Context, CallEdge> {
                     changed = true;
                 }
             }
-            if (thisIsNone) {
-                summarized = new Summarized(s.summarized); // naively joining definitely_summarized with bottom would lose precision
-                changed = true;
-            } else {
-                changed |= summarized.join(s.summarized);
-            }
+            changed |= summarized.join(s.summarized);
         }
         if (store_default.isAllNone() && !s.store_default.isAllNone()) {
             for (ObjectLabel lab : s.store.keySet()) { // materialize before changing default
@@ -865,9 +875,6 @@ public class State implements IState<State, Context, CallEdge> {
             store_default = s.store_default;
             store_default.freeze();
             changed = true;
-        }
-        if (basis_store == null && s.basis_store != null) {
-            basis_store = s.basis_store; // needed if this state is none but s isn't
         }
         if (log.isDebugEnabled()) {
             if (Options.get().isIntermediateStatesEnabled())
@@ -896,13 +903,6 @@ public class State implements IState<State, Context, CallEdge> {
         if (obj_from.isAllNone()) { // may be a call edge or function entry state where not all properties have been propagated, so don't use isSomeNone here
             // obj_from object is none, so nothing to do
             return false;
-        }
-        if (obj_to.isAllNone()) { // may be a call edge or function entry state where not all properties have been propagated, so don't use isSomeNone here
-            // obj_to is none, so just copy from obj_from
-            makeWritableStore();
-            obj_to = new Obj(obj_from);
-            writeToStore(objlabel_to, obj_to);
-            return true;
         }
         // join all properties from obj_from into obj_to
         boolean changed = false;
@@ -943,9 +943,9 @@ public class State implements IState<State, Context, CallEdge> {
             }
         }
         obj_from = state_from.getObject(objlabel_from, false); // propagating defaults may have materialized properties, so get the latest version
-        for (String propertyname : obj_from.getProperties().keySet()) {
+        for (PKey propertyname : obj_from.getProperties().keySet()) {
             if (!obj_to.getProperties().containsKey(propertyname)) {
-                Value v = Strings.isArrayIndex(propertyname) ? default_array_property_to_original : default_nonarray_property_to_original;
+                Value v = propertyname.isArrayIndex() ? default_array_property_to_original : default_nonarray_property_to_original;
                 if (!obj_to.isWritable())
                     obj_to = getObject(objlabel_to, true);
                 obj_to.setProperty(propertyname, v); // materializing from default doesn't affect 'changed'
@@ -953,7 +953,7 @@ public class State implements IState<State, Context, CallEdge> {
 //                  log.debug("Materialized " + objlabel_to + "." + propertyname + " = " + v);
             }
         }
-        for (String propertyname : newList(obj_to.getPropertyNames())) { // TODO: need newList (to avoid ConcurrentModificationException)?
+        for (PKey propertyname : newList(obj_to.getPropertyNames())) { // TODO: need newList (to avoid ConcurrentModificationException)?
             Value v_to = obj_to.getProperty(propertyname);
             Value v_from = obj_from.getProperty(propertyname);
             if (modified || !v_to.isUnknown() || !v_from.isUnknown()) {
@@ -1032,12 +1032,12 @@ public class State implements IState<State, Context, CallEdge> {
         /**
          * Property names that are maybe (including definitely) included.
          */
-        private Collection<String> maybe;
+        private Collection<PKey> maybe;
 
         /**
          * Property names that are definitely included.
          */
-        private Collection<String> definitely;
+        private Collection<PKey> definitely;
 
         /**
          * If true, all array properties are maybe included.
@@ -1059,14 +1059,14 @@ public class State implements IState<State, Context, CallEdge> {
         /**
          * Returns the property names that are maybe (including definitely) included.
          */
-        public Collection<String> getMaybe() {
+        public Collection<PKey> getMaybe() {
             return maybe;
         }
 
         /**
          * Returns the property names that are definitely included.
          */
-        public Collection<String> getDefinitely() {
+        public Collection<PKey> getDefinitely() {
             return definitely;
         }
 
@@ -1121,8 +1121,8 @@ public class State implements IState<State, Context, CallEdge> {
                 vs.add(Value.makeAnyStrUInt());
             if (nonarray)
                 vs.add(Value.makeAnyStrNotUInt());
-            for (String k : maybe) // maybe includes definitely
-                vs.add(Value.makeStr(k));
+            for (PKey k : maybe) // maybe includes definitely
+                vs.add(k.toValue());
             return Value.join(vs);
         }
 
@@ -1130,7 +1130,7 @@ public class State implements IState<State, Context, CallEdge> {
          * Returns a collection of values that represents the property names.
          */
         public Collection<Value> toValues() {
-            Collection<Value> vs = maybe.stream().map(Value::makeStr).collect(Collectors.toList());
+            Collection<Value> vs = maybe.stream().map(PKey::toValue).collect(Collectors.toList());
             if (array) {
                 vs.add(Value.makeAnyStrUInt());
                 vs.removeIf(prop -> prop.isMaybeSingleStr() && Strings.isArrayIndex(prop.getStr()));
@@ -1146,7 +1146,7 @@ public class State implements IState<State, Context, CallEdge> {
     /**
      * Returns a description of the names of the [enumerable] properties of the given objects [and their prototypes].
      */
-    public Properties getProperties(Collection<ObjectLabel> objlabels, boolean onlyEnumerable, boolean usePrototypes) {
+    public Properties getProperties(Collection<ObjectLabel> objlabels, boolean onlyEnumerable, boolean onlySymbols, boolean includeSymbols, boolean usePrototypes) {
         Map<ObjectLabel, Set<ObjectLabel>> inverse_proto = newMap();
         Set<ObjectLabel> roots = newSet();
         if (usePrototypes) {
@@ -1182,7 +1182,7 @@ public class State implements IState<State, Context, CallEdge> {
                 Value proto = UnknownValueResolver.getInternalPrototype(ol, this, false);
                 Properties p = mergeProperties(proto.getObjectLabels(), props);
                 // overwrite with properties in the current object
-                addOwnProperties(ol, onlyEnumerable, p);
+                addOwnProperties(ol, onlyEnumerable, onlySymbols, includeSymbols, p);
                 Properties oldp = props.get(ol);
                 if (oldp == null || !oldp.equals(p)) {
                     props.put(ol, p);
@@ -1190,7 +1190,7 @@ public class State implements IState<State, Context, CallEdge> {
                 }
             } else {
                 Properties p = new Properties();
-                addOwnProperties(ol, onlyEnumerable, p);
+                addOwnProperties(ol, onlyEnumerable, onlySymbols, includeSymbols, p);
                 props.put(ol, p);
             }
         }
@@ -1198,9 +1198,9 @@ public class State implements IState<State, Context, CallEdge> {
     }
 
     /**
-     * @see #getProperties(Collection, boolean, boolean)
+     * @see #getProperties(Collection, boolean, boolean, boolean, boolean)
      */
-    private void addOwnProperties(ObjectLabel ol, boolean onlyEnumerable, Properties p) {
+    private void addOwnProperties(ObjectLabel ol, boolean onlyEnumerable, boolean onlySymbols, boolean includeSymbols, Properties p) {
         Predicate<Value> isEligible = v -> v.isMaybePresent() && (!onlyEnumerable || v.isMaybeNotDontEnum());
         if (isEligible.test(UnknownValueResolver.getDefaultArrayProperty(ol, this))) {
             p.array = true;
@@ -1208,9 +1208,14 @@ public class State implements IState<State, Context, CallEdge> {
         if (isEligible.test(UnknownValueResolver.getDefaultNonArrayProperty(ol, this))) {
             p.nonarray = true;
         }
-        for (Map.Entry<String, Value> me : UnknownValueResolver.getProperties(ol, this).entrySet()) {
-            String propertyname = me.getKey();
-            if (__PROTO__.equals(propertyname)) { // magic property that is invisible for reflection
+        for (Map.Entry<PKey, Value> me : UnknownValueResolver.getProperties(ol, this).entrySet()) {
+            PKey propertyname = me.getKey();
+            if (StringPKey.__PROTO__.equals(propertyname)) { // magic property that is invisible for reflection
+                continue;
+            }
+            // Symbols are not enumerable, nor in the ownProperties
+            if ((!includeSymbols && propertyname instanceof SymbolPKey) ||
+                    (onlySymbols && !(propertyname instanceof SymbolPKey))) {
                 continue;
             }
             Value v = UnknownValueResolver.getProperty(ol, propertyname, this, true);
@@ -1225,14 +1230,14 @@ public class State implements IState<State, Context, CallEdge> {
             Value internalValue = UnknownValueResolver.getRealValue(readInternalValue(singleton(ol)), this);
             if (internalValue.isMaybeSingleStr()) {
                 for (int i = 0; i < internalValue.getStr().length(); i++) {
-                    p.maybe.add(Integer.toString(i));
-                    p.definitely.add(Integer.toString(i));
+                    p.maybe.add(StringPKey.make(Integer.toString(i)));
+                    p.definitely.add(StringPKey.make(Integer.toString(i)));
                 }
             }
             if (internalValue.isMaybeStrPrefix()) {
                 for (int i = 0; i < internalValue.getPrefix().length(); i++) {
-                    p.maybe.add(Integer.toString(i));
-                    p.definitely.add(Integer.toString(i));
+                    p.maybe.add(StringPKey.make(Integer.toString(i)));
+                    p.definitely.add(StringPKey.make(Integer.toString(i)));
                 }
             }
             if (internalValue.isMaybeFuzzyStr()) {
@@ -1265,16 +1270,9 @@ public class State implements IState<State, Context, CallEdge> {
     }
 
     /**
-     * @see #getPrototypeWithProperty(ObjectLabel, Str)
-     */
-    public Set<ObjectLabel> getPrototypeWithProperty(ObjectLabel objlabel, String propertyName) {
-        return getPrototypeWithProperty(objlabel, Value.makeStr(propertyName));
-    }
-
-    /**
      * Returns the set of objects in the prototype chain that contain the property.
      */
-    public Set<ObjectLabel> getPrototypeWithProperty(ObjectLabel objlabel, Str propertyName) { // TODO: review
+    public Set<ObjectLabel> getPrototypeWithProperty(ObjectLabel objlabel, PKeys propertyName) { // TODO: review
         if (Options.get().isDebugOrTestEnabled() && propertyName.isMaybeOtherThanStr()) {
             throw new AnalysisException("Uncoerced property name: " + propertyName);
         }
@@ -1288,7 +1286,7 @@ public class State implements IState<State, Context, CallEdge> {
                     visited.add(l);
 
                     Collection<Value> values = newList();
-                    if (propertyName.isMaybeFuzzyStr()) {
+                    if (propertyName.isMaybeFuzzyStrOrSymbol()) {
                         if (propertyName.isMaybeStrSomeNonUInt()) {
                             values.add(UnknownValueResolver.getDefaultNonArrayProperty(l, this));
                         }
@@ -1297,11 +1295,11 @@ public class State implements IState<State, Context, CallEdge> {
                         }
                         // relevant properties have been materialized now
                         values.addAll(getObject(l, false).getProperties().keySet().stream()
-                                .filter(propertyName::isMaybeStr)
+                                .filter(k -> k instanceof StringPKey && propertyName.isMaybeStr(((StringPKey)k).getStr())) // FIXME: doesn't support Symbols?
                                 .map(n -> UnknownValueResolver.getProperty(l, n, this, true))
                                 .collect(Collectors.toList()));
-                    } else {
-                        values.add(UnknownValueResolver.getProperty(l, propertyName.getStr(), this, true));
+                    } else { // FIXME: doesn't support Symbols?
+                        values.add(UnknownValueResolver.getProperty(l, StringPKey.make(propertyName.getStr()), this, true));
                     }
 
                     boolean definitelyAbsent = values.stream().allMatch(Value::isNotPresent);
@@ -1388,8 +1386,8 @@ public class State implements IState<State, Context, CallEdge> {
             Value old_nonarray = UnknownValueResolver.getDefaultNonArrayProperty(objlabel, this);
             obj.setDefaultArrayProperty(old_array.joinAbsentModified());
             obj.setDefaultNonArrayProperty(old_nonarray.joinAbsentModified());
-            for (Map.Entry<String, Value> me : newSet(UnknownValueResolver.getProperties(objlabel, this).entrySet())) {
-                String propertyname = me.getKey();
+            for (Map.Entry<PKey, Value> me : newSet(UnknownValueResolver.getProperties(objlabel, this).entrySet())) {
+                PKey propertyname = me.getKey();
                 Value v = me.getValue();
                 if (v.isUnknown())
                     v = UnknownValueResolver.getProperty(objlabel, propertyname, this, true);
@@ -1504,7 +1502,7 @@ public class State implements IState<State, Context, CallEdge> {
     public Value readVariableDirect(String var) {
         Collection<Value> values = newList();
         for (ObjectLabel objlabel : execution_context.getVariableObject()) {
-            values.add(readProperty(ObjectProperty.makeOrdinary(objlabel, var), false));
+            values.add(readProperty(ObjectProperty.makeOrdinary(objlabel, StringPKey.make(var)), false));
         }
         return UnknownValueResolver.join(values, this);
     }
@@ -1574,7 +1572,7 @@ public class State implements IState<State, Context, CallEdge> {
             Obj obj = getObject(objlabel, true);
             // FIXME only null or object values are actually written! (see JSObject -> OBJECT_SETPROTOTYPEOF for example) (GitHub #356)
             // FIXME Property.__PROTO__ should be assigned `absent` when `newval.isMaybeNull` (GitHub #356)
-            obj.setProperty(Property.__PROTO__, newval.setAttributes(true, true, false));
+            obj.setProperty(StringPKey.__PROTO__, newval.setAttributes(true, true, false));
             obj.setInternalPrototype(newval);
         }
         if (log.isDebugEnabled())
@@ -1870,7 +1868,7 @@ public class State implements IState<State, Context, CallEdge> {
             int index = 0;
             Obj obj = store.get(label);
             if (obj != null) {
-                for (Map.Entry<String, Value> ee : obj.getProperties().entrySet()) {
+                for (Map.Entry<PKey, Value> ee : obj.getProperties().entrySet()) {
                     s.append("|").append("<f").append(index++).append("> ").append(ee.getKey()).append("=").append(esc(ee.getValue().restrictToNotObject().toString()));
                 }
                 if (!obj.getDefaultArrayProperty().isUnknown()) {
@@ -1900,7 +1898,7 @@ public class State implements IState<State, Context, CallEdge> {
             ObjectLabel sourceLabel = e.getKey();
             Obj obj = e.getValue();
             int index = 0;
-            for (Map.Entry<String, Value> ee : obj.getProperties().entrySet()) {
+            for (Map.Entry<PKey, Value> ee : obj.getProperties().entrySet()) {
                 Value value = ee.getValue();
                 String source = node(sourceLabel) + ":f" + index;
                 for (ObjectLabel targetLabel : value.getObjectLabels()) {
@@ -2153,7 +2151,7 @@ public class State implements IState<State, Context, CallEdge> {
     public Value hasInstance(Collection<ObjectLabel> prototype, Value v) {
         boolean maybe_true = false;
         boolean maybe_false = false;
-        if (v.isMaybePrimitive())
+        if (v.isMaybePrimitiveOrSymbol())
             maybe_false = true;
         List<ObjectLabel> pending = newList(v.getObjectLabels());
         Set<ObjectLabel> visited = newSet(v.getObjectLabels());

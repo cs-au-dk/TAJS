@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -85,7 +85,7 @@ public class OscillatorNode {
         switch (nativeObject) {
             case OSCILLATORNODE_CONSTRUCTOR:
                 Exceptions.throwTypeError(c);
-                s.setToNone();
+                s.setToBottom();
             case OSCILLATORNODE_START:
             case OSCILLATORNODE_STOP:
                 return Value.makeUndef();

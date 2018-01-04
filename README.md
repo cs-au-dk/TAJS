@@ -1,6 +1,6 @@
 # TAJS - Type Analyzer for JavaScript
 
-Copyright 2009-2017 Aarhus University
+Copyright 2009-2018 Aarhus University
 
 TAJS is a dataflow analysis for JavaScript that infers type information and call graphs.
 
@@ -62,7 +62,7 @@ Some of the available options (run TAJS without arguments to see the full list):
 
 - `-test-soundness` - test soundness using concrete execution as described in ['Systematic Approaches for Increasing Soundness and Precision of Static Analyzers', SOAP 2017](http://cs.au.dk/~amoeller/papers/tajsexperience/) (see [below](#soundness-testing))
 
-- `-unsound X` - enable unsound assumption X, e.g. `ignore-unlikely-property-reads` causes some unlikely properties to be ignored during dynamic property read operations, and `show-unsoundness-usage` outputs usage of unsound assumptions
+- `-unsound X` - enable unsound assumption X, e.g. `-ignore-unlikely-property-reads` causes some unlikely properties to be ignored during dynamic property read operations, and `-show-unsoundness-usage` outputs usage of unsound assumptions
 
 Note that the analysis produces lots of addition information that is not output by default. If you want full access to the abstract states and call graphs, as a starting point see the source code for `dk.brics.tajs.Main`. 
 The javadoc for TAJS is available at <http://www.brics.dk/TAJS/doc/>.

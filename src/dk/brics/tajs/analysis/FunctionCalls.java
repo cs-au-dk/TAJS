@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -351,7 +351,7 @@ public class FunctionCalls {
                                 c.getMonitoring().visitNativeFunctionReturn(call.getSourceNode(), objlabel.getHostObject(), res);
                                 if (call.getSourceNode().isRegistersDone())
                                     c.getState().clearOrdinaryRegisters();
-                                if ((!res.isNone() && !c.getState().isNone()) || Options.get().isPropagateDeadFlow()) {
+                                if ((!res.isNone() && !c.getState().isBottom()) || Options.get().isPropagateDeadFlow()) {
                                     c.getState().setExecutionContext(call.getExecutionContext());
                                     if (call.getResultRegister() != AbstractNode.NO_VALUE)
                                         c.getState().writeRegister(call.getResultRegister(), res);

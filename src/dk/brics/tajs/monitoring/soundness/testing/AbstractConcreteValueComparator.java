@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -284,7 +284,7 @@ public class AbstractConcreteValueComparator {
                 return true;
             }
             Value jalangiValue = Value.makeNone().joinAnyStrIdentifier();
-            boolean isStrPrefix = abstractValue.isMaybeStrPrefix() || (abstractValue.getStr() != null && Strings.isIdentifierAndNotPrefixOfReservedName(abstractValue.getStr()));
+            boolean isStrPrefix = abstractValue.isMaybeStrPrefix() || (abstractValue.isMaybeSingleStr() && Strings.isIdentifierAndNotPrefixOfReservedName(abstractValue.getStr()));
             //In valuelogger there STR_PREFIX and STR_IDENTIFIER is not distinguished
             boolean x = jalangiValue.join(abstractValue).equals(abstractValue) || isStrPrefix;
             return x;
@@ -341,7 +341,7 @@ public class AbstractConcreteValueComparator {
      * @return true iff the abstract value over-approximates the concrete value.
      */
     private boolean isAbstractValueSound(ObjectDescription d, Value abstractValue) {
-        if (!abstractValue.isMaybeObject()) {
+        if (!abstractValue.isMaybeObjectOrSymbol()) {
             return false;
         }
         return d.accept(new ObjectDescriptionVisitor<Boolean>() {
@@ -397,7 +397,8 @@ public class AbstractConcreteValueComparator {
 
             @Override
             public Boolean visit(OtherSymbolDescription otherSymbolDescription) {
-                return false; // Symbols are not yet supported by TAJS
+                // TODO: First raw approximation (jalangilogger doesn't collect symbol names and allocation sites, but the result of calling toString) - github #513
+                return !abstractValue.getSymbols().isEmpty();
             }
         });
     }

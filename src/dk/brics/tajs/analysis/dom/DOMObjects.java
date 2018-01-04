@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.HostAPIs;
 import dk.brics.tajs.analysis.ParallelTransfer;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.dom.core.DOMElement;
 import dk.brics.tajs.analysis.js.UserFunctionCalls;
 import dk.brics.tajs.flowgraph.EventType;
 import dk.brics.tajs.flowgraph.Function;
@@ -37,6 +38,7 @@ import dk.brics.tajs.util.Pair;
 import org.apache.log4j.Logger;
 
 import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * Native DOM objects.
@@ -123,7 +125,7 @@ public enum DOMObjects implements HostObject {
     WINDOW_CANCEL_ANIMATION_FRAME("Window.cancelAnimationFrame"),
     WINDOW_CANCEL_ANIM_FRAME("Window.cancelAnimFrame"),
     WINDOW_MATCH_MEDIA("Window.matchMedia"),
-    WINDOW_REQUEST_ANIMATION_FRAME("Window.requestAnimationFram"),
+    WINDOW_REQUEST_ANIMATION_FRAME("Window.requestAnimationFrame"),
     WINDOW_WEBKIT_REQUEST_ANIMATION_FRAME("Window.webkitRequestAnimationFrame"),
 
     // /////////////////////////////////////////////////////////////////////////
@@ -443,9 +445,9 @@ public enum DOMObjects implements HostObject {
     HTMLELEMENT_BLUR("HTMLElement.prototype.blur"),
     HTMLELEMENT_MATCHES_SELECTOR("HTMLElement.prototype.(*)MatchesSelector"),
     HTMLELEMENT_MATCHES("HTMLElement.prototype.matches"),
-    HTMLFIELDSETELEMENT_CONSTRUCTOR("HTMLFieldsetElement constructor"),
-    HTMLFIELDSETELEMENT_PROTOTYPE("HTMLFieldsetElement.prototype"),
-    HTMLFIELDSETELEMENT_INSTANCES("HTMLFieldsetElement instances"),
+    HTMLFIELDSETELEMENT_CONSTRUCTOR("HTMLFieldSetElement constructor"),
+    HTMLFIELDSETELEMENT_PROTOTYPE("HTMLFieldSetElement.prototype"),
+    HTMLFIELDSETELEMENT_INSTANCES("HTMLFieldSetElement instances"),
     HTMLFONTELEMENT_CONSTRUCTOR("HTMLFontElement constructor"),
     HTMLFONTELEMENT_PROTOTYPE("HTMLFontElement.prototype"),
     HTMLFONTELEMENT_INSTANCES("HTMLFontElement instances"),
@@ -457,9 +459,9 @@ public enum DOMObjects implements HostObject {
     HTMLFRAMEELEMENT_CONSTRUCTOR("HTMLFrameElement constructor"),
     HTMLFRAMEELEMENT_PROTOTYPE("HTMLFrameElement.prototype"),
     HTMLFRAMEELEMENT_INSTANCES("HTMLFrameElement instances"),
-    HTMLFRAMESETELEMENT_CONSTRUCTOR("HTMLFramesetElement constructor"),
-    HTMLFRAMESETELEMENT_PROTOTYPE("HTMLFramesetElement.prototype"),
-    HTMLFRAMESETELEMENT_INSTANCES("HTMLFramesetElement instances"),
+    HTMLFRAMESETELEMENT_CONSTRUCTOR("HTMLFrameSetElement constructor"),
+    HTMLFRAMESETELEMENT_PROTOTYPE("HTMLFrameSetElement.prototype"),
+    HTMLFRAMESETELEMENT_INSTANCES("HTMLFrameSetElement instances"),
     HTMLHRELEMENT_CONSTRUCTOR("HTMLHRElement constructor"),
     HTMLHRELEMENT_PROTOTYPE("HTMLHRElement.prototype"),
     HTMLHRELEMENT_INSTANCES("HTMLHRElement instances"),
@@ -508,9 +510,9 @@ public enum DOMObjects implements HostObject {
     HTMLMETAELEMENT_CONSTRUCTOR("HTMLMetaElement constructor"),
     HTMLMETAELEMENT_PROTOTYPE("HTMLMetaElement.prototype"),
     HTMLMETAELEMENT_INSTANCES("HTMLMetaElement instances"),
-    HTMLMODELEMENT_CONSTRUCTOR("HTMLModeElement constructor"),
-    HTMLMODELEMENT_PROTOTYPE("HTMLModeElement.prototype"),
-    HTMLMODELEMENT_INSTANCES("HTMLModeElement instances"),
+    HTMLMODELEMENT_CONSTRUCTOR("HTMLModElement constructor"),
+    HTMLMODELEMENT_PROTOTYPE("HTMLModElement.prototype"),
+    HTMLMODELEMENT_INSTANCES("HTMLModElement instances"),
     HTMLOLISTELEMENT_CONSTRUCTOR("HTMLOListElement constructor"),
     HTMLOLISTELEMENT_PROTOTYPE("HTMLOListElement.prototype"),
     HTMLOLISTELEMENT_INSTANCES("HTMLOListElement instances"),
@@ -893,31 +895,35 @@ public enum DOMObjects implements HostObject {
             pt.add(() -> DOMEvents.addEventHandler(rhsValue, eventHandlerKind, c));
         }
 
-        // element innerHTML
-        if (prop.isMaybeSingleStr() && (prop.getStr().equals("innerHTML") || prop.getStr().equals("outerHTML"))) { // FIXME: what about fuzzy property names for innerHTML/outerHTML? emit unsoundness warning? (GitHub #400)
-            pt.add(() -> {
-                SourceLocation loaderLocation = c.getNode().getSourceLocation();
-                Value innerHTMLText = Conversion.toString(rhsValue, c);
-                if (innerHTMLText.isMaybeFuzzyStr()) { // TODO: some fuzzy strings can safely be ignored (e.g. isMaybeStrUInt)
-                    if (!c.getAnalysis().getUnsoundness().mayIgnoreImpreciseInnerOuterHTML(c.getNode(), prop.getStr(), innerHTMLText)) {
-                        throw new AnalysisPrecisionLimitationException(loaderLocation + ": write to .innerHTML with fuzzy string (" + prop + ")");
-                    } else {
-                        innerHTMLText = Value.makeStr(""); // unsound assumption, treat fuzzy HTML string as ""
+        if (prop.isMaybeSingleStr()) {
+            if (prop.getStr().equals("name")) { // FIXME: what about fuzzy property names for name? emit unsoundness warning? (GitHub #400)
+                DOMElement.setAttributeModel(singleton(objlabel), Value.makeStr("name"), Conversion.toString(rhsValue, c), c);
+            }// element innerHTML
+            else if (prop.getStr().equals("innerHTML") || prop.getStr().equals("outerHTML")) { // FIXME: what about fuzzy property names for innerHTML/outerHTML? emit unsoundness warning? (GitHub #400)
+                pt.add(() -> {
+                    SourceLocation loaderLocation = c.getNode().getSourceLocation();
+                    Value innerHTMLText = Conversion.toString(rhsValue, c);
+                    if (innerHTMLText.isMaybeFuzzyStr()) { // TODO: some fuzzy strings can safely be ignored (e.g. isMaybeStrUInt)
+                        if (!c.getAnalysis().getUnsoundness().mayIgnoreImpreciseInnerOuterHTML(c.getNode(), prop.getStr(), innerHTMLText)) {
+                            throw new AnalysisPrecisionLimitationException(loaderLocation + ": write to .innerHTML with fuzzy string (" + prop + ")");
+                        } else {
+                            innerHTMLText = Value.makeStr(""); // unsound assumption, treat fuzzy HTML string as ""
+                        }
                     }
-                }
-                // extract event handlers from the new HTML code
-                HTMLParser parser = new HTMLParser(innerHTMLText.getStr(), loaderLocation.getLocation(), new DynamicLocationMaker(loaderLocation));
-                DOMBuilder.registerHTML(parser.getHTML(), c);
-                parser.getJavaScript().stream()
-                        .map(Pair::getSecond)
-                        .filter(e -> e.getKind() == Kind.EVENTHANDLER)
-                        .forEach(e -> {
-                            DynamicLocationMaker dynamicLocationMaker = new DynamicLocationMaker(c.getNode().getSourceLocation());
-                            Function handlerDeclaration = FlowGraphMutator.extendFlowGraphWithTopLevelFunction(newList(), e.getCode(), c.getFlowGraph(), dynamicLocationMaker);
-                            handlerDeclaration.getNode().setDomEventType(e.getEventKind());
-                            UserFunctionCalls.declareFunction(handlerDeclaration.getNode(), c);
-                        });
-            });
+                    // extract event handlers from the new HTML code
+                    HTMLParser parser = new HTMLParser(innerHTMLText.getStr(), loaderLocation.getLocation(), new DynamicLocationMaker(loaderLocation));
+                    DOMBuilder.registerHTML(parser.getHTML(), c);
+                    parser.getJavaScript().stream()
+                            .map(Pair::getSecond)
+                            .filter(e -> e.getKind() == Kind.EVENTHANDLER)
+                            .forEach(e -> {
+                                DynamicLocationMaker dynamicLocationMaker = new DynamicLocationMaker(c.getNode().getSourceLocation());
+                                Function handlerDeclaration = FlowGraphMutator.extendFlowGraphWithTopLevelFunction(newList(), e.getCode(), c.getFlowGraph(), dynamicLocationMaker);
+                                handlerDeclaration.getNode().setDomEventType(e.getEventKind());
+                                UserFunctionCalls.declareFunction(handlerDeclaration.getNode(), c);
+                            });
+                });
+            }
         }
 
         pt.complete();

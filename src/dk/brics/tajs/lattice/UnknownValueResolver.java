@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Pair;
-import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -579,8 +578,8 @@ public final class UnknownValueResolver {
                 dst_v = dst_v.makeNonPolymorphic();
             }
             if (r == Kind.DEFAULT_ARRAY || r == Kind.DEFAULT_NONARRAY)
-                for (String p : src_obj.getPropertyNames())
-                    if (Strings.isArrayIndex(p) == (r == Kind.DEFAULT_ARRAY) && !dst_obj.getProperties().containsKey(p)) {
+                for (PKey p : src_obj.getPropertyNames())
+                    if (p.isArrayIndex() == (r == Kind.DEFAULT_ARRAY) && !dst_obj.getProperties().containsKey(p)) {
                         if (log.isDebugEnabled())
                             log.debug("materialized property " + p);
                         if (!dst_obj.isWritable())
@@ -633,10 +632,10 @@ public final class UnknownValueResolver {
     }
 
     /**
-     * Wrapper for {@link Obj#getProperty(String)}.
+     * Wrapper for {@link Obj#getProperty(PKey)}.
      * Never returns 'unknown'.
      */
-    public static Value getProperty(ObjectLabel objlabel, String propertyname, State s, boolean partial) {
+    public static Value getProperty(ObjectLabel objlabel, PKey propertyname, State s, boolean partial) {
         Value res = s.getObject(objlabel, false).getProperty(propertyname);
         if (!isValueOK(res, partial)) {
             res = recover(s, ObjectProperty.makeOrdinary(objlabel, propertyname),
@@ -751,7 +750,7 @@ public final class UnknownValueResolver {
      * The resulting map may contain 'unknown' and polymorphic values, but all property names will be present.
      * The map is not writable.
      */
-    public static Map<String, Value> getProperties(ObjectLabel objlabel, State s) {
+    public static Map<PKey, Value> getProperties(ObjectLabel objlabel, State s) {
         Obj obj = s.getObject(objlabel, false);
         if (obj.getDefaultArrayProperty().isUnknown() || obj.getDefaultNonArrayProperty().isUnknown()) {
             if (obj.getDefaultArrayProperty().isUnknown())
@@ -860,7 +859,9 @@ public final class UnknownValueResolver {
      * Joins the given values, performing full recovery for polymorphic values if necessary.
      * Assumes that the values are non-unknown.
      */
-    public static Value join(Iterable<Value> values, State s) {
+    public static Value join(Collection<Value> values, State s) {
+        if (values.size() == 1)
+            return values.iterator().next();
         if (canJoin(values))
             return Value.join(values);
         Collection<Value> vs = new ArrayList<>();

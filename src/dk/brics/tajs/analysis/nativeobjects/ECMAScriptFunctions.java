@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,6 +59,7 @@ public class ECMAScriptFunctions {
             case OBJECT_FREEZE:
             case OBJECT_KEYS:
             case OBJECT_GETOWNPROPERTYNAMES:
+            case OBJECT_GETOWNPROPERTYSYMBOLS:
             case OBJECT_DEFINEGETTER:
             case OBJECT_DEFINESETTER:
             case OBJECT_GETOWNPROPERTYDESCRIPTOR:
@@ -137,6 +138,15 @@ public class ECMAScriptFunctions {
             case REGEXP_TEST:
             case REGEXP_TOSTRING:
                 res = JSRegExp.evaluate(nativeobject, call, c);
+                break;
+
+            case SYMBOL:
+            case SYMBOL_TOSTRING:
+            case SYMBOL_FOR:
+            case SYMBOL_KEYFOR:
+            case SYMBOL_TOSOURCE:
+            case SYMBOL_VALUEOF:
+                res = JSSymbol.evaluate(nativeobject, call, c);
                 break;
 
             case DATE:

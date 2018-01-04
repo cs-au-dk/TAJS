@@ -213,6 +213,13 @@
         function makeTypedArray() {
             function TypedArray() {
                 Object.defineProperty(this, 'constructor', {value: TypedArray});
+                Object.defineProperty(this, Symbol.species, {
+                    configurable: true,
+                    enumerable: false,
+                    get: function () {
+                        return TypedArray;
+                    }
+                });
                 $TypedArray$.apply(this, arguments);
             }
 

@@ -77,4 +77,4 @@ jQuery.each(({ajaxStart: "ajaxStart", ajaxStop: "ajaxStop", ajaxComplete: "ajaxC
               });
 TAJS_assert(jQuery.fn.ajaxStop, "isMaybeObject");
 jQuery.fn.ajaxStop.KILL_UNDEFINED;
-TAJS_assert(jQuery.fn.ajaxStop, "isMaybeOtherThanObject", false);
+TAJS_assert(jQuery.fn.ajaxStop, "isMaybePrimitiveOrSymbol", false);

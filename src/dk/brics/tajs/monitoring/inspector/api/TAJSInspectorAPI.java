@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,7 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
@@ -179,7 +180,7 @@ public class TAJSInspectorAPI implements InspectorAPI {
     public OptionData getOptions() {
         Map<String, String> map = Options.get().getOptionValues().entrySet().stream()
                 .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue() + ""));
-        ExperimentalOptions.ExperimentalOptionsManager.get().getEnabled().stream()
+        ExperimentalOptions.ExperimentalOptionsManager.get().getEnabled()
                 .forEach(e -> map.put("XXX-ExperimentalOption:" + e.getClass().getSimpleName(), e.toString()));
         return new OptionData(map);
     }
@@ -216,7 +217,7 @@ public class TAJSInspectorAPI implements InspectorAPI {
         metaProperties.put("<prototype>", prototype);
         metaProperties.put("<internal>", internal);
 
-        Map<String, Set<Value>> multiProperties = newMap();
+        Map<PKey, Set<Value>> multiProperties = newMap();
         states.forEach(state ->
                 UnknownValueResolver.getProperties(label, state)
                         .keySet().forEach(k -> {
@@ -225,7 +226,7 @@ public class TAJSInspectorAPI implements InspectorAPI {
                 }));
 
         Map<String, CompositeValue> properties = multiProperties.entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, e -> mapper.makeCompositeValue(Value.join(e.getValue()))));
+                .collect(Collectors.toMap(e -> e.getKey().toString(), e -> mapper.makeCompositeValue(Value.join(e.getValue()))));
 
         return new DescribedProperties(metaProperties, properties);
     }
@@ -346,7 +347,7 @@ public class TAJSInspectorAPI implements InspectorAPI {
         }
 
         Context context = idManager.resolve(contextID.get());
-        if (c.getAnalysisLatticeElement().getState(node.getBlock(), context).isNone()) {
+        if (c.getAnalysisLatticeElement().getState(node.getBlock(), context).isBottom()) {
             return new dk.brics.inspector.api.model.Optional<>();
         }
         return new dk.brics.inspector.api.model.Optional<>(mapper.makeDescribedLocation(node, context));

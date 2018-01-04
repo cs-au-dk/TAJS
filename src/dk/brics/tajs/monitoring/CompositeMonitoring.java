@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,8 @@ import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PKeys;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.Message;
@@ -238,15 +238,15 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, Str propertystr, State state, boolean check_unknown) {
-        m1.visitPropertyRead(n, objs, propertystr, state, check_unknown);
-        m2.visitPropertyRead(n, objs, propertystr, state, check_unknown);
+    public void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, PKeys propertyname, State state, boolean check_unknown) {
+        m1.visitPropertyRead(n, objs, propertyname, state, check_unknown);
+        m2.visitPropertyRead(n, objs, propertyname, state, check_unknown);
     }
 
     @Override
-    public void visitPropertyWrite(Node n, Set<ObjectLabel> objs, Str propertystr) {
-        m1.visitPropertyWrite(n, objs, propertystr);
-        m2.visitPropertyWrite(n, objs, propertystr);
+    public void visitPropertyWrite(Node n, Set<ObjectLabel> objs, PKeys propertyname) {
+        m1.visitPropertyWrite(n, objs, propertyname);
+        m2.visitPropertyWrite(n, objs, propertyname);
     }
 
     @Override
@@ -262,9 +262,9 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, Str propertystr, boolean maybe, State state, Value v, ObjectLabel global_obj) {
-        m1.visitReadProperty(n, objlabels, propertystr, maybe, state, v, global_obj);
-        m2.visitReadProperty(n, objlabels, propertystr, maybe, state, v, global_obj);
+    public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, PKeys propertyname, boolean maybe, State state, Value v, ObjectLabel global_obj) {
+        m1.visitReadProperty(n, objlabels, propertyname, maybe, state, v, global_obj);
+        m2.visitReadProperty(n, objlabels, propertyname, maybe, state, v, global_obj);
     }
 
     @Override

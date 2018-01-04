@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2017 Aarhus University
+ * Copyright 2009-2018 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -250,6 +250,9 @@ public class OptionValues {
 
     @Option(name = "-analysis-limitations-warn-only", usage = "If analysis limitation encountered, emit warning but continue (only used with -test)")
     private boolean analysisLimitationWarnOnly;
+
+    @Option(name = "-nodejs", usage = "Use Node.js environment for analysis and soundness testing (currently only 'require' is supported)")
+    private boolean nodejs;
 
     @Argument
     private List<Path> arguments = new ArrayList<>();
@@ -1223,5 +1226,17 @@ public class OptionValues {
 
     public void disableAanalysisLimitationWarnOnly() {
         analysisLimitationWarnOnly = false;
+    }
+
+    public boolean isNodeJS() {
+        return nodejs;
+    }
+
+    public void enableNodeJS() {
+        nodejs = true;
+    }
+
+    public void disableNodeJS() {
+        nodejs = false;
     }
 }
