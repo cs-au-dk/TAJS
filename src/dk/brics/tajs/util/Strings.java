@@ -291,6 +291,13 @@ public class Strings {
     	return IDENTIFIERPARTS.matcher(s).matches();
     }
 
+    /**
+     * Checks whether the given string consists of valid identifier parts excluding identifiers.
+     */
+    public static boolean isOtherIdentifierParts(String s) {
+        return !isIdentifier(s) && IDENTIFIERPARTS.matcher(s).matches();
+    }
+
     public static boolean containsNonNumberCharacters(String s) {
         for (int i = 0; i < s.length(); i ++) {
             if (!NUMBER_CHARACTERS.matcher(Character.toString(s.charAt(i))).matches()) {

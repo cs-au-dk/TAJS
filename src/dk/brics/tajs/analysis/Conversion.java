@@ -378,7 +378,7 @@ public class Conversion {
                     result = result.joinBool(true);
             } else if (v.isMaybeStrPrefix() && !v.getPrefix().isEmpty()) // trivially true, but better make sure
                 result = result.joinBool(true);
-            else if (v.isMaybeStrOtherIdentifierParts() || v.isMaybeStrJSON())
+            else if (v.isMaybeStrOtherIdentifierParts())
                 result = result.joinAnyBool();
             else
                 result = result.joinBool(true);

@@ -32,13 +32,13 @@ public class JSString_trim_trimLeft_trimRight_test {
     @Test
     public void trimFuzzyStrings() {
         Misc.runSource(
-                "var ident = Math.random()? 'a': 'b';",
-                "var prefix = 'x' + ident",
-                "var ident_prefix = Math.random()? ident: prefix",
-                "TAJS_assert(ident.trim(), 'isMaybeStrIdentifier');",
+                "var anyStr = TAJS_make('AnyStr');",
+                "var prefix = 'x' + anyStr;",
+                "var anyStr_prefix = Math.random()? anyStr: prefix;",
+                "TAJS_assert(anyStr.trim(), 'isMaybeStrIdentifier');",
                 "TAJS_assert(prefix.trim(), 'isMaybeStrPrefix');",
-                "TAJS_assert(ident_prefix.trim(), 'isMaybeStrIdentifier||isMaybeStrPrefix');",
-                "TAJS_assert(ident_prefix.trim(), 'isMaybeStrOtherIdentifierParts||isMaybeStrOther');",
+                "TAJS_assert(anyStr_prefix.trim(), 'isMaybeStrIdentifier||isMaybeStrPrefix');",
+                "TAJS_assert(anyStr_prefix.trim(), 'isMaybeStrOtherIdentifierParts||isMaybeStrOther');",
                 "var num_obj = String.prototype.trim.call(Math.random()? 1: {});",
                 "TAJS_assert(num_obj, 'isMaybeStrOther||isMaybeStrUInt');",
                 "TAJS_assert(num_obj, 'isMaybeStrOther||isMaybeStrUInt');");

@@ -246,7 +246,7 @@ public class SourceLocation implements Comparable<SourceLocation>, DeepImmutable
                 selectedFileName = wrapDynamic(loaderLocation.toUserFriendlyString(showPosition));
                 break;
             case STATIC:
-                if (location.getProtocol().equalsIgnoreCase("http") || location.getProtocol().equalsIgnoreCase("https")) {
+                if (location.getProtocol().equalsIgnoreCase("http") || location.getProtocol().equalsIgnoreCase("https") || location.getProtocol().equalsIgnoreCase("jar")) {
                     selectedFileName = location.toString();
                 } else if (customName != null) {
                     selectedFileName = customName;

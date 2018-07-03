@@ -63,12 +63,12 @@ import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.ObjProperties;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.PKeys;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.State.Properties;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
@@ -883,11 +883,11 @@ public class NodeTransfer implements NodeVisitor {
         v1 = UnknownValueResolver.getRealValue(v1, c.getState());
         v1 = v1.restrictToNotNullNotUndef(); // ES5: "If experValue is null or undefined, return (normal, empty, empty)."
         Set<ObjectLabel> objs = Conversion.toObjectLabels(n, v1, c);
-        Properties p = c.getState().getProperties(objs, true, false, false, true);
+        ObjProperties p = c.getState().getProperties(objs, ObjProperties.PropertyQuery.makeQuery().onlyEnumerable().usePrototypes());
 
         if (!Options.get().isForInSpecializationDisabled()) {
             // 1. Find properties to iterate through
-            Collection<Value> propertyNameValues = newList(p.toValues());
+            Collection<Value> propertyNameValues = newList(p.getMaybePresentPropertyNames());
 
             // Add the no-iteration case
             propertyNameValues.add(Value.makeNull().makeExtendedScope());
@@ -921,7 +921,7 @@ public class NodeTransfer implements NodeVisitor {
             }
             c.getState().setToBottom();
         } else { // fall back to simple mode without context specialization
-            Value proplist = p.toValue().joinNull();
+            Value proplist = Value.join(p.getMaybePresentPropertyNames()).joinNull();
             m.visitPropertyRead(n, objs, proplist, c.getState(), true);
             c.getState().writeRegister(n.getPropertyListRegister(), proplist);
         }

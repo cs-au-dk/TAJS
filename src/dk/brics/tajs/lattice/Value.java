@@ -163,8 +163,6 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
      * &&
      * !((flags & STR_PREFIX) != 0 && (str == null || str.length == 0))
      * &&
-     * !((flags & STR_IDENTIFIER) == 0 && (flags & STR_OTHERIDENTIFIERPARTS) != 0)
-     * &&
      * !((flags & NUM_ANY) != 0 && num != null)
      * &&
      * !(object_labels != null && object_labels.isEmpty())
@@ -290,8 +288,6 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
                 msg = "fixed string and flags inconsistent";
             else if ((v.flags & STR_PREFIX) != 0 && (v.str == null || v.str.isEmpty()))
                 msg = "prefix string inconsistent";
-            else if ((v.flags & STR_IDENTIFIER) == 0 && (v.flags & STR_OTHERIDENTIFIERPARTS) != 0)
-                msg = "identifier string flags inconsistent";
             else if ((v.flags & NUM) != 0 && v.num != null)
                 msg = "number facet inconsistent";
             else if (v.num != null && Double.isNaN(v.num))
@@ -2574,10 +2570,11 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
                 flags |= STR_OTHERNUM;
             } else if (Strings.isIdentifier(s)) {
                 flags |= STR_IDENTIFIER;
-            } else if (Strings.isIdentifierParts(s))
-                flags = flags | STR_OTHERIDENTIFIERPARTS | STR_IDENTIFIER;
-            else
+            } else if (Strings.isOtherIdentifierParts(s)) {
+                flags |= STR_OTHERIDENTIFIERPARTS;
+            } else {
                 flags |= STR_OTHER;
+            }
         }
         return flags != oldflags;
     }

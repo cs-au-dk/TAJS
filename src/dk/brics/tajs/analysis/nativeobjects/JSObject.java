@@ -27,13 +27,13 @@ import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.lattice.Obj;
+import dk.brics.tajs.lattice.ObjProperties;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.PKeys;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.State.Properties;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message;
@@ -158,36 +158,16 @@ public class JSObject {
                 if (!v.isMaybeOtherThanUndef())
                     return Value.makeBool(false);
                 Value propval = Conversion.toString(v, c);
-                if (propval.isNotStr())
+                ObjProperties properties = state.getProperties(thisobj, ObjProperties.PropertyQuery.makeQuery());
+                Value v2 = properties.getValue(propval);
+                if (v2.isMaybeAbsent() && v2.isMaybePresent())
+                    return Value.makeAnyBool();
+                else if (v2.isMaybePresent())
+                    return Value.makeBool(true);
+                else if (v2.isMaybeAbsent())
+                    return Value.makeBool(false);
+                else
                     return Value.makeNone();
-
-                State.Properties properties = state.getProperties(thisobj, false, false, false, false);
-                if (propval.isMaybeSingleStr()) {
-                    String str = propval.getStr();
-                    if (properties.getDefinitely().contains(StringPKey.make(str))) {
-                        return Value.makeBool(true);
-                    }
-                    if (properties.getMaybe().contains(StringPKey.make(str))) {
-                        return Value.makeAnyBool();
-                    }
-                    if (Strings.isArrayIndex(str) && properties.isArray()) {
-                        return Value.makeAnyBool();
-                    }
-                    if (!Strings.isArrayIndex(str) && properties.isNonArray()) {
-                        return Value.makeAnyBool();
-                    }
-                } else {
-                    if (propval.isMaybeStrSomeNonUInt() && properties.isNonArray()) {
-                        return Value.makeAnyBool();
-                    }
-                    if (propval.isMaybeStrUInt() && properties.isArray()) {
-                        return Value.makeAnyBool();
-                    }
-                    if (properties.getMaybe().stream().anyMatch(k -> k.isMaybeValue(propval))) {
-                        return Value.makeAnyBool();
-                    }
-                }
-                return Value.makeBool(false);
             }
 
             case OBJECT_ISPROTOTYPEOF: { // 15.2.4.6
@@ -312,28 +292,22 @@ public class JSObject {
     private static boolean definePropertiesFromDescriptorsObject(Value target, Set<ObjectLabel> propertyDescriptorsObject, State state, Solver.SolverInterface c) {
         final boolean[] stopPropagation = {false};
         ParallelTransfer.process(propertyDescriptorsObject, props -> {
-            Properties properties = state.getProperties(singleton(props), true,false,true,false);
-            properties.getMaybe().forEach(prop -> {
-                boolean forceWeak = !properties.getDefinitely().contains(prop);
-                stopPropagation[0] |= definePropertyFromDescriptorsObjectProperty(target, props, prop.toValue(), forceWeak, c).isNone();
+            ObjProperties properties = state.getProperties(singleton(props), ObjProperties.PropertyQuery.makeQuery().onlyEnumerable().includeSymbols());
+            properties.getProperties().forEach((name, val) -> {
+                if (val.isMaybePresent())
+                    stopPropagation[0] |= definePropertyFromDescriptorsObjectProperty(target, props, name, val.isMaybeAbsent(), c).isNone();
             });
-            if (properties.isArray()) {
-                stopPropagation[0] |= definePropertyFromDescriptorsObjectProperty(target, props, Value.makeAnyStrUInt(), true, c).isNone();
-            }
-            if (properties.isNonArray()) {
-                stopPropagation[0] |= definePropertyFromDescriptorsObjectProperty(target, props, Value.makeAnyStrNotUInt(), true, c).isNone();
-            }
         }, c);
         return stopPropagation[0];
     }
 
-    private static Value definePropertyFromDescriptorsObjectProperty(Value target, ObjectLabel propertyDescriptorsObject, Value propertyName, boolean forceWeak, Solver.SolverInterface c) {
+    private static Value definePropertyFromDescriptorsObjectProperty(Value target, ObjectLabel propertyDescriptorsObject, PKeys propertyName, boolean forceWeak, Solver.SolverInterface c) {
         c.getMonitoring().visitPropertyRead(c.getNode(), singleton(propertyDescriptorsObject), propertyName, c.getState(), true);
         Value propertyDescriptorObject = c.getAnalysis().getPropVarOperations().readPropertyValue(singleton(propertyDescriptorsObject), propertyName);
         return defineProperty(target, propertyName, propertyDescriptorObject, forceWeak, c);
     }
 
-    private static Value defineProperty(Value o, Value propertyName, Value propertyDescriptorObject, boolean forceWeak, Solver.SolverInterface c) {
+    private static Value defineProperty(Value o, PKeys propertyName, Value propertyDescriptorObject, boolean forceWeak, Solver.SolverInterface c) {
         PropertyDescriptor desc = PropertyDescriptor.toDefinePropertyPropertyDescriptor(propertyDescriptorObject, c);
         Value value = desc.makePropertyWithAttributes();
         if (value.isNone())
@@ -350,7 +324,7 @@ public class JSObject {
         }
         ObjectLabel array = JSArray.makeArray(call.getSourceNode(), c);
         boolean onlyEnumerable = nativeobject == ECMAScriptObjects.OBJECT_KEYS;
-        State.Properties properties = state.getProperties(objectArg.getObjectLabels(), onlyEnumerable, false, symbols, false);
+        ObjProperties properties = state.getProperties(objectArg.getObjectLabels(), ObjProperties.PropertyQuery.makeQuery().setOnlyEnumerable(onlyEnumerable).setIncludeSymbols(symbols));
         if (!properties.getMaybe().isEmpty()) {
             if ((properties.getMaybe().size() < 2 || c.getAnalysis().getUnsoundness().mayUseSortedObjectKeys(call.getSourceNode())) && properties.isDefinite()) {
                 // we know the *order* of property names
@@ -360,7 +334,7 @@ public class JSObject {
             } else {
                 // Order of properties is the same as for-in: unspecified
                 if (nativeobject == ECMAScriptObjects.OBJECT_KEYS) {
-                    // Special case: we can ignore all non-enumrable strings (see SplittingUtil!)
+                    // Special case: we can ignore all non-enumerable strings (see SplittingUtil!)
                     Value propertyNames = Value.join(properties.getMaybe().stream().map(PKey::toValue).collect(Collectors.toList()));
                     if (properties.isDefinite()) {
                         // we know the *number* of property names
@@ -376,10 +350,10 @@ public class JSObject {
                 }
             }
         }
-        if (properties.isArray()) {
+        if (properties.isDefaultArrayMaybePresent()) {
             JSArray.setUnknownEntries(array, Value.makeAnyStrUInt(), c);
         }
-        if (properties.isNonArray()) {
+        if (properties.isDefaultNonArrayMaybePresent()) {
             JSArray.setUnknownEntries(array, Value.makeAnyStrNotUInt(), c);
         }
         return Value.makeObject(array);
@@ -399,7 +373,7 @@ public class JSObject {
             return Value.makeNone();
         }
         ObjectLabel array = JSArray.makeArray(call.getSourceNode(), c);
-        State.Properties properties = state.getProperties(objectArg.getObjectLabels(), true, false, false, false);
+        ObjProperties properties = state.getProperties(objectArg.getObjectLabels(), ObjProperties.PropertyQuery.makeQuery().onlyEnumerable());
 
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
 
@@ -412,12 +386,12 @@ public class JSObject {
             }
             JSArray.setUnknownEntries(array, propertyValues, c);
         }
-        if (properties.isArray()) {
+        if (properties.isDefaultArrayMaybePresent()) {
             Value property = Value.makeAnyStrUInt();
             Value valueOfProperty = pv.readPropertyValue(objectArg.getObjectLabels(), property);
             JSArray.setUnknownEntries(array, valueOfProperty, c);
         }
-        if (properties.isNonArray()) {
+        if (properties.isDefaultNonArrayMaybePresent()) {
             Value property = Value.makeAnyStrNotUInt();
             Value valueOfProperty = pv.readPropertyValue(objectArg.getObjectLabels(), property);
             JSArray.setUnknownEntries(array, valueOfProperty, c);
@@ -430,8 +404,6 @@ public class JSObject {
      * Transfer for Object.assign
      */
     public static Value assign(CallInfo call, Solver.SolverInterface c) {
-        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-
         // 1. prepare target
         Value targetValue = Conversion.toObject(call.getSourceNode(), FunctionCalls.readParameter(call, c.getState(), 0), c);
         Set<ObjectLabel> targetObjects = targetValue.getObjectLabels();
@@ -455,8 +427,8 @@ public class JSObject {
                 .collect(Collectors.toSet());
 
         // 3. copy individual properties
-        Set<Pair<ObjectLabel, Properties>> propertiesToCopy = sourceObjects.stream()
-                .map(l -> Pair.make(l, c.getState().getProperties(singleton(l), true, false, false, false)))
+        Set<Pair<ObjectLabel, ObjProperties>> propertiesToCopy = sourceObjects.stream()
+                .map(l -> Pair.make(l, c.getState().getProperties(singleton(l), ObjProperties.PropertyQuery.makeQuery().onlyEnumerable())))
                 .collect(Collectors.toSet());
         ParallelTransfer pt = new ParallelTransfer(c);
         propertiesToCopy.forEach(pair -> pt.add(() -> {
@@ -469,10 +441,10 @@ public class JSObject {
                 }
                 performSingleAssign(targetObjects, pair.getFirst(), name.toValue(), value, !pair.getSecond().isDefinite(), c);
             });
-            if (pair.getSecond().isArray()) {
+            if (pair.getSecond().isDefaultArrayMaybePresent()) {
                 performSingleAssign(targetObjects, pair.getFirst(), Value.makeAnyStrUInt(), UnknownValueResolver.getDefaultArrayProperty(pair.getFirst(), c.getState()), true, c);
             }
-            if (pair.getSecond().isNonArray()) {
+            if (pair.getSecond().isDefaultNonArrayMaybePresent()) {
                 performSingleAssign(targetObjects, pair.getFirst(), Value.makeAnyStrNotUInt(), UnknownValueResolver.getDefaultNonArrayProperty(pair.getFirst(), c.getState()), true, c);
             }
         }));

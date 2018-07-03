@@ -1808,7 +1808,7 @@ public class TestMicro {
     @Test
     public void concatNumUInts() {
         Misc.runSource("",
-                "var uint = Math.random()? '0': '1';",
+                "var uint = TAJS_make('AnyStrUInt');",
                 "var sequenceOfDigits = uint + uint;",
                 "TAJS_assert(sequenceOfDigits, 'isMaybeStrOtherNum');",
                 "TAJS_assert(sequenceOfDigits + sequenceOfDigits, 'isMaybeStrOtherIdentifierParts');",
@@ -3985,4 +3985,53 @@ public class TestMicro {
         );
         Misc.checkSystemOutput();
     }
+
+    @Test
+    public void testRemovedStrOtherIdentifierPartsImpliesStrIdentifierInvariant() {
+        Misc.runSource(
+                "var x = TAJS_join('38x','27x');",
+                "TAJS_assert(x, 'isMaybeStrIdentifier', false);"
+        );
+    }
+
+    @Test
+    public void testComparisonWithZeroAndUIntPos() {
+        Misc.runSource(
+                "var x = 0;",
+                "var y = TAJS_join(1, 2);",
+                "TAJS_dumpValue(y);",
+                "TAJS_assert(y > x);",
+                "TAJS_assert(x < y);"
+        );
+    }
+
+    @Test
+    public void testMissingProperty() {
+        Misc.runSource(
+                "function doBind() {" +
+                        "    return function wrap() {};" +
+                        "};" +
+                        "function extend(axios, b) {" +
+                        "    for (var key in b) {" +
+                        "        axios[\"request\"] = doBind();" +
+                        "    }" +
+                        "}" +
+                        "var axios = doBind();" +
+                        "extend(axios, {foo: 1});" +
+                        "TAJS_assertEquals(\"undefined\", typeof axios.request, false)"
+        );
+    }
+
+    @Test
+    public void strictUndefined() {
+        Options.get().getSoundnessTesterOptions().setTest(false); // FIXME: needed because of #473
+        Misc.runSource(
+                        "(function () {",
+                        "'use strict';",
+                        "TAJS_assertEquals(undefined, this);",
+                        "function f() { TAJS_assertEquals(undefined, this) }",
+                        "f();",
+                        "})();");
+    }
 }
+

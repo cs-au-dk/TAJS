@@ -228,13 +228,18 @@ public class PropVarOperations {
                             }
                         }
                         // if maybe absent, proceed along prototype chain
-                        if (v.isMaybeAbsent() && !unsoundness.maySkipPrototypesForPropertyRead(c.getNode(), propertystr, v)) {
-                            Value proto = UnknownValueResolver.getInternalPrototype(l, c.getState(), false);
-                            ol2.addAll(proto.getObjectLabels());
-                            if (proto.isMaybeAbsent() || proto.isMaybeNull()) {
-                                // reached end of prototype chain, add 'absent'
-                                values.add(Value.makeAbsent());
+                        if (v.isMaybeAbsent()) {
+                            boolean add_absent = false;
+                            if (unsoundness.maySkipPrototypesForPropertyRead(c.getNode(), propertystr, v)) // unsoundly skipping the prototype
+                                add_absent = true;
+                            else {
+                                Value proto = UnknownValueResolver.getInternalPrototype(l, c.getState(), false);
+                                ol2.addAll(proto.getObjectLabels());
+                                if (proto.isMaybeAbsent() || proto.isMaybeNull()) // reached end of prototype chain
+                                    add_absent = true;
                             }
+                            if (add_absent)
+                                values.add(Value.makeAbsent());
                         }
                     }
                 ol = ol2;

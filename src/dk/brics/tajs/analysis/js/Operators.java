@@ -474,6 +474,10 @@ public class Operators {
      * 11.8.1 <code>&lt;</code>
      */
     public static Value lt(Value v1, Value v2, Solver.SolverInterface c) {
+        if (v1.isMaybeSingleNum() && v1.getNum().equals(0.0) && !v1.isMaybeOtherThanNum() && v2.isMaybeNumUIntPos() && !v2.isMaybeZero() && !v2.isMaybeOtherThanNumUInt()) {
+            // 0 is less than UIntPos
+            return Value.makeBool(true);
+        }
         return abstractRelationalComparison(v1, v2, c);
     }
 
@@ -481,6 +485,10 @@ public class Operators {
      * 11.8.2 <code>&gt;</code>
      */
     public static Value gt(Value v1, Value v2, Solver.SolverInterface c) {
+        if (v1.isMaybeNumUIntPos() && !v1.isMaybeZero() && !v1.isMaybeOtherThanNumUInt() && v2.isMaybeSingleNum() && v2.getNum().equals(0.0) && !v2.isMaybeOtherThanNum()) {
+            // UIntPos is greater than 0
+            return Value.makeBool(true);
+        }
         return abstractRelationalComparison(v2, v1, c);
     }
 

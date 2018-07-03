@@ -1,6 +1,7 @@
 test-resources/src/10k/filterrific.html:616:24: [definite] Too many parameters to function Object.prototype.toLocaleString
 test-resources/src/10k/filterrific.html:616:24: [definite] Too many parameters to function Object.prototype.toString
 test-resources/src/10k/filterrific.html:616:24: [definite] Too many parameters to function Object.prototype.valueOf
+test-resources/src/10k/filterrific.html:578:13: [definite] The conditional expression is always true
 test-resources/src/10k/filterrific.html:616:24: [definite] Too few parameters to function Object.prototype.__defineGetter__
 test-resources/src/10k/filterrific.html:616:24: [definite] Too few parameters to function Object.prototype.__defineSetter__
 test-resources/src/10k/filterrific.html:244:117: [definite] The variable ca is never used
