@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dk.brics.tajs.monitoring.soundness.logfileutilities;
+package dk.brics.tajs.monitoring.soundness;
 
 import dk.au.cs.casa.jer.HashUtil;
 import dk.au.cs.casa.jer.LogParser;
@@ -22,7 +22,6 @@ import dk.au.cs.casa.jer.Logger;
 import dk.au.cs.casa.jer.Metadata;
 import dk.au.cs.casa.jer.RawLogFile;
 import dk.brics.tajs.analysis.KnownUnsoundnesses;
-import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.options.SoundnessTesterOptions;
 import dk.brics.tajs.options.TAJSEnvironmentConfig;
@@ -53,7 +52,7 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 /**
- * Utility class for creating, finding, or parsing the log file for a specific application.
+ * Utility class for creating, finding, and parsing log files.
  */
 public class LogFileHelper {
 
@@ -71,16 +70,16 @@ public class LogFileHelper {
 
     private static WeakHashMap<URL, LogParser> cache = new WeakHashMap<>();
 
-    private final OptionValues options;
-
+    /**
+     * Typical locations for JavaScript files and their corresponding logs.
+     */
     private final ResourceMap[] sourceToLogMapping = {
             new ResourceMap("test-resources/src", "test-resources", "logs"),
             new ResourceMap("benchmarks/tajs/src", "benchmarks", "tajs/logs"),
             new ResourceMap("out/temp-sources", "test-resources", "logs/temp-sources")
     };
 
-    public LogFileHelper(OptionValues options) {
-        this.options = options;
+    public LogFileHelper() {
         if (Arrays.stream(sourceToLogMapping).map(m -> m.subpath).collect(Collectors.toSet()).size() != sourceToLogMapping.length)
             throw new AnalysisException("Subpaths are used by the class loader to resolve the correct resource folder, hence they must be distinct");
     }
@@ -92,6 +91,9 @@ public class LogFileHelper {
         return cache.get(logFile);
     }
 
+    /**
+     * Reads a jalangilogger log file from a URL.
+     */
     private static RawLogFile buildRawLogFileFromURL(URL logFile) {
         String path = logFile.getPath();
         if (path.endsWith(gzipSuffix)) {
@@ -109,6 +111,9 @@ public class LogFileHelper {
         }
     }
 
+    /**
+     * Creates a jalangilogger log file from an input stream.
+     */
     private static RawLogFile buildRawLogFileFromStream(InputStream inputStream) {
         List<String> logFileLines = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new BufferedInputStream(inputStream), logFileEncoding))) {
@@ -122,49 +127,48 @@ public class LogFileHelper {
         return new RawLogFile(logFileLines);
     }
 
+    /**
+     * Returns the URL where the log file can be read.
+     */
     public URL getLogFile() {
-        return getAllLogFilePositions().runtimeLocation;
+        return getLogFileLocation().runtimeLocation;
     }
 
+    /**
+     * Returns the URL of the log file, and if necessary generates the file.
+     */
     public URL createOrGetLogFile() {
-        LogFileLocations logFileLocations = getAllLogFilePositions();
-
-        if (options.getSoundnessTesterOptions().isRegenerate()) {
-            wipeLogFilesIfPossible(logFileLocations);
+        LogFileLocation logFileLocation = getLogFileLocation();
+        if (Options.get().getSoundnessTesterOptions().isRegenerate()) {
+            wipeLogFilesIfPossible(logFileLocation);
         }
-
-        URL runtimeLocation = logFileLocations.runtimeLocation;
+        URL runtimeLocation = logFileLocation.runtimeLocation;
         boolean isConsumable = false, isEmpty = true;
         if ((isConsumable = PathAndURLUtils.isConsumable(runtimeLocation))
                 && (!(isEmpty = isEmptyContent(runtimeLocation)))
-                && (verifySha(logFileLocations, getMainFile()))) {
+                && (verifySha(logFileLocation, getMainFile()))) {
             return runtimeLocation;
         }
-
         boolean canProduceLogForFile = !KnownUnsoundnesses.isUnloggableMainFile(getMainFile());
         boolean canProduceLogAtAll = SoundnessTesterOptions.isLogCreationPossible();
-        boolean isAllowedToProduceLog = options.getSoundnessTesterOptions().isGenerate();
-
-        if(DEBUG) {
+        boolean isAllowedToProduceLog = Options.get().getSoundnessTesterOptions().isGenerate();
+        if (DEBUG) {
             System.out.println(String.format("Log creation info \n" +
                             "    runtime-path: %s, \n" +
                             "    persistent-path: %s, \n" +
                             "    consumable: %b, empty: %b, unloggable-main-file: %b, log-creation-possible: %b, allowed-to-produce: %b)",
-                    logFileLocations.runtimeLocation, logFileLocations.persistentLocation, isConsumable, isEmpty, canProduceLogForFile, canProduceLogAtAll, isAllowedToProduceLog));
+                    logFileLocation.runtimeLocation, logFileLocation.persistentLocation, isConsumable, isEmpty, canProduceLogForFile, canProduceLogAtAll, isAllowedToProduceLog));
         }
-
         boolean createLog = canProduceLogAtAll && canProduceLogForFile && isAllowedToProduceLog;
-
         if (!canProduceLogForFile) {
             warn("Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)");
         } else if (!isAllowedToProduceLog) {
-            throw new LogFileException("Could not create value log file: creation of new log files is not enabled");
+            throw new LogFileException("Log file does not exist, and creation of new log files is not enabled (use -generate-log)");
         } else if (!canProduceLogAtAll) {
             throw new LogFileException("Could not create value log file: missing jalangilogger installation (see README)");
         }
-
         if (createLog) {
-            wipeLogFilesIfPossible(logFileLocations);
+            wipeLogFilesIfPossible(logFileLocation);
             RawLogFile rawLogFile = generateLogFile(getMainFile());
             Path runtimePath = PathAndURLUtils.toPath(runtimeLocation);
             try {
@@ -177,8 +181,8 @@ public class LogFileHelper {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            if (logFileLocations.persistentLocation.isPresent()) {
-                Path persistentPath = PathAndURLUtils.toPath(logFileLocations.persistentLocation.get());
+            if (logFileLocation.persistentLocation.isPresent()) {
+                Path persistentPath = PathAndURLUtils.toPath(logFileLocation.persistentLocation.get());
                 if (!persistentPath.equals(runtimePath)) {
                     try (InputStream persistentStream = runtimeLocation.openStream()) {
                         Files.createDirectories(persistentPath.getParent());
@@ -189,19 +193,17 @@ public class LogFileHelper {
                     }
                 }
             } else {
-                warn("Creating log file, but not persisting it (a 'tajs' entry in .tajsconfig is needed)");
+                warn("Creating log file, but not persisting it (a 'tajs' entry in tajs.properties is needed)");
             }
-
             return runtimeLocation;
         }
-
         return null;
     }
 
-    private void wipeLogFilesIfPossible(LogFileLocations logFileLocations) {
-        wipeFileIfPossible(logFileLocations.runtimeLocation);
-        if (logFileLocations.persistentLocation.isPresent()) {
-            wipeFileIfPossible(logFileLocations.persistentLocation.get());
+    private void wipeLogFilesIfPossible(LogFileLocation logFileLocation) {
+        wipeFileIfPossible(logFileLocation.runtimeLocation);
+        if (logFileLocation.persistentLocation.isPresent()) {
+            wipeFileIfPossible(logFileLocation.persistentLocation.get());
         }
     }
 
@@ -213,17 +215,23 @@ public class LogFileHelper {
         }
     }
 
-    private LogFileLocations getAllLogFilePositions() {
-        Optional<Path> slogFile = options.getSoundnessTesterOptions().getExplicitSoundnessLogFile();
+    /**
+     * Obtains the log file location from the -log-file option, or tries to guess it.
+     */
+    private LogFileLocation getLogFileLocation() {
+        Optional<Path> slogFile = Options.get().getSoundnessTesterOptions().getExplicitSoundnessLogFile();
         if (slogFile.isPresent()) {
             URL url = PathAndURLUtils.toURL(slogFile.get());
-            return new LogFileLocations(Optional.of(url), url);
+            return new LogFileLocation(Optional.of(url), url);
         }
         return inferLogFilePosition();
     }
 
+    /**
+     * Finds the main file.
+     */
     public Path getMainFile() {
-        return options.getArguments().get(Options.get().getArguments().size() - 1);
+        return Options.get().getArguments().get(Options.get().getArguments().size() - 1);
     }
 
     private Metadata getMetaData(URL firstLogFile) {
@@ -235,7 +243,6 @@ public class LogFileHelper {
         if (!fileName.endsWith(gzipSuffix)) {
             throw new IllegalArgumentException("Attempting to gzip to non-gzip file: " + target);
         }
-
         byte[] newLine = "\n".getBytes(logFileEncoding);
         try (FileOutputStream zipFile = new FileOutputStream(target.toFile()); GZIPOutputStream zipOut = new GZIPOutputStream(zipFile)) {
             logFileLines.getLines().forEach(line -> {
@@ -249,6 +256,9 @@ public class LogFileHelper {
         }
     }
 
+    /**
+     * Deletes the given file.
+     */
     private void wipeFileIfPossible(URL location) {
         cache.remove(location);
         Path relativeLogFilePath = PathAndURLUtils.toPath(location);
@@ -260,9 +270,9 @@ public class LogFileHelper {
     }
 
     /**
-     * Infers all the locations of a log file for soundness testing of a JavaScript file using the source to log mapping.
+     * Guesses the location of the log file for soundness testing of a JavaScript file using the source to log mapping.
      * When invoked in an IDE, both the build folder resource folder and the original resource folder are taken into account.
-     * If the one in the original resource folder one is not available for any reason, the the only one returned is the one
+     * If the one in the original resource folder one is not available for any reason, then the only one returned is the one
      * accessible through resources.
      * <p>
      * Examples:
@@ -270,32 +280,22 @@ public class LogFileHelper {
      *     test-resources/src/bar/baz.js -> test-resources/logs/bar/baz.js.log
      * </pre>
      */
-    private LogFileLocations inferLogFilePosition() {
+    private LogFileLocation inferLogFilePosition() {
         Path mainFile = getMainFile();
-        if (mainFile.isAbsolute()) {
+        if (mainFile.isAbsolute())
             mainFile = attemptToRelativizeAbsolutePath(mainFile);
-        }
-
-        String suffix = options.getSoundnessTesterOptions().isUseUncompressedLogFileForInference() ? logSuffix : loggzipSuffix;
-
-        Path preMappedLogFile = Paths.get(makeLogFileNameFromPrefix(mainFile, suffix));
+        String suffix = Options.get().getSoundnessTesterOptions().isUseUncompressedLogFileForInference() ? logSuffix : loggzipSuffix;
+        Path preMappedLogFile = Paths.get(mainFile + suffix);
         List<ResourceMap> mappers = Arrays.stream(sourceToLogMapping)
                 .filter(m -> m.map(preMappedLogFile).isPresent())
                 .collect(Collectors.toList());
-
-        if(mappers.size() != 1)
+        if (mappers.size() != 1)
             throw new AnalysisException("Expected to be able to map " + mainFile + " to its logs location, viable mappers: " + mappers);
-
-        Path mappedLogFilePath = mappers.get(0).map(preMappedLogFile).get();
-        URL runtimeLogFileLocation = mappers.get(0).mapToResource(preMappedLogFile).get();
-
+        ResourceMap m = mappers.get(0);
+        Path mappedLogFilePath = m.map(preMappedLogFile).get();
+        URL runtimeLogFileLocation = m.mapToResource(preMappedLogFile).get();
         Optional<URL> persistentLogFileLocation = inferPersistentLogFileLocation(mappedLogFilePath);
-
-        return new LogFileLocations(persistentLogFileLocation, runtimeLogFileLocation);
-    }
-
-    private String makeLogFileNameFromPrefix(Path mainFile, String suffix) {
-        return String.format("%s%s", mainFile, suffix);
+        return new LogFileLocation(persistentLogFileLocation, runtimeLogFileLocation);
     }
 
     private Path attemptToRelativizeAbsolutePath(Path mainFile) {
@@ -311,38 +311,44 @@ public class LogFileHelper {
                 throw new RuntimeException(e);
             }
         }
-        throw new IllegalArgumentException("Only relative paths supported for log file inference (maybe a 'tajs' entry in .tajsconfig would help): " + mainFile);
+        throw new IllegalArgumentException("Only relative paths supported for log file inference (maybe a 'tajs' entry in tajs.properties would help): " + mainFile);
     }
 
     private Optional<URL> inferPersistentLogFileLocation(Path logFile) {
-        String tajsConfigPropertyName = "tajs";
-        if (!TAJSEnvironmentConfig.get().hasProperty(tajsConfigPropertyName)) {
+        if (!TAJSEnvironmentConfig.get().hasProperty("tajs")) {
             return Optional.empty();
         }
-        Path persistentFilePath = Paths.get(TAJSEnvironmentConfig.get().getCustom(tajsConfigPropertyName)).resolve(logFile);
-        return Optional.of(PathAndURLUtils.toURL(persistentFilePath));
+        return Optional.of(PathAndURLUtils.toURL(Paths.get(TAJSEnvironmentConfig.get().getCustom("tajs")).resolve(logFile)));
     }
 
+    /**
+     * Generates log file for the given JavaScript application, using jalangilogger with an appropriate environment (Node.js / default browser / etc.).
+     */
     private RawLogFile generateLogFile(Path testFile) {
         Path jalangilogger = SoundnessTesterOptions.getJalangiLogger();
+        Optional<Integer> explicitTimeLimit = Options.get().getSoundnessTesterOptions().getTimeLimitExplicitly();
+        Optional<Integer> explicitInstrumentationTimeLimit = Options.get().getSoundnessTesterOptions().getInstrumentationTimeLimitExplicitly();
+        Optional<Logger.Environment> explicitEnvironment = Options.get().getSoundnessTesterOptions().getGeneratorEnvironmentExplicitly();
+        Logger.Environment environment = explicitEnvironment.orElseGet(() -> {
+            if (Options.get().isDOMEnabled())
+                if (Options.get().getSoundnessTesterOptions().isNonInteractive())
+                    return Logger.Environment.DRIVEN_BROWSER;
+                else
+                    return Logger.Environment.BROWSER;
+            else if (Options.get().isNodeJS())
+                return Logger.Environment.NODE;
+            else
+                return Logger.Environment.NODE_GLOBAL;
+        });
         Path node = TAJSEnvironmentConfig.get().getNode();
-        Path jjs = Paths.get(TAJSEnvironmentConfig.get().getCustom("jjs"));
-
-        Optional<Integer> explicitTimeLimit = options.getSoundnessTesterOptions().getTimeLimitExplicitly();
-        Optional<Integer> explicitInstrumentationTimeLimit = options.getSoundnessTesterOptions().getInstrumentationTimeLimitExplicitly();
-        Optional<Logger.Environment> explicitEnvironment = options.getSoundnessTesterOptions().getGeneratorEnvironmentExplicitly();
-        Logger.Environment environment = explicitEnvironment.orElseGet(() ->
-                options.isDOMEnabled() ?
-                        (options.getSoundnessTesterOptions().isNonInteractive() ?
-                                Logger.Environment.DRIVEN_BROWSER : Logger.Environment.BROWSER)
-                        :
-                        Options.get().isNodeJS() ? Logger.Environment.NODE : Logger.Environment.NODE_GLOBAL);
+        Path jjs = environment == Logger.Environment.NASHORN ? Paths.get(TAJSEnvironmentConfig.get().getCustom("jjs")) : null;
         Integer timeLimit = explicitTimeLimit.orElse(30);
         Integer instrumentationTimeLimit = explicitInstrumentationTimeLimit.orElse(30);
         try {
             Path customRootDirectory = getCustomRootDirectoryForTest(testFile);
             List<Path> preambles = getPreambles();
-            Optional<Set<Path>> onlyInclude = options.getSoundnessTesterOptions().getOnlyIncludesForInstrumentation();
+            Optional<Set<Path>> onlyInclude = Options.get().getSoundnessTesterOptions().getOnlyIncludesForInstrumentation();
+            info("Generating log file for soundness testing...");
             if (customRootDirectory == null) {
                 return Logger.makeLoggerForIndependentMainFile(testFile, preambles, onlyInclude, instrumentationTimeLimit, timeLimit, environment, node, jalangilogger, jjs).log();
             } else {
@@ -354,11 +360,12 @@ public class LogFileHelper {
         }
     }
 
+    /**
+     * Collects all non-main files being analyzed.
+     */
     private List<Path> getPreambles() {
-        List<Path> args = options.getArguments();
+        List<Path> args = Options.get().getArguments();
         List<Path> preambles = new ArrayList<>();
-        //The last element in args is the main file
-        //Everything else is assumed to be a preamble
         for (int i = 0; i < args.size() - 1; i++) {
             Path preamble = args.get(i).toAbsolutePath();
             preambles.add(preamble);
@@ -367,15 +374,18 @@ public class LogFileHelper {
     }
 
     private Path getCustomRootDirectoryForTest(Path main) {
-        Path rootDirectoryFromMainDirectory = options.getSoundnessTesterOptions().getRootDirFromMainDirectory();
+        Path rootDirectoryFromMainDirectory = Options.get().getSoundnessTesterOptions().getRootDirFromMainDirectory();
         if (rootDirectoryFromMainDirectory == null) {
             return null;
         }
         return main.getParent().resolve(rootDirectoryFromMainDirectory).toAbsolutePath().normalize();
     }
 
-    private boolean verifySha(LogFileLocations logFileLocations, Path jsFile) {
-        Metadata metadata = getMetaData(logFileLocations.runtimeLocation);
+    /**
+     * Checks whether the SHA stored in the log file matches the given file or directory.
+     */
+    private boolean verifySha(LogFileLocation logFileLocation, Path jsFile) {
+        Metadata metadata = getMetaData(logFileLocation.runtimeLocation);
         String expectedSha = metadata.getSha();
         Path rootDirectoryFromMain = getCustomRootDirectoryForTest(jsFile);
         String currentSha;
@@ -388,25 +398,28 @@ public class LogFileHelper {
                 currentSha = HashUtil.shaDirOrFile(getCustomRootDirectoryForTest(jsFile));
             }
         }
-
         if (currentSha.equals(expectedSha)) {
             return true;
         }
-
-        if (options.getSoundnessTesterOptions().isIgnoreShaDifference()) {
+        if (Options.get().getSoundnessTesterOptions().isIgnoreShaDifference()) {
             warn("Ignoring SHA-mismatch for %s (expected %s, got %s)", metadata.getRoot(), expectedSha, currentSha);
             return true;
         }
-        if (options.getSoundnessTesterOptions().isForceUpdateSha()) {
+        if (Options.get().getSoundnessTesterOptions().isForceUpdateSha()) {
             warn("Force-updating SHA-mismatch for %s (expected %s, got %s)", metadata.getRoot(), expectedSha, currentSha);
-            forceUpdateSha(PathAndURLUtils.toPath(logFileLocations.runtimeLocation), expectedSha, currentSha);
-            if (logFileLocations.persistentLocation.isPresent()) {
-                forceUpdateSha(PathAndURLUtils.toPath(logFileLocations.persistentLocation.get()), expectedSha, currentSha);
+            forceUpdateSha(PathAndURLUtils.toPath(logFileLocation.runtimeLocation), expectedSha, currentSha);
+            if (logFileLocation.persistentLocation.isPresent()) {
+                forceUpdateSha(PathAndURLUtils.toPath(logFileLocation.persistentLocation.get()), expectedSha, currentSha);
             }
             return true;
         }
-
         return false;
+    }
+
+    private void info(String msg) {
+        if (!Options.get().isQuietEnabled()) {
+            log.info(msg);
+        }
     }
 
     private void warn(String format, Object... args) {
@@ -428,12 +441,12 @@ public class LogFileHelper {
     }
 
     /**
-     * Bean for the location of the log files to make use of.
+     * Bean for the location of the log file.
      */
-    private class LogFileLocations {
+    private class LogFileLocation {
 
         /**
-         * The persistent location of the log file. This will typically be the TAJS/resources/jalangilogfiles directory.
+         * The persistent location of the log file. This will typically be in TAJS/test-resources/logs directory or TAJS/benchmarks/tajs/logs.
          * This location is used for creating/updating log files, which in turn will be copied to the runtimeLocation during a later build step.
          */
         private final Optional<URL> persistentLocation;
@@ -443,7 +456,7 @@ public class LogFileHelper {
          */
         private final URL runtimeLocation;
 
-        public LogFileLocations(Optional<URL> persistentLocation, URL runtimeLocation) {
+        public LogFileLocation(Optional<URL> persistentLocation, URL runtimeLocation) {
             this.persistentLocation = persistentLocation;
             this.runtimeLocation = runtimeLocation;
         }
@@ -461,7 +474,6 @@ public class LogFileHelper {
         public LogFileException(String s, Throwable t) {
             super(s, t);
         }
-
     }
 
     private static class ResourceMap {
@@ -472,7 +484,7 @@ public class LogFileHelper {
         Path originalPathPart;
 
         /**
-         * Name of resource folder, used when transorming a path of the form
+         * Name of resource folder, used when transforming a path of the form
          * <p>
          * test-resources/subpath...
          * <p>
@@ -497,6 +509,9 @@ public class LogFileHelper {
                 throw new AnalysisException("Need to specify a subfolder as subpath");
         }
 
+        /**
+         * Maps the given path according to this rule, or returns empty if no match.
+         */
         public Optional<Path> map(Path p) {
             Path mapping = resourceFolder.resolve(subpath);
             if (p.startsWith(originalPathPart)) {
@@ -505,9 +520,11 @@ public class LogFileHelper {
             return Optional.empty();
         }
 
+        /**
+         * Maps the given path according to this rule to produce a URL for reading, or returns empty if no match.
+         */
         public Optional<URL> mapToResource(Path p) {
-            Optional<Path> mapped = map(p);
-            return mapped.map(m -> {
+            return map(p).map(m -> {
                 Path folderInResourceFolder = resourceFolder.resolve(subpath);
                 URL containing = Thread.currentThread().getContextClassLoader().getResource(subpath + "/");
                 if (containing == null)

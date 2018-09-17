@@ -34,11 +34,11 @@ import static dk.brics.tajs.util.Collections.newList;
 /**
  * Manages system-local environment properties.
  * <p>
- * Searches for a .tajsconfig file in the working directory or one of its ancestors until the file is found.
+ * Searches for a tajs.properties file in the working directory or one of its ancestors until the file is found.
  */
 public class TAJSEnvironmentConfig {
 
-    private static final String filename = ".tajsconfig";
+    private static final String filename = "tajs.properties";
 
     private static TAJSEnvironmentConfig instance;
 
@@ -120,7 +120,7 @@ public class TAJSEnvironmentConfig {
     }
 
     /**
-     * Finds all .tajsconfig files on the directory path from the working directory to the root of the file system.
+     * Finds all tajs.properties files on the directory path from the working directory to the root of the file system.
      */
     private static List<Path> findOrderedConfigFiles() {
         Path parent = Paths.get("").toAbsolutePath();

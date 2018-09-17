@@ -3,12 +3,14 @@
 <project name="TAJS" default="all" basedir=".">
 
     <property name="project" value="tajs" />
-    <property name="version" value="0.15" />
+    <property name="version" value="0.16" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
 
-    <property file="local-development.properties"/>
+    <property name="statsquiet" value="false" />
+
+    <property file="tajs.properties"/>
 
     <path id="classpath">
         <fileset dir=".">
@@ -186,23 +188,33 @@
     <target name="test-stats-standard" depends="compile-test">
         <java classname="dk.brics.tajs.test.Stats$Standard" fork="true" failonerror="true" maxmemory="2048m">
             <classpath refid="classpath.test" />
+            <sysproperty key="statsquiet" value="${statsquiet}"/>
         </java>
     </target>
 
     <target name="test-stats-extra" depends="compile-test">
         <java classname="dk.brics.tajs.test.Stats$Extra" fork="true" failonerror="true" maxmemory="2048m">
             <classpath refid="classpath.test" />
+            <sysproperty key="statsquiet" value="${statsquiet}"/>
         </java>
     </target>
 
     <target name="test-stats-libs" depends="compile-test">
         <java classname="dk.brics.tajs.test.Stats$Libs" fork="true" failonerror="true" maxmemory="8192m">
             <classpath refid="classpath.test" />
+            <sysproperty key="statsquiet" value="${statsquiet}"/>
+        </java>
+    </target>
+
+    <target name="test-stats-jquery" depends="compile-test">
+        <java classname="dk.brics.tajs.test.Stats$JQuery" fork="true" failonerror="true" maxmemory="8192m">
+            <classpath refid="classpath.test" />
+            <sysproperty key="statsquiet" value="${statsquiet}"/>
         </java>
     </target>
 
     <target name="publish" depends="all">
-        <fail message="property 'public' should be set in local-development.properties">
+        <fail message="property 'public' should be set in tajs.properties">
             <condition>
                 <not>
                     <isset property="public" />
@@ -240,14 +252,14 @@
                 </not>
             </condition>
         </fail>
-        <fail message="property 'dot' should be set in local-development.properties">
+        <fail message="property 'dot' should be set in tajs.properties">
             <condition>
                 <not>
                     <isset property="dot" />
                 </not>
             </condition>
         </fail>
-        <fail message="property 'imgviewer' should be set in local-development.properties">
+        <fail message="property 'imgviewer' should be set in tajs.properties">
             <condition>
                 <not>
                     <isset property="imgviewer" />
@@ -292,7 +304,7 @@
                 </not>
             </condition>
         </fail>
-        <fail message="property 'dot' should be set in local-development.properties">
+        <fail message="property 'dot' should be set in tajs.properties">
             <condition>
                 <not>
                     <isset property="dot" />

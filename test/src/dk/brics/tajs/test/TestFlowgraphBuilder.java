@@ -1641,7 +1641,7 @@ public class TestFlowgraphBuilder {
         );
     }
 
-    @Test(expected = AnalysisResultException.class /* GitHub #194 */)
+    @Test
     public void forwardSlashRegExpConstructor() {
         Misc.run("test-resources/src/flowgraphbuilder/forwardSlashRegExpConstructor.js");
     }

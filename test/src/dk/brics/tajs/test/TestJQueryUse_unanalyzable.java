@@ -7,7 +7,6 @@ import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -22,11 +21,6 @@ import org.junit.Test;
  * If a test in this file makes the analysis terminate successfully, it should be moved to {@link TestJQueryUse}.
  */
 public class TestJQueryUse_unanalyzable {
-
-    @BeforeClass
-    public static void beforeClass() {
-        Main.reset();
-    }
 
     @Test
     public void auto_ajax_loadWithCallback() {

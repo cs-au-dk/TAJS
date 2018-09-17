@@ -37,15 +37,22 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
 
     private static Logger log = Logger.getLogger(ProgressMonitor.class);
 
-    public ProgressMonitor() {
-        super(new PreScanProgressMonitor(), new DefaultAnalysisMonitoring());
+    /**
+     * @param print only print progress if 'true'
+     */
+    public ProgressMonitor(boolean print) {
+        super(new PreScanProgressMonitor(print), new DefaultAnalysisMonitoring());
     }
 
     public static class PreScanProgressMonitor extends DefaultAnalysisMonitoring {
 
+        private boolean print;
+
         private int nodeTransfers = 0;
 
         private long lastPrintProgress = 0;
+
+        private long startTime;
 
         private long stateSize = 0;
 
@@ -65,9 +72,21 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
 
         public Set<AbstractNode> getVisitedNonHostNodes() {
             return visitedNonHostNodes;
-        }@Override
+        }
+
+        public PreScanProgressMonitor(boolean print) {
+            this.print = print;
+        }
+
+        @Override
         public void setSolverInterface(Solver.SolverInterface c){
             this.c = c;
+        }
+
+        @Override
+        public void visitPhasePre(AnalysisPhase phase) {
+            if (phase == AnalysisPhase.ANALYSIS)
+                startTime = System.currentTimeMillis();
         }
 
         @Override
@@ -104,7 +123,7 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
 
         @Override
         public void visitBlockTransferPre(BasicBlock b, State s) {
-            if (log.isDebugEnabled()) {
+            if (log.isDebugEnabled() && print) {
                 log.debug("Selecting worklist entry for block " + b.getIndex() + " at " + b.getSourceLocation());
                 log.debug("Worklist: " + c.getWorklist());
                 log.debug("Visiting " + b);
@@ -115,7 +134,7 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
 
         @Override
         public void visitBlockTransferPost(BasicBlock b, State s) {
-            if (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() ) {
+            if (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && print) {
                 long t = System.currentTimeMillis();
                 if (t - lastPrintProgress > 100 && ! c.getWorklist().isEmpty()) {
                     printProgress();
@@ -125,18 +144,19 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
         }
 
         private void printProgress() {
-            System.out.printf("\rNode transfers: %-7d Visited/total nodes: %6d/%-6d Abstract states: %-6d Avg. state size: %-8.2f Call edges: %-6d Worklist size: %-5d          ",
+            System.out.printf("\rNode transfers: %-7d Visited/total nodes: %6d/%-6d Abstract states: %-6d Avg. state size: %-8.2f Call edges: %-6d Worklist size: %-5d Time: %-6.2f          ",
                     nodeTransfers, visitedNonHostNodes.size(), c.getFlowGraph().getNumberOfUserCodeNodes(),
                     c.getAnalysisLatticeElement().getNumberOfStates(),
                     ((double)stateSize) / c.getAnalysisLatticeElement().getNumberOfStates(),
                     c.getAnalysisLatticeElement().getCallGraph().size(),
-                    c.getWorklist().size());
+                    c.getWorklist().size(),
+                    (System.currentTimeMillis() - startTime) / 1000.0);
             System.out.flush();
         }
 
         @Override
-        public void visitIterationDone() {
-            if (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled()) {
+        public void visitIterationDone(String terminatedEarlyMsg) {
+            if (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && print) {
                 printProgress();
                 System.out.println(); // needed due to '\r' in printProgress
             }

@@ -111,7 +111,7 @@
      */
     function createCollection(proto, objectOnly) {
         function Collection(a) {
-            if (!this || this.constructor !== Collection) return new Collection(a);
+            if (!this || this.constructor !== Collection) throw new TypeError("Constructor requires 'new'");
             this._keys = [];
             this._values = [];
             this._itp = []; // iteration pointers
@@ -141,7 +141,9 @@
         var i;
         //init Set argument, like `[1,2,3,{}]`
         if (this.add)
-            a.forEach(this.add, this);
+            for (var j = 0; j < a.length; j++) {
+                this.add(a[j]);
+            }
         //init Map argument like `[[1,2], [{}, 4]]`
         else
             a.forEach(function (a) {
@@ -169,8 +171,6 @@
     }
 
     function has(list, key) {
-        if (this.objectOnly && key !== Object(key))
-            throw new TypeError("Invalid value used as weak collection key");
         //NaN or 0 passed
         if (key != key || key === 0) for (i = list.length; i-- && !is(list[i], key);) {
         }
@@ -188,6 +188,8 @@
 
     /** @chainable */
     function sharedSet(key, value) {
+        if (this.objectOnly && key !== Object(key))
+            throw new TypeError("Invalid value used as weak collection key");
         this.has(key) ?
             this._values[i] = value
             :
@@ -198,6 +200,9 @@
 
     /** @chainable */
     function sharedAdd(value) {
+        if (this.objectOnly && value !== Object(value))
+            throw new TypeError("Invalid value used as weak collection value");
+
         if (!this.has(value)) this._values.push(value);
         return this;
     }

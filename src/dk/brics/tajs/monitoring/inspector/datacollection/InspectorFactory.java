@@ -61,7 +61,7 @@ public class InspectorFactory {
     }
 
     private static Pair<IAnalysisMonitoring, Pair<InspectorDataProvider, DefaultGutterDataProvider>> makeInspectorCreatorSetup() {
-        final IAnalysisMonitoring monitoring = Monitoring.make();
+        final IAnalysisMonitoring monitoring = Monitoring.make(false);
         final VisitationMonitoring visitation = new VisitationMonitoring();
 
         final TypeCollector typeCollector = new TypeCollector();

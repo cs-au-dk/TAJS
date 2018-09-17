@@ -258,7 +258,8 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                 boolean isLoopVariable = syntacticInformation.isLoopVariable(function.getOuterFunction(), closureVariableName)
                         && value.isMaybeSingleNum();
                 boolean isValidClosureVariables = isLoopVariable || determinateInterestingValue.isPrecise(value, c);
-                if (isValidClosureVariables) {
+                boolean isRecursive = value.toString().split(closureVariableName + "=").length > 2; //TODO: Less hacky way of detecting recursion
+                if (isValidClosureVariables && !isRecursive) {
                     map.put(closureVariableName, value);
                 }
             }

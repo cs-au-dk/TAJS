@@ -284,16 +284,20 @@ public class Monitoring implements IAnalysisMonitoring {
         messages = null;
     }
 
+    public static IAnalysisMonitoring make() {
+        return make(true);
+    }
+
     /**
      * Constructs a new monitoring object.
      */
-    public static IAnalysisMonitoring make() {
+    public static IAnalysisMonitoring make(boolean allow_progress_monitor) {
         List<IAnalysisMonitoring> monitors = newList();
         ReachabilityMonitor reachabilityMonitor = new ReachabilityMonitor();
         monitors.add(reachabilityMonitor);
         monitors.add(new Monitoring(reachabilityMonitor));
-        if (log.isDebugEnabled() || (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && !Options.get().isTestEnabled() && !Options.get().isIntermediateStatesEnabled())) {
-            monitors.add(new ProgressMonitor());
+        if (allow_progress_monitor && (log.isDebugEnabled() || (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && !Options.get().isTestEnabled() && !Options.get().isIntermediateStatesEnabled()))) {
+            monitors.add(new ProgressMonitor(true));
         }
         return CompositeMonitoring.buildFromList(monitors);
     }
@@ -1110,7 +1114,6 @@ public class Monitoring implements IAnalysisMonitoring {
     @Override
     public void visitPropertyWrite(Node n, Set<ObjectLabel> objs, PKeys propertyname) {
         if (!scan_phase) {
-            checkValueSuspicious(n, Value.makeObject(objs));
             return;
         }
         // warn about potential loss of precision
@@ -1153,10 +1156,14 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Registers the name, location, and value of a variable being read or written.
+     * Registers the name, location, and value of a variable or property being read or written.
+     * Also checks for suspiciously imprecise values.
      */
     @Override
-    public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
+    public void visitVariableOrProperty(AbstractNode node, String var, SourceLocation loc, Value value, Context context, State state) {
+        if (!scan_phase) {
+            checkValueSuspicious(node, value);
+        }
         if (scan_phase && Options.get().isShowVariableInfoEnabled()) {
             type_collector.record(var, loc, UnknownValueResolver.getRealValue(value, state), context);
         }
@@ -1201,6 +1208,7 @@ public class Monitoring implements IAnalysisMonitoring {
 
     /**
      * Checks for call/construct to a non-function value causing a TypeError.
+     * Also checks for suspiciously imprecise function values.
      */
     @Override
     public void visitCall(AbstractNode n, Value funval) {
@@ -1269,7 +1277,6 @@ public class Monitoring implements IAnalysisMonitoring {
     @Override
     public void visitRead(Node n, Value v, State state) {
         if (!scan_phase) {
-            checkValueSuspicious(n, v);
             return;
         }
         v = UnknownValueResolver.getRealValue(v, state); // it is not important to preserve polymorphic values during the scan phase
@@ -1621,7 +1628,7 @@ public class Monitoring implements IAnalysisMonitoring {
      * Ignored.
      */
     @Override
-    public void visitIterationDone() {
+    public void visitIterationDone(String terminatedEarlyMsg) {
         // ignore
     }
 

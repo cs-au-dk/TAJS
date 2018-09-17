@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.monitoring.inspector.datacollection.monitors;
 
+import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.State;
@@ -32,7 +33,7 @@ public class NonLazyTypeCollectorMonitoring extends DefaultAnalysisMonitoring {
     }
 
     @Override
-    public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
+    public void visitVariableOrProperty(AbstractNode node, String var, SourceLocation loc, Value value, Context context, State state) {
         value = UnknownValueResolver.getRealValue(value, state);
         typeCollector.record(var, loc, value, context);
     }

@@ -7,7 +7,6 @@ import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -17,11 +16,6 @@ import org.junit.Test;
  * NB: these tests should all succeed, see {@link TestJQueryUse_unanalyzable} for tests that we fail to analyze successfully.
  */
 public class TestJQueryUse {
-
-    @BeforeClass
-    public static void beforeClass() {
-        Main.reset();
-    }
 
     @Test
     public void auto_ajax_abort() {

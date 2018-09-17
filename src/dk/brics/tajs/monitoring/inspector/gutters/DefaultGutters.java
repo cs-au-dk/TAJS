@@ -29,7 +29,7 @@ import dk.brics.tajs.monitoring.inspector.datacollection.SourceLine;
 import dk.brics.tajs.monitoring.inspector.dataprocessing.DomainMapper;
 import dk.brics.tajs.monitoring.inspector.dataprocessing.IDManager;
 import dk.brics.tajs.monitoring.inspector.util.OccurenceCountingMap;
-import dk.brics.tajs.monitoring.soundness.logfileutilities.LogFileHelper;
+import dk.brics.tajs.monitoring.soundness.LogFileHelper;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.Message.Severity;
@@ -256,7 +256,7 @@ public class DefaultGutters implements GutterProvider {
         Set<Gutter<?>> gutters = newSet();
         URL logFile;
         try {
-            logFile = new LogFileHelper(Options.get()).getLogFile();
+            logFile = new LogFileHelper().getLogFile();
         } catch (Exception e) {
             log.warn("Could not create value logger gutters due to lack of value logger log file (using the -log-file option will fix this)" );
             return newSet();

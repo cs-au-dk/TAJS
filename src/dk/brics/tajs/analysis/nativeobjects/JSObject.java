@@ -41,7 +41,6 @@ import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
-import dk.brics.tajs.util.Strings;
 
 import java.util.Collections;
 import java.util.List;
@@ -157,8 +156,8 @@ public class JSObject {
                 // Result is only defined when called with a parameter. Return false if not, just like Safari.
                 if (!v.isMaybeOtherThanUndef())
                     return Value.makeBool(false);
-                Value propval = Conversion.toString(v, c);
-                ObjProperties properties = state.getProperties(thisobj, ObjProperties.PropertyQuery.makeQuery());
+                Value propval = Conversion.toProperty(v, c);
+                ObjProperties properties = state.getProperties(thisobj, ObjProperties.PropertyQuery.makeQuery().setIncludeSymbols(true));
                 Value v2 = properties.getValue(propval);
                 if (v2.isMaybeAbsent() && v2.isMaybePresent())
                     return Value.makeAnyBool();
@@ -336,7 +335,7 @@ public class JSObject {
                 if (nativeobject == ECMAScriptObjects.OBJECT_KEYS) {
                     // Special case: we can ignore all non-enumerable strings (see SplittingUtil!)
                     Value propertyNames = Value.join(properties.getMaybe().stream().map(PKey::toValue).collect(Collectors.toList()));
-                    if (properties.isDefinite()) {
+                    if (properties.isDefinite() && properties.getDefinitely().size() <= 1) {
                         // we know the *number* of property names
                         List<Value> joinedPropertyNamesArray = properties.getDefinitely().stream().map(x -> propertyNames).collect(Collectors.toList());
                         JSArray.setEntries(array, joinedPropertyNamesArray, c);

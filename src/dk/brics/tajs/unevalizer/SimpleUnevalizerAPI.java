@@ -51,7 +51,7 @@ public class SimpleUnevalizerAPI { // TODO: GitHub #364
             ObjectLabel functionLabel = UserFunctionCalls.instantiateGlobalScopeFunction(function, callNode, c.getState(), c);
             return Value.makeObject(functionLabel);
         } catch (ParseError e) {
-            Exceptions.throwSyntaxError(c);
+            Exceptions.throwSyntaxError(c, true);
             return Value.makeNone();
         }
     }

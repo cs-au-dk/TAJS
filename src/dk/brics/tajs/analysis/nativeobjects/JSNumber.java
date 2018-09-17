@@ -113,7 +113,7 @@ public class JSNumber {
                     maybe_rangeerror = true;
                 }
                 if (maybe_rangeerror || definitely_rangeerror) {
-                    Exceptions.throwRangeError(c);
+                    Exceptions.throwRangeError(c, maybe_rangeerror);
                     c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "RangeError in Number function");
                 }
                 if (definitely_rangeerror)

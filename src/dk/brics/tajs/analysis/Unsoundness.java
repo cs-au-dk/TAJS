@@ -29,6 +29,7 @@ import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.UnsoundnessOptionValues;
 import dk.brics.tajs.solver.Message.Severity;
+import org.apache.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -49,6 +50,8 @@ import static dk.brics.tajs.util.Collections.newSet;
  * </ul>
  */
 public class Unsoundness {
+
+    private static Logger log = Logger.getLogger(Unsoundness.class);
 
     private final UnsoundnessOptionValues options;
 
@@ -78,6 +81,7 @@ public class Unsoundness {
      */
     public void addMessage(AbstractNode node, String msg) {
         if (options.isShowUnsoundnessUsage()) {
+            log.debug(msg + " at " + node.getClass().getSimpleName() + " " + node.getSourceLocation());
             messageCollector.accept(node, Severity.TAJS_UNSOUNDNESS, msg);
         }
     }
@@ -211,12 +215,12 @@ public class Unsoundness {
         if (!options.isIgnoreSomePrototypesDuringDynamicPropertyReads()) {
             return false;
         }
-        boolean isFuzzy = currentPropertyValue.isMaybeFuzzyStr();
+        boolean isFuzzy = propertyName.isMaybeFuzzyStr();
         if (!isFuzzy) {
             return false;
         }
-        boolean isOnlyFuzzyUInt = !currentPropertyValue.isMaybeStrSomeNonUInt()
-                && currentPropertyValue.isMaybeStrSomeUInt();
+        boolean isOnlyFuzzyUInt = !propertyName.isMaybeStrSomeNonUInt()
+                && propertyName.isMaybeStrSomeUInt();
         if (isOnlyFuzzyUInt) {
             addMessage(node, "Assuming array-like reads do not use prototypes");
             return true;
@@ -226,7 +230,7 @@ public class Unsoundness {
         return addMessageIfUnsound(
                 node,
                 skip,
-                "Assuming dynamic property access does not need to use prototypes");
+                "Assuming dynamic property read does not need to use prototypes");
     }
 
     /**
@@ -247,6 +251,35 @@ public class Unsoundness {
                 node,
                 property.getProperty().isFuzzy(), // TODO: enable by option? (GitHub #357)
                 "Skipping write to property '__proto__'");
+    }
+
+    /**
+     * Decides if undefined should be ignored as the first argument to addition
+     */
+    public boolean mayIgnoreUnlikelyUndefinedAsFirstArgumentToAddition(AbstractNode node, Value v) {
+        boolean allowUnsoundness = options.isIgnoreUnlikelyUndefinedAsFirstArgumentToAddition()
+                && v.isMaybeUndef() && v.isMaybeOtherThanUndef();
+        return addMessageIfUnsound(
+                node,
+                allowUnsoundness,
+                String.format("Ignoring unlikely undefined as first argument to addition for value: %s", v));
+    }
+
+    /**
+     * Decides if the 'in' operator should be definitely true, when value to test 'v' is only numeric and 'v' is
+     * maybe in the object.
+     */
+    public boolean mayAssumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber(AbstractNode node, Value v, Value res) {
+        boolean allowUnsoundness = options.isAssumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber()
+                && v.restrictToNotNum().isNone() && res.isMaybeTrue();
+        return addMessageIfUnsound(
+                node,
+                allowUnsoundness,
+                String.format("Ignoring result of 'in' operator is maybe false, because value to test is numeric and is maybe in object"));
+    }
+
+    public void ignoringException(AbstractNode node, String exceptionKind) {
+        addMessage(node, "Ignoring potential " + exceptionKind + " exception");
     }
 
     @FunctionalInterface

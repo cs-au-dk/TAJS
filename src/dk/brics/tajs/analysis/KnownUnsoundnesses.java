@@ -121,9 +121,6 @@ public class KnownUnsoundnesses {
         uninspectedUnsoundFiles.addAll(Stream.of(
                 // TODO move some of these to yet another category
 
-                // ES6 Symbol
-                "benchmarks/tajs/src/libraries/jquery/jquery-1.12.0.js",
-
                 // Minor ES3 legacy, catch no longer introduces a new with-like scope object
                 "test-resources/src/flowgraphbuilder/flowgraph_builder0123.js",
 
@@ -156,10 +153,12 @@ public class KnownUnsoundnesses {
                 "benchmarks/tajs/src/apps/minesweeper/minesweeper.html",
                 "benchmarks/tajs/src/apps/solitaire/spider.html",
 
+                "test-resources/src/1k2012love/1008.js",
                 "test-resources/src/1k2012love/1168.js",
                 "test-resources/src/1k2012love/1189.js",
                 "test-resources/src/1k2012love/1190.js",
                 "test-resources/src/1k2012love/1240.js",
+                "test-resources/src/1k2012love/1252.js",
                 "test-resources/src/1k2012love/1254.js",
                 "test-resources/src/1k2012love/1269.js",
                 "test-resources/src/1k2012love/1271.js",
@@ -171,6 +170,7 @@ public class KnownUnsoundnesses {
                 "test-resources/src/1k2013spring/1472.js",
                 "test-resources/src/1k2013spring/1473.js",
                 "test-resources/src/1k2013spring/1506.js",
+                "test-resources/src/1k2013spring/1524.js",
                 "test-resources/src/1k2013spring/1526.js",
 
                 "test-resources/src/v8tests/const.js",
@@ -252,20 +252,6 @@ public class KnownUnsoundnesses {
                         make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-orig.js", 883, 3),
                         make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-orig.js", 884, 10),
                         make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-orig.js", 884, 18),
-
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.3.0.js", 3054, 7),
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.3.0.js", 3055, 3),
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.3.0.js", 3055, 3),
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.3.0.js", 3055, 3),
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.3.0.js", 3056, 10),
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.3.0.js", 3056, 18),
-
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.4.0.js", 882, 7),
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.4.0.js", 883, 3),
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.4.0.js", 883, 3),
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.4.0.js", 883, 3),
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.4.0.js", 884, 10),
-                        make("benchmarks/tajs/src/libraries/jquery/jquery-1.4.0.js", 884, 18),
 
                         // redefinition of non-configurable properties
                         make("out/temp-sources/JSObject_defineProperty_test.nonConfigurable1.js", 0, 0),
@@ -457,8 +443,6 @@ public class KnownUnsoundnesses {
 
                 )
         );
-
-        KnownUnsoundnesses_fixedInExtended.modifyKnownTAJSUnsoundFiles(uninspectedUnsoundFiles);
     }
 
     public static boolean isUnsoundLocation(SourceLocation location) {
@@ -562,24 +546,6 @@ public class KnownUnsoundnesses {
             result = 31 * result + columnNumber;
             result = 31 * result + (file != null ? file.hashCode() : 0);
             return result;
-        }
-    }
-
-    // TODO remove when all features of "extended" are in master (GitHub #418)
-    public static class KnownUnsoundnesses_fixedInExtended {
-
-        public static void modifyKnownTAJSUnsoundFiles(Set<Path> current) {
-            current.addAll(Stream.of(
-                    "benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js",
-                    "benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js",
-                    "benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js",
-                    "benchmarks/tajs/src/jquery-load/jquery-1.10.js-sliced.js",
-                    "benchmarks/tajs/src/jquery-load/jquery-1.11.0.js-sliced.js",
-                    "test-resources/src/1k2012love/1008.js",
-                    "test-resources/src/1k2012love/1252.js",
-                    "test-resources/src/1k2013spring/1524.js"
-
-            ).map(KnownUnsoundnesses::make).collect(Collectors.toList()));
         }
     }
 }

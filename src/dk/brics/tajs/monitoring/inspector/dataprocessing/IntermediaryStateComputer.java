@@ -40,11 +40,11 @@ public class IntermediaryStateComputer {
     }
 
     private <T> T withExceptionsDisabled(Supplier<T> f) {
-        boolean exceptionsEnabled = !Options.get().isExceptionsDisabled();
-        Options.get().enableNoExceptions();
+        boolean exceptionsEnabled = !Options.get().getUnsoundness().isNoExceptions();
+        Options.get().getUnsoundness().setNoExceptions(true);
         T result = f.get();
         if (exceptionsEnabled) {
-            Options.get().disableNoExceptions();
+            Options.get().getUnsoundness().setNoExceptions(false);
         }
         return result;
     }

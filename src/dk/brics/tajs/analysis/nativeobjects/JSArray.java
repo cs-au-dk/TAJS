@@ -108,7 +108,7 @@ public class JSArray {
                         if (s == Status.CERTAIN && lenarg.isMaybeOtherThanNum())
                             s = Status.MAYBE;
                         if (s != Status.NONE) {
-                            Exceptions.throwRangeError(c);
+                            Exceptions.throwRangeError(c, s == Status.MAYBE);
                             c.getMonitoring().addMessage(call.getSourceNode(), Severity.HIGH, "RangeError, invalid value of array length");
                         }
                         if (s == Status.CERTAIN)

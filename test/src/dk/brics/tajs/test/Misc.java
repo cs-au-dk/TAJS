@@ -16,6 +16,7 @@ import org.apache.log4j.PatternLayout;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.WriterAppender;
 import org.junit.ComparisonFailure;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -23,6 +24,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Method;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -49,15 +51,17 @@ public class Misc {
         if (m.equals("test") && suffix == null) {
             throw new AnalysisException("Looks like parameterized test, but suffix missing!");
         }
-        System.out.println("testing " + getClassName() + "." + m + (suffix != null ? "." + suffix : ""));
+        System.out.println("testing " + getClassName(false) + "." + m + (suffix != null ? "." + suffix : ""));
+        String appendername = Options.get().isDebugEnabled() ? "testdebug" : "test";
         Properties prop = new Properties();
-        prop.put("log4j.rootLogger", "INFO, test");
-        prop.put("log4j.appender.test", "org.apache.log4j.ConsoleAppender");
-        prop.put("log4j.appender.test.layout", "org.apache.log4j.PatternLayout");
-        prop.put("log4j.appender.test.layout.ConversionPattern", "%m%n");
+        prop.put("log4j.rootLogger", (Options.get().isDebugEnabled() ? "DEBUG" : "INFO") + ", " + appendername);
+        prop.put("log4j.appender." + appendername, "org.apache.log4j.ConsoleAppender");
+        prop.put("log4j.appender." + appendername + ".layout", "org.apache.log4j.PatternLayout");
+        prop.put("log4j.appender." + appendername + ".layout.ConversionPattern", "%m%n");
         PropertyConfigurator.configure(prop);
         fixLocale();
-        captureSystemOutput();
+        if (Options.get().isQuietEnabled())
+            captureSystemOutput();
     }
 
     private static String getMethodName() {
@@ -73,13 +77,13 @@ public class Misc {
         throw new AnalysisException("Can't find method name!?");
     }
 
-    private static String getClassName() {
+    private static String getClassName(boolean full) {
         StackTraceElement[] s = Thread.currentThread().getStackTrace();
         for (int i = s.length - 1; i >= 0; i--) {
             String c = s[i].getClassName();
             if (c.startsWith("dk.brics.tajs.test")) {
                 if (!s[i].getMethodName().equals("main")) {
-                    return c.substring(c.lastIndexOf('.') + 1);
+                    return full ? c : c.substring(c.lastIndexOf('.') + 1);
                 }
             }
         }
@@ -112,7 +116,22 @@ public class Misc {
             if (msg == null) {
                 msg = e.toString();
             }
-            System.out.println("ERROR: " + msg);
+            try {
+                Class<?> cls = Class.forName(getClassName(true));
+                Method met = cls.getMethod(getMethodName());
+                Test an = met.getDeclaredAnnotation(Test.class);
+                boolean expected = !an.expected().equals(Test.None.class);
+                if (expected)
+                    System.out.println("Error (expected): " + msg);
+                else {
+                    System.out.println("TEST FAILED: " + msg);
+                    if (!(e instanceof AnalysisException))
+                        e.printStackTrace(System.out);
+                }
+            } catch (ClassNotFoundException | NoSuchMethodException e2) {
+                System.out.println("ERROR: can't find test method");
+                throw new AnalysisException(e2);
+            }
             throw e;
         }
     }
@@ -181,6 +200,8 @@ public class Misc {
     }
 
     public static void checkSystemOutput() {
+        if (ps == null)
+            throw new AnalysisException("No output collected (is -quiet disabled?)");
         ps.close();
         ps = null;
         try {
@@ -224,7 +245,7 @@ public class Misc {
             if (m.equals("test") && suffix == null) {
                 throw new AnalysisException("Looks like parameterized test, but suffix missing!");
             }
-            File file = new File(dir, getClassName() + "." + m + (suffix != null ? "." + suffix : "") + ".js"); // Windows chokes if reusing file names in one execution
+            File file = new File(dir, getClassName(false) + "." + m + (suffix != null ? "." + suffix : "") + ".js"); // Windows chokes if reusing file names in one execution
             file.deleteOnExit();
             try (PrintWriter writer = new PrintWriter(file, "UTF-8")) {
                 for (String aSrc : src) {

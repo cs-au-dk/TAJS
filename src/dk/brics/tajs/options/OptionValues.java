@@ -61,9 +61,6 @@ public class OptionValues {
     @Option(name = "-no-modified", usage = "Disable modified flags")
     private boolean noModified;
 
-    @Option(name = "-no-exceptions", usage = "Disable implicit exception flow")
-    private boolean noExceptions;
-
     @Option(name = "-no-gc", usage = "Disable abstract garbage collection")
     private boolean noGc;
 
@@ -215,7 +212,7 @@ public class OptionValues {
     @Option(name = "-log-file", usage = "Specify the location of the soundness log file to use")
     private String logFile;
 
-    @Option(name = "-config", usage = "The location of .tajsconfig properties file")
+    @Option(name = "-config", usage = "The location of tajs.properties properties file")
     private String config;
 
     @Option(name = "-show-internal-messages", usage = "Show messages for host functions modeled as JavaScript source code")
@@ -275,7 +272,6 @@ public class OptionValues {
         if (noObjectSensitivity != that.noObjectSensitivity) return false;
         if (noRecency != that.noRecency) return false;
         if (noModified != that.noModified) return false;
-        if (noExceptions != that.noExceptions) return false;
         if (noGc != that.noGc) return false;
         if (noLazy != that.noLazy) return false;
         if (noCopyOnWrite != that.noCopyOnWrite) return false;
@@ -349,7 +345,6 @@ public class OptionValues {
         result = 31 * result + (noObjectSensitivity ? 1 : 0);
         result = 31 * result + (noRecency ? 1 : 0);
         result = 31 * result + (noModified ? 1 : 0);
-        result = 31 * result + (noExceptions ? 1 : 0);
         result = 31 * result + (noGc ? 1 : 0);
         result = 31 * result + (noLazy ? 1 : 0);
         result = 31 * result + (noCopyOnWrite ? 1 : 0);
@@ -505,6 +500,16 @@ public class OptionValues {
                 sb.append(" ").append(me.getValue());
             }
         }
+        String u = unsoundness.toString();
+        if (!u.isEmpty()) {
+            if (!first) {
+                sb.append(" ");
+            } else {
+                first = false;
+            }
+            sb.append("-unsound ");
+            sb.append(u);
+        }
         for (Path argument : arguments) {
             if (!first) {
                 sb.append(" ");
@@ -601,10 +606,6 @@ public class OptionValues {
 
     public void disableNoCopyOnWrite() {
         noCopyOnWrite = false;
-    }
-
-    public void disableNoExceptions() {
-        noExceptions = false;
     }
 
     public void disableNoGc() {
@@ -779,10 +780,6 @@ public class OptionValues {
         noCopyOnWrite = true;
     }
 
-    public void enableNoExceptions() {
-        noExceptions = true;
-    }
-
     public void enableNoGc() {
         noGc = true;
     }
@@ -851,14 +848,24 @@ public class OptionValues {
         quiet = true;
         lowSeverity = true;
         deterministicCollections = true;
-        testSoundness = true;
-        soundnessTesterOptions.setTest(true);
-        soundnessTesterOptions.setGenerate(true);
+        enableTestSoundness();
     }
 
     public void enableTestFlowGraphBuiler() {
         enableTest();
         testFlowgraphBuilder = true;
+    }
+
+    public void enableTestSoundness() {
+        testSoundness = true;
+        soundnessTesterOptions.setTest(true);
+        soundnessTesterOptions.setGenerate(true);
+    }
+
+    public void disableTestSoundness() {
+        testSoundness = false;
+        soundnessTesterOptions.setTest(false);
+        soundnessTesterOptions.setGenerate(false);
     }
 
     public void enableTiming() {
@@ -940,10 +947,6 @@ public class OptionValues {
 
     public boolean isEvalStatistics() {
         return evalStatistics;
-    }
-
-    public boolean isExceptionsDisabled() {
-        return noExceptions;
     }
 
     public boolean isFlowGraphEnabled() {

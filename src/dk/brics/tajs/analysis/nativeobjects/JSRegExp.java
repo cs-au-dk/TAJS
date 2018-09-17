@@ -168,7 +168,7 @@ public class JSRegExp {
                 pMultiline = Value.makeBool(strflags.contains("m"));
                 strflags = strflags.replaceFirst("g", "").replaceFirst("i", "").replaceFirst("m", "");
                 if ((!strflags.isEmpty())) {
-                    Exceptions.throwSyntaxError(c);
+                    Exceptions.throwSyntaxError(c, true);
                     c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "SyntaxError, invalid flags at RegExp constructor");
                     return true;
                 }
@@ -204,18 +204,33 @@ public class JSRegExp {
             // ... If P is the empty String, this specification can be met by letting S be "(?:)".
 
             // let the concrete semantic handle this mess...
-            if (patternToUse.getStr().contains("/")) {
-                // Nashorn does not do the *first* part of 15.10.4.1.
-                // TODO remove this branch once Nashorn has improved (create bug report?) (see GitHub #194)
-                // Proper escaping is done in firefox, but not in Chrome: https://code.google.com/p/chromium/issues/detail?id=515897
-                patternToUse = Value.makeAnyStr();
-            } else {
-                Value concreteResult = TAJSConcreteSemantics.convertTAJSCallExplicit(Value.makeUndef(), "RegExp", Collections.singletonList(patternToUse), c);
-                patternToUse = pv.readPropertyValue(concreteResult.getObjectLabels(), "source");
-            }
+            patternToUse = escapeUnescapedSlashes(patternToUse); //Nashorn does not do the *first* part of 15.10.4.1. // TODO remove this escape once Nashorn has improved (create bug report?) (see GitHub #194)
+            Value concreteResult = TAJSConcreteSemantics.convertTAJSCallExplicit(Value.makeUndef(), "RegExp", Collections.singletonList(patternToUse), c);
+            patternToUse = pv.readPropertyValue(concreteResult.getObjectLabels(), "source");
         }
         writeRegExpProperties(regexp, state, patternToUse, pGlobal, pIgnoreCase, pMultiline, Value.makeNum(0), pv);
         return false;
+    }
+
+    private static Value escapeUnescapedSlashes(Value patternToUse) {
+        String originalPatternToUSe = patternToUse.getStr();
+        StringBuilder transformedPatternToUseBuilder = new StringBuilder();
+        int numberOfBackslashes = 0;
+        for (int i = 0; i < originalPatternToUSe.length(); i++) {
+            char character = originalPatternToUSe.charAt(i);
+            if (character == '/') {
+                if (numberOfBackslashes % 2 == 0) {
+                    transformedPatternToUseBuilder.append("\\");
+                }
+                numberOfBackslashes = 0;
+            } else if (character == '\\') {
+                numberOfBackslashes++;
+            } else {
+                numberOfBackslashes = 0;
+            }
+            transformedPatternToUseBuilder.append(character);
+        }
+        return Value.makeStr(transformedPatternToUseBuilder.toString());
     }
 
     private static void writeRegExpProperties(Set<ObjectLabel> regexp, State state, Value pattern, Value global, Value ignoreCase, Value multiline, Value lastIndex, PropVarOperations pv) {

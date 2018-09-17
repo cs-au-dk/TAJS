@@ -16,9 +16,14 @@
 
 package dk.brics.tajs.options;
 
+import dk.brics.tajs.util.AnalysisException;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Option values for unsoundness.
@@ -27,7 +32,7 @@ import org.kohsuke.args4j.Option;
  * <p>
  * (Unlike {@link OptionValues}, this is a bean with regular getters and setters.)
  */
-public class UnsoundnessOptionValues {
+public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
 
     @Option(name = "-no-implicit-global-var-declarations", usage = "Allows ignoring implicit declaration of global variables")
     private boolean noImplicitGlobalVarDeclarations;
@@ -66,6 +71,15 @@ public class UnsoundnessOptionValues {
     @Option(name = "-ignore-some-prototypes-during-dynamic-property-reads", usage = "Allows ignoring some unlikely prototypes during a dynamic property read")
     private boolean ignoreSomePrototypesDuringDynamicPropertyReads;
 
+    @Option(name = "-ignore-unlikely-undefined-as-first-argument-to-addition", usage = "Allows ignoring undefined as first argument to addition when it is maybe undef")
+    private boolean ignoreUnlikelyUndefinedAsFirstArgumentToAddition;
+
+    @Option(name = "-assume-in-operator-returns-true-when-sound-value-is-maybe-true-and-propname-is-number", usage = "Allows the analysis to assume for the 'in' operator that a property is in an object, when the propertyname is a number and might be in the object")
+    private boolean assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber;
+
+    @Option(name = "-no-exceptions", usage = "Disable implicit exception flow")
+    private boolean noExceptions;
+
     public UnsoundnessOptionValues(UnsoundnessOptionValues base, String[] args) {
         if (base != null) {
             OptionsUtil.cloneAllFields(base, this);
@@ -98,6 +112,10 @@ public class UnsoundnessOptionValues {
         if (ignoreImpreciseFunctionConstructor != that.ignoreImpreciseFunctionConstructor) return false;
         if (ignoreUnlikelyPropertyReads != that.ignoreUnlikelyPropertyReads) return false;
         if (showUnsoundnessUsage != that.showUnsoundnessUsage) return false;
+        if (ignoreSomePrototypesDuringDynamicPropertyReads != that.ignoreSomePrototypesDuringDynamicPropertyReads) return false;
+        if (ignoreUnlikelyUndefinedAsFirstArgumentToAddition != that.ignoreUnlikelyUndefinedAsFirstArgumentToAddition) return false;
+        if (assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber != that.assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber) return false;
+        if (noExceptions != that.noExceptions) return false;
         return true;
     }
 
@@ -115,8 +133,47 @@ public class UnsoundnessOptionValues {
         result = 31 * result + (ignoreUnlikelyPropertyReads ? 1 : 0);
         result = 31 * result + (showUnsoundnessUsage ? 1 : 0);
         result = 31 * result + (ignoreSomePrototypesDuringDynamicPropertyReads ? 1 : 0);
+        result = 31 * result + (ignoreUnlikelyUndefinedAsFirstArgumentToAddition ? 1 : 0);
+        result = 31 * result + (assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber ? 1 : 0);
+        result = 31 * result + (noExceptions ? 1 : 0);
         return result;
     }
+
+    public Map<String, Object> getOptionValues() {
+        try {
+            Map<String, Object> options = new TreeMap<>();
+            for (Field f : UnsoundnessOptionValues.class.getDeclaredFields()) {
+                f.setAccessible(true);
+                Option annotation = f.getAnnotation(Option.class);
+                if (annotation != null) {
+                    Object value = f.get(this);
+                    String name = annotation.name();
+                    if (value != null && (Boolean) value) {
+                        options.put(name, value);
+                    }
+                }
+            }
+            return options;
+        } catch (IllegalArgumentException | IllegalAccessException e) {
+            throw new AnalysisException(e);
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        boolean first = true;
+        for (Map.Entry<String, Object> me : getOptionValues().entrySet()) {
+            if (!first) {
+                sb.append(",");
+            } else {
+                first = false;
+            }
+            sb.append(me.getKey());
+        }
+        return sb.toString();
+    }
+
 
     public boolean isIgnoreLocale() {
         return ignoreLocale;
@@ -212,5 +269,29 @@ public class UnsoundnessOptionValues {
 
     public void setIgnoreSomePrototypesDuringDynamicPropertyReads(boolean ignoreSomePrototypesDuringDynamicPropertyReads) {
         this.ignoreSomePrototypesDuringDynamicPropertyReads = ignoreSomePrototypesDuringDynamicPropertyReads;
+    }
+
+    public boolean isIgnoreUnlikelyUndefinedAsFirstArgumentToAddition() {
+        return ignoreUnlikelyUndefinedAsFirstArgumentToAddition;
+    }
+
+    public void setIgnoreUnlikelyUndefinedAsFirstArgumentToAddition(boolean ignoreUnlikelyUndefinedAsFirstArgumentToAddition) {
+        this.ignoreUnlikelyUndefinedAsFirstArgumentToAddition = ignoreUnlikelyUndefinedAsFirstArgumentToAddition;
+    }
+
+    public boolean isAssumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber() {
+        return assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber;
+    }
+
+    public void setAssumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber(boolean assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber) {
+        this.assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber = assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber;
+    }
+
+    public boolean isNoExceptions() {
+        return noExceptions;
+    }
+
+    public void setNoExceptions(boolean noExceptions) {
+        this.noExceptions = noExceptions;
     }
 }

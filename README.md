@@ -118,8 +118,8 @@ Changes to the source code of the analyzed program requires a new log file to be
 
 ## Environment configuration
 
-Some advanced features of TAJS require additional environment configuration which can be defined in a .tajsconfig [properties](https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html) file. 
-These features will automatically look for a .tajsconfig file in the working directory and its ancestor directories. 
+Some advanced features of TAJS require additional environment configuration which can be defined in a tajs.properties [properties](https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html) file. 
+These features will automatically look for a tajs.properties file in the working directory and its ancestor directories. 
 
 ### Installing external dependencies 
 
@@ -130,7 +130,7 @@ cd extras/jalangilogger/javascript
 npm install
 ```
 
-Individual external dependencies can be registered in .tajsconfig like this:
+Individual external dependencies can be registered in tajs.properties like this:
 
 ```properties
 jalangilogger = /home/tajs-user/tajs/extras/jalangilogger/javascript/node_modules/jalangilogger
@@ -144,13 +144,15 @@ tajs = /home/tajs-user/tajs
 
 ### Configurations for log file generation 
 
-For generation of log files for soundness testing, TAJS needs to know the locations of `jjs` and `node`: 
+For generation of log files for soundness testing, TAJS needs to know the locations of `node` or `jjs`: 
 
 ```properties
-jjs = /usr/bin/jjs
 node = /usr/bin/nodejs
+jjs = /usr/bin/jjs
 ```
-(On Windows, the paths are something like `C:/Program Files/Java/jdk1.8.0_131/bin/jjs.exe` and `C:/Program Files/nodejs/node.exe`.)
+(On Windows, the paths are something like `C:/Program Files/nodejs/node.exe` and `C:/Program Files/Java/jdk1.8.0_131/bin/jjs.exe` and .)
+
+`jjs` is only needed if using Nashorn as generator environment instead of Node.js, which can be set programmatically in the soundness tester options.
 
 ## Running regression tests
 

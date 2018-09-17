@@ -251,8 +251,8 @@ public class TogglableMonitor implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
-        active.visitVariableOrProperty(var, loc, value, context, state);
+    public void visitVariableOrProperty(AbstractNode node, String var, SourceLocation loc, Value value, Context context, State state) {
+        active.visitVariableOrProperty(node, var, loc, value, context, state);
     }
 
     @Override
@@ -266,8 +266,8 @@ public class TogglableMonitor implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitIterationDone() {
-        active.visitIterationDone();
+    public void visitIterationDone(String terminatedEarlyMsg) {
+        active.visitIterationDone(terminatedEarlyMsg);
     }
 
     public Toggler getController() {

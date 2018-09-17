@@ -334,6 +334,9 @@ public class Operators {
      */
     public static Value add(Value v1, Value v2, Solver.SolverInterface c) {
         Value p1 = Conversion.toPrimitive(v1, Hint.NONE, c);
+        if (c.getAnalysis().getUnsoundness().mayIgnoreUnlikelyUndefinedAsFirstArgumentToAddition(c.getNode(), p1)) {
+            p1 = p1.restrictToNotUndef();
+        }
         Value p2 = Conversion.toPrimitive(v2, Hint.NONE, c);
         Value r1 = p1.restrictToNotStr();
         Value r2 = p2.restrictToNotStr();
@@ -590,8 +593,7 @@ public class Operators {
                 maybe_v2_prototype_nonobject, maybe_v2_prototype_object);
         if (maybe_v2_non_function || maybe_v2_prototype_nonobject) {
             Exceptions.throwTypeError(c);
-            if ((maybe_v2_non_function && !maybe_v2_function)
-                    || (maybe_v2_prototype_object && !maybe_v2_prototype_nonobject))
+            if (!maybe_v2_function || !maybe_v2_prototype_object)
                 return Value.makeNone();
         }
         return c.getState().hasInstance(v2_prototype.getObjectLabels(), v1);
@@ -612,7 +614,13 @@ public class Operators {
         }
         // 11.8.7 step 6-8
         Value v1_strorsymbol = Conversion.toString(v1.restrictToNotSymbol(), c).join(v1.restrictToSymbol());
-        return Value.makeBool(c.getAnalysis().getPropVarOperations().hasProperty(v2.getObjectLabels(), v1_strorsymbol));
+        Value res = Value.makeBool(c.getAnalysis().getPropVarOperations().hasProperty(v2.getObjectLabels(), v1_strorsymbol));
+
+        if (c.getAnalysis().getUnsoundness().mayAssumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber(c.getNode(), v1, res)) {
+            res = Value.makeBool(true);
+        }
+
+        return res;
     }
 
     /**

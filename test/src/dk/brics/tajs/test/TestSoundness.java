@@ -21,6 +21,6 @@ public class TestSoundness {
 
     @Test
     public void soundness_google() throws Exception {
-        Misc.run("-test-soundness", "richards.log", "test-resources/src/google/richards.js");
+        Misc.run("-test-soundness", "richards.log", "test-resources/src/google/richards.js"); // FIXME
     }
 }

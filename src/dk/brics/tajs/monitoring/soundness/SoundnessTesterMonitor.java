@@ -27,11 +27,8 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.AnalysisPhase;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.TypeCollector;
-import dk.brics.tajs.monitoring.soundness.logfileutilities.LogFileHelper;
 import dk.brics.tajs.monitoring.soundness.postprocessing.SoundnessTestResult;
 import dk.brics.tajs.monitoring.soundness.testing.SoundnessTester;
 import dk.brics.tajs.options.Options;
@@ -54,38 +51,52 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
 
     private static final Logger log = Logger.getLogger(SoundnessTesterMonitor.class);
 
+    /**
+     * Collector for values of variables and properties.
+     */
     private final TypeCollector type_collector = new TypeCollector();
 
+    /**
+     * DOM object allocation sites.
+     */
     private final Set<SourceLocation> domObjectAllocationSites = newSet();
 
     private Solver.SolverInterface c;
 
     private boolean scanning = false;
 
-    private SoundnessTesterMonitor() {
-        if (!Options.get().getSoundnessTesterOptions().isTest()) {
-            throw new AnalysisException(String.format("%s requires the soundness testing to be enabled in Options", c.getClass().getSimpleName()));
-        }
-    }
-
-    public static IAnalysisMonitoring make() {
-        SoundnessTesterMonitor soundnessTesterMonitor = new SoundnessTesterMonitor();
-        DOMConstructorCallMonitor domConstructorCallMonitor = new DOMConstructorCallMonitor(soundnessTesterMonitor.domObjectAllocationSites);
-        return new CompositeMonitoring(domConstructorCallMonitor, soundnessTesterMonitor);
-    }
+    public SoundnessTesterMonitor() { }
 
     @Override
     public void setSolverInterface(Solver.SolverInterface c) {
         this.c = c;
     }
 
+    /**
+     * Collects value of a variable or property.
+     */
     @Override
-    public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
+    public void visitVariableOrProperty(AbstractNode node, String var, SourceLocation loc, Value value, Context context, State state) {
         if (scanning) {
             type_collector.record(var, loc, UnknownValueResolver.getRealValue(value, state), context);
         }
     }
 
+    /**
+     * Collects DOM object allocation sites.
+     */
+    @Override
+    public void visitNativeFunctionCall(AbstractNode n, HostObject hostobject, boolean num_actuals_unknown, int num_actuals, int min, int max) {
+        if (scanning && hostobject.getAPI() == HostAPIs.DOCUMENT_OBJECT_MODEL) {
+            if (hostobject.toString().endsWith(" constructor") || hostobject.toString().endsWith(".constructor")) { // quite hacky, but robust
+                domObjectAllocationSites.add(n.getSourceLocation());
+            }
+        }
+    }
+
+    /**
+     * Before analysis, make sure log file exists, if necessary by generating it -- if selected in the options.
+     */
     @Override
     public void visitPhasePre(AnalysisPhase phase) {
         if (phase == AnalysisPhase.ANALYSIS && Options.get().getSoundnessTesterOptions().generateBeforeAnalysis()) {
@@ -95,45 +106,47 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
         }
     }
 
+    /**
+     * After scan phase, perform the soundness test, and generate the log file if necessary.
+     */
     @Override
     public void visitPhasePost(AnalysisPhase phase) {
         if (phase == AnalysisPhase.SCAN) {
-            test();
+            URL logFile = generateLog();
+            if (logFile == null)
+                return;
+            SoundnessTestResult result = new SoundnessTester(type_collector.getTypeInformation(), domObjectAllocationSites, c).test(logFile);
+            if (result.success) {
+                if (!Options.get().isNoMessages()) {
+                    log.info(result.message);
+                }
+            } else {
+                if (Options.get().getSoundnessTesterOptions().isPrintErrorsWithoutThrowingException()) {
+                    System.err.println(result.message);
+                } else {
+                    throw new SoundnessException(result.message);
+                }
+            }
         }
     }
 
+    /**
+     * Checks that the log file exists or can be created.
+     * @return URL of the log file, or null if not available
+     */
     private URL generateLog() {
-        LogFileHelper logFileHelper = new LogFileHelper(Options.get());
+        LogFileHelper logFileHelper = new LogFileHelper();
         Path main = logFileHelper.getMainFile();
         if (KnownUnsoundnesses.isSyntaxFailureFile(main)) {
             log.info(String.format("Log of soundness facts is not available because of syntax errors in source of %s, skipping soundness checking", PathAndURLUtils.toPortableString(main)));
             return null;
         }
-
         URL logFile = logFileHelper.createOrGetLogFile(); // may have the side-effect of creating the log file on disk
         if (logFile == null) {
             log.info(String.format("Log of soundness facts is not available for %s, skipping soundness checking", PathAndURLUtils.toPortableString(main)));
             return null;
         }
         return logFile;
-    }
-
-    private void test() {
-        URL logFile = generateLog();
-        if (logFile == null) return;
-
-        SoundnessTestResult result = new SoundnessTester(type_collector.getTypeInformation(), domObjectAllocationSites, c).test(logFile);
-        if (result.success) {
-            if (!Options.get().isNoMessages()) {
-                log.info(result.message);
-            }
-        } else {
-            if (Options.get().getSoundnessTesterOptions().isPrintErrorsWithoutThrowingException()) {
-                System.err.println(result.message);
-            } else {
-                throw new SoundnessException(result.message);
-            }
-        }
     }
 
     /**
@@ -143,24 +156,6 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
 
         public SoundnessException(String message) {
             super(message);
-        }
-    }
-
-    private static class DOMConstructorCallMonitor extends DefaultAnalysisMonitoring {
-
-        private final Set<SourceLocation> domObjectAllocationSites;
-
-        public DOMConstructorCallMonitor(Set<SourceLocation> domObjectAllocationSites) {
-            this.domObjectAllocationSites = domObjectAllocationSites;
-        }
-
-        @Override
-        public void visitNativeFunctionCall(AbstractNode n, HostObject hostobject, boolean num_actuals_unknown, int num_actuals, int min, int max) {
-            if (hostobject.getAPI() == HostAPIs.DOCUMENT_OBJECT_MODEL) {
-                if (hostobject.toString().endsWith(" constructor") || hostobject.toString().endsWith(".constructor")) { // quite hacky, but robust
-                    domObjectAllocationSites.add(n.getSourceLocation());
-                }
-            }
         }
     }
 }

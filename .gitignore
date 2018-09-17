@@ -6,6 +6,5 @@
 /doc
 /.idea/workspace.xml
 /.idea/kotlinc.xml
-/local-development.properties
-.tajsconfig
+tajs.properties
 *.iml

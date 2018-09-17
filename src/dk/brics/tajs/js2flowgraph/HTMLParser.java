@@ -20,6 +20,7 @@ import dk.brics.tajs.flowgraph.EventType;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.flowgraph.SourceLocation.SourceLocationMaker;
 import dk.brics.tajs.flowgraph.SourceLocation.StaticLocationMaker;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException.AnalysisModelLimitationException;
 import dk.brics.tajs.util.Collectors;
@@ -82,14 +83,16 @@ public class HTMLParser {
         allJavaScriptScriptTypeNames.addAll(Arrays.asList("javascript", "ecmascript", ""));
         Pattern pattern = Pattern.compile("^(.*) at \\(r(\\d+),c(\\d+),p\\d+\\) (.*)$"); // pattern for extracting source positions from the error messages. Example: "StartTag at (r21,c11,p721) missing required end tag"
         doc.setLogger(new HTMLParserLogger(msg -> {
-            Matcher matcher = pattern.matcher(msg);
-            if (matcher.matches()) {
-                String messageWithoutRawPosition = String.format("%s %s", matcher.group(1), matcher.group(4));
-                int row = Integer.parseInt(matcher.group(2));
-                int column = Integer.parseInt(matcher.group(3));
-                log.info(String.format("%s: %s", sourceLocationMaker.make(row, column, row, column), messageWithoutRawPosition));
-            } else {
-                log.info(String.format("%s: %s", sourceLocationMaker.makeUnspecifiedPosition(), msg));
+            if (!Options.get().isNoMessages()) {
+                Matcher matcher = pattern.matcher(msg);
+                if (matcher.matches()) {
+                    String messageWithoutRawPosition = String.format("%s %s", matcher.group(1), matcher.group(4));
+                    int row = Integer.parseInt(matcher.group(2));
+                    int column = Integer.parseInt(matcher.group(3));
+                    log.info(String.format("%s: HTML %s", sourceLocationMaker.make(row, column, row, column), messageWithoutRawPosition)); // TODO: use Monitoring instead (github #535)
+                } else {
+                    log.info(String.format("%s: HTML %s", sourceLocationMaker.makeUnspecifiedPosition(), msg)); // TODO: use Monitoring instead (github #535)
+                }
             }
         }));
         List<Pair<URL, JavaScriptSource>> code = newList();

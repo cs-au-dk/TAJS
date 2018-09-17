@@ -80,7 +80,9 @@ public interface ISolverMonitoring<StateType extends IState<StateType, ContextTy
     void visitPropagationPost(BlockAndContext<ContextType> from, BlockAndContext<ContextType> to, boolean changed);
 
     /**
-     * Invoked when dataflow solver iteration is done.
+     * Invoked when dataflow solver iteration is done (not necessarily with success).
+     *
+     * @param terminatedEarlyMsg message about premature termination, if non-null
      */
-    void visitIterationDone();
+    void visitIterationDone(String terminatedEarlyMsg);
 }

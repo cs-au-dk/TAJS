@@ -124,7 +124,7 @@ public class HTMLElement {
             case HTMLELEMENT_MATCHES_SELECTOR: {
                 DOMFunctions.expectParameters(nativeObject, call, c, 1, 1);
                 // may throw on bad syntax
-                DOMException.throwException(call.getSourceNode(), c);
+                DOMException.throwException(call.getSourceNode(), c, true);
                 return Value.makeAnyBool();
             }
             case HTMLELEMENT_MATCHES: {

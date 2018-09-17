@@ -26,8 +26,8 @@ import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.ValueLogLocationInformation;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.TypeCollector.VariableSummary;
+import dk.brics.tajs.monitoring.soundness.LogFileHelper;
 import dk.brics.tajs.monitoring.soundness.ValueLogSourceLocationEqualityDecider;
-import dk.brics.tajs.monitoring.soundness.logfileutilities.LogFileHelper;
 import dk.brics.tajs.monitoring.soundness.postprocessing.CategorizedSoundnessCheckResults;
 import dk.brics.tajs.monitoring.soundness.postprocessing.SoundnessTestResult;
 import dk.brics.tajs.monitoring.soundness.postprocessing.SoundnessTesterPerformance;
@@ -79,6 +79,9 @@ public class SoundnessTester {
      * Tests the soundness of the static analysis result by comparing it with the content of the given value log.
      */
     public SoundnessTestResult test(URL logFile) {
+        if (!Options.get().isQuietEnabled())
+            log.info("Testing soundness...");
+
         // setup
         SoundnessTesterPerformance soundnessTesterPerformance = new SoundnessTesterPerformance(mainFile, type_map, c.getFlowGraph());
         soundnessTesterPerformance.beginSetup();
@@ -92,13 +95,11 @@ public class SoundnessTester {
         ProgramExitReachabilitySoundnessTester programExitReachabilitySoundnessTester = new ProgramExitReachabilitySoundnessTester(checks, c);
         ValueLogSourceLocationEqualityDecider equalityDecider = new ValueLogSourceLocationEqualityDecider(valueLogLocationInformation.getTajsLocation2jalangiLocation(), flowGraph);
         LogEntrySoundnessTester logEntrySoundnessTester = new LogEntrySoundnessTester(resolvedTypeMap, loc2nodes, checks, equalityDecider, valueLogLocationInformation, domObjectAllocationSites, c);
-
         soundnessTesterPerformance.endSetupStartTest();
 
         // test
         boolean reachabilityFailure = programExitReachabilitySoundnessTester.test(runResult);
         logEntrySoundnessTester.test(entries);
-
         soundnessTesterPerformance.endTest();
 
         // report

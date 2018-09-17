@@ -304,9 +304,9 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
-        m1.visitVariableOrProperty(var, loc, value, context, state);
-        m2.visitVariableOrProperty(var, loc, value, context, state);
+    public void visitVariableOrProperty(AbstractNode node, String var, SourceLocation loc, Value value, Context context, State state) {
+        m1.visitVariableOrProperty(node, var, loc, value, context, state);
+        m2.visitVariableOrProperty(node, var, loc, value, context, state);
     }
 
     @Override
@@ -346,9 +346,9 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitIterationDone() {
-        m1.visitIterationDone();
-        m2.visitIterationDone();
+    public void visitIterationDone(String terminatedEarlyMsg) {
+        m1.visitIterationDone(terminatedEarlyMsg);
+        m2.visitIterationDone(terminatedEarlyMsg);
     }
 
     protected interface Factory<T> {

@@ -2678,7 +2678,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
 
     private static Value reallyMakeAnyStrNotUInt() {
         Value r = new Value();
-        r.flags |= STR_IDENTIFIER | STR_OTHER | STR_OTHERNUM;
+        r.flags |= STR_IDENTIFIER | STR_OTHERIDENTIFIERPARTS | STR_OTHER | STR_OTHERNUM;
         return canonicalize(r);
     }
 

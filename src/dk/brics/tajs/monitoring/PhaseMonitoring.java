@@ -248,8 +248,8 @@ public class PhaseMonitoring<PreScanMonitorType extends IAnalysisMonitoring, Sca
     }
 
     @Override
-    public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
-        activeMonitor.visitVariableOrProperty(var, loc, value, context, state);
+    public void visitVariableOrProperty(AbstractNode node, String var, SourceLocation loc, Value value, Context context, State state) {
+        activeMonitor.visitVariableOrProperty(node, var, loc, value, context, state);
     }
 
     @Override
@@ -283,7 +283,7 @@ public class PhaseMonitoring<PreScanMonitorType extends IAnalysisMonitoring, Sca
     }
 
     @Override
-    public void visitIterationDone() {
-        activeMonitor.visitIterationDone();
+    public void visitIterationDone(String terminatedEarlyMsg) {
+        activeMonitor.visitIterationDone(terminatedEarlyMsg);
     }
 }

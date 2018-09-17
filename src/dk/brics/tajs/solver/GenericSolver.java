@@ -406,7 +406,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                 }
             }
         } finally {
-            analysis.getMonitoring().visitIterationDone();
+            analysis.getMonitoring().visitIterationDone(terminatedEarly);
         }
         if (terminatedEarly != null) {
             log.warn(terminatedEarly);

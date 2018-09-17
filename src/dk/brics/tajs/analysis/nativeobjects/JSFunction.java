@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
+import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.ParallelTransfer;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
@@ -49,6 +50,7 @@ import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * 15.3 native Function functions.
@@ -328,6 +330,24 @@ public class JSFunction {
             if (thisObj.getKind() != Kind.FUNCTION) {
                 is_maybe_typeerror = true;
             } else {
+                boolean isNativeFunction = false;
+                if (c.getFlowGraph().isHostEnvironmentSource(thisObj.getSourceLocation())) {
+                    PropVarOperations pv = c.getAnalysis().getPropVarOperations();
+                    Value prototype = UnknownValueResolver.getRealValue(pv.readPropertyValue(singleton(thisObj), "prototype"), c.getState());
+                    Value toStringTag = UnknownValueResolver.getRealValue(pv.readPropertyValue(prototype.getObjectLabels(), Value.makeObject(InitialStateBuilder.WELLKNOWN_SYMBOL_TO_STRING_TAG)), c.getState());
+                    if (toStringTag.isMaybeSingleStr()) {
+                        strs.add(Value.makeStr("function " + toStringTag.getStr() + "() { [native code] }"));
+                        isNativeFunction = true;
+                    } else {
+                        Value name = UnknownValueResolver.getRealValue(pv.readPropertyValue(singleton(thisObj), "name"), c.getState());
+                        if (name.isMaybeSingleStr()) {
+                            strs.add(Value.makeStr("function " + name.getStr() + "() { [native code] }"));
+                            isNativeFunction = true;
+                        }
+                    }
+                }
+                if (isNativeFunction)
+                    continue;
                 Optional<String> toString = c.getAnalysis().getUnsoundness().evaluate_FunctionToString(c.getNode(), thisObj);
                 if (toString.isPresent()) {
                     strs.add(Value.makeStr(toString.get()));

@@ -7,9 +7,12 @@ import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.DefaultNodeVisitor;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.AnalysisPhase;
 import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
@@ -593,24 +596,24 @@ public class Stats {
     };
 
     public static String[][] testRevamp2016 = {
-            {"-determinacy", "benchmarks/tajs/src/revamp/jquery/jquery_app0.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/jquery/jquery_app1.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/jquery/jquery_app2.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/jquery/jquery_app3.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/jquery/jquery_app4.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/jquery/jquery_tutorial_example_a.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/jquery/jquery_tutorial_example_b.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/jquery/jquery_tutorial_example_c.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/jquery/jquery_tutorial_example_d.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/jquery/jquery_tutorial_example_e.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/jquery/jquery_tutorial_example_f.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/prototype/ajax.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/prototype/classes.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/prototype/justload.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/prototype/observe.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/prototype/query.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/prototype/trythese.html"},
-            {"-determinacy", "benchmarks/tajs/src/revamp/scriptaculous/justload.html"},
+            {"-determinacy", "test-resources/src/revamp/jquery/jquery_app0.html"},
+            {"-determinacy", "test-resources/src/revamp/jquery/jquery_app1.html"},
+            {"-determinacy", "test-resources/src/revamp/jquery/jquery_app2.html"},
+            {"-determinacy", "test-resources/src/revamp/jquery/jquery_app3.html"},
+            {"-determinacy", "test-resources/src/revamp/jquery/jquery_app4.html"},
+            {"-determinacy", "test-resources/src/revamp/jquery/jquery_tutorial_example_a.html"},
+            {"-determinacy", "test-resources/src/revamp/jquery/jquery_tutorial_example_b.html"},
+            {"-determinacy", "test-resources/src/revamp/jquery/jquery_tutorial_example_c.html"},
+            {"-determinacy", "test-resources/src/revamp/jquery/jquery_tutorial_example_d.html"},
+            {"-determinacy", "test-resources/src/revamp/jquery/jquery_tutorial_example_e.html"},
+            {"-determinacy", "test-resources/src/revamp/jquery/jquery_tutorial_example_f.html"},
+            {"-determinacy", "test-resources/src/revamp/prototype/ajax.html"},
+            {"-determinacy", "test-resources/src/revamp/prototype/classes.html"},
+            {"-determinacy", "test-resources/src/revamp/prototype/justload.html"},
+            {"-determinacy", "test-resources/src/revamp/prototype/observe.html"},
+            {"-determinacy", "test-resources/src/revamp/prototype/query.html"},
+            {"-determinacy", "test-resources/src/revamp/prototype/trythese.html"},
+            {"-determinacy", "test-resources/src/revamp/scriptaculous/justload.html"},
     };
 
     /**
@@ -621,11 +624,10 @@ public class Stats {
             {"benchmarks/tajs/src/popular-libs/accounting/accounting-0.2.2/index.html"},
             {"benchmarks/tajs/src/popular-libs/accounting/accounting-0.3.2/index.html"},
             {"benchmarks/tajs/src/popular-libs/accounting/accounting-0.4.2/index.html"},
-            {"benchmarks/tajs/src/popular-libs/accounting/angular/angular-1.3.20"},
-            {"benchmarks/tajs/src/popular-libs/accounting/angular/angular-1.6.3"},
-            {"benchmarks/tajs/src/popular-libs/accounting/angular/angular-1.5.8"},
-            {"benchmarks/tajs/src/popular-libs/accounting/angular/angular-1.4.14"},
-            {"benchmarks/tajs/src/popular-libs/angular-1.3.20/index.html"},
+            {"benchmarks/tajs/src/popular-libs/angular/angular-1.3.20/index.html"},
+            {"benchmarks/tajs/src/popular-libs/angular/angular-1.6.3/index.html"},
+            {"benchmarks/tajs/src/popular-libs/angular/angular-1.5.8/index.html"},
+            {"benchmarks/tajs/src/popular-libs/angular/angular-1.4.14/index.html"},
             {"benchmarks/tajs/src/popular-libs/async/async-1.0.0/index.html"},
             {"benchmarks/tajs/src/popular-libs/async/async-2.0.0/index.html"},
             {"benchmarks/tajs/src/popular-libs/async/async-2.1.5/index.html"},
@@ -763,6 +765,26 @@ public class Stats {
         }
     }
 
+    public static class JQuery {
+
+        public static void main(String[] args) throws IOException, CmdLineException {
+            String outfile = args.length > 0 ? args[0] : "jquery";
+            OptionValues defaultOptions = new OptionValues();
+            defaultOptions.getUnsoundness().setIgnoreSomePrototypesDuringDynamicPropertyReads(true);
+            defaultOptions.getUnsoundness().setIgnoreImpreciseEvals(true);
+            defaultOptions.getUnsoundness().setIgnoreUnlikelyUndefinedAsFirstArgumentToAddition(true);
+            defaultOptions.getUnsoundness().setAssumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber(true);
+            defaultOptions.getUnsoundness().setIgnoreUnlikelyPropertyReads(true);
+            defaultOptions.getUnsoundness().setShowUnsoundnessUsage(true);
+            run(outfile, 300, 250000, Optional.of(defaultOptions),
+                    testJQueryLoad_ignoreUnreachable,
+                    testJQueryLoad,
+                    testJQueryUse_ignoreUnreachable,
+                    testJQueryUse
+            );
+        }
+    }
+
     public static class Libs {
 
         public static void main(String[] args) throws IOException, CmdLineException {
@@ -776,8 +798,6 @@ public class Stats {
             defaultOptions.enablePolyfillES6Collections();
             defaultOptions.enablePolyfillES6Promises();
             defaultOptions.enableConsoleModel();
-            defaultOptions.getSoundnessTesterOptions().setTest(true);
-            defaultOptions.getSoundnessTesterOptions().setRootDirFromMainDirectory(Paths.get("../"));
             run(outfile, 220, 500000, Optional.of(defaultOptions), libs);
         }
     }
@@ -795,6 +815,8 @@ public class Stats {
         try (FileWriter fw = new FileWriter(f.toFile())) {
             Main.initLogging();
             JsonWriter w = new JsonWriter(fw);
+            fw.write("timestamp = " + System.currentTimeMillis() + ";\n");
+            fw.write("defaultOptions = \"" + (initialOptions.isPresent() ? initialOptions.get() : "") + "\";\n");
             fw.write("data = ");
             w.beginArray();
             int numberOfTests = Arrays.stream(tests).mapToInt(ts -> ts.length).sum();
@@ -805,17 +827,19 @@ public class Stats {
                     OptionValues options = initialOptions.map(OptionValues::clone).orElseGet(OptionValues::new);
                     options.parse(testArgs);
                     options.checkConsistency();
+                    options.enableNoMessages();
+                    if (System.getProperty("statsquiet", "false").equalsIgnoreCase("true"))
+                        options.enableQuiet();
 
-                    ProgressMonitor progressMonitor = new ProgressMonitor();
-                    AnalysisTimeLimiter analysisTimeLimiter = new AnalysisTimeLimiter(secondsTimeLimit, nodeTransferLimit, true);
+                    ProgressMonitor progressMonitor = new ProgressMonitor(false);
+                    AnalysisTimeLimiter analysisTimeLimiter = new AnalysisTimeLimiter(secondsTimeLimit, nodeTransferLimit, false);
                     SuspiciousnessMonitor suspiciousnessMonitor = new SuspiciousnessMonitor();
+                    TerminationMonitor terminationMonitor = new TerminationMonitor();
                     Analysis a = null;
                     Throwable throwable = null;
                     long time = 0;
                     try {
-                        options.enableTest();
-                        options.enableNoMessages();
-                        a = Main.init(options, CompositeMonitoring.buildFromList(Monitoring.make(), progressMonitor, analysisTimeLimiter, suspiciousnessMonitor), null);
+                        a = Main.init(options, CompositeMonitoring.buildFromList(Monitoring.make(), progressMonitor, analysisTimeLimiter, suspiciousnessMonitor, terminationMonitor), null);
                         time = System.currentTimeMillis();
                         if (a == null)
                             throw new AnalysisException("Error during initialization");
@@ -827,9 +851,12 @@ public class Stats {
                     long elapsed = System.currentTimeMillis() - time;
                     w.beginObject();
                     String name = testArgs[testArgs.length - 1];
+                    String exceptionMsg = throwable != null ? throwable.getMessage() : null;
+                    String terminatedEarlyMsg = terminationMonitor.getTerminatedEarlyMsg();
+                    String errorMsg = exceptionMsg != null ? exceptionMsg : terminatedEarlyMsg != null ? terminatedEarlyMsg : "";
                     w.name("name").value(name.replace("test-resources/src", "").replace("benchmarks/tajs/src", ""));
-                    w.name("options").value(Arrays.stream(testArgs).filter(s -> !s.endsWith(".js") && !s.endsWith(".html")).collect(Collectors.joining(",")));
-                    w.name("error").value(throwable != null ? throwable.getMessage().length() > 40 ? throwable.getMessage().substring(0, 40) + "..." : throwable.getMessage() : "");
+                    w.name("options").value(Arrays.stream(testArgs).filter(s -> !s.endsWith(".js") && !s.endsWith(".html")).collect(Collectors.joining(" ")));
+                    w.name("error").value(errorMsg.length() > 50 ? errorMsg.substring(0, 50) + "..." : errorMsg);
                     if (time != 0) {
                         w.name("time").value(((double) elapsed) / 1000);
                     }
@@ -846,13 +873,13 @@ public class Stats {
                         w.name("average_node_transfer_time").value( progressMonitor.getPreScanMonitor().getNodeTransfers() != 0 ? ((double) elapsed / progressMonitor.getPreScanMonitor().getNodeTransfers()) : -1);
                         w.name("callgraph_edges").value(a.getSolver().getAnalysisLatticeElement().getCallGraph().size());
                         w.name("callnodes_to_nonfunction").value(suspiciousnessMonitor.getScanMonitor().getCallToNonFunction().size());
-                        w.name("callnodes_to_native_and_user_functions").value(suspiciousnessMonitor.getScanMonitor().getCallToNativeAndUserFunction().size());
-                        w.name("callnodes_to_multiple_native_functions").value(suspiciousnessMonitor.getScanMonitor().getCallToMultipleNativeFunctions().size());
+                        w.name("callnodes_to_mixed_functions").value(suspiciousnessMonitor.getScanMonitor().getCallToMixedFunctions().size());
                         w.name("callnodes_polymorphic").value(suspiciousnessMonitor.getScanMonitor().getCallPolymorphic().size());
-                        w.name("callnodes_megamorphic").value(suspiciousnessMonitor.getScanMonitor().getCallMegamorphic().size());
+                        w.name("mixed_readwrites").value(suspiciousnessMonitor.getScanMonitor().getMixedReadOrWrite().size());
                     }
                     // TODO: average and max suspiciousness at function value at call, property name at dynamic-property-accesses, value at read-property, value at read-variable
                     w.endObject();
+                    w.flush();
                     Main.reset();
                     System.gc();
                 }
@@ -860,6 +887,21 @@ public class Stats {
             w.endArray();
         }
         System.out.println("Output written to " + f + ", open stats.html?" + outfile + " in a browser to view the results");
+    }
+
+    public static class TerminationMonitor extends DefaultAnalysisMonitoring {
+
+        private String terminatedEarlyMsg = null;
+
+        public String getTerminatedEarlyMsg() {
+            return terminatedEarlyMsg;
+        }
+
+        @Override
+        public void visitIterationDone(String terminatedEarlyMsg) {
+            this.terminatedEarlyMsg = terminatedEarlyMsg;
+        }
+
     }
 
     public static class SuspiciousnessMonitor extends PhaseMonitoring<DefaultAnalysisMonitoring, SuspiciousnessMonitor.ScanSuspiciousnessMonitor> { // TODO: would be nice to be able to extract information from other monitors...
@@ -878,52 +920,43 @@ public class Stats {
             private int call_nodes = 0;
 
             /**
-             * Call/construct nodes that may involve non-function values.
+             * Call/construct nodes that may involve non-function non-undefined values.
              */
-            private Set<AbstractNode> call_to_non_function = newSet();
+            private Set<AbstractNode> call_to_non_function_or_undef = newSet();
 
             /**
-             * Call/construct nodes that may involve both native and user-defined function in the same call context.
+             * Variable/property read/write nodes where the value may involve a mix of two or more native and one or more user-defined functions in the same call context.
              */
-            private Set<AbstractNode> call_to_native_and_user_function = newSet();
+            private Set<AbstractNode> mixed_readwrites = newSet();
 
             /**
-             * Call/construct nodes that may involve calls to multiple native functions in the same call context.
+             * Call/construct nodes that may involve a mix of two or more native and one or more user-defined functions in the same call context.
              */
-            private Set<AbstractNode> call_to_multiple_native_functions = newSet();
+            private Set<AbstractNode> call_to_mixed_functions = newSet();
 
             /**
              * Call/construct nodes that may involve calls to multiple user-defined functions in the same call context (ignoring callee contexts).
              */
             private Set<AbstractNode> call_polymorphic = newSet();
 
-            /**
-             * Call/construct nodes that may involve calls to more than 10 user-defined functions in the same call context (ignoring callee contexts).
-             */
-            private Set<AbstractNode> call_megamorphic = newSet();
-
             public int getNumberOfCallNodes() {
                 return call_nodes;
             }
 
             public Set<AbstractNode> getCallToNonFunction() {
-                return call_to_non_function;
+                return call_to_non_function_or_undef;
             }
 
-            public Set<AbstractNode> getCallToNativeAndUserFunction() {
-                return call_to_native_and_user_function;
+            public Set<AbstractNode> getMixedReadOrWrite() {
+                return mixed_readwrites;
             }
 
-            public Set<AbstractNode> getCallToMultipleNativeFunctions() {
-                return call_to_multiple_native_functions;
+            public Set<AbstractNode> getCallToMixedFunctions() {
+                return call_to_mixed_functions;
             }
 
             public Set<AbstractNode> getCallPolymorphic() {
                 return call_polymorphic;
-            }
-
-            public Set<AbstractNode> getCallMegamorphic() {
-                return call_megamorphic;
             }
 
             @Override
@@ -947,23 +980,38 @@ public class Stats {
                 }
             }
 
+            private long getNumberOfNativeFunctions(Set<ObjectLabel> objs) {
+                return objs.stream().filter(objlabel -> objlabel.isHostObject() && objlabel.getKind() == ObjectLabel.Kind.FUNCTION).map(ObjectLabel::getHostObject).count();
+            }
+
+            private long getNumberOfNonNativeFunctions(Set<ObjectLabel> objs) {
+                return objs.stream().filter(objlabel -> !objlabel.isHostObject() && objlabel.getKind() == ObjectLabel.Kind.FUNCTION).map(ObjectLabel::getHostObject).count();
+            }
+
+            private boolean isMixed(Value v) {
+                Set<ObjectLabel> objs = v.getObjectLabels();
+                return getNumberOfNativeFunctions(objs) >= 2 && getNumberOfNonNativeFunctions(objs) >= 1;
+            }
+
+            @Override
+            public void visitVariableOrProperty(AbstractNode n, String var, SourceLocation loc, Value value, Context context, State state) {
+                if (isMixed(value)) {
+                    mixed_readwrites.add(n);
+                }
+            }
+
             @Override
             public void visitCall(AbstractNode n, Value funval) {
-                if (funval.isMaybePrimitive() || funval.getObjectLabels().stream().anyMatch(objlabel -> objlabel.getKind() != ObjectLabel.Kind.FUNCTION)) {
-                    call_to_non_function.add(n);
+                boolean is_primitive_non_undef = funval.restrictToNotUndef().isMaybePrimitive();
+                boolean is_non_function_object = funval.getObjectLabels().stream().anyMatch(objlabel -> objlabel.getKind() != ObjectLabel.Kind.FUNCTION);
+                if (is_primitive_non_undef || is_non_function_object) {
+                    call_to_non_function_or_undef.add(n);
                 }
-                if (funval.getObjectLabels().stream().anyMatch(objlabel -> !objlabel.isHostObject() && objlabel.getKind() == ObjectLabel.Kind.FUNCTION) &&
-                        funval.getObjectLabels().stream().anyMatch(objlabel -> objlabel.isHostObject() && objlabel.getKind() == ObjectLabel.Kind.FUNCTION)) {
-                    call_to_native_and_user_function.add(n);
+                if (isMixed(funval)) {
+                    call_to_mixed_functions.add(n);
                 }
-                if (funval.getObjectLabels().stream().filter(objlabel -> objlabel.isHostObject() && objlabel.getKind() == ObjectLabel.Kind.FUNCTION).map(ObjectLabel::getHostObject).count() > 1) {
-                    call_to_multiple_native_functions.add(n);
-                }
-                if (funval.getObjectLabels().stream().filter(objlabel -> !objlabel.isHostObject() && objlabel.getKind() == ObjectLabel.Kind.FUNCTION).map(ObjectLabel::getFunction).count() > 1) {
+                if (getNumberOfNonNativeFunctions(funval.getObjectLabels()) > 1) {
                     call_polymorphic.add(n);
-                }
-                if (funval.getObjectLabels().stream().filter(objlabel -> !objlabel.isHostObject() && objlabel.getKind() == ObjectLabel.Kind.FUNCTION).map(ObjectLabel::getFunction).count() > 10) {
-                    call_megamorphic.add(n);
                 }
             }
         }

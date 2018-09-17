@@ -257,7 +257,7 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
     /**
      * Invoked when a variable or property is read or written.
      */
-    void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state);
+    void visitVariableOrProperty(AbstractNode node, String var, SourceLocation loc, Value value, Context context, State state);
     // TODO: merge with other variable/property read/write methods?
 
     /**

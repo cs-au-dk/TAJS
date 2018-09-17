@@ -19,6 +19,7 @@ package dk.brics.tajs.monitoring;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.util.AnalysisLimitationException;
+import org.apache.log4j.Logger;
 
 /**
  * A simple monitoring that will prevent the analysis from running more than a set time.
@@ -26,6 +27,8 @@ import dk.brics.tajs.util.AnalysisLimitationException;
  * Ignores time spent in building flowgraph and post-processing analysis results.
  */
 public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
+
+    private static Logger log = Logger.getLogger(AnalysisTimeLimiter.class);
 
     private static long nanoFactor = 1000 * 1000 * 1000;
 
@@ -63,23 +66,28 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
             long now = System.nanoTime();
             boolean timeOut = maxNanoTime != -1 && maxNanoTime < now;
             if (timeOut) {
-                if (crash) {
-                    long overUsed = (now - maxNanoTime);
-                    long used = (secondsTimeLimit * nanoFactor) + overUsed;
-                    long allowed = secondsTimeLimit * nanoFactor;
-                    long milliFactor = 1000;
-                    long nanoMilliFactor = nanoFactor / milliFactor;
-                    throw new AnalysisLimitationException.AnalysisTimeException(String.format("Analysis exceeded time limit. Used: %dms. Allowed: %dms.", used / nanoMilliFactor, allowed / nanoMilliFactor));
-                }
+                long overUsed = (now - maxNanoTime);
+                long used = (secondsTimeLimit * nanoFactor) + overUsed;
+                long allowed = secondsTimeLimit * nanoFactor;
+                long milliFactor = 1000;
+                long nanoMilliFactor = nanoFactor / milliFactor;
+                String msg = String.format("Analysis exceeded time limit. Used: %dms. Allowed: %dms.", used / nanoMilliFactor, allowed / nanoMilliFactor);
+                if (crash)
+                    throw new AnalysisLimitationException.AnalysisTimeException(msg);
+                else
+                    log.info(msg);
                 analysisWasLimited = true;
                 return false;
             }
         }
         if (nodeTransferLimit != -1) {
             if (nodeTransfers > nodeTransferLimit) {
-                if (crash) {
-                    throw new AnalysisLimitationException.AnalysisTimeException("Analysis exceeded node transfer limit " + nodeTransferLimit);
-                }
+                String msg = "Analysis exceeded node transfer limit " + nodeTransferLimit;
+                if (crash)
+                    throw new AnalysisLimitationException.AnalysisTimeException(msg);
+                else
+                    log.info(msg);
+                analysisWasLimited = true;
                 return false;
             }
         }

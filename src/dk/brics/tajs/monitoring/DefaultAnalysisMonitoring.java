@@ -188,7 +188,7 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitVariableOrProperty(String var, SourceLocation loc, Value value, Context context, State state) {
+    public void visitVariableOrProperty(AbstractNode node, String var, SourceLocation loc, Value value, Context context, State state) {
     }
 
     @Override
@@ -216,6 +216,6 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitIterationDone() {
+    public void visitIterationDone(String terminatedEarlyMsg) {
     }
 }

@@ -242,7 +242,7 @@ public class Main {
         // Analysis results checking monitors
         // Note: the first one to throw an exception will prevent the others from reporting errors
         if (Options.get().getSoundnessTesterOptions().isTest()) {
-            extraMonitors.add(SoundnessTesterMonitor.make());
+            extraMonitors.add(new SoundnessTesterMonitor());
         } else if (Options.get().isTestEnabled()) {
             // (no need to test reachability if using soundness testing)
             extraMonitors.add(new ProgramExitReachabilityChecker(true, !Options.get().isDoNotExpectOrdinaryExitEnabled(), true, false, true, timeLimiter::analysisNotExceededLimit));

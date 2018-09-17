@@ -732,7 +732,7 @@ public class PropVarOperations {
                     }
                     boolean definitely_length = propertystr.isMaybeSingleStr() && propertystr.getStr().equals("length");
                     if (maybeInvalid) {
-                        Exceptions.throwRangeError(c);
+                        Exceptions.throwRangeError(c, maybeValid);
                         c.getMonitoring().addMessage(c.getNode(), Message.Severity.HIGH, "RangeError, assigning invalid value to array 'length' property");
                         if (definitely_length && !maybeValid) {
                             c.getState().setToBottom();

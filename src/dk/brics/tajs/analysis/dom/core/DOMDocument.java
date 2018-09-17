@@ -201,7 +201,7 @@ public class DOMDocument {
                     String t = tagname.getStr();
                     if (t.length() > 0 && t.charAt(0) == '<') {
                         // Extended createElement syntax is being used
-                        DOMException.throwException(call.getSourceNode(), c);
+                        DOMException.throwException(call.getSourceNode(), c, false);
                         return Value.makeNone();
                     }
                     return Value.makeObject(DOMFunctions.getHTMLObjectLabel(t));
@@ -222,7 +222,7 @@ public class DOMDocument {
                     String t = tagname.getStr();
                     if (t.length() > 0 && t.charAt(0) == '<') {
                         // Extended createElement syntax is being used
-                        DOMException.throwException(call.getSourceNode(), c);
+                        DOMException.throwException(call.getSourceNode(), c, false);
                         return Value.makeNone();
                     }
                     return Value.makeObject(DOMFunctions.getHTMLObjectLabel(t));

@@ -3,6 +3,7 @@ package dk.brics.tajs.test.nativeobjects;
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
+import dk.brics.tajs.util.AnalysisResultException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,6 +13,7 @@ public class TestHostFunctionSources_ES6Collections {
     public void before() {
         Main.reset();
         Options.get().enableTest();
+        Options.get().enableDeterminacy();
         Options.get().enablePolyfillES6Collections();
     }
 
@@ -25,19 +27,21 @@ public class TestHostFunctionSources_ES6Collections {
         basics("Set");
     }
 
-    @Test
+    @Test(expected = AnalysisResultException.class) // Test contains definite TypeError
     public void WeakMap_basics() {
+        Options.get().getSoundnessTesterOptions().setTest(false);
         basics("WeakMap");
     }
 
-    @Test
+    @Test(expected = AnalysisResultException.class) // Test contains definite TypeError
     public void WeakSet_basics() {
+        Options.get().getSoundnessTesterOptions().setTest(false);
         basics("WeakSet");
     }
 
     @Test
     public void missingSetterSupport() {
-        Misc.runSource("TAJS_assert((new Set()).size, 'isMaybeNumUInt||isMaybeUndef')");
+        Misc.runSource("TAJS_assertEquals(0, (new Set()).size)");
     }
 
     @Test
@@ -72,11 +76,19 @@ public class TestHostFunctionSources_ES6Collections {
                 "TAJS_assert(o, 'isMaybeObject');",
                 "TAJS_assert(typeof o.has === 'function');",
                 "TAJS_assert(typeof o.delete === 'function');",
-                "TAJS_assert(o.has(42), 'isMaybeAnyBool');",
+                "TAJS_assertEquals(false, o.has(42));",
                 ("Set".equals(functionName) ? "   o.add(42);" : "   o.set(42);"),
                 "TAJS_assert(o.has(42), 'isMaybeAnyBool');",
                 "TAJS_assert(o.has('foo'), 'isMaybeAnyBool');",
                 "o.delete(42);",
                 "TAJS_assert(o.has(42), 'isMaybeAnyBool');");
+    }
+
+    @Test
+    public void setSize() {
+        Misc.runSource(new String[]{
+                "var x = new Set([,2]).size",
+
+        });
     }
 }

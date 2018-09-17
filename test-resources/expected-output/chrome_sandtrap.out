@@ -1,5 +1,5 @@
-test-resources/src/chromeexperiments/sandtrap.html:1126:7: StartTag missing required end tag
-test-resources/src/chromeexperiments/sandtrap.html:1127:7: StartTag missing required end tag
+test-resources/src/chromeexperiments/sandtrap.html:1126:7: HTML StartTag missing required end tag
+test-resources/src/chromeexperiments/sandtrap.html:1127:7: HTML StartTag missing required end tag
 test-resources/src/chromeexperiments/sandtrap.html:164:46: [definite] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:59:13: [definite] The conditional expression is always true
 test-resources/src/chromeexperiments/sandtrap.html:76:13: [definite] The conditional expression is always true

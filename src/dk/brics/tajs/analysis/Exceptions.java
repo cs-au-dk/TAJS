@@ -42,8 +42,10 @@ public class Exceptions {
      * Don't forget to set the ordinary state to none if the exception will definitely occur.
      */
     public static void throwTypeError(Solver.SolverInterface c) {
-        if (Options.get().isExceptionsDisabled())
+        if (Options.get().getUnsoundness().isNoExceptions()) {
+            c.getAnalysis().getUnsoundness().ignoringException(c.getNode(), "TypeError");
             return;
+        }
         c.withState(c.getState().clone(), () ->
                 throwException(c.getState(), makeException(InitialStateBuilder.TYPE_ERROR_PROTOTYPE, c), c, c.getNode()));
     }
@@ -53,9 +55,11 @@ public class Exceptions {
      * Does not modify the current state.
      * Don't forget to set the ordinary state to none if the exception will definitely occur.
      */
-    public static void throwReferenceError(Solver.SolverInterface c) {
-        if (Options.get().isExceptionsDisabled())
+    public static void throwReferenceError(Solver.SolverInterface c, boolean maybe) {
+        if (maybe && Options.get().getUnsoundness().isNoExceptions()) {
+            c.getAnalysis().getUnsoundness().ignoringException(c.getNode(), "ReferenceError");
             return;
+        }
         c.withState(c.getState().clone(), () ->
                 throwException(c.getState(), makeException(InitialStateBuilder.REFERENCE_ERROR_PROTOTYPE, c), c, c.getNode()));
     }
@@ -65,9 +69,11 @@ public class Exceptions {
      * Does not modify the current state.
      * Don't forget to set the ordinary state to none if the exception will definitely occur.
      */
-    public static void throwRangeError(Solver.SolverInterface c) {
-        if (Options.get().isExceptionsDisabled())
+    public static void throwRangeError(Solver.SolverInterface c, boolean maybe) {
+        if (maybe && Options.get().getUnsoundness().isNoExceptions()) {
+            c.getAnalysis().getUnsoundness().ignoringException(c.getNode(), "RangeError");
             return;
+        }
         c.withState(c.getState().clone(), () ->
                 throwException(c.getState(), makeException(InitialStateBuilder.RANGE_ERROR_PROTOTYPE, c), c, c.getNode()));
     }
@@ -77,9 +83,11 @@ public class Exceptions {
      * Does not modify the current state.
      * Don't forget to set the ordinary state to none if the exception will definitely occur.
      */
-    public static void throwSyntaxError(Solver.SolverInterface c) {
-        if (Options.get().isExceptionsDisabled())
+    public static void throwSyntaxError(Solver.SolverInterface c, boolean maybe) {
+        if (maybe && Options.get().getUnsoundness().isNoExceptions()) {
+            c.getAnalysis().getUnsoundness().ignoringException(c.getNode(), "SyntaxError");
             return;
+        }
         c.withState(c.getState().clone(), () ->
                 throwException(c.getState(), makeException(InitialStateBuilder.SYNTAX_ERROR_PROTOTYPE, c), c, c.getNode()));
     }

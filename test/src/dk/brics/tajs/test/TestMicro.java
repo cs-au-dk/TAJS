@@ -484,6 +484,7 @@ public class TestMicro {
         Misc.checkSystemOutput();
     }
 
+    @Ignore // FIXME: Str join (github #533)
     @Test
     public void micro_74() throws Exception {
         Misc.run("test-resources/src/micro/test74.js");
@@ -2209,9 +2210,9 @@ public class TestMicro {
                 "TAJS_assert(Object.keys(o1).length === 1);",
                 "TAJS_assert(Object.keys(o1)[0] === 'p');",
                 "var o2 = {p: 42, q: 87};",
-                "TAJS_assert(Object.keys(o2).length === 2);",
-                "TAJS_assert(Object.keys(o2)[0], 'isStrIdentifier');",
-                "TAJS_assert(Object.keys(o2)[1], 'isStrIdentifier');",
+                "TAJS_assert(Object.keys(o2).length, 'isMaybeNumUInt');",
+                "TAJS_assert(Object.keys(o2)[0], 'isStrIdentifier||isMaybeUndef');",
+                "TAJS_assert(Object.keys(o2)[1], 'isStrIdentifier||isMaybeUndef');",
                 "var oMaybe1 = {};",
                 "if(Math.random()){oMaybe1.p = 42;}",
                 "TAJS_assert(Object.keys(oMaybe1).length, 'isMaybeNumUInt');",
@@ -4032,6 +4033,16 @@ public class TestMicro {
                         "function f() { TAJS_assertEquals(undefined, this) }",
                         "f();",
                         "})();");
+    }
+
+    @Test
+    public void maybeUndefAsFirstArgumentToAddition_unsound() {
+        Options.get().getUnsoundness().setIgnoreUnlikelyUndefinedAsFirstArgumentToAddition(true);
+        Misc.runSource("",
+                "var x = TAJS_join('foo', undefined);",
+                "var y = 'bar';",
+                "var z = x + y;",
+                "TAJS_assertEquals('foobar', z);");
     }
 }
 

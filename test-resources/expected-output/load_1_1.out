@@ -1,0 +1,534 @@
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2:1: [definite] The conditional expression is always true
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2:12: [definite] Property is null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:14:24: [definite] Property is null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:60:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1229:38: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1229:38: [definite] Variable args is null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1233:21: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1233:42: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1233:42: [definite] Variable args is null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1765:21: [definite] The conditional expression is always true
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1766:20: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1767:19: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1768:22: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1771:27: [definite] The conditional expression is always true
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2720:17: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2725:13: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2725:17: [definite] Variable data is null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2730:13: [definite] The conditional expression is always true
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2734:13: [definite] The conditional expression is always true
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2740:13: [definite] The conditional expression is always true
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2740:18: [definite] Variable handlers is null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2755:13: [definite] The conditional expression is always true
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2828:13: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2833:38: [definite] The conditional expression is always true
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2844:17: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2852:13: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2856:20: [definite] Variable returnValue is null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2872:17: [definite] The conditional expression is always true
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2892:13: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2899:13: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3221:17: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3221:21: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3547:9: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3547:13: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3552:13: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3574:17: [definite] The conditional expression is always true
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3593:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4344:9: [definite] The conditional expression is always false
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:168:9: [definite] Dead assignment, property jquery is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:192:9: [definite] Dead assignment, property size is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:196:9: [definite] Dead assignment, property length is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:225:9: [definite] Dead assignment, property get is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:244:9: [definite] Dead assignment, property pushStack is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:264:9: [definite] Dead assignment, property setArray is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:292:9: [definite] Dead assignment, property each is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:321:9: [definite] Dead assignment, property index is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:405:9: [definite] Dead assignment, property attr is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:486:9: [definite] Dead assignment, property css is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:525:9: [definite] Dead assignment, property text is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:589:9: [definite] Dead assignment, property wrap is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:638:9: [definite] Dead assignment, property append is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:674:9: [definite] Dead assignment, property prepend is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:707:9: [definite] Dead assignment, property before is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:740:9: [definite] Dead assignment, property after is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:764:9: [definite] Dead assignment, property end is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:788:9: [definite] Dead assignment, property find is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:811:9: [definite] Dead assignment, property clone is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:857:9: [definite] Dead assignment, property filter is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:908:9: [definite] Dead assignment, property not is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:963:9: [definite] Dead assignment, property add is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:991:9: [definite] Dead assignment, property is is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1018:9: [definite] Dead assignment, property val is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1047:9: [definite] Dead assignment, property html is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1061:9: [definite] Dead assignment, property domManip is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property ADDITION is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property AT_TARGET is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property BUBBLING_PHASE is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property CAPTURING_PHASE is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_DELTA_LINE is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_DELTA_PAGE is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_DELTA_PIXEL is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_JOYSTICK is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_LEFT is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_MOBILE is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_NUMPAD is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_RIGHT is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_STANDARD is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property MODIFICATION is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property REMOVAL is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property _toggle is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property altKey is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property animate is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property attrChange is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property attrName is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property bind is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property bubbles is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property button is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property cancelable is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property changedTouches is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property charCode is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property clientX is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property clientY is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property ctrlKey is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property currentTarget is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property data is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property defaultPrevented is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property deltaMode is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property deltaX is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property deltaY is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property deltaZ is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property detail is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property evalScripts is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property eventPhase is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property fadeIn is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property fadeOut is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property fadeTo is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property fromElement is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property handler is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property hide is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property hover is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property key is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property keyCode is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property keyIdentifier is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property keyLocation is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property layerX is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property layerY is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property load is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property loadIfModified is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property metaKey is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property newURL is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property newValue is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property offsetX is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property offsetY is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property oldURL is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property one is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property pageX is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property pageY is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property prevValue is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property queue is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property ready is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property relatedNode is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property relatedTarget is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property repeat is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property returnValue is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property screenX is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property screenY is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property serialize is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property shiftKey is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property show is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property slideDown is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property slideToggle is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property slideUp is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property srcElement is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property target is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property targetTouches is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property timeStamp is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property toElement is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property touches is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property trigger is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property unbind is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property view is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property wheelDelta is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property wheelDeltaX is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property wheelDeltaY is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property which is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1257:13: [definite] Dead assignment, property add is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1268:13: [definite] Dead assignment, property remove is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1276:13: [definite] Dead assignment, property has is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1911:9: [definite] Dead assignment, property children is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1911:9: [definite] Dead assignment, property next is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1911:9: [definite] Dead assignment, property parent is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1911:9: [definite] Dead assignment, property parents is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1911:9: [definite] Dead assignment, property prev is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1911:9: [definite] Dead assignment, property siblings is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1995:9: [definite] Dead assignment, property appendTo is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1995:9: [definite] Dead assignment, property insertAfter is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1995:9: [definite] Dead assignment, property insertBefore is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1995:9: [definite] Dead assignment, property prependTo is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2137:9: [definite] Dead assignment, property addClass is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2137:9: [definite] Dead assignment, property empty is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2137:9: [definite] Dead assignment, property remove is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2137:9: [definite] Dead assignment, property removeAttr is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2137:9: [definite] Dead assignment, property removeClass is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2137:9: [definite] Dead assignment, property toggleClass is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2197:9: [definite] Dead assignment, property contains is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2197:9: [definite] Dead assignment, property eq is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2197:9: [definite] Dead assignment, property gt is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2197:9: [definite] Dead assignment, property lt is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2259:9: [definite] Dead assignment, property height is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2259:9: [definite] Dead assignment, property width is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2266:13: [definite] Dead assignment, property  is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2267:13: [definite] Dead assignment, property # is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2268:13: [definite] Dead assignment, property : is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2270:17: [definite] Dead assignment, property lt is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2271:17: [definite] Dead assignment, property gt is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2272:17: [definite] Dead assignment, property nth is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2273:17: [definite] Dead assignment, property eq is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2274:17: [definite] Dead assignment, property first is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2275:17: [definite] Dead assignment, property last is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2276:17: [definite] Dead assignment, property even is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2277:17: [definite] Dead assignment, property odd is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2279:17: [definite] Dead assignment, property nth-child is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2280:17: [definite] Dead assignment, property first-child is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2281:17: [definite] Dead assignment, property last-child is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2282:17: [definite] Dead assignment, property only-child is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2284:17: [definite] Dead assignment, property parent is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2285:17: [definite] Dead assignment, property empty is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2287:17: [definite] Dead assignment, property contains is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2289:17: [definite] Dead assignment, property visible is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2290:17: [definite] Dead assignment, property hidden is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2292:17: [definite] Dead assignment, property enabled is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2293:17: [definite] Dead assignment, property disabled is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2294:17: [definite] Dead assignment, property checked is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2295:17: [definite] Dead assignment, property selected is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2297:17: [definite] Dead assignment, property text is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2298:17: [definite] Dead assignment, property radio is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2299:17: [definite] Dead assignment, property checkbox is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2300:17: [definite] Dead assignment, property file is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2301:17: [definite] Dead assignment, property password is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2302:17: [definite] Dead assignment, property submit is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2303:17: [definite] Dead assignment, property image is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2304:17: [definite] Dead assignment, property reset is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2305:17: [definite] Dead assignment, property button is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2306:17: [definite] Dead assignment, property input is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2308:13: [definite] Dead assignment, property . is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2309:13: [definite] Dead assignment, property @ is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2310:17: [definite] Dead assignment, property = is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2311:17: [definite] Dead assignment, property != is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2312:17: [definite] Dead assignment, property ^= is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2313:17: [definite] Dead assignment, property $= is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2314:17: [definite] Dead assignment, property *= is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2315:17: [definite] Dead assignment, property  is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2316:17: [definite] Dead assignment, property _resort is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2320:17: [definite] Dead assignment, property _prefix is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2322:13: [definite] Dead assignment, property [ is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2730:18: [definite] Reading absent property guid
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2734:18: [definite] Reading absent property events
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2763:9: [definite] Dead assignment, property remove is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2794:9: [definite] Dead assignment, property trigger is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2843:32: [definite] Reading absent property data
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2844:21: [definite] Reading absent property apply of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2879:17: [definite] Dead assignment, property target is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property blur is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property change is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property click is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property dblclick is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property error is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property focus is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property keydown is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property keypress is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property keyup is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property load is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property mousedown is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property mousemove is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property mouseout is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property mouseover is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property mouseup is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property resize is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property scroll is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property select is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property submit is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:13: [definite] Dead assignment, property unload is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4447:9: [definite] Dead assignment, property ajaxComplete is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4447:9: [definite] Dead assignment, property ajaxError is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4447:9: [definite] Dead assignment, property ajaxSend is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4447:9: [definite] Dead assignment, property ajaxStart is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4447:9: [definite] Dead assignment, property ajaxStop is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4447:9: [definite] Dead assignment, property ajaxSuccess is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4658:13: [definite] Dead assignment, property global is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4659:13: [definite] Dead assignment, property type is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4660:13: [definite] Dead assignment, property timeout is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4661:13: [definite] Dead assignment, property contentType is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4662:13: [definite] Dead assignment, property processData is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4663:13: [definite] Dead assignment, property async is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4664:13: [definite] Dead assignment, property data is never read
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:25:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:192:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:225:14: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:244:20: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:264:19: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:292:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:321:16: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:324:23: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:405:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:421:30: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:486:14: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:525:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:532:36: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:534:46: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:589:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:594:30: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:638:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:640:54: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:674:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:676:55: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:707:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:709:55: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:740:16: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:742:56: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:764:14: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:788:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:790:52: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:811:16: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:813:52: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:857:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:859:77: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:908:14: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:910:117: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:963:14: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:991:13: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1018:14: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1047:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1061:19: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1069:30: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1076:32: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1133:40: [definite] The variable ARG3 is never used
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1186:21: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1193:21: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1241:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1257:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1259:45: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1268:21: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1270:79: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1276:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1286:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1299:14: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1304:32: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1309:37: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1342:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1378:32: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1389:63: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1399:16: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1402:28: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1465:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1524:59: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1548:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1552:20: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1567:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1598:16: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1634:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1691:14: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1762:13: [definite] The variable b is never used
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1910:8: [definite] The variable n is never used
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1911:24: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1994:8: [definite] The variable n is never used
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1995:24: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1998:30: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2101:21: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2106:19: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2110:22: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2114:22: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2122:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2129:16: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2136:8: [definite] The variable n is never used
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2137:24: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2196:51: [definite] The variable i is never used
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2197:24: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2258:40: [definite] The variable i is never used
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2259:24: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2316:26: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2330:141: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2335:22: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2353:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2401:38: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2427:118: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2490:46: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2504:52: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2516:50: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2548:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2554:32: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2581:44: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2606:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2648:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2671:14: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2696:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2738:28: [definite] Reading absent property (computed name)
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2755:18: [definite] Reading absent property (computed name)
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2763:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2794:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2804:36: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2882:40: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2886:41: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2894:40: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2901:41: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2956:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2958:30: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2989:14: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2991:30: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2993:46: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3029:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3031:30: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3048:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3050:30: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3075:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3079:31: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3114:16: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3117:13: [definite] Unreachable function handleHover
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3180:16: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3190:39: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3213:51: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3539:196: [definite] The variable i is never used
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3541:28: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3557:21: [definite] The variable script is never used
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3561:49: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3595:38: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3643:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3650:47: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3690:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3697:48: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3722:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3725:104: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3751:20: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3778:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3805:22: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3807:30: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3837:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3865:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3894:17: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3933:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3935:31: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3956:16: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3963:30: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3982:16: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3995:28: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4007:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4027:13: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4039:19: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4058:21: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4063:21: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4069:24: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4074:39: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4080:22: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4098:22: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4111:24: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4137:22: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4225:25: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4253:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4259:36: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4284:27: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4316:20: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4329:22: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4331:45: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4346:26: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4446:94: [definite] The variable i is never used
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4447:24: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4478:14: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4520:24: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4543:20: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4568:18: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4597:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4629:22: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4653:20: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4788:15: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4844:38: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4905:46: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4913:28: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4945:22: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4961:22: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4970:26: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4986:19: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:5010:16: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:5018:32: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:5030:43: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:5045:21: [definite] Unreachable function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1227:17: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1903:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1989:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2100:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2196:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2258:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2730:18: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2833:21: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2836:21: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2842:35: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2843:32: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2844:21: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2844:21: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2868:64: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2869:63: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2872:42: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2879:32: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3213:21: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3539:9: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3583:29: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4446:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1227:17: [maybe] Reading absent property length
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1903:5: [maybe] Reading absent property each
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1989:5: [maybe] Reading absent property each
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2100:5: [maybe] Reading absent property each
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2196:5: [maybe] Reading absent property each
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2258:5: [maybe] Reading absent property each
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2833:21: [maybe] Reading absent property event
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2836:21: [maybe] Reading 'this' yields the global object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2836:21: [maybe] Reading absent property events of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2836:33: [maybe] Reading absent property type of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2843:32: [maybe] Reading absent property data of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2844:32: [maybe] Reading 'this' yields the global object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2860:18: [maybe] Reading absent property target of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2860:34: [maybe] Reading absent property srcElement of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2862:32: [maybe] Reading absent property srcElement of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2865:17: [maybe] Reading absent property pageX of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2865:45: [maybe] Reading absent property clientX of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2868:31: [maybe] Reading absent property clientX of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2868:48: [maybe] Reading absent property scrollLeft of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2868:64: [maybe] Reading absent property scrollLeft of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2869:31: [maybe] Reading absent property clientY of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2869:48: [maybe] Reading absent property scrollTop of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2869:63: [maybe] Reading absent property scrollTop of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2872:42: [maybe] Reading absent property nodeType of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2872:42: [maybe] Reading absent property target of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2879:32: [maybe] Reading absent property parentNode of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2879:32: [maybe] Reading absent property target of host object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3207:18: [maybe] Reading absent property isReady
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3211:21: [maybe] Reading absent property readyList
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3213:21: [maybe] Reading absent property each
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3213:33: [maybe] Reading absent property readyList
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3539:9: [maybe] Reading absent property each
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3580:43: [maybe] Reading absent property safariTimer
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3583:29: [maybe] Reading absent property ready
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3590:42: [maybe] Reading absent property ready
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3708:18: [maybe] Reading absent property toggle
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4446:5: [maybe] Reading absent property each
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1227:17, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1903:5, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1989:5, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2100:5, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2196:5, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2258:5, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2730:18, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2833:21, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2836:21, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2842:35, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2843:32, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2844:21, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2868:64, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2869:63, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2872:42, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2879:32, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3213:21, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3539:9, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3583:29, benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4446:5]
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1142:23: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:29: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1229:21: [maybe] Converting primitive string to object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1233:25: [maybe] Converting primitive string to object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1762:17: [maybe] Converting object to string
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1762:17: [maybe] Converting primitive string to object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2836:21: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2842:35: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2843:32: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2844:21: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2868:31: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2869:31: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3539:21: [maybe] Converting object to string
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3539:21: [maybe] Converting primitive string to object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3580:29: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4446:17: [maybe] Converting object to string
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4446:17: [maybe] Converting primitive string to object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2836:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2836:21: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2844:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 1321 checks (with 0 expected failures)

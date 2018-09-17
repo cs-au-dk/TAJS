@@ -414,7 +414,7 @@ public class NativeFunctionSignatureBuilder {
         // OBJECT FUNCTIONS
         addSig(OBJECT_DEFINEGETTER, Receivers.DontCare, MandatoryParameters.String, MandatoryParameters.Function);
         addSig(OBJECT_DEFINESETTER, Receivers.DontCare, MandatoryParameters.String, MandatoryParameters.Function);
-        addSig(OBJECT_HASOWNPROPERTY, Receivers.CoerceObject, MandatoryParameters.String);
+        addSig(OBJECT_HASOWNPROPERTY, Receivers.CoerceObject, MandatoryParameters.StringOrSymbol);
         addSig(OBJECT_ISPROTOTYPEOF, Receivers.DontCare, MandatoryParameters.DontCare);
         addSig(OBJECT_PROPERTYISENUMERABLE, Receivers.CoerceObject, MandatoryParameters.String);
         addSig(OBJECT_TOLOCALESTRING, Receivers.DontCare);

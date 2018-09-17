@@ -23,7 +23,7 @@ import java.util.Optional;
 
 /**
  * Resolves the external dependencies of TAJS that can be installed using "external-dependencies/install-external-dependencies.sh".
- * This resolution can be overridden with entries in .tajsconfig.
+ * This resolution can be overridden with entries in tajs.properties.
  */
 public class ExternalDependencies {
 
@@ -39,7 +39,7 @@ public class ExternalDependencies {
     private static Optional<Path> getExternalDependency(String dependencyName, Path pathInDependencyContainer) {
         boolean has = TAJSEnvironmentConfig.get().hasProperty(dependencyName);
         if (has) {
-            return Optional.of(Paths.get(TAJSEnvironmentConfig.get().getCustom(dependencyName)));
+            return Optional.of(Paths.get(TAJSEnvironmentConfig.get().getCustom(dependencyName)).resolve(pathInDependencyContainer));
         }
         boolean hasTAJS = TAJSEnvironmentConfig.get().hasProperty("tajs");
         if (hasTAJS) {

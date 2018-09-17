@@ -23,11 +23,13 @@
 <body>
 <div class="container-fluid">
     <h1>TAJS Statistics</h1>
+    <p id="timestamp"></p>
+    <p id="defaultoptions"></p>
     <table id="table" class="table table-sm" data-show-columns="true">
         <thead>
         <tr>
             <th data-field="name" data-sortable="true" data-switchable="false" data-toggle="tooltip" title="Path of the benchmark">Name</th>
-            <th data-field="options" data-sortable="true" data-switchable="false" data-toggle="tooltip" title="Analysis options">Options</th>
+            <th data-field="options" data-sortable="true" data-toggle="tooltip" title="Extra analysis options">Extra options</th>
             <th data-field="time" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Analysis time in seconds">Time</th>
             <th data-field="error" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Analysis errors, if any">Error</th>
             <th data-field="node_transfers" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of node transfers">Node transfers</th>
@@ -41,11 +43,10 @@
             <th data-field="states_per_block" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average number of abstract states per basic block">States per block</th>
             <th data-field="average_state_size" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average size of all abstract states (counting object labels and number of different types for all object properties, context-sensitively)">Average state size</th>
             <th data-field="average_node_transfer_time" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average number of milliseconds per node transfer">Average node transfer time</th>
-            <th data-field="callnodes_to_nonfunction" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke a non-function value (including 'undefined')">Non-function calls</th>
-            <th data-field="callnodes_to_native_and_user_functions" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke both native and user-defined functions">Native and user-function calls</th>
-            <th data-field="callnodes_to_multiple_native_functions" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke multiple native functions">Multiple native function calls</th>
+            <th data-field="mixed_readwrites" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of variable/property read/write nodes that in some call context have a value with multiple native and also user-defined functions">Mixed reads/writes</th>
+            <th data-field="callnodes_to_mixed_functions" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke multiple native and also user-defined functions">Mixed calls</th>
+            <th data-field="callnodes_to_nonfunction" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke a non-function value (ignoring 'undefined')">Non-function calls</th>
             <th data-field="callnodes_polymorphic" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke multiple user-defined functions (ignoring callee contexts)">Polymorphic calls</th>
-            <th data-field="callnodes_megamorphic" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke more than 10 user-defined functions (ignoring callee contexts)">Megamorphic calls</th>
         </tr>
         </thead>
     </table>
@@ -61,6 +62,9 @@ if (q.startsWith("?")) {
     s.onload = function() {
         $('#table').bootstrapTable({data: data, search: true}).bootstrapTable('hideLoading');
         $('[data-toggle="tooltip"]').tooltip();
+        var d = new Date(timestamp);
+        $('#timestamp').text("Generated " + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " + d.getHours() + ":" + (d.getMinutes() <= 9 ? "0" : "") + d.getMinutes());
+        $('#defaultoptions').text("Default options: " + defaultOptions);
     }
     document.getElementsByTagName('body')[0].appendChild(s);
 } else {
@@ -115,10 +119,9 @@ function cellStyle(value, row, index, field) {
         status = 'medium';
     else
         status = 'good';
-  } else if (field == 'callnodes_to_native_and_user_functions' ||
-             field == 'callnodes_to_multiple_native_functions' ||
-             field == 'callnodes_polymorphic' ||
-             field == 'callnodes_megamorphic') {
+  } else if (field == 'callnodes_to_mixed_functions' ||
+             field == 'mixed_readwrites' ||
+             field == 'callnodes_polymorphic') {
     if (value > 5)
         status = 'bad';
     else if (value > 0)

@@ -27,6 +27,7 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.options.Options;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 
@@ -90,7 +91,11 @@ public class DOMException {
         createDOMProperty(DOMEXCEPTION_PROTOTYPE, "INVALID_ACCESS_ERR", Value.makeNum(15), c);
     }
 
-    public static void throwException(AbstractNode sourceNode, Solver.SolverInterface c) {
+    public static void throwException(AbstractNode sourceNode, Solver.SolverInterface c, boolean maybe) {
+        if (maybe && Options.get().getUnsoundness().isNoExceptions()) {
+            c.getAnalysis().getUnsoundness().ignoringException(c.getNode(), "DOMException");
+            return;
+        }
         Exceptions.throwException(c.getState().clone(), newDOMException(Value.makeAnyNumUInt(), c), c, sourceNode);
     }
 }
