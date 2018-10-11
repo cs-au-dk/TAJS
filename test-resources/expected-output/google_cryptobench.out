@@ -204,23 +204,16 @@ test-resources/src/google/cryptobench.js:615:40: [maybe] Reading absent property
 test-resources/src/google/cryptobench.js:620:15: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:639:12: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:639:40: [maybe] Reading absent property s
+test-resources/src/google/cryptobench.js:807:11: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:839:26: [maybe] Reading absent property t
-test-resources/src/google/cryptobench.js:839:30: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:841:6: [maybe] Reading absent property t
-test-resources/src/google/cryptobench.js:841:12: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:842:9: [maybe] Reading absent property s
-test-resources/src/google/cryptobench.js:843:20: [maybe] Reading absent property t
-test-resources/src/google/cryptobench.js:844:11: [maybe] Reading absent property t
-test-resources/src/google/cryptobench.js:847:9: [maybe] Reading absent property s
 test-resources/src/google/cryptobench.js:848:20: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:849:11: [maybe] Reading absent property t
-test-resources/src/google/cryptobench.js:851:12: [maybe] Reading absent property s
 test-resources/src/google/cryptobench.js:851:19: [maybe] Reading absent property s
 test-resources/src/google/cryptobench.js:912:22: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:914:6: [maybe] Reading absent property s
 test-resources/src/google/cryptobench.js:914:25: [maybe] Reading absent property t
-test-resources/src/google/cryptobench.js:936:11: [maybe] Reading absent property t
-test-resources/src/google/cryptobench.js:936:26: [maybe] Reading absent property s
 test-resources/src/google/cryptobench.js:961:34: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:961:38: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:967:6: [maybe] Reading absent property t
@@ -458,6 +451,8 @@ test-resources/src/google/cryptobench.js:796:30: [maybe] The variable a has valu
 test-resources/src/google/cryptobench.js:797:17: [maybe] Conversion from string to number yields NaN
 test-resources/src/google/cryptobench.js:797:17: [maybe] The variable a has values with different types
 test-resources/src/google/cryptobench.js:798:5: [maybe] Converting primitive number to object
+test-resources/src/google/cryptobench.js:809:18: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:810:6: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:811:26: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:811:26: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:815:14: [maybe] Conversion to number yields NaN
@@ -471,7 +466,6 @@ test-resources/src/google/cryptobench.js:840:42: [maybe] Reading absent property
 test-resources/src/google/cryptobench.js:840:56: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:842:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:843:49: [maybe] Reading absent property (computed name)
-test-resources/src/google/cryptobench.js:847:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:848:48: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:860:30: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:901:7: [maybe] Conversion to number yields NaN
@@ -719,15 +713,10 @@ test-resources/src/google/cryptobench.js:529:3: [info] 'this' refers to a summar
 test-resources/src/google/cryptobench.js:529:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google/cryptobench.js:530:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:530:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google/cryptobench.js:562:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:562:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google/cryptobench.js:563:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:563:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google/cryptobench.js:638:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:638:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google/cryptobench.js:639:12: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:639:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google/cryptobench.js:639:40: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:639:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google/cryptobench.js:645:44: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:659:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
@@ -751,17 +740,11 @@ test-resources/src/google/cryptobench.js:1025:9: [info] 'this' refers to multipl
 test-resources/src/google/cryptobench.js:1025:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1029:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1029:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google/cryptobench.js:1053:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1053:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google/cryptobench.js:1058:15: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1058:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google/cryptobench.js:1058:45: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1058:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google/cryptobench.js:1058:55: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1058:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google/cryptobench.js:1058:82: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1058:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google/cryptobench.js:1059:40: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1059:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1069:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1072:22: [info] 'this' refers to a summary abstract object, which may cause loss of precision

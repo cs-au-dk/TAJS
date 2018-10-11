@@ -100,6 +100,12 @@ public abstract class AbstractNode implements Cloneable, Serializable {
     public AbstractNode getDuplicateOf() {
         return duplicate_of;
     }
+    /**
+     * Returns the node that this node is a duplicate of, or this node if this is not a duplicate.
+     */
+    public AbstractNode getThisOrDuplicateOf() {
+        return duplicate_of != null ? duplicate_of : this;
+    }
 
     /**
      * Sets the node index.

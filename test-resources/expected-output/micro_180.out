@@ -19,5 +19,5 @@ test-resources/src/micro/test180.js:35:3: [info] Abstract value: UInt|NotUInt
 test-resources/src/micro/test180.js:36:3: [info] Abstract value: UInt|NotUInt
 test-resources/src/micro/test180.js:41:5: [info] Abstract value: UInt|NotUInt
 test-resources/src/micro/test180.js:58:1: [info] Abstract value: UIntPos
-test-resources/src/micro/test180.js:61:1: [info] Abstract object: {length:UInt,[[DefaultArray]]=Undef|Null|[@Object#node165, *Object#node165]|absent,[[DefaultNonArray]]=Null|[*Object#node165]|absent,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/test180.js:61:1: [info] Abstract object: {0:Undef|Null|[@Object#node165, *Object#node165],1:Undef|Null|[@Object#node165, *Object#node165],2:Undef|Null|[@Object#node165, *Object#node165],length:UInt,[[DefaultArray]]=Undef|Null|[@Object#node165, *Object#node165]|absent,[[DefaultNonArray]]=[@Object#node165]|absent,[[Prototype]]=[@Array.prototype[native]]}
 Soundness testing succeeded for 444 checks (with 0 expected failures)

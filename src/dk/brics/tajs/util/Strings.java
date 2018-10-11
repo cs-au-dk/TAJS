@@ -101,6 +101,9 @@ public class Strings {
                 case '}':
                     b.append("\\}");
                     break;
+                case '|':
+                    b.append("\\|");
+                    break;
                 default:
                     if (c >= 0x20 && c <= 0x7e)
                         b.append(c);

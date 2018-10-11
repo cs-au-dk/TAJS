@@ -57,14 +57,25 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
      */
     private Map<NodeAndContext<ContextType>, Map<BlockAndContext<ContextType>, CallEdgeType>> call_edge_info; // default is empty maps
 
+    private Map<AbstractNode,Set<Function>> callees_ignoring_contexts;
+
     /**
      * Map from basic block and context to occurrence order.
      */
-    private Map<BlockAndContext<ContextType>, Integer> block_context_order;
+    private Map<BlockAndContext<ContextType>, Integer> funentry_order;
 
-    private int next_block_context_order;
+    /**
+     * Map from context to occurrence order.
+     */
+    private Map<ContextType, Integer> context_order;
+
+    private int next_funentry_order;
+
+    private int next_context_order;
 
     private int size;
+
+    private int size_ignoring_contexts;
 
     public static class ReverseEdge<ContextType extends IContext<?>> {
 
@@ -106,7 +117,9 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
     public CallGraph() {
         call_sources = newMap();
         call_edge_info = newMap();
-        block_context_order = newMap();
+        funentry_order = newMap();
+        context_order = newMap();
+        callees_ignoring_contexts = newMap();
     }
 
     /**
@@ -130,6 +143,13 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
                 sync.callEdgeAdded(caller.getBlock().getFunction(), callee.getFunction());
             changed = true;
             size++;
+            Set<Function> callees_ci = callees_ignoring_contexts.get(caller);
+            if (callees_ci == null) {
+                callees_ci = newSet();
+                callees_ignoring_contexts.put(caller, callees_ci);
+            }
+            if (callees_ci.add(callee.getFunction()))
+                size_ignoring_contexts++;
         } else {
             // propagate into existing edge
             changed = call_edge.getState().propagate(edge_state, true);
@@ -157,20 +177,40 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
     }
 
     /**
-     * Assigns an order to the given (basic block,context).
+     * Assigns an order to the given function entry.
      */
-    public void registerBlockContext(BlockAndContext<ContextType> bc) {
-        if (!block_context_order.containsKey(bc))
-            block_context_order.put(bc, next_block_context_order++);
+    public void registerFunctionEntry(BlockAndContext<ContextType> bc) {
+        if (!funentry_order.containsKey(bc))
+            funentry_order.put(bc, next_funentry_order++);
+    }
+
+    /**
+     * Assigns an order to the given function entry.
+     */
+    public void registerContext(ContextType c) {
+        if (!context_order.containsKey(c))
+            context_order.put(c, next_context_order++);
     }
 
     /**
      * Returns the occurrence order of the given (basic block,context).
      */
-    public int getBlockContextOrder(BlockAndContext<ContextType> bc) {
-        Integer order = block_context_order.get(bc);
+    public int getFunctionEntryOrder(BlockAndContext<ContextType> bc) {
+        Integer order = funentry_order.get(bc);
         if (order == null)
             throw new AnalysisException("Unexpected basic block and context: " + bc);
+        return order;
+    }
+
+    /**
+     * Returns the occurrence order of the given context.
+     */
+    public int getContextOrder(ContextType c) {
+        Integer order = context_order.get(c);
+        if (order == null) {
+            order = next_context_order++;
+            context_order.put(c, order);
+        }
         return order;
     }
 
@@ -207,6 +247,10 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
 
     public int size() {
         return size;
+    }
+
+    public int getSizeIgnoringContexts() {
+        return size_ignoring_contexts;
     }
 
     /**

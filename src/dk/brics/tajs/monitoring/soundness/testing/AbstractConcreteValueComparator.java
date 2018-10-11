@@ -221,7 +221,12 @@ public class AbstractConcreteValueComparator {
     private boolean isAbstractValueSound(OtherDescription d, Value abstractValue) {
         String concreteValue = d.getDescription();
         try {
-            return abstractValue.isMaybeNum(Integer.parseInt(concreteValue));
+            if (concreteValue.equals("0")) {
+                // patch for https://github.com/cs-au-dk/jalangilogger/blob/master/javascript/src/analysis/ValueLogger.js
+                // describeNonStringPrimitive represents -0.0 as "0"
+                return abstractValue.isMaybeNum(0.0) || abstractValue.isMaybeNum(-0.0);
+            } else
+                return abstractValue.isMaybeNum(Integer.parseInt(concreteValue));
         } catch (NumberFormatException e) {
             // squelch
         }

@@ -187,12 +187,11 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
         /**
          * Propagates dataflow and updates the worklist if needed.
          */
-        private boolean propagateAndUpdateWorklist(StateType state, BasicBlock block, ContextType context, boolean localize) {
+        private void propagateAndUpdateWorklist(StateType state, BasicBlock block, ContextType context, boolean localize) {
             boolean changed = propagate(state, new BlockAndContext<>(block, context), localize);
             if (changed) {
                 addToWorklist(block, context);
             }
-            return changed;
         }
 
         /**
@@ -206,7 +205,6 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
             MergeResult res = the_analysis_lattice_element.propagate(state, to, localize);
             boolean changed = res != null;
             getMonitoring().visitPropagationPost(from, to, changed);
-            the_analysis_lattice_element.getCallGraph().registerBlockContext(to);
             if (changed) {
                 analysis.getMonitoring().visitNewFlow(to.getBlock(), to.getContext(), the_analysis_lattice_element.getState(to), res.getDiff(), "CALL");
                 if (log.isDebugEnabled())
@@ -221,7 +219,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
          * Adds the given location to the worklist.
          */
         public void addToWorklist(BasicBlock block, ContextType context) {
-            if (worklist.add(worklist.new Entry(block, context)))
+            if (worklist.add(new BlockAndContext<>(block, context)))
                 deps.incrementFunctionActivityLevel(BlockAndContext.makeEntry(block, context));
             if (sync != null)
                 sync.markPendingBlock(block);
@@ -238,27 +236,29 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
             if (messages_enabled)
                 return;
             CallGraph<StateType, ContextType, CallEdgeType> cg = the_analysis_lattice_element.getCallGraph();
+            ContextType callee_context = edge_context; // FIXME: change if using edge transformations: edge_state.transform(cg.getCallEdge(call_node, caller_context, callee_entry, edge_context), edge_context, the_analysis_lattice_element.getStates(callee_entry), callee_entry);
+            the_analysis_lattice_element.getCallGraph().registerFunctionEntry(new BlockAndContext<>(callee_entry, callee_context));
             // add to existing call edge
             if (cg.addTarget(call_node, caller_context, callee_entry, edge_context, edge_state, sync, analysis, c.getMonitoring())) {
                 // new flow at call edge, transform it relative to the function entry states and contexts
-                ContextType callee_context = edge_state.transform(cg.getCallEdge(call_node, caller_context, callee_entry, edge_context),
-                        edge_context, the_analysis_lattice_element.getStates(callee_entry), callee_entry);
                 cg.addSource(call_node, caller_context, callee_entry, callee_context, edge_context, implicit);
                 // propagate transformed state into function entry
-                if (propagateAndUpdateWorklist(edge_state, callee_entry, callee_context, true)) {
+                propagateAndUpdateWorklist(edge_state, callee_entry, callee_context, true);
+                if (deps.isFunctionActive(new BlockAndContext<>(callee_entry, callee_context))) {
                     // charge the call edge
-                    deps.chargeCallEdge(call_node.getBlock(), caller_context, edge_context, callee_entry, callee_context);
+                    deps.chargeCallEdge(call_node, caller_context, edge_context, callee_entry, callee_context, implicit);
                 }
             }
-            ContextType callee_context = edge_context; // TODO: update this if State.transform doesn't just return the edge context as callee context
-            // process existing ordinary/exceptional return flow
-            StateType stored_state = current_state;
-            AbstractNode stored_node = current_node;
-            current_state = null;
-            current_node = null;
-            analysis.getNodeTransferFunctions().transferReturn(call_node, callee_entry, caller_context, callee_context, edge_context, implicit);
-            current_state = stored_state;
-            current_node = stored_node;
+            if (Options.get().isChargedCallsDisabled() || !CallDependencies.DELAY_RETURN_FLOW_UNTIL_DISCHARGED || !deps.isCallEdgeCharged(call_node, caller_context, edge_context, callee_entry, callee_context)) {
+                // process existing ordinary/exceptional return flow
+                StateType stored_state = current_state;
+                AbstractNode stored_node = current_node;
+                current_state = null; // transferReturn shouldn't read current_state or current_node, setting to null to be safe...
+                current_node = null;
+                analysis.getNodeTransferFunctions().transferReturn(call_node, callee_entry, caller_context, callee_context, edge_context, implicit);
+                current_state = stored_state;
+                current_node = stored_node;
+            } // else: don't process existing return flow yet, wait until until call edge is discharged
         }
 
         /**
@@ -277,7 +277,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
          * Checks whether the given edge is charged.
          * Always returns true if charged edges are disabled.
          */
-        public boolean isCallEdgeCharged(BasicBlock caller, ContextType caller_context, ContextType edge_context,
+        public boolean isCallEdgeCharged(AbstractNode caller, ContextType caller_context, ContextType edge_context,
                                          BlockAndContext<ContextType> callee_entry) {
             return deps.isCallEdgeCharged(caller, caller_context, edge_context, callee_entry.getBlock(), callee_entry.getContext());
         }
@@ -288,6 +288,10 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
 
         public WorkList<ContextType> getWorklist() {
             return worklist;
+        }
+
+        public CallDependencies<ContextType> getCallDependencies() {
+            return deps;
         }
     }
 
@@ -313,11 +317,12 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
         c = new SolverInterface();
         analysis.setSolverInterface(c);
         // initialize worklist
-        worklist = new WorkList<>(analysis.getWorklistStrategy());
-        deps = new CallDependencies<>();
+        worklist = new WorkList<>(the_analysis_lattice_element.getCallGraph());
+        deps = new CallDependencies<>(c);
         current_node = global_entry_block.getFirstNode();
         // build initial state
         StateType initialState = analysis.getInitialStateBuilder().build(global_entry_block, c, document);
+        the_analysis_lattice_element.getCallGraph().registerFunctionEntry(new BlockAndContext<>(initialState.getBasicBlock(), initialState.getContext()));
         c.propagateToBasicBlock(initialState, initialState.getBasicBlock(), initialState.getContext());
     }
 
@@ -341,20 +346,18 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                     sync.waitIfSingleStep();
                 }
                 // pick a pending entry
-                WorkList<ContextType>.Entry p = worklist.removeNext();
-                if (p == null)
-                    continue; // entry may have been removed
+                BlockAndContext<ContextType> p = worklist.removeNext();
                 BasicBlock block = p.getBlock();
                 ContextType context = p.getContext();
                 if (sync != null)
                     sync.markActiveBlock(block);
-                deps.decrementFunctionActivityLevel(BlockAndContext.makeEntry(block, context));
-                StateType state = the_analysis_lattice_element.getState(block, p.getContext());
+                StateType state = the_analysis_lattice_element.getState(block, context);
                 if (state == null)
                     throw new AnalysisException();
                 // basic block transfer
                 current_state = state.clone();
                 analysis.getMonitoring().visitBlockTransferPre(block, current_state);
+                deps.decrementFunctionActivityLevel(BlockAndContext.makeEntry(block, context));
                 if (global_entry_block == block)
                     current_state.localize(null); // use *localized* initial state
                 if (Options.get().isIntermediateStatesEnabled())
@@ -401,7 +404,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                         }
                     }
                 } finally {
-                    // discharge incoming call edges if the function is now inactive
+                    // process return flow and discharge incoming call edges if the function is now inactive
                     deps.dischargeIfInactive(BlockAndContext.makeEntry(block, context));
                 }
             }

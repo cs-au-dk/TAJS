@@ -16,38 +16,37 @@
 
 package dk.brics.tajs.solver;
 
-import dk.brics.tajs.flowgraph.BasicBlock;
+import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisException;
 import org.apache.log4j.Logger;
 
 import javax.annotation.Nonnull;
-import java.util.HashSet;
-import java.util.PriorityQueue;
+import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
+
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Work list used by solver.
  */
-public class WorkList<ContextType extends IContext<?>> {
+public class WorkList<ContextType extends IContext<ContextType>> {
 
     private static Logger log = Logger.getLogger(WorkList.class);
 
-    // invariant: pending_set is a subset of pending_queue (not necessarily equal)
+    private TreeSet<Entry> pending_queue;
 
-    private static int next_serial;
+    private Set<Entry> pending_set; // only for test mode
 
-    private Set<Entry> pending_set;
-
-    private PriorityQueue<Entry> pending_queue;
-
-    private IWorkListStrategy<ContextType> worklist_strategy;
+    private CallGraph<?, ContextType, ?> call_graph;
 
     /**
      * Constructs a new empty work list.
      */
-    public WorkList(IWorkListStrategy<ContextType> w) {
-        worklist_strategy = w;
-        pending_set = new HashSet<>();
-        pending_queue = new PriorityQueue<>();
+    public WorkList(CallGraph<?, ContextType, ?> call_graph) {
+        this.call_graph = call_graph;
+        pending_queue = new TreeSet<>();
+        pending_set = newSet();
     }
 
     /**
@@ -55,14 +54,14 @@ public class WorkList<ContextType extends IContext<?>> {
      *
      * @return true if changed
      */
-    public boolean add(Entry e) {
-        if (pending_set.add(e)) {
-            pending_queue.add(e);
-            if (log.isDebugEnabled())
-                log.debug("Adding worklist entry for block " + e.b.getIndex());
-            return true;
-        }
-        return false;
+    public boolean add(BlockAndContext<ContextType> bc) {
+        Entry e = new Entry(bc);
+        boolean added = pending_queue.add(e);
+        if (added)
+            log.debug("Adding worklist entry for " + bc);
+        if (Options.get().isTestEnabled() && pending_set.add(e) != added)
+            throw new AnalysisException("Failed to add to worklist - entries perhaps not totally ordered?");
+        return added;
     }
 
     /**
@@ -74,79 +73,54 @@ public class WorkList<ContextType extends IContext<?>> {
 
     /**
      * Picks and removes the next entry.
-     * Returns null if the entry has been removed.
      */
-    public Entry removeNext() {
-        Entry p = pending_queue.remove();
-        if (!pending_set.remove(p)) {
-            if (log.isDebugEnabled())
-                log.debug("Skipping removed entry " + p);
-            return null;
-        }
-        return p;
+    public BlockAndContext<ContextType> removeNext() {
+        Entry e = Objects.requireNonNull(pending_queue.pollFirst());
+        if (Options.get().isTestEnabled() && !pending_set.remove(e))
+            throw new AnalysisException("Failed to remove from worklist - entries perhaps not totally ordered?");
+        return e.bc;
     }
 
     /**
      * Returns the number of entries in the work list.
      */
     public int size() {
-        return pending_set.size();
+        return pending_queue.size();
     }
-
-//    /**
-//     * Removes the given entry.
-//     */
-//    public void remove(Entry e) {
-//        if (pending_set.remove(e))
-//            if (log.isDebugEnabled())
-//                log.debug("Removing entry " + e);
-//    }
 
     /**
      * Returns a string description of this work list.
      */
     @Override
     public String toString() {
-        return pending_set.toString();
+        return pending_queue.toString();
     }
 
     /**
      * Work list entry.
      * Consists of a block and a context.
      */
-    public class Entry implements IWorkListStrategy.IEntry<ContextType>, Comparable<Entry> {
+    private class Entry implements Comparable<Entry> {
 
-        private BasicBlock b;
+        private BlockAndContext<ContextType> bc;
 
-        private ContextType c;
+        private int hash; // uniquely determined by bc
 
-        private int serial;
+        private BlockAndContext<ContextType> funentry; // uniquely determined by bc
 
-        private int hash;
+        private int funentry_order; // uniquely determined by bc
+
+        private int context_order; // uniquely determined by bc
 
         /**
          * Constructs a new entry.
          */
-        public Entry(BasicBlock b, ContextType c) {
-            this.b = b;
-            this.c = c;
-            serial = next_serial++;
-            hash = b.getIndex() + c.hashCode();
-        }
-
-        @Override
-        public BasicBlock getBlock() {
-            return b;
-        }
-
-        @Override
-        public ContextType getContext() {
-            return c;
-        }
-
-        @Override
-        public int getSerial() {
-            return serial;
+        public Entry(BlockAndContext<ContextType> bc) {
+            this.bc = bc;
+            hash = bc.hashCode();
+            funentry = BlockAndContext.makeEntry(bc.getBlock(), bc.getContext());
+            funentry_order = call_graph.getFunctionEntryOrder(funentry);
+            context_order = call_graph.getContextOrder(bc.getContext());
         }
 
         /**
@@ -158,7 +132,7 @@ public class WorkList<ContextType extends IContext<?>> {
                 return false;
             @SuppressWarnings("unchecked")
             WorkList<?>.Entry p = (WorkList<?>.Entry) obj;
-            return p.b == b && p.c.equals(c);
+            return p.bc.equals(bc);
         }
 
         /**
@@ -170,20 +144,56 @@ public class WorkList<ContextType extends IContext<?>> {
         }
 
         /**
-         * Compares this and the given entry.
-         * This method defines the work list priority using the work list strategy.
-         */
-        @Override
-        public int compareTo(@Nonnull Entry p) {
-            return worklist_strategy.compare(this, p);
-        }
-
-        /**
          * Returns a string description of this entry.
          */
         @Override
         public String toString() {
-            return Integer.toString(b.getIndex());
+            return "(" + bc + ")";
+//            return Integer.toString(bc.getBlock().getIndex());
+        }
+
+        /**
+         * Compares this and the given entry.
+         * This method defines the work list priority using the work list strategy.
+         * A negative return value means that this first has higher priority than the other,
+         * a positive return value means that the other has higher priority than this.
+         */
+        @Override
+        public int compareTo(@Nonnull Entry other) {
+            if (bc.equals(other.bc))
+                return 0;
+
+            final int THIS_FIRST = -1;
+            final int OTHER_FIRST = 1;
+
+//            // low priority for event dispatcher node
+//            if (bc.getBlock().getFirstNode() instanceof EventDispatcherNode && !(other.bc.getBlock().getFirstNode() instanceof EventDispatcherNode))
+//                return OTHER_FIRST;
+//            if (other.bc.getBlock().getFirstNode() instanceof EventDispatcherNode && !(bc.getBlock().getFirstNode() instanceof EventDispatcherNode))
+//                return THIS_FIRST;
+
+//            // low priority for exceptional return nodes
+//            if (bc.getBlock().getFirstNode() instanceof ExceptionalReturnNode && !(other.bc.getBlock().getFirstNode() instanceof ExceptionalReturnNode))
+//                return OTHER_FIRST;
+//            if (other.bc.getBlock().getFirstNode() instanceof ExceptionalReturnNode && !(bc.getBlock().getFirstNode() instanceof ExceptionalReturnNode))
+//                return THIS_FIRST;
+
+            if (funentry.equals(other.funentry)) {
+                // same function and same context at entry: use block order (reverse post order)
+                if (bc.getBlock().getOrder() < other.bc.getBlock().getOrder())
+                    return THIS_FIRST;
+                else if (other.bc.getBlock().getOrder() < bc.getBlock().getOrder())
+                    return OTHER_FIRST;
+                // same block, same function and context at entry, but different context: order by context number (not important, but need a tiebreaker)
+                return context_order - other.context_order;
+            } else {
+                // different function/context at entry: order by entry occurrence number (lower first)
+                if (funentry_order < other.funentry_order)
+                    return THIS_FIRST;
+                else if (other.funentry_order < funentry_order)
+                    return OTHER_FIRST;
+                throw new AnalysisException("Failed to compare " + this + " + and " + other);
+            }
         }
     }
 }

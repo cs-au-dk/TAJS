@@ -37,8 +37,9 @@ public interface ILatticeMonitoring extends ISolverMonitoring<State, Context> {
 
     /**
      * Invoked when a state join operation is performed.
+     * @param ms time used by the join operation
      */
-    void visitJoin();
+    void visitJoin(long ms);
 
     /**
      * Invoked when a new abstract object is allocated.

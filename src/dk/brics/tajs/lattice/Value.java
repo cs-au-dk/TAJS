@@ -91,7 +91,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
 
     private final static int EXTENDEDSCOPE = 0x20000000; // for extended scope registers (for-in and finally blocks)
 
-    private final static int NUM_ZERO = 0x40000000; // zero
+    private final static int NUM_ZERO = 0x40000000; // zero (positive or negative)
 
     private final static int NUM_UINT = NUM_UINT_POS | NUM_ZERO; // UInt32 numbers
 
@@ -318,10 +318,6 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
                 throw new AnalysisException("Unexpected polymorphic value");
         }
         canonicalizing = true;
-        if ((v.flags & NUM) == NUM_ZERO) {
-            v.flags = v.flags & ~NUM;
-            v.num = 0.0;
-        }
         if (v.object_labels != null)
             v.object_labels = Canonicalizer.get().canonicalizeSet(v.object_labels);
         if (v.getters != null)
@@ -1021,7 +1017,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
             if (num != null)
                 if (v.num != null) {
                     // both this and v are single numbers
-                    if (!num.equals(v.num)) {
+                    if (Double.compare(num, v.num) != 0) {
                         // both this and v are single numbers, and the numbers are different
                         joinSingleNumberAsFuzzy(num);
                         joinSingleNumberAsFuzzy(v.num);
@@ -1108,7 +1104,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
         //noinspection StringEquality,NumberEquality
         return flags == v.flags
                 && (var == v.var || (var != null && v.var != null && var.equals(v.var)))
-                && (num == v.num || (num != null && v.num != null && num.equals(v.num)))
+                && ((num == null && v.num == null) || (num != null && v.num != null && Double.compare(num, v.num) == 0))
                 && (str == v.str || (str != null && v.str != null && str.equals(v.str)))
                 && (object_labels == v.object_labels || (object_labels != null && v.object_labels != null && object_labels.equals(v.object_labels)))
                 && (getters == v.getters || (getters != null && v.getters != null && getters.equals(v.getters)))
@@ -1933,7 +1929,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
     public boolean isMaybeNum(double num) {
         checkNotPolymorphicOrUnknown();
         if (this.num != null) {
-            return this.num == num;
+            return Double.compare(this.num, num) == 0;
         } else if (Double.isInfinite(num)) {
             return (flags & NUM_INF) != 0;
         } else if (Double.isNaN(num)) {
@@ -2072,7 +2068,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
         checkNotPolymorphicOrUnknown();
         if (Double.isNaN(v))
             return joinNumNaN();
-        if (num != null && num == v)
+        if (num != null && Double.compare(num, v) == 0)
             return this;
         Value r = new Value(this);
         if (isNotNum())

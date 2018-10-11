@@ -74,6 +74,7 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
+import dk.brics.tajs.solver.CallDependencies;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
@@ -130,17 +131,16 @@ public class NodeTransfer implements NodeVisitor {
                                Context edge_context, boolean implicit) {
         if (call_node instanceof BeginForInNode) {
             for (EndForInNode endNode : ((BeginForInNode) call_node).getEndNodes()) {
-                BasicBlock end_block = endNode.getBlock();
-                if (c.getAnalysisLatticeElement().getState(end_block, callee_context) != null)// (EndForInNode uses same context as corresponding BeginForInNode)
-                    c.addToWorklist(end_block, callee_context);
+                State end_state = c.getAnalysisLatticeElement().getState(endNode.getBlock(), callee_context); // (EndForInNode uses same context as corresponding BeginForInNode)
+                if (end_state != null) {
+                    c.withStateAndNode(end_state, endNode, () -> { transferEndForIn(endNode); return null; });
+                }
             }
-        } else { // call_node is an ordinary call node
+        } else { // call_node is an ordinary call node or an implicit call
             Function callee = callee_entry.getFunction();
-            BasicBlock ordinary_exit = callee.getOrdinaryExit();
-            BasicBlock exceptional_exit = callee.getExceptionalExit();
-            State ordinary_exit_state = c.getAnalysisLatticeElement().getState(ordinary_exit, callee_context);// (ReturnNode uses same context as corresponding function entry node)
-            State exceptional_exit_state = c.getAnalysisLatticeElement().getState(exceptional_exit, callee_context);
             NodeAndContext<Context> caller = new NodeAndContext<>(call_node, caller_context);
+            BasicBlock ordinary_exit = callee.getOrdinaryExit();
+            State ordinary_exit_state = c.getAnalysisLatticeElement().getState(ordinary_exit, callee_context); // (ReturnNode uses same context as corresponding function entry node)
             if (ordinary_exit_state != null) {
                 if (ordinary_exit.getFirstNode() instanceof ReturnNode) {
                     ReturnNode returnNode = (ReturnNode) ordinary_exit.getFirstNode();
@@ -148,6 +148,8 @@ public class NodeTransfer implements NodeVisitor {
                 } else
                     throw new AnalysisException("ReturnNode expected");
             }
+            BasicBlock exceptional_exit = callee.getExceptionalExit();
+            State exceptional_exit_state = c.getAnalysisLatticeElement().getState(exceptional_exit, callee_context);
             if (exceptional_exit_state != null) {
                 transferExceptionalReturn(exceptional_exit, exceptional_exit_state.clone(), caller, edge_context, implicit);
             }
@@ -777,7 +779,10 @@ public class NodeTransfer implements NodeVisitor {
      */
     @Override
     public void visit(ReturnNode n) {
-        transferReturn(n.getReturnValueRegister(), n.getBlock(), c.getState(), null, null, false);
+        if (Options.get().isChargedCallsDisabled() || !CallDependencies.DELAY_RETURN_FLOW_UNTIL_DISCHARGED) {
+            transferReturn(n.getReturnValueRegister(), n.getBlock(), c.getState(), null, null, false);
+        }
+        // don't do anything - transferReturn is invoked when the call edges are discharged
     }
 
     /**
@@ -799,7 +804,10 @@ public class NodeTransfer implements NodeVisitor {
      */
     @Override
     public void visit(ExceptionalReturnNode n) {
-        transferExceptionalReturn(n.getBlock(), c.getState(), null, null, false);
+        if (Options.get().isChargedCallsDisabled() || !CallDependencies.DELAY_RETURN_FLOW_UNTIL_DISCHARGED || n.getBlock().getFunction().isMain()) {
+            transferExceptionalReturn(n.getBlock(), c.getState(), null, null, false);
+        }
+        // don't do anything - transferExceptionalReturn is invoked when the call edges are discharged (unless exiting from main)
     }
 
     /**
@@ -958,6 +966,16 @@ public class NodeTransfer implements NodeVisitor {
     @Override
     public void visit(EndForInNode n) {
         if (!Options.get().isForInSpecializationDisabled()) {
+            if (Options.get().isChargedCallsDisabled() || !CallDependencies.DELAY_RETURN_FLOW_UNTIL_DISCHARGED) {
+                transferEndForIn(n);
+            }
+            // don't do anything - transferEndForIn is invoked when the call edges are discharged
+            c.getState().setToBottom();
+        }
+    }
+
+    private void transferEndForIn(EndForInNode n) {
+        if (!Options.get().isForInSpecializationDisabled()) {
             if (!c.isScanning()) {
                 // 1. Find successor block, context and base-state
                 for (CallGraph.ReverseEdge<Context> re : c.getAnalysisLatticeElement().getCallGraph().getSources(BlockAndContext.makeEntry(c.getState().getBasicBlock(), c.getState().getContext()))) {
@@ -982,7 +1000,6 @@ public class NodeTransfer implements NodeVisitor {
                     UserFunctionCalls.attemptMaterializeVariableObj(nonSpecializedMergeState);
                     c.propagateToBasicBlock(nonSpecializedMergeState, c.getState().getBasicBlock().getSingleSuccessor(), beginContext);
                 }
-                c.getState().setToBottom();
             }
         }
     }

@@ -158,6 +158,9 @@ public class ContextArguments {// TODO: canonicalize? (#140)
     }
 
     public Value getParameterValue(String name) { // TODO: review
+        if (parameterNames == null) {
+            return null;
+        }
         int index = parameterNames.indexOf(name);
         if (index == -1) {
             return null;

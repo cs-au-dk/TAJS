@@ -25,6 +25,7 @@ test-resources/src/1k2013spring/1547.js:69:19: [maybe] Reading absent property x
 test-resources/src/1k2013spring/1547.js:70:19: [maybe] Reading absent property y
 test-resources/src/1k2013spring/1547.js:71:9: [maybe] Reading absent property length
 test-resources/src/1k2013spring/1547.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1547.js:61:11, test-resources/src/1k2013spring/1547.js:87:16, test-resources/src/1k2013spring/1547.js:87:25, test-resources/src/1k2013spring/1547.js:88:9, test-resources/src/1k2013spring/1547.js:94:8, test-resources/src/1k2013spring/1547.js:98:9, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1547.js:46:10: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1547.js:48:9: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1547.js:48:19: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1547.js:49:9: [maybe] Conversion to number yields NaN

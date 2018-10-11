@@ -274,8 +274,8 @@ public class State implements IState<State, Context, CallEdge> {
             // object exists but isn't yet writable, make it writable
             obj = new Obj(obj);
             writeToStore(objlabel, obj);
-            if (log.isDebugEnabled())
-                log.debug("making writable object from store: " + objlabel);
+//            if (log.isDebugEnabled())
+//                log.debug("making writable object from store: " + objlabel);
         }
         if (obj == null && basis_store != null) {
             // check the basis_store
@@ -283,8 +283,8 @@ public class State implements IState<State, Context, CallEdge> {
             if (obj != null && writable) {
                 obj = new Obj(obj);
                 writeToStore(objlabel, obj);
-                if (log.isDebugEnabled())
-                    log.debug("making writable object from basis store: " + objlabel);
+//                if (log.isDebugEnabled())
+//                    log.debug("making writable object from basis store: " + objlabel);
             }
         }
         if (obj == null) {
@@ -293,8 +293,8 @@ public class State implements IState<State, Context, CallEdge> {
             if (writable) {
                 obj = new Obj(obj);
                 writeToStore(objlabel, obj);
-                if (log.isDebugEnabled())
-                    log.debug("making writable object from store default: " + objlabel + " at " + block.getSourceLocation());
+//                if (log.isDebugEnabled())
+//                    log.debug("making writable object from store default: " + objlabel + " at " + block.getSourceLocation());
             }
         }
         return obj;

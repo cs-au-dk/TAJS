@@ -149,8 +149,10 @@ public class AnalysisLatticeElement implements
                 if (log.isDebugEnabled())
                     log.debug("after localization, before join: " + s);
             }
+            long time = System.currentTimeMillis();
             add = state_current.propagate(s, localize);
-            s.getSolverInterface().getMonitoring().visitJoin();
+            long elapsed = System.currentTimeMillis() - time;
+            s.getSolverInterface().getMonitoring().visitJoin(elapsed);
             if (Options.get().isNewFlowEnabled()) {
                 diff = state_current.diff(state_old);
             }

@@ -53,11 +53,6 @@ public interface IAnalysis<StateType extends IState<StateType, ContextType, Call
     IEdgeTransfer<StateType, ContextType> getEdgeTransferFunctions();
 
     /**
-     * Returns the work list strategy.
-     */
-    IWorkListStrategy<ContextType> getWorklistStrategy();
-
-    /**
      * Returns the monitoring object.
      */
     MonitoringType getMonitoring();

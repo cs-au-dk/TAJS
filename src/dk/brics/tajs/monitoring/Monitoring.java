@@ -260,6 +260,8 @@ public class Monitoring implements IAnalysisMonitoring {
 
     private final ReachabilityMonitor reachabilityMonitor;
 
+    private long joinTime;
+
     /**
      * Constructs a new monitoring object.
      * New instances should be constructed with {@link #make()} to ensure auxiliary monitors are invoked properly.
@@ -654,6 +656,8 @@ public class Monitoring implements IAnalysisMonitoring {
             b.append("\nBasic blocks: ").append(flowgraph.getNumberOfBlocks());
             b.append("\nRecovery graph sizes: ").append(recovery_graph_sizes);
 
+            b.append("\n\nTotal time for state joins:                                                   ").append(joinTime).append("ms");
+
             log.info(b);
         }
 
@@ -756,11 +760,12 @@ public class Monitoring implements IAnalysisMonitoring {
     }
 
     /**
-     * Counts join operations.
+     * Counts state join operations and their time.
      */
     @Override
-    public void visitJoin() {
+    public void visitJoin(long ms) {
         joins++;
+        joinTime += ms;
     }
 
     /**

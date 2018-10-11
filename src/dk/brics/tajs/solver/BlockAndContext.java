@@ -31,6 +31,8 @@ public final class BlockAndContext<ContextType extends IContext<?>> {
      * Constructs a new pair.
      */
     public BlockAndContext(BasicBlock b, ContextType c) {
+        if (b == null || c == null)
+            throw new NullPointerException();
         this.b = b;
         this.c = c;
     }

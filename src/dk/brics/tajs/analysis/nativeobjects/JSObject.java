@@ -465,7 +465,7 @@ public class JSObject {
             value = pv.readPropertyValue(singleton(source), propName); // trigger getters (also oin prototypes)
         }
         value = value.restrictToNotGetterSetter().removeAttributes();
-        if (value.isNone()) {
+        if (!value.isMaybePresent()) {
             return;
         }
         pv.writeProperty(targetObjects, propName, value, forceWeak);

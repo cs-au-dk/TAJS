@@ -25,13 +25,12 @@ import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.IAnalysis;
 import dk.brics.tajs.solver.IEdgeTransfer;
-import dk.brics.tajs.solver.IWorkListStrategy;
 import dk.brics.tajs.solver.SolverSynchronizer;
 
 /**
  * Encapsulation of the analysis using {@link State}, {@link Context},
  * {@link Solver}, {@link InitialStateBuilder}, {@link Transfer},
- * {@link WorkListStrategy}, {@link IContextSensitivityStrategy}, and {@link IAnalysisMonitoring}.
+ * {@link IContextSensitivityStrategy}, and {@link IAnalysisMonitoring}.
  */
 public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnalysisMonitoring, Analysis> {
 
@@ -40,8 +39,6 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
     private final InitialStateBuilder initial_state_builder;
 
     private final Transfer transfer;
-
-    private final WorkListStrategy worklist_strategy;
 
     private final IAnalysisMonitoring monitoring;
 
@@ -61,7 +58,6 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
         this.monitoring = monitoring;
         initial_state_builder = new InitialStateBuilder();
         transfer = new Transfer();
-        worklist_strategy = new WorkListStrategy();
         eval_cache = new EvalCache();
         solver = new Solver(this, sync);
         state_util = new PropVarOperations(unsoundness);
@@ -99,11 +95,6 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
     }
 
     @Override
-    public IWorkListStrategy<Context> getWorklistStrategy() {
-        return worklist_strategy;
-    }
-
-    @Override
     public IAnalysisMonitoring getMonitoring() {
         return monitoring;
     }
@@ -112,7 +103,6 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
     public void setSolverInterface(Solver.SolverInterface c) {
         transfer.setSolverInterface(c);
         state_util.setSolverInterface(c);
-        worklist_strategy.setCallGraph(c.getAnalysisLatticeElement().getCallGraph());
         monitoring.setSolverInterface(c);
     }
 

@@ -240,7 +240,6 @@ test-resources/src/google2/deltablue.js:258:3: [info] 'this' refers to multiple 
 test-resources/src/google2/deltablue.js:258:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/deltablue.js:259:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/deltablue.js:259:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/deltablue.js:266:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/deltablue.js:266:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/deltablue.js:274:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/deltablue.js:274:30: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
@@ -276,7 +275,6 @@ test-resources/src/google2/deltablue.js:416:13: [info] 'this' refers to multiple
 test-resources/src/google2/deltablue.js:416:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/deltablue.js:417:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/deltablue.js:419:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/deltablue.js:426:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/deltablue.js:426:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/deltablue.js:430:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/deltablue.js:435:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

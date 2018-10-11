@@ -47,7 +47,7 @@ Abstract state:
     @Object#node52 (test-resources/src/micro/test206.js:109:17): {constructor:[@FOO#fun4],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @Object#node59 (test-resources/src/micro/test206.js:112:11): {script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript",[[Prototype]]=[@Object.prototype[native]]}
     @Object#node63 (test-resources/src/micro/test206.js:115:12): {script:[@RegExp#node66],[[Prototype]]=[@Object.prototype[native]]}
-    @RegExp#node66 (test-resources/src/micro/test206.js:116:11): {global:false,ignoreCase:false,lastIndex:0.0,multiline:false,source:"javascript|ecmascript",[[Prototype]]=[@RegExp.prototype[native]],[[Value]]="javascript|ecmascript"}
+    @RegExp#node66 (test-resources/src/micro/test206.js:116:11): {global:false,ignoreCase:false,lastIndex:0.0,multiline:false,source:"javascript\|ecmascript",[[Prototype]]=[@RegExp.prototype[native]],[[Value]]="javascript\|ecmascript"}
     @Object#node69 (test-resources/src/micro/test206.js:118:14): {text script:[@BAR#fun5],[[Prototype]]=[@Object.prototype[native]]}
     @BAR#fun5 (test-resources/src/micro/test206.js:119:18): {length:1.0,name:"BAR",prototype:[@Object#node70],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @Object#node70 (test-resources/src/micro/test206.js:119:18): {constructor:[@BAR#fun5],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}

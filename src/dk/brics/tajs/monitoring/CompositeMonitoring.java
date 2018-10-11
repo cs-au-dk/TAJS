@@ -196,9 +196,9 @@ public class CompositeMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitJoin() {
-        m1.visitJoin();
-        m2.visitJoin();
+    public void visitJoin(long ms) {
+        m1.visitJoin(ms);
+        m2.visitJoin(ms);
     }
 
     @Override

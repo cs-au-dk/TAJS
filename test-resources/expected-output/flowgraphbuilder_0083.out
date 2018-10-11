@@ -14,7 +14,7 @@ fg2: <main> function()
     ->[block 4]
   block 4:
     node 5: read-variable['RegExp',v7,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0083.js:1:5)
-    node 6: constant["c|d",v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0083.js:1:12)
+    node 6: constant["c\|d",v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0083.js:1:12)
     ->[block 5]
   block 5:
     node 7: call[v6,v7,v8,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0083.js:1:5)

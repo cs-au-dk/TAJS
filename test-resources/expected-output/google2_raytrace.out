@@ -1,0 +1,680 @@
+test-resources/src/google2/raytrace.js:69:1: [definite] The conditional expression is always true
+test-resources/src/google2/raytrace.js:70:1: [definite] The conditional expression is always true
+test-resources/src/google2/raytrace.js:187:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:188:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:208:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:209:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:272:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:273:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:290:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:291:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:313:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:314:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:315:1: [definite] The conditional expression is always true
+test-resources/src/google2/raytrace.js:347:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:348:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:372:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:373:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:408:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:409:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:410:1: [definite] The conditional expression is always true
+test-resources/src/google2/raytrace.js:458:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:459:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:460:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:512:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:513:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:535:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:536:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:579:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:580:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:594:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:595:1: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:613:16: [definite] The conditional expression is always true
+test-resources/src/google2/raytrace.js:626:9: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:626:13: [definite] Property is null/undefined
+test-resources/src/google2/raytrace.js:640:9: [definite] The conditional expression is always false
+test-resources/src/google2/raytrace.js:640:13: [definite] Variable canvas is null/undefined
+test-resources/src/google2/raytrace.js:70:11: [definite] Reading absent property RayTracer
+test-resources/src/google2/raytrace.js:141:5: [definite] Dead assignment, property divideFactor is never read
+test-resources/src/google2/raytrace.js:195:5: [definite] Dead assignment, property intensity is never read
+test-resources/src/google2/raytrace.js:200:9: [definite] Dead assignment, property intensity is never read
+test-resources/src/google2/raytrace.js:204:28: [definite] Reading absent property x
+test-resources/src/google2/raytrace.js:204:52: [definite] Reading absent property y
+test-resources/src/google2/raytrace.js:204:76: [definite] Reading absent property z
+test-resources/src/google2/raytrace.js:224:5: [definite] Dead assignment, property copy is never read
+test-resources/src/google2/raytrace.js:259:5: [definite] Dead assignment, property multiplyVector is never read
+test-resources/src/google2/raytrace.js:296:5: [definite] Dead assignment, property camera is never read
+test-resources/src/google2/raytrace.js:299:5: [definite] Dead assignment, property background is never read
+test-resources/src/google2/raytrace.js:315:11: [definite] Reading absent property Material
+test-resources/src/google2/raytrace.js:324:5: [definite] Dead assignment, property refraction is never read
+test-resources/src/google2/raytrace.js:410:11: [definite] Reading absent property Shape
+test-resources/src/google2/raytrace.js:519:5: [definite] Dead assignment, property hitCount is never read
+test-resources/src/google2/raytrace.js:600:5: [definite] Dead assignment, property canvas is never read
+test-resources/src/google2/raytrace.js:141:20: [definite] Unreachable function
+test-resources/src/google2/raytrace.js:157:16: [definite] Unreachable function
+test-resources/src/google2/raytrace.js:224:11: [definite] Unreachable function
+test-resources/src/google2/raytrace.js:259:22: [definite] Unreachable function
+test-resources/src/google2/raytrace.js:331:15: [definite] The variable u is never used
+test-resources/src/google2/raytrace.js:331:15: [definite] The variable v is never used
+test-resources/src/google2/raytrace.js:354:22: [definite] The variable refraction is never used
+test-resources/src/google2/raytrace.js:362:19: [definite] The variable u is never used
+test-resources/src/google2/raytrace.js:362:19: [definite] The variable v is never used
+test-resources/src/google2/raytrace.js:622:13: [definite] The variable pxW is never used
+test-resources/src/google2/raytrace.js:622:18: [definite] The variable pxH is never used
+test-resources/src/google2/raytrace.js:707:13: [definite] The variable oldColor is never used
+test-resources/src/google2/raytrace.js:31:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:92:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:92:22: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:92:31: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:93:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:93:24: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:93:35: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:94:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:94:23: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:94:33: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:106:9: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:114:22: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:114:31: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:124:22: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:134:22: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:164:18: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:165:21: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:166:21: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:204:28: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:204:52: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:204:76: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:231:17: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:241:55: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:247:25: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:251:42: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:251:48: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:256:42: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:256:48: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:264:42: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:302:23: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:309:27: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:394:21: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:394:53: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:425:19: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:427:17: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:428:17: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:434:29: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:436:49: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:441:27: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:446:26: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:446:26: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:476:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:476:18: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:479:19: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:479:19: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:484:25: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:486:45: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:494:12: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:495:48: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:495:65: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:495:83: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:496:22: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:497:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:497:21: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:498:21: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:499:26: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:499:26: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:501:26: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:501:26: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:551:24: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:551:24: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:552:23: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:556:19: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:558:13: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:559:17: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:560:17: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:564:19: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:569:47: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:631:28: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:631:28: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:654:23: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:684:28: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:684:28: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:696:19: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:696:19: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:697:18: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:698:13: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:706:21: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:708:38: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:714:21: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:715:33: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:720:25: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:722:29: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:724:41: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:726:45: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:739:48: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:750:27: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:753:21: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:770:30: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:771:46: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:772:29: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:777:64: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:778:18: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:779:29: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:783:17: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:785:29: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:788:17: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:793:45: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:793:45: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:794:17: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:795:29: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:800:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:800:9: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:845:33: [maybe] TypeError, call to non-function
+test-resources/src/google2/raytrace.js:857:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:872:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/raytrace.js:92:22: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:92:31: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:93:24: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:93:35: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:94:23: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:94:33: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:102:22: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:103:24: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:104:23: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:106:9: [maybe] Reading absent property limit
+test-resources/src/google2/raytrace.js:114:22: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:114:31: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:115:24: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:115:35: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:116:23: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:116:33: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:124:22: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:124:31: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:125:24: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:125:35: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:126:23: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:126:33: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:134:22: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:135:24: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:136:23: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:152:21: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:152:42: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:152:66: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:153:23: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:153:46: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:153:72: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:154:22: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:154:44: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:154:69: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:164:18: [maybe] Reading absent property add
+test-resources/src/google2/raytrace.js:165:21: [maybe] Reading absent property multiplyScalar
+test-resources/src/google2/raytrace.js:166:21: [maybe] Reading absent property multiplyScalar
+test-resources/src/google2/raytrace.js:172:28: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:173:28: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:174:28: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:179:28: [maybe] Reading absent property red
+test-resources/src/google2/raytrace.js:180:28: [maybe] Reading absent property green
+test-resources/src/google2/raytrace.js:181:28: [maybe] Reading absent property blue
+test-resources/src/google2/raytrace.js:204:28: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:204:52: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:204:76: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:231:17: [maybe] Reading absent property magnitude
+test-resources/src/google2/raytrace.js:232:42: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:232:54: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:232:66: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:236:27: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:236:36: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:236:47: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:236:56: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:236:67: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:236:76: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:241:46: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:241:55: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:241:61: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:241:70: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:242:44: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:242:53: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:242:59: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:242:68: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:243:44: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:243:53: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:243:59: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:243:68: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:247:16: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:247:25: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:247:31: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:247:40: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:247:46: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:247:55: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:251:42: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:251:48: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:251:53: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:251:59: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:251:64: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:251:70: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:256:42: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:256:48: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:256:53: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:256:59: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:256:64: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:256:70: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:264:42: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:264:51: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:264:60: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:268:29: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:268:44: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:268:59: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:286:26: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:286:48: [maybe] Reading absent property direction
+test-resources/src/google2/raytrace.js:302:27: [maybe] Reading absent property Camera
+test-resources/src/google2/raytrace.js:309:31: [maybe] Reading absent property Background
+test-resources/src/google2/raytrace.js:343:37: [maybe] Reading absent property gloss
+test-resources/src/google2/raytrace.js:343:70: [maybe] Reading absent property transparency
+test-resources/src/google2/raytrace.js:343:108: [maybe] Reading absent property hasTexture
+test-resources/src/google2/raytrace.js:363:20: [maybe] Reading absent property color
+test-resources/src/google2/raytrace.js:367:46: [maybe] Reading absent property gloss
+test-resources/src/google2/raytrace.js:367:79: [maybe] Reading absent property transparency
+test-resources/src/google2/raytrace.js:367:117: [maybe] Reading absent property hasTexture
+test-resources/src/google2/raytrace.js:394:21: [maybe] Reading absent property wrapUp
+test-resources/src/google2/raytrace.js:394:37: [maybe] Reading absent property density
+test-resources/src/google2/raytrace.js:394:53: [maybe] Reading absent property wrapUp
+test-resources/src/google2/raytrace.js:394:69: [maybe] Reading absent property density
+test-resources/src/google2/raytrace.js:397:24: [maybe] Reading absent property colorEven
+test-resources/src/google2/raytrace.js:399:24: [maybe] Reading absent property colorOdd
+test-resources/src/google2/raytrace.js:403:46: [maybe] Reading absent property gloss
+test-resources/src/google2/raytrace.js:403:79: [maybe] Reading absent property transparency
+test-resources/src/google2/raytrace.js:403:117: [maybe] Reading absent property hasTexture
+test-resources/src/google2/raytrace.js:425:19: [maybe] Reading absent property subtract
+test-resources/src/google2/raytrace.js:425:60: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:425:74: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:427:17: [maybe] Reading absent property dot
+test-resources/src/google2/raytrace.js:427:25: [maybe] Reading absent property direction
+test-resources/src/google2/raytrace.js:428:17: [maybe] Reading absent property dot
+test-resources/src/google2/raytrace.js:428:33: [maybe] Reading absent property radius
+test-resources/src/google2/raytrace.js:428:47: [maybe] Reading absent property radius
+test-resources/src/google2/raytrace.js:434:29: [maybe] Reading absent property add
+test-resources/src/google2/raytrace.js:435:49: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:436:49: [maybe] Reading absent property multiplyScalar
+test-resources/src/google2/raytrace.js:437:53: [maybe] Reading absent property direction
+test-resources/src/google2/raytrace.js:441:27: [maybe] Reading absent property normalize
+test-resources/src/google2/raytrace.js:441:27: [maybe] Reading absent property subtract
+test-resources/src/google2/raytrace.js:443:45: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:446:26: [maybe] Reading absent property getColor
+test-resources/src/google2/raytrace.js:446:26: [maybe] Reading absent property material
+test-resources/src/google2/raytrace.js:454:38: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:454:68: [maybe] Reading absent property radius
+test-resources/src/google2/raytrace.js:476:18: [maybe] Reading absent property dot
+test-resources/src/google2/raytrace.js:476:18: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:476:36: [maybe] Reading absent property direction
+test-resources/src/google2/raytrace.js:479:19: [maybe] Reading absent property dot
+test-resources/src/google2/raytrace.js:479:19: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:479:37: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:479:53: [maybe] Reading absent property d
+test-resources/src/google2/raytrace.js:484:25: [maybe] Reading absent property add
+test-resources/src/google2/raytrace.js:485:45: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:486:45: [maybe] Reading absent property multiplyScalar
+test-resources/src/google2/raytrace.js:487:49: [maybe] Reading absent property direction
+test-resources/src/google2/raytrace.js:491:23: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:494:12: [maybe] Reading absent property hasTexture
+test-resources/src/google2/raytrace.js:494:12: [maybe] Reading absent property material
+test-resources/src/google2/raytrace.js:495:48: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:495:48: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:495:65: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:495:65: [maybe] Reading absent property z
+test-resources/src/google2/raytrace.js:495:83: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:495:83: [maybe] Reading absent property x
+test-resources/src/google2/raytrace.js:496:22: [maybe] Reading absent property cross
+test-resources/src/google2/raytrace.js:496:31: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:497:21: [maybe] Reading absent property dot
+test-resources/src/google2/raytrace.js:498:21: [maybe] Reading absent property dot
+test-resources/src/google2/raytrace.js:499:26: [maybe] Reading absent property getColor
+test-resources/src/google2/raytrace.js:499:26: [maybe] Reading absent property material
+test-resources/src/google2/raytrace.js:501:26: [maybe] Reading absent property getColor
+test-resources/src/google2/raytrace.js:501:26: [maybe] Reading absent property material
+test-resources/src/google2/raytrace.js:508:28: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:508:53: [maybe] Reading absent property d
+test-resources/src/google2/raytrace.js:531:35: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:551:24: [maybe] Reading absent property cross
+test-resources/src/google2/raytrace.js:551:24: [maybe] Reading absent property normalize
+test-resources/src/google2/raytrace.js:551:49: [maybe] Reading absent property up
+test-resources/src/google2/raytrace.js:552:23: [maybe] Reading absent property add
+test-resources/src/google2/raytrace.js:552:59: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:552:74: [maybe] Reading absent property lookAt
+test-resources/src/google2/raytrace.js:556:19: [maybe] Reading absent property subtract
+test-resources/src/google2/raytrace.js:557:13: [maybe] Reading absent property screen
+test-resources/src/google2/raytrace.js:558:13: [maybe] Reading absent property subtract
+test-resources/src/google2/raytrace.js:559:17: [maybe] Reading absent property multiplyScalar
+test-resources/src/google2/raytrace.js:559:64: [maybe] Reading absent property equator
+test-resources/src/google2/raytrace.js:560:17: [maybe] Reading absent property multiplyScalar
+test-resources/src/google2/raytrace.js:560:64: [maybe] Reading absent property up
+test-resources/src/google2/raytrace.js:563:17: [maybe] Reading absent property y
+test-resources/src/google2/raytrace.js:564:19: [maybe] Reading absent property subtract
+test-resources/src/google2/raytrace.js:566:13: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:569:47: [maybe] Reading absent property normalize
+test-resources/src/google2/raytrace.js:615:9: [maybe] Reading absent property canvasHeight
+test-resources/src/google2/raytrace.js:615:38: [maybe] Reading absent property pixelHeight
+test-resources/src/google2/raytrace.js:616:9: [maybe] Reading absent property canvasWidth
+test-resources/src/google2/raytrace.js:616:37: [maybe] Reading absent property pixelWidth
+test-resources/src/google2/raytrace.js:623:15: [maybe] Reading absent property pixelWidth
+test-resources/src/google2/raytrace.js:624:15: [maybe] Reading absent property pixelHeight
+test-resources/src/google2/raytrace.js:631:28: [maybe] Reading absent property brightness
+test-resources/src/google2/raytrace.js:646:28: [maybe] Reading absent property canvasHeight
+test-resources/src/google2/raytrace.js:647:27: [maybe] Reading absent property canvasWidth
+test-resources/src/google2/raytrace.js:654:23: [maybe] Reading absent property getRay
+test-resources/src/google2/raytrace.js:668:12: [maybe] Reading absent property isHit
+test-resources/src/google2/raytrace.js:672:16: [maybe] Reading absent property color
+test-resources/src/google2/raytrace.js:684:28: [maybe] Reading absent property intersect
+test-resources/src/google2/raytrace.js:685:20: [maybe] Reading absent property isHit
+test-resources/src/google2/raytrace.js:685:34: [maybe] Reading absent property distance
+test-resources/src/google2/raytrace.js:685:56: [maybe] Reading absent property distance
+test-resources/src/google2/raytrace.js:685:72: [maybe] Reading absent property distance
+test-resources/src/google2/raytrace.js:696:19: [maybe] Reading absent property dot
+test-resources/src/google2/raytrace.js:697:18: [maybe] Reading absent property add
+test-resources/src/google2/raytrace.js:698:13: [maybe] Reading absent property multiplyScalar
+test-resources/src/google2/raytrace.js:706:21: [maybe] Reading absent property multiplyScalar
+test-resources/src/google2/raytrace.js:706:67: [maybe] Reading absent property color
+test-resources/src/google2/raytrace.js:706:79: [maybe] Reading absent property ambience
+test-resources/src/google2/raytrace.js:708:38: [maybe] Reading absent property gloss
+test-resources/src/google2/raytrace.js:708:38: [maybe] Reading absent property material
+test-resources/src/google2/raytrace.js:708:38: [maybe] Reading absent property shape
+test-resources/src/google2/raytrace.js:714:21: [maybe] Reading absent property normalize
+test-resources/src/google2/raytrace.js:714:21: [maybe] Reading absent property subtract
+test-resources/src/google2/raytrace.js:715:33: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:716:33: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:719:16: [maybe] Reading absent property renderDiffuse
+test-resources/src/google2/raytrace.js:720:25: [maybe] Reading absent property dot
+test-resources/src/google2/raytrace.js:720:31: [maybe] Reading absent property normal
+test-resources/src/google2/raytrace.js:722:29: [maybe] Reading absent property add
+test-resources/src/google2/raytrace.js:724:41: [maybe] Reading absent property multiply
+test-resources/src/google2/raytrace.js:725:45: [maybe] Reading absent property color
+test-resources/src/google2/raytrace.js:726:45: [maybe] Reading absent property multiplyScalar
+test-resources/src/google2/raytrace.js:727:49: [maybe] Reading absent property color
+test-resources/src/google2/raytrace.js:737:25: [maybe] Reading absent property rayDepth
+test-resources/src/google2/raytrace.js:739:14: [maybe] Reading absent property renderReflections
+test-resources/src/google2/raytrace.js:739:48: [maybe] Reading absent property material
+test-resources/src/google2/raytrace.js:739:48: [maybe] Reading absent property reflection
+test-resources/src/google2/raytrace.js:739:48: [maybe] Reading absent property shape
+test-resources/src/google2/raytrace.js:741:57: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:741:72: [maybe] Reading absent property normal
+test-resources/src/google2/raytrace.js:741:85: [maybe] Reading absent property direction
+test-resources/src/google2/raytrace.js:742:70: [maybe] Reading absent property shape
+test-resources/src/google2/raytrace.js:744:19: [maybe] Reading absent property isHit
+test-resources/src/google2/raytrace.js:744:33: [maybe] Reading absent property distance
+test-resources/src/google2/raytrace.js:747:32: [maybe] Reading absent property color
+test-resources/src/google2/raytrace.js:750:27: [maybe] Reading absent property blend
+test-resources/src/google2/raytrace.js:752:21: [maybe] Reading absent property color
+test-resources/src/google2/raytrace.js:753:21: [maybe] Reading absent property material
+test-resources/src/google2/raytrace.js:753:21: [maybe] Reading absent property reflection
+test-resources/src/google2/raytrace.js:753:21: [maybe] Reading absent property shape
+test-resources/src/google2/raytrace.js:765:16: [maybe] Reading absent property renderShadows
+test-resources/src/google2/raytrace.js:766:56: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:768:70: [maybe] Reading absent property shape
+test-resources/src/google2/raytrace.js:769:20: [maybe] Reading absent property isHit
+test-resources/src/google2/raytrace.js:769:40: [maybe] Reading absent property shape
+test-resources/src/google2/raytrace.js:769:60: [maybe] Reading absent property shape
+test-resources/src/google2/raytrace.js:770:30: [maybe] Reading absent property multiplyScalar
+test-resources/src/google2/raytrace.js:771:46: [maybe] Reading absent property material
+test-resources/src/google2/raytrace.js:771:46: [maybe] Reading absent property shape
+test-resources/src/google2/raytrace.js:771:46: [maybe] Reading absent property transparency
+test-resources/src/google2/raytrace.js:772:29: [maybe] Reading absent property addScalar
+test-resources/src/google2/raytrace.js:777:10: [maybe] Reading absent property renderHighlights
+test-resources/src/google2/raytrace.js:777:44: [maybe] Reading absent property isHit
+test-resources/src/google2/raytrace.js:777:64: [maybe] Reading absent property gloss
+test-resources/src/google2/raytrace.js:777:64: [maybe] Reading absent property material
+test-resources/src/google2/raytrace.js:777:64: [maybe] Reading absent property shape
+test-resources/src/google2/raytrace.js:778:18: [maybe] Reading absent property normalize
+test-resources/src/google2/raytrace.js:778:18: [maybe] Reading absent property subtract
+test-resources/src/google2/raytrace.js:779:29: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:779:29: [maybe] Reading absent property shape
+test-resources/src/google2/raytrace.js:780:29: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:783:17: [maybe] Reading absent property normalize
+test-resources/src/google2/raytrace.js:783:17: [maybe] Reading absent property subtract
+test-resources/src/google2/raytrace.js:784:29: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:785:29: [maybe] Reading absent property position
+test-resources/src/google2/raytrace.js:785:29: [maybe] Reading absent property shape
+test-resources/src/google2/raytrace.js:788:17: [maybe] Reading absent property normalize
+test-resources/src/google2/raytrace.js:788:17: [maybe] Reading absent property subtract
+test-resources/src/google2/raytrace.js:793:45: [maybe] Reading absent property dot
+test-resources/src/google2/raytrace.js:793:45: [maybe] Reading absent property normal
+test-resources/src/google2/raytrace.js:794:17: [maybe] Reading absent property add
+test-resources/src/google2/raytrace.js:795:29: [maybe] Reading absent property multiplyScalar
+test-resources/src/google2/raytrace.js:795:75: [maybe] Reading absent property color
+test-resources/src/google2/raytrace.js:800:9: [maybe] Reading absent property limit
+test-resources/src/google2/raytrace.js:845:33: [maybe] Reading absent property normalize
+test-resources/src/google2/raytrace.js:857:5: [maybe] Reading absent property shapes
+test-resources/src/google2/raytrace.js:872:5: [maybe] Reading absent property lights
+test-resources/src/google2/raytrace.js: [maybe] Uncaught exception, constructed at [test-resources/src/google2/raytrace.js:31:7, test-resources/src/google2/raytrace.js:92:9, test-resources/src/google2/raytrace.js:92:22, test-resources/src/google2/raytrace.js:92:31, test-resources/src/google2/raytrace.js:93:9, test-resources/src/google2/raytrace.js:93:24, test-resources/src/google2/raytrace.js:93:35, test-resources/src/google2/raytrace.js:94:9, test-resources/src/google2/raytrace.js:94:23, test-resources/src/google2/raytrace.js:94:33, test-resources/src/google2/raytrace.js:106:9, test-resources/src/google2/raytrace.js:114:22, test-resources/src/google2/raytrace.js:114:31, test-resources/src/google2/raytrace.js:124:22, test-resources/src/google2/raytrace.js:134:22, test-resources/src/google2/raytrace.js:164:18, test-resources/src/google2/raytrace.js:165:21, test-resources/src/google2/raytrace.js:166:21, test-resources/src/google2/raytrace.js:204:28, test-resources/src/google2/raytrace.js:204:52, test-resources/src/google2/raytrace.js:204:76, test-resources/src/google2/raytrace.js:231:17, test-resources/src/google2/raytrace.js:241:55, test-resources/src/google2/raytrace.js:247:25, test-resources/src/google2/raytrace.js:251:42, test-resources/src/google2/raytrace.js:251:48, test-resources/src/google2/raytrace.js:256:42, test-resources/src/google2/raytrace.js:256:48, test-resources/src/google2/raytrace.js:264:42, test-resources/src/google2/raytrace.js:302:23, test-resources/src/google2/raytrace.js:309:27, test-resources/src/google2/raytrace.js:394:21, test-resources/src/google2/raytrace.js:394:53, test-resources/src/google2/raytrace.js:425:19, test-resources/src/google2/raytrace.js:427:17, test-resources/src/google2/raytrace.js:428:17, test-resources/src/google2/raytrace.js:434:29, test-resources/src/google2/raytrace.js:436:49, test-resources/src/google2/raytrace.js:441:27, test-resources/src/google2/raytrace.js:446:26, test-resources/src/google2/raytrace.js:476:18, test-resources/src/google2/raytrace.js:479:19, test-resources/src/google2/raytrace.js:484:25, test-resources/src/google2/raytrace.js:486:45, test-resources/src/google2/raytrace.js:494:12, test-resources/src/google2/raytrace.js:495:48, test-resources/src/google2/raytrace.js:495:65, test-resources/src/google2/raytrace.js:495:83, test-resources/src/google2/raytrace.js:496:22, test-resources/src/google2/raytrace.js:497:21, test-resources/src/google2/raytrace.js:498:21, test-resources/src/google2/raytrace.js:499:26, test-resources/src/google2/raytrace.js:501:26, test-resources/src/google2/raytrace.js:551:24, test-resources/src/google2/raytrace.js:552:23, test-resources/src/google2/raytrace.js:556:19, test-resources/src/google2/raytrace.js:558:13, test-resources/src/google2/raytrace.js:559:17, test-resources/src/google2/raytrace.js:560:17, test-resources/src/google2/raytrace.js:564:19, test-resources/src/google2/raytrace.js:569:47, test-resources/src/google2/raytrace.js:631:28, test-resources/src/google2/raytrace.js:654:23, test-resources/src/google2/raytrace.js:662:17, test-resources/src/google2/raytrace.js:684:28, test-resources/src/google2/raytrace.js:696:19, test-resources/src/google2/raytrace.js:697:18, test-resources/src/google2/raytrace.js:698:13, test-resources/src/google2/raytrace.js:706:21, test-resources/src/google2/raytrace.js:708:38, test-resources/src/google2/raytrace.js:714:21, test-resources/src/google2/raytrace.js:715:33, test-resources/src/google2/raytrace.js:720:25, test-resources/src/google2/raytrace.js:722:29, test-resources/src/google2/raytrace.js:724:41, test-resources/src/google2/raytrace.js:726:45, test-resources/src/google2/raytrace.js:739:48, test-resources/src/google2/raytrace.js:750:27, test-resources/src/google2/raytrace.js:753:21, test-resources/src/google2/raytrace.js:770:30, test-resources/src/google2/raytrace.js:771:46, test-resources/src/google2/raytrace.js:772:29, test-resources/src/google2/raytrace.js:777:64, test-resources/src/google2/raytrace.js:778:18, test-resources/src/google2/raytrace.js:779:29, test-resources/src/google2/raytrace.js:783:17, test-resources/src/google2/raytrace.js:785:29, test-resources/src/google2/raytrace.js:788:17, test-resources/src/google2/raytrace.js:793:45, test-resources/src/google2/raytrace.js:794:17, test-resources/src/google2/raytrace.js:795:29, test-resources/src/google2/raytrace.js:800:9, test-resources/src/google2/raytrace.js:845:33, test-resources/src/google2/raytrace.js:857:5, test-resources/src/google2/raytrace.js:872:5]
+test-resources/src/google2/raytrace.js:39:29: [maybe] Reading absent property (computed name)
+test-resources/src/google2/raytrace.js:84:20: [maybe] The variable r has values with different types
+test-resources/src/google2/raytrace.js:85:22: [maybe] The variable g has values with different types
+test-resources/src/google2/raytrace.js:92:22: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:93:24: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:94:23: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:102:22: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:103:24: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:104:23: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:114:22: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:115:24: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:116:23: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:124:22: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:124:22: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:124:22: [maybe] The variable c1 has values with different types
+test-resources/src/google2/raytrace.js:125:24: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:125:24: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:125:24: [maybe] The variable c1 has values with different types
+test-resources/src/google2/raytrace.js:126:23: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:126:23: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:126:23: [maybe] The variable c1 has values with different types
+test-resources/src/google2/raytrace.js:134:22: [maybe] Conversion from string to number yields NaN
+test-resources/src/google2/raytrace.js:134:22: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:134:22: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:134:22: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:134:22: [maybe] The variable c1 has values with different types
+test-resources/src/google2/raytrace.js:134:31: [maybe] The variable f has values with different types
+test-resources/src/google2/raytrace.js:135:24: [maybe] Conversion from string to number yields NaN
+test-resources/src/google2/raytrace.js:135:24: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:135:24: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:135:24: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:135:24: [maybe] The variable c1 has values with different types
+test-resources/src/google2/raytrace.js:135:35: [maybe] The variable f has values with different types
+test-resources/src/google2/raytrace.js:136:23: [maybe] Conversion from string to number yields NaN
+test-resources/src/google2/raytrace.js:136:23: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:136:23: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:136:23: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:136:23: [maybe] The variable c1 has values with different types
+test-resources/src/google2/raytrace.js:136:33: [maybe] The variable f has values with different types
+test-resources/src/google2/raytrace.js:165:71: [maybe] Conversion from string to number yields NaN
+test-resources/src/google2/raytrace.js:165:71: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:165:71: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:165:75: [maybe] The variable w has values with different types
+test-resources/src/google2/raytrace.js:166:67: [maybe] The variable c2 has values with different types
+test-resources/src/google2/raytrace.js:166:71: [maybe] The variable w has values with different types
+test-resources/src/google2/raytrace.js:172:28: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:173:28: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:174:28: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:179:28: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:180:28: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:181:28: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:204:16: [maybe] Converting undefined to string
+test-resources/src/google2/raytrace.js:204:28: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:204:52: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:204:76: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:232:42: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:232:54: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:232:66: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:236:27: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:236:47: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:236:67: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:241:45: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:241:55: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:241:55: [maybe] The variable w has values with different types
+test-resources/src/google2/raytrace.js:241:61: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:241:70: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:241:70: [maybe] The variable w has values with different types
+test-resources/src/google2/raytrace.js:242:44: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:242:53: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:242:53: [maybe] The variable w has values with different types
+test-resources/src/google2/raytrace.js:242:59: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:242:68: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:242:68: [maybe] The variable w has values with different types
+test-resources/src/google2/raytrace.js:243:43: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:243:53: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:243:53: [maybe] The variable w has values with different types
+test-resources/src/google2/raytrace.js:243:59: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:243:68: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:243:68: [maybe] The variable w has values with different types
+test-resources/src/google2/raytrace.js:247:16: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:247:31: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:247:46: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:251:42: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:251:53: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:251:64: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:255:28: [maybe] Converting null to string
+test-resources/src/google2/raytrace.js:255:28: [maybe] Converting undefined to string
+test-resources/src/google2/raytrace.js:256:42: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:256:53: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:256:64: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:264:42: [maybe] Conversion from string to number yields NaN
+test-resources/src/google2/raytrace.js:264:42: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:264:42: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:264:42: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:264:42: [maybe] The variable v has values with different types
+test-resources/src/google2/raytrace.js:264:48: [maybe] The variable w has values with different types
+test-resources/src/google2/raytrace.js:264:51: [maybe] Conversion from string to number yields NaN
+test-resources/src/google2/raytrace.js:264:51: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:264:51: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:264:51: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:264:51: [maybe] The variable v has values with different types
+test-resources/src/google2/raytrace.js:264:57: [maybe] The variable w has values with different types
+test-resources/src/google2/raytrace.js:264:60: [maybe] Conversion from string to number yields NaN
+test-resources/src/google2/raytrace.js:264:60: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:264:60: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:264:60: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:264:60: [maybe] The variable v has values with different types
+test-resources/src/google2/raytrace.js:264:66: [maybe] The variable w has values with different types
+test-resources/src/google2/raytrace.js:268:16: [maybe] Converting undefined to string
+test-resources/src/google2/raytrace.js:286:16: [maybe] Converting null to string
+test-resources/src/google2/raytrace.js:286:16: [maybe] Converting undefined to string
+test-resources/src/google2/raytrace.js:343:16: [maybe] Converting boolean to string
+test-resources/src/google2/raytrace.js:343:16: [maybe] Converting undefined to string
+test-resources/src/google2/raytrace.js:367:20: [maybe] Converting boolean to string
+test-resources/src/google2/raytrace.js:367:20: [maybe] Converting undefined to string
+test-resources/src/google2/raytrace.js:394:33: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:394:65: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:403:20: [maybe] Converting boolean to string
+test-resources/src/google2/raytrace.js:403:20: [maybe] Converting undefined to string
+test-resources/src/google2/raytrace.js:428:33: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:454:16: [maybe] Converting null to string
+test-resources/src/google2/raytrace.js:454:16: [maybe] Converting undefined to string
+test-resources/src/google2/raytrace.js:479:19: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:495:82: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:508:16: [maybe] Converting null to string
+test-resources/src/google2/raytrace.js:508:16: [maybe] Converting undefined to string
+test-resources/src/google2/raytrace.js:531:16: [maybe] Converting null to string
+test-resources/src/google2/raytrace.js:531:16: [maybe] Converting undefined to string
+test-resources/src/google2/raytrace.js:551:24: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:563:17: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:615:9: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:616:9: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:631:28: [maybe] Converting primitive number to object
+test-resources/src/google2/raytrace.js:631:28: [maybe] The variable color has values with different types
+test-resources/src/google2/raytrace.js:651:26: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:652:22: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:658:34: [maybe] The variable color has values with different types
+test-resources/src/google2/raytrace.js:681:25: [maybe] Reading absent property (computed name)
+test-resources/src/google2/raytrace.js:708:38: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:711:25: [maybe] Reading absent property (computed name)
+test-resources/src/google2/raytrace.js:771:37: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:877:21: [maybe] Converting object to string
+test-resources/src/google2/raytrace.js:877:21: [maybe] Converting primitive string to object
+test-resources/src/google2/raytrace.js:152:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:152:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:152:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:152:66: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:153:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:153:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:153:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:153:72: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:154:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:154:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:154:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:154:69: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:172:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:173:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:174:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:179:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:180:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:181:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:204:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:204:52: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:204:76: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:231:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:232:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:232:54: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:232:66: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:236:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:236:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:236:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:236:56: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:236:67: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:236:76: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:241:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:241:61: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:242:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:242:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:243:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:243:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:247:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:247:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:247:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:268:29: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:268:44: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:268:59: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:286:26: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:286:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:307:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:307:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:308:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:308:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:309:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:309:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:343:37: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:343:70: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:343:108: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:363:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:367:46: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:367:79: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:367:117: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:394:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:394:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:394:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:394:69: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:397:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:399:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:403:46: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:403:79: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:403:117: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:423:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:425:74: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:428:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:428:47: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:443:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:446:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:454:38: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:454:68: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:476:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:479:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:479:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:482:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:491:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:494:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:495:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:495:65: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:495:83: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:496:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:499:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:501:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:508:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:508:53: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:531:35: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/raytrace.js:551:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:552:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:552:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/raytrace.js:552:74: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+Soundness testing succeeded for 3621 checks (with 0 expected failures)

@@ -101,8 +101,8 @@ public class TogglableMonitor implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitJoin() {
-        active.visitJoin();
+    public void visitJoin(long ms) {
+        active.visitJoin(ms);
     }
 
     @Override

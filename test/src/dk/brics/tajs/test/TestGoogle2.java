@@ -4,6 +4,7 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 @SuppressWarnings("static-method")
@@ -32,7 +33,8 @@ public class TestGoogle2 {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class) // TODO investigate (GitHub #417)
+    @Ignore
+    @Test
     public void google2_raytrace() throws Exception {
         // (contains parts of the Prototype framework)
         Misc.run("test-resources/src/google2/raytrace.js");

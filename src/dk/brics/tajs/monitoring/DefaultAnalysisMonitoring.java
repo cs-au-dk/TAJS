@@ -116,7 +116,7 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
     }
 
     @Override
-    public void visitJoin() {
+    public void visitJoin(long ms) {
     }
 
     @Override

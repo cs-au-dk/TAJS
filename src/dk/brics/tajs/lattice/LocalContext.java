@@ -86,7 +86,7 @@ public class LocalContext implements DeepImmutable {
         private final BeginLoopNode node;
 
         public LoopUnrollingQualifier(BeginLoopNode node) {
-            this.node = node;
+            this.node = (BeginLoopNode)node.getThisOrDuplicateOf();
         }
 
         public static LoopUnrollingQualifier make(BeginLoopNode node) {

@@ -125,10 +125,10 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
         public void visitBlockTransferPre(BasicBlock b, State s) {
             if (log.isDebugEnabled() && print) {
                 log.debug("Selecting worklist entry for block " + b.getIndex() + " at " + b.getSourceLocation());
+                log.debug("Context: " + s.getContext());
                 log.debug("Worklist: " + c.getWorklist());
                 log.debug("Visiting " + b);
 //    		    	log.debug("Number of abstract states at this block: " + the_analysis_lattice_element.getSize(block));
-                log.debug("Context: " + s.getContext());
             }
         }
 
@@ -148,7 +148,7 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
                     nodeTransfers, visitedNonHostNodes.size(), c.getFlowGraph().getNumberOfUserCodeNodes(),
                     c.getAnalysisLatticeElement().getNumberOfStates(),
                     ((double)stateSize) / c.getAnalysisLatticeElement().getNumberOfStates(),
-                    c.getAnalysisLatticeElement().getCallGraph().size(),
+                    c.getAnalysisLatticeElement().getCallGraph().getSizeIgnoringContexts(),
                     c.getWorklist().size(),
                     (System.currentTimeMillis() - startTime) / 1000.0);
             System.out.flush();

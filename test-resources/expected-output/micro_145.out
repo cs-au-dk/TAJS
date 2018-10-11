@@ -3,5 +3,5 @@ test-resources/src/micro/test145.js:8:2: [definite] Dead assignment, property a 
 test-resources/src/micro/test145.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test145.js:2:12: [maybe] The variable v has values with different types
 test-resources/src/micro/test145.js:14:1: [info] Abstract value: [*Object#node21]
-test-resources/src/micro/test145.js:15:1: [info] Abstract object: {a:true|87.0,[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/test145.js:15:1: [info] Abstract object: {a:true,[[Prototype]]=[@Object.prototype[native]]}
 Soundness testing succeeded for 30 checks (with 0 expected failures)

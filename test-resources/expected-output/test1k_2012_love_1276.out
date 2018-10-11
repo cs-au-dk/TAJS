@@ -24,6 +24,7 @@ test-resources/src/1k2012love/1276.js:79:12: [maybe] ReferenceError, reading abs
 test-resources/src/1k2012love/1276.js:81:11: [maybe] ReferenceError, reading absent variable b
 test-resources/src/1k2012love/1276.js:82:6: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1276.js:88:5: [maybe] RangeError, assigning invalid value to array 'length' property
+test-resources/src/1k2012love/1276.js:89:5: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2012love/1276.js:93:8: [maybe] ReferenceError, reading absent variable G
 test-resources/src/1k2012love/1276.js:93:14: [maybe] ReferenceError, reading absent variable G
 test-resources/src/1k2012love/1276.js:93:19: [maybe] ReferenceError, reading absent variable n
@@ -108,6 +109,8 @@ test-resources/src/1k2012love/1276.js:85:6: [maybe] The variable j has values wi
 test-resources/src/1k2012love/1276.js:85:11: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1276.js:88:5: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1276.js:88:5: [maybe] Converting object to number
+test-resources/src/1k2012love/1276.js:89:5: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1276.js:89:5: [maybe] Converting object to number
 test-resources/src/1k2012love/1276.js:93:32: [maybe] The variable j has values with different types
 test-resources/src/1k2012love/1276.js:93:36: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1276.js:93:44: [maybe] Reading absent property (computed name)

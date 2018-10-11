@@ -336,10 +336,10 @@ public class UserFunctionCalls {
             CallGraph<State, Context, CallEdge> cg = c.getAnalysisLatticeElement().getCallGraph();
             for (Iterator<CallGraph.ReverseEdge<Context>> i = cg.getSources(BlockAndContext.makeEntry(state.getBasicBlock(), state.getContext())).iterator(); i.hasNext(); ) {
                 CallGraph.ReverseEdge<Context> re = i.next();
-                if (c.isCallEdgeCharged(re.getCallNode().getBlock(), re.getCallerContext(), re.getEdgeContext(), BlockAndContext.makeEntry(state.getBasicBlock(), state.getContext())))
+                if (c.isCallEdgeCharged(re.getCallNode(), re.getCallerContext(), re.getEdgeContext(), BlockAndContext.makeEntry(state.getBasicBlock(), state.getContext())))
                     returnToCaller(re.getCallNode(), re.getCallerContext(), re.getEdgeContext(), re.isImplicit(), returnval, exceptional, f, i.hasNext() ? state.clone() : state, c);
                 else if (log.isDebugEnabled())
-                    log.debug("skipping call edge from " + re.getCallNode() + ", call context " + re.getCallerContext() + ", edge context " + re.getEdgeContext());
+                    log.debug("skipping call edge from node " + re.getCallNode().getIndex() + ", call context " + re.getCallerContext() + ", edge context " + re.getEdgeContext());
 
             }
         }
@@ -476,8 +476,8 @@ public class UserFunctionCalls {
             Obj obj = return_state.getObject(objlabel, true); // always preparing for object updates, even if no changes are made
             replacePolymorphicValues(obj, calledge_state, caller_entry_state, return_state);
             Obj calledge_obj = summarized_calledge.getObject(objlabel, false);
-            if (log.isDebugEnabled())
-                log.debug("strengthenNonModifiedParts on " + objlabel);
+//            if (log.isDebugEnabled())
+//                log.debug("strengthenNonModifiedParts on " + objlabel);
             obj.replaceNonModifiedParts(calledge_obj);
         }
         // restore objects that were not used by the callee (i.e. either 'unknown' or never retrieved from basis_store to store)

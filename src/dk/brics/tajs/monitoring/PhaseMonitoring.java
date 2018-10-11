@@ -158,8 +158,8 @@ public class PhaseMonitoring<PreScanMonitorType extends IAnalysisMonitoring, Sca
     }
 
     @Override
-    public void visitJoin() {
-        activeMonitor.visitJoin();
+    public void visitJoin(long ms) {
+        activeMonitor.visitJoin(ms);
     }
 
     @Override
