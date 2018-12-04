@@ -5,11 +5,11 @@ Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
   Summarized: maybe=[@replace#fun4, @arguments#node35, @arguments#node27, @arguments#node21, @activation#node35, @activation#node27, @activation#node21, @Object#node7, @Object#node50, @Object#node5, @Object#node43, @Object#node23, @Object#node11, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1], definitely=[@replace#fun4, @arguments#node35, @arguments#node27, @arguments#node21, @activation#node35, @activation#node27, @activation#node21, @Object#node7, @Object#node50, @Object#node5, @Object#node43, @Object#node23, @Object#node11, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {C:[@<anonymous>#fun1],Object:[@Object[native]],String:[@String[native]],x:[@Object#node11],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
-    @Object.prototype[native] (<initial state>): {C:^(@Object.prototype[native].C[absent]),configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),get:^(@Object.prototype[native].get[absent]),inc:^(@Object.prototype[native].inc[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),value:^(@Object.prototype[native].value[absent]),writable:^(@Object.prototype[native].writable[absent]),x:^(@Object.prototype[native].x[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
-    @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @String.prototype[native] (<initial state>): {replace:[@replace#fun4],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
-    @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {C:[@<anonymous>#fun1],Object:[@Object[native]],String:[@String[native]],x:[@Object#node11],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @Object.prototype[native] (<initial state>): {C:^(@Object.prototype[native].C[absent]),configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),get:^(@Object.prototype[native].get[absent]),inc:^(@Object.prototype[native].inc[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),value:^(@Object.prototype[native].value[absent]),writable:^(@Object.prototype[native].writable[absent]),x:^(@Object.prototype[native].x[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @String.prototype[native] (<initial state>): {replace:[@replace#fun4],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
+    @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @Object#node5 (host-environment-sources-loader): {constructor:[@<anonymous>#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @<anonymous>#fun1 (test-resources/src/micro/test141.js:1:9): {length:1.0,name:"",prototype:[@Object#node7],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @Object#node7 (test-resources/src/micro/test141.js:1:9): {constructor:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
@@ -25,4 +25,5 @@ Abstract state:
     @replace#fun4 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node50],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node35],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+  Functions in stack: []
 Soundness testing succeeded for 22 checks (with 0 expected failures)

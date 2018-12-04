@@ -1,4 +1,4 @@
-var ALL_IDENT = Math.random() ? "foo" : "bar";
+var ALL_IDENT = TAJS_make('AnyStrIdent');
 var SINGLE_IDENT = 'p';
 var ALL_UINT = Math.random() ? 2 : 3;
 function fuzzyDefinition() {

@@ -1,4 +1,5 @@
 test-resources/src/sunspider/crypto-md5.js:231:17: [definite] The conditional expression is always false
+test-resources/src/sunspider/crypto-md5.js: [definite] Exceptional program exit is unreachable
 test-resources/src/sunspider/crypto-md5.js:19:5: [definite] The variable b64pad is never used
 test-resources/src/sunspider/crypto-md5.js:27:1: [definite] Unreachable function b64_md5
 test-resources/src/sunspider/crypto-md5.js:28:1: [definite] Unreachable function str_md5
@@ -10,9 +11,6 @@ test-resources/src/sunspider/crypto-md5.js:166:1: [definite] Unreachable functio
 test-resources/src/sunspider/crypto-md5.js:217:1: [definite] Unreachable function binl2str
 test-resources/src/sunspider/crypto-md5.js:244:1: [definite] Unreachable function binl2b64
 test-resources/src/sunspider/crypto-md5.js:290:5: [definite] The variable md5Output is never used
-test-resources/src/sunspider/crypto-md5.js:47:3: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/sunspider/crypto-md5.js:48:3: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/sunspider/crypto-md5.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/crypto-md5.js:47:3, test-resources/src/sunspider/crypto-md5.js:48:3, test-resources/src/sunspider/crypto-md5.js:210:5]
 test-resources/src/sunspider/crypto-md5.js:26:60: [maybe] Converting primitive string to object
 test-resources/src/sunspider/crypto-md5.js:47:3: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/crypto-md5.js:47:3: [maybe] Reading absent property (computed name)
@@ -96,6 +94,6 @@ test-resources/src/sunspider/crypto-md5.js:236:12: [maybe] Converting primitive 
 test-resources/src/sunspider/crypto-md5.js:236:28: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/crypto-md5.js:236:28: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/crypto-md5.js:293:26: [maybe] Converting object to number
-test-resources/src/sunspider/crypto-md5.js:295:1: [info] Abstract value: UInt|NotUInt
+test-resources/src/sunspider/crypto-md5.js:295:1: [info] Abstract value: Num
 Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
 Log of soundness facts is not available for test-resources/src/sunspider/crypto-md5.js, skipping soundness checking

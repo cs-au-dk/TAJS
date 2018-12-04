@@ -1,5 +1,5 @@
-test-resources/src/1k2013spring/1376.js:158:28: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2013spring/1376.js:165:29: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1376.js:158:28: [definite] Too few parameters to native function
+test-resources/src/1k2013spring/1376.js:165:29: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1376.js:108:7: [definite] The variable x is never used
 test-resources/src/1k2013spring/1376.js:122:7: [definite] The variable x is never used
 test-resources/src/1k2013spring/1376.js:128:17: [definite] The variable x is never used

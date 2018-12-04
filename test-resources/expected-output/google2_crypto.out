@@ -1,13 +1,12 @@
 test-resources/src/google2/crypto.js:187:37: [definite] ReferenceError, reading absent variable DV
-test-resources/src/google2/crypto.js:768:5: [definite] TypeError, call to non-function
-test-resources/src/google2/crypto.js:53:50: [definite] Variable c is null/undefined
+test-resources/src/google2/crypto.js:53:5: [definite] The conditional expression is always false
 test-resources/src/google2/crypto.js:54:10: [definite] The conditional expression is always true
 test-resources/src/google2/crypto.js:199:8: [definite] The conditional expression is always false
 test-resources/src/google2/crypto.js:200:8: [definite] The conditional expression is always true
 test-resources/src/google2/crypto.js:246:3: [definite] The conditional expression is always true
 test-resources/src/google2/crypto.js:614:3: [definite] The conditional expression is always false
 test-resources/src/google2/crypto.js:614:6: [definite] The conditional expression is always false
-test-resources/src/google2/crypto.js:754:25: [definite] Variable c is null/undefined
+test-resources/src/google2/crypto.js:628:6: [definite] The conditional expression is always false
 test-resources/src/google2/crypto.js:1407:1: [definite] The conditional expression is always true
 test-resources/src/google2/crypto.js:1407:4: [definite] Variable rng_pool is null/undefined
 test-resources/src/google2/crypto.js:1504:3: [definite] The conditional expression is always true
@@ -18,7 +17,6 @@ test-resources/src/google2/crypto.js:1571:6: [definite] The conditional expressi
 test-resources/src/google2/crypto.js:1621:3: [definite] The conditional expression is always false
 test-resources/src/google2/crypto.js:1621:6: [definite] The conditional expression is always false
 test-resources/src/google2/crypto.js:1638:3: [definite] The conditional expression is always false
-test-resources/src/google2/crypto.js:768:5: [definite] Reading absent property nextBytes
 test-resources/src/google2/crypto.js:1010:1: [definite] Dead assignment, property convert is never read
 test-resources/src/google2/crypto.js:1011:1: [definite] Dead assignment, property revert is never read
 test-resources/src/google2/crypto.js:1012:1: [definite] Dead assignment, property mulTo is never read
@@ -26,8 +24,12 @@ test-resources/src/google2/crypto.js:1013:1: [definite] Dead assignment, propert
 test-resources/src/google2/crypto.js:1278:1: [definite] Dead assignment, property chunkSize is never read
 test-resources/src/google2/crypto.js:1279:1: [definite] Dead assignment, property toRadix is never read
 test-resources/src/google2/crypto.js:1280:1: [definite] Dead assignment, property fromRadix is never read
+test-resources/src/google2/crypto.js:1281:1: [definite] Dead assignment, property fromNumber is never read
+test-resources/src/google2/crypto.js:1282:1: [definite] Dead assignment, property bitwiseTo is never read
 test-resources/src/google2/crypto.js:1283:1: [definite] Dead assignment, property changeBit is never read
 test-resources/src/google2/crypto.js:1285:1: [definite] Dead assignment, property dMultiply is never read
+test-resources/src/google2/crypto.js:1289:1: [definite] Dead assignment, property modInt is never read
+test-resources/src/google2/crypto.js:1290:1: [definite] Dead assignment, property millerRabin is never read
 test-resources/src/google2/crypto.js:1293:1: [definite] Dead assignment, property clone is never read
 test-resources/src/google2/crypto.js:1294:1: [definite] Dead assignment, property intValue is never read
 test-resources/src/google2/crypto.js:1295:1: [definite] Dead assignment, property byteValue is never read
@@ -41,7 +43,11 @@ test-resources/src/google2/crypto.js:1303:1: [definite] Dead assignment, propert
 test-resources/src/google2/crypto.js:1304:1: [definite] Dead assignment, property xor is never read
 test-resources/src/google2/crypto.js:1305:1: [definite] Dead assignment, property andNot is never read
 test-resources/src/google2/crypto.js:1306:1: [definite] Dead assignment, property not is never read
+test-resources/src/google2/crypto.js:1307:1: [definite] Dead assignment, property shiftLeft is never read
+test-resources/src/google2/crypto.js:1308:1: [definite] Dead assignment, property shiftRight is never read
+test-resources/src/google2/crypto.js:1309:1: [definite] Dead assignment, property getLowestSetBit is never read
 test-resources/src/google2/crypto.js:1310:1: [definite] Dead assignment, property bitCount is never read
+test-resources/src/google2/crypto.js:1311:1: [definite] Dead assignment, property testBit is never read
 test-resources/src/google2/crypto.js:1312:1: [definite] Dead assignment, property setBit is never read
 test-resources/src/google2/crypto.js:1313:1: [definite] Dead assignment, property clearBit is never read
 test-resources/src/google2/crypto.js:1314:1: [definite] Dead assignment, property flipBit is never read
@@ -50,11 +56,13 @@ test-resources/src/google2/crypto.js:1320:1: [definite] Dead assignment, propert
 test-resources/src/google2/crypto.js:1322:1: [definite] Dead assignment, property modInverse is never read
 test-resources/src/google2/crypto.js:1323:1: [definite] Dead assignment, property pow is never read
 test-resources/src/google2/crypto.js:1324:1: [definite] Dead assignment, property gcd is never read
+test-resources/src/google2/crypto.js:1325:1: [definite] Dead assignment, property isProbablePrime is never read
 test-resources/src/google2/crypto.js:1494:3: [definite] Dead assignment, property d is never read
 test-resources/src/google2/crypto.js:1574:5: [definite] Dead assignment, property d is never read
 test-resources/src/google2/crypto.js:1653:1: [definite] Dead assignment, property setPrivate is never read
 test-resources/src/google2/crypto.js:1655:1: [definite] Dead assignment, property generate is never read
 test-resources/src/google2/crypto.js:47:5: [definite] The variable j_lm is never used
+test-resources/src/google2/crypto.js:50:1: [definite] The variable c is never used
 test-resources/src/google2/crypto.js:69:1: [definite] Unreachable function am1
 test-resources/src/google2/crypto.js:83:1: [definite] Unreachable function am2
 test-resources/src/google2/crypto.js:118:1: [definite] Unreachable function am4
@@ -68,21 +76,27 @@ test-resources/src/google2/crypto.js:696:1: [definite] Unreachable function bnpC
 test-resources/src/google2/crypto.js:699:1: [definite] Unreachable function bnSigNum
 test-resources/src/google2/crypto.js:707:1: [definite] Unreachable function bnpToRadix
 test-resources/src/google2/crypto.js:722:1: [definite] Unreachable function bnpFromRadix
-test-resources/src/google2/crypto.js:766:26: [definite] The variable t is never used
-test-resources/src/google2/crypto.js:769:8: [definite] Unreachable code
+test-resources/src/google2/crypto.js:749:1: [definite] Unreachable function bnpFromNumber
 test-resources/src/google2/crypto.js:800:1: [definite] Unreachable function bnEquals
 test-resources/src/google2/crypto.js:801:1: [definite] Unreachable function bnMin
 test-resources/src/google2/crypto.js:802:1: [definite] Unreachable function bnMax
+test-resources/src/google2/crypto.js:805:1: [definite] Unreachable function bnpBitwiseTo
 test-resources/src/google2/crypto.js:826:1: [definite] Unreachable function op_and
 test-resources/src/google2/crypto.js:827:1: [definite] Unreachable function bnAnd
+test-resources/src/google2/crypto.js:830:1: [definite] Unreachable function op_or
 test-resources/src/google2/crypto.js:831:1: [definite] Unreachable function bnOr
 test-resources/src/google2/crypto.js:834:1: [definite] Unreachable function op_xor
 test-resources/src/google2/crypto.js:835:1: [definite] Unreachable function bnXor
 test-resources/src/google2/crypto.js:838:1: [definite] Unreachable function op_andnot
 test-resources/src/google2/crypto.js:839:1: [definite] Unreachable function bnAndNot
 test-resources/src/google2/crypto.js:842:1: [definite] Unreachable function bnNot
+test-resources/src/google2/crypto.js:854:1: [definite] Unreachable function bnShiftLeft
+test-resources/src/google2/crypto.js:861:1: [definite] Unreachable function bnShiftRight
+test-resources/src/google2/crypto.js:868:1: [definite] Unreachable function lbit
+test-resources/src/google2/crypto.js:880:1: [definite] Unreachable function bnGetLowestSetBit
 test-resources/src/google2/crypto.js:889:1: [definite] Unreachable function cbit
 test-resources/src/google2/crypto.js:896:1: [definite] Unreachable function bnBitCount
+test-resources/src/google2/crypto.js:903:1: [definite] Unreachable function bnTestBit
 test-resources/src/google2/crypto.js:911:1: [definite] Unreachable function bnpChangeBit
 test-resources/src/google2/crypto.js:918:1: [definite] Unreachable function bnSetBit
 test-resources/src/google2/crypto.js:921:1: [definite] Unreachable function bnClearBit
@@ -96,7 +110,11 @@ test-resources/src/google2/crypto.js:1007:1: [definite] Unreachable function nMu
 test-resources/src/google2/crypto.js:1008:1: [definite] Unreachable function nSqrTo
 test-resources/src/google2/crypto.js:1016:1: [definite] Unreachable function bnPow
 test-resources/src/google2/crypto.js:1150:1: [definite] Unreachable function bnGCD
+test-resources/src/google2/crypto.js:1178:1: [definite] Unreachable function bnpModInt
 test-resources/src/google2/crypto.js:1189:1: [definite] Unreachable function bnModInverse
+test-resources/src/google2/crypto.js:1231:5: [definite] The variable lplim is never used
+test-resources/src/google2/crypto.js:1234:1: [definite] Unreachable function bnIsProbablePrime
+test-resources/src/google2/crypto.js:1254:1: [definite] Unreachable function bnpMillerRabin
 test-resources/src/google2/crypto.js:1451:1: [definite] Unreachable function linebrk
 test-resources/src/google2/crypto.js:1461:1: [definite] Unreachable function byte2Hex
 test-resources/src/google2/crypto.js:1559:1: [definite] Unreachable function RSASetPrivate
@@ -107,11 +125,8 @@ test-resources/src/google2/crypto.js:409:17: [maybe] TypeError, accessing proper
 test-resources/src/google2/crypto.js:410:27: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/crypto.js:511:23: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/crypto.js:576:17: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google2/crypto.js:767:5: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/google2/crypto.js:768:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/crypto.js:1068:3: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/crypto.js:1132:7: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google2/crypto.js:1364:3: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/google2/crypto.js:1433:10: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/crypto.js:1514:10: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/crypto.js:176:15: [maybe] Reading absent property t
@@ -129,10 +144,6 @@ test-resources/src/google2/crypto.js:283:11: [maybe] Reading absent property s
 test-resources/src/google2/crypto.js:283:18: [maybe] Reading absent property s
 test-resources/src/google2/crypto.js:285:11: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:286:9: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:306:6: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:307:17: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:307:44: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:307:55: [maybe] Reading absent property s
 test-resources/src/google2/crypto.js:315:11: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:317:9: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:318:9: [maybe] Reading absent property s
@@ -178,7 +189,6 @@ test-resources/src/google2/crypto.js:446:6: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:448:6: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:448:13: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:454:23: [maybe] Reading absent property s
-test-resources/src/google2/crypto.js:454:36: [maybe] Reading absent property s
 test-resources/src/google2/crypto.js:456:34: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:459:12: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:466:11: [maybe] Reading absent property t
@@ -187,28 +197,10 @@ test-resources/src/google2/crypto.js:476:9: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:476:27: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:500:6: [maybe] Reading absent property s
 test-resources/src/google2/crypto.js:507:6: [maybe] Reading absent property s
-test-resources/src/google2/crypto.js:533:6: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:554:16: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:560:21: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:562:6: [maybe] Reading absent property s
 test-resources/src/google2/crypto.js:577:9: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:578:13: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:579:22: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:584:11: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:585:40: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:590:15: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:609:12: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:609:40: [maybe] Reading absent property s
 test-resources/src/google2/crypto.js:777:11: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:809:26: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:811:6: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:812:9: [maybe] Reading absent property s
-test-resources/src/google2/crypto.js:818:20: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:819:11: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:821:19: [maybe] Reading absent property s
-test-resources/src/google2/crypto.js:882:22: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:884:6: [maybe] Reading absent property s
-test-resources/src/google2/crypto.js:884:25: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:931:34: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:931:38: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:937:6: [maybe] Reading absent property t
@@ -223,12 +215,8 @@ test-resources/src/google2/crypto.js:995:9: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:995:33: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:999:15: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:999:34: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1023:20: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1023:27: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1028:11: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1028:15: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1028:45: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1028:82: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1029:20: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1039:17: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1039:24: [maybe] Reading absent property t
@@ -236,26 +224,12 @@ test-resources/src/google2/crypto.js:1042:22: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1042:37: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1043:13: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1043:56: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1053:30: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1059:6: [maybe] Reading absent property s
 test-resources/src/google2/crypto.js:1059:17: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1059:25: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1068:15: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1069:6: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1069:12: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1069:32: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1070:35: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1071:34: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1072:50: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1119:11: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1181:25: [maybe] Reading absent property s
-test-resources/src/google2/crypto.js:1182:6: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1184:22: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js:1237:6: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js: [maybe] Uncaught exception, constructed at [test-resources/src/google2/crypto.js:111:5, test-resources/src/google2/crypto.js:176:38, test-resources/src/google2/crypto.js:187:37, test-resources/src/google2/crypto.js:207:11, test-resources/src/google2/crypto.js:211:10, test-resources/src/google2/crypto.js:218:7, test-resources/src/google2/crypto.js:222:7, test-resources/src/google2/crypto.js:315:34, test-resources/src/google2/crypto.js:325:35, test-resources/src/google2/crypto.js:339:5, test-resources/src/google2/crypto.js:361:5, test-resources/src/google2/crypto.js:409:17, test-resources/src/google2/crypto.js:410:27, test-resources/src/google2/crypto.js:480:9, test-resources/src/google2/crypto.js:511:23, test-resources/src/google2/crypto.js:576:17, test-resources/src/google2/crypto.js:578:5, test-resources/src/google2/crypto.js:767:5, test-resources/src/google2/crypto.js:768:5, test-resources/src/google2/crypto.js:813:33, test-resources/src/google2/crypto.js:818:30, test-resources/src/google2/crypto.js:995:22, test-resources/src/google2/crypto.js:1026:16, test-resources/src/google2/crypto.js:1041:19, test-resources/src/google2/crypto.js:1068:3, test-resources/src/google2/crypto.js:1132:7, test-resources/src/google2/crypto.js:1353:5, test-resources/src/google2/crypto.js:1364:3, test-resources/src/google2/crypto.js:1365:3, test-resources/src/google2/crypto.js:1433:10, test-resources/src/google2/crypto.js:1476:26, test-resources/src/google2/crypto.js:1483:5, test-resources/src/google2/crypto.js:1514:10, test-resources/src/google2/crypto.js:1688:11]
+test-resources/src/google2/crypto.js: [maybe] Uncaught exception, constructed at [test-resources/src/google2/crypto.js:187:37, test-resources/src/google2/crypto.js:207:11, test-resources/src/google2/crypto.js:211:10, test-resources/src/google2/crypto.js:409:17, test-resources/src/google2/crypto.js:410:27, test-resources/src/google2/crypto.js:511:23, test-resources/src/google2/crypto.js:576:17, test-resources/src/google2/crypto.js:1068:3, test-resources/src/google2/crypto.js:1132:7, test-resources/src/google2/crypto.js:1433:10, test-resources/src/google2/crypto.js:1514:10, test-resources/src/google2/crypto.js:1688:11]
 test-resources/src/google2/crypto.js:52:6: [maybe] The variable a has values with different types
 test-resources/src/google2/crypto.js:53:20: [maybe] The variable a has values with different types
-test-resources/src/google2/crypto.js:53:46: [maybe] The variable a has values with different types
 test-resources/src/google2/crypto.js:55:26: [maybe] The variable a has values with different types
 test-resources/src/google2/crypto.js:104:12: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:104:27: [maybe] Conversion to number yields NaN
@@ -321,11 +295,8 @@ test-resources/src/google2/crypto.js:296:9: [maybe] Conversion to number yields 
 test-resources/src/google2/crypto.js:297:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:298:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:299:9: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:307:17: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:307:33: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:307:33: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:307:44: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:307:55: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:315:11: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:315:42: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:315:49: [maybe] Reading absent property (computed name)
@@ -415,13 +386,11 @@ test-resources/src/google2/crypto.js:537:14: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:538:14: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:539:16: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:542:13: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:554:14: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:578:13: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:581:13: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:581:13: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:582:41: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:582:41: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:584:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:585:5: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:585:5: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:587:11: [maybe] Reading absent property (computed name)
@@ -431,20 +400,6 @@ test-resources/src/google2/crypto.js:587:55: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:587:55: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:609:23: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:609:23: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:752:8: [maybe] The variable a has values with different types
-test-resources/src/google2/crypto.js:754:23: [maybe] The variable a has values with different types
-test-resources/src/google2/crypto.js:755:24: [maybe] Conversion from string to number yields NaN
-test-resources/src/google2/crypto.js:755:24: [maybe] The variable a has values with different types
-test-resources/src/google2/crypto.js:756:49: [maybe] Conversion from string to number yields NaN
-test-resources/src/google2/crypto.js:756:49: [maybe] The variable a has values with different types
-test-resources/src/google2/crypto.js:760:31: [maybe] The variable a has values with different types
-test-resources/src/google2/crypto.js:760:70: [maybe] Conversion from string to number yields NaN
-test-resources/src/google2/crypto.js:760:70: [maybe] The variable a has values with different types
-test-resources/src/google2/crypto.js:766:30: [maybe] Conversion from string to number yields NaN
-test-resources/src/google2/crypto.js:766:30: [maybe] The variable a has values with different types
-test-resources/src/google2/crypto.js:767:17: [maybe] Conversion from string to number yields NaN
-test-resources/src/google2/crypto.js:767:17: [maybe] The variable a has values with different types
-test-resources/src/google2/crypto.js:768:5: [maybe] Converting primitive number to object
 test-resources/src/google2/crypto.js:779:18: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:780:6: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:781:26: [maybe] Conversion to number yields NaN
@@ -455,27 +410,6 @@ test-resources/src/google2/crypto.js:786:14: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:786:14: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:789:14: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:789:14: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:809:17: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:810:42: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:810:56: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:812:9: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:813:49: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:818:48: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:830:30: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:871:7: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:871:25: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:872:7: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:872:23: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:873:7: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:873:22: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:874:7: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:874:20: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:875:7: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:883:8: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:883:48: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:884:25: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:907:11: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:907:11: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:931:25: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:933:10: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:933:10: [maybe] Reading absent property (computed name)
@@ -499,7 +433,6 @@ test-resources/src/google2/crypto.js:1000:5: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:1000:7: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1023:20: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1028:11: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1028:43: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1028:65: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1029:11: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1029:50: [maybe] Reading absent property (computed name)
@@ -508,17 +441,8 @@ test-resources/src/google2/crypto.js:1042:20: [maybe] Conversion to number yield
 test-resources/src/google2/crypto.js:1043:13: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1043:39: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1043:56: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1053:28: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1059:23: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1068:15: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1069:12: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1069:32: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1070:35: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1071:34: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1072:50: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1114:18: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1114:25: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:1119:11: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1120:13: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1122:22: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1122:22: [maybe] Reading absent property (computed name)
@@ -530,24 +454,6 @@ test-resources/src/google2/crypto.js:1132:7: [maybe] Reading absent property (co
 test-resources/src/google2/crypto.js:1138:18: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1141:22: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1141:22: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:1181:11: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1181:35: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1183:20: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1183:20: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:1184:22: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1184:49: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1184:50: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1184:54: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:1237:18: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:1239:10: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:1239:24: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:1245:13: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:1246:46: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1246:51: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:1248:21: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1248:23: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:1259:8: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:1263:15: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1350:10: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1350:14: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1350:26: [maybe] Reading absent property (computed name)
@@ -556,7 +462,6 @@ test-resources/src/google2/crypto.js:1352:17: [maybe] Reading absent property (c
 test-resources/src/google2/crypto.js:1362:13: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1362:22: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1363:7: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:1364:3: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1364:20: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1366:10: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1366:18: [maybe] Conversion to number yields NaN
@@ -630,15 +535,10 @@ test-resources/src/google2/crypto.js:283:11: [info] 'this' refers to multiple ab
 test-resources/src/google2/crypto.js:285:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:285:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:305:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:305:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:306:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:306:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:307:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:307:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:307:44: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:307:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:307:55: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:307:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:312:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:312:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:315:11: [info] 'this' refers to a summary abstract object, which may cause loss of precision
@@ -698,25 +598,12 @@ test-resources/src/google2/crypto.js:450:19: [info] 'this' refers to multiple ab
 test-resources/src/google2/crypto.js:454:23: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:454:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:499:3: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:499:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:500:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:500:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:532:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:532:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:533:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:533:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:608:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:608:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:609:12: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:609:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:609:40: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:609:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:615:44: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:629:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:856:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:856:39: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:863:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:863:39: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:928:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:931:38: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:937:12: [info] 'this' refers to a summary abstract object, which may cause loss of precision
@@ -725,7 +612,6 @@ test-resources/src/google2/crypto.js:944:10: [info] 'this' refers to a summary a
 test-resources/src/google2/crypto.js:947:10: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:963:36: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:966:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:966:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:969:41: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:972:39: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:994:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
@@ -733,23 +619,16 @@ test-resources/src/google2/crypto.js:995:9: [info] 'this' refers to multiple abs
 test-resources/src/google2/crypto.js:995:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:999:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/crypto.js:999:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1023:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1028:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1028:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1028:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1028:82: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1029:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/google2/crypto.js:1023:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/crypto.js:1028:15: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/crypto.js:1028:45: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/crypto.js:1028:55: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/crypto.js:1028:82: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+test-resources/src/google2/crypto.js:1029:40: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:1039:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:1042:22: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:1043:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:1043:27: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:1043:56: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:1108:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/google2/crypto.js:1179:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1181:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1182:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1184:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1255:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1264:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/google2/crypto.js:1268:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 Soundness testing succeeded for 14998 checks (with 0 expected failures)

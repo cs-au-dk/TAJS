@@ -895,7 +895,7 @@ public class NodeTransfer implements NodeVisitor {
 
         if (!Options.get().isForInSpecializationDisabled()) {
             // 1. Find properties to iterate through
-            Collection<Value> propertyNameValues = newList(p.getMaybePresentPropertyNames());
+            Collection<Value> propertyNameValues = newList(p.getGroupedPropertyNames());
 
             // Add the no-iteration case
             propertyNameValues.add(Value.makeNull().makeExtendedScope());
@@ -929,7 +929,7 @@ public class NodeTransfer implements NodeVisitor {
             }
             c.getState().setToBottom();
         } else { // fall back to simple mode without context specialization
-            Value proplist = Value.join(p.getMaybePresentPropertyNames()).joinNull();
+            Value proplist = Value.join(p.getGroupedPropertyNames()).joinNull();
             m.visitPropertyRead(n, objs, proplist, c.getState(), true);
             c.getState().writeRegister(n.getPropertyListRegister(), proplist);
         }

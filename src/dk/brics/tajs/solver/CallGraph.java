@@ -152,7 +152,7 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
                 size_ignoring_contexts++;
         } else {
             // propagate into existing edge
-            changed = call_edge.getState().propagate(edge_state, true);
+            changed = call_edge.getState().propagate(edge_state, true, false);
         }
         monitoring.visitPropagationPost(from, to, changed);
         if (log.isDebugEnabled())

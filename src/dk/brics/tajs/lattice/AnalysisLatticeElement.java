@@ -27,8 +27,10 @@ import dk.brics.tajs.util.AnalysisException;
 import org.apache.log4j.Logger;
 
 import java.util.Map;
+import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newMap;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Global analysis lattice element.
@@ -123,6 +125,9 @@ public class AnalysisLatticeElement implements
             add = true;
             if (localize) {
                 s.localize(null);
+                Set<BlockAndContext<Context>> fs = newSet(s.getStackedFunctions());
+                fs.add(new BlockAndContext<>(bc.getBlock(), bc.getContext()));
+                s.setStacked(null, fs);
             }
             s.setBasicBlock(bc.getBlock());
             s.setContext(bc.getContext());
@@ -149,8 +154,10 @@ public class AnalysisLatticeElement implements
                 if (log.isDebugEnabled())
                     log.debug("after localization, before join: " + s);
             }
+            boolean backedge = !localize && state_current.getBasicBlock().getOrder() <= s.getBasicBlock().getOrder();
+            boolean recursive = localize && s.getStackedFunctions().contains(new BlockAndContext<>(state_current.getBasicBlock(), state_current.getContext()));
             long time = System.currentTimeMillis();
-            add = state_current.propagate(s, localize);
+            add = state_current.propagate(s, localize, backedge || recursive);
             long elapsed = System.currentTimeMillis() - time;
             s.getSolverInterface().getMonitoring().visitJoin(elapsed);
             if (Options.get().isNewFlowEnabled()) {

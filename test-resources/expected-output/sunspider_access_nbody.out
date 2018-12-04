@@ -13,5 +13,5 @@ test-resources/src/sunspider/access-nbody.js:125:18: [maybe] Reading absent prop
 test-resources/src/sunspider/access-nbody.js:138:19: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/access-nbody.js:146:22: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/access-nbody.js:176:26: [maybe] Converting object to number
-test-resources/src/sunspider/access-nbody.js:178:1: [info] Abstract value: UInt|NotUInt
+test-resources/src/sunspider/access-nbody.js:178:1: [info] Abstract value: Num
 Soundness testing succeeded for 952 checks (with 0 expected failures)

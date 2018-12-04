@@ -23,7 +23,10 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
+import java.util.Set;
+
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+import static dk.brics.tajs.util.Collections.newSet;
 
 public class TouchEvent {
 	public static ObjectLabel PROTOTYPE;
@@ -46,13 +49,18 @@ public class TouchEvent {
         /*
          * Properties.
          */
+        Set<String> touchEventTypes = newSet();
+        touchEventTypes.add("touchstart");
+        touchEventTypes.add("touchend");
+        touchEventTypes.add("touchmove");
+        touchEventTypes.add("touchcancel");
+
         createDOMProperty(INSTANCES, "altKey", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "ctrlKey", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "metaKey", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "shiftKey", Value.makeAnyBool().setReadOnly(), c);
-        createDOMProperty(INSTANCES, "type", Value.makeAnyStr().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeStrings(touchEventTypes).setReadOnly(), c);
 
-        
         // Multiplied Object
         s.multiplyObject(INSTANCES);
         INSTANCES = INSTANCES.makeSingleton().makeSummary();

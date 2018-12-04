@@ -62,21 +62,6 @@ benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:991:9: [definite] Dead a
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1018:9: [definite] Dead assignment, property val is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1047:9: [definite] Dead assignment, property html is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1061:9: [definite] Dead assignment, property domManip is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property ADDITION is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property AT_TARGET is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property BUBBLING_PHASE is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property CAPTURING_PHASE is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_DELTA_LINE is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_DELTA_PAGE is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_DELTA_PIXEL is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_JOYSTICK is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_LEFT is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_MOBILE is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_NUMPAD is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_RIGHT is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property DOM_KEY_LOCATION_STANDARD is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property MODIFICATION is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property REMOVAL is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property _toggle is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property altKey is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property animate is never read
@@ -100,7 +85,6 @@ benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property deltaZ is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property detail is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property evalScripts is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property eventPhase is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property fadeIn is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property fadeOut is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property fadeTo is never read
@@ -143,7 +127,6 @@ benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property srcElement is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property target is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property targetTouches is never read
-benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property timeStamp is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property toElement is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property touches is never read
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [definite] Dead assignment, property trigger is never read
@@ -528,6 +511,9 @@ benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3539:21: [maybe] Convert
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:3580:29: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4446:17: [maybe] Converting object to string
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:4446:17: [maybe] Converting primitive string to object
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:17: [info] Writing to unknown property that may cause loss of precision
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1144:13: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:1145:29: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2836:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2836:21: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js:2844:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

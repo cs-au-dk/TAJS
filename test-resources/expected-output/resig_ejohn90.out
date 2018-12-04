@@ -17,6 +17,6 @@ test-resources/src/resig/ejohn90.js:2:4: [info] Abstract value: "find"
 test-resources/src/resig/ejohn90.js:3:4: [info] Abstract value: [@Object#node9]
 test-resources/src/resig/ejohn90.js:4:4: [info] Abstract value: [@<anonymous>#fun6, @<anonymous>#fun5, @<anonymous>#fun4]
 test-resources/src/resig/ejohn90.js:35:5: [info] Abstract value: [@Object#node9]
-test-resources/src/resig/ejohn90.js:36:2: [info] Abstract value: Undef|IdentStr
-test-resources/src/resig/ejohn90.js:37:2: [info] Abstract value: Undef|IdentStr
+test-resources/src/resig/ejohn90.js:36:2: [info] Abstract value: Undef|(IdentStr){"Alex","Dean","Sam"}
+test-resources/src/resig/ejohn90.js:37:2: [info] Abstract value: Undef|(IdentStr){"Edwards","X"}
 Soundness testing succeeded for 193 checks (with 0 expected failures)

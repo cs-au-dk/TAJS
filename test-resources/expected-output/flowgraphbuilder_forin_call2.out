@@ -64,15 +64,11 @@ function f()
     node 28: exceptional-return (test-resources/src/flowgraphbuilder/forin_call2.js:1:1)
     ->[]
 
-test-resources/src/flowgraphbuilder/forin_call2.js:5:5: [definite] Too few parameters to function Object.prototype.__defineGetter__
-test-resources/src/flowgraphbuilder/forin_call2.js:5:5: [definite] Too few parameters to function Object.prototype.__defineSetter__
-test-resources/src/flowgraphbuilder/forin_call2.js:5:5: [definite] Too few parameters to function Object.prototype.hasOwnProperty
-test-resources/src/flowgraphbuilder/forin_call2.js:5:5: [definite] Too few parameters to function Object.prototype.isPrototypeOf
-test-resources/src/flowgraphbuilder/forin_call2.js:5:5: [definite] Too few parameters to function Object.prototype.propertyIsEnumerable
 test-resources/src/flowgraphbuilder/forin_call2.js:1:1: [definite] Unreachable function f
 test-resources/src/flowgraphbuilder/forin_call2.js:4:10: [definite] The variable i is never used
 test-resources/src/flowgraphbuilder/forin_call2.js:5:5: [maybe] RangeError in Number function
 test-resources/src/flowgraphbuilder/forin_call2.js:5:5: [maybe] TypeError, call to non-function
+test-resources/src/flowgraphbuilder/forin_call2.js:5:5: [maybe] Too few parameters to native function
 test-resources/src/flowgraphbuilder/forin_call2.js: [maybe] Uncaught exception, constructed at [test-resources/src/flowgraphbuilder/forin_call2.js:5:5]
 test-resources/src/flowgraphbuilder/forin_call2.js:5:5: [maybe] Converting object to string
 test-resources/src/flowgraphbuilder/forin_call2.js:5:5: [maybe] Converting primitive number to object

@@ -3,6 +3,7 @@ package dk.brics.tajs.test;
 import dk.brics.tajs.Main;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.Collectors;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RunWith(Parameterized.class)
 public class TestSoundnessTesterAssignments {

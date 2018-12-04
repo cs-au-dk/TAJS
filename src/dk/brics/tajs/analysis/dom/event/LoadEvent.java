@@ -24,7 +24,10 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
+import java.util.Set;
+
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+import static dk.brics.tajs.util.Collections.newSet;
 
 public class LoadEvent {
 
@@ -48,7 +51,11 @@ public class LoadEvent {
         /*
          * Properties.
          */
-        createDOMProperty(INSTANCES, "type", Value.makeNone().joinAnyStrIdentifier().setReadOnly(), c);
+        Set<String> loadEventTypes = newSet();
+        loadEventTypes.add("DOMContentLoaded");
+        loadEventTypes.add("load");
+
+        createDOMProperty(INSTANCES, "type", Value.makeStrings(loadEventTypes).setReadOnly(), c);
         createDOMProperty(INSTANCES, "bubbles", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "cancelable", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "detail", Value.makeAnyNum().setReadOnly(), c);

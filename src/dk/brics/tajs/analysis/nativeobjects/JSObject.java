@@ -36,6 +36,7 @@ import dk.brics.tajs.lattice.PKeys;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
@@ -194,8 +195,8 @@ public class JSObject {
                         if (UnknownValueResolver.getProperty(ol, propname, state, true).isMaybeNotDontEnum())
                             return Value.makeAnyBool();
                     }
-                    if (UnknownValueResolver.getDefaultArrayProperty(ol, state).isMaybeNotDontEnum() ||
-                            UnknownValueResolver.getDefaultNonArrayProperty(ol, state).isMaybeNotDontEnum())
+                    if (UnknownValueResolver.getDefaultNumericProperty(ol, state).isMaybeNotDontEnum() ||
+                            UnknownValueResolver.getDefaultOtherProperty(ol, state).isMaybeNotDontEnum())
                         return Value.makeAnyBool();
                 }
                 return Value.makeBool(false);
@@ -331,8 +332,17 @@ public class JSObject {
                 Collections.sort(sortedNames);
                 JSArray.setEntries(array, sortedNames.stream().map(PKey::toValue).collect(Collectors.toList()), c);
             } else {
-                // Order of properties is the same as for-in: unspecified
-                if (nativeobject == ECMAScriptObjects.OBJECT_KEYS) {
+                // Order of properties is the same as for-in: unspecified.
+                if (!Options.get().isNoStringSets() && !properties.isDefaultNumericMaybePresent() && !properties.isDefaultOtherMaybePresent()) {
+                    if (properties.isDefinite()) {
+                        // we know the *number* of property names
+                        Value propertyNames = Value.makeStringsAndSymbols(properties.getMaybe());
+                        List<Value> joinedPropertyNamesArray = properties.getDefinitely().stream().map(x -> propertyNames).collect(Collectors.toList());
+                        JSArray.setEntries(array, joinedPropertyNamesArray, c);
+                    } else {
+                        JSArray.setUnknownEntries(array, Value.makeStringsAndSymbols(properties.getMaybe()), c);
+                    }
+                } else if (nativeobject == ECMAScriptObjects.OBJECT_KEYS) {
                     // Special case: we can ignore all non-enumerable strings (see SplittingUtil!)
                     Value propertyNames = Value.join(properties.getMaybe().stream().map(PKey::toValue).collect(Collectors.toList()));
                     if (properties.isDefinite() && properties.getDefinitely().size() <= 1) {
@@ -349,11 +359,11 @@ public class JSObject {
                 }
             }
         }
-        if (properties.isDefaultArrayMaybePresent()) {
-            JSArray.setUnknownEntries(array, Value.makeAnyStrUInt(), c);
+        if (properties.isDefaultNumericMaybePresent()) {
+            JSArray.setUnknownEntries(array, Value.makeAnyStrNumeric(), c);
         }
-        if (properties.isDefaultNonArrayMaybePresent()) {
-            JSArray.setUnknownEntries(array, Value.makeAnyStrNotUInt(), c);
+        if (properties.isDefaultOtherMaybePresent()) {
+            JSArray.setUnknownEntries(array, Value.makeAnyStrNotNumeric(), c);
         }
         return Value.makeObject(array);
     }
@@ -385,13 +395,13 @@ public class JSObject {
             }
             JSArray.setUnknownEntries(array, propertyValues, c);
         }
-        if (properties.isDefaultArrayMaybePresent()) {
-            Value property = Value.makeAnyStrUInt();
+        if (properties.isDefaultNumericMaybePresent()) {
+            Value property = Value.makeAnyStrNumeric();
             Value valueOfProperty = pv.readPropertyValue(objectArg.getObjectLabels(), property);
             JSArray.setUnknownEntries(array, valueOfProperty, c);
         }
-        if (properties.isDefaultNonArrayMaybePresent()) {
-            Value property = Value.makeAnyStrNotUInt();
+        if (properties.isDefaultOtherMaybePresent()) {
+            Value property = Value.makeAnyStrNotNumeric();
             Value valueOfProperty = pv.readPropertyValue(objectArg.getObjectLabels(), property);
             JSArray.setUnknownEntries(array, valueOfProperty, c);
         }
@@ -440,11 +450,11 @@ public class JSObject {
                 }
                 performSingleAssign(targetObjects, pair.getFirst(), name.toValue(), value, !pair.getSecond().isDefinite(), c);
             });
-            if (pair.getSecond().isDefaultArrayMaybePresent()) {
-                performSingleAssign(targetObjects, pair.getFirst(), Value.makeAnyStrUInt(), UnknownValueResolver.getDefaultArrayProperty(pair.getFirst(), c.getState()), true, c);
+            if (pair.getSecond().isDefaultNumericMaybePresent()) {
+                performSingleAssign(targetObjects, pair.getFirst(), Value.makeAnyStrNumeric(), UnknownValueResolver.getDefaultNumericProperty(pair.getFirst(), c.getState()), true, c);
             }
-            if (pair.getSecond().isDefaultNonArrayMaybePresent()) {
-                performSingleAssign(targetObjects, pair.getFirst(), Value.makeAnyStrNotUInt(), UnknownValueResolver.getDefaultNonArrayProperty(pair.getFirst(), c.getState()), true, c);
+            if (pair.getSecond().isDefaultOtherMaybePresent()) {
+                performSingleAssign(targetObjects, pair.getFirst(), Value.makeAnyStrNotNumeric(), UnknownValueResolver.getDefaultOtherProperty(pair.getFirst(), c.getState()), true, c);
             }
         }));
         if (sourceObjects.isEmpty() || sources.stream().anyMatch(v -> v.isMaybeNull() || v.isMaybeUndef())) {

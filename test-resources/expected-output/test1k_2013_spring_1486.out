@@ -4,7 +4,6 @@ test-resources/src/1k2013spring/1486.js:70:21: [maybe] TypeError, accessing prop
 test-resources/src/1k2013spring/1486.js:70:36: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1486.js:74:21: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1486.js:74:36: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1486.js:88:2: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2013spring/1486.js:88:2: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1486.js:98:31: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1486.js:101:31: [maybe] TypeError, accessing property of null/undefined

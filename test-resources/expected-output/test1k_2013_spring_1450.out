@@ -10,12 +10,10 @@ test-resources/src/1k2013spring/1450.js:95:12: [maybe] ReferenceError, reading a
 test-resources/src/1k2013spring/1450.js:153:20: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1450.js:165:2: [maybe] ReferenceError, reading absent variable frame
 test-resources/src/1k2013spring/1450.js:166:44: [maybe] ReferenceError, reading absent variable t0
-test-resources/src/1k2013spring/1450.js:171:83: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2013spring/1450.js:171:83: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1450.js:172:26: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2013spring/1450.js:172:26: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1450.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1450.js:13:3, test-resources/src/1k2013spring/1450.js:34:41, test-resources/src/1k2013spring/1450.js:95:12, test-resources/src/1k2013spring/1450.js:153:20, test-resources/src/1k2013spring/1450.js:165:2, test-resources/src/1k2013spring/1450.js:166:44, test-resources/src/1k2013spring/1450.js:167:2, test-resources/src/1k2013spring/1450.js:171:83, test-resources/src/1k2013spring/1450.js:172:26, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1450.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1450.js:34:41, test-resources/src/1k2013spring/1450.js:95:12, test-resources/src/1k2013spring/1450.js:153:20, test-resources/src/1k2013spring/1450.js:165:2, test-resources/src/1k2013spring/1450.js:166:44, test-resources/src/1k2013spring/1450.js:167:2, test-resources/src/1k2013spring/1450.js:171:83, test-resources/src/1k2013spring/1450.js:172:26, test-resources/src/1k2013spring/shim.js:9:5]
 test-resources/src/1k2013spring/1450.js:17:3: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1450.js:17:6: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1450.js:18:3: [maybe] Conversion to number yields NaN
@@ -28,16 +26,10 @@ test-resources/src/1k2013spring/1450.js:34:46: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1450.js:34:59: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1450.js:34:76: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1450.js:153:8: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1450.js:153:18: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1450.js:153:20: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1450.js:153:34: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1450.js:153:36: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1450.js:154:6: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1450.js:154:17: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1450.js:154:31: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1450.js:155:7: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1450.js:155:14: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1450.js:155:28: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1450.js:157:2: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1450.js:158:2: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1450.js:160:11: [maybe] Conversion to number yields NaN

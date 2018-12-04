@@ -9,6 +9,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         PackageDependencyTest.class,
+        TestStr.class,
         RunMediumModels.class,
         RunMediumFeatures.class,
         RunMediumECMAApps.class,

@@ -27,7 +27,6 @@ test-resources/src/sunspider/crypto-aes.js:67:51: [maybe] TypeError, accessing p
 test-resources/src/sunspider/crypto-aes.js:81:30: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/crypto-aes.js:81:45: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/crypto-aes.js:92:11: [maybe] RangeError, invalid value of array length
-test-resources/src/sunspider/crypto-aes.js:101:5: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/sunspider/crypto-aes.js:102:39: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/crypto-aes.js:105:42: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/crypto-aes.js:109:29: [maybe] TypeError, accessing property of null/undefined
@@ -35,7 +34,6 @@ test-resources/src/sunspider/crypto-aes.js:109:39: [maybe] TypeError, accessing 
 test-resources/src/sunspider/crypto-aes.js:254:19: [maybe] RangeError, invalid value of array length
 test-resources/src/sunspider/crypto-aes.js:266:21: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/crypto-aes.js:268:28: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/sunspider/crypto-aes.js:277:10: [maybe] TypeError, call to non-function
 test-resources/src/sunspider/crypto-aes.js:283:76: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/crypto-aes.js:283:76: [maybe] TypeError, call to non-function
 test-resources/src/sunspider/crypto-aes.js:287:10: [maybe] TypeError, accessing property of null/undefined
@@ -43,7 +41,7 @@ test-resources/src/sunspider/crypto-aes.js:287:78: [maybe] TypeError, accessing 
 test-resources/src/sunspider/crypto-aes.js:287:78: [maybe] TypeError, call to non-function
 test-resources/src/sunspider/crypto-aes.js:283:76: [maybe] Reading absent property charCodeAt
 test-resources/src/sunspider/crypto-aes.js:287:78: [maybe] Reading absent property slice
-test-resources/src/sunspider/crypto-aes.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/crypto-aes.js:22:30, test-resources/src/sunspider/crypto-aes.js:38:42, test-resources/src/sunspider/crypto-aes.js:45:30, test-resources/src/sunspider/crypto-aes.js:45:45, test-resources/src/sunspider/crypto-aes.js:54:36, test-resources/src/sunspider/crypto-aes.js:55:29, test-resources/src/sunspider/crypto-aes.js:66:14, test-resources/src/sunspider/crypto-aes.js:67:14, test-resources/src/sunspider/crypto-aes.js:67:29, test-resources/src/sunspider/crypto-aes.js:67:51, test-resources/src/sunspider/crypto-aes.js:81:30, test-resources/src/sunspider/crypto-aes.js:81:45, test-resources/src/sunspider/crypto-aes.js:92:11, test-resources/src/sunspider/crypto-aes.js:101:5, test-resources/src/sunspider/crypto-aes.js:102:39, test-resources/src/sunspider/crypto-aes.js:105:42, test-resources/src/sunspider/crypto-aes.js:109:29, test-resources/src/sunspider/crypto-aes.js:109:39, test-resources/src/sunspider/crypto-aes.js:198:29, test-resources/src/sunspider/crypto-aes.js:254:19, test-resources/src/sunspider/crypto-aes.js:258:29, test-resources/src/sunspider/crypto-aes.js:266:21, test-resources/src/sunspider/crypto-aes.js:268:28, test-resources/src/sunspider/crypto-aes.js:274:5, test-resources/src/sunspider/crypto-aes.js:277:10, test-resources/src/sunspider/crypto-aes.js:283:76, test-resources/src/sunspider/crypto-aes.js:287:10, test-resources/src/sunspider/crypto-aes.js:287:78, HOST(string-replace-model.js):26:41, HOST(string-replace-model.js):33:51, HOST(string-replace-model.js):49:30, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
+test-resources/src/sunspider/crypto-aes.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/crypto-aes.js:22:30, test-resources/src/sunspider/crypto-aes.js:38:42, test-resources/src/sunspider/crypto-aes.js:45:30, test-resources/src/sunspider/crypto-aes.js:45:45, test-resources/src/sunspider/crypto-aes.js:54:36, test-resources/src/sunspider/crypto-aes.js:55:29, test-resources/src/sunspider/crypto-aes.js:66:14, test-resources/src/sunspider/crypto-aes.js:67:14, test-resources/src/sunspider/crypto-aes.js:67:29, test-resources/src/sunspider/crypto-aes.js:67:51, test-resources/src/sunspider/crypto-aes.js:81:30, test-resources/src/sunspider/crypto-aes.js:81:45, test-resources/src/sunspider/crypto-aes.js:92:11, test-resources/src/sunspider/crypto-aes.js:102:39, test-resources/src/sunspider/crypto-aes.js:105:42, test-resources/src/sunspider/crypto-aes.js:109:29, test-resources/src/sunspider/crypto-aes.js:109:39, test-resources/src/sunspider/crypto-aes.js:254:19, test-resources/src/sunspider/crypto-aes.js:266:21, test-resources/src/sunspider/crypto-aes.js:268:28, test-resources/src/sunspider/crypto-aes.js:283:76, test-resources/src/sunspider/crypto-aes.js:287:10, test-resources/src/sunspider/crypto-aes.js:287:78, HOST(string-replace-model.js):26:41, HOST(string-replace-model.js):33:51, HOST(string-replace-model.js):49:30, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
 test-resources/src/sunspider/crypto-aes.js:22:30: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/crypto-aes.js:22:60: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/crypto-aes.js:38:42: [maybe] Reading absent property (computed name)
@@ -91,8 +89,6 @@ test-resources/src/sunspider/crypto-aes.js:96:14: [maybe] Reading absent propert
 test-resources/src/sunspider/crypto-aes.js:96:24: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/crypto-aes.js:96:36: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/crypto-aes.js:96:48: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/crypto-aes.js:101:5: [maybe] Conversion from string to number yields NaN
-test-resources/src/sunspider/crypto-aes.js:101:5: [maybe] Converting object to number
 test-resources/src/sunspider/crypto-aes.js:102:39: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/crypto-aes.js:105:31: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/crypto-aes.js:105:31: [maybe] Reading absent property (computed name)
@@ -142,6 +138,6 @@ test-resources/src/sunspider/crypto-aes.js:287:78: [maybe] Converting primitive 
 test-resources/src/sunspider/crypto-aes.js:287:78: [maybe] Converting primitive string to object
 test-resources/src/sunspider/crypto-aes.js:287:78: [maybe] The variable c has values with different types
 test-resources/src/sunspider/crypto-aes.js:429:26: [maybe] Converting object to number
-test-resources/src/sunspider/crypto-aes.js:431:1: [info] Abstract value: UInt|NotUInt
+test-resources/src/sunspider/crypto-aes.js:431:1: [info] Abstract value: Num
 Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
 Log of soundness facts is not available for test-resources/src/sunspider/crypto-aes.js, skipping soundness checking

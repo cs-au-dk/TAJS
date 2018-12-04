@@ -24,12 +24,12 @@ import dk.brics.tajs.flowgraph.TAJSFunctionName;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.util.AnalysisResultException;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_ASSERT;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_ASSERT_EQUALS;

@@ -203,6 +203,9 @@ public class OptionValues {
     @Option(name = "-async-events", usage = "Enable execution of asynchronous event handlers with TAJS_asyncListen")
     private boolean asyncEvents;
 
+    @Option(name = "-no-string-sets", usage = "Disables the use of string sets")
+    private boolean noStringSets;
+
     @Option(name = "-test-soundness", usage = "Test that the analysis fixpoint over-approximates concrete behaviors")
     private boolean testSoundness;
 
@@ -314,6 +317,7 @@ public class OptionValues {
         if (polyfillTypedArrays != that.polyfillTypedArrays) return false;
         if (polyfillES6Promises != that.polyfillES6Promises) return false;
         if (asyncEvents != that.asyncEvents) return false;
+        if (noStringSets != that.noStringSets) return false;
         if (testSoundness != that.testSoundness) return false;
         if (generateLog != that.generateLog) return false;
         if (showInternalMessages != that.showInternalMessages) return false;
@@ -391,6 +395,7 @@ public class OptionValues {
         result = 31 * result + (polyfillTypedArrays ? 1 : 0);
         result = 31 * result + (polyfillES6Promises ? 1 : 0);
         result = 31 * result + (asyncEvents ? 1 : 0);
+        result = 31 * result + (noStringSets ? 1 : 0);
         result = 31 * result + (testSoundness ? 1 : 0);
         result = 31 * result + (generateLog ? 1 : 0);
         result = 31 * result + (logFile != null ? logFile.hashCode() : 0);
@@ -1125,6 +1130,14 @@ public class OptionValues {
 
     public void setUnsoundness(UnsoundnessOptionValues unsoundness) {
         this.unsoundness = unsoundness;
+    }
+
+    public boolean isNoStringSets() {
+        return noStringSets;
+    }
+
+    public void enableNoStringSets() {
+        this.noStringSets = true;
     }
 
     public SoundnessTesterOptions getSoundnessTesterOptions() {

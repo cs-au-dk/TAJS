@@ -80,7 +80,7 @@ test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:2: [definite] Dea
 test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:2: [definite] Dead assignment, property y is never read
 test-resources/src/flowgraphbuilder/flowgraph_builder0187.js: [definite] Exceptional program exit is unreachable
 test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:3:1: [info] Abstract object: {[[Prototype]]=[@Object.prototype[native]]}
-test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:7:2: [info] Abstract object: {x:^(@Object#node7.x[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
-test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:7:2: [info] Abstract object: {y:^(@Object#node7.y[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:7:2: [info] Abstract object: {x:^(@Object#node7.x[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:7:2: [info] Abstract object: {y:^(@Object#node7.y[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
 test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:10:1: [info] Abstract object: {x:1.0|absent,y:2.0|absent,[[Prototype]]=[@Object.prototype[native]]}
 Soundness testing succeeded for 22 checks (with 0 expected failures)

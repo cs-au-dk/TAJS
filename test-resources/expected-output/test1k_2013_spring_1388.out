@@ -1,4 +1,4 @@
-test-resources/src/1k2013spring/1388.js:33:5: [definite] Too few parameters to function Node.cloneNode
+test-resources/src/1k2013spring/1388.js:33:5: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1388.js:58:13: [definite] The variable f is never used
 test-resources/src/1k2013spring/1388.js:65:13: [definite] The variable f is never used
 test-resources/src/1k2013spring/1388.js:34:5: [maybe] TypeError, call to non-function

@@ -117,7 +117,7 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
          */
         private int getStateSize(State s) {
             return s.getStore().values().stream().flatMap(o -> Stream.concat(o.getProperties().values().stream(),
-                    Stream.of(o.getDefaultArrayProperty(), o.getDefaultNonArrayProperty(), o.getInternalPrototype(), o.getInternalValue())))
+                    Stream.of(o.getDefaultNumericProperty(), o.getDefaultOtherProperty(), o.getInternalPrototype(), o.getInternalValue())))
                     .mapToInt(p -> p.getAllObjectLabels().size() + p.typeSize()).sum();
         }
 

@@ -1,7 +1,7 @@
-test-resources/src/1k2012love/1113.js: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.fillRect
-test-resources/src/1k2012love/1113.js:1:320: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2012love/1113.js:1:342: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2012love/1113.js:1:1021: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.fillRect
+test-resources/src/1k2012love/1113.js: [definite] Too few parameters to native function
+test-resources/src/1k2012love/1113.js:1:320: [definite] Too few parameters to native function
+test-resources/src/1k2012love/1113.js:1:342: [definite] Too few parameters to native function
+test-resources/src/1k2012love/1113.js:1:1021: [definite] Too few parameters to native function
 test-resources/src/1k2012love/1113.js:1:336: [maybe] ReferenceError, reading absent variable n
 test-resources/src/1k2012love/1113.js:1:339: [maybe] ReferenceError, reading absent variable n
 test-resources/src/1k2012love/1113.js:1:357: [maybe] ReferenceError, reading absent variable n

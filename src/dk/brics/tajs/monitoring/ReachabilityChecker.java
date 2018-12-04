@@ -19,10 +19,10 @@ package dk.brics.tajs.monitoring;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.util.AnalysisResultException;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 

@@ -178,7 +178,7 @@ public class DOMBuilder {
         createDOMProperty(DOMTouch.PROTOTYPE, "target", DOMFunctions.makeAnyHTMLElement().setReadOnly(), c);
 
         Value nodes = Value.makeObject(getAllDOMNodes()).setReadOnly();
-        c.getAnalysis().getPropVarOperations().writeProperty(singleton(DOMNamedNodeMap.INSTANCES), Value.makeAnyStrNotUInt(), nodes);
+        c.getAnalysis().getPropVarOperations().writeProperty(singleton(DOMNamedNodeMap.INSTANCES), Value.makeAnyStrNotNumeric(), nodes);
 
         c.getAnalysis().getPropVarOperations().writeProperty(singleton(HTMLOptionsCollection.INSTANCES), Value.makeAnyStrUInt(), Value.makeObject(HTMLOptionElement.INSTANCES));
 

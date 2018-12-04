@@ -87,6 +87,7 @@ public class Options {
         public static final int NUMBER_OF_UNKNOWN_ARGUMENTS_TO_KEEP_DISJOINT = 10;
         public static final int MAX_CONTEXT_SPECIALIZATION = 10;
         public static final int ARRAY_TRUNCATION_BOUND = 25;
+        public static final int STRING_CONCAT_SETS_BOUND = 15;
 
         // Fine performance tuning
         public static final int HYBRID_ARRAY_HASH_SET_ARRAY_SIZE = 8;

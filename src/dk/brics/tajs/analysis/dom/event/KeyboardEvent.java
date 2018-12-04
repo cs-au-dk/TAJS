@@ -27,8 +27,11 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisLimitationException;
 
+import java.util.Set;
+
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * The KeyboardEvent interface provides specific contextual information
@@ -68,6 +71,11 @@ public class KeyboardEvent {
         /*
          * Properties
          */
+        Set<String> keyboardEventTypes = newSet();
+        keyboardEventTypes.add("keydown");
+        keyboardEventTypes.add("keypress");
+        keyboardEventTypes.add("keyup");
+
         createDOMProperty(INSTANCES, "keyIdentifier", Value.makeAnyStr().setReadOnly(), c);
         createDOMProperty(INSTANCES, "keyLocation", Value.makeAnyNumUInt().setReadOnly(), c);
         createDOMProperty(INSTANCES, "ctrlKey", Value.makeAnyBool().setReadOnly(), c);
@@ -75,6 +83,7 @@ public class KeyboardEvent {
         createDOMProperty(INSTANCES, "altKey", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "metaKey", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "repeat", Value.makeAnyBool().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeStrings(keyboardEventTypes).setReadOnly(), c);
 
         // DOM LEVEL 0:
         createDOMProperty(INSTANCES, "charCode", Value.makeAnyNumUInt(), c);

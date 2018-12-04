@@ -1,6 +1,7 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.PathAndURLUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +17,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Stack;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static dk.brics.tajs.util.Collections.addToMapSet;

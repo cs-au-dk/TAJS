@@ -1,6 +1,6 @@
 test-resources/src/1k2013spring/1438.js:75:5: [definite] TypeError, call to non-function
 test-resources/src/1k2013spring/1438.js:2:12: [definite] The conditional expression is always true
-test-resources/src/1k2013spring/1438.js:61:9: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1438.js:61:9: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1438.js:7:9: [definite] Unreachable function
 test-resources/src/1k2013spring/1438.js:27:5: [definite] Unreachable code
 test-resources/src/1k2013spring/1438.js:21:5: [maybe] ReferenceError, reading absent variable b

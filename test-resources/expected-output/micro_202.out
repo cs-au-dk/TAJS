@@ -11,6 +11,6 @@ test-resources/src/micro/test202.js:36:10: [maybe] Reading absent property ajaxS
 test-resources/src/micro/test202.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test202.js:34:10, test-resources/src/micro/test202.js:35:10, test-resources/src/micro/test202.js:36:10]
 test-resources/src/micro/test202.js:27:3: [maybe] Converting primitive string to object
 test-resources/src/micro/test202.js:37:1: [info] Abstract value: "ajaxError"
-test-resources/src/micro/test202.js:38:1: [info] Abstract value: PrefixStr[ajax]
+test-resources/src/micro/test202.js:38:1: [info] Abstract value: (PrefixStr[ajax]){"ajaxComplete","ajaxError"}
 test-resources/src/micro/test202.js:39:1: [info] Abstract value: PrefixStr[ajax]
 Soundness testing succeeded for 177 checks (with 0 expected failures)

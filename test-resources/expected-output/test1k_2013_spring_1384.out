@@ -1,4 +1,4 @@
-test-resources/src/1k2013spring/1384.js:44:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.lineTo
+test-resources/src/1k2013spring/1384.js:44:3: [definite] Too many parameters to native function
 test-resources/src/1k2013spring/1384.js:24:7: [maybe] ReferenceError, reading absent variable f
 test-resources/src/1k2013spring/1384.js:24:12: [maybe] ReferenceError, reading absent variable l
 test-resources/src/1k2013spring/1384.js:25:11: [maybe] ReferenceError, reading absent variable CX

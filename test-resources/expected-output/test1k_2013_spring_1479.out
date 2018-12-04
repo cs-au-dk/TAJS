@@ -1,4 +1,4 @@
-test-resources/src/1k2013spring/1479.js:89:5: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1479.js:89:5: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1479.js:116:31: [definite] The variable e is never used
 test-resources/src/1k2013spring/1479.js:32:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1479.js:67:12: [maybe] TypeError, accessing property of null/undefined

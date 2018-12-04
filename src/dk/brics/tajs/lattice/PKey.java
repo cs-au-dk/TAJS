@@ -19,12 +19,12 @@ package dk.brics.tajs.lattice;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.Collections;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.DeepImmutable;
 import dk.brics.tajs.util.Strings;
 
 import javax.annotation.Nonnull;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * A fixed property key.
@@ -37,9 +37,9 @@ abstract public class PKey implements Comparable<PKey>, DeepImmutable { // XXX: 
     public abstract Value toValue();
 
     /**
-     * Checks whether this property key is an array index.
+     * Checks whether this property key is a numeric index.
      */
-    public abstract boolean isArrayIndex();
+    public abstract boolean isNumeric();
 
     /**
      * Checks whether this property matches the given value.
@@ -129,8 +129,8 @@ abstract public class PKey implements Comparable<PKey>, DeepImmutable { // XXX: 
         }
 
         @Override
-        public boolean isArrayIndex() {
-            return Strings.isArrayIndex(str);
+        public boolean isNumeric() {
+            return Strings.isNumeric(str);
         }
 
         @Override
@@ -217,7 +217,7 @@ abstract public class PKey implements Comparable<PKey>, DeepImmutable { // XXX: 
         }
 
         @Override
-        public boolean isArrayIndex() {
+        public boolean isNumeric() {
             return false;
         }
 

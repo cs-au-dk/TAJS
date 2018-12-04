@@ -1,41 +1,489 @@
-test-resources/src/1k2013spring/1430.js:35:3: [definite] TypeError, call to non-function
-test-resources/src/1k2013spring/1430.js:16:6: [definite] Too few parameters to function Node.cloneNode
-test-resources/src/1k2013spring/1430.js:28:3: [definite] Dead assignment, property is never read
-test-resources/src/1k2013spring/1430.js:31:8: [definite] Dead assignment, property x is never read
-test-resources/src/1k2013spring/1430.js:31:19: [definite] Dead assignment, property y is never read
-test-resources/src/1k2013spring/1430.js:31:30: [definite] Dead assignment, property d is never read
-test-resources/src/1k2013spring/1430.js:31:35: [definite] Dead assignment, property e is never read
-test-resources/src/1k2013spring/1430.js:31:40: [definite] Dead assignment, property a is never read
-test-resources/src/1k2013spring/1430.js:31:45: [definite] Dead assignment, property b is never read
-test-resources/src/1k2013spring/1430.js:31:50: [definite] Dead assignment, property g is never read
-test-resources/src/1k2013spring/1430.js:31:55: [definite] Dead assignment, property h is never read
-test-resources/src/1k2013spring/1430.js:31:60: [definite] Dead assignment, property c is never read
-test-resources/src/1k2013spring/1430.js:31:65: [definite] Dead assignment, property f is never read
-test-resources/src/1k2013spring/1430.js:31:70: [definite] Dead assignment, property l is never read
-test-resources/src/1k2013spring/1430.js:32:3: [definite] Dead assignment, property is never read
-test-resources/src/1k2013spring/1430.js:35:3: [definite] Reading absent property ce of host object
-test-resources/src/1k2013spring/1430.js:12:15: [definite] The variable e is never used
-test-resources/src/1k2013spring/1430.js:12:27: [definite] The variable g is never used
-test-resources/src/1k2013spring/1430.js:12:39: [definite] The variable h is never used
-test-resources/src/1k2013spring/1430.js:15:20: [definite] The variable m is never used
-test-resources/src/1k2013spring/1430.js:36:3: [definite] Unreachable code
-test-resources/src/1k2013spring/1430.js:39:9: [definite] The variable b is never used
-test-resources/src/1k2013spring/1430.js:49:11: [definite] The variable f is never used
-test-resources/src/1k2013spring/1430.js:51:13: [definite] The variable d is never used
+test-resources/src/1k2013spring/1430.js:16:6: [definite] Too few parameters to native function
+test-resources/src/1k2013spring/1430.js:80:26: [definite] Dead assignment, property is never read
 test-resources/src/1k2013spring/1430.js:17:6: [maybe] TypeError, call to non-function
 test-resources/src/1k2013spring/1430.js:32:3: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1430.js:35:3: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1430.js:35:3: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1430.js:35:3: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:35:3: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1430.js:36:3: [maybe] ReferenceError, reading absent variable tx
+test-resources/src/1k2013spring/1430.js:36:3: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1430.js:36:3: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:36:3: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1430.js:39:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1430.js:40:14: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1430.js:49:15: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1430.js:50:15: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1430.js:52:23: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:52:31: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1430.js:52:38: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:52:67: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:52:82: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:52:133: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:52:148: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:52:178: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:52:193: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:52:270: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:52:285: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:52:315: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:52:330: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:58:13: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:59:13: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:60:13: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:61:13: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:62:7: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:63:7: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:63:7: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1430.js:63:7: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1430.js:64:11: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1430.js:64:11: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:64:11: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1430.js:64:11: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1430.js:69:7: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1430.js:69:7: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:69:7: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1430.js:69:7: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1430.js:70:7: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:70:7: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1430.js:70:7: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1430.js:74:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1430.js:76:7: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1430.js:76:7: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:76:7: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1430.js:77:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1430.js:79:11: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Implicit call to native non-toString method
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Implicit call to native non-valueOf method
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Implicit call to non-native host object toString/valueOf method
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] TypeError when computing default value for object
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] TypeError, argument is not of expected type: HTMLElement.prototype
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] TypeError, argument is not of expected type: ImageData
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1430.js:17:6: [maybe] Reading absent property getContext of host object
-test-resources/src/1k2013spring/1430.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1430.js:17:6, test-resources/src/1k2013spring/1430.js:32:3, test-resources/src/1k2013spring/1430.js:35:3, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1430.js:35:3: [maybe] Reading absent property ce of host object
+test-resources/src/1k2013spring/1430.js:35:3: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1430.js:36:3: [maybe] Reading absent property ce of host object
+test-resources/src/1k2013spring/1430.js:36:3: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1430.js:40:14: [maybe] Reading absent property l
+test-resources/src/1k2013spring/1430.js:41:7: [maybe] Reading absent property a
+test-resources/src/1k2013spring/1430.js:41:14: [maybe] Reading absent property g
+test-resources/src/1k2013spring/1430.js:42:7: [maybe] Reading absent property b
+test-resources/src/1k2013spring/1430.js:42:14: [maybe] Reading absent property h
+test-resources/src/1k2013spring/1430.js:43:7: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:43:14: [maybe] Reading absent property a
+test-resources/src/1k2013spring/1430.js:44:7: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:44:14: [maybe] Reading absent property b
+test-resources/src/1k2013spring/1430.js:45:11: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:45:19: [maybe] Reading absent property a
+test-resources/src/1k2013spring/1430.js:45:37: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:45:50: [maybe] Reading absent property a
+test-resources/src/1k2013spring/1430.js:46:11: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:46:19: [maybe] Reading absent property b
+test-resources/src/1k2013spring/1430.js:46:37: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:46:50: [maybe] Reading absent property b
+test-resources/src/1k2013spring/1430.js:47:13: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:47:21: [maybe] Reading absent property a
+test-resources/src/1k2013spring/1430.js:47:41: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:47:54: [maybe] Reading absent property a
+test-resources/src/1k2013spring/1430.js:48:13: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:48:21: [maybe] Reading absent property b
+test-resources/src/1k2013spring/1430.js:48:41: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:48:54: [maybe] Reading absent property b
+test-resources/src/1k2013spring/1430.js:49:17: [maybe] Reading absent property d
+test-resources/src/1k2013spring/1430.js:49:28: [maybe] Reading absent property e
+test-resources/src/1k2013spring/1430.js:50:15: [maybe] Reading absent property length
+test-resources/src/1k2013spring/1430.js:52:25: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:31: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:40: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:46: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:55: [maybe] Reading absent property c
+test-resources/src/1k2013spring/1430.js:52:69: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:75: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:84: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:90: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:106: [maybe] Reading absent property g
+test-resources/src/1k2013spring/1430.js:52:114: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:120: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:135: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:141: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:150: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:156: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:180: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:186: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:195: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:201: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:216: [maybe] Reading absent property f
+test-resources/src/1k2013spring/1430.js:52:222: [maybe] Reading absent property f
+test-resources/src/1k2013spring/1430.js:52:230: [maybe] Reading absent property c
+test-resources/src/1k2013spring/1430.js:52:236: [maybe] Reading absent property c
+test-resources/src/1k2013spring/1430.js:52:243: [maybe] Reading absent property h
+test-resources/src/1k2013spring/1430.js:52:251: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:257: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:272: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:278: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:287: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:293: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:317: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:323: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:52:332: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:338: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:52:353: [maybe] Reading absent property f
+test-resources/src/1k2013spring/1430.js:52:359: [maybe] Reading absent property f
+test-resources/src/1k2013spring/1430.js:52:367: [maybe] Reading absent property c
+test-resources/src/1k2013spring/1430.js:52:373: [maybe] Reading absent property c
+test-resources/src/1k2013spring/1430.js:54:13: [maybe] Reading absent property c
+test-resources/src/1k2013spring/1430.js:56:21: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:57:21: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:58:15: [maybe] Reading absent property d
+test-resources/src/1k2013spring/1430.js:59:15: [maybe] Reading absent property e
+test-resources/src/1k2013spring/1430.js:60:15: [maybe] Reading absent property d
+test-resources/src/1k2013spring/1430.js:61:15: [maybe] Reading absent property e
+test-resources/src/1k2013spring/1430.js:62:7: [maybe] Reading absent property push
+test-resources/src/1k2013spring/1430.js:63:7: [maybe] Reading absent property ba of host object
+test-resources/src/1k2013spring/1430.js:63:7: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1430.js:64:11: [maybe] Reading absent property cR of host object
+test-resources/src/1k2013spring/1430.js:64:17: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:64:22: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:64:30: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:64:35: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] Reading absent property addColorStop of host object
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] Reading absent property addColorStop of host object
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1430.js:69:7: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1430.js:69:14: [maybe] Reading absent property x
+test-resources/src/1k2013spring/1430.js:69:19: [maybe] Reading absent property y
+test-resources/src/1k2013spring/1430.js:70:7: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1430.js:76:7: [maybe] Reading absent property gg of host object
+test-resources/src/1k2013spring/1430.js:76:7: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1430.js:77:9: [maybe] Reading absent property data of host object
+test-resources/src/1k2013spring/1430.js:79:11: [maybe] Reading absent property length of host object
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Reading absent property pg of host object
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1430.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1430.js:17:6, test-resources/src/1k2013spring/1430.js:32:3, test-resources/src/1k2013spring/1430.js:35:3, test-resources/src/1k2013spring/1430.js:36:3, test-resources/src/1k2013spring/1430.js:39:13, test-resources/src/1k2013spring/1430.js:40:14, test-resources/src/1k2013spring/1430.js:49:15, test-resources/src/1k2013spring/1430.js:50:15, test-resources/src/1k2013spring/1430.js:52:23, test-resources/src/1k2013spring/1430.js:52:31, test-resources/src/1k2013spring/1430.js:52:38, test-resources/src/1k2013spring/1430.js:52:67, test-resources/src/1k2013spring/1430.js:52:82, test-resources/src/1k2013spring/1430.js:52:133, test-resources/src/1k2013spring/1430.js:52:148, test-resources/src/1k2013spring/1430.js:52:178, test-resources/src/1k2013spring/1430.js:52:193, test-resources/src/1k2013spring/1430.js:52:270, test-resources/src/1k2013spring/1430.js:52:285, test-resources/src/1k2013spring/1430.js:52:315, test-resources/src/1k2013spring/1430.js:52:330, test-resources/src/1k2013spring/1430.js:58:13, test-resources/src/1k2013spring/1430.js:59:13, test-resources/src/1k2013spring/1430.js:60:13, test-resources/src/1k2013spring/1430.js:61:13, test-resources/src/1k2013spring/1430.js:62:7, test-resources/src/1k2013spring/1430.js:63:7, test-resources/src/1k2013spring/1430.js:64:11, test-resources/src/1k2013spring/1430.js:65:7, test-resources/src/1k2013spring/1430.js:67:7, test-resources/src/1k2013spring/1430.js:69:7, test-resources/src/1k2013spring/1430.js:70:7, test-resources/src/1k2013spring/1430.js:74:5, test-resources/src/1k2013spring/1430.js:76:7, test-resources/src/1k2013spring/1430.js:77:9, test-resources/src/1k2013spring/1430.js:79:11, test-resources/src/1k2013spring/1430.js:82:3, test-resources/src/1k2013spring/shim.js:9:5]
 test-resources/src/1k2013spring/1430.js:22:5: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:22:5: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1430.js:22:5: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1430.js:22:16: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1430.js:22:16: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1430.js:22:34: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1430.js:25:6: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:25:6: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1430.js:25:6: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1430.js:25:17: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1430.js:25:17: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1430.js:25:35: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1430.js:32:5: [maybe] Conversion to number yields NaN
-Disabling soundness testing for test-resources/src/1k2013spring/1430.js entirely (60 uninspected soundness errors).
-Soundness testing succeeded for 370 checks (with 60 expected failures)
+test-resources/src/1k2013spring/1430.js:35:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:35:3: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:36:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:36:3: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:37:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:38:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:39:13: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1430.js:40:14: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:40:14: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:40:14: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:41:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:41:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:41:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:41:14: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:41:14: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:42:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:42:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:42:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:42:14: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:42:14: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:42:14: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:43:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:43:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:43:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:43:14: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:43:14: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:44:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:44:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:44:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:44:14: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:44:14: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:45:11: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:45:11: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:45:19: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:45:19: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:45:19: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:45:33: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:45:37: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:45:37: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:45:44: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:45:50: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:45:50: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:46:11: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:46:11: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:46:19: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:46:19: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:46:19: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:46:33: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:46:37: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:46:37: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:46:44: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:46:50: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:46:50: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:47:13: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:47:13: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:47:21: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:47:21: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:47:21: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:47:35: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:47:41: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:47:41: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:47:48: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:47:54: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:47:54: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:48:13: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:48:13: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:48:21: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:48:21: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:48:21: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:48:35: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:48:41: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:48:41: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:48:48: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:48:54: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:48:54: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:49:15: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1430.js:49:17: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:49:17: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:49:17: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:49:23: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:49:28: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:49:28: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:50:15: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:50:15: [maybe] The variable f has values with different types
+test-resources/src/1k2013spring/1430.js:50:24: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:51:17: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:51:17: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1430.js:51:17: [maybe] The variable f has values with different types
+test-resources/src/1k2013spring/1430.js:52:9: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:9: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:14: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:25: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:25: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:25: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:31: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:31: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:40: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:40: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:40: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:46: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:46: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:55: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:55: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:55: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:69: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:69: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:69: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:75: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:75: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:84: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:84: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:84: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:90: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:90: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:106: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:106: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:106: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:114: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:114: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:114: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:120: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:120: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:135: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:135: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:135: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:141: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:141: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:150: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:150: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:150: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:156: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:156: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:180: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:180: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:180: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:186: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:186: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:195: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:195: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:195: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:201: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:201: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:216: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:216: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:216: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:222: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:222: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:230: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:230: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:230: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:236: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:236: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:243: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:243: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:243: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:251: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:251: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:251: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:257: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:257: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:272: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:272: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:272: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:278: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:278: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:287: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:287: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:287: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:293: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:293: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:317: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:317: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:317: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:323: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:323: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:332: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:332: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:332: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:338: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:338: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:353: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:353: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:353: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:359: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:359: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:52:367: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:52:367: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:367: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:52:373: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:52:373: [maybe] The variable d has values with different types
+test-resources/src/1k2013spring/1430.js:54:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:54:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:54:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:54:13: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:54:13: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:55:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:55:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:55:13: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:55:13: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:55:19: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:55:19: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:56:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:56:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:56:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:56:21: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:56:21: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:57:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:57:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:57:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:57:21: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:57:21: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:58:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:58:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:58:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:58:15: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:58:15: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:59:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:59:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:59:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:59:15: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:59:15: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:60:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:60:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:60:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:60:15: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:60:15: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:61:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:61:7: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:61:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:61:15: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:61:15: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:62:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:62:7: [maybe] The variable f has values with different types
+test-resources/src/1k2013spring/1430.js:62:14: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:63:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:63:7: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1430.js:64:11: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:64:11: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:64:11: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1430.js:64:17: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:64:17: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:64:22: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:64:22: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:64:30: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:64:30: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:64:35: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:64:35: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] Converting primitive boolean to object
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:65:7: [maybe] The variable f has values with different types
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] Converting primitive boolean to object
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:67:7: [maybe] The variable f has values with different types
+test-resources/src/1k2013spring/1430.js:68:22: [maybe] The variable f has values with different types
+test-resources/src/1k2013spring/1430.js:69:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:69:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:69:7: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1430.js:69:14: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:69:14: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:69:19: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:69:19: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:70:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:70:7: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1430.js:74:5: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:74:5: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1430.js:76:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:76:7: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:77:9: [maybe] Converting primitive boolean to object
+test-resources/src/1k2013spring/1430.js:77:9: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:77:9: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:79:11: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:79:11: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:79:11: [maybe] The variable pix has values with different types
+test-resources/src/1k2013spring/1430.js:80:5: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:80:5: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:80:5: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1430.js:80:5: [maybe] The variable pix has values with different types
+test-resources/src/1k2013spring/1430.js:80:26: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1430.js:80:26: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:80:26: [maybe] The variable pix has values with different types
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Converting boolean to string
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Converting object to number
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Converting object to string
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Converting primitive boolean to object
+test-resources/src/1k2013spring/1430.js:82:3: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1430.js:82:8: [maybe] The variable b has values with different types
+test-resources/src/1k2013spring/1430.js:22:3: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1430.js:25:3: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1430.js:21:1: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1430.js:22:34: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1430.js:24:1: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1430.js:25:35: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 370 checks (with 0 expected failures)

@@ -85,6 +85,7 @@ public class Test1K2012Love {
     }
 
     @Test
+    @Ignore // TODO investigate (Github #493)
     public void test1k_2012_love_1028() {
         Misc.run("test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1028.js");
         Misc.checkSystemOutput();
@@ -156,7 +157,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class) // TODO investigate (GitHub #417)
+    @Test
     public void test1k_2012_love_1057() {
         Misc.run("test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1057.js");
         Misc.checkSystemOutput();
@@ -230,7 +231,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class)
+    @Test
     public void test1k_2012_love_1102() {
         Misc.run("test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1102.js");
         Misc.checkSystemOutput();
@@ -572,11 +573,10 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.class) // TODO investigate (GitHub #417)
     public void test1k_2012_love_1269() {
-        //Misc.captureSystemOutput();
         Misc.run("test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1269.js");
-        //Misc.checkSystemOutput();
+        Misc.checkSystemOutput();
     }
 
     @Test
@@ -603,7 +603,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.class) // TODO investigate (GitHub #417)
     public void test1k_2012_love_1276() {
         Misc.run("test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1276.js");
         Misc.checkSystemOutput();

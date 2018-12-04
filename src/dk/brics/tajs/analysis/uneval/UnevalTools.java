@@ -378,7 +378,7 @@ public class UnevalTools {
                 for (Set<ObjectLabel> ls : ScopeChain.iterable(state.getScopeChain()))
                     for (ObjectLabel l : ls)
                         if (!l.equals(InitialStateBuilder.GLOBAL)) {
-                            if (UnknownValueResolver.getDefaultNonArrayProperty(l, state).isNotAbsent()) // TODO: javadoc
+                            if (UnknownValueResolver.getDefaultOtherProperty(l, state).isNotAbsent()) // TODO: javadoc
                                 return null;
                             for (PKey propertyname : UnknownValueResolver.getProperties(l, state).keySet())
                                 if (UnknownValueResolver.getProperty(l, propertyname, state, true).isMaybePresent())

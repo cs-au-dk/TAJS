@@ -43,7 +43,7 @@ public class JSObject_assign_test {
     public void fuzzy() {
         Misc.runSource("var o1 = {};",
                 "var o2 = {};",
-                "o2[TAJS_make('AnyStrNotUInt')] = 'FUZZY';",
+                "o2[TAJS_make('AnyStrNotNumeric')] = 'FUZZY';",
                 "Object.assign(o1, o2);",
                 "TAJS_assertEquals(TAJS_join(undefined, 'FUZZY'), o1.foo);",
                 "TAJS_assertEquals(TAJS_join(undefined), o1[42]);");

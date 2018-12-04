@@ -1,6 +1,6 @@
-test-resources/src/sunspider/3d-morph.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/3d-morph.js:41:13]
+test-resources/src/sunspider/3d-morph.js: [definite] Exceptional program exit is unreachable
 test-resources/src/sunspider/3d-morph.js:57:5: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-morph.js:57:19: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-morph.js:61:26: [maybe] Converting object to number
-test-resources/src/sunspider/3d-morph.js:63:1: [info] Abstract value: UInt|NotUInt
+test-resources/src/sunspider/3d-morph.js:63:1: [info] Abstract value: Num
 Soundness testing succeeded for 1858 checks (with 0 expected failures)

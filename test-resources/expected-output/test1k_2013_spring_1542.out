@@ -1,0 +1,59 @@
+test-resources/src/1k2013spring/1542.js:65:14: [definite] ReferenceError, reading absent variable Uint32Array
+test-resources/src/1k2013spring/1542.js:15:5: [definite] The variable image is never used
+test-resources/src/1k2013spring/1542.js:15:12: [definite] The variable data32 is never used
+test-resources/src/1k2013spring/1542.js:17:5: [definite] The variable down is never used
+test-resources/src/1k2013spring/1542.js:18:5: [definite] The variable f is never used
+test-resources/src/1k2013spring/1542.js:19:8: [definite] The variable j is never used
+test-resources/src/1k2013spring/1542.js:20:5: [definite] The variable u is never used
+test-resources/src/1k2013spring/1542.js:20:8: [definite] The variable v is never used
+test-resources/src/1k2013spring/1542.js:22:5: [definite] The variable ballx is never used
+test-resources/src/1k2013spring/1542.js:22:12: [definite] The variable ballx2 is never used
+test-resources/src/1k2013spring/1542.js:22:20: [definite] The variable bally is never used
+test-resources/src/1k2013spring/1542.js:22:27: [definite] The variable bally2 is never used
+test-resources/src/1k2013spring/1542.js:23:5: [definite] The variable ballay is never used
+test-resources/src/1k2013spring/1542.js:24:5: [definite] The variable pany is never used
+test-resources/src/1k2013spring/1542.js:25:5: [definite] The variable q is never used
+test-resources/src/1k2013spring/1542.js:25:8: [definite] The variable q2 is never used
+test-resources/src/1k2013spring/1542.js:27:5: [definite] The variable th is never used
+test-resources/src/1k2013spring/1542.js:28:5: [definite] The variable offx is never used
+test-resources/src/1k2013spring/1542.js:29:5: [definite] The variable u2 is never used
+test-resources/src/1k2013spring/1542.js:29:9: [definite] The variable offy is never used
+test-resources/src/1k2013spring/1542.js:29:15: [definite] The variable v2 is never used
+test-resources/src/1k2013spring/1542.js:29:19: [definite] The variable k is never used
+test-resources/src/1k2013spring/1542.js:31:5: [definite] The variable gbg is never used
+test-resources/src/1k2013spring/1542.js:33:5: [definite] The variable score is never used
+test-resources/src/1k2013spring/1542.js:33:12: [definite] The variable airtime is never used
+test-resources/src/1k2013spring/1542.js:33:21: [definite] The variable comments is never used
+test-resources/src/1k2013spring/1542.js:47:3: [definite] Unreachable function
+test-resources/src/1k2013spring/1542.js:54:5: [definite] The variable seed is never used
+test-resources/src/1k2013spring/1542.js:65:26: [definite] Unreachable code
+test-resources/src/1k2013spring/1542.js:74:13: [definite] Unreachable function
+test-resources/src/1k2013spring/1542.js:213:27: [definite] Unreachable function
+test-resources/src/1k2013spring/1542.js:217:23: [definite] Unreachable function
+test-resources/src/1k2013spring/1542.js:64:9: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1542.js:64:9: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1542.js:64:9: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1542.js:64:9: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1542.js:64:9: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1542.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1542.js:64:9, test-resources/src/1k2013spring/1542.js:65:14, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1542.js:57:27: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1542.js:57:27: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1542.js:57:27: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1542.js:57:33: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1542.js:57:33: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1542.js:57:44: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1542.js:57:44: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1542.js:57:45: [maybe] Converting boolean to string
+test-resources/src/1k2013spring/1542.js:57:45: [maybe] Converting null to string
+test-resources/src/1k2013spring/1542.js:57:45: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1542.js:57:48: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1542.js:57:58: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1542.js:64:9: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1542.js:64:9: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1542.js:57:25: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1542.js:57:75: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1542.js:57:1: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1542.js:57:48: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1542.js:57:58: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 0 checks (with 0 expected failures)

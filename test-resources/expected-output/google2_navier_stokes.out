@@ -26,15 +26,13 @@ test-resources/src/google2/navier-stokes.js:313:22: [definite] Unreachable funct
 test-resources/src/google2/navier-stokes.js:314:23: [definite] Unreachable function
 test-resources/src/google2/navier-stokes.js:333:23: [definite] Unreachable function
 test-resources/src/google2/navier-stokes.js:342:9: [definite] The variable visc is never used
-test-resources/src/google2/navier-stokes.js:304:14: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/google2/navier-stokes.js:305:14: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/google2/navier-stokes.js:359:16: [maybe] RangeError, invalid value of array length
 test-resources/src/google2/navier-stokes.js:360:21: [maybe] RangeError, invalid value of array length
 test-resources/src/google2/navier-stokes.js:361:13: [maybe] RangeError, invalid value of array length
 test-resources/src/google2/navier-stokes.js:362:18: [maybe] RangeError, invalid value of array length
 test-resources/src/google2/navier-stokes.js:363:13: [maybe] RangeError, invalid value of array length
 test-resources/src/google2/navier-stokes.js:364:18: [maybe] RangeError, invalid value of array length
-test-resources/src/google2/navier-stokes.js: [maybe] Uncaught exception, constructed at [test-resources/src/google2/navier-stokes.js:87:17, test-resources/src/google2/navier-stokes.js:97:17, test-resources/src/google2/navier-stokes.js:101:17, test-resources/src/google2/navier-stokes.js:107:17, test-resources/src/google2/navier-stokes.js:129:21, test-resources/src/google2/navier-stokes.js:144:33, test-resources/src/google2/navier-stokes.js:164:21, test-resources/src/google2/navier-stokes.js:165:21, test-resources/src/google2/navier-stokes.js:227:17, test-resources/src/google2/navier-stokes.js:244:17, test-resources/src/google2/navier-stokes.js:245:17, test-resources/src/google2/navier-stokes.js:304:14, test-resources/src/google2/navier-stokes.js:305:14, test-resources/src/google2/navier-stokes.js:359:16, test-resources/src/google2/navier-stokes.js:360:21, test-resources/src/google2/navier-stokes.js:361:13, test-resources/src/google2/navier-stokes.js:362:18, test-resources/src/google2/navier-stokes.js:363:13, test-resources/src/google2/navier-stokes.js:364:18]
+test-resources/src/google2/navier-stokes.js: [maybe] Uncaught exception, constructed at [test-resources/src/google2/navier-stokes.js:359:16, test-resources/src/google2/navier-stokes.js:360:21, test-resources/src/google2/navier-stokes.js:361:13, test-resources/src/google2/navier-stokes.js:362:18, test-resources/src/google2/navier-stokes.js:363:13, test-resources/src/google2/navier-stokes.js:364:18]
 test-resources/src/google2/navier-stokes.js:79:38: [maybe] Conversion to number yields NaN
 test-resources/src/google2/navier-stokes.js:79:38: [maybe] Reading absent property (computed name)
 test-resources/src/google2/navier-stokes.js:79:46: [maybe] Conversion to number yields NaN

@@ -167,6 +167,7 @@ public class TestSunspider {
 
     @Test
     public void sunspider_string_validate_input() throws Exception {
+        Options.get().getSoundnessTesterOptions().setTest(false); // github #531
         Misc.run("test-resources/src/sunspider/string-validate-input.js");
         Misc.checkSystemOutput();
     }

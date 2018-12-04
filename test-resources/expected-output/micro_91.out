@@ -1,8 +1,12 @@
+test-resources/src/micro/test91.js:8:16: [definite] Variable y is null/undefined
+test-resources/src/micro/test91.js:10:1: [definite] The conditional expression is always true
+test-resources/src/micro/test91.js:10:5: [definite] Variable y is null/undefined
+test-resources/src/micro/test91.js:16:16: [definite] Variable y is null/undefined
 test-resources/src/micro/test91.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test91.js:7:9: [maybe] Reading absent property (computed name)
-test-resources/src/micro/test91.js:8:1: [info] Abstract value: Undef|Null|[@Object[native], @Object.prototype[native], @Object.prototype.valueOf[native], @Object.prototype.toString[native], @Object.prototype.toLocaleString[native], @Object.prototype.propertyIsEnumerable[native], @Object.prototype.isPrototypeOf[native], @Object.prototype.hasOwnProperty[native], @Object.prototype.__defineSetter__[native], @Object.prototype.__defineGetter__[native]]
-test-resources/src/micro/test91.js:15:1: [info] Abstract value: IdentStr
-test-resources/src/micro/test91.js:16:1: [info] Abstract value: Undef|Null|[@Object[native], @Object.prototype[native], @Object.prototype.valueOf[native], @Object.prototype.toString[native], @Object.prototype.toLocaleString[native], @Object.prototype.propertyIsEnumerable[native], @Object.prototype.isPrototypeOf[native], @Object.prototype.hasOwnProperty[native], @Object.prototype.__defineSetter__[native], @Object.prototype.__defineGetter__[native]]
-test-resources/src/micro/test91.js:17:1: [info] Abstract value: Bool
+test-resources/src/micro/test91.js:8:1: [info] Abstract value: Undef
+test-resources/src/micro/test91.js:15:1: [info] Abstract value: (IdentStr){"bar","foo"}
+test-resources/src/micro/test91.js:16:1: [info] Abstract value: Undef
+test-resources/src/micro/test91.js:17:1: [info] Abstract value: true
 test-resources/src/micro/test91.js:7:9: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 22 checks (with 0 expected failures)

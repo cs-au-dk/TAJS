@@ -5,11 +5,11 @@ Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
   Summarized: maybe=[@replace#fun3, @f#fun1, @arguments#node27, @arguments#node14, @activation#node27, @activation#node14, @Object#node5, @Object#node42, @Object#node35, @Object#node1, @<anonymous>#fun2], definitely=[@replace#fun3, @f#fun1, @arguments#node27, @arguments#node14, @activation#node27, @activation#node14, @Object#node5, @Object#node42, @Object#node35, @Object#node1, @<anonymous>#fun2]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],f:[@f#fun1],t:42.0,[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
-    @Object.prototype[native] (<initial state>): {configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),f:^(@Object.prototype[native].f[absent]),get:^(@Object.prototype[native].get[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),t:^(@Object.prototype[native].t[absent]),value:^(@Object.prototype[native].value[absent]),writable:^(@Object.prototype[native].writable[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
-    @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @String.prototype[native] (<initial state>): {replace:[@replace#fun3],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
-    @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],f:[@f#fun1],t:42.0,[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @Object.prototype[native] (<initial state>): {configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),f:^(@Object.prototype[native].f[absent]),get:^(@Object.prototype[native].get[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),t:^(@Object.prototype[native].t[absent]),value:^(@Object.prototype[native].value[absent]),writable:^(@Object.prototype[native].writable[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @String.prototype[native] (<initial state>): {replace:[@replace#fun3],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
+    @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @Object#node5 (host-environment-sources-loader): {constructor:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @Object#node1 (test-resources/src/micro/test192.js:1:1): {constructor:[@f#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @f#fun1 (test-resources/src/micro/test192.js:1:1): {length:1.0,name:"f",prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
@@ -20,4 +20,5 @@ Abstract state:
     @replace#fun3 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node42],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node27],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+  Functions in stack: []
 Soundness testing succeeded for 35 checks (with 0 expected failures)

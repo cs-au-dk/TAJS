@@ -114,7 +114,7 @@ public class Conversion {
             if (!isMaybeNonCallable(tostring)) {
                 s.setToBottom(); // TODO: skip this if we decide to skip the cloning above
             }
-            s.propagate(tostringState, false);
+            s.propagate(tostringState, false, false);
             if (isMaybeNonCallable(tostring) || result.isMaybeObject()) {
                 Value valueof = pv.readPropertyValue(Collections.singleton(obj), "valueOf");
                 visitPropertyRead(obj, "valueOf", s, c);
@@ -128,7 +128,7 @@ public class Conversion {
                 if (!isMaybeNonCallable(valueof)) {
                     s.setToBottom(); // TODO: skip this if we decide to skip the cloning above
                 }
-                s.propagate(valueOfState, false);
+                s.propagate(valueOfState, false, false);
                 if (isMaybeNonCallable(valueof) || result.isMaybeObject())
                     maybe_typeerror = true;
             }
@@ -154,7 +154,7 @@ public class Conversion {
             if (!isMaybeNonCallable(valueof)) {
                 s.setToBottom(); // TODO: skip this if we decide to skip the cloning above
             }
-            s.propagate(valueofState, false);
+            s.propagate(valueofState, false, false);
             if (isMaybeNonCallable(valueof) || result.isMaybeObject()) {
                 Value tostring = pv.readPropertyValue(Collections.singleton(obj), "toString");
                 visitPropertyRead(obj, "toString", s, c);
@@ -168,7 +168,7 @@ public class Conversion {
                 if (!isMaybeNonCallable(tostring)) {
                     s.setToBottom(); // TODO: skip this if we decide to skip the cloning above
                 }
-                s.propagate(toStringState, false);
+                s.propagate(toStringState, false, false);
                 if (isMaybeNonCallable(tostring) || result.isMaybeObject())
                     maybe_typeerror = true;
             }
@@ -310,7 +310,7 @@ public class Conversion {
                 res = c.getState();
                 first = false;
             } else {
-                res.propagate(c.getState(), false);
+                res.propagate(c.getState(), false, false);
             }
             if (!last) {
                 c.setState(orig);

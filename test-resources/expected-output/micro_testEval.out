@@ -1,7 +1,7 @@
 test-resources/src/micro/testEval.js: [definite] Ordinary program exit is unreachable
 test-resources/src/micro/testEval.js:2:16: [definite] Variable a is null/undefined
 test-resources/src/micro/testEval.js:3:30: [definite] Variable a is null/undefined
-test-resources/src/micro/testEval.js:1:9: [definite] Too few parameters to function eval
+test-resources/src/micro/testEval.js:1:9: [definite] Too few parameters to native function
 test-resources/src/micro/testEval.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/testEval.js:15:5: [definite] The variable f is never used
 test-resources/src/micro/testEval.js:15:5: [definite] Unreachable code

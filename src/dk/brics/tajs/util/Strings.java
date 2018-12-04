@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.util;
 
+import java.util.Collection;
 import java.util.Random;
 import java.util.regex.Pattern;
 
@@ -120,6 +121,13 @@ public class Strings {
     }
 
     /**
+     * Invokes {@link #escape(String)} on each string in the given collection.
+     */
+    public static Collection<String> escape(Collection<String> ss) {
+        return ss.stream().map(Strings::escape).collect(Collectors.toList());
+    }
+
+    /**
      * Escapes quotes and special characters in the (Javascript source) string.
      */
     public static String escapeSource(String s) {
@@ -128,20 +136,18 @@ public class Strings {
         StringBuilder b = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            switch (c) {
-                case '"':
-                    b.append("\\\"");
-                    break;
-                default:
-                    if (c >= 0x20 && c <= 0x7e)
-                        b.append(c);
-                    else {
-                        b.append("\\u");
-                        String t = Integer.toHexString(c & 0xffff);
-                        for (int j = 0; j + t.length() < 4; j++)
-                            b.append('0');
-                        b.append(t);
-                    }
+            if (c == '"') {
+                b.append("\\\"");
+            } else {
+                if (c >= 0x20 && c <= 0x7e)
+                    b.append(c);
+                else {
+                    b.append("\\u");
+                    String t = Integer.toHexString(c & 0xffff);
+                    for (int j = 0; j + t.length() < 4; j++)
+                        b.append('0');
+                    b.append(t);
+                }
             }
         }
         return b.toString();
@@ -169,7 +175,7 @@ public class Strings {
      * Checks whether the given string is a valid double, including Infinity, -Infinity, and NaN.
      * This is an over-approximation of the strings that may appear when number values are coerced to string values.
      */
-    public static boolean isNumber(String s) {
+    public static boolean isNumeric(String s) {
         return NUMBER.matcher(s).matches();
     }
 

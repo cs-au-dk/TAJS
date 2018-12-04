@@ -1,6 +1,6 @@
 test-resources/src/10k/gravity.html:62:9: [definite] Dead assignment, property is never read
 test-resources/src/10k/gravity.html:204:13: [definite] Dead assignment, property is never read
-test-resources/src/10k/gravity.html:218:13: [definite] Too few parameters to function Window.location.reload
+test-resources/src/10k/gravity.html:218:13: [definite] Too few parameters to native function
 test-resources/src/10k/gravity.html:35:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/gravity.html:45:9: [maybe] ReferenceError, reading absent variable ctx
 test-resources/src/10k/gravity.html:62:45: [maybe] TypeError, accessing property of null/undefined

@@ -1,4 +1,4 @@
-test-resources/src/1k2013spring/1458.js:120:5: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1458.js:120:5: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1458.js:64:1: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1458.js:64:14: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1458.js:64:27: [maybe] TypeError, accessing property of null/undefined
@@ -78,13 +78,20 @@ test-resources/src/1k2013spring/1458.js:77:3: [maybe] Reading absent property (c
 test-resources/src/1k2013spring/1458.js:84:7: [maybe] The variable S has values with different types
 test-resources/src/1k2013spring/1458.js:88:27: [maybe] The variable S has values with different types
 test-resources/src/1k2013spring/1458.js:102:9: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:104:9: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1458.js:116:19: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1458.js:116:33: [maybe] The variable S has values with different types
+test-resources/src/1k2013spring/1458.js:120:31: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1458.js:126:11: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:143:9: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1458.js:144:11: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1458.js:152:18: [maybe] The variable S has values with different types
 test-resources/src/1k2013spring/1458.js:152:23: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:154:20: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1458.js:155:15: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:160:16: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1458.js:161:18: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1458.js:169:16: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1458.js:185:9: [maybe] The variable S has values with different types
 test-resources/src/1k2013spring/1458.js:191:9: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1458.js:192:9: [maybe] Reading absent property (computed name)

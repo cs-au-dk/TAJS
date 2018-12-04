@@ -20,6 +20,7 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
+import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectProperty;
@@ -152,6 +153,26 @@ public class Unsoundness {
     }
 
     /**
+     * Decides if 'Math.random' produces a fixed value.
+     */
+    public boolean mayUseFixedMathRandom(AbstractNode node) {
+        return addMessageIfUnsound(
+                node,
+                options.isUseFixedRandom(),
+                "Assuming Math.random returns fixed value");
+    }
+
+    /**
+     * Decides if 'Date.now' produces a fixed value.
+     */
+    public boolean mayUseFixedDateNow(AbstractNode node) {
+        return addMessageIfUnsound(
+                node,
+                options.isUseFixedRandom(),
+                "Assuming Date.now returns fixed value");
+    }
+
+    /**
      * Decides if an imprecise call to 'eval' can be treated as a no-op.
      */
     public boolean mayIgnoreImpreciseEval(AbstractNode node) {
@@ -246,10 +267,10 @@ public class Unsoundness {
     /**
      * Decides if an property write should update the internal prototype.
      */
-    public boolean maySkipInternalProtoPropertyWrite(AbstractNode node, ObjectProperty property) {
+    public boolean maySkipInternalProtoPropertyWrite(AbstractNode node) {
         return addMessageIfUnsound(
                 node,
-                property.getProperty().isFuzzy(), // TODO: enable by option? (GitHub #357)
+                (node instanceof WritePropertyNode) && !((WritePropertyNode) node).isPropertyFixed(), // TODO: enable by option? (GitHub #357)
                 "Skipping write to property '__proto__'");
     }
 

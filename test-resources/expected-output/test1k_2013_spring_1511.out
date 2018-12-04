@@ -1,6 +1,6 @@
-test-resources/src/1k2013spring/1511.js:127:3: [definite] Too many parameters to function Window.setTimeout
+test-resources/src/1k2013spring/1511.js:127:3: [definite] Too many parameters to native function
 test-resources/src/1k2013spring/1511.js:128:16: [definite] Variable O is null/undefined
-test-resources/src/1k2013spring/1511.js:70:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1511.js:70:4: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1511.js:47:6: [maybe] ReferenceError, reading absent variable c
 test-resources/src/1k2013spring/1511.js:57:6: [maybe] ReferenceError, reading absent variable r
 test-resources/src/1k2013spring/1511.js:62:9: [maybe] ReferenceError, reading absent variable a

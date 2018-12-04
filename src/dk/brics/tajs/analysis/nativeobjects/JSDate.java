@@ -150,7 +150,10 @@ public class JSDate {
     }
 
     private static Value getNow(CallInfo call, Solver.SolverInterface c) {
-        return Value.makeAnyNum();
+        if (c.getAnalysis().getUnsoundness().mayUseFixedDateNow(c.getNode())) {
+            return Value.makeNum(1543012345678l + 11 * c.getNode().getIndex()); // pick a pseudo-random value deterministically from the node index
+        } else
+            return Value.makeAnyNum();
     }
 
     /**

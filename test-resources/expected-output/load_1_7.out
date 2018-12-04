@@ -1,7 +1,7 @@
-TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4692:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c26,p25)
+TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4692:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c30,p29)
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4692:13):1:1: HTML StartTag a contains a '/' character before the closing '>', which is ignored because tags of this name cannot be empty-element tags
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4692:13):1:1: HTML StartTag missing required end tag
-TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4692:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c26,p25)
+TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4692:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c30,p29)
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4692:13):1:1: HTML StartTag a contains a '/' character before the closing '>', which is ignored because tags of this name cannot be empty-element tags
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4692:13):1:1: HTML StartTag missing required end tag
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:23:49: [definite] Variable context is null/undefined
@@ -167,7 +167,6 @@ benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:48:13: [definite] Dead a
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:57:21: [definite] Reading absent property nodeType
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:58:21: [definite] Dead assignment, property context is never read
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:155:13: [definite] Dead assignment, property selector is never read
-benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:157:13: [definite] Dead assignment, property jquery is never read
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:159:13: [definite] Dead assignment, property length is never read
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:161:13: [definite] Dead assignment, property size is never read
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:165:13: [definite] Dead assignment, property toArray is never read
@@ -298,7 +297,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3245:5: [definite] Dead 
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3266:20: [definite] Reading absent property type
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3282:9: [definite] Dead assignment, property timeStamp is never read
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3282:33: [definite] Reading absent property timeStamp
-benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3284:9: [definite] Dead assignment, property jQueryTAJS_UUID is never read
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3284:9: [definite] Dead assignment, property jQuery1707353572644123783 is never read
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3296:9: [definite] Dead assignment, property preventDefault is never read
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3313:9: [definite] Dead assignment, property stopPropagation is never read
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3329:9: [definite] Dead assignment, property stopImmediatePropagation is never read
@@ -853,13 +852,13 @@ benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3667:243: [definite] The
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3669:27: [definite] Unreachable function
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:13: [definite] The variable chunker is never used
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:158: [definite] The variable expando is never used
-benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:194: [definite] The variable done is never used
-benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:204: [definite] The variable toString is never used
-benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:242: [definite] The variable hasDuplicate is never used
-benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:264: [definite] The variable baseHasDuplicate is never used
-benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:289: [definite] The variable rBackslash is never used
-benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:309: [definite] The variable rReturn is never used
-benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:328: [definite] The variable rNonWord is never used
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:220: [definite] The variable done is never used
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:230: [definite] The variable toString is never used
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:268: [definite] The variable hasDuplicate is never used
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:290: [definite] The variable baseHasDuplicate is never used
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:315: [definite] The variable rBackslash is never used
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:335: [definite] The variable rReturn is never used
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:354: [definite] The variable rNonWord is never used
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3704:22: [definite] Unreachable function
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3843:29: [definite] Unreachable function
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3862:26: [definite] Unreachable function
@@ -1304,7 +1303,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3631:17: [maybe] TypeErr
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3667:5: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3679:13: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4566:13: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4697:17: [maybe] <Document.getElementById>("scriptTAJS_UUID") did not match any elements
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4697:17: [maybe] <Document.getElementById>("script1543012544800") did not match any elements
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4747:42: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4747:89: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4747:89: [maybe] TypeError, call to non-function
@@ -1553,6 +1552,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:1419:9: [maybe] Reading 
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:1422:56: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:1434:44: [maybe] Converting undefined to string
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:1467:20: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:1517:29: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:1527:49: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:1541:27: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:1541:50: [maybe] Reading absent property (computed name)
@@ -1587,6 +1587,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3282:33: [maybe] Convert
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3573:26: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3667:17: [maybe] Converting object to string
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3667:17: [maybe] Converting primitive string to object
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:181: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4545:28: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4545:28: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4545:28: [maybe] Converting object to number
@@ -1610,4 +1611,11 @@ benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:8713:20: [maybe] Convert
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:801:13: [info] Writing to unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:420:47: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:1728:29: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 6459 checks (with 0 expected failures)
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:758:24: [unsound] Assuming Date.now returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:801:13: [unsound] Skipping write to property '__proto__'
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:947:55: [unsound] Assuming UInt-addition is closed
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:1517:50: [unsound] Assuming Math.random returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:2984:47: [unsound] Assuming UInt-addition is closed
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:3695:182: [unsound] Assuming Math.random returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js:4691:72: [unsound] Assuming Date.now returns fixed value
+Soundness testing succeeded for 6492 checks (with 2 expected failures)

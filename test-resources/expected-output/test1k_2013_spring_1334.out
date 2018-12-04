@@ -3,7 +3,7 @@ test-resources/src/1k2013spring/1334.js:56:5: [definite] The conditional express
 test-resources/src/1k2013spring/1334.js:57:5: [definite] The conditional expression is always false
 test-resources/src/1k2013spring/1334.js:58:5: [definite] The conditional expression is always false
 test-resources/src/1k2013spring/1334.js:59:5: [definite] The conditional expression is always false
-test-resources/src/1k2013spring/1334.js:38:7: [definite] Too few parameters to function Node.cloneNode
+test-resources/src/1k2013spring/1334.js:38:7: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1334.js:7:36: [definite] Unreachable function
 test-resources/src/1k2013spring/1334.js:22:1: [definite] The variable v is never used
 test-resources/src/1k2013spring/1334.js:35:29: [maybe] ReferenceError, reading absent variable c

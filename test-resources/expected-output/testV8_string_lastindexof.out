@@ -1,4 +1,4 @@
-test-resources/src/v8tests/string-lastindexof.js:37:18: [definite] Too few parameters to function String.prototype.lastIndexOf
+test-resources/src/v8tests/string-lastindexof.js:37:18: [definite] Too few parameters to native function
 test-resources/src/v8tests/string-lastindexof.js: [definite] Exceptional program exit is unreachable
 test-resources/src/v8tests/string-lastindexof.js:30:17: [maybe] Converting object to string
 test-resources/src/v8tests/string-lastindexof.js:30:17: [maybe] Converting primitive string to object

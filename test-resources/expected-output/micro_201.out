@@ -9,12 +9,12 @@ Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
   Summarized: maybe=[@replace#fun4, @callback#fun1, @arguments#node70, @arguments#node56{method="post"}, @arguments#node56{method="get"}, @activation#node70, @activation#node56{method="post"}, @activation#node56{method="get"}, @String#node37{boxed-primitive="post"}, @String#node37{boxed-primitive="get"}, @Object#node9, @Object#node85, @Object#node78, @Object#node7, @Object#node59{method="post"}, @Object#node59{method="get"}, @Object#node2, @Object#node14, @<anonymous>#fun3, @<anonymous>#fun2{method="post"}, @<anonymous>#fun2{method="get"}], definitely=[@replace#fun4, @callback#fun1, @arguments#node70, @activation#node70, @Object#node9, @Object#node85, @Object#node78, @Object#node7, @Object#node2, @Object#node14, @<anonymous>#fun3]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],callback:[@callback#fun1],jQuery:[@Object#node9],name:Undef|UIntStr,obj:[@Object#node14],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
-    @Function.prototype[native] (<initial state>): {call:[@Function.prototype.call[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],callback:[@callback#fun1],jQuery:[@Object#node9],name:Undef|(UIntStr){"0","1"},obj:[@Object#node14],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @Function.prototype[native] (<initial state>): {call:[@Function.prototype.call[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @Object.prototype[native] (<initial state>): {__defineGetter__:[@Object.prototype.__defineGetter__[native]],__defineSetter__:[@Object.prototype.__defineSetter__[native]],constructor:[@Object[native]],hasOwnProperty:[@Object.prototype.hasOwnProperty[native]],isPrototypeOf:[@Object.prototype.isPrototypeOf[native]],propertyIsEnumerable:[@Object.prototype.propertyIsEnumerable[native]],toLocaleString:[@Object.prototype.toLocaleString[native]],toString:[@Object.prototype.toString[native]],valueOf:[@Object.prototype.valueOf[native]],[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
-    @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @String.prototype[native] (<initial state>): {replace:[@replace#fun4],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
-    @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @String.prototype[native] (<initial state>): {replace:[@replace#fun4],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
+    @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @Object#node7 (host-environment-sources-loader): {constructor:[@<anonymous>#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @Object#node9 (test-resources/src/micro/test201.js:1:14): {get:[@<anonymous>#fun2{method="get"}]|absent,post:[@<anonymous>#fun2{method="post"}]|absent,[[Prototype]]=[@Object.prototype[native]]}
     *activation#node56{method="get"} (test-resources/src/micro/test201.js:3:1): {arguments:[*arguments#node56{method="get"}],method:"get"}
@@ -44,7 +44,8 @@ Abstract state:
   Registers: 
     v1=Undef
     v13=[@Object#node14]
+  Functions in stack: []
 test-resources/src/micro/test201.js:16:1: [info] Abstract object: {get:[@<anonymous>#fun2{method="get"}]|absent,post:[@<anonymous>#fun2{method="post"}]|absent,[[Prototype]]=[@Object.prototype[native]]}
 test-resources/src/micro/test201.js:17:1: [info] Abstract value: "I'm get"
-test-resources/src/micro/test201.js:18:1: [info] Abstract value: PrefixStr[I'm ]
+test-resources/src/micro/test201.js:18:1: [info] Abstract value: (PrefixStr[I'm ]){"I'm get","I'm post"}
 Soundness testing succeeded for 49 checks (with 0 expected failures)

@@ -5,7 +5,6 @@ test-resources/src/1k2013spring/1436.js:39:5: [maybe] ReferenceError, reading ab
 test-resources/src/1k2013spring/1436.js:39:22: [maybe] ReferenceError, reading absent variable D
 test-resources/src/1k2013spring/1436.js:39:25: [maybe] ReferenceError, reading absent variable D
 test-resources/src/1k2013spring/1436.js:41:6: [maybe] ReferenceError, reading absent variable M
-test-resources/src/1k2013spring/1436.js:41:6: [maybe] TypeError, call to non-function
 test-resources/src/1k2013spring/1436.js:44:74: [maybe] ReferenceError, reading absent variable L
 test-resources/src/1k2013spring/1436.js:44:76: [maybe] ReferenceError, reading absent variable T
 test-resources/src/1k2013spring/1436.js:44:79: [maybe] ReferenceError, reading absent variable T

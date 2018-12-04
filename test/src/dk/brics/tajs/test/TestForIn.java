@@ -588,7 +588,7 @@ public class TestForIn {
                 "TAJS_assert(o.a, 'isMaybeUndef');",
                 "TAJS_assert(o.b, 'isMaybeSingleStr');",
                 "TAJS_assert(o.b, 'isMaybeUndef');",
-                "TAJS_assert(o[42], 'isMaybeStrOnlyUInt');",
+                "TAJS_assert(o[42], 'isMaybeStrSomeNumeric');",
                 "TAJS_assert(o[42], 'isMaybeUndef');",
                 "TAJS_dumpValue('OK');");
     }
@@ -606,7 +606,7 @@ public class TestForIn {
                 "TAJS_assert(o[0], 'isMaybeUndef');",
                 "TAJS_assert(o[1], 'isMaybeSingleNum');",
                 "TAJS_assert(o[1], 'isMaybeUndef');",
-                "TAJS_assert(o.abc, 'isMaybeSingleStr');",
+                "TAJS_assert(o.abc, 'isMaybeSingleStr', false);",
                 "TAJS_assert(o.abc, 'isMaybeUndef');",
                 "TAJS_dumpValue('OK');");
     }

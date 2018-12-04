@@ -52,6 +52,9 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
     @Option(name = "-use-ordered-object-keys", usage = "Allows a determistic ordering of the Object.keys array")
     private boolean useOrderedObjectKeys;
 
+    @Option(name = "-use-fixed-random", usage = "Allows Math.random and Date.now to use fixed values")
+    private boolean useFixedRandom;
+
     @Option(name = "-ignore-locale", usage = "Allows the use of a fixed locale for locale specific functions")
     private boolean ignoreLocale;
 
@@ -107,6 +110,7 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
         if (ignoreImpreciseEvals != that.ignoreImpreciseEvals) return false;
         if (ignoreAsyncEvals != that.ignoreAsyncEvals) return false;
         if (useOrderedObjectKeys != that.useOrderedObjectKeys) return false;
+        if (useFixedRandom != that.useFixedRandom) return false;
         if (ignoreLocale != that.ignoreLocale) return false;
         if (warnAboutAllStringCoercions != that.warnAboutAllStringCoercions) return false;
         if (ignoreImpreciseFunctionConstructor != that.ignoreImpreciseFunctionConstructor) return false;
@@ -127,6 +131,7 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
         result = 31 * result + (ignoreImpreciseEvals ? 1 : 0);
         result = 31 * result + (ignoreAsyncEvals ? 1 : 0);
         result = 31 * result + (useOrderedObjectKeys ? 1 : 0);
+        result = 31 * result + (useFixedRandom ? 1 : 0);
         result = 31 * result + (ignoreLocale ? 1 : 0);
         result = 31 * result + (warnAboutAllStringCoercions ? 1 : 0);
         result = 31 * result + (ignoreImpreciseFunctionConstructor ? 1 : 0);
@@ -213,6 +218,14 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
 
     public void setUseOrderedObjectKeys(boolean useOrderedObjectKeys) {
         this.useOrderedObjectKeys = useOrderedObjectKeys;
+    }
+
+    public boolean isUseFixedRandom() {
+        return useFixedRandom;
+    }
+
+    public void setUseFixedRandom(boolean useFixedRandom) {
+        this.useFixedRandom = useFixedRandom;
     }
 
     public boolean isIgnoreAsyncEvals() {

@@ -5,6 +5,7 @@ import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
 import dk.brics.tajs.util.AnalysisLimitationException;
+import dk.brics.tajs.util.Collectors;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +18,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Tests for source code snippets from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/.......

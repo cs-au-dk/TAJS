@@ -1,11 +1,7 @@
 test-resources/src/v8tests/function-names.js:133:19: [definite] Reading 'this' yields the global object
 test-resources/src/v8tests/function-names.js:31:28: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/v8tests/function-names.js:31:28: [maybe] Reading absent property name of host object
 test-resources/src/v8tests/function-names.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/function-names.js:31:28]
 test-resources/src/v8tests/function-names.js:31:18: [maybe] Reading absent property (computed name)
-test-resources/src/v8tests/function-names.js:31:28: [maybe] Converting primitive boolean to object
-test-resources/src/v8tests/function-names.js:31:28: [maybe] Converting primitive number to object
-test-resources/src/v8tests/function-names.js:31:28: [maybe] Converting primitive string to object
 test-resources/src/v8tests/function-names.js:31:28: [maybe] Reading absent property (computed name)
 test-resources/src/v8tests/function-names.js:31:35: [maybe] Reading absent property (computed name)
 test-resources/src/v8tests/function-names.js:31:28: [info] Reading from unknown property that may cause loss of precision

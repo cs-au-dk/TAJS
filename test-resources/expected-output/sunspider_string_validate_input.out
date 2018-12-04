@@ -10,5 +10,4 @@ test-resources/src/sunspider/string-validate-input.js:72:14: [maybe] Reading abs
 test-resources/src/sunspider/string-validate-input.js:83:13: [maybe] Converting object to string
 test-resources/src/sunspider/string-validate-input.js:83:13: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-validate-input.js:96:26: [maybe] Converting object to number
-test-resources/src/sunspider/string-validate-input.js:98:1: [info] Abstract value: UInt|NotUInt
-Soundness testing succeeded for 117536 checks (with 0 expected failures)
+test-resources/src/sunspider/string-validate-input.js:98:1: [info] Abstract value: Num

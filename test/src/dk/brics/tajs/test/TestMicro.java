@@ -2210,7 +2210,7 @@ public class TestMicro {
                 "TAJS_assert(Object.keys(o1).length === 1);",
                 "TAJS_assert(Object.keys(o1)[0] === 'p');",
                 "var o2 = {p: 42, q: 87};",
-                "TAJS_assert(Object.keys(o2).length, 'isMaybeNumUInt');",
+                "TAJS_assert(Object.keys(o2).length === 2);",
                 "TAJS_assert(Object.keys(o2)[0], 'isStrIdentifier||isMaybeUndef');",
                 "TAJS_assert(Object.keys(o2)[1], 'isStrIdentifier||isMaybeUndef');",
                 "var oMaybe1 = {};",
@@ -2256,7 +2256,7 @@ public class TestMicro {
                 "TAJS_assert(Object.keys(a0).length, 'isMaybeNumUInt');",
                 "TAJS_assert(Object.keys(a0)[0], 'isMaybeSingleStr', false);",
                 "TAJS_assert(Object.keys(a0)[0], 'isMaybeStrSomeUInt');",
-                "TAJS_assert(Object.keys(a0)[0], 'isMaybeStrSomeNonUInt', false);",
+                "TAJS_assert(Object.keys(a0)[0], 'isMaybeStrSomeNonNumeric', false);",
                 "var a1 = {p: 42};",
                 "a1[Math.random()? 0: 1] = 42;",
                 "TAJS_assert(Object.keys(a1).length, 'isMaybeNumUInt');",
@@ -4044,5 +4044,73 @@ public class TestMicro {
                 "var z = x + y;",
                 "TAJS_assertEquals('foobar', z);");
     }
-}
 
+    @Test
+    public void testFixedRandom1() {
+        Misc.runSource(
+                "TAJS_dumpValue('foo' + (new Date()).getTime());",
+                "TAJS_dumpValue('foo' + -(new Date()));",
+                "TAJS_dumpValue('foo' + Math.random());",
+                "TAJS_dumpValue('foo' + (Math.random() + '').replace('.', ''));",
+                "TAJS_dumpValue('foo' + ('1.10.0' + Math.random() ).replace(/\\D/g, ''));");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void testFixedRandom2() {
+        Options.get().getUnsoundness().setUseFixedRandom(true);
+        Options.get().getUnsoundness().setShowUnsoundnessUsage(true);
+        Options.get().getSoundnessTesterOptions().setTest(false);
+        Misc.runSource(
+                "TAJS_dumpValue('foo' + (new Date()).getTime());",
+                "TAJS_dumpValue('foo' + -(new Date()));",
+                "TAJS_dumpValue('foo' + Math.random());",
+                "TAJS_dumpValue('foo' + (Math.random() + '').replace('.', ''));",
+                "TAJS_dumpValue('foo' + ('1.10.0' + Math.random() ).replace(/\\D/g, ''));");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void finerpropertyretrival1() throws Exception {
+        Options.get().getSoundnessTesterOptions().setTest(false);
+        Misc.runSource("" +
+                        "var POLLUTION_MARKER = {};",
+                "var P = TAJS_makeExcludedStrings('protop');",
+                "var opr = {protop: 8};",
+                "var o = {inheritorp: 9};",
+                "o.__proto__ = opr;",
+                "o[P] = POLLUTION_MARKER;",
+                "var o2 = {};",
+                "for(var x  in o) {",
+                "  o2[x] = o[x];", // protop should not appear explicitly as x
+                "}",
+                "TAJS_assert(o['protop'] !== POLLUTION_MARKER);",
+                "TAJS_dumpValue(o['inheritorp']);",
+                "");
+    }
+
+    @Test
+    public void widen1() {
+        Misc.runSource(
+                "var x = 'foo'",
+                "while (x.length < 10) {",
+                "  TAJS_dumpValue(x);",
+                "  x = x + 'bar';",
+                "}",
+                "TAJS_dumpValue(x);");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void widen2() {
+        Misc.runSource(
+                "function f(a) {",
+                        "  TAJS_dumpValue(a);",
+                        "  if (a.length < 10)",
+                        "    return f(a + 'bar');",
+                        "  return a;",
+                        "}",
+                        "TAJS_dumpValue(f('foo'));");
+        Misc.checkSystemOutput();
+    }
+}

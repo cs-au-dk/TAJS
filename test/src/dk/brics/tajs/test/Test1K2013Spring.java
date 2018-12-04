@@ -479,7 +479,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class) // TODO investigate (GitHub #417)
+    @Test
     public void test1k_2013_spring_1542() {
         Misc.run("test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1542.js");
         Misc.checkSystemOutput();

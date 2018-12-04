@@ -47,17 +47,17 @@ public class ObjectProperty {
     }
 
     /**
-     * Constructs an ObjectProperty for a default-array property.
+     * Constructs an ObjectProperty for a default-numeric property.
      */
-    public static ObjectProperty makeDefaultArray(ObjectLabel objlabel) {
-        return new ObjectProperty(objlabel, Property.makeDefaultArrayProperty());
+    public static ObjectProperty makeDefaultNumeric(ObjectLabel objlabel) {
+        return new ObjectProperty(objlabel, Property.makeDefaultNumericProperty());
     }
 
     /**
-     * Constructs an ObjectProperty for a default-nonarray property.
+     * Constructs an ObjectProperty for a default-non-numeric property.
      */
-    public static ObjectProperty makeDefaultNonArray(ObjectLabel objlabel) {
-        return new ObjectProperty(objlabel, Property.makeDefaultNonArrayProperty());
+    public static ObjectProperty makeDefaultOther(ObjectLabel objlabel) {
+        return new ObjectProperty(objlabel, Property.makeDefaultOtherProperty());
     }
 
     /**

@@ -157,6 +157,8 @@ test-resources/src/chromeexperiments/bomomo.html:2844:220: [maybe] ReferenceErro
 test-resources/src/chromeexperiments/bomomo.html:2678:23: [maybe] Reading absent property teleported
 test-resources/src/chromeexperiments/bomomo.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/bomomo.html:314:9, test-resources/src/chromeexperiments/bomomo.html:316:9, test-resources/src/chromeexperiments/bomomo.html:343:9, test-resources/src/chromeexperiments/bomomo.html:353:9, test-resources/src/chromeexperiments/bomomo.html:420:13, test-resources/src/chromeexperiments/bomomo.html:427:13, test-resources/src/chromeexperiments/bomomo.html:438:5, test-resources/src/chromeexperiments/bomomo.html:443:5, test-resources/src/chromeexperiments/bomomo.html:447:32, test-resources/src/chromeexperiments/bomomo.html:453:13, test-resources/src/chromeexperiments/bomomo.html:458:24, test-resources/src/chromeexperiments/bomomo.html:460:13, test-resources/src/chromeexperiments/bomomo.html:462:13, test-resources/src/chromeexperiments/bomomo.html:475:20, test-resources/src/chromeexperiments/bomomo.html:608:9, test-resources/src/chromeexperiments/bomomo.html:618:5, test-resources/src/chromeexperiments/bomomo.html:621:9, test-resources/src/chromeexperiments/bomomo.html:622:9, test-resources/src/chromeexperiments/bomomo.html:678:5, test-resources/src/chromeexperiments/bomomo.html:678:42, test-resources/src/chromeexperiments/bomomo.html:678:79, test-resources/src/chromeexperiments/bomomo.html:679:5, test-resources/src/chromeexperiments/bomomo.html:679:42, test-resources/src/chromeexperiments/bomomo.html:679:81, test-resources/src/chromeexperiments/bomomo.html:680:5, test-resources/src/chromeexperiments/bomomo.html:680:42, test-resources/src/chromeexperiments/bomomo.html:680:81, test-resources/src/chromeexperiments/bomomo.html:681:5, test-resources/src/chromeexperiments/bomomo.html:681:40, test-resources/src/chromeexperiments/bomomo.html:681:79, test-resources/src/chromeexperiments/bomomo.html:682:5, test-resources/src/chromeexperiments/bomomo.html:682:40, test-resources/src/chromeexperiments/bomomo.html:682:79, test-resources/src/chromeexperiments/bomomo.html:683:5, test-resources/src/chromeexperiments/bomomo.html:683:40, test-resources/src/chromeexperiments/bomomo.html:683:78, test-resources/src/chromeexperiments/bomomo.html:684:5, test-resources/src/chromeexperiments/bomomo.html:684:42, test-resources/src/chromeexperiments/bomomo.html:684:81, test-resources/src/chromeexperiments/bomomo.html:685:5, test-resources/src/chromeexperiments/bomomo.html:685:40, test-resources/src/chromeexperiments/bomomo.html:685:79, test-resources/src/chromeexperiments/bomomo.html:686:5, test-resources/src/chromeexperiments/bomomo.html:686:42, test-resources/src/chromeexperiments/bomomo.html:686:80, test-resources/src/chromeexperiments/bomomo.html:687:5, test-resources/src/chromeexperiments/bomomo.html:687:42, test-resources/src/chromeexperiments/bomomo.html:687:79, test-resources/src/chromeexperiments/bomomo.html:688:5, test-resources/src/chromeexperiments/bomomo.html:688:42, test-resources/src/chromeexperiments/bomomo.html:688:80, test-resources/src/chromeexperiments/bomomo.html:689:5, test-resources/src/chromeexperiments/bomomo.html:689:42, test-resources/src/chromeexperiments/bomomo.html:689:81, test-resources/src/chromeexperiments/bomomo.html:690:5, test-resources/src/chromeexperiments/bomomo.html:690:42, test-resources/src/chromeexperiments/bomomo.html:690:81, test-resources/src/chromeexperiments/bomomo.html:691:5, test-resources/src/chromeexperiments/bomomo.html:691:42, test-resources/src/chromeexperiments/bomomo.html:691:81, test-resources/src/chromeexperiments/bomomo.html:692:5, test-resources/src/chromeexperiments/bomomo.html:692:42, test-resources/src/chromeexperiments/bomomo.html:692:81, test-resources/src/chromeexperiments/bomomo.html:697:36, test-resources/src/chromeexperiments/bomomo.html:700:36, test-resources/src/chromeexperiments/bomomo.html:759:5, test-resources/src/chromeexperiments/bomomo.html:1152:31, test-resources/src/chromeexperiments/bomomo.html:1515:35, test-resources/src/chromeexperiments/bomomo.html:1690:29, test-resources/src/chromeexperiments/bomomo.html:1799:30, test-resources/src/chromeexperiments/bomomo.html:1818:33, test-resources/src/chromeexperiments/bomomo.html:1840:34, test-resources/src/chromeexperiments/bomomo.html:1859:34, test-resources/src/chromeexperiments/bomomo.html:1944:26, test-resources/src/chromeexperiments/bomomo.html:1976:35, test-resources/src/chromeexperiments/bomomo.html:2058:34, test-resources/src/chromeexperiments/bomomo.html:2059:34, test-resources/src/chromeexperiments/bomomo.html:2060:34, test-resources/src/chromeexperiments/bomomo.html:2061:34, test-resources/src/chromeexperiments/bomomo.html:2062:34, test-resources/src/chromeexperiments/bomomo.html:2063:34, test-resources/src/chromeexperiments/bomomo.html:2081:19, test-resources/src/chromeexperiments/bomomo.html:2127:17, test-resources/src/chromeexperiments/bomomo.html:2128:17, test-resources/src/chromeexperiments/bomomo.html:2129:17, test-resources/src/chromeexperiments/bomomo.html:2417:17, test-resources/src/chromeexperiments/bomomo.html:2425:17, test-resources/src/chromeexperiments/bomomo.html:2440:17, test-resources/src/chromeexperiments/bomomo.html:2454:17, test-resources/src/chromeexperiments/bomomo.html:2468:17, test-resources/src/chromeexperiments/bomomo.html:2477:17, test-resources/src/chromeexperiments/bomomo.html:2480:28, test-resources/src/chromeexperiments/bomomo.html:2500:21, test-resources/src/chromeexperiments/bomomo.html:2504:32, test-resources/src/chromeexperiments/bomomo.html:2518:21, test-resources/src/chromeexperiments/bomomo.html:2522:32, test-resources/src/chromeexperiments/bomomo.html:2527:17, test-resources/src/chromeexperiments/bomomo.html:2541:17, test-resources/src/chromeexperiments/bomomo.html:2556:17, test-resources/src/chromeexperiments/bomomo.html:2570:17, test-resources/src/chromeexperiments/bomomo.html:2573:28, test-resources/src/chromeexperiments/bomomo.html:2579:17, test-resources/src/chromeexperiments/bomomo.html:2582:28, test-resources/src/chromeexperiments/bomomo.html:2601:17, test-resources/src/chromeexperiments/bomomo.html:2604:28, test-resources/src/chromeexperiments/bomomo.html:2610:17, test-resources/src/chromeexperiments/bomomo.html:2613:28, test-resources/src/chromeexperiments/bomomo.html:2632:17, test-resources/src/chromeexperiments/bomomo.html:2639:17, test-resources/src/chromeexperiments/bomomo.html:2654:17, test-resources/src/chromeexperiments/bomomo.html:2661:17, test-resources/src/chromeexperiments/bomomo.html:2679:21, test-resources/src/chromeexperiments/bomomo.html:2689:17, test-resources/src/chromeexperiments/bomomo.html:2702:75, test-resources/src/chromeexperiments/bomomo.html:2702:122, test-resources/src/chromeexperiments/bomomo.html:2703:75, test-resources/src/chromeexperiments/bomomo.html:2703:122, test-resources/src/chromeexperiments/bomomo.html:2706:21, test-resources/src/chromeexperiments/bomomo.html:2716:17, test-resources/src/chromeexperiments/bomomo.html:2734:17, test-resources/src/chromeexperiments/bomomo.html:2741:17, test-resources/src/chromeexperiments/bomomo.html:2821:16, test-resources/src/chromeexperiments/bomomo.html:2826:16, test-resources/src/chromeexperiments/bomomo.html:2844:79, test-resources/src/chromeexperiments/bomomo.html:2844:112, test-resources/src/chromeexperiments/bomomo.html:2844:147, test-resources/src/chromeexperiments/bomomo.html:2844:182, test-resources/src/chromeexperiments/bomomo.html:2844:220]
 test-resources/src/chromeexperiments/bomomo.html:314:9: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/bomomo.html:315:29: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:315:59: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:316:9: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bomomo.html:316:35: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bomomo.html:316:66: [maybe] Reading absent property (computed name)
@@ -168,6 +170,8 @@ test-resources/src/chromeexperiments/bomomo.html:584:16: [maybe] Converting prim
 test-resources/src/chromeexperiments/bomomo.html:597:12: [maybe] Converting object to string
 test-resources/src/chromeexperiments/bomomo.html:597:12: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/bomomo.html:608:9: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/bomomo.html:620:29: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:620:60: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:621:9: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bomomo.html:621:78: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bomomo.html:622:9: [maybe] Reading absent property (computed name)
@@ -246,20 +250,39 @@ test-resources/src/chromeexperiments/bomomo.html:1345:26: [maybe] Conversion to 
 test-resources/src/chromeexperiments/bomomo.html:1346:26: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1438:30: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1438:71: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1449:35: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1450:36: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1452:36: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1453:42: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1454:41: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1466:37: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1467:44: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1507:17: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1541:26: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1616:26: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1617:26: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1651:26: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1652:26: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1679:21: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1681:36: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1685:17: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1689:30: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bomomo.html:1690:29: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1690:54: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1727:21: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1727:43: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1746:21: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1746:43: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1776:39: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1777:39: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1781:27: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1781:62: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1784:27: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1784:62: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1794:21: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1795:30: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1799:30: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1814:21: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1818:33: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1818:55: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1818:77: [maybe] Conversion to number yields NaN
@@ -269,18 +292,31 @@ test-resources/src/chromeexperiments/bomomo.html:1829:62: [maybe] Conversion to 
 test-resources/src/chromeexperiments/bomomo.html:1831:34: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1834:34: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1838:33: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1838:47: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1839:25: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1840:34: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1840:49: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1847:37: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1848:53: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1848:62: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1850:34: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1853:34: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1857:46: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1857:60: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1858:25: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1860:34: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1860:49: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1875:21: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1898:21: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1943:17: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1944:26: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1945:26: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1964:30: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:1965:30: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1972:21: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:1981:21: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:2025:17: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:2056:22: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2058:34: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2058:71: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2059:57: [maybe] Conversion to number yields NaN
@@ -291,6 +327,7 @@ test-resources/src/chromeexperiments/bomomo.html:2061:71: [maybe] Conversion to 
 test-resources/src/chromeexperiments/bomomo.html:2062:57: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2063:34: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2063:71: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:2066:17: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2081:19: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2082:19: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2083:19: [maybe] Conversion to number yields NaN
@@ -339,12 +376,14 @@ test-resources/src/chromeexperiments/bomomo.html:2472:17: [maybe] Conversion to 
 test-resources/src/chromeexperiments/bomomo.html:2480:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2481:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2488:17: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:2498:21: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2499:34: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bomomo.html:2502:39: [maybe] Converting undefined to string
 test-resources/src/chromeexperiments/bomomo.html:2503:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2504:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2509:37: [maybe] Converting undefined to string
 test-resources/src/chromeexperiments/bomomo.html:2510:21: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:2516:21: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2517:34: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bomomo.html:2521:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2522:21: [maybe] Conversion to number yields NaN
@@ -378,15 +417,21 @@ test-resources/src/chromeexperiments/bomomo.html:2681:39: [maybe] Converting und
 test-resources/src/chromeexperiments/bomomo.html:2682:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2683:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2692:17: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:2702:26: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2702:75: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/bomomo.html:2702:87: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2702:122: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/bomomo.html:2703:26: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2703:75: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/bomomo.html:2703:87: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2703:122: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/bomomo.html:2705:22: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2708:39: [maybe] Converting undefined to string
 test-resources/src/chromeexperiments/bomomo.html:2709:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2710:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2718:33: [maybe] Converting undefined to string
 test-resources/src/chromeexperiments/bomomo.html:2719:17: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/bomomo.html:2721:22: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2722:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2723:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bomomo.html:2735:33: [maybe] Converting undefined to string

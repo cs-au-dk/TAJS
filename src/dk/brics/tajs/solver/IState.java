@@ -38,7 +38,7 @@ public interface IState
      *
      * @return true if changed
      */
-    boolean propagate(StateType s, boolean funentry);
+    boolean propagate(StateType s, boolean funentry, boolean widen);
 
     /**
      * Checks whether this abstract state is the bottom abstract state.

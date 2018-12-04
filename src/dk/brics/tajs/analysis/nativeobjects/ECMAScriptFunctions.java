@@ -402,7 +402,7 @@ public class ECMAScriptFunctions {
                 // 15.9.5.8 Date.prototype.valueOf ( )
                 // The valueOf function returns a number, which is this time value.
                 if (thiss.getKind() == Kind.DATE)
-                    result = Value.makeAnyNumNotNaNInf();
+                    return UnknownValueResolver.getInternalValue(thiss, c.getState(), false);
                 else
                     Exceptions.throwTypeError(c); // not generic according to 15.9.5
                 break;

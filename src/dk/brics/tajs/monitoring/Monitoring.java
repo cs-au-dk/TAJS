@@ -1269,10 +1269,10 @@ public class Monitoring implements IAnalysisMonitoring {
             return;
         }
         Status s1 = (!num_actuals_unknown && num_actuals < min) ? Status.CERTAIN : Status.NONE;
-        addMessage(n, s1, Severity.MEDIUM, "Too few parameters to function " + hostobject);
+        addMessage(n, s1, Severity.MEDIUM, "Too few parameters to native function");
         if (max != -1) {
             Status s2 = num_actuals_unknown ? Status.MAYBE : num_actuals > max ? Status.CERTAIN : Status.NONE;
-            addMessage(n, s2, Severity.HIGH, "Too many parameters to function " + hostobject);
+            addMessage(n, s2, Severity.HIGH, "Too many parameters to native function");
         }
     }
 

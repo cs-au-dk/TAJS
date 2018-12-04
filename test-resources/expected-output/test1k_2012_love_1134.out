@@ -1,8 +1,3 @@
-test-resources/src/1k2012love/1134.js:65:12: [definite] Too many parameters to function Object.prototype.toLocaleString
-test-resources/src/1k2012love/1134.js:65:12: [definite] Too many parameters to function Object.prototype.toString
-test-resources/src/1k2012love/1134.js:65:12: [definite] Too many parameters to function Object.prototype.valueOf
-test-resources/src/1k2012love/1134.js:65:12: [definite] Too few parameters to function Object.prototype.__defineGetter__
-test-resources/src/1k2012love/1134.js:65:12: [definite] Too few parameters to function Object.prototype.__defineSetter__
 test-resources/src/1k2012love/1134.js:5:7: [definite] The variable timeout is never used
 test-resources/src/1k2012love/1134.js:16:27: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1134.js:20:19: [maybe] TypeError, accessing property of null/undefined
@@ -12,6 +7,7 @@ test-resources/src/1k2012love/1134.js:43:25: [maybe] TypeError, accessing proper
 test-resources/src/1k2012love/1134.js:51:10: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1134.js:54:19: [maybe] ReferenceError, reading absent variable b
 test-resources/src/1k2012love/1134.js:61:25: [maybe] ReferenceError, reading absent variable b
+test-resources/src/1k2012love/1134.js:65:12: [maybe] Too many parameters to native function
 test-resources/src/1k2012love/1134.js:65:12: [maybe] TypeError, call to non-function
 test-resources/src/1k2012love/1134.js:65:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1134.js:69:17: [maybe] TypeError, accessing property of null/undefined
@@ -30,6 +26,7 @@ test-resources/src/1k2012love/1134.js:52:13: [maybe] Reading absent property t
 test-resources/src/1k2012love/1134.js:53:15: [maybe] Reading absent property txt
 test-resources/src/1k2012love/1134.js:56:31: [maybe] Reading absent property t
 test-resources/src/1k2012love/1134.js:60:15: [maybe] Reading absent property txt
+test-resources/src/1k2012love/1134.js:65:12: [maybe] Too few parameters to native function
 test-resources/src/1k2012love/1134.js:65:17: [maybe] Reading absent property c
 test-resources/src/1k2012love/1134.js:69:17: [maybe] Reading absent property c
 test-resources/src/1k2012love/1134.js:69:29: [maybe] Reading absent property c

@@ -47,7 +47,7 @@ public class JSObject_defineProperties_test {
     public void fuzzy() {
         Misc.runSource("var o = {};",
                 "var props = {};",
-                "props[TAJS_make('AnyStrNotUInt')] = {value: 42};",
+                "props[TAJS_make('AnyStrNotNumeric')] = {value: 42};",
                 "props[87] = {value: true};",
                 "Object.defineProperties(o, props);",
                 "TAJS_assert(o.p, 'isMaybeSingleNum||isMaybeUndef');",

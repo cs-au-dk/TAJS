@@ -1,26 +1,295 @@
-test-resources/src/1k2013spring/1473.js:19:16: [definite] TypeError, call to non-function
-test-resources/src/1k2013spring/1473.js:16:2: [definite] The conditional expression is always true
-test-resources/src/1k2013spring/1473.js:19:4: [definite] The conditional expression is always false
-test-resources/src/1k2013spring/1473.js:19:16: [definite] Reading absent property fc of host object
-test-resources/src/1k2013spring/1473.js:21:2: [definite] Unreachable code
-test-resources/src/1k2013spring/1473.js:83:4: [definite] Unreachable function
 test-resources/src/1k2013spring/1473.js:16:6: [maybe] ReferenceError, reading absent variable Z
 test-resources/src/1k2013spring/1473.js:19:2: [maybe] ReferenceError, reading absent variable K
 test-resources/src/1k2013spring/1473.js:19:4: [maybe] ReferenceError, reading absent variable l
 test-resources/src/1k2013spring/1473.js:19:16: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2013spring/1473.js:19:16: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:19:16: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:19:16: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
 test-resources/src/1k2013spring/1473.js:19:25: [maybe] ReferenceError, reading absent variable W
 test-resources/src/1k2013spring/1473.js:19:27: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1473.js:21:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:21:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:21:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:22:2: [maybe] ReferenceError, reading absent variable v
+test-resources/src/1k2013spring/1473.js:22:6: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1473.js:24:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:24:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:24:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:24:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:24:7: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1473.js:24:12: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1473.js:25:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:25:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:25:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:25:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:25:12: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1473.js:25:14: [maybe] ReferenceError, reading absent variable g
+test-resources/src/1k2013spring/1473.js:27:2: [maybe] ReferenceError, reading absent variable K
+test-resources/src/1k2013spring/1473.js:27:4: [maybe] ReferenceError, reading absent variable l
+test-resources/src/1k2013spring/1473.js:28:2: [maybe] ReferenceError, reading absent variable P
+test-resources/src/1k2013spring/1473.js:29:2: [maybe] ReferenceError, reading absent variable P
+test-resources/src/1k2013spring/1473.js:30:2: [maybe] ReferenceError, reading absent variable P
+test-resources/src/1k2013spring/1473.js:32:2: [maybe] ReferenceError, reading absent variable K
+test-resources/src/1k2013spring/1473.js:33:16: [maybe] ReferenceError, reading absent variable P
+test-resources/src/1k2013spring/1473.js:36:2: [maybe] ReferenceError, reading absent variable p
+test-resources/src/1k2013spring/1473.js:36:6: [maybe] ReferenceError, reading absent variable d
+test-resources/src/1k2013spring/1473.js:36:20: [maybe] ReferenceError, reading absent variable Q
+test-resources/src/1k2013spring/1473.js:36:31: [maybe] ReferenceError, reading absent variable Q
+test-resources/src/1k2013spring/1473.js:36:39: [maybe] ReferenceError, reading absent variable Q
+test-resources/src/1k2013spring/1473.js:37:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:37:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:37:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:38:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:38:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:38:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:38:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:38:7: [maybe] ReferenceError, reading absent variable C
+test-resources/src/1k2013spring/1473.js:38:9: [maybe] ReferenceError, reading absent variable g
+test-resources/src/1k2013spring/1473.js:38:18: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1473.js:38:20: [maybe] ReferenceError, reading absent variable g
+test-resources/src/1k2013spring/1473.js:39:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:39:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:39:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:39:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:39:7: [maybe] ReferenceError, reading absent variable g
+test-resources/src/1k2013spring/1473.js:40:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:40:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:40:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:41:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:41:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:41:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:44:14: [maybe] ReferenceError, reading absent variable q
+test-resources/src/1k2013spring/1473.js:46:3: [maybe] ReferenceError, reading absent variable P
+test-resources/src/1k2013spring/1473.js:46:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1473.js:47:12: [maybe] ReferenceError, reading absent variable l
+test-resources/src/1k2013spring/1473.js:49:23: [maybe] ReferenceError, reading absent variable X
+test-resources/src/1k2013spring/1473.js:49:40: [maybe] ReferenceError, reading absent variable X
+test-resources/src/1k2013spring/1473.js:52:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:52:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:52:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:53:2: [maybe] ReferenceError, reading absent variable K
+test-resources/src/1k2013spring/1473.js:54:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:54:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:54:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:55:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:55:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:55:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:55:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:56:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:56:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:56:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:56:11: [maybe] ReferenceError, reading absent variable l
+test-resources/src/1k2013spring/1473.js:57:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:57:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:57:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:57:7: [maybe] ReferenceError, reading absent variable o
+test-resources/src/1k2013spring/1473.js:58:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:58:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:58:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:61:2: [maybe] ReferenceError, reading absent variable g
+test-resources/src/1k2013spring/1473.js:61:11: [maybe] ReferenceError, reading absent variable l
+test-resources/src/1k2013spring/1473.js:61:19: [maybe] ReferenceError, reading absent variable A
+test-resources/src/1k2013spring/1473.js:62:6: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1473.js:62:16: [maybe] ReferenceError, reading absent variable A
+test-resources/src/1k2013spring/1473.js:63:6: [maybe] ReferenceError, reading absent variable o
+test-resources/src/1k2013spring/1473.js:63:8: [maybe] ReferenceError, reading absent variable F
+test-resources/src/1k2013spring/1473.js:63:13: [maybe] ReferenceError, reading absent variable l
+test-resources/src/1k2013spring/1473.js:66:8: [maybe] ReferenceError, reading absent variable F
+test-resources/src/1k2013spring/1473.js:66:10: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1473.js:68:6: [maybe] ReferenceError, reading absent variable F
+test-resources/src/1k2013spring/1473.js:68:8: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1473.js:70:7: [maybe] ReferenceError, reading absent variable F
+test-resources/src/1k2013spring/1473.js:70:11: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1473.js:70:15: [maybe] ReferenceError, reading absent variable l
+test-resources/src/1k2013spring/1473.js:71:7: [maybe] ReferenceError, reading absent variable R
+test-resources/src/1k2013spring/1473.js:73:15: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1473.js:76:2: [maybe] ReferenceError, reading absent variable h
+test-resources/src/1k2013spring/1473.js:76:5: [maybe] ReferenceError, reading absent variable h
+test-resources/src/1k2013spring/1473.js:76:7: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1473.js:76:10: [maybe] ReferenceError, reading absent variable h
+test-resources/src/1k2013spring/1473.js:77:5: [maybe] ReferenceError, reading absent variable o
+test-resources/src/1k2013spring/1473.js:77:11: [maybe] ReferenceError, reading absent variable l
+test-resources/src/1k2013spring/1473.js:77:18: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1473.js:85:7: [maybe] ReferenceError, reading absent variable X
+test-resources/src/1k2013spring/1473.js:85:9: [maybe] ReferenceError, reading absent variable g
+test-resources/src/1k2013spring/1473.js:86:14: [maybe] ReferenceError, reading absent variable W
+test-resources/src/1k2013spring/1473.js:93:7: [maybe] ReferenceError, reading absent variable X
+test-resources/src/1k2013spring/1473.js:94:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:94:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:94:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:95:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:95:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:95:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:95:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:95:7: [maybe] ReferenceError, reading absent variable C
+test-resources/src/1k2013spring/1473.js:95:15: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1473.js:96:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:96:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:96:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:96:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:96:7: [maybe] ReferenceError, reading absent variable C
+test-resources/src/1k2013spring/1473.js:96:15: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1473.js:97:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:97:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:97:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:97:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:97:7: [maybe] ReferenceError, reading absent variable C
+test-resources/src/1k2013spring/1473.js:97:15: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1473.js:98:2: [maybe] Too many parameters to native function
+test-resources/src/1k2013spring/1473.js:98:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:98:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:98:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2013spring/1473.js:98:7: [maybe] ReferenceError, reading absent variable C
+test-resources/src/1k2013spring/1473.js:98:15: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2013spring/1473.js:99:2: [maybe] TypeError, call to non-function
+test-resources/src/1k2013spring/1473.js:99:2: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2013spring/1473.js:99:2: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
 test-resources/src/1k2013spring/1473.js:103:2: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2013spring/1473.js:103:22: [maybe] ReferenceError, reading absent variable h
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2013spring/1473.js:19:16: [maybe] Reading absent property fc of host object
+test-resources/src/1k2013spring/1473.js:19:16: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:21:2: [maybe] Reading absent property sv of host object
+test-resources/src/1k2013spring/1473.js:21:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:24:2: [maybe] Reading absent property ta of host object
+test-resources/src/1k2013spring/1473.js:24:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:25:2: [maybe] Reading absent property sa of host object
+test-resources/src/1k2013spring/1473.js:25:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:37:2: [maybe] Reading absent property sv of host object
+test-resources/src/1k2013spring/1473.js:37:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:38:2: [maybe] Reading absent property ta of host object
+test-resources/src/1k2013spring/1473.js:38:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:39:2: [maybe] Reading absent property rt of host object
+test-resources/src/1k2013spring/1473.js:39:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:40:2: [maybe] Reading absent property fx of host object
+test-resources/src/1k2013spring/1473.js:40:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:41:2: [maybe] Reading absent property re of host object
+test-resources/src/1k2013spring/1473.js:41:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:52:2: [maybe] Reading absent property re of host object
+test-resources/src/1k2013spring/1473.js:52:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:54:2: [maybe] Reading absent property sv of host object
+test-resources/src/1k2013spring/1473.js:54:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:55:2: [maybe] Reading absent property sa of host object
+test-resources/src/1k2013spring/1473.js:55:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:56:2: [maybe] Reading absent property fx of host object
+test-resources/src/1k2013spring/1473.js:56:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:57:2: [maybe] Reading absent property fx of host object
+test-resources/src/1k2013spring/1473.js:57:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:58:2: [maybe] Reading absent property re of host object
+test-resources/src/1k2013spring/1473.js:58:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:94:2: [maybe] Reading absent property ba of host object
+test-resources/src/1k2013spring/1473.js:94:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:95:2: [maybe] Reading absent property ln of host object
+test-resources/src/1k2013spring/1473.js:95:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:96:2: [maybe] Reading absent property ln of host object
+test-resources/src/1k2013spring/1473.js:96:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:97:2: [maybe] Reading absent property ln of host object
+test-resources/src/1k2013spring/1473.js:97:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:98:2: [maybe] Reading absent property ln of host object
+test-resources/src/1k2013spring/1473.js:98:2: [maybe] Too few parameters to native function
+test-resources/src/1k2013spring/1473.js:99:2: [maybe] Reading absent property fl of host object
+test-resources/src/1k2013spring/1473.js:99:2: [maybe] Too few parameters to native function
 test-resources/src/1k2013spring/1473.js:105:27: [maybe] Reading absent property which of host object
-test-resources/src/1k2013spring/1473.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1473.js:16:6, test-resources/src/1k2013spring/1473.js:19:2, test-resources/src/1k2013spring/1473.js:19:4, test-resources/src/1k2013spring/1473.js:19:16, test-resources/src/1k2013spring/1473.js:19:25, test-resources/src/1k2013spring/1473.js:19:27, test-resources/src/1k2013spring/1473.js:103:2, test-resources/src/1k2013spring/1473.js:103:22, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1473.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1473.js:16:6, test-resources/src/1k2013spring/1473.js:19:2, test-resources/src/1k2013spring/1473.js:19:4, test-resources/src/1k2013spring/1473.js:19:16, test-resources/src/1k2013spring/1473.js:19:25, test-resources/src/1k2013spring/1473.js:19:27, test-resources/src/1k2013spring/1473.js:21:2, test-resources/src/1k2013spring/1473.js:22:2, test-resources/src/1k2013spring/1473.js:22:6, test-resources/src/1k2013spring/1473.js:24:2, test-resources/src/1k2013spring/1473.js:24:7, test-resources/src/1k2013spring/1473.js:24:12, test-resources/src/1k2013spring/1473.js:25:2, test-resources/src/1k2013spring/1473.js:25:12, test-resources/src/1k2013spring/1473.js:25:14, test-resources/src/1k2013spring/1473.js:27:2, test-resources/src/1k2013spring/1473.js:27:4, test-resources/src/1k2013spring/1473.js:28:2, test-resources/src/1k2013spring/1473.js:29:2, test-resources/src/1k2013spring/1473.js:30:2, test-resources/src/1k2013spring/1473.js:32:2, test-resources/src/1k2013spring/1473.js:33:16, test-resources/src/1k2013spring/1473.js:36:2, test-resources/src/1k2013spring/1473.js:36:6, test-resources/src/1k2013spring/1473.js:36:20, test-resources/src/1k2013spring/1473.js:36:31, test-resources/src/1k2013spring/1473.js:36:39, test-resources/src/1k2013spring/1473.js:37:2, test-resources/src/1k2013spring/1473.js:38:2, test-resources/src/1k2013spring/1473.js:38:7, test-resources/src/1k2013spring/1473.js:38:9, test-resources/src/1k2013spring/1473.js:38:18, test-resources/src/1k2013spring/1473.js:38:20, test-resources/src/1k2013spring/1473.js:39:2, test-resources/src/1k2013spring/1473.js:39:7, test-resources/src/1k2013spring/1473.js:40:2, test-resources/src/1k2013spring/1473.js:41:2, test-resources/src/1k2013spring/1473.js:44:14, test-resources/src/1k2013spring/1473.js:46:3, test-resources/src/1k2013spring/1473.js:46:5, test-resources/src/1k2013spring/1473.js:47:12, test-resources/src/1k2013spring/1473.js:49:23, test-resources/src/1k2013spring/1473.js:49:40, test-resources/src/1k2013spring/1473.js:52:2, test-resources/src/1k2013spring/1473.js:53:2, test-resources/src/1k2013spring/1473.js:54:2, test-resources/src/1k2013spring/1473.js:55:2, test-resources/src/1k2013spring/1473.js:56:2, test-resources/src/1k2013spring/1473.js:56:11, test-resources/src/1k2013spring/1473.js:57:2, test-resources/src/1k2013spring/1473.js:57:7, test-resources/src/1k2013spring/1473.js:58:2, test-resources/src/1k2013spring/1473.js:61:2, test-resources/src/1k2013spring/1473.js:61:11, test-resources/src/1k2013spring/1473.js:61:19, test-resources/src/1k2013spring/1473.js:62:6, test-resources/src/1k2013spring/1473.js:62:16, test-resources/src/1k2013spring/1473.js:63:6, test-resources/src/1k2013spring/1473.js:63:8, test-resources/src/1k2013spring/1473.js:63:13, test-resources/src/1k2013spring/1473.js:66:8, test-resources/src/1k2013spring/1473.js:66:10, test-resources/src/1k2013spring/1473.js:68:6, test-resources/src/1k2013spring/1473.js:68:8, test-resources/src/1k2013spring/1473.js:70:7, test-resources/src/1k2013spring/1473.js:70:11, test-resources/src/1k2013spring/1473.js:70:15, test-resources/src/1k2013spring/1473.js:71:7, test-resources/src/1k2013spring/1473.js:73:15, test-resources/src/1k2013spring/1473.js:76:2, test-resources/src/1k2013spring/1473.js:76:5, test-resources/src/1k2013spring/1473.js:76:7, test-resources/src/1k2013spring/1473.js:76:10, test-resources/src/1k2013spring/1473.js:77:5, test-resources/src/1k2013spring/1473.js:77:11, test-resources/src/1k2013spring/1473.js:77:18, test-resources/src/1k2013spring/1473.js:85:7, test-resources/src/1k2013spring/1473.js:85:9, test-resources/src/1k2013spring/1473.js:86:14, test-resources/src/1k2013spring/1473.js:93:7, test-resources/src/1k2013spring/1473.js:94:2, test-resources/src/1k2013spring/1473.js:95:2, test-resources/src/1k2013spring/1473.js:95:7, test-resources/src/1k2013spring/1473.js:95:15, test-resources/src/1k2013spring/1473.js:96:2, test-resources/src/1k2013spring/1473.js:96:7, test-resources/src/1k2013spring/1473.js:96:15, test-resources/src/1k2013spring/1473.js:97:2, test-resources/src/1k2013spring/1473.js:97:7, test-resources/src/1k2013spring/1473.js:97:15, test-resources/src/1k2013spring/1473.js:98:2, test-resources/src/1k2013spring/1473.js:98:7, test-resources/src/1k2013spring/1473.js:98:15, test-resources/src/1k2013spring/1473.js:99:2, test-resources/src/1k2013spring/1473.js:103:2, test-resources/src/1k2013spring/1473.js:103:22, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1473.js:2:14: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1473.js:2:14: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1473.js:2:14: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1473.js:2:14: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1473.js:2:20: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1473.js:2:20: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1473.js:2:26: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1473.js:2:26: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1473.js:2:33: [maybe] Reading absent property (computed name)
-Disabling soundness testing for test-resources/src/1k2013spring/1473.js entirely (387 uninspected soundness errors).
-Soundness testing succeeded for 677 checks (with 387 expected failures)
+test-resources/src/1k2013spring/1473.js:19:16: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:19:16: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:21:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:21:2: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1473.js:24:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:24:2: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:25:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:25:2: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:37:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:37:2: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1473.js:38:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:38:2: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:39:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:39:2: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:39:2: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1473.js:40:2: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1473.js:40:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:40:2: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1473.js:41:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:41:2: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1473.js:44:14: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1473.js:44:28: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1473.js:44:28: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:44:28: [maybe] Converting object to number
+test-resources/src/1k2013spring/1473.js:44:28: [maybe] The variable s has values with different types
+test-resources/src/1k2013spring/1473.js:46:5: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:46:5: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1473.js:46:5: [maybe] The variable s has values with different types
+test-resources/src/1k2013spring/1473.js:46:11: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:46:11: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1473.js:46:11: [maybe] The variable s has values with different types
+test-resources/src/1k2013spring/1473.js:46:17: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:46:17: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1473.js:46:17: [maybe] The variable s has values with different types
+test-resources/src/1k2013spring/1473.js:47:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:47:3: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:47:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1473.js:47:3: [maybe] The variable s has values with different types
+test-resources/src/1k2013spring/1473.js:48:4: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:48:4: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1473.js:48:4: [maybe] The variable s has values with different types
+test-resources/src/1k2013spring/1473.js:48:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:48:13: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:48:13: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1473.js:48:13: [maybe] The variable s has values with different types
+test-resources/src/1k2013spring/1473.js:49:4: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:49:4: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1473.js:49:4: [maybe] The variable s has values with different types
+test-resources/src/1k2013spring/1473.js:49:18: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:49:18: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:49:18: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1473.js:49:18: [maybe] The variable s has values with different types
+test-resources/src/1k2013spring/1473.js:49:32: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:49:32: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:49:32: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1473.js:49:32: [maybe] The variable s has values with different types
+test-resources/src/1k2013spring/1473.js:52:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:52:2: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1473.js:54:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:54:2: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1473.js:55:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:55:2: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:56:2: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1473.js:56:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:56:2: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1473.js:57:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:57:2: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:58:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:58:2: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1473.js:85:5: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:86:16: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:92:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:92:21: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:94:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:94:2: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1473.js:95:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:95:2: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:95:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:95:15: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:96:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:96:2: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:96:7: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:96:15: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:97:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:97:2: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:98:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:98:2: [maybe] Converting primitive number to object
+test-resources/src/1k2013spring/1473.js:99:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1473.js:99:2: [maybe] Converting undefined to string
+test-resources/src/1k2013spring/1473.js:2:12: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1473.js:2:1: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2013spring/1473.js:2:33: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 677 checks (with 0 expected failures)

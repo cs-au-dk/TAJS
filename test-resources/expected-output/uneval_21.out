@@ -180,22 +180,12 @@ test-resources/src/uneval/uneval21.html:137:31: [definite] Unreachable function
 test-resources/src/uneval/uneval21.html:138:31: [definite] Unreachable function
 test-resources/src/uneval/uneval21.html:139:31: [definite] Unreachable function
 test-resources/src/uneval/uneval21.html:140:37: [definite] Unreachable function
-test-resources/src/uneval/uneval21.html:5:21: [maybe] Converting primitive string to object
-test-resources/src/uneval/uneval21.html:5:21: [maybe] The variable wt_va has values with different types
 test-resources/src/uneval/uneval21.html:6:10: [maybe] Converting undefined to string
-test-resources/src/uneval/uneval21.html:6:25: [maybe] Converting primitive string to object
 test-resources/src/uneval/uneval21.html:6:25: [maybe] Reading absent property (computed name)
-test-resources/src/uneval/uneval21.html:6:25: [maybe] The variable wt_va has values with different types
-test-resources/src/uneval/uneval21.html:6:54: [maybe] Converting primitive string to object
 test-resources/src/uneval/uneval21.html:6:54: [maybe] Reading absent property (computed name)
-test-resources/src/uneval/uneval21.html:6:54: [maybe] The variable wt_va has values with different types
 TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:11: [maybe] Reading absent property (computed name)
-TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:19: [maybe] Converting primitive string to object
 TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:19: [maybe] Reading absent property (computed name)
-TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:20: [maybe] The variable wt_va has values with different types
-TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:52: [maybe] Converting primitive string to object
 TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:52: [maybe] Reading absent property (computed name)
-TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:53: [maybe] The variable wt_va has values with different types
 TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:44: [info] Writing to unknown property that may cause loss of precision
 TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:11: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 458 checks (with 0 expected failures)

@@ -1,9 +1,6 @@
 test-resources/src/google/benchpress.js:192:7: [definite] Dead assignment, property is never read
 test-resources/src/google/benchpress.js:76:38: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google/benchpress.js:79:3: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/google/benchpress.js:85:3: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/google/benchpress.js:85:23: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google/benchpress.js:156:3: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/google/benchpress.js:365:10: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google/benchpress.js:368:10: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google/benchpress.js:374:32: [maybe] TypeError, accessing property of null/undefined
@@ -14,18 +11,12 @@ test-resources/src/google/benchpress.js:426:26: [maybe] TypeError, accessing pro
 test-resources/src/google/benchpress.js:427:26: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google/benchpress.js:428:26: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google/benchpress.js:436:7: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google/benchpress.js: [maybe] Uncaught exception, constructed at [test-resources/src/google/benchpress.js:76:38, test-resources/src/google/benchpress.js:79:3, test-resources/src/google/benchpress.js:85:3, test-resources/src/google/benchpress.js:85:23, test-resources/src/google/benchpress.js:156:3, test-resources/src/google/benchpress.js:334:7, test-resources/src/google/benchpress.js:365:10, test-resources/src/google/benchpress.js:368:10, test-resources/src/google/benchpress.js:374:32, test-resources/src/google/benchpress.js:375:32, test-resources/src/google/benchpress.js:418:13, test-resources/src/google/benchpress.js:419:13, test-resources/src/google/benchpress.js:426:26, test-resources/src/google/benchpress.js:427:26, test-resources/src/google/benchpress.js:428:26, test-resources/src/google/benchpress.js:436:7]
+test-resources/src/google/benchpress.js: [maybe] Uncaught exception, constructed at [test-resources/src/google/benchpress.js:76:38, test-resources/src/google/benchpress.js:85:23, test-resources/src/google/benchpress.js:365:10, test-resources/src/google/benchpress.js:368:10, test-resources/src/google/benchpress.js:374:32, test-resources/src/google/benchpress.js:375:32, test-resources/src/google/benchpress.js:418:13, test-resources/src/google/benchpress.js:419:13, test-resources/src/google/benchpress.js:426:26, test-resources/src/google/benchpress.js:427:26, test-resources/src/google/benchpress.js:428:26, test-resources/src/google/benchpress.js:436:7]
 test-resources/src/google/benchpress.js:20:15: [maybe] Converting object to number
 test-resources/src/google/benchpress.js:75:13: [maybe] Reading absent property (computed name)
-test-resources/src/google/benchpress.js:79:3: [maybe] Conversion from string to number yields NaN
-test-resources/src/google/benchpress.js:79:3: [maybe] Converting object to number
 test-resources/src/google/benchpress.js:83:13: [maybe] Reading absent property (computed name)
-test-resources/src/google/benchpress.js:85:3: [maybe] Conversion from string to number yields NaN
-test-resources/src/google/benchpress.js:85:3: [maybe] Conversion to number yields NaN
-test-resources/src/google/benchpress.js:85:3: [maybe] Converting object to number
 test-resources/src/google/benchpress.js:131:9: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:155:13: [maybe] Reading absent property (computed name)
-test-resources/src/google/benchpress.js:156:3: [maybe] Conversion to number yields NaN
 test-resources/src/google/benchpress.js:156:14: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:164:33: [maybe] Conversion to number yields NaN
 test-resources/src/google/benchpress.js:191:9: [maybe] Reading absent property (computed name)

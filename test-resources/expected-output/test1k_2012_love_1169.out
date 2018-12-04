@@ -1,4 +1,4 @@
-test-resources/src/1k2012love/1169.js:46:13: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2012love/1169.js:46:13: [definite] Too few parameters to native function
 test-resources/src/1k2012love/1169.js:1:49: [definite] The variable hy is never used
 test-resources/src/1k2012love/1169.js:2:57: [definite] The variable size is never used
 test-resources/src/1k2012love/1169.js:61:9: [maybe] TypeError, accessing property of null/undefined

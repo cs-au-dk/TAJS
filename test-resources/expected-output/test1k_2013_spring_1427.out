@@ -1,5 +1,4 @@
-test-resources/src/1k2013spring/1427.js:98:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2013spring/1427.js:24:2: [maybe] RangeError, assigning invalid value to array 'length' property
+test-resources/src/1k2013spring/1427.js:98:4: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1427.js:44:7: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1427.js:45:7: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1427.js:57:10: [maybe] TypeError, accessing property of null/undefined
@@ -16,9 +15,7 @@ test-resources/src/1k2013spring/1427.js:95:6: [maybe] TypeError, accessing prope
 test-resources/src/1k2013spring/1427.js:96:16: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1427.js:104:4: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1427.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1427.js:24:2, test-resources/src/1k2013spring/1427.js:44:7, test-resources/src/1k2013spring/1427.js:45:7, test-resources/src/1k2013spring/1427.js:57:10, test-resources/src/1k2013spring/1427.js:59:19, test-resources/src/1k2013spring/1427.js:62:10, test-resources/src/1k2013spring/1427.js:63:11, test-resources/src/1k2013spring/1427.js:64:12, test-resources/src/1k2013spring/1427.js:65:9, test-resources/src/1k2013spring/1427.js:65:20, test-resources/src/1k2013spring/1427.js:78:7, test-resources/src/1k2013spring/1427.js:79:5, test-resources/src/1k2013spring/1427.js:87:3, test-resources/src/1k2013spring/1427.js:95:6, test-resources/src/1k2013spring/1427.js:96:16, test-resources/src/1k2013spring/1427.js:104:4, test-resources/src/1k2013spring/shim.js:9:5]
-test-resources/src/1k2013spring/1427.js:24:2: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2013spring/1427.js:24:2: [maybe] Converting object to number
+test-resources/src/1k2013spring/1427.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1427.js:44:7, test-resources/src/1k2013spring/1427.js:45:7, test-resources/src/1k2013spring/1427.js:57:10, test-resources/src/1k2013spring/1427.js:59:19, test-resources/src/1k2013spring/1427.js:62:10, test-resources/src/1k2013spring/1427.js:63:11, test-resources/src/1k2013spring/1427.js:64:12, test-resources/src/1k2013spring/1427.js:65:9, test-resources/src/1k2013spring/1427.js:65:20, test-resources/src/1k2013spring/1427.js:78:7, test-resources/src/1k2013spring/1427.js:79:5, test-resources/src/1k2013spring/1427.js:87:3, test-resources/src/1k2013spring/1427.js:95:6, test-resources/src/1k2013spring/1427.js:96:16, test-resources/src/1k2013spring/1427.js:104:4, test-resources/src/1k2013spring/shim.js:9:5]
 test-resources/src/1k2013spring/1427.js:40:11: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1427.js:42:12: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1427.js:44:7: [maybe] Reading absent property (computed name)

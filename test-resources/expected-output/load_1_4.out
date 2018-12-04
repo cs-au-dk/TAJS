@@ -1,7 +1,7 @@
-TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3262:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c26,p25)
+TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3262:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c30,p29)
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3262:13):1:1: HTML StartTag a contains a '/' character before the closing '>', which is ignored because tags of this name cannot be empty-element tags
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3262:13):1:1: HTML StartTag missing required end tag
-TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3262:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c26,p25)
+TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3262:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c30,p29)
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3262:13):1:1: HTML StartTag a contains a '/' character before the closing '>', which is ignored because tags of this name cannot be empty-element tags
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3262:13):1:1: HTML StartTag missing required end tag
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:20:45: [definite] Variable context is null/undefined
@@ -437,7 +437,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:728:5: [definite] Unreac
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:805:11: [definite] Unreachable code
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:810:13: [definite] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:817:40: [definite] Unreachable function click
-benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:868:52: [definite] The variable windowData is never used
+benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:868:47: [definite] The variable windowData is never used
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:921:47: [definite] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:923:21: [definite] Unreachable function
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:965:15: [definite] Unreachable function
@@ -881,7 +881,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:2225:29: [maybe] TypeErr
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:2228:17: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:2338:5: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:2345:13: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3268:17: [maybe] <Document.getElementById>("scriptTAJS_UUID") did not match any elements
+benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3268:17: [maybe] <Document.getElementById>("script1543012483794") did not match any elements
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3317:42: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3317:89: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3317:89: [maybe] TypeError, call to non-function
@@ -1017,7 +1017,15 @@ benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:4611:17: [maybe] Convert
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:5661:13: [maybe] Converting object to string
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:5904:20: [maybe] Converting object to string
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:5904:20: [maybe] Converting primitive string to object
+benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:287:29: [info] Writing to unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:646:9: [info] Writing to unknown property that may cause loss of precision
+benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:271:17: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:272:27: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:273:28: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:881:34: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:1700:48: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 4001 checks (with 6 expected failures)
+benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:323:43: [unsound] Assuming UInt-addition is closed
+benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:755:16: [unsound] Assuming Date.now returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:894:22: [unsound] Assuming UInt-addition is closed
+benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js:3261:72: [unsound] Assuming Date.now returns fixed value
+Soundness testing succeeded for 4015 checks (with 6 expected failures)

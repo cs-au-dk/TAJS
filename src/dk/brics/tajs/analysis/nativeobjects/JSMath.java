@@ -24,6 +24,8 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 
+import java.util.Random;
+
 /**
  * 15.8 native Math functions.
  */
@@ -186,7 +188,10 @@ public class JSMath {
             }
 
             case MATH_RANDOM: { // 15.8.2.14
-                return Value.makeAnyNumNotNaNInf();
+                if (c.getAnalysis().getUnsoundness().mayUseFixedMathRandom(c.getNode()))
+                    return Value.makeNum(new Random(c.getNode().getIndex()).nextDouble()); // pick a pseudo-random value deterministically from the node index
+                else
+                    return Value.makeAnyNumNotNaNInf();
             }
 
             case MATH_IMUL: {

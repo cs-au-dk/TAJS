@@ -1,5 +1,5 @@
-test-resources/src/micro/test109.js:8:13: [definite] Too many parameters to function Function.prototype
 test-resources/src/micro/test109.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/test109.js:8:13: [maybe] Too many parameters to native function
 test-resources/src/micro/test109.js:7:24: [maybe] Conversion to number yields NaN
 test-resources/src/micro/test109.js:9:19: [maybe] Converting primitive number to object
 test-resources/src/micro/test109.js:10:16: [maybe] Converting primitive number to object

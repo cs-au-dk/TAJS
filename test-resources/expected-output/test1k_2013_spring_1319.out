@@ -1,6 +1,6 @@
-test-resources/src/1k2013spring/1319.js:86:9: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2013spring/1319.js:92:9: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2013spring/1319.js:163:13: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1319.js:86:9: [definite] Too few parameters to native function
+test-resources/src/1k2013spring/1319.js:92:9: [definite] Too few parameters to native function
+test-resources/src/1k2013spring/1319.js:163:13: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1319.js:52:29: [maybe] ReferenceError, reading absent variable m
 test-resources/src/1k2013spring/1319.js:52:32: [maybe] ReferenceError, reading absent variable terrainm
 test-resources/src/1k2013spring/1319.js:76:19: [maybe] ReferenceError, reading absent variable explx
@@ -16,10 +16,8 @@ test-resources/src/1k2013spring/1319.js:112:34: [maybe] ReferenceError, reading 
 test-resources/src/1k2013spring/1319.js:113:44: [maybe] ReferenceError, reading absent variable n
 test-resources/src/1k2013spring/1319.js:118:21: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2013spring/1319.js:119:26: [maybe] ReferenceError, reading absent variable trail
-test-resources/src/1k2013spring/1319.js:119:33: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
 test-resources/src/1k2013spring/1319.js:119:56: [maybe] ReferenceError, reading absent variable trail
 test-resources/src/1k2013spring/1319.js:123:17: [maybe] ReferenceError, reading absent variable n
-test-resources/src/1k2013spring/1319.js:125:18: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2013spring/1319.js:125:18: [maybe] ReferenceError, reading absent variable player
 test-resources/src/1k2013spring/1319.js:125:25: [maybe] ReferenceError, reading absent variable n
 test-resources/src/1k2013spring/1319.js:130:9: [maybe] ReferenceError, reading absent variable DrawTank
@@ -39,7 +37,6 @@ test-resources/src/1k2013spring/1319.js:148:44: [maybe] ReferenceError, reading 
 test-resources/src/1k2013spring/1319.js:155:13: [maybe] ReferenceError, reading absent variable explx
 test-resources/src/1k2013spring/1319.js:158:8: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2013spring/1319.js:159:13: [maybe] ReferenceError, reading absent variable trail
-test-resources/src/1k2013spring/1319.js:159:20: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
 test-resources/src/1k2013spring/1319.js:159:43: [maybe] ReferenceError, reading absent variable trail
 test-resources/src/1k2013spring/1319.js:163:19: [maybe] ReferenceError, reading absent variable explx
 test-resources/src/1k2013spring/1319.js:163:26: [maybe] ReferenceError, reading absent variable exply
@@ -103,7 +100,6 @@ test-resources/src/1k2013spring/1319.js:119:33: [maybe] Conversion to number yie
 test-resources/src/1k2013spring/1319.js:119:33: [maybe] Converting object to number
 test-resources/src/1k2013spring/1319.js:119:52: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1319.js:119:56: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1319.js:125:18: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1319.js:125:18: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1319.js:125:18: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1319.js:134:13: [maybe] The variable bulletx has values with different types

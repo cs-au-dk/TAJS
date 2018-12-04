@@ -1,4 +1,4 @@
-test-resources/src/1k2013spring/1336.js:36:21: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1336.js:36:21: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1336.js:24:27: [maybe] ReferenceError, reading absent variable J
 test-resources/src/1k2013spring/1336.js:24:31: [maybe] ReferenceError, reading absent variable q
 test-resources/src/1k2013spring/1336.js:29:5: [maybe] ReferenceError, reading absent variable t

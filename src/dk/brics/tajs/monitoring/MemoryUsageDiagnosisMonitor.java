@@ -31,6 +31,7 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.StateExtras;
 import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.solver.CallGraph;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 import org.apache.log4j.Logger;
 
@@ -43,7 +44,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
@@ -193,15 +193,15 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
                 objs.stream()
                         .mapToInt(obj ->
                                 obj.getProperties().size()
-                                        + (!obj.getDefaultArrayProperty().isUnknown() && obj.getDefaultArrayProperty().isMaybePresent() ? 1 : 0)
-                                        + (!obj.getDefaultNonArrayProperty().isUnknown() && obj.getDefaultNonArrayProperty().isMaybePresent() ? 1 : 0))
+                                        + (!obj.getDefaultNumericProperty().isUnknown() && obj.getDefaultNumericProperty().isMaybePresent() ? 1 : 0)
+                                        + (!obj.getDefaultOtherProperty().isUnknown() && obj.getDefaultOtherProperty().isMaybePresent() ? 1 : 0))
                         .sum());
         measurements.recordPlainNumber("Sum(|Obj.properties|) (unique Obj)",
                 newSet(objs).stream()
                         .mapToInt(obj ->
                                 obj.getProperties().size()
-                                        + (!obj.getDefaultArrayProperty().isUnknown() && obj.getDefaultArrayProperty().isMaybePresent() ? 1 : 0)
-                                        + (!obj.getDefaultNonArrayProperty().isUnknown() && obj.getDefaultNonArrayProperty().isMaybePresent() ? 1 : 0))
+                                        + (!obj.getDefaultNumericProperty().isUnknown() && obj.getDefaultNumericProperty().isMaybePresent() ? 1 : 0)
+                                        + (!obj.getDefaultOtherProperty().isUnknown() && obj.getDefaultOtherProperty().isMaybePresent() ? 1 : 0))
                         .sum());
 
         measurements.measureIdentitySetDuplication("SourceLocation",
@@ -220,7 +220,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
     @SuppressWarnings("unused")
     private void printCanonicalizationPotentials(Collection<?> elements) {
         elements.stream()
-                .collect(Collectors.groupingBy(o -> o, Collectors.counting()))
+                .collect(Collectors.groupingBy(o -> o, java.util.stream.Collectors.counting()))
                 .entrySet().stream()
                 .filter(e -> e.getValue() > 1)
                 .map(e -> Pair.make(e.getKey().toString(), e.getValue()))

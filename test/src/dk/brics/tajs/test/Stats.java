@@ -724,7 +724,10 @@ public class Stats {
 
         public static void main(String[] args) throws IOException, CmdLineException {
             String outfile = args.length > 0 ? args[0] : "standard";
-            run(outfile, 60, 100000, Optional.empty(),
+            OptionValues defaultOptions = new OptionValues();
+            defaultOptions.getUnsoundness().setUseFixedRandom(true);
+            defaultOptions.getUnsoundness().setShowUnsoundnessUsage(true);
+            run(outfile, 60, 100000, Optional.of(defaultOptions),
                     // from RunMedium:
                     testSunspider,
                     testGoogle,
@@ -747,8 +750,8 @@ public class Stats {
 
                     // from RunSlow:
                     testApps,
-                    testJQueryUse, // includes TestJQueryUse_unanalyzable,
-                    testJQueryUse_ignoreUnreachable,
+//                    testJQueryUse, // includes TestJQueryUse_unanalyzable,
+//                    testJQueryUse_ignoreUnreachable,
 
                     // from RunPapers:
                     testJSAI2014,
@@ -775,6 +778,7 @@ public class Stats {
             defaultOptions.getUnsoundness().setIgnoreUnlikelyUndefinedAsFirstArgumentToAddition(true);
             defaultOptions.getUnsoundness().setAssumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber(true);
             defaultOptions.getUnsoundness().setIgnoreUnlikelyPropertyReads(true);
+            defaultOptions.getUnsoundness().setUseFixedRandom(true);
             defaultOptions.getUnsoundness().setShowUnsoundnessUsage(true);
             run(outfile, 300, 250000, Optional.of(defaultOptions),
                     testJQueryLoad_ignoreUnreachable,
@@ -856,7 +860,11 @@ public class Stats {
                     String errorMsg = exceptionMsg != null ? exceptionMsg : terminatedEarlyMsg != null ? terminatedEarlyMsg : "";
                     w.name("name").value(name.replace("test-resources/src", "").replace("benchmarks/tajs/src", ""));
                     w.name("options").value(Arrays.stream(testArgs).filter(s -> !s.endsWith(".js") && !s.endsWith(".html")).collect(Collectors.joining(" ")));
-                    w.name("error").value(errorMsg.length() > 50 ? errorMsg.substring(0, 50) + "..." : errorMsg);
+                    if (errorMsg.isEmpty()) {
+                        w.name("error").value("");
+                    } else {
+                        w.name("error").value(categorizeErrorMsg(errorMsg) + ": " + (errorMsg.length() > 500 ? errorMsg.substring(0, 500) + "..." : errorMsg));
+                    }
                     if (time != 0) {
                         w.name("time").value(((double) elapsed) / 1000);
                     }
@@ -887,6 +895,42 @@ public class Stats {
             w.endArray();
         }
         System.out.println("Output written to " + f + ", open stats.html?" + outfile + " in a browser to view the results");
+    }
+
+    private static String categorizeErrorMsg(String errorMsg) {
+        if (errorMsg.contains("Likely significant loss of precision (mix of multiple native and non-native functions)")
+                || errorMsg.contains("Too imprecise calls to Function")
+                || errorMsg.contains("Unevalable eval")) {
+            return "[Precision loss]";
+        }
+        if (errorMsg.contains("not yet supported") || errorMsg.contains("let is not supported") || errorMsg.contains("No support for")) {
+            return "[Syntactic limitations]";
+        }
+        if (errorMsg.contains("No transfer function for native function")
+                || errorMsg.contains("Error.captureStackTrace")
+                || errorMsg.contains("Array.prototype.values")) {
+            return "[EcmaScript modelling]";
+        }
+        if (errorMsg.contains("No model for Partial")) {
+            return "[Node modelling]";
+        }
+        if (errorMsg.contains("Terminating fixpoint solver early and unsoundly!")
+                || errorMsg.contains("GC overhead limit exceeded")
+                || errorMsg.contains("Java heap space")) {
+            return "[Scalability]";
+        }
+        if (errorMsg.contains("TAJS_nodeRequireResolve")) {
+            return "[Require]";
+        }
+        if (errorMsg.contains("SoundnessTesting failed")) {
+            return "[Soundness failure]";
+        }
+        if (errorMsg.contains("Log file indicates at the instrumentation was unsuccessful")
+                || errorMsg.contains("Unhandled result kind: syntax-error")
+                || errorMsg.contains("Something went wrong while checking location")) {
+            return "[Log file error]";
+        }
+        return "[Other]";
     }
 
     public static class TerminationMonitor extends DefaultAnalysisMonitoring {

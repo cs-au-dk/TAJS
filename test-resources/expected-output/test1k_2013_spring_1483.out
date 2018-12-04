@@ -26,14 +26,11 @@ test-resources/src/1k2013spring/1483.js:51:9: [maybe] ReferenceError, reading ab
 test-resources/src/1k2013spring/1483.js:51:19: [maybe] ReferenceError, reading absent variable y
 test-resources/src/1k2013spring/1483.js:51:21: [maybe] ReferenceError, reading absent variable h
 test-resources/src/1k2013spring/1483.js:54:15: [maybe] ReferenceError, reading absent variable m
-test-resources/src/1k2013spring/1483.js:55:13: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2013spring/1483.js:55:13: [maybe] ReferenceError, reading absent variable zx
 test-resources/src/1k2013spring/1483.js:55:18: [maybe] ReferenceError, reading absent variable n
 test-resources/src/1k2013spring/1483.js:55:21: [maybe] ReferenceError, reading absent variable w
-test-resources/src/1k2013spring/1483.js:56:13: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2013spring/1483.js:56:13: [maybe] ReferenceError, reading absent variable zy
 test-resources/src/1k2013spring/1483.js:56:19: [maybe] ReferenceError, reading absent variable h
-test-resources/src/1k2013spring/1483.js:57:13: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2013spring/1483.js:57:13: [maybe] ReferenceError, reading absent variable zs
 test-resources/src/1k2013spring/1483.js:60:20: [maybe] ReferenceError, reading absent variable n
 test-resources/src/1k2013spring/1483.js:61:24: [maybe] ReferenceError, reading absent variable zx

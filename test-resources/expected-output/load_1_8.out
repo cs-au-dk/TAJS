@@ -120,6 +120,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3344:17: [definite] Vari
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3349:50: [definite] Variable fn is null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3349:54: [definite] Variable selector is null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3381:44: [definite] Variable data is null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3498:20: [definite] The conditional expression is always true
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3507:24: [definite] The conditional expression is always true
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3527:17: [definite] The conditional expression is always false
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3611:21: [definite] The conditional expression is always true
@@ -158,7 +159,6 @@ benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:55:9: [definite] Dead as
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:64:17: [definite] Reading absent property nodeType
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:65:17: [definite] Dead assignment, property context is never read
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:140:9: [definite] Dead assignment, property selector is never read
-benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:142:9: [definite] Dead assignment, property jquery is never read
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:144:9: [definite] Dead assignment, property length is never read
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:146:9: [definite] Dead assignment, property size is never read
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:150:9: [definite] Dead assignment, property toArray is never read
@@ -292,7 +292,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:2978:5: [definite] Dead 
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3006:20: [definite] Reading absent property type
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3022:9: [definite] Dead assignment, property timeStamp is never read
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3022:33: [definite] Reading absent property timeStamp
-benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3024:9: [definite] Dead assignment, property jQueryTAJS_UUID is never read
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3024:9: [definite] Dead assignment, property jQuery18006857292159305641 is never read
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3036:9: [definite] Dead assignment, property preventDefault is never read
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3053:9: [definite] Dead assignment, property stopPropagation is never read
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3069:9: [definite] Dead assignment, property stopImmediatePropagation is never read
@@ -1311,8 +1311,8 @@ benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3381:17: [maybe] TypeErr
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3417:5: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3496:31: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3496:31: [maybe] TypeError, call to non-function
-benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3509:17: [maybe] <HTMLDocument.prototype.getElementsByName>(sizcacheTAJS_UUID0) did not match any elements
-benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3510:35: [maybe] <Document.getElementById>("sizcacheTAJS_UUID") did not match any elements
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3509:17: [maybe] <HTMLDocument.prototype.getElementsByName>(sizcache026371154343318570) did not match any elements
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3510:35: [maybe] <Document.getElementById>("sizcache02637115434331857") did not match any elements
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3522:45: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3522:93: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3522:93: [maybe] TypeError, call to non-function
@@ -1562,6 +1562,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:1289:13: [maybe] Reading
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:1290:13: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:1293:60: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:1318:48: [maybe] Converting undefined to string
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:1354:29: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:1364:49: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:1378:27: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:1378:47: [maybe] Reading absent property (computed name)
@@ -1597,6 +1598,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3022:33: [maybe] Convert
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3322:26: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3417:17: [maybe] Converting object to string
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3417:17: [maybe] Converting primitive string to object
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3442:272: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3448:22: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3449:596: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3454:30: [maybe] Converting object to string
@@ -1629,4 +1631,10 @@ benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:916:24: [info] 'this' re
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:960:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:992:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:1536:43: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 6823 checks (with 0 expected failures)
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:743:20: [unsound] Assuming Date.now returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:857:55: [unsound] Assuming UInt-addition is closed
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:1354:50: [unsound] Assuming Math.random returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:2711:80: [unsound] Assuming UInt-addition is closed
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:3442:286: [unsound] Assuming Math.random returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js:5907:13: [unsound] Skipping write to property '__proto__'
+Soundness testing succeeded for 6848 checks (with 2 expected failures)

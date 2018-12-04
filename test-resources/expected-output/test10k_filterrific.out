@@ -1,9 +1,4 @@
-test-resources/src/10k/filterrific.html:616:24: [definite] Too many parameters to function Object.prototype.toLocaleString
-test-resources/src/10k/filterrific.html:616:24: [definite] Too many parameters to function Object.prototype.toString
-test-resources/src/10k/filterrific.html:616:24: [definite] Too many parameters to function Object.prototype.valueOf
 test-resources/src/10k/filterrific.html:578:13: [definite] The conditional expression is always true
-test-resources/src/10k/filterrific.html:616:24: [definite] Too few parameters to function Object.prototype.__defineGetter__
-test-resources/src/10k/filterrific.html:616:24: [definite] Too few parameters to function Object.prototype.__defineSetter__
 test-resources/src/10k/filterrific.html:244:117: [definite] The variable ca is never used
 test-resources/src/10k/filterrific.html:624:29: [definite] The variable ra is never used
 test-resources/src/10k/filterrific.html:636:21: [definite] The variable i is never used
@@ -46,6 +41,7 @@ test-resources/src/10k/filterrific.html:588:13: [maybe] TypeError, accessing pro
 test-resources/src/10k/filterrific.html:608:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/filterrific.html:616:9: [maybe] TypeError, argument is not of expected type: ImageData
 test-resources/src/10k/filterrific.html:616:9: [maybe] TypeError, call to non-function
+test-resources/src/10k/filterrific.html:616:24: [maybe] Too many parameters to native function
 test-resources/src/10k/filterrific.html:616:24: [maybe] TypeError, call to non-function
 test-resources/src/10k/filterrific.html:639:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/filterrific.html:640:34: [maybe] TypeError, accessing property of null/undefined
@@ -72,9 +68,10 @@ test-resources/src/10k/filterrific.html:461:18: [maybe] Reading absent property 
 test-resources/src/10k/filterrific.html:465:20: [maybe] Reading absent property a of host object
 test-resources/src/10k/filterrific.html:474:20: [maybe] Reading absent property a of host object
 test-resources/src/10k/filterrific.html:616:9: [maybe] Reading absent property putImageData of host object
+test-resources/src/10k/filterrific.html:616:24: [maybe] Too few parameters to native function
 test-resources/src/10k/filterrific.html:646:23: [maybe] Reading absent property b of host object
 test-resources/src/10k/filterrific.html:648:23: [maybe] Reading absent property toFixed
-test-resources/src/10k/filterrific.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/filterrific.html:253:16, test-resources/src/10k/filterrific.html:257:16, test-resources/src/10k/filterrific.html:260:9, test-resources/src/10k/filterrific.html:266:13, test-resources/src/10k/filterrific.html:270:9, test-resources/src/10k/filterrific.html:283:38, test-resources/src/10k/filterrific.html:299:9, test-resources/src/10k/filterrific.html:299:19, test-resources/src/10k/filterrific.html:333:9, test-resources/src/10k/filterrific.html:339:13, test-resources/src/10k/filterrific.html:340:13, test-resources/src/10k/filterrific.html:341:13, test-resources/src/10k/filterrific.html:346:17, test-resources/src/10k/filterrific.html:348:17, test-resources/src/10k/filterrific.html:349:17, test-resources/src/10k/filterrific.html:350:17, test-resources/src/10k/filterrific.html:358:13, test-resources/src/10k/filterrific.html:365:24, test-resources/src/10k/filterrific.html:367:28, test-resources/src/10k/filterrific.html:378:9, test-resources/src/10k/filterrific.html:386:13, test-resources/src/10k/filterrific.html:396:16, test-resources/src/10k/filterrific.html:418:18, test-resources/src/10k/filterrific.html:424:13, test-resources/src/10k/filterrific.html:442:61, test-resources/src/10k/filterrific.html:461:21, test-resources/src/10k/filterrific.html:465:23, test-resources/src/10k/filterrific.html:474:84, test-resources/src/10k/filterrific.html:478:17, test-resources/src/10k/filterrific.html:549:21, test-resources/src/10k/filterrific.html:575:9, test-resources/src/10k/filterrific.html:588:13, test-resources/src/10k/filterrific.html:600:13, test-resources/src/10k/filterrific.html:608:13, test-resources/src/10k/filterrific.html:616:9, test-resources/src/10k/filterrific.html:616:24, test-resources/src/10k/filterrific.html:639:17, test-resources/src/10k/filterrific.html:640:34, test-resources/src/10k/filterrific.html:646:23, test-resources/src/10k/filterrific.html:647:17, test-resources/src/10k/filterrific.html:648:23, test-resources/src/10k/filterrific.html:652:9]
+test-resources/src/10k/filterrific.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/filterrific.html:253:16, test-resources/src/10k/filterrific.html:257:16, test-resources/src/10k/filterrific.html:260:9, test-resources/src/10k/filterrific.html:266:13, test-resources/src/10k/filterrific.html:270:9, test-resources/src/10k/filterrific.html:283:38, test-resources/src/10k/filterrific.html:299:9, test-resources/src/10k/filterrific.html:299:19, test-resources/src/10k/filterrific.html:333:9, test-resources/src/10k/filterrific.html:339:13, test-resources/src/10k/filterrific.html:340:13, test-resources/src/10k/filterrific.html:341:13, test-resources/src/10k/filterrific.html:346:17, test-resources/src/10k/filterrific.html:348:17, test-resources/src/10k/filterrific.html:349:17, test-resources/src/10k/filterrific.html:350:17, test-resources/src/10k/filterrific.html:358:13, test-resources/src/10k/filterrific.html:365:24, test-resources/src/10k/filterrific.html:367:28, test-resources/src/10k/filterrific.html:378:9, test-resources/src/10k/filterrific.html:386:13, test-resources/src/10k/filterrific.html:396:16, test-resources/src/10k/filterrific.html:418:18, test-resources/src/10k/filterrific.html:424:13, test-resources/src/10k/filterrific.html:442:61, test-resources/src/10k/filterrific.html:461:21, test-resources/src/10k/filterrific.html:465:23, test-resources/src/10k/filterrific.html:474:84, test-resources/src/10k/filterrific.html:478:17, test-resources/src/10k/filterrific.html:549:21, test-resources/src/10k/filterrific.html:575:9, test-resources/src/10k/filterrific.html:588:13, test-resources/src/10k/filterrific.html:608:13, test-resources/src/10k/filterrific.html:616:9, test-resources/src/10k/filterrific.html:616:24, test-resources/src/10k/filterrific.html:639:17, test-resources/src/10k/filterrific.html:640:34, test-resources/src/10k/filterrific.html:646:23, test-resources/src/10k/filterrific.html:647:17, test-resources/src/10k/filterrific.html:648:23, test-resources/src/10k/filterrific.html:652:9]
 test-resources/src/10k/filterrific.html:266:13: [maybe] Converting primitive number to object
 test-resources/src/10k/filterrific.html:266:13: [maybe] The variable a has values with different types
 test-resources/src/10k/filterrific.html:270:9: [maybe] Converting undefined to string
@@ -255,13 +252,9 @@ test-resources/src/10k/filterrific.html:599:46: [maybe] Reading absent property 
 test-resources/src/10k/filterrific.html:600:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/filterrific.html:600:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/filterrific.html:603:34: [maybe] Conversion from string to number yields NaN
-test-resources/src/10k/filterrific.html:603:57: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/filterrific.html:603:57: [maybe] Conversion to number yields NaN
-test-resources/src/10k/filterrific.html:603:57: [maybe] Converting object to number
 test-resources/src/10k/filterrific.html:603:61: [maybe] Reading absent property (computed name)
-test-resources/src/10k/filterrific.html:603:70: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/filterrific.html:603:70: [maybe] Conversion to number yields NaN
-test-resources/src/10k/filterrific.html:603:70: [maybe] Converting object to number
 test-resources/src/10k/filterrific.html:603:74: [maybe] Reading absent property (computed name)
 test-resources/src/10k/filterrific.html:607:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/filterrific.html:607:16: [maybe] The variable b has values with different types
@@ -288,8 +281,5 @@ test-resources/src/10k/filterrific.html:653:16: [maybe] The variable b has value
 test-resources/src/10k/filterrific.html:319:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/10k/filterrific.html:379:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/10k/filterrific.html:382:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-test-resources/src/10k/filterrific.html:603:9: [info] Reading from unknown property that may cause loss of precision
-test-resources/src/10k/filterrific.html:603:61: [info] Reading from unknown property that may cause loss of precision
-test-resources/src/10k/filterrific.html:603:74: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/10k/filterrific.html:607:13: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 0 checks (with 0 expected failures)

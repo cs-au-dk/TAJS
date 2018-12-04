@@ -3,7 +3,7 @@ test-resources/src/micro/test65.js:35:2: [definite] Dead assignment, property a 
 test-resources/src/micro/test65.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test65.js:9:16: [maybe] Reading absent property (computed name)
 test-resources/src/micro/test65.js:12:16: [maybe] Reading absent property (computed name)
-test-resources/src/micro/test65.js:5:1: [info] Abstract value: PrefixStr[aa]
+test-resources/src/micro/test65.js:5:1: [info] Abstract value: (PrefixStr[aa]){"aaaa","aaab","aaba","aabb"}
 test-resources/src/micro/test65.js:9:1: [info] Abstract value: Undef|42.0
 test-resources/src/micro/test65.js:12:1: [info] Abstract value: Undef|42.0|"foo"
 test-resources/src/micro/test65.js:13:1: [info] Abstract value: 42.0|"foo"

@@ -11,7 +11,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestJQueryLoad { // TODO: code contains "dk.brics.tajs.directives.unreachable" and "TAJS_" strings (for nondet. values), currently analyzing without "-ignore-unreachable" (same for TestJQueryUse and TestJQueryUse_unanalyzable)
+public class TestJQueryLoad { // TODO: code contains "dk.brics.tajs.directives.unreachable", currently analyzing without "-ignore-unreachable" (same for TestJQueryUse and TestJQueryUse_unanalyzable)
 
     private IAnalysisMonitoring monitor;
 
@@ -96,7 +96,10 @@ public class TestJQueryLoad { // TODO: code contains "dk.brics.tajs.directives.u
         Options.get().enableIncludeDom();
         Options.get().enableUnevalizer();
         Options.get().enableTest();
+//        Options.get().getSoundnessTesterOptions().setTest(false);
         Options.get().enableNoStrict(); // soundness testing does not work properly with strict mode
+        Options.get().getUnsoundness().setUseFixedRandom(true);
+        Options.get().getUnsoundness().setShowUnsoundnessUsage(true);
         // Each tests runs in less than 30 seconds on `Intel(R) Core(TM) i7-3520M CPU @ 2.90GHz`
         analysisLimiter = new AnalysisTimeLimiter(1 * 90);
         monitor = CompositeMonitoring.buildFromList(Monitoring.make(), analysisLimiter);

@@ -1,4 +1,4 @@
-test-resources/src/1k2013spring/1449.js:83:5: [definite] Too few parameters to function Window.clearInterval
+test-resources/src/1k2013spring/1449.js:83:5: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1449.js:31:3: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2013spring/1449.js:45:7: [maybe] ReferenceError, reading absent variable t
 test-resources/src/1k2013spring/1449.js:49:36: [maybe] ReferenceError, reading absent variable t

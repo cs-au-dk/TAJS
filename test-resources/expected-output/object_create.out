@@ -1,4 +1,4 @@
-out/temp-sources/TestMicro.object_create.js:3:11: [definite] Too few parameters to function Object.create
+out/temp-sources/TestMicro.object_create.js:3:11: [definite] Too few parameters to native function
 out/temp-sources/TestMicro.object_create.js:3:6: [definite] The variable o1 is never used
 out/temp-sources/TestMicro.object_create.js:3:6: [definite] Unreachable code
 out/temp-sources/TestMicro.object_create.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestMicro.object_create.js:3:11]

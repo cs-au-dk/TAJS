@@ -262,8 +262,8 @@ benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:409:32: [definite] Unrea
 benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:432:40: [definite] The variable ARG2 is never used
 benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:432:40: [definite] The variable ARG3 is never used
 benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:472:9: [definite] The variable expando is never used
-benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:472:43: [definite] The variable uuid is never used
-benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:472:53: [definite] The variable win is never used
+benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:472:54: [definite] The variable uuid is never used
+benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:472:64: [definite] The variable win is never used
 benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:474:21: [definite] Unreachable function
 benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:485:21: [definite] Unreachable function
 benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:490:19: [definite] Unreachable function
@@ -464,4 +464,6 @@ benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:2106:17: [maybe] Convert
 benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:2106:17: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:2256:17: [maybe] Converting object to string
 benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:2256:17: [maybe] Converting primitive string to object
-Soundness testing succeeded for 1624 checks (with 0 expected failures)
+benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:472:31: [unsound] Assuming Date.now returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js:2262:15: [unsound] Assuming Date.now returns fixed value
+Soundness testing succeeded for 1632 checks (with 0 expected failures)

@@ -1,4 +1,4 @@
-test-resources/src/1k2012love/1243.js:175:13: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.stroke
+test-resources/src/1k2012love/1243.js:175:13: [definite] Too many parameters to native function
 test-resources/src/1k2012love/1243.js:116:13: [definite] The variable l is never used
 test-resources/src/1k2012love/1243.js:116:13: [definite] The variable r is never used
 test-resources/src/1k2012love/1243.js:120:5: [maybe] ReferenceError, reading absent variable t

@@ -1,9 +1,3 @@
-test-resources/src/10k/sudoku.html:89:9: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/10k/sudoku.html:94:9: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/10k/sudoku.html:95:9: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/10k/sudoku.html:96:9: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/10k/sudoku.html:102:9: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/10k/sudoku.html:103:21: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/10k/sudoku.html:124:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/sudoku.html:124:23: [maybe] RangeError, invalid value of array length
 test-resources/src/10k/sudoku.html:125:5: [maybe] TypeError, accessing property of null/undefined
@@ -14,7 +8,6 @@ test-resources/src/10k/sudoku.html:134:5: [maybe] TypeError, accessing property 
 test-resources/src/10k/sudoku.html:135:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/sudoku.html:136:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/sudoku.html:140:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/sudoku.html:141:14: [maybe] TypeError, call to non-function
 test-resources/src/10k/sudoku.html:146:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/sudoku.html:147:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/sudoku.html:148:9: [maybe] TypeError, accessing property of null/undefined
@@ -37,8 +30,6 @@ test-resources/src/10k/sudoku.html:185:13: [maybe] ReferenceError, reading absen
 test-resources/src/10k/sudoku.html:185:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/sudoku.html:186:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/sudoku.html:187:39: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/sudoku.html:239:24: [maybe] TypeError, call to non-function
-test-resources/src/10k/sudoku.html:242:25: [maybe] TypeError, call to non-function
 test-resources/src/10k/sudoku.html:254:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/sudoku.html:255:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/sudoku.html:260:9: [maybe] TypeError, accessing property of null/undefined
@@ -65,7 +56,7 @@ test-resources/src/10k/sudoku.html:170:32: [maybe] Reading 'this' yields the glo
 test-resources/src/10k/sudoku.html:170:32: [maybe] Reading absent property n of host object
 test-resources/src/10k/sudoku.html:187:39: [maybe] Reading absent property checked of host object
 test-resources/src/10k/sudoku.html:268:17: [maybe] Reading absent property value of host object
-test-resources/src/10k/sudoku.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/sudoku.html:89:9, test-resources/src/10k/sudoku.html:94:9, test-resources/src/10k/sudoku.html:95:9, test-resources/src/10k/sudoku.html:96:9, test-resources/src/10k/sudoku.html:102:9, test-resources/src/10k/sudoku.html:103:21, test-resources/src/10k/sudoku.html:124:5, test-resources/src/10k/sudoku.html:124:23, test-resources/src/10k/sudoku.html:125:5, test-resources/src/10k/sudoku.html:125:24, test-resources/src/10k/sudoku.html:132:5, test-resources/src/10k/sudoku.html:133:5, test-resources/src/10k/sudoku.html:134:5, test-resources/src/10k/sudoku.html:135:5, test-resources/src/10k/sudoku.html:136:5, test-resources/src/10k/sudoku.html:140:5, test-resources/src/10k/sudoku.html:141:14, test-resources/src/10k/sudoku.html:146:9, test-resources/src/10k/sudoku.html:147:9, test-resources/src/10k/sudoku.html:148:9, test-resources/src/10k/sudoku.html:154:21, test-resources/src/10k/sudoku.html:155:21, test-resources/src/10k/sudoku.html:156:21, test-resources/src/10k/sudoku.html:157:21, test-resources/src/10k/sudoku.html:158:41, test-resources/src/10k/sudoku.html:159:25, test-resources/src/10k/sudoku.html:159:50, test-resources/src/10k/sudoku.html:159:74, test-resources/src/10k/sudoku.html:166:9, test-resources/src/10k/sudoku.html:167:9, test-resources/src/10k/sudoku.html:168:9, test-resources/src/10k/sudoku.html:170:21, test-resources/src/10k/sudoku.html:173:21, test-resources/src/10k/sudoku.html:181:9, test-resources/src/10k/sudoku.html:182:9, test-resources/src/10k/sudoku.html:185:13, test-resources/src/10k/sudoku.html:186:13, test-resources/src/10k/sudoku.html:187:39, test-resources/src/10k/sudoku.html:239:24, test-resources/src/10k/sudoku.html:242:25, test-resources/src/10k/sudoku.html:254:9, test-resources/src/10k/sudoku.html:255:9, test-resources/src/10k/sudoku.html:260:9, test-resources/src/10k/sudoku.html:261:9, test-resources/src/10k/sudoku.html:268:17]
+test-resources/src/10k/sudoku.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/sudoku.html:124:5, test-resources/src/10k/sudoku.html:124:23, test-resources/src/10k/sudoku.html:125:5, test-resources/src/10k/sudoku.html:125:24, test-resources/src/10k/sudoku.html:132:5, test-resources/src/10k/sudoku.html:133:5, test-resources/src/10k/sudoku.html:134:5, test-resources/src/10k/sudoku.html:135:5, test-resources/src/10k/sudoku.html:136:5, test-resources/src/10k/sudoku.html:140:5, test-resources/src/10k/sudoku.html:146:9, test-resources/src/10k/sudoku.html:147:9, test-resources/src/10k/sudoku.html:148:9, test-resources/src/10k/sudoku.html:154:21, test-resources/src/10k/sudoku.html:155:21, test-resources/src/10k/sudoku.html:156:21, test-resources/src/10k/sudoku.html:157:21, test-resources/src/10k/sudoku.html:158:41, test-resources/src/10k/sudoku.html:159:25, test-resources/src/10k/sudoku.html:159:50, test-resources/src/10k/sudoku.html:159:74, test-resources/src/10k/sudoku.html:166:9, test-resources/src/10k/sudoku.html:167:9, test-resources/src/10k/sudoku.html:168:9, test-resources/src/10k/sudoku.html:170:21, test-resources/src/10k/sudoku.html:173:21, test-resources/src/10k/sudoku.html:181:9, test-resources/src/10k/sudoku.html:182:9, test-resources/src/10k/sudoku.html:185:13, test-resources/src/10k/sudoku.html:186:13, test-resources/src/10k/sudoku.html:187:39, test-resources/src/10k/sudoku.html:254:9, test-resources/src/10k/sudoku.html:255:9, test-resources/src/10k/sudoku.html:260:9, test-resources/src/10k/sudoku.html:261:9, test-resources/src/10k/sudoku.html:268:17]
 test-resources/src/10k/sudoku.html:12:29: [maybe] Converting object to string
 test-resources/src/10k/sudoku.html:12:29: [maybe] Converting primitive string to object
 test-resources/src/10k/sudoku.html:35:16: [maybe] Reading absent property (computed name)
@@ -79,7 +70,6 @@ test-resources/src/10k/sudoku.html:42:16: [maybe] Conversion to number yields Na
 test-resources/src/10k/sudoku.html:46:27: [maybe] Conversion to number yields NaN
 test-resources/src/10k/sudoku.html:85:17: [maybe] Reading absent property (computed name)
 test-resources/src/10k/sudoku.html:85:38: [maybe] Reading absent property (computed name)
-test-resources/src/10k/sudoku.html:89:9: [maybe] Conversion to number yields NaN
 test-resources/src/10k/sudoku.html:94:9: [maybe] Conversion to number yields NaN
 test-resources/src/10k/sudoku.html:94:9: [maybe] Reading absent property (computed name)
 test-resources/src/10k/sudoku.html:94:21: [maybe] Conversion to number yields NaN
@@ -94,8 +84,6 @@ test-resources/src/10k/sudoku.html:96:22: [maybe] Conversion to number yields Na
 test-resources/src/10k/sudoku.html:96:23: [maybe] Reading absent property (computed name)
 test-resources/src/10k/sudoku.html:100:15: [maybe] Conversion to number yields NaN
 test-resources/src/10k/sudoku.html:100:23: [maybe] Reading absent property (computed name)
-test-resources/src/10k/sudoku.html:102:9: [maybe] Conversion to number yields NaN
-test-resources/src/10k/sudoku.html:103:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/sudoku.html:114:50: [maybe] Reading absent property (computed name)
 test-resources/src/10k/sudoku.html:121:12: [maybe] Reading absent property (computed name)
 test-resources/src/10k/sudoku.html:146:9: [maybe] Reading absent property (computed name)

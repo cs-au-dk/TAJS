@@ -210,6 +210,11 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         State initialState = new State(c, global_entry_block);
         initialState.setContext(c.getAnalysis().getContextSensitivityStrategy().makeInitialContext());
 
+//        // TODO: include top-level in stacked_funentries?
+//        Set<BlockAndContext<Context>> fs = newSet();
+//        fs.add(new BlockAndContext<>(initialState.getBasicBlock(), initialState.getContext()));
+//        initialState.setStacked(null, fs);
+
         // add to the state
         c.withState(initialState, () -> {
             buildECMAInitialState(c);

@@ -28,6 +28,9 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.Strings;
 
@@ -48,6 +51,9 @@ public class Operators {
      * 11.4.3 <code>typeof</code>
      */
     public static Value typeof(Value v, boolean base_maybe_null) {
+        if (v.isNone()) {
+            return Value.makeNone();
+        }
         boolean maybe_boolean = !v.isNotBool();
         boolean maybe_number = !v.isNotNum();
         boolean maybe_string = !v.isNotStr();
@@ -64,35 +70,23 @@ public class Operators {
                 maybe_object = true;
             }
         }
-        int count = (maybe_boolean ? 1 : 0)
-                + (maybe_number ? 1 : 0)
-                + (maybe_string ? 1 : 0)
-                + (maybe_undefined ? 1 : 0)
-                + (maybe_object ? 1 : 0)
-                + (maybe_function ? 1 : 0)
-                + (maybe_symbol ? 1 : 0);
-        if (count > 1)
-            return Value.makeAnyStr();
-        else { // table p. 47
-            String s;
-            if (maybe_boolean)
-                s = "boolean";
-            else if (maybe_number)
-                s = "number";
-            else if (maybe_string)
-                s = "string";
-            else if (maybe_undefined)
-                s = "undefined";
-            else if (maybe_object)
-                s = "object";
-            else if (maybe_function)
-                s = "function";
-            else if (maybe_symbol)
-                s = "symbol";
-            else
-                return Value.makeNone();
-            return Value.makeStr(s);
+
+        Set<String> values = newSet();
+        Set<String> notValues = newSet();
+        // table p. 47
+        (maybe_boolean ? values : notValues).add("boolean");
+        (maybe_number ? values : notValues).add("number");
+        (maybe_string ? values : notValues).add("string");
+        (maybe_undefined ? values : notValues).add("undefined");
+        (maybe_function ? values : notValues).add("function");
+        (maybe_object ? values : notValues).add("object");
+        (maybe_symbol ? values : notValues).add("symbol");
+
+        if (values.isEmpty()) {
+            throw new AnalysisException("No case for `typeof " + v + "`???");
         }
+
+        return Value.join(values.stream().map(Value::makeStr).collect(Collectors.toSet())).restrictToNotStrings(notValues);
     }
 
     /**
@@ -235,7 +229,7 @@ public class Operators {
                 } else if (arg2.isMaybeSingleNum() && arg2.getNum() == 0) {
                     r = r.join(arg1); // x + 0 === x
                 } else if (((arg1.isMaybeNumUInt() && !arg1.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg1.isMaybeSingleNumUInt()) &&
-                           ((arg2.isMaybeNumUInt() && !arg2.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg2.isMaybeSingleNumUInt())) {
+                        ((arg2.isMaybeNumUInt() && !arg2.restrictToNotNaN().isMaybeOtherThanNumUInt()) || arg2.isMaybeSingleNumUInt())) {
                     r = r.joinAnyNumUInt();
                     if (!c.getAnalysis().getUnsoundness().mayAssumeClosedUIntAddition(c.getNode())) {
                         r = r.joinAnyNumOther().joinNumInf();
@@ -355,11 +349,30 @@ public class Operators {
     }
 
     private static Value addStrings(Str s1, Str s2, Value r) { // TODO: could be more precise in some cases...
-        if (s1.isMaybeSingleStr()) {
+        if (s1.isMaybeAllKnownStr() && s2.isMaybeAllKnownStr()) {
+            // s1 and s2 are both known strings
+            if (s1.isMaybeSingleStr() && s2.isMaybeSingleStr() && s1.getIncludedStrings() == null && s2.getIncludedStrings() == null) {
+                r = r.joinStr(s1.getStr() + s2.getStr());
+            } else {
+                Set<Value> vs = newSet();
+                Set<String> vs1 = s1.getAllKnownStr();
+                Set<String> vs2 = s2.getAllKnownStr();
+                for (String ss1 : vs1) {
+                    for (String ss2 : vs2) {
+                        vs.add(Value.makeStr(ss1 + ss2));
+                    }
+                }
+                r = r.join(Value.join(vs));
+                if ((vs.size() > Options.Constants.STRING_CONCAT_SETS_BOUND) && vs1.size() > 1 && vs2.size() > 1) {
+                    // widen
+                    r = r.forgetExcludedIncludedStrings();
+                }
+            }
+        } else if (s1.isMaybeSingleStr()) {
             // s1 is single string, handle string parts of s2
             if (s2.isMaybeSingleStr()) {
                 // s1 and s2 are both single strings
-                r = r.joinStr(s1.getStr() + s2.getStr());
+                r = r.joinStr(s1.getStr() + s2.getStr()); // (covered by case above)
             } else if (s1.getStr().isEmpty()) {
                 r = r.join(s2.restrictToStr());
             } else if (s2.isMaybeStrPrefix()) {
@@ -817,7 +830,7 @@ public class Operators {
         }
         v = Conversion.toPrimitive(v, hint, c);
         if (!r.isNone()) {
-            c.getState().propagate(s, false); // weak update of side-effects of toPrimitive, but only if we already have a partial result
+            c.getState().propagate(s, false, false); // weak update of side-effects of toPrimitive, but only if we already have a partial result
         }
         return v;
     }

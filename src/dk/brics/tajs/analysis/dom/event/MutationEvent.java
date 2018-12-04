@@ -30,8 +30,11 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 
+import java.util.Set;
+
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * The MutationEvent interface provides specific contextual information
@@ -61,11 +64,23 @@ public class MutationEvent {
         /*
          * Properties.
          */
+        Set<String> mutationEventTypes = newSet();
+        mutationEventTypes.add("DOMAttrModified");
+        mutationEventTypes.add("DOMAttributeNameChanged");
+        mutationEventTypes.add("DOMCharacterDataModified");
+        mutationEventTypes.add("DOMElementNameChanged");
+        mutationEventTypes.add("DOMNodeInserted");
+        mutationEventTypes.add("DOMNodeInsertedIntoDocument");
+        mutationEventTypes.add("DOMNodeRemoved");
+        mutationEventTypes.add("DOMNodeRemovedFromDocument");
+        mutationEventTypes.add("DOMSubtreeModified");
+
         createDOMProperty(INSTANCES, "relatedNode", Value.makeAnyStr().setReadOnly(), c);
         createDOMProperty(INSTANCES, "prevValue", Value.makeAnyStr().setReadOnly(), c);
         createDOMProperty(INSTANCES, "newValue", Value.makeAnyStr().setReadOnly(), c);
         createDOMProperty(INSTANCES, "attrName", Value.makeAnyStr().setReadOnly(), c);
         createDOMProperty(INSTANCES, "attrChange", Value.makeAnyNumUInt().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeStrings(mutationEventTypes).setReadOnly(), c);
 
         /*
          * Constants (attrChangeType).

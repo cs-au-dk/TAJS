@@ -5,8 +5,8 @@ test-resources/src/micro/testOO.js: [definite] Exceptional program exit is unrea
 test-resources/src/micro/testOO.js:18:1: [info] Abstract value: "jimmy"
 test-resources/src/micro/testOO.js:19:1: [info] Abstract value: "hello"
 test-resources/src/micro/testOO.js:20:1: [info] Abstract value: "argh"
-test-resources/src/micro/testOO.js:21:1: [info] Abstract value: IdentStr
-test-resources/src/micro/testOO.js:22:1: [info] Abstract value: IdentStr
+test-resources/src/micro/testOO.js:21:1: [info] Abstract value: (IdentStr){"argh","ouch"}
+test-resources/src/micro/testOO.js:22:1: [info] Abstract value: (IdentStr){"argh","ouch"}
 test-resources/src/micro/testOO.js:29:1: [info] Abstract object: {constructor:[@Singer#fun5],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
 test-resources/src/micro/testOO.js:31:1: [info] Abstract object: {count:0.0,name:Undef,[[Prototype]]=[@Object#node1]}
 test-resources/src/micro/testOO.js:33:1: [info] Abstract object: {Super:[@Object#node1],count:0.0,name:Undef,[[Prototype]]=[@Object#node1]}
@@ -22,6 +22,6 @@ test-resources/src/micro/testOO.js:45:1: [info] Abstract value: "a song tra-la-l
 test-resources/src/micro/testOO.js:46:1: [info] Abstract value: "argh"
 test-resources/src/micro/testOO.js:61:1: [info] Abstract value: "marilyn"
 test-resources/src/micro/testOO.js:62:1: [info] Abstract value: "Gee, I'm bad"
-test-resources/src/micro/testOO.js:63:1: [info] Abstract value: PrefixStr[Gee, ]
+test-resources/src/micro/testOO.js:63:1: [info] Abstract value: (PrefixStr[Gee, ]){"Gee, I'm bad","Gee, a hard day's night tra-la-la"}
 test-resources/src/micro/testOO.js:64:1: [info] Abstract value: "argh"
 Soundness testing succeeded for 260 checks (with 0 expected failures)

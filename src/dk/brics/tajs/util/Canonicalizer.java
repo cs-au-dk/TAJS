@@ -74,6 +74,17 @@ public class Canonicalizer {
      * Canonicalizes a set into an immutable version.
      */
     public <T extends DeepImmutable> Set<T> canonicalizeSet(Set<T> set) {
+        return canonicalizeViaImmutableBox(set);
+    }
+
+    /**
+     * Canonicalizes a set of strings into an immutable version.
+     */
+    public Set<String> canonicalizeStringSet(Set<String> strings) {
+        return canonicalizeViaImmutableBox(strings);
+    }
+
+    private <T> Set<T> canonicalizeViaImmutableBox(Set<T> set) {
         return canonicalize(new ImmutableBox<>(java.util.Collections.unmodifiableSet(set))).get();
     }
 

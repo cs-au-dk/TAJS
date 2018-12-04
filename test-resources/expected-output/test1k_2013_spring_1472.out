@@ -1,5 +1,5 @@
 test-resources/src/1k2013spring/1472.js:57:1: [definite] Reading 'this' yields the global object
-test-resources/src/1k2013spring/1472.js:105:13: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1472.js:105:13: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1472.js:19:5: [definite] The variable e is never used
 test-resources/src/1k2013spring/1472.js:19:8: [definite] The variable f is never used
 test-resources/src/1k2013spring/1472.js:19:145: [definite] The variable g is never used

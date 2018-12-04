@@ -2513,7 +2513,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****IdentStr|OtherIdentPartsStr
+****(IdentStr|OtherIdentPartsStr){"","bar"}
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -4103,7 +4103,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****UIntStr
+****(UIntStr){"4","5"}
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -5375,7 +5375,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****Bool|UIntStr
+****Bool|(UIntStr){"1","2"}
 Attributes: 
 isBottom = false
 isNoValue = false
@@ -5428,7 +5428,7 @@ isReadOnly = false
 isMaybeReadOnly = false
 isMaybeNotReadOnly = false
 isNotReadOnly = false
-****Bool|IdentStr
+****Bool|(IdentStr){"x","y"}
 Attributes: 
 isBottom = false
 isNoValue = false

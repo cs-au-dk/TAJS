@@ -51,6 +51,7 @@ public enum TAJSFunctionName {
     TAJS_LOAD("load"),
 
     TAJS_MAKE("make"),
+    TAJS_MAKE_EXCLUDED_STRINGS("makeExcludedStrings"),
     TAJS_MAKE_CONTEXT_SENSITIVE("makeContextSensitive"),
     TAJS_MAKE_PARTIAL("makePartial"),
 

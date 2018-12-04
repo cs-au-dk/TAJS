@@ -3,5 +3,5 @@ test-resources/src/sunspider/access-nsieve.js:37:21: [maybe] RangeError, invalid
 test-resources/src/sunspider/access-nsieve.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/access-nsieve.js:37:21]
 test-resources/src/sunspider/access-nsieve.js:26:11: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/access-nsieve.js:45:26: [maybe] Converting object to number
-test-resources/src/sunspider/access-nsieve.js:47:1: [info] Abstract value: UInt|NotUInt
+test-resources/src/sunspider/access-nsieve.js:47:1: [info] Abstract value: Num
 Soundness testing succeeded for 1073 checks (with 0 expected failures)

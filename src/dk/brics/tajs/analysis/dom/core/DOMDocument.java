@@ -108,7 +108,7 @@ public class DOMDocument {
          * Properties from DOMWindow
          */
         createDOMProperty(INSTANCES, "location", Value.makeObject(DOMWindow.LOCATION), c);
-        createDOMProperty(INSTANCES, "readyState", Value.makeAnyStrNotUInt().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "readyState", Value.makeAnyStrNotNumeric().setReadOnly(), c);
 
         /*
          * Functions.

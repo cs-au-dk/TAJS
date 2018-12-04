@@ -1,6 +1,6 @@
-test-resources/src/1k2013spring/1404.js:40:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2013spring/1404.js:46:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2013spring/1404.js:58:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1404.js:40:7: [definite] Too few parameters to native function
+test-resources/src/1k2013spring/1404.js:46:7: [definite] Too few parameters to native function
+test-resources/src/1k2013spring/1404.js:58:7: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1404.js:65:9: [definite] Reading 'this' yields the global object
 test-resources/src/1k2013spring/1404.js:21:7: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined

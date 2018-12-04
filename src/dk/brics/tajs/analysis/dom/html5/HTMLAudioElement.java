@@ -65,7 +65,7 @@ public class HTMLAudioElement {
         createDOMProperty(INSTANCES, "mozCurrentSampleOffset", Value.makeAnyNum(), c);
         createDOMProperty(INSTANCES, "muted", Value.makeAnyBool(), c);
         createDOMProperty(INSTANCES, "played", Value.makeObject(TimeRanges.INSTANCES), c);
-        createDOMProperty(INSTANCES, "preload", Value.makeAnyStrNotUInt(), c);
+        createDOMProperty(INSTANCES, "preload", Value.makeAnyStrNotNumeric(), c);
         createDOMProperty(INSTANCES, "src", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "volume", Value.makeAnyNum(), c);
 

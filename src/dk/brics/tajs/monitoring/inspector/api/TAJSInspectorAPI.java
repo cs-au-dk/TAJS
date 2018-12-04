@@ -207,13 +207,13 @@ public class TAJSInspectorAPI implements InspectorAPI {
         ObjectLabel label = idManager.resolve(objectID);
         Set<State> states = convertLocationIDToStates(locationID);
 
-        CompositeValue array = mapper.makeCompositeValue(valueFromStates(states, state -> UnknownValueResolver.getDefaultArrayProperty(label, state)));
-        CompositeValue nonArray = mapper.makeCompositeValue(valueFromStates(states, state -> UnknownValueResolver.getDefaultNonArrayProperty(label, state)));
+        CompositeValue numeric = mapper.makeCompositeValue(valueFromStates(states, state -> UnknownValueResolver.getDefaultNumericProperty(label, state)));
+        CompositeValue other = mapper.makeCompositeValue(valueFromStates(states, state -> UnknownValueResolver.getDefaultOtherProperty(label, state)));
         CompositeValue prototype = mapper.makeCompositeValue(valueFromStates(states, state -> UnknownValueResolver.getInternalPrototype(label, state, false)));
         CompositeValue internal = mapper.makeCompositeValue(valueFromStates(states, state -> UnknownValueResolver.getInternalValue(label, state, false)));
         Map<String, CompositeValue> metaProperties = newMap();
-        metaProperties.put("<array>", array);
-        metaProperties.put("<non-array>", nonArray);
+        metaProperties.put("<numeric>", numeric);
+        metaProperties.put("<other>", other);
         metaProperties.put("<prototype>", prototype);
         metaProperties.put("<internal>", internal);
 

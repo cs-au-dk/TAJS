@@ -133,7 +133,7 @@ npm install
 Individual external dependencies can be registered in tajs.properties like this:
 
 ```properties
-jalangilogger = /home/tajs-user/tajs/extras/jalangilogger/javascript/node_modules/jalangilogger
+jalangilogger = /home/tajs-user/tajs/extras/jalangilogger
 ```
 
 Alternatively, register the location of the TAJS installation:

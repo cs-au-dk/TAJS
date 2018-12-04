@@ -1,7 +1,7 @@
 test-resources/src/uneval/uneval29.html:12:19: [definite] ReferenceError, reading absent variable ActiveXObject
 test-resources/src/uneval/uneval29.html:23:19: [definite] ReferenceError, reading absent variable ActiveXObject
 test-resources/src/uneval/uneval29.html:160:28: [definite] TypeError, accessing property of null/undefined
-test-resources/src/uneval/uneval29.html:181:19: [definite] Too many parameters to function HTMLImageElement constructor
+test-resources/src/uneval/uneval29.html:181:19: [definite] Too many parameters to native function
 test-resources/src/uneval/uneval29.html:9:5: [definite] The conditional expression is always true
 test-resources/src/uneval/uneval29.html:20:5: [definite] The conditional expression is always true
 test-resources/src/uneval/uneval29.html:31:1: [definite] The conditional expression is always true

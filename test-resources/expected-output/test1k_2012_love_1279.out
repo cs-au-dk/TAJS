@@ -1,8 +1,8 @@
 TAJS-dynamic-code(test-resources/src/1k2012love/1279.js:20:7):1:1: HTML StartTag missing required end tag
 TAJS-dynamic-code(test-resources/src/1k2012love/1279.js:20:7):1:1: HTML StartTag missing required end tag
-test-resources/src/1k2012love/1279.js:62:5: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
-test-resources/src/1k2012love/1279.js:66:5: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
-test-resources/src/1k2012love/1279.js:66:12: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2012love/1279.js:62:5: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1279.js:66:5: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1279.js:66:12: [definite] Too few parameters to native function
 test-resources/src/1k2012love/1279.js:41:13: [definite] The variable _ is never used
 test-resources/src/1k2012love/1279.js:42:18: [maybe] ReferenceError, reading absent variable S
 test-resources/src/1k2012love/1279.js:43:3: [maybe] ReferenceError, reading absent variable a

@@ -66,6 +66,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_ADD_CONTEXT_SENSITIVITY;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_ASSERT;
@@ -93,6 +95,7 @@ import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_LOAD;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_LOAD_JSON;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MAKE;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MAKE_CONTEXT_SENSITIVE;
+import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MAKE_EXCLUDED_STRINGS;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MAKE_PARTIAL;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NEW_ARRAY;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NEW_OBJECT;
@@ -396,6 +399,22 @@ public class TAJSFunctionEvaluator {
                     tajsValueAssert(TAJS_ASSERT, call, state, c);
                 });
         register(implementations,
+                TAJS_MAKE_EXCLUDED_STRINGS,
+                "String ... strings",
+                "StringValue",
+                "Makes the abstract string consisting of all strings except the given strings",
+                (call, state, pv, c) -> {
+                    final Set<String> strings = newSet();
+                    for (int i = 0; i < call.getNumberOfArgs(); i++) {
+                        Value arg = FunctionCalls.readParameter(call, state, i);
+                        if (!arg.isMaybeSingleStr()) {
+                            throw new AnalysisException("Cannot make excluded strings from non-singleton-string: " + arg);
+                        }
+                        strings.add(arg.getStr());
+                    }
+                    return Value.makeAnyStr().restrictToNotStrings(strings);
+                });
+        register(implementations,
                 TAJS_MAKE,
                 "String partialMethodName",
                 "Value",
@@ -480,7 +499,7 @@ public class TAJSFunctionEvaluator {
                     } else {
                         expectedResult = true;
                     }
-                    if (expected.equals(actual) != expectedResult) {
+                    if (expected.forgetExcludedIncludedStrings().equals(actual.forgetExcludedIncludedStrings()) != expectedResult) {
                         String reason;
                         if (expectedResult) {
                             reason = String.format("Expected=%s, Actual=%s", expected, actual);
@@ -632,6 +651,12 @@ public class TAJSFunctionEvaluator {
     }
 
     private static Value reflectiveMake(String methodNameSuffix, TAJSFunctionName tajsFunctionName, SourceLocation sourceLocation) { // TODO: inline?
+        Matcher matcher = Pattern.compile("strings\\((.*)\\)").matcher(methodNameSuffix); // example: TAJS_make("strings(foo,bar,baz)")
+        if (matcher.matches()) {
+            String stringsString = matcher.group(1);
+            Set<String> strings = newSet(Arrays.asList(stringsString.split(",")));
+            return Value.makeStrings(strings);
+        }
         String methodName = "make" + methodNameSuffix;
         try {
             Method method = Value.class.getMethod(methodName);

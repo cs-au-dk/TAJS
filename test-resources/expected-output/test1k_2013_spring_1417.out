@@ -1,3 +1,4 @@
+test-resources/src/1k2013spring/1417.js:38:2: [definite] The conditional expression is always false
 test-resources/src/1k2013spring/1417.js:17:4: [definite] Dead assignment, property second is never read
 test-resources/src/1k2013spring/1417.js:155:22: [definite] The variable event is never used
 test-resources/src/1k2013spring/1417.js:40:14: [maybe] TypeError, accessing property of null/undefined
@@ -8,8 +9,6 @@ test-resources/src/1k2013spring/1417.js:48:14: [maybe] TypeError, accessing prop
 test-resources/src/1k2013spring/1417.js:50:14: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1417.js:52:14: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1417.js:54:14: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1417.js:56:14: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1417.js:58:14: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1417.js:69:18: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1417.js:70:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1417.js:72:27: [maybe] TypeError, accessing property of null/undefined
@@ -27,7 +26,7 @@ test-resources/src/1k2013spring/1417.js:73:32: [maybe] Reading absent property r
 test-resources/src/1k2013spring/1417.js:73:59: [maybe] Reading absent property parte
 test-resources/src/1k2013spring/1417.js:73:67: [maybe] Reading absent property mov
 test-resources/src/1k2013spring/1417.js:75:33: [maybe] Reading absent property hijos
-test-resources/src/1k2013spring/1417.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1417.js:40:14, test-resources/src/1k2013spring/1417.js:42:14, test-resources/src/1k2013spring/1417.js:44:14, test-resources/src/1k2013spring/1417.js:46:14, test-resources/src/1k2013spring/1417.js:48:14, test-resources/src/1k2013spring/1417.js:50:14, test-resources/src/1k2013spring/1417.js:52:14, test-resources/src/1k2013spring/1417.js:54:14, test-resources/src/1k2013spring/1417.js:56:14, test-resources/src/1k2013spring/1417.js:58:14, test-resources/src/1k2013spring/1417.js:69:18, test-resources/src/1k2013spring/1417.js:70:13, test-resources/src/1k2013spring/1417.js:72:27, test-resources/src/1k2013spring/1417.js:73:32, test-resources/src/1k2013spring/1417.js:73:59, test-resources/src/1k2013spring/1417.js:73:67, test-resources/src/1k2013spring/1417.js:75:33, test-resources/src/1k2013spring/1417.js:79:3, test-resources/src/1k2013spring/1417.js:147:2, test-resources/src/1k2013spring/1417.js:150:7, test-resources/src/1k2013spring/1417.js:150:10, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1417.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1417.js:40:14, test-resources/src/1k2013spring/1417.js:42:14, test-resources/src/1k2013spring/1417.js:44:14, test-resources/src/1k2013spring/1417.js:46:14, test-resources/src/1k2013spring/1417.js:48:14, test-resources/src/1k2013spring/1417.js:50:14, test-resources/src/1k2013spring/1417.js:52:14, test-resources/src/1k2013spring/1417.js:54:14, test-resources/src/1k2013spring/1417.js:69:18, test-resources/src/1k2013spring/1417.js:70:13, test-resources/src/1k2013spring/1417.js:72:27, test-resources/src/1k2013spring/1417.js:73:32, test-resources/src/1k2013spring/1417.js:73:59, test-resources/src/1k2013spring/1417.js:73:67, test-resources/src/1k2013spring/1417.js:75:33, test-resources/src/1k2013spring/1417.js:79:3, test-resources/src/1k2013spring/1417.js:147:2, test-resources/src/1k2013spring/1417.js:150:7, test-resources/src/1k2013spring/1417.js:150:10, test-resources/src/1k2013spring/shim.js:9:5]
 test-resources/src/1k2013spring/1417.js:27:4: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1417.js:27:4: [maybe] The variable num has values with different types
 test-resources/src/1k2013spring/1417.js:29:8: [maybe] The variable num has values with different types

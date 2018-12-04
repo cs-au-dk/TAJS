@@ -577,9 +577,9 @@ public final class UnknownValueResolver {
                 }
                 dst_v = dst_v.makeNonPolymorphic();
             }
-            if (r == Kind.DEFAULT_ARRAY || r == Kind.DEFAULT_NONARRAY)
+            if (r == Kind.DEFAULT_NUMERIC || r == Kind.DEFAULT_OTHER)
                 for (PKey p : src_obj.getPropertyNames())
-                    if (p.isArrayIndex() == (r == Kind.DEFAULT_ARRAY) && !dst_obj.getProperties().containsKey(p)) {
+                    if (p.isNumeric() == (r == Kind.DEFAULT_NUMERIC) && !dst_obj.getProperties().containsKey(p)) {
                         if (log.isDebugEnabled())
                             log.debug("materialized property " + p);
                         if (!dst_obj.isWritable())
@@ -655,10 +655,10 @@ public final class UnknownValueResolver {
         switch (propref.getKind()) {
             case ORDINARY:
                 return getProperty(propref.getObjectLabel(), propref.getPropertyName(), s, partial);
-            case DEFAULT_ARRAY:
-                return getDefaultArrayProperty(propref.getObjectLabel(), s);
-            case DEFAULT_NONARRAY:
-                return getDefaultNonArrayProperty(propref.getObjectLabel(), s);
+            case DEFAULT_NUMERIC:
+                return getDefaultNumericProperty(propref.getObjectLabel(), s);
+            case DEFAULT_OTHER:
+                return getDefaultOtherProperty(propref.getObjectLabel(), s);
             case INTERNAL_PROTOTYPE:
                 return getInternalPrototype(propref.getObjectLabel(), s, partial);
             case INTERNAL_VALUE:
@@ -669,31 +669,31 @@ public final class UnknownValueResolver {
     }
 
     /**
-     * Wrapper for {@link Obj#getDefaultArrayProperty}.
+     * Wrapper for {@link Obj#getDefaultNumericProperty}.
      * Never returns 'unknown' or polymorphic value.
      * As a side-effect, ordinary properties may be materialized.
      */
-    public static Value getDefaultArrayProperty(ObjectLabel objlabel, State s) { // TODO: extend polymorphism to the default array property?
-        Value res = s.getObject(objlabel, false).getDefaultArrayProperty();
+    public static Value getDefaultNumericProperty(ObjectLabel objlabel, State s) { // TODO: extend polymorphism to the default numeric property?
+        Value res = s.getObject(objlabel, false).getDefaultNumericProperty();
         if (!isValueOK(res, false)) {
-            res = recover(s, ObjectProperty.makeDefaultArray(objlabel), false).getDefaultArrayProperty();
+            res = recover(s, ObjectProperty.makeDefaultNumeric(objlabel), false).getDefaultNumericProperty();
             if (log.isDebugEnabled())
-                log.debug("getDefaultArrayProperty(" + objlabel + ") = " + res);
+                log.debug("getDefaultNumericProperty(" + objlabel + ") = " + res);
         }
         return res;
     }
 
     /**
-     * Wrapper for {@link Obj#getDefaultNonArrayProperty}.
+     * Wrapper for {@link Obj#getDefaultOtherProperty}.
      * Never returns 'unknown' or polymorphic value.
      * As a side-effect, ordinary properties may be materialized.
      */
-    public static Value getDefaultNonArrayProperty(ObjectLabel objlabel, State s) { // TODO: extend polymorphism to the default non-array property?
-        Value res = s.getObject(objlabel, false).getDefaultNonArrayProperty();
+    public static Value getDefaultOtherProperty(ObjectLabel objlabel, State s) { // TODO: extend polymorphism to the default non-numeric property?
+        Value res = s.getObject(objlabel, false).getDefaultOtherProperty();
         if (!isValueOK(res, false)) {
-            res = recover(s, ObjectProperty.makeDefaultNonArray(objlabel), false).getDefaultNonArrayProperty();
+            res = recover(s, ObjectProperty.makeDefaultOther(objlabel), false).getDefaultOtherProperty();
             if (log.isDebugEnabled())
-                log.debug("getDefaultNonArrayProperty(" + objlabel + ") = " + res);
+                log.debug("getDefaultOtherProperty(" + objlabel + ") = " + res);
         }
         return res;
     }
@@ -752,11 +752,11 @@ public final class UnknownValueResolver {
      */
     public static Map<PKey, Value> getProperties(ObjectLabel objlabel, State s) {
         Obj obj = s.getObject(objlabel, false);
-        if (obj.getDefaultArrayProperty().isUnknown() || obj.getDefaultNonArrayProperty().isUnknown()) {
-            if (obj.getDefaultArrayProperty().isUnknown())
-                recover(s, ObjectProperty.makeDefaultArray(objlabel), false);
-            if (obj.getDefaultNonArrayProperty().isUnknown())
-                recover(s, ObjectProperty.makeDefaultNonArray(objlabel), false);
+        if (obj.getDefaultNumericProperty().isUnknown() || obj.getDefaultOtherProperty().isUnknown()) {
+            if (obj.getDefaultNumericProperty().isUnknown())
+                recover(s, ObjectProperty.makeDefaultNumeric(objlabel), false);
+            if (obj.getDefaultOtherProperty().isUnknown())
+                recover(s, ObjectProperty.makeDefaultOther(objlabel), false);
             obj = s.getObject(objlabel, false); // now all properties have been materialized from the defaults if unknown
             if (log.isDebugEnabled())
                 log.debug("getProperties(" + objlabel + ")");
@@ -779,11 +779,11 @@ public final class UnknownValueResolver {
             case ORDINARY:
                 res = getProperty(var.getObjectLabel(), var.getPropertyName(), entry_state, false);
                 break;
-            case DEFAULT_ARRAY:
-                res = getDefaultArrayProperty(var.getObjectLabel(), entry_state);
+            case DEFAULT_NUMERIC:
+                res = getDefaultNumericProperty(var.getObjectLabel(), entry_state);
                 break;
-            case DEFAULT_NONARRAY:
-                res = getDefaultNonArrayProperty(var.getObjectLabel(), entry_state);
+            case DEFAULT_OTHER:
+                res = getDefaultOtherProperty(var.getObjectLabel(), entry_state);
                 break;
             case INTERNAL_VALUE:
                 res = getInternalValue(var.getObjectLabel(), entry_state, false);
@@ -840,19 +840,19 @@ public final class UnknownValueResolver {
      * Assumes that both values are non-unknown.
      */
     public static Value join(Value v1, Value v2, State s) {
-        return join(v1, s, v2, s);
+        return join(v1, s, v2, s, false);
     }
 
     /**
      * Joins the given values, performing full recovery for polymorphic values if necessary.
      * Assumes that both values are non-unknown.
      */
-    public static Value join(Value v1, State s1, Value v2, State s2) {
+    public static Value join(Value v1, State s1, Value v2, State s2, boolean widen) {
         if (!canJoin(v1, v2)) {
             v1 = getRealValue(v1, s1);
             v2 = getRealValue(v2, s2);
         }
-        return v1.join(v2);
+        return v1.join(v2, widen);
     }
 
     /**

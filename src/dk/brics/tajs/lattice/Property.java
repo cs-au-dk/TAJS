@@ -34,8 +34,8 @@ public class Property {
      */
     public enum Kind {
         ORDINARY,
-        DEFAULT_ARRAY,
-        DEFAULT_NONARRAY,
+        DEFAULT_NUMERIC,
+        DEFAULT_OTHER,
         INTERNAL_VALUE,
         INTERNAL_PROTOTYPE,
         INTERNAL_SCOPE
@@ -43,9 +43,9 @@ public class Property {
 
     private Kind kind;
 
-    private static Property theDefaultArrayProperty =  new Property(Kind.DEFAULT_ARRAY, null);
+    private static Property theDefaultNumericProperty =  new Property(Kind.DEFAULT_NUMERIC, null);
 
-    private static Property theDefaultNonArrayProperty =  new Property(Kind.DEFAULT_NONARRAY, null);
+    private static Property theDefaultOtherProperty =  new Property(Kind.DEFAULT_OTHER, null);
 
     private static Property theInternalValueProperty =  new Property(Kind.INTERNAL_VALUE, null);
 
@@ -67,17 +67,17 @@ public class Property {
     }
 
     /**
-     * Constructs a default-array property.
+     * Constructs a default-numeric property.
      */
-    public static Property makeDefaultArrayProperty() {
-        return theDefaultArrayProperty;
+    public static Property makeDefaultNumericProperty() {
+        return theDefaultNumericProperty;
     }
 
     /**
-     * Constructs a default-nonarray property.
+     * Constructs a default-non-numeric property.
      */
-    public static Property makeDefaultNonArrayProperty() {
-        return theDefaultNonArrayProperty;
+    public static Property makeDefaultOtherProperty() {
+        return theDefaultOtherProperty;
     }
 
     /**
@@ -139,15 +139,15 @@ public class Property {
     }
 
     /**
-     * Checks whether the property refers to default-array/nonarray or a summary symbol.
+     * Checks whether the property refers to default or a summary symbol.
      * Should not be invoked with an internal property reference.
      */
     public boolean isFuzzy() {
         switch (kind) {
             case ORDINARY:
                 return propertyname instanceof SymbolPKey && !((SymbolPKey) propertyname).getObjectLabel().isSingleton();
-            case DEFAULT_ARRAY:
-            case DEFAULT_NONARRAY:
+            case DEFAULT_NUMERIC:
+            case DEFAULT_OTHER:
                 return true;
             default:
                 throw new AnalysisException(kind + " not expected");
@@ -171,10 +171,10 @@ public class Property {
         switch (kind) {
             case ORDINARY:
                 return propertyname.toValue();
-            case DEFAULT_ARRAY:
-                return Value.makeAnyStrUInt();
-            case DEFAULT_NONARRAY:
-                return Value.makeAnyStrNotUInt();
+            case DEFAULT_NUMERIC:
+                return Value.makeAnyStrNumeric();
+            case DEFAULT_OTHER:
+                return Value.makeAnyStrNotNumeric();
             default:
                 throw new AnalysisException(kind + " not expected");
         }
@@ -188,10 +188,10 @@ public class Property {
         switch (kind) {
             case ORDINARY:
                 return propertyname.toStringEscaped();
-            case DEFAULT_ARRAY:
-                return "[[default-array]]";
-            case DEFAULT_NONARRAY:
-                return "[[default-nonarray]]";
+            case DEFAULT_NUMERIC:
+                return "[[default-numeric]]";
+            case DEFAULT_OTHER:
+                return "[[default-other]]";
             case INTERNAL_VALUE:
                 return "[[Value]]";
             case INTERNAL_PROTOTYPE:

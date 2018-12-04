@@ -6,5 +6,5 @@ test-resources/src/sunspider/math-cordic.js:75:26: [maybe] Reading absent proper
 test-resources/src/sunspider/math-cordic.js:80:13: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/math-cordic.js:80:26: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/math-cordic.js:102:26: [maybe] Converting object to number
-test-resources/src/sunspider/math-cordic.js:104:1: [info] Abstract value: UInt|NotUInt
+test-resources/src/sunspider/math-cordic.js:104:1: [info] Abstract value: Num
 Soundness testing succeeded for 427 checks (with 0 expected failures)

@@ -1,4 +1,4 @@
-test-resources/src/micro/testString.js:61:16: [definite] Too few parameters to function String.prototype.localeCompare
+test-resources/src/micro/testString.js:61:16: [definite] Too few parameters to native function
 test-resources/src/micro/testString.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/testString.js:4:9: [maybe] Converting boolean to string
 test-resources/src/micro/testString.js:10:16: [maybe] Converting primitive string to object

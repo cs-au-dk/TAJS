@@ -486,13 +486,12 @@ public class UserFunctionCalls {
                 return_state.putObject(me.getKey(), me.getValue()); // obj is freshly created at summarizeStoreAndRegisters, so freeze() unnecessary
         // remove objects that are equal to the default object
         return_state.removeObjectsEqualToDefault(caller_entry_state.getStoreDefault().isAllNone());
-        // restore execution_context and stacked_objlabels from caller
+        // restore execution_context, stacked_objlabels, and stacked_funentries from caller
         return_state.setExecutionContext(caller_state.getExecutionContext().clone());
         return_state.getExecutionContext().summarize(callee_summarized);
         return_state.setRegisters(summarize(caller_state.getRegisters(), callee_summarized));
-        if (Options.get().isLazyDisabled()) {
-            return_state.setStackedObjects(newSet(callee_summarized.summarize(caller_state.getStackedObjects())));
-        }
+        return_state.setStacked(Options.get().isLazyDisabled() ? newSet(callee_summarized.summarize(caller_state.getStackedObjects())) : null,
+                newSet(caller_state.getStackedFunctions()));
         // replace polymorphic values in returnval and exval
         Value res = returnval == null ? null : replacePolymorphicValue(returnval, calledge_state, caller_entry_state, return_state);
         if (exval != null) {
@@ -519,8 +518,8 @@ public class UserFunctionCalls {
             newproperties.put(me.getKey(), v);
         }
         obj.setProperties(newproperties);
-        obj.setDefaultArrayProperty(replacePolymorphicValue(obj.getDefaultArrayProperty(), calledge_state, caller_entry_state, return_state));
-        obj.setDefaultNonArrayProperty(replacePolymorphicValue(obj.getDefaultNonArrayProperty(), calledge_state, caller_entry_state, return_state));
+        obj.setDefaultNumericProperty(replacePolymorphicValue(obj.getDefaultNumericProperty(), calledge_state, caller_entry_state, return_state));
+        obj.setDefaultOtherProperty(replacePolymorphicValue(obj.getDefaultOtherProperty(), calledge_state, caller_entry_state, return_state));
         obj.setInternalPrototype(replacePolymorphicValue(obj.getInternalPrototype(), calledge_state, caller_entry_state, return_state));
         obj.setInternalValue(replacePolymorphicValue(obj.getInternalValue(), calledge_state, caller_entry_state, return_state));
         // TODO: scope chain polymorphic?
@@ -605,7 +604,7 @@ public class UserFunctionCalls {
                 state.putObject(objlabel, summarized_obj);
             if (objlabel.isSingleton()) {
                 if (s.isMaybeSummarized(objlabel))
-                    state.propagateObj(objlabel.makeSummary(), state, objlabel, true);
+                    state.propagateObj(objlabel.makeSummary(), state, objlabel, true, false);
                 if (s.isDefinitelySummarized(objlabel))
                     state.removeObject(objlabel);
             }
@@ -661,7 +660,7 @@ public class UserFunctionCalls {
                 BlockAndContext<Context> from = new BlockAndContext<>(s.getBasicBlock(), s.getContext());
                 BlockAndContext<Context> to = new BlockAndContext<>(c.getState().getBasicBlock(), c.getState().getContext());
                 c.getMonitoring().visitPropagationPre(from, to);
-                boolean changed = c.getState().propagate(s, false);
+                boolean changed = c.getState().propagate(s, false, false);
                 c.getState().setRegisters(registers);
                 c.getMonitoring().visitPropagationPost(from, to, changed);
             } // otherwise, treat as bottom (but don't kill flow - there may be no ordinary return flow)

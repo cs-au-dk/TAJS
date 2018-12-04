@@ -38,9 +38,9 @@ public final class Obj {
 
     private boolean writable_properties; // for copy-on-write (for properties, not this object)
 
-    private Value default_array_property; // represents all other possible properties that are valid array indices
+    private Value default_numeric_property; // represents all other possible numeric properties
 
-    private Value default_nonarray_property; // represents all other possible properties
+    private Value default_other_property; // represents all other possible properties
 
     private Value internal_prototype; // the [[Prototype]] property
 
@@ -79,8 +79,8 @@ public final class Obj {
      * The object is initially writable.
      */
     public Obj(Obj x) {
-        default_nonarray_property = x.default_nonarray_property;
-        default_array_property = x.default_array_property;
+        default_other_property = x.default_other_property;
+        default_numeric_property = x.default_numeric_property;
         internal_prototype = x.internal_prototype;
         internal_value = x.internal_value;
         scope = x.scope;
@@ -117,7 +117,7 @@ public final class Obj {
      */
     private void setToNone() {
         checkWritable();
-        default_nonarray_property = default_array_property = internal_prototype = internal_value = Value.makeNone();
+        default_other_property = default_numeric_property = internal_prototype = internal_value = Value.makeNone();
         properties = Collections.emptyMap();
         scope = null;
         scope_unknown = false;
@@ -129,8 +129,8 @@ public final class Obj {
 //     */
 //    public void setTo(Obj x) {
 //        checkWritable();
-//        default_nonarray_property = x.default_nonarray_property;
-//        default_array_property = x.default_array_property;
+//        default_other_property = x.default_other_property;
+//        default_numeric_property = x.default_numeric_property;
 //        internal_prototype = x.internal_prototype;
 //        internal_value = x.internal_value;
 //        scope = x.scope;
@@ -149,7 +149,7 @@ public final class Obj {
     private static Obj makeTheAbsentModified() {
         Obj obj = new Obj();
         obj.properties = Collections.emptyMap();
-        obj.default_nonarray_property = obj.default_array_property = obj.internal_prototype = obj.internal_value = Value.makeAbsentModified();
+        obj.default_other_property = obj.default_numeric_property = obj.internal_prototype = obj.internal_value = Value.makeAbsentModified();
         return obj;
     }
 
@@ -166,7 +166,7 @@ public final class Obj {
     private static Obj makeTheNone() {
         Obj obj = new Obj();
         obj.properties = Collections.emptyMap();
-        obj.default_nonarray_property = obj.default_array_property = obj.internal_prototype = obj.internal_value = Value.makeNone();
+        obj.default_other_property = obj.default_numeric_property = obj.internal_prototype = obj.internal_value = Value.makeNone();
         return obj;
     }
 
@@ -183,7 +183,7 @@ public final class Obj {
     private static Obj makeTheNoneModified() {
         Obj obj = new Obj();
         obj.properties = Collections.emptyMap();
-        obj.default_nonarray_property = obj.default_array_property = obj.internal_prototype = obj.internal_value = Value.makeNoneModified();
+        obj.default_other_property = obj.default_numeric_property = obj.internal_prototype = obj.internal_value = Value.makeNoneModified();
         return obj;
     }
 
@@ -200,7 +200,7 @@ public final class Obj {
     private static Obj makeTheUnknown() {
         Obj obj = new Obj();
         obj.properties = Collections.emptyMap();
-        obj.default_array_property = obj.default_nonarray_property = obj.internal_prototype = obj.internal_value = Value.makeUnknown();
+        obj.default_numeric_property = obj.default_other_property = obj.internal_prototype = obj.internal_value = Value.makeUnknown();
         obj.scope_unknown = true;
         return obj;
     }
@@ -219,7 +219,7 @@ public final class Obj {
         for (Value v : properties.values())
             if (!v.isUnknown())
                 return false;
-        return default_array_property.isUnknown() && default_nonarray_property.isUnknown() && internal_prototype.isUnknown()
+        return default_numeric_property.isUnknown() && default_other_property.isUnknown() && internal_prototype.isUnknown()
                 && internal_value.isUnknown() && scope_unknown;
     }
 
@@ -230,7 +230,7 @@ public final class Obj {
         for (Value v : properties.values())
             if (!v.isNone())
                 return false;
-        return default_array_property.isNone() && default_nonarray_property.isNone() && internal_prototype.isNone()
+        return default_numeric_property.isNone() && default_other_property.isNone() && internal_prototype.isNone()
                 && internal_value.isNone() && !scope_unknown && scope == null;
     }
 
@@ -242,7 +242,7 @@ public final class Obj {
         for (Value v : properties.values())
             if (v.isNone())
                 return true;
-        return default_array_property.isNone() || default_nonarray_property.isNone() || internal_prototype.isNone() || internal_value.isNone();
+        return default_numeric_property.isNone() || default_other_property.isNone() || internal_prototype.isNone() || internal_value.isNone();
     }
 
     /**
@@ -252,7 +252,7 @@ public final class Obj {
         for (Value v : properties.values())
             if (v.isMaybeModified())
                 return true;
-        return default_array_property.isMaybeModified() || default_nonarray_property.isMaybeModified() || internal_prototype.isMaybeModified() || internal_value.isMaybeModified();
+        return default_numeric_property.isMaybeModified() || default_other_property.isMaybeModified() || internal_prototype.isMaybeModified() || internal_value.isMaybeModified();
     }
 
     private void checkWritable() {
@@ -282,8 +282,8 @@ public final class Obj {
             }
         }
         res.writable_properties = true;
-        res.default_array_property = default_array_property.summarize(s);
-        res.default_nonarray_property = default_nonarray_property.summarize(s);
+        res.default_numeric_property = default_numeric_property.summarize(s);
+        res.default_other_property = default_other_property.summarize(s);
         res.internal_prototype = internal_prototype.summarize(s);
         res.internal_value = internal_value.summarize(s);
         res.scope = ScopeChain.summarize(scope, s);
@@ -304,17 +304,17 @@ public final class Obj {
             }
             newproperties.put(me.getKey(), v);
         }
-        boolean default_array_property_maybe_modified = default_array_property.isMaybeModified();
-        boolean default_nonarray_property_maybe_modified = default_nonarray_property.isMaybeModified();
-        if (!default_array_property_maybe_modified || !default_nonarray_property_maybe_modified)
+        boolean default_numeric_property_maybe_modified = default_numeric_property.isMaybeModified();
+        boolean default_other_property_maybe_modified = default_other_property.isMaybeModified();
+        if (!default_numeric_property_maybe_modified || !default_other_property_maybe_modified)
             for (Entry<PKey, Value> me : other.properties.entrySet())
                 if (!newproperties.containsKey(me.getKey())
-                        && (me.getKey().isArrayIndex() ? !default_array_property_maybe_modified : !default_nonarray_property_maybe_modified))
+                        && (me.getKey().isNumeric() ? !default_numeric_property_maybe_modified : !default_other_property_maybe_modified))
                     newproperties.put(me.getKey(), me.getValue());
-        if (!default_array_property_maybe_modified)
-            default_array_property = other.default_array_property;
-        if (!default_nonarray_property_maybe_modified)
-            default_nonarray_property = other.default_nonarray_property;
+        if (!default_numeric_property_maybe_modified)
+            default_numeric_property = other.default_numeric_property;
+        if (!default_other_property_maybe_modified)
+            default_other_property = other.default_other_property;
         if (!internal_prototype.isMaybeModified())
             internal_prototype = other.internal_prototype;
         if (!internal_value.isMaybeModified())
@@ -324,7 +324,7 @@ public final class Obj {
             scope_unknown = false;
         }
         // remove properties that are equal to the default (semantic reduction)
-        newproperties.entrySet().removeIf(me -> me.getValue().equals(me.getKey().isArrayIndex() ? default_array_property : default_nonarray_property));
+        newproperties.entrySet().removeIf(me -> me.getValue().equals(me.getKey().isNumeric() ? default_numeric_property : default_other_property));
         properties = newproperties;
         writable_properties = true;
         if (isSomeNone())
@@ -379,8 +379,8 @@ public final class Obj {
             new_properties.put(me.getKey(), me.getValue().restrictToNotModified());
         properties = new_properties;
         writable_properties = true;
-        default_nonarray_property = default_nonarray_property.restrictToNotModified();
-        default_array_property = default_array_property.restrictToNotModified();
+        default_other_property = default_other_property.restrictToNotModified();
+        default_numeric_property = default_numeric_property.restrictToNotModified();
         internal_prototype = internal_prototype.restrictToNotModified();
         internal_value = internal_value.restrictToNotModified();
     }
@@ -392,10 +392,10 @@ public final class Obj {
     public Value getProperty(PKey propertyname) {
         Value v = properties.get(propertyname);
         if (v == null)
-            if (propertyname.isArrayIndex())
-                v = getDefaultArrayProperty();
+            if (propertyname.isNumeric())
+                v = getDefaultNumericProperty();
             else
-                v = getDefaultNonArrayProperty();
+                v = getDefaultOtherProperty();
         return v;
     }
 
@@ -433,37 +433,37 @@ public final class Obj {
     }
 
     /**
-     * Returns the value of the default array property.
+     * Returns the value of the default numeric property.
      */
-    public Value getDefaultArrayProperty() {
-        return default_array_property;
+    public Value getDefaultNumericProperty() {
+        return default_numeric_property;
     }
 
     /**
-     * Sets the value of the default array property.
+     * Sets the value of the default numeric property.
      */
-    public void setDefaultArrayProperty(Value v) {
+    public void setDefaultNumericProperty(Value v) {
         checkWritable();
         if (!v.isUnknown() && v.isMaybePresent() && !v.isMaybeAbsent())
-            throw new AnalysisException("Illegal default array property: " + v);
-        default_array_property = v;
+            throw new AnalysisException("Illegal default numeric property: " + v);
+        default_numeric_property = v;
     }
 
     /**
-     * Returns the value of the default non-array property.
+     * Returns the value of the default non-numeric property.
      */
-    public Value getDefaultNonArrayProperty() {
-        return default_nonarray_property;
+    public Value getDefaultOtherProperty() {
+        return default_other_property;
     }
 
     /**
-     * Sets the value of the default non-array property.
+     * Sets the value of the default non-numeric property.
      */
-    public void setDefaultNonArrayProperty(Value v) {
+    public void setDefaultOtherProperty(Value v) {
         checkWritable();
         if (!v.isUnknown() && v.isMaybePresent() && !v.isMaybeAbsent())
-            throw new AnalysisException("Illegal default nonarray property: " + v);
-        default_nonarray_property = v;
+            throw new AnalysisException("Illegal default non-numeric property: " + v);
+        default_other_property = v;
     }
 
     /**
@@ -557,8 +557,8 @@ public final class Obj {
             newproperties.put(me.getKey().replaceObjectLabel(oldlabel, newlabel), me.getValue().replaceObjectLabel(oldlabel, newlabel));
         properties = newproperties;
         scope = ScopeChain.replaceObjectLabel(scope, oldlabel, newlabel, cache);
-        default_nonarray_property = default_nonarray_property.replaceObjectLabel(oldlabel, newlabel);
-        default_array_property = default_array_property.replaceObjectLabel(oldlabel, newlabel);
+        default_other_property = default_other_property.replaceObjectLabel(oldlabel, newlabel);
+        default_numeric_property = default_numeric_property.replaceObjectLabel(oldlabel, newlabel);
         internal_prototype = internal_prototype.replaceObjectLabel(oldlabel, newlabel);
         internal_value = internal_value.replaceObjectLabel(oldlabel, newlabel);
         writable_properties = true;
@@ -579,8 +579,8 @@ public final class Obj {
         return properties.equals(x.properties) &&
                 (scope == null || x.scope == null || scope.equals(x.scope)) &&
                 (scope_unknown == x.scope_unknown) &&
-                default_nonarray_property.equals(x.default_nonarray_property) &&
-                default_array_property.equals(x.default_array_property) &&
+                default_other_property.equals(x.default_other_property) &&
+                default_numeric_property.equals(x.default_numeric_property) &&
                 internal_prototype.equals(x.internal_prototype) &&
                 internal_value.equals(x.internal_value);
     }
@@ -588,7 +588,7 @@ public final class Obj {
     /**
      * Returns a description of the changes from the old object to this object.
      * It is assumed that the old object is less than this object
-     * and that no explicit property has been moved to default_array_property or default_nonarray_property.
+     * and that no explicit property has been moved to default_numeric_property or default_other_property.
      */
     public void diff(Obj old, StringBuilder b) {
         for (Entry<PKey, Value> me : sortedEntries(properties)) {
@@ -601,15 +601,15 @@ public final class Obj {
                 b.append(" was: ").append(v);
             }
         }
-        if (!default_array_property.equals(old.default_array_property)) {
-            b.append("\n        changed default_array_property: ");
-            default_array_property.diff(old.default_array_property, b);
-            b.append(" was: ").append(old.default_array_property);
+        if (!default_numeric_property.equals(old.default_numeric_property)) {
+            b.append("\n        changed default_numeric_property: ");
+            default_numeric_property.diff(old.default_numeric_property, b);
+            b.append(" was: ").append(old.default_numeric_property);
         }
-        if (!default_nonarray_property.equals(old.default_nonarray_property)) {
-            b.append("\n        changed default_nonarray_property: ");
-            default_nonarray_property.diff(old.default_nonarray_property, b);
-            b.append(" was: ").append(old.default_nonarray_property);
+        if (!default_other_property.equals(old.default_other_property)) {
+            b.append("\n        changed default_other_property: ");
+            default_other_property.diff(old.default_other_property, b);
+            b.append(" was: ").append(old.default_other_property);
         }
         if (!internal_prototype.equals(old.internal_prototype)) {
             b.append("\n        changed internal_prototype: ");
@@ -637,8 +637,8 @@ public final class Obj {
                     + (scope_unknown ? 13 : 0)
                     + internal_prototype.hashCode() * 11
                     + internal_value.hashCode() * 113
-                    + default_nonarray_property.hashCode() * 23
-                    + default_array_property.hashCode() * 31;
+                    + default_other_property.hashCode() * 23
+                    + default_numeric_property.hashCode() * 31;
             if (h == 0)
                 h = 1;
             if (!writable)
@@ -656,13 +656,13 @@ public final class Obj {
         StringBuilder b = new StringBuilder();
         boolean any = false;
         b.append("{");
-        if (default_array_property.isNone()) {
+        if (default_numeric_property.isNone()) {
             any = true;
             b.append("<none>");
         }
         for (Entry<PKey, Value> me : sortedEntries(properties)) {
             Value v = me.getValue();
-            if (v == (me.getKey().isArrayIndex() ? default_array_property : default_nonarray_property))
+            if (v == (me.getKey().isNumeric() ? default_numeric_property : default_other_property))
                 continue;
             if (me.getKey().equals(StringPKey.__PROTO__))
                 continue;
@@ -672,19 +672,19 @@ public final class Obj {
                 any = true;
             b.append(me.getKey().toStringEscaped()).append(":").append(v);
         }
-        if (default_array_property.isMaybePresentOrUnknown()) {
+        if (default_numeric_property.isMaybePresentOrUnknown()) {
             if (any)
                 b.append(",");
             else
                 any = true;
-            b.append("[[DefaultArray]]=").append(default_array_property);
+            b.append("[[DefaultNumeric]]=").append(default_numeric_property);
         }
-        if (default_nonarray_property.isMaybePresentOrUnknown()) {
+        if (default_other_property.isMaybePresentOrUnknown()) {
             if (any)
                 b.append(",");
             else
                 any = true;
-            b.append("[[DefaultNonArray]]=").append(default_nonarray_property);
+            b.append("[[DefaultOther]]=").append(default_other_property);
         }
         if (internal_prototype.isMaybePresentOrUnknown()) {
             if (any)
@@ -729,10 +729,10 @@ public final class Obj {
             if (v.isMaybeModified() && v.isMaybePresentOrUnknown())
                 b.append("\n    ").append(me.getKey().toStringEscaped()).append(": ").append(v);
         }
-        if ((default_array_property.isMaybeModified()) && default_array_property.isMaybePresentOrUnknown())
-            b.append("\n    ").append("[[DefaultArray]] = ").append(default_array_property);
-        if ((default_nonarray_property.isMaybeModified()) && default_nonarray_property.isMaybePresentOrUnknown())
-            b.append("\n    ").append("[[DefaultNonArray]] = ").append(default_nonarray_property);
+        if ((default_numeric_property.isMaybeModified()) && default_numeric_property.isMaybePresentOrUnknown())
+            b.append("\n    ").append("[[DefaultNumeric]] = ").append(default_numeric_property);
+        if ((default_other_property.isMaybeModified()) && default_other_property.isMaybePresentOrUnknown())
+            b.append("\n    ").append("[[DefaultOther]] = ").append(default_other_property);
         if (internal_prototype.isMaybeModified() && internal_prototype.isMaybePresentOrUnknown())
             b.append("\n    [[Prototype]] = ").append(internal_prototype);
         if (internal_value.isMaybeModified() && internal_value.isMaybePresentOrUnknown())
@@ -748,8 +748,8 @@ public final class Obj {
         Set<ObjectLabel> objlabels = newSet();
         for (Value v : properties.values())
             objlabels.addAll(v.getAllObjectLabels());
-        objlabels.addAll(default_array_property.getAllObjectLabels());
-        objlabels.addAll(default_nonarray_property.getAllObjectLabels());
+        objlabels.addAll(default_numeric_property.getAllObjectLabels());
+        objlabels.addAll(default_other_property.getAllObjectLabels());
         objlabels.addAll(internal_prototype.getAllObjectLabels());
         objlabels.addAll(internal_value.getAllObjectLabels());
         objlabels.addAll(ScopeChain.getObjectLabels(scope));
@@ -760,8 +760,8 @@ public final class Obj {
      * Checks whether this object contains the given object label.
      */
     public boolean containsObjectLabel(ObjectLabel objlabel) {
-        if (default_array_property.containsObjectLabel(objlabel) ||
-                default_nonarray_property.containsObjectLabel(objlabel) ||
+        if (default_numeric_property.containsObjectLabel(objlabel) ||
+                default_other_property.containsObjectLabel(objlabel) ||
                 internal_prototype.containsObjectLabel(objlabel) ||
                 internal_value.containsObjectLabel(objlabel)) {
             return true;
@@ -780,10 +780,10 @@ public final class Obj {
         switch (prop.getKind()) {
             case ORDINARY:
                 return getProperty(prop.getPropertyName());
-            case DEFAULT_ARRAY:
-                return getDefaultArrayProperty();
-            case DEFAULT_NONARRAY:
-                return getDefaultNonArrayProperty();
+            case DEFAULT_NUMERIC:
+                return getDefaultNumericProperty();
+            case DEFAULT_OTHER:
+                return getDefaultOtherProperty();
             case INTERNAL_VALUE:
                 return getInternalValue();
             case INTERNAL_PROTOTYPE:
@@ -802,11 +802,11 @@ public final class Obj {
             case ORDINARY:
                 setProperty(prop.getPropertyName(), v);
                 break;
-            case DEFAULT_ARRAY:
-                setDefaultArrayProperty(v);
+            case DEFAULT_NUMERIC:
+                setDefaultNumericProperty(v);
                 break;
-            case DEFAULT_NONARRAY:
-                setDefaultNonArrayProperty(v);
+            case DEFAULT_OTHER:
+                setDefaultOtherProperty(v);
                 break;
             case INTERNAL_VALUE:
                 setInternalValue(v);
@@ -830,10 +830,10 @@ public final class Obj {
             properties.put(propertyname, getProperty(propertyname));
         }
         // reduce those properties that are unknown or polymorphic in obj
-        default_array_property = UnknownValueResolver.localize(default_array_property, obj.default_array_property, s,
-                ObjectProperty.makeDefaultArray(objlabel));
-        default_nonarray_property = UnknownValueResolver.localize(default_nonarray_property, obj.default_nonarray_property, s,
-                ObjectProperty.makeDefaultNonArray(objlabel));
+        default_numeric_property = UnknownValueResolver.localize(default_numeric_property, obj.default_numeric_property, s,
+                ObjectProperty.makeDefaultNumeric(objlabel));
+        default_other_property = UnknownValueResolver.localize(default_other_property, obj.default_other_property, s,
+                ObjectProperty.makeDefaultOther(objlabel));
         internal_value = UnknownValueResolver.localize(internal_value, obj.internal_value, s,
                 ObjectProperty.makeInternalValue(objlabel));
         internal_prototype = UnknownValueResolver.localize(internal_prototype, obj.internal_prototype, s,
@@ -869,11 +869,23 @@ public final class Obj {
 //        // careful with defaults when they don't cover the same properties - here, obj.default
 //        // has already been propagated further (to the function entry state), so we don't need
 //        // to consider which non-default properties in obj correspond to this.default
-//        default_array_property = default_array_property.remove(obj.default_array_property);
-//        default_nonarray_property = default_nonarray_property.remove(obj.default_nonarray_property);
+//        default_numeric_property = default_numeric_property.remove(obj.default_numeric_property);
+//        default_other_property = default_other_property.remove(obj.default_other_property);
 //        internal_prototype = internal_prototype.remove(obj.internal_prototype);
 //        internal_value = internal_value.remove(obj.internal_value);
 //        scope = ScopeChain.remove(scope, obj.scope);
 //        // TODO: could remove properties that have same value as their default?
 //    }
+
+    /**
+     * Materializes the given property names.
+     */
+    public void materialize(Set<String> propertynames) {
+        checkWritable();
+        makeWritableProperties();
+        for (String propertyname : propertynames) {
+            PKey p = PKey.StringPKey.make(propertyname);
+            properties.put(p, getProperty(p));
+        }
+    }
 }

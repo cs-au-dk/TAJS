@@ -1,6 +1,6 @@
 test-resources/src/10k/10k_snake.html:38:16: [definite] The conditional expression is always true
 test-resources/src/10k/10k_snake.html:176:22: [definite] Reading 'this' yields the global object
-test-resources/src/10k/10k_snake.html:176:22: [definite] Too few parameters to function Window.getComputedStyle
+test-resources/src/10k/10k_snake.html:176:22: [definite] Too few parameters to native function
 test-resources/src/10k/10k_snake.html:31:30: [definite] Unreachable function
 test-resources/src/10k/10k_snake.html:34:44: [definite] Unreachable function
 test-resources/src/10k/10k_snake.html:57:14: [definite] The variable count is never used
@@ -71,7 +71,6 @@ test-resources/src/10k/10k_snake.html:48:31: [maybe] Converting undefined to str
 test-resources/src/10k/10k_snake.html:48:54: [maybe] The variable className has values with different types
 test-resources/src/10k/10k_snake.html:52:26: [maybe] Converting primitive string to object
 test-resources/src/10k/10k_snake.html:92:26: [maybe] Reading absent property (computed name)
-test-resources/src/10k/10k_snake.html:93:30: [maybe] Reading absent property (computed name)
 test-resources/src/10k/10k_snake.html:93:40: [maybe] Reading absent property (computed name)
 test-resources/src/10k/10k_snake.html:94:37: [maybe] Reading absent property (computed name)
 test-resources/src/10k/10k_snake.html:99:25: [maybe] Reading absent property (computed name)

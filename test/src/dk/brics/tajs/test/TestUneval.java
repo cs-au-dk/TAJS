@@ -196,6 +196,7 @@ public class TestUneval {
     @Test(expected = AnalysisLimitationException.class /* Imprecise eval */)
     public void uneval_26() throws Exception {
         Options.get().enableIncludeDom();
+        Options.get().enableNoStringSets(); // TODO
         Misc.run("test-resources/src/uneval/uneval26.html");
         Misc.checkSystemOutput();
     }
@@ -435,7 +436,7 @@ public class TestUneval {
                 "TAJS_assert(Function(x)() === undefined);");
     }
 
-    @Test(expected = AnalysisLimitationException.class /* Imprecise eval, but not an internal crash */)
+    @Test
     public void uneval_missing_entry_block() throws Exception {
         Options.get().enableIncludeDom();
         Misc.run("test-resources/src/uneval/uneval_missing_entry_block.js");

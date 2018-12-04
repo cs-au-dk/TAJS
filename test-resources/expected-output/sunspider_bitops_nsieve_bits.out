@@ -1,10 +1,10 @@
 test-resources/src/sunspider/bitops-nsieve-bits.js:10:1: [definite] Unreachable function pad
 test-resources/src/sunspider/bitops-nsieve-bits.js:31:23: [maybe] RangeError, invalid value of array length
-test-resources/src/sunspider/bitops-nsieve-bits.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/bitops-nsieve-bits.js:24:9, test-resources/src/sunspider/bitops-nsieve-bits.js:31:23]
+test-resources/src/sunspider/bitops-nsieve-bits.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/bitops-nsieve-bits.js:31:23]
 test-resources/src/sunspider/bitops-nsieve-bits.js:22:9: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/bitops-nsieve-bits.js:22:9: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/bitops-nsieve-bits.js:24:9: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/bitops-nsieve-bits.js:24:9: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/bitops-nsieve-bits.js:39:26: [maybe] Converting object to number
-test-resources/src/sunspider/bitops-nsieve-bits.js:41:1: [info] Abstract value: UInt|NotUInt
+test-resources/src/sunspider/bitops-nsieve-bits.js:41:1: [info] Abstract value: Num
 Soundness testing succeeded for 1247 checks (with 0 expected failures)

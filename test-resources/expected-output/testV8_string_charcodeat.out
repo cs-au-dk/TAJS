@@ -1,4 +1,4 @@
-test-resources/src/v8tests/string-charcodeat.js:127:20: [definite] Too few parameters to function String.prototype.charCodeAt
+test-resources/src/v8tests/string-charcodeat.js:127:20: [definite] Too few parameters to native function
 test-resources/src/v8tests/string-charcodeat.js: [definite] Exceptional program exit is unreachable
 test-resources/src/v8tests/string-charcodeat.js:47:10: [maybe] Converting object to string
 test-resources/src/v8tests/string-charcodeat.js:47:10: [maybe] Converting primitive string to object

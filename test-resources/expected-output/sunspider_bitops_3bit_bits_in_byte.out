@@ -1,4 +1,4 @@
 test-resources/src/sunspider/bitops-3bit-bits-in-byte.js: [definite] Exceptional program exit is unreachable
 test-resources/src/sunspider/bitops-3bit-bits-in-byte.js:39:26: [maybe] Converting object to number
-test-resources/src/sunspider/bitops-3bit-bits-in-byte.js:41:1: [info] Abstract value: UInt|NotUInt
+test-resources/src/sunspider/bitops-3bit-bits-in-byte.js:41:1: [info] Abstract value: Num
 Soundness testing succeeded for 1074 checks (with 0 expected failures)

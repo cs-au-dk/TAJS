@@ -27,8 +27,11 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 
+import java.util.Set;
+
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * The MouseEvent interface provides specific contextual information associated
@@ -56,6 +59,14 @@ public class MouseEvent {
         /*
          * Properties.
          */
+        Set<String> mouseEventTypes = newSet();
+        mouseEventTypes.add("click");
+        mouseEventTypes.add("dblclick");
+        mouseEventTypes.add("mousedown");
+        mouseEventTypes.add("mouseup");
+        mouseEventTypes.add("mousemove");
+        mouseEventTypes.add("mouseout");
+
         createDOMProperty(INSTANCES, "screenX", Value.makeAnyNum().setReadOnly(), c);
         createDOMProperty(INSTANCES, "screenY", Value.makeAnyNum().setReadOnly(), c);
         createDOMProperty(INSTANCES, "pageX", Value.makeAnyNum().setReadOnly(), c);
@@ -67,6 +78,7 @@ public class MouseEvent {
         createDOMProperty(INSTANCES, "altKey", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "metaKey", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(INSTANCES, "button", Value.makeAnyNumUInt().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "type", Value.makeStrings(mouseEventTypes).setReadOnly(), c);
 
         // DOM Level 0
         createDOMProperty(INSTANCES, "offsetX", Value.makeAnyNum().setReadOnly(), c);

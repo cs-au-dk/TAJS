@@ -149,8 +149,6 @@ test-resources/src/chromeexperiments/strangeattractor.html:571:17: [maybe] TypeE
 test-resources/src/chromeexperiments/strangeattractor.html:574:37: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/strangeattractor.html:574:49: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/strangeattractor.html:707:9: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/strangeattractor.html:885:9: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/chromeexperiments/strangeattractor.html:886:9: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/chromeexperiments/strangeattractor.html:900:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/strangeattractor.html:900:9: [maybe] TypeError, call to non-function
 test-resources/src/chromeexperiments/strangeattractor.html:902:9: [maybe] TypeError, call to non-function
@@ -161,7 +159,7 @@ test-resources/src/chromeexperiments/strangeattractor.html:922:5: [maybe] TypeEr
 test-resources/src/chromeexperiments/strangeattractor.html:900:9: [maybe] Reading absent property setFillColor of host object
 test-resources/src/chromeexperiments/strangeattractor.html:902:9: [maybe] Reading absent property setStrokeColor of host object
 test-resources/src/chromeexperiments/strangeattractor.html:922:35: [maybe] Reading absent property firstChild of host object
-test-resources/src/chromeexperiments/strangeattractor.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/strangeattractor.html:159:25, test-resources/src/chromeexperiments/strangeattractor.html:373:20, test-resources/src/chromeexperiments/strangeattractor.html:399:45, test-resources/src/chromeexperiments/strangeattractor.html:564:51, test-resources/src/chromeexperiments/strangeattractor.html:567:19, test-resources/src/chromeexperiments/strangeattractor.html:571:17, test-resources/src/chromeexperiments/strangeattractor.html:574:37, test-resources/src/chromeexperiments/strangeattractor.html:574:49, test-resources/src/chromeexperiments/strangeattractor.html:707:9, test-resources/src/chromeexperiments/strangeattractor.html:885:9, test-resources/src/chromeexperiments/strangeattractor.html:886:9, test-resources/src/chromeexperiments/strangeattractor.html:900:9, test-resources/src/chromeexperiments/strangeattractor.html:902:9, test-resources/src/chromeexperiments/strangeattractor.html:902:30, test-resources/src/chromeexperiments/strangeattractor.html:914:21, test-resources/src/chromeexperiments/strangeattractor.html:919:47, test-resources/src/chromeexperiments/strangeattractor.html:922:5]
+test-resources/src/chromeexperiments/strangeattractor.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/strangeattractor.html:159:25, test-resources/src/chromeexperiments/strangeattractor.html:373:20, test-resources/src/chromeexperiments/strangeattractor.html:399:45, test-resources/src/chromeexperiments/strangeattractor.html:564:51, test-resources/src/chromeexperiments/strangeattractor.html:567:19, test-resources/src/chromeexperiments/strangeattractor.html:571:17, test-resources/src/chromeexperiments/strangeattractor.html:574:37, test-resources/src/chromeexperiments/strangeattractor.html:574:49, test-resources/src/chromeexperiments/strangeattractor.html:707:9, test-resources/src/chromeexperiments/strangeattractor.html:900:9, test-resources/src/chromeexperiments/strangeattractor.html:902:9, test-resources/src/chromeexperiments/strangeattractor.html:902:30, test-resources/src/chromeexperiments/strangeattractor.html:914:21, test-resources/src/chromeexperiments/strangeattractor.html:919:47, test-resources/src/chromeexperiments/strangeattractor.html:922:5]
 test-resources/src/chromeexperiments/strangeattractor.html:210:26: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/strangeattractor.html:408:46: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/strangeattractor.html:565:98: [maybe] Reading absent property (computed name)
@@ -170,10 +168,6 @@ test-resources/src/chromeexperiments/strangeattractor.html:572:26: [maybe] Readi
 test-resources/src/chromeexperiments/strangeattractor.html:573:26: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/strangeattractor.html:766:17: [maybe] The variable p has values with different types
 test-resources/src/chromeexperiments/strangeattractor.html:767:30: [maybe] The variable p has values with different types
-test-resources/src/chromeexperiments/strangeattractor.html:885:9: [maybe] Conversion from string to number yields NaN
-test-resources/src/chromeexperiments/strangeattractor.html:885:9: [maybe] Converting object to number
-test-resources/src/chromeexperiments/strangeattractor.html:886:9: [maybe] Conversion from string to number yields NaN
-test-resources/src/chromeexperiments/strangeattractor.html:886:9: [maybe] Converting object to number
 test-resources/src/chromeexperiments/strangeattractor.html:909:17: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/strangeattractor.html:328:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/strangeattractor.html:384:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision

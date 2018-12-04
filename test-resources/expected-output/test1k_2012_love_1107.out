@@ -1,9 +1,9 @@
-test-resources/src/1k2012love/1107.js:63:7: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
-test-resources/src/1k2012love/1107.js:67:7: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.stroke
-test-resources/src/1k2012love/1107.js:67:14: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
-test-resources/src/1k2012love/1107.js:67:19: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.closePath
-test-resources/src/1k2012love/1107.js:65:7: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2012love/1107.js:67:29: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2012love/1107.js:63:7: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1107.js:67:7: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1107.js:67:14: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1107.js:67:19: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1107.js:65:7: [definite] Too few parameters to native function
+test-resources/src/1k2012love/1107.js:67:29: [definite] Too few parameters to native function
 test-resources/src/1k2012love/1107.js:23:19: [maybe] ReferenceError, reading absent variable W
 test-resources/src/1k2012love/1107.js:23:38: [maybe] ReferenceError, reading absent variable H
 test-resources/src/1k2012love/1107.js:29:34: [maybe] ReferenceError, reading absent variable w

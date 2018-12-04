@@ -4,10 +4,11 @@ Abstract state:
   Execution context: ScopeChain=[[@activation#node31],[@<the global object>[native]]], VariableObject=[@activation#node31], this=Null
   Summarized: maybe=[@arguments#node37, @activation#node37], definitely=[@arguments#node37, @activation#node37]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {f4:^(@<the global object>[native].f4[present]),x:^(@<the global object>[native].y[present]),y:^(@<the global object>[native].y[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @activation#node31 (test-resources/src/micro/test152.js:3:1): {f4:^(@activation#node31.f4[absent]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Value]]=?,[[Scope]]=?}
-    @f4#fun4 (test-resources/src/micro/test152.js:4:1): {prototype:^(@f4#fun4.prototype[present]),[[DefaultArray]]=?,[[DefaultNonArray]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=[[@<the global object>[native]]]}
+    @<the global object>[native] (<initial state>): {f4:^(@<the global object>[native].f4[present]),x:^(@<the global object>[native].y[present]),y:^(@<the global object>[native].y[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @activation#node31 (test-resources/src/micro/test152.js:3:1): {f4:^(@activation#node31.f4[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Value]]=?,[[Scope]]=?}
+    @f4#fun4 (test-resources/src/micro/test152.js:4:1): {prototype:^(@f4#fun4.prototype[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=[[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+  Functions in stack: [block 20, context {}, block 15, context {}, block 10, context {}]
 test-resources/src/micro/test152.js:8:1: [info] Abstract value: 2.0
 Soundness testing succeeded for 31 checks (with 0 expected failures)

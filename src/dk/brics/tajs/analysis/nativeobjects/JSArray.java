@@ -383,7 +383,7 @@ public class JSArray {
                     } else {
                         // imprecise case: length is not known --> mix all array properties
                         new_length = Value.makeAnyNumUInt();
-                        Value defaultArrayProperty = UnknownValueResolver.getDefaultArrayProperty(current, state);
+                        Value defaultArrayProperty = UnknownValueResolver.getDefaultNumericProperty(current, state);
                         if (!defaultArrayProperty.restrictToNotAbsent().isNone()) {
                             pv.writeProperty(thisObj, Value.makeAnyStrUInt(), defaultArrayProperty, moreThanOneArray);
                         }
@@ -680,7 +680,7 @@ public class JSArray {
     public static void setEntries(ObjectLabel array, List<Value> content, Solver.SolverInterface c) {
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
         for (int i = 0; i < content.size(); i++) {
-            pv.writeProperty(array, "" + i, content.get(i));
+            pv.writeProperty(array, Integer.toString(i), content.get(i));
         }
         writeLength(array, Value.makeNum(content.size()), c);
     }

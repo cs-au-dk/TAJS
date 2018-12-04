@@ -43,7 +43,7 @@ import dk.brics.tajs.monitoring.soundness.ValueLogSourceLocationEqualityDecider;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -93,19 +93,13 @@ public class AbstractConcreteValueComparator {
             return true;
         }
 
-        Value valueWithoutComplementOrSpecialStrings = abstractValue;
-        // XXX kill the complementary string information
-        // valueWithoutComplementOrSpecialStrings = valueWithoutComplementOrSpecialStrings.restrictToNotComplementaryString();
-        // XXX kill the special string information
-        // valueWithoutComplementOrSpecialStrings = valueWithoutComplementOrSpecialStrings.restrictToNotSpecialStrings();
-
-        return isAbstractValueSound_noComplementOrSpecialStrings(concreteValue, valueWithoutComplementOrSpecialStrings);
+        return isAbstractValueSound_noStringSets(concreteValue, abstractValue.forgetExcludedIncludedStrings());
     }
 
     /**
      * @return true iff the abstract value over-approximates the concrete value.
      */
-    private boolean isAbstractValueSound_noComplementOrSpecialStrings(ValueDescription concreteValue, Value abstractValue) {
+    private boolean isAbstractValueSound_noStringSets(ValueDescription concreteValue, Value abstractValue) {
         if (isAbstractStringValueMorePreciseThanSemiConcreteValue(concreteValue, abstractValue)) {
             // technically, this could miss some unsoundness, but it is very convenient in practice.
             return true;
@@ -150,11 +144,11 @@ public class AbstractConcreteValueComparator {
                 }
                 String concreteValue = d.getDescription();
                 if (concreteValue.equals("STR_UINT")) {
-                    Value jalangiValue = Value.makeAnyStrUInt();
+                    Value jalangiValue = Value.makeAnyStrNumeric(); // FIXME: mismatch with STR_UINT
                     return jalangiValue.join(absValStrOnly).equals(jalangiValue);
                 }
                 if (concreteValue.equals("STR_OTHERNUM")) {
-                    Value jalangiValue = Value.makeAnyStrNotUInt();
+                    Value jalangiValue = Value.makeAnyStrNumeric(); // FIXME: mismatch with STR_OTHERNUM
                     return jalangiValue.join(absValStrOnly).equals(jalangiValue);
                 }
                 if (concreteValue.equals("STR_IDENTIFIER") || concreteValue.equals("STR_IDENTIFIERPARTS")) {
@@ -181,7 +175,7 @@ public class AbstractConcreteValueComparator {
             }
 
             private Boolean matchesLoggerRegExp(ConcreteRegularExpression regexp, String abstractConcreteString) {
-                MappedNativeResult<ConcreteValue> match = TAJSConcreteSemantics.getNative().apply("RegExp.prototype.test", regexp, Arrays.asList(new ConcreteString(abstractConcreteString)));
+                MappedNativeResult<ConcreteValue> match = TAJSConcreteSemantics.getNative().apply("RegExp.prototype.test", regexp, Collections.singletonList(new ConcreteString(abstractConcreteString)));
 
                 @SuppressWarnings("unchecked")
                 ConcreteBoolean value = (ConcreteBoolean) match.getResult().getValue();
@@ -193,6 +187,14 @@ public class AbstractConcreteValueComparator {
                 if (abstractValue.isMaybeStrPrefix()) {
                     return true; // TODO improve precision
                 }
+                if ((d.getString().startsWith("jQuery") && absValStrOnly.getStr().startsWith("jQuery")) ||
+                        (d.getString().startsWith("sizzle") && absValStrOnly.getStr().startsWith("sizzle")) ||
+                        (d.getString().startsWith("sizcache") && absValStrOnly.getStr().startsWith("sizcache")) ||
+                        (d.getString().startsWith("script") && absValStrOnly.getStr().startsWith("script")) ||
+                        (d.getString().startsWith("window.script") && absValStrOnly.getStr().startsWith("window.script")) ||
+                        (d.getString().startsWith("<a name='script") && absValStrOnly.getStr().startsWith("<a name='script")) ||
+                        (d.getString().startsWith("<input name='script") && absValStrOnly.getStr().startsWith("<input name='script")))
+                    return true; // nasty hack related to -use-fixed-random (see also KnownUnsoundnesses)
                 return d.getString().equals(absValStrOnly.getStr()) || isFunctionToStringComparison(absValStrOnly.getStr(), d.getString());
             }
 
@@ -288,7 +290,7 @@ public class AbstractConcreteValueComparator {
             if (isBoxed(abstractValue, ObjectLabel.Kind.STRING)) {
                 return true;
             }
-            Value jalangiValue = Value.makeNone().joinAnyStrIdentifier();
+            Value jalangiValue = Value.makeAnyStrIdent();
             boolean isStrPrefix = abstractValue.isMaybeStrPrefix() || (abstractValue.isMaybeSingleStr() && Strings.isIdentifierAndNotPrefixOfReservedName(abstractValue.getStr()));
             //In valuelogger there STR_PREFIX and STR_IDENTIFIER is not distinguished
             boolean x = jalangiValue.join(abstractValue).equals(abstractValue) || isStrPrefix;

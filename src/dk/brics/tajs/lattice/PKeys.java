@@ -34,6 +34,11 @@ public interface PKeys extends Str { // XXX: rename to StrOrSymbol
     boolean isMaybeOtherThanStrOrSymbol();
 
     /**
+     * Returns true if this value is maybe a singleton string or a singleton symbol (but not both).
+     */
+    boolean isMaybeSingleStrOrSymbol();
+
+    /**
      * Returns true if this value is maybe a non-singleton string or a non-singleton symbol.
      */
     boolean isMaybeFuzzyStrOrSymbol();

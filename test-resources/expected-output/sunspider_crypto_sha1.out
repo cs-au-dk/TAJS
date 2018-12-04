@@ -1,4 +1,5 @@
 test-resources/src/sunspider/crypto-sha1.js:177:17: [definite] The conditional expression is always false
+test-resources/src/sunspider/crypto-sha1.js: [definite] Exceptional program exit is unreachable
 test-resources/src/sunspider/crypto-sha1.js:19:5: [definite] The variable b64pad is never used
 test-resources/src/sunspider/crypto-sha1.js:27:1: [definite] Unreachable function b64_sha1
 test-resources/src/sunspider/crypto-sha1.js:28:1: [definite] Unreachable function str_sha1
@@ -10,9 +11,6 @@ test-resources/src/sunspider/crypto-sha1.js:112:1: [definite] Unreachable functi
 test-resources/src/sunspider/crypto-sha1.js:163:1: [definite] Unreachable function binb2str
 test-resources/src/sunspider/crypto-sha1.js:190:1: [definite] Unreachable function binb2b64
 test-resources/src/sunspider/crypto-sha1.js:228:5: [definite] The variable sha1Output is never used
-test-resources/src/sunspider/crypto-sha1.js:47:3: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/sunspider/crypto-sha1.js:48:3: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/sunspider/crypto-sha1.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/crypto-sha1.js:47:3, test-resources/src/sunspider/crypto-sha1.js:48:3, test-resources/src/sunspider/crypto-sha1.js:156:5]
 test-resources/src/sunspider/crypto-sha1.js:26:60: [maybe] Converting primitive string to object
 test-resources/src/sunspider/crypto-sha1.js:47:3: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/crypto-sha1.js:47:3: [maybe] Reading absent property (computed name)
@@ -39,6 +37,6 @@ test-resources/src/sunspider/crypto-sha1.js:182:12: [maybe] Converting primitive
 test-resources/src/sunspider/crypto-sha1.js:182:28: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/crypto-sha1.js:182:28: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/crypto-sha1.js:231:26: [maybe] Converting object to number
-test-resources/src/sunspider/crypto-sha1.js:233:1: [info] Abstract value: UInt|NotUInt
+test-resources/src/sunspider/crypto-sha1.js:233:1: [info] Abstract value: Num
 Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
 Log of soundness facts is not available for test-resources/src/sunspider/crypto-sha1.js, skipping soundness checking

@@ -1,15 +1,15 @@
-test-resources/src/1k2012love/1196.js:65:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.save
-test-resources/src/1k2012love/1196.js:85:4: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.beginPath
-test-resources/src/1k2012love/1196.js:97:4: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.fill
-test-resources/src/1k2012love/1196.js:99:5: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.closePath
-test-resources/src/1k2012love/1196.js:109:14: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.clip
-test-resources/src/1k2012love/1196.js:123:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.restore
-test-resources/src/1k2012love/1196.js:131:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.save
-test-resources/src/1k2012love/1196.js:138:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.save
-test-resources/src/1k2012love/1196.js:149:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.restore
-test-resources/src/1k2012love/1196.js:160:3: [definite] Too many parameters to function CanvasRenderingContext2D.prototype.restore
-test-resources/src/1k2012love/1196.js:91:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2012love/1196.js:94:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2012love/1196.js:65:3: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1196.js:85:4: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1196.js:97:4: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1196.js:99:5: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1196.js:109:14: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1196.js:123:3: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1196.js:131:3: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1196.js:138:3: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1196.js:149:3: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1196.js:160:3: [definite] Too many parameters to native function
+test-resources/src/1k2012love/1196.js:91:4: [definite] Too few parameters to native function
+test-resources/src/1k2012love/1196.js:94:4: [definite] Too few parameters to native function
 test-resources/src/1k2012love/1196.js:49:6: [maybe] ReferenceError, reading absent variable d
 test-resources/src/1k2012love/1196.js:64:13: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2012love/1196.js:67:29: [maybe] ReferenceError, reading absent variable k

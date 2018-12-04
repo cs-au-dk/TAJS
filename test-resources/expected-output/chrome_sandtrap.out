@@ -565,6 +565,7 @@ test-resources/src/chromeexperiments/sandtrap.html:475:13: [maybe] Conversion fr
 test-resources/src/chromeexperiments/sandtrap.html:475:13: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:475:62: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:476:38: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/sandtrap.html:476:53: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:484:27: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:489:148: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:490:14: [maybe] Reading absent property (computed name)

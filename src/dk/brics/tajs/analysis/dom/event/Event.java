@@ -29,8 +29,11 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisException;
 
+import java.util.Set;
+
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * The Event interface is used to provide contextual information about an event
@@ -74,8 +77,25 @@ public class Event {
         /*
          * Properties.
          */
+        Set<String> eventTypes = newSet();
+        eventTypes.add("unload");
+        eventTypes.add("click");
+        eventTypes.add("dblclick");
+        eventTypes.add("focus");
+        eventTypes.add("focusin");
+        eventTypes.add("focusout");
+        eventTypes.add("blur");
+        eventTypes.add("submit");
+        eventTypes.add("reset");
+        eventTypes.add("select");
+        eventTypes.add("selectstart");
+        eventTypes.add("selectend");
+        eventTypes.add("change");
+        eventTypes.add("resize");
+        eventTypes.add("orientationchange");
+
         // TODO these belong on the event instances, and not on the prototype...
-        createDOMProperty(PROTOTYPE, "type", Value.makeNone().joinAnyStrIdentifier().setReadOnly(), c);
+        createDOMProperty(PROTOTYPE, "type", Value.makeAnyStrIdent().setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "eventPhase", Value.makeAnyNumUInt().setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "bubbles", Value.makeAnyBool().setReadOnly(), c);
         createDOMProperty(PROTOTYPE, "cancelable", Value.makeAnyBool().setReadOnly(), c);

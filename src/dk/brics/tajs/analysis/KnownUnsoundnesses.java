@@ -17,6 +17,7 @@
 package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.PathAndURLUtils;
 
 import java.nio.file.Path;
@@ -25,7 +26,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -156,19 +156,12 @@ public class KnownUnsoundnesses {
                 "test-resources/src/1k2012love/1008.js",
                 "test-resources/src/1k2012love/1168.js",
                 "test-resources/src/1k2012love/1189.js",
-                "test-resources/src/1k2012love/1190.js",
                 "test-resources/src/1k2012love/1240.js",
                 "test-resources/src/1k2012love/1252.js",
-                "test-resources/src/1k2012love/1254.js",
-                "test-resources/src/1k2012love/1269.js",
                 "test-resources/src/1k2012love/1271.js",
                 "test-resources/src/1k2012love/1281.js", // missing model of websocket?
 
-                "test-resources/src/1k2013spring/1425.js",
-                "test-resources/src/1k2013spring/1430.js",
-                "test-resources/src/1k2013spring/1457.js",
                 "test-resources/src/1k2013spring/1472.js",
-                "test-resources/src/1k2013spring/1473.js",
                 "test-resources/src/1k2013spring/1506.js",
                 "test-resources/src/1k2013spring/1524.js",
                 "test-resources/src/1k2013spring/1526.js",
@@ -183,6 +176,9 @@ public class KnownUnsoundnesses {
 
         uninspectedUnsoundLocations.addAll(
                 Arrays.asList(
+                        make("test-resources/src/1k2012love/1190.js", 86, 7),
+                        make("test-resources/src/1k2012love/1190.js", 87, 7),
+
                         make("test-resources/src/1k2013spring/1337.js", 18, 45),
 
                         make("test-resources/src/1k2013spring/1350.js", 63, 7),
@@ -191,6 +187,8 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/1k2013spring/1429.js", 60, 9),
                         make("test-resources/src/1k2013spring/1429.js", 60, 19),
                         make("test-resources/src/1k2013spring/1429.js", 60, 30),
+
+                        make("test-resources/src/1k2013spring/1457.js", 31, 14),
 
                         make("test-resources/src/1k2013spring/1525.js", 62, 15),
                         make("test-resources/src/1k2013spring/1525.js", 62, 30)
@@ -319,6 +317,17 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/refinement/underscore/test-suite/utility/test180.html", 14, 18),
                         make("test-resources/src/refinement/underscore/test-suite/utility/test180.html", 17, 25),
 
+                        // Fails due to -use-fixed-random (see also AbstractConcreteValueComparator.isAbstractStringValueMorePreciseThanSemiConcreteValue)
+                        make("benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js", 1142, 29),
+                        make("benchmarks/tajs/src/jquery-load/jquery-1.6.js-sliced.js", 1224, 29),
+                        make("benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js", 1517, 29),
+                        make("benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js", 3695, 181),
+                        make("benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js", 1354, 29),
+                        make("benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js", 3504, 13),
+                        make("benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js", 1543, 29),
+                        make("benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js", 3694, 17),
+                        make("benchmarks/tajs/src/jquery-load/jquery-1.10.js-sliced.js", 292, 29),
+                        make("benchmarks/tajs/src/jquery-load/jquery-1.11.0.js-sliced.js", 190, 22),
 
                         //
                         // DELIBERATE UNSOUNDNESS:

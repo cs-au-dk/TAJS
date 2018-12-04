@@ -1,17 +1,17 @@
-test-resources/src/v8tests/date.js:50:1: [definite] Too few parameters to function Date.prototype.setFullYear
-test-resources/src/v8tests/date.js:55:1: [definite] Too few parameters to function Date.prototype.setUTCFullYear
-test-resources/src/v8tests/date.js:61:1: [definite] Too few parameters to function Date.prototype.setMonth
-test-resources/src/v8tests/date.js:66:1: [definite] Too few parameters to function Date.prototype.setUTCMonth
-test-resources/src/v8tests/date.js:72:1: [definite] Too few parameters to function Date.prototype.setDate
-test-resources/src/v8tests/date.js:77:1: [definite] Too few parameters to function Date.prototype.setUTCDate
-test-resources/src/v8tests/date.js:83:1: [definite] Too few parameters to function Date.prototype.setHours
-test-resources/src/v8tests/date.js:88:1: [definite] Too few parameters to function Date.prototype.setUTCHours
-test-resources/src/v8tests/date.js:94:1: [definite] Too few parameters to function Date.prototype.setMinutes
-test-resources/src/v8tests/date.js:99:1: [definite] Too few parameters to function Date.prototype.setUTCHours
-test-resources/src/v8tests/date.js:106:1: [definite] Too few parameters to function Date.prototype.setSeconds
-test-resources/src/v8tests/date.js:111:1: [definite] Too few parameters to function Date.prototype.setUTCSeconds
-test-resources/src/v8tests/date.js:118:1: [definite] Too few parameters to function Date.prototype.setMilliseconds
-test-resources/src/v8tests/date.js:123:1: [definite] Too few parameters to function Date.prototype.setUTCMilliseconds
+test-resources/src/v8tests/date.js:50:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:55:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:61:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:66:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:72:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:77:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:83:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:88:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:94:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:99:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:106:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:111:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:118:1: [definite] Too few parameters to native function
+test-resources/src/v8tests/date.js:123:1: [definite] Too few parameters to native function
 test-resources/src/v8tests/date.js: [definite] Exceptional program exit is unreachable
 test-resources/src/v8tests/date.js:30:13: [maybe] Converting object to number
 test-resources/src/v8tests/date.js:50:1: [maybe] Conversion to number yields NaN

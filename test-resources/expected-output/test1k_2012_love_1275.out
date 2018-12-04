@@ -19,7 +19,6 @@ test-resources/src/1k2012love/1275.js:29:24: [maybe] ReferenceError, reading abs
 test-resources/src/1k2012love/1275.js:29:35: [maybe] ReferenceError, reading absent variable p
 test-resources/src/1k2012love/1275.js:36:24: [maybe] ReferenceError, reading absent variable i
 test-resources/src/1k2012love/1275.js:43:6: [maybe] ReferenceError, reading absent variable s
-test-resources/src/1k2012love/1275.js:44:6: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2012love/1275.js:44:6: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1275.js:45:9: [maybe] ReferenceError, reading absent variable m
 test-resources/src/1k2012love/1275.js:66:15: [maybe] TypeError, accessing property of null/undefined

@@ -1,5 +1,5 @@
-test-resources/src/micro/testObject.js:4:10: [definite] Too many parameters to function Object
-test-resources/src/micro/testObject.js:24:10: [definite] Too many parameters to function Object
+test-resources/src/micro/testObject.js:4:10: [definite] Too many parameters to native function
+test-resources/src/micro/testObject.js:24:10: [definite] Too many parameters to native function
 test-resources/src/micro/testObject.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/testObject.js:4:10: [maybe] Converting primitive number to object
 test-resources/src/micro/testObject.js:5:10: [maybe] Converting primitive string to object

@@ -11,6 +11,6 @@ test-resources/src/micro/test179.js:5:2: [info] Abstract value: "e"
 test-resources/src/micro/test179.js:5:2: [info] Abstract value: "h"
 test-resources/src/micro/test179.js:5:2: [info] Abstract value: "l"
 test-resources/src/micro/test179.js:5:2: [info] Abstract value: "o"
-test-resources/src/micro/test179.js:9:1: [info] Abstract object: {length:UInt,[[DefaultArray]]=UIntStr|absent,[[Prototype]]=[@Array.prototype[native]]}
-test-resources/src/micro/test179.js:10:1: [info] Abstract object: {length:UInt,[[DefaultArray]]=IdentStr|absent,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/test179.js:9:1: [info] Abstract object: {length:UInt,[[DefaultNumeric]]=UIntStr|absent,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/test179.js:10:1: [info] Abstract object: {length:UInt,[[DefaultNumeric]]=IdentStr|absent,[[Prototype]]=[@Array.prototype[native]]}
 Soundness testing succeeded for 74 checks (with 0 expected failures)

@@ -31,6 +31,7 @@ import dk.brics.tajs.solver.Message;
 import java.util.Collections;
 
 import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMFunction;
+import static dk.brics.tajs.util.Collections.singleton;
 
 public class CSSStyleDeclaration {
 
@@ -66,7 +67,7 @@ public class CSSStyleDeclaration {
         /*
          * Properties
          */
-        pv.writeProperty(Collections.singleton(INSTANCES), Value.makeAnyStrNotUInt(), Value.makeAnyStr(), false, true);
+        pv.writeProperty(Collections.singleton(INSTANCES), Value.makeAnyStrNotNumeric().restrictToNotStrings(singleton("getPropertyValue")), Value.makeAnyStr(), false, true);
 
         /*
          * Functions.

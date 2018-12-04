@@ -1,7 +1,7 @@
-test-resources/src/1k2013spring/1443.js:146:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2013spring/1443.js:150:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2013spring/1443.js:154:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
-test-resources/src/1k2013spring/1443.js:158:4: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1443.js:146:4: [definite] Too few parameters to native function
+test-resources/src/1k2013spring/1443.js:150:4: [definite] Too few parameters to native function
+test-resources/src/1k2013spring/1443.js:154:4: [definite] Too few parameters to native function
+test-resources/src/1k2013spring/1443.js:158:4: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1443.js:34:5: [definite] The variable aVectorData is never used
 test-resources/src/1k2013spring/1443.js:39:5: [definite] The variable TYPE_GRASS is never used
 test-resources/src/1k2013spring/1443.js:40:5: [definite] The variable TYPE_FLOWER is never used

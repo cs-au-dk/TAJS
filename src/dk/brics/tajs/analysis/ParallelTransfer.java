@@ -97,7 +97,7 @@ public class ParallelTransfer {
                 }
             }
             for (State s : results_except_last) {
-                state.propagate(s, false);
+                state.propagate(s, false, false);
             }
         }
     }

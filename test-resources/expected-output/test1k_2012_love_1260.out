@@ -11,9 +11,7 @@ test-resources/src/1k2012love/1260.js:44:64: [maybe] TypeError, accessing proper
 test-resources/src/1k2012love/1260.js:47:13: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2012love/1260.js:62:14: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2012love/1260.js:69:58: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2012love/1260.js:89:5: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2012love/1260.js:89:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2012love/1260.js:90:5: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2012love/1260.js:90:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1260.js:95:10: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1260.js:96:10: [maybe] TypeError, accessing property of null/undefined
@@ -31,7 +29,6 @@ test-resources/src/1k2012love/1260.js:36:16: [maybe] The variable symbol has val
 test-resources/src/1k2012love/1260.js:36:28: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1260.js:36:45: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1260.js:40:11: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1260.js:40:12: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1260.js:41:31: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1260.js:44:34: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1260.js:44:43: [maybe] Conversion to number yields NaN
@@ -62,14 +59,6 @@ test-resources/src/1k2012love/1260.js:105:7: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1260.js:114:35: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1260.js:122:18: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1260.js:122:18: [maybe] Converting object to number
-test-resources/src/1k2012love/1260.js:124:15: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1260.js:124:21: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1260.js:124:37: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1260.js:124:43: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1260.js:124:59: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1260.js:124:65: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1260.js:124:81: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1260.js:124:87: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1260.js:127:7: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1260.js:132:30: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 264 checks (with 0 expected failures)

@@ -18,13 +18,15 @@ package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.util.AnalysisException;
 
+import java.util.Set;
+
 /**
  * 'String' facet for abstract values.
  */
 public interface Str {
 
     /**
-     * Returns true if this value is maybe any string.
+     * Returns true if this value is maybe any string (ignoring excluded strings).
      */
     boolean isMaybeAnyStr();
 
@@ -34,7 +36,7 @@ public interface Str {
     boolean isMaybeSingleStr();
 
     /**
-     * Returns true if this value is maybe any UInt string.
+     * Returns true if this value is maybe any UInt string (ignoring excluded strings).
      */
     boolean isMaybeStrUInt();
 
@@ -44,33 +46,43 @@ public interface Str {
     boolean isMaybeStrSomeUInt();
 
     /**
+     * Returns true if this value is maybe some numeric string.
+     */
+    boolean isMaybeStrSomeNumeric();
+
+    /**
      * Returns true if this value is maybe a non-UInt string.
      */
     boolean isMaybeStrSomeNonUInt();
 
     /**
-     * Returns true if this value is maybe any (unbounded) non-UInt number string, including Infinity, -Infinity, and NaN.
+     * Returns true if this value is maybe a non-numeric string.
+     */
+    boolean isMaybeStrSomeNonNumeric();
+
+    /**
+     * Returns true if this value is maybe any (unbounded) non-UInt number string, including Infinity, -Infinity, and NaN (ignoring excluded strings).
      */
     boolean isMaybeStrOtherNum();
 
     /**
-     * Returns true if this value is maybe any identifier string.
+     * Returns true if this value is maybe any identifier string (ignoring excluded strings).
      */
     boolean isMaybeStrIdentifier();
 
     /**
      * Returns true if this value is maybe any string consisting of identifier parts,
-     * ignoring identifier strings and UInt strings.
+     * ignoring identifier strings and UInt strings (and ignoring excluded strings).
      */
     boolean isMaybeStrOtherIdentifierParts();
 
     /**
-     * Returns true if this value is maybe a fixed nonempty prefix string.
+     * Returns true if this value is maybe a fixed nonempty prefix string (ignoring excluded strings).
      */
     boolean isMaybeStrPrefix();
 
     /**
-     * Returns true if this value is maybe any non-number, non-identifier-parts string.
+     * Returns true if this value is maybe any non-number, non-identifier-parts string (ignoring excluded strings).
      */
     boolean isMaybeStrOther();
 
@@ -95,7 +107,7 @@ public interface Str {
     boolean isStrIdentifier();
 
     /**
-     * Returns true if this value is maybe any UInt string but not a non-UInt string.
+     * Returns true if this value is maybe any UInt string but not a non-UInt string (ignoring excluded strings).
      */
     boolean isMaybeStrOnlyUInt();
 
@@ -202,12 +214,12 @@ public interface Str {
      */
     boolean isMaybeStr(String s);
 
-    /**
-     * Checks whether the given abstract string value is definitely different from this abstract string string.
-     * (Conservative, true means certainly yes, false means maybe no.)
-     * @throws AnalysisException if the abstract values are maybe non-strings
-     */
-    boolean isStrDisjoint(Str other);
+//    /**
+//     * Checks whether the given abstract string value is definitely different from this abstract string string.
+//     * (Conservative, true means certainly yes, false means maybe no.)
+//     * @throws AnalysisException if the abstract values are maybe non-strings
+//     */
+//    boolean isStrDisjoint(Str other);
 
     /**
      * Checks whether this string value may contain the given substring.
@@ -227,4 +239,35 @@ public interface Str {
      * (Conservative, true means certainly yes, false means maybe no.)
      */
     boolean mustOnlyBeIdentifierCharacters();
+
+    /**
+     * Returns the strings that are explicitly excluded, or null if none.
+     */
+    Set<String> getExcludedStrings();
+
+    /**
+     * Returns the strings that are explicitly included, or null if none.
+     */
+    Set<String> getIncludedStrings();
+
+    /**
+     * Constructs a value from this value but, if possible, with the given strings removed.
+     */
+    Value restrictToNotStrings(Set<String> strings);
+
+    /**
+     * Constructs a value from this value but with no excluded or included strings.
+     */
+    Value forgetExcludedIncludedStrings();
+
+    /**
+     * Returns true if the value contains only known strings (possibly beside values of other type).
+     */
+    boolean isMaybeAllKnownStr();
+
+    /**
+     * Returns the set of all known strings.
+     * Only invoke if {@see #isMaybeAllKnownStr} returns true.
+     */
+    Set<String> getAllKnownStr();
 }

@@ -1,8 +1,8 @@
 test-resources/src/chromeexperiments/kaleidoscope.html:248:1: HTML StartTag missing required end tag
-test-resources/src/chromeexperiments/kaleidoscope.html:108:4: [definite] Too many parameters to function Math.random
-test-resources/src/chromeexperiments/kaleidoscope.html:109:4: [definite] Too many parameters to function Math.random
-test-resources/src/chromeexperiments/kaleidoscope.html:114:8: [definite] Too many parameters to function Math.random
-test-resources/src/chromeexperiments/kaleidoscope.html:115:8: [definite] Too many parameters to function Math.random
+test-resources/src/chromeexperiments/kaleidoscope.html:108:4: [definite] Too many parameters to native function
+test-resources/src/chromeexperiments/kaleidoscope.html:109:4: [definite] Too many parameters to native function
+test-resources/src/chromeexperiments/kaleidoscope.html:114:8: [definite] Too many parameters to native function
+test-resources/src/chromeexperiments/kaleidoscope.html:115:8: [definite] Too many parameters to native function
 test-resources/src/chromeexperiments/kaleidoscope.html:70:21: [definite] The conditional expression is always true
 test-resources/src/chromeexperiments/kaleidoscope.html:71:22: [definite] The conditional expression is always true
 test-resources/src/chromeexperiments/kaleidoscope.html:223:33: [definite] The conditional expression is always true

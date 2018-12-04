@@ -1,7 +1,7 @@
-TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3951:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c26,p25)
+TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3951:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c30,p29)
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3951:13):1:1: HTML StartTag a contains a '/' character before the closing '>', which is ignored because tags of this name cannot be empty-element tags
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3951:13):1:1: HTML StartTag missing required end tag
-TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3951:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c26,p25)
+TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3951:13):1:1: HTML StartTag a has missing whitespace after quoted attribute value at position (r1,c30,p29)
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3951:13):1:1: HTML StartTag a contains a '/' character before the closing '>', which is ignored because tags of this name cannot be empty-element tags
 TAJS-dynamic-code(benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3951:13):1:1: HTML StartTag missing required end tag
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:23:49: [definite] Variable context is null/undefined
@@ -130,7 +130,6 @@ benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:45:13: [definite] Dead a
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:54:21: [definite] Reading absent property nodeType
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:55:21: [definite] Dead assignment, property context is never read
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:145:13: [definite] Dead assignment, property selector is never read
-benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:147:13: [definite] Dead assignment, property jquery is never read
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:149:13: [definite] Dead assignment, property length is never read
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:151:13: [definite] Dead assignment, property size is never read
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:155:13: [definite] Dead assignment, property toArray is never read
@@ -210,7 +209,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2403:17: [definite] Dead
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2411:17: [definite] Dead assignment, property teardown is never read
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2440:20: [definite] Reading absent property type
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2452:9: [definite] Dead assignment, property timeStamp is never read
-benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2454:9: [definite] Dead assignment, property jQueryTAJS_UUID is never read
+benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2454:9: [definite] Dead assignment, property jQuery1507384926115383911 is never read
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2483:9: [definite] Dead assignment, property stopPropagation is never read
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2499:9: [definite] Dead assignment, property stopImmediatePropagation is never read
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2506:9: [definite] Dead assignment, property isImmediatePropagationStopped is never read
@@ -1074,7 +1073,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2836:5: [maybe] TypeErro
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2987:5: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2999:13: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3809:13: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3956:17: [maybe] <Document.getElementById>("scriptTAJS_UUID") did not match any elements
+benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3956:17: [maybe] <Document.getElementById>("script1543012515507") did not match any elements
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:4006:42: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:4006:89: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:4006:89: [maybe] TypeError, call to non-function
@@ -1258,6 +1257,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:1098:52: [maybe] Reading
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:1099:13: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:1100:13: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:1103:92: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:1142:29: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:1152:49: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:1166:27: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:1314:29: [maybe] Reading absent property (computed name)
@@ -1297,4 +1297,8 @@ benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:890:13: [info] Writing t
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:402:47: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:1314:29: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:2230:48: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 5498 checks (with 0 expected failures)
+benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:700:24: [unsound] Assuming Date.now returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:890:13: [unsound] Skipping write to property '__proto__'
+benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:1142:50: [unsound] Assuming Math.random returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js:3950:72: [unsound] Assuming Date.now returns fixed value
+Soundness testing succeeded for 5520 checks (with 1 expected failures)

@@ -100,7 +100,7 @@ public class NativeObjectToString {
 
         Set<Value> positives = separator.positive.stream().map(stringWrapper).map(Value::makeStr).collect(Collectors.toSet());
         Set<String> negatives = separator.negative.stream().map(stringWrapper).collect(Collectors.toSet());
-        return Value.join(positives); // TODO add .removeStrings once complement-strings are supported
+        return Value.join(positives).restrictToNotStrings(negatives);
     }
 
     private static class Separator<T> {

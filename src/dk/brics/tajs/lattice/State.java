@@ -20,7 +20,6 @@ import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey.StringPKey;
-import dk.brics.tajs.lattice.PKey.SymbolPKey;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
@@ -37,18 +36,14 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.function.Predicate;
 
-import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
-import static dk.brics.tajs.util.Collections.singleton;
 import static dk.brics.tajs.util.Collections.sortedEntries;
 
 /**
@@ -111,7 +106,13 @@ public class State implements IState<State, Context, CallEdge> {
      */
     private Set<ObjectLabel> stacked_objlabels; // not used if lazy propagation is enabled
 
-    private boolean writable_stacked_objlabels; // for copy-on-write
+    /**
+     * Set of (function entry, context) in call stack.
+     * Used for recursion detection.
+     */
+    private Set<BlockAndContext<Context>> stacked_funentries;
+
+    private boolean writable_stacked; // for copy-on-write for stacked_objlabels and stacked_funentries
 
     private StateExtras extras;
 
@@ -169,17 +170,19 @@ public class State implements IState<State, Context, CallEdge> {
         registers = newList(x.registers);
         writable_registers = true;
         stacked_objlabels = newSet(x.stacked_objlabels);
-        writable_stacked_objlabels = true;
+        stacked_funentries = newSet(x.stacked_funentries);
+        writable_stacked = true;
 //        } else {
 //            store = x.store;
 //            basis_store = x.basis_store;
 //            execution_context = x.execution_context;
 //            registers = x.registers;
 //            stacked_objlabels = x.stacked_objlabels;
+//            stacked_funentries = x.stacked_funentries;
 //            x.writable_execution_context = writable_execution_context = false;
 //            x.writable_store = writable_store = false;
 //            x.writable_registers = writable_registers = false;
-//            x.writable_stacked_objlabels = writable_stacked_objlabels = false;
+//            x.writable_stacked = writable_stacked = false;
 //        }
     }
 
@@ -394,23 +397,33 @@ public class State implements IState<State, Context, CallEdge> {
     }
 
     /**
-     * Sets the object labels that appear on the stack.
+     * Returns the functions that appear on the stack.
+     * Not used if lazy propagation is enabled
      */
-    public void setStackedObjects(Set<ObjectLabel> so) {
-        stacked_objlabels = so;
-        writable_stacked_objlabels = true;
+    public Set<BlockAndContext<Context>> getStackedFunctions() {
+        return stacked_funentries;
     }
 
     /**
-     * Makes stacked object set writable (for copy-on-write).
+     * Sets the object labels and functions that appear on the stack.
      */
-    private void makeWritableStackedObjects() {
-        if (!Options.get().isLazyDisabled())
+    public void setStacked(Set<ObjectLabel> so, Set<BlockAndContext<Context>> sf) {
+        if (so != null)
+            stacked_objlabels = so;
+        stacked_funentries = sf;
+        writable_stacked = true;
+    }
+
+    /**
+     * Makes stacked objects and functions writable (for copy-on-write).
+     */
+    private void makeWritableStacked() {
+        if (writable_stacked)
             return;
-        if (writable_stacked_objlabels)
-            return;
-        stacked_objlabels = newSet(stacked_objlabels);
-        writable_stacked_objlabels = true;
+        if (Options.get().isLazyDisabled())
+            stacked_objlabels = newSet(stacked_objlabels);
+        stacked_funentries = newSet(stacked_funentries);
+        writable_stacked = true;
     }
 
     /**
@@ -470,14 +483,16 @@ public class State implements IState<State, Context, CallEdge> {
         registers = new ArrayList<>();
         writable_registers = true;
         stacked_objlabels = newSet();
-        writable_stacked_objlabels = true;
+        stacked_funentries = newSet();
+        writable_stacked = true;
 //        } else {
 //            store = Collections.emptyMap();
 //            writable_store = false;
 //            registers = Collections.emptyList();
 //            writable_registers = false;
 //            stacked_objlabels = Collections.emptySet();
-//            writable_stacked_objlabels = false;
+//            stacked_funentries = Collections.emptySet();
+//            writable_stacked = false;
 //        }
         execution_context = new ExecutionContext();
         writable_execution_context = true;
@@ -520,7 +535,7 @@ public class State implements IState<State, Context, CallEdge> {
 //            // assuming that store_default, execution_context, stacked_objlabels, and registers are identical in this and other
 //            if (!store_default.equals(other.store_default) ||
 //                    !execution_context.equals(other.execution_context) ||
-//                    !stacked_objlabels.equals(other.stacked_objlabels) ||
+//                    !stacked_objlabels.equals(other.stacked_objlabels) || // FIXME: also consider stacked_funentries
 //                    !reads.store_default.equals(reads_other.store_default) ||
 //                    !reads.execution_context.equals(reads_other.execution_context) ||
 //                    !reads.stacked_objlabels.equals(reads_other.stacked_objlabels))
@@ -814,7 +829,7 @@ public class State implements IState<State, Context, CallEdge> {
      * @return true if an object changed (note there may be other changes due to recoveries)
      */
     @Override
-    public boolean propagate(State s, boolean funentry) {
+    public boolean propagate(State s, boolean funentry, boolean widen) {
         if (Options.get().isDebugOrTestEnabled() && !store_default.isAllNone() && !s.store_default.isAllNone() && !store_default.equals(s.store_default))
             throw new AnalysisException("Expected store default objects to be equal");
         if (log.isDebugEnabled() && Options.get().isIntermediateStatesEnabled()) {
@@ -835,15 +850,16 @@ public class State implements IState<State, Context, CallEdge> {
         makeWritableStore();
         makeWritableExecutionContext();
         makeWritableRegisters();
-        makeWritableStackedObjects();
+        makeWritableStacked();
         boolean changed = execution_context.add(s.execution_context);
         Set<ObjectLabel> labs = newSet();
         labs.addAll(store.keySet());
         labs.addAll(s.store.keySet());
         for (ObjectLabel lab : labs)
-            changed |= propagateObj(lab, s, lab, false);
+            changed |= propagateObj(lab, s, lab, false, widen);
         if (Options.get().isLazyDisabled())
             changed |= stacked_objlabels.addAll(s.stacked_objlabels);
+        changed |= stacked_funentries.addAll(s.stacked_funentries);
         changed |= extras.propagate(s.extras);
         changed |= summarized.join(s.summarized);
         if (!funentry) {
@@ -856,7 +872,7 @@ public class State implements IState<State, Context, CallEdge> {
                 else if (v2 == null)
                     v = v1;
                 else
-                    v = UnknownValueResolver.join(v1, this, v2, s);
+                    v = UnknownValueResolver.join(v1, this, v2, s, widen);
                 if (i < registers.size())
                     registers.set(i, v);
                 else
@@ -893,7 +909,7 @@ public class State implements IState<State, Context, CallEdge> {
      * @param modified if true, set modified flag on written values
      * @return true if the object changed (note there may be other changes due to recoveries)
      */
-    public boolean propagateObj(ObjectLabel objlabel_to, State state_from, ObjectLabel objlabel_from, boolean modified) {
+    public boolean propagateObj(ObjectLabel objlabel_to, State state_from, ObjectLabel objlabel_from, boolean modified, boolean widen) {
         Obj obj_from = state_from.getObject(objlabel_from, false);
         Obj obj_to = getObject(objlabel_to, false);
         if (obj_from == obj_to && !modified) {
@@ -906,46 +922,46 @@ public class State implements IState<State, Context, CallEdge> {
         }
         // join all properties from obj_from into obj_to
         boolean changed = false;
-        Value default_array_property_to = obj_to.getDefaultArrayProperty();
-        Value default_array_property_from = obj_from.getDefaultArrayProperty();
-        Value default_array_property_to_original = default_array_property_to;
-        if (modified || !default_array_property_to.isUnknown() || !default_array_property_from.isUnknown()) {
-            if (default_array_property_to.isUnknown())
-                default_array_property_to = UnknownValueResolver.getDefaultArrayProperty(objlabel_to, this);
-            if (default_array_property_from.isUnknown())
-                default_array_property_from = UnknownValueResolver.getDefaultArrayProperty(objlabel_from, state_from);
-            default_array_property_to = default_array_property_to.join(default_array_property_from);
+        Value default_numeric_property_to = obj_to.getDefaultNumericProperty();
+        Value default_numeric_property_from = obj_from.getDefaultNumericProperty();
+        Value default_numeric_property_to_original = default_numeric_property_to;
+        if (modified || !default_numeric_property_to.isUnknown() || !default_numeric_property_from.isUnknown()) {
+            if (default_numeric_property_to.isUnknown())
+                default_numeric_property_to = UnknownValueResolver.getDefaultNumericProperty(objlabel_to, this);
+            if (default_numeric_property_from.isUnknown())
+                default_numeric_property_from = UnknownValueResolver.getDefaultNumericProperty(objlabel_from, state_from);
+            default_numeric_property_to = default_numeric_property_to.join(default_numeric_property_from, widen);
             if (modified)
-                default_array_property_to = default_array_property_to.joinModified();
-            if (default_array_property_to != default_array_property_to_original) {
+                default_numeric_property_to = default_numeric_property_to.joinModified();
+            if (default_numeric_property_to != default_numeric_property_to_original) {
                 if (!obj_to.isWritable())
                     obj_to = getObject(objlabel_to, true);
-                obj_to.setDefaultArrayProperty(default_array_property_to);
+                obj_to.setDefaultNumericProperty(default_numeric_property_to);
                 changed = true;
             }
         }
-        Value default_nonarray_property_to = obj_to.getDefaultNonArrayProperty();
-        Value default_nonarray_property_from = obj_from.getDefaultNonArrayProperty();
-        Value default_nonarray_property_to_original = default_nonarray_property_to;
-        if (modified || !default_nonarray_property_to.isUnknown() || !default_nonarray_property_from.isUnknown()) {
-            if (default_nonarray_property_to.isUnknown())
-                default_nonarray_property_to = UnknownValueResolver.getDefaultNonArrayProperty(objlabel_to, this);
-            if (default_nonarray_property_from.isUnknown())
-                default_nonarray_property_from = UnknownValueResolver.getDefaultNonArrayProperty(objlabel_from, state_from);
-            default_nonarray_property_to = default_nonarray_property_to.join(default_nonarray_property_from);
+        Value default_other_property_to = obj_to.getDefaultOtherProperty();
+        Value default_other_property_from = obj_from.getDefaultOtherProperty();
+        Value default_other_property_to_original = default_other_property_to;
+        if (modified || !default_other_property_to.isUnknown() || !default_other_property_from.isUnknown()) {
+            if (default_other_property_to.isUnknown())
+                default_other_property_to = UnknownValueResolver.getDefaultOtherProperty(objlabel_to, this);
+            if (default_other_property_from.isUnknown())
+                default_other_property_from = UnknownValueResolver.getDefaultOtherProperty(objlabel_from, state_from);
+            default_other_property_to = default_other_property_to.join(default_other_property_from, widen);
             if (modified)
-                default_nonarray_property_to = default_nonarray_property_to.joinModified();
-            if (default_nonarray_property_to != default_nonarray_property_to_original) {
+                default_other_property_to = default_other_property_to.joinModified();
+            if (default_other_property_to != default_other_property_to_original) {
                 if (!obj_to.isWritable())
                     obj_to = getObject(objlabel_to, true);
-                obj_to.setDefaultNonArrayProperty(default_nonarray_property_to);
+                obj_to.setDefaultOtherProperty(default_other_property_to);
                 changed = true;
             }
         }
         obj_from = state_from.getObject(objlabel_from, false); // propagating defaults may have materialized properties, so get the latest version
         for (PKey propertyname : obj_from.getProperties().keySet()) {
             if (!obj_to.getProperties().containsKey(propertyname)) {
-                Value v = propertyname.isArrayIndex() ? default_array_property_to_original : default_nonarray_property_to_original;
+                Value v = propertyname.isNumeric() ? default_numeric_property_to_original : default_other_property_to_original;
                 if (!obj_to.isWritable())
                     obj_to = getObject(objlabel_to, true);
                 obj_to.setProperty(propertyname, v); // materializing from default doesn't affect 'changed'
@@ -962,7 +978,7 @@ public class State implements IState<State, Context, CallEdge> {
                     v_to = UnknownValueResolver.getProperty(objlabel_to, propertyname, this, v_from.isPolymorphic());
                 if (v_from.isUnknown())
                     v_from = UnknownValueResolver.getProperty(objlabel_from, propertyname, state_from, v_to.isPolymorphic());
-                v_to = UnknownValueResolver.join(v_to, this, v_from, state_from);
+                v_to = UnknownValueResolver.join(v_to, this, v_from, state_from, widen);
                 if (modified)
                     v_to = v_to.joinModified();
                 if (v_to != v_to_original) {
@@ -981,7 +997,7 @@ public class State implements IState<State, Context, CallEdge> {
                 internal_prototype_to = UnknownValueResolver.getInternalPrototype(objlabel_to, this, internal_prototype_from.isPolymorphic());
             if (internal_prototype_from.isUnknown())
                 internal_prototype_from = UnknownValueResolver.getInternalPrototype(objlabel_from, state_from, internal_prototype_to.isPolymorphic());
-            internal_prototype_to = UnknownValueResolver.join(internal_prototype_to, this, internal_prototype_from, state_from);
+            internal_prototype_to = UnknownValueResolver.join(internal_prototype_to, this, internal_prototype_from, state_from, widen);
             if (modified)
                 internal_prototype_to = internal_prototype_to.joinModified();
             if (internal_prototype_to != internal_prototype_to_original) {
@@ -999,7 +1015,7 @@ public class State implements IState<State, Context, CallEdge> {
                 internal_value_to = UnknownValueResolver.getInternalValue(objlabel_to, this, internal_value_from.isPolymorphic());
             if (internal_value_from.isUnknown())
                 internal_value_from = UnknownValueResolver.getInternalValue(objlabel_from, state_from, internal_value_to.isPolymorphic());
-            internal_value_to = UnknownValueResolver.join(internal_value_to, this, internal_value_from, state_from);
+            internal_value_to = UnknownValueResolver.join(internal_value_to, this, internal_value_from, state_from, widen);
             if (modified)
                 internal_value_to = internal_value_to.joinModified();
             if (internal_value_to != internal_value_to_original) {
@@ -1049,11 +1065,11 @@ public class State implements IState<State, Context, CallEdge> {
 
                     Collection<Value> values = newList();
                     if (propertyName.isMaybeFuzzyStrOrSymbol()) {
-                        if (propertyName.isMaybeStrSomeNonUInt()) {
-                            values.add(UnknownValueResolver.getDefaultNonArrayProperty(l, this));
+                        if (propertyName.isMaybeStrSomeNonNumeric()) {
+                            values.add(UnknownValueResolver.getDefaultOtherProperty(l, this));
                         }
-                        if (propertyName.isMaybeStrSomeUInt()) {
-                            values.add(UnknownValueResolver.getDefaultNonArrayProperty(l, this));
+                        if (propertyName.isMaybeStrSomeNumeric()) {
+                            values.add(UnknownValueResolver.getDefaultNumericProperty(l, this));
                         }
                         // relevant properties have been materialized now
                         values.addAll(getObject(l, false).getProperties().keySet().stream()
@@ -1094,7 +1110,7 @@ public class State implements IState<State, Context, CallEdge> {
             for (ObjectLabel l : ol)
                 if (!visited.contains(l)) {
                     visited.add(l);
-                    Value v = UnknownValueResolver.getDefaultArrayProperty(objlabel, state);
+                    Value v = UnknownValueResolver.getDefaultNumericProperty(objlabel, state);
                     if (v.isMaybeAbsent()) {
                         Value proto = UnknownValueResolver.getInternalPrototype(l, state, false);
                         ol2.addAll(proto.getObjectLabels());
@@ -1144,10 +1160,10 @@ public class State implements IState<State, Context, CallEdge> {
         } else {
             // join the empty object into oldobj (only relevant if recency abstraction is disabled)
             Obj obj = getObject(objlabel, true);
-            Value old_array = UnknownValueResolver.getDefaultArrayProperty(objlabel, this);
-            Value old_nonarray = UnknownValueResolver.getDefaultNonArrayProperty(objlabel, this);
-            obj.setDefaultArrayProperty(old_array.joinAbsentModified());
-            obj.setDefaultNonArrayProperty(old_nonarray.joinAbsentModified());
+            Value old_numeric = UnknownValueResolver.getDefaultNumericProperty(objlabel, this);
+            Value old_other = UnknownValueResolver.getDefaultOtherProperty(objlabel, this);
+            obj.setDefaultNumericProperty(old_numeric.joinAbsentModified());
+            obj.setDefaultOtherProperty(old_other.joinAbsentModified());
             for (Map.Entry<PKey, Value> me : newSet(UnknownValueResolver.getProperties(objlabel, this).entrySet())) {
                 PKey propertyname = me.getKey();
                 Value v = me.getValue();
@@ -1167,7 +1183,7 @@ public class State implements IState<State, Context, CallEdge> {
         if (!oldobj.isSomeNone()) {
             // join singleton object into its summary object
             // FIXME Support c.getMonitoring().visitRenameObject(c.getNode(), singleton, summary, this); (GitHub #413)
-            propagateObj(summary, this, singleton, true);
+            propagateObj(summary, this, singleton, true, false);
             // update references
             Map<ScopeChain, ScopeChain> cache = new HashMap<>();
             for (ObjectLabel objlabel2 : newList(store.keySet())) {
@@ -1188,7 +1204,7 @@ public class State implements IState<State, Context, CallEdge> {
             extras.replaceObjectLabel(singleton, summary);
             if (Options.get().isLazyDisabled())
                 if (stacked_objlabels.contains(singleton)) {
-                    makeWritableStackedObjects();
+                    makeWritableStacked();
                     stacked_objlabels.remove(singleton);
                     stacked_objlabels.add(summary);
                 }
@@ -1226,7 +1242,7 @@ public class State implements IState<State, Context, CallEdge> {
             // move the object
             ObjectLabel summarylabel = objlabel.makeSummary();
             c.getMonitoring().visitRenameObject(c.getNode(), objlabel, summarylabel, this);
-            propagateObj(summarylabel, this, objlabel, true);
+            propagateObj(summarylabel, this, objlabel, true, false);
             store.remove(objlabel);
             // update references
             Map<ScopeChain, ScopeChain> cache = new HashMap<>();
@@ -1248,7 +1264,7 @@ public class State implements IState<State, Context, CallEdge> {
             extras.replaceObjectLabel(objlabel, summarylabel);
             if (Options.get().isLazyDisabled())
                 if (stacked_objlabels.contains(objlabel)) {
-                    makeWritableStackedObjects();
+                    makeWritableStacked();
                     stacked_objlabels.remove(objlabel);
                     stacked_objlabels.add(summarylabel);
                 }
@@ -1277,10 +1293,10 @@ public class State implements IState<State, Context, CallEdge> {
         switch (p.getKind()) {
             case ORDINARY:
                 return UnknownValueResolver.getProperty(objlabel, p.getPropertyName(), this, partial);
-            case DEFAULT_ARRAY:
-                return UnknownValueResolver.getDefaultArrayProperty(objlabel, this);
-            case DEFAULT_NONARRAY:
-                return UnknownValueResolver.getDefaultNonArrayProperty(objlabel, this);
+            case DEFAULT_NUMERIC:
+                return UnknownValueResolver.getDefaultNumericProperty(objlabel, this);
+            case DEFAULT_OTHER:
+                return UnknownValueResolver.getDefaultOtherProperty(objlabel, this);
             case INTERNAL_PROTOTYPE:
                 return UnknownValueResolver.getInternalPrototype(objlabel, this, partial);
             case INTERNAL_VALUE:
@@ -1299,11 +1315,11 @@ public class State implements IState<State, Context, CallEdge> {
             case ORDINARY:
                 obj.setProperty(p.getPropertyName(), v);
                 break;
-            case DEFAULT_ARRAY:
-                obj.setDefaultArrayProperty(v);
+            case DEFAULT_NUMERIC:
+                obj.setDefaultNumericProperty(v);
                 break;
-            case DEFAULT_NONARRAY:
-                obj.setDefaultNonArrayProperty(v);
+            case DEFAULT_OTHER:
+                obj.setDefaultOtherProperty(v);
                 break;
             case INTERNAL_PROTOTYPE:
                 obj.setInternalPrototype(v);
@@ -1335,7 +1351,7 @@ public class State implements IState<State, Context, CallEdge> {
             // FIXME only null or object values are actually written! (see JSObject -> OBJECT_SETPROTOTYPEOF for example) (GitHub #356)
             // FIXME Property.__PROTO__ should be assigned `absent` when `newval.isMaybeNull` (GitHub #356)
             obj.setProperty(StringPKey.__PROTO__, newval.setAttributes(true, true, false));
-            obj.setInternalPrototype(newval);
+            obj.setInternalPrototype(newval); // TODO: redundant, the value is also available as __proto__
         }
         if (log.isDebugEnabled())
             log.debug("writeInternalPrototype(" + objlabels + "," + value + ")");
@@ -1498,6 +1514,7 @@ public class State implements IState<State, Context, CallEdge> {
 //            }
 //        }
 //        stacked_objlabels.removeAll(other.stacked_objlabels);
+//        stacked_funentries.removeAll(other.stacked_funentries);
 //        extras.remove(other.extras);
 //    }
 
@@ -1536,6 +1553,10 @@ public class State implements IState<State, Context, CallEdge> {
         temp.removeAll(old.stacked_objlabels);
         if (!temp.isEmpty())
             b.append("\n      new stacked object labels: ").append(temp);
+        Set<BlockAndContext<Context>> temp2 = newSet(stacked_funentries);
+        temp2.removeAll(old.stacked_funentries);
+        if (!temp2.isEmpty())
+            b.append("\n      new stacked functions: ").append(temp2);
         if (!registers.equals(old.registers))
             b.append("\n      registers changed");
         // TODO: implement diff for StateExtras?
@@ -1563,6 +1584,7 @@ public class State implements IState<State, Context, CallEdge> {
         b.append(extras);
         if (Options.get().isLazyDisabled())
             b.append("\n  Objects used by outer scopes: ").append(stacked_objlabels);
+        b.append("\n  Functions in stack: ").append(stacked_funentries);
         return b.toString();
     }
 
@@ -1633,11 +1655,11 @@ public class State implements IState<State, Context, CallEdge> {
                 for (Map.Entry<PKey, Value> ee : obj.getProperties().entrySet()) {
                     s.append("|").append("<f").append(index++).append("> ").append(ee.getKey()).append("=").append(esc(ee.getValue().restrictToNotObject().toString()));
                 }
-                if (!obj.getDefaultArrayProperty().isUnknown()) {
-                    s.append("|").append("<f").append(index++).append("> [[DefaultArray]]=").append(esc(obj.getDefaultArrayProperty().restrictToNotObject().toString()));
+                if (!obj.getDefaultNumericProperty().isUnknown()) {
+                    s.append("|").append("<f").append(index++).append("> [[DefaultNumeric]]=").append(esc(obj.getDefaultNumericProperty().restrictToNotObject().toString()));
                 }
-                if (!obj.getDefaultNonArrayProperty().isUnknown()) {
-                    s.append("|").append("<f").append(index++).append("> [[DefaultNonArray]]=").append(esc(obj.getDefaultNonArrayProperty().restrictToNotObject().toString()));
+                if (!obj.getDefaultOtherProperty().isUnknown()) {
+                    s.append("|").append("<f").append(index++).append("> [[DefaultOther]]=").append(esc(obj.getDefaultOtherProperty().restrictToNotObject().toString()));
                 }
                 if (!obj.getInternalPrototype().isUnknown()) {
                     s.append("|").append("<f").append(index++).append("> [[Prototype]]=").append(esc(obj.getInternalPrototype().restrictToNotObject().toString()));
@@ -1669,17 +1691,17 @@ public class State implements IState<State, Context, CallEdge> {
                 }
                 index++;
             }
-            if (!obj.getDefaultArrayProperty().isUnknown()) {
+            if (!obj.getDefaultNumericProperty().isUnknown()) {
                 String source = node(sourceLabel) + ":f" + index;
-                for (ObjectLabel targetLabel : obj.getDefaultArrayProperty().getObjectLabels()) {
+                for (ObjectLabel targetLabel : obj.getDefaultNumericProperty().getObjectLabels()) {
                     String target = node(targetLabel);
                     es.append("\t").append(source).append(" -> ").append(target).append(";\n");
                 }
                 index++;
             }
-            if (!obj.getDefaultNonArrayProperty().isUnknown()) {
+            if (!obj.getDefaultOtherProperty().isUnknown()) {
                 String source = node(sourceLabel) + ":f" + index;
-                for (ObjectLabel targetLabel : obj.getDefaultArrayProperty().getObjectLabels()) {
+                for (ObjectLabel targetLabel : obj.getDefaultOtherProperty().getObjectLabels()) {
                     String target = node(targetLabel);
                     es.append("\t").append(source).append(" -> ").append(target).append(";\n");
                 }
@@ -1845,7 +1867,7 @@ public class State implements IState<State, Context, CallEdge> {
      * Returns true if the given object label is definitely the none object at the given function entry state.
      */
     private static boolean noneAtEntry(ObjectLabel objlabel, State entry_state) {
-        return entry_state.getObject(objlabel, false).getDefaultArrayProperty().isNone();
+        return entry_state.getObject(objlabel, false).getDefaultNumericProperty().isNone();
     }
 
     /**
@@ -1894,8 +1916,8 @@ public class State implements IState<State, Context, CallEdge> {
         Obj fo = getObject(objlabel, false);
         for (Value v : fo.getProperties().values())
             objlabels.addAll(v.getAllObjectLabels());
-        objlabels.addAll(fo.getDefaultArrayProperty().getAllObjectLabels());
-        objlabels.addAll(fo.getDefaultNonArrayProperty().getAllObjectLabels());
+        objlabels.addAll(fo.getDefaultNumericProperty().getAllObjectLabels());
+        objlabels.addAll(fo.getDefaultOtherProperty().getAllObjectLabels());
         objlabels.addAll(fo.getInternalPrototype().getAllObjectLabels());
         objlabels.addAll(fo.getInternalValue().getAllObjectLabels());
         if (!fo.isScopeChainUnknown())
@@ -2011,7 +2033,7 @@ public class State implements IState<State, Context, CallEdge> {
     public void stackObjectLabels() {
         if (!Options.get().isLazyDisabled())
             return;
-        makeWritableStackedObjects();
+        makeWritableStacked();
         for (Value v : registers)
             if (v != null)
                 stacked_objlabels.addAll(v.getObjectLabels());

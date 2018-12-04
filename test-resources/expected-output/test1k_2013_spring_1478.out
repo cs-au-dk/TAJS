@@ -1,7 +1,6 @@
 test-resources/src/1k2013spring/1478.js:79:1: [definite] The variable event is never used
 test-resources/src/1k2013spring/1478.js:21:5: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2013spring/1478.js:36:17: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1478.js:36:17: [maybe] TypeError, call to non-function
 test-resources/src/1k2013spring/1478.js:74:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1478.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1478.js:21:5, test-resources/src/1k2013spring/1478.js:36:17, test-resources/src/1k2013spring/1478.js:74:5, test-resources/src/1k2013spring/shim.js:9:5]

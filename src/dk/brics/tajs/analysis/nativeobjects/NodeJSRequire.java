@@ -4,6 +4,7 @@ import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.options.TAJSEnvironmentConfig;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.PathAndURLUtils;
 
@@ -16,7 +17,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newMap;
 

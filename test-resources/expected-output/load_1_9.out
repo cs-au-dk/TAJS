@@ -131,6 +131,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3654:23: [definite] Vari
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3656:13: [definite] The conditional expression is always false
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3656:17: [definite] The conditional expression is always false
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3656:25: [definite] Variable document is null/undefined
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3675:24: [definite] The conditional expression is always true
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3681:21: [definite] The conditional expression is always false
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3697:28: [definite] The conditional expression is always true
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3720:13: [definite] The conditional expression is always true
@@ -183,11 +184,11 @@ benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:222:9: [definite] Dead a
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:228:9: [definite] Dead assignment, property push is never read
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:229:9: [definite] Dead assignment, property sort is never read
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:230:9: [definite] Dead assignment, property splice is never read
-benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:325:24: [definite] Too few parameters to function Window.setTimeout
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:325:24: [definite] Too few parameters to native function
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:352:42: [definite] Reading absent property window
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:352:42: [definite] Reading absent property window of host object
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:369:58: [definite] Reading absent property nodeType
-benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:781:17: [definite] Too few parameters to function Window.setTimeout
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:781:17: [definite] Too few parameters to native function
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:836:13: [definite] Reading absent property nodeType
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:932:38: [definite] Reading absent property unique
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:961:13: [definite] Dead assignment, property remove is never read
@@ -307,7 +308,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:2962:9: [definite] Dead 
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3012:20: [definite] Reading absent property type
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3028:9: [definite] Dead assignment, property timeStamp is never read
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3028:33: [definite] Reading absent property timeStamp
-benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3030:9: [definite] Dead assignment, property jQueryTAJS_UUID is never read
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3030:9: [definite] Dead assignment, property jQuery19006848333982085144 is never read
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3037:9: [definite] Dead assignment, property isImmediatePropagationStopped is never read
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3038:9: [definite] Dead assignment, property preventDefault is never read
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3055:9: [definite] Dead assignment, property stopPropagation is never read
@@ -828,11 +829,11 @@ benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3406:50: [definite] The 
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3406:73: [definite] The variable outermostContext is never used
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3407:41: [definite] The variable documentIsXML is never used
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3407:91: [definite] The variable contains is never used
-benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:89: [definite] The variable dirruns is never used
-benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:102: [definite] The variable done is never used
-benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:112: [definite] The variable classCache is never used
-benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:140: [definite] The variable tokenCache is never used
-benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:168: [definite] The variable compilerCache is never used
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:91: [definite] The variable dirruns is never used
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:104: [definite] The variable done is never used
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:114: [definite] The variable classCache is never used
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:142: [definite] The variable tokenCache is never used
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:170: [definite] The variable compilerCache is never used
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3409:42: [definite] The variable MAX_NEGATIVE is never used
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3410:19: [definite] The variable pop is never used
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3410:34: [definite] The variable push is never used
@@ -1339,8 +1340,8 @@ benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3386:5: [maybe] TypeErro
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3673:35: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3673:35: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3686:17: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3699:17: [maybe] <HTMLDocument.prototype.getElementsByName>(sizzleTAJS_UUID0) did not match any elements
-benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3700:41: [maybe] <Document.getElementById>("sizzleTAJS_UUID") did not match any elements
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3699:17: [maybe] <HTMLDocument.prototype.getElementsByName>(sizzle-15430124902180) did not match any elements
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3700:41: [maybe] <Document.getElementById>("sizzle-1543012490218") did not match any elements
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3708:49: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3708:97: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3708:97: [maybe] TypeError, call to non-function
@@ -1612,6 +1613,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1318:60: [maybe] Reading
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1338:48: [maybe] Converting undefined to string
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1378:23: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1378:43: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1543:29: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1553:49: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1574:43: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1574:57: [maybe] Converting object to string
@@ -1645,6 +1647,7 @@ benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3028:33: [maybe] Convert
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3321:26: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3386:17: [maybe] Converting object to string
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3386:17: [maybe] Converting primitive string to object
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:30: [maybe] Converting object to number
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3428:22: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3435:115: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3440:36: [maybe] Converting primitive string to object
@@ -1666,4 +1669,9 @@ benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:958:24: [info] 'this' re
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1002:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1034:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1574:43: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 7142 checks (with 0 expected failures)
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:769:20: [unsound] Assuming Date.now returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:896:55: [unsound] Assuming UInt-addition is closed
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:1543:46: [unsound] Assuming Math.random returns fixed value
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:2692:37: [unsound] Assuming UInt-addition is closed
+benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js:3408:32: [unsound] Assuming Date.now returns fixed value
+Soundness testing succeeded for 7158 checks (with 2 expected failures)

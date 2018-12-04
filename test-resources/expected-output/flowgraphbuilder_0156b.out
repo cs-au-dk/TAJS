@@ -151,7 +151,7 @@ function()
     node 55: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
     ->[]
 
-test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:5:13: [definite] Too few parameters to function Window.setInterval
+test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:5:13: [definite] Too few parameters to native function
 test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html: [definite] Exceptional program exit is unreachable
 test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:5:13: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 0 checks (with 0 expected failures)

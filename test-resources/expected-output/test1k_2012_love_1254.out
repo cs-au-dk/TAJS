@@ -1,19 +1,78 @@
-test-resources/src/1k2012love/1254.js:122:5: [definite] TypeError, call to non-function
-test-resources/src/1k2012love/1254.js:238:3: [definite] ReferenceError, reading absent variable P
-test-resources/src/1k2012love/1254.js:115:3: [definite] The conditional expression is always true
-test-resources/src/1k2012love/1254.js:122:5: [definite] Reading absent property lc of host object
-test-resources/src/1k2012love/1254.js:69:5: [definite] Unreachable function
-test-resources/src/1k2012love/1254.js:113:13: [definite] The variable e is never used
-test-resources/src/1k2012love/1254.js:124:5: [definite] Unreachable code
-test-resources/src/1k2012love/1254.js:237:15: [definite] The variable e is never used
-test-resources/src/1k2012love/1254.js:238:3: [definite] Unreachable code
+test-resources/src/1k2012love/1254.js:83:7: [maybe] ReferenceError, reading absent variable L
+test-resources/src/1k2012love/1254.js:88:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1254.js:115:8: [maybe] ReferenceError, reading absent variable B
 test-resources/src/1k2012love/1254.js:118:7: [maybe] ReferenceError, reading absent variable i
 test-resources/src/1k2012love/1254.js:121:5: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1254.js:122:5: [maybe] Too many parameters to native function
+test-resources/src/1k2012love/1254.js:122:5: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1254.js:122:5: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
 test-resources/src/1k2012love/1254.js:122:16: [maybe] ReferenceError, reading absent variable S
 test-resources/src/1k2012love/1254.js:122:19: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2012love/1254.js:127:5: [maybe] Too many parameters to native function
+test-resources/src/1k2012love/1254.js:127:5: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1254.js:127:5: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2012love/1254.js:128:7: [maybe] ReferenceError, reading absent variable L
+test-resources/src/1k2012love/1254.js:129:9: [maybe] ReferenceError, reading absent variable L
+test-resources/src/1k2012love/1254.js:129:24: [maybe] ReferenceError, reading absent variable L
+test-resources/src/1k2012love/1254.js:133:7: [maybe] ReferenceError, reading absent variable i
+test-resources/src/1k2012love/1254.js:134:9: [maybe] ReferenceError, reading absent variable L
+test-resources/src/1k2012love/1254.js:138:14: [maybe] ReferenceError, reading absent variable n
+test-resources/src/1k2012love/1254.js:142:3: [maybe] ReferenceError, reading absent variable a
+test-resources/src/1k2012love/1254.js:143:3: [maybe] Too many parameters to native function
+test-resources/src/1k2012love/1254.js:143:3: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1254.js:143:3: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2012love/1254.js:143:14: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2012love/1254.js:143:17: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2012love/1254.js:147:9: [maybe] ReferenceError, reading absent variable B
+test-resources/src/1k2012love/1254.js:152:19: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2012love/1254.js:153:19: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2012love/1254.js:164:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1254.js:185:27: [maybe] Too many parameters to native function
+test-resources/src/1k2012love/1254.js:185:27: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1254.js:185:27: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2012love/1254.js:185:27: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2012love/1254.js:190:17: [maybe] ReferenceError, reading absent variable P
+test-resources/src/1k2012love/1254.js:190:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1254.js:193:9: [maybe] Too many parameters to native function
+test-resources/src/1k2012love/1254.js:193:9: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1254.js:193:9: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1254.js:193:9: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2012love/1254.js:193:9: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2012love/1254.js:198:9: [maybe] Too many parameters to native function
+test-resources/src/1k2012love/1254.js:198:9: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1254.js:198:9: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2012love/1254.js:198:9: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2012love/1254.js:203:9: [maybe] Too many parameters to native function
+test-resources/src/1k2012love/1254.js:203:9: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1254.js:203:9: [maybe] TypeError, inf or NaN as arguments to CanvasRenderingContext2D.putImageData
+test-resources/src/1k2012love/1254.js:203:9: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2012love/1254.js:208:9: [maybe] Too many parameters to native function
+test-resources/src/1k2012love/1254.js:208:9: [maybe] TypeError, call to non-function
+test-resources/src/1k2012love/1254.js:208:9: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+test-resources/src/1k2012love/1254.js:208:20: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2012love/1254.js:208:23: [maybe] ReferenceError, reading absent variable S
+test-resources/src/1k2012love/1254.js:216:7: [maybe] ReferenceError, reading absent variable P
+test-resources/src/1k2012love/1254.js:216:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1254.js:223:5: [maybe] ReferenceError, reading absent variable L
+test-resources/src/1k2012love/1254.js:238:3: [maybe] ReferenceError, reading absent variable P
+test-resources/src/1k2012love/1254.js:238:3: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2012love/1254.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1254.js:115:8, test-resources/src/1k2012love/1254.js:118:7, test-resources/src/1k2012love/1254.js:121:5, test-resources/src/1k2012love/1254.js:122:5, test-resources/src/1k2012love/1254.js:122:16, test-resources/src/1k2012love/1254.js:122:19, test-resources/src/1k2012love/1254.js:238:3, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1254.js:122:5: [maybe] Reading absent property lc of host object
+test-resources/src/1k2012love/1254.js:122:5: [maybe] Too few parameters to native function
+test-resources/src/1k2012love/1254.js:127:5: [maybe] Reading absent property lx of host object
+test-resources/src/1k2012love/1254.js:127:5: [maybe] Too few parameters to native function
+test-resources/src/1k2012love/1254.js:143:3: [maybe] Reading absent property lc of host object
+test-resources/src/1k2012love/1254.js:143:3: [maybe] Too few parameters to native function
+test-resources/src/1k2012love/1254.js:185:27: [maybe] Reading absent property aR of host object
+test-resources/src/1k2012love/1254.js:193:9: [maybe] Reading absent property addColorStop of host object
+test-resources/src/1k2012love/1254.js:193:9: [maybe] Too few parameters to native function
+test-resources/src/1k2012love/1254.js:198:9: [maybe] Reading absent property addColorStop of host object
+test-resources/src/1k2012love/1254.js:198:9: [maybe] Too few parameters to native function
+test-resources/src/1k2012love/1254.js:203:9: [maybe] Reading absent property addColorStop of host object
+test-resources/src/1k2012love/1254.js:203:9: [maybe] Too few parameters to native function
+test-resources/src/1k2012love/1254.js:208:9: [maybe] Reading absent property lc of host object
+test-resources/src/1k2012love/1254.js:208:9: [maybe] Too few parameters to native function
+test-resources/src/1k2012love/1254.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1254.js:83:7, test-resources/src/1k2012love/1254.js:88:9, test-resources/src/1k2012love/1254.js:115:8, test-resources/src/1k2012love/1254.js:118:7, test-resources/src/1k2012love/1254.js:121:5, test-resources/src/1k2012love/1254.js:122:5, test-resources/src/1k2012love/1254.js:122:16, test-resources/src/1k2012love/1254.js:122:19, test-resources/src/1k2012love/1254.js:127:5, test-resources/src/1k2012love/1254.js:128:7, test-resources/src/1k2012love/1254.js:129:9, test-resources/src/1k2012love/1254.js:129:24, test-resources/src/1k2012love/1254.js:133:7, test-resources/src/1k2012love/1254.js:134:9, test-resources/src/1k2012love/1254.js:138:14, test-resources/src/1k2012love/1254.js:142:3, test-resources/src/1k2012love/1254.js:143:3, test-resources/src/1k2012love/1254.js:143:14, test-resources/src/1k2012love/1254.js:143:17, test-resources/src/1k2012love/1254.js:147:9, test-resources/src/1k2012love/1254.js:150:5, test-resources/src/1k2012love/1254.js:152:19, test-resources/src/1k2012love/1254.js:153:19, test-resources/src/1k2012love/1254.js:164:17, test-resources/src/1k2012love/1254.js:185:27, test-resources/src/1k2012love/1254.js:190:17, test-resources/src/1k2012love/1254.js:193:9, test-resources/src/1k2012love/1254.js:198:9, test-resources/src/1k2012love/1254.js:203:9, test-resources/src/1k2012love/1254.js:208:9, test-resources/src/1k2012love/1254.js:208:20, test-resources/src/1k2012love/1254.js:208:23, test-resources/src/1k2012love/1254.js:216:7, test-resources/src/1k2012love/1254.js:223:5, test-resources/src/1k2012love/1254.js:238:3, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1254.js:42:3: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1254.js:42:3: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1254.js:42:3: [maybe] Converting undefined to string
@@ -21,5 +80,85 @@ test-resources/src/1k2012love/1254.js:42:3: [maybe] Reading absent property (com
 test-resources/src/1k2012love/1254.js:42:10: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1254.js:42:10: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1254.js:47:5: [maybe] Reading absent property (computed name)
-Disabling soundness testing for test-resources/src/1k2012love/1254.js entirely (247 uninspected soundness errors).
-Soundness testing succeeded for 423 checks (with 247 expected failures)
+test-resources/src/1k2012love/1254.js:76:6: [maybe] Converting object to string
+test-resources/src/1k2012love/1254.js:76:6: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:76:6: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1254.js:88:9: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:89:5: [maybe] The variable f has values with different types
+test-resources/src/1k2012love/1254.js:89:10: [maybe] Converting object to string
+test-resources/src/1k2012love/1254.js:89:10: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:96:5: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:96:5: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1254.js:96:5: [maybe] The variable f has values with different types
+test-resources/src/1k2012love/1254.js:97:9: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1254.js:100:8: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1254.js:100:8: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:100:8: [maybe] Converting object to number
+test-resources/src/1k2012love/1254.js:100:8: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:100:8: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1254.js:100:8: [maybe] The variable f has values with different types
+test-resources/src/1k2012love/1254.js:101:8: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1254.js:101:8: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:101:8: [maybe] Converting object to number
+test-resources/src/1k2012love/1254.js:101:8: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:101:8: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1254.js:101:8: [maybe] The variable f has values with different types
+test-resources/src/1k2012love/1254.js:102:8: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1254.js:102:8: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:102:8: [maybe] Converting object to number
+test-resources/src/1k2012love/1254.js:102:8: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:102:8: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1254.js:102:8: [maybe] The variable f has values with different types
+test-resources/src/1k2012love/1254.js:103:8: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1254.js:103:8: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:103:8: [maybe] Converting object to number
+test-resources/src/1k2012love/1254.js:103:8: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:103:8: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1254.js:103:8: [maybe] The variable f has values with different types
+test-resources/src/1k2012love/1254.js:104:8: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1254.js:104:8: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:104:8: [maybe] Converting object to number
+test-resources/src/1k2012love/1254.js:104:8: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:104:8: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1254.js:104:8: [maybe] The variable f has values with different types
+test-resources/src/1k2012love/1254.js:115:8: [maybe] The variable B has values with different types
+test-resources/src/1k2012love/1254.js:122:5: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:122:5: [maybe] Converting primitive number to object
+test-resources/src/1k2012love/1254.js:125:29: [maybe] Converting object to number
+test-resources/src/1k2012love/1254.js:127:5: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1254.js:127:5: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:127:5: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:143:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:143:3: [maybe] Converting primitive number to object
+test-resources/src/1k2012love/1254.js:147:9: [maybe] Converting primitive number to object
+test-resources/src/1k2012love/1254.js:147:9: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1254.js:147:9: [maybe] The variable B has values with different types
+test-resources/src/1k2012love/1254.js:161:13: [maybe] Converting primitive number to object
+test-resources/src/1k2012love/1254.js:161:13: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1254.js:161:13: [maybe] The variable B has values with different types
+test-resources/src/1k2012love/1254.js:185:27: [maybe] Converting primitive number to object
+test-resources/src/1k2012love/1254.js:193:9: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1254.js:193:9: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:193:9: [maybe] Converting primitive boolean to object
+test-resources/src/1k2012love/1254.js:193:9: [maybe] Converting primitive number to object
+test-resources/src/1k2012love/1254.js:193:9: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:193:9: [maybe] The variable e has values with different types
+test-resources/src/1k2012love/1254.js:198:9: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1254.js:198:9: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:198:9: [maybe] Converting primitive boolean to object
+test-resources/src/1k2012love/1254.js:198:9: [maybe] Converting primitive number to object
+test-resources/src/1k2012love/1254.js:198:9: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:198:9: [maybe] The variable e has values with different types
+test-resources/src/1k2012love/1254.js:199:41: [maybe] Converting object to number
+test-resources/src/1k2012love/1254.js:203:9: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1254.js:203:9: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:203:9: [maybe] Converting primitive boolean to object
+test-resources/src/1k2012love/1254.js:203:9: [maybe] Converting primitive number to object
+test-resources/src/1k2012love/1254.js:203:9: [maybe] Converting primitive string to object
+test-resources/src/1k2012love/1254.js:203:9: [maybe] The variable e has values with different types
+test-resources/src/1k2012love/1254.js:208:9: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1254.js:208:9: [maybe] Converting primitive number to object
+test-resources/src/1k2012love/1254.js:40:3: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/1k2012love/1254.js:38:1: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/1k2012love/1254.js:47:5: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 423 checks (with 0 expected failures)

@@ -47,6 +47,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import static dk.brics.tajs.analysis.InitialStateBuilder.GLOBAL;
+import static dk.brics.tajs.lattice.Property.Kind.DEFAULT_NUMERIC;
 import static dk.brics.tajs.lattice.Property.Kind.ORDINARY;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -354,11 +355,15 @@ public class PropVarOperations {
         // read string property keys
         if (propertystr.isMaybeSingleStr()) {
             values.add(UnknownValueResolver.getProperty(objlabel, StringPKey.make(propertystr.getStr()), state, true));
+        } else if (propertystr.getIncludedStrings() != null) {
+            propertystr.getIncludedStrings().forEach(n ->
+                    values.add(UnknownValueResolver.getProperty(objlabel, StringPKey.make(n), state, true))
+            );
         } else if (propertystr.isMaybeFuzzyStr()) {
-            if (propertystr.isMaybeStrSomeUInt())
-                values.add(UnknownValueResolver.getDefaultArrayProperty(objlabel, state));
-            if (propertystr.isMaybeStrSomeNonUInt())
-                values.add(UnknownValueResolver.getDefaultNonArrayProperty(objlabel, state));
+            if (propertystr.isMaybeStrSomeNumeric())
+                values.add(UnknownValueResolver.getDefaultNumericProperty(objlabel, state));
+            if (propertystr.isMaybeStrSomeNonNumeric())
+                values.add(UnknownValueResolver.getDefaultOtherProperty(objlabel, state));
             // the calls to UnknownValueResolver above have materialized all relevant properties
             for (PKey propertyname : state.getObject(objlabel, false).getPropertyNames())
                 if (propertyname instanceof StringPKey && propertyname.isMaybeValue(propertystr)) {
@@ -470,17 +475,23 @@ public class PropVarOperations {
         for (ObjectLabel objlabel : objlabels) {
             if (propertystr.isMaybeSingleStr()) {
                 pt.add(() -> writeProperty(ObjectProperty.makeOrdinary(objlabel, PKey.make(propertystr)), value, process_attributes, value_has_attributes, true, true, weak, not_invoke_setters));
+            } else if (propertystr.getIncludedStrings() != null) {
+                propertystr.getIncludedStrings().forEach(specialString ->
+                        pt.add(() -> writeProperty(ObjectProperty.makeOrdinary(objlabel, StringPKey.make(specialString)), value, process_attributes, value_has_attributes, true, true, force_weak || objlabels.size() != 1 || propertystr.getIncludedStrings().size() > 1, not_invoke_setters))
+                );
             } else if (propertystr.isMaybeFuzzyStr()) {
                 State state = c.getState();
-                if (propertystr.isMaybeStrSomeUInt()) {
-                    UnknownValueResolver.getDefaultArrayProperty(objlabel, state);
-                    pt.add(() -> writeProperty(ObjectProperty.makeDefaultArray(objlabel), value, process_attributes, value_has_attributes, true, true, true, not_invoke_setters));
+                if (propertystr.getExcludedStrings() != null)
+                    state.getObject(objlabel, true).materialize(propertystr.getExcludedStrings());
+                if (propertystr.isMaybeStrSomeNumeric()) {
+                    UnknownValueResolver.getDefaultNumericProperty(objlabel, state);
+                    pt.add(() -> writeProperty(ObjectProperty.makeDefaultNumeric(objlabel), value, process_attributes, value_has_attributes, true, true, true, not_invoke_setters));
                 }
-                if (propertystr.isMaybeStrSomeNonUInt()) {
-                    UnknownValueResolver.getDefaultNonArrayProperty(objlabel, state);
-                    pt.add(() -> writeProperty(ObjectProperty.makeDefaultNonArray(objlabel), value, process_attributes, value_has_attributes, true, true, true, not_invoke_setters));
+                if (propertystr.isMaybeStrSomeNonNumeric()) {
+                    UnknownValueResolver.getDefaultOtherProperty(objlabel, state);
+                    pt.add(() -> writeProperty(ObjectProperty.makeDefaultOther(objlabel), value, process_attributes, value_has_attributes, true, true, true, not_invoke_setters));
                 }
-                for (PKey propertyname : newSet(state.getObject(objlabel, false).getPropertyNames())) { // calls to UnknownValueResolver above have materialized all relevant properties
+                for (PKey propertyname : newSet(state.getObject(objlabel, false).getPropertyNames())) { // calls to UnknownValueResolver and materialize above have materialized all relevant properties
                     if (propertyname instanceof StringPKey && propertyname.isMaybeValue(propertystr)) {
                         pt.add(() -> writeProperty(ObjectProperty.makeOrdinary(objlabel, propertyname), value, process_attributes, value_has_attributes, true, true, true, not_invoke_setters));
                     }
@@ -538,6 +549,12 @@ public class PropVarOperations {
         if (maybeSetterCall)
             writeable = writeable.joinBool(true);
         if (writeable.isMaybeTrue()) {
+            if (!Options.get().isNoStringSets()
+                    && (objprop.getProperty().getKind() == DEFAULT_NUMERIC || (objprop.getProperty().getKind() == ORDINARY && objprop.getPropertyName() instanceof PKey.StringPKey && Strings.isArrayIndex(((PKey.StringPKey) objprop.getPropertyName()).getStr())))
+                    && !value.isPolymorphicOrUnknown() && value.isMaybeSingleStr()) {
+                // about to write string to an array-like-property. We assume it is a string-collection, and "upgrade" it to a special string
+                value = value.join(Value.makeStrings(singleton(value.getStr())));
+            }
             if (force_weak || writeable.isMaybeFalse() || !objprop.getObjectLabel().isSingleton() || objprop.getProperty().isFuzzy() || (!allow_overwrite && oldvalue.isMaybePresent())) { // weak update
                 // TODO: if !allow_overwrite && oldvalue.isMaybePresent(): warn that the operation maybe has no effect? (double declaration of variable)
                 value = UnknownValueResolver.join(value, oldvalue, state);
@@ -658,15 +675,21 @@ public class PropVarOperations {
                             }
                         }
                         boolean writeInternalPrototype_fixed = objprop.getProperty().getKind() == Property.Kind.ORDINARY && StringPKey.__PROTO__.equals(objprop.getPropertyName());
-                        boolean writeProperty = !writeInternalPrototype_fixed;
-                        boolean writeInternalPrototype_dynamic = objprop.getProperty().getKind() == Property.Kind.DEFAULT_NONARRAY;
+                        boolean writeInternalPrototype_dynamic = objprop.getProperty().getKind() == Property.Kind.DEFAULT_OTHER;
                         boolean writeInternalPrototype = writeInternalPrototype_fixed || writeInternalPrototype_dynamic;
-                        if (writeInternalPrototype && !unsoundness.maySkipInternalProtoPropertyWrite(c.getNode(), objprop)) {
+                        boolean skipInternalPrototype = writeInternalPrototype && unsoundness.maySkipInternalProtoPropertyWrite(c.getNode());
+                        if (writeInternalPrototype && !skipInternalPrototype) {
                             // TODO: make use of c.getState().writeInternalPrototype(objprop.getObjectLabel(), finalValue) instead? (GitHub #356) + currently ignoring old value of the internal prototype!
                             c.getState().getObject(objprop.getObjectLabel(), true).setInternalPrototype(valueNonAccessor);
                         }
-                        if (writeProperty && !unsoundness.maySkipPropertyWrite(c.getNode(), objprop)) {
-                            c.getState().getObject(objprop.getObjectLabel(), true).setValue(objprop, finalValue);
+                        if (!unsoundness.maySkipPropertyWrite(c.getNode(), objprop)) {
+                            if (!writeInternalPrototype_fixed || !skipInternalPrototype) {
+                                Value v = finalValue;
+                                if (writeInternalPrototype_fixed)
+                                    v = v.setAttributes(true, true, false);
+                                // TODO: should also set attributes (weakly) if writeInternalPrototype_dynamic and !maySkipInternalProtoPropertyWrite - see also #356
+                                c.getState().getObject(objprop.getObjectLabel(), true).setValue(objprop, v);
+                            }
                         }
                     });
                 } else {
@@ -1090,10 +1113,10 @@ public class PropVarOperations {
         if (propertystr.isMaybeSingleStr())
             res = res.joinBool(weakDeleteProperty(ObjectProperty.makeOrdinary(objlabel, PKey.make(propertystr))));
         else if (propertystr.isMaybeFuzzyStr()) {
-            if (propertystr.isMaybeStrSomeUInt())
-                res = res.joinBool(weakDeleteProperty(ObjectProperty.makeDefaultArray(objlabel)));
-            if (propertystr.isMaybeStrSomeNonUInt())
-                res = res.joinBool(weakDeleteProperty(ObjectProperty.makeDefaultNonArray(objlabel)));
+            if (propertystr.isMaybeStrSomeNumeric())
+                res = res.joinBool(weakDeleteProperty(ObjectProperty.makeDefaultNumeric(objlabel)));
+            if (propertystr.isMaybeStrSomeNonNumeric())
+                res = res.joinBool(weakDeleteProperty(ObjectProperty.makeDefaultOther(objlabel)));
             // the calls to readProperty above via weakDeleteProperty have materialized all relevant properties
             for (PKey propertyname : newSet(c.getState().getObject(objlabel, false).getPropertyNames()))
               if (propertyname instanceof StringPKey && propertyname.isMaybeValue(propertystr))

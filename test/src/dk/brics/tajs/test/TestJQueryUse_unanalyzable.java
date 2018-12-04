@@ -248,6 +248,8 @@ public class TestJQueryUse_unanalyzable {
         Options.get().enableIncludeDom();
         Options.get().enableUnevalizer();
         Options.get().enableTest();
+        Options.get().getUnsoundness().setUseFixedRandom(true);
+        Options.get().getUnsoundness().setShowUnsoundnessUsage(true);
         // Successfull tests runs in less than 1 minute on `Intel(R) Core(TM) i7-3520M CPU @ 2.90GHz`
         AnalysisTimeLimiter analysisLimiter = new AnalysisTimeLimiter(90);
         try {

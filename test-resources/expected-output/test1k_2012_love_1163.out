@@ -3,6 +3,7 @@ test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property
 test-resources/src/1k2012love/1163.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1163.js:80:4, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1163.js:41:9: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1163.js:74:15: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1163.js:75:52: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1163.js:86:22: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1163.js:87:4: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1163.js:87:20: [maybe] Reading absent property (computed name)

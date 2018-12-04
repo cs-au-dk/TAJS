@@ -1,5 +1,5 @@
 test-resources/src/1k2013spring/1524.js:52:3: [definite] The conditional expression is always true
-test-resources/src/1k2013spring/1524.js:103:3: [definite] Too few parameters to function CanvasRenderingContext2D.prototype.arc
+test-resources/src/1k2013spring/1524.js:103:3: [definite] Too few parameters to native function
 test-resources/src/1k2013spring/1524.js:55:3: [definite] Unreachable function
 test-resources/src/1k2013spring/1524.js:75:27: [maybe] ReferenceError, reading absent variable horizon
 test-resources/src/1k2013spring/1524.js:75:42: [maybe] ReferenceError, reading absent variable block

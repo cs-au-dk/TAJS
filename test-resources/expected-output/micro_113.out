@@ -1,4 +1,4 @@
-test-resources/src/micro/test113.js:5:10: [definite] Too few parameters to function Object.prototype.hasOwnProperty
+test-resources/src/micro/test113.js:5:10: [definite] Too few parameters to native function
 test-resources/src/micro/test113.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test113.js:14:5: [definite] The variable zz is never used
 test-resources/src/micro/test113.js:2:10: [maybe] Converting boolean to string

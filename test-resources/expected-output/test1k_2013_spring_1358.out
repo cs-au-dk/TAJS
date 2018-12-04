@@ -15,22 +15,11 @@ test-resources/src/1k2013spring/1358.js: [maybe] Uncaught exception, constructed
 test-resources/src/1k2013spring/1358.js:6:13: [maybe] Converting undefined to string
 test-resources/src/1k2013spring/1358.js:7:13: [maybe] Converting undefined to string
 test-resources/src/1k2013spring/1358.js:8:13: [maybe] Converting undefined to string
-test-resources/src/1k2013spring/1358.js:10:17: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1358.js:10:17: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1358.js:10:17: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1358.js:11:3: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1358.js:11:3: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1358.js:11:14: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1358.js:11:14: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1358.js:11:14: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1358.js:11:24: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1358.js:11:24: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1358.js:11:24: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1358.js:11:35: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1358.js:11:35: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1358.js:11:35: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1358.js:11:46: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1358.js:11:46: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1358.js:11:46: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1358.js:28:5: [maybe] Converting undefined to string
 test-resources/src/1k2013spring/1358.js:29:12: [maybe] Conversion to number yields NaN
