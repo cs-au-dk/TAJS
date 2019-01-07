@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,6 +50,16 @@ public final class Summarized {
     public Summarized(Summarized s) {
         maybe_summarized = newSet(s.maybe_summarized);
         definitely_summarized = newSet(s.definitely_summarized);
+    }
+
+    /**
+     * Constructs a new pair of summarized sets representing the given object label being definitely summarized.
+     */
+    public Summarized(ObjectLabel objlabel) {
+        maybe_summarized = newSet();
+        definitely_summarized = newSet();
+        maybe_summarized.add(objlabel);
+        definitely_summarized.add(objlabel);
     }
 
     /**

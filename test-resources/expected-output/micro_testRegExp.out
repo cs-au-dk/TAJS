@@ -9,15 +9,15 @@ test-resources/src/micro/testRegExp.js:2:1: [info] Abstract value: [@RegExp#node
 test-resources/src/micro/testRegExp.js:3:1: [info] Abstract value: "ab*"
 test-resources/src/micro/testRegExp.js:4:1: [info] Abstract value: 0.0
 test-resources/src/micro/testRegExp.js:5:1: [info] Abstract value: true
-test-resources/src/micro/testRegExp.js:7:1: [info] Abstract value: [@RegExp#node33]
+test-resources/src/micro/testRegExp.js:7:1: [info] Abstract value: [@RegExp#node30]
 test-resources/src/micro/testRegExp.js:9:1: [info] Abstract value: [@RegExp#node15]
-test-resources/src/micro/testRegExp.js:12:1: [info] Abstract value: [@Array#node47{<CONCRETE>="[\"abbb\"]"}]
+test-resources/src/micro/testRegExp.js:12:1: [info] Abstract value: [@Array#node43{<CONCRETE>="[\"abbb\"]"}]
 test-resources/src/micro/testRegExp.js:13:1: [info] Abstract value: 1.0
 test-resources/src/micro/testRegExp.js:14:1: [info] Abstract value: "abbb"
 test-resources/src/micro/testRegExp.js:15:1: [info] Abstract value: 0.0
 test-resources/src/micro/testRegExp.js:16:1: [info] Abstract value: "abbb"
 test-resources/src/micro/testRegExp.js:17:1: [info] Abstract value: Undef
 test-resources/src/micro/testRegExp.js:19:1: [info] Abstract value: "/ab*/gi"
-test-resources/src/micro/testRegExp.js:22:1: [info] Abstract value: [@RegExp#node81]
+test-resources/src/micro/testRegExp.js:22:1: [info] Abstract value: [@RegExp#node71]
 test-resources/src/micro/testRegExp.js:34:1: [info] Abstract value: true
 Soundness testing succeeded for 93 checks (with 0 expected failures)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,7 +77,6 @@ import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.SourceLocation.SourceLocationMaker;
 import dk.brics.tajs.flowgraph.TAJSFunctionName;
-import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginWithNode;
@@ -132,10 +131,8 @@ import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.getFlowGraphBinar
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.getFlowGraphUnaryNonAssignmentOp;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.getPrefixPostfixOp;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.getSource;
-import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeAssumeNonNullUndef;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeBasicBlock;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeCatchBasicBlock;
-import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeDirectiveNode;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeJoinBasicBlock;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeJumpThroughBlock;
 import static dk.brics.tajs.js2flowgraph.FunctionBuilderHelper.makeSuccessorBasicBlock;
@@ -185,32 +182,21 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
     }
 
     /**
-     * Registers a value access (read/write), potentially adding relevant assume nodes.
+     * Registers a value access (read/write).
      */
     private BasicBlock access(AbstractNode accessNode, SyntacticReference target, AstEnv env) {
-        // try to make an assume node
-        final AssumeNode assumeNode;
         if (target.type == SyntacticReference.Type.StaticProperty || target.type == SyntacticReference.Type.DynamicProperty) {
-            assumeNode = makeAssumeNonNullUndef(target.asProperty().base);
             syntacticInformationCollector.registerPropertyAccess(accessNode, target.asProperty());
-        } else {
-            assumeNode = null;
         }
 
         // add the access
-        addNodeToBlock(accessNode, env.getAppendBlock(), assumeNode == null ? env : env.makeStatementLevel(false));
+        addNodeToBlock(accessNode, env.getAppendBlock(), env);
         BasicBlock appendBlock;
         if (requiresOwnBlock(accessNode)) {
             appendBlock = makeSuccessorBasicBlock(env.getAppendBlock(), functionAndBlocksManager);
         } else {
             appendBlock = env.getAppendBlock();
         }
-
-        // add the assume node
-        if (assumeNode != null) {
-            addNodeToBlock(assumeNode, appendBlock, env);
-        }
-
         return appendBlock;
     }
 
@@ -993,16 +979,6 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
 
     @Override
     public TranslationResult process(ExpressionStatementTree tree, AstEnv env) {
-        if (tree.expression.type == ParseTreeType.LITERAL_EXPRESSION && tree.expression.asLiteralExpression().literalToken.type == TokenType.STRING) {
-            // check whether this is a TAJS directive
-            final LiteralToken text = tree.expression.asLiteralExpression().literalToken.asLiteral();
-            SourceLocation location = makeSourceLocation(tree);
-            final AbstractNode directiveNode = makeDirectiveNode(ClosureASTUtil.normalizeString(text), location);
-            if (directiveNode != null) {
-                addNodeToBlock(directiveNode, env.getAppendBlock(), env.makeStatementLevel(true));
-                return TranslationResult.makeAppendBlock(env.getAppendBlock());
-            }
-        }
         return process(tree.expression, env.makeStatementLevel(true).makeResultRegister(AbstractNode.NO_VALUE));
     }
 

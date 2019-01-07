@@ -84,7 +84,7 @@ public class NodeJSRequire {
             String expression = "console.log(require.resolve('" + arg + "'))"; // <-- malicious injection possible here
             String[] cmd = {TAJSEnvironmentConfig.get().getNode().toString(), "-e", expression};
             final ProcessBuilder pb = new ProcessBuilder(cmd);
-            Path resolveLocation = PathAndURLUtils.toPath(location).toAbsolutePath();
+            Path resolveLocation = PathAndURLUtils.toPath(location, false);
             pb.directory((Files.isDirectory(resolveLocation) ? resolveLocation : resolveLocation.getParent()).toFile());
             try {
                 Process process = pb.start();

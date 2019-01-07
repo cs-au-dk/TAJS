@@ -1,10 +1,9 @@
-benchmarks/tajs/src/apps/minesweeper/minesweeper.html:137:1: StartTag select has missing whitespace after quoted attribute value at position (r137,c81,p2484)
-benchmarks/tajs/src/apps/minesweeper/minesweeper.html:137:1: StartTag select contains a '/' character before the closing '>', which is ignored because tags of this name cannot be empty-element tags
+benchmarks/tajs/src/apps/minesweeper/minesweeper.html:137:1: HTML StartTag select has missing whitespace after quoted attribute value
+benchmarks/tajs/src/apps/minesweeper/minesweeper.html:137:1: HTML StartTag select contains a '/' character before the closing '>', which is ignored because tags of this name cannot be empty-element tags
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:506:10: [definite] The conditional expression is always true
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:509:10: [definite] The conditional expression is always true
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:299:3: [definite] Dead assignment, property imgWidth is never read
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:300:3: [definite] Dead assignment, property imgHeight is never read
-benchmarks/tajs/src/apps/minesweeper/minesweeper.html:266:36: [definite] Unreachable function
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:186:26: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:188:27: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:232:5: [maybe] TypeError, accessing property of null/undefined

@@ -1,7 +1,6 @@
 test-resources/src/1k2012love/1102.js:24:1: [maybe] TypeError, call to non-function
 test-resources/src/1k2012love/1102.js:30:6: [maybe] ReferenceError, reading absent variable T
 test-resources/src/1k2012love/1102.js:31:2: [maybe] ReferenceError, reading absent variable Q
-test-resources/src/1k2012love/1102.js:31:18: [maybe] ReferenceError, reading absent variable T
 test-resources/src/1k2012love/1102.js:36:2: [maybe] ReferenceError, reading absent variable H
 test-resources/src/1k2012love/1102.js:38:9: [maybe] ReferenceError, reading absent variable R
 test-resources/src/1k2012love/1102.js:38:29: [maybe] ReferenceError, reading absent variable N
@@ -28,7 +27,6 @@ test-resources/src/1k2012love/1102.js:76:5: [maybe] ReferenceError, reading abse
 test-resources/src/1k2012love/1102.js:79:27: [maybe] ReferenceError, reading absent variable g
 test-resources/src/1k2012love/1102.js:83:4: [maybe] ReferenceError, reading absent variable D
 test-resources/src/1k2012love/1102.js:83:10: [maybe] ReferenceError, reading absent variable $
-test-resources/src/1k2012love/1102.js:83:12: [maybe] ReferenceError, reading absent variable D
 test-resources/src/1k2012love/1102.js:83:21: [maybe] ReferenceError, reading absent variable g
 test-resources/src/1k2012love/1102.js:83:26: [maybe] ReferenceError, reading absent variable e
 test-resources/src/1k2012love/1102.js:83:43: [maybe] ReferenceError, reading absent variable X
@@ -39,7 +37,7 @@ test-resources/src/1k2012love/1102.js:73:5: [maybe] Reading absent property whic
 test-resources/src/1k2012love/1102.js:79:6: [maybe] Reading 'this' yields the global object
 test-resources/src/1k2012love/1102.js:79:33: [maybe] Reading absent property screenX of host object
 test-resources/src/1k2012love/1102.js:83:12: [maybe] Reading absent property v of host object
-test-resources/src/1k2012love/1102.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1102.js:24:1, test-resources/src/1k2012love/1102.js:30:6, test-resources/src/1k2012love/1102.js:31:2, test-resources/src/1k2012love/1102.js:31:18, test-resources/src/1k2012love/1102.js:36:2, test-resources/src/1k2012love/1102.js:38:9, test-resources/src/1k2012love/1102.js:38:29, test-resources/src/1k2012love/1102.js:38:33, test-resources/src/1k2012love/1102.js:38:37, test-resources/src/1k2012love/1102.js:38:41, test-resources/src/1k2012love/1102.js:46:7, test-resources/src/1k2012love/1102.js:46:9, test-resources/src/1k2012love/1102.js:46:11, test-resources/src/1k2012love/1102.js:46:13, test-resources/src/1k2012love/1102.js:46:29, test-resources/src/1k2012love/1102.js:46:32, test-resources/src/1k2012love/1102.js:46:34, test-resources/src/1k2012love/1102.js:46:36, test-resources/src/1k2012love/1102.js:46:52, test-resources/src/1k2012love/1102.js:46:57, test-resources/src/1k2012love/1102.js:47:4, test-resources/src/1k2012love/1102.js:47:33, test-resources/src/1k2012love/1102.js:47:49, test-resources/src/1k2012love/1102.js:69:3, test-resources/src/1k2012love/1102.js:74:5, test-resources/src/1k2012love/1102.js:74:14, test-resources/src/1k2012love/1102.js:76:5, test-resources/src/1k2012love/1102.js:79:27, test-resources/src/1k2012love/1102.js:83:4, test-resources/src/1k2012love/1102.js:83:10, test-resources/src/1k2012love/1102.js:83:12, test-resources/src/1k2012love/1102.js:83:21, test-resources/src/1k2012love/1102.js:83:26, test-resources/src/1k2012love/1102.js:83:43, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1102.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1102.js:24:1, test-resources/src/1k2012love/1102.js:30:6, test-resources/src/1k2012love/1102.js:31:2, test-resources/src/1k2012love/1102.js:36:2, test-resources/src/1k2012love/1102.js:38:9, test-resources/src/1k2012love/1102.js:38:29, test-resources/src/1k2012love/1102.js:38:33, test-resources/src/1k2012love/1102.js:38:37, test-resources/src/1k2012love/1102.js:38:41, test-resources/src/1k2012love/1102.js:46:7, test-resources/src/1k2012love/1102.js:46:9, test-resources/src/1k2012love/1102.js:46:11, test-resources/src/1k2012love/1102.js:46:13, test-resources/src/1k2012love/1102.js:46:29, test-resources/src/1k2012love/1102.js:46:32, test-resources/src/1k2012love/1102.js:46:34, test-resources/src/1k2012love/1102.js:46:36, test-resources/src/1k2012love/1102.js:46:52, test-resources/src/1k2012love/1102.js:46:57, test-resources/src/1k2012love/1102.js:47:4, test-resources/src/1k2012love/1102.js:47:33, test-resources/src/1k2012love/1102.js:47:49, test-resources/src/1k2012love/1102.js:69:3, test-resources/src/1k2012love/1102.js:74:5, test-resources/src/1k2012love/1102.js:74:14, test-resources/src/1k2012love/1102.js:76:5, test-resources/src/1k2012love/1102.js:79:27, test-resources/src/1k2012love/1102.js:83:4, test-resources/src/1k2012love/1102.js:83:10, test-resources/src/1k2012love/1102.js:83:21, test-resources/src/1k2012love/1102.js:83:26, test-resources/src/1k2012love/1102.js:83:43, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1102.js:38:29: [maybe] The variable N has values with different types
 test-resources/src/1k2012love/1102.js:38:33: [maybe] The variable M has values with different types
 test-resources/src/1k2012love/1102.js:38:37: [maybe] The variable K has values with different types
@@ -74,10 +72,6 @@ test-resources/src/1k2012love/1102.js:64:8: [maybe] Reading absent property (com
 test-resources/src/1k2012love/1102.js:73:5: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1102.js:76:5: [maybe] The variable D has values with different types
 test-resources/src/1k2012love/1102.js:83:4: [maybe] The variable D has values with different types
-test-resources/src/1k2012love/1102.js:83:12: [maybe] Converting primitive number to object
-test-resources/src/1k2012love/1102.js:83:12: [maybe] The variable D has values with different types
-test-resources/src/1k2012love/1102.js:83:19: [maybe] Converting primitive number to object
-test-resources/src/1k2012love/1102.js:83:19: [maybe] The variable D has values with different types
 test-resources/src/1k2012love/1102.js:83:26: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1102.js:83:26: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1102.js:83:26: [maybe] The variable e has values with different types

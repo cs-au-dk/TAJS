@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -289,7 +289,6 @@ public class FlowGraph {
         this.rawSyntacticInformation.getInForIn().addAll(rawSyntacticInformation.getInForIn());
         this.rawSyntacticInformation.getLoopVariables().putAll(rawSyntacticInformation.getLoopVariables());
         this.rawSyntacticInformation.getTajsCallsWithLiteralFalseAsFirstOrFourthArgument().addAll(rawSyntacticInformation.getTajsCallsWithLiteralFalseAsFirstOrFourthArgument());
-        this.rawSyntacticInformation.getConditionPatterns().putAll(rawSyntacticInformation.getConditionPatterns());
         this.rawSyntacticInformation.getNodeWithBaseReferences().putAll(rawSyntacticInformation.getNodeWithBaseReferences());
         this.rawSyntacticInformation.getSimpleReads().putAll(rawSyntacticInformation.getSimpleReads());
         this.rawSyntacticInformation.getExpressionRegisters().putAll(rawSyntacticInformation.getExpressionRegisters());

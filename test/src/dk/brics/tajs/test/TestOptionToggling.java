@@ -37,6 +37,7 @@ public class TestOptionToggling {
                 .filter(m -> m.getName().startsWith("enable"))
                 .filter(m -> !m.getName().equals("enableDebug"))
                 .filter(m -> !m.getName().equals("enableInspector"))
+                .filter(m -> !m.getName().equals("enableNodeJS"))
                 .filter(m -> m.getParameterCount() == 0)
                 .map(m -> {
                     OptionValues optionValues = new OptionValues();

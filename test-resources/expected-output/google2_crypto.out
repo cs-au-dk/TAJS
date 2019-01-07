@@ -119,7 +119,6 @@ test-resources/src/google2/crypto.js:1451:1: [definite] Unreachable function lin
 test-resources/src/google2/crypto.js:1461:1: [definite] Unreachable function byte2Hex
 test-resources/src/google2/crypto.js:1559:1: [definite] Unreachable function RSASetPrivate
 test-resources/src/google2/crypto.js:1586:1: [definite] Unreachable function RSAGenerate
-test-resources/src/google2/crypto.js:207:11: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/crypto.js:211:10: [maybe] TypeError, call to non-function
 test-resources/src/google2/crypto.js:409:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/crypto.js:410:27: [maybe] TypeError, accessing property of null/undefined
@@ -127,8 +126,6 @@ test-resources/src/google2/crypto.js:511:23: [maybe] TypeError, accessing proper
 test-resources/src/google2/crypto.js:576:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/crypto.js:1068:3: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/crypto.js:1132:7: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google2/crypto.js:1433:10: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google2/crypto.js:1514:10: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/crypto.js:176:15: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:177:9: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:178:9: [maybe] Reading absent property s
@@ -227,10 +224,8 @@ test-resources/src/google2/crypto.js:1043:56: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1059:6: [maybe] Reading absent property s
 test-resources/src/google2/crypto.js:1059:17: [maybe] Reading absent property t
 test-resources/src/google2/crypto.js:1069:6: [maybe] Reading absent property t
-test-resources/src/google2/crypto.js: [maybe] Uncaught exception, constructed at [test-resources/src/google2/crypto.js:187:37, test-resources/src/google2/crypto.js:207:11, test-resources/src/google2/crypto.js:211:10, test-resources/src/google2/crypto.js:409:17, test-resources/src/google2/crypto.js:410:27, test-resources/src/google2/crypto.js:511:23, test-resources/src/google2/crypto.js:576:17, test-resources/src/google2/crypto.js:1068:3, test-resources/src/google2/crypto.js:1132:7, test-resources/src/google2/crypto.js:1433:10, test-resources/src/google2/crypto.js:1514:10, test-resources/src/google2/crypto.js:1688:11]
+test-resources/src/google2/crypto.js: [maybe] Uncaught exception, constructed at [test-resources/src/google2/crypto.js:187:37, test-resources/src/google2/crypto.js:211:10, test-resources/src/google2/crypto.js:409:17, test-resources/src/google2/crypto.js:410:27, test-resources/src/google2/crypto.js:511:23, test-resources/src/google2/crypto.js:576:17, test-resources/src/google2/crypto.js:1068:3, test-resources/src/google2/crypto.js:1132:7, test-resources/src/google2/crypto.js:1688:11]
 test-resources/src/google2/crypto.js:52:6: [maybe] The variable a has values with different types
-test-resources/src/google2/crypto.js:53:20: [maybe] The variable a has values with different types
-test-resources/src/google2/crypto.js:55:26: [maybe] The variable a has values with different types
 test-resources/src/google2/crypto.js:104:12: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:104:27: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:105:9: [maybe] Conversion to number yields NaN
@@ -254,18 +249,14 @@ test-resources/src/google2/crypto.js:167:17: [maybe] Converting primitive string
 test-resources/src/google2/crypto.js:176:15: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:176:51: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:207:11: [maybe] Converting primitive string to object
-test-resources/src/google2/crypto.js:207:11: [maybe] The variable s has values with different types
 test-resources/src/google2/crypto.js:209:20: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:209:20: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:211:10: [maybe] Converting object to string
 test-resources/src/google2/crypto.js:211:10: [maybe] Converting primitive string to object
 test-resources/src/google2/crypto.js:218:7: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:218:7: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:218:32: [maybe] Conversion to number yields NaN
-test-resources/src/google2/crypto.js:219:31: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:222:7: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:222:7: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:222:31: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:226:17: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:226:17: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:228:16: [maybe] Conversion to number yields NaN

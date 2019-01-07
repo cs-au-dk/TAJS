@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,7 +98,7 @@ public class TAJSAssertionReachabilityCheckerMonitor extends DefaultAnalysisMoni
             Set<CallNode> unreachable = newSet(assertionCallNodes);
             unreachable.removeAll(reachableAssertionCallNodes);
             if (!unreachable.isEmpty()) {
-                List<String> sourceLocationStrings = unreachable.stream().map(AbstractNode::getSourceLocation).sorted().map(SourceLocation::toString).collect(Collectors.toList());
+                List<String> sourceLocationStrings = unreachable.stream().map(AbstractNode::getSourceLocation).sorted(new SourceLocation.Comparator()).map(SourceLocation::toString).collect(Collectors.toList());
                 throw new AnalysisResultException("Some TAJS assertions were not invoked: " + String.join(", ", sourceLocationStrings));
             }
         }

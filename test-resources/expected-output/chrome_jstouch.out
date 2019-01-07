@@ -17,10 +17,8 @@ test-resources/src/chromeexperiments/jstouch.html:876:16: [definite] Unreachable
 test-resources/src/chromeexperiments/jstouch.html:952:13: [definite] Unreachable function
 test-resources/src/chromeexperiments/jstouch.html:1141:30: [definite] The variable ry is never used
 test-resources/src/chromeexperiments/jstouch.html:496:2: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/jstouch.html:627:7: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/jstouch.html:647:15: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/jstouch.html:673:4: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/jstouch.html:700:11: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/jstouch.html:711:3: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/jstouch.html:735:3: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
 test-resources/src/chromeexperiments/jstouch.html:929:14: [maybe] TypeError, accessing property of null/undefined
@@ -32,7 +30,6 @@ test-resources/src/chromeexperiments/jstouch.html:1298:25: [maybe] TypeError, ac
 test-resources/src/chromeexperiments/jstouch.html:1299:25: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/jstouch.html:1300:25: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/jstouch.html:1304:25: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/jstouch.html:1327:27: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/jstouch.html:1328:46: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/jstouch.html:1167:22: [maybe] Reading absent property _mTmpMat
 test-resources/src/chromeexperiments/jstouch.html:1168:17: [maybe] Reading absent property _mTmpMat
@@ -44,8 +41,7 @@ test-resources/src/chromeexperiments/jstouch.html:1250:39: [maybe] Reading absen
 test-resources/src/chromeexperiments/jstouch.html:1253:39: [maybe] Reading absent property tl_poss
 test-resources/src/chromeexperiments/jstouch.html:1263:39: [maybe] Reading absent property tl_poss
 test-resources/src/chromeexperiments/jstouch.html:1273:22: [maybe] Reading absent property N_list
-test-resources/src/chromeexperiments/jstouch.html:1327:27: [maybe] Reading absent property N_list
-test-resources/src/chromeexperiments/jstouch.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/jstouch.html:496:2, test-resources/src/chromeexperiments/jstouch.html:627:7, test-resources/src/chromeexperiments/jstouch.html:647:15, test-resources/src/chromeexperiments/jstouch.html:673:4, test-resources/src/chromeexperiments/jstouch.html:700:11, test-resources/src/chromeexperiments/jstouch.html:711:3, test-resources/src/chromeexperiments/jstouch.html:929:14, test-resources/src/chromeexperiments/jstouch.html:1077:21, test-resources/src/chromeexperiments/jstouch.html:1168:17, test-resources/src/chromeexperiments/jstouch.html:1185:36, test-resources/src/chromeexperiments/jstouch.html:1208:21, test-resources/src/chromeexperiments/jstouch.html:1298:25, test-resources/src/chromeexperiments/jstouch.html:1299:25, test-resources/src/chromeexperiments/jstouch.html:1300:25, test-resources/src/chromeexperiments/jstouch.html:1304:25, test-resources/src/chromeexperiments/jstouch.html:1327:27, test-resources/src/chromeexperiments/jstouch.html:1328:46]
+test-resources/src/chromeexperiments/jstouch.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/jstouch.html:496:2, test-resources/src/chromeexperiments/jstouch.html:647:15, test-resources/src/chromeexperiments/jstouch.html:673:4, test-resources/src/chromeexperiments/jstouch.html:711:3, test-resources/src/chromeexperiments/jstouch.html:929:14, test-resources/src/chromeexperiments/jstouch.html:1077:21, test-resources/src/chromeexperiments/jstouch.html:1168:17, test-resources/src/chromeexperiments/jstouch.html:1185:36, test-resources/src/chromeexperiments/jstouch.html:1208:21, test-resources/src/chromeexperiments/jstouch.html:1298:25, test-resources/src/chromeexperiments/jstouch.html:1299:25, test-resources/src/chromeexperiments/jstouch.html:1300:25, test-resources/src/chromeexperiments/jstouch.html:1304:25, test-resources/src/chromeexperiments/jstouch.html:1328:46]
 test-resources/src/chromeexperiments/jstouch.html:645:11: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:645:11: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/jstouch.html:647:15: [maybe] Reading absent property (computed name)
@@ -370,5 +366,4 @@ test-resources/src/chromeexperiments/jstouch.html:1304:25: [info] 'this' refers 
 test-resources/src/chromeexperiments/jstouch.html:1327:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/jstouch.html:1341:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/jstouch.html:1342:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Disabling soundness testing for test-resources/src/chromeexperiments/jstouch.html entirely (568 uninspected soundness errors).
-Soundness testing succeeded for 3212 checks (with 568 expected failures)
+Soundness testing succeeded for 8071 checks (with 0 expected failures)

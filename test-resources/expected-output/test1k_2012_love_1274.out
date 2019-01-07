@@ -1,11 +1,10 @@
 test-resources/src/1k2012love/1274.js:29:24: [definite] TypeError, accessing property of null/undefined
-test-resources/src/1k2012love/1274.js:29:12: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1274.js:29:24: [maybe] <Document.getElementById>("d") did not match any elements
 test-resources/src/1k2012love/1274.js:36:8: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1274.js:29:12: [maybe] Reading absent property which of host object
 test-resources/src/1k2012love/1274.js:29:79: [maybe] Reading absent property which of host object
-test-resources/src/1k2012love/1274.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1274.js:29:12, test-resources/src/1k2012love/1274.js:29:24, test-resources/src/1k2012love/1274.js:36:8, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1274.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1274.js:29:24, test-resources/src/1k2012love/1274.js:36:8, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1274.js:29:59: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1274.js:29:107: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1274.js:34:9: [maybe] Reading absent property (computed name)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,11 +21,10 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 /**
  * Interface for edge transfer function classes.
  */
-public interface IEdgeTransfer<StateType extends IState<StateType, ?, ?>,
-        ContextType extends IContext<?>> {
+public interface IEdgeTransfer<ContextType extends IContext<?>> {
 
     /**
-     * Returns non-null context if flow should occur on the given edge and state.
+     * Returns non-null context if flow should occur on the given edge.
      */
-    ContextType transfer(BasicBlock src, BasicBlock dst, StateType state);
+    ContextType transfer(BasicBlock src, BasicBlock dst);
 }

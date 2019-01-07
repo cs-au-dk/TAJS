@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -163,6 +163,7 @@ public class TAJSInspectorAPI implements InspectorAPI {
         SourceLocation sourceLocation = c.getFlowGraph().getFunctions().stream()
                 .map(dk.brics.tajs.flowgraph.Function::getSourceLocation)
                 .filter(Objects::nonNull)
+                .filter(sl -> sl.getLocation() != null)
                 .filter(e -> {
                     FileID make = idManager.make(e.getLocation());
                     return id.equals(make);

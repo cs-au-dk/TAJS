@@ -2,5 +2,5 @@ test-resources/src/micro/test169.js:18:9: [definite] Dead assignment, property i
 test-resources/src/micro/test169.js:18:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/micro/test169.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test169.js:18:9]
 test-resources/src/micro/test169.js:18:9: [maybe] Reading absent property (computed name)
-test-resources/src/micro/test169.js:21:1: [info] Abstract value: [@Object#node19]
+test-resources/src/micro/test169.js:21:1: [info] Abstract value: [@Object#node18]
 Soundness testing succeeded for 235 checks (with 0 expected failures)

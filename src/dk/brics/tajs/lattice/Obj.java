@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,6 +110,13 @@ public final class Obj {
      */
     public boolean isWritable() {
         return writable;
+    }
+
+    /**
+     * Checks whether the properties of this object are writable.
+     */
+    public boolean isWritableProperties() {
+        return writable_properties;
     }
 
     /**
@@ -267,6 +274,7 @@ public final class Obj {
      */
     public Obj summarize(Summarized s) {
         Obj res = new Obj();
+        res.writable = true;
         res.properties = newMap();
         for (Entry<PKey, Value> me : properties.entrySet()) {
             Set<PKey> summarized_key = me.getKey().summarize(s);
@@ -591,7 +599,7 @@ public final class Obj {
      * and that no explicit property has been moved to default_numeric_property or default_other_property.
      */
     public void diff(Obj old, StringBuilder b) {
-        for (Entry<PKey, Value> me : sortedEntries(properties)) {
+        for (Entry<PKey, Value> me : sortedEntries(properties, new PKey.Comparator())) {
             Value v = old.properties.get(me.getKey());
             if (v == null) {
                 b.append("\n        new property: ").append(me.getKey());
@@ -660,7 +668,7 @@ public final class Obj {
             any = true;
             b.append("<none>");
         }
-        for (Entry<PKey, Value> me : sortedEntries(properties)) {
+        for (Entry<PKey, Value> me : sortedEntries(properties, new PKey.Comparator())) {
             Value v = me.getValue();
             if (v == (me.getKey().isNumeric() ? default_numeric_property : default_other_property))
                 continue;
@@ -721,7 +729,7 @@ public final class Obj {
      */
     public String printModified() {
         StringBuilder b = new StringBuilder();
-        for (Entry<PKey, Value> me : sortedEntries(properties)) {
+        for (Entry<PKey, Value> me : sortedEntries(properties, new PKey.Comparator())) {
             Value v = me.getValue();
             if (me.getKey().equals(StringPKey.__PROTO__)) {
                 continue;

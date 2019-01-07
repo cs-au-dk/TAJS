@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -274,6 +274,11 @@ public class Conversion {
                     public ExecutionContext getExecutionContext() {
                         return c.getState().getExecutionContext();
                     }
+
+                    @Override
+                    public boolean assumeFunction() {
+                        return false;
+                    }
                 }, c);
             }
         }
@@ -296,7 +301,7 @@ public class Conversion {
         boolean first = true;
         State res = null;
         State orig = c.getState();
-        for (Iterator<ObjectLabel> it = v.restrictToObject().getObjectLabels().iterator(); it.hasNext(); ) {
+        for (Iterator<ObjectLabel> it = v.restrictToNonSymbolObject().getObjectLabels().iterator(); it.hasNext(); ) {
             ObjectLabel ol = it.next();
             boolean last = !it.hasNext();
             // Return a default value for the Object. The default value of an object is

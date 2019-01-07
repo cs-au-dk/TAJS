@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -366,6 +366,11 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                 try {
                     try {
                         for (AbstractNode n : block.getNodes()) {
+                            if (Options.get().isIgnoreUnreachedEnabled()) {
+                                if (!c.getAnalysis().getBlendedAnalysis().isReachable(n)) {
+                                    continue block_loop;
+                                }
+                            }
                             current_node = n;
                             if (log.isDebugEnabled())
                                 log.debug("Visiting node " + current_node.getIndex() + ": "
@@ -378,6 +383,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                                     throw e;
                                 } else {
                                     terminatedEarly = String.format("Stopping analysis prematurely: %s", e.getMessage());
+                                    the_analysis_lattice_element.getState(block, context).setToBottom(); // to avoid failing in scan phase
                                     break block_loop;
                                 }
                             } finally {
@@ -395,12 +401,13 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                         analysis.getMonitoring().visitBlockTransferPost(block, current_state);
                     }
                     // edge transfer
+                    StateType s = current_state;
                     for (Iterator<BasicBlock> i = block.getSuccessors().iterator(); i.hasNext(); ) {
                         BasicBlock succ = i.next();
-                        StateType s = i.hasNext() ? current_state.clone() : current_state;
-                        ContextType new_context = analysis.getEdgeTransferFunctions().transfer(block, succ, s);
+                        current_state = i.hasNext() ? s.clone() : s;
+                        ContextType new_context = analysis.getEdgeTransferFunctions().transfer(block, succ);
                         if (new_context != null) {
-                            c.propagateToBasicBlock(s, succ, new_context);
+                            c.propagateToBasicBlock(current_state, succ, new_context);
                         }
                     }
                 } finally {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,6 +88,7 @@ public class Options {
         public static final int MAX_CONTEXT_SPECIALIZATION = 10;
         public static final int ARRAY_TRUNCATION_BOUND = 25;
         public static final int STRING_CONCAT_SETS_BOUND = 15;
+        public static final int STRING_SETS_BOUND = 250;
 
         // Fine performance tuning
         public static final int HYBRID_ARRAY_HASH_SET_ARRAY_SIZE = 8;

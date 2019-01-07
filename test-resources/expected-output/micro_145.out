@@ -1,7 +1,6 @@
-test-resources/src/micro/test145.js:2:10: [definite] Dead assignment, property a is never read
-test-resources/src/micro/test145.js:8:2: [definite] Dead assignment, property a is never read
 test-resources/src/micro/test145.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test145.js:2:12: [maybe] The variable v has values with different types
-test-resources/src/micro/test145.js:14:1: [info] Abstract value: [*Object#node21]
+test-resources/src/micro/test145.js:14:1: [info] Abstract value: [*Object#node24]
 test-resources/src/micro/test145.js:15:1: [info] Abstract object: {a:true,[[Prototype]]=[@Object.prototype[native]]}
-Soundness testing succeeded for 30 checks (with 0 expected failures)
+test-resources/src/micro/test145.js:16:1: [info] Abstract value: true
+Soundness testing succeeded for 33 checks (with 0 expected failures)

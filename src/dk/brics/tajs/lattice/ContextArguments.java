@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,6 +43,16 @@ public class ContextArguments {// TODO: canonicalize? (#140)
 
     private final List<Value> arguments;
 
+    /**
+     * Cached hashcode for immutable instance.
+     */
+    private final int hashCode;
+
+    /**
+     * Cached toString for immutable instance.
+     */
+    private final String toString;
+
     private ContextArguments(Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> selectedClosureVariables) { // TODO: review, compare with 19b80eac3
         List<String> relevantParameterNames = parameterNames != null ? parameterNames.subList(0, arguments == null ? 0 : Math.min(parameterNames.size(), arguments.size())) : null;
         this.unknownArg = unknownArg;
@@ -54,6 +64,8 @@ public class ContextArguments {// TODO: canonicalize? (#140)
                 throw new AnalysisException("Attempting to be context sensitive in polymorphic or unknown value");
             }
         }
+        hashCode = calculateHashCode();
+        toString = toString(false);
     }
     /**
      * Context arguments for a function invocation with unknown arguments.
@@ -112,7 +124,7 @@ public class ContextArguments {// TODO: canonicalize? (#140)
 
     @Override
     public String toString() {
-        return toString(false);
+        return toString;
     }
 
     @Override
@@ -132,6 +144,10 @@ public class ContextArguments {// TODO: canonicalize? (#140)
 
     @Override
     public int hashCode() {
+        return hashCode;
+    }
+
+    private int calculateHashCode() {
         int result = unknownArg != null ? unknownArg.hashCode() : 0;
         result = 31 * result + (selectedClosureVariables != null ? selectedClosureVariables.hashCode() : 0);
         result = 31 * result + (parameterNames != null ? parameterNames.hashCode() : 0);

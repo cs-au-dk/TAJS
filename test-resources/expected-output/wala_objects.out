@@ -1,7 +1,7 @@
 test-resources/src/wala/objects.js: [definite] Exceptional program exit is unreachable
 test-resources/src/wala/objects.js:42:11: [maybe] Converting object to string
-test-resources/src/wala/objects.js:48:1: [info] Abstract object: {3:7.0,4:[@Number#node37{boxed-primitive=4.0}],5:[@Object#node13],6:[@String#node41{boxed-primitive="whatever"}],length:7.0,[[Prototype]]=[@Array.prototype[native]]}
-test-resources/src/wala/objects.js:49:1: [info] Abstract value: [@Number#node37{boxed-primitive=4.0}]
-test-resources/src/wala/objects.js:50:1: [info] Abstract value: [@String#node41{boxed-primitive="whatever"}]
+test-resources/src/wala/objects.js:48:1: [info] Abstract object: {3:7.0,4:[@Number#node34{boxed-primitive=4.0}],5:[@Object#node13],6:[@String#node38{boxed-primitive="whatever"}],length:7.0,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/wala/objects.js:49:1: [info] Abstract value: [@Number#node34{boxed-primitive=4.0}]
+test-resources/src/wala/objects.js:50:1: [info] Abstract value: [@String#node38{boxed-primitive="whatever"}]
 test-resources/src/wala/objects.js:51:1: [info] Abstract value: "whatever"
 Soundness testing succeeded for 115 checks (with 0 expected failures)

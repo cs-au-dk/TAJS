@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
@@ -82,11 +83,11 @@ public class JSArray {
 
                 boolean isArrayLiteral = call.getSourceNode() instanceof CallNode && ((CallNode) call.getSourceNode()).getLiteralConstructorKind() == CallNode.LiteralConstructorKinds.ARRAY;
                 if (call.isUnknownNumberOfArgs())
-                    pv.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), call.getUnknownArg());
+                    pv.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), call.getUnknownArg().summarize(new Summarized(objlabel)));
                 else {
                     int numArgs = call.getNumberOfArgs();
                     if (numArgs == 1 && !isArrayLiteral) { // 15.4.2.2, paragraph 2.
-                        Value lenarg = FunctionCalls.readParameter(call, state, 0);
+                        Value lenarg = FunctionCalls.readParameter(call, state, 0).summarize(new Summarized(objlabel));
                         Status s;
                         if (lenarg.isMaybeSingleNum()) {
                             double d = lenarg.getNum();
@@ -126,7 +127,7 @@ public class JSArray {
                             boolean isAbsent = isArrayLiteral && ((CallNode) call.getSourceNode()).getArgRegister(i) == AbstractNode.NO_VALUE;
                             // support for the array literal syntax with omitted values: ['foo',,,,'bar']
                             if (!isAbsent) {
-                                Value parameter = FunctionCalls.readParameter(call, state, i);
+                                Value parameter = FunctionCalls.readParameter(call, state, i).summarize(new Summarized(objlabel));
                                 pv.writeProperty(objlabel, Integer.toString(i), parameter);
                             }
                         }
@@ -180,7 +181,7 @@ public class JSArray {
                         if (i == -1) {
                             element = state.readThis();
                         } else {
-                            element = FunctionCalls.readParameter(call, state, i);
+                            element = FunctionCalls.readParameter(call, state, i).summarize(new Summarized(resultLabel));
                         }
 
                         Pair<Set<ObjectLabel>, Value> separatedArrayValues = separateArrayValues(element, state);
@@ -226,7 +227,7 @@ public class JSArray {
                         unfoldedElements.addAll(unfoldedElement);
                     }
                 } else {
-                    unfoldedElements.add(call.getUnknownArg());
+                    unfoldedElements.add(call.getUnknownArg().summarize(new Summarized(resultLabel)));
                     isPreciseUnfolding = false;
                 }
 
@@ -297,7 +298,7 @@ public class JSArray {
                     } else {
                         new_len = Value.makeAnyNumUIntPos();
                     }
-                    if (arr.size() == 1) {
+                    if (arr.size() == 1 && arr.iterator().next().isSingleton()) {
                         Double length_prop = old_len.getNum();
                         long length = length_prop != null ? Conversion.toUInt32(length_prop) : -1;
                         int i;
@@ -398,7 +399,7 @@ public class JSArray {
                 ObjectLabel resultArray = makeArray(call.getSourceNode(), c);
 
                 // resolve the fromIndex, a value of null means that it is not coercible to a single, precise number
-                Value fromIndexValue = FunctionCalls.readParameter(call, state, 0);
+                Value fromIndexValue = FunctionCalls.readParameter(call, state, 0).summarize(new Summarized(resultArray));
                 if (fromIndexValue.isMaybeUndef()) {
                     fromIndexValue = fromIndexValue.restrictToNotUndef().joinNum(0);
                 }
@@ -406,7 +407,7 @@ public class JSArray {
                 Long fromIndex = fromIndexNum != null ? Conversion.toUInt32(fromIndexNum) : null;
 
                 // resolve the toIndex, a value of null means that it is not coercible to a single, precise number
-                Value toIndexValue = FunctionCalls.readParameter(call, state, 1);
+                Value toIndexValue = FunctionCalls.readParameter(call, state, 1).summarize(new Summarized(resultArray));
                 Long toIndex;
                 if (toIndexValue.isMaybeUndef() && !toIndexValue.isMaybeOtherThanUndef()) {
                     toIndex =  Math.round(Math.pow(2, 32)-1); // default value: array length, resolved later
@@ -526,10 +527,10 @@ public class JSArray {
                 readLength(thisObjects, c); // force read-side-effects
                 Value parameters = Value.makeNone();
                 if (call.isUnknownNumberOfArgs())
-                    parameters = UnknownValueResolver.join(parameters, call.getUnknownArg(), state);
+                    parameters = UnknownValueResolver.join(parameters, call.getUnknownArg().summarize(new Summarized(resultArray)), state);
                 else
                     for (int i = 2; i < call.getNumberOfArgs(); i++)
-                        parameters = UnknownValueResolver.join(parameters, FunctionCalls.readParameter(call, state, i), state);
+                        parameters = UnknownValueResolver.join(parameters, FunctionCalls.readParameter(call, state, i).summarize(new Summarized(resultArray)), state);
                 pv.deleteProperty(thisObjects, Value.makeAnyStrUInt(), true);
                 pv.writeProperty(thisObjects, Value.makeAnyStrUInt(), parameters.join(arrayValues).removeAttributes(), true);
                 writeLength(thisObjects, Value.makeAnyNumUInt(), c);
@@ -591,7 +592,7 @@ public class JSArray {
             }
 
             case ARRAY_VALUES: { // 15.4.4.14
-                throw new AnalysisException("Model for Array.prototype.values not implemented"); // TODO (Github #450):
+                throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getJSSourceNode().getSourceLocation() + ": Model for Array.prototype.values not implemented"); // TODO (Github #450):
             }
 
             default:

@@ -1,5 +1,3 @@
-var U = !!Math.random();
-
 function FIRST() {
     TARGET = 0;
 }
@@ -11,7 +9,7 @@ function MAYBE_FIRST(maybe) {
 }
 
 function RUN() {
-    while (U) {
+    while (!TAJS_make('AnyBool')) {
         ({});
     }
 

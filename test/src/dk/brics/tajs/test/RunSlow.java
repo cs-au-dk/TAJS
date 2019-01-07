@@ -8,11 +8,12 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        TestApps.class,
+        TestOptionToggling.class,
+        TestFeatureToggling.class,
+        RunBlendedAnalysis.class,
         TestJQueryUse.class,
         TestJQueryUse_unanalyzable.class,
-        TestOptionToggling.class,
-        TestSmoke.class
+        TestRevamp2016.class
 })
 public class RunSlow {
 

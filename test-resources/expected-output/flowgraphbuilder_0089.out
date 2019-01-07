@@ -15,18 +15,16 @@ fg2: <main> function()
   block 4:
     node 5: read-variable['o',v5,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:3)
     node 6: read-property[v5,'x',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:3)
-    node 7: <variable-non-null-undef>['o'] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:3)
-    node 8: +[v6,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:1)
-    node 9: constant[1.0,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:1)
-    node 10: +[v7,v8,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:1)
-    node 11: write-property[v5,'x',v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:3)
-    node 12: <variable-non-null-undef>['o']* (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:3)
+    node 7: +[v6,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:1)
+    node 8: constant[1.0,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:1)
+    node 9: +[v7,v8,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:1)
+    node 10: write-property[v5,'x',v9]* (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js:1:3)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js)
+    node 11: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js)
     ->[]
   block 6: [exit-exceptional]
-    node 14: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js)
+    node 12: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0089.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0089.js: [definite] Ordinary program exit is unreachable

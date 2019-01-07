@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,6 +92,9 @@ public final class HeapContext implements DeepImmutable {
      */
     @Override
     public boolean equals(Object obj) {
+// TODO: currently not exploiting object identity here, requires refactoring of all static fields of type ObjectLabel (in dk.brics.tajs.analysis.dom and sub-packages)
+//        if (!Canonicalizer.get().isCanonicalizing())
+//            return this == obj;
         if (obj == this)
             return true;
         if (!(obj instanceof HeapContext))

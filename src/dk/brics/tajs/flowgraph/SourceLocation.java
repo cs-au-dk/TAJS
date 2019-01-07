@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import java.nio.file.Path;
 /**
  * Source location.
  */
-public class SourceLocation implements Comparable<SourceLocation>, DeepImmutable, Serializable {
+public class SourceLocation implements DeepImmutable, Serializable {
 
     /**
      * A custom name for this source location (only used for pretty printing and sorting).
@@ -119,8 +119,15 @@ public class SourceLocation implements Comparable<SourceLocation>, DeepImmutable
         return location;
     }
 
+    public SourceLocation getLoaderLocation() {
+        return loaderLocation;
+    }
+
     @Override
     public boolean equals(Object o) {
+        if (!Canonicalizer.get().isCanonicalizing())
+            return this == o;
+
         if (this == o) return true;
         if (!(o instanceof SourceLocation)) return false;
 
@@ -193,45 +200,6 @@ public class SourceLocation implements Comparable<SourceLocation>, DeepImmutable
     }
 
     /**
-     * Compares source locations first by line number, then by column number.
-     */
-    @Override
-    public int compareTo(@Nonnull SourceLocation e) {
-
-        int c = kind.compareTo(e.kind);
-        if (c != 0) {
-            return c;
-        }
-
-        c = customName == e.customName ? 0 : (customName == null ? -1 : (e.customName == null ? 1 : customName.compareTo(e.customName)));
-        if (c != 0) {
-            return c;
-        }
-
-        c = location == e.location ? 0 : (location == null ? -1 : (e.location == null ? 1 : location.getPath().compareTo(e.location.getPath())));
-        if (c != 0) {
-            return c;
-        }
-
-        c = loaderLocation == e.loaderLocation ? 0 : (loaderLocation == null ? -1 : (e.loaderLocation == null ? 1 : loaderLocation.compareTo(e.loaderLocation)));
-        if (c != 0) {
-            return c;
-        }
-
-        c = lineNumber - e.lineNumber;
-        if (c != 0) {
-            return c;
-        }
-
-        c = columnNumber - e.columnNumber;
-        if (c != 0) {
-            return c;
-        }
-
-        return 0;
-    }
-
-    /**
      * User friendly representation of this source location.
      *
      * @param showPosition true if the position inside the source file should be included in the output.
@@ -251,7 +219,7 @@ public class SourceLocation implements Comparable<SourceLocation>, DeepImmutable
                 } else if (customName != null) {
                     selectedFileName = customName;
                 } else {
-                    Path actual = PathAndURLUtils.toPath(location);
+                    Path actual = PathAndURLUtils.toPath(location, true);
                     Path relativeToWorkingDirectory = PathAndURLUtils.getRelativeToWorkingDirectory(actual);
                     selectedFileName = PathAndURLUtils.toPortableString(relativeToWorkingDirectory);
                 }
@@ -267,7 +235,11 @@ public class SourceLocation implements Comparable<SourceLocation>, DeepImmutable
         return String.format("TAJS-dynamic-code(%s)", loaderLocationString);
     }
 
-    private enum Kind {
+    public Kind getKind() {
+        return kind;
+    }
+
+    public enum Kind {
 
         /**
          * Synthetic locations, mainly used for testing.
@@ -383,6 +355,39 @@ public class SourceLocation implements Comparable<SourceLocation>, DeepImmutable
         @Override
         public SourceLocation make(int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber) {
             return makeCanonical(name, null, lineNumber, columnNumber, endLineNumber, endColumnNumber, null, Kind.SYNTHETIC);
+        }
+    }
+
+    public static class Comparator implements java.util.Comparator<SourceLocation> {
+
+        /**
+         * Compares source locations first by line number, then by column number.
+         */
+        @Override
+        public int compare(@Nonnull SourceLocation o1, @Nonnull SourceLocation o2) {
+            return compareStatic(o1, o2);
+        }
+
+        public static int compareStatic(@Nonnull SourceLocation o1, @Nonnull SourceLocation o2) {
+            int c = o1.kind.compareTo(o2.kind);
+            if (c != 0)
+                return c;
+            c = o1.customName == o2.customName ? 0 : (o1.customName == null ? -1 : (o2.customName == null ? 1 : o1.customName.compareTo(o2.customName)));
+            if (c != 0)
+                return c;
+            c = o1.location == o2.location ? 0 : (o1.location == null ? -1 : (o2.location == null ? 1 : o1.location.getPath().compareTo(o2.location.getPath())));
+            if (c != 0)
+                return c;
+            c = o1.loaderLocation == o2.loaderLocation ? 0 : (o1.loaderLocation == null ? -1 : (o2.loaderLocation == null ? 1 : compareStatic(o1.loaderLocation, o2.loaderLocation)));
+            if (c != 0)
+                return c;
+            c = o1.lineNumber - o2.lineNumber;
+            if (c != 0)
+                return c;
+            c = o1.columnNumber - o2.columnNumber;
+            if (c != 0)
+                return c;
+            return 0;
         }
     }
 }

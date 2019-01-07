@@ -2,22 +2,30 @@ test-resources/src/google2/splay.js:300:10: [definite] The conditional expressio
 test-resources/src/google2/splay.js:47:7: [definite] Dead assignment, property array is never read
 test-resources/src/google2/splay.js:48:7: [definite] Dead assignment, property string is never read
 test-resources/src/google2/splay.js:358:3: [definite] Dead assignment, property value is never read
-test-resources/src/google2/splay.js:113:27: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:163:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/splay.js:167:13: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/splay.js:169:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/splay.js:170:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/splay.js:173:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/splay.js:174:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:193:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/splay.js:197:8: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/splay.js:198:18: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/splay.js:200:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/splay.js:201:18: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:206:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:224:10: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:236:10: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:256:7: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/splay.js:258:14: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/google2/splay.js:259:25: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:272:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:301:15: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:305:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:308:24: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:323:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google2/splay.js:326:25: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google2/splay.js:384:16: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google2/splay.js:385:15: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google2/splay.js: [maybe] Uncaught exception, constructed at [test-resources/src/google2/splay.js:95:11, test-resources/src/google2/splay.js:101:13, test-resources/src/google2/splay.js:113:27, test-resources/src/google2/splay.js:163:7, test-resources/src/google2/splay.js:190:11, test-resources/src/google2/splay.js:193:7, test-resources/src/google2/splay.js:194:11, test-resources/src/google2/splay.js:206:5, test-resources/src/google2/splay.js:224:10, test-resources/src/google2/splay.js:236:10, test-resources/src/google2/splay.js:256:7, test-resources/src/google2/splay.js:272:5, test-resources/src/google2/splay.js:301:15, test-resources/src/google2/splay.js:305:17, test-resources/src/google2/splay.js:308:24, test-resources/src/google2/splay.js:323:17, test-resources/src/google2/splay.js:326:25, test-resources/src/google2/splay.js:384:16, test-resources/src/google2/splay.js:385:15]
+test-resources/src/google2/splay.js: [maybe] Uncaught exception, constructed at [test-resources/src/google2/splay.js:95:11, test-resources/src/google2/splay.js:101:13, test-resources/src/google2/splay.js:163:7, test-resources/src/google2/splay.js:167:13, test-resources/src/google2/splay.js:169:18, test-resources/src/google2/splay.js:170:5, test-resources/src/google2/splay.js:173:17, test-resources/src/google2/splay.js:174:5, test-resources/src/google2/splay.js:190:11, test-resources/src/google2/splay.js:193:7, test-resources/src/google2/splay.js:194:11, test-resources/src/google2/splay.js:197:8, test-resources/src/google2/splay.js:198:18, test-resources/src/google2/splay.js:200:17, test-resources/src/google2/splay.js:201:18, test-resources/src/google2/splay.js:206:5, test-resources/src/google2/splay.js:224:10, test-resources/src/google2/splay.js:236:10, test-resources/src/google2/splay.js:256:7, test-resources/src/google2/splay.js:258:14, test-resources/src/google2/splay.js:259:25, test-resources/src/google2/splay.js:272:5, test-resources/src/google2/splay.js:301:15, test-resources/src/google2/splay.js:305:17, test-resources/src/google2/splay.js:308:24, test-resources/src/google2/splay.js:323:17, test-resources/src/google2/splay.js:326:25]
 test-resources/src/google2/splay.js:100:9: [maybe] Reading absent property (computed name)
 test-resources/src/google2/splay.js:100:20: [maybe] Reading absent property (computed name)
 test-resources/src/google2/splay.js:382:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

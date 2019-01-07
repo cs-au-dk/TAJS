@@ -1,6 +1,6 @@
 # TAJS - Type Analyzer for JavaScript
 
-Copyright 2009-2018 Aarhus University
+Copyright 2009-2019 Aarhus University
 
 TAJS is a dataflow analysis for JavaScript that infers type information and call graphs.
 
@@ -62,6 +62,8 @@ Some of the available options (run TAJS without arguments to see the full list):
 
 - `-test-soundness` - test soundness using concrete execution as described in ['Systematic Approaches for Increasing Soundness and Precision of Static Analyzers', SOAP 2017](http://cs.au.dk/~amoeller/papers/tajsexperience/) (see [below](#soundness-testing))
 
+- `-blended-analysis` - use concrete execution as described in ['Systematic Approaches for Increasing Soundness and Precision of Static Analyzers', SOAP 2017](http://cs.au.dk/~amoeller/papers/tajsexperience/) for increasing precision (see [below](#blended-analysis))
+
 - `-unsound X` - enable unsound assumption X, e.g. `-ignore-unlikely-property-reads` causes some unlikely properties to be ignored during dynamic property read operations, and `-show-unsoundness-usage` outputs usage of unsound assumptions
 
 Note that the analysis produces lots of addition information that is not output by default. If you want full access to the abstract states and call graphs, as a starting point see the source code for `dk.brics.tajs.Main`. 
@@ -92,7 +94,7 @@ It is possible to test that the analysis fixpoint over-approximates concrete beh
 This requires a log file of concrete behaviors to be provided to TAJS. 
 Sample log files are located in [test-resources/logs](test-resources/logs).
 
-Soundness testing, with an existing log file can be performed like this:
+Soundness testing using an existing log file can be performed like this:
 ```
 java -jar dist/tajs-all.jar -test-soundness -log-file test-resources/logs/google/richards.js.log.gz test-resources/src/google/richards.js
 ```
@@ -115,6 +117,30 @@ If DOM modeling is enabled (e.g. if the given file is an HTML file) then a brows
 If analyzing a stand-alone JavaScript file, the log file is generated with Node.js instead of using a browser.
 
 Changes to the source code of the analyzed program requires a new log file to be created. 
+
+## Blended analysis
+
+It is possible to artificially increase precision of the analysis by filtering abstract values based on values observed concretely. This option
+requires a log file as described for [soundness testing](#soundness-testing).
+
+Blended analysis using an existing log file can be performed like this:
+
+```
+java -jar dist/tajs-all.jar -blended-analysis -log-file test-resources/logs/google/richards.js.log.gz test-resources/src/google/richards.js
+```
+The output is as usual, but probably with fewer warnings due to the analysis being more precise.
+
+A variant of blended analysis is to tell the analysis to ignore code that is unreached according to the given log file:
+
+```
+java -jar dist/tajs-all.jar -ignore-unreached -log-file test-resources/logs/google/richards.js.log.gz test-resources/src/google/richards.js
+```
+
+Blended analysis with a freshly generated log file can be performed like this:
+
+```
+java -jar dist/tajs-all.jar -blended-analysis -generate-log -log-file my-log-file.log test-resources/src/google/richards.js
+```
 
 ## Environment configuration
 

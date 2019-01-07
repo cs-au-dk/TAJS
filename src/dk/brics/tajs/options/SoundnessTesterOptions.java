@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -105,6 +105,11 @@ public class SoundnessTesterOptions {
      */
     private boolean generateBeforeAnalysis = false;
 
+    /**
+     * Automatically detects which files should be instrumented and sets rootDirFromMainDirectory, based on the main HTML file.
+     */
+    private boolean generateOnlyIncludeAutomaticallyForHTMLFiles = false;
+
     public static Path getJalangiLogger() {
         return ExternalDependencies.getJalangiLoggerDirectory().get();
     }
@@ -127,6 +132,7 @@ public class SoundnessTesterOptions {
         if (ignoreShaDifference != that.ignoreShaDifference) return false;
         if (useUncompressedLogFileForInference != that.useUncompressedLogFileForInference) return false;
         if (generateBeforeAnalysis != that.generateBeforeAnalysis) return false;
+        if (generateOnlyIncludeAutomaticallyForHTMLFiles != that.generateOnlyIncludeAutomaticallyForHTMLFiles) return false;
         if (rootDirFromMainDirectory != null ? !rootDirFromMainDirectory.equals(that.rootDirFromMainDirectory) : that.rootDirFromMainDirectory != null)
             return false;
         if (explicitSoundnessLogFile != null ? !explicitSoundnessLogFile.equals(that.explicitSoundnessLogFile) : that.explicitSoundnessLogFile != null)
@@ -155,6 +161,7 @@ public class SoundnessTesterOptions {
         result = 31 * result + (ignoreShaDifference ? 1 : 0);
         result = 31 * result + (useUncompressedLogFileForInference ? 1 : 0);
         result = 31 * result + (generateBeforeAnalysis ? 1 : 0);
+        result = 31 * result + (generateOnlyIncludeAutomaticallyForHTMLFiles ? 1 : 0);
         return result;
     }
 
@@ -272,5 +279,13 @@ public class SoundnessTesterOptions {
 
     public void setGenerateBeforeAnalysis(boolean b) {
         generateBeforeAnalysis = true;
+    }
+
+    public void setGenerateOnlyIncludeAutomaticallyForHTMLFiles(boolean generateOnlyIncludeAutomaticallyForHTMLFiles) {
+        this.generateOnlyIncludeAutomaticallyForHTMLFiles = generateOnlyIncludeAutomaticallyForHTMLFiles;
+    }
+
+    public boolean isGenerateOnlyIncludeAutomaticallyForHTMLFiles() {
+        return generateOnlyIncludeAutomaticallyForHTMLFiles;
     }
 }

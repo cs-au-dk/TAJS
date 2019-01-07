@@ -37,10 +37,8 @@ test-resources/src/10k/minesweeper.html:70:15: [maybe] Reading absent property b
 test-resources/src/10k/minesweeper.html:70:23: [maybe] Reading absent property a
 test-resources/src/10k/minesweeper.html:75:21: [maybe] Reading absent property h
 test-resources/src/10k/minesweeper.html:81:124: [maybe] Reading absent property b
-test-resources/src/10k/minesweeper.html:92:13: [maybe] Reading absent property pageY of host object
 test-resources/src/10k/minesweeper.html:92:23: [maybe] Reading absent property offsetTop of host object
 test-resources/src/10k/minesweeper.html:92:23: [maybe] Reading absent property target of host object
-test-resources/src/10k/minesweeper.html:93:23: [maybe] Reading absent property pageX of host object
 test-resources/src/10k/minesweeper.html:93:33: [maybe] Reading absent property offsetLeft of host object
 test-resources/src/10k/minesweeper.html:93:33: [maybe] Reading absent property target of host object
 test-resources/src/10k/minesweeper.html:107:23: [maybe] Reading absent property a
@@ -52,7 +50,6 @@ test-resources/src/10k/minesweeper.html:164:13: [maybe] Reading absent property 
 test-resources/src/10k/minesweeper.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/minesweeper.html:32:62, test-resources/src/10k/minesweeper.html:37:71, test-resources/src/10k/minesweeper.html:38:13, test-resources/src/10k/minesweeper.html:43:5, test-resources/src/10k/minesweeper.html:46:13, test-resources/src/10k/minesweeper.html:47:13, test-resources/src/10k/minesweeper.html:59:13, test-resources/src/10k/minesweeper.html:69:17, test-resources/src/10k/minesweeper.html:70:15, test-resources/src/10k/minesweeper.html:81:124, test-resources/src/10k/minesweeper.html:92:23, test-resources/src/10k/minesweeper.html:93:33, test-resources/src/10k/minesweeper.html:106:22, test-resources/src/10k/minesweeper.html:107:23, test-resources/src/10k/minesweeper.html:129:9, test-resources/src/10k/minesweeper.html:134:31, test-resources/src/10k/minesweeper.html:148:5, test-resources/src/10k/minesweeper.html:151:5, test-resources/src/10k/minesweeper.html:164:13, test-resources/src/10k/minesweeper.html:165:13, test-resources/src/10k/minesweeper.html:166:123]
 test-resources/src/10k/minesweeper.html:34:7: [maybe] The variable a has values with different types
 test-resources/src/10k/minesweeper.html:35:9: [maybe] The variable a has values with different types
-test-resources/src/10k/minesweeper.html:36:19: [maybe] The variable a has values with different types
 test-resources/src/10k/minesweeper.html:37:71: [maybe] Reading absent property (computed name)
 test-resources/src/10k/minesweeper.html:46:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/minesweeper.html:52:27: [maybe] Converting undefined to string
@@ -80,15 +77,7 @@ test-resources/src/10k/minesweeper.html:81:126: [maybe] The variable c has value
 test-resources/src/10k/minesweeper.html:81:139: [maybe] The variable c has values with different types
 test-resources/src/10k/minesweeper.html:83:19: [maybe] Conversion to number yields NaN
 test-resources/src/10k/minesweeper.html:92:13: [maybe] Conversion to number yields NaN
-test-resources/src/10k/minesweeper.html:92:13: [maybe] Converting primitive number to object
-test-resources/src/10k/minesweeper.html:92:13: [maybe] The variable a has values with different types
-test-resources/src/10k/minesweeper.html:92:23: [maybe] Converting primitive number to object
-test-resources/src/10k/minesweeper.html:92:23: [maybe] The variable a has values with different types
 test-resources/src/10k/minesweeper.html:93:23: [maybe] Conversion to number yields NaN
-test-resources/src/10k/minesweeper.html:93:23: [maybe] Converting primitive number to object
-test-resources/src/10k/minesweeper.html:93:23: [maybe] The variable a has values with different types
-test-resources/src/10k/minesweeper.html:93:33: [maybe] Converting primitive number to object
-test-resources/src/10k/minesweeper.html:93:33: [maybe] The variable a has values with different types
 test-resources/src/10k/minesweeper.html:106:22: [maybe] Reading absent property (computed name)
 test-resources/src/10k/minesweeper.html:121:17: [maybe] Conversion to number yields NaN
 test-resources/src/10k/minesweeper.html:121:44: [maybe] Conversion to number yields NaN

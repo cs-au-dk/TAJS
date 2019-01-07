@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -178,7 +178,7 @@ public class DOMBuilder {
         createDOMProperty(DOMTouch.PROTOTYPE, "target", DOMFunctions.makeAnyHTMLElement().setReadOnly(), c);
 
         Value nodes = Value.makeObject(getAllDOMNodes()).setReadOnly();
-        c.getAnalysis().getPropVarOperations().writeProperty(singleton(DOMNamedNodeMap.INSTANCES), Value.makeAnyStrNotNumeric(), nodes);
+        c.getAnalysis().getPropVarOperations().writeProperty(singleton(DOMNamedNodeMap.INSTANCES), Value.makeAnyStrNotUInt(), nodes);
 
         c.getAnalysis().getPropVarOperations().writeProperty(singleton(HTMLOptionsCollection.INSTANCES), Value.makeAnyStrUInt(), Value.makeObject(HTMLOptionElement.INSTANCES));
 

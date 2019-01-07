@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.analysis;
 
+import dk.brics.tajs.blendedanalysis.solver.BlendedAnalysisManager;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.lattice.AnalysisLatticeElement;
 import dk.brics.tajs.lattice.CallEdge;
@@ -50,6 +51,8 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
 
     private final PropVarOperations state_util;
 
+    private BlendedAnalysisManager blended_analysis_manager;
+
     /**
      * Constructs a new analysis object.
      */
@@ -61,6 +64,8 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
         eval_cache = new EvalCache();
         solver = new Solver(this, sync);
         state_util = new PropVarOperations(unsoundness);
+        if (Options.get().isBlendedAnalysisEnabled() || Options.get().isIgnoreUnreachedEnabled())
+            blended_analysis_manager = new BlendedAnalysisManager();
     }
 
     @Override
@@ -90,7 +95,7 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
     }
 
     @Override
-    public IEdgeTransfer<State, Context> getEdgeTransferFunctions() {
+    public IEdgeTransfer<Context> getEdgeTransferFunctions() {
         return transfer;
     }
 
@@ -100,10 +105,17 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
     }
 
     @Override
+    public BlendedAnalysisManager getBlendedAnalysis() {
+        return blended_analysis_manager;
+    }
+
+    @Override
     public void setSolverInterface(Solver.SolverInterface c) {
         transfer.setSolverInterface(c);
         state_util.setSolverInterface(c);
         monitoring.setSolverInterface(c);
+        if (Options.get().isBlendedAnalysisEnabled() || Options.get().isIgnoreUnreachedEnabled())
+            blended_analysis_manager.setSolverInterface(c);
     }
 
     /**

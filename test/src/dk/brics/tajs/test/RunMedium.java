@@ -8,12 +8,12 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        PackageDependencyTest.class,
-        TestStr.class,
+        RunMediumECMAApps.class,
+        RunMediumDOMApps.class,
         RunMediumModels.class,
         RunMediumFeatures.class,
-        RunMediumECMAApps.class,
-        RunMediumDOMApps.class
+        TestStr.class,
+        PackageDependencyTest.class,
 })
 public class RunMedium {
 

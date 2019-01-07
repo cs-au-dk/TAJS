@@ -9,5 +9,5 @@ test-resources/src/micro/testEval.js:2:1: [info] Abstract value: Undef
 test-resources/src/micro/testEval.js:6:1: [info] Abstract value: 9.11
 test-resources/src/micro/testEval.js:10:1: [info] Abstract value: [@Boolean#node33{boxed-primitive=true}]
 test-resources/src/micro/testEval.js:13:1: [info] Abstract value: [@funfun#fun3]
-test-resources/src/micro/testEval.js:14:1: [info] Abstract object: {length:1.0,name:"funfun",prototype:[@Object#node389],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+test-resources/src/micro/testEval.js:14:1: [info] Abstract object: {length:1.0,name:"funfun",prototype:[@Object#node347],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
 Soundness testing succeeded for 44 checks (with 1 expected failures)

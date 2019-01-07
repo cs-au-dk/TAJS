@@ -13,4 +13,5 @@ h();
 
 TAJS_dumpValue(x);
 TAJS_dumpObject(x);
+TAJS_dumpValue(x.a);
 

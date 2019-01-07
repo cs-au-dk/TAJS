@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -144,11 +144,11 @@ public class AbstractConcreteValueComparator {
                 }
                 String concreteValue = d.getDescription();
                 if (concreteValue.equals("STR_UINT")) {
-                    Value jalangiValue = Value.makeAnyStrNumeric(); // FIXME: mismatch with STR_UINT
+                    Value jalangiValue = Value.makeAnyStrUInt();
                     return jalangiValue.join(absValStrOnly).equals(jalangiValue);
                 }
                 if (concreteValue.equals("STR_OTHERNUM")) {
-                    Value jalangiValue = Value.makeAnyStrNumeric(); // FIXME: mismatch with STR_OTHERNUM
+                    Value jalangiValue = Value.makeAnyStrOtherNum();
                     return jalangiValue.join(absValStrOnly).equals(jalangiValue);
                 }
                 if (concreteValue.equals("STR_IDENTIFIER") || concreteValue.equals("STR_IDENTIFIERPARTS")) {
@@ -223,10 +223,8 @@ public class AbstractConcreteValueComparator {
     private boolean isAbstractValueSound(OtherDescription d, Value abstractValue) {
         String concreteValue = d.getDescription();
         try {
-            if (concreteValue.equals("0")) {
-                // patch for https://github.com/cs-au-dk/jalangilogger/blob/master/javascript/src/analysis/ValueLogger.js
-                // describeNonStringPrimitive represents -0.0 as "0"
-                return abstractValue.isMaybeNum(0.0) || abstractValue.isMaybeNum(-0.0);
+            if (concreteValue.equals("-0")) {
+                return abstractValue.isMaybeNum(-0.0);
             } else
                 return abstractValue.isMaybeNum(Integer.parseInt(concreteValue));
         } catch (NumberFormatException e) {

@@ -21,7 +21,7 @@ public class Test1K2012Love {
         Options.get().enableIncludeDom();
         Options.get().enableUnevalizer();
         Options.get().enablePolyfillMDN();
-        Options.get().setAnalysisTimeLimit(1 * 60);
+        Options.get().setAnalysisTransferLimit(100000);
     }
 
     @Test
@@ -603,7 +603,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class) // TODO investigate (GitHub #417)
+    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void test1k_2012_love_1276() {
         Misc.run("test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1276.js");
         Misc.checkSystemOutput();

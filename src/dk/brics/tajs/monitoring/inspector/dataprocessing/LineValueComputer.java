@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginWithNode;
@@ -162,12 +161,6 @@ public class LineValueComputer {
 
         public NodeLineValueVisitor(State state) {
             this.state = state;
-        }
-
-        @Override
-        public void visit(AssumeNode n) {
-            visitPropertyAccess(n, n.getBaseRegister(), n.getPropertyRegister(), n.getPropertyString());
-            addVariable(n, n.getVariableName(), AbstractNode.NO_VALUE);
         }
 
         private void addVariable(AbstractNode n, String variableName, int resultBaseRegister) {

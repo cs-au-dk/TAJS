@@ -1,8 +1,11 @@
 test-resources/src/1k2012love/1140.js:56:10: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1140.js:57:10: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1140.js:58:10: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/1k2012love/1140.js:59:10: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1140.js:64:4: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2012love/1140.js:93:11: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2012love/1140.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1140.js:56:10, test-resources/src/1k2012love/1140.js:64:4, test-resources/src/1k2012love/1140.js:93:11, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1140.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1140.js:56:10, test-resources/src/1k2012love/1140.js:57:10, test-resources/src/1k2012love/1140.js:58:10, test-resources/src/1k2012love/1140.js:59:10, test-resources/src/1k2012love/1140.js:64:4, test-resources/src/1k2012love/1140.js:93:11, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1140.js:32:4: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1140.js:35:27: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1140.js:36:30: [maybe] Conversion to number yields NaN

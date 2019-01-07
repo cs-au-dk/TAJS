@@ -3,7 +3,7 @@
 <project name="TAJS" default="all" basedir=".">
 
     <property name="project" value="tajs" />
-    <property name="version" value="0.18" />
+    <property name="version" value="0.19" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
@@ -92,12 +92,11 @@
 
     <target name="doc" depends="jar">
         <mkdir dir="doc" />
-        <javadoc overview="src/overview.html" Package="true" sourcepath="src" destdir="doc" nodeprecated="true" author="true" notree="true" nohelp="true" windowtitle="TAJS" additionalparam="-Xdoclint:none">
-                <!-- for Java 8: additionalparam="-Xdoclint:none" -->
+        <javadoc overview="src/overview.html" Package="true" sourcepath="src" destdir="doc" nodeprecated="true" author="true" notree="true" nohelp="true" windowtitle="TAJS" additionalparam="-Xdoclint:-html,-missing">
             <doctitle>
                 <![CDATA[Type Analyzer for JavaScript (TAJS) API Specification]]>
             </doctitle>
-            <bottom><![CDATA[<i> Copyright &#169; 2009-2018 Aarhus University </i>]]></bottom>
+            <bottom><![CDATA[<i> Copyright &#169; 2009-2019 Aarhus University </i>]]></bottom>
             <link href="http://docs.oracle.com/javase/8/docs/api/"/>
             <link href="http://www.mozilla.org/rhino/apidocs/" />
             <classpath refid="classpath" />
@@ -165,14 +164,6 @@
         <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" failureproperty="test.failed" maxmemory="2048m">
             <classpath refid="classpath.test" />
             <test name="dk.brics.tajs.test.RunSlow"/>
-        </junit>
-        <fail message="tests failed" if="test.failed"/>
-    </target>
-
-    <target name="test-papers" depends="compile-test">
-        <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" failureproperty="test.failed" maxmemory="2048m">
-            <classpath refid="classpath.test" />
-            <test name="dk.brics.tajs.test.RunPapers"/>
         </junit>
         <fail message="tests failed" if="test.failed"/>
     </target>

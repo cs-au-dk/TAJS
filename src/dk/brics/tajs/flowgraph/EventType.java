@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,7 +61,7 @@ public enum EventType { // TODO: (#116) reconsider how to represent HTML event h
      */
     private static final Map<String, EventType> eventTypes = newMap();
 
-    static {
+    static {// TODO: see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/
         eventTypes.put("load", EventType.LOAD);
         eventTypes.put("DOMContentLoaded", EventType.LOAD);
 
@@ -78,6 +78,7 @@ public enum EventType { // TODO: (#116) reconsider how to represent HTML event h
         eventTypes.put("mouseover", EventType.MOUSE);
         eventTypes.put("mousemove", EventType.MOUSE);
         eventTypes.put("mouseout", EventType.MOUSE);
+        eventTypes.put("contextmenu", EventType.MOUSE);
 
         eventTypes.put("readystatechange", EventType.AJAX);
 

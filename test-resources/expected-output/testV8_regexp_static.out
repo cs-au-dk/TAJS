@@ -47,7 +47,7 @@ test-resources/src/v8tests/regexp-static.js:93:21: [maybe] Reading absent proper
 test-resources/src/v8tests/regexp-static.js:101:25: [maybe] Reading absent property lastMatch of host object
 test-resources/src/v8tests/regexp-static.js:111:21: [maybe] Reading absent property $2 of host object
 test-resources/src/v8tests/regexp-static.js:112:21: [maybe] Reading absent property $3 of host object
-test-resources/src/v8tests/regexp-static.js: [maybe] Uncaught exception, constructed at [HOST(string-replace-model.js):26:41, HOST(string-replace-model.js):33:51, HOST(string-replace-model.js):49:30, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
+test-resources/src/v8tests/regexp-static.js: [maybe] Uncaught exception, constructed at [HOST(string-replace-model.js):49:30, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
 test-resources/src/v8tests/regexp-static.js:50:20: [maybe] Reading absent property (computed name)
 test-resources/src/v8tests/regexp-static.js:61:1: [maybe] Converting object to string
 test-resources/src/v8tests/regexp-static.js:61:1: [maybe] Converting primitive string to object

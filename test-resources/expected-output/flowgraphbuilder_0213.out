@@ -15,37 +15,34 @@ fg2: <main> function()
   block 4:
     node 5: read-variable['f',v6,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:1:9)
     node 6: read-property[v6,'description',v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:1:9)
-    node 7: <variable-non-null-undef>['f'] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:1:9)
-    node 8: constant["h-panel",v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:2:11)
-    node 9: ===[v5,v7,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:1:1)
-    node 10: if[v8](true-block:5,false-block:8) (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:1:1)
+    node 7: constant["h-panel",v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:2:11)
+    node 8: ===[v5,v7,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:1:1)
+    node 9: if[v8](true-block:5,false-block:8) (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:1:1)
     ->[block 5,block 8]
   block 5:
-    node 11: read-variable['Array',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:13)
-    node 12: read-variable['c',v16,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:15)
-    node 13: constant[0.0,v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:17)
-    node 14: read-property[v16,v17,v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:15)
-    node 15: <variable-non-null-undef>['c'] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:15)
-    node 16: read-variable['e',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:22)
-    node 17: constant[0.0,v19] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:24)
-    node 18: read-property[v18,v19,v15] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:22)
-    node 19: <variable-non-null-undef>['e'] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:22)
-    node 20: +[v14,v15,v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:15)
-    node 21: read-variable['b',v13,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:30)
-    node 22: *[v12,v13,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:14)
-    node 23: constant[0.0,v20] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:33)
+    node 10: read-variable['Array',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:13)
+    node 11: read-variable['c',v16,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:15)
+    node 12: constant[0.0,v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:17)
+    node 13: read-property[v16,v17,v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:15)
+    node 14: read-variable['e',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:22)
+    node 15: constant[0.0,v19] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:24)
+    node 16: read-property[v18,v19,v15] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:22)
+    node 17: +[v14,v15,v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:15)
+    node 18: read-variable['b',v13,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:30)
+    node 19: *[v12,v13,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:14)
+    node 20: constant[0.0,v20] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:33)
     ->[block 6]
   block 6:
-    node 24: construct[-,v10,v11,v20,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:13)
+    node 21: construct[-,v10,v11,v20,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:13)
     ->[block 7]
   block 7:
-    node 25: write-variable[v9,'a']* (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:9)
+    node 22: write-variable[v9,'a']* (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:9)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 26: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js)
+    node 23: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js)
     ->[]
   block 9: [exit-exceptional]
-    node 27: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js)
+    node 24: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0213.js: [definite] Ordinary program exit is unreachable

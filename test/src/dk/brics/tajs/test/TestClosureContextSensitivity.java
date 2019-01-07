@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Set;
+import java.util.function.Supplier;
 
 import static dk.brics.tajs.util.Collections.newSet;
 import static org.junit.Assert.assertEquals;
@@ -157,15 +158,20 @@ public class TestClosureContextSensitivity {
     }
 
     private void test(String expectedValue, String... sourceLines) {
-        Value expected = Value.makeStr(expectedValue);
+        Supplier<Value> expected = () -> Value.makeStr(expectedValue);
         test(expected, sourceLines);
     }
 
-    private void test(Value expected, String... sourceLines) {
+    private void test(Supplier<Value> expected, String... sourceLines) {
         TestMonitor testMonitor = new TestMonitor();
         IAnalysisMonitoring monitor = CompositeMonitoring.buildFromList(testMonitor, Monitoring.make());
         Misc.runSource(sourceLines, monitor);
-        assertEquals(expected.toString(), testMonitor.state.readVariableDirect("RESULT").toString());
+        try {
+            assertEquals(expected.get().toString(), testMonitor.state.readVariableDirect("RESULT").toString());
+        } catch (Throwable e) {
+            e.printStackTrace(System.out);
+            throw e;
+        }
     }
 
     private class TestMonitor extends DefaultAnalysisMonitoring {

@@ -38,6 +38,8 @@ benchmarks/tajs/src/apps/jscrypto/jscrypto.js:233:1: [definite] Dead assignment,
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:242:1: [definite] Dead assignment, property verify is never read
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:374:4: [definite] Dead assignment, property is never read
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:384:3: [definite] Dead assignment, property is never read
+benchmarks/tajs/src/apps/jscrypto/jscrypto.js:483:5: [definite] Dead assignment, property is never read
+benchmarks/tajs/src/apps/jscrypto/jscrypto.js:484:5: [definite] Dead assignment, property is never read
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:528:2: [definite] Dead assignment, property _cipher is never read
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:536:1: [definite] Dead assignment, property _formatInput is never read
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:627:1: [definite] Dead assignment, property _generateCtrBlocks is never read
@@ -135,8 +137,6 @@ benchmarks/tajs/src/apps/jscrypto/jscrypto.js:160:28: [maybe] TypeError, accessi
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:161:13: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:162:13: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:163:13: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:210:19: [maybe] TypeError, call to non-function
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:214:14: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:283:22: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:8: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:25: [maybe] TypeError, accessing property of null/undefined
@@ -149,28 +149,17 @@ benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:37: [maybe] TypeError, accessi
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:72: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:106: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:135: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:380:23: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:476:7: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:477:7: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:500:18: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:500:18: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:501:20: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:501:20: [maybe] TypeError, call to non-function
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:503:16: [maybe] TypeError, call to non-function
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:504:20: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:4: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:4: [maybe] TypeError, call to non-function
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1370:5: [maybe] RangeError, assigning invalid value to array 'length' property
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1499:2: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1523:36: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1533:3: [maybe] TypeError, call to non-function
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1563:7: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1569:3: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:76:3: [maybe] Reading absent property innerHTML of host object
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:4: [maybe] Reading absent property update_words_big_endian of host object
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:94: [maybe] Reading absent property length
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1533:3: [maybe] Reading absent property push
-benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:72:2, benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:76:3, benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:79:2, benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:87:3, benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:90:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:104:21, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:115:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:116:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:117:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:118:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:131:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:132:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:133:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:134:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:135:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:135:19, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:136:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:136:19, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:137:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:137:19, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:138:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:138:19, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:139:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:140:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:141:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:142:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:148:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:148:19, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:148:23, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:148:28, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:149:4, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:149:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:150:4, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:150:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:151:4, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:151:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:152:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:152:28, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:153:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:154:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:155:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:156:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:156:28, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:157:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:158:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:159:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:160:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:160:28, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:161:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:162:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:163:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:210:19, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:214:14, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:283:22, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:8, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:25, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:54, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:75, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:96, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:305:154, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:9, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:37, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:72, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:106, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:135, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:374:4, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:380:23, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:476:7, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:477:7, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:483:5, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:484:5, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:500:18, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:501:20, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:503:16, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:504:20, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:932:30, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:950:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:999:4, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1015:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1019:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:4, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1370:5, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1499:2, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1523:36, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1533:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1563:7, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1569:3]
+benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:72:2, benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:76:3, benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:79:2, benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:87:3, benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:90:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:104:21, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:115:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:116:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:117:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:118:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:131:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:132:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:133:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:134:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:135:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:135:19, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:136:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:136:19, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:137:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:137:19, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:138:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:138:19, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:139:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:140:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:141:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:142:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:148:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:148:19, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:148:23, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:148:28, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:149:4, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:149:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:150:4, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:150:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:151:4, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:151:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:152:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:152:28, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:153:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:154:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:155:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:156:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:156:28, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:157:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:158:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:159:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:160:3, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:160:28, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:161:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:162:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:163:13, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:283:22, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:8, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:25, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:54, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:75, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:294:96, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:305:154, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:9, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:37, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:72, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:106, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:310:135, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:476:7, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:477:7, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:500:18, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:501:20, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:4, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1499:2, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1523:36, benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1569:3]
 benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:34:6: [maybe] Converting primitive string to object
 benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:36:22: [maybe] Converting object to string
 benchmarks/tajs/src/apps/jscrypto/encrypt_cookie.html:36:22: [maybe] Converting primitive string to object
@@ -681,43 +670,33 @@ benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1130:30: [maybe] Reading absent pr
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:21: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:22: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:22: [maybe] Converting undefined to string
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:23: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:23: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:23: [maybe] Converting object to number
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:23: [maybe] The variable a has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:29: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:29: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:29: [maybe] Converting object to number
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:29: [maybe] The variable a has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:36: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:36: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:36: [maybe] Converting object to number
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:36: [maybe] The variable a has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:42: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:42: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:42: [maybe] Converting object to number
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:42: [maybe] The variable a has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:48: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:48: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:48: [maybe] Converting object to number
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:48: [maybe] The variable a has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:58: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:58: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:58: [maybe] Converting object to number
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:58: [maybe] The variable b has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:65: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:65: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:65: [maybe] Converting object to number
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:65: [maybe] The variable b has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:72: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:72: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:72: [maybe] Converting object to number
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:72: [maybe] The variable b has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:79: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:79: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:79: [maybe] Converting object to number
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:79: [maybe] The variable b has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:85: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:85: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:85: [maybe] Converting object to number
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1131:85: [maybe] The variable b has values with different types
@@ -775,38 +754,20 @@ benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1175:71: [maybe] Reading absent pr
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1296:7: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1318:14: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1325:17: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1326:9: [maybe] The variable robin has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1327:28: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1327:30: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1327:30: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:4: [maybe] Converting object to string
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:4: [maybe] Converting primitive number to object
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:4: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:16: [maybe] The variable robin has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:48: [maybe] The variable id has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1370:5: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1370:5: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1370:5: [maybe] Converting object to string
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1370:5: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1370:24: [maybe] The variable robin has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1375:30: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1386:15: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1523:36: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1524:3: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1524:3: [maybe] Converting undefined to string
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1524:3: [maybe] The variable strength has values with different types
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1524:15: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1537:5: [maybe] Conversion from string to number yields NaN
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1537:28: [maybe] The variable strength has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1538:9: [maybe] The variable strength has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1538:53: [maybe] The variable strength has values with different types
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1556:16: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1564:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1569:3: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1319:3: [info] Writing to unknown property that may cause loss of precision
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1326:37: [info] Writing to unknown property that may cause loss of precision
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1327:5: [info] Writing to unknown property that may cause loss of precision
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1370:5: [info] Writing to unknown property that may cause loss of precision
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:263:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:266:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:275:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
@@ -845,7 +806,5 @@ benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1209:5: [info] 'this' refers to mu
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1318:14: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1325:17: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1327:30: [info] Reading from unknown property that may cause loss of precision
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:4: [info] Reading from unknown property that may cause loss of precision
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1370:5: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1556:16: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 9 checks (with 0 expected failures)
+Soundness testing succeeded for 0 checks (with 0 expected failures)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -209,7 +209,8 @@ public class JSString {
                     trimmedString = thisString;
                 } else if (thisString.isMaybeStrPrefix() && (nativeobject == STRING_TRIM || nativeobject == STRING_TRIMLEFT)) {
                     Pattern LTRIM = Pattern.compile("^[\\s\\uFEFF\\xA0]+");
-                    trimmedString = Value.makeNone().joinPrefix(thisString.getPrefix().replaceAll(LTRIM.toString(),""));
+                    String trimmedPrefixString = thisString.getPrefix().replaceAll(LTRIM.toString(), "");
+                    trimmedString = !trimmedPrefixString.isEmpty() ? Value.makeNone().joinPrefix(trimmedPrefixString) : Value.makeAnyStr();
                 } else {
                     trimmedString = Value.makeAnyStr();
                 }

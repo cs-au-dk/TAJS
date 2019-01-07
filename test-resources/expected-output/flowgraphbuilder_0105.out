@@ -23,19 +23,16 @@ fg2: <main> function()
     node 12: write-variable[v7,'y']* (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:2:1)
     node 13: read-variable['y',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
     node 14: read-property[v10,'b',v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
-    node 15: <variable-non-null-undef>['y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
-    node 16: read-property[v9,'a',v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
-    node 17: <property-non-null-undef>[v10,'b'] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
-    node 18: constant[2.0,v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:10)
-    node 19: +[v11,v12,v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
-    node 20: write-property[v9,'a',v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
-    node 21: <property-non-null-undef>[v10,'b']* (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 15: read-property[v9,'a',v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 16: constant[2.0,v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:10)
+    node 17: +[v11,v12,v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 18: write-property[v9,'a',v13]* (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 22: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js)
+    node 19: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js)
     ->[]
   block 6: [exit-exceptional]
-    node 23: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js)
+    node 20: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0105.js: [definite] Exceptional program exit is unreachable

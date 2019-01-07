@@ -7,8 +7,8 @@ test-resources/src/micro/test138.js: [definite] Exceptional program exit is unre
 test-resources/src/micro/test138.js:18:1: [info] Abstract state (modified parts):
   @<the global object>[native] (<initial state>):
     make: [@make#fun1]
-    x: [@Object#node43, *Object#node43]
-    y: Undef|[@Object#node43]
+    x: [@Object#node37, *Object#node37]
+    y: Undef|[@Object#node37]
   @Math[native] (<initial state>):
   @Object.prototype[native] (<initial state>):
   @Object[native] (<initial state>):
@@ -28,34 +28,34 @@ test-resources/src/micro/test138.js:18:1: [info] Abstract state (modified parts)
     name: "make"
     prototype: [@Object#node1]
     [[Prototype]] = [@Function.prototype[native]]
-  *Object#node43 (test-resources/src/micro/test138.js:2:9):
+  *Object#node37 (test-resources/src/micro/test138.js:2:9):
     a: 7.0
-    b: [*Object#node43]
+    b: [*Object#node37]
     [[Prototype]] = [@Object.prototype[native]]
-  @Object#node43 (test-resources/src/micro/test138.js:2:9):
+  @Object#node37 (test-resources/src/micro/test138.js:2:9):
     a: 7.0|"foo"
-    b: [@Object#node43]|absent
-    c: [@Object#node43]|absent
-    d: [*Object#node43]|absent
+    b: [@Object#node37]|absent
+    c: [@Object#node37]|absent
+    d: [*Object#node37]|absent
     [[Prototype]] = [@Object.prototype[native]]
   @<anonymous>#fun2 (HOST(string-replace-model.js):1:1):
     length: 0.0
     name: ""
     prototype: [@Object#node6]
     [[Prototype]] = [@Function.prototype[native]]
-  @activation#node46 (HOST(string-replace-model.js):1:1):
-    arguments: [@arguments#node46]
-  @arguments#node46 (HOST(string-replace-model.js):1:1):
+  @activation#node40 (HOST(string-replace-model.js):1:1):
+    arguments: [@arguments#node40]
+  @arguments#node40 (HOST(string-replace-model.js):1:1):
     callee: [@<anonymous>#fun2]
     length: 0.0
     [[Prototype]] = [@Object.prototype[native]]
-  @Object#node61 (HOST(string-replace-model.js):3:12):
+  @Object#node53 (HOST(string-replace-model.js):3:12):
     constructor: [@replace#fun3]
     [[Prototype]] = [@Object.prototype[native]]
     [[Value]] = NaN
   @replace#fun3 (HOST(string-replace-model.js):3:12):
     length: 2.0
     name: "replace"
-    prototype: [@Object#node61]
+    prototype: [@Object#node53]
     [[Prototype]] = [@Function.prototype[native]]
 Soundness testing succeeded for 31 checks (with 0 expected failures)

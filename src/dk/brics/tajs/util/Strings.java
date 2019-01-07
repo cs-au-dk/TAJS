@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -60,9 +60,18 @@ public class Strings {
 
     /**
      * Escapes special characters in the given string.
-     * Special characters are all Unicode chars except 0x20-0x7e but including \, ", {, and }.
+     * Special characters are all Unicode chars except 0x20-0x7e but including \, ", <, >, |, {, and }.
      */
     public static String escape(String s) {
+        return escape(s, false);
+    }
+
+    /**
+     * Escapes special characters in the given string.
+     * Special characters are all Unicode chars except 0x20-0x7e but including \, ".
+     * If onlyEscapeEscapeSequences is false <, >, |, {, and } are also escaped.
+     */
+    public static String escape(String s, boolean onlyEscapeEscapeSequences) {
         if (s == null)
             return null;
         StringBuilder b = new StringBuilder();
@@ -91,19 +100,19 @@ public class Strings {
                     b.append("\\f");
                     break;
                 case '<':
-                    b.append("\\<");
+                    b.append(onlyEscapeEscapeSequences ? c : "\\<");
                     break;
                 case '>':
-                    b.append("\\>");
+                    b.append(onlyEscapeEscapeSequences ? c : "\\>");
                     break;
                 case '{':
-                    b.append("\\{");
+                    b.append(onlyEscapeEscapeSequences ? c : "\\{");
                     break;
                 case '}':
-                    b.append("\\}");
+                    b.append(onlyEscapeEscapeSequences ? c : "\\}");
                     break;
                 case '|':
-                    b.append("\\|");
+                    b.append(onlyEscapeEscapeSequences ? c : "\\|");
                     break;
                 default:
                     if (c >= 0x20 && c <= 0x7e)

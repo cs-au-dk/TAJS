@@ -66,23 +66,22 @@ fg2: <main> function()
     node 31: write-variable[v21,'x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:7:6)
     node 32: read-variable['g',v22,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:8:5)
     node 33: read-variable['x',v23,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:8:7)
-    node 34: read-property[v22,v23,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:8:5)
-    node 35: <variable-non-null-undef>['g']* (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:8:5)
+    node 34: read-property[v22,v23,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:8:5)
     ->[block 18] ~>[block 17]
   block 17:
-    node 36: end-for-in(begin-node:27)* (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:7:1)
+    node 35: end-for-in(begin-node:27)* (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:7:1)
     ->[block 21]
   block 18:
-    node 37: end-for-in(begin-node:27)* (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:7:1)
+    node 36: end-for-in(begin-node:27)* (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:7:1)
     ->[block 14]
   block 19:
-    node 38: end-for-in(begin-node:27)* (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:7:1)
+    node 37: end-for-in(begin-node:27)* (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:7:1)
     ->[block 20]
   block 20: [exit-ordinary]
-    node 39: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js)
+    node 38: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js)
     ->[]
   block 21: [exit-exceptional]
-    node 40: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js)
+    node 39: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0179.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0179.js:6:6: [definite] Dead assignment, property b is never read

@@ -31,6 +31,8 @@ import static dk.brics.tajs.util.Collections.newSet;
 @RunWith(Parameterized.class)
 public class PackageDependencyTest {
 
+    static final private boolean DEBUG = false;
+
     @Parameterized.Parameter
     public Dependency antiDependency;
 
@@ -98,64 +100,50 @@ public class PackageDependencyTest {
         graph.addEdge(TAJSPackage.flowgraph, TAJSPackage.options);
         graph.addEdge(TAJSPackage.util, TAJSPackage.options);
         graph.addEdge(TAJSPackage.options, TAJSPackage.util);
-//        // additions that are not present in /misc//package-dependencies.png (yet)
-//        graph.addNode(TAJSPackage.metautil);
-//        graph.addEdge(TAJSPackage.metautil, TAJSPackage.analysis);
-//        graph.addEdge(TAJSPackage.metautil, TAJSPackage.monitoring);
-//        graph.addEdge(TAJSPackage.metautil, TAJSPackage.lattice);
-//        graph.addEdge(TAJSPackage.metautil, TAJSPackage.solver);
-//        graph.addEdge(TAJSPackage.metautil, TAJSPackage.js2flowgraph);
-//        graph.addEdge(TAJSPackage.metautil, TAJSPackage.flowgraph);
-//        graph.addEdge(TAJSPackage.metautil, TAJSPackage.util);
-//        graph.addEdge(TAJSPackage.metautil, TAJSPackage.options);
-//        graph.addEdge(TAJSPackage.metautil, TAJSPackage.unevalizer);
         return graph;
-    }
-
-    private static Optional<String> testAntiDependency(TAJSPackage target, TAJSPackage antiDependency) {
-        try {
-            return testAntiDependency_(target, antiDependency);
-        } catch (InterruptedException | IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     /**
      * Tests if a forbidden dependency is reachable from a specific package. Explains all failures.
      */
-    private static Optional<String> testAntiDependency_(TAJSPackage target, TAJSPackage antiDependency) throws IOException, InterruptedException {
-        System.out.println("testing that " + target + " does not depend on " + antiDependency);
-        boolean DEBUG = false;
-        ProcessBuilder pb = new ProcessBuilder();
-        String antiDependencyPattern = String.format("%s.*", antiDependency.getCanonicalName());
-        String classpath = System.getProperty("java.class.path");
-        pb.command(Arrays.asList("jdeps", "-cp", classpath, "-e", antiDependencyPattern, "-v", target.getLocation()));
-        if (DEBUG) {
-            System.out.println(String.join(" ", pb.command()));
+    private static Optional<String> testAntiDependency(TAJSPackage target, TAJSPackage antiDependency) {
+        try {
+            System.out.println("testing that " + target + " does not depend on " + antiDependency);
+            ProcessBuilder pb = new ProcessBuilder();
+            String antiDependencyPattern = String.format("%s.*", antiDependency.getCanonicalName());
+            String targetPattern = String.format("%s.*", target.getCanonicalName());
+            String classpath = System.getProperty("java.class.path");
+            pb.command(Arrays.asList("jdeps", "-cp", classpath, "-e", antiDependencyPattern, "-v", "-include", targetPattern));
+            if (DEBUG) {
+                System.out.println(String.join(" ", pb.command()));
+            }
+            Process process = pb.start();
+            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            List<String> lines = newList();
+            while ((line = br.readLine()) != null) {
+                if (!line.startsWith("split package"))
+                    lines.add(line);
+            }
+            process.waitFor();
+            if (lines.size() > 1) {
+                return Optional.of(String.join(String.format("%n"), lines.subList(1, lines.size())));
+            }
+            return Optional.empty();
+        } catch (InterruptedException | IOException e) {
+            throw new RuntimeException(e);
         }
-        Process process = pb.start();
-        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        String line;
-        List<String> lines = newList();
-        while ((line = br.readLine()) != null) {
-            lines.add(line);
-        }
-        process.waitFor();
-        if (lines.size() > 1) {
-            return Optional.of(String.join(String.format("%n"), lines.subList(1, lines.size())));
-        }
-        return Optional.empty();
     }
 
     @Test
-    public void antiDependencyIsNotPresent() throws IOException, InterruptedException {
+    public void antiDependencyIsNotPresent() {
         Optional<String> failure = testAntiDependency(antiDependency.getFrom(), antiDependency.getTo());
         if (!failure.isPresent()) {
             return;
         }
         String headline = String.format("Bad dependency '%s' is present: (output from 'jdeps')", antiDependency.toString());
         String fullOutput = failure.get();
-        System.out.format("%s%n%s", headline, fullOutput);
+        System.out.format("%s%n%s\n", headline, fullOutput);
         throw new AssertionError(headline);
     }
 
@@ -242,8 +230,6 @@ public class PackageDependencyTest {
 
         public static final TAJSPackage options = new TAJSPackage("options");
 
-        public static final TAJSPackage metautil = new TAJSPackage("metautil");
-
         private final String lastName;
 
         private TAJSPackage(String lastName) {
@@ -259,7 +245,7 @@ public class PackageDependencyTest {
         }
 
         private String getLocation() {
-            return PathAndURLUtils.toPath(Main.class.getResource(lastName)).toString();
+            return PathAndURLUtils.toPath(Main.class.getResource(lastName), false).toString();
         }
 
         @Override

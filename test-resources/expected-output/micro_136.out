@@ -1,7 +1,7 @@
 test-resources/src/micro/test136.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test136.js:6:14: [maybe] The variable n has values with different types
 test-resources/src/micro/test136.js:10:12: [maybe] The variable x has values with different types
-test-resources/src/micro/test136.js:15:1: [info] Abstract value: [@Object#node37]
-test-resources/src/micro/test136.js:16:1: [info] Abstract value: [*Object#node37]
+test-resources/src/micro/test136.js:15:1: [info] Abstract value: [@Object#node34]
+test-resources/src/micro/test136.js:16:1: [info] Abstract value: [*Object#node34]
 test-resources/src/micro/test136.js:17:1: [info] Abstract value: 42.0
 Soundness testing succeeded for 38 checks (with 0 expected failures)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -164,10 +164,10 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
      * Constructs a new InitialStateBuilder object.
      */
     public InitialStateBuilder() {
-        init();
+        reset();
     }
 
-    private static void init() {
+    public static void reset() {
         GLOBAL = ObjectLabel.make(ECMAScriptObjects.GLOBAL, Kind.OBJECT);
         OBJECT_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.OBJECT_PROTOTYPE, Kind.OBJECT);
         FUNCTION_PROTOTYPE = ObjectLabel.make(ECMAScriptObjects.FUNCTION_PROTOTYPE, Kind.FUNCTION);

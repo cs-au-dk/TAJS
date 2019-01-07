@@ -20,6 +20,8 @@ test-resources/src/chromeexperiments/sandtrap.html:572:9: [definite] The conditi
 test-resources/src/chromeexperiments/sandtrap.html:704:9: [definite] The conditional expression is always false
 test-resources/src/chromeexperiments/sandtrap.html:724:13: [definite] The conditional expression is always false
 test-resources/src/chromeexperiments/sandtrap.html:727:17: [definite] The conditional expression is always true
+test-resources/src/chromeexperiments/sandtrap.html:832:9: [definite] The conditional expression is always false
+test-resources/src/chromeexperiments/sandtrap.html:915:17: [definite] The conditional expression is always true
 test-resources/src/chromeexperiments/sandtrap.html:1029:9: [definite] The conditional expression is always false
 test-resources/src/chromeexperiments/sandtrap.html:1083:5: [definite] The conditional expression is always true
 test-resources/src/chromeexperiments/sandtrap.html:82:27: [definite] Reading absent property opera
@@ -35,7 +37,6 @@ test-resources/src/chromeexperiments/sandtrap.html:1043:9: [definite] Dead assig
 test-resources/src/chromeexperiments/sandtrap.html:1052:9: [definite] Dead assignment, property update is never read
 test-resources/src/chromeexperiments/sandtrap.html:21:5: [definite] The variable ROTATIONAL_FRICTION is never used
 test-resources/src/chromeexperiments/sandtrap.html:76:9: [definite] The variable b is never used
-test-resources/src/chromeexperiments/sandtrap.html:144:23: [definite] Unreachable function
 test-resources/src/chromeexperiments/sandtrap.html:149:17: [definite] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:164:57: [definite] Unreachable code
 test-resources/src/chromeexperiments/sandtrap.html:206:1: [definite] Unreachable function resetGame
@@ -104,14 +105,12 @@ test-resources/src/chromeexperiments/sandtrap.html:508:86: [maybe] TypeError, ac
 test-resources/src/chromeexperiments/sandtrap.html:509:25: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:509:47: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:509:86: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:514:25: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:514:39: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:514:65: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:515:40: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:515:67: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:516:21: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:520:37: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:520:37: [maybe] TypeError, call to non-function
 test-resources/src/chromeexperiments/sandtrap.html:521:26: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:521:61: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:521:105: [maybe] TypeError, accessing property of null/undefined
@@ -217,13 +216,6 @@ test-resources/src/chromeexperiments/sandtrap.html:739:83: [maybe] TypeError, ac
 test-resources/src/chromeexperiments/sandtrap.html:740:21: [maybe] TypeError, call to non-function
 test-resources/src/chromeexperiments/sandtrap.html:748:29: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:754:29: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:760:29: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:761:47: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:761:64: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:768:64: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:768:81: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:773:153: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:773:172: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:782:21: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:783:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:800:25: [maybe] TypeError, accessing property of null/undefined
@@ -248,7 +240,6 @@ test-resources/src/chromeexperiments/sandtrap.html:948:17: [maybe] TypeError, ac
 test-resources/src/chromeexperiments/sandtrap.html:949:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:950:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:951:36: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:952:21: [maybe] TypeError, call to non-function
 test-resources/src/chromeexperiments/sandtrap.html:962:21: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:963:21: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:964:21: [maybe] TypeError, accessing property of null/undefined
@@ -268,10 +259,8 @@ test-resources/src/chromeexperiments/sandtrap.html:986:13: [maybe] TypeError, no
 test-resources/src/chromeexperiments/sandtrap.html:988:72: [maybe] TypeError, call to non-function
 test-resources/src/chromeexperiments/sandtrap.html:997:21: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:1000:13: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:1010:17: [maybe] TypeError, call to non-function
 test-resources/src/chromeexperiments/sandtrap.html:1011:21: [maybe] TypeError, call to non-function
 test-resources/src/chromeexperiments/sandtrap.html:1030:9: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/chromeexperiments/sandtrap.html:1061:32: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:1086:15: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:1089:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/sandtrap.html:1109:13: [maybe] TypeError, accessing property of null/undefined
@@ -286,7 +275,6 @@ test-resources/src/chromeexperiments/sandtrap.html:71:9: [maybe] Reading absent 
 test-resources/src/chromeexperiments/sandtrap.html:82:9: [maybe] Reading absent property wheelDelta of host object
 test-resources/src/chromeexperiments/sandtrap.html:83:19: [maybe] Reading absent property wheelDelta of host object
 test-resources/src/chromeexperiments/sandtrap.html:84:14: [maybe] Reading absent property detail of host object
-test-resources/src/chromeexperiments/sandtrap.html:84:33: [maybe] Reading absent property detail of host object
 test-resources/src/chromeexperiments/sandtrap.html:87:9: [maybe] Reading absent property rotate
 test-resources/src/chromeexperiments/sandtrap.html:106:24: [maybe] Reading absent property which of host object
 test-resources/src/chromeexperiments/sandtrap.html:138:17: [maybe] Reading absent property rotate
@@ -314,7 +302,6 @@ test-resources/src/chromeexperiments/sandtrap.html:514:65: [maybe] Reading absen
 test-resources/src/chromeexperiments/sandtrap.html:515:25: [maybe] Reading absent property height
 test-resources/src/chromeexperiments/sandtrap.html:515:40: [maybe] Reading absent property p
 test-resources/src/chromeexperiments/sandtrap.html:515:67: [maybe] Reading absent property p
-test-resources/src/chromeexperiments/sandtrap.html:520:37: [maybe] Reading absent property charAt
 test-resources/src/chromeexperiments/sandtrap.html:540:17: [maybe] Reading absent property p
 test-resources/src/chromeexperiments/sandtrap.html:540:41: [maybe] Reading absent property p
 test-resources/src/chromeexperiments/sandtrap.html:541:33: [maybe] Reading absent property p
@@ -443,18 +430,6 @@ test-resources/src/chromeexperiments/sandtrap.html:739:83: [maybe] Reading absen
 test-resources/src/chromeexperiments/sandtrap.html:740:21: [maybe] Reading absent property remove
 test-resources/src/chromeexperiments/sandtrap.html:748:29: [maybe] Reading absent property grid
 test-resources/src/chromeexperiments/sandtrap.html:754:29: [maybe] Reading absent property grid
-test-resources/src/chromeexperiments/sandtrap.html:760:29: [maybe] Reading absent property description
-test-resources/src/chromeexperiments/sandtrap.html:761:47: [maybe] Reading absent property p
-test-resources/src/chromeexperiments/sandtrap.html:761:64: [maybe] Reading absent property p
-test-resources/src/chromeexperiments/sandtrap.html:768:64: [maybe] Reading absent property p
-test-resources/src/chromeexperiments/sandtrap.html:768:81: [maybe] Reading absent property p
-test-resources/src/chromeexperiments/sandtrap.html:770:63: [maybe] Reading absent property v
-test-resources/src/chromeexperiments/sandtrap.html:773:33: [maybe] Reading absent property description
-test-resources/src/chromeexperiments/sandtrap.html:773:60: [maybe] Reading absent property description
-test-resources/src/chromeexperiments/sandtrap.html:773:90: [maybe] Reading absent property description
-test-resources/src/chromeexperiments/sandtrap.html:773:120: [maybe] Reading absent property description
-test-resources/src/chromeexperiments/sandtrap.html:773:153: [maybe] Reading absent property v
-test-resources/src/chromeexperiments/sandtrap.html:773:172: [maybe] Reading absent property v
 test-resources/src/chromeexperiments/sandtrap.html:782:21: [maybe] Reading absent property context of host object
 test-resources/src/chromeexperiments/sandtrap.html:782:21: [maybe] Reading absent property parent
 test-resources/src/chromeexperiments/sandtrap.html:784:21: [maybe] Reading absent property scale
@@ -483,7 +458,6 @@ test-resources/src/chromeexperiments/sandtrap.html:949:17: [maybe] Reading absen
 test-resources/src/chromeexperiments/sandtrap.html:950:17: [maybe] Reading absent property storage
 test-resources/src/chromeexperiments/sandtrap.html:950:44: [maybe] Reading absent property storageCanvas
 test-resources/src/chromeexperiments/sandtrap.html:951:36: [maybe] Reading absent property storageCanvas
-test-resources/src/chromeexperiments/sandtrap.html:952:21: [maybe] Reading absent property charAt
 test-resources/src/chromeexperiments/sandtrap.html:962:21: [maybe] Reading absent property storageContext
 test-resources/src/chromeexperiments/sandtrap.html:963:21: [maybe] Reading absent property storageContext
 test-resources/src/chromeexperiments/sandtrap.html:964:21: [maybe] Reading absent property storageContext
@@ -526,14 +500,12 @@ test-resources/src/chromeexperiments/sandtrap.html:1006:52: [maybe] Reading abse
 test-resources/src/chromeexperiments/sandtrap.html:1006:66: [maybe] Reading absent property offsetX
 test-resources/src/chromeexperiments/sandtrap.html:1006:109: [maybe] Reading absent property scale
 test-resources/src/chromeexperiments/sandtrap.html:1006:123: [maybe] Reading absent property offsetY
-test-resources/src/chromeexperiments/sandtrap.html:1010:17: [maybe] Reading absent property charAt
 test-resources/src/chromeexperiments/sandtrap.html:1011:21: [maybe] Reading absent property getCartesianGravity
 test-resources/src/chromeexperiments/sandtrap.html:1030:9: [maybe] Reading absent property grid
 test-resources/src/chromeexperiments/sandtrap.html:1092:13: [maybe] Reading 'this' yields the global object
 test-resources/src/chromeexperiments/sandtrap.html:1095:13: [maybe] Reading 'this' yields the global object
-test-resources/src/chromeexperiments/sandtrap.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/sandtrap.html:65:9, test-resources/src/chromeexperiments/sandtrap.html:71:9, test-resources/src/chromeexperiments/sandtrap.html:87:9, test-resources/src/chromeexperiments/sandtrap.html:119:30, test-resources/src/chromeexperiments/sandtrap.html:138:17, test-resources/src/chromeexperiments/sandtrap.html:149:17, test-resources/src/chromeexperiments/sandtrap.html:164:46, test-resources/src/chromeexperiments/sandtrap.html:174:5, test-resources/src/chromeexperiments/sandtrap.html:174:15, test-resources/src/chromeexperiments/sandtrap.html:199:28, test-resources/src/chromeexperiments/sandtrap.html:200:5, test-resources/src/chromeexperiments/sandtrap.html:200:54, test-resources/src/chromeexperiments/sandtrap.html:226:15, test-resources/src/chromeexperiments/sandtrap.html:227:5, test-resources/src/chromeexperiments/sandtrap.html:240:9, test-resources/src/chromeexperiments/sandtrap.html:292:5, test-resources/src/chromeexperiments/sandtrap.html:308:9, test-resources/src/chromeexperiments/sandtrap.html:323:5, test-resources/src/chromeexperiments/sandtrap.html:329:9, test-resources/src/chromeexperiments/sandtrap.html:332:13, test-resources/src/chromeexperiments/sandtrap.html:338:5, test-resources/src/chromeexperiments/sandtrap.html:339:5, test-resources/src/chromeexperiments/sandtrap.html:342:18, test-resources/src/chromeexperiments/sandtrap.html:343:10, test-resources/src/chromeexperiments/sandtrap.html:352:5, test-resources/src/chromeexperiments/sandtrap.html:355:5, test-resources/src/chromeexperiments/sandtrap.html:378:17, test-resources/src/chromeexperiments/sandtrap.html:453:5, test-resources/src/chromeexperiments/sandtrap.html:460:5, test-resources/src/chromeexperiments/sandtrap.html:475:13, test-resources/src/chromeexperiments/sandtrap.html:475:62, test-resources/src/chromeexperiments/sandtrap.html:476:38, test-resources/src/chromeexperiments/sandtrap.html:476:53, test-resources/src/chromeexperiments/sandtrap.html:484:27, test-resources/src/chromeexperiments/sandtrap.html:487:18, test-resources/src/chromeexperiments/sandtrap.html:488:58, test-resources/src/chromeexperiments/sandtrap.html:489:148, test-resources/src/chromeexperiments/sandtrap.html:490:14, test-resources/src/chromeexperiments/sandtrap.html:498:17, test-resources/src/chromeexperiments/sandtrap.html:499:38, test-resources/src/chromeexperiments/sandtrap.html:508:25, test-resources/src/chromeexperiments/sandtrap.html:508:47, test-resources/src/chromeexperiments/sandtrap.html:508:86, test-resources/src/chromeexperiments/sandtrap.html:509:25, test-resources/src/chromeexperiments/sandtrap.html:509:47, test-resources/src/chromeexperiments/sandtrap.html:509:86, test-resources/src/chromeexperiments/sandtrap.html:514:25, test-resources/src/chromeexperiments/sandtrap.html:514:39, test-resources/src/chromeexperiments/sandtrap.html:514:65, test-resources/src/chromeexperiments/sandtrap.html:515:40, test-resources/src/chromeexperiments/sandtrap.html:515:67, test-resources/src/chromeexperiments/sandtrap.html:516:21, test-resources/src/chromeexperiments/sandtrap.html:520:37, test-resources/src/chromeexperiments/sandtrap.html:521:26, test-resources/src/chromeexperiments/sandtrap.html:521:61, test-resources/src/chromeexperiments/sandtrap.html:521:105, test-resources/src/chromeexperiments/sandtrap.html:521:130, test-resources/src/chromeexperiments/sandtrap.html:521:146, test-resources/src/chromeexperiments/sandtrap.html:521:178, test-resources/src/chromeexperiments/sandtrap.html:522:33, test-resources/src/chromeexperiments/sandtrap.html:522:77, test-resources/src/chromeexperiments/sandtrap.html:522:152, test-resources/src/chromeexperiments/sandtrap.html:522:168, test-resources/src/chromeexperiments/sandtrap.html:522:200, test-resources/src/chromeexperiments/sandtrap.html:540:17, test-resources/src/chromeexperiments/sandtrap.html:540:41, test-resources/src/chromeexperiments/sandtrap.html:541:33, test-resources/src/chromeexperiments/sandtrap.html:542:33, test-resources/src/chromeexperiments/sandtrap.html:545:21, test-resources/src/chromeexperiments/sandtrap.html:545:28, test-resources/src/chromeexperiments/sandtrap.html:545:36, test-resources/src/chromeexperiments/sandtrap.html:545:64, test-resources/src/chromeexperiments/sandtrap.html:545:71, test-resources/src/chromeexperiments/sandtrap.html:545:79, test-resources/src/chromeexperiments/sandtrap.html:546:21, test-resources/src/chromeexperiments/sandtrap.html:546:28, test-resources/src/chromeexperiments/sandtrap.html:546:51, test-resources/src/chromeexperiments/sandtrap.html:546:79, test-resources/src/chromeexperiments/sandtrap.html:546:86, test-resources/src/chromeexperiments/sandtrap.html:546:109, test-resources/src/chromeexperiments/sandtrap.html:547:21, test-resources/src/chromeexperiments/sandtrap.html:547:28, test-resources/src/chromeexperiments/sandtrap.html:547:51, test-resources/src/chromeexperiments/sandtrap.html:547:64, test-resources/src/chromeexperiments/sandtrap.html:547:71, test-resources/src/chromeexperiments/sandtrap.html:547:94, test-resources/src/chromeexperiments/sandtrap.html:548:21, test-resources/src/chromeexperiments/sandtrap.html:548:28, test-resources/src/chromeexperiments/sandtrap.html:548:51, test-resources/src/chromeexperiments/sandtrap.html:548:79, test-resources/src/chromeexperiments/sandtrap.html:548:86, test-resources/src/chromeexperiments/sandtrap.html:548:109, test-resources/src/chromeexperiments/sandtrap.html:549:21, test-resources/src/chromeexperiments/sandtrap.html:549:28, test-resources/src/chromeexperiments/sandtrap.html:549:36, test-resources/src/chromeexperiments/sandtrap.html:549:64, test-resources/src/chromeexperiments/sandtrap.html:549:71, test-resources/src/chromeexperiments/sandtrap.html:549:79, test-resources/src/chromeexperiments/sandtrap.html:550:21, test-resources/src/chromeexperiments/sandtrap.html:550:28, test-resources/src/chromeexperiments/sandtrap.html:550:51, test-resources/src/chromeexperiments/sandtrap.html:550:79, test-resources/src/chromeexperiments/sandtrap.html:550:86, test-resources/src/chromeexperiments/sandtrap.html:550:109, test-resources/src/chromeexperiments/sandtrap.html:551:21, test-resources/src/chromeexperiments/sandtrap.html:551:28, test-resources/src/chromeexperiments/sandtrap.html:551:51, test-resources/src/chromeexperiments/sandtrap.html:551:64, test-resources/src/chromeexperiments/sandtrap.html:551:71, test-resources/src/chromeexperiments/sandtrap.html:551:94, test-resources/src/chromeexperiments/sandtrap.html:552:21, test-resources/src/chromeexperiments/sandtrap.html:552:28, test-resources/src/chromeexperiments/sandtrap.html:552:51, test-resources/src/chromeexperiments/sandtrap.html:552:79, test-resources/src/chromeexperiments/sandtrap.html:552:86, test-resources/src/chromeexperiments/sandtrap.html:552:109, test-resources/src/chromeexperiments/sandtrap.html:558:52, test-resources/src/chromeexperiments/sandtrap.html:566:33, test-resources/src/chromeexperiments/sandtrap.html:579:17, test-resources/src/chromeexperiments/sandtrap.html:580:17, test-resources/src/chromeexperiments/sandtrap.html:581:9, test-resources/src/chromeexperiments/sandtrap.html:581:27, test-resources/src/chromeexperiments/sandtrap.html:589:13, test-resources/src/chromeexperiments/sandtrap.html:589:42, test-resources/src/chromeexperiments/sandtrap.html:590:13, test-resources/src/chromeexperiments/sandtrap.html:591:42, test-resources/src/chromeexperiments/sandtrap.html:592:13, test-resources/src/chromeexperiments/sandtrap.html:593:37, test-resources/src/chromeexperiments/sandtrap.html:595:13, test-resources/src/chromeexperiments/sandtrap.html:596:13, test-resources/src/chromeexperiments/sandtrap.html:598:33, test-resources/src/chromeexperiments/sandtrap.html:599:33, test-resources/src/chromeexperiments/sandtrap.html:600:9, test-resources/src/chromeexperiments/sandtrap.html:602:9, test-resources/src/chromeexperiments/sandtrap.html:608:33, test-resources/src/chromeexperiments/sandtrap.html:609:33, test-resources/src/chromeexperiments/sandtrap.html:615:17, test-resources/src/chromeexperiments/sandtrap.html:615:36, test-resources/src/chromeexperiments/sandtrap.html:639:24, test-resources/src/chromeexperiments/sandtrap.html:639:42, test-resources/src/chromeexperiments/sandtrap.html:639:60, test-resources/src/chromeexperiments/sandtrap.html:656:16, test-resources/src/chromeexperiments/sandtrap.html:667:21, test-resources/src/chromeexperiments/sandtrap.html:672:13, test-resources/src/chromeexperiments/sandtrap.html:705:9, test-resources/src/chromeexperiments/sandtrap.html:712:21, test-resources/src/chromeexperiments/sandtrap.html:714:17, test-resources/src/chromeexperiments/sandtrap.html:715:17, test-resources/src/chromeexperiments/sandtrap.html:733:25, test-resources/src/chromeexperiments/sandtrap.html:739:29, test-resources/src/chromeexperiments/sandtrap.html:739:59, test-resources/src/chromeexperiments/sandtrap.html:739:83, test-resources/src/chromeexperiments/sandtrap.html:740:21, test-resources/src/chromeexperiments/sandtrap.html:748:29, test-resources/src/chromeexperiments/sandtrap.html:754:29, test-resources/src/chromeexperiments/sandtrap.html:760:29, test-resources/src/chromeexperiments/sandtrap.html:761:47, test-resources/src/chromeexperiments/sandtrap.html:761:64, test-resources/src/chromeexperiments/sandtrap.html:768:64, test-resources/src/chromeexperiments/sandtrap.html:768:81, test-resources/src/chromeexperiments/sandtrap.html:773:153, test-resources/src/chromeexperiments/sandtrap.html:773:172, test-resources/src/chromeexperiments/sandtrap.html:782:21, test-resources/src/chromeexperiments/sandtrap.html:783:13, test-resources/src/chromeexperiments/sandtrap.html:800:25, test-resources/src/chromeexperiments/sandtrap.html:807:21, test-resources/src/chromeexperiments/sandtrap.html:842:161, test-resources/src/chromeexperiments/sandtrap.html:843:161, test-resources/src/chromeexperiments/sandtrap.html:846:25, test-resources/src/chromeexperiments/sandtrap.html:847:25, test-resources/src/chromeexperiments/sandtrap.html:848:161, test-resources/src/chromeexperiments/sandtrap.html:849:161, test-resources/src/chromeexperiments/sandtrap.html:852:25, test-resources/src/chromeexperiments/sandtrap.html:853:25, test-resources/src/chromeexperiments/sandtrap.html:854:161, test-resources/src/chromeexperiments/sandtrap.html:855:161, test-resources/src/chromeexperiments/sandtrap.html:859:86, test-resources/src/chromeexperiments/sandtrap.html:860:86, test-resources/src/chromeexperiments/sandtrap.html:868:21, test-resources/src/chromeexperiments/sandtrap.html:876:25, test-resources/src/chromeexperiments/sandtrap.html:898:25, test-resources/src/chromeexperiments/sandtrap.html:935:25, test-resources/src/chromeexperiments/sandtrap.html:948:17, test-resources/src/chromeexperiments/sandtrap.html:949:17, test-resources/src/chromeexperiments/sandtrap.html:950:17, test-resources/src/chromeexperiments/sandtrap.html:951:36, test-resources/src/chromeexperiments/sandtrap.html:952:21, test-resources/src/chromeexperiments/sandtrap.html:962:21, test-resources/src/chromeexperiments/sandtrap.html:963:21, test-resources/src/chromeexperiments/sandtrap.html:964:21, test-resources/src/chromeexperiments/sandtrap.html:965:21, test-resources/src/chromeexperiments/sandtrap.html:966:21, test-resources/src/chromeexperiments/sandtrap.html:967:21, test-resources/src/chromeexperiments/sandtrap.html:968:21, test-resources/src/chromeexperiments/sandtrap.html:969:21, test-resources/src/chromeexperiments/sandtrap.html:970:21, test-resources/src/chromeexperiments/sandtrap.html:971:21, test-resources/src/chromeexperiments/sandtrap.html:972:21, test-resources/src/chromeexperiments/sandtrap.html:973:21, test-resources/src/chromeexperiments/sandtrap.html:980:21, test-resources/src/chromeexperiments/sandtrap.html:983:21, test-resources/src/chromeexperiments/sandtrap.html:986:13, test-resources/src/chromeexperiments/sandtrap.html:988:72, test-resources/src/chromeexperiments/sandtrap.html:997:21, test-resources/src/chromeexperiments/sandtrap.html:1000:13, test-resources/src/chromeexperiments/sandtrap.html:1010:17, test-resources/src/chromeexperiments/sandtrap.html:1011:21, test-resources/src/chromeexperiments/sandtrap.html:1030:9, test-resources/src/chromeexperiments/sandtrap.html:1061:32, test-resources/src/chromeexperiments/sandtrap.html:1086:15, test-resources/src/chromeexperiments/sandtrap.html:1089:9, TAJS-dynamic-code(test-resources/src/chromeexperiments/sandtrap.html:333:13):1:1]
+test-resources/src/chromeexperiments/sandtrap.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/sandtrap.html:65:9, test-resources/src/chromeexperiments/sandtrap.html:71:9, test-resources/src/chromeexperiments/sandtrap.html:87:9, test-resources/src/chromeexperiments/sandtrap.html:119:30, test-resources/src/chromeexperiments/sandtrap.html:138:17, test-resources/src/chromeexperiments/sandtrap.html:149:17, test-resources/src/chromeexperiments/sandtrap.html:164:46, test-resources/src/chromeexperiments/sandtrap.html:174:5, test-resources/src/chromeexperiments/sandtrap.html:174:15, test-resources/src/chromeexperiments/sandtrap.html:199:28, test-resources/src/chromeexperiments/sandtrap.html:200:5, test-resources/src/chromeexperiments/sandtrap.html:200:54, test-resources/src/chromeexperiments/sandtrap.html:226:15, test-resources/src/chromeexperiments/sandtrap.html:227:5, test-resources/src/chromeexperiments/sandtrap.html:240:9, test-resources/src/chromeexperiments/sandtrap.html:292:5, test-resources/src/chromeexperiments/sandtrap.html:308:9, test-resources/src/chromeexperiments/sandtrap.html:323:5, test-resources/src/chromeexperiments/sandtrap.html:329:9, test-resources/src/chromeexperiments/sandtrap.html:332:13, test-resources/src/chromeexperiments/sandtrap.html:338:5, test-resources/src/chromeexperiments/sandtrap.html:339:5, test-resources/src/chromeexperiments/sandtrap.html:342:18, test-resources/src/chromeexperiments/sandtrap.html:343:10, test-resources/src/chromeexperiments/sandtrap.html:352:5, test-resources/src/chromeexperiments/sandtrap.html:355:5, test-resources/src/chromeexperiments/sandtrap.html:378:17, test-resources/src/chromeexperiments/sandtrap.html:453:5, test-resources/src/chromeexperiments/sandtrap.html:460:5, test-resources/src/chromeexperiments/sandtrap.html:475:13, test-resources/src/chromeexperiments/sandtrap.html:475:62, test-resources/src/chromeexperiments/sandtrap.html:476:38, test-resources/src/chromeexperiments/sandtrap.html:476:53, test-resources/src/chromeexperiments/sandtrap.html:484:27, test-resources/src/chromeexperiments/sandtrap.html:487:18, test-resources/src/chromeexperiments/sandtrap.html:488:58, test-resources/src/chromeexperiments/sandtrap.html:489:148, test-resources/src/chromeexperiments/sandtrap.html:490:14, test-resources/src/chromeexperiments/sandtrap.html:498:17, test-resources/src/chromeexperiments/sandtrap.html:499:38, test-resources/src/chromeexperiments/sandtrap.html:508:25, test-resources/src/chromeexperiments/sandtrap.html:508:47, test-resources/src/chromeexperiments/sandtrap.html:508:86, test-resources/src/chromeexperiments/sandtrap.html:509:25, test-resources/src/chromeexperiments/sandtrap.html:509:47, test-resources/src/chromeexperiments/sandtrap.html:509:86, test-resources/src/chromeexperiments/sandtrap.html:514:39, test-resources/src/chromeexperiments/sandtrap.html:514:65, test-resources/src/chromeexperiments/sandtrap.html:515:40, test-resources/src/chromeexperiments/sandtrap.html:515:67, test-resources/src/chromeexperiments/sandtrap.html:516:21, test-resources/src/chromeexperiments/sandtrap.html:520:37, test-resources/src/chromeexperiments/sandtrap.html:521:26, test-resources/src/chromeexperiments/sandtrap.html:521:61, test-resources/src/chromeexperiments/sandtrap.html:521:105, test-resources/src/chromeexperiments/sandtrap.html:521:130, test-resources/src/chromeexperiments/sandtrap.html:521:146, test-resources/src/chromeexperiments/sandtrap.html:521:178, test-resources/src/chromeexperiments/sandtrap.html:522:33, test-resources/src/chromeexperiments/sandtrap.html:522:77, test-resources/src/chromeexperiments/sandtrap.html:522:152, test-resources/src/chromeexperiments/sandtrap.html:522:168, test-resources/src/chromeexperiments/sandtrap.html:522:200, test-resources/src/chromeexperiments/sandtrap.html:540:17, test-resources/src/chromeexperiments/sandtrap.html:540:41, test-resources/src/chromeexperiments/sandtrap.html:541:33, test-resources/src/chromeexperiments/sandtrap.html:542:33, test-resources/src/chromeexperiments/sandtrap.html:545:21, test-resources/src/chromeexperiments/sandtrap.html:545:28, test-resources/src/chromeexperiments/sandtrap.html:545:36, test-resources/src/chromeexperiments/sandtrap.html:545:64, test-resources/src/chromeexperiments/sandtrap.html:545:71, test-resources/src/chromeexperiments/sandtrap.html:545:79, test-resources/src/chromeexperiments/sandtrap.html:546:21, test-resources/src/chromeexperiments/sandtrap.html:546:28, test-resources/src/chromeexperiments/sandtrap.html:546:51, test-resources/src/chromeexperiments/sandtrap.html:546:79, test-resources/src/chromeexperiments/sandtrap.html:546:86, test-resources/src/chromeexperiments/sandtrap.html:546:109, test-resources/src/chromeexperiments/sandtrap.html:547:21, test-resources/src/chromeexperiments/sandtrap.html:547:28, test-resources/src/chromeexperiments/sandtrap.html:547:51, test-resources/src/chromeexperiments/sandtrap.html:547:64, test-resources/src/chromeexperiments/sandtrap.html:547:71, test-resources/src/chromeexperiments/sandtrap.html:547:94, test-resources/src/chromeexperiments/sandtrap.html:548:21, test-resources/src/chromeexperiments/sandtrap.html:548:28, test-resources/src/chromeexperiments/sandtrap.html:548:51, test-resources/src/chromeexperiments/sandtrap.html:548:79, test-resources/src/chromeexperiments/sandtrap.html:548:86, test-resources/src/chromeexperiments/sandtrap.html:548:109, test-resources/src/chromeexperiments/sandtrap.html:549:21, test-resources/src/chromeexperiments/sandtrap.html:549:28, test-resources/src/chromeexperiments/sandtrap.html:549:36, test-resources/src/chromeexperiments/sandtrap.html:549:64, test-resources/src/chromeexperiments/sandtrap.html:549:71, test-resources/src/chromeexperiments/sandtrap.html:549:79, test-resources/src/chromeexperiments/sandtrap.html:550:21, test-resources/src/chromeexperiments/sandtrap.html:550:28, test-resources/src/chromeexperiments/sandtrap.html:550:51, test-resources/src/chromeexperiments/sandtrap.html:550:79, test-resources/src/chromeexperiments/sandtrap.html:550:86, test-resources/src/chromeexperiments/sandtrap.html:550:109, test-resources/src/chromeexperiments/sandtrap.html:551:21, test-resources/src/chromeexperiments/sandtrap.html:551:28, test-resources/src/chromeexperiments/sandtrap.html:551:51, test-resources/src/chromeexperiments/sandtrap.html:551:64, test-resources/src/chromeexperiments/sandtrap.html:551:71, test-resources/src/chromeexperiments/sandtrap.html:551:94, test-resources/src/chromeexperiments/sandtrap.html:552:21, test-resources/src/chromeexperiments/sandtrap.html:552:28, test-resources/src/chromeexperiments/sandtrap.html:552:51, test-resources/src/chromeexperiments/sandtrap.html:552:79, test-resources/src/chromeexperiments/sandtrap.html:552:86, test-resources/src/chromeexperiments/sandtrap.html:552:109, test-resources/src/chromeexperiments/sandtrap.html:558:52, test-resources/src/chromeexperiments/sandtrap.html:566:33, test-resources/src/chromeexperiments/sandtrap.html:579:17, test-resources/src/chromeexperiments/sandtrap.html:580:17, test-resources/src/chromeexperiments/sandtrap.html:581:9, test-resources/src/chromeexperiments/sandtrap.html:581:27, test-resources/src/chromeexperiments/sandtrap.html:589:13, test-resources/src/chromeexperiments/sandtrap.html:589:42, test-resources/src/chromeexperiments/sandtrap.html:590:13, test-resources/src/chromeexperiments/sandtrap.html:591:42, test-resources/src/chromeexperiments/sandtrap.html:592:13, test-resources/src/chromeexperiments/sandtrap.html:593:37, test-resources/src/chromeexperiments/sandtrap.html:595:13, test-resources/src/chromeexperiments/sandtrap.html:596:13, test-resources/src/chromeexperiments/sandtrap.html:598:33, test-resources/src/chromeexperiments/sandtrap.html:599:33, test-resources/src/chromeexperiments/sandtrap.html:600:9, test-resources/src/chromeexperiments/sandtrap.html:602:9, test-resources/src/chromeexperiments/sandtrap.html:608:33, test-resources/src/chromeexperiments/sandtrap.html:609:33, test-resources/src/chromeexperiments/sandtrap.html:615:17, test-resources/src/chromeexperiments/sandtrap.html:615:36, test-resources/src/chromeexperiments/sandtrap.html:639:24, test-resources/src/chromeexperiments/sandtrap.html:639:42, test-resources/src/chromeexperiments/sandtrap.html:639:60, test-resources/src/chromeexperiments/sandtrap.html:656:16, test-resources/src/chromeexperiments/sandtrap.html:667:21, test-resources/src/chromeexperiments/sandtrap.html:672:13, test-resources/src/chromeexperiments/sandtrap.html:705:9, test-resources/src/chromeexperiments/sandtrap.html:712:21, test-resources/src/chromeexperiments/sandtrap.html:714:17, test-resources/src/chromeexperiments/sandtrap.html:715:17, test-resources/src/chromeexperiments/sandtrap.html:733:25, test-resources/src/chromeexperiments/sandtrap.html:739:29, test-resources/src/chromeexperiments/sandtrap.html:739:59, test-resources/src/chromeexperiments/sandtrap.html:739:83, test-resources/src/chromeexperiments/sandtrap.html:740:21, test-resources/src/chromeexperiments/sandtrap.html:748:29, test-resources/src/chromeexperiments/sandtrap.html:754:29, test-resources/src/chromeexperiments/sandtrap.html:782:21, test-resources/src/chromeexperiments/sandtrap.html:783:13, test-resources/src/chromeexperiments/sandtrap.html:800:25, test-resources/src/chromeexperiments/sandtrap.html:807:21, test-resources/src/chromeexperiments/sandtrap.html:842:161, test-resources/src/chromeexperiments/sandtrap.html:843:161, test-resources/src/chromeexperiments/sandtrap.html:846:25, test-resources/src/chromeexperiments/sandtrap.html:847:25, test-resources/src/chromeexperiments/sandtrap.html:848:161, test-resources/src/chromeexperiments/sandtrap.html:849:161, test-resources/src/chromeexperiments/sandtrap.html:852:25, test-resources/src/chromeexperiments/sandtrap.html:853:25, test-resources/src/chromeexperiments/sandtrap.html:854:161, test-resources/src/chromeexperiments/sandtrap.html:855:161, test-resources/src/chromeexperiments/sandtrap.html:859:86, test-resources/src/chromeexperiments/sandtrap.html:860:86, test-resources/src/chromeexperiments/sandtrap.html:868:21, test-resources/src/chromeexperiments/sandtrap.html:876:25, test-resources/src/chromeexperiments/sandtrap.html:898:25, test-resources/src/chromeexperiments/sandtrap.html:935:25, test-resources/src/chromeexperiments/sandtrap.html:948:17, test-resources/src/chromeexperiments/sandtrap.html:949:17, test-resources/src/chromeexperiments/sandtrap.html:950:17, test-resources/src/chromeexperiments/sandtrap.html:951:36, test-resources/src/chromeexperiments/sandtrap.html:962:21, test-resources/src/chromeexperiments/sandtrap.html:963:21, test-resources/src/chromeexperiments/sandtrap.html:964:21, test-resources/src/chromeexperiments/sandtrap.html:965:21, test-resources/src/chromeexperiments/sandtrap.html:966:21, test-resources/src/chromeexperiments/sandtrap.html:967:21, test-resources/src/chromeexperiments/sandtrap.html:968:21, test-resources/src/chromeexperiments/sandtrap.html:969:21, test-resources/src/chromeexperiments/sandtrap.html:970:21, test-resources/src/chromeexperiments/sandtrap.html:971:21, test-resources/src/chromeexperiments/sandtrap.html:972:21, test-resources/src/chromeexperiments/sandtrap.html:973:21, test-resources/src/chromeexperiments/sandtrap.html:980:21, test-resources/src/chromeexperiments/sandtrap.html:983:21, test-resources/src/chromeexperiments/sandtrap.html:986:13, test-resources/src/chromeexperiments/sandtrap.html:988:72, test-resources/src/chromeexperiments/sandtrap.html:997:21, test-resources/src/chromeexperiments/sandtrap.html:1000:13, test-resources/src/chromeexperiments/sandtrap.html:1011:21, test-resources/src/chromeexperiments/sandtrap.html:1030:9, test-resources/src/chromeexperiments/sandtrap.html:1086:15, test-resources/src/chromeexperiments/sandtrap.html:1089:9, TAJS-dynamic-code(test-resources/src/chromeexperiments/sandtrap.html:333:13):1:1]
 test-resources/src/chromeexperiments/sandtrap.html:83:19: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/sandtrap.html:84:24: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:111:13: [maybe] The variable mouseClicked has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:112:13: [maybe] The variable mouseClicked has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:135:21: [maybe] The variable mouseClicked has values with different types
@@ -543,13 +515,6 @@ test-resources/src/chromeexperiments/sandtrap.html:183:17: [maybe] Conversion to
 test-resources/src/chromeexperiments/sandtrap.html:187:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:199:28: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:202:16: [maybe] Conversion from string to number yields NaN
-test-resources/src/chromeexperiments/sandtrap.html:308:25: [maybe] Converting undefined to string
-test-resources/src/chromeexperiments/sandtrap.html:309:39: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/sandtrap.html:310:26: [maybe] Converting undefined to string
-test-resources/src/chromeexperiments/sandtrap.html:311:38: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/sandtrap.html:312:20: [maybe] Converting undefined to string
-test-resources/src/chromeexperiments/sandtrap.html:315:18: [maybe] Converting undefined to string
-test-resources/src/chromeexperiments/sandtrap.html:332:13: [maybe] Converting undefined to string
 test-resources/src/chromeexperiments/sandtrap.html:382:24: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:419:6: [maybe] The variable mapResolution has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:426:10: [maybe] The variable c has values with different types
@@ -575,49 +540,35 @@ test-resources/src/chromeexperiments/sandtrap.html:498:17: [maybe] Reading absen
 test-resources/src/chromeexperiments/sandtrap.html:499:38: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:507:21: [maybe] The variable l has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:508:25: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/sandtrap.html:508:47: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:508:47: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:508:47: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:508:47: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/sandtrap.html:508:79: [maybe] The variable l has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:508:86: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:509:25: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/sandtrap.html:509:47: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:509:47: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:509:47: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:509:47: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/sandtrap.html:509:79: [maybe] The variable l has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:509:86: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:510:26: [maybe] The variable i has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:511:52: [maybe] The variable l has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:514:25: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:514:25: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:514:25: [maybe] The variable i has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:514:39: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:514:39: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:514:39: [maybe] The variable i has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:514:51: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:514:51: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:514:51: [maybe] The variable i has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:514:65: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:514:65: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:514:65: [maybe] The variable i has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:515:25: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:515:25: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:515:25: [maybe] The variable i has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:515:40: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:515:40: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:515:40: [maybe] The variable i has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:515:52: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:515:52: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:515:52: [maybe] The variable i has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:515:67: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:515:67: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:515:67: [maybe] The variable i has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:516:21: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:516:36: [maybe] The variable i has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:520:37: [maybe] Converting object to string
-test-resources/src/chromeexperiments/sandtrap.html:520:37: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:520:37: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:520:37: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:521:26: [maybe] Reading absent property (computed name)
@@ -652,7 +603,6 @@ test-resources/src/chromeexperiments/sandtrap.html:545:28: [maybe] The variable 
 test-resources/src/chromeexperiments/sandtrap.html:545:36: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:545:36: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:545:36: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:545:64: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:545:64: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:545:64: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:545:64: [maybe] Reading absent property (computed name)
@@ -669,7 +619,6 @@ test-resources/src/chromeexperiments/sandtrap.html:546:28: [maybe] The variable 
 test-resources/src/chromeexperiments/sandtrap.html:546:51: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:546:51: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:546:51: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:546:79: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:546:79: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:546:79: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:546:79: [maybe] Reading absent property (computed name)
@@ -686,7 +635,6 @@ test-resources/src/chromeexperiments/sandtrap.html:547:28: [maybe] The variable 
 test-resources/src/chromeexperiments/sandtrap.html:547:51: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:547:51: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:547:51: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:547:64: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:547:64: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:547:64: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:547:64: [maybe] Reading absent property (computed name)
@@ -703,7 +651,6 @@ test-resources/src/chromeexperiments/sandtrap.html:548:28: [maybe] The variable 
 test-resources/src/chromeexperiments/sandtrap.html:548:51: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:548:51: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:548:51: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:548:79: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:548:79: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:548:79: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:548:79: [maybe] Reading absent property (computed name)
@@ -720,7 +667,6 @@ test-resources/src/chromeexperiments/sandtrap.html:549:28: [maybe] The variable 
 test-resources/src/chromeexperiments/sandtrap.html:549:36: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:549:36: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:549:36: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:549:64: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:549:64: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:549:64: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:549:64: [maybe] Reading absent property (computed name)
@@ -737,7 +683,6 @@ test-resources/src/chromeexperiments/sandtrap.html:550:28: [maybe] The variable 
 test-resources/src/chromeexperiments/sandtrap.html:550:51: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:550:51: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:550:51: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:550:79: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:550:79: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:550:79: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:550:79: [maybe] Reading absent property (computed name)
@@ -754,7 +699,6 @@ test-resources/src/chromeexperiments/sandtrap.html:551:28: [maybe] The variable 
 test-resources/src/chromeexperiments/sandtrap.html:551:51: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:551:51: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:551:51: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:551:64: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:551:64: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:551:64: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:551:64: [maybe] Reading absent property (computed name)
@@ -771,7 +715,6 @@ test-resources/src/chromeexperiments/sandtrap.html:552:28: [maybe] The variable 
 test-resources/src/chromeexperiments/sandtrap.html:552:51: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:552:51: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:552:51: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:552:79: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:552:79: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:552:79: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:552:79: [maybe] Reading absent property (computed name)
@@ -816,104 +759,50 @@ test-resources/src/chromeexperiments/sandtrap.html:689:31: [maybe] Conversion to
 test-resources/src/chromeexperiments/sandtrap.html:705:9: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:712:21: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:713:18: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:713:23: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:713:23: [maybe] The variable d has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:714:17: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:715:17: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:733:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:734:22: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:734:27: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:734:27: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:737:28: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:737:28: [maybe] The variable d has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:738:30: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:748:29: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:749:25: [maybe] The variable k has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:749:30: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:749:30: [maybe] The variable k has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:754:29: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:756:26: [maybe] The variable k has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:756:31: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:756:31: [maybe] The variable k has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:760:29: [maybe] Conversion from string to number yields NaN
-test-resources/src/chromeexperiments/sandtrap.html:760:29: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:760:29: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:760:29: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:761:47: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:761:47: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:761:47: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:761:64: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:761:64: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:761:64: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:768:64: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:768:64: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:768:64: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:768:81: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:768:81: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:768:81: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:770:63: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:770:63: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:770:63: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:773:33: [maybe] Conversion from string to number yields NaN
-test-resources/src/chromeexperiments/sandtrap.html:773:33: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:773:33: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:773:33: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:773:60: [maybe] Conversion from string to number yields NaN
-test-resources/src/chromeexperiments/sandtrap.html:773:60: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:773:60: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:773:60: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:773:90: [maybe] Conversion from string to number yields NaN
-test-resources/src/chromeexperiments/sandtrap.html:773:90: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:773:90: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:773:90: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:773:120: [maybe] Conversion from string to number yields NaN
-test-resources/src/chromeexperiments/sandtrap.html:773:120: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:773:120: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:773:120: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:773:153: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:773:153: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:773:153: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:773:172: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:773:172: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:773:172: [maybe] The variable d has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:784:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:785:24: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:785:66: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:790:25: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:800:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:801:26: [maybe] The variable j has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:801:31: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:801:31: [maybe] The variable j has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:831:25: [maybe] The variable e has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:841:21: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:841:21: [maybe] Converting object to string
 test-resources/src/chromeexperiments/sandtrap.html:841:21: [maybe] The variable h has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:842:161: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:843:161: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:845:44: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:845:44: [maybe] Converting primitive number to object
 test-resources/src/chromeexperiments/sandtrap.html:845:44: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:845:44: [maybe] The variable h has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:846:25: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:846:25: [maybe] Converting primitive number to object
 test-resources/src/chromeexperiments/sandtrap.html:846:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:846:25: [maybe] The variable h has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:847:25: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:847:25: [maybe] Converting primitive number to object
 test-resources/src/chromeexperiments/sandtrap.html:847:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:847:25: [maybe] The variable h has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:848:161: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:849:161: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:851:44: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:851:44: [maybe] Converting primitive number to object
 test-resources/src/chromeexperiments/sandtrap.html:851:44: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:851:44: [maybe] The variable h has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:852:25: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:852:25: [maybe] Converting primitive number to object
 test-resources/src/chromeexperiments/sandtrap.html:852:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:852:25: [maybe] The variable h has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:853:25: [maybe] Converting primitive boolean to object
-test-resources/src/chromeexperiments/sandtrap.html:853:25: [maybe] Converting primitive number to object
 test-resources/src/chromeexperiments/sandtrap.html:853:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:853:25: [maybe] The variable h has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:854:161: [maybe] Reading absent property (computed name)
@@ -922,17 +811,13 @@ test-resources/src/chromeexperiments/sandtrap.html:859:86: [maybe] Reading absen
 test-resources/src/chromeexperiments/sandtrap.html:860:86: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:876:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:877:26: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:877:31: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:877:31: [maybe] The variable d has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:898:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:899:26: [maybe] The variable d has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:899:31: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:899:31: [maybe] The variable d has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:935:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:952:21: [maybe] Converting object to string
-test-resources/src/chromeexperiments/sandtrap.html:952:21: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:952:21: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/sandtrap.html:954:25: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:984:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:985:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:986:42: [maybe] Conversion to number yields NaN
@@ -949,7 +834,6 @@ test-resources/src/chromeexperiments/sandtrap.html:1004:89: [maybe] Conversion t
 test-resources/src/chromeexperiments/sandtrap.html:1006:31: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:1006:88: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:1010:17: [maybe] Converting object to string
-test-resources/src/chromeexperiments/sandtrap.html:1010:17: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/sandtrap.html:1010:17: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:1030:9: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:1056:13: [maybe] Conversion to number yields NaN
@@ -994,4 +878,4 @@ test-resources/src/chromeexperiments/sandtrap.html:996:21: [info] 'this' refers 
 test-resources/src/chromeexperiments/sandtrap.html:1009:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/chromeexperiments/sandtrap.html:1092:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/sandtrap.html:1095:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 0 checks (with 0 expected failures)
+Soundness testing succeeded for 14694 checks (with 0 expected failures)

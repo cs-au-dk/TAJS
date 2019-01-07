@@ -90,4 +90,9 @@ public class JSString_trim_trimLeft_trimRight_test {
                 "}"
         );
     }
+
+    @Test
+    public void trimBaseIsPrefixWithOnlySpacesBug() {
+        Misc.runSource("TAJS_join(' a', ' b').trim();");
+    }
 }

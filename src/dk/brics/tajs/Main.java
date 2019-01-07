@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,9 @@
 package dk.brics.tajs;
 
 import dk.brics.tajs.analysis.Analysis;
+import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.nativeobjects.NodeJSRequire;
+import dk.brics.tajs.blendedanalysis.BlendedAnalysisOptions;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
@@ -26,6 +28,8 @@ import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
 import dk.brics.tajs.js2flowgraph.HTMLParser;
 import dk.brics.tajs.lattice.Obj;
+import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
@@ -34,6 +38,7 @@ import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
 import dk.brics.tajs.monitoring.CompositeMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.MaxMemoryUsageMonitor;
+import dk.brics.tajs.monitoring.MemoryUsageDiagnosisMonitor;
 import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.monitoring.ProgramExitReachabilityChecker;
 import dk.brics.tajs.monitoring.TAJSAssertionReachabilityCheckerMonitor;
@@ -65,9 +70,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 import java.util.Properties;
+import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Main class for the TAJS program analysis.
@@ -103,7 +111,7 @@ public class Main {
     }
 
     /**
-     * Resets all internal counters and caches.
+     * Resets all internal counters, caches, and canonicalized static fields.
      */
     public static void reset() {
         Canonicalizer.reset();
@@ -115,6 +123,11 @@ public class Main {
         Strings.reset();
         ScopeChain.reset();
         NodeJSRequire.reset();
+        PathAndURLUtils.reset();
+        PKey.StringPKey.reset();
+        ObjectLabel.reset();
+        InitialStateBuilder.reset();
+        BlendedAnalysisOptions.reset();
     }
 
     /**
@@ -142,8 +155,13 @@ public class Main {
      * @throws AnalysisException if internal error
      */
     public static Analysis init(OptionValues options, IAnalysisMonitoring monitoring, SolverSynchronizer sync) throws AnalysisException {
+        checkValidOptions(options);
         Options.set(options);
         TAJSEnvironmentConfig.init();
+
+        if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles()) {
+            setupOnlyInclude();
+        }
 
         monitoring = addOptionalMonitors(monitoring);
 
@@ -198,7 +216,7 @@ public class Main {
                 document = p.getHTML();
                 for (Pair<URL, JavaScriptSource> js : p.getJavaScript()) {
                     if (!Options.get().isQuietEnabled() && js.getSecond().getKind() == Kind.FILE)
-                        log.info("Loading " + PathAndURLUtils.getRelativeToWorkingDirectory(PathAndURLUtils.toPath(js.getFirst())));
+                        log.info("Loading " + PathAndURLUtils.getRelativeToWorkingDirectory(PathAndURLUtils.toPath(js.getFirst(), false)));
                     builder.transformWebAppCode(js.getSecond(), new SourceLocation.StaticLocationMaker(js.getFirst()));
                 }
             }
@@ -219,6 +237,31 @@ public class Main {
         return analysis;
     }
 
+    private static void checkValidOptions(OptionValues options) {
+        try {
+            options.checkConsistency();
+        } catch (CmdLineException e) {
+            throw new AnalysisException(e);
+        }
+    }
+
+    /**
+     * If the main file is a .html file, then set onlyInclude for instrumentation to
+     * be the main file as well as all script files used by the main file.
+     */
+    private static void setupOnlyInclude() {
+        Path testFile = Options.get().getArguments().get(Options.get().getArguments().size() - 1);
+        if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles() && (testFile.toString().endsWith(".html") || testFile.toString().endsWith(".htm"))) {
+            Set<Path> relevantFiles = newSet();
+            relevantFiles.add(testFile);
+            relevantFiles.addAll(HTMLParser.getScriptsInHTMLFile(PathAndURLUtils.toRealPath(testFile)));
+            Options.get().getSoundnessTesterOptions().setOnlyIncludesForInstrumentation(Optional.of(relevantFiles));
+            Path commonAncestor = PathAndURLUtils.getCommonAncestorDirectory(relevantFiles);
+            Path rootDirFromMainDirectory = PathAndURLUtils.toRealPath(testFile).getParent().relativize(commonAncestor);
+            Options.get().getSoundnessTesterOptions().setRootDirFromMainDirectory(rootDirFromMainDirectory);
+        }
+    }
+
     /**
      * Adds additional monitors according to the options.
      */
@@ -235,8 +278,10 @@ public class Main {
 
         // Analysis result measuring monitors
         if (Options.get().isMemoryMeasurementEnabled()) {
+            if (Options.get().isStatisticsEnabled()) {
+                extraMonitors.add(new MemoryUsageDiagnosisMonitor());
+            }
             extraMonitors.add(new MaxMemoryUsageMonitor());
-            // extraMonitors.add(new MemoryUsageDiagnosisMonitor()); // for development use only
         }
 
         // Analysis results checking monitors
@@ -341,7 +386,7 @@ public class Main {
     private static void showHeader() {
         if (!Options.get().isQuietEnabled()) {
             log.info("TAJS - Type Analyzer for JavaScript\n" +
-                "Copyright 2009-2018 Aarhus University\n");
+                "Copyright 2009-2019 Aarhus University\n");
         }
     }
 

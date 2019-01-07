@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
-import dk.brics.tajs.flowgraph.syntaticinfo.ConditionPattern;
 import dk.brics.tajs.flowgraph.syntaticinfo.Property;
 import dk.brics.tajs.flowgraph.syntaticinfo.RawSyntacticInformation;
 import dk.brics.tajs.flowgraph.syntaticinfo.SyntacticQueries;
@@ -48,7 +47,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-import static dk.brics.tajs.util.Collections.addAllToMapSet;
 import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newSet;
 
@@ -140,13 +138,6 @@ public class SyntacticAnalysis {
     }
 
     public void registerIfNodeCondition(IfNode ifNode, ParseTree condition) {
-        if (condition == null /* condition might be implicit */) {
-            return;
-        }
-        Set<ConditionPattern> patterns = new ConditionPatternMatcher(rawSyntacticInformation.getQueryView()).match(condition);
-        if (!patterns.isEmpty()) {
-            addAllToMapSet(rawSyntacticInformation.getConditionPatterns(), ifNode, patterns);
-        }
     }
 
     public void registerPropertyAccess(AbstractNode accessNode, Property property) {

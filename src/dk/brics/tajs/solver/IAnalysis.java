@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.solver;
 
+import dk.brics.tajs.blendedanalysis.solver.BlendedAnalysisManager;
 import dk.brics.tajs.flowgraph.FlowGraph;
 
 /**
@@ -50,7 +51,12 @@ public interface IAnalysis<StateType extends IState<StateType, ContextType, Call
     /**
      * Returns the edge transfer functions.
      */
-    IEdgeTransfer<StateType, ContextType> getEdgeTransferFunctions();
+    IEdgeTransfer<ContextType> getEdgeTransferFunctions();
+
+    /**
+     * Returns the blended analysis component.
+     */
+    BlendedAnalysisManager getBlendedAnalysis();
 
     /**
      * Returns the monitoring object.

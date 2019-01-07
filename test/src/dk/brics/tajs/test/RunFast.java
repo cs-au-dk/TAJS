@@ -10,6 +10,13 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+        // misc. tests
+        TestMicro.class,
+        // application tests
+        TestWala.class,
+        TestResig.class,
+        TestJQueryEach.class,
+        TestAnderson.class,
         // specific tests
         TestValue.class,
         TestTAJSFunctions.class,
@@ -17,16 +24,10 @@ import org.junit.runners.Suite;
         TestForIn.class,
         TestUnrolling.class,
         TestAssumeNonNullUndef.class,
+        TestAssumeForBranches.class,
         TestGettersSetters.class,
         TestStrict.class,
         TestConversion.class,
-        // misc. tests
-        TestMicro.class,
-        // application tests
-        TestAnderson.class,
-        TestJQueryEach.class,
-        TestWala.class,
-        TestResig.class,
 })
 public class RunFast {
 

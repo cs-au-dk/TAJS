@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ public class SoundnessTestResult {
     private static Comparator<SoundnessCheck> getFailureComparison() {
         return Comparator.comparing((SoundnessCheck o) -> !o.hasDataFlow())
                 .thenComparing(o -> o.getFailureKind() == SoundnessCheck.FailureKind.MISSING_NATIVE_PROPERTY)
-                .thenComparing(SoundnessCheck::getSourceLocation)
+                .thenComparing(SoundnessCheck::getSourceLocation, new SourceLocation.Comparator())
                 .thenComparing(SoundnessCheck::getMessage);
     }
 
@@ -71,7 +71,7 @@ public class SoundnessTestResult {
             if (counts.failureCount < 3 && !reachabilityFailure) {
                 StringBuilder failureRendering = new StringBuilder();
                 List<SoundnessCheck> failureList = newList(categorized.failures);
-                failureList.sort(Comparator.comparing(SoundnessCheck::getSourceLocation));
+                failureList.sort(Comparator.comparing(SoundnessCheck::getSourceLocation, new SourceLocation.Comparator()));
                 failureList.forEach(f -> failureRendering.append(String.format("%n\t%s: %s", f.getSourceLocation().toString(), f.getMessage())));
                 return new SoundnessTestResult(false, String.format("Expected a lot more soundness tests to fail, but most (%d) succeeded unexpectedly (that is a good thing).%n\tPlease mark the following %d locations as failing *instead* of the entire file:%s", counts.successCount, counts.failureCount, failureRendering.toString()));
             }
@@ -103,7 +103,7 @@ public class SoundnessTestResult {
         } else if (!categorized.expectedFailureLocationsThatDidNotHappen.isEmpty()) {
             StringBuilder failureRendering = new StringBuilder();
             List<SourceLocation> failureList = newList(categorized.expectedFailureLocationsThatDidNotHappen);
-            failureList.sort(SourceLocation::compareTo);
+            failureList.sort(new SourceLocation.Comparator());
             failureList.forEach(f -> failureRendering.append(String.format("%n\t\t%s", f.toString())));
             return new SoundnessTestResult(false, String.format("Expected more soundness tests to fail, but some succeeded unexpectedly (that is a good thing).%n\tPlease unmark the following locations as failing:%s", failureRendering.toString()));
         }

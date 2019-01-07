@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,7 +65,7 @@ public class HTMLAudioElement {
         createDOMProperty(INSTANCES, "mozCurrentSampleOffset", Value.makeAnyNum(), c);
         createDOMProperty(INSTANCES, "muted", Value.makeAnyBool(), c);
         createDOMProperty(INSTANCES, "played", Value.makeObject(TimeRanges.INSTANCES), c);
-        createDOMProperty(INSTANCES, "preload", Value.makeAnyStrNotNumeric(), c);
+        createDOMProperty(INSTANCES, "preload", Value.makeAnyStrNotUInt(), c);
         createDOMProperty(INSTANCES, "src", Value.makeAnyStr(), c);
         createDOMProperty(INSTANCES, "volume", Value.makeAnyNum(), c);
 

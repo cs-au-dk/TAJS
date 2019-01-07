@@ -11,8 +11,8 @@ test-resources/src/micro/testOO.js:29:1: [info] Abstract object: {constructor:[@
 test-resources/src/micro/testOO.js:31:1: [info] Abstract object: {count:0.0,name:Undef,[[Prototype]]=[@Object#node1]}
 test-resources/src/micro/testOO.js:33:1: [info] Abstract object: {Super:[@Object#node1],count:0.0,name:Undef,[[Prototype]]=[@Object#node1]}
 test-resources/src/micro/testOO.js:35:1: [info] Abstract object: {Super:[@Object#node1],count:0.0,name:Undef,sing:[@<anonymous>#fun6],[[Prototype]]=[@Object#node1]}
-test-resources/src/micro/testOO.js:38:1: [info] Abstract object: {count:0.0,name:"jerry",[[Prototype]]=[@Object#node65]}
-test-resources/src/micro/testOO.js:39:1: [info] Abstract object: {length:1.0,name:"Singer",prototype:[@Object#node65],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+test-resources/src/micro/testOO.js:38:1: [info] Abstract object: {count:0.0,name:"jerry",[[Prototype]]=[@Object#node53]}
+test-resources/src/micro/testOO.js:39:1: [info] Abstract object: {length:1.0,name:"Singer",prototype:[@Object#node53],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
 test-resources/src/micro/testOO.js:40:1: [info] Abstract object: {Super:[@Object#node1],count:0.0,name:Undef,sing:[@<anonymous>#fun6],[[Prototype]]=[@Object#node1]}
 test-resources/src/micro/testOO.js:41:1: [info] Abstract object: {length:1.0,name:"Person",prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
 test-resources/src/micro/testOO.js:42:1: [info] Abstract object: {constructor:[@Person#fun1],getName:[@<anonymous>#fun2],say:[@<anonymous>#fun3],slap:[@<anonymous>#fun4],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}

@@ -46,34 +46,32 @@ fg2: <main> function()
     node 25: read-variable['x',v19,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:9)
     node 26: read-variable['p',v20,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:11)
     node 27: read-property[v19,v20,v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:9)
-    node 28: <variable-non-null-undef>['x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:9)
-    node 29: write-property[v17,v18,v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:2)
-    node 30: <variable-non-null-undef>['y']* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:2)
-    node 31: read-variable['y',v23,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:7:18)
+    node 28: write-property[v17,v18,v16]* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:2)
+    node 29: read-variable['y',v23,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:7:18)
     ->[block 10] ~>[block 11]
   block 10:
-    node 32: call[TAJS_dumpObject,v23,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:7:2)
+    node 30: call[TAJS_dumpObject,v23,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:7:2)
     ->[block 12] ~>[block 11]
   block 11:
-    node 33: end-for-in(begin-node:18)* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
+    node 31: end-for-in(begin-node:18)* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
     ->[block 17]
   block 12:
-    node 34: end-for-in(begin-node:18)* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
+    node 32: end-for-in(begin-node:18)* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
     ->[block 7]
   block 13:
-    node 35: end-for-in(begin-node:18)* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
+    node 33: end-for-in(begin-node:18)* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
     ->[block 14]
   block 14:
-    node 36: read-variable['y',v26,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:10:17)
+    node 34: read-variable['y',v26,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:10:17)
     ->[block 15]
   block 15:
-    node 37: call[TAJS_dumpObject,v26,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:10:1)
+    node 35: call[TAJS_dumpObject,v26,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:10:1)
     ->[block 16]
   block 16: [exit-ordinary]
-    node 38: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js)
+    node 36: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js)
     ->[]
   block 17: [exit-exceptional]
-    node 39: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js)
+    node 37: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:2: [definite] Dead assignment, property x is never read

@@ -124,7 +124,6 @@ test-resources/src/google/cryptobench.js:1479:1: [definite] Unreachable function
 test-resources/src/google/cryptobench.js:1489:1: [definite] Unreachable function byte2Hex
 test-resources/src/google/cryptobench.js:1587:1: [definite] Unreachable function RSASetPrivate
 test-resources/src/google/cryptobench.js:1614:1: [definite] Unreachable function RSAGenerate
-test-resources/src/google/cryptobench.js:237:11: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google/cryptobench.js:241:10: [maybe] TypeError, call to non-function
 test-resources/src/google/cryptobench.js:439:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google/cryptobench.js:440:27: [maybe] TypeError, accessing property of null/undefined
@@ -132,8 +131,6 @@ test-resources/src/google/cryptobench.js:541:23: [maybe] TypeError, accessing pr
 test-resources/src/google/cryptobench.js:606:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google/cryptobench.js:1098:3: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google/cryptobench.js:1162:7: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google/cryptobench.js:1461:10: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/google/cryptobench.js:1542:10: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google/cryptobench.js:205:15: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:206:9: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:207:9: [maybe] Reading absent property s
@@ -233,10 +230,8 @@ test-resources/src/google/cryptobench.js:1073:56: [maybe] Reading absent propert
 test-resources/src/google/cryptobench.js:1089:6: [maybe] Reading absent property s
 test-resources/src/google/cryptobench.js:1089:17: [maybe] Reading absent property t
 test-resources/src/google/cryptobench.js:1099:6: [maybe] Reading absent property t
-test-resources/src/google/cryptobench.js: [maybe] Uncaught exception, constructed at [test-resources/src/google/cryptobench.js:237:11, test-resources/src/google/cryptobench.js:241:10, test-resources/src/google/cryptobench.js:439:17, test-resources/src/google/cryptobench.js:440:27, test-resources/src/google/cryptobench.js:541:23, test-resources/src/google/cryptobench.js:606:17, test-resources/src/google/cryptobench.js:1098:3, test-resources/src/google/cryptobench.js:1162:7, test-resources/src/google/cryptobench.js:1461:10, test-resources/src/google/cryptobench.js:1542:10]
+test-resources/src/google/cryptobench.js: [maybe] Uncaught exception, constructed at [test-resources/src/google/cryptobench.js:241:10, test-resources/src/google/cryptobench.js:439:17, test-resources/src/google/cryptobench.js:440:27, test-resources/src/google/cryptobench.js:541:23, test-resources/src/google/cryptobench.js:606:17, test-resources/src/google/cryptobench.js:1098:3, test-resources/src/google/cryptobench.js:1162:7]
 test-resources/src/google/cryptobench.js:54:6: [maybe] The variable a has values with different types
-test-resources/src/google/cryptobench.js:55:20: [maybe] The variable a has values with different types
-test-resources/src/google/cryptobench.js:57:26: [maybe] The variable a has values with different types
 test-resources/src/google/cryptobench.js:124:12: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:124:27: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:125:9: [maybe] Conversion to number yields NaN
@@ -261,18 +256,14 @@ test-resources/src/google/cryptobench.js:205:15: [maybe] Conversion to number yi
 test-resources/src/google/cryptobench.js:205:51: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:217:35: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:237:11: [maybe] Converting primitive string to object
-test-resources/src/google/cryptobench.js:237:11: [maybe] The variable s has values with different types
 test-resources/src/google/cryptobench.js:239:20: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:239:20: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:241:10: [maybe] Converting object to string
 test-resources/src/google/cryptobench.js:241:10: [maybe] Converting primitive string to object
 test-resources/src/google/cryptobench.js:248:7: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:248:7: [maybe] Reading absent property (computed name)
-test-resources/src/google/cryptobench.js:248:32: [maybe] Conversion to number yields NaN
-test-resources/src/google/cryptobench.js:249:31: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:252:7: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:252:7: [maybe] Reading absent property (computed name)
-test-resources/src/google/cryptobench.js:252:31: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:256:17: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:256:17: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:258:16: [maybe] Conversion to number yields NaN

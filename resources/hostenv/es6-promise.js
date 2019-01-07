@@ -1114,6 +1114,7 @@ Promise.prototype = {
     return this.then(null, onRejection);
   }
 };
+Object.defineProperty(Promise.prototype, Symbol.toStringTag, {value: "Promise"})
 
 function polyfill() {
     var local = undefined;

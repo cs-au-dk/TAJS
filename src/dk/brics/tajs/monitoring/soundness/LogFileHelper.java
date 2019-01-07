@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -170,7 +170,7 @@ public class LogFileHelper {
         if (createLog) {
             wipeLogFilesIfPossible(logFileLocation);
             RawLogFile rawLogFile = generateLogFile(getMainFile());
-            Path runtimePath = PathAndURLUtils.toPath(runtimeLocation);
+            Path runtimePath = PathAndURLUtils.toPath(runtimeLocation, false);
             try {
                 Files.createDirectories(runtimePath.getParent());
                 if (runtimePath.getFileName().toString().endsWith(gzipSuffix)) {
@@ -182,7 +182,7 @@ public class LogFileHelper {
                 throw new RuntimeException(e);
             }
             if (logFileLocation.persistentLocation.isPresent()) {
-                Path persistentPath = PathAndURLUtils.toPath(logFileLocation.persistentLocation.get());
+                Path persistentPath = PathAndURLUtils.toPath(logFileLocation.persistentLocation.get(), false);
                 if (!persistentPath.equals(runtimePath)) {
                     try (InputStream persistentStream = runtimeLocation.openStream()) {
                         Files.createDirectories(persistentPath.getParent());
@@ -261,7 +261,7 @@ public class LogFileHelper {
      */
     private void wipeFileIfPossible(URL location) {
         cache.remove(location);
-        Path relativeLogFilePath = PathAndURLUtils.toPath(location);
+        Path relativeLogFilePath = PathAndURLUtils.toPath(location, false);
         try {
             Files.deleteIfExists(relativeLogFilePath);
         } catch (IOException e) {
@@ -298,17 +298,13 @@ public class LogFileHelper {
         return new LogFileLocation(persistentLogFileLocation, runtimeLogFileLocation);
     }
 
-    private Path attemptToRelativizeAbsolutePath(Path mainFile) {
+    private Path attemptToRelativizeAbsolutePath(Path mainFile) { // TODO: use PathAndURLUtils.getRelativeToTAJS?
         if (TAJSEnvironmentConfig.get().hasProperty("tajs")) {
             Path tajs = Paths.get(TAJSEnvironmentConfig.get().getCustom("tajs"));
-            try {
-                Path resolved = mainFile.toRealPath(); // resolve symlinks
-                boolean inTAJSDirectory = resolved.toAbsolutePath().startsWith(tajs.toAbsolutePath());
-                if (inTAJSDirectory) {
-                    return tajs.relativize(resolved);
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            Path resolved = PathAndURLUtils.toRealPath(mainFile); // resolve symlinks
+            boolean inTAJSDirectory = resolved.startsWith(PathAndURLUtils.toRealPath(tajs));
+            if (inTAJSDirectory) {
+                return tajs.relativize(resolved);
             }
         }
         throw new IllegalArgumentException("Only relative paths supported for log file inference (maybe a 'tajs' entry in tajs.properties would help): " + mainFile);
@@ -407,9 +403,9 @@ public class LogFileHelper {
         }
         if (Options.get().getSoundnessTesterOptions().isForceUpdateSha()) {
             warn("Force-updating SHA-mismatch for %s (expected %s, got %s)", metadata.getRoot(), expectedSha, currentSha);
-            forceUpdateSha(PathAndURLUtils.toPath(logFileLocation.runtimeLocation), expectedSha, currentSha);
+            forceUpdateSha(PathAndURLUtils.toPath(logFileLocation.runtimeLocation, false), expectedSha, currentSha);
             if (logFileLocation.persistentLocation.isPresent()) {
-                forceUpdateSha(PathAndURLUtils.toPath(logFileLocation.persistentLocation.get()), expectedSha, currentSha);
+                forceUpdateSha(PathAndURLUtils.toPath(logFileLocation.persistentLocation.get(), false), expectedSha, currentSha);
             }
             return true;
         }
@@ -528,7 +524,7 @@ public class LogFileHelper {
                 Path folderInResourceFolder = resourceFolder.resolve(subpath);
                 URL containing = Thread.currentThread().getContextClassLoader().getResource(subpath + "/");
                 if (containing == null)
-                    throw new AnalysisException("Could not find folder in resource folder " + subpath);
+                    throw new AnalysisException("Could not find folder in resource folder " + subpath + " (hint: use option -log-file)");
                 Path relative = folderInResourceFolder.relativize(m);
                 try {
                     return new URL(containing, relative.toString());

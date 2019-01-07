@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
@@ -67,6 +68,10 @@ public class DOMException {
         s.newObject(DOMEXCEPTION_PROTOTYPE);
         s.writeInternalPrototype(DOMEXCEPTION_PROTOTYPE, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         pv.writeProperty(DOMWindow.WINDOW, "DOMException", Value.makeObject(DOMEXCEPTION_PROTOTYPE));
+
+        s.newObject(DOMEXCEPTION);
+        s.writeInternalPrototype(DOMEXCEPTION, Value.makeObject(DOMEXCEPTION_PROTOTYPE));
+        pv.writePropertyWithAttributes(DOMEXCEPTION_PROTOTYPE, PKey.SymbolPKey.make(InitialStateBuilder.WELLKNOWN_SYMBOL_TO_STRING_TAG), Value.makeStr("DOMException").setAttributes(true, true, true));
 
         /*
          * Properties.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,6 @@ import dk.brics.tajs.unevalizer.UnevalizerLimitations;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Collectors;
-import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
 import java.util.Arrays;
@@ -108,7 +107,7 @@ public class JSFunction {
                 if (toStringedArguments.stream().anyMatch(Value::isNone)) {
                     return Value.makeNone();
                 }
-                if (toStringedArguments.stream().anyMatch(Value::isMaybeFuzzyStr)) {
+                if (toStringedArguments.stream().anyMatch(v -> v.isMaybeFuzzyStr() && v.getIncludedStrings() == null)) {
                     if (c.getAnalysis().getUnsoundness().maySimplifyImpreciseFunctionConstructor(callNode)) {
                         vParameterNames.clear();
                         vBody = Value.makeStr("");
@@ -117,14 +116,16 @@ public class JSFunction {
                     }
                 }
 
-                // TODO: no escaping of parameters?
-                String body = Strings.escapeSource(vBody.getStr());
                 List<String> parameterNames = vParameterNames.stream()
                         .flatMap(v -> Arrays.stream(v.getStr().split(",")))
                         .map(String::trim)
                         .collect(Collectors.toList());
 
-                return SimpleUnevalizerAPI.evaluateFunctionCall(call.getSourceNode(), parameterNames, body, c);
+                Set<String> bodies = vBody.getIncludedStrings() != null ? vBody.getIncludedStrings() : singleton(vBody.getStr());
+                Set<Value> evaledFunctions = bodies.stream()
+                        .map(body -> SimpleUnevalizerAPI.evaluateFunctionCall(call.getSourceNode(), parameterNames, body, c))
+                        .collect(Collectors.toSet());
+                return UnknownValueResolver.join(evaledFunctions, c.getState());
             }
 
             case FUNCTION_PROTOTYPE: { // 15.3.4
@@ -235,6 +236,11 @@ public class JSFunction {
                         public ExecutionContext getExecutionContext() {
                             return call.getExecutionContext();
                         }
+
+                        @Override
+                        public boolean assumeFunction() {
+                            return false; // TODO: could do filtering like for ordinary calls
+                        }
                     }, c);
                 }, c);
                 return Value.makeNone();
@@ -297,6 +303,11 @@ public class JSFunction {
                     @Override
                     public ExecutionContext getExecutionContext() {
                         return call.getExecutionContext();
+                    }
+
+                    @Override
+                    public boolean assumeFunction() {
+                        return false; // TODO: could do filtering like for ordinary calls
                     }
                 }, c);
                 return Value.makeNone(); // no direct flow to the successor

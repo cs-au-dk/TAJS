@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -626,7 +626,13 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
 
     @Override
     public Void visit(FunctionEntry e) {
-        Optional<ConstantNode> nodeOpt = getNode(e.getSourceLocation(), ConstantNode.class, (n) -> !n.getBlock().getFunction().isMain());
+        Optional<ConstantNode> nodeOpt = getNode(e.getSourceLocation(), ConstantNode.class, (n) -> {
+            boolean isRequireWrapper = Options.get().isNodeJS()
+                    && n.getBlock().getFunction().toString().equals("function(exports,require,module,__filename,__dirname)")
+                    && n.getSourceLocation().getLineNumber() == 1 && n.getSourceLocation().getColumnNumber() == 1;
+            boolean isMainFunction = n.getBlock().getFunction().isMain();
+            return !isMainFunction && !isRequireWrapper;
+        });
         checks.add(new DataflowCheck(e.getSourceLocation(), "function-entry", !nodeOpt.isPresent()));
 
         if (!nodeOpt.isPresent()) {
@@ -707,7 +713,11 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
 
         @Override
         public String getMessage() {
-            return String.format("Value mismatch for %s. Concrete: %s. Abstract: %s.", kind, concreteValue, abstractValues); // XXX do *not* move this computation to the constructor. It can be very expensive!
+            Collection<String> abstractValueStrings = abstractValues.stream().map(v -> {
+                Set<SourceLocation> locs = v.getObjectSourceLocations();
+                return locs.isEmpty() ? v.toString() : v + "@" + locs;
+            }).collect(java.util.stream.Collectors.toList());
+            return String.format("Value mismatch for %s. Concrete: %s. Abstract: %s.", kind, concreteValue, abstractValueStrings); // XXX do *not* move this computation to the constructor. It can be very expensive!
         }
 
         @Override

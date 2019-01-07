@@ -38,6 +38,7 @@
             Object.defineProperty(this, 'byteLength', {value: _bytes.length});
             Object.defineProperty(this, '_bytes', {value: _bytes});
         };
+        Object.defineProperty(ArrayBuffer.prototype, Symbol.toStringTag, {value: "ArrayBuffer"})
         Object.defineProperty(ArrayBuffer.prototype, 'slice', {
             value: function slice(begin, end) {
                 var result = new ArrayBuffer(TAJS.UInt);
@@ -210,7 +211,7 @@
             }
         });
 
-        function makeTypedArray() {
+        function makeTypedArray(name) {
             function TypedArray() {
                 Object.defineProperty(this, 'constructor', {value: TypedArray});
                 Object.defineProperty(this, Symbol.species, {
@@ -220,13 +221,20 @@
                         return TypedArray;
                     }
                 });
+                TypedArray.name = name;
                 $TypedArray$.apply(this, arguments);
             }
+            TAJS_makeContextSensitive(TypedArray, -2);
 
             TypedArray.__proto__ = $TypedArray$;
             TypedArray.BYTES_PER_ELEMENT = TAJS.UInt;
 
-            TypedArray.prototype = $TypedArrayPrototype$;
+            var unsharedPrototype = TAJS_newObject();
+            unsharedPrototype.__proto__ = $TypedArrayPrototype$;
+
+            TypedArray.prototype = unsharedPrototype;
+
+            Object.defineProperty(TypedArray.prototype, Symbol.toStringTag, {writable: false, value: name})
 
             Object.defineProperty(TypedArray.prototype, 'BYTES_PER_ELEMENT', {value: TypedArray.BYTES_PER_ELEMENT});
 
@@ -268,6 +276,7 @@
         Object.defineProperty(DataView.prototype, 'getInt32', {value: getter});
         Object.defineProperty(DataView.prototype, 'getFloat32', {value: getter});
         Object.defineProperty(DataView.prototype, 'getFloat64', {value: getter});
+        Object.defineProperty(DataView.prototype, Symbol.toStringTag, {value: "DataView"})
 
         function setter() {
 

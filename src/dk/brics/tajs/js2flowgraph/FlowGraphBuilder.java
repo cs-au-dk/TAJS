@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -346,7 +346,7 @@ public class FlowGraphBuilder {
             if (f1host != f2host) {
                 return f1host ? 1 : -1;
             }
-            return 0;
+            return SourceLocation.Comparator.compareStatic(f1.getSourceLocation(), f2.getSourceLocation());
         });
         int nodeCount = origNodeCount;
         int blockCount = origBlockCount;

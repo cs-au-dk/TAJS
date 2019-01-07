@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
-import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginWithNode;
@@ -76,6 +75,7 @@ import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.Message.Status;
 import dk.brics.tajs.solver.NodeAndContext;
+import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
@@ -334,7 +334,7 @@ public class Monitoring implements IAnalysisMonitoring {
         deadWrites.addAll(potentiallyDeadWrites);
         deadWrites.removeAll(undeadWrites);
         for (Pair<AbstractNode, PKey> deadWrite : deadWrites) {
-            String m_s = "Dead assignment, property " + deadWrite.getSecond() + " is never read";
+            String m_s = "Dead assignment, property " + deadWrite.getSecond().toStringEscaped() + " is never read";
             Message m = new Message(deadWrite.getFirst(), Status.CERTAIN, m_s, Severity.MEDIUM, true);
             messages.put(m, m);
         }
@@ -532,10 +532,6 @@ public class Monitoring implements IAnalysisMonitoring {
                         }
 
                         @Override
-                        public void visit(AssumeNode n) {
-                        }
-
-                        @Override
                         public void visit(EventDispatcherNode n) {
                         }
 
@@ -657,6 +653,8 @@ public class Monitoring implements IAnalysisMonitoring {
             b.append("\nRecovery graph sizes: ").append(recovery_graph_sizes);
 
             b.append("\n\nTotal time for state joins:                                                   ").append(joinTime).append("ms");
+
+            b.append("\n\nCanonicalizer: hits=").append(Canonicalizer.get().getCacheHits()).append(", misses=").append(Canonicalizer.get().getCacheMisses());
 
             log.info(b);
         }
@@ -1013,12 +1011,12 @@ public class Monitoring implements IAnalysisMonitoring {
             if (objlabels.stream().anyMatch(l -> l.isHostObject() && !l.equals(global_obj))) {
                 boolean isPartial = objlabels.stream().anyMatch(l -> l.isHostObject() && l.getHostObject().getAPI() == HostAPIs.PARTIAL_HOST_MODEL);
                 if (isPartial) {
-                    addMessage(n, s, Severity.MEDIUM, "Reading absent property " + n.getPropertyString() + " of partially modeled host object!");
+                    addMessage(n, s, Severity.MEDIUM, "Reading absent property " + Strings.escape(n.getPropertyString(), true) + " of partially modeled host object!");
                 } else {
-                    addMessage(n, s, Severity.MEDIUM, "Reading absent property " + n.getPropertyString() + " of host object");
+                    addMessage(n, s, Severity.MEDIUM, "Reading absent property " + Strings.escape(n.getPropertyString(), true) + " of host object");
                 }
             } else {
-                addMessage(n, s, Severity.MEDIUM, "Reading absent property " + n.getPropertyString());
+                addMessage(n, s, Severity.MEDIUM, "Reading absent property " + Strings.escape(n.getPropertyString(), true));
             }
         } else {
             addMessage(n, s, Severity.LOW, "Reading absent property (computed name)");

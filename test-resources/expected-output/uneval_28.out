@@ -4,12 +4,12 @@ test-resources/src/uneval/uneval28.html:13:29: [definite] Variable PWAd is null/
 test-resources/src/uneval/uneval28.html:16:23: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:19:29: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:22:28: [definite] Variable PWAd is null/undefined
-test-resources/src/uneval/uneval28.html:24:9: [definite] The conditional expression is always false
+test-resources/src/uneval/uneval28.html:25:30: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:28:23: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:31:28: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:34:27: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:37:27: [definite] Variable PWAd is null/undefined
-test-resources/src/uneval/uneval28.html:39:9: [definite] The conditional expression is always false
+test-resources/src/uneval/uneval28.html:40:27: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:43:27: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:46:27: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:49:27: [definite] Variable PWAd is null/undefined
@@ -18,10 +18,10 @@ test-resources/src/uneval/uneval28.html:55:27: [definite] Variable PWAd is null/
 test-resources/src/uneval/uneval28.html:58:27: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:61:27: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:64:27: [definite] Variable PWAd is null/undefined
-test-resources/src/uneval/uneval28.html:66:9: [definite] The conditional expression is always false
-test-resources/src/uneval/uneval28.html:69:9: [definite] The conditional expression is always false
-test-resources/src/uneval/uneval28.html:72:9: [definite] The conditional expression is always false
-test-resources/src/uneval/uneval28.html:75:9: [definite] The conditional expression is always false
+test-resources/src/uneval/uneval28.html:67:24: [definite] Variable PWAd is null/undefined
+test-resources/src/uneval/uneval28.html:70:27: [definite] Variable PWAd is null/undefined
+test-resources/src/uneval/uneval28.html:73:27: [definite] Variable PWAd is null/undefined
+test-resources/src/uneval/uneval28.html:76:27: [definite] Variable PWAd is null/undefined
 test-resources/src/uneval/uneval28.html:107:9: [definite] The conditional expression is always true
 test-resources/src/uneval/uneval28.html: [definite] Exceptional program exit is unreachable
 test-resources/src/uneval/uneval28.html:78:7: [definite] Unreachable code

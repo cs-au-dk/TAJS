@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -179,8 +179,8 @@ public class OptionValues {
     @Option(name = "-parameter-sensitivity", usage = "Enable usage of different contexts for (some) calls based on the argument values")
     private boolean parameterSensitivity;
 
-    @Option(name = "-ignore-unreachable", usage = "Ignore code parts which has been marked as unreachable")
-    private boolean ignoreUnreachable;
+    @Option(name = "-ignore-unreached", usage = "Ignore code that is unreached according to the log file")
+    private boolean ignoreUnreached;
 
     @Option(name = "-loop-unrolling", usage = "Enable unrolling of loops up to [n] times")
     private int loopUnrollings = -1;
@@ -254,6 +254,9 @@ public class OptionValues {
     @Option(name = "-nodejs", usage = "Use Node.js environment for analysis and soundness testing (currently only 'require' is supported)")
     private boolean nodejs;
 
+    @Option(name = "-blended-analysis", usage = "Filter abstract values based on values observed concretely")
+    private boolean blendedAnalysis;
+
     @Argument
     private List<Path> arguments = new ArrayList<>();
 
@@ -309,7 +312,7 @@ public class OptionValues {
         if (ajaxReturnsJson != that.ajaxReturnsJson) return false;
         if (contextSensitiveHeap != that.contextSensitiveHeap) return false;
         if (parameterSensitivity != that.parameterSensitivity) return false;
-        if (ignoreUnreachable != that.ignoreUnreachable) return false;
+        if (ignoreUnreached != that.ignoreUnreached) return false;
         if (loopUnrollings != that.loopUnrollings) return false;
         if (determinacy != that.determinacy) return false;
         if (polyfillMDN != that.polyfillMDN) return false;
@@ -340,6 +343,7 @@ public class OptionValues {
             return false;
         if (config != null ? !config.equals(that.config) : that.config != null) return false;
         if (arguments != null ? !arguments.equals(that.arguments) : that.arguments != null) return false;
+        if (blendedAnalysis != that.blendedAnalysis) return false;
         return soundnessTesterOptions != null ? soundnessTesterOptions.equals(that.soundnessTesterOptions) : that.soundnessTesterOptions == null;
     }
 
@@ -387,7 +391,7 @@ public class OptionValues {
         result = 31 * result + (ignoredLibraries != null ? ignoredLibraries.hashCode() : 0);
         result = 31 * result + (contextSensitiveHeap ? 1 : 0);
         result = 31 * result + (parameterSensitivity ? 1 : 0);
-        result = 31 * result + (ignoreUnreachable ? 1 : 0);
+        result = 31 * result + (ignoreUnreached ? 1 : 0);
         result = 31 * result + loopUnrollings;
         result = 31 * result + (determinacy ? 1 : 0);
         result = 31 * result + (polyfillMDN ? 1 : 0);
@@ -411,6 +415,7 @@ public class OptionValues {
         result = 31 * result + (inspector ? 1 : 0);
         result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
         result = 31 * result + (soundnessTesterOptions != null ? soundnessTesterOptions.hashCode() : 0);
+        result = 31 * result + (blendedAnalysis ? 1 : 0);
         return result;
     }
 
@@ -424,18 +429,9 @@ public class OptionValues {
                 }
                 if (testSoundness) {
                     soundnessTesterOptions.setTest(true);
-                    if (logFile == null) {
-                        throw new CmdLineException(parser, "-test-soundness requires -log-file", null);
-                    }
                 }
                 if (generateLog) {
                     soundnessTesterOptions.setGenerate(true);
-                    if (logFile == null) {
-                        throw new CmdLineException(parser, "-generate-log requires -log-file", null);
-                    }
-                    if (!testSoundness) {
-                        throw new CmdLineException(parser, "-generate-log requires -test-soundness", null); // TODO: could support -generate-log without -test-soundness (and then without running the static analysis!)
-                    }
                 }
                 if (logFile != null) {
                     soundnessTesterOptions.setExplicitSoundnessLogFile(Optional.of(Paths.get(logFile)));
@@ -689,8 +685,8 @@ public class OptionValues {
         unevalizer = false;
     }
 
-    public void disableUnreachable() {
-        ignoreUnreachable = false;
+    public void disableIgnoreUnreached() {
+        ignoreUnreached = false;
     }
 
     public void enableAjaxReturnsJson() {
@@ -881,8 +877,8 @@ public class OptionValues {
         unevalizer = true;
     }
 
-    public void enableUnreachable() {
-        ignoreUnreachable = true;
+    public void enableIgnoreUnreached() {
+        ignoreUnreached = true;
     }
 
     public List<Path> getArguments() {
@@ -976,7 +972,7 @@ public class OptionValues {
 
     public boolean isIgnoreLibrariesEnabled() {
         return !ignoredLibraries.isEmpty();
-    }
+    } // TODO: unused?
 
     public boolean isIntermediateStatesEnabled() {
         return states;
@@ -992,7 +988,7 @@ public class OptionValues {
 
     public boolean isLoopUnrollingEnabled() {
         return loopUnrollings != -1;
-    }
+    } // TODO: unused?
 
     public boolean isMemoryMeasurementEnabled() {
         return memoryUsage;
@@ -1066,8 +1062,8 @@ public class OptionValues {
         return unevalizer;
     }
 
-    public boolean isIgnoreUnreachableEnabled() {
-        return ignoreUnreachable;
+    public boolean isIgnoreUnreachedEnabled() {
+        return ignoreUnreached;
     }
 
     public boolean isConcreteNativeDisabled() {
@@ -1077,6 +1073,17 @@ public class OptionValues {
     public void checkConsistency() throws CmdLineException {
         if (arguments == null || arguments.isEmpty()) {
             throw new CmdLineException(null, "No arguments provided!", null);
+        }
+        if (generateLog) {
+            if (logFile == null) {
+                throw new CmdLineException(null, "-generate-log requires -log-file", null);
+            }
+            if (!testSoundness && !blendedAnalysis) {
+                throw new CmdLineException(null, "-generate-log requires -test-soundness or -blended-analysis", null); // TODO: could support -generate-log without -test-soundness (and then without running the static analysis!)
+            }
+        }
+        if (blendedAnalysis && unsoundness.isUseFixedRandom()) {
+            throw new CmdLineException(null, "-blended-analysis and -unsound -use-fixed-random are not allowed together", null);
         }
     }
 
@@ -1254,5 +1261,17 @@ public class OptionValues {
 
     public void disableNodeJS() {
         nodejs = false;
+    }
+
+    public boolean isBlendedAnalysisEnabled() {
+        return blendedAnalysis;
+    }
+
+    public void enableBlendedAnalysis() {
+        this.blendedAnalysis = true;
+    }
+
+    public void disableBlendedAnalysis() {
+        this.blendedAnalysis = false;
     }
 }

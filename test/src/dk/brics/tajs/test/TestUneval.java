@@ -423,7 +423,7 @@ public class TestUneval {
         Misc.runSource("var f = new Function('', 42);");
     }
 
-    @Test(expected = AnalysisLimitationException.class)
+    @Test
     public void impreciseFunctionConstructor() {
         Misc.runSource("var x = Math.random()? 'a': 'b'",
                 "Function(x)();");

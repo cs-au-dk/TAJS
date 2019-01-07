@@ -25,22 +25,15 @@ var jQuery = {
 	TAJS_addContextSensitivity(callback, 0);
         var name, i = 0, length = obj.length, isObj = length === undefined || jQuery.isFunction(obj);
         if (args) {
-            "dk.brics.tajs.directives.unreachable";
             if (isObj) {
-                "dk.brics.tajs.directives.unreachable";
                 for (name in obj) {
-                    "dk.brics.tajs.directives.unreachable";
                     if (callback.apply(obj[name], args) === false) {
-                        "dk.brics.tajs.directives.unreachable";
                         break;
                     }
                 }
             } else {
-                "dk.brics.tajs.directives.unreachable";
                 for (;i < length; ) {
-                    "dk.brics.tajs.directives.unreachable";
                     if (callback.apply(obj[i++], args) === false) {
-                        "dk.brics.tajs.directives.unreachable";
                         break;
                     }
                 }
@@ -49,14 +42,12 @@ var jQuery = {
             if (isObj) {
                 for (name in obj) {
                     if (callback.call(obj[name], name, obj[name]) === false) {
-                        "dk.brics.tajs.directives.unreachable";
                         break;
                     }
                 }
             } else {
                 for (;i < length; ) {
                     if (callback.call(obj[i], i, obj[i++]) === false) {
-                        "dk.brics.tajs.directives.unreachable";
                         break;
                     }
                 }

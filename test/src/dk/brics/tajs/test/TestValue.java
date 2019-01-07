@@ -12,15 +12,19 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.Pair;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -314,12 +318,12 @@ public class TestValue {
         printInfo(vNull.joinStr("x"));
         printInfo(Value.makeAnyStr().restrictToStr());
         printInfo(vNull.restrictToStr());
-        printInfo(v7.restrictToObject());
+        printInfo(v7.restrictToNonSymbolObject());
         printInfo(v7.restrictToNotObject());
         printInfo(v7.restrictToNotObject().restrictToNotObject());
-        printInfo(v7.joinNumInf().restrictToObject());
+        printInfo(v7.joinNumInf().restrictToNonSymbolObject());
         printInfo(v7.joinNumInf().restrictToNotObject());
-        printInfo(v7.restrictToObject().restrictToObject());
+        printInfo(v7.restrictToNonSymbolObject().restrictToNonSymbolObject());
         printInfo(Value.makeAbsentModified());
         printInfo(Value.makeAnyNumNotNaNInf());
         Misc.checkSystemOutput();
@@ -363,5 +367,81 @@ public class TestValue {
         assertTrue(prefixA.isMaybeStrPrefix());
         assertEquals("A", prefixA.getPrefix());
         assertTrue(notPrefix.isNone());
+    }
+
+    @Test
+    public void restrictToStrictEqualsBug() {
+        Value prefix = Value.makeNone().joinPrefix("foo");
+        Value anyStr = Value.makeAnyStr();
+
+        Value res = prefix.restrictToStrictEquals(anyStr);
+        assertEquals(String.format("Unexpected restrictToStrictEquals-result for %s.restrictToStrictEquals(%s), expected: %s, got %s", prefix, anyStr, prefix, res), prefix, res);
+
+        Value resCommuted = anyStr.restrictToStrictEquals(prefix);
+        assertEquals(String.format("Unexpected restrictToStrictEquals-result for %s.restrictToStrictEquals(%s), expected: %s, got %s", anyStr, prefix, prefix, resCommuted), prefix, resCommuted);
+    }
+
+    @Test
+    public void restrictToStrictEqualsBug2() {
+        Value prefix = Value.makeNone().joinPrefix(" ");
+        Value anyStr = Value.makeAnyStr();
+
+        Value res = prefix.restrictToStrictEquals(anyStr);
+        assertEquals(String.format("Unexpected restrictToStrictEquals-result for %s.restrictToStrictEquals(%s), expected: %s, got %s", prefix, anyStr, prefix, res), prefix, res);
+
+        Value resCommuted = anyStr.restrictToStrictEquals(prefix);
+        assertEquals(String.format("Unexpected restrictToStrictEquals-result for %s.restrictToStrictEquals(%s), expected: %s, got %s", anyStr, prefix, prefix, resCommuted), prefix, resCommuted);
+    }
+
+    @Test
+    public void prefixStrRestrictedToStringSetIssue() {
+        Value prefix = Value.makeNone().joinPrefix("bar");
+        Value stringSet = Value.makeStrings(Stream.of("a", "b").collect(Collectors.toSet()));
+
+        Value res = prefix.restrictToStrictEquals(stringSet);
+        assertTrue(res.isNone());
+    }
+
+    @Test
+    public void restrictToStrictEquals() {
+        List<Pair<Value, Value>> nonBottomRestrictions = Arrays.asList(
+                Pair.make(Value.makeAnyStr(), Value.makeAnyStr()),
+                Pair.make(Value.makeAnyStr().join(Value.makeAnyBool()), Value.makeAnyStr()),
+                Pair.make(Value.makeAnyBool(), Value.makeAnyBool()),
+                Pair.make(Value.makeAnyBool(), Value.makeBool(true)),
+                Pair.make(Value.makeAnyStr(), Value.makeStr("")),
+                Pair.make(Value.makeAnyStrUInt(), Value.makeStr("5")),
+                Pair.make(Value.makeAnyStrNotUInt(), Value.makeStr("5.2")),
+                Pair.make(Value.makeAnyNumUInt(), Value.makeNum(5)),
+                Pair.make(Value.makeAnyNumOther(), Value.makeNum(5.2))
+        );
+
+        testRestrictToStrictEquals(nonBottomRestrictions, false);
+        List<Pair<Value, Value>> bottomRestrictions = Arrays.asList(
+                Pair.make(Value.makeAnyStr(), Value.makeAnyNum()),
+                Pair.make(Value.makeAnyStr().join(Value.makeAnyBool()), Value.makeAnyNum()),
+                Pair.make(Value.makeAnyNum(), Value.makeAnyBool()),
+                Pair.make(Value.makeBool(false), Value.makeBool(true)),
+                Pair.make(Value.makeAnyNum(), Value.makeStr("")),
+                Pair.make(Value.makeAnyStrUInt(), Value.makeStr("5.2")),
+                Pair.make(Value.makeAnyStrNotNumeric(), Value.makeStr("5")),
+                Pair.make(Value.makeAnyNumUInt(), Value.makeNum(5.2)),
+                Pair.make(Value.makeAnyNumOther(), Value.makeNum(5)),
+                Pair.make(Value.makeStr("foobar").join(Value.makeStr("foobaz")), Value.makeStr("bar")),
+                Pair.make(Value.makeStr("foobar").join(Value.makeStr("foobaz")), Value.makeStr("foo"))
+        );
+        testRestrictToStrictEquals(bottomRestrictions, true);
+    }
+
+    private void testRestrictToStrictEquals(List<Pair<Value, Value>> pairs, boolean bottomMeetExpected) {
+        for (Pair<Value, Value> pair : pairs) {
+            Value v1 = pair.getFirst();
+            Value v2 = pair.getSecond();
+            Value restrictToStrictEquals = v1.restrictToStrictEquals(v2);
+            boolean bottomRestriction = restrictToStrictEquals.isNone();
+            Value restrictToStrictEquals_commuted = v2.restrictToStrictEquals(v1);
+            assertEquals(String.format("Non-commutative restrictToStrictEquals-use: %s.restrictToStrictEquals(%s) = %s vs. %s.restrictToStrictEquals(%s) = %s ", v1, v2, restrictToStrictEquals, v2, v1, restrictToStrictEquals_commuted), restrictToStrictEquals, restrictToStrictEquals_commuted);
+            assertEquals(String.format("Unexpected restrictToStrictEquals-result for %s.restrictToStrictEquals(%s), expected bottomness: %s, got %s", v1, v2, bottomMeetExpected, bottomRestriction), bottomMeetExpected, bottomRestriction);
+        }
     }
 }

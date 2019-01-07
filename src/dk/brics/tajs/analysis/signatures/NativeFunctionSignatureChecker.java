@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -366,6 +366,11 @@ public class NativeFunctionSignatureChecker {
                 @Override
                 public ExecutionContext getExecutionContext() {
                     return call.getExecutionContext();
+                }
+
+                @Override
+                public boolean assumeFunction() {
+                    return false;
                 }
             }, c);
         }

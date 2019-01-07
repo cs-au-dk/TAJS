@@ -1,4 +1,5 @@
 test-resources/src/10k/10k_snake.html:38:16: [definite] The conditional expression is always true
+test-resources/src/10k/10k_snake.html:100:13: [definite] The conditional expression is always false
 test-resources/src/10k/10k_snake.html:176:22: [definite] Reading 'this' yields the global object
 test-resources/src/10k/10k_snake.html:176:22: [definite] Too few parameters to native function
 test-resources/src/10k/10k_snake.html:31:30: [definite] Unreachable function
@@ -27,29 +28,29 @@ test-resources/src/10k/10k_snake.html:188:9: [maybe] TypeError, accessing proper
 test-resources/src/10k/10k_snake.html:190:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/10k_snake.html:193:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/10k_snake.html:193:42: [maybe] ReferenceError, reading absent variable lastDirection
-test-resources/src/10k/10k_snake.html:129:13: [maybe] Reading absent property el of host object
-test-resources/src/10k/10k_snake.html:148:13: [maybe] Reading absent property el of host object
-test-resources/src/10k/10k_snake.html:156:9: [maybe] Reading absent property el of host object
-test-resources/src/10k/10k_snake.html:161:22: [maybe] Reading absent property col of host object
-test-resources/src/10k/10k_snake.html:161:40: [maybe] Reading absent property row of host object
-test-resources/src/10k/10k_snake.html:161:68: [maybe] Reading absent property row of host object
-test-resources/src/10k/10k_snake.html:165:22: [maybe] Reading absent property col of host object
-test-resources/src/10k/10k_snake.html:165:40: [maybe] Reading absent property row of host object
-test-resources/src/10k/10k_snake.html:165:68: [maybe] Reading absent property row of host object
-test-resources/src/10k/10k_snake.html:169:23: [maybe] Reading absent property col of host object
-test-resources/src/10k/10k_snake.html:169:51: [maybe] Reading absent property col of host object
-test-resources/src/10k/10k_snake.html:169:72: [maybe] Reading absent property row of host object
-test-resources/src/10k/10k_snake.html:173:24: [maybe] Reading absent property col of host object
-test-resources/src/10k/10k_snake.html:173:52: [maybe] Reading absent property col of host object
-test-resources/src/10k/10k_snake.html:173:73: [maybe] Reading absent property row of host object
+test-resources/src/10k/10k_snake.html:129:13: [maybe] Reading absent property el
+test-resources/src/10k/10k_snake.html:148:13: [maybe] Reading absent property el
+test-resources/src/10k/10k_snake.html:156:9: [maybe] Reading absent property el
+test-resources/src/10k/10k_snake.html:161:22: [maybe] Reading absent property col
+test-resources/src/10k/10k_snake.html:161:40: [maybe] Reading absent property row
+test-resources/src/10k/10k_snake.html:161:68: [maybe] Reading absent property row
+test-resources/src/10k/10k_snake.html:165:22: [maybe] Reading absent property col
+test-resources/src/10k/10k_snake.html:165:40: [maybe] Reading absent property row
+test-resources/src/10k/10k_snake.html:165:68: [maybe] Reading absent property row
+test-resources/src/10k/10k_snake.html:169:23: [maybe] Reading absent property col
+test-resources/src/10k/10k_snake.html:169:51: [maybe] Reading absent property col
+test-resources/src/10k/10k_snake.html:169:72: [maybe] Reading absent property row
+test-resources/src/10k/10k_snake.html:173:24: [maybe] Reading absent property col
+test-resources/src/10k/10k_snake.html:173:52: [maybe] Reading absent property col
+test-resources/src/10k/10k_snake.html:173:73: [maybe] Reading absent property row
 test-resources/src/10k/10k_snake.html:177:32: [maybe] Reading absent property row of host object
 test-resources/src/10k/10k_snake.html:177:44: [maybe] Reading absent property col of host object
 test-resources/src/10k/10k_snake.html:178:13: [maybe] Reading absent property el of host object
-test-resources/src/10k/10k_snake.html:182:13: [maybe] Reading absent property el of host object
-test-resources/src/10k/10k_snake.html:187:9: [maybe] Reading absent property el of host object
-test-resources/src/10k/10k_snake.html:188:9: [maybe] Reading absent property el of host object
-test-resources/src/10k/10k_snake.html:190:9: [maybe] Reading absent property el of host object
-test-resources/src/10k/10k_snake.html:193:13: [maybe] Reading absent property el of host object
+test-resources/src/10k/10k_snake.html:182:13: [maybe] Reading absent property el
+test-resources/src/10k/10k_snake.html:187:9: [maybe] Reading absent property el
+test-resources/src/10k/10k_snake.html:188:9: [maybe] Reading absent property el
+test-resources/src/10k/10k_snake.html:190:9: [maybe] Reading absent property el
+test-resources/src/10k/10k_snake.html:193:13: [maybe] Reading absent property el
 test-resources/src/10k/10k_snake.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/10k_snake.html:85:13, test-resources/src/10k/10k_snake.html:115:20, test-resources/src/10k/10k_snake.html:116:9, test-resources/src/10k/10k_snake.html:126:9, test-resources/src/10k/10k_snake.html:129:13, test-resources/src/10k/10k_snake.html:132:9, test-resources/src/10k/10k_snake.html:138:16, test-resources/src/10k/10k_snake.html:139:13, test-resources/src/10k/10k_snake.html:148:13, test-resources/src/10k/10k_snake.html:156:9, test-resources/src/10k/10k_snake.html:161:22, test-resources/src/10k/10k_snake.html:165:22, test-resources/src/10k/10k_snake.html:169:23, test-resources/src/10k/10k_snake.html:173:24, test-resources/src/10k/10k_snake.html:176:22, test-resources/src/10k/10k_snake.html:177:27, test-resources/src/10k/10k_snake.html:178:13, test-resources/src/10k/10k_snake.html:182:13, test-resources/src/10k/10k_snake.html:187:9, test-resources/src/10k/10k_snake.html:188:9, test-resources/src/10k/10k_snake.html:190:9, test-resources/src/10k/10k_snake.html:193:13, test-resources/src/10k/10k_snake.html:193:42]
 test-resources/src/10k/10k_snake.html:20:32: [maybe] Reading absent property (computed name)
 test-resources/src/10k/10k_snake.html:23:32: [maybe] Reading absent property (computed name)

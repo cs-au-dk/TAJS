@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ package dk.brics.tajs.solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
+import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Strings;
@@ -288,10 +289,10 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
         List<Map.Entry<Function, List<AbstractNode>>> res = newList();
         for (Map.Entry<Function, Set<AbstractNode>> me : s) {
             List<AbstractNode> ns = newList(me.getValue());
-            ns.sort(Comparator.comparing(AbstractNode::getSourceLocation));
+            ns.sort(Comparator.comparing(AbstractNode::getSourceLocation, new SourceLocation.Comparator()));
             res.add(new AbstractMap.SimpleEntry<>(me.getKey(), ns));
         }
-        res.sort(Comparator.comparing(o -> o.getKey().getSourceLocation()));
+        res.sort(Comparator.comparing(o -> o.getKey().getSourceLocation(), new SourceLocation.Comparator()));
         return res;
     }
 

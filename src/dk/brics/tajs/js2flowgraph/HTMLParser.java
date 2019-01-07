@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,7 +86,14 @@ public class HTMLParser {
             if (!Options.get().isNoMessages()) {
                 Matcher matcher = pattern.matcher(msg);
                 if (matcher.matches()) {
-                    String messageWithoutRawPosition = String.format("%s %s", matcher.group(1), matcher.group(4));
+                    String last;
+                    Pattern pattern2 = Pattern.compile("^(.*)( at position \\(r\\d+,c\\d+,p\\d+\\))(.*)$"); // work-around for line encoding issue in HTML parser
+                    Matcher matcher2 = pattern2.matcher(matcher.group(4));
+                    if (matcher2.matches())
+                        last = matcher2.group(1) + matcher2.group(3);
+                    else
+                        last = matcher.group(4);
+                    String messageWithoutRawPosition = String.format("%s %s", matcher.group(1), last);
                     int row = Integer.parseInt(matcher.group(2));
                     int column = Integer.parseInt(matcher.group(3));
                     log.info(String.format("%s: HTML %s", sourceLocationMaker.make(row, column, row, column), messageWithoutRawPosition)); // TODO: use Monitoring instead (github #535)
@@ -169,7 +176,7 @@ public class HTMLParser {
             return new HTMLParser(PathAndURLUtils.toURL(html)).getJavaScript().stream()
                     .filter(pair -> pair.getSecond().getKind() == JavaScriptSource.Kind.FILE)
                     .map(Pair::getFirst)
-                    .map(PathAndURLUtils::toPath)
+                    .map(p -> PathAndURLUtils.toPath(p, false))
                     .collect(Collectors.toSet());
         } catch (IOException e) {
             throw new RuntimeException(e);

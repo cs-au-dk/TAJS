@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,45 +20,49 @@ import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
-import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
-import dk.brics.tajs.flowgraph.jsnodes.CatchNode;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
 import dk.brics.tajs.monitoring.inspector.datacollection.SourceLine;
 import dk.brics.tajs.monitoring.inspector.util.OccurenceCountingMap;
-import dk.brics.tajs.options.Options;
-import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collectors;
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Stack;
 
-import static dk.brics.tajs.flowgraph.jsnodes.AssumeNode.Kind.UNREACHABLE;
 import static dk.brics.tajs.util.Collections.newSet;
 
 public class VisitationMonitoring extends DefaultAnalysisMonitoring {
 
-    private final Set<AbstractNode> visitableNodes;
+    /**
+     * Contains all nodes that are analyzed
+     */
+    private final Set<AbstractNode> visitedNodes;
 
-    private final Set<AbstractNode> reachableNodes;
-
+    /**
+     * A counter for how many nodes there are on each line
+     */
     private final OccurenceCountingMap<SourceLine> nodesPerLineMap;
 
+    /**
+     * A counter for how many blocks there are on each line
+     */
     private final OccurenceCountingMap<SourceLine> blocksPerLineMap;
 
+    /**
+     * A counter for how many times blocks on a line have been analyzed
+     */
     private final OccurenceCountingMap<SourceLine> visitCountMapByBlocks;
 
+    /**
+     * Contains all the functions that have been analyzed
+     */
     private final Set<Function> seenFunctions = newSet();
 
     public VisitationMonitoring() {
         this.visitCountMapByBlocks = new OccurenceCountingMap<>();
-        this.visitableNodes = new HashSet<>();
-        this.reachableNodes = new HashSet<>();
+        this.visitedNodes = new HashSet<>();
         this.nodesPerLineMap = new OccurenceCountingMap<>();
         this.blocksPerLineMap = new OccurenceCountingMap<>();
     }
@@ -106,7 +110,7 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
     }
 
     public Info createLineVisitingInfo() {
-        return new Info(visitCountMapByBlocks, visitableNodes, reachableNodes, blocksPerLineMap, nodesPerLineMap);
+        return new Info(visitCountMapByBlocks, visitedNodes, blocksPerLineMap, nodesPerLineMap);
     }
 
     private void addFunction(Function f) {
@@ -114,10 +118,13 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
             return;
         }
         seenFunctions.add(f);
-        visitableNodes.addAll(VisitableNodesAnalyzer.analyze(f, false));
-        reachableNodes.addAll(VisitableNodesAnalyzer.analyze(f, true));
         nodesPerLineMap.countAll(makeNodesPerLineMap(f));
         blocksPerLineMap.countAll(makeBlocksPerLineMap(f));
+    }
+
+    @Override
+    public void visitNodeTransferPre(AbstractNode n, State state) {
+        visitedNodes.add(n);
     }
 
     @Override
@@ -125,14 +132,8 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
         addFunction(block.getFunction());
         Set<SourceLine> lines = new HashSet<>();
         for (AbstractNode node : block.getNodes()) {
-            if (!visitableNodes.contains(node)) {
-                continue;
-            }
             if (node.getSourceLocation().getLocation() == null)
                 continue; // node js artificial nodes doesn't have a corresponding file location, ReportMaker reads it.
-            if (Options.get().isIgnoreUnreachableEnabled() && !reachableNodes.contains(node)) {
-                continue;
-            }
 
             final SourceLocation sourceLocation = node.getSourceLocation();
             // only count each line once per transfer
@@ -147,9 +148,7 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
 
     public static class Info {
 
-        private final Set<AbstractNode> visitableNodes;
-
-        private final Set<AbstractNode> reachableNodes;
+        private final Set<AbstractNode> visitedNodes;
 
         private final OccurenceCountingMap<SourceLine> blockVisitCountsPerLine;
 
@@ -157,10 +156,9 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
 
         private final OccurenceCountingMap<SourceLine> nodesPerLine;
 
-        public Info(OccurenceCountingMap<SourceLine> blockVisitCountsPerLine, Set<AbstractNode> visitableNodes, Set<AbstractNode> reachableNodes, OccurenceCountingMap<SourceLine> blocksPerLine, OccurenceCountingMap<SourceLine> nodesPerLine) {
+        public Info(OccurenceCountingMap<SourceLine> blockVisitCountsPerLine, Set<AbstractNode> visitedNodes, OccurenceCountingMap<SourceLine> blocksPerLine, OccurenceCountingMap<SourceLine> nodesPerLine) {
             this.blockVisitCountsPerLine = blockVisitCountsPerLine;
-            this.visitableNodes = visitableNodes;
-            this.reachableNodes = reachableNodes;
+            this.visitedNodes = visitedNodes;
             this.blocksPerLine = blocksPerLine;
             this.nodesPerLine = nodesPerLine;
         }
@@ -173,119 +171,18 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
             return nodesPerLine;
         }
 
-        public Set<AbstractNode> getReachableNodes() {
-            return reachableNodes;
-        }
-
         public OccurenceCountingMap<SourceLine> getBlockVisitCountsPerLine() {
             return blockVisitCountsPerLine;
         }
 
-        public Set<AbstractNode> getVisitableNodesPerLine() {
-            return visitableNodes;
-        }
-
-        public Map<URL, Set<Integer>> getVisitableLinesPerFile() {
-            return convertNodeSetToURLLineSetMap(visitableNodes);
-        }
-
-        public Map<URL, Set<Integer>> getReachableLinesPerFile() {
-            return convertNodeSetToURLLineSetMap(reachableNodes);
+        public Map<URL, Set<Integer>> getAbstractLiveLines() {
+            return convertNodeSetToURLLineSetMap(visitedNodes);
         }
 
         private Map<URL, Set<Integer>> convertNodeSetToURLLineSetMap(Set<AbstractNode> nodes) {
             return nodes.stream()
                     .filter(n -> n.getSourceLocation().getLocation() != null)
                     .collect(Collectors.groupingBy(n -> n.getSourceLocation().getLocation(), java.util.stream.Collectors.mapping(n -> n.getSourceLocation().getLineNumber(), Collectors.toSet())));
-        }
-    }
-
-    private static class VisitableNodesAnalyzer {
-        private static final boolean DEBUG_LOCAL = false;
-
-        public static Set<AbstractNode> analyze(Function f, boolean useReachabilityInformation) {
-            Set<AbstractNode> visitableNodes = new HashSet<>();
-            Set<BasicBlock> visitedBlocks = new HashSet<>();
-            Map<BasicBlock, SourceLocation> unreachableDirectiveLocationsInBlocks = new HashMap<>();
-            Stack<BasicBlock> workList = new Stack<>();
-
-            workList.add(f.getEntry());
-
-            // reachability analysis for the blocks
-            while (!workList.isEmpty()) {
-                BasicBlock block = workList.pop();
-                if (visitedBlocks.contains(block) || f != block.getFunction()) {
-                    continue;
-                }
-                visitedBlocks.add(block);
-                List<AbstractNode> nodes = block.getNodes();
-                boolean canFlowThrough = true;
-                for (AbstractNode node : nodes) {
-                    if (useReachabilityInformation && node instanceof AssumeNode && ((AssumeNode) node).getKind() == UNREACHABLE) {
-                        canFlowThrough = false;
-                        // theoretic problem: multiple NO_FLOW nodes in same block, but the last of them is visited first.
-                        unreachableDirectiveLocationsInBlocks.put(block, node.getSourceLocation());
-                        break;
-                    }
-                }
-                if (canFlowThrough) {
-                    final BasicBlock exceptionHandler = block.getExceptionHandler();
-                    if (exceptionHandler != null)
-                        workList.add(exceptionHandler);
-                    workList.addAll(block.getSuccessors());
-                }
-            }
-
-            // ignore the first block of each function: it is pure de
-            visitedBlocks.remove(f.getEntry());
-
-
-            // for all the reachable blocks, register the nodes which are located prior to NO_FLOW nodes
-            for (BasicBlock block : visitedBlocks) {
-                for (AbstractNode node : block.getNodes()) {
-                    // the node is reachable if it is in a block without a NO_FLOW node, or if it is located prior to the location of said node.
-                    final boolean reachable;
-                    if (unreachableDirectiveLocationsInBlocks.containsKey(block)) {
-                        reachable = isNodeBefore(node, unreachableDirectiveLocationsInBlocks.get(block));
-                    } else {
-                        reachable = true;
-                    }
-
-                    if (DEBUG_LOCAL) {
-                        if (!reachable) {
-                            System.out.format("NOT reachable: %s(line: %d)%n", node, node.getSourceLocation().getLineNumber());
-                        } else {
-                            System.out.format("Reachable: %s(line: %d)%n", node, node.getSourceLocation().getLineNumber());
-                        }
-                    }
-                    final boolean visitable = reachable && !node.isArtificial() && !(node instanceof CatchNode);
-                    if (visitable) {
-                        visitableNodes.add(node);
-                    }
-
-                    if (DEBUG_LOCAL) {
-                        if (!visitable) {
-                            System.out.format("NOT visitable: %s(line: %d)%n", node, node.getSourceLocation().getLineNumber());
-                        } else {
-                            System.out.format("Visitable: %s(line: %d)%n", node, node.getSourceLocation().getLineNumber());
-                        }
-                    }
-                }
-            }
-
-            return visitableNodes;
-        }
-
-        private static boolean isNodeBefore(AbstractNode node, SourceLocation sourceLocation) {
-            SourceLocation nodeLocation = node.getSourceLocation();
-            if (!nodeLocation.getLocation().equals(sourceLocation.getLocation())) {
-                // If multiple files are included, they should get their own initializers?
-                throw new AnalysisException("Nodes from different files in same block?");
-            }
-            if (nodeLocation.getLineNumber() == sourceLocation.getLineNumber()) {
-                return nodeLocation.getColumnNumber() <= sourceLocation.getColumnNumber();
-            }
-            return nodeLocation.getLineNumber() <= sourceLocation.getLineNumber();
         }
     }
 }

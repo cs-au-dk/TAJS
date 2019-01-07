@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,7 +98,6 @@ public class KnownUnsoundnesses {
                 "test-resources/src/1k2013spring/1544.js",
                 "test-resources/src/1k2013spring/1547.js",
                 "test-resources/src/1k2013spring/1557.js",
-                "test-resources/src/chromeexperiments/watertype.html",
 
                 // INSPECTED FAILURES (TODO move to separate set of strings)
 
@@ -111,7 +110,11 @@ public class KnownUnsoundnesses {
                 "test-resources/src/sunspider/crypto-aes.js",
                 "test-resources/src/sunspider/crypto-md5.js",
                 "test-resources/src/sunspider/crypto-sha1.js",
-                "test-resources/src/sunspider/regexp-dna.js"
+                "test-resources/src/sunspider/regexp-dna.js",
+                "benchmarks/tajs/src/sparse2014benchmarks/crypto-aes.js",
+                "benchmarks/tajs/src/sparse2014benchmarks/crypto-md5.js",
+                "benchmarks/tajs/src/strlat2014benchmarks/crypto-md5.js",
+                "benchmarks/tajs/src/jsai2014benchmarks/std-crypto-sha1.js"
         ).map(KnownUnsoundnesses::make).collect(Collectors.toList()));
 
         syntaxFailureFiles.addAll(Stream.of(
@@ -128,7 +131,8 @@ public class KnownUnsoundnesses {
                 "test-resources/src/v8tests/arguments-indirect.js",
                 "test-resources/src/v8tests/extra-arguments.js",
 
-                // benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js crashes immediately due to "border" let/var duplicate declaration? (already a Jalangi issue?)
+                // Arrays.from does not support ES6 iterators
+                "benchmarks/tajs/src/lodash/test-suite/4.17.10/lodash_test_73.html",
 
                 // missing TAJS call at inline eventhandlers???
                 // <button onclick="load()">Render</button><br/><br/>
@@ -136,12 +140,8 @@ public class KnownUnsoundnesses {
                 // <input value="BUILD ME A WORLD!!!!!!!!!!!" onclick="createTerrain()" type="button">
                 "test-resources/src/10k/fractal_landscape.html",
 
-                "test-resources/src/chromeexperiments/jstouch.html",
-                "test-resources/src/chromeexperiments/strangeattractor.html",
                 "test-resources/src/chromeexperiments/deepseastress.html",
-
-                // LocalStorage converts fields to strings + like something more
-                "test-resources/src/chromeexperiments/harmony.html",
+                "test-resources/src/chromeexperiments/apophis.html",
 
                 // lots of allocation site mismatches
                 "test-resources/src/10k/10k_world.html",
@@ -191,7 +191,12 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/1k2013spring/1457.js", 31, 14),
 
                         make("test-resources/src/1k2013spring/1525.js", 62, 15),
-                        make("test-resources/src/1k2013spring/1525.js", 62, 30)
+                        make("test-resources/src/1k2013spring/1525.js", 62, 30),
+
+                        make("test-resources/src/chromeexperiments/bingbong.html", 841, 702),
+
+                        make("test-resources/src/chromeexperiments/bomomo.html", 2858, 297),
+                        make("test-resources/src/chromeexperiments/bomomo.html", 2858, 499)
                 )
         );
         unsoundLocations_tajs.addAll(
@@ -234,22 +239,14 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/1k2012love/1218.js", 53, 5),
 
                         // dynamic insertion of script tags (i.e. eval through the DOM)
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.3.js-sliced.js", 3217, 13),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.3.js-sliced.js", 3218, 13),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.3.js-sliced.js", 3218, 13),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.3.js-sliced.js", 3218, 13),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.3.js-sliced.js", 3219, 20),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.3.js-sliced.js", 3219, 27),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js", 810, 13),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js", 811, 13),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js", 811, 13),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js", 811, 13),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js", 812, 20),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js", 812, 27),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-orig.js", 882, 7),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-orig.js", 883, 3),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-orig.js", 884, 10),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.4.js-orig.js", 884, 18),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.3.js", 3054, 7),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.3.js", 3055, 3),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.3.js", 3056, 10),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.3.js", 3056, 18),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.4.js", 882, 7),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.4.js", 883, 3),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.4.js", 884, 10),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.4.js", 884, 18),
 
                         // redefinition of non-configurable properties
                         make("out/temp-sources/JSObject_defineProperty_test.nonConfigurable1.js", 0, 0),
@@ -317,17 +314,24 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/refinement/underscore/test-suite/utility/test180.html", 14, 18),
                         make("test-resources/src/refinement/underscore/test-suite/utility/test180.html", 17, 25),
 
+                        // Fails due to 0x80000000 | 0 incorrectly being abstractly evaluated to 2147483647 (should be -2147483648)
+                        make("benchmarks/tajs/src/jsai2014benchmarks/ems-fourinarow.js", 6000, 30),
+
                         // Fails due to -use-fixed-random (see also AbstractConcreteValueComparator.isAbstractStringValueMorePreciseThanSemiConcreteValue)
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js", 1142, 29),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.6.js-sliced.js", 1224, 29),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js", 1517, 29),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js", 3695, 181),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js", 1354, 29),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js", 3504, 13),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js", 1543, 29),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js", 3694, 17),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.10.js-sliced.js", 292, 29),
-                        make("benchmarks/tajs/src/jquery-load/jquery-1.11.0.js-sliced.js", 190, 22),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.5.js", 1310, 22),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.6.js", 1391, 22),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.7.js", 1684, 22),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.7.js", 3923, 25),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.8.js", 1521, 22),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.8.js", 3811, 3),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.9.js", 1712, 22),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.9.js", 4050, 3),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.10.js", 381, 22),
+                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.11.js", 242, 22),
+
+                        // Fails due to wrong receiver, for a function called from a function defined by new Function
+                        make("benchmarks/tajs/src/underscore/test-suite/utility/test180.html", 14, 18),
+                        make("benchmarks/tajs/src/underscore/test-suite/utility/test180.html", 17, 25),
 
                         //
                         // DELIBERATE UNSOUNDNESS:
@@ -431,12 +435,12 @@ public class KnownUnsoundnesses {
                         make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 3, 4),
                         make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 4, 4),
                         make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 5, 8),
-                        make("test-resources/src/sparse2014benchmarks/jpg.js", 27, 18),
-                        make("test-resources/src/sparse2014benchmarks/jpg.js", 522, 7),
-                        make("test-resources/src/jsai2015benchmarks/buckets_many_extra_prints.js", 3, 2),
-                        make("test-resources/src/jsai2015benchmarks/buckets_many_extra_prints.js", 36, 29),
-                        make("test-resources/src/jsai2015benchmarks/buckets_many_extra_prints.js", 1905, 22),
-                        make("test-resources/src/jsai2015benchmarks/buckets_many_extra_prints.js", 2052, 33),
+                        make("benchmarks/tajs/src/sparse2014benchmarks/jpg.js", 27, 18),
+                        make("benchmarks/tajs/src/sparse2014benchmarks/jpg.js", 522, 7),
+                        make("benchmarks/tajs/src/jsai2015benchmarks/buckets_many_extra_prints.js", 3, 2),
+                        make("benchmarks/tajs/src/jsai2015benchmarks/buckets_many_extra_prints.js", 36, 29),
+                        make("benchmarks/tajs/src/jsai2015benchmarks/buckets_many_extra_prints.js", 1905, 22),
+                        make("benchmarks/tajs/src/jsai2015benchmarks/buckets_many_extra_prints.js", 2052, 33),
 
                         // this-mismatch between TAJS/Jalangi (!!??)
                         make("out/temp-sources/TestUneval.uneval_stackOverflowRegression.js", 2, 2),
@@ -483,7 +487,7 @@ public class KnownUnsoundnesses {
     }
 
     private static boolean containsTAJSRelativePath(Set<Path> set, Path path) {
-        Optional<Path> relativeToTAJS = relativize(path);
+        Optional<Path> relativeToTAJS = PathAndURLUtils.getRelativeToTAJS(path);
         if (!relativeToTAJS.isPresent()) {
             return false;
         }
@@ -491,19 +495,12 @@ public class KnownUnsoundnesses {
     }
 
     private static boolean containsTAJSRelativeLocation(Set<SimpleSourceLocation> set, SourceLocation sourceLocation) {
-        Path path = PathAndURLUtils.toPath(sourceLocation.getLocation());
-        Optional<Path> relativeToTAJS = relativize(path);
+        Path path = PathAndURLUtils.toPath(sourceLocation.getLocation(), false);
+        Optional<Path> relativeToTAJS = PathAndURLUtils.getRelativeToTAJS(path);
         if (!relativeToTAJS.isPresent()) {
             return false;
         }
         return set.contains(new SimpleSourceLocation(sourceLocation.getLineNumber(), sourceLocation.getColumnNumber(), relativeToTAJS.get()));
-    }
-
-    /**
-     * Makes a path relative to the TAJS directory.
-     */
-    private static Optional<Path> relativize(Path path) {
-        return PathAndURLUtils.getRelativeToTAJS(path);
     }
 
     /**

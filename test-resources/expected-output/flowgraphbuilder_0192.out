@@ -15,23 +15,22 @@ fg2: <main> function()
   block 4:
     node 5: read-variable['o',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:1)
     node 6: read-property[v8,'f',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:1)
-    node 7: <variable-non-null-undef>['o'] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:1)
-    node 8: constant["s",v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:5)
-    node 9: read-variable['v',v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:9)
-    node 10: +[v10,v11,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:5)
+    node 7: constant["s",v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:5)
+    node 8: read-variable['v',v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:9)
+    node 9: +[v10,v11,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:5)
     ->[block 5]
   block 5:
-    node 11: call[v8,'f',v9,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:1)
+    node 10: call[v8,'f',v9,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:1)
     ->[block 6]
   block 6:
-    node 12: constant["t",v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:14)
-    node 13: write-property[v6,'p',v5]* (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:1)
+    node 11: constant["t",v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:14)
+    node 12: write-property[v6,'p',v5]* (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js:1:1)
     ->[block 7]
   block 7: [exit-ordinary]
-    node 14: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js)
+    node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js)
     ->[]
   block 8: [exit-exceptional]
-    node 15: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js)
+    node 14: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0192.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0192.js: [definite] Ordinary program exit is unreachable

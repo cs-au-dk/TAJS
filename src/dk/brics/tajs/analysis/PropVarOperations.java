@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,7 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
 
@@ -85,7 +86,19 @@ public class PropVarOperations {
      * Absent is converted to undefined. Attributes are set to bottom.
      */
     public Value readPropertyValue(Collection<ObjectLabel> objlabels, String propertyname) {
-        return readPropertyValue(objlabels, Value.makeTemporaryStr(propertyname));
+        return readPropertyValue(objlabels, propertyname, null);
+    }
+
+    /**
+     * 8.6.2.1 [[Get]]
+     * Returns the value of the given property in the given objects.
+     * The internal prototype chains are used.
+     * Absent is converted to undefined. Attributes are set to bottom.
+     *
+     * @param collect if non-null, collect the objects where the property may be found
+     */
+    public Value readPropertyValue(Collection<ObjectLabel> objlabels, String propertyname, Set<ObjectLabel> collect) {
+        return readPropertyValue(objlabels, Value.makeTemporaryStr(propertyname), collect);
     }
 
     /**
@@ -95,7 +108,19 @@ public class PropVarOperations {
      * Absent is converted to undefined. Attributes are set to bottom.
      */
     public Value readPropertyValue(Collection<ObjectLabel> objlabels, PKeys propertystr) {
-        Value v = readPropertyRaw(objlabels, propertystr, false, false);
+        return readPropertyValue(objlabels, propertystr, null);
+    }
+
+    /**
+     * 8.6.2.1 [[Get]]
+     * Returns the value of the given property in the given objects.
+     * The internal prototype chains are used.
+     * Absent is converted to undefined. Attributes are set to bottom.
+     *
+     * @param collect if non-null, collect the objects where the property may be found
+     */
+    public Value readPropertyValue(Collection<ObjectLabel> objlabels, PKeys propertystr, Set<ObjectLabel> collect) {
+        Value v = readPropertyRaw(objlabels, propertystr, false, false, collect);
         if (v.isMaybeAbsent())
             v = v.restrictToNotAbsent().joinUndef();
         v = v.setBottomPropertyData();
@@ -114,12 +139,25 @@ public class PropVarOperations {
     }
 
     /**
+     * Returns the value of the given property in the given objects, together with the actual objects where the property is read.
+     * The internal prototype chains are used.
+     * Getters are not called.
+     */
+    public Pair<Set<ObjectLabel>,Value> readPropertyWithAttributesAndObjs(Collection<ObjectLabel> objlabels, String propertyname) {
+        Set<ObjectLabel> objs = newSet();
+        Value v = readPropertyRaw(objlabels, Value.makeTemporaryStr(propertyname), false, true, objs);
+        if (log.isDebugEnabled())
+            log.debug("readPropertyWithAttributesAndObjs(" + objlabels + "," + propertyname + ") = " + v);
+        return Pair.make(objs, v);
+    }
+
+    /**
      * Returns the value of the given property in the given objects.
      * The internal prototype chains are used.
      * Getters are not called.
      */
     public Value readPropertyWithAttributes(Collection<ObjectLabel> objlabels, PKeys propertystr) {
-        Value v = readPropertyRaw(objlabels, propertystr, false, true);
+        Value v = readPropertyRaw(objlabels, propertystr, false, true, null);
         if (log.isDebugEnabled())
             log.debug("readPropertyWithAttributes(" + objlabels + "," + propertystr + ") = " + v);
         return v;
@@ -131,8 +169,9 @@ public class PropVarOperations {
      *
      * @param only_attributes if set, only attributes (incl. pseudo-attributes) are considered
      * @param no_call_getters if set, do not call getters
+     * @param collect if non-null, collect the objects where the property may be found
      */
-    private Value readPropertyRaw(Collection<ObjectLabel> objlabels, PKeys propertystr, boolean only_attributes, boolean no_call_getters) {
+    private Value readPropertyRaw(Collection<ObjectLabel> objlabels, PKeys propertystr, boolean only_attributes, boolean no_call_getters, Set<ObjectLabel> collect) {
         Collection<Value> values = newList();
         Set<ObjectLabel> visited = newSet();
         BasicBlock implicitAfterCall = null;
@@ -150,6 +189,8 @@ public class PropVarOperations {
                         } else {
                             v = readPropertyDirect(l, propertystr);
                         }
+                        if (collect != null && v.isMaybePresent())
+                            collect.add(l);
                         if (!no_call_getters) {
                             if (v.isMaybePresentAccessor())
                                 v = UnknownValueResolver.getRealValue(v, c.getState());
@@ -210,6 +251,12 @@ public class PropVarOperations {
 
                                         @Override
                                         public boolean isUnknownNumberOfArgs() {
+                                            return false;
+                                        }
+
+
+                                        @Override
+                                        public boolean assumeFunction() {
                                             return false;
                                         }
                                     }, c);
@@ -294,6 +341,7 @@ public class PropVarOperations {
             } else {
                 result = result.joinAnyNumUInt();
             }
+            result = result.setAttributes(true, true, false);
         }
         return result.isNone() ? Value.makeAbsent() : result;
     }
@@ -385,7 +433,7 @@ public class PropVarOperations {
      * The internal prototype chains are used.
      */
     private Bool hasPropertyRaw(Collection<ObjectLabel> objlabels, PKeys propertyname) {
-        Value v = readPropertyRaw(objlabels, propertyname, true, true);
+        Value v = readPropertyRaw(objlabels, propertyname, true, true, null);
         boolean maybe_present = v.isMaybePresent();
         boolean maybe_absent = v.isMaybeAbsent();
         return maybe_present ? (maybe_absent ? Value.makeAnyBool() : Value.makeBool(true)) : (maybe_absent ? Value.makeBool(false) : Value.makeNone());
@@ -418,7 +466,7 @@ public class PropVarOperations {
         */
         if (Options.get().isAlwaysCanPut())
             return Value.makeBool(true);
-        Value v = readPropertyRaw(Collections.singleton(objprop.getObjectLabel()), objprop.getProperty().toValue(), true, true); // TODO: possible to optimize modeling of [[CanPut]]? i.e. in some cases omit this call to readPropertyRaw?
+        Value v = readPropertyRaw(Collections.singleton(objprop.getObjectLabel()), objprop.getProperty().toValue(), true, true, null); // TODO: possible to optimize modeling of [[CanPut]]? i.e. in some cases omit this call to readPropertyRaw?
         Bool b;
         if (v.isNotPresent() || v.isNotReadOnly())
             b = Value.makeBool(true);
@@ -526,7 +574,7 @@ public class PropVarOperations {
         Value prototypevalue = Value.makeNone();
         if (!not_invoke_setters && oldvalue.isMaybeAbsent()) { // if old value (maybe) absent, we also need the setters from the prototype chain
             Value proto = UnknownValueResolver.getInternalPrototype(objprop.getObjectLabel(), state, false);
-            prototypevalue = readPropertyRaw(proto.getObjectLabels(), objprop.getProperty().toValue(), false, true);
+            prototypevalue = readPropertyRaw(proto.getObjectLabels(), objprop.getProperty().toValue(), false, true, null);
         }
         boolean maybeDefiningGetter = !value.isPolymorphic() && value.isMaybeGetter();
         boolean maybeDefiningSetter = !value.isPolymorphic() && value.isMaybeSetter();
@@ -656,6 +704,11 @@ public class PropVarOperations {
                             public boolean isUnknownNumberOfArgs() {
                                 return false;
                             }
+
+                            @Override
+                            public boolean assumeFunction() {
+                                return false;
+                            }
                         }, c);
                     }
                 }
@@ -689,6 +742,7 @@ public class PropVarOperations {
                                     v = v.setAttributes(true, true, false);
                                 // TODO: should also set attributes (weakly) if writeInternalPrototype_dynamic and !maySkipInternalProtoPropertyWrite - see also #356
                                 c.getState().getObject(objprop.getObjectLabel(), true).setValue(objprop, v);
+                                c.getState().getMustEquals().setToBottom(objprop);
                             }
                         }
                     });
@@ -774,6 +828,7 @@ public class PropVarOperations {
                         // write 'length' property
                         numvalue = numvalue.setAttributes(true, true, false);
                         c.getState().getObject(objprop.getObjectLabel(), true).setProperty(StringPKey.LENGTH, numvalue.joinModified());
+                        c.getState().getMustEquals().setToBottom(objprop.getObjectLabel(), StringPKey.LENGTH);
                     }
                 }
             }
@@ -786,6 +841,7 @@ public class PropVarOperations {
                 else
                     v = Value.makeAnyNumUInt();
                 c.getState().getObject(objprop.getObjectLabel(), true).setProperty(StringPKey.LENGTH, v.setAttributes(true, true, false).joinModified());
+                c.getState().getMustEquals().setToBottom(objprop.getObjectLabel(), StringPKey.LENGTH);
             }
         }
         return objprop.getKind() == ORDINARY && StringPKey.LENGTH.equals(objprop.getPropertyName());
@@ -881,7 +937,7 @@ public class PropVarOperations {
     /**
      * @see #writeVariable(String, Value, boolean, boolean)
      */
-    public Set<ObjectLabel> writeVariable(String varname, Value value, boolean set_modified) {
+    public Pair<Set<ObjectLabel>, Boolean> writeVariable(String varname, Value value, boolean set_modified) {
         return writeVariable(varname, value, set_modified, false);
     }
 
@@ -892,9 +948,10 @@ public class PropVarOperations {
      * @param value   the new value
      * @param set_modified if set, the modified flag is set on written values (false for 'assume' operations)
      * @param not_invoke_setters if set, do not invoke setter (e.g. for assume-node variable updates)
-     * @return the set of objects where the variable may be stored (i.e. the base objects)
+     * @return the set of objects where the variable may be stored (i.e. the base objects),
+     *         and a boolean indicating whether the write was definitely performed
      */
-    public Set<ObjectLabel> writeVariable(String varname, Value value, boolean set_modified, boolean not_invoke_setters) {
+    public Pair<Set<ObjectLabel>, Boolean> writeVariable(String varname, Value value, boolean set_modified, boolean not_invoke_setters) {
         State state = c.getState();
         value.assertNonEmpty();
         // 10.1.4 Identifier Resolution
@@ -905,7 +962,7 @@ public class PropVarOperations {
         // 5. Return a value of type Reference whose base object is null and whose property name is the Identifier.
         ParallelTransfer pf = new ParallelTransfer(c);
         Set<ObjectLabel> objlabels = newSet();
-        boolean definitely_found;
+        boolean definitely_found = false;
         for (Iterator<Set<ObjectLabel>> it = ScopeChain.iterable(state.getExecutionContext().getScopeChain()).iterator(); it.hasNext(); ) {
             Set<ObjectLabel> sc = it.next();
             definitely_found = true;
@@ -936,7 +993,7 @@ public class PropVarOperations {
         pf.complete();
         if (log.isDebugEnabled())
             log.debug("writeVariable(" + varname + "," + value + ")");
-        return objlabels;
+        return Pair.make(objlabels, definitely_found);
     }
 
     /**
@@ -982,7 +1039,7 @@ public class PropVarOperations {
         for (Set<ObjectLabel> sc : ScopeChain.iterable(c.getState().getExecutionContext().getScopeChain())) {
             boolean definitely_found_at_current_level = true;
             for (ObjectLabel objlabel : sc) {
-                Value v = readPropertyRaw(Collections.singleton(objlabel), Value.makeTemporaryStr(varname), false, not_invoke_getters);
+                Value v = readPropertyRaw(Collections.singleton(objlabel), Value.makeTemporaryStr(varname), false, not_invoke_getters, null);
                 if (v.isMaybePresent()) { // found one (maybe)
                     values.add(v.setBottomPropertyData());
                     if (base_objs != null)
@@ -1095,6 +1152,7 @@ public class PropVarOperations {
             }
             Obj obj = c.getState().getObject(objlabel, true);
             obj.setProperty(propertyname, newval);
+            c.getState().getMustEquals().setToBottom(objlabel, propertyname);
         }
         return res;
     }
@@ -1141,7 +1199,8 @@ public class PropVarOperations {
                 res = Value.makeBool(true);
             else // don't know, maybe delete
                 res = Value.makeAnyBool();
-            c.getState().writeProperty(p, v.joinAbsentModified());
+            c.getState().getObject(p.getObjectLabel(), true).setValue(p, v.joinAbsentModified());
+            c.getState().getMustEquals().setToBottom(p);
         }
         return res;
     }

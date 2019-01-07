@@ -18,7 +18,7 @@ public class TestJQueryEach {
         Options.get().enableTiming();
         Options.get().enableTest();
         Options.get().enableParameterSensitivity();
-        Options.get().enableUnreachable();
+        Options.get().enableIgnoreUnreached();
         Options.get().enableLoopUnrolling(100);
     }
 

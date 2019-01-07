@@ -1,10 +1,10 @@
 test-resources/src/micro/test164.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test164.js:21:3: [info] Abstract state:
 Abstract state:
-  Execution context: ScopeChain=[[@Object#node26],[@Object#node18],[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
-  Summarized: maybe=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node97, @arguments#node91, @arguments#node85, @arguments#node79, @arguments#node103, @activation#node97, @activation#node91, @activation#node85, @activation#node79, @activation#node103, @Object#node5, @Object#node4, @Object#node26, @Object#node22, @Object#node2, @Object#node18, @Object#node14, @Object#node118, @Object#node111, @Object#node10, @Object#node1, @<anonymous>#fun5], definitely=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node97, @arguments#node91, @arguments#node85, @arguments#node79, @arguments#node103, @activation#node97, @activation#node91, @activation#node85, @activation#node79, @activation#node103, @Object#node5, @Object#node4, @Object#node26, @Object#node22, @Object#node2, @Object#node18, @Object#node14, @Object#node118, @Object#node111, @Object#node10, @Object#node1, @<anonymous>#fun5]
+  Execution context: ScopeChain=[[@Object#node24],[@Object#node17],[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
+  Summarized: maybe=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node99, @arguments#node93, @arguments#node87, @arguments#node81, @arguments#node75, @activation#node99, @activation#node93, @activation#node87, @activation#node81, @activation#node75, @Object#node5, @Object#node4, @Object#node24, @Object#node21, @Object#node2, @Object#node17, @Object#node14, @Object#node112, @Object#node105, @Object#node10, @Object#node1, @<anonymous>#fun5], definitely=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node99, @arguments#node93, @arguments#node87, @arguments#node81, @arguments#node75, @activation#node99, @activation#node93, @activation#node87, @activation#node81, @activation#node75, @Object#node5, @Object#node4, @Object#node24, @Object#node21, @Object#node2, @Object#node17, @Object#node14, @Object#node112, @Object#node105, @Object#node10, @Object#node1, @<anonymous>#fun5]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],f1:[@f1#fun1],f2:[@f2#fun2],foo:Undef,g1:[@g1#fun3],g2:[@g2#fun4],x:[@Object#node18],y:[@Object#node26],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],f1:[@f1#fun1],f2:[@f2#fun2],foo:Undef,g1:[@g1#fun3],g2:[@g2#fun4],x:[@Object#node17],y:[@Object#node24],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Object.prototype[native] (<initial state>): {configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),f1:^(@Object.prototype[native].f1[absent]),f2:^(@Object.prototype[native].f2[absent]),foo:^(@Object.prototype[native].foo[absent]),g1:^(@Object.prototype[native].g1[absent]),g2:^(@Object.prototype[native].g2[absent]),get:^(@Object.prototype[native].get[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),v1:^(@Object.prototype[native].v1[absent]),v2:^(@Object.prototype[native].v2[absent]),value:^(@Object.prototype[native].value[absent]),w1:^(@Object.prototype[native].w1[absent]),w2:^(@Object.prototype[native].w2[absent]),writable:^(@Object.prototype[native].writable[absent]),x:^(@Object.prototype[native].x[absent]),y:^(@Object.prototype[native].y[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @String.prototype[native] (<initial state>): {replace:[@replace#fun6],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
@@ -14,19 +14,27 @@ Abstract state:
     @f1#fun1 (test-resources/src/micro/test164.js:1:1): {length:0.0,name:"f1",prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @f2#fun2 (test-resources/src/micro/test164.js:4:1): {length:0.0,name:"f2",prototype:[@Object#node14],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @Object#node14 (test-resources/src/micro/test164.js:7:16): {v1:"v1",[[Prototype]]=[@Object#node1]}
-    @Object#node18 (test-resources/src/micro/test164.js:8:9): {v2:"v2",[[Prototype]]=[@Object#node14]}
+    @Object#node17 (test-resources/src/micro/test164.js:8:9): {v2:"v2",[[Prototype]]=[@Object#node14]}
     @Object#node4 (test-resources/src/micro/test164.js:10:1): {constructor:[@g1#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @g1#fun3 (test-resources/src/micro/test164.js:10:1): {length:0.0,name:"g1",prototype:[@Object#node4],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @g2#fun4 (test-resources/src/micro/test164.js:13:1): {length:0.0,name:"g2",prototype:[@Object#node22],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node22 (test-resources/src/micro/test164.js:16:16): {w1:"w1",[[Prototype]]=[@Object#node4]}
-    @Object#node26 (test-resources/src/micro/test164.js:17:9): {w2:"w2",[[Prototype]]=[@Object#node22]}
+    @g2#fun4 (test-resources/src/micro/test164.js:13:1): {length:0.0,name:"g2",prototype:[@Object#node21],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node21 (test-resources/src/micro/test164.js:16:16): {w1:"w1",[[Prototype]]=[@Object#node4]}
+    @Object#node24 (test-resources/src/micro/test164.js:17:9): {w2:"w2",[[Prototype]]=[@Object#node21]}
     @<anonymous>#fun5 (HOST(string-replace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node10],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @activation#node103 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node103]}
-    @arguments#node103 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun5],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node118 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun6],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @replace#fun6 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node118],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node103],[@<the global object>[native]]]}
+    @activation#node99 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node99]}
+    @arguments#node99 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun5],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node112 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun6],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @replace#fun6 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node112],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node99],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+  MustReachingDefs: 
+    v1: node 0 (test-resources/src/micro/test164.js)
+  MustEquals: 
+    @<the global object>[native].y: [v13, v17]
+    @<the global object>[native].x: [v15]
+    v13: [@<the global object>[native].y]
+    v15: [@<the global object>[native].x]
+    v17: [@<the global object>[native].y]
   Functions in stack: []
 test-resources/src/micro/test164.js:27:3: [info] Abstract value: "v1#"
 test-resources/src/micro/test164.js:28:3: [info] Abstract value: "v2#"
@@ -35,10 +43,10 @@ test-resources/src/micro/test164.js:30:3: [info] Abstract value: "w2#"
 test-resources/src/micro/test164.js:31:3: [info] Abstract value: 42.0
 test-resources/src/micro/test164.js:33:2: [info] Abstract state:
 Abstract state:
-  Execution context: ScopeChain=[[@Object#node18],[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
-  Summarized: maybe=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node97, @arguments#node91, @arguments#node85, @arguments#node79, @arguments#node103, @activation#node97, @activation#node91, @activation#node85, @activation#node79, @activation#node103, @Object#node5, @Object#node4, @Object#node26, @Object#node22, @Object#node2, @Object#node18, @Object#node14, @Object#node118, @Object#node111, @Object#node10, @Object#node1, @<anonymous>#fun5], definitely=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node97, @arguments#node91, @arguments#node85, @arguments#node79, @arguments#node103, @activation#node97, @activation#node91, @activation#node85, @activation#node79, @activation#node103, @Object#node5, @Object#node4, @Object#node26, @Object#node22, @Object#node2, @Object#node18, @Object#node14, @Object#node118, @Object#node111, @Object#node10, @Object#node1, @<anonymous>#fun5]
+  Execution context: ScopeChain=[[@Object#node17],[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
+  Summarized: maybe=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node99, @arguments#node93, @arguments#node87, @arguments#node81, @arguments#node75, @activation#node99, @activation#node93, @activation#node87, @activation#node81, @activation#node75, @Object#node5, @Object#node4, @Object#node24, @Object#node21, @Object#node2, @Object#node17, @Object#node14, @Object#node112, @Object#node105, @Object#node10, @Object#node1, @<anonymous>#fun5], definitely=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node99, @arguments#node93, @arguments#node87, @arguments#node81, @arguments#node75, @activation#node99, @activation#node93, @activation#node87, @activation#node81, @activation#node75, @Object#node5, @Object#node4, @Object#node24, @Object#node21, @Object#node2, @Object#node17, @Object#node14, @Object#node112, @Object#node105, @Object#node10, @Object#node1, @<anonymous>#fun5]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],f1:[@f1#fun1],f2:[@f2#fun2],foo:42.0,g1:[@g1#fun3],g2:[@g2#fun4],x:[@Object#node18],y:[@Object#node26],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],f1:[@f1#fun1],f2:[@f2#fun2],foo:42.0,g1:[@g1#fun3],g2:[@g2#fun4],x:[@Object#node17],y:[@Object#node24],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Object.prototype[native] (<initial state>): {configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),f1:^(@Object.prototype[native].f1[absent]),f2:^(@Object.prototype[native].f2[absent]),foo:^(@Object.prototype[native].foo[absent]),g1:^(@Object.prototype[native].g1[absent]),g2:^(@Object.prototype[native].g2[absent]),get:^(@Object.prototype[native].get[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),v1:^(@Object.prototype[native].v1[absent]),v2:^(@Object.prototype[native].v2[absent]),value:^(@Object.prototype[native].value[absent]),w1:^(@Object.prototype[native].w1[absent]),w2:^(@Object.prototype[native].w2[absent]),writable:^(@Object.prototype[native].writable[absent]),x:^(@Object.prototype[native].x[absent]),y:^(@Object.prototype[native].y[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @String.prototype[native] (<initial state>): {replace:[@replace#fun6],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
@@ -48,26 +56,47 @@ Abstract state:
     @f1#fun1 (test-resources/src/micro/test164.js:1:1): {length:0.0,name:"f1",prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @f2#fun2 (test-resources/src/micro/test164.js:4:1): {length:0.0,name:"f2",prototype:[@Object#node14],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @Object#node14 (test-resources/src/micro/test164.js:7:16): {v1:"v1",[[Prototype]]=[@Object#node1]}
-    @Object#node18 (test-resources/src/micro/test164.js:8:9): {v1:"v1#",v2:"v2#",[[Prototype]]=[@Object#node14]}
+    @Object#node17 (test-resources/src/micro/test164.js:8:9): {v1:"v1#",v2:"v2#",[[Prototype]]=[@Object#node14]}
     @Object#node4 (test-resources/src/micro/test164.js:10:1): {constructor:[@g1#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @g1#fun3 (test-resources/src/micro/test164.js:10:1): {length:0.0,name:"g1",prototype:[@Object#node4],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @g2#fun4 (test-resources/src/micro/test164.js:13:1): {length:0.0,name:"g2",prototype:[@Object#node22],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node22 (test-resources/src/micro/test164.js:16:16): {w1:"w1",[[Prototype]]=[@Object#node4]}
-    @Object#node26 (test-resources/src/micro/test164.js:17:9): {w1:"w1#",w2:"w2#",[[Prototype]]=[@Object#node22]}
+    @g2#fun4 (test-resources/src/micro/test164.js:13:1): {length:0.0,name:"g2",prototype:[@Object#node21],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node21 (test-resources/src/micro/test164.js:16:16): {w1:"w1",[[Prototype]]=[@Object#node4]}
+    @Object#node24 (test-resources/src/micro/test164.js:17:9): {w1:"w1#",w2:"w2#",[[Prototype]]=[@Object#node21]}
     @<anonymous>#fun5 (HOST(string-replace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node10],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @activation#node103 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node103]}
-    @arguments#node103 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun5],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node118 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun6],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @replace#fun6 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node118],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node103],[@<the global object>[native]]]}
+    @activation#node99 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node99]}
+    @arguments#node99 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun5],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node112 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun6],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @replace#fun6 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node112],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node99],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+  MustEquals: 
+    @<the global object>[native].y: [v13, v17]
+    @<the global object>[native].x: [v15]
+    @<the global object>[native].foo: [v33, v48]
+    @Object#node17.v1: [v21, v36]
+    @Object#node17.v2: [v24, v39]
+    @Object#node24.w1: [v27, v42]
+    @Object#node24.w2: [v30, v45]
+    v13: [@<the global object>[native].y]
+    v15: [@<the global object>[native].x]
+    v17: [@<the global object>[native].y]
+    v21: [@Object#node17.v1]
+    v24: [@Object#node17.v2]
+    v27: [@Object#node24.w1]
+    v30: [@Object#node24.w2]
+    v33: [@<the global object>[native].foo]
+    v36: [@Object#node17.v1]
+    v39: [@Object#node17.v2]
+    v42: [@Object#node24.w1]
+    v45: [@Object#node24.w2]
+    v48: [@<the global object>[native].foo]
   Functions in stack: []
 test-resources/src/micro/test164.js:35:1: [info] Abstract state:
 Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
-  Summarized: maybe=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node97, @arguments#node91, @arguments#node85, @arguments#node79, @arguments#node103, @activation#node97, @activation#node91, @activation#node85, @activation#node79, @activation#node103, @Object#node5, @Object#node4, @Object#node26, @Object#node22, @Object#node2, @Object#node18, @Object#node14, @Object#node118, @Object#node111, @Object#node10, @Object#node1, @<anonymous>#fun5], definitely=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node97, @arguments#node91, @arguments#node85, @arguments#node79, @arguments#node103, @activation#node97, @activation#node91, @activation#node85, @activation#node79, @activation#node103, @Object#node5, @Object#node4, @Object#node26, @Object#node22, @Object#node2, @Object#node18, @Object#node14, @Object#node118, @Object#node111, @Object#node10, @Object#node1, @<anonymous>#fun5]
+  Summarized: maybe=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node99, @arguments#node93, @arguments#node87, @arguments#node81, @arguments#node75, @activation#node99, @activation#node93, @activation#node87, @activation#node81, @activation#node75, @Object#node5, @Object#node4, @Object#node24, @Object#node21, @Object#node2, @Object#node17, @Object#node14, @Object#node112, @Object#node105, @Object#node10, @Object#node1, @<anonymous>#fun5], definitely=[@replace#fun6, @g2#fun4, @g1#fun3, @f2#fun2, @f1#fun1, @arguments#node99, @arguments#node93, @arguments#node87, @arguments#node81, @arguments#node75, @activation#node99, @activation#node93, @activation#node87, @activation#node81, @activation#node75, @Object#node5, @Object#node4, @Object#node24, @Object#node21, @Object#node2, @Object#node17, @Object#node14, @Object#node112, @Object#node105, @Object#node10, @Object#node1, @<anonymous>#fun5]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],f1:[@f1#fun1],f2:[@f2#fun2],foo:42.0,g1:[@g1#fun3],g2:[@g2#fun4],x:[@Object#node18],y:[@Object#node26],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],f1:[@f1#fun1],f2:[@f2#fun2],foo:42.0,g1:[@g1#fun3],g2:[@g2#fun4],x:[@Object#node17],y:[@Object#node24],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Object.prototype[native] (<initial state>): {configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),f1:^(@Object.prototype[native].f1[absent]),f2:^(@Object.prototype[native].f2[absent]),foo:^(@Object.prototype[native].foo[absent]),g1:^(@Object.prototype[native].g1[absent]),g2:^(@Object.prototype[native].g2[absent]),get:^(@Object.prototype[native].get[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),v1:^(@Object.prototype[native].v1[absent]),v2:^(@Object.prototype[native].v2[absent]),value:^(@Object.prototype[native].value[absent]),w1:^(@Object.prototype[native].w1[absent]),w2:^(@Object.prototype[native].w2[absent]),writable:^(@Object.prototype[native].writable[absent]),x:^(@Object.prototype[native].x[absent]),y:^(@Object.prototype[native].y[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @String.prototype[native] (<initial state>): {replace:[@replace#fun6],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
@@ -77,19 +106,40 @@ Abstract state:
     @f1#fun1 (test-resources/src/micro/test164.js:1:1): {length:0.0,name:"f1",prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @f2#fun2 (test-resources/src/micro/test164.js:4:1): {length:0.0,name:"f2",prototype:[@Object#node14],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @Object#node14 (test-resources/src/micro/test164.js:7:16): {v1:"v1",[[Prototype]]=[@Object#node1]}
-    @Object#node18 (test-resources/src/micro/test164.js:8:9): {v1:"v1#",v2:"v2#",[[Prototype]]=[@Object#node14]}
+    @Object#node17 (test-resources/src/micro/test164.js:8:9): {v1:"v1#",v2:"v2#",[[Prototype]]=[@Object#node14]}
     @Object#node4 (test-resources/src/micro/test164.js:10:1): {constructor:[@g1#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @g1#fun3 (test-resources/src/micro/test164.js:10:1): {length:0.0,name:"g1",prototype:[@Object#node4],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @g2#fun4 (test-resources/src/micro/test164.js:13:1): {length:0.0,name:"g2",prototype:[@Object#node22],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node22 (test-resources/src/micro/test164.js:16:16): {w1:"w1",[[Prototype]]=[@Object#node4]}
-    @Object#node26 (test-resources/src/micro/test164.js:17:9): {w1:"w1#",w2:"w2#",[[Prototype]]=[@Object#node22]}
+    @g2#fun4 (test-resources/src/micro/test164.js:13:1): {length:0.0,name:"g2",prototype:[@Object#node21],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node21 (test-resources/src/micro/test164.js:16:16): {w1:"w1",[[Prototype]]=[@Object#node4]}
+    @Object#node24 (test-resources/src/micro/test164.js:17:9): {w1:"w1#",w2:"w2#",[[Prototype]]=[@Object#node21]}
     @<anonymous>#fun5 (HOST(string-replace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node10],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @activation#node103 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node103]}
-    @arguments#node103 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun5],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node118 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun6],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @replace#fun6 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node118],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node103],[@<the global object>[native]]]}
+    @activation#node99 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node99]}
+    @arguments#node99 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun5],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node112 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun6],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @replace#fun6 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node112],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node99],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+  MustEquals: 
+    @<the global object>[native].y: [v13, v17]
+    @<the global object>[native].x: [v15]
+    @<the global object>[native].foo: [v33, v48]
+    @Object#node17.v1: [v21, v36]
+    @Object#node17.v2: [v24, v39]
+    @Object#node24.w1: [v27, v42]
+    @Object#node24.w2: [v30, v45]
+    v13: [@<the global object>[native].y]
+    v15: [@<the global object>[native].x]
+    v17: [@<the global object>[native].y]
+    v21: [@Object#node17.v1]
+    v24: [@Object#node17.v2]
+    v27: [@Object#node24.w1]
+    v30: [@Object#node24.w2]
+    v33: [@<the global object>[native].foo]
+    v36: [@Object#node17.v1]
+    v39: [@Object#node17.v2]
+    v42: [@Object#node24.w1]
+    v45: [@Object#node24.w2]
+    v48: [@<the global object>[native].foo]
   Functions in stack: []
 test-resources/src/micro/test164.js:36:1: [info] Abstract value: "v1#"
 test-resources/src/micro/test164.js:37:1: [info] Abstract value: "w1#"

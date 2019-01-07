@@ -4,7 +4,6 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 @SuppressWarnings("static-method")
@@ -14,41 +13,40 @@ public class TestJSAI2014 {
     public void init() {
         Main.reset();
         Options.get().enableTest();
-        Options.get().setAnalysisTimeLimit(5 * 60);
+        Options.get().setAnalysisTransferLimit(100000);
     }
 
-    @Ignore // throws AnalysisTimeException on fast machines (GitHub #435)
     @Test(expected = AnalysisLimitationException.class)
     public void JSAI2014_ems_aha() throws Exception {
         Options.get().enablePolyfillTypedArrays();
         Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-aha.js");
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void JSAI2014_ems_fannkuch() throws Exception {
         Options.get().enablePolyfillTypedArrays();
         Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-fannkuch.js");
     }
 
-    @Test
+    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void JSAI2014_ems_fasta() throws Exception {
         Options.get().enablePolyfillTypedArrays();
         Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-fasta.js");
     }
 
-    @Test(expected = AnalysisLimitationException.class)
+    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void JSAI2014_ems_fourinarow() throws Exception {
         Options.get().enablePolyfillTypedArrays();
         Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-fourinarow.js");
     }
 
-    @Test(expected = AnalysisLimitationException.class)
+    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void JSAI2014_ems_hashtest() throws Exception {
         Options.get().enablePolyfillTypedArrays();
         Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-hashtest.js");
     }
 
-    @Test(expected = AnalysisLimitationException.class)
+    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
     public void JSAI2014_ems_llubenchmark() throws Exception {
         Options.get().enablePolyfillTypedArrays();
         Misc.run("benchmarks/tajs/src/jsai2014benchmarks/ems-llubenchmark.js");
@@ -70,7 +68,7 @@ public class TestJSAI2014 {
         Misc.run("benchmarks/tajs/src/jsai2014benchmarks/opn-linq_action.js");
     }
 
-    @Test(expected = AnalysisLimitationException.class)
+    @Test
     public void JSAI2014_opn_linq_aggregate() throws Exception {
         Misc.run("benchmarks/tajs/src/jsai2014benchmarks/opn-linq_aggregate.js");
     }
@@ -85,7 +83,7 @@ public class TestJSAI2014 {
         Misc.run("benchmarks/tajs/src/jsai2014benchmarks/opn-linq_enumerable.js");
     }
 
-    @Test(expected = AnalysisLimitationException.class)
+    @Test
     public void JSAI2014_opn_linq_functional() throws Exception {
         Misc.run("benchmarks/tajs/src/jsai2014benchmarks/opn-linq_functional.js");
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -139,6 +139,8 @@ public final class Context implements IContext<Context>, DeepImmutable {
 
     @Override
     public boolean equals(Object obj) {
+        if (!Canonicalizer.get().isCanonicalizing())
+            return this == obj;
         if (obj == this)
             return true;
         if (!(obj instanceof Context))

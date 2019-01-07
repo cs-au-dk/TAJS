@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.SourceLocation.SourceLocationMaker;
-import dk.brics.tajs.flowgraph.jsnodes.AssumeNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginWithNode;
 import dk.brics.tajs.flowgraph.jsnodes.BinaryOperatorNode.Op;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
@@ -42,9 +41,6 @@ import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReturnNode;
 import dk.brics.tajs.flowgraph.jsnodes.ThrowNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
-import dk.brics.tajs.flowgraph.syntaticinfo.DynamicProperty;
-import dk.brics.tajs.flowgraph.syntaticinfo.StaticProperty;
-import dk.brics.tajs.flowgraph.syntaticinfo.SyntacticReference;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Pair;
 
@@ -118,32 +114,6 @@ public class FunctionBuilderHelper {
             }
         }
         return translationMap;
-    }
-
-    /**
-     * Creates node for a directive, or null if the directive is not recognized.
-     */
-    public static AbstractNode makeDirectiveNode(String text, SourceLocation location) {
-        Directive directive = null;
-        for (Directive d : Directive.values()) {
-            if (text.equals(d.getName())) {
-                directive = d;
-                break;
-            }
-        }
-        if (directive == null) {
-            return null;
-        }
-        final AbstractNode directiveNode;
-        switch (directive) {
-            case NO_FLOW: {
-                directiveNode = AssumeNode.makeUnreachable(location);
-                break;
-            }
-            default:
-                throw new AnalysisException("Unexpected directive: " + directive);
-        }
-        return directiveNode;
     }
 
     /**
@@ -306,33 +276,6 @@ public class FunctionBuilderHelper {
                 return Op.SUB;
             default:
                 throw new AnalysisException("Unhandled binary type: " + token);
-        }
-    }
-
-    /**
-     * Creates an assume node for the given reference being non-null/undefined.
-     */
-    public static AssumeNode makeAssumeNonNullUndef(SyntacticReference base) {
-        if (base == null)
-            return null;
-        switch (base.type) {
-            case Variable: {
-                String name = base.asVariable().name;
-                if ("this".equals(name)) {
-                    return null;
-                }
-                return AssumeNode.makeVariableNonNullUndef(name, base.location);
-            }
-            case StaticProperty: {
-                StaticProperty property = base.asStaticProperty();
-                return AssumeNode.makePropertyNonNullUndef(property.baseRegister, property.propertyName, base.location);
-            }
-            case DynamicProperty: {
-                DynamicProperty property = base.asDynamicProperty();
-                return AssumeNode.makePropertyNonNullUndef(property.baseRegister, property.propertyRegister, base.location);
-            }
-            default:
-                throw new AnalysisException("Unexpected reference type: " + base.type);
         }
     }
 
@@ -570,32 +513,5 @@ public class FunctionBuilderHelper {
             }
         }
         return false;
-    }
-
-    /**
-     * Special TAJS directives.
-     * Directives are constant strings that appear as expression statements in the JavaScript code.
-     */
-    public enum Directive {
-
-        NO_FLOW("dk.brics.tajs.directives.unreachable");
-
-        private final String name;
-
-        Directive(String name) {
-            this.name = name;
-        }
-
-        @Override
-        public String toString() {
-            return name;
-        }
-
-        /**
-         * Returns the name of the directive.
-         */
-        String getName() {
-            return name;
-        }
     }
 }

@@ -1,0 +1,44 @@
+test-resources/src/micro/assumes.js:92:1: [definite] The conditional expression is always true
+test-resources/src/micro/assumes.js:98:3: [definite] The conditional expression is always true
+test-resources/src/micro/assumes.js:29:5: [definite] Reading absent property q
+test-resources/src/micro/assumes.js:111:18: [definite] Reading absent property d
+test-resources/src/micro/assumes.js:114:31: [definite] Dead assignment, property q is never read
+test-resources/src/micro/assumes.js:1:11: [definite] The variable t is never used
+test-resources/src/micro/assumes.js:29:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/assumes.js:34:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/assumes.js:42:5: [maybe] TypeError, call to non-function
+test-resources/src/micro/assumes.js:49:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/assumes.js:49:5: [maybe] TypeError, call to non-function
+test-resources/src/micro/assumes.js:58:5: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/assumes.js:106:16: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/micro/assumes.js:34:5: [maybe] Reading absent property f
+test-resources/src/micro/assumes.js:49:5: [maybe] Reading absent property e
+test-resources/src/micro/assumes.js:58:5: [maybe] Reading absent property f
+test-resources/src/micro/assumes.js:106:16: [maybe] Reading absent property d
+test-resources/src/micro/assumes.js:116:5: [maybe] Reading absent property p
+test-resources/src/micro/assumes.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/assumes.js:29:5, test-resources/src/micro/assumes.js:34:5, test-resources/src/micro/assumes.js:42:5, test-resources/src/micro/assumes.js:49:5, test-resources/src/micro/assumes.js:58:5, test-resources/src/micro/assumes.js:106:16]
+test-resources/src/micro/assumes.js:26:1: [info] Abstract value: Null|[@Object#node250, @Object#node245]
+test-resources/src/micro/assumes.js:27:1: [info] Abstract value: Null|[@Object#node245, @<anonymous>#fun4]
+test-resources/src/micro/assumes.js:30:1: [info] Abstract value: [@Object#node250, @Object#node245]
+test-resources/src/micro/assumes.js:35:1: [info] Abstract value: [@Object#node245]
+test-resources/src/micro/assumes.js:36:1: [info] Abstract value: [@Object#node250]
+test-resources/src/micro/assumes.js:43:1: [info] Abstract value: [@<anonymous>#fun4]
+test-resources/src/micro/assumes.js:50:1: [info] Abstract value: [@Object#node245]
+test-resources/src/micro/assumes.js:51:1: [info] Abstract value: [@<anonymous>#fun2]
+test-resources/src/micro/assumes.js:59:1: [info] Abstract value: [@Object#node245]
+test-resources/src/micro/assumes.js:60:1: [info] Abstract value: [@Object#node250]
+test-resources/src/micro/assumes.js:61:1: [info] Abstract value: [@<anonymous>#fun3]
+test-resources/src/micro/assumes.js:70:3: [info] Abstract value: [@<anonymous>#fun4]
+test-resources/src/micro/assumes.js:74:3: [info] Abstract value: Null|[@Object#node245]
+test-resources/src/micro/assumes.js:81:3: [info] Abstract value: Zero
+test-resources/src/micro/assumes.js:83:3: [info] Abstract value: UIntPos|NotUInt
+test-resources/src/micro/assumes.js:93:3: [info] Abstract value: 42.0
+test-resources/src/micro/assumes.js:99:5: [info] Abstract value: 42.0
+test-resources/src/micro/assumes.js:106:1: [info] Abstract value: Undef|42.0
+test-resources/src/micro/assumes.js:109:3: [info] Abstract value: 42.0
+test-resources/src/micro/assumes.js:111:3: [info] Abstract value: Undef
+test-resources/src/micro/assumes.js:117:3: [info] Abstract value: [@Object#node222]
+test-resources/src/micro/assumes.js:118:3: [info] Abstract value: [@Object#node222]
+test-resources/src/micro/assumes.js:120:1: [info] Abstract value: [@Object#node225, @Object#node222]
+test-resources/src/micro/assumes.js:121:1: [info] Abstract value: [@Object#node225, @Object#node222]
+Soundness testing succeeded for 223 checks (with 0 expected failures)

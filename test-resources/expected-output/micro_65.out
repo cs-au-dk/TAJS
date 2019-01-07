@@ -14,7 +14,7 @@ test-resources/src/micro/test65.js:29:1: [info] Abstract value: false
 test-resources/src/micro/test65.js:30:1: [info] Abstract value: false
 test-resources/src/micro/test65.js:32:1: [info] Abstract value: "number"
 test-resources/src/micro/test65.js:43:1: [info] Abstract object: {a:123.0,[[Prototype]]=[@Object.prototype[native]]}
-test-resources/src/micro/test65.js:45:1: [info] Abstract object: {[[Prototype]]=[@Object#node89]}
+test-resources/src/micro/test65.js:45:1: [info] Abstract object: {[[Prototype]]=[@Object#node84]}
 test-resources/src/micro/test65.js:11:1: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/micro/test65.js:9:16: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/micro/test65.js:12:16: [info] Reading from unknown property that may cause loss of precision

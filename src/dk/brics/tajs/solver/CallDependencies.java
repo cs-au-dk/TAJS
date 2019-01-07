@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -116,7 +116,7 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
 
         @Override
         public String toString() {
-            return "(node " + caller.getIndex() + " (" + caller.getSourceLocation() + "), " + caller_context + ", " + edge_context + ", block " + callee.getIndex() + " (" + callee.getSourceLocation() + "), " +  callee_context + ")";
+            return "(node " + caller.getIndex() + " (" + caller.getSourceLocation() + "), " + caller_context + ", " + edge_context + ", block " + callee.getIndex() + " (" + callee.getSourceLocation() + "), " + callee_context + ")";
         }
     }
 
@@ -141,14 +141,19 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
     private Map<BlockAndContext<ContextType>, Integer> function_activity_level;
 
     /**
+     * Function entries for delayed returns.
+     */
+    private Set<BlockAndContext<ContextType>> delayed_returns; // only used if DELAY_RETURN_FLOW_UNTIL_DISCHARGED is enabled
+
+    /**
      * Pending return flow for each call node.
      */
-    private Map<Pair<AbstractNode, ContextType>, Set<Edge>> pending_returnflow;
+    private Map<Pair<AbstractNode, ContextType>, Set<Edge>> pending_returnflow; // only used if DELAY_RETURN_FLOW_UNTIL_INACTIVE is enabled
 
     /**
      * Map from call node to set of charged call edges.
      */
-    private Map<Pair<AbstractNode, ContextType>, Set<Edge>> node_charged_call_edges;
+    private Map<Pair<AbstractNode, ContextType>, Set<Edge>> node_charged_call_edges; // only used if DELAY_RETURN_FLOW_UNTIL_INACTIVE is enabled
 
     public CallDependencies(GenericSolver<?,ContextType,?,?,?>.SolverInterface c) {
         this.c = c;
@@ -157,6 +162,7 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
             charged_call_edges_forward_map = newMap();
             charged_call_edges_backward_map = newMap();
             function_activity_level = newMap();
+            delayed_returns = newSet();
             pending_returnflow = newMap();
             node_charged_call_edges = newMap();
         }
@@ -199,8 +205,13 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
             if (sb.isEmpty()) {
                 charged_call_edges_backward_map.remove(callee_entry);
             }
-            if (!node_charged_call_edges.get(Pair.make(e.caller, e.caller_context)).remove(e))
+            Pair<AbstractNode, ContextType> p = Pair.make(e.caller, e.caller_context);
+            Set<Edge> ne = node_charged_call_edges.get(p);
+            if (!ne.remove(e))
                 throw new AnalysisException("failed to remove edge from node_charged_call_edges");
+            if (ne.isEmpty()) {
+                node_charged_call_edges.remove(p);
+            }
             if (log.isDebugEnabled())
                 log.debug("discharging call edge " + e);
             dischargeIfInactive(caller_entry);
@@ -214,39 +225,60 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
     public void dischargeIfInactive(BlockAndContext<ContextType> entry) {
         if (Options.get().isChargedCallsDisabled())
             return;
+        boolean active = isFunctionActive(entry);
         if (DELAY_RETURN_FLOW_UNTIL_DISCHARGED) {
-            // if the function is inactive, process the return flow for the charged incoming call edges
-            if (!isFunctionActive(entry)) {
-                Set<Edge> es = charged_call_edges_backward_map.get(entry);
-                if (es != null) {
-                    for (Edge e : es) {
-                        if (DELAY_RETURN_FLOW_UNTIL_INACTIVE) {
-                            Pair<AbstractNode, ContextType> p = Pair.make(e.caller, e.caller_context);
-                            addToMapSet(pending_returnflow, p, e);
-                            boolean all_charged_inactive = true;
-                            for (Edge f : node_charged_call_edges.get(p)) {
-                                if (f.caller.equals(e.caller) && f.caller_context.equals(e.caller_context))
-                                    if (isFunctionActive(new BlockAndContext<>(f.callee, f.callee_context))) {
-                                        all_charged_inactive = false;
-                                        break;
-                                    }
-                            }
-                            if (all_charged_inactive) {
-                                for (Edge f : pending_returnflow.remove(p))
-                                    c.getAnalysis().getNodeTransferFunctions().transferReturn(f.caller, f.callee, f.caller_context, f.callee_context, f.edge_context, f.isImplicit());
-                            }
-                        } else
-                            c.getAnalysis().getNodeTransferFunctions().transferReturn(e.caller, e.callee, e.caller_context, e.callee_context, e.edge_context, e.isImplicit());
-                    }
+            Set<Edge> processed = newSet();
+            if (active && !findActiveDelayed(entry, true, null, false)) {
+                // function is active, but only because of delayed returns, so process them
+                Set<BlockAndContext<ContextType>> delayed = newSet();
+                findActiveDelayed(entry, false, delayed, false);
+                for (BlockAndContext<ContextType> d : delayed) {
+                    delayed_returns.remove(d);
+                    processReturns(d, processed);
                 }
+                active = isFunctionActive(entry); // although the delayed returns no longer cause the function to be active, processing them may add items to the worklist
+            }
+            // if the function is inactive, process the return flow for the charged incoming call edges
+            if (!active) {
+                processReturns(entry, processed);
+                active = isFunctionActive(entry); // processing return flow may make re-activate the function
             }
         }
-        // if the function is still inactive (note that the return transfer could make it active), discharge the charged incoming call edges
-        if (!isFunctionActive(entry)) {
+        // if the function is (still) inactive, discharge the charged incoming call edges
+        if (!active) {
             Set<Edge> es = charged_call_edges_backward_map.get(entry);
             if (es != null) {
                 for (Edge e : newList(es)) {
                     dischargeCallEdge(e);
+                }
+            }
+        }
+    }
+
+    private void processReturns(BlockAndContext<ContextType> d, Set<Edge> processed) {
+        Set<Edge> es = charged_call_edges_backward_map.get(d);
+        if (es != null) {
+            for (Edge e : es) {
+                if (DELAY_RETURN_FLOW_UNTIL_INACTIVE) {
+                    Pair<AbstractNode, ContextType> p = Pair.make(e.caller, e.caller_context);
+                    addToMapSet(pending_returnflow, p, e);
+                    boolean all_charged_inactive = true;
+                    for (Edge f : node_charged_call_edges.get(p)) {
+                        if (f.caller.equals(e.caller) && f.caller_context.equals(e.caller_context))
+                            if (isFunctionActive(new BlockAndContext<>(f.callee, f.callee_context))) {
+                                all_charged_inactive = false;
+                                break;
+                            }
+                    }
+                    if (all_charged_inactive) {
+                        for (Edge f : pending_returnflow.remove(p)) {
+                            if (processed.add(f))
+                                c.getAnalysis().getNodeTransferFunctions().transferReturn(f.caller, f.callee, f.caller_context, f.callee_context, f.edge_context, f.isImplicit());
+                        }
+                    }
+                } else {
+                    if (processed.add(e))
+                        c.getAnalysis().getNodeTransferFunctions().transferReturn(e.caller, e.callee, e.caller_context, e.callee_context, e.edge_context, e.isImplicit());
                 }
             }
         }
@@ -260,6 +292,15 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
         if (Options.get().isChargedCallsDisabled())
             return true;
         return charged_call_edges.contains(new Edge(caller, caller_context, edge_context, callee, callee_context, false));
+    }
+
+    /**
+     * Registers that processing of return flow has been delayed.
+     */
+    public void registerDelayedReturn(BasicBlock b, ContextType c) {
+        if (this.c.isScanning())
+            return;
+        delayed_returns.add(BlockAndContext.makeEntry(b, c));
     }
 
     private void addToFunctionActivityLevel(BlockAndContext<ContextType> bc, int value) {
@@ -303,23 +344,42 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
     public boolean isFunctionActive(BlockAndContext<ContextType> bc) {
         if (Options.get().isChargedCallsDisabled())
             return true;
-        return isFunctionActive(bc, Collections.newSet());
+        return findActiveDelayed(bc, false, null, true);
     }
 
-    private boolean isFunctionActive(BlockAndContext<ContextType> bc, Set<BlockAndContext<ContextType>> visited) {
+    /**
+     * Checks whether the function or a function reachable alone charged outgoing call edges has positive worklist activity or delayed returns.
+     * @param ignoreDelayed if set, ignore delayed returns
+     * @param delayed if non-null, collect delayed returns
+     * @param stopAtFirstDelayed if set, stop searching if a delayed return is found
+     */
+    private boolean findActiveDelayed(BlockAndContext<ContextType> bc, boolean ignoreDelayed, Set<BlockAndContext<ContextType>> delayed, boolean stopAtFirstDelayed) {
+        return findActiveDelayed(bc, ignoreDelayed, delayed, stopAtFirstDelayed, Collections.newSet());
+    }
+
+    private boolean findActiveDelayed(BlockAndContext<ContextType> bc,
+                                      boolean ignoreDelayed, Set<BlockAndContext<ContextType>> delayed, boolean stopAtFirstDelayed,
+                                      Set<BlockAndContext<ContextType>> visited) {
         if (visited.contains(bc))
             return false;
         visited.add(bc);
         // 1) the function is active if its worklist activity is positive
         if (function_activity_level.containsKey(bc))
             return true;
-        // 2) the function is active if it contains a charged outgoing edge to an active function (inductively)
+        if (!ignoreDelayed && delayed_returns.contains(bc)) {
+            // 2) the function is active if it has delayed return
+            if (delayed != null)
+                delayed.add(bc);
+            if (stopAtFirstDelayed)
+                return true;
+        }
+        // 3) the function is active if it contains a charged outgoing edge to an active function (inductively)
         Set<Edge> edges = charged_call_edges_forward_map.get(bc);
         if (edges != null)
             for (Edge e : edges)
-                if (isFunctionActive(e.getCallee(), visited))
+                if (findActiveDelayed(e.getCallee(), ignoreDelayed, delayed, stopAtFirstDelayed, visited))
                     return true;
-        // 3) otherwise it is inactive
+        // 4) otherwise it is inactive
         return false;
     }
 

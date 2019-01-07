@@ -110,7 +110,6 @@ public class Misc {
             if (a == null)
                 throw new AnalysisException("Error during initialization");
             Main.run(a);
-            Main.reset();
         } catch (Throwable e) {
             String msg = e.getMessage();
             if (msg == null) {
@@ -260,13 +259,18 @@ public class Misc {
     }
 
     public static FlowGraph build(String... src) {
-        StringBuilder sb = new StringBuilder();
-        for (String aSrc : src) {
-            sb.append(aSrc).append("\n");
+        try {
+            StringBuilder sb = new StringBuilder();
+            for (String aSrc : src) {
+                sb.append(aSrc).append("\n");
+            }
+            SourceLocation.SyntheticLocationMaker sourceLocationMaker = new SourceLocation.SyntheticLocationMaker("synthetic");
+            FlowGraphBuilder flowGraphBuilder = FlowGraphBuilder.makeForMain(sourceLocationMaker);
+            flowGraphBuilder.transformStandAloneCode(sb.toString(), sourceLocationMaker);
+            return flowGraphBuilder.close();
+        } catch (Throwable e) {
+            e.printStackTrace(System.out);
+            throw e;
         }
-        SourceLocation.SyntheticLocationMaker sourceLocationMaker = new SourceLocation.SyntheticLocationMaker("synthetic");
-        FlowGraphBuilder flowGraphBuilder = FlowGraphBuilder.makeForMain(sourceLocationMaker);
-        flowGraphBuilder.transformStandAloneCode(sb.toString(), sourceLocationMaker);
-        return flowGraphBuilder.close();
     }
 }

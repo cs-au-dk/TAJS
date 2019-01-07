@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,8 @@ import dk.brics.inspector.api.model.locations.FileDescription;
 import dk.brics.inspector.api.model.values.DescribedProperties;
 import dk.brics.tajs.monitoring.TogglableMonitor.Toggler;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
@@ -45,6 +47,8 @@ public class SynchronizedMonitoringStoppingAPI implements InspectorAPI {
     private final InspectorAPI api;
 
     private final Toggler toggler;
+
+    private final Map<FileID, Set<Gutter<?>>> gutterCache = new HashMap();
 
     public SynchronizedMonitoringStoppingAPI(InspectorAPI api, Toggler toggler) {
         this.api = api;
@@ -71,7 +75,12 @@ public class SynchronizedMonitoringStoppingAPI implements InspectorAPI {
 
     @Override
     public Set<Gutter<?>> getGutters(FileID id) {
-        return wrap(() -> api.getGutters(id));
+        if (gutterCache.containsKey(id)) {
+            return gutterCache.get(id);
+        }
+        Set<Gutter<?>> res = wrap(() -> api.getGutters(id));
+        gutterCache.put(id, res);
+        return res;
     }
 
     @Override

@@ -58,10 +58,6 @@ test-resources/src/10k/3d_maker.html:165:5: [maybe] TypeError, accessing propert
 test-resources/src/10k/3d_maker.html:247:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:248:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:260:25: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:273:25: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:274:25: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:276:26: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:278:26: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:280:12: [maybe] ReferenceError, reading absent variable x
 test-resources/src/10k/3d_maker.html:280:14: [maybe] ReferenceError, reading absent variable y
 test-resources/src/10k/3d_maker.html:284:5: [maybe] TypeError, accessing property of null/undefined
@@ -69,13 +65,8 @@ test-resources/src/10k/3d_maker.html:285:5: [maybe] TypeError, accessing propert
 test-resources/src/10k/3d_maker.html:286:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:287:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:288:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:289:15: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:290:16: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:291:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:293:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:306:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:310:39: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:315:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:319:25: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:325:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:326:5: [maybe] TypeError, accessing property of null/undefined
@@ -89,11 +80,7 @@ test-resources/src/10k/3d_maker.html:333:5: [maybe] TypeError, accessing propert
 test-resources/src/10k/3d_maker.html:334:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:336:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:336:23: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:336:37: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:337:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:337:32: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:337:50: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:337:68: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:340:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:340:23: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:340:37: [maybe] TypeError, accessing property of null/undefined
@@ -103,20 +90,16 @@ test-resources/src/10k/3d_maker.html:341:50: [maybe] TypeError, accessing proper
 test-resources/src/10k/3d_maker.html:341:68: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:344:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:344:23: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:344:41: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:346:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:348:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:349:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:350:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:350:23: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:350:37: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:354:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:356:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:378:68: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:384:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:385:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:386:15: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/3d_maker.html:387:16: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/3d_maker.html:17:9: [maybe] Reading absent property cv
 test-resources/src/10k/3d_maker.html:129:5: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:130:5: [maybe] Reading absent property ct
@@ -130,21 +113,12 @@ test-resources/src/10k/3d_maker.html:159:13: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:161:9: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:164:5: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:165:5: [maybe] Reading absent property ct
-test-resources/src/10k/3d_maker.html:273:25: [maybe] Reading absent property cv
-test-resources/src/10k/3d_maker.html:274:25: [maybe] Reading absent property cv
-test-resources/src/10k/3d_maker.html:276:26: [maybe] Reading absent property cv
-test-resources/src/10k/3d_maker.html:278:26: [maybe] Reading absent property cv
 test-resources/src/10k/3d_maker.html:284:5: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:285:5: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:286:5: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:287:5: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:288:5: [maybe] Reading absent property ct
-test-resources/src/10k/3d_maker.html:289:15: [maybe] Reading absent property cv
-test-resources/src/10k/3d_maker.html:290:16: [maybe] Reading absent property cv
 test-resources/src/10k/3d_maker.html:291:5: [maybe] Reading absent property ct
-test-resources/src/10k/3d_maker.html:293:5: [maybe] Reading absent property cv
-test-resources/src/10k/3d_maker.html:306:5: [maybe] Reading absent property cv
-test-resources/src/10k/3d_maker.html:315:5: [maybe] Reading absent property cv
 test-resources/src/10k/3d_maker.html:325:5: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:326:5: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:327:5: [maybe] Reading absent property ct
@@ -166,9 +140,7 @@ test-resources/src/10k/3d_maker.html:349:9: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:350:9: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:354:13: [maybe] Reading absent property ct
 test-resources/src/10k/3d_maker.html:356:9: [maybe] Reading absent property ct
-test-resources/src/10k/3d_maker.html:386:15: [maybe] Reading absent property cv
-test-resources/src/10k/3d_maker.html:387:16: [maybe] Reading absent property cv
-test-resources/src/10k/3d_maker.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/3d_maker.html:19:19, test-resources/src/10k/3d_maker.html:41:22, test-resources/src/10k/3d_maker.html:42:50, test-resources/src/10k/3d_maker.html:42:67, test-resources/src/10k/3d_maker.html:92:13, test-resources/src/10k/3d_maker.html:92:24, test-resources/src/10k/3d_maker.html:94:17, test-resources/src/10k/3d_maker.html:94:29, test-resources/src/10k/3d_maker.html:94:40, test-resources/src/10k/3d_maker.html:96:21, test-resources/src/10k/3d_maker.html:96:33, test-resources/src/10k/3d_maker.html:96:44, test-resources/src/10k/3d_maker.html:129:5, test-resources/src/10k/3d_maker.html:130:5, test-resources/src/10k/3d_maker.html:131:5, test-resources/src/10k/3d_maker.html:132:5, test-resources/src/10k/3d_maker.html:136:5, test-resources/src/10k/3d_maker.html:146:13, test-resources/src/10k/3d_maker.html:147:13, test-resources/src/10k/3d_maker.html:147:32, test-resources/src/10k/3d_maker.html:147:51, test-resources/src/10k/3d_maker.html:151:13, test-resources/src/10k/3d_maker.html:152:13, test-resources/src/10k/3d_maker.html:152:32, test-resources/src/10k/3d_maker.html:152:51, test-resources/src/10k/3d_maker.html:157:9, test-resources/src/10k/3d_maker.html:157:28, test-resources/src/10k/3d_maker.html:157:47, test-resources/src/10k/3d_maker.html:159:13, test-resources/src/10k/3d_maker.html:159:32, test-resources/src/10k/3d_maker.html:159:51, test-resources/src/10k/3d_maker.html:161:9, test-resources/src/10k/3d_maker.html:161:28, test-resources/src/10k/3d_maker.html:161:47, test-resources/src/10k/3d_maker.html:164:5, test-resources/src/10k/3d_maker.html:165:5, test-resources/src/10k/3d_maker.html:247:17, test-resources/src/10k/3d_maker.html:248:17, test-resources/src/10k/3d_maker.html:260:25, test-resources/src/10k/3d_maker.html:273:25, test-resources/src/10k/3d_maker.html:274:25, test-resources/src/10k/3d_maker.html:276:26, test-resources/src/10k/3d_maker.html:278:26, test-resources/src/10k/3d_maker.html:280:12, test-resources/src/10k/3d_maker.html:280:14, test-resources/src/10k/3d_maker.html:284:5, test-resources/src/10k/3d_maker.html:285:5, test-resources/src/10k/3d_maker.html:286:5, test-resources/src/10k/3d_maker.html:287:5, test-resources/src/10k/3d_maker.html:288:5, test-resources/src/10k/3d_maker.html:289:15, test-resources/src/10k/3d_maker.html:290:16, test-resources/src/10k/3d_maker.html:291:5, test-resources/src/10k/3d_maker.html:293:5, test-resources/src/10k/3d_maker.html:306:5, test-resources/src/10k/3d_maker.html:310:39, test-resources/src/10k/3d_maker.html:315:5, test-resources/src/10k/3d_maker.html:319:25, test-resources/src/10k/3d_maker.html:325:5, test-resources/src/10k/3d_maker.html:326:5, test-resources/src/10k/3d_maker.html:327:5, test-resources/src/10k/3d_maker.html:328:5, test-resources/src/10k/3d_maker.html:329:5, test-resources/src/10k/3d_maker.html:330:5, test-resources/src/10k/3d_maker.html:331:5, test-resources/src/10k/3d_maker.html:332:5, test-resources/src/10k/3d_maker.html:333:5, test-resources/src/10k/3d_maker.html:334:5, test-resources/src/10k/3d_maker.html:336:9, test-resources/src/10k/3d_maker.html:336:23, test-resources/src/10k/3d_maker.html:336:37, test-resources/src/10k/3d_maker.html:337:13, test-resources/src/10k/3d_maker.html:337:32, test-resources/src/10k/3d_maker.html:337:50, test-resources/src/10k/3d_maker.html:337:68, test-resources/src/10k/3d_maker.html:340:9, test-resources/src/10k/3d_maker.html:340:23, test-resources/src/10k/3d_maker.html:340:37, test-resources/src/10k/3d_maker.html:341:13, test-resources/src/10k/3d_maker.html:341:32, test-resources/src/10k/3d_maker.html:341:50, test-resources/src/10k/3d_maker.html:341:68, test-resources/src/10k/3d_maker.html:344:9, test-resources/src/10k/3d_maker.html:344:23, test-resources/src/10k/3d_maker.html:344:41, test-resources/src/10k/3d_maker.html:346:5, test-resources/src/10k/3d_maker.html:348:9, test-resources/src/10k/3d_maker.html:349:9, test-resources/src/10k/3d_maker.html:350:9, test-resources/src/10k/3d_maker.html:350:23, test-resources/src/10k/3d_maker.html:350:37, test-resources/src/10k/3d_maker.html:354:13, test-resources/src/10k/3d_maker.html:356:9, test-resources/src/10k/3d_maker.html:378:68, test-resources/src/10k/3d_maker.html:384:5, test-resources/src/10k/3d_maker.html:385:5, test-resources/src/10k/3d_maker.html:386:15, test-resources/src/10k/3d_maker.html:387:16]
+test-resources/src/10k/3d_maker.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/3d_maker.html:19:19, test-resources/src/10k/3d_maker.html:41:22, test-resources/src/10k/3d_maker.html:42:50, test-resources/src/10k/3d_maker.html:42:67, test-resources/src/10k/3d_maker.html:92:13, test-resources/src/10k/3d_maker.html:92:24, test-resources/src/10k/3d_maker.html:94:17, test-resources/src/10k/3d_maker.html:94:29, test-resources/src/10k/3d_maker.html:94:40, test-resources/src/10k/3d_maker.html:96:21, test-resources/src/10k/3d_maker.html:96:33, test-resources/src/10k/3d_maker.html:96:44, test-resources/src/10k/3d_maker.html:129:5, test-resources/src/10k/3d_maker.html:130:5, test-resources/src/10k/3d_maker.html:131:5, test-resources/src/10k/3d_maker.html:132:5, test-resources/src/10k/3d_maker.html:136:5, test-resources/src/10k/3d_maker.html:146:13, test-resources/src/10k/3d_maker.html:147:13, test-resources/src/10k/3d_maker.html:147:32, test-resources/src/10k/3d_maker.html:147:51, test-resources/src/10k/3d_maker.html:151:13, test-resources/src/10k/3d_maker.html:152:13, test-resources/src/10k/3d_maker.html:152:32, test-resources/src/10k/3d_maker.html:152:51, test-resources/src/10k/3d_maker.html:157:9, test-resources/src/10k/3d_maker.html:157:28, test-resources/src/10k/3d_maker.html:157:47, test-resources/src/10k/3d_maker.html:159:13, test-resources/src/10k/3d_maker.html:159:32, test-resources/src/10k/3d_maker.html:159:51, test-resources/src/10k/3d_maker.html:161:9, test-resources/src/10k/3d_maker.html:161:28, test-resources/src/10k/3d_maker.html:161:47, test-resources/src/10k/3d_maker.html:164:5, test-resources/src/10k/3d_maker.html:165:5, test-resources/src/10k/3d_maker.html:247:17, test-resources/src/10k/3d_maker.html:248:17, test-resources/src/10k/3d_maker.html:260:25, test-resources/src/10k/3d_maker.html:280:12, test-resources/src/10k/3d_maker.html:280:14, test-resources/src/10k/3d_maker.html:284:5, test-resources/src/10k/3d_maker.html:285:5, test-resources/src/10k/3d_maker.html:286:5, test-resources/src/10k/3d_maker.html:287:5, test-resources/src/10k/3d_maker.html:288:5, test-resources/src/10k/3d_maker.html:291:5, test-resources/src/10k/3d_maker.html:310:39, test-resources/src/10k/3d_maker.html:319:25, test-resources/src/10k/3d_maker.html:325:5, test-resources/src/10k/3d_maker.html:326:5, test-resources/src/10k/3d_maker.html:327:5, test-resources/src/10k/3d_maker.html:328:5, test-resources/src/10k/3d_maker.html:329:5, test-resources/src/10k/3d_maker.html:330:5, test-resources/src/10k/3d_maker.html:331:5, test-resources/src/10k/3d_maker.html:332:5, test-resources/src/10k/3d_maker.html:333:5, test-resources/src/10k/3d_maker.html:334:5, test-resources/src/10k/3d_maker.html:336:9, test-resources/src/10k/3d_maker.html:336:23, test-resources/src/10k/3d_maker.html:337:32, test-resources/src/10k/3d_maker.html:340:9, test-resources/src/10k/3d_maker.html:340:23, test-resources/src/10k/3d_maker.html:340:37, test-resources/src/10k/3d_maker.html:341:13, test-resources/src/10k/3d_maker.html:341:32, test-resources/src/10k/3d_maker.html:341:50, test-resources/src/10k/3d_maker.html:341:68, test-resources/src/10k/3d_maker.html:344:9, test-resources/src/10k/3d_maker.html:344:23, test-resources/src/10k/3d_maker.html:346:5, test-resources/src/10k/3d_maker.html:348:9, test-resources/src/10k/3d_maker.html:349:9, test-resources/src/10k/3d_maker.html:350:9, test-resources/src/10k/3d_maker.html:350:23, test-resources/src/10k/3d_maker.html:354:13, test-resources/src/10k/3d_maker.html:356:9, test-resources/src/10k/3d_maker.html:378:68, test-resources/src/10k/3d_maker.html:384:5, test-resources/src/10k/3d_maker.html:385:5]
 test-resources/src/10k/3d_maker.html:27:18: [maybe] Converting primitive number to object
 test-resources/src/10k/3d_maker.html:27:18: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:27:18: [maybe] The variable m has values with different types
@@ -216,11 +188,7 @@ test-resources/src/10k/3d_maker.html:260:25: [maybe] Reading absent property (co
 test-resources/src/10k/3d_maker.html:310:39: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:319:25: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:336:23: [maybe] Reading absent property (computed name)
-test-resources/src/10k/3d_maker.html:336:37: [maybe] Reading absent property (computed name)
-test-resources/src/10k/3d_maker.html:337:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:337:28: [maybe] The variable m has values with different types
-test-resources/src/10k/3d_maker.html:337:50: [maybe] Reading absent property (computed name)
-test-resources/src/10k/3d_maker.html:337:68: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:340:23: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:340:37: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:341:13: [maybe] Reading absent property (computed name)
@@ -228,9 +196,7 @@ test-resources/src/10k/3d_maker.html:341:28: [maybe] The variable m has values w
 test-resources/src/10k/3d_maker.html:341:50: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:341:68: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:344:23: [maybe] Reading absent property (computed name)
-test-resources/src/10k/3d_maker.html:344:41: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:350:23: [maybe] Reading absent property (computed name)
-test-resources/src/10k/3d_maker.html:350:37: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:378:15: [maybe] Conversion to number yields NaN
 test-resources/src/10k/3d_maker.html:378:68: [maybe] Reading absent property (computed name)
 test-resources/src/10k/3d_maker.html:27:26: [info] 'this' refers to a summary abstract object, which may cause loss of precision

@@ -2,7 +2,6 @@ package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,12 +35,12 @@ public class TestJSAI2015 {
         Misc.run("benchmarks/tajs/src/jsai2015benchmarks/linq_action_many_extra_prints.js");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test
     public void JSAI2015_linq_aggregate() throws Exception {
         Misc.run("benchmarks/tajs/src/jsai2015benchmarks/linq_aggregate_many_extra_prints.js");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test
     public void JSAI2015_linq_functional() throws Exception {
         Misc.run("benchmarks/tajs/src/jsai2015benchmarks/linq_functional_many_extra_prints.js");
     }

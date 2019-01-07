@@ -3,7 +3,7 @@ test-resources/src/micro/test192.js:8:5: [definite] The variable t is never used
 test-resources/src/micro/test192.js:9:1: [info] Abstract state:
 Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
-  Summarized: maybe=[@replace#fun3, @f#fun1, @arguments#node27, @arguments#node14, @activation#node27, @activation#node14, @Object#node5, @Object#node42, @Object#node35, @Object#node1, @<anonymous>#fun2], definitely=[@replace#fun3, @f#fun1, @arguments#node27, @arguments#node14, @activation#node27, @activation#node14, @Object#node5, @Object#node42, @Object#node35, @Object#node1, @<anonymous>#fun2]
+  Summarized: maybe=[@replace#fun3, @f#fun1, @arguments#node27, @arguments#node14, @activation#node27, @activation#node14, @Object#node5, @Object#node40, @Object#node33, @Object#node1, @<anonymous>#fun2], definitely=[@replace#fun3, @f#fun1, @arguments#node27, @arguments#node14, @activation#node27, @activation#node14, @Object#node5, @Object#node40, @Object#node33, @Object#node1, @<anonymous>#fun2]
   Store (excluding basis and default objects): 
     @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],f:[@f#fun1],t:42.0,[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Object.prototype[native] (<initial state>): {configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),f:^(@Object.prototype[native].f[absent]),get:^(@Object.prototype[native].get[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),t:^(@Object.prototype[native].t[absent]),value:^(@Object.prototype[native].value[absent]),writable:^(@Object.prototype[native].writable[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
@@ -16,9 +16,14 @@ Abstract state:
     @<anonymous>#fun2 (HOST(string-replace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node5],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @activation#node27 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node27]}
     @arguments#node27 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun2],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node42 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @replace#fun3 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node42],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node27],[@<the global object>[native]]]}
+    @Object#node40 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @replace#fun3 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node40],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node27],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+  MustReachingDefs: 
+    v1: node 0 (test-resources/src/micro/test192.js)
+  MustEquals: 
+    @<the global object>[native].t: [v5]
+    v5: [@<the global object>[native].t]
   Functions in stack: []
 Soundness testing succeeded for 35 checks (with 0 expected failures)

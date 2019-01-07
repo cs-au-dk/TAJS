@@ -15,15 +15,13 @@ fg2: <main> function()
   block 4:
     node 5: read-variable['o1',v6,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0161.js:1:1)
     node 6: read-property[v6,'o2',v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0161.js:1:1)
-    node 7: <variable-non-null-undef>['o1'] (test-resources/src/flowgraphbuilder/flowgraph_builder0161.js:1:1)
-    node 8: read-property[v5,'x',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0161.js:1:1)
-    node 9: <property-non-null-undef>[v6,'o2']* (test-resources/src/flowgraphbuilder/flowgraph_builder0161.js:1:1)
+    node 7: read-property[v5,'x',-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0161.js:1:1)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 10: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0161.js)
+    node 8: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0161.js)
     ->[]
   block 6: [exit-exceptional]
-    node 11: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0161.js)
+    node 9: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0161.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0161.js: [definite] Ordinary program exit is unreachable

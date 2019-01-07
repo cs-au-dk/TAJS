@@ -182,4 +182,5 @@ test-resources/src/chromeexperiments/apophis.html:929:3: [maybe] Converting prim
 test-resources/src/chromeexperiments/apophis.html:929:3: [maybe] The variable obj has values with different types
 test-resources/src/chromeexperiments/apophis.html:930:3: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/apophis.html:930:3: [maybe] The variable obj has values with different types
-Soundness testing succeeded for 147 checks (with 0 expected failures)
+Disabling soundness testing for test-resources/src/chromeexperiments/apophis.html entirely (10 uninspected soundness errors).
+Soundness testing succeeded for 2326 checks (with 10 expected failures)

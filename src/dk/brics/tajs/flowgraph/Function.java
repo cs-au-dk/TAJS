@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -403,7 +403,7 @@ public class Function implements Serializable {
             roots.remove(b.getExceptionHandler());
         });
         List<BasicBlock> rootOrder = newList(roots);
-        rootOrder.sort(Comparator.comparing(BasicBlock::getSourceLocation));
+        rootOrder.sort(Comparator.comparing(BasicBlock::getSourceLocation, new SourceLocation.Comparator()));
 
         int i = 0;
         for (BasicBlock block : BlockDependencyOrderer.produceDependencyOrder(topologicalBlocks, nonTopologicalBlocks, rootOrder)) {

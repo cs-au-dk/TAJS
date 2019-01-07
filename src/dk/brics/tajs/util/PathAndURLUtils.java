@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,8 @@ import java.net.URL;
 import java.nio.file.FileSystemNotFoundException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
@@ -42,6 +44,17 @@ public class PathAndURLUtils {
     private static Map<Path, URL> pathURLCache = new WeakHashMap<>();
 
     private static Map<URL, Path> urlPathCache = new WeakHashMap<>();
+
+    private static Map<Path, Path> realPathCache = new WeakHashMap<>();
+
+    private static Map<Path, Boolean> tajsRootDirectoryCache = new WeakHashMap<>();
+
+    public static void reset() {
+        pathURLCache.clear();
+        urlPathCache.clear();
+        realPathCache.clear();
+        tajsRootDirectoryCache.clear();
+    }
 
     /**
      * Converts a Path to a URL.
@@ -62,38 +75,46 @@ public class PathAndURLUtils {
      * Converts a URL to a Path.
      * This might "mount" a new file system in the JVM.
      * Particularly useful when loading JavaScript models within jar files.
+     * @param normalize if set, normalize the path (resolve symlinks)
+     * @throws AnalysisException if 'normalize' is set and the file does not exist (or some other error occurred)
      */
-    public static Path toPath(URL url) {
+    public static Path toPath(URL url, boolean normalize) {
         return urlPathCache.computeIfAbsent(url, k -> {
             URI uri;
+            Path path;
             try {
                 uri = url.toURI();
             } catch (URISyntaxException e) {
                 throw new AnalysisException(e);
             }
             if ("file".equals(url.getProtocol())) {
-                return Paths.get(uri);
-            }
-            try {
-                FileSystems.getFileSystem(uri);
-            } catch (FileSystemNotFoundException e) {
+                path = Paths.get(uri);
+            } else {
                 try {
-                    // prevent runtime error when reading from jar file
-                    FileSystems.newFileSystem(uri, new HashMap<>(), null);
-                } catch (IOException e1) {
-                    throw new AnalysisException(e1);
+                    FileSystems.getFileSystem(uri);
+                } catch (FileSystemNotFoundException e) {
+                    try {
+                        // prevent runtime error when reading from jar file
+                        FileSystems.newFileSystem(uri, new HashMap<>(), null);
+                    } catch (IOException e1) {
+                        throw new AnalysisException(e1);
+                    }
                 }
+                path = Paths.get(uri);
             }
-            return Paths.get(uri);
+            if (normalize)
+                path =  toRealPath(path);
+            return path;
         });
     }
 
     /**
      * Normalizes a file URL using the underlying path normalization.
+     * @throws AnalysisException if the file does not exist (or some other error occurred)
      */
     public static URL normalizeFileURL(URL url) {
         if ("file".equals(url.getProtocol())) {
-            return toURL(toPath(url).toAbsolutePath().normalize());
+            return toURL(toPath(url, true).normalize());
         }
         return url;
     }
@@ -111,6 +132,7 @@ public class PathAndURLUtils {
 
     /**
      * Makes a relative Path that is relative to the working directory.
+     * @throws AnalysisException if the file does not exist (or some other error occurred)
      */
     public static Path getRelativeToWorkingDirectory(Path path) {
         return getRelativeTo(getWorkingDirectory(), path);
@@ -118,66 +140,81 @@ public class PathAndURLUtils {
 
     /**
      * Makes a relative Path that is relative to the 'from' directory.
+     * @throws AnalysisException if the file does not exist (or some other error occurred)
      */
     public static Path getRelativeTo(Path from, Path to) {
-        return from.toAbsolutePath().normalize().relativize(to.toAbsolutePath()).normalize();
+        return toRealPath(from).normalize().relativize(toRealPath(to)).normalize();
     }
 
     /**
      * Makes a relative Path that is relative to the TAJS directory, if possible.
+     * @throws AnalysisException if the file does not exist (or some other error occurred)
      */
     public static Optional<Path> getRelativeToTAJS(Path to) {
         Optional<Path> relativeToParentTAJS = getRelativeToParentTAJS(to);
         if (relativeToParentTAJS.isPresent()) {
             return relativeToParentTAJS;
         } else if (TAJSEnvironmentConfig.get().hasProperty("tajs")) {
-            try {
-                Path tajs = Paths.get(TAJSEnvironmentConfig.get().getCustom("tajs"));
-                return Optional.of(getRelativeTo(tajs.toAbsolutePath(), to.toRealPath()));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            Path tajs = Paths.get(TAJSEnvironmentConfig.get().getCustom("tajs"));
+            return Optional.of(getRelativeTo(tajs, to));
         }
         return Optional.empty();
     }
 
     /**
      * Makes a relative path from the root tajs directory to the given (descendant) file, if possible.
+     * @throws AnalysisException if the file does not exist (or some other error occurred)
      */
     private static Optional<Path> getRelativeToParentTAJS(Path to) {
-        try {
-            Path maybeTajs = to.toAbsolutePath().toRealPath();
-            while (maybeTajs != null) {
-                if (isTAJSRootDirectory(maybeTajs)) {
-                    return Optional.of(getRelativeTo(maybeTajs.toAbsolutePath(), to.toRealPath()));
-                }
-                maybeTajs = maybeTajs.getParent();
+        Path maybeTajs = toRealPath(to);
+        while (maybeTajs != null) {
+            if (isTAJSRootDirectory(maybeTajs)) {
+                return Optional.of(getRelativeTo(maybeTajs, to));
             }
-            return Optional.empty();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            maybeTajs = maybeTajs.getParent();
         }
+        return Optional.empty();
     }
 
     /**
      * Decides if the given directory is the TAJS root directory
      */
     private static boolean isTAJSRootDirectory(Path dir) {
-        String thisRelativeSourceFilePath = PathAndURLUtils.class.getCanonicalName().replace('.', File.separatorChar) + ".java";
-        Path thisSourceFilePath = dir.resolve("src").resolve(thisRelativeSourceFilePath);
-        return Files.exists(thisSourceFilePath);
+        return tajsRootDirectoryCache.computeIfAbsent(dir, k -> {
+            String thisRelativeSourceFilePath = PathAndURLUtils.class.getCanonicalName().replace('.', File.separatorChar) + ".java";
+            Path thisSourceFilePath = dir.resolve("src").resolve(thisRelativeSourceFilePath);
+            return Files.exists(thisSourceFilePath);
+        });
+    }
+
+    /**
+     * Wrapper for {@link Path#toRealPath(LinkOption...)} that converts {@link IOException} to {@link AnalysisException}
+     * and caches the result.
+     * @throws AnalysisException if the file does not exist (or some other error occurred)
+     */
+    public static Path toRealPath(Path p) {
+        return realPathCache.computeIfAbsent(p, k -> {
+            try {
+                return p.toRealPath();
+            } catch (NoSuchFileException e) {
+                throw new AnalysisException("No such file " + e.getMessage());
+            } catch (IOException e) {
+                throw new AnalysisException(e);
+            }
+        });
     }
 
     /**
      * Returns the most specific common ancestor of the given nonempty set of paths.
+     * @throws AnalysisException if one of the files do not exist (or some other error occurred)
      */
     public static Path getCommonAncestorDirectory(Set<Path> paths) {
         if (paths.isEmpty()) {
             throw new IllegalArgumentException("Empty set of paths");
         }
         // Implementation note: ought to build the parent path forwards instead of backwards for more efficiency)
-        paths = paths.stream().map(Path::toAbsolutePath).collect(Collectors.toSet());
-        Path shortestPath = paths.stream().sorted(Comparator.comparingInt(Path::getNameCount)).findFirst().get();
+        paths = paths.stream().map(PathAndURLUtils::toRealPath).collect(Collectors.toSet());
+        Path shortestPath = paths.stream().min(Comparator.comparingInt(Path::getNameCount)).get();
         Path parent = shortestPath;
         while (parent != null) {
             Path finalParent = parent;
@@ -204,7 +241,8 @@ public class PathAndURLUtils {
     }
 
     /**
-     * Converts a string to an URL.
+     * Converts a string to a URL.
+     * @throws AnalysisException if the file does not exist (or some other error occurred)
      */
     public static URL toURL(String str) {
         URL url;
@@ -213,9 +251,9 @@ public class PathAndURLUtils {
         } catch (MalformedURLException e) {
             Path strAsPath = Paths.get(str);
             if (Files.exists(strAsPath)) {
-                url = PathAndURLUtils.toURL(strAsPath);
+                url = toURL(strAsPath);
             } else {
-                throw new RuntimeException(e);
+                throw new AnalysisException(e);
             }
         }
         return url;

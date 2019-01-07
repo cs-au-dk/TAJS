@@ -1,5 +1,4 @@
 test-resources/src/resig/ejohn21.js: [definite] Exceptional program exit is unreachable
 test-resources/src/resig/ejohn21.js:2:8: [maybe] Reading absent property (computed name)
-test-resources/src/resig/ejohn21.js:3:12: [maybe] Reading absent property (computed name)
-test-resources/src/resig/ejohn21.js:23:1: [info] Abstract value: Undef|Bool
+test-resources/src/resig/ejohn21.js:23:1: [info] Abstract value: Bool
 Soundness testing succeeded for 50 checks (with 0 expected failures)

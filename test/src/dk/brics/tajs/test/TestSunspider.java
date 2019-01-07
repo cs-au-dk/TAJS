@@ -105,12 +105,16 @@ public class TestSunspider {
 
     @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void sunspider_date_format_tofte() throws Exception {
+        Options.get().enableUnevalizer();
+        Options.get().setAnalysisTimeLimit(10);
         Misc.run("test-resources/src/sunspider/date-format-tofte.js");
         Misc.checkSystemOutput();
     }
 
     @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void sunspider_date_format_xparb() throws Exception {
+        Options.get().enableUnevalizer();
+        Options.get().setAnalysisTimeLimit(10);
         Misc.run("test-resources/src/sunspider/date-format-xparb.js");
         Misc.checkSystemOutput();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,6 +71,12 @@ public interface IState
      * Localizes this state according to the given existing state.
      */
     void localize(StateType s);
+
+    /**
+     * Sets this state to the bottom abstract state.
+     * Used for representing 'no flow'.
+     */
+    void setToBottom();
 
     /**
      * Transforms this state according to the given edge.

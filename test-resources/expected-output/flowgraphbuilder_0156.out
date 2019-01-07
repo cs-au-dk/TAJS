@@ -211,24 +211,22 @@ function()
   block 53:
     node 99: read-variable['cs1',v3,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
     node 100: read-property[v3,'startSlide',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
-    node 101: <variable-non-null-undef>['cs1'] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
-    node 102: constant["l",v4] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:65)
-    node 103: constant["cs1",v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:69)
+    node 101: constant["l",v4] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:65)
+    node 102: constant["cs1",v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:69)
     ->[block 54]
   block 54:
-    node 104: call[v3,'startSlide',v4,v5,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
+    node 103: call[v3,'startSlide',v4,v5,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
     ->[block 55]
   block 55:
-    node 105: read-variable['cs1',v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:76)
-    node 106: constant[false,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:83)
-    node 107: write-property[v7,'as',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:76)
-    node 108: <variable-non-null-undef>['cs1']* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:76)
+    node 104: read-variable['cs1',v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:76)
+    node 105: constant[false,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:83)
+    node 106: write-property[v7,'as',v6]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:76)
     ->[block 56]
   block 56: [exit-ordinary]
-    node 109: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
+    node 107: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
     ->[]
   block 57: [exit-exceptional]
-    node 110: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
+    node 108: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
     ->[]
 
 TAJS-dynamic-code(test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:6:23):1:1: [definite] TypeError, call to non-function

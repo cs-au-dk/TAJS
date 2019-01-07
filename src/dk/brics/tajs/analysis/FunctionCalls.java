@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -113,6 +113,11 @@ public class FunctionCalls {
          * Returns the execution context.
          */
         ExecutionContext getExecutionContext();
+
+        /**
+         * Assumes that a function is called.
+         */
+        boolean assumeFunction();
     }
 
     /**
@@ -122,11 +127,14 @@ public class FunctionCalls {
 
         private CallNode n;
 
-        private State state;
+        private State state; // the state at the call site
 
-        public OrdinaryCallInfo(CallNode n, State state) {
+        private Solver.SolverInterface c;
+
+        public OrdinaryCallInfo(CallNode n, Solver.SolverInterface c) {
             this.n = n;
-            this.state = state;
+            this.state = c.getState();
+            this.c = c;
         }
 
         @Override
@@ -161,7 +169,16 @@ public class FunctionCalls {
                 if (argRegister == AbstractNode.NO_VALUE) {
                     return Value.makeAbsent(); // happens for array literal with empty entries: `[foo, , , 42]`
                 }
-                return state.readRegister(argRegister);
+                Value res = state.readRegister(argRegister);
+
+                if (Options.get().isBlendedAnalysisEnabled()) {
+                    Value finalRes = res;
+                    res = c.withState(state, () -> c.getAnalysis().getBlendedAnalysis().getArg(finalRes, i, getFunctionValue(), getThis(), n, state));
+                    if (res.isNone()) {
+                        return Value.makeAbsent();
+                    }
+                }
+                return res;
             } else
                 return Value.makeAbsent();
         }
@@ -189,6 +206,11 @@ public class FunctionCalls {
         @Override
         public ExecutionContext getExecutionContext() {
             return state.getExecutionContext();
+        }
+
+        @Override
+        public boolean assumeFunction() {
+            return false;
         }
     }
 
@@ -274,6 +296,11 @@ public class FunctionCalls {
         public ExecutionContext getExecutionContext() {
             return state.getExecutionContext();
         }
+
+        @Override
+        public boolean assumeFunction() {
+            return false;
+        }
     }
 
     /**
@@ -322,6 +349,11 @@ public class FunctionCalls {
         public ExecutionContext getExecutionContext() {
             return c.getState().getExecutionContext();
         }
+
+        @Override
+        public boolean assumeFunction() {
+            return false;
+        }
     }
 
     /**
@@ -331,7 +363,7 @@ public class FunctionCalls {
         State caller_state = c.getState();
         Value funval = call.getFunctionValue();
         funval = UnknownValueResolver.getRealValue(funval, caller_state);
-        boolean maybe_non_function = funval.isMaybePrimitive();
+        boolean maybe_non_function = funval.isMaybePrimitiveOrSymbol();
         for (ObjectLabel objlabel : funval.getObjectLabels()) {
             if (objlabel.getKind() == Kind.FUNCTION) {
                 if (objlabel.isHostObject()) { // host function
@@ -353,8 +385,10 @@ public class FunctionCalls {
                                     c.getState().clearOrdinaryRegisters();
                                 if ((!res.isNone() && !c.getState().isBottom()) || Options.get().isPropagateDeadFlow()) {
                                     c.getState().setExecutionContext(call.getExecutionContext());
-                                    if (call.getResultRegister() != AbstractNode.NO_VALUE)
+                                    if (call.getResultRegister() != AbstractNode.NO_VALUE) {
                                         c.getState().writeRegister(call.getResultRegister(), res);
+                                        c.getState().getMustReachingDefs().addReachingDef(call.getResultRegister(), call.getSourceNode());
+                                    }
                                     c.propagateToBasicBlock(c.getState(), call.getSourceNode().getBlock().getSingleSuccessor(), c.getState().getContext());
                                 }
                             });
@@ -367,8 +401,10 @@ public class FunctionCalls {
         }
         if (funval.getObjectLabels().isEmpty() && Options.get().isPropagateDeadFlow()) {
             State newstate = caller_state.clone();
-            if (call.getResultRegister() != AbstractNode.NO_VALUE)
+            if (call.getResultRegister() != AbstractNode.NO_VALUE) {
                 newstate.writeRegister(call.getResultRegister(), Value.makeNone());
+                newstate.getMustReachingDefs().addReachingDef(call.getResultRegister(), call.getSourceNode());
+            }
             c.propagateToBasicBlock(newstate, call.getSourceNode().getBlock().getSingleSuccessor(), newstate.getContext());
         }
         c.getMonitoring().visitCall(c.getNode(), funval);

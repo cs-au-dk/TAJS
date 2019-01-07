@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -270,19 +270,13 @@ public class DefaultGutters implements GutterProvider {
                     .map(Pair::getSecond)
                     .collect(Collectors.toSet());
 
-            Set<Integer> visitableLines = data.flowgraphInfo.getVisitableLinesPerFile().get(url);
-            Set<Integer> abstractLiveLines = data.flowgraphInfo.getReachableLinesPerFile().get(url);
-            Set<Integer> liveLines = newSet(visitableLines);
-//            Set<Integer> deadLines = newSet(visitableLines);
-            liveLines.retainAll(concreteLiveLines);
-//            deadLines.removeAll(concreteLiveLines);
+            Set<Integer> abstractLiveLines = data.flowgraphInfo.getAbstractLiveLines().get(url);
             Set<Integer> spuriousLiveLines = newSet(abstractLiveLines);
             Set<Integer> spuriousDeadLines = newSet(concreteLiveLines);
             spuriousLiveLines.removeAll(concreteLiveLines);
-            spuriousDeadLines.removeAll(liveLines);
+            spuriousDeadLines.removeAll(abstractLiveLines);
 
-            gutters.add(new Gutter<>(GutterKind.BOOLEAN, "Observed concrete", "source code line is observed in concrete execution", convertToBooleanLikeLineMap(liveLines)));
-//            gutters.add(new Gutter<>(GutterKind.NUMBER, "Non-visited concrete", "source code line is not visited in concrete execution", convertToBooleanLikeLineMap(deadLines)));
+            gutters.add(new Gutter<>(GutterKind.BOOLEAN, "Observed concrete", "source code line is observed in concrete execution", convertToBooleanLikeLineMap(concreteLiveLines)));
             gutters.add(new Gutter<>(GutterKind.BOOLEAN, "Non-observed concrete, reachable abstract", "source code line is not observed in concrete execution, but reachable according to analysis", convertToBooleanLikeLineMap(spuriousDeadLines)));
             gutters.add(new Gutter<>(GutterKind.BOOLEAN, "Observed concrete, unreachable abstract", "source code line is observed in concrete execution, but unreachable according to analysis (unsound!)", convertToBooleanLikeLineMap(spuriousLiveLines)));
         }

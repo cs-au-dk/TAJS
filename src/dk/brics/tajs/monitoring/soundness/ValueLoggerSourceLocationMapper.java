@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,14 +39,17 @@ public class ValueLoggerSourceLocationMapper {
     }
 
     private static Path getMainDir() {
-        return Options.get().getArguments().get(Options.get().getArguments().size() - 1).getParent();
+        Path p = Options.get().getArguments().get(Options.get().getArguments().size() - 1).getParent();
+        if (p == null)
+            p = PathAndURLUtils.getWorkingDirectory();
+        return p;
     }
 
     /**
      * Maps from a TAJS source location to a value logger source location.
      */
     public static dk.au.cs.casa.jer.entries.SourceLocation makeLoggerSourceLocation(SourceLocation sourceLocation) {
-        Path relative = PathAndURLUtils.getRelativeTo(getMainDir(), PathAndURLUtils.toPath(sourceLocation.getLocation()));
-        return new dk.au.cs.casa.jer.entries.SourceLocation(sourceLocation.getLineNumber(), sourceLocation.getColumnNumber(), relative.toString());
+        Path relative = PathAndURLUtils.getRelativeTo(getMainDir(), PathAndURLUtils.toPath(sourceLocation.getLocation(), false));
+        return new dk.au.cs.casa.jer.entries.SourceLocation(sourceLocation.getLineNumber(), sourceLocation.getColumnNumber(), PathAndURLUtils.toPortableString(relative));
     }
 }

@@ -54,7 +54,6 @@ test-resources/src/1k2012love/1247.js:131:47: [maybe] Conversion to number yield
 test-resources/src/1k2012love/1247.js:131:52: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1247.js:131:65: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1247.js:131:70: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1247.js:133:25: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1247.js:141:9: [maybe] Conversion to number yields NaN
 Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
 Log of soundness facts is not available for test-resources/src/1k2012love/1247.js, skipping soundness checking

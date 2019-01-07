@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,8 @@
  */
 
 package dk.brics.tajs.util;
+
+import dk.brics.tajs.lattice.Obj;
 
 import java.lang.ref.WeakReference;
 import java.util.Map;
@@ -34,6 +36,8 @@ public class Canonicalizer {
     private int cacheHits = 0;
 
     private int cacheMisses = 0;
+
+    private boolean canonicalizing;
 
     public static void reset() {
         instance = null;
@@ -55,16 +59,28 @@ public class Canonicalizer {
     }
 
     /**
+     * Checks whether an object is currently being canonicalized.
+     */
+    public boolean isCanonicalizing() {
+        return canonicalizing;
+    }
+
+    /**
      * Canonicalizes the given instance.
      */
     @SuppressWarnings("unchecked")
     public <T extends DeepImmutable> T canonicalize(T instance) {
+        if (canonicalizing)
+            throw new AnalysisException("Already canonicalizing!");
+        canonicalizing = true;
         WeakReference<T> canonical = (WeakReference<T>) canonicalInstances.get(instance);
         if (canonical == null || canonical.get() == null) {
             canonicalInstances.put(instance, new WeakReference<>(instance));
+            canonicalizing = false;
             cacheMisses++;
             return instance;
         } else {
+            canonicalizing = false;
             cacheHits++;
             return canonical.get();
         }
@@ -82,6 +98,13 @@ public class Canonicalizer {
      */
     public Set<String> canonicalizeStringSet(Set<String> strings) {
         return canonicalizeViaImmutableBox(strings);
+    }
+
+    /**
+     * Canonicalizes an Obj into an immutable version.
+     */
+    public Obj canonicalizeObj(Obj obj) {
+        return canonicalize(new ImmutableBox<>(obj)).get();
     }
 
     private <T> Set<T> canonicalizeViaImmutableBox(Set<T> set) {

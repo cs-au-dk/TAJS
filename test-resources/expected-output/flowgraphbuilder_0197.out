@@ -28,63 +28,61 @@ fg2: <main> function()
     node 13: write-variable[v6,'k']* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:2:5)
     node 14: read-variable['k',v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:16)
     node 15: read-property[v11,'p',v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:16)
-    node 16: <variable-non-null-undef>['k'] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:16)
     ->[block 7]
   block 7:
-    node 17: call[TAJS_dumpValue,v10,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:1)
+    node 16: call[TAJS_dumpValue,v10,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:1)
     ->[block 8]
   block 8:
-    node 18: function-expr[function(),v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
-    node 19: write-variable[v12,'K_bug']* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:5)
-    node 20: read-variable['K_bug',v14,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:17)
+    node 17: function-expr[function(),v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
+    node 18: write-variable[v12,'K_bug']* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:5)
+    node 19: read-variable['K_bug',v14,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:17)
     ->[block 9]
   block 9:
-    node 21: construct[-,v14,v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:13)
+    node 20: construct[-,v14,v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:13)
     ->[block 10]
   block 10:
-    node 22: write-variable[v13,'k_bug']* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:5)
-    node 23: read-variable['k_bug',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:16)
-    node 24: read-property[v18,'p',v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:16)
-    node 25: <variable-non-null-undef>['k_bug'] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:16)
+    node 21: write-variable[v13,'k_bug']* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:5)
+    node 22: read-variable['k_bug',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:16)
+    node 23: read-property[v18,'p',v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:16)
     ->[block 11]
   block 11:
-    node 26: call[TAJS_dumpValue,v17,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:1)
+    node 24: call[TAJS_dumpValue,v17,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:1)
     ->[block 12]
   block 12: [exit-ordinary]
-    node 27: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js)
+    node 25: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js)
     ->[]
   block 13: [exit-exceptional]
-    node 28: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js)
+    node 26: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js)
     ->[]
 function()
   block 14: [entry]
-    node 29: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
+    node 27: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
     ->[block 15]
   block 15:
-    node 30: read-variable['this',v4,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:23)
-    node 31: constant[42.0,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:32)
-    node 32: write-property[v4,'p',v3]* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:23)
+    node 28: read-variable['this',v4,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:23)
+    node 29: constant[42.0,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:32)
+    node 30: write-property[v4,'p',v3]* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:23)
     ->[block 16]
   block 16: [exit-ordinary]
-    node 33: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
+    node 31: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
     ->[]
   block 17: [exit-exceptional]
-    node 34: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
+    node 32: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
     ->[]
 function()
   block 18: [entry]
-    node 35: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
+    node 33: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
     ->[block 19]
   block 19:
-    node 36: read-variable['this',v4,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:28)
-    node 37: constant[42.0,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:37)
-    node 38: write-property[v4,'p',v3]* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:28)
+    node 34: read-variable['this',v4,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:28)
+    node 35: constant[42.0,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:37)
+    node 36: write-property[v4,'p',v3]* (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:28)
     ->[block 20]
   block 20: [exit-ordinary]
-    node 39: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
+    node 37: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
     ->[]
   block 21: [exit-exceptional]
-    node 40: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
+    node 38: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0197.js: [definite] Exceptional program exit is unreachable

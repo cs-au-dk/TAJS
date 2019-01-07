@@ -1,9 +1,7 @@
-test-resources/src/1k2013spring/1541.js:56:16: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1541.js:57:8: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1541.js:67:5: [maybe] TypeError, call to non-function
 test-resources/src/1k2013spring/1541.js:80:11: [maybe] TypeError, call to non-function
 test-resources/src/1k2013spring/1541.js:81:11: [maybe] TypeError, call to non-function
-test-resources/src/1k2013spring/1541.js:84:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1541.js:93:7: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1541.js:104:4: [maybe] TypeError, call to non-function
 test-resources/src/1k2013spring/1541.js:114:7: [maybe] TypeError, accessing property of null/undefined
@@ -20,7 +18,7 @@ test-resources/src/1k2013spring/1541.js:131:3: [maybe] ReferenceError, reading a
 test-resources/src/1k2013spring/1541.js:132:3: [maybe] TypeError, call to non-function
 test-resources/src/1k2013spring/1541.js:135:3: [maybe] TypeError, call to non-function
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1541.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1541.js:56:16, test-resources/src/1k2013spring/1541.js:57:8, test-resources/src/1k2013spring/1541.js:67:5, test-resources/src/1k2013spring/1541.js:80:11, test-resources/src/1k2013spring/1541.js:81:11, test-resources/src/1k2013spring/1541.js:84:9, test-resources/src/1k2013spring/1541.js:93:7, test-resources/src/1k2013spring/1541.js:104:4, test-resources/src/1k2013spring/1541.js:114:7, test-resources/src/1k2013spring/1541.js:115:4, test-resources/src/1k2013spring/1541.js:116:4, test-resources/src/1k2013spring/1541.js:119:4, test-resources/src/1k2013spring/1541.js:120:4, test-resources/src/1k2013spring/1541.js:122:7, test-resources/src/1k2013spring/1541.js:123:4, test-resources/src/1k2013spring/1541.js:124:4, test-resources/src/1k2013spring/1541.js:127:4, test-resources/src/1k2013spring/1541.js:128:4, test-resources/src/1k2013spring/1541.js:131:3, test-resources/src/1k2013spring/1541.js:132:3, test-resources/src/1k2013spring/1541.js:135:3, test-resources/src/1k2013spring/shim.js:9:5, HOST(mdn-polyfills.js):132:42]
+test-resources/src/1k2013spring/1541.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1541.js:57:8, test-resources/src/1k2013spring/1541.js:67:5, test-resources/src/1k2013spring/1541.js:80:11, test-resources/src/1k2013spring/1541.js:81:11, test-resources/src/1k2013spring/1541.js:93:7, test-resources/src/1k2013spring/1541.js:104:4, test-resources/src/1k2013spring/1541.js:114:7, test-resources/src/1k2013spring/1541.js:115:4, test-resources/src/1k2013spring/1541.js:116:4, test-resources/src/1k2013spring/1541.js:119:4, test-resources/src/1k2013spring/1541.js:120:4, test-resources/src/1k2013spring/1541.js:122:7, test-resources/src/1k2013spring/1541.js:123:4, test-resources/src/1k2013spring/1541.js:124:4, test-resources/src/1k2013spring/1541.js:127:4, test-resources/src/1k2013spring/1541.js:128:4, test-resources/src/1k2013spring/1541.js:131:3, test-resources/src/1k2013spring/1541.js:132:3, test-resources/src/1k2013spring/1541.js:135:3, test-resources/src/1k2013spring/shim.js:9:5, HOST(mdn-polyfills.js):132:42]
 test-resources/src/1k2013spring/1541.js:24:16: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1541.js:24:19: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1541.js:26:11: [maybe] Reading absent property (computed name)
@@ -30,29 +28,10 @@ test-resources/src/1k2013spring/1541.js:30:19: [maybe] Reading absent property (
 test-resources/src/1k2013spring/1541.js:32:11: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1541.js:32:22: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1541.js:54:7: [maybe] The variable lastClick has values with different types
-test-resources/src/1k2013spring/1541.js:56:16: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1541.js:56:16: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1541.js:56:16: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1541.js:56:16: [maybe] The variable lastClick has values with different types
-test-resources/src/1k2013spring/1541.js:56:31: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1541.js:56:31: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1541.js:56:31: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1541.js:56:31: [maybe] The variable lastClick has values with different types
 test-resources/src/1k2013spring/1541.js:57:8: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1541.js:59:5: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1541.js:61:9: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1541.js:83:7: [maybe] The variable lastClick has values with different types
-test-resources/src/1k2013spring/1541.js:84:9: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1541.js:84:9: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1541.js:84:9: [maybe] The variable lastClick has values with different types
-test-resources/src/1k2013spring/1541.js:85:9: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1541.js:85:9: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1541.js:85:9: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1541.js:85:9: [maybe] The variable lastClick has values with different types
-test-resources/src/1k2013spring/1541.js:86:9: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1541.js:86:9: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1541.js:86:9: [maybe] The variable lastClick has values with different types
-test-resources/src/1k2013spring/1541.js:91:19: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1541.js:93:7: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1541.js:96:4: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1541.js:98:8: [maybe] Reading absent property (computed name)

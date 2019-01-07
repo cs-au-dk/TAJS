@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,17 +31,26 @@ import javax.annotation.Nonnull;
  * Label of abstract object.
  * Immutable.
  */
-public final class ObjectLabel implements Comparable<ObjectLabel>, DeepImmutable {
+public final class ObjectLabel implements DeepImmutable {
 
     /**
      * Source location used for host functions.
      */
-    private static final SourceLocation initial_source = new SourceLocation.SyntheticLocationMaker("<initial state>").makeUnspecifiedPosition();
+    private static SourceLocation initial_source;
 
     /**
      * Special object label for absent getter/setter.
      */
-    public static final ObjectLabel absent_accessor_function = make(null, null, null, Kind.FUNCTION, null, false);
+    public static ObjectLabel absent_accessor_function;
+
+    public static void reset() {
+        absent_accessor_function = make(null, null, null, Kind.FUNCTION, null, false);
+        initial_source = new SourceLocation.SyntheticLocationMaker("<initial state>").makeUnspecifiedPosition();
+    }
+
+    static {
+        reset();
+    }
 
     /**
      * Object kinds.
@@ -94,6 +103,11 @@ public final class ObjectLabel implements Comparable<ObjectLabel>, DeepImmutable
      * Cached hashcode for immutable instance.
      */
     private final int hashcode;
+
+    /**
+     * Cached toString for immutable instance.
+     */
+    private String toString;
 
     private ObjectLabel(HostObject hostobject, AbstractNode node, Function function, Kind kind, HeapContext heapContext, boolean singleton) {
         this.hostobject = hostobject;
@@ -254,7 +268,10 @@ public final class ObjectLabel implements Comparable<ObjectLabel>, DeepImmutable
      */
     @Override
     public String toString() {
-        if (this == absent_accessor_function)
+        if (toString != null) {
+            return toString;
+        }
+        if (absent_accessor_function == null || this == absent_accessor_function)
             return "<absent getter/setter>";
         StringBuilder b = new StringBuilder();
         if (singleton)
@@ -272,7 +289,8 @@ public final class ObjectLabel implements Comparable<ObjectLabel>, DeepImmutable
             b.append(kind).append("#node").append(node.getIndex());
         }
         b.append(heapContext);
-        return b.toString();
+        toString = b.toString();
+        return toString;
     }
 
     /**
@@ -280,6 +298,9 @@ public final class ObjectLabel implements Comparable<ObjectLabel>, DeepImmutable
      */
     @Override
     public boolean equals(Object obj) {
+// TODO: currently not exploiting object identity here, requires refactoring of all static fields of type ObjectLabel (in dk.brics.tajs.analysis.dom and sub-packages) -- see also HeapContext.equals
+//        if (!Canonicalizer.get().isCanonicalizing())
+//            return this == obj;
         if (obj == this)
             return true;
         if (!(obj instanceof ObjectLabel))
@@ -305,17 +326,25 @@ public final class ObjectLabel implements Comparable<ObjectLabel>, DeepImmutable
         return hashcode;
     }
 
-    /**
-     * Compares this and the given object label.
-     * The source location is used as primary key, and toString is used as secondary key.
-     */
-    @Override
-    public int compareTo(@Nonnull ObjectLabel objlabel) {
-        int c = getSourceLocation().compareTo(objlabel.getSourceLocation());
-        if (c != 0)
-            return c;
-        if (equals(objlabel))
-            return 0;
-        return toString().compareTo(objlabel.toString());
+    public static class Comparator implements java.util.Comparator<ObjectLabel> {
+
+        /**
+         * Compares the two object labels.
+         * The source location is used as primary key, and toString is used as secondary key.
+         */
+        @Override
+        public int compare(@Nonnull ObjectLabel o1, @Nonnull ObjectLabel o2) {
+            return compareStatic(o1, o2);
+        }
+
+        public static int compareStatic(@Nonnull ObjectLabel o1, @Nonnull ObjectLabel o2) {
+            int c = SourceLocation.Comparator.compareStatic(o1.getSourceLocation(), o2.getSourceLocation());
+            if (c != 0)
+                return c;
+            if (o1.equals(o2))
+                return 0;
+            return o1.toString().compareTo(o2.toString());
+        }
+
     }
 }

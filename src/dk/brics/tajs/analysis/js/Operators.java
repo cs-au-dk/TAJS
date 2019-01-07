@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -363,7 +363,7 @@ public class Operators {
                     }
                 }
                 r = r.join(Value.join(vs));
-                if ((vs.size() > Options.Constants.STRING_CONCAT_SETS_BOUND) && vs1.size() > 1 && vs2.size() > 1) {
+                if (((vs.size() > Options.Constants.STRING_CONCAT_SETS_BOUND) && vs1.size() > 1 && vs2.size() > 1) || vs.size() > Options.Constants.STRING_SETS_BOUND) {
                     // widen
                     r = r.forgetExcludedIncludedStrings();
                 }
@@ -705,7 +705,7 @@ public class Operators {
             }
             if (v2.isMaybeObject()) {
                 Num n1 = Conversion.fromBooltoNum(v1);
-                Num n2 = Conversion.toNumber(weakToPrimitive(v2.restrictToObject(), Hint.NUM, r, c), c);
+                Num n2 = Conversion.toNumber(weakToPrimitive(v2.restrictToNonSymbolObject(), Hint.NUM, r, c), c);
                 r = abstractNumberEquality(r, n1, n2);
             }
             if (v2.isMaybeSymbol()) {
@@ -732,7 +732,7 @@ public class Operators {
             }
             if (v2.isMaybeObject()) {
                 Value n1 = v1.restrictToNum();
-                Value n2 = weakToPrimitive(v2.restrictToObject(), Hint.NONE, r, c);
+                Value n2 = weakToPrimitive(v2.restrictToNonSymbolObject(), Hint.NONE, r, c);
                 r = r.join(abstractEqualityComparison(n1, n2, c));
             }
             if (v2.isMaybeSymbol()) {
@@ -758,7 +758,7 @@ public class Operators {
             }
             if (v2.isMaybeObject()) {
                 Value n1 = v1.restrictToStr();
-                Value n2 = weakToPrimitive(v2.restrictToObject(), Hint.NONE, r, c);
+                Value n2 = weakToPrimitive(v2.restrictToNonSymbolObject(), Hint.NONE, r, c);
                 r = r.join(abstractEqualityComparison(n1, n2, c));
             }
             if (v2.isMaybeSymbol()) {
@@ -783,7 +783,7 @@ public class Operators {
             }
             if (v2.isMaybeObject()) {
                 Value n1 = v1.restrictToSymbol();
-                Value n2 = weakToPrimitive(v2.restrictToObject(), Hint.NONE, r, c);
+                Value n2 = weakToPrimitive(v2.restrictToNonSymbolObject(), Hint.NONE, r, c);
                 r = r.join(abstractEqualityComparison(n1, n2, c));
             }
             if (v2.isMaybeSymbol()) {
@@ -795,7 +795,7 @@ public class Operators {
                 r = r.joinBool(false);
             if (v2.isMaybeNull())
                 r = r.joinBool(false);
-            Value vv1 = v1.restrictToObject();
+            Value vv1 = v1.restrictToNonSymbolObject();
             if (!v2.isNotBool()) {
                 Num n1 = Conversion.toNumber(weakToPrimitive(vv1, Hint.NUM, r, c), c);
                 Num n2 = Conversion.fromBooltoNum(v2);
@@ -812,7 +812,7 @@ public class Operators {
                 r = r.join(abstractEqualityComparison(n1, n2, c));
             }
             if (v2.isMaybeObject()) {
-                r = eqObjectOrSymbol(r, vv1.getObjectLabels(), v2.restrictToObject().getObjectLabels());
+                r = eqObjectOrSymbol(r, vv1.getObjectLabels(), v2.restrictToNonSymbolObject().getObjectLabels());
             }
             if (v2.isMaybeSymbol()) {
                 Value n1 = weakToPrimitive(vv1, Hint.NONE, r, c);

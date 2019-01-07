@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
@@ -31,6 +32,7 @@ import java.util.function.Function;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * Implementation of Object.prototype.toString, which depends on the host environment.
@@ -89,8 +91,15 @@ public class NativeObjectToString {
 
         Set<ObjectLabel.Kind> nonDomElementKinds = nonDOMElementInstanceObjects.stream()
                 .map(ObjectLabel::getKind).collect(Collectors.toSet());
-        Arrays.stream(ObjectLabel.Kind.values()).forEach(k ->
-                separator.choose(nonDomElementKinds.contains(k), k.toString())); // NB: relying on enum.toString
+
+        vObject.getObjectLabels().forEach(obj -> {
+            Value toStringTag = UnknownValueResolver.getRealValue(c.getAnalysis().getPropVarOperations().readPropertyValue(singleton(obj), Value.makeObject(InitialStateBuilder.WELLKNOWN_SYMBOL_TO_STRING_TAG)), c.getState());
+            if (toStringTag.isMaybeSingleStr()) {
+                separator.choose(true, toStringTag.getStr());
+            } else {
+                separator.choose(nonDomElementKinds.contains(obj.getKind()), obj.getKind().toString()); // NB: relying on enum.toString
+            }
+        });
 
         if (separator.positive.isEmpty()) {
             throw new AnalysisException("No case for toString on " + v + "???");

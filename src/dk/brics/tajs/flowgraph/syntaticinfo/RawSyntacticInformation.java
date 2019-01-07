@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.util.AnalysisException;
 
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newMap;
@@ -44,8 +43,6 @@ public class RawSyntacticInformation {
     private final Map<Function, Set<String>> loopVariables;
 
     private final Set<CallNode> tajsCallsWithLiteralFalseAsFirstOrFourthArgument;
-
-    private final Map<IfNode, Set<ConditionPattern>> conditionPatterns;
 
     private final Map<AbstractNode, SyntacticReference> nodeWithBaseReferences;
 
@@ -69,7 +66,6 @@ public class RawSyntacticInformation {
         this.inForIn = newSet();
         this.loopVariables = newMap();
         this.tajsCallsWithLiteralFalseAsFirstOrFourthArgument = newSet();
-        this.conditionPatterns = newMap();
         this.nodeWithBaseReferences = newMap();
         this.simpleReads = newMap();
         this.expressionRegisters = newMap();
@@ -98,10 +94,6 @@ public class RawSyntacticInformation {
 
     public Set<CallNode> getTajsCallsWithLiteralFalseAsFirstOrFourthArgument() {
         return tajsCallsWithLiteralFalseAsFirstOrFourthArgument;
-    }
-
-    public Map<IfNode, Set<ConditionPattern>> getConditionPatterns() {
-        return conditionPatterns;
     }
 
     public Map<AbstractNode, SyntacticReference> getNodeWithBaseReferences() {
@@ -171,22 +163,6 @@ public class RawSyntacticInformation {
         }
 
         @Override
-        public Set<ConditionPattern> getConditionPattern(IfNode ifNode) {
-            if (conditionPatterns.containsKey(ifNode)) {
-                return conditionPatterns.get(ifNode);
-            }
-            return newSet();
-        }
-
-        @Override
-        public Optional<SyntacticReference> getBaseReference(AbstractNode node) {
-            if (nodeWithBaseReferences.containsKey(node)) {
-                return Optional.of(nodeWithBaseReferences.get(node));
-            }
-            return Optional.empty();
-        }
-
-        @Override
         public boolean isSimpleRead(ParseTree tree) {
             return simpleReads.containsKey(tree);
         }
@@ -202,16 +178,6 @@ public class RawSyntacticInformation {
                 throw new AnalysisException("No register associated with tree: " + tree + "?!?");
             }
             return expressionRegisters.get(tree);
-        }
-
-        @Override
-        public Set<String> getConditionRefined1ArgumentVariables(IfNode ifNode) {
-            return conditionRefined1ArgumentVariables.getOrDefault(ifNode, newSet());
-        }
-
-        @Override
-        public Set<String> getConditionRefinedArgumentVariables(IfNode ifNode) {
-            return conditionRefinedArgumentVariables.getOrDefault(ifNode, newSet());
         }
 
         @Override

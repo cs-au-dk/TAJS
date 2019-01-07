@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -267,7 +267,7 @@ public interface Str {
 
     /**
      * Returns the set of all known strings.
-     * Only invoke if {@see #isMaybeAllKnownStr} returns true.
+     * Only invoke if {@link #isMaybeAllKnownStr} returns true.
      */
     Set<String> getAllKnownStr();
 }

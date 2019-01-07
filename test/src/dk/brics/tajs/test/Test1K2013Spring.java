@@ -2,7 +2,6 @@ package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
-import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +19,7 @@ public class Test1K2013Spring {
         Options.get().enableIncludeDom();
         Options.get().enableUnevalizer();
         Options.get().enablePolyfillMDN();
-        Options.get().setAnalysisTimeLimit(1 * 60);
+        Options.get().setAnalysisTransferLimit(100000);
     }
 
     @Test
@@ -431,7 +430,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisException.class)
+    @Test(expected = AnalysisLimitationException.AnalysisModelLimitationException.class)
     public void test1k_2013_spring_1528() {
         Misc.run("test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1528.js");
         Misc.checkSystemOutput();

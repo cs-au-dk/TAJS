@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import org.apache.log4j.Logger;
  */
 public class Transfer implements
         INodeTransfer<State, Context>,
-        IEdgeTransfer<State, Context> {
+        IEdgeTransfer<Context> {
 
     private static Logger log = Logger.getLogger(Transfer.class);
 
@@ -55,6 +55,7 @@ public class Transfer implements
      */
     public void setSolverInterface(Solver.SolverInterface c) {
         js_node_transfer.setSolverInterface(c);
+        js_edge_transfer.setSolverInterface(c);
     }
 
     @Override
@@ -76,8 +77,8 @@ public class Transfer implements
     }
 
     @Override
-    public Context transfer(BasicBlock src, BasicBlock dst, State state) {
-        Context res = js_edge_transfer.transfer(src, dst, state);
+    public Context transfer(BasicBlock src, BasicBlock dst) {
+        Context res = js_edge_transfer.transfer(src, dst);
         if (res == null)
             if (log.isDebugEnabled())
                 log.debug("Killing flow to block " + dst.getIndex());

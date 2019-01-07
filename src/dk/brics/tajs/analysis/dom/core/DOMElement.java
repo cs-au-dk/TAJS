@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -302,7 +302,7 @@ public class DOMElement {
                 return Value.makeAnyBool();
             }
             default: {
-                throw new AnalysisException("Unknown Native Object: " + nativeObject);
+                throw new AnalysisException(call.getJSSourceNode().getSourceLocation() + ": Unknown Native Object: " + nativeObject);
             }
         }
     }

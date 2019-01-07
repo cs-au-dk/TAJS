@@ -4,10 +4,9 @@ test-resources/src/1k2013spring/1479.js:32:5: [maybe] TypeError, accessing prope
 test-resources/src/1k2013spring/1479.js:67:12: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1479.js:88:5: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2013spring/1479.js:98:3: [maybe] ReferenceError, reading absent variable a
-test-resources/src/1k2013spring/1479.js:104:12: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1479.js:104:26: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1479.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1479.js:32:5, test-resources/src/1k2013spring/1479.js:67:12, test-resources/src/1k2013spring/1479.js:88:5, test-resources/src/1k2013spring/1479.js:98:3, test-resources/src/1k2013spring/1479.js:104:12, test-resources/src/1k2013spring/1479.js:104:26, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1479.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1479.js:32:5, test-resources/src/1k2013spring/1479.js:67:12, test-resources/src/1k2013spring/1479.js:88:5, test-resources/src/1k2013spring/1479.js:98:3, test-resources/src/1k2013spring/1479.js:104:26, test-resources/src/1k2013spring/shim.js:9:5]
 test-resources/src/1k2013spring/1479.js:29:14: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1479.js:44:18: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1479.js:49:18: [maybe] Conversion to number yields NaN

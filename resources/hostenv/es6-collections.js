@@ -44,6 +44,8 @@
             // WeakMap#set(key:void*, value:void*):void
             set: sharedSet
         }, true);
+
+        Object.defineProperty(exports.WeakMap.prototype, Symbol.toStringTag, {value: "WeakMap"})
     }
 
     if (typeof Map == 'undefined' || typeof ((new Map).values) !== 'function' || !(new Map).values().next) {
@@ -68,6 +70,8 @@
             // Map#clear():
             clear: sharedClear
         });
+
+        Object.defineProperty(exports.Map.prototype, Symbol.toStringTag, {value: "Map"})
     }
 
     if (typeof Set == 'undefined' || typeof ((new Set).values) !== 'function' || !(new Set).values().next) {
@@ -89,6 +93,8 @@
             // Set#forEach(callback:Function, context:void*):void ==> callback.call(context, value, index) === not in specs
             forEach: sharedForEach
         });
+
+        Object.defineProperty(exports.Set.prototype, Symbol.toStringTag, {value: "Set"})
     }
 
     if (typeof WeakSet == 'undefined') {
@@ -102,6 +108,8 @@
             // WeakSet#has(value:void*):boolean
             has: setHas
         }, true);
+
+        Object.defineProperty(exports.WeakSet.prototype, Symbol.toStringTag, {value: "WeakSet"})
     }
 
 
@@ -203,6 +211,7 @@
         if (this.objectOnly && value !== Object(value))
             throw new TypeError("Invalid value used as weak collection value");
 
+        value = value === 0 ? 0 : value;
         if (!this.has(value)) this._values.push(value);
         return this;
     }

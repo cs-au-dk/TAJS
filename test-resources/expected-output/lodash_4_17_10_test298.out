@@ -1,0 +1,1223 @@
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:416:20: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:419:18: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:422:14: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:422:14: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:425:21: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:428:20: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:431:23: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:434:21: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:440:19: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:442:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:447:14: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:452:27: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:453:20: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:454:19: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:455:22: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:456:19: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:457:26: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:513:18: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:516:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:576:18: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:867:18: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:868:12: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:955:7: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1129:12: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1421:15: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1421:15: [definite] Variable context is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1453:31: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1453:31: [definite] Variable coreJsData is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1454:14: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1454:14: [definite] Variable uid is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1477:18: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1480:23: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1480:23: [definite] Variable Buffer is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1485:28: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1486:23: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1487:26: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1498:27: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1499:18: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1499:18: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1500:25: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1506:26: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1506:26: [definite] Variable Buffer is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1526:19: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1539:23: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1540:25: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1541:26: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1685:9: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1688:9: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1920:20: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1920:20: [definite] Variable entries is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1923:14: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1937:23: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2141:20: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2141:20: [definite] Variable entries is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2144:14: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2161:21: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3010:14: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3084:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3087:15: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3248:14: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3430:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3430:11: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3433:21: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3948:41: [definite] Variable start is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4023:23: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4036:27: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4514:24: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4924:27: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4924:27: [definite] Variable fromRight is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:11: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5170:18: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5459:23: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5894:19: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6014:7: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6015:9: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6031:22: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6048:24: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6067:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6067:9: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6067:10: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6068:10: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6069:10: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6070:10: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6071:10: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6379:14: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6389:22: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6389:22: [definite] Variable coreJsData is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6399:18: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6400:19: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6400:20: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6567:25: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6567:25: [definite] Variable start is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6645:22: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6769:7: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9960:15: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10540:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10540:11: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10540:41: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10555:29: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11257:23: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11304:25: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11332:14: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11403:20: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11403:20: [definite] Variable nativeIsBuffer is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11422:18: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11653:14: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11713:14: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11772:14: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11792:17: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12065:20: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12115:17: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12178:24: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13306:14: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15690:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15691:13: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15703:9: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16980:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17039:7: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17069:5: [definite] The conditional expression is always true
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17081:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17095:8: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:295:3: [definite] Dead assignment, property [object Float32Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:295:32: [definite] Dead assignment, property [object Float64Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:296:3: [definite] Dead assignment, property [object Int8Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:296:29: [definite] Dead assignment, property [object Int16Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:297:3: [definite] Dead assignment, property [object Int32Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:297:30: [definite] Dead assignment, property [object Uint8Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:298:3: [definite] Dead assignment, property [object Uint8ClampedArray] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:298:37: [definite] Dead assignment, property [object Uint16Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:299:3: [definite] Dead assignment, property [object Uint32Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:300:3: [definite] Dead assignment, property [object Arguments] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:300:29: [definite] Dead assignment, property [object Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:301:3: [definite] Dead assignment, property [object ArrayBuffer] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:301:36: [definite] Dead assignment, property [object Boolean] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:302:3: [definite] Dead assignment, property [object DataView] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:302:33: [definite] Dead assignment, property [object Date] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:303:3: [definite] Dead assignment, property [object Error] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:303:30: [definite] Dead assignment, property [object Function] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:304:3: [definite] Dead assignment, property [object Map] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:304:28: [definite] Dead assignment, property [object Number] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:305:3: [definite] Dead assignment, property [object Object] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:305:31: [definite] Dead assignment, property [object RegExp] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:306:3: [definite] Dead assignment, property [object Set] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:306:28: [definite] Dead assignment, property [object String] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:307:3: [definite] Dead assignment, property [object WeakMap] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:311:3: [definite] Dead assignment, property [object Arguments] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:311:28: [definite] Dead assignment, property [object Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:312:3: [definite] Dead assignment, property [object ArrayBuffer] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:312:35: [definite] Dead assignment, property [object DataView] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:313:3: [definite] Dead assignment, property [object Boolean] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:313:28: [definite] Dead assignment, property [object Date] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:314:3: [definite] Dead assignment, property [object Float32Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:314:31: [definite] Dead assignment, property [object Float64Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:315:3: [definite] Dead assignment, property [object Int8Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:315:28: [definite] Dead assignment, property [object Int16Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:316:3: [definite] Dead assignment, property [object Int32Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:316:29: [definite] Dead assignment, property [object Map] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:317:3: [definite] Dead assignment, property [object Number] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:317:30: [definite] Dead assignment, property [object Object] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:318:3: [definite] Dead assignment, property [object RegExp] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:318:30: [definite] Dead assignment, property [object Set] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:319:3: [definite] Dead assignment, property [object String] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:319:30: [definite] Dead assignment, property [object Symbol] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:320:3: [definite] Dead assignment, property [object Uint8Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:320:29: [definite] Dead assignment, property [object Uint8ClampedArray] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:321:3: [definite] Dead assignment, property [object Uint16Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:321:30: [definite] Dead assignment, property [object Uint32Array] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:322:3: [definite] Dead assignment, property [object Error] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:322:29: [definite] Dead assignment, property [object Function] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:323:3: [definite] Dead assignment, property [object WeakMap] is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:328:5: [definite] Dead assignment, property \u00c0 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:328:19: [definite] Dead assignment, property \u00c1 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:328:32: [definite] Dead assignment, property \u00c2 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:328:45: [definite] Dead assignment, property \u00c3 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:328:58: [definite] Dead assignment, property \u00c4 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:328:71: [definite] Dead assignment, property \u00c5 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:329:5: [definite] Dead assignment, property \u00e0 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:329:19: [definite] Dead assignment, property \u00e1 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:329:32: [definite] Dead assignment, property \u00e2 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:329:45: [definite] Dead assignment, property \u00e3 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:329:58: [definite] Dead assignment, property \u00e4 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:329:71: [definite] Dead assignment, property \u00e5 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:330:5: [definite] Dead assignment, property \u00c7 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:330:19: [definite] Dead assignment, property \u00e7 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:331:5: [definite] Dead assignment, property \u00d0 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:331:19: [definite] Dead assignment, property \u00f0 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:332:5: [definite] Dead assignment, property \u00c8 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:332:19: [definite] Dead assignment, property \u00c9 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:332:32: [definite] Dead assignment, property \u00ca is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:332:45: [definite] Dead assignment, property \u00cb is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:333:5: [definite] Dead assignment, property \u00e8 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:333:19: [definite] Dead assignment, property \u00e9 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:333:32: [definite] Dead assignment, property \u00ea is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:333:45: [definite] Dead assignment, property \u00eb is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:334:5: [definite] Dead assignment, property \u00cc is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:334:19: [definite] Dead assignment, property \u00cd is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:334:32: [definite] Dead assignment, property \u00ce is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:334:45: [definite] Dead assignment, property \u00cf is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:335:5: [definite] Dead assignment, property \u00ec is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:335:19: [definite] Dead assignment, property \u00ed is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:335:32: [definite] Dead assignment, property \u00ee is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:335:45: [definite] Dead assignment, property \u00ef is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:336:5: [definite] Dead assignment, property \u00d1 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:336:19: [definite] Dead assignment, property \u00f1 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:337:5: [definite] Dead assignment, property \u00d2 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:337:19: [definite] Dead assignment, property \u00d3 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:337:32: [definite] Dead assignment, property \u00d4 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:337:45: [definite] Dead assignment, property \u00d5 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:337:58: [definite] Dead assignment, property \u00d6 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:337:71: [definite] Dead assignment, property \u00d8 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:338:5: [definite] Dead assignment, property \u00f2 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:338:19: [definite] Dead assignment, property \u00f3 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:338:32: [definite] Dead assignment, property \u00f4 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:338:45: [definite] Dead assignment, property \u00f5 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:338:58: [definite] Dead assignment, property \u00f6 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:338:71: [definite] Dead assignment, property \u00f8 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:339:5: [definite] Dead assignment, property \u00d9 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:339:19: [definite] Dead assignment, property \u00da is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:339:32: [definite] Dead assignment, property \u00db is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:339:45: [definite] Dead assignment, property \u00dc is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:340:5: [definite] Dead assignment, property \u00f9 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:340:19: [definite] Dead assignment, property \u00fa is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:340:32: [definite] Dead assignment, property \u00fb is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:340:45: [definite] Dead assignment, property \u00fc is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:341:5: [definite] Dead assignment, property \u00dd is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:341:19: [definite] Dead assignment, property \u00fd is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:341:32: [definite] Dead assignment, property \u00ff is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:342:5: [definite] Dead assignment, property \u00c6 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:342:19: [definite] Dead assignment, property \u00e6 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:343:5: [definite] Dead assignment, property \u00de is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:343:19: [definite] Dead assignment, property \u00fe is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:344:5: [definite] Dead assignment, property \u00df is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:346:5: [definite] Dead assignment, property \u0100 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:346:21: [definite] Dead assignment, property \u0102 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:346:36: [definite] Dead assignment, property \u0104 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:347:5: [definite] Dead assignment, property \u0101 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:347:21: [definite] Dead assignment, property \u0103 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:347:36: [definite] Dead assignment, property \u0105 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:348:5: [definite] Dead assignment, property \u0106 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:348:21: [definite] Dead assignment, property \u0108 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:348:36: [definite] Dead assignment, property \u010a is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:348:51: [definite] Dead assignment, property \u010c is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:349:5: [definite] Dead assignment, property \u0107 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:349:21: [definite] Dead assignment, property \u0109 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:349:36: [definite] Dead assignment, property \u010b is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:349:51: [definite] Dead assignment, property \u010d is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:350:5: [definite] Dead assignment, property \u010e is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:350:21: [definite] Dead assignment, property \u0110 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:350:36: [definite] Dead assignment, property \u010f is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:350:51: [definite] Dead assignment, property \u0111 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:351:5: [definite] Dead assignment, property \u0112 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:351:21: [definite] Dead assignment, property \u0114 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:351:36: [definite] Dead assignment, property \u0116 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:351:51: [definite] Dead assignment, property \u0118 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:351:66: [definite] Dead assignment, property \u011a is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:352:5: [definite] Dead assignment, property \u0113 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:352:21: [definite] Dead assignment, property \u0115 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:352:36: [definite] Dead assignment, property \u0117 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:352:51: [definite] Dead assignment, property \u0119 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:352:66: [definite] Dead assignment, property \u011b is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:353:5: [definite] Dead assignment, property \u011c is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:353:21: [definite] Dead assignment, property \u011e is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:353:36: [definite] Dead assignment, property \u0120 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:353:51: [definite] Dead assignment, property \u0122 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:354:5: [definite] Dead assignment, property \u011d is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:354:21: [definite] Dead assignment, property \u011f is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:354:36: [definite] Dead assignment, property \u0121 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:354:51: [definite] Dead assignment, property \u0123 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:355:5: [definite] Dead assignment, property \u0124 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:355:21: [definite] Dead assignment, property \u0126 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:355:36: [definite] Dead assignment, property \u0125 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:355:51: [definite] Dead assignment, property \u0127 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:356:5: [definite] Dead assignment, property \u0128 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:356:21: [definite] Dead assignment, property \u012a is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:356:36: [definite] Dead assignment, property \u012c is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:356:51: [definite] Dead assignment, property \u012e is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:356:66: [definite] Dead assignment, property \u0130 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:357:5: [definite] Dead assignment, property \u0129 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:357:21: [definite] Dead assignment, property \u012b is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:357:36: [definite] Dead assignment, property \u012d is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:357:51: [definite] Dead assignment, property \u012f is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:357:66: [definite] Dead assignment, property \u0131 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:358:5: [definite] Dead assignment, property \u0134 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:358:21: [definite] Dead assignment, property \u0135 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:359:5: [definite] Dead assignment, property \u0136 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:359:21: [definite] Dead assignment, property \u0137 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:359:36: [definite] Dead assignment, property \u0138 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:360:5: [definite] Dead assignment, property \u0139 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:360:21: [definite] Dead assignment, property \u013b is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:360:36: [definite] Dead assignment, property \u013d is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:360:51: [definite] Dead assignment, property \u013f is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:360:66: [definite] Dead assignment, property \u0141 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:361:5: [definite] Dead assignment, property \u013a is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:361:21: [definite] Dead assignment, property \u013c is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:361:36: [definite] Dead assignment, property \u013e is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:361:51: [definite] Dead assignment, property \u0140 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:361:66: [definite] Dead assignment, property \u0142 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:362:5: [definite] Dead assignment, property \u0143 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:362:21: [definite] Dead assignment, property \u0145 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:362:36: [definite] Dead assignment, property \u0147 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:362:51: [definite] Dead assignment, property \u014a is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:363:5: [definite] Dead assignment, property \u0144 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:363:21: [definite] Dead assignment, property \u0146 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:363:36: [definite] Dead assignment, property \u0148 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:363:51: [definite] Dead assignment, property \u014b is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:364:5: [definite] Dead assignment, property \u014c is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:364:21: [definite] Dead assignment, property \u014e is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:364:36: [definite] Dead assignment, property \u0150 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:365:5: [definite] Dead assignment, property \u014d is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:365:21: [definite] Dead assignment, property \u014f is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:365:36: [definite] Dead assignment, property \u0151 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:366:5: [definite] Dead assignment, property \u0154 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:366:21: [definite] Dead assignment, property \u0156 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:366:36: [definite] Dead assignment, property \u0158 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:367:5: [definite] Dead assignment, property \u0155 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:367:21: [definite] Dead assignment, property \u0157 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:367:36: [definite] Dead assignment, property \u0159 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:368:5: [definite] Dead assignment, property \u015a is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:368:21: [definite] Dead assignment, property \u015c is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:368:36: [definite] Dead assignment, property \u015e is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:368:51: [definite] Dead assignment, property \u0160 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:369:5: [definite] Dead assignment, property \u015b is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:369:21: [definite] Dead assignment, property \u015d is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:369:36: [definite] Dead assignment, property \u015f is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:369:51: [definite] Dead assignment, property \u0161 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:370:5: [definite] Dead assignment, property \u0162 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:370:21: [definite] Dead assignment, property \u0164 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:370:36: [definite] Dead assignment, property \u0166 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:371:5: [definite] Dead assignment, property \u0163 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:371:21: [definite] Dead assignment, property \u0165 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:371:36: [definite] Dead assignment, property \u0167 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:372:5: [definite] Dead assignment, property \u0168 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:372:21: [definite] Dead assignment, property \u016a is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:372:36: [definite] Dead assignment, property \u016c is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:372:51: [definite] Dead assignment, property \u016e is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:372:66: [definite] Dead assignment, property \u0170 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:372:81: [definite] Dead assignment, property \u0172 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:373:5: [definite] Dead assignment, property \u0169 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:373:21: [definite] Dead assignment, property \u016b is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:373:36: [definite] Dead assignment, property \u016d is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:373:51: [definite] Dead assignment, property \u016f is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:373:66: [definite] Dead assignment, property \u0171 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:373:81: [definite] Dead assignment, property \u0173 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:374:5: [definite] Dead assignment, property \u0174 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:374:21: [definite] Dead assignment, property \u0175 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:375:5: [definite] Dead assignment, property \u0176 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:375:21: [definite] Dead assignment, property \u0177 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:375:36: [definite] Dead assignment, property \u0178 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:376:5: [definite] Dead assignment, property \u0179 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:376:21: [definite] Dead assignment, property \u017b is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:376:36: [definite] Dead assignment, property \u017d is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:377:5: [definite] Dead assignment, property \u017a is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:377:21: [definite] Dead assignment, property \u017c is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:377:36: [definite] Dead assignment, property \u017e is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:378:5: [definite] Dead assignment, property \u0132 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:378:21: [definite] Dead assignment, property \u0133 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:379:5: [definite] Dead assignment, property \u0152 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:379:21: [definite] Dead assignment, property \u0153 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:380:5: [definite] Dead assignment, property \u0149 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:380:21: [definite] Dead assignment, property \u017f is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:385:5: [definite] Dead assignment, property & is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:386:5: [definite] Dead assignment, property < is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:387:5: [definite] Dead assignment, property > is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:388:5: [definite] Dead assignment, property \" is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:389:5: [definite] Dead assignment, property ' is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:394:5: [definite] Dead assignment, property &amp; is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:395:5: [definite] Dead assignment, property &lt; is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:396:5: [definite] Dead assignment, property &gt; is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:397:5: [definite] Dead assignment, property &quot; is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:398:5: [definite] Dead assignment, property &#39; is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:403:5: [definite] Dead assignment, property \\ is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:404:5: [definite] Dead assignment, property ' is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:405:5: [definite] Dead assignment, property \n is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:406:5: [definite] Dead assignment, property \r is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:407:5: [definite] Dead assignment, property \u2028 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:408:5: [definite] Dead assignment, property \u2029 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1253:7: [definite] Dead assignment, property 0 is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1440:22: [definite] Reading absent property __core-js_shared__
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1468:19: [definite] Reading absent property _
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1739:7: [definite] Dead assignment, property escape is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1747:7: [definite] Dead assignment, property evaluate is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1755:7: [definite] Dead assignment, property interpolate is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1763:7: [definite] Dead assignment, property variable is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1771:7: [definite] Dead assignment, property imports is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1779:9: [definite] Dead assignment, property _ is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1937:7: [definite] Dead assignment, property __data__ is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1938:7: [definite] Dead assignment, property size is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2008:5: [definite] Dead assignment, property delete is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2009:5: [definite] Dead assignment, property get is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2010:5: [definite] Dead assignment, property has is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2011:5: [definite] Dead assignment, property set is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2124:5: [definite] Dead assignment, property clear is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2125:5: [definite] Dead assignment, property delete is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2126:5: [definite] Dead assignment, property get is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2127:5: [definite] Dead assignment, property has is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2128:5: [definite] Dead assignment, property set is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2158:7: [definite] Dead assignment, property size is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2159:7: [definite] Dead assignment, property __data__ is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2160:9: [definite] Dead assignment, property hash is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2161:9: [definite] Dead assignment, property map is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2162:9: [definite] Dead assignment, property string is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2228:5: [definite] Dead assignment, property delete is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2229:5: [definite] Dead assignment, property get is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2230:5: [definite] Dead assignment, property has is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2231:5: [definite] Dead assignment, property set is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2282:5: [definite] Dead assignment, property add is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2282:30: [definite] Dead assignment, property push is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2283:5: [definite] Dead assignment, property has is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2381:5: [definite] Dead assignment, property clear is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2382:5: [definite] Dead assignment, property delete is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2383:5: [definite] Dead assignment, property get is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2384:5: [definite] Dead assignment, property has is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2385:5: [definite] Dead assignment, property set is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10555:29: [definite] Reading absent property Cache
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property compact is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property drop is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property dropRight is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property filter is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property head is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property initial is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property last is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property map is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property reject is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property slice is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property tail is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property take is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property takeRight is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property takeRightWhile is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property takeWhile is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property toArray is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17043:22: [definite] Dead assignment, property name is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17043:42: [definite] Dead assignment, property func is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17047:5: [definite] Dead assignment, property wrapper is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17048:7: [definite] Dead assignment, property name is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17049:7: [definite] Dead assignment, property func is never read
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17105:8: [definite] Reading 'this' yields the global object
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:18:7: [definite] The variable LARGE_ARRAY_SIZE is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:21:7: [definite] The variable CORE_ERROR_TEXT is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:22:7: [definite] The variable FUNC_ERROR_TEXT is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:25:7: [definite] The variable HASH_UNDEFINED is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:28:7: [definite] The variable MAX_MEMOIZE_SIZE is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:31:7: [definite] The variable PLACEHOLDER is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:34:7: [definite] The variable CLONE_DEEP_FLAG is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:35:7: [definite] The variable CLONE_FLAT_FLAG is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:36:7: [definite] The variable CLONE_SYMBOLS_FLAG is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:39:7: [definite] The variable COMPARE_PARTIAL_FLAG is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:40:7: [definite] The variable COMPARE_UNORDERED_FLAG is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:45:7: [definite] The variable WRAP_CURRY_BOUND_FLAG is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:55:7: [definite] The variable DEFAULT_TRUNC_LENGTH is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:56:7: [definite] The variable DEFAULT_TRUNC_OMISSION is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:64:7: [definite] The variable LAZY_MAP_FLAG is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:70:7: [definite] The variable MAX_INTEGER is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:71:7: [definite] The variable NAN is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:75:7: [definite] The variable MAX_ARRAY_INDEX is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:76:7: [definite] The variable HALF_MAX_ARRAY_LENGTH is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:79:7: [definite] The variable wrapFlags is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:97:7: [definite] The variable domExcTag is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:103:7: [definite] The variable nullTag is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:111:7: [definite] The variable undefinedTag is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:113:7: [definite] The variable weakSetTag is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:128:7: [definite] The variable reEmptyStringLeading is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:129:7: [definite] The variable reEmptyStringMiddle is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:130:7: [definite] The variable reEmptyStringTrailing is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:135:7: [definite] The variable reHasEscapedHtml is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:136:7: [definite] The variable reHasUnescapedHtml is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:144:7: [definite] The variable reIsDeepProp is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:145:7: [definite] The variable reIsPlainProp is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:146:7: [definite] The variable rePropName is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:153:7: [definite] The variable reHasRegExpChar is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:156:7: [definite] The variable reTrim is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:157:7: [definite] The variable reTrimStart is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:158:7: [definite] The variable reTrimEnd is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:161:7: [definite] The variable reWrapComment is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:162:7: [definite] The variable reWrapDetails is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:163:7: [definite] The variable reSplitDetails is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:166:7: [definite] The variable reAsciiWord is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:169:7: [definite] The variable reEscapeChar is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:175:7: [definite] The variable reEsTemplate is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:178:7: [definite] The variable reFlags is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:181:7: [definite] The variable reIsBadHex is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:184:7: [definite] The variable reIsBinary is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:187:7: [definite] The variable reIsHostCtor is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:190:7: [definite] The variable reIsOctal is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:193:7: [definite] The variable reIsUint is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:196:7: [definite] The variable reLatin is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:199:7: [definite] The variable reNoMatch is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:202:7: [definite] The variable reUnescapedString is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:252:7: [definite] The variable reApos is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:258:7: [definite] The variable reComboMark is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:261:7: [definite] The variable reUnicode is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:264:7: [definite] The variable reUnicodeWord is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:276:7: [definite] The variable reHasUnicode is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:279:7: [definite] The variable reHasUnicodeWord is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:282:7: [definite] The variable contextProps is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:291:7: [definite] The variable templateCounter is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:402:7: [definite] The variable stringEscapes is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:412:7: [definite] The variable freeParseFloat is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:413:7: [definite] The variable freeParseInt is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:448:7: [definite] Unreachable code
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:471:3: [definite] Unreachable function apply
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:491:3: [definite] Unreachable function arrayAggregator
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:532:3: [definite] Unreachable function arrayEachRight
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:553:3: [definite] Unreachable function arrayEvery
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:598:3: [definite] Unreachable function arrayIncludes
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:612:3: [definite] Unreachable function arrayIncludesWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:633:3: [definite] Unreachable function arrayMap
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:652:3: [definite] Unreachable function arrayPush
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:675:3: [definite] Unreachable function arrayReduce
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:700:3: [definite] Unreachable function arrayReduceRight
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:721:3: [definite] Unreachable function arraySome
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:740:7: [definite] The variable asciiSize is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:749:3: [definite] Unreachable function asciiToArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:760:3: [definite] Unreachable function asciiWords
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:775:3: [definite] Unreachable function baseFindKey
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:777:26: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:797:3: [definite] Unreachable function baseFindIndex
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:818:3: [definite] Unreachable function baseIndexOf
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:834:3: [definite] Unreachable function baseIndexOfWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:853:3: [definite] Unreachable function baseIsNaN
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:878:3: [definite] The variable key is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:879:12: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:891:3: [definite] The variable object is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:892:12: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:910:3: [definite] Unreachable function baseReduce
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:911:26: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:929:3: [definite] Unreachable function baseSortBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:971:3: [definite] Unreachable function baseTimes
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:990:3: [definite] Unreachable function baseToPairs
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:991:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1003:3: [definite] Unreachable function baseUnary
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1004:12: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1019:3: [definite] Unreachable function baseValues
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1020:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1033:3: [definite] Unreachable function cacheHas
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1046:3: [definite] Unreachable function charsStartIndex
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1063:3: [definite] Unreachable function charsEndIndex
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1078:3: [definite] Unreachable function countHolders
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1098:7: [definite] The variable deburrLetter is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1107:7: [definite] The variable escapeHtmlChar is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1116:3: [definite] Unreachable function escapeStringChar
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1139:3: [definite] Unreachable function hasUnicode
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1150:3: [definite] Unreachable function hasUnicodeWord
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1161:3: [definite] Unreachable function iteratorToArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1178:3: [definite] Unreachable function mapToArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1182:17: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1211:3: [definite] Unreachable function replaceHolders
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1235:3: [definite] Unreachable function safeGet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1265:3: [definite] Unreachable function setToPairs
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1269:17: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1285:3: [definite] Unreachable function strictIndexOf
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1307:3: [definite] Unreachable function strictLastIndexOf
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1324:3: [definite] Unreachable function stringSize
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1337:3: [definite] Unreachable function stringToArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1350:7: [definite] The variable unescapeHtmlChar is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1359:3: [definite] Unreachable function unicodeSize
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1374:3: [definite] Unreachable function unicodeToArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1385:3: [definite] Unreachable function unicodeWords
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1426:9: [definite] The variable Error is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1431:9: [definite] The variable String is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1432:9: [definite] The variable TypeError is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1449:9: [definite] The variable idCounter is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1465:9: [definite] The variable objectCtorString is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1468:9: [definite] The variable oldDash is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1479:9: [definite] The variable Uint8Array is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1480:9: [definite] The variable allocUnsafe is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1481:9: [definite] The variable getPrototype is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1483:9: [definite] The variable propertyIsEnumerable is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1484:9: [definite] The variable splice is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1485:9: [definite] The variable spreadableSymbol is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1494:9: [definite] Unreachable code
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1503:9: [definite] The variable nativeCeil is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1504:9: [definite] The variable nativeFloor is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1507:9: [definite] The variable nativeIsFinite is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1508:9: [definite] The variable nativeJoin is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1511:9: [definite] The variable nativeMin is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1513:9: [definite] The variable nativeParseInt is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1514:9: [definite] The variable nativeRandom is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1515:9: [definite] The variable nativeReverse is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1532:9: [definite] The variable dataViewCtorString is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1533:9: [definite] The variable mapCtorString is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1534:9: [definite] The variable promiseCtorString is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1535:9: [definite] The variable setCtorString is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1536:9: [definite] The variable weakMapCtorString is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1540:9: [definite] The variable symbolValueOf is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1541:9: [definite] The variable symbolToString is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1662:5: [definite] Unreachable function lodash
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1683:7: [definite] Unreachable function object
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1692:13: [definite] The variable result is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1703:5: [definite] Unreachable function baseLodash
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1714:5: [definite] Unreachable function LodashWrapper
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1799:5: [definite] Unreachable function LazyWrapper
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1817:5: [definite] Unreachable function lazyClone
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1836:5: [definite] Unreachable function lazyReverse
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1856:5: [definite] Unreachable function lazyValue
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1924:13: [definite] The variable entry is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1951:5: [definite] Unreachable function hashDelete
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1966:5: [definite] Unreachable function hashGet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1984:5: [definite] Unreachable function hashHas
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1999:5: [definite] Unreachable function hashSet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2022:5: [definite] Unreachable function ListCache
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2040:5: [definite] Unreachable function listCacheClear
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2054:5: [definite] Unreachable function listCacheDelete
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2080:5: [definite] Unreachable function listCacheGet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2096:5: [definite] Unreachable function listCacheHas
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2110:5: [definite] Unreachable function listCacheSet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2145:13: [definite] The variable entry is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2175:5: [definite] Unreachable function mapCacheDelete
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2190:5: [definite] Unreachable function mapCacheGet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2203:5: [definite] Unreachable function mapCacheHas
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2217:5: [definite] Unreachable function mapCacheSet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2243:5: [definite] Unreachable function SetCache
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2263:5: [definite] Unreachable function setCacheAdd
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2277:5: [definite] Unreachable function setCacheHas
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2294:5: [definite] Unreachable function Stack
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2306:5: [definite] Unreachable function stackClear
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2320:5: [definite] Unreachable function stackDelete
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2337:5: [definite] Unreachable function stackGet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2350:5: [definite] Unreachable function stackHas
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2364:5: [definite] Unreachable function stackSet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2397:5: [definite] Unreachable function arrayLikeKeys
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2431:5: [definite] Unreachable function arraySample
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2444:5: [definite] Unreachable function arraySampleSize
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2455:5: [definite] Unreachable function arrayShuffle
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2468:5: [definite] Unreachable function assignMergeValue
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2485:5: [definite] Unreachable function assignValue
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2501:5: [definite] Unreachable function assocIndexOf
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2522:5: [definite] Unreachable function baseAggregator
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2523:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2538:5: [definite] Unreachable function baseAssign
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2551:5: [definite] Unreachable function baseAssignIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2564:5: [definite] Unreachable function baseAssignValue
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2585:5: [definite] Unreachable function baseAt
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2606:5: [definite] Unreachable function baseClamp
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2634:5: [definite] Unreachable function baseClone
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2685:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2693:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2705:33: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2723:5: [definite] Unreachable function baseConforms
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2725:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2738:5: [definite] Unreachable function baseConformsTo
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2766:5: [definite] Unreachable function baseDelay
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2770:25: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2784:5: [definite] Unreachable function baseDifference
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2837:9: [definite] The variable baseEach is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2847:9: [definite] The variable baseEachRight is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2858:5: [definite] Unreachable function baseEvery
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2860:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2877:5: [definite] Unreachable function baseExtremum
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2906:5: [definite] Unreachable function baseFill
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2932:5: [definite] Unreachable function baseFilter
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2934:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2953:5: [definite] Unreachable function baseFlatten
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2999:9: [definite] The variable baseForRight is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3021:5: [definite] Unreachable function baseForOwnRight
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3048:5: [definite] Unreachable function baseGet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3071:5: [definite] Unreachable function baseGetAllKeys
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3101:5: [definite] Unreachable function baseGt
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3113:5: [definite] Unreachable function baseHas
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3125:5: [definite] Unreachable function baseHasIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3138:5: [definite] Unreachable function baseInRange
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3152:5: [definite] Unreachable function baseIntersection
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3216:5: [definite] Unreachable function baseInverter
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3217:26: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3233:5: [definite] Unreachable function baseInvoke
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3258:5: [definite] Unreachable function baseIsArrayBuffer
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3269:5: [definite] Unreachable function baseIsDate
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3287:5: [definite] Unreachable function baseIsEqual
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3311:5: [definite] Unreachable function baseIsEqualDeep
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3363:5: [definite] Unreachable function baseIsMap
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3377:5: [definite] Unreachable function baseIsMatch
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3444:5: [definite] Unreachable function baseIsRegExp
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3455:5: [definite] Unreachable function baseIsSet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3466:5: [definite] Unreachable function baseIsTypedArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3478:5: [definite] Unreachable function baseIteratee
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3522:5: [definite] Unreachable function baseKeysIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3546:5: [definite] Unreachable function baseLt
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3558:5: [definite] Unreachable function baseMap
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3562:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3575:5: [definite] Unreachable function baseMatches
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3580:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3593:5: [definite] Unreachable function baseMatchesProperty
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3597:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3616:5: [definite] Unreachable function baseMerge
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3620:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3653:5: [definite] Unreachable function baseMergeDeep
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3723:5: [definite] Unreachable function baseNth
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3741:5: [definite] Unreachable function baseOrderBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3745:40: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3746:44: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3752:33: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3766:5: [definite] Unreachable function basePick
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3767:40: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3781:5: [definite] Unreachable function basePickBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3804:5: [definite] Unreachable function basePropertyDeep
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3805:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3821:5: [definite] Unreachable function basePullAll
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3857:5: [definite] Unreachable function basePullAt
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3884:5: [definite] Unreachable function baseRandom
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3899:5: [definite] Unreachable function baseRange
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3919:5: [definite] Unreachable function baseRepeat
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3958:5: [definite] Unreachable function baseSample
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3970:5: [definite] Unreachable function baseSampleSize
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3985:5: [definite] Unreachable function baseSet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4023:45: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4052:5: [definite] Unreachable function baseShuffle
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4065:5: [definite] Unreachable function baseSlice
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4095:5: [definite] Unreachable function baseSome
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4098:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4117:5: [definite] Unreachable function baseSortedIndex
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4151:5: [definite] Unreachable function baseSortedIndexBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4200:5: [definite] Unreachable function baseSortedUniq
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4226:5: [definite] Unreachable function baseToNumber
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4244:5: [definite] Unreachable function baseToString
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4269:5: [definite] Unreachable function baseUniq
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4329:5: [definite] Unreachable function baseUnset
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4345:5: [definite] Unreachable function baseUpdate
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4360:5: [definite] Unreachable function baseWhile
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4382:5: [definite] Unreachable function baseWrapperValue
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4387:35: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4402:5: [definite] Unreachable function baseXor
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4432:5: [definite] Unreachable function baseZipObject
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4452:5: [definite] Unreachable function castArrayLikeObject
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4463:5: [definite] Unreachable function castFunction
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4475:5: [definite] Unreachable function castPath
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4502:5: [definite] Unreachable function castSlice
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4514:9: [definite] The variable clearTimeout is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4514:43: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4526:5: [definite] Unreachable function cloneBuffer
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4544:5: [definite] Unreachable function cloneArrayBuffer
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4558:5: [definite] Unreachable function cloneDataView
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4570:5: [definite] Unreachable function cloneRegExp
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4583:5: [definite] Unreachable function cloneSymbol
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4595:5: [definite] Unreachable function cloneTypedArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4608:5: [definite] Unreachable function compareAscending
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4652:5: [definite] Unreachable function compareMultiple
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4690:5: [definite] Unreachable function composeArgs
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4725:5: [definite] Unreachable function composeArgsRight
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4759:5: [definite] Unreachable function copyArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4780:5: [definite] Unreachable function copyObject
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4814:5: [definite] Unreachable function copySymbols
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4826:5: [definite] Unreachable function copySymbolsIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4838:5: [definite] The variable initializer is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4838:5: [definite] The variable setter is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4839:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4854:5: [definite] The variable assigner is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4855:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4888:5: [definite] The variable eachFunc is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4888:5: [definite] The variable fromRight is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4889:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4943:5: [definite] Unreachable function createBind
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4947:7: [definite] Unreachable function wrapper
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4961:5: [definite] The variable methodName is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4962:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4988:5: [definite] The variable callback is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4989:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5002:5: [definite] Unreachable function createCtor
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5003:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5036:5: [definite] Unreachable function createCurry
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5039:7: [definite] Unreachable function wrapper
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5071:5: [definite] The variable findIndexFunc is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5072:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5077:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5091:5: [definite] The variable fromRight is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5092:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5127:16: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5164:5: [definite] The variable argPos is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5164:5: [definite] The variable arity is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5164:5: [definite] The variable ary is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5164:5: [definite] The variable func is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5164:5: [definite] The variable holders is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5164:5: [definite] The variable holdersRight is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5164:5: [definite] The variable partials is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5164:5: [definite] The variable partialsRight is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5164:5: [definite] The variable thisArg is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5165:11: [definite] The variable isAry is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5166:11: [definite] The variable isBind is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5168:11: [definite] The variable isCurried is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5169:11: [definite] The variable isFlip is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5170:11: [definite] The variable Ctor is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5172:7: [definite] Unreachable function wrapper
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5226:5: [definite] The variable setter is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5226:5: [definite] The variable toIteratee is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5227:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5240:5: [definite] The variable defaultValue is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5240:5: [definite] The variable operator is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5241:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5273:5: [definite] The variable arrayFunc is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5274:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5276:25: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5278:39: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5294:5: [definite] Unreachable function createPadding
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5319:5: [definite] Unreachable function createPartial
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5323:7: [definite] Unreachable function wrapper
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5349:5: [definite] The variable fromRight is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5350:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5374:5: [definite] The variable operator is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5375:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5401:5: [definite] Unreachable function createRecurry
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5435:11: [definite] The variable func is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5436:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5459:9: [definite] The variable createSet is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5459:88: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5470:5: [definite] The variable keysFunc is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5471:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5508:5: [definite] Unreachable function createWrap
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5575:5: [definite] Unreachable function customDefaultsAssignIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5597:5: [definite] Unreachable function customDefaultsMerge
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5616:5: [definite] Unreachable function customOmitClone
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5633:5: [definite] Unreachable function equalArrays
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5672:33: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5711:5: [definite] Unreachable function equalByTag
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5789:5: [definite] Unreachable function equalObjects
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5871:5: [definite] Unreachable function getAllKeys
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5883:5: [definite] Unreachable function getAllKeysIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5894:9: [definite] The variable getData is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5894:37: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5905:5: [definite] Unreachable function getFuncName
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5927:5: [definite] Unreachable function getHolder
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5943:5: [definite] Unreachable function getIteratee
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5957:5: [definite] Unreachable function getMapData
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5971:5: [definite] Unreachable function getMatchData
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6006:11: [definite] The variable tag is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6011:9: [definite] Unreachable code
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6031:9: [definite] The variable getSymbols is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6031:54: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6036:52: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6048:9: [definite] The variable getSymbolsIn is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6048:56: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6072:16: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6100:5: [definite] Unreachable function getView
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6125:5: [definite] Unreachable function getWrapDetails
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6139:5: [definite] Unreachable function hasPath
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6168:5: [definite] Unreachable function initCloneArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6187:5: [definite] Unreachable function initCloneObject
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6205:5: [definite] Unreachable function initCloneByTag
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6249:5: [definite] Unreachable function insertWrapDetails
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6267:5: [definite] Unreachable function isFlattenable
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6280:5: [definite] Unreachable function isIndex
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6300:5: [definite] Unreachable function isIterateeCall
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6322:5: [definite] Unreachable function isKey
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6342:5: [definite] Unreachable function isKeyable
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6357:5: [definite] Unreachable function isLaziable
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6378:5: [definite] The variable func is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6389:9: [definite] The variable isMaskable is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6413:5: [definite] Unreachable function isStrictComparable
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6426:5: [definite] Unreachable function matchesStrictComparable
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6427:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6445:34: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6452:11: [definite] The variable cache is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6472:5: [definite] Unreachable function mergeData
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6536:5: [definite] Unreachable function nativeKeysIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6566:5: [definite] The variable transform is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6568:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6595:5: [definite] Unreachable function parent
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6609:5: [definite] Unreachable function reorder
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6635:9: [definite] The variable setData is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6645:9: [definite] The variable setTimeout is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6645:39: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6669:5: [definite] Unreachable function setWrapToString
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6694:30: [definite] Unreachable code
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6711:5: [definite] Unreachable function shuffleSelf
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6735:9: [definite] The variable stringToPath is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6735:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6740:34: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6753:5: [definite] Unreachable function toKey
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6772:11: [definite] Unreachable code
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6775:11: [definite] Unreachable code
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6788:5: [definite] Unreachable function updateWrapDetails
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6789:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6805:5: [definite] Unreachable function wrapperClone
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6839:5: [definite] Unreachable function chunk
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6874:5: [definite] Unreachable function compact
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6911:5: [definite] Unreachable function concat
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6947:31: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6979:33: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7012:35: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7047:5: [definite] Unreachable function drop
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7081:5: [definite] Unreachable function dropRight
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7126:5: [definite] Unreachable function dropRightWhile
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7167:5: [definite] Unreachable function dropWhile
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7202:5: [definite] Unreachable function fill
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7249:5: [definite] Unreachable function findIndex
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7296:5: [definite] Unreachable function findLastIndex
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7325:5: [definite] Unreachable function flatten
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7344:5: [definite] Unreachable function flattenDeep
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7369:5: [definite] Unreachable function flattenDepth
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7393:5: [definite] Unreachable function fromPairs
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7423:5: [definite] Unreachable function head
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7450:5: [definite] Unreachable function indexOf
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7476:5: [definite] Unreachable function initial
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7498:33: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7528:35: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7563:37: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7591:5: [definite] Unreachable function join
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7609:5: [definite] Unreachable function last
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7635:5: [definite] Unreachable function lastIndexOf
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7671:5: [definite] Unreachable function nth
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7720:5: [definite] Unreachable function pullAll
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7749:5: [definite] Unreachable function pullAllBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7778:5: [definite] Unreachable function pullAllWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7808:27: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7812:43: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7847:5: [definite] Unreachable function remove
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7891:5: [definite] Unreachable function reverse
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7911:5: [definite] Unreachable function slice
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7944:5: [definite] Unreachable function sortedIndex
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7973:5: [definite] Unreachable function sortedIndexBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:7993:5: [definite] Unreachable function sortedIndexOf
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8022:5: [definite] Unreachable function sortedLastIndex
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8051:5: [definite] Unreachable function sortedLastIndexBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8071:5: [definite] Unreachable function sortedLastIndexOf
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8097:5: [definite] Unreachable function sortedUniq
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8119:5: [definite] Unreachable function sortedUniqBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8139:5: [definite] Unreachable function tail
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8169:5: [definite] Unreachable function take
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8202:5: [definite] Unreachable function takeRight
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8247:5: [definite] Unreachable function takeRightWhile
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8288:5: [definite] Unreachable function takeWhile
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8310:26: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8337:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8366:30: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8390:5: [definite] Unreachable function uniq
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8417:5: [definite] Unreachable function uniqBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8441:5: [definite] Unreachable function uniqWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8465:5: [definite] Unreachable function unzip
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8470:34: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8476:32: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8502:5: [definite] Unreachable function unzipWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8510:31: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8535:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8559:24: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8586:26: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8615:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8655:5: [definite] Unreachable function zipObject
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8674:5: [definite] Unreachable function zipObjectDeep
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8698:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8737:5: [definite] Unreachable function chain
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8766:5: [definite] Unreachable function tap
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8794:5: [definite] Unreachable function thru
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8814:30: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8818:25: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8830:60: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8865:5: [definite] Unreachable function wrapperChain
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8895:5: [definite] Unreachable function wrapperCommit
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8921:5: [definite] Unreachable function wrapperNext
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8949:5: [definite] Unreachable function wrapperToIterator
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:8977:5: [definite] Unreachable function wrapperPlant
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9017:5: [definite] Unreachable function wrapperReverse
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9049:5: [definite] Unreachable function wrapperValue
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9077:36: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9126:5: [definite] Unreachable function every
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9171:5: [definite] Unreachable function filter
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9256:5: [definite] Unreachable function flatMap
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9280:5: [definite] Unreachable function flatMapDeep
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9305:5: [definite] Unreachable function flatMapDepth
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9340:5: [definite] Unreachable function forEach
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9365:5: [definite] Unreachable function forEachRight
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9393:36: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9431:5: [definite] Unreachable function includes
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9467:30: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9472:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9506:34: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9552:5: [definite] Unreachable function map
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9586:5: [definite] Unreachable function orderBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9636:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9638:8: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9677:5: [definite] Unreachable function reduce
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9706:5: [definite] Unreachable function reduceRight
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9747:5: [definite] Unreachable function reject
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9766:5: [definite] Unreachable function sample
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9791:5: [definite] Unreachable function sampleSize
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9816:5: [definite] Unreachable function shuffle
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9842:5: [definite] Unreachable function size
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9892:5: [definite] Unreachable function some
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9929:27: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9960:25: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9990:5: [definite] Unreachable function after
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:9995:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10019:5: [definite] Unreachable function ary
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10042:5: [definite] Unreachable function before
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10048:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10094:25: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10148:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10198:5: [definite] Unreachable function curry
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10243:5: [definite] Unreachable function curryRight
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10304:5: [definite] Unreachable function debounce
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10327:7: [definite] Unreachable function invokeFunc
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10337:7: [definite] Unreachable function leadingEdge
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10346:7: [definite] Unreachable function remainingWait
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10356:7: [definite] Unreachable function shouldInvoke
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10367:7: [definite] Unreachable function timerExpired
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10376:7: [definite] Unreachable function trailingEdge
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10388:7: [definite] Unreachable function cancel
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10396:7: [definite] Unreachable function flush
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10400:7: [definite] Unreachable function debounced
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10446:26: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10469:26: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10491:5: [definite] Unreachable function flip
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10543:22: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10582:5: [definite] Unreachable function negate
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10586:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10616:5: [definite] Unreachable function once
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10651:29: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10657:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10701:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10738:33: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10765:26: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10794:5: [definite] Unreachable function rest
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10836:5: [definite] Unreachable function spread
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10841:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10896:5: [definite] Unreachable function throttle
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10929:5: [definite] Unreachable function unary
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10955:5: [definite] Unreachable function wrap
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10994:5: [definite] Unreachable function castArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11028:5: [definite] Unreachable function clone
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11063:5: [definite] Unreachable function cloneWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11086:5: [definite] Unreachable function cloneDeep
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11118:5: [definite] Unreachable function cloneDeepWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11147:5: [definite] Unreachable function conformsTo
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11183:5: [definite] Unreachable function eq
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11235:41: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11257:95: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11360:5: [definite] Unreachable function isArrayLikeObject
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11381:5: [definite] Unreachable function isBoolean
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11441:5: [definite] Unreachable function isElement
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11478:5: [definite] Unreachable function isEmpty
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11530:5: [definite] Unreachable function isEqual
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11566:5: [definite] Unreachable function isEqualWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11590:5: [definite] Unreachable function isError
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11625:5: [definite] Unreachable function isFinite
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11682:5: [definite] Unreachable function isInteger
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11822:5: [definite] Unreachable function isMatch
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11858:5: [definite] Unreachable function isMatchWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11891:5: [definite] Unreachable function isNaN
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11924:5: [definite] Unreachable function isNative
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11948:5: [definite] Unreachable function isNull
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11972:5: [definite] Unreachable function isNil
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12002:5: [definite] Unreachable function isNumber
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12035:5: [definite] Unreachable function isPlainObject
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12094:5: [definite] Unreachable function isSafeInteger
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12134:5: [definite] Unreachable function isString
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12156:5: [definite] Unreachable function isSymbol
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12197:5: [definite] Unreachable function isUndefined
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12218:5: [definite] Unreachable function isWeakMap
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12239:5: [definite] Unreachable function isWeakSet
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12291:41: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12318:5: [definite] Unreachable function toArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12357:5: [definite] Unreachable function toFinite
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12395:5: [definite] Unreachable function toInteger
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12429:5: [definite] Unreachable function toLength
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12456:5: [definite] Unreachable function toNumber
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12501:5: [definite] Unreachable function toPlainObject
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12529:5: [definite] Unreachable function toSafeInteger
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12556:5: [definite] Unreachable function toString
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12594:33: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12637:35: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12670:39: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12702:37: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12759:5: [definite] Unreachable function create
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12785:29: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12835:33: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12875:5: [definite] Unreachable function findKey
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12914:5: [definite] Unreachable function findLastKey
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12946:5: [definite] Unreachable function forIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12978:5: [definite] Unreachable function forInRight
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13012:5: [definite] Unreachable function forOwn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13042:5: [definite] Unreachable function forOwnRight
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13069:5: [definite] Unreachable function functions
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13096:5: [definite] Unreachable function functionsIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13125:5: [definite] Unreachable function get
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13157:5: [definite] Unreachable function has
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13187:5: [definite] Unreachable function hasIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13209:33: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13244:35: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13332:5: [definite] Unreachable function keysIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13357:5: [definite] Unreachable function mapKeys
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13361:26: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13395:5: [definite] Unreachable function mapValues
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13399:26: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13436:32: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13471:36: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13495:25: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13501:31: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13537:5: [definite] Unreachable function omitBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13558:25: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13580:5: [definite] Unreachable function pickBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13584:50: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13588:40: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13622:5: [definite] Unreachable function result
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13672:5: [definite] Unreachable function set
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13700:5: [definite] Unreachable function setWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13787:5: [definite] Unreachable function transform
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13804:52: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13837:5: [definite] Unreachable function unset
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13868:5: [definite] Unreachable function update
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13896:5: [definite] Unreachable function updateWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13927:5: [definite] Unreachable function values
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13955:5: [definite] Unreachable function valuesIn
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13980:5: [definite] Unreachable function clamp
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14034:5: [definite] Unreachable function inRange
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14077:5: [definite] Unreachable function random
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14138:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14158:5: [definite] Unreachable function capitalize
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14180:5: [definite] Unreachable function deburr
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14208:5: [definite] Unreachable function endsWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14250:5: [definite] Unreachable function escape
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14272:5: [definite] Unreachable function escapeRegExp
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14300:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14324:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14370:5: [definite] Unreachable function pad
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14409:5: [definite] Unreachable function padEnd
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14442:5: [definite] Unreachable function padStart
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14476:5: [definite] Unreachable function parseInt
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14507:5: [definite] Unreachable function repeat
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14535:5: [definite] Unreachable function replace
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14563:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14586:5: [definite] Unreachable function split
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14628:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14655:5: [definite] Unreachable function startsWith
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14769:5: [definite] Unreachable function template
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14806:36: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14863:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14898:5: [definite] Unreachable function toLower
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14923:5: [definite] Unreachable function toUpper
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14949:5: [definite] Unreachable function trim
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:14984:5: [definite] Unreachable function trimEnd
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15017:5: [definite] Unreachable function trimStart
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15068:5: [definite] Unreachable function truncate
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15143:5: [definite] Unreachable function unescape
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15170:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15212:5: [definite] Unreachable function words
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15246:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15280:28: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15281:30: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15317:5: [definite] Unreachable function cond
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15321:46: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15328:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15363:5: [definite] Unreachable function conforms
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15386:5: [definite] The variable value is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15387:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15412:5: [definite] Unreachable function defaultTo
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15525:5: [definite] Unreachable function iteratee
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15557:5: [definite] Unreachable function matches
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15587:5: [definite] Unreachable function matchesProperty
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15615:27: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15616:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15644:29: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15645:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15691:57: [definite] Unreachable code
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15697:11: [definite] The variable chain is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15704:42: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15735:5: [definite] Unreachable function noConflict
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15754:5: [definite] Unreachable function noop
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15778:5: [definite] Unreachable function nthArg
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15780:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15879:5: [definite] Unreachable function property
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15904:5: [definite] Unreachable function propertyOf
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15905:14: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16009:5: [definite] Unreachable function stubArray
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16026:5: [definite] Unreachable function stubFalse
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16048:5: [definite] Unreachable function stubObject
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16065:5: [definite] Unreachable function stubString
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16082:5: [definite] Unreachable function stubTrue
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16105:5: [definite] Unreachable function times
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16140:5: [definite] Unreachable function toPath
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16164:5: [definite] Unreachable function uniqueId
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16186:35: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16228:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16273:5: [definite] Unreachable function max
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16302:5: [definite] Unreachable function maxBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16349:5: [definite] Unreachable function meanBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16371:5: [definite] Unreachable function min
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16400:5: [definite] Unreachable function minBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16421:40: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16463:40: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16481:5: [definite] Unreachable function sum
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16510:5: [definite] Unreachable function sumBy
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16863:33: [definite] The variable index is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16864:43: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16882:53: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16890:11: [definite] The variable isFilter is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16892:43: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16905:11: [definite] The variable takeName is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16907:43: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16914:11: [definite] The variable dropName is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16916:43: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16921:37: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16925:34: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16929:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16933:48: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16937:23: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16942:36: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16946:35: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16965:44: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16969:37: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16974:39: [definite] The variable func is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16975:11: [definite] The variable checkIteratee is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16978:11: [definite] The variable retUnwrapped is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16983:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:16990:27: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17020:11: [definite] The variable func is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17021:11: [definite] The variable chainName is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17022:11: [definite] The variable retUnwrapped is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17024:38: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17030:32: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17037:39: [definite] The variable func is never used
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17090:12: [definite] Unreachable function
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11332:40: [maybe] Reading absent property length
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:516:20: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:581:19: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1472:7: [maybe] Converting primitive string to object
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3036:27: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4924:21: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:24: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5459:35: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:21: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/test-suite/4.17.10/lodash_test_298.html: [maybe] Uncaught exception, constructed at [HOST(es6-collections.js):122:65, HOST(es6-collections.js):268:36]
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3036:27: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3507:7: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:24: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 19549 checks (with 0 expected failures)

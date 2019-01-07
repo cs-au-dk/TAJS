@@ -10,10 +10,9 @@ test-resources/src/1k2012love/1209.js:41:33: [definite] Dead assignment, propert
 test-resources/src/1k2012love/1209.js:41:40: [definite] Dead assignment, property 28 is never read
 test-resources/src/1k2012love/1209.js:41:47: [definite] Dead assignment, property 33 is never read
 test-resources/src/1k2012love/1209.js:29:3: [definite] The variable xPos is never used
-test-resources/src/1k2012love/1209.js:95:11: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1209.js:130:3: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2012love/1209.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1209.js:95:11, test-resources/src/1k2012love/1209.js:130:3, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1209.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1209.js:130:3, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1209.js:56:3: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1209.js:73:4: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1209.js:86:15: [maybe] Conversion to number yields NaN

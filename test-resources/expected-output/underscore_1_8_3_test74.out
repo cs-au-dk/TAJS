@@ -1,0 +1,369 @@
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:48:3: [definite] The conditional expression is always false
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:64:5: [definite] The conditional expression is always true
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:64:9: [definite] Variable context is null/undefined
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:89:55: [definite] Variable context is null/undefined
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:89:64: [definite] Variable argCount is null/undefined
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:90:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:127:14: [definite] The conditional expression is always false
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:139:12: [definite] The conditional expression is always true
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:149:37: [definite] Variable context is null/undefined
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:397:31: [definite] Variable context is null/undefined
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:929:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:930:5: [definite] The conditional expression is always true
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1207:15: [definite] The conditional expression is always true
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1214:12: [definite] The conditional expression is always false
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1226:3: [definite] The conditional expression is always false
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1234:3: [definite] The conditional expression is always true
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1234:7: [definite] The conditional expression is always true
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1331:11: [definite] The conditional expression is always true
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1543:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:12:14: [definite] Reading 'this' yields the global object
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:15:28: [definite] Reading absent property _
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:905:22: [definite] Dead assignment, property toString is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:7: [definite] Dead assignment, property &#x27; is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:7: [definite] Dead assignment, property &#x60; is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:7: [definite] Dead assignment, property &amp; is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:7: [definite] Dead assignment, property &gt; is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:7: [definite] Dead assignment, property &lt; is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:7: [definite] Dead assignment, property &quot; is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1384:5: [definite] Dead assignment, property evaluate is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1385:5: [definite] Dead assignment, property interpolate is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1386:5: [definite] Dead assignment, property escape is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1397:5: [definite] Dead assignment, property ' is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1398:5: [definite] Dead assignment, property \\ is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1399:5: [definite] Dead assignment, property \r is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1400:5: [definite] Dead assignment, property \n is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1401:5: [definite] Dead assignment, property \u2028 is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1402:5: [definite] Dead assignment, property \u2029 is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property after is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property all is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property allKeys is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property any is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property assign is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property before is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property bind is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property bindAll is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property chain is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property clone is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property collect is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property compact is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property compose is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property constant is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property contains is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property countBy is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property create is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property debounce is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property defaults is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property defer is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property delay is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property detect is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property difference is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property drop is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property each is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property escape is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property every is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property extend is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property extendOwn is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property filter is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property find is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property findIndex is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property findKey is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property findLastIndex is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property findWhere is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property first is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property flatten is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property foldl is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property foldr is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property forEach is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property functions is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property groupBy is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property has is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property head is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property identity is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property include is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property includes is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property indexBy is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property indexOf is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property initial is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property inject is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property intersection is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property invert is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property invoke is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isArguments is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isArray is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isBoolean is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isDate is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isElement is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isEmpty is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isEqual is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isError is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isFinite is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isFunction is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isMatch is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isNaN is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isNull is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isNumber is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isObject is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isRegExp is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isString is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property isUndefined is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property iteratee is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property keys is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property last is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property lastIndexOf is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property map is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property mapObject is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property matcher is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property matches is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property max is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property memoize is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property methods is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property min is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property mixin is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property negate is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property noConflict is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property noop is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property now is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property object is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property omit is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property once is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property pairs is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property partial is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property partition is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property pick is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property pluck is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property property is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property propertyOf is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property random is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property range is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property reduce is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property reduceRight is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property reject is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property rest is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property result is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property sample is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property select is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property shuffle is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property size is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property some is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property sortBy is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property sortedIndex is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property tail is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property take is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property tap is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property template is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property throttle is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property times is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property toArray is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property unescape is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property union is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property uniq is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property unique is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property uniqueId is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property unzip is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property values is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property where is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property without is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property wrap is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:7: [definite] Dead assignment, property zip is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1507:5: [definite] Dead assignment, property pop is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1507:5: [definite] Dead assignment, property push is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1507:5: [definite] Dead assignment, property reverse is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1507:5: [definite] Dead assignment, property shift is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1507:5: [definite] Dead assignment, property sort is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1507:5: [definite] Dead assignment, property splice is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1507:5: [definite] Dead assignment, property unshift is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1518:5: [definite] Dead assignment, property concat is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1518:5: [definite] Dead assignment, property join is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1518:5: [definite] Dead assignment, property slice is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1530:3: [definite] Dead assignment, property valueOf is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1530:25: [definite] Dead assignment, property toJSON is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1532:3: [definite] Dead assignment, property toString is never read
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1548:8: [definite] Reading 'this' yields the global object
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:15:7: [definite] The variable previousUnderscore is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:22:5: [definite] The variable push is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:25:5: [definite] The variable hasOwnProperty is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:32:5: [definite] The variable nativeBind is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:33:5: [definite] The variable nativeCreate is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:36:7: [definite] The variable Ctor is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:36:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:39:11: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:63:20: [definite] The variable argCount is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:66:22: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:69:22: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:72:22: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:75:22: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:79:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:93:16: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:98:24: [definite] The variable keysFunc is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:98:24: [definite] The variable undefinedOnly is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:99:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:116:7: [definite] The variable baseCreate is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:116:20: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:156:11: [definite] The variable keys is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:156:18: [definite] Unreachable code
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:165:23: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:178:3: [definite] The variable dir is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:181:5: [definite] Unreachable function iterator
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:189:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:211:23: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:223:25: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:226:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:233:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:239:21: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:252:20: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:265:41: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:272:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:275:23: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:282:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:288:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:294:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:299:11: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:312:19: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:324:11: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:337:19: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:350:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:365:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:374:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:376:31: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:382:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:408:21: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:421:21: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:426:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:434:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:441:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:444:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:456:31: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:465:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:471:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:480:30: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:485:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:490:7: [definite] The variable flatten is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:490:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:510:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:515:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:522:23: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:551:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:557:20: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:573:18: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:575:28: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:582:11: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:588:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:601:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:614:3: [definite] The variable dir is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:615:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:632:19: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:644:3: [definite] The variable dir is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:644:3: [definite] The variable predicateFind is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:644:3: [definite] The variable sortedIndex is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:645:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:678:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:700:7: [definite] The variable executeBound is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:700:22: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:711:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:715:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:724:15: [definite] The variable func is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:725:9: [definite] The variable boundArgs is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:726:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:741:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:752:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:753:19: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:765:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:767:23: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:781:16: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:786:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:792:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:817:16: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:820:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:834:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:852:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:857:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:858:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:865:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:868:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:877:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:878:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:886:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:888:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:905:7: [definite] The variable hasEnumBug is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:906:7: [definite] The variable nonEnumerableProps is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:909:3: [definite] Unreachable function collectNonEnumProps
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:931:9: [definite] The variable keys is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:932:14: [definite] The variable key is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:939:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:949:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:961:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:975:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1013:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1023:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1031:18: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1043:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1048:18: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1061:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1068:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1076:11: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1082:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1095:7: [definite] The variable eq is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1095:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1188:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1194:15: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1201:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1207:32: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1227:21: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1241:16: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1246:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1251:17: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1256:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1261:19: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1267:11: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1276:18: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1287:16: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1288:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1293:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1298:18: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1299:26: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1299:41: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1306:27: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1308:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1314:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1322:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1331:23: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1348:9: [definite] The variable escaper is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1348:19: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1353:9: [definite] The variable testRegexp is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1354:9: [definite] The variable replaceRegexp is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1355:12: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1365:14: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1375:7: [definite] The variable idCounter is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1376:16: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1392:7: [definite] The variable noMatch is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1396:7: [definite] The variable escapes is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1405:7: [definite] The variable escaper is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1407:7: [definite] The variable escapeChar is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1407:20: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1415:16: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1429:27: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1460:20: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1472:13: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1485:7: [definite] The variable result is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1485:16: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:11: [definite] The variable func is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1493:27: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1506:9: [definite] The variable method is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1507:25: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1517:9: [definite] The variable method is never used
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1518:25: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1524:23: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1532:26: [definite] Unreachable function
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1544:30: [definite] Unreachable function
+benchmarks/tajs/src/underscore/test-suite/collections/test74.html: [definite] Exceptional program exit is unreachable
+benchmarks/tajs/src/underscore/test-suite/collections/test74.html:5:1: [definite] Unreachable function deepEqual
+benchmarks/tajs/src/underscore/test-suite/collections/test74.html:6:1: [definite] Unreachable function strictEqual
+benchmarks/tajs/src/underscore/test-suite/collections/test74.html:7:1: [definite] Unreachable function ok
+benchmarks/tajs/src/underscore/test-suite/collections/test74.html:8:1: [definite] Unreachable function notStrictEqual
+benchmarks/tajs/src/underscore/test-suite/collections/test74.html:9:1: [definite] Unreachable function start
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:127:37: [maybe] Converting primitive string to object
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:415:5: [maybe] Converting boolean to string
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 4104 checks (with 0 expected failures)

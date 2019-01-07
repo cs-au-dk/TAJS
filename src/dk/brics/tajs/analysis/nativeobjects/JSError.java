@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.AnalysisLimitationException;
 
@@ -93,7 +94,7 @@ public class JSError {
         state.newObject(obj);
         pv.writeProperty(obj, "stack", Value.makeAnyStr());
         state.writeInternalPrototype(obj, Value.makeObject(proto));
-        Value message = FunctionCalls.readParameter(call, state, 0);
+        Value message = FunctionCalls.readParameter(call, state, 0).summarize(new Summarized(obj));
         if (message.isMaybeOtherThanUndef())
             c.getAnalysis().getPropVarOperations().writeProperty(obj, "message", Conversion.toString(message.restrictToNotUndef(), c).removeAttributes());
         return Value.makeObject(obj);

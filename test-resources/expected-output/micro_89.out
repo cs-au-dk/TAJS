@@ -1,6 +1,6 @@
 test-resources/src/micro/test89.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test89.js:2:12: [maybe] The variable v has values with different types
 test-resources/src/micro/test89.js:11:1: [info] Abstract value: 87.0
-test-resources/src/micro/test89.js:13:1: [info] Abstract value: [*Object#node31]
+test-resources/src/micro/test89.js:13:1: [info] Abstract value: [*Object#node29]
 test-resources/src/micro/test89.js:14:1: [info] Abstract object: {a:87.0,[[Prototype]]=[@Object.prototype[native]]}
 Soundness testing succeeded for 34 checks (with 0 expected failures)

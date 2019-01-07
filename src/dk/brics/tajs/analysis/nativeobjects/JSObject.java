@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.PKeys;
 import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
@@ -43,7 +44,6 @@ import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -73,7 +73,7 @@ public class JSObject {
                 Value arg2 = arg.restrictToNotNullNotUndef().restrictToNotObject();
                 boolean arg_maybe_other = arg2.isMaybeOtherThanUndef() && arg2.isMaybeOtherThanNull();
                 // 15.2.1.1 step 2 for objects and 15.2.2.1 step 3 in one swoop. Slightly cheating, but toObject(Obj) = Obj.
-                Value res = arg.restrictToObject();
+                Value res = arg.restrictToNonSymbolObject();
                 // 15.2.1.1 step 2 for non-objects and 15.2.2.1 step 5-7.
                 res = arg_maybe_other ? res.join(Conversion.toObject(call.getSourceNode(), arg2.restrictToStrBoolNum(), c)) : res;
                 if (arg.isMaybeNull() || arg.isMaybeUndef()) {
@@ -89,16 +89,16 @@ public class JSObject {
             case OBJECT_CREATE: {
                 ObjectLabel obj = ObjectLabel.make(call.getSourceNode(), Kind.OBJECT);
                 state.newObject(obj);
-                Value prototype = FunctionCalls.readParameter(call, state, 0);
+                Value prototype = FunctionCalls.readParameter(call, state, 0).summarize(new Summarized(obj));
                 if (prototype.restrictToNotNull().isMaybePrimitiveOrSymbol()) {
                     Exceptions.throwTypeError(c);
                 }
-                if (prototype.restrictToObject().isNone() && prototype.restrictToNull().isNone()) {
+                if (prototype.restrictToNonSymbolObject().isNone() && prototype.restrictToNull().isNone()) {
                     return Value.makeNone();
                 }
                 state.writeInternalPrototype(obj, prototype);
 
-                Value properties = FunctionCalls.readParameter(call, state, 1);
+                Value properties = FunctionCalls.readParameter(call, state, 1).summarize(new Summarized(obj));
                 Value propertiesObject = Conversion.toObject(call.getSourceNode(), properties.restrictToNotUndef(), c);
                 boolean stopPropagation = false;
                 if (propertiesObject.isMaybeObject()) {
@@ -260,7 +260,7 @@ public class JSObject {
                 if (notNullOrObject) {
                     Exceptions.throwTypeError(c);
                 }
-                Value nullOrObject = proto.restrictToNull().join(proto.restrictToObject());
+                Value nullOrObject = proto.restrictToNull().join(proto.restrictToNonSymbolObject());
                 if (nullOrObject.isNone()) {
                     return Value.makeNone();
                 }
@@ -324,12 +324,15 @@ public class JSObject {
         }
         ObjectLabel array = JSArray.makeArray(call.getSourceNode(), c);
         boolean onlyEnumerable = nativeobject == ECMAScriptObjects.OBJECT_KEYS;
-        ObjProperties properties = state.getProperties(objectArg.getObjectLabels(), ObjProperties.PropertyQuery.makeQuery().setOnlyEnumerable(onlyEnumerable).setIncludeSymbols(symbols));
+        ObjProperties.PropertyQuery propertyQuery = ObjProperties.PropertyQuery.makeQuery();
+        propertyQuery = !symbols ? propertyQuery.setOnlyEnumerable(onlyEnumerable) : propertyQuery.onlySymbols();
+        ObjProperties properties = state.getProperties(objectArg.getObjectLabels(), propertyQuery);
+
         if (!properties.getMaybe().isEmpty()) {
             if ((properties.getMaybe().size() < 2 || c.getAnalysis().getUnsoundness().mayUseSortedObjectKeys(call.getSourceNode())) && properties.isDefinite()) {
                 // we know the *order* of property names
                 List<PKey> sortedNames = newList(properties.getDefinitely());
-                Collections.sort(sortedNames);
+                sortedNames.sort(new PKey.Comparator());
                 JSArray.setEntries(array, sortedNames.stream().map(PKey::toValue).collect(Collectors.toList()), c);
             } else {
                 // Order of properties is the same as for-in: unspecified.

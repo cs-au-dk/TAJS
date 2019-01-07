@@ -647,7 +647,7 @@ public class TestMicro {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisResultException.class /* TODO: GitHub #36 */)
+    @Test
     public void micro_101() throws Exception {
         Misc.run("test-resources/src/micro/test101.js");
     }
@@ -1988,16 +1988,16 @@ public class TestMicro {
 
     @Test
     public void object_create() {
-        Misc.runSource("var U = !!Math.random();",
-                "if(U){",
+        Misc.runSource(
+                "if(!TAJS_make('AnyBool')){",
                 "	var o1 = Object.create();",
                 "	TAJS_assert(false);",
                 "}",
-                "if(U){",
+                "if(TAJS_make('AnyBool')){",
                 "	var o2 = Object.create(null);",
                 "	TAJS_dumpObject(o2);",
                 "}",
-                "if(U){",
+                "if(TAJS_make('AnyBool')){",
                 "	var o3 = Object.create(Array);",
                 "	TAJS_dumpObject(o3);",
                 "}",
@@ -2697,8 +2697,7 @@ public class TestMicro {
         Options.get().enableNoRecency();
         Misc.runSource("var s1 = 'foo';",
                 "TAJS_assert(s1.search, 'isMaybeObject');",
-                "var U = !!Math.random();",
-                "var s2 = U? '%W': U? 42: U? 4.2: undefined;",
+                "var s2 = TAJS_make('AnyBool')? '%W': TAJS_make('AnyBool')? 42: TAJS_make('AnyBool')? 4.2: undefined;",
                 "TAJS_assert(s2.search, 'isMaybeObject')");
     }
 
@@ -3187,8 +3186,7 @@ public class TestMicro {
                 "f.apply(this, argumentArray1);",
                 "f.apply(this, argumentArray2);",
                 "f.apply(this, argumentArray3);",
-                "var U = !!Math.random();",
-                "var argumentArray123 = U? argumentArray1: U? argumentArray2: argumentArray3",
+                "var argumentArray123 = TAJS_make('AnyBool')? argumentArray1: TAJS_make('AnyBool')? argumentArray2: argumentArray3",
                 "f.apply(this, argumentArray123);"
         );
     }
@@ -4112,5 +4110,83 @@ public class TestMicro {
                         "}",
                         "TAJS_dumpValue(f('foo'));");
         Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void recencySummarizationSoundnessBug() {
+        Options.get().enableDeterminacy();
+        Options.get().enableNoLazy();
+        Misc.runSource(
+                "function create(prototype) {",
+                        "  return Object.create(prototype);",
+                        "}",
+                        "var y = create({bar: 2});",
+                        "var created = create(y);",
+                        "created.bar");
+
+    }
+
+    @Test
+    public void recencySummarizationSoundnessBugWithoutRecency() {
+        Options.get().enableDeterminacy();
+        Options.get().enableNoLazy();
+        Options.get().enableNoRecency();
+        Misc.runSource(
+                "function create(prototype) {",
+                "  return Object.create(prototype);",
+                "}",
+                "var y = create({bar: 2});",
+                "var created = create(y);",
+                "created.bar");
+
+    }
+
+    @Test
+    public void assumes() throws Exception {
+        Misc.run("test-resources/src/micro/assumes.js");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void testDelayReturnFlowUntilDischargedSoundnessBug() {
+        Misc.runSource(
+                "var hasBeenCalled = false;",
+                "",
+                "var debouncedIncr = function() {",
+                "  var x = hasBeenCalled;",
+                "  if (!hasBeenCalled) {",
+                "    hasBeenCalled = true;",
+                "    var result = (function(){ debouncedIncr();}());",
+                "  }",
+                "};",
+                "",
+                "debouncedIncr();");
+    }
+
+    @Test
+    public void domExceptionObjectToStringSoundnessBug() {
+        Options.get().enableIncludeDom();
+        Misc.runSource("try {",
+                "  document.querySelectorAll('<_<');",
+                "} catch (e) {",
+                "  TAJS_assertEquals('[object DOMException]', Object.prototype.toString.call(e));",
+                "}"
+        );
+    }
+
+    @Test
+    public void getOwnPropertySymbolsSoundnessBug() {
+        Misc.runSource("var length = Object.getOwnPropertySymbols({a:1, b:2, c:3}).length;",
+                "TAJS_assertEquals(0, length);");
+    }
+
+    @Test
+    public void arrayPushStrongUpdateSoundnessBug() {
+        Misc.runSource("function createArr() { return [] }",
+                "var summ1 = createArr();",
+                "var summ2 = createArr();",
+                "var singleton = createArr();",
+                "summ1.push(1)",
+                "TAJS_assert(0 === summ2.length, 'isMaybeTrue')");
     }
 }

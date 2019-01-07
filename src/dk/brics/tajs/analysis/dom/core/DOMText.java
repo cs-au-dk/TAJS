@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -105,7 +105,7 @@ public class DOMText {
                 return Value.makeObject(PROTOTYPE).joinNull();
             }
             default: {
-                throw new AnalysisException("Unknown Native Object: " + nativeObjects);
+                throw new AnalysisException(call.getJSSourceNode().getSourceLocation() + ": Unknown Native Object: " + nativeObjects);
             }
         }
     }

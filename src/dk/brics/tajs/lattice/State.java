@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.IState;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Strings;
 import org.apache.log4j.Logger;
@@ -116,6 +117,10 @@ public class State implements IState<State, Context, CallEdge> {
 
     private StateExtras extras;
 
+    private MustReachingDefs must_reaching_defs;
+
+    private MustEquals must_equals;
+
     private static int number_of_states_created;
 
     private static int number_of_makewritable_store;
@@ -130,6 +135,8 @@ public class State implements IState<State, Context, CallEdge> {
         this.block = block;
         summarized = new Summarized();
         extras = new StateExtras();
+        must_reaching_defs = new MustReachingDefs();
+        must_equals = new MustEquals();
         setToBottom();
         number_of_states_created++;
     }
@@ -158,20 +165,25 @@ public class State implements IState<State, Context, CallEdge> {
      */
     private void setToState(State x) {
         summarized = new Summarized(x.summarized);
-        store_default = x.store_default.freeze();
+        store_default = x.store_default = Canonicalizer.get().canonicalizeObj(x.store_default.freeze());
         extras = new StateExtras(x.extras);
+        must_reaching_defs = new MustReachingDefs(x.must_reaching_defs);
+        must_equals = new MustEquals(x.must_equals);
 //        if (Options.get().isCopyOnWriteDisabled()) {
-        store = newMap();
-        for (Map.Entry<ObjectLabel, Obj> xs : x.store.entrySet())
-            writeToStore(xs.getKey(), xs.getValue().freeze());
-        basis_store = x.basis_store;
-        writable_store = true;
-        execution_context = x.execution_context.clone();
-        registers = newList(x.registers);
-        writable_registers = true;
-        stacked_objlabels = newSet(x.stacked_objlabels);
-        stacked_funentries = newSet(x.stacked_funentries);
-        writable_stacked = true;
+            store = newMap();
+            for (Map.Entry<ObjectLabel, Obj> xs : x.store.entrySet()) {
+                Obj obj =  Canonicalizer.get().canonicalizeObj(xs.getValue().freeze());
+                writeToStore(xs.getKey(), obj);
+                xs.setValue(obj); // write back canonicalized object
+            }
+            basis_store = x.basis_store;
+            writable_store = true;
+            execution_context = x.execution_context.clone();
+            registers = newList(x.registers);
+            writable_registers = true;
+            stacked_objlabels = newSet(x.stacked_objlabels);
+            stacked_funentries = newSet(x.stacked_funentries);
+            writable_stacked = true;
 //        } else {
 //            store = x.store;
 //            basis_store = x.basis_store;
@@ -198,6 +210,20 @@ public class State implements IState<State, Context, CallEdge> {
      */
     public StateExtras getExtras() {
         return extras;
+    }
+
+    /**
+     * Returns the reaching definitions information.
+     */
+    public MustReachingDefs getMustReachingDefs() {
+        return must_reaching_defs;
+    }
+
+    /**
+     * Returns the must-equals information.
+     */
+    public MustEquals getMustEquals() {
+        return must_equals;
     }
 
     @Override
@@ -469,14 +495,13 @@ public class State implements IState<State, Context, CallEdge> {
         log.debug("clearModified()");
     }
 
-    /**
-     * Sets this state to the bottom abstract state.
-     * Used for representing 'no flow'.
-     */
+    @Override
     public void setToBottom() {
         basis_store = null;
         summarized.clear();
         extras.setToBottom();
+        must_reaching_defs.setToBottom();
+        must_equals.setToBottom();
 //        if (Options.get().isCopyOnWriteDisabled()) {
         store = newMap();
         writable_store = true;
@@ -861,6 +886,8 @@ public class State implements IState<State, Context, CallEdge> {
             changed |= stacked_objlabels.addAll(s.stacked_objlabels);
         changed |= stacked_funentries.addAll(s.stacked_funentries);
         changed |= extras.propagate(s.extras);
+        changed |= must_reaching_defs.propagate(s.must_reaching_defs);
+        changed |= must_equals.propagate(s.must_equals);
         changed |= summarized.join(s.summarized);
         if (!funentry) {
             for (int i = 0; i < registers.size() || i < s.registers.size(); i++) {
@@ -888,8 +915,7 @@ public class State implements IState<State, Context, CallEdge> {
                     writeToStore(lab, store_default);
                 }
             }
-            store_default = s.store_default;
-            store_default.freeze();
+            store_default = s.store_default = Canonicalizer.get().canonicalizeObj(s.store_default.freeze());
             changed = true;
         }
         if (log.isDebugEnabled()) {
@@ -1050,7 +1076,7 @@ public class State implements IState<State, Context, CallEdge> {
     /**
      * Returns the set of objects in the prototype chain that contain the property.
      */
-    public Set<ObjectLabel> getPrototypeWithProperty(ObjectLabel objlabel, PKeys propertyName) { // TODO: review
+    public Set<ObjectLabel> getPrototypeWithProperty(ObjectLabel objlabel, PKeys propertyName) { // TODO: review -- see PropVarOperations.readPropertyRaw
         if (Options.get().isDebugOrTestEnabled() && propertyName.isMaybeOtherThanStr()) {
             throw new AnalysisException("Uncoerced property name: " + propertyName);
         }
@@ -1202,6 +1228,7 @@ public class State implements IState<State, Context, CallEdge> {
                 }
             }
             extras.replaceObjectLabel(singleton, summary);
+            must_equals.setToBottom(singleton);
             if (Options.get().isLazyDisabled())
                 if (stacked_objlabels.contains(singleton)) {
                     makeWritableStacked();
@@ -1262,6 +1289,7 @@ public class State implements IState<State, Context, CallEdge> {
                 }
             }
             extras.replaceObjectLabel(objlabel, summarylabel);
+            must_equals.setToBottom(objlabel);
             if (Options.get().isLazyDisabled())
                 if (stacked_objlabels.contains(objlabel)) {
                     makeWritableStacked();
@@ -1301,32 +1329,6 @@ public class State implements IState<State, Context, CallEdge> {
                 return UnknownValueResolver.getInternalPrototype(objlabel, this, partial);
             case INTERNAL_VALUE:
                 return UnknownValueResolver.getInternalValue(objlabel, this, partial);
-            default:
-                throw new AnalysisException("Unexpected property reference");
-        }
-    }
-
-    /**
-     * Writes the designated property value.
-     */
-    public void writeProperty(ObjectProperty p, Value v) {
-        Obj obj = getObject(p.getObjectLabel(), true);
-        switch (p.getKind()) {
-            case ORDINARY:
-                obj.setProperty(p.getPropertyName(), v);
-                break;
-            case DEFAULT_NUMERIC:
-                obj.setDefaultNumericProperty(v);
-                break;
-            case DEFAULT_OTHER:
-                obj.setDefaultOtherProperty(v);
-                break;
-            case INTERNAL_PROTOTYPE:
-                obj.setInternalPrototype(v);
-                break;
-            case INTERNAL_VALUE:
-                obj.setInternalValue(v);
-                break;
             default:
                 throw new AnalysisException("Unexpected property reference");
         }
@@ -1524,7 +1526,7 @@ public class State implements IState<State, Context, CallEdge> {
     @Override
     public String diff(State old) {
         StringBuilder b = new StringBuilder();
-        for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store)) {
+        for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store, new ObjectLabel.Comparator())) {
             Obj xo = old.getObject(me.getKey(), false);
             if (!me.getValue().equals(xo)) {
                 b.append("\n      changed object ").append(me.getKey()).append(" at ").append(me.getKey().getSourceLocation()).append(": ");
@@ -1572,7 +1574,7 @@ public class State implements IState<State, Context, CallEdge> {
         b.append("\n  Execution context: ").append(execution_context);
         b.append("\n  Summarized: ").append(summarized);
         b.append("\n  Store (excluding basis and default objects): ");
-        for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store)) {
+        for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store, new ObjectLabel.Comparator())) {
             b.append("\n    ").append(me.getKey()).append(" (").append(me.getKey().getSourceLocation()).append("): ").append(me.getValue()).append("");
         }
 //        b.append("\n  Default object: ").append(store_default);
@@ -1582,6 +1584,12 @@ public class State implements IState<State, Context, CallEdge> {
             if (registers.get(i) != null)
                 b.append("\n    v").append(i).append("=").append(registers.get(i));
         b.append(extras);
+        String mrd = must_reaching_defs.toString();
+        if (!mrd.isEmpty())
+            b.append("\n  MustReachingDefs: ").append(mrd);
+        String me = must_equals.toString();
+        if (!me.isEmpty())
+            b.append("\n  MustEquals: ").append(me);
         if (Options.get().isLazyDisabled())
             b.append("\n  Objects used by outer scopes: ").append(stacked_objlabels);
         b.append("\n  Functions in stack: ").append(stacked_funentries);
@@ -1593,11 +1601,11 @@ public class State implements IState<State, Context, CallEdge> {
      */
     public String printObject(Value v) {
         StringBuilder b = new StringBuilder();
-        for (ObjectLabel obj : new TreeSet<>(v.getObjectLabels())) {
+        v.getObjectLabels().stream().sorted(new ObjectLabel.Comparator()).forEach(obj -> {
             if (b.length() > 0)
                 b.append(", ");
             b.append(getObject(obj, false)); // TODO: .append(" at ").append(obj.getSourceLocation());
-        }
+        });
         return b.toString();
     }
 
@@ -1628,7 +1636,7 @@ public class State implements IState<State, Context, CallEdge> {
      * Prints the modified parts of the store.
      */
     private void printModifiedStore(StringBuilder b) {
-        for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store))
+        for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store, new ObjectLabel.Comparator()))
             b.append("\n  ").append(me.getKey()).append(" (").append(me.getKey().getSourceLocation()).append("):").append(me.getValue().printModified());
     }
 
@@ -1637,8 +1645,8 @@ public class State implements IState<State, Context, CallEdge> {
         StringBuilder ns = new StringBuilder("\n\t/* Nodes */\n");
         StringBuilder es = new StringBuilder("\n\t/* Edges */\n");
         // nodes
-        TreeSet<ObjectLabel> objs = new TreeSet<>();
-        for (Map.Entry<ObjectLabel, Obj> e : sortedEntries(store)) {
+        TreeSet<ObjectLabel> objs = new TreeSet<>(new ObjectLabel.Comparator());
+        for (Map.Entry<ObjectLabel, Obj> e : sortedEntries(store, new ObjectLabel.Comparator())) {
             ObjectLabel label = e.getKey();
             Obj obj = e.getValue();
             objs.add(label);
@@ -1678,7 +1686,7 @@ public class State implements IState<State, Context, CallEdge> {
         es.append("\tvar[label=var,shape=none];\n");
         es.append("\tscope[label=scope,shape=none];\n");
         // edges
-        for (Map.Entry<ObjectLabel, Obj> e : sortedEntries(store)) {
+        for (Map.Entry<ObjectLabel, Obj> e : sortedEntries(store, new ObjectLabel.Comparator())) {
             ObjectLabel sourceLabel = e.getKey();
             Obj obj = e.getValue();
             int index = 0;
@@ -1891,7 +1899,7 @@ public class State implements IState<State, Context, CallEdge> {
                 // some object represented by objlabel may originate from the caller (so it must be treated as live),
                 // unless it is a singleton object marked as definitely summarized or it is 'none' at function entry
                 if (!((objlabel.isSingleton() && summarized.isDefinitelySummarized(objlabel)) ||
-                        noneAtEntry(objlabel, entry_state)))
+                        (noneAtEntry(objlabel, entry_state) && (objlabel.isSingleton() || (summarized.isMaybeSummarized(objlabel.makeSingleton()) && noneAtEntry(objlabel.makeSingleton(), entry_state))))))
                     live.add(objlabel);
             }
         LinkedHashSet<ObjectLabel> pending = new LinkedHashSet<>(live);
@@ -1964,7 +1972,16 @@ public class State implements IState<State, Context, CallEdge> {
      * All attribute information is cleared. 'unknown' values are not permitted.
      */
     public void writeRegister(int reg, Value value) {
-        value.assertNonEmpty();
+        writeRegister(reg, value, true);
+    }
+    /**
+     * Assigns the given value to the given register (strong update).
+     * All attribute information is cleared. 'unknown' values are not permitted.
+     * @param ordinary if set, kill must-equals information for that register
+     */
+    public void writeRegister(int reg, Value value, boolean ordinary) {
+        if (ordinary)
+            value.assertNonEmpty();
         value = value.setBottomPropertyData();
         if (value.isUnknown())
             throw new AnalysisException("Unexpected 'unknown'");
@@ -1972,6 +1989,8 @@ public class State implements IState<State, Context, CallEdge> {
         while (reg >= registers.size())
             registers.add(null);
         registers.set(reg, value);
+        if (ordinary)
+            must_equals.setToBottom(reg);
         if (log.isDebugEnabled())
             log.debug("writeRegister(v" + reg + "," + value + ")");
     }
@@ -1984,6 +2003,8 @@ public class State implements IState<State, Context, CallEdge> {
         while (reg >= registers.size())
             registers.add(null);
         registers.set(reg, null);
+        must_reaching_defs.setToBottom(reg);
+        must_equals.setToBottom(reg);
         if (log.isDebugEnabled())
             log.debug("removeRegister(v" + reg + ")");
     }
@@ -2004,8 +2025,12 @@ public class State implements IState<State, Context, CallEdge> {
             res = null;
         else
             res = registers.get(reg);
-        if (res == null)
-            throw new AnalysisException("Reading undefined register v" + reg);
+        if (res == null) {
+            if (Options.get().isPropagateDeadFlow())
+                res = Value.makeNone();
+            else
+                throw new AnalysisException("Reading undefined register v" + reg);
+        }
         if (log.isDebugEnabled())
             log.debug("readRegister(v" + reg + ") = " + res);
         return res;
@@ -2024,6 +2049,13 @@ public class State implements IState<State, Context, CallEdge> {
     public void setRegisters(List<Value> registers) {
         this.registers = registers;
         writable_registers = true;
+    }
+
+    /**
+     * Sets the must reaching definitions.
+     */
+    public void setMustReachingDefs(MustReachingDefs must_reaching_defs) {
+        this.must_reaching_defs = must_reaching_defs;
     }
 
     /**
@@ -2059,9 +2091,15 @@ public class State implements IState<State, Context, CallEdge> {
         List<Value> new_registers = newList();
         int reg = 0;
         for (Value v : registers) {
-            if (reg++ >= AbstractNode.FIRST_ORDINARY_REG && v != null && !v.isExtendedScope())
+            if (reg >= AbstractNode.FIRST_ORDINARY_REG && v != null && !v.isExtendedScope())
                 v = null;
+            if (v == null) {
+                must_reaching_defs.setToBottom(reg);
+                if (!MustEquals.ALIAS_TRACKING) // must_equals shouldn't be modified if using alias filtering
+                    must_equals.setToBottom(reg);
+            }
             new_registers.add(v);
+            reg++;
         }
         registers = new_registers;
         writable_registers = true;
@@ -2135,6 +2173,7 @@ public class State implements IState<State, Context, CallEdge> {
             clearModified();
         }
         summarized.clear();
+        must_equals.setToBottom();
     }
 
     /**

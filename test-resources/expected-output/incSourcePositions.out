@@ -19,17 +19,15 @@ fg2: <main> function()
     node 8: write-variable[v7,'a']* (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:1)
     node 9: read-variable['c',v8,-] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
     node 10: read-property[v8,'d',v9] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
-    node 11: <variable-non-null-undef>['c'] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
-    node 12: read-variable['e',v10,-] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:8)
-    node 13: +[v9,v10,v11] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
-    node 14: write-property[v8,'d',v11] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
-    node 15: <variable-non-null-undef>['c']* (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    node 11: read-variable['e',v10,-] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:8)
+    node 12: +[v9,v10,v11] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    node 13: write-property[v8,'d',v11]* (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 16: return[v1] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js)
+    node 14: return[v1] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js)
     ->[]
   block 6: [exit-exceptional]
-    node 17: exceptional-return (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js)
+    node 15: exceptional-return (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js)
     ->[]
 
 out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js: [definite] Ordinary program exit is unreachable

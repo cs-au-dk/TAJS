@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import dk.brics.tajs.options.Options;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -230,6 +231,16 @@ public class Collections {
      */
     public static <K extends Comparable<K>, V> TreeSet<Map.Entry<K, V>> sortedEntries(Map<K, V> m) {
         TreeSet<Map.Entry<K, V>> s = new TreeSet<>(new MapEntryComparator<>());
+        for (Map.Entry<K, V> me : m.entrySet())
+            s.add(new MapEntry<>(me.getKey(), me.getValue()));
+        return s;
+    }
+
+    /**
+     * Returns an ordered set of map entries, sorted using the given comparator.
+     */
+    public static <K, V> TreeSet<Map.Entry<K, V>> sortedEntries(Map<K, V> m, Comparator<K> c) {
+        TreeSet<Map.Entry<K, V>> s = new TreeSet<>(new MapEntryComparator2<>(c));
         for (Map.Entry<K, V> me : m.entrySet())
             s.add(new MapEntry<>(me.getKey(), me.getValue()));
         return s;

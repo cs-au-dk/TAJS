@@ -29,4 +29,4 @@ test-resources/src/chromeexperiments/burncanvas.html:133:12: [maybe] Conversion 
 test-resources/src/chromeexperiments/burncanvas.html:133:24: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/burncanvas.html:138:34: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/burncanvas.html:138:41: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 508 checks (with 0 expected failures)
+Soundness testing succeeded for 2243 checks (with 0 expected failures)

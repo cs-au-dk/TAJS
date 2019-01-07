@@ -2,7 +2,6 @@ test-resources/src/1k2012love/1270.js:10:14: [maybe] TypeError, accessing proper
 test-resources/src/1k2012love/1270.js:13:21: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1270.js:43:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1270.js:44:34: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2012love/1270.js:45:27: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1270.js:46:19: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1270.js:46:36: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1270.js:46:36: [maybe] TypeError, call to non-function
@@ -15,13 +14,11 @@ test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property
 test-resources/src/1k2012love/1270.js:43:9: [maybe] Reading absent property t
 test-resources/src/1k2012love/1270.js:43:31: [maybe] Reading absent property c
 test-resources/src/1k2012love/1270.js:44:14: [maybe] Reading absent property ch
-test-resources/src/1k2012love/1270.js:44:24: [maybe] Reading absent property ch
 test-resources/src/1k2012love/1270.js:44:34: [maybe] Reading absent property c
-test-resources/src/1k2012love/1270.js:44:34: [maybe] Reading absent property ch
 test-resources/src/1k2012love/1270.js:46:36: [maybe] Reading absent property replace of host object
 test-resources/src/1k2012love/1270.js:46:62: [maybe] Reading absent property v
 test-resources/src/1k2012love/1270.js:46:85: [maybe] Reading absent property replace
-test-resources/src/1k2012love/1270.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1270.js:10:14, test-resources/src/1k2012love/1270.js:13:21, test-resources/src/1k2012love/1270.js:43:9, test-resources/src/1k2012love/1270.js:44:34, test-resources/src/1k2012love/1270.js:45:27, test-resources/src/1k2012love/1270.js:46:19, test-resources/src/1k2012love/1270.js:46:36, test-resources/src/1k2012love/1270.js:46:39, test-resources/src/1k2012love/1270.js:46:62, test-resources/src/1k2012love/1270.js:46:85, test-resources/src/1k2012love/1270.js:46:131, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1270.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1270.js:10:14, test-resources/src/1k2012love/1270.js:13:21, test-resources/src/1k2012love/1270.js:43:9, test-resources/src/1k2012love/1270.js:44:34, test-resources/src/1k2012love/1270.js:46:19, test-resources/src/1k2012love/1270.js:46:36, test-resources/src/1k2012love/1270.js:46:39, test-resources/src/1k2012love/1270.js:46:62, test-resources/src/1k2012love/1270.js:46:85, test-resources/src/1k2012love/1270.js:46:131, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1270.js:10:14: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1270.js:12:15: [maybe] Converting object to string
 test-resources/src/1k2012love/1270.js:12:15: [maybe] Converting primitive string to object
@@ -52,7 +49,6 @@ test-resources/src/1k2012love/1270.js:35:20: [maybe] Converting object to string
 test-resources/src/1k2012love/1270.js:35:20: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1270.js:35:42: [maybe] Converting object to string
 test-resources/src/1k2012love/1270.js:35:42: [maybe] Converting primitive string to object
-test-resources/src/1k2012love/1270.js:44:34: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1270.js:46:19: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1270.js:46:36: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1270.js:46:36: [maybe] Reading absent property (computed name)

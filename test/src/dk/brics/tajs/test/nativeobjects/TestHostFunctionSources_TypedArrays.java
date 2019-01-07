@@ -87,7 +87,7 @@ public class TestHostFunctionSources_TypedArrays {
                 "TAJS_assertEquals('object', typeof arr.__proto__);",
                 "TAJS_assertEquals('object', typeof arr.__proto__.__proto__);",
                 "TAJS_assertEquals('object', typeof arr.__proto__.__proto__.__proto__);",
-                "TAJS_assertEquals(null, arr.__proto__.__proto__.__proto__);",
+                "TAJS_assertEquals(null, arr.__proto__.__proto__.__proto__.__proto__);",
                 "",
                 "arr[2] = 2;",
                 "arr[10] = 10;",

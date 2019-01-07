@@ -9,8 +9,6 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        TestCollections.class,
-        TestNoFlowNodeInsertion.class,
         TestAddContextSensitivity.class,
         TestMakeContextSensitive.class,
         TestSyntacticObjectSensitivity.class,

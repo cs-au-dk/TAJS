@@ -18,13 +18,14 @@ import org.junit.Test;
 
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Supplier;
 
 import static dk.brics.tajs.util.Collections.newSet;
 import static org.junit.Assert.assertEquals;
 
 public class TestLiteralContextSensitivity {
 
-    final Set<Value> none = Collections.<Value>newSet();
+    final Supplier<Set<Value>> none = Collections::<Value>newSet;
 
     @Before
     public void before() {
@@ -88,15 +89,17 @@ public class TestLiteralContextSensitivity {
         test("o", set("x"), "var o ; function f(p1, p2){o = [p1, p2];}; var y = Math.random()? 'y1': 'y2'; f('x', y);");
     }
 
-    private Set<Value> set(String... stringValues) {
-        final Set<Value> values = newSet();
-        for (String string : stringValues) {
-            values.add(Value.makeStr(string));
-        }
-        return values;
+    private Supplier<Set<Value>> set(String... stringValues) {
+        return () -> {
+            final Set<Value> values = newSet();
+            for (String string : stringValues) {
+                values.add(Value.makeStr(string));
+            }
+            return values;
+        };
     }
 
-    private void test(String objectVariable, Set<Value> contextValues, String... sourceLines) {
+    private void test(String objectVariable, Supplier<Set<Value>> contextValues, String... sourceLines) {
         TestMonitor testMonitor = new TestMonitor();
         Misc.runSource(sourceLines, CompositeMonitoring.buildFromList(Monitoring.make(), testMonitor));
         Set<ObjectLabel> objectLabels = testMonitor.state.readVariableDirect(objectVariable).getObjectLabels();
@@ -108,7 +111,12 @@ public class TestLiteralContextSensitivity {
                 values.addAll(arguments.getArguments().stream().filter(Objects::nonNull).collect(Collectors.toList()));
         }
         values.remove(null);
-        assertEquals(contextValues, values);
+        try {
+            assertEquals(contextValues.get(), values);
+        } catch (Throwable e) {
+            e.printStackTrace(System.out);
+            throw e;
+        }
     }
 
     private class TestMonitor extends DefaultAnalysisMonitoring {

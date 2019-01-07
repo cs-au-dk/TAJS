@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ import java.util.Set;
 /**
  * A fixed property key.
  */
-abstract public class PKey implements Comparable<PKey>, DeepImmutable { // XXX: rename class (and other occurrences of "PKey")?
+abstract public class PKey implements DeepImmutable { // XXX: rename class (and other occurrences of "PKey")?
 
     /**
      * Converts this property key to a {@link Value}.
@@ -45,21 +45,6 @@ abstract public class PKey implements Comparable<PKey>, DeepImmutable { // XXX: 
      * Checks whether this property matches the given value.
      */
     public abstract boolean isMaybeValue(PKeys v);
-
-    @Override
-    public int compareTo(@Nonnull PKey o) {
-        if (this instanceof StringPKey) {
-            if (o instanceof StringPKey) {
-                return ((StringPKey)this).getStr().compareTo(((StringPKey)o).getStr());
-            } else {
-                return 1;
-            }
-        } else if (o instanceof StringPKey) {
-            return -1;
-        } else {
-            return ((SymbolPKey)this).getObjectLabel().compareTo(((SymbolPKey)o).getObjectLabel());
-        }
-    }
 
     abstract public boolean equals(Object o);
 
@@ -106,11 +91,21 @@ abstract public class PKey implements Comparable<PKey>, DeepImmutable { // XXX: 
      */
     public static final class StringPKey extends PKey {
 
-        public static final PKey __PROTO__ = make("__proto__");
+        public static PKey __PROTO__;
 
-        public static final PKey PROTOTYPE = make("prototype");
+        public static PKey PROTOTYPE;
 
-        public static final PKey LENGTH = make("length");
+        public static PKey LENGTH;
+
+        public static void reset() {
+            __PROTO__ = make("__proto__");
+            PROTOTYPE = make("prototype");
+            LENGTH = make("length");
+        }
+
+        static {
+            reset();
+        }
 
         private String str;
 
@@ -157,11 +152,13 @@ abstract public class PKey implements Comparable<PKey>, DeepImmutable { // XXX: 
 
         @Override
         public String toStringEscaped() {
-            return Strings.escape(str);
+            return Strings.escape(str, true);
         }
 
         @Override
         public boolean equals(Object obj) {
+            if (!Canonicalizer.get().isCanonicalizing())
+                return this == obj;
             return obj instanceof StringPKey && getStr().equals(((StringPKey)obj).getStr());
         }
 
@@ -238,6 +235,8 @@ abstract public class PKey implements Comparable<PKey>, DeepImmutable { // XXX: 
 
         @Override
         public boolean equals(Object obj) {
+            if (!Canonicalizer.get().isCanonicalizing())
+                return this == obj;
             return obj instanceof SymbolPKey && getObjectLabel().equals(((SymbolPKey)obj).getObjectLabel());
         }
 
@@ -257,6 +256,23 @@ abstract public class PKey implements Comparable<PKey>, DeepImmutable { // XXX: 
         public Set<PKey> summarize(Summarized s) {
             return s.summarize(Collections.singleton(objlabel)).stream().map(SymbolPKey::make).collect(Collectors.toSet());
         }
+    }
 
+    public static class Comparator implements java.util.Comparator<PKey> {
+
+        @Override
+        public int compare(@Nonnull PKey o1, @Nonnull PKey o2) {
+            if (o1 instanceof StringPKey) {
+                if (o2 instanceof StringPKey) {
+                    return ((StringPKey)o1).getStr().compareTo(((StringPKey)o2).getStr());
+                } else {
+                    return 1;
+                }
+            } else if (o2 instanceof StringPKey) {
+                return -1;
+            } else {
+                return ObjectLabel.Comparator.compareStatic(((SymbolPKey)o1).getObjectLabel(), ((SymbolPKey)o2).getObjectLabel());
+            }
+        }
     }
 }

@@ -76,12 +76,8 @@ test-resources/src/chromeexperiments/anotherworld.html:369:12: [maybe] Convertin
 test-resources/src/chromeexperiments/anotherworld.html:370:12: [maybe] Converting object to string
 test-resources/src/chromeexperiments/anotherworld.html:370:12: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/anotherworld.html:402:12: [maybe] Converting undefined to string
-test-resources/src/chromeexperiments/anotherworld.html:411:25: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/anotherworld.html:417:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/anotherworld.html:459:12: [maybe] Converting undefined to string
 test-resources/src/chromeexperiments/anotherworld.html:463:4: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/anotherworld.html:469:41: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/anotherworld.html:470:36: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/anotherworld.html:477:8: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/anotherworld.html:477:32: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/anotherworld.html:481:16: [maybe] Reading absent property (computed name)
@@ -104,11 +100,8 @@ test-resources/src/chromeexperiments/anotherworld.html:543:12: [maybe] Conversio
 test-resources/src/chromeexperiments/anotherworld.html:544:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/anotherworld.html:545:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/anotherworld.html:546:12: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/anotherworld.html:555:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/anotherworld.html:571:19: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/anotherworld.html:572:19: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/anotherworld.html:583:13: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/anotherworld.html:601:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/anotherworld.html:609:14: [maybe] Converting object to string
 test-resources/src/chromeexperiments/anotherworld.html:609:14: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/anotherworld.html:617:14: [maybe] Conversion to number yields NaN
@@ -184,7 +177,6 @@ test-resources/src/chromeexperiments/anotherworld.html:1102:22: [maybe] Reading 
 test-resources/src/chromeexperiments/anotherworld.html:1104:8: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/anotherworld.html:1106:9: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/anotherworld.html:1112:25: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/anotherworld.html:1127:13: [maybe] Converting undefined to string
 test-resources/src/chromeexperiments/anotherworld.html:1179:7: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/anotherworld.html:1185:7: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/anotherworld.html:1191:7: [maybe] Conversion to number yields NaN
@@ -197,4 +189,4 @@ test-resources/src/chromeexperiments/anotherworld.html:1270:4: [maybe] Conversio
 test-resources/src/chromeexperiments/anotherworld.html:1276:4: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/anotherworld.html:1282:4: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/anotherworld.html:1288:4: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 14001 checks (with 0 expected failures)
+Soundness testing succeeded for 22818 checks (with 0 expected failures)

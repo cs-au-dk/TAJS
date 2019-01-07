@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -108,7 +108,7 @@ public class DOMDocument {
          * Properties from DOMWindow
          */
         createDOMProperty(INSTANCES, "location", Value.makeObject(DOMWindow.LOCATION), c);
-        createDOMProperty(INSTANCES, "readyState", Value.makeAnyStrNotNumeric().setReadOnly(), c);
+        createDOMProperty(INSTANCES, "readyState", Value.makeAnyStrNotUInt().setReadOnly(), c);
 
         /*
          * Functions.
@@ -314,11 +314,13 @@ public class DOMDocument {
                     Exceptions.throwTypeError(c);
                     return Value.makeNone();
                 }
+                DOMException.throwException(call.getJSSourceNode(), c, true); // Invalid query selector
                 return DOMNodeList.makeNaiveInstance();
             }
             case DOCUMENT_QUERY_SELECTOR: {
                 DOMFunctions.expectParameters(nativeobject, call, c, 1, 1);
                 Value selector = Conversion.toString(FunctionCalls.readParameter(call, s, 0), c);
+                DOMException.throwException(call.getJSSourceNode(), c, true); // Invalid query selector
                 return DOMFunctions.makeAnyHTMLElement().joinNull();
             }
             case DOCUMENT_CREATE_ATTRIBUTE_NS:

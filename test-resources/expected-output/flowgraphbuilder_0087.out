@@ -26,16 +26,15 @@ function fooo()
   block 7:
     node 9: read-variable['Math',v3,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0087.js:2:9)
     node 10: read-property[v3,'random',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0087.js:2:9)
-    node 11: <variable-non-null-undef>['Math'] (test-resources/src/flowgraphbuilder/flowgraph_builder0087.js:2:9)
     ->[block 8]
   block 8:
-    node 12: call[v3,'random',v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0087.js:2:9)
+    node 11: call[v3,'random',v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0087.js:2:9)
     ->[block 9]
   block 9: [exit-ordinary]
-    node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0087.js:1:1)
+    node 12: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0087.js:1:1)
     ->[]
   block 10: [exit-exceptional]
-    node 14: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0087.js:1:1)
+    node 13: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0087.js:1:1)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0087.js: [definite] Exceptional program exit is unreachable

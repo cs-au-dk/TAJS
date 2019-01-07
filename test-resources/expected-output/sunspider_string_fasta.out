@@ -7,7 +7,6 @@ test-resources/src/sunspider/string-fasta.js:43:15: [maybe] Converting null to s
 test-resources/src/sunspider/string-fasta.js:43:15: [maybe] Converting undefined to string
 test-resources/src/sunspider/string-fasta.js:43:15: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/string-fasta.js:43:27: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/string-fasta.js:43:33: [maybe] The variable last has values with different types
 test-resources/src/sunspider/string-fasta.js:52:25: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-fasta.js:53:13: [maybe] Converting object to string
 test-resources/src/sunspider/string-fasta.js:53:13: [maybe] Converting primitive string to object

@@ -1603,12 +1603,6 @@ public class TestFlowgraphBuilder {
     }
 
     @Test
-    public void flowgraphbuilder_directive() throws Exception {
-        Misc.run("test-resources/src/flowgraphbuilder/directive.js");
-        Misc.checkSystemOutput();
-    }
-
-    @Test
     public void flowgraphbuilder_multipleLazyOrs() throws Exception {
         Misc.run("test-resources/src/flowgraphbuilder/multipleLazyOrs.js");
         Misc.checkSystemOutput();

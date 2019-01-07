@@ -22,29 +22,28 @@ fg2: <main> function()
     ->[block 6]
   block 6:
     node 9: read-property[v8,v9,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5)
-    node 10: <variable-non-null-undef>['o'] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5)
-    node 11: constant[3.0,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:14)
-    node 12: *[v6,v7,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5)
-    node 13: write-variable[v5,'y']* (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:1)
+    node 10: constant[3.0,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:14)
+    node 11: *[v6,v7,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5)
+    node 12: write-variable[v5,'y']* (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:1)
     ->[block 7]
   block 7: [exit-ordinary]
-    node 14: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js)
+    node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js)
     ->[]
   block 8: [exit-exceptional]
-    node 15: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js)
+    node 14: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js)
     ->[]
 function f()
   block 9: [entry]
-    node 16: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
+    node 15: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
     ->[block 10]
   block 10:
-    node 17: constant["hi",v1]* (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:2:11)
+    node 16: constant["hi",v1]* (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:2:11)
     ->[block 11]
   block 11: [exit-ordinary]
-    node 18: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
+    node 17: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
     ->[]
   block 12: [exit-exceptional]
-    node 19: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
+    node 18: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0065.js: [definite] Ordinary program exit is unreachable

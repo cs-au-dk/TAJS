@@ -8,29 +8,14 @@ test-resources/src/10k/rgb_color_wheel.html:79:12: [maybe] TypeError, accessing 
 test-resources/src/10k/rgb_color_wheel.html:109:24: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:127:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:130:13: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:130:21: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:134:20: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:134:28: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:135:20: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:135:28: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:137:19: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:137:27: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:141:20: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:141:28: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:142:20: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:142:28: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:144:19: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:144:27: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:169:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:192:28: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:200:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:202:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:219:26: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:219:34: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:225:30: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:225:38: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:246:9: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/rgb_color_wheel.html:248:24: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:280:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:281:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/rgb_color_wheel.html:286:15: [maybe] TypeError, accessing property of null/undefined
@@ -68,7 +53,7 @@ test-resources/src/10k/rgb_color_wheel.html:356:25: [maybe] Reading absent prope
 test-resources/src/10k/rgb_color_wheel.html:379:11: [maybe] Reading absent property getContext of host object
 test-resources/src/10k/rgb_color_wheel.html:381:14: [maybe] Reading absent property width of host object
 test-resources/src/10k/rgb_color_wheel.html:382:15: [maybe] Reading absent property height of host object
-test-resources/src/10k/rgb_color_wheel.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/rgb_color_wheel.html:73:12, test-resources/src/10k/rgb_color_wheel.html:79:12, test-resources/src/10k/rgb_color_wheel.html:109:24, test-resources/src/10k/rgb_color_wheel.html:127:5, test-resources/src/10k/rgb_color_wheel.html:130:13, test-resources/src/10k/rgb_color_wheel.html:130:21, test-resources/src/10k/rgb_color_wheel.html:134:20, test-resources/src/10k/rgb_color_wheel.html:134:28, test-resources/src/10k/rgb_color_wheel.html:135:20, test-resources/src/10k/rgb_color_wheel.html:135:28, test-resources/src/10k/rgb_color_wheel.html:137:19, test-resources/src/10k/rgb_color_wheel.html:137:27, test-resources/src/10k/rgb_color_wheel.html:141:20, test-resources/src/10k/rgb_color_wheel.html:141:28, test-resources/src/10k/rgb_color_wheel.html:142:20, test-resources/src/10k/rgb_color_wheel.html:142:28, test-resources/src/10k/rgb_color_wheel.html:144:19, test-resources/src/10k/rgb_color_wheel.html:144:27, test-resources/src/10k/rgb_color_wheel.html:169:5, test-resources/src/10k/rgb_color_wheel.html:192:28, test-resources/src/10k/rgb_color_wheel.html:200:5, test-resources/src/10k/rgb_color_wheel.html:202:5, test-resources/src/10k/rgb_color_wheel.html:219:26, test-resources/src/10k/rgb_color_wheel.html:219:34, test-resources/src/10k/rgb_color_wheel.html:225:30, test-resources/src/10k/rgb_color_wheel.html:225:38, test-resources/src/10k/rgb_color_wheel.html:246:9, test-resources/src/10k/rgb_color_wheel.html:248:24, test-resources/src/10k/rgb_color_wheel.html:280:5, test-resources/src/10k/rgb_color_wheel.html:281:5, test-resources/src/10k/rgb_color_wheel.html:286:15, test-resources/src/10k/rgb_color_wheel.html:292:17, test-resources/src/10k/rgb_color_wheel.html:296:9, test-resources/src/10k/rgb_color_wheel.html:325:12, test-resources/src/10k/rgb_color_wheel.html:328:25, test-resources/src/10k/rgb_color_wheel.html:342:5, test-resources/src/10k/rgb_color_wheel.html:343:5, test-resources/src/10k/rgb_color_wheel.html:348:9, test-resources/src/10k/rgb_color_wheel.html:349:9, test-resources/src/10k/rgb_color_wheel.html:350:9, test-resources/src/10k/rgb_color_wheel.html:356:25, test-resources/src/10k/rgb_color_wheel.html:363:5, test-resources/src/10k/rgb_color_wheel.html:373:5, test-resources/src/10k/rgb_color_wheel.html:374:5, test-resources/src/10k/rgb_color_wheel.html:379:11, test-resources/src/10k/rgb_color_wheel.html:388:5, test-resources/src/10k/rgb_color_wheel.html:389:5]
+test-resources/src/10k/rgb_color_wheel.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/rgb_color_wheel.html:73:12, test-resources/src/10k/rgb_color_wheel.html:79:12, test-resources/src/10k/rgb_color_wheel.html:109:24, test-resources/src/10k/rgb_color_wheel.html:127:5, test-resources/src/10k/rgb_color_wheel.html:130:13, test-resources/src/10k/rgb_color_wheel.html:135:20, test-resources/src/10k/rgb_color_wheel.html:142:20, test-resources/src/10k/rgb_color_wheel.html:169:5, test-resources/src/10k/rgb_color_wheel.html:192:28, test-resources/src/10k/rgb_color_wheel.html:200:5, test-resources/src/10k/rgb_color_wheel.html:202:5, test-resources/src/10k/rgb_color_wheel.html:219:26, test-resources/src/10k/rgb_color_wheel.html:246:9, test-resources/src/10k/rgb_color_wheel.html:280:5, test-resources/src/10k/rgb_color_wheel.html:281:5, test-resources/src/10k/rgb_color_wheel.html:286:15, test-resources/src/10k/rgb_color_wheel.html:292:17, test-resources/src/10k/rgb_color_wheel.html:296:9, test-resources/src/10k/rgb_color_wheel.html:325:12, test-resources/src/10k/rgb_color_wheel.html:328:25, test-resources/src/10k/rgb_color_wheel.html:342:5, test-resources/src/10k/rgb_color_wheel.html:343:5, test-resources/src/10k/rgb_color_wheel.html:348:9, test-resources/src/10k/rgb_color_wheel.html:349:9, test-resources/src/10k/rgb_color_wheel.html:350:9, test-resources/src/10k/rgb_color_wheel.html:356:25, test-resources/src/10k/rgb_color_wheel.html:363:5, test-resources/src/10k/rgb_color_wheel.html:373:5, test-resources/src/10k/rgb_color_wheel.html:374:5, test-resources/src/10k/rgb_color_wheel.html:379:11, test-resources/src/10k/rgb_color_wheel.html:388:5, test-resources/src/10k/rgb_color_wheel.html:389:5]
 test-resources/src/10k/rgb_color_wheel.html:70:12: [maybe] Converting undefined to string
 test-resources/src/10k/rgb_color_wheel.html:86:33: [maybe] Conversion to number yields NaN
 test-resources/src/10k/rgb_color_wheel.html:87:22: [maybe] Conversion to number yields NaN
@@ -91,21 +76,10 @@ test-resources/src/10k/rgb_color_wheel.html:109:49: [maybe] Reading absent prope
 test-resources/src/10k/rgb_color_wheel.html:109:63: [maybe] Conversion to number yields NaN
 test-resources/src/10k/rgb_color_wheel.html:109:74: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:130:13: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:130:21: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:132:9: [maybe] The variable scheme has values with different types
-test-resources/src/10k/rgb_color_wheel.html:134:20: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:134:28: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:135:20: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:135:28: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:137:19: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:137:27: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:139:9: [maybe] The variable scheme has values with different types
-test-resources/src/10k/rgb_color_wheel.html:141:20: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:141:28: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:142:20: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:142:28: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:144:19: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:144:27: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:153:18: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:154:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:157:18: [maybe] Reading absent property (computed name)
@@ -125,10 +99,7 @@ test-resources/src/10k/rgb_color_wheel.html:201:55: [maybe] Reading absent prope
 test-resources/src/10k/rgb_color_wheel.html:210:13: [maybe] The variable scheme has values with different types
 test-resources/src/10k/rgb_color_wheel.html:218:9: [maybe] The variable scheme has values with different types
 test-resources/src/10k/rgb_color_wheel.html:219:26: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:219:34: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:224:13: [maybe] The variable scheme has values with different types
-test-resources/src/10k/rgb_color_wheel.html:225:30: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:225:38: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:242:28: [maybe] Converting undefined to string
 test-resources/src/10k/rgb_color_wheel.html:243:27: [maybe] Converting undefined to string
 test-resources/src/10k/rgb_color_wheel.html:244:27: [maybe] Converting undefined to string

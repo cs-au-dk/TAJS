@@ -203,16 +203,21 @@ public class TestAssumeNonNullUndef {
     }
 
     public void testWithSource(final int expectedWarnings, final String... source) {
-        OptionValues baseOptions = new OptionValues();
-        baseOptions.enableTest();
-        IAnalysisMonitoring monitoring = Monitoring.make();
-        Misc.runSource(source, monitoring);
-        Set<Message> nullUndefWarnings = new HashSet<>();
-        for (Message message : monitoring.getMessages()) {
-            if (message.getStatus() == Status.MAYBE && message.getMessage().endsWith(" is null/undefined")) {
-                nullUndefWarnings.add(message);
+        try {
+            OptionValues baseOptions = new OptionValues();
+            baseOptions.enableTest();
+            IAnalysisMonitoring monitoring = Monitoring.make();
+            Misc.runSource(source, monitoring);
+            Set<Message> nullUndefWarnings = new HashSet<>();
+            for (Message message : monitoring.getMessages()) {
+                if (message.getStatus() == Status.MAYBE && message.getMessage().endsWith(" is null/undefined")) {
+                    nullUndefWarnings.add(message);
+                }
             }
+            Assert.assertEquals(expectedWarnings, nullUndefWarnings.size());
+        } catch (Throwable e) {
+            e.printStackTrace(System.out);
+            throw e;
         }
-        Assert.assertEquals(expectedWarnings, nullUndefWarnings.size());
     }
 }

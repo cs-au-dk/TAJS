@@ -362,8 +362,7 @@ public class TestUnrolling {
     public void indeterminateForLoop() {
         Misc.runSource(
                 "var i = 0;",
-                "var R = !!Math.random();",
-                "for(;R;){ i++; }",
+                "for(;TAJS_make('AnyBool');){ i++; }",
                 "TAJS_assert(i, 'isMaybeNumUInt');",
                 "TAJS_assert(i, 'isMaybeSingleNum', false);");
     }
@@ -371,8 +370,7 @@ public class TestUnrolling {
     @Test
     public void indeterminateStdForLoop() {
         Misc.runSource(
-                "var R = !!Math.random();",
-                "for(var i = 0;R; i++){ }",
+                "for(var i = 0;TAJS_make('AnyBool'); i++){ }",
                 "TAJS_assert(i, 'isMaybeNumUInt');",
                 "TAJS_assert(i, 'isMaybeSingleNum', false);");
     }
@@ -381,8 +379,7 @@ public class TestUnrolling {
     public void indeterminateWhileLoop() {
         Misc.runSource(
                 "var i = 0;",
-                "var R = !!Math.random();",
-                "while(R){ i++; }",
+                "while(TAJS_make('AnyBool')){ i++; }",
                 "TAJS_assert(i, 'isMaybeNumUInt');",
                 "TAJS_assert(i, 'isMaybeSingleNum', false);");
     }
@@ -392,8 +389,7 @@ public class TestUnrolling {
         Misc.runSource(
                 "var i = 0;",
                 "(function(){",
-                "   var R = !!Math.random();",
-                "   while(R){ i++; }",
+                "   while(TAJS_make('AnyBool')){ i++; }",
                 "})();",
                 "TAJS_assert(i, 'isMaybeNumUInt');",
                 "TAJS_assert(i, 'isMaybeSingleNum', false);");

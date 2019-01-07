@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 package dk.brics.tajs.solver;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.flowgraph.SourceLocation;
 import org.apache.log4j.Logger;
 
 import javax.annotation.Nonnull;
@@ -264,7 +265,7 @@ public class Message implements Comparable<Message> {
         c = severity.ordinal() - e.severity.ordinal();
         if (c != 0)
             return c;
-        c = node.getSourceLocation().compareTo(e.node.getSourceLocation());
+        c = SourceLocation.Comparator.compareStatic(node.getSourceLocation(), e.node.getSourceLocation());
         if (c != 0)
             return c;
         return key.compareTo(e.key);

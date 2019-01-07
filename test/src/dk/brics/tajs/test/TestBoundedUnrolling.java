@@ -118,15 +118,4 @@ public class TestBoundedUnrolling {
                 "TAJS_assert(k, 'isMaybeSingleNum', false);",
                 "");
     }
-
-    @Test
-    public void stringShrinkingWhileLoop_aboveBound() {
-        Options.get().enableLoopUnrolling(2);
-        Misc.runSource(
-                "var s = 'abcdefg';",
-                "while(s){ s = s.substring(1); }",
-                "TAJS_assert(s, 'isMaybeSingleStr', false);",
-                "TAJS_assert(s, 'isMaybeAnyStr||isMaybeStrIdentifier');",
-                "");
-    }
 }

@@ -62,4 +62,4 @@ test-resources/src/chromeexperiments/aquarium.html:83:20: [info] 'this' refers t
 test-resources/src/chromeexperiments/aquarium.html:83:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/aquarium.html:84:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/aquarium.html:84:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 1176 checks (with 0 expected failures)
+Soundness testing succeeded for 1212 checks (with 0 expected failures)

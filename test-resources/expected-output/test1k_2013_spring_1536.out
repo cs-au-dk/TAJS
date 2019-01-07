@@ -51,19 +51,4 @@ test-resources/src/1k2013spring/1536.js:57:3: [maybe] Reading absent property f 
 test-resources/src/1k2013spring/1536.js:82:7: [maybe] Reading absent property b of host object
 test-resources/src/1k2013spring/1536.js:86:5: [maybe] Reading absent property f of host object
 test-resources/src/1k2013spring/1536.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1536.js:23:16, test-resources/src/1k2013spring/1536.js:26:19, test-resources/src/1k2013spring/1536.js:32:21, test-resources/src/1k2013spring/1536.js:32:24, test-resources/src/1k2013spring/1536.js:33:21, test-resources/src/1k2013spring/1536.js:33:24, test-resources/src/1k2013spring/1536.js:54:3, test-resources/src/1k2013spring/1536.js:56:23, test-resources/src/1k2013spring/1536.js:56:27, test-resources/src/1k2013spring/1536.js:57:3, test-resources/src/1k2013spring/1536.js:64:3, test-resources/src/1k2013spring/1536.js:64:16, test-resources/src/1k2013spring/1536.js:64:20, test-resources/src/1k2013spring/1536.js:64:25, test-resources/src/1k2013spring/1536.js:64:30, test-resources/src/1k2013spring/1536.js:70:15, test-resources/src/1k2013spring/1536.js:70:20, test-resources/src/1k2013spring/1536.js:70:25, test-resources/src/1k2013spring/1536.js:71:15, test-resources/src/1k2013spring/1536.js:72:14, test-resources/src/1k2013spring/1536.js:76:7, test-resources/src/1k2013spring/1536.js:76:10, test-resources/src/1k2013spring/1536.js:76:13, test-resources/src/1k2013spring/1536.js:78:25, test-resources/src/1k2013spring/1536.js:78:29, test-resources/src/1k2013spring/1536.js:79:27, test-resources/src/1k2013spring/1536.js:79:31, test-resources/src/1k2013spring/1536.js:82:7, test-resources/src/1k2013spring/1536.js:83:14, test-resources/src/1k2013spring/1536.js:83:24, test-resources/src/1k2013spring/1536.js:86:5, test-resources/src/1k2013spring/1536.js:89:3, test-resources/src/1k2013spring/1536.js:89:6, test-resources/src/1k2013spring/1536.js:89:9, test-resources/src/1k2013spring/1536.js:89:12, test-resources/src/1k2013spring/1536.js:89:20, test-resources/src/1k2013spring/1536.js:89:23, test-resources/src/1k2013spring/1536.js:91:11, test-resources/src/1k2013spring/1536.js:91:13, test-resources/src/1k2013spring/1536.js:92:11, test-resources/src/1k2013spring/1536.js:96:29, test-resources/src/1k2013spring/1536.js:96:39, test-resources/src/1k2013spring/1536.js:96:49, test-resources/src/1k2013spring/1536.js:96:59, test-resources/src/1k2013spring/1536.js:97:15, test-resources/src/1k2013spring/1536.js:98:15, test-resources/src/1k2013spring/shim.js:9:5]
-test-resources/src/1k2013spring/1536.js:23:16: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:26:19: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:83:14: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:83:24: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:89:3: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:89:12: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:94:21: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:96:29: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:96:39: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:96:49: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:96:59: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:97:5: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:97:11: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:98:5: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1536.js:98:11: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 354 checks (with 0 expected failures)

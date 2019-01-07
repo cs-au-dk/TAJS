@@ -9,9 +9,7 @@ test-resources/src/10k/heatmap.html:70:21: [definite] The variable declaration x
 test-resources/src/10k/heatmap.html:71:21: [definite] The variable declaration y shadows a parameter
 test-resources/src/10k/heatmap.html:89:24: [definite] The variable event is never used
 test-resources/src/10k/heatmap.html:130:21: [definite] Unreachable function
-test-resources/src/10k/heatmap.html:69:26: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/heatmap.html:101:25: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/10k/heatmap.html:163:32: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/heatmap.html:195:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/heatmap.html:200:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/heatmap.html:215:21: [maybe] TypeError, accessing property of null/undefined
@@ -28,7 +26,7 @@ test-resources/src/10k/heatmap.html:167:33: [maybe] Reading absent property heig
 test-resources/src/10k/heatmap.html:195:13: [maybe] Reading absent property innerHTML of host object
 test-resources/src/10k/heatmap.html:243:39: [maybe] Reading absent property selectedIndex of host object
 test-resources/src/10k/heatmap.html:246:25: [maybe] Reading absent property selectedIndex of host object
-test-resources/src/10k/heatmap.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/heatmap.html:69:26, test-resources/src/10k/heatmap.html:101:25, test-resources/src/10k/heatmap.html:163:32, test-resources/src/10k/heatmap.html:195:13, test-resources/src/10k/heatmap.html:200:13, test-resources/src/10k/heatmap.html:215:21, test-resources/src/10k/heatmap.html:227:9, test-resources/src/10k/heatmap.html:242:9, test-resources/src/10k/heatmap.html:243:13, test-resources/src/10k/heatmap.html:243:39, test-resources/src/10k/heatmap.html:245:9, test-resources/src/10k/heatmap.html:246:13, test-resources/src/10k/heatmap.html:246:25]
+test-resources/src/10k/heatmap.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/heatmap.html:101:25, test-resources/src/10k/heatmap.html:195:13, test-resources/src/10k/heatmap.html:200:13, test-resources/src/10k/heatmap.html:215:21, test-resources/src/10k/heatmap.html:227:9, test-resources/src/10k/heatmap.html:242:9, test-resources/src/10k/heatmap.html:243:13, test-resources/src/10k/heatmap.html:243:39, test-resources/src/10k/heatmap.html:245:9, test-resources/src/10k/heatmap.html:246:13, test-resources/src/10k/heatmap.html:246:25]
 test-resources/src/10k/heatmap.html:70:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/heatmap.html:71:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/heatmap.html:76:25: [maybe] Conversion to number yields NaN

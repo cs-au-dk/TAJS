@@ -56,15 +56,15 @@ public class Stats {
             {"test-resources/src/sunspider/crypto-aes.js"},
             {"test-resources/src/sunspider/crypto-md5.js"},
             {"test-resources/src/sunspider/crypto-sha1.js"},
-            {"test-resources/src/sunspider/date-format-tofte.js"},
-            {"test-resources/src/sunspider/date-format-xparb.js"},
+            {"-uneval", "test-resources/src/sunspider/date-format-tofte.js"},
+            {"-uneval", "test-resources/src/sunspider/date-format-xparb.js"},
             {"test-resources/src/sunspider/math-cordic.js"},
             {"test-resources/src/sunspider/math-partial-sums.js"},
             {"test-resources/src/sunspider/math-spectral-norm.js"},
             {"test-resources/src/sunspider/regexp-dna.js"},
             {"test-resources/src/sunspider/string-base64.js"},
             {"test-resources/src/sunspider/string-fasta.js"},
-            {"test-resources/src/sunspider/string-tagcloud.js"},
+            {"-uneval", "test-resources/src/sunspider/string-tagcloud.js"},
             {"test-resources/src/sunspider/string-unpack-code.js"},
             {"test-resources/src/sunspider/string-validate-input.js"},
     };
@@ -142,7 +142,7 @@ public class Stats {
             {"test-resources/src/chromeexperiments/sandtrap.html"},
             {"test-resources/src/chromeexperiments/starfield.html"},
             {"test-resources/src/chromeexperiments/strangeattractor.html"},
-            {"test-resources/src/chromeexperiments/tetris.html"},
+            {"-uneval", "test-resources/src/chromeexperiments/tetris.html"},
             {"test-resources/src/chromeexperiments/trail.html"},
             {"test-resources/src/chromeexperiments/tunneler.html"},
             {"test-resources/src/chromeexperiments/voronoi.html"},
@@ -176,7 +176,7 @@ public class Stats {
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1057.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1061.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1063.js"},
-            {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1066.js"},
+            {"-uneval", "-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1066.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1068.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1071.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1072.js"},
@@ -184,7 +184,7 @@ public class Stats {
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1091.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1092.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1093.js"},
-            {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1095.js"},
+            {"-uneval", "-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1095.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1102.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1103.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1107.js"},
@@ -198,8 +198,8 @@ public class Stats {
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1149.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1154.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1155.js"},
-            {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1156.js"},
-            {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1157.js"},
+            {"-uneval", "-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1156.js"},
+            {"-uneval", "-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1157.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1160.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1163.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1166.js"},
@@ -207,7 +207,7 @@ public class Stats {
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1169.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1170.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1171.js"},
-            {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1175.js"},
+            {"-uneval", "-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1175.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1176.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1183.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1186.js"},
@@ -242,7 +242,7 @@ public class Stats {
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1258.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1260.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1265.js"},
-            {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1269.js"},
+            {"-uneval", "-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1269.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1270.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1271.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1274.js"},
@@ -286,7 +286,7 @@ public class Stats {
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1417.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1420.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1421.js"},
-            {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1423.js"},
+            {"-uneval", "-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1423.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1425.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1426.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1427.js"},
@@ -332,7 +332,7 @@ public class Stats {
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1539.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1541.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1542.js"},
-            {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1544.js"},
+            {"-uneval", "-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1544.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1547.js"},
             {"-dom", "-polyfill-mdn", "test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1557.js"},
     };
@@ -353,183 +353,185 @@ public class Stats {
     };
 
     public static String[][] testJQueryLoad = {
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.0.js-sliced.js"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.3.js-sliced.js"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.6.js-sliced.js"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.10.js-sliced.js"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.11.0.js-sliced.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.0.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.1.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.2.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.3.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.4.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.5.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.6.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.7.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.8.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.9.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.10.js"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.11.js"}
     };
 
-    public static String[][] testJQueryLoad_ignoreUnreachable = {
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.0.js-sliced.js"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.1.js-sliced.js"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.2.js-sliced.js"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.3.js-sliced.js"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.4.js-sliced.js"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.5.js-sliced.js"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.6.js-sliced.js"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.7.js-sliced.js"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.8.js-sliced.js"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.9.js-sliced.js"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.10.js-sliced.js"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-load/jquery-1.11.0.js-sliced.js"},
+    public static String[][] testJQueryLoad_ignoreUnreached = {
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.0.js"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.1.js"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.2.js"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.3.js"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.4.js"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.5.js"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.6.js"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.7.js"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.8.js"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.9.js"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.10.js"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/libraries/jquery-1.11.js"}
     };
 
     public static String[][] testJQueryUse = {
             // analyzable in OOPSLA'14:
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_abort.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_abort2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_progress.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_progress2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_progressErrorCallback.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_stop.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_stopQueue.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_stopQueue2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dimensions_get.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dimensions_getWindow.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dimensions_set.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/divTest2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_appendPrepend.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_appendPrepend2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_appendPrepend3.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_beforeAfter.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_beforeAfter2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_beforeAfter3.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_removeEmpty.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_removeEmpty2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_setCssAttribute.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/fading_fadeIn.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/fading_fadeInOut.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/fading_fadeToggleSpeed.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/sliding_down.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/sliding_downSpeeds.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/sliding_toggle.snippet_in_plain.htm.dir/index.htm"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_abort.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_abort2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_progress.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_progress2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_progressErrorCallback.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_stop.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_stopQueue.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_stopQueue2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dimensions_get.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dimensions_getWindow.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dimensions_set.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/divTest2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_appendPrepend.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_appendPrepend2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_appendPrepend3.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_beforeAfter.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_beforeAfter2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_beforeAfter3.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_removeEmpty.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_removeEmpty2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_setCssAttribute.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/fading_fadeIn.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/fading_fadeInOut.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/fading_fadeToggleSpeed.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/sliding_down.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/sliding_downSpeeds.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/sliding_toggle.html"},
             // unanalyzable in OOPSLA'14:
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_loadWithCallback.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bindUnbindBind2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/fading_fadeTimed.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_get.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_jsonp.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_load.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_load2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_callback.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_queue.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_simpleSpeed.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_get.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_getAttribute.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_setAttribute.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_setMultipleCssAttributes.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_setMultipleAttributes.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_unbind.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bind.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bind2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bind3.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bindData.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_live.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/methodChaining_divTest1.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/methodChaining_divTest2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/noConflict_fullName.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/noConflict_ready.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/noConflict_rename.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ready_divTest1.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ready_divTest2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_attributeValues.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_attributes.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_child.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_class.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/divTest1.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_descendant.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/sliding_downUp.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_id.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ready_divTest3.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_live2.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bindUnbindBind.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_getSet.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_set.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_getSetAttribute.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_simple.snippet_in_plain.htm.dir/index.htm"},
-            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_post.snippet_in_plain.htm.dir/index.htm"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_loadWithCallback.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bindUnbindBind2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/fading_fadeTimed.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_get.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_jsonp.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_load.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_load2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_callback.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_queue.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_simpleSpeed.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_get.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_getAttribute.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_setAttribute.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_setMultipleCssAttributes.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_setMultipleAttributes.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_unbind.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bind.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bind2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bind3.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bindData.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_live.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/methodChaining_divTest1.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/methodChaining_divTest2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/noConflict_fullName.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/noConflict_ready.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/noConflict_rename.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ready_divTest1.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ready_divTest2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_attributeValues.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_attributes.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_child.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_class.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/divTest1.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_descendant.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/sliding_downUp.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_id.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ready_divTest3.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_live2.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bindUnbindBind.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_getSet.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_set.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_getSetAttribute.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_simple.html"},
+            {"-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_post.html"},
     };
 
-    public static String[][] testJQueryUse_ignoreUnreachable = {
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_abort.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_abort2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_progress.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_progress2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_progressErrorCallback.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_stop.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_stopQueue.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_stopQueue2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dimensions_get.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dimensions_getWindow.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dimensions_set.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/divTest2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_appendPrepend.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_appendPrepend2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_appendPrepend3.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_beforeAfter.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_beforeAfter2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_beforeAfter3.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_removeEmpty.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_removeEmpty2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_setCssAttribute.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/fading_fadeIn.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/fading_fadeInOut.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/fading_fadeToggleSpeed.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/sliding_down.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/sliding_downSpeeds.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/sliding_toggle.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_loadWithCallback.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bindUnbindBind2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/fading_fadeTimed.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_get.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_jsonp.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_load.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_load2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_callback.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_queue.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_simpleSpeed.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_get.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_getAttribute.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_setAttribute.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_setMultipleCssAttributes.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_setMultipleAttributes.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_unbind.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bind.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bind2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bind3.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bindData.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_live.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/methodChaining_divTest1.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/methodChaining_divTest2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/noConflict_fullName.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/noConflict_ready.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/noConflict_rename.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ready_divTest1.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ready_divTest2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_attributeValues.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_attributes.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_child.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_class.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/divTest1.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_descendant.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/sliding_downUp.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/selectors_id.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ready_divTest3.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_live2.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/events_bindUnbindBind.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_getSet.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_set.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/dom_getSetAttribute.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/animate_simple.snippet_in_plain.htm.dir/index.htm"},
-            {"-ignore-unreachable", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery-use-autogenerated/ajax_post.snippet_in_plain.htm.dir/index.htm"},
+    public static String[][] testJQueryUse_ignoreUnreached = {
+            // analyzable in OOPSLA'14:
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_abort.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_abort2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_progress.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_progress2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_progressErrorCallback.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_stop.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_stopQueue.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_stopQueue2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dimensions_get.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dimensions_getWindow.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dimensions_set.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/divTest2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_appendPrepend.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_appendPrepend2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_appendPrepend3.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_beforeAfter.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_beforeAfter2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_beforeAfter3.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_removeEmpty.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_removeEmpty2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_setCssAttribute.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/fading_fadeIn.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/fading_fadeInOut.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/fading_fadeToggleSpeed.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/sliding_down.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/sliding_downSpeeds.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/sliding_toggle.html"},
+            // unanalyzable in OOPSLA'14:
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_loadWithCallback.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bindUnbindBind2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/fading_fadeTimed.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_get.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_jsonp.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_load.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_load2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_callback.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_queue.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_simpleSpeed.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_get.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_getAttribute.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_setAttribute.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_setMultipleCssAttributes.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_setMultipleAttributes.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_unbind.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bind.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bind2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bind3.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bindData.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_live.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/methodChaining_divTest1.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/methodChaining_divTest2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/noConflict_fullName.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/noConflict_ready.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/noConflict_rename.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ready_divTest1.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ready_divTest2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_attributeValues.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_attributes.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_child.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_class.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/divTest1.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_descendant.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/sliding_downUp.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/selectors_id.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ready_divTest3.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_live2.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/events_bindUnbindBind.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_getSet.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_set.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/dom_getSetAttribute.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/animate_simple.html"},
+            {"-ignore-unreached", "-dom", "-uneval", "-determinacy", "benchmarks/tajs/src/jquery/test-suite/1.10/ajax_post.html"},
     };
 
     public static String[][] testJSAI2014 = {
@@ -720,6 +722,43 @@ public class Stats {
             {"benchmarks/tajs/src/popular-libs/yui/yui-3.18.1/index.html"}
     };
 
+    public static String[][] underscoreTestSuite = new String[182][];
+    static {
+        for (int i = 0; i < 29; i++) {
+            underscoreTestSuite[i] = new String[]{"benchmarks/tajs/src/underscore/test-suite/arrays/test" + (i + 1) + ".html"};
+        }
+        for (int i = 29; i < 38; i++) {
+            underscoreTestSuite[i] = new String[]{"benchmarks/tajs/src/underscore/test-suite/chaining/test" + (i + 1) + ".html"};
+        }
+        for (int i = 38; i < 81; i++) {
+            underscoreTestSuite[i] = new String[]{"benchmarks/tajs/src/underscore/test-suite/collections/test" + (i + 1) + ".html"};
+        }
+        for (int i = 81; i < 113; i++) {
+            underscoreTestSuite[i] = new String[]{"benchmarks/tajs/src/underscore/test-suite/functions/test" + (i + 1) + ".html"};
+        }
+        for (int i = 113; i < 152; i++) {
+            underscoreTestSuite[i] = new String[]{"benchmarks/tajs/src/underscore/test-suite/objects/test" + (i + 1) + ".html"};
+        }
+        for (int i = 152; i < 182; i++) {
+            underscoreTestSuite[i] = new String[]{"benchmarks/tajs/src/underscore/test-suite/utility/test" + (i + 1) + ".html"};
+        }
+
+    }
+
+    public static String[][] lodash3TestSuite = new String[176][];
+    static {
+        for (int i = 0; i < 176; i++) {
+            lodash3TestSuite[i] = new String[]{"benchmarks/tajs/src/lodash/test-suite/3.0.0/lodash_test_" + (i + 1) + ".html"};
+        }
+    }
+
+    public static String[][] lodash4TestSuite = new String[306][];
+    static {
+        for (int i = 0; i < 306; i++) {
+            lodash4TestSuite[i] = new String[]{"benchmarks/tajs/src/lodash/test-suite/4.17.10/lodash_test_" + (i + 1) + ".html"};
+        }
+    }
+
     public static class Standard {
 
         public static void main(String[] args) throws IOException, CmdLineException {
@@ -736,7 +775,7 @@ public class Stats {
                     test1K2012Love,
                     test1K2013Spring,
                     testJQueryLoad,
-                    testJQueryLoad_ignoreUnreachable);
+                    testJQueryLoad_ignoreUnreached);
         }
     }
 
@@ -744,21 +783,20 @@ public class Stats {
 
         public static void main(String[] args) throws IOException, CmdLineException {
             String outfile = args.length > 0 ? args[0] : "extra";
-            run(outfile, 300, 100000, Optional.empty(),
+            run(outfile, 120, 200000, Optional.empty(),
                     // from RunMedium:
                     testGoogle2,
-
-                    // from RunSlow:
                     testApps,
-//                    testJQueryUse, // includes TestJQueryUse_unanalyzable,
-//                    testJQueryUse_ignoreUnreachable,
-
-                    // from RunPapers:
                     testJSAI2014,
                     testJSAI2015,
                     testStrLat2014,
-                    testSparse2014,
-                    testRevamp2016
+                    testSparse2014
+
+                    // from RunSlow:
+//                    testJQueryUse, // includes TestJQueryUse_unanalyzable,
+//                    testJQueryUse_ignoreUnreached,
+//                    testRevamp2016
+
                     /* TODO:
                     TestKaistAlexaBenchmarksFlowgraph (extended only)
                     other:
@@ -780,10 +818,11 @@ public class Stats {
             defaultOptions.getUnsoundness().setIgnoreUnlikelyPropertyReads(true);
             defaultOptions.getUnsoundness().setUseFixedRandom(true);
             defaultOptions.getUnsoundness().setShowUnsoundnessUsage(true);
-            run(outfile, 300, 250000, Optional.of(defaultOptions),
-                    testJQueryLoad_ignoreUnreachable,
+            defaultOptions.getSoundnessTesterOptions().setGenerateOnlyIncludeAutomaticallyForHTMLFiles(true);
+            run(outfile, 120, 200000, Optional.of(defaultOptions),
+                    testJQueryLoad_ignoreUnreached,
                     testJQueryLoad,
-                    testJQueryUse_ignoreUnreachable,
+                    testJQueryUse_ignoreUnreached,
                     testJQueryUse
             );
         }
@@ -802,7 +841,85 @@ public class Stats {
             defaultOptions.enablePolyfillES6Collections();
             defaultOptions.enablePolyfillES6Promises();
             defaultOptions.enableConsoleModel();
+            defaultOptions.getUnsoundness().setIgnoreSomePrototypesDuringDynamicPropertyReads(true);
+            defaultOptions.getUnsoundness().setIgnoreImpreciseEvals(true);
+            defaultOptions.getUnsoundness().setIgnoreUnlikelyUndefinedAsFirstArgumentToAddition(true);
+            defaultOptions.getUnsoundness().setAssumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber(true);
+            defaultOptions.getUnsoundness().setIgnoreUnlikelyPropertyReads(true);
+            defaultOptions.getUnsoundness().setUseFixedRandom(true);
+            defaultOptions.getUnsoundness().setShowUnsoundnessUsage(true);
+            defaultOptions.getUnsoundness().setIgnoreMissingNativeModels(true);
             run(outfile, 220, 500000, Optional.of(defaultOptions), libs);
+        }
+    }
+
+    public static class TestUnderscore {
+
+        public static void main(String[] args) throws IOException, CmdLineException {
+            OptionValues optionValues = new OptionValues();
+            optionValues.enableTest();
+            optionValues.enableDeterminacy();
+            optionValues.enableNoMessages();
+            optionValues.enablePolyfillMDN();
+            optionValues.enablePolyfillTypedArrays();
+            optionValues.getSoundnessTesterOptions().setRootDirFromMainDirectory(Paths.get("../.."));
+            optionValues.getSoundnessTesterOptions().setGenerateOnlyIncludeAutomaticallyForHTMLFiles(true);
+            optionValues.enableIncludeDom();
+
+            optionValues.enableBlendedAnalysis();
+            optionValues.enableIgnoreUnreached();
+
+            run("underscore", 220, 500000, Optional.of(optionValues), underscoreTestSuite);
+        }
+    }
+
+    public static class TestLodash3 {
+
+        public static void main(String[] args) throws IOException, CmdLineException {
+            OptionValues optionValues = new OptionValues();
+            optionValues.enableTest();
+            optionValues.getSoundnessTesterOptions().setRootDirFromMainDirectory(Paths.get("../../"));
+            optionValues.getSoundnessTesterOptions().setGenerateOnlyIncludeAutomaticallyForHTMLFiles(true);
+
+            optionValues.enableDeterminacy();
+            optionValues.enablePolyfillMDN();
+            optionValues.enablePolyfillTypedArrays();
+            optionValues.enablePolyfillES6Collections();
+            optionValues.enablePolyfillES6Promises();
+            optionValues.enableConsoleModel();
+            optionValues.enableNoMessages();
+            optionValues.enableIncludeDom();
+
+            optionValues.enableBlendedAnalysis();
+            optionValues.enableIgnoreUnreached();
+
+            optionValues.getUnsoundness().setUsePreciseFunctionToString(true);
+
+            run("lodash_3.0.0", 220, 500000, Optional.of(optionValues), lodash3TestSuite);
+        }
+    }
+
+    public static class TestLodash4 {
+
+        public static void main(String[] args) throws IOException, CmdLineException {
+            OptionValues optionValues = new OptionValues();
+            optionValues.enableTest();
+            optionValues.getSoundnessTesterOptions().setRootDirFromMainDirectory(Paths.get("../../"));
+            optionValues.getSoundnessTesterOptions().setGenerateOnlyIncludeAutomaticallyForHTMLFiles(true);
+
+            optionValues.enableDeterminacy();
+            optionValues.enablePolyfillMDN();
+            optionValues.enablePolyfillTypedArrays();
+            optionValues.enablePolyfillES6Collections();
+            optionValues.enablePolyfillES6Promises();
+            optionValues.enableConsoleModel();
+            optionValues.enableNoMessages();
+            optionValues.enableIncludeDom();
+
+            optionValues.enableBlendedAnalysis();
+            optionValues.enableIgnoreUnreached();
+
+            run("lodash_4.17.10", 120, 500000, Optional.of(optionValues), lodash4TestSuite);
         }
     }
 

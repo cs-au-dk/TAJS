@@ -19,7 +19,6 @@ test-resources/src/1k2012love/1246.js:143:35: [definite] The variable x is never
 test-resources/src/1k2012love/1246.js:143:35: [definite] The variable y is never used
 test-resources/src/1k2012love/1246.js:146:21: [definite] The variable x is never used
 test-resources/src/1k2012love/1246.js:146:21: [definite] The variable y is never used
-test-resources/src/1k2012love/1246.js:31:11: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1246.js:40:13: [maybe] ReferenceError, reading absent variable creeps
 test-resources/src/1k2012love/1246.js:40:51: [maybe] ReferenceError, reading absent variable dir
 test-resources/src/1k2012love/1246.js:40:55: [maybe] TypeError, accessing property of null/undefined
@@ -39,7 +38,6 @@ test-resources/src/1k2012love/1246.js:76:60: [maybe] ReferenceError, reading abs
 test-resources/src/1k2012love/1246.js:76:69: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1246.js:77:11: [maybe] ReferenceError, reading absent variable money
 test-resources/src/1k2012love/1246.js:79:9: [maybe] ReferenceError, reading absent variable genMap
-test-resources/src/1k2012love/1246.js:81:13: [maybe] ReferenceError, reading absent variable genMap
 test-resources/src/1k2012love/1246.js:83:13: [maybe] ReferenceError, reading absent variable money
 test-resources/src/1k2012love/1246.js:89:3: [maybe] ReferenceError, reading absent variable a
 test-resources/src/1k2012love/1246.js:98:13: [maybe] ReferenceError, reading absent variable c
@@ -50,10 +48,8 @@ test-resources/src/1k2012love/1246.js:106:5: [maybe] ReferenceError, reading abs
 test-resources/src/1k2012love/1246.js:106:16: [maybe] ReferenceError, reading absent variable life
 test-resources/src/1k2012love/1246.js:115:5: [maybe] ReferenceError, reading absent variable drawText
 test-resources/src/1k2012love/1246.js:115:18: [maybe] ReferenceError, reading absent variable money
-test-resources/src/1k2012love/1246.js:119:5: [maybe] ReferenceError, reading absent variable drawText
 test-resources/src/1k2012love/1246.js:119:19: [maybe] ReferenceError, reading absent variable life
 test-resources/src/1k2012love/1246.js:119:67: [maybe] ReferenceError, reading absent variable start
-test-resources/src/1k2012love/1246.js:120:15: [maybe] ReferenceError, reading absent variable drawText
 test-resources/src/1k2012love/1246.js:120:28: [maybe] ReferenceError, reading absent variable life
 test-resources/src/1k2012love/1246.js:124:14: [maybe] ReferenceError, reading absent variable creeps
 test-resources/src/1k2012love/1246.js:125:11: [maybe] ReferenceError, reading absent variable dir
@@ -71,7 +67,6 @@ test-resources/src/1k2012love/1246.js:131:59: [maybe] ReferenceError, reading ab
 test-resources/src/1k2012love/1246.js:135:5: [maybe] ReferenceError, reading absent variable board
 test-resources/src/1k2012love/1246.js:136:11: [maybe] ReferenceError, reading absent variable dir
 test-resources/src/1k2012love/1246.js:136:15: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2012love/1246.js:141:9: [maybe] ReferenceError, reading absent variable drawText
 test-resources/src/1k2012love/1246.js:144:21: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1246.js:145:25: [maybe] ReferenceError, reading absent variable step
 test-resources/src/1k2012love/1246.js:145:33: [maybe] TypeError, accessing property of null/undefined
@@ -93,9 +88,6 @@ test-resources/src/1k2012love/1246.js:131:30: [maybe] Reading absent property y
 test-resources/src/1k2012love/1246.js:131:39: [maybe] Reading absent property e
 test-resources/src/1k2012love/1246.js:136:15: [maybe] Reading absent property x
 test-resources/src/1k2012love/1246.js:136:21: [maybe] Reading absent property y
-test-resources/src/1k2012love/1246.js:141:24: [maybe] Reading absent property e
-test-resources/src/1k2012love/1246.js:141:32: [maybe] Reading absent property x
-test-resources/src/1k2012love/1246.js:141:39: [maybe] Reading absent property y
 test-resources/src/1k2012love/1246.js:144:27: [maybe] Reading absent property y
 test-resources/src/1k2012love/1246.js:145:44: [maybe] Reading absent property x
 test-resources/src/1k2012love/1246.js:145:70: [maybe] Reading absent property y
@@ -104,7 +96,7 @@ test-resources/src/1k2012love/1246.js:147:27: [maybe] Reading absent property y
 test-resources/src/1k2012love/1246.js:149:20: [maybe] Reading absent property e
 test-resources/src/1k2012love/1246.js:149:48: [maybe] Reading absent property e
 test-resources/src/1k2012love/1246.js:149:55: [maybe] Reading absent property e
-test-resources/src/1k2012love/1246.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1246.js:31:11, test-resources/src/1k2012love/1246.js:40:13, test-resources/src/1k2012love/1246.js:40:51, test-resources/src/1k2012love/1246.js:40:55, test-resources/src/1k2012love/1246.js:41:8, test-resources/src/1k2012love/1246.js:46:3, test-resources/src/1k2012love/1246.js:66:3, test-resources/src/1k2012love/1246.js:66:11, test-resources/src/1k2012love/1246.js:70:15, test-resources/src/1k2012love/1246.js:70:34, test-resources/src/1k2012love/1246.js:71:7, test-resources/src/1k2012love/1246.js:74:11, test-resources/src/1k2012love/1246.js:74:35, test-resources/src/1k2012love/1246.js:76:11, test-resources/src/1k2012love/1246.js:76:28, test-resources/src/1k2012love/1246.js:76:39, test-resources/src/1k2012love/1246.js:76:60, test-resources/src/1k2012love/1246.js:76:69, test-resources/src/1k2012love/1246.js:77:11, test-resources/src/1k2012love/1246.js:79:9, test-resources/src/1k2012love/1246.js:81:13, test-resources/src/1k2012love/1246.js:83:13, test-resources/src/1k2012love/1246.js:89:3, test-resources/src/1k2012love/1246.js:98:13, test-resources/src/1k2012love/1246.js:99:16, test-resources/src/1k2012love/1246.js:100:7, test-resources/src/1k2012love/1246.js:103:5, test-resources/src/1k2012love/1246.js:106:5, test-resources/src/1k2012love/1246.js:106:16, test-resources/src/1k2012love/1246.js:115:5, test-resources/src/1k2012love/1246.js:115:18, test-resources/src/1k2012love/1246.js:119:5, test-resources/src/1k2012love/1246.js:119:19, test-resources/src/1k2012love/1246.js:119:67, test-resources/src/1k2012love/1246.js:120:15, test-resources/src/1k2012love/1246.js:120:28, test-resources/src/1k2012love/1246.js:124:14, test-resources/src/1k2012love/1246.js:125:11, test-resources/src/1k2012love/1246.js:125:15, test-resources/src/1k2012love/1246.js:127:7, test-resources/src/1k2012love/1246.js:127:17, test-resources/src/1k2012love/1246.js:127:36, test-resources/src/1k2012love/1246.js:129:7, test-resources/src/1k2012love/1246.js:129:36, test-resources/src/1k2012love/1246.js:129:44, test-resources/src/1k2012love/1246.js:129:55, test-resources/src/1k2012love/1246.js:131:14, test-resources/src/1k2012love/1246.js:131:51, test-resources/src/1k2012love/1246.js:131:59, test-resources/src/1k2012love/1246.js:135:5, test-resources/src/1k2012love/1246.js:136:11, test-resources/src/1k2012love/1246.js:136:15, test-resources/src/1k2012love/1246.js:141:9, test-resources/src/1k2012love/1246.js:144:21, test-resources/src/1k2012love/1246.js:145:25, test-resources/src/1k2012love/1246.js:145:33, test-resources/src/1k2012love/1246.js:145:55, test-resources/src/1k2012love/1246.js:147:21, test-resources/src/1k2012love/1246.js:154:15, test-resources/src/1k2012love/1246.js:154:69, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1246.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1246.js:40:13, test-resources/src/1k2012love/1246.js:40:51, test-resources/src/1k2012love/1246.js:40:55, test-resources/src/1k2012love/1246.js:41:8, test-resources/src/1k2012love/1246.js:46:3, test-resources/src/1k2012love/1246.js:66:3, test-resources/src/1k2012love/1246.js:66:11, test-resources/src/1k2012love/1246.js:70:15, test-resources/src/1k2012love/1246.js:70:34, test-resources/src/1k2012love/1246.js:71:7, test-resources/src/1k2012love/1246.js:74:11, test-resources/src/1k2012love/1246.js:74:35, test-resources/src/1k2012love/1246.js:76:11, test-resources/src/1k2012love/1246.js:76:28, test-resources/src/1k2012love/1246.js:76:39, test-resources/src/1k2012love/1246.js:76:60, test-resources/src/1k2012love/1246.js:76:69, test-resources/src/1k2012love/1246.js:77:11, test-resources/src/1k2012love/1246.js:79:9, test-resources/src/1k2012love/1246.js:83:13, test-resources/src/1k2012love/1246.js:89:3, test-resources/src/1k2012love/1246.js:98:13, test-resources/src/1k2012love/1246.js:99:16, test-resources/src/1k2012love/1246.js:100:7, test-resources/src/1k2012love/1246.js:103:5, test-resources/src/1k2012love/1246.js:106:5, test-resources/src/1k2012love/1246.js:106:16, test-resources/src/1k2012love/1246.js:115:5, test-resources/src/1k2012love/1246.js:115:18, test-resources/src/1k2012love/1246.js:119:19, test-resources/src/1k2012love/1246.js:119:67, test-resources/src/1k2012love/1246.js:120:28, test-resources/src/1k2012love/1246.js:124:14, test-resources/src/1k2012love/1246.js:125:11, test-resources/src/1k2012love/1246.js:125:15, test-resources/src/1k2012love/1246.js:127:7, test-resources/src/1k2012love/1246.js:127:17, test-resources/src/1k2012love/1246.js:127:36, test-resources/src/1k2012love/1246.js:129:7, test-resources/src/1k2012love/1246.js:129:36, test-resources/src/1k2012love/1246.js:129:44, test-resources/src/1k2012love/1246.js:129:55, test-resources/src/1k2012love/1246.js:131:14, test-resources/src/1k2012love/1246.js:131:51, test-resources/src/1k2012love/1246.js:131:59, test-resources/src/1k2012love/1246.js:135:5, test-resources/src/1k2012love/1246.js:136:11, test-resources/src/1k2012love/1246.js:136:15, test-resources/src/1k2012love/1246.js:144:21, test-resources/src/1k2012love/1246.js:145:25, test-resources/src/1k2012love/1246.js:145:33, test-resources/src/1k2012love/1246.js:145:55, test-resources/src/1k2012love/1246.js:147:21, test-resources/src/1k2012love/1246.js:154:15, test-resources/src/1k2012love/1246.js:154:69, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1246.js:34:25: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1246.js:38:9: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1246.js:40:51: [maybe] Reading absent property (computed name)
@@ -151,14 +143,6 @@ test-resources/src/1k2012love/1246.js:136:21: [maybe] The variable e has values 
 test-resources/src/1k2012love/1246.js:139:13: [maybe] The variable e has values with different types
 test-resources/src/1k2012love/1246.js:141:18: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1246.js:141:18: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1246.js:141:24: [maybe] Converting primitive number to object
-test-resources/src/1k2012love/1246.js:141:24: [maybe] The variable e has values with different types
-test-resources/src/1k2012love/1246.js:141:32: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1246.js:141:32: [maybe] Converting primitive number to object
-test-resources/src/1k2012love/1246.js:141:32: [maybe] The variable e has values with different types
-test-resources/src/1k2012love/1246.js:141:39: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1246.js:141:39: [maybe] Converting primitive number to object
-test-resources/src/1k2012love/1246.js:141:39: [maybe] The variable e has values with different types
 test-resources/src/1k2012love/1246.js:144:17: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1246.js:144:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1246.js:145:25: [maybe] Conversion to number yields NaN

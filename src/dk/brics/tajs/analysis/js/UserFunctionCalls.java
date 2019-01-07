@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.MustReachingDefs;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
@@ -53,6 +54,7 @@ import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.Collectors;
 import org.apache.log4j.Logger;
 
@@ -100,6 +102,7 @@ public class UserFunctionCalls {
         int result_reg = n.getResultRegister();
         if (result_reg != AbstractNode.NO_VALUE) {
             c.getState().writeRegister(result_reg, Value.makeObject(fn));
+            c.getState().getMustReachingDefs().addReachingDef(n.getResultRegister(), n);
         }
     }
 
@@ -191,104 +194,107 @@ public class UserFunctionCalls {
 
         State edge_state = caller_state.clone();
         c.withState(edge_state, () -> {
-                    final Value thisVal;
-                    Summarized extra_summarized = new Summarized();
-                    if (call.isConstructorCall()) {
-                        // 13.2.2.1-2 create new object
-                        HeapContext thisHeapContext = c.getAnalysis().getContextSensitivityStrategy().makeConstructorHeapContext(edge_state, obj_f, call, c);
-                        ObjectLabel new_obj = ObjectLabel.make(n, Kind.OBJECT, thisHeapContext);
-                        edge_state.newObject(new_obj);
-                        extra_summarized.addDefinitelySummarized(new_obj);
-                        thisVal = Value.makeObject(new_obj);
-                        // 13.2.2.3-5 provide [[Prototype]]
-                        Value prototypeFinal = UnknownValueResolver.getRealValue(prototype, edge_state);
-                        if (prototypeFinal.isMaybePrimitiveOrSymbol())
-                            prototypeFinal = prototypeFinal.restrictToObject().joinObject(InitialStateBuilder.OBJECT_PROTOTYPE);
-                        edge_state.writeInternalPrototype(new_obj, prototypeFinal);
-                    } else { // see ES5 10.4.3
-                        Value rawThisVal = call.getThis();
-                        if (f.isStrict()) {
-                            thisVal = rawThisVal;
-                        } else {
-                            Value coercedThisVal = Conversion.toObject(call.getSourceNode(), rawThisVal.restrictToNotNullNotUndef(), c);
-                            if (rawThisVal.isMaybeNull() || rawThisVal.isMaybeUndef()) {
-                                thisVal = coercedThisVal.joinObject(InitialStateBuilder.GLOBAL);
-                            } else {
-                                thisVal = coercedThisVal;
-                            }
-                        }
+            if (call.assumeFunction())
+                return;
+            final Value thisVal;
+            Summarized extra_summarized = new Summarized();
+            if (call.isConstructorCall()) {
+                // 13.2.2.1-2 create new object
+                HeapContext thisHeapContext = c.getAnalysis().getContextSensitivityStrategy().makeConstructorHeapContext(edge_state, obj_f, call, c);
+                ObjectLabel new_obj = ObjectLabel.make(n, Kind.OBJECT, thisHeapContext);
+                edge_state.newObject(new_obj);
+                extra_summarized.addDefinitelySummarized(new_obj);
+                thisVal = Value.makeObject(new_obj);
+                // 13.2.2.3-5 provide [[Prototype]]
+                Value prototypeFinal = UnknownValueResolver.getRealValue(prototype, edge_state);
+                if (prototypeFinal.isMaybePrimitiveOrSymbol())
+                    prototypeFinal = prototypeFinal.restrictToNonSymbolObject().joinObject(InitialStateBuilder.OBJECT_PROTOTYPE);
+                edge_state.writeInternalPrototype(new_obj, prototypeFinal);
+            } else { // see ES5 10.4.3
+                Value rawThisVal = call.getThis();
+                if (f.isStrict()) {
+                    thisVal = rawThisVal;
+                } else {
+                    Value coercedThisVal = Conversion.toObject(call.getSourceNode(), rawThisVal.restrictToNotNullNotUndef(), c);
+                    if (rawThisVal.isMaybeNull() || rawThisVal.isMaybeUndef()) {
+                        thisVal = coercedThisVal.joinObject(InitialStateBuilder.GLOBAL);
+                    } else {
+                        thisVal = coercedThisVal;
                     }
-                    HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeActivationAndArgumentsHeapContext(edge_state, obj_f, thisVal, call, c);
+                }
+            }
+            HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeActivationAndArgumentsHeapContext(edge_state, obj_f, thisVal, call, c);
 
-                    // 10.2.3 enter new execution context, 13.2.1 transfer parameters, 10.1.6/8 provide 'arguments' object
-                    ObjectLabel varobj = ObjectLabel.make(f.getEntry().getFirstNode(), Kind.ACTIVATION, heapContext); // better to use entry than invoke here
-                    edge_state.newObject(varobj);
-                    extra_summarized.addDefinitelySummarized(varobj);
-                    ObjectLabel argobj = ObjectLabel.make(f.getEntry().getFirstNode(), Kind.ARGUMENTS, heapContext);
-                    edge_state.newObject(argobj);
-                    extra_summarized.addDefinitelySummarized(argobj);
-                    ScopeChain sc = ScopeChain.make(Collections.singleton(varobj), obj_f_sc);
+            // 10.2.3 enter new execution context, 13.2.1 transfer parameters, 10.1.6/8 provide 'arguments' object
+            ObjectLabel varobj = ObjectLabel.make(f.getEntry().getFirstNode(), Kind.ACTIVATION, heapContext); // better to use entry than invoke here
+            edge_state.newObject(varobj);
+            extra_summarized.addDefinitelySummarized(varobj);
+            ObjectLabel argobj = ObjectLabel.make(f.getEntry().getFirstNode(), Kind.ARGUMENTS, heapContext);
+            edge_state.newObject(argobj);
+            extra_summarized.addDefinitelySummarized(argobj);
+            ScopeChain sc = ScopeChain.make(Collections.singleton(varobj), obj_f_sc);
 
-                    edge_state.setExecutionContext(new ExecutionContext(sc, singleton(varobj), thisVal));
-                    pv.declareAndWriteVariable("arguments", Value.makeObject(argobj), true);
-                    edge_state.writeInternalPrototype(argobj, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
-                    pv.writePropertyWithAttributes(argobj, "callee", Value.makeObject(obj_f).setAttributes(true, false, false));
-                    Value argumentCount = call.isUnknownNumberOfArgs() ? Value.makeAnyNumUInt() : Value.makeNum(call.getNumberOfArgs());
-                    pv.writePropertyWithAttributes(argobj, "length", argumentCount.setAttributes(true, false, false));
+            edge_state.setExecutionContext(new ExecutionContext(sc, singleton(varobj), thisVal));
+            pv.declareAndWriteVariable("arguments", Value.makeObject(argobj), true);
+            edge_state.writeInternalPrototype(argobj, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
+            pv.writePropertyWithAttributes(argobj, "callee", Value.makeObject(obj_f).setAttributes(true, false, false));
+            Value argumentCount = call.isUnknownNumberOfArgs() ? Value.makeAnyNumUInt() : Value.makeNum(call.getNumberOfArgs());
+            pv.writePropertyWithAttributes(argobj, "length", argumentCount.setAttributes(true, false, false));
 
-                    DeclareFunctionNode node = f.getNode();
-                    if (node != null) {
-                        if (node.isExpression() && f.getName() != null) {
-                            Value objVal = Value.makeObject(obj_f);
-                            pv.declareAndWriteVariable(f.getName(), objVal, true); // 10.1.3
-                        }
-                    }
+            DeclareFunctionNode node = f.getNode();
+            if (node != null) {
+                if (node.isExpression() && f.getName() != null) {
+                    Value objVal = Value.makeObject(obj_f);
+                    pv.declareAndWriteVariable(f.getName(), objVal, true); // 10.1.3
+                }
+            }
 
-                    // if unknown number of arguments, fuzzy write unknown arg to arguments object
-                    if (call.isUnknownNumberOfArgs()) {
-                        Value v = call.getUnknownArg();
-                        if (Options.get().isDebugOrTestEnabled() && !v.isMaybeUndef()) {
-                            throw new AnalysisException("Unknown arg not possibly undefined?");
-                        }
-                        Value summarized = v.summarize(extra_summarized);
-                        pv.writeProperty(singleton(argobj), Value.makeAnyStrUInt(), summarized); // the first arguments will be overwritten below with something more precise
-                    }
-                    // write argument values to the arguments object and the named parameters
-                    final int numberOfUnknownArgumentsToKeepDisjoint = Options.Constants.NUMBER_OF_UNKNOWN_ARGUMENTS_TO_KEEP_DISJOINT; // number of parameters to keep separate, if the actual number is unknown
-                    for (int i = 0; i < f.getParameterNames().size() || i < (call.isUnknownNumberOfArgs() ? numberOfUnknownArgumentsToKeepDisjoint : call.getNumberOfArgs()); i++) {
-                        Value v = call.getArg(i);
-                        Value summarized = v.summarize(extra_summarized);
-                        pv.writeProperty(argobj, StringPKey.make(Integer.toString(i)), summarized); // from ES5 Annex E: "In Edition 5 the array indexed properties of argument objects that correspond to actual formal parameters are enumerable. In Edition 3, such properties were not enumerable."
-                        if (i < f.getParameterNames().size()) {
-                            if (summarized.isMaybeAbsent())
-                                summarized = summarized.restrictToNotAbsent().joinUndef(); // convert absent to undefined
-                            pv.declareAndWriteVariable(f.getParameterNames().get(i), summarized, true); // 10.1.3
-                        }
-                    }
-                    // FIXME: properties of 'arguments' should be shared with the formal parameters (see 10.1.8 item 4) - easy solution that does not require Reference types? - github #21
-                    // (see comment at NodeTransfer/WriteVariable... - also needs the other way around...)
+            // if unknown number of arguments, fuzzy write unknown arg to arguments object
+            if (call.isUnknownNumberOfArgs()) {
+                Value v = call.getUnknownArg();
+                if (Options.get().isDebugOrTestEnabled() && !v.isMaybeUndef()) {
+                    throw new AnalysisException("Unknown arg not possibly undefined?");
+                }
+                Value summarized = v.summarize(extra_summarized);
+                pv.writeProperty(singleton(argobj), Value.makeAnyStrUInt(), summarized); // the first arguments will be overwritten below with something more precise
+            }
+            // write argument values to the arguments object and the named parameters
+            final int numberOfUnknownArgumentsToKeepDisjoint = Options.Constants.NUMBER_OF_UNKNOWN_ARGUMENTS_TO_KEEP_DISJOINT; // number of parameters to keep separate, if the actual number is unknown
+            for (int i = 0; i < f.getParameterNames().size() || i < (call.isUnknownNumberOfArgs() ? numberOfUnknownArgumentsToKeepDisjoint : call.getNumberOfArgs()); i++) {
+                Value v = call.getArg(i);
+                Value summarized = v.summarize(extra_summarized);
+                pv.writeProperty(argobj, StringPKey.make(Integer.toString(i)), summarized); // from ES5 Annex E: "In Edition 5 the array indexed properties of argument objects that correspond to actual formal parameters are enumerable. In Edition 3, such properties were not enumerable."
+                if (i < f.getParameterNames().size()) {
+                    if (summarized.isMaybeAbsent())
+                        summarized = summarized.restrictToNotAbsent().joinUndef(); // convert absent to undefined
+                    pv.declareAndWriteVariable(f.getParameterNames().get(i), summarized, true); // 10.1.3
+                }
+            }
+            // FIXME: properties of 'arguments' should be shared with the formal parameters (see 10.1.8 item 4) - easy solution that does not require Reference types? - github #21
+            // (see comment at NodeTransfer/WriteVariable... - also needs the other way around...)
 
-                    if (c.isScanning())
-                        return;
+            if (c.isScanning())
+                return;
 
-                    edge_state.stackObjectLabels();
-                    edge_state.clearRegisters();
+            edge_state.stackObjectLabels();
+            edge_state.clearRegisters();
+            edge_state.getMustReachingDefs().setToBottom();
 
-                    if (thisVal.getObjectLabels().size() > 1
-                            && (Options.get().isContextSpecializationEnabled()
-                            && thisVal.getObjectLabels().size() < Options.Constants.MAX_CONTEXT_SPECIALIZATION)) {
-                        // specialize edge_state such that 'this' becomes a singleton
-                        if (log.isDebugEnabled())
-                            log.debug("specializing edge state, this = " + thisVal.getObjectLabels());
-                        for (Iterator<ObjectLabel> it = thisVal.getObjectLabels().iterator(); it.hasNext(); ) {
-                            ObjectLabel this_obj = it.next();
-                            State next_edge_state = it.hasNext() ? edge_state.clone() : edge_state;
-                            next_edge_state.getExecutionContext().setThis(Value.makeObject(this_obj)); // (execution context should be writable here)
-                            propagateToFunctionEntry(next_edge_state, n, obj_f, call, implicit, c);
-                        }
-                    } else
-                        propagateToFunctionEntry(edge_state, n, obj_f, call, implicit, c);
-                });
+            if (thisVal.getObjectLabels().size() > 1
+                    && (Options.get().isContextSpecializationEnabled()
+                    && thisVal.getObjectLabels().size() < Options.Constants.MAX_CONTEXT_SPECIALIZATION)) {
+                // specialize edge_state such that 'this' becomes a singleton
+                if (log.isDebugEnabled())
+                    log.debug("specializing edge state, this = " + thisVal.getObjectLabels());
+                for (Iterator<ObjectLabel> it = thisVal.getObjectLabels().iterator(); it.hasNext(); ) {
+                    ObjectLabel this_obj = it.next();
+                    State next_edge_state = it.hasNext() ? edge_state.clone() : edge_state;
+                    next_edge_state.getExecutionContext().setThis(Value.makeObject(this_obj)); // (execution context should be writable here)
+                    propagateToFunctionEntry(next_edge_state, n, obj_f, call, implicit, c);
+                }
+            } else
+                propagateToFunctionEntry(edge_state, n, obj_f, call, implicit, c);
+        });
     }
 
     private static void propagateToFunctionEntry(State edge_state, AbstractNode n, ObjectLabel obj_f, CallInfo callInfo, boolean implicit, Solver.SolverInterface c) {
@@ -307,7 +313,7 @@ public class UserFunctionCalls {
             AbstractNode n = f.getOrdinaryExit().getLastNode();
             if (exceptional) {
                 returnval = UnknownValueResolver.getRealValue(returnval, state);
-                List<SourceLocation> objs = returnval.getObjectSourceLocations().stream().sorted().collect(Collectors.toList());
+                List<SourceLocation> objs = returnval.getObjectSourceLocations().stream().sorted(new SourceLocation.Comparator()).collect(Collectors.toList());
                 if (!objs.isEmpty()) { // use object source locations
                     List<String> locationStrings = objs.stream().map(SourceLocation::toString).collect(Collectors.toList());
                     String msg = String.format("Uncaught exception, constructed at [%s]", String.join(", ", locationStrings));
@@ -328,6 +334,8 @@ public class UserFunctionCalls {
 
         state.clearVariableObject();
         state.clearRegisters();
+        state.getMustReachingDefs().setToBottom();
+        state.getMustEquals().setToBottom();
 
         if (specific_caller != null)
             returnToCaller(specific_caller.getNode(), specific_caller.getContext(), specific_edge_context, implicit, returnval, exceptional, f, state, c);
@@ -362,15 +370,16 @@ public class UserFunctionCalls {
             throw new AnalysisException();
 
         if (log.isDebugEnabled())
-            log.debug("trying call node " + node.getIndex() + ": " + node
-                    + " at " + node.getSourceLocation() + "\n" +
-                    "caller context: " + caller_context + ", callee context: " + state.getContext());
+            log.debug("trying call node " + node.getIndex() + ": " + node + " at " + node.getSourceLocation() +
+                    ", caller context: " + caller_context + ", callee context: " + state.getContext());
 
         // apply inverse transform
         state.writeRegister(0, returnval); // TODO: pass returnval explicitly through returnFromFunctionExit instead of using a register
         c.returnFromFunctionExit(state, node, caller_context, f.getEntry(), edge_context, implicit);
         returnval = state.readRegister(0);
         state.clearRegisters();
+        state.getMustReachingDefs().setToBottom();
+        state.getMustEquals().setToBottom();
         if (state.isBottom())
             return; // flow was cancelled, probably something needs to be recomputed
 
@@ -413,7 +422,7 @@ public class UserFunctionCalls {
 
                 if (is_constructor && returnval.isMaybePrimitiveOrSymbol()) {
                     // 13.2.2.7-8 replace non-object by the new object (which is kept in 'this' at the call edge)
-                    returnval = returnval.restrictToObject().join(calledge_state.getExecutionContext().getThis());
+                    returnval = returnval.restrictToNonSymbolObject().join(calledge_state.getExecutionContext().getThis());
                 }
 
                 if (!implicit) {
@@ -425,8 +434,10 @@ public class UserFunctionCalls {
                 attemptMaterializeVariableObj(state);
 
                 // transfer ordinary return value to caller
-                if (result_reg != AbstractNode.NO_VALUE)
+                if (result_reg != AbstractNode.NO_VALUE) {
                     state.writeRegister(result_reg, returnval);
+                    state.getMustReachingDefs().addReachingDef(result_reg, node);
+                }
 
                 if (implicit) { // implicit call, trigger re-processing of the basic block containing the caller
                     boolean changed = c.propagate(state, new BlockAndContext<>(node.getImplicitAfterCall(), caller_context), false);
@@ -468,7 +479,9 @@ public class UserFunctionCalls {
     public static Value mergeFunctionReturn(State return_state, State caller_state, State calledge_state, State caller_entry_state,
                                             Summarized callee_summarized, Value returnval, Value exval) {
         return_state.makeWritableStore();
-        return_state.setStoreDefault(caller_state.getStoreDefault().freeze());
+        Obj store_default = Canonicalizer.get().canonicalizeObj(caller_state.getStoreDefault().freeze());
+        return_state.setStoreDefault(store_default);
+        caller_state.setStoreDefault(store_default); // write back canonicalized object
         // strengthen each object and replace polymorphic values
         State summarized_calledge = calledge_state.clone();
         summarizeStoreAndRegisters(summarized_calledge, return_state.getSummarized());
@@ -490,6 +503,8 @@ public class UserFunctionCalls {
         return_state.setExecutionContext(caller_state.getExecutionContext().clone());
         return_state.getExecutionContext().summarize(callee_summarized);
         return_state.setRegisters(summarize(caller_state.getRegisters(), callee_summarized));
+        return_state.setMustReachingDefs(new MustReachingDefs(caller_state.getMustReachingDefs()));
+        return_state.getMustEquals().setToBottom(); // TODO: could kill only the heap locations that may have been written by the function?
         return_state.setStacked(Options.get().isLazyDisabled() ? newSet(callee_summarized.summarize(caller_state.getStackedObjects())) : null,
                 newSet(caller_state.getStackedFunctions()));
         // replace polymorphic values in returnval and exval

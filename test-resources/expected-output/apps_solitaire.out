@@ -1,7 +1,7 @@
 benchmarks/tajs/src/apps/solitaire/spider.html:215:21: [definite] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/solitaire/spider.html:349:38: [definite] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/solitaire/spider.html:512:109: [definite] TypeError, call to non-function
-benchmarks/tajs/src/apps/solitaire/spider.html:559:13: [definite] Too many parameters to function HTMLDocument.prototype.open
+benchmarks/tajs/src/apps/solitaire/spider.html:559:13: [definite] Too many parameters to native function
 benchmarks/tajs/src/apps/solitaire/spider.html:30:24: [definite] The conditional expression is always true
 benchmarks/tajs/src/apps/solitaire/spider.html:33:17: [definite] The conditional expression is always true
 benchmarks/tajs/src/apps/solitaire/spider.html:39:17: [definite] The conditional expression is always false
@@ -51,18 +51,10 @@ benchmarks/tajs/src/apps/solitaire/spider.html:392:37: [definite] Unreachable co
 benchmarks/tajs/src/apps/solitaire/spider.html:428:13: [definite] Unreachable function RefreshScreen
 benchmarks/tajs/src/apps/solitaire/spider.html:620:13: [definite] Unreachable code
 benchmarks/tajs/src/apps/solitaire/spider.html:292:21: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/apps/solitaire/spider.html:293:21: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/solitaire/spider.html:296:21: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/apps/solitaire/spider.html:297:21: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/solitaire/spider.html:300:21: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/apps/solitaire/spider.html:301:21: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/apps/solitaire/spider.html:304:21: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/apps/solitaire/spider.html:305:21: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/apps/solitaire/spider.html:320:42: [maybe] RangeError, assigning invalid value to array 'length' property
-benchmarks/tajs/src/apps/solitaire/spider.html:321:26: [maybe] RangeError, assigning invalid value to array 'length' property
-benchmarks/tajs/src/apps/solitaire/spider.html:325:21: [maybe] RangeError, assigning invalid value to array 'length' property
-benchmarks/tajs/src/apps/solitaire/spider.html:340:21: [maybe] RangeError, assigning invalid value to array 'length' property
-benchmarks/tajs/src/apps/solitaire/spider.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/apps/solitaire/spider.html:52:21, benchmarks/tajs/src/apps/solitaire/spider.html:58:21, benchmarks/tajs/src/apps/solitaire/spider.html:215:21, benchmarks/tajs/src/apps/solitaire/spider.html:225:21, benchmarks/tajs/src/apps/solitaire/spider.html:292:21, benchmarks/tajs/src/apps/solitaire/spider.html:293:21, benchmarks/tajs/src/apps/solitaire/spider.html:296:21, benchmarks/tajs/src/apps/solitaire/spider.html:297:21, benchmarks/tajs/src/apps/solitaire/spider.html:300:21, benchmarks/tajs/src/apps/solitaire/spider.html:301:21, benchmarks/tajs/src/apps/solitaire/spider.html:304:21, benchmarks/tajs/src/apps/solitaire/spider.html:305:21, benchmarks/tajs/src/apps/solitaire/spider.html:320:42, benchmarks/tajs/src/apps/solitaire/spider.html:321:26, benchmarks/tajs/src/apps/solitaire/spider.html:325:21, benchmarks/tajs/src/apps/solitaire/spider.html:328:56, benchmarks/tajs/src/apps/solitaire/spider.html:340:21, benchmarks/tajs/src/apps/solitaire/spider.html:341:42, benchmarks/tajs/src/apps/solitaire/spider.html:349:38, benchmarks/tajs/src/apps/solitaire/spider.html:391:33, benchmarks/tajs/src/apps/solitaire/spider.html:512:109]
+benchmarks/tajs/src/apps/solitaire/spider.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/apps/solitaire/spider.html:215:21, benchmarks/tajs/src/apps/solitaire/spider.html:225:21, benchmarks/tajs/src/apps/solitaire/spider.html:292:21, benchmarks/tajs/src/apps/solitaire/spider.html:296:21, benchmarks/tajs/src/apps/solitaire/spider.html:300:21, benchmarks/tajs/src/apps/solitaire/spider.html:304:21, benchmarks/tajs/src/apps/solitaire/spider.html:349:38, benchmarks/tajs/src/apps/solitaire/spider.html:391:33, benchmarks/tajs/src/apps/solitaire/spider.html:512:109]
 benchmarks/tajs/src/apps/solitaire/spider.html:57:26: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/solitaire/spider.html:58:36: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/solitaire/spider.html:68:25: [maybe] Conversion to number yields NaN
@@ -100,16 +92,12 @@ benchmarks/tajs/src/apps/solitaire/spider.html:205:25: [maybe] Reading absent pr
 benchmarks/tajs/src/apps/solitaire/spider.html:205:59: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/solitaire/spider.html:205:77: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/solitaire/spider.html:292:21: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/solitaire/spider.html:293:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/solitaire/spider.html:294:36: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/solitaire/spider.html:296:21: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/solitaire/spider.html:297:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/solitaire/spider.html:298:36: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/solitaire/spider.html:300:21: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/solitaire/spider.html:301:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/solitaire/spider.html:302:36: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/solitaire/spider.html:304:21: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/solitaire/spider.html:305:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/solitaire/spider.html:306:36: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/solitaire/spider.html:308:17: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/solitaire/spider.html:317:37: [maybe] Conversion to number yields NaN

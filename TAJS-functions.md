@@ -54,6 +54,8 @@
     - Creates an abstract value. The value is created by reflectively invoking the `'make' + partialMethodName`-method of the Value class.
 - **TAJS_makeContextSensitive**(Value targetFunction, Integer targetContextSensitivity, [Object contextSensitivityGuard]) -> void:
     - Makes the given function *more* context sensitive. If targetContextSensitivity is an unsigned integer then the function is parameter-sensitive in that argument position; if it is -1 then the function is object-sensitive; if it is -2 then the function "inherits" the parameter-sensitivity of the enclosing function. The optional guard can have a field named 'caller' with a value indicating from which callers the context sensitivity should apply.
+- **TAJS_makeExcludedStrings**(String ... strings) -> StringValue:
+    - Makes the abstract string consisting of all strings except the given strings.
 - **TAJS_makePartial**(String kind, String canonicalName) -> Object:
     - Creates a "partial" object of the given kind (FUNCTION, OBJECT, ARRAY) and canonical name. Partial functions cannot be invoked, and accessing properties of partial objects results in warnings.
 - **TAJS_newArray**() -> Array:

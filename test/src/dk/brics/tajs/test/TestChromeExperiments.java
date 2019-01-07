@@ -172,7 +172,6 @@ public class TestChromeExperiments {
 
     @Test
     public void chrome_starfield() throws Exception {
-        Options.get().enableUnevalizer();
         Misc.run("test-resources/src/chromeexperiments/starfield.html");
         Misc.checkSystemOutput();
     }

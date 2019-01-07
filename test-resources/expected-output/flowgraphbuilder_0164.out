@@ -15,21 +15,16 @@ fg2: <main> function()
   block 4:
     node 5: read-variable['z',v9,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
     node 6: read-property[v9,'c',v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
-    node 7: <variable-non-null-undef>['z'] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
-    node 8: read-property[v8,'rows',v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
-    node 9: <property-non-null-undef>[v9,'c'] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
-    node 10: read-property[v7,'cells',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
-    node 11: <property-non-null-undef>[v8,'rows'] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
-    node 12: read-property[v6,'item',v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
-    node 13: <property-non-null-undef>[v7,'cells'] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
-    node 14: read-property[v5,'offsetHeight',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
-    node 15: <property-non-null-undef>[v6,'item']* (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 7: read-property[v8,'rows',v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 8: read-property[v7,'cells',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 9: read-property[v6,'item',v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 10: read-property[v5,'offsetHeight',-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
     ->[block 5]
   block 5: [exit-ordinary]
-    node 16: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js)
+    node 11: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js)
     ->[]
   block 6: [exit-exceptional]
-    node 17: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js)
+    node 12: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0164.js: [definite] Ordinary program exit is unreachable

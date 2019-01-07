@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.MustReachingDefs;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ScopeChain;
@@ -74,6 +75,8 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
 
     private final Set<StateExtras> extras;
 
+    private final Set<MustReachingDefs> mustReachingDefs;
+
     private final Set<Summarized> summarized;
 
     private FlowGraph flowGraph;
@@ -89,6 +92,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
         scopeChains = makeIdentitySet();
         objs = makeIdentitySet();
         extras = makeIdentitySet();
+        mustReachingDefs = makeIdentitySet();
         states = makeIdentitySet();
         summarized = makeIdentitySet();
     }
@@ -130,6 +134,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
         }
         objs.addAll(state.getStore().values());
         extras.add(state.getExtras());
+        mustReachingDefs.add(state.getMustReachingDefs());
         summarized.add(state.getSummarized());
         states.add(state); // could delay all the other recording, but the collection states might be removed later
     }
@@ -169,6 +174,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
         measurements.measureIdentitySetDuplication("Obj", objs);
         measurements.measureIdentitySetDuplication("Summarized", summarized);
         measurements.measureIdentitySetDuplication("Extras", extras);
+        measurements.measureIdentitySetDuplication("MustReachingDefs", mustReachingDefs);
 
         measurements.recordPlainNumber("Block", flowGraph.getNumberOfBlocks());
         measurements.recordPlainNumber("Node", flowGraph.getNumberOfNodes());
@@ -188,6 +194,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
         specializeMeasurement(measurements, "Context", contexts, "thisVal", c -> c.getThisVal() != null && !c.getThisVal().isNone());
 
         specializeMeasurement(measurements, "Obj", this.objs, "writable", Obj::isWritable);
+        specializeMeasurement(measurements, "Obj", this.objs, "writableProperties", Obj::isWritableProperties);
 
         measurements.recordPlainNumber("Sum(|Obj.properties|)",
                 objs.stream()

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 Aarhus University
+ * Copyright 2009-2019 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,7 @@ import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
-import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 
-import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -46,7 +44,7 @@ public interface SyntacticQueries {
     /**
      * True iff the given node is inside a for-in loop.
      */
-    boolean isInForIn(AbstractNode node);
+    boolean isInForIn(AbstractNode node); // TODO: currently unused
 
     /**
      * True iff the given function contains variables that are used as both property read and write names.
@@ -57,16 +55,6 @@ public interface SyntacticQueries {
      * The set of CallNodes to TAJS_* function with 'false' as first or fourth argument.
      */
     Set<CallNode> getTajsCallsWithLiteralFalseAsFirstOrFourthArgument();
-
-    /**
-     * The set of pattern-matched conditions used in the condition of an if-node.
-     */
-    Set<ConditionPattern> getConditionPattern(IfNode ifNode);
-
-    /**
-     * The base-reference of a property access.
-     */
-    Optional<SyntacticReference> getBaseReference(AbstractNode node);
 
     /**
      * True iff the parse tree is a simple read.
@@ -84,19 +72,9 @@ public interface SyntacticQueries {
     int getExpressionRegister(ParseTree tree);
 
     /**
-     * The variables that are used as the first argument to a function call in a condition, where the variable is also used in he body of the condition.
-     */
-    Set<String> getConditionRefined1ArgumentVariables(IfNode ifNode);
-
-    /**
-     * The variables that are used as arguments to a function call in a condition, where the variable is also used in he body of the condition.
-     */
-    Set<String> getConditionRefinedArgumentVariables(IfNode ifNode);
-
-    /**
      * True iff the variable could be allocated on the stack (i.e. not referenced by any closures).
      */
-    boolean isStackVariable(Function function, String variableName);
+    boolean isStackVariable(Function function, String variableName); // TODO: currently unused
 
     /**
      * The set of free variables of a function that are bound in an outer function (closure variables).
