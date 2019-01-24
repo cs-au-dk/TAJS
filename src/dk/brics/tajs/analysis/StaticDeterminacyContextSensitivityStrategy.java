@@ -69,12 +69,12 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
      * <p>
      */
     @Override
-    public HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state) {
+    public HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c) {
         ContextArguments funArgs = state.getContext().getFunArgs();
         if (!shouldLiteralBeHeapSensitive(node, funArgs)) {
-            return null;
+            return makeHeapContext(node, null, c);
         }
-        return makeHeapContext(node, funArgs);
+        return makeHeapContext(node, funArgs, c);
     }
 
     @Override
@@ -120,12 +120,12 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
     public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, Value thisval, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         // Due to implementation details, the callee context is created *after* the activation and argument objects.
         // So the callee-context is computed here (using the same algorithm) as well
-        return makeHeapContext(callInfo.getJSSourceNode(), decideCallContextArguments(function, callInfo, state, c)); // TODO: currently not using this_objs...
+        return makeHeapContext(callInfo.getJSSourceNode(), decideCallContextArguments(function, callInfo, state, c), c); // TODO: currently not using this_objs...
     }
 
     @Override
     public HeapContext makeConstructorHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
-        return makeHeapContext(callInfo.getJSSourceNode(), decideCallContextArguments(function, callInfo, state, c));
+        return makeHeapContext(callInfo.getJSSourceNode(), decideCallContextArguments(function, callInfo, state, c), c);
     }
 
     /**
@@ -264,12 +264,12 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                 }
             }
         }
-        HeapContext heapContext = makeHeapContext(c.getNode(), new ContextArguments(null, map));
+        HeapContext heapContext = makeHeapContext(c.getNode(), new ContextArguments(null, map), c);
         closureVariableValuesAtAllocation.put(heapContext, map);
         return heapContext;
     }
 
-    public HeapContext makeHeapContext(AbstractNode location, ContextArguments arguments) {
+    public HeapContext makeHeapContext(AbstractNode location, ContextArguments arguments, Solver.SolverInterface c) {
         boolean recursive = ContextArguments.extractTopLevelObjectLabels(arguments).stream().anyMatch(l -> {
             SourceLocation thisAllocationSite = location.getSourceLocation();
             SourceLocation otherAllocationSite = l.getSourceLocation();

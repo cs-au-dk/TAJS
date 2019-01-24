@@ -2,7 +2,7 @@ test-resources/src/sunspider/string-unpack-code.js:20:5: [definite] The variable
 test-resources/src/sunspider/string-unpack-code.js:34:5: [definite] The variable decompressedJQuery is never used
 test-resources/src/sunspider/string-unpack-code.js:55:5: [definite] The variable decompressedDojo is never used
 test-resources/src/sunspider/string-unpack-code.js:70:5: [definite] The variable decompressedPrototype is never used
-test-resources/src/sunspider/string-unpack-code.js: [maybe] Uncaught exception, constructed at [HOST(string-replace-model.js):49:30, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
+test-resources/src/sunspider/string-unpack-code.js: [maybe] Uncaught exception, constructed at [HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
 test-resources/src/sunspider/string-unpack-code.js:20:134: [maybe] Converting primitive number to object
 test-resources/src/sunspider/string-unpack-code.js:20:155: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:20:197: [maybe] Reading absent property (computed name)

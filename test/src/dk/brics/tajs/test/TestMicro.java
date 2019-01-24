@@ -1180,7 +1180,8 @@ public class TestMicro {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisResultException.class /* TODO: GitHub #243 */)
+    @Ignore // TODO: #243 Nashorn bug, seems to be fixed in Java SDK 11 (but not in jdk1.8.0_201 on Windows)
+    @Test
     public void micro_185() throws Exception {
         Misc.run("test-resources/src/micro/test185.js");
     }
@@ -4188,5 +4189,11 @@ public class TestMicro {
                 "var singleton = createArr();",
                 "summ1.push(1)",
                 "TAJS_assert(0 === summ2.length, 'isMaybeTrue')");
+    }
+
+    @Test
+    public void testMustEqualsBaseCoercion() {
+        Misc.runSource("var x = 'foo';",
+                "(x[2]) ? typeof x === 'object' && x : false");
     }
 }

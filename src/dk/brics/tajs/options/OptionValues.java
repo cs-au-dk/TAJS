@@ -254,6 +254,9 @@ public class OptionValues {
     @Option(name = "-nodejs", usage = "Use Node.js environment for analysis and soundness testing (currently only 'require' is supported)")
     private boolean nodejs;
 
+    @Option(name = "-type-checks", usage = "Enables type checking")
+    private boolean typeCheckEnabled;
+
     @Option(name = "-blended-analysis", usage = "Filter abstract values based on values observed concretely")
     private boolean blendedAnalysis;
 
@@ -315,6 +318,7 @@ public class OptionValues {
         if (ignoreUnreached != that.ignoreUnreached) return false;
         if (loopUnrollings != that.loopUnrollings) return false;
         if (determinacy != that.determinacy) return false;
+        if (typeCheckEnabled != that.typeCheckEnabled) return false;
         if (polyfillMDN != that.polyfillMDN) return false;
         if (polyfillES6Collections != that.polyfillES6Collections) return false;
         if (polyfillTypedArrays != that.polyfillTypedArrays) return false;
@@ -415,6 +419,7 @@ public class OptionValues {
         result = 31 * result + (inspector ? 1 : 0);
         result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
         result = 31 * result + (soundnessTesterOptions != null ? soundnessTesterOptions.hashCode() : 0);
+        result = 31 * result + (typeCheckEnabled ? 1 : 0);
         result = 31 * result + (blendedAnalysis ? 1 : 0);
         return result;
     }
@@ -1261,6 +1266,14 @@ public class OptionValues {
 
     public void disableNodeJS() {
         nodejs = false;
+    }
+
+    public boolean isTypeCheckEnabled() {
+        return this.typeCheckEnabled;
+    }
+
+    public void enableTypeCheck() {
+        this.typeCheckEnabled = true;
     }
 
     public boolean isBlendedAnalysisEnabled() {

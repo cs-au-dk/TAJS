@@ -48,7 +48,7 @@ public class SynchronizedMonitoringStoppingAPI implements InspectorAPI {
 
     private final Toggler toggler;
 
-    private final Map<FileID, Set<Gutter<?>>> gutterCache = new HashMap();
+    private final Map<FileID, Set<Gutter<?>>> gutterCache = new HashMap<>();
 
     public SynchronizedMonitoringStoppingAPI(InspectorAPI api, Toggler toggler) {
         this.api = api;

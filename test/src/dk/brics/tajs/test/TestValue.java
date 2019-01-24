@@ -444,4 +444,11 @@ public class TestValue {
             assertEquals(String.format("Unexpected restrictToStrictEquals-result for %s.restrictToStrictEquals(%s), expected bottomness: %s, got %s", v1, v2, bottomMeetExpected, bottomRestriction), bottomMeetExpected, bottomRestriction);
         }
     }
+
+    @Test
+    public void testRestrictIdentStrToIdentStrWithExcludedStrings() {
+        Value identStr = Value.makeAnyStrIdent();
+        Value excludedStrings = Value.makeAnyStrIdent().restrictToNotStrings(Stream.of("a", "b").collect(Collectors.toSet()));
+        assertEquals(excludedStrings, identStr.restrictToStrictEquals(excludedStrings));
+    }
 }

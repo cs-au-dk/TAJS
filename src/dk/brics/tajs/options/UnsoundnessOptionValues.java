@@ -74,6 +74,9 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
     @Option(name = "-ignore-some-prototypes-during-dynamic-property-reads", usage = "Allows ignoring some unlikely prototypes during a dynamic property read")
     private boolean ignoreSomePrototypesDuringDynamicPropertyReads;
 
+    @Option(name = "-ignore-events-after-exceptions", usage = "Ignore events after uncaught exceptions during initialization (always done for NodeJS analysis)")
+    private boolean ignoreEventsAfterExceptions;
+
     @Option(name = "-ignore-unlikely-undefined-as-first-argument-to-addition", usage = "Allows ignoring undefined as first argument to addition when it is maybe undef")
     private boolean ignoreUnlikelyUndefinedAsFirstArgumentToAddition;
 
@@ -116,6 +119,7 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
         if (ignoreImpreciseFunctionConstructor != that.ignoreImpreciseFunctionConstructor) return false;
         if (ignoreUnlikelyPropertyReads != that.ignoreUnlikelyPropertyReads) return false;
         if (showUnsoundnessUsage != that.showUnsoundnessUsage) return false;
+        if (ignoreEventsAfterExceptions != that.ignoreEventsAfterExceptions) return false;
         if (ignoreSomePrototypesDuringDynamicPropertyReads != that.ignoreSomePrototypesDuringDynamicPropertyReads) return false;
         if (ignoreUnlikelyUndefinedAsFirstArgumentToAddition != that.ignoreUnlikelyUndefinedAsFirstArgumentToAddition) return false;
         if (assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber != that.assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber) return false;
@@ -141,6 +145,7 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
         result = 31 * result + (ignoreUnlikelyUndefinedAsFirstArgumentToAddition ? 1 : 0);
         result = 31 * result + (assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber ? 1 : 0);
         result = 31 * result + (noExceptions ? 1 : 0);
+        result = 31 * result + (ignoreEventsAfterExceptions ? 1 : 0);
         return result;
     }
 
@@ -283,6 +288,10 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
     public void setIgnoreSomePrototypesDuringDynamicPropertyReads(boolean ignoreSomePrototypesDuringDynamicPropertyReads) {
         this.ignoreSomePrototypesDuringDynamicPropertyReads = ignoreSomePrototypesDuringDynamicPropertyReads;
     }
+
+    public boolean isIgnoreEventsAfterExceptions() {  return ignoreEventsAfterExceptions; }
+
+    public void setIgnoreEventsAfterExceptions(boolean ignoreEventsAfterExceptions) { this.ignoreEventsAfterExceptions = ignoreEventsAfterExceptions; }
 
     public boolean isIgnoreUnlikelyUndefinedAsFirstArgumentToAddition() {
         return ignoreUnlikelyUndefinedAsFirstArgumentToAddition;

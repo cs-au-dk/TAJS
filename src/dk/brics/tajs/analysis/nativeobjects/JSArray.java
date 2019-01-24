@@ -396,7 +396,7 @@ public class JSArray {
             }
 
             case ARRAY_SLICE: {
-                ObjectLabel resultArray = makeArray(call.getSourceNode(), c);
+                ObjectLabel resultArray = makeArray(call.getSourceNode(), Value.makeNum(0), state.readThis(), c);
 
                 // resolve the fromIndex, a value of null means that it is not coercible to a single, precise number
                 Value fromIndexValue = FunctionCalls.readParameter(call, state, 0).summarize(new Summarized(resultArray));
@@ -667,7 +667,19 @@ public class JSArray {
     }
 
     public static ObjectLabel makeArray(AbstractNode allocationNode, Value length, Solver.SolverInterface c) {
-        return makeArray(allocationNode, length, null, c);
+        return makeArray(allocationNode, length, (HeapContext)null, c);
+    }
+
+    /**
+     * Makes an array where the heapContext of the thisObj is used as the heapContext of the resulting array.
+     * This helps if two different arrays are created at the same callsite, but with 2 different this-objects.
+     * This scenario happens if two different functions created using Function.prototype.bind are called form the same callsite.
+     */
+    public static ObjectLabel makeArray(AbstractNode allocationNode, Value length, Value thisObj, Solver.SolverInterface c) {
+        if (thisObj != null && thisObj.isMaybeSingleObjectLabel()) {
+            return makeArray(allocationNode, length, thisObj.getAllObjectLabels().iterator().next().getHeapContext(), c);
+        }
+        return makeArray(allocationNode, length, (HeapContext)null, c);
     }
 
     public static ObjectLabel makeArray(AbstractNode allocationNode, Value length, HeapContext heapContext, Solver.SolverInterface c) {
@@ -780,6 +792,9 @@ public class JSArray {
                     return Value.makeAnyStr();
                 }
                 strings.add(string);
+            }
+            if (strings.size() == 1) { // separator might be null, if strings.size() == 1
+                return Value.makeStr(strings.iterator().next());
             }
             return Value.makeStr(String.join(separator, strings));
     }

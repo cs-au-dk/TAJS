@@ -72,7 +72,6 @@ public class TAJSAssertionReachabilityCheckerMonitor extends DefaultAnalysisMoni
                 .collect(Collectors.toSet());
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void visitNodeTransferPre(AbstractNode n, State s) {
         if (assertionCallNodes.contains(n) && !s.isBottom()) { // FIXME: suspicious call to Set.contains (github #503)

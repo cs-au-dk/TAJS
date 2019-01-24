@@ -86,13 +86,10 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
 
         ContextType edge_context;
 
-        boolean implicit;
-
-        public ReverseEdge(AbstractNode call_node, ContextType caller_context, ContextType edge_context, boolean implicit) {
+        public ReverseEdge(AbstractNode call_node, ContextType caller_context, ContextType edge_context) {
             this.call_node = call_node;
             this.caller_context = caller_context;
             this.edge_context = edge_context;
-            this.implicit = implicit;
         }
 
         public AbstractNode getCallNode() {
@@ -105,10 +102,6 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
 
         public ContextType getEdgeContext() {
             return edge_context;
-        }
-
-        public boolean isImplicit() {
-            return implicit;
         }
     }
 
@@ -166,8 +159,8 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
      * Adds a reverse edge.
      */
     public void addSource(AbstractNode caller, ContextType caller_context, BasicBlock callee, ContextType callee_context,
-                          ContextType edge_context, boolean implicit) {
-        addToMapSet(call_sources, new BlockAndContext<>(callee, callee_context), new ReverseEdge<>(caller, caller_context, edge_context, implicit));
+                          ContextType edge_context) {
+        addToMapSet(call_sources, new BlockAndContext<>(callee, callee_context), new ReverseEdge<>(caller, caller_context, edge_context));
     }
 
     /**

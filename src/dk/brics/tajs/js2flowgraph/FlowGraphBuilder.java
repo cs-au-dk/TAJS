@@ -457,7 +457,9 @@ public class FlowGraphBuilder {
             appendBlock = makeSuccessorBasicBlock(appendBlock, functionAndBlocksManager);
 
             BasicBlock weakCatcher = injectCatcherForFunction(location, env);
-            weakCatcher.addSuccessor(appendBlock);
+            if (!Options.get().getUnsoundness().isIgnoreEventsAfterExceptions() &&
+                    !Options.get().isNodeJS()) // in Node.js, uncaught exceptions during initialization prevent event processing
+                weakCatcher.addSuccessor(appendBlock);
 
             NopNode nopEntryNode = new NopNode("eventDispatchers: entry", location);
             nopEntryNode.setArtificial();
@@ -466,7 +468,11 @@ public class FlowGraphBuilder {
             if (Options.get().isDOMEnabled()) {
                 BasicBlock lastDOMContentLoadedEventLoopBlock = addAsyncBlocks(Type.DOM_CONTENT_LOADED, true, "DOMContentLoaded", location, env.makeAppendBlock(appendBlock));
                 BasicBlock lastLoadEventLoopBlock = addAsyncBlocks(Type.DOM_LOAD, true, "Load", location, env.makeAppendBlock(lastDOMContentLoadedEventLoopBlock));
-                BasicBlock lastOtherEventLoopBlock = addAsyncBlocks(Type.DOM_OTHER, true, "Other", location, env.makeAppendBlock(lastLoadEventLoopBlock));
+                BasicBlock lastOtherEventLoopBlock = addAsyncBlocks(Type.DOM_OTHER, !Options.get().isTypeCheckEnabled(), "Other", location, env.makeAppendBlock(lastLoadEventLoopBlock));
+                if (Options.get().isTypeCheckEnabled()) {
+                    lastOtherEventLoopBlock = addAsyncBlocks(Type.TYPE_TESTS, false, "TypeTests", location, env.makeAppendBlock(lastOtherEventLoopBlock));
+                    lastOtherEventLoopBlock.addSuccessor(lastLoadEventLoopBlock);
+                }
                 BasicBlock lastUnloadEventLoopBlock = addAsyncBlocks(Type.DOM_UNLOAD, true, "Unload", location, env.makeAppendBlock(lastOtherEventLoopBlock));
                 appendBlock = lastUnloadEventLoopBlock;
             } else if (Options.get().isAsyncEventsEnabled()) {

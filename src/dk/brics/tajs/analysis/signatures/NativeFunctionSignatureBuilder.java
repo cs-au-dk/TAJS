@@ -97,6 +97,7 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.DECODEURICO
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ENCODEURI;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ENCODEURICOMPONENT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ERROR;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ERROR_CAPTURESTACKTRACE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ERROR_TOSTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ESCAPE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.EVAL;
@@ -511,6 +512,7 @@ public class NativeFunctionSignatureBuilder {
 
         // ERROR FUNCTIONS
         addSig(ERROR_TOSTRING, none);
+        addStaticSig(ERROR_CAPTURESTACKTRACE, MandatoryParameters.Object, OptionalParameters.Function);
 
         // JSON FUNCTIONS
         addSig(JSON_PARSE, none, OptionalParameters.String);

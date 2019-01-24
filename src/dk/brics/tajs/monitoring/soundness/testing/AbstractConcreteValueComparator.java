@@ -177,7 +177,6 @@ public class AbstractConcreteValueComparator {
             private Boolean matchesLoggerRegExp(ConcreteRegularExpression regexp, String abstractConcreteString) {
                 MappedNativeResult<ConcreteValue> match = TAJSConcreteSemantics.getNative().apply("RegExp.prototype.test", regexp, Collections.singletonList(new ConcreteString(abstractConcreteString)));
 
-                @SuppressWarnings("unchecked")
                 ConcreteBoolean value = (ConcreteBoolean) match.getResult().getValue();
                 return value.getBooleanValue();
             }

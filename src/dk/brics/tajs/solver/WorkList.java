@@ -17,6 +17,7 @@
 package dk.brics.tajs.solver;
 
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.typetesting.ITypeTester;
 import dk.brics.tajs.util.AnalysisException;
 import org.apache.log4j.Logger;
 
@@ -40,11 +41,14 @@ public class WorkList<ContextType extends IContext<ContextType>> {
 
     private CallGraph<?, ContextType, ?> call_graph;
 
+    private ITypeTester<ContextType> ttr;
+
     /**
      * Constructs a new empty work list.
      */
-    public WorkList(CallGraph<?, ContextType, ?> call_graph) {
+    public WorkList(CallGraph<?, ContextType, ?> call_graph, ITypeTester<ContextType> ttr) {
         this.call_graph = call_graph;
+        this.ttr = ttr;
         pending_queue = new TreeSet<>();
         pending_set = newSet();
     }
@@ -130,7 +134,6 @@ public class WorkList<ContextType extends IContext<ContextType>> {
         public boolean equals(Object obj) {
             if (obj == null || !getClass().equals(obj.getClass()))
                 return false;
-            @SuppressWarnings("unchecked")
             WorkList<?>.Entry p = (WorkList<?>.Entry) obj;
             return p.bc.equals(bc);
         }
@@ -177,6 +180,12 @@ public class WorkList<ContextType extends IContext<ContextType>> {
 //                return OTHER_FIRST;
 //            if (other.bc.getBlock().getFirstNode() instanceof ExceptionalReturnNode && !(bc.getBlock().getFirstNode() instanceof ExceptionalReturnNode))
 //                return THIS_FIRST;
+
+            if (ttr != null) {
+                Integer c = ttr.compareWorkListEntries(bc, other.bc);
+                if (c != null)
+                    return c;
+            }
 
             if (funentry.equals(other.funentry)) {
                 // same function and same context at entry: use block order (reverse post order)

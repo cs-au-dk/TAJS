@@ -85,8 +85,8 @@ public class CustomContextSensitivityStrategy implements IContextSensitivityStra
     }
 
     @Override
-    public HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state) {
-        return defaultContextSensitivity.makeObjectLiteralHeapContext(node, state);
+    public HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c) {
+        return defaultContextSensitivity.makeObjectLiteralHeapContext(node, state, c);
     }
 
     @Override
@@ -232,5 +232,9 @@ public class CustomContextSensitivityStrategy implements IContextSensitivityStra
             }
         }
         return new ContextArguments(parameterNames, args, nonArguments);
+    }
+
+    public IContextSensitivityStrategy getDefaultContextSensitivity() {
+        return defaultContextSensitivity;
     }
 }

@@ -32,8 +32,8 @@ public class OptionsUtil {
                 Object value = f.get(from);
                 if (value instanceof Cloneable) {
                     for (Method possibleClone : value.getClass().getDeclaredMethods()) {
-                        possibleClone.setAccessible(true);
                         if ("clone".equals(possibleClone.getName()) && possibleClone.getParameterTypes().length == 0) {
+                            possibleClone.setAccessible(true);
                             value = possibleClone.invoke(value);
                         }
                     }

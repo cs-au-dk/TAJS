@@ -105,7 +105,7 @@ class ObjReadsWrites {
      */
     public void readMaybe(PKey prop) {
         R_Status r = reads.get(prop);
-        if (r != null && r == R_Status.READ) {
+        if (r == R_Status.READ) {
             return;
         }
         reads.put(prop, R_Status.MAYBE_READ);
@@ -124,7 +124,7 @@ class ObjReadsWrites {
      */
     public void writeMaybe(PKey prop) {
         W_Status r = writes.get(prop);
-        if (r != null && r == W_Status.WRITTEN) {
+        if (r == W_Status.WRITTEN) {
             return;
         }
         writes.put(prop, W_Status.MAYBE_WRITTEN);

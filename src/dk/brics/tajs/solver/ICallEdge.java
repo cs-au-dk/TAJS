@@ -30,4 +30,5 @@ public interface ICallEdge<StateType extends IState<?, ?, ?>> {
      * Sets the state at this edge.
      */
     void setState(StateType s);
+
 }

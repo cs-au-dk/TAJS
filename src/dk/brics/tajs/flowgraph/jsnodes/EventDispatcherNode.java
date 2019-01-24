@@ -56,7 +56,12 @@ public class EventDispatcherNode extends Node {
         /**
          * Events that are scheduled for asynchronous execution.
          */
-        ASYNC
+        ASYNC,
+
+        /**
+         * Entry point for type tests.
+         */
+        TYPE_TESTS
     }
 
     private Type type;

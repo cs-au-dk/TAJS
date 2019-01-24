@@ -282,6 +282,8 @@ public class NativeFunctionSignatureUtilities {
 
         public static final Optional Object = MandatoryParameters.Object.toMaybe();
 
+        public static final Optional Function = MandatoryParameters.Function.toMaybe();
+
         public static final Optional StringIfNotRegExp = MandatoryParameters.StringIfNotRegExp.toMaybe();
 
         public static final Optional StringIfNotFunction = MandatoryParameters.StringIfNotFunction.toMaybe();

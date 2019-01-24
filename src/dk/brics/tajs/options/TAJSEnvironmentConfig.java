@@ -157,7 +157,7 @@ public class TAJSEnvironmentConfig {
         if (property == null) {
             return true; // default enabled
         }
-        Boolean desktop = Boolean.valueOf(property);
+        boolean desktop = Boolean.parseBoolean(property);
         if (desktop && !java.awt.Desktop.isDesktopSupported()) {
             throw new AnalysisException("Invalid TAJS configuration: desktop-usage is explicitly enabled, but the platform does not support desktops!");
         }

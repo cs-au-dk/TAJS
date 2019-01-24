@@ -60,7 +60,7 @@ public class ObjectCollectionMonitor extends DefaultAnalysisMonitoring {
                         Collectors.groupingBy(e -> e.getKey().getFirst(),
                                 java.util.stream.Collectors.mapping(Map.Entry::getValue,
                                         Collector.of(
-                                                Collections::<ObjectLabel>newSet,
+                                                Collections::newSet,
                                                 Set::addAll /* only difference from TAJSCollectors.toSet */, (acc1, acc2) -> {
                                                     acc1.addAll(acc2);
                                                     return acc1;

@@ -290,5 +290,8 @@ public class DOMEvents {
             triggerEventHandler(EventType.OTHER, c);
             triggerEventHandler(EventType.TIMEOUT, c);
         }
+        if (n.getType() == EventDispatcherNode.Type.TYPE_TESTS) {
+            c.getAnalysis().getTypeTester().triggerTypeTests(c);
+        }
     }
 }

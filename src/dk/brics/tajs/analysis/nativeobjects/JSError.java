@@ -17,6 +17,7 @@
 package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.Conversion;
+import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
@@ -27,7 +28,6 @@ import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.util.AnalysisLimitationException;
 
 /**
  * 15.11 native Error functions.
@@ -71,8 +71,12 @@ public class JSError {
                 return createErrorObject(InitialStateBuilder.URI_ERROR_PROTOTYPE, nativeobject, call, c);
             }
 
-            case ERROR_CAPTURESTACKTRACE: { // 15.11.4.4
-                throw new AnalysisLimitationException.AnalysisModelLimitationException("Error.captureStackTrace not yet modeled");
+            case ERROR_CAPTURESTACKTRACE: { // V8 specific
+                Value targetObj = FunctionCalls.readParameter(call, c.getState(), 0);
+                if (!targetObj.restrictToNotObject().isNone())
+                    Exceptions.throwTypeError(c);
+
+                c.getAnalysis().getPropVarOperations().writeProperty(targetObj.getObjectLabels(), Value.makeStr("stack"), Value.makeAnyStr());
             }
 
             case ERROR_TOSTRING: { // 15.11.4.4

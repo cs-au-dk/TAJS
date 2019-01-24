@@ -202,4 +202,17 @@ public class ContextArguments {// TODO: canonicalize? (#140)
                 .flatMap(v -> v.getObjectLabels().stream())
                 .collect(Collectors.toSet());
     }
+
+    public ContextArguments copyWith(Value unknownArg,
+                                     Map<String, Value> selectedClosureVariables,
+                                     List<String> parameterNames,
+                                     List<Value> arguments) {
+
+        return new ContextArguments(
+            unknownArg != null ? unknownArg : this.unknownArg,
+            parameterNames != null ? parameterNames : this.parameterNames,
+            arguments != null ? arguments : this.arguments,
+            selectedClosureVariables != null ? selectedClosureVariables : this.selectedClosureVariables);
+    }
+
 }

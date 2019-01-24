@@ -38,7 +38,8 @@ public enum HostAPIs implements HostAPI {
     ECMASCRIPT_NATIVE("ECMAScript native functions", "native"),
     DOCUMENT_OBJECT_MODEL("The Document Object Model", "dom"),
     TAJS("TAJS_-functions", "tajs"),
-    PARTIAL_HOST_MODEL("Partially modeled host APIs", "partial");
+    PARTIAL_HOST_MODEL("Partially modeled host APIs", "partial"),
+    SPEC("TypeScript modeled", "spec");
 
     private String name;
 
@@ -63,6 +64,8 @@ public enum HostAPIs implements HostAPI {
                 return TAJSFunctionEvaluator.evaluate((TAJSFunction) hostobject, call, c);
             case PARTIAL_HOST_MODEL:
                 throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getSourceNode().getSourceLocation() + ": No model for " + hostobject);
+            case SPEC:
+                  return c.getAnalysis().getTypeTester().evaluateCallToSymbolicFunction(hostobject, call, c);
             default:
                 throw new AnalysisException("Unexpected host API");
         }

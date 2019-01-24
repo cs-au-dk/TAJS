@@ -403,7 +403,7 @@ public class Unevalizer {
                         // The part of the name to the left of the variable. Might be empty.
                         String lsub = v.substring(0, i);
                         // The part to the right of the variable. Might be empty.
-                        String rsub = v.substring(i + hole.length(), v.length());
+                        String rsub = v.substring(i + hole.length());
                         if (!lsub.isEmpty()) {
                             if (!(callback.isDefinitelyIdentifierFragment(hole) || callback.isDefinitelyInteger(hole))) {
                                 log.debug("Failed due to non IdentifierFragment and non Integer");

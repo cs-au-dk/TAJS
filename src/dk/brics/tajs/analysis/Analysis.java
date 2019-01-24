@@ -27,6 +27,7 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.IAnalysis;
 import dk.brics.tajs.solver.IEdgeTransfer;
 import dk.brics.tajs.solver.SolverSynchronizer;
+import dk.brics.tajs.typetesting.ITypeTester;
 
 /**
  * Encapsulation of the analysis using {@link State}, {@link Context},
@@ -53,14 +54,17 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
 
     private BlendedAnalysisManager blended_analysis_manager;
 
+    private ITypeTester<Context> ttr;
+
     /**
      * Constructs a new analysis object.
      */
-    public Analysis(IAnalysisMonitoring monitoring, SolverSynchronizer sync) {
+    public Analysis(IAnalysisMonitoring monitoring, SolverSynchronizer sync, Transfer transfer, ITypeTester<Context> ttr) {
         unsoundness = new Unsoundness(Options.get().getUnsoundness(), monitoring::addMessageInfo);
         this.monitoring = monitoring;
         initial_state_builder = new InitialStateBuilder();
-        transfer = new Transfer();
+        this.transfer = transfer;
+        this.ttr = ttr;
         eval_cache = new EvalCache();
         solver = new Solver(this, sync);
         state_util = new PropVarOperations(unsoundness);
@@ -68,15 +72,30 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
             blended_analysis_manager = new BlendedAnalysisManager();
     }
 
+    /**
+     * Constructs a new analysis object with the default transfer.
+     */
+    public Analysis(IAnalysisMonitoring monitoring, SolverSynchronizer sync) {
+        this(monitoring, sync, new Transfer(), null);
+    }
+
     @Override
     public AnalysisLatticeElement makeAnalysisLattice(FlowGraph fg) {
         return new AnalysisLatticeElement(fg);
     }
 
+    /**
+     * Initializes the context-sensitivity strategy.
+     * If a type-tester is available, then that is used;
+     * otherwise, if determinacy is enabled then {@link StaticDeterminacyContextSensitivityStrategy} is used;
+     * otherwise {@link BasicContextSensitivityStrategy} is used.
+     */
     @Override
     public void initContextSensitivity(FlowGraph fg) {
         IContextSensitivityStrategy s;
-        if (Options.get().isDeterminacyEnabled()) {
+        if (ttr != null) {
+            s = ttr.getCustomContextSensitivityStrategy(fg);
+        } else if (Options.get().isDeterminacyEnabled()) {
             s = new StaticDeterminacyContextSensitivityStrategy(fg.getSyntacticInformation());
         } else {
             s = new BasicContextSensitivityStrategy();
@@ -153,5 +172,10 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
 
     public Unsoundness getUnsoundness() {
         return unsoundness;
+    }
+
+    @Override
+    public ITypeTester<Context> getTypeTester() {
+        return ttr;
     }
 }

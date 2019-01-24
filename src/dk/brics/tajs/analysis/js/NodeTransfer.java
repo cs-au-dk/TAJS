@@ -76,6 +76,7 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallDependencies;
 import dk.brics.tajs.solver.CallGraph;
+import dk.brics.tajs.solver.CallKind;
 import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collectors;
@@ -133,7 +134,7 @@ public class NodeTransfer implements NodeVisitor {
      * Transfer ordinary and exceptional return for the given call node and callee entry.
      */
     public void transferReturn(AbstractNode call_node, BasicBlock callee_entry, Context caller_context, Context callee_context,
-                               Context edge_context, boolean implicit) {
+                               Context edge_context, CallKind callKind) {
         if (call_node instanceof BeginForInNode) {
             for (EndForInNode endNode : ((BeginForInNode) call_node).getEndNodes()) {
                 State end_state = c.getAnalysisLatticeElement().getState(endNode.getBlock(), callee_context); // (EndForInNode uses same context as corresponding BeginForInNode)
@@ -149,14 +150,14 @@ public class NodeTransfer implements NodeVisitor {
             if (ordinary_exit_state != null) {
                 if (ordinary_exit.getFirstNode() instanceof ReturnNode) {
                     ReturnNode returnNode = (ReturnNode) ordinary_exit.getFirstNode();
-                    transferReturn(returnNode.getReturnValueRegister(), ordinary_exit, ordinary_exit_state.clone(), caller, edge_context, implicit);
+                    transferReturn(returnNode.getReturnValueRegister(), ordinary_exit, ordinary_exit_state.clone(), caller, edge_context, callKind);
                 } else
                     throw new AnalysisException("ReturnNode expected");
             }
             BasicBlock exceptional_exit = callee.getExceptionalExit();
             State exceptional_exit_state = c.getAnalysisLatticeElement().getState(exceptional_exit, callee_context);
             if (exceptional_exit_state != null) {
-                transferExceptionalReturn(exceptional_exit, exceptional_exit_state.clone(), caller, edge_context, implicit);
+                transferExceptionalReturn(exceptional_exit, exceptional_exit_state.clone(), caller, edge_context, callKind);
             }
         }
     }
@@ -213,7 +214,7 @@ public class NodeTransfer implements NodeVisitor {
      */
     @Override
     public void visit(NewObjectNode n) {
-        HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeObjectLiteralHeapContext(n, c.getState());
+        HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeObjectLiteralHeapContext(n, c.getState(), c);
         ObjectLabel objlabel = ObjectLabel.make(n, Kind.OBJECT, heapContext);
         c.getState().newObject(objlabel);
         c.getState().writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
@@ -430,9 +431,10 @@ public class NodeTransfer implements NodeVisitor {
             c.getState().setToBottom();
             return;
         }
-        c.getState().writeRegister(n.getBaseRegister(), Value.makeObject(objlabels), false); // write coerced value back to the base register (maybe used by CallNode later)
         if (filtering.assumeNotNullUndef(n.getBaseRegister()))
             return;
+        if (!baseval.restrictToNotNullNotUndef().equals(Value.makeObject(objlabels)))
+            c.getState().writeRegister(n.getBaseRegister(), Value.makeObject(objlabels), true); // write coerced value back to the base register (maybe used by CallNode later)
         // get the property name value, separate the undefined/null/NaN components, coerce with ToString
         Value propertyval;
         if (n.isPropertyFixed()) {
@@ -859,7 +861,7 @@ public class NodeTransfer implements NodeVisitor {
     @Override
     public void visit(ReturnNode n) {
         if (Options.get().isChargedCallsDisabled() || !CallDependencies.DELAY_RETURN_FLOW_UNTIL_DISCHARGED) {
-            transferReturn(n.getReturnValueRegister(), n.getBlock(), c.getState(), null, null, false);
+            transferReturn(n.getReturnValueRegister(), n.getBlock(), c.getState(), null, null, CallKind.ORDINARY);
         } else { // transferReturn is invoked when the call edges are discharged
             c.getCallDependencies().registerDelayedReturn(n.getBlock(), c.getState().getContext());
         }
@@ -870,13 +872,13 @@ public class NodeTransfer implements NodeVisitor {
      *
      * @param caller if non-null, only consider this caller
      */
-    private void transferReturn(int valueReg, BasicBlock block, State state, NodeAndContext<Context> caller, Context edge_context, boolean implicit) {
+    private void transferReturn(int valueReg, BasicBlock block, State state, NodeAndContext<Context> caller, Context edge_context, CallKind callKind) {
         Value v;
         if (valueReg != AbstractNode.NO_VALUE)
             v = state.readRegister(valueReg);
         else
             v = Value.makeUndef();
-        UserFunctionCalls.leaveUserFunction(v, false, block.getFunction(), state, c, caller, edge_context, implicit);
+        UserFunctionCalls.leaveUserFunction(v, false, block.getFunction(), state, c, caller, edge_context, callKind);
     }
 
     /**
@@ -885,7 +887,7 @@ public class NodeTransfer implements NodeVisitor {
     @Override
     public void visit(ExceptionalReturnNode n) {
         if (Options.get().isChargedCallsDisabled() || !CallDependencies.DELAY_RETURN_FLOW_UNTIL_DISCHARGED || n.getBlock().getFunction().isMain()) {
-            transferExceptionalReturn(n.getBlock(), c.getState(), null, null, false);
+            transferExceptionalReturn(n.getBlock(), c.getState(), null, null, CallKind.ORDINARY);
         } else { // transferExceptionalReturn is invoked when the call edges are discharged (unless exiting from main)
             c.getCallDependencies().registerDelayedReturn(n.getBlock(), c.getState().getContext());
         }
@@ -896,10 +898,10 @@ public class NodeTransfer implements NodeVisitor {
      *
      * @param caller if non-null, only consider this caller
      */
-    private void transferExceptionalReturn(BasicBlock block, State state, NodeAndContext<Context> caller, Context edge_context, boolean implicit) {
+    private void transferExceptionalReturn(BasicBlock block, State state, NodeAndContext<Context> caller, Context edge_context, CallKind callKind) {
         Value v = state.readRegister(AbstractNode.EXCEPTION_REG);
         state.removeRegister(AbstractNode.EXCEPTION_REG);
-        UserFunctionCalls.leaveUserFunction(v, true, block.getFunction(), state, c, caller, edge_context, implicit);
+        UserFunctionCalls.leaveUserFunction(v, true, block.getFunction(), state, c, caller, edge_context, callKind);
     }
 
     /**
@@ -997,7 +999,7 @@ public class NodeTransfer implements NodeVisitor {
                     Context specialized_context = c.getAnalysis().getContextSensitivityStrategy().makeForInEntryContext(c.getState().getContext(), n, k);
 //                    specialized_contexts.add(specialized_context);
                     // 2.2  Propagate specialized context
-                    c.propagateToFunctionEntry(n, c.getState().getContext(), specialized_state, specialized_context, successor, false);
+                    c.propagateToFunctionEntry(n, c.getState().getContext(), specialized_state, specialized_context, successor, CallKind.ORDINARY);
                 }
             }
             if (!c.isScanning()) {

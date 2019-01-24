@@ -35,5 +35,5 @@ public interface INodeTransfer<StateType extends IState<StateType, ?, ?>,
      * Processes ordinary and exceptional return flow when a new call edge has been added.
      */
     void transferReturn(AbstractNode call_node, BasicBlock callee_entry, ContextType caller_context,
-                        ContextType callee_context, ContextType edge_context, boolean implicit);
+                        ContextType callee_context, ContextType edge_context, CallKind callKind);
 }

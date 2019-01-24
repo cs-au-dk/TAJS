@@ -58,6 +58,7 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.solver.CallKind;
 import dk.brics.tajs.solver.INodeTransfer;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
@@ -135,7 +136,7 @@ public class LineValueComputer {
             }
 
             @Override
-            public void transferReturn(AbstractNode call_node, BasicBlock callee_entry, Context caller_context, Context callee_context, Context edge_context, boolean implicit) {
+            public void transferReturn(AbstractNode call_node, BasicBlock callee_entry, Context caller_context, Context callee_context, Context edge_context, CallKind callKind) {
                 // unused
             }
 

@@ -12,7 +12,6 @@ import org.junit.runners.Suite;
         TestFeatureToggling.class,
         RunBlendedAnalysis.class,
         TestJQueryUse.class,
-        TestJQueryUse_unanalyzable.class,
         TestRevamp2016.class
 })
 public class RunSlow {

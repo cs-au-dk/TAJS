@@ -132,4 +132,8 @@ public final class HeapContext implements DeepImmutable {
                 .collect(Collectors.toSet());
     }
 
+    public HeapContext copyWith(ContextArguments funargs, Map<String, Value> concreteSemanticValueQualifiers) {
+        return new HeapContext(funargs != null ? funargs : this.funargs, concreteSemanticValueQualifiers != null ? concreteSemanticValueQualifiers : this.concreteSemanticValueQualifiers);
+    }
+
 }

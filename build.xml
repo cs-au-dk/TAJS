@@ -3,7 +3,7 @@
 <project name="TAJS" default="all" basedir=".">
 
     <property name="project" value="tajs" />
-    <property name="version" value="0.19" />
+    <property name="version" value="0.20" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />

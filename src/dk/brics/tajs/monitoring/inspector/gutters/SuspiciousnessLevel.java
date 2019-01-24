@@ -141,12 +141,8 @@ public class SuspiciousnessLevel {
     private int getNumberOfObjectTypes(Value value) {
         Set<ObjectLabel> objectLabels = value.getObjectLabels();
         Set<Kind> objectTypes = new HashSet<>();
-        for (ObjectLabel label : objectLabels) {
-            final Kind kind = label.getKind();
-            if (!objectTypes.contains(kind)) {
-                objectTypes.add(kind);
-            }
-        }
+        for (ObjectLabel label : objectLabels)
+            objectTypes.add(label.getKind());
         return objectTypes.size();
     }
 

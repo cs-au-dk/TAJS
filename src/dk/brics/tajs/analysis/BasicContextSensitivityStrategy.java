@@ -109,7 +109,7 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
     }
 
     @Override
-    public HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state) {
+    public HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c) {
         return makeHeapContext(null);
     }
 

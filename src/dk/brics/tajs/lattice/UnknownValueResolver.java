@@ -91,7 +91,6 @@ public final class UnknownValueResolver {
             return p;
         }
 
-        @SuppressWarnings("unchecked")
         @Override
         public boolean equals(Object obj) {
             if (!(obj instanceof RGNode))

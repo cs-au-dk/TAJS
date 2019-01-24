@@ -110,7 +110,6 @@ public class TAJSConcreteSemantics {
         if (result.kind != Kind.VALUE) {
             throw new AnalysisModelLimitationException("Implementation only supports value-results here: supply a valid, non-crashing program!");
         }
-        @SuppressWarnings("unchecked")
         ConcreteString value = (ConcreteString) result.getValue();
         return value.getString();
     }

@@ -68,24 +68,38 @@ public class Filtering {
     }
 
     /**
+     * Restricts the value of the register that are equal to the given memory location.
+     */
+    private boolean assumeRegistersEqualToSatisfy(ObjectLabel objlabel, PKey pkey, Restriction restriction) {
+        for (int reg : c.getState().getMustEquals().getMustEquals(objlabel, pkey))
+            if (c.getState().isRegisterDefined(reg))
+                if (assumeRegisterSatisfies(reg, restriction))
+                    return true;
+        return false;
+    }
+
+    /**
      * Restricts the value of the given object property.
      * Accesses the object directly, without using the prototype chain.
      */
-    private void assumeObjectPropertySatisfies(ObjectLabel objlabel, PKey pkey, Restriction restriction) {
+    private boolean assumeObjectPropertySatisfies(ObjectLabel objlabel, PKey pkey, Restriction restriction) {
         if (!objlabel.isSingleton())
             throw new AnalysisException("Expected singleton object label");
+        if (assumeRegistersEqualToSatisfy(objlabel, pkey, restriction))
+            return true;
         Value v = UnknownValueResolver.getProperty(objlabel, pkey, c.getState(), false);
         Value oldv = v;
         v = restriction.restrict(v);
         if (v != oldv)
             c.getState().getObject(objlabel, true).setProperty(pkey, v);
+        return false;
     }
 
     /**
      * Variant of {@link #assumeObjectPropertySatisfies(ObjectLabel, PKey, Restriction)} that uses the prototype chain.
      * (This method is only needed for call nodes where the function is given as a property read.)
      */
-    private void assumeObjectPropertySatisfies(Set<ObjectLabel> baseobjs, String propname, Restriction restriction) {
+    private boolean assumeObjectPropertySatisfies(Set<ObjectLabel> baseobjs, String propname, Restriction restriction) {
         Pair<Set<ObjectLabel>, Value> p = pv.readPropertyWithAttributesAndObjs(baseobjs, propname);
         Set<ObjectLabel> objs = p.getFirst();
         Value v = p.getSecond();
@@ -95,7 +109,10 @@ public class Filtering {
             v = restriction.restrict(v);
             if (v != oldv)
                 pv.writePropertyWithAttributes(objs, PKey.StringPKey.make(propname), v, false, true);
+            if (assumeRegistersEqualToSatisfy(objs.iterator().next(), PKey.StringPKey.make(propname), restriction))
+                return true;
         }
+        return false;
     }
 
     /**
@@ -117,6 +134,8 @@ public class Filtering {
                 }
                 if (v != oldv)
                     c.getState().getObject(baseObj, true).setProperty(PKey.StringPKey.make(varname), v);
+                if (assumeRegistersEqualToSatisfy(baseObjs.iterator().next(), PKey.StringPKey.make(varname), restriction))
+                    return true;
             }
         }
         return false;
@@ -244,7 +263,8 @@ public class Filtering {
 
         // restrict all must-equals object properties
         for (ObjectProperty objprop : c.getState().getMustEquals().getMustEquals(reg))
-            assumeObjectPropertySatisfies(objprop.getObjectLabel(), objprop.getPropertyName(), restriction);
+            if (assumeObjectPropertySatisfies(objprop.getObjectLabel(), objprop.getPropertyName(), restriction))
+                return true;
 
         AbstractNode def = c.getState().getMustReachingDefs().getReachingDef(reg);
 
@@ -334,7 +354,8 @@ public class Filtering {
         Restriction restriction = new Restriction(Restriction.Kind.FUNCTION);
 
         // the property can be restricted (provided that strong update is possible)
-        assumeObjectPropertySatisfies(baseobjs, propname, restriction);
+        if (assumeObjectPropertySatisfies(baseobjs, propname, restriction))
+            return true;
 
         // if the base object was read from a variable, then if its value is an object, that object must have a property named propname whose value maybe satisfies the restriction
         if (assumeHasPropertyWhere(basereg, propname, restriction))

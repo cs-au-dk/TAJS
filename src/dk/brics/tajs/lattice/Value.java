@@ -3012,7 +3012,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
 
     private static Value reallyMakeAnyStrOtherNum() {
         Value r = new Value();
-        r.flags |= STR_OTHER;
+        r.flags |= STR_OTHERNUM;
         return canonicalize(r);
     }
 
@@ -3256,6 +3256,18 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
                 v.excluded_strings.addAll(excluded_strings);
         }
         return canonicalize(v);
+    }
+
+
+    /**
+     * Constructs a value that is any string except for the provided collection of strings.
+     * (Used by ReaGenT.)
+     */
+    public static Value makeAnyStrExcluding(Collection<String> strings) {
+        Value r = new Value(makeAnyStr());
+        r.excluded_strings = newSet();
+        r.excluded_strings.addAll(strings);
+        return canonicalize(r);
     }
 
     /**
@@ -4206,15 +4218,18 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
                                 r.flags &= ~(STR_IDENTIFIER | STR_OTHERIDENTIFIERPARTS); // can't be IDENTIFIER or OTHERIDENTIFIERPARTS if the prefix string contains non-identifier-parts chars
                         }
                     }
-                    if (v.excluded_strings != null) {
-                        if (r.excluded_strings != null)
-                            r.excluded_strings = newSet(r.excluded_strings);
-                        else
-                            r.excluded_strings = newSet();
-                        r.excluded_strings.addAll(v.excluded_strings);
-                    }
-                } else
+                } else {
+                    // both are fuzzy (or not string) and not JSON nor prefix: intersect the STR flags
                     r.flags &= v.flags | ~STR;
+                }
+                if (v.excluded_strings != null) {
+                    // v has excluded string, so add them to r
+                    if (r.excluded_strings != null)
+                        r.excluded_strings = newSet(r.excluded_strings);
+                    else
+                        r.excluded_strings = newSet();
+                    r.excluded_strings.addAll(v.excluded_strings);
+                }
                 if (r.excluded_strings != null) {
                     // remove excluded strings that don't match any of the STR flags
                     r.excluded_strings = r.excluded_strings.stream().filter(r::isMaybeStrIgnoreIncludedExcluded).collect(Collectors.toSet());

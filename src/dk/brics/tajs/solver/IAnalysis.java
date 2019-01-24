@@ -18,6 +18,7 @@ package dk.brics.tajs.solver;
 
 import dk.brics.tajs.blendedanalysis.solver.BlendedAnalysisManager;
 import dk.brics.tajs.flowgraph.FlowGraph;
+import dk.brics.tajs.typetesting.ITypeTester;
 
 /**
  * Interface for analyses on flow graphs.
@@ -73,4 +74,8 @@ public interface IAnalysis<StateType extends IState<StateType, ContextType, Call
      */
     CallEdgeType makeCallEdge(StateType edge_state);
 
+    /**
+     * Returns the type tester, or null if not available.
+     */
+    ITypeTester<ContextType> getTypeTester();
 }

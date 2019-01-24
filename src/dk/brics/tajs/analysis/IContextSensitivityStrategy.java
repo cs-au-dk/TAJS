@@ -50,7 +50,7 @@ public interface IContextSensitivityStrategy {
     /**
      * Constructs a heap context for an object literal.
      */
-    HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state);
+    HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c);
 
     /**
      * Constructs the initial context.

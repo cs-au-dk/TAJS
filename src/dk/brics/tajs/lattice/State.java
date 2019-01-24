@@ -1575,7 +1575,7 @@ public class State implements IState<State, Context, CallEdge> {
         b.append("\n  Summarized: ").append(summarized);
         b.append("\n  Store (excluding basis and default objects): ");
         for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store, new ObjectLabel.Comparator())) {
-            b.append("\n    ").append(me.getKey()).append(" (").append(me.getKey().getSourceLocation()).append("): ").append(me.getValue()).append("");
+            b.append("\n    ").append(me.getKey()).append(" (").append(me.getKey().getSourceLocation()).append("): ").append(me.getValue());
         }
 //        b.append("\n  Default object: ").append(store_default);
 //        b.append("\n  Store default: ").append(store_default);
@@ -2078,10 +2078,8 @@ public class State implements IState<State, Context, CallEdge> {
     public void clearRegisters() {
         if (writable_registers)
             registers.clear();
-        else {
+        else
             registers = Collections.emptyList();
-            writable_registers = false;
-        }
     }
 
     /**

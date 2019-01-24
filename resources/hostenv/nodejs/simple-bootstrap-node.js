@@ -14,5 +14,5 @@
     }
 
     var require_with_parentFilename = loadRequire();
-    require_with_parentFilename(TAJS_getMain(), null);
+    this.TAJS_global_exports = require_with_parentFilename(TAJS_getMain(), null);
 })();

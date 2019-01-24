@@ -18,6 +18,7 @@ package dk.brics.tajs;
 
 import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.analysis.InitialStateBuilder;
+import dk.brics.tajs.analysis.Transfer;
 import dk.brics.tajs.analysis.nativeobjects.NodeJSRequire;
 import dk.brics.tajs.blendedanalysis.BlendedAnalysisOptions;
 import dk.brics.tajs.flowgraph.FlowGraph;
@@ -27,6 +28,7 @@ import dk.brics.tajs.flowgraph.JavaScriptSource.Kind;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
 import dk.brics.tajs.js2flowgraph.HTMLParser;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.PKey;
@@ -49,6 +51,7 @@ import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.options.TAJSEnvironmentConfig;
 import dk.brics.tajs.solver.SolverSynchronizer;
+import dk.brics.tajs.typetesting.ITypeTester;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.Collectors;
@@ -131,14 +134,14 @@ public class Main {
     }
 
     /**
-     * Reads the input and prepares an analysis object, using the default monitoring and command-line arguments.
+     * Reads the input and prepares an analysis object, using the default monitoring.
      */
-    public static Analysis init(String[] args, SolverSynchronizer sync) throws AnalysisException {
+    public static Analysis init(String[] args, SolverSynchronizer sync, Transfer transfer) throws AnalysisException {
         OptionValues options = new OptionValues();
         try {
             options.parse(args);
             options.checkConsistency();
-            return init(options, Monitoring.make(), sync);
+            return init(options, Monitoring.make(), sync, transfer, null);
         } catch (CmdLineException e) {
             showHeader();
             log.info(e.getMessage() + "\n");
@@ -154,7 +157,7 @@ public class Main {
      * @return analysis object, null if invalid input
      * @throws AnalysisException if internal error
      */
-    public static Analysis init(OptionValues options, IAnalysisMonitoring monitoring, SolverSynchronizer sync) throws AnalysisException {
+    public static Analysis init(OptionValues options, IAnalysisMonitoring monitoring, SolverSynchronizer sync, Transfer transfer, ITypeTester<Context> ttr) throws AnalysisException {
         checkValidOptions(options);
         Options.set(options);
         TAJSEnvironmentConfig.init();
@@ -165,7 +168,7 @@ public class Main {
 
         monitoring = addOptionalMonitors(monitoring);
 
-        Analysis analysis = new Analysis(monitoring, sync);
+        Analysis analysis = new Analysis(monitoring, sync, transfer, ttr);
 
         showHeader();
 
@@ -235,6 +238,20 @@ public class Main {
         leavePhase(AnalysisPhase.INITIALIZATION, analysis.getMonitoring());
 
         return analysis;
+    }
+
+    /**
+     * Reads the input and prepares an analysis object, using the default monitoring and transfer functions.
+     */
+    public static Analysis init(String[] args, SolverSynchronizer sync) throws AnalysisException {
+        return init(args, sync, new Transfer());
+    }
+
+    /**
+     * Reads the input and prepares an analysis object, using the default transfer functions.
+     */
+    public static Analysis init(OptionValues options, IAnalysisMonitoring monitoring, SolverSynchronizer sync) throws AnalysisException {
+        return init(options, monitoring, sync, new Transfer(), null);
     }
 
     private static void checkValidOptions(OptionValues options) {

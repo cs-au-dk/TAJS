@@ -21,17 +21,15 @@ import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import jdk.nashorn.api.scripting.ScriptObjectMirror;
-import jdk.nashorn.api.scripting.ScriptUtils;
-import jdk.nashorn.internal.runtime.ECMAException;
-import jdk.nashorn.internal.runtime.Undefined;
 import org.apache.log4j.Logger;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 import static dk.brics.tajs.util.Collections.newMap;
@@ -55,7 +53,6 @@ public class NashornConcreteSemantics implements NativeConcreteSemantics {
         System.out.println(o);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public MappedNativeResult<ConcreteValue> apply(String functionName, ConcreteValue base, List<ConcreteValue> arguments) {
         if ("String.prototype.startsWith".equals(functionName)) { // Nashorn does not implement this "standard" feature
@@ -152,7 +149,6 @@ public class NashornConcreteSemantics implements NativeConcreteSemantics {
         });
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public NativeResult<ConcreteValue> eval(String script) {
         try {
@@ -163,7 +159,7 @@ public class NashornConcreteSemantics implements NativeConcreteSemantics {
     }
 
     private <T extends ConcreteValue> NativeResult<T> handleEvalThrowable(Throwable t) {
-        if (t.getCause() instanceof ECMAException) {
+        if (t.getCause().getClass().getSimpleName().equals("ECMAException")) {
             return NativeResult.makeException();
         }
         if (Options.get().isDebugEnabled()) {
@@ -181,14 +177,31 @@ public class NashornConcreteSemantics implements NativeConcreteSemantics {
     }
 
     private ConcreteArray toConcreteArray(ScriptObjectMirror array) {
-        Integer length = (Integer) ScriptUtils.convert(array.get("length"), Integer.class);
-        final ConcreteValue[] concreteEntries = new ConcreteValue[length];
-        for (int i = 0; i < length; i++) {
-            concreteEntries[i] = toConcreteValue(array.get(Integer.toString(i)));
+        List<ConcreteValue> concreteEntries = new ArrayList<>();
+
+        Integer maxIndex = array.keySet().stream()
+            .map(NashornConcreteSemantics::intOrNull)
+            .filter(Objects::nonNull)
+            .max(Integer::compare)
+            .orElse(null);
+
+        if (maxIndex != null) {
+            for (int index = 0; index <= maxIndex; index++) {
+                concreteEntries.add(toConcreteValue(array.get(index + "")));
+            }
         }
+
         Map<PKey, ConcreteValue> extraProperties = newMap();
         array.keySet().forEach(k -> extraProperties.put(StringPKey.make(k), toConcreteValue(array.getMember(k))));
-        return new ConcreteArray(Arrays.asList(concreteEntries), extraProperties);
+        return new ConcreteArray(concreteEntries, extraProperties);
+    }
+
+    private static Integer intOrNull(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     private ConcreteValue toConcreteValue(Object value) {
@@ -211,7 +224,7 @@ public class NashornConcreteSemantics implements NativeConcreteSemantics {
         if (value instanceof String) {
             return new ConcreteString((String) value);
         }
-        if (value instanceof Undefined) { // type is internal, and Nashorn explicitly converts this value to null, the branch is likely dead
+        if (value.getClass().getSimpleName().equals("Undefined")) { // type is internal, and Nashorn explicitly converts this value to null, the branch is likely dead
             return new ConcreteUndefined();
         }
         if (value instanceof Boolean) {

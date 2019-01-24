@@ -63,23 +63,23 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
 
         private ContextType callee_context;
 
-        private boolean implicit; // ignored in equals and hashCode
+        private CallKind callKind; // ignored in equals and hashCode
 
-        public Edge(AbstractNode caller, ContextType caller_context, ContextType edge_context, BasicBlock callee, ContextType callee_context, boolean implicit) {
+        public Edge(AbstractNode caller, ContextType caller_context, ContextType edge_context, BasicBlock callee, ContextType callee_context, CallKind callKind) {
             this.caller = caller;
             this.caller_context = caller_context;
             this.edge_context = edge_context;
             this.callee = callee;
             this.callee_context = callee_context;
-            this.implicit = implicit;
+            this.callKind = callKind;
+        }
+
+        public CallKind getCallKind() {
+            return callKind;
         }
 
         public BlockAndContext<ContextType> getCallee() {
             return new BlockAndContext<>(callee, callee_context);
-        }
-
-        public boolean isImplicit() {
-            return implicit;
         }
 
         @Override
@@ -172,10 +172,10 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
      * Records a call edge that awaits return flow.
      * Has no effect if charged edges are disabled.
      */
-    public void chargeCallEdge(AbstractNode caller, ContextType caller_context, ContextType edge_context, BasicBlock callee, ContextType callee_context, boolean implicit) {
+    public void chargeCallEdge(AbstractNode caller, ContextType caller_context, ContextType edge_context, BasicBlock callee, ContextType callee_context, CallKind callKind) {
         if (Options.get().isChargedCallsDisabled())
             return;
-        Edge e = new Edge(caller, caller_context, edge_context, callee, callee_context, implicit);
+        Edge e = new Edge(caller, caller_context, edge_context, callee, callee_context, callKind);
         if (charged_call_edges.add(e)) {
             BlockAndContext<ContextType> caller_entry = BlockAndContext.makeEntry(caller.getBlock(), caller_context);
             BlockAndContext<ContextType> callee_entry = BlockAndContext.makeEntry(callee, callee_context);
@@ -273,12 +273,12 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
                     if (all_charged_inactive) {
                         for (Edge f : pending_returnflow.remove(p)) {
                             if (processed.add(f))
-                                c.getAnalysis().getNodeTransferFunctions().transferReturn(f.caller, f.callee, f.caller_context, f.callee_context, f.edge_context, f.isImplicit());
+                                c.getAnalysis().getNodeTransferFunctions().transferReturn(f.caller, f.callee, f.caller_context, f.callee_context, f.edge_context, f.getCallKind());
                         }
                     }
                 } else {
                     if (processed.add(e))
-                        c.getAnalysis().getNodeTransferFunctions().transferReturn(e.caller, e.callee, e.caller_context, e.callee_context, e.edge_context, e.isImplicit());
+                        c.getAnalysis().getNodeTransferFunctions().transferReturn(e.caller, e.callee, e.caller_context, e.callee_context, e.edge_context, e.getCallKind());
                 }
             }
         }
@@ -291,7 +291,7 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
     public boolean isCallEdgeCharged(AbstractNode caller, ContextType caller_context, ContextType edge_context, BasicBlock callee, ContextType callee_context) {
         if (Options.get().isChargedCallsDisabled())
             return true;
-        return charged_call_edges.contains(new Edge(caller, caller_context, edge_context, callee, callee_context, false));
+        return charged_call_edges.contains(new Edge(caller, caller_context, edge_context, callee, callee_context, CallKind.ORDINARY));
     }
 
     /**

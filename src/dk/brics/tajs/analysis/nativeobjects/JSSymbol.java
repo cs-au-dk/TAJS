@@ -70,7 +70,7 @@ public class JSSymbol {
                 return evaluateToSymbol(state.readThis(), c);
             }
             case SYMBOL_TOSTRING:
-                throw new AnalysisException("Model for Symbol.toString not implemented"); //TODO
+                return Value.makeAnyStr();
             case SYMBOL_KEYFOR:
                 throw new AnalysisException("Model for Symbol.keyFor not implemented"); //TODO
             case SYMBOL_TOSOURCE:

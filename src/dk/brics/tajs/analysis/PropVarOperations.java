@@ -254,7 +254,6 @@ public class PropVarOperations {
                                             return false;
                                         }
 
-
                                         @Override
                                         public boolean assumeFunction() {
                                             return false;
@@ -362,7 +361,7 @@ public class PropVarOperations {
         }
         String string = str.getStr();
         if (isKnownUIntIndex) {
-            Integer index = Integer.valueOf(propertystr.getStr());
+            int index = Integer.parseInt(propertystr.getStr());
             if (index >= string.length()) {
                 // index out of bounds
                 return Value.makeAbsent();
@@ -764,6 +763,9 @@ public class PropVarOperations {
         if (Options.get().isDOMEnabled() &&
                 (objlabel.getHostObject().getAPI() == HostAPIs.DOCUMENT_OBJECT_MODEL || objlabel == GLOBAL)) {
             DOMObjects.evaluateDOMSetter(objlabel, prop.toValue(), value, c); // TODO: refactor to use Property instead of Str
+        }
+        else if (objlabel.getHostObject().getAPI() == HostAPIs.SPEC) {
+            log.error("Unsupported setter " + prop + " on " + objlabel);
         } else { // not applicable for any other family of host objects
             c.getState().setToBottom();
         }

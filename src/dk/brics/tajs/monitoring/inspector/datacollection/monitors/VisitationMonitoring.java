@@ -24,6 +24,7 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
 import dk.brics.tajs.monitoring.inspector.datacollection.SourceLine;
 import dk.brics.tajs.monitoring.inspector.util.OccurenceCountingMap;
+import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.Collectors;
 
 import java.net.URL;
@@ -31,6 +32,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
 public class VisitationMonitoring extends DefaultAnalysisMonitoring {
@@ -56,6 +58,11 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
     private final OccurenceCountingMap<SourceLine> visitCountMapByBlocks;
 
     /**
+     * A counter for how many times each node and context have been visited
+     */
+    private final Map<SourceLine, OccurenceCountingMap<NodeAndContext>> visitedNodesAndContexts;
+
+    /**
      * Contains all the functions that have been analyzed
      */
     private final Set<Function> seenFunctions = newSet();
@@ -65,6 +72,7 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
         this.visitedNodes = new HashSet<>();
         this.nodesPerLineMap = new OccurenceCountingMap<>();
         this.blocksPerLineMap = new OccurenceCountingMap<>();
+        this.visitedNodesAndContexts = newMap();
     }
 
     private static OccurenceCountingMap<SourceLine> makeBlocksPerLineMap(Function f) {
@@ -110,7 +118,7 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
     }
 
     public Info createLineVisitingInfo() {
-        return new Info(visitCountMapByBlocks, visitedNodes, blocksPerLineMap, nodesPerLineMap);
+        return new Info(visitCountMapByBlocks, visitedNodes, blocksPerLineMap, nodesPerLineMap, visitedNodesAndContexts);
     }
 
     private void addFunction(Function f) {
@@ -143,6 +151,10 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
                 visitCountMapByBlocks.count(lineSourceLocation);
                 lines.add(lineSourceLocation);
             }
+            if (!visitedNodesAndContexts.containsKey(lineSourceLocation)) {
+                visitedNodesAndContexts.put(lineSourceLocation, new OccurenceCountingMap<>());
+            }
+            visitedNodesAndContexts.get(lineSourceLocation).count(new NodeAndContext<>(node, state.getContext()));
         }
     }
 
@@ -156,11 +168,14 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
 
         private final OccurenceCountingMap<SourceLine> nodesPerLine;
 
-        public Info(OccurenceCountingMap<SourceLine> blockVisitCountsPerLine, Set<AbstractNode> visitedNodes, OccurenceCountingMap<SourceLine> blocksPerLine, OccurenceCountingMap<SourceLine> nodesPerLine) {
+        private final Map<SourceLine, OccurenceCountingMap<NodeAndContext>> visitedNodesAndContexts;
+
+        public Info(OccurenceCountingMap<SourceLine> blockVisitCountsPerLine, Set<AbstractNode> visitedNodes, OccurenceCountingMap<SourceLine> blocksPerLine, OccurenceCountingMap<SourceLine> nodesPerLine, Map<SourceLine, OccurenceCountingMap<NodeAndContext>> visitedNodesAndContexts) {
             this.blockVisitCountsPerLine = blockVisitCountsPerLine;
             this.visitedNodes = visitedNodes;
             this.blocksPerLine = blocksPerLine;
             this.nodesPerLine = nodesPerLine;
+            this.visitedNodesAndContexts = visitedNodesAndContexts;
         }
 
         public OccurenceCountingMap<SourceLine> getBlocksPerLine() {
@@ -183,6 +198,10 @@ public class VisitationMonitoring extends DefaultAnalysisMonitoring {
             return nodes.stream()
                     .filter(n -> n.getSourceLocation().getLocation() != null)
                     .collect(Collectors.groupingBy(n -> n.getSourceLocation().getLocation(), java.util.stream.Collectors.mapping(n -> n.getSourceLocation().getLineNumber(), Collectors.toSet())));
+        }
+
+        public Map<SourceLine, OccurenceCountingMap<NodeAndContext>> getVisitedNodesAndContexts() {
+            return visitedNodesAndContexts;
         }
     }
 }

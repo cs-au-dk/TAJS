@@ -34,6 +34,7 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.Message.Status;
+import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.PathAndURLUtils;
@@ -42,6 +43,7 @@ import org.apache.log4j.Logger;
 import java.net.URL;
 import java.nio.file.Path;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.Optional;
@@ -49,6 +51,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 import static dk.brics.tajs.util.PathAndURLUtils.normalizeFileURL;
 
@@ -180,6 +183,8 @@ public class DefaultGutters implements GutterProvider {
         LineMap<Long> blockVisitsPerLine = convertOccurrenceCountningMap(url, data.flowgraphInfo.getBlockVisitCountsPerLine());
         gutters.add(new Gutter<>(GutterKind.NUMBER, "Block visit counts", "times visited", blockVisitsPerLine));
         gutters.add(new Gutter<>(GutterKind.NUMBER, "Normalized block visit counts", "times visited (normalized)", normalize(blockVisitsPerLine, blockPerLineMap)));
+        gutters.add(new Gutter<>(GutterKind.NUMBER, "Maximal NodeAndContext visit counts", "times node and context is visited (max)", getMaxNodeAndContextVisitedLineMap(url, data)));
+
         LineMap<Double> timeForLines = convertNodeMapToSummedLineMap(url, data.timesForNodes.entrySet().stream()
                 .filter(e1 -> e1.getKey().isPresent())
                 .map(e1 -> Pair.make(e1.getKey().get(), e1.getValue()))
@@ -234,6 +239,28 @@ public class DefaultGutters implements GutterProvider {
 
         gutters.add(new Gutter<>(GutterKind.STRING, "Messages", "messages", makeMessages(url, data)));
         return gutters;
+    }
+
+    private LineMap<Long> getMaxNodeAndContextVisitedLineMap(URL url, DefaultGutterData data) {
+        Map<SourceLine, OccurenceCountingMap<NodeAndContext>> basicBlocksVisited = data.flowgraphInfo.getVisitedNodesAndContexts();
+        Map<Integer, Long> basicBlocksVisitedData = newMap();
+        for (Map.Entry<SourceLine, OccurenceCountingMap<NodeAndContext>> me : basicBlocksVisited.entrySet()) {
+            if (me.getKey() == null) {
+                continue;
+            }
+            if (!url.equals(me.getKey().getLocation())) {
+                continue;
+            }
+            int key = me.getKey().getLine();
+            Collection<Integer> values = me.getValue().getMapView().values();
+            if (values.isEmpty()) {
+                continue;
+            }
+            long maxValue = Collections.max(values);
+            basicBlocksVisitedData.put(key, maxValue);
+        }
+
+        return new LineMap<>(basicBlocksVisitedData);
     }
 
     private <V> LineMap<V> convertLineMap(URL url, Map<SourceLine, V> map) {

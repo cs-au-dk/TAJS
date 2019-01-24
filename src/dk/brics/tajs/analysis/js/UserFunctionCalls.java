@@ -50,6 +50,7 @@ import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
+import dk.brics.tajs.solver.CallKind;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
@@ -297,16 +298,17 @@ public class UserFunctionCalls {
         });
     }
 
-    private static void propagateToFunctionEntry(State edge_state, AbstractNode n, ObjectLabel obj_f, CallInfo callInfo, boolean implicit, Solver.SolverInterface c) {
-        Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge_state, obj_f, callInfo, edge_state.readThis(), c);
-        c.propagateToFunctionEntry(n, edge_state.getContext(), edge_state, edge_context, obj_f.getFunction().getEntry(), implicit);
+    private static void propagateToFunctionEntry(State edge_state, AbstractNode n, ObjectLabel obj_f, CallInfo call, boolean implicit, Solver.SolverInterface c) {
+        Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge_state, obj_f, call, edge_state.readThis(), c);
+        CallKind callKind = !implicit ? CallKind.ORDINARY : call.isConstructorCall() ? CallKind.IMPLICIT_CONSTRUCTOR : CallKind.IMPLICIT;
+        c.propagateToFunctionEntry(n, edge_state.getContext(), edge_state, edge_context, obj_f.getFunction().getEntry(), callKind);
     }
 
     /**
      * Leaves a user-defined function.
      */
     public static void leaveUserFunction(Value returnval, boolean exceptional, Function f, State state, Solver.SolverInterface c,
-                                         NodeAndContext<Context> specific_caller, Context specific_edge_context, boolean implicit) {
+                                         NodeAndContext<Context> specific_caller, Context specific_edge_context, CallKind callKind) {
 
         if (f.isMain()) { // TODO: also report uncaught exceptions and return immediately for event handlers
             final String msgkey = "Uncaught exception";
@@ -338,14 +340,14 @@ public class UserFunctionCalls {
         state.getMustEquals().setToBottom();
 
         if (specific_caller != null)
-            returnToCaller(specific_caller.getNode(), specific_caller.getContext(), specific_edge_context, implicit, returnval, exceptional, f, state, c);
+            returnToCaller(specific_caller.getNode(), specific_caller.getContext(), specific_edge_context, callKind, returnval, exceptional, f, state, c);
         else {
             // try each call node that calls f with the current callee context
             CallGraph<State, Context, CallEdge> cg = c.getAnalysisLatticeElement().getCallGraph();
             for (Iterator<CallGraph.ReverseEdge<Context>> i = cg.getSources(BlockAndContext.makeEntry(state.getBasicBlock(), state.getContext())).iterator(); i.hasNext(); ) {
                 CallGraph.ReverseEdge<Context> re = i.next();
                 if (c.isCallEdgeCharged(re.getCallNode(), re.getCallerContext(), re.getEdgeContext(), BlockAndContext.makeEntry(state.getBasicBlock(), state.getContext())))
-                    returnToCaller(re.getCallNode(), re.getCallerContext(), re.getEdgeContext(), re.isImplicit(), returnval, exceptional, f, i.hasNext() ? state.clone() : state, c);
+                    returnToCaller(re.getCallNode(), re.getCallerContext(), re.getEdgeContext(), callKind, returnval, exceptional, f, i.hasNext() ? state.clone() : state, c);
                 else if (log.isDebugEnabled())
                     log.debug("skipping call edge from node " + re.getCallNode().getIndex() + ", call context " + re.getCallerContext() + ", edge context " + re.getEdgeContext());
 
@@ -353,11 +355,11 @@ public class UserFunctionCalls {
         }
     }
 
-    private static void returnToCaller(AbstractNode node, Context caller_context, Context edge_context, boolean implicit, Value returnval, boolean exceptional, Function f, State state, Solver.SolverInterface c) {
+    private static void returnToCaller(AbstractNode node, Context caller_context, Context edge_context, CallKind callInfo, Value returnval, boolean exceptional, Function f, State state, Solver.SolverInterface c) {
         final boolean is_constructor;
         final int result_reg;
-        if (implicit) { // implicit function call, e.g. valueOf/toString
-            is_constructor = false;
+        if (callInfo.isImplicit()) { // implicit function call, e.g. valueOf/toString
+            is_constructor = callInfo.isImplicitConstructorCall();
             result_reg = AbstractNode.RETURN_REG;
         } else if (node instanceof CallNode) {
             CallNode callnode = (CallNode) node;
@@ -375,7 +377,7 @@ public class UserFunctionCalls {
 
         // apply inverse transform
         state.writeRegister(0, returnval); // TODO: pass returnval explicitly through returnFromFunctionExit instead of using a register
-        c.returnFromFunctionExit(state, node, caller_context, f.getEntry(), edge_context, implicit);
+        c.returnFromFunctionExit(state, node, caller_context, f.getEntry(), edge_context, callInfo);
         returnval = state.readRegister(0);
         state.clearRegisters();
         state.getMustReachingDefs().setToBottom();
@@ -402,7 +404,7 @@ public class UserFunctionCalls {
                 returnval, null); // TODO: not obvious why this part is in dk.brics.tajs.analysis and the renaming and localization is done via dk.brics.tajs.solver...
         if (node.isRegistersDone())
             state.clearOrdinaryRegisters();
-        if (implicit) {
+        if (callInfo.isImplicit()) {
             state.setBasicBlock(node.getImplicitAfterCall());
             state.setContext(caller_context);
         } else {
@@ -425,7 +427,7 @@ public class UserFunctionCalls {
                     returnval = returnval.restrictToNonSymbolObject().join(calledge_state.getExecutionContext().getThis());
                 }
 
-                if (!implicit) {
+                if (!callInfo.isImplicit()) {
                     // collect garbage (but not if implicit, because some objects may only be reachable via registers which we don't have here)
                     state.reduce(returnval);
                 }
@@ -439,7 +441,7 @@ public class UserFunctionCalls {
                     state.getMustReachingDefs().addReachingDef(result_reg, node);
                 }
 
-                if (implicit) { // implicit call, trigger re-processing of the basic block containing the caller
+                if (callInfo.isImplicit()) { // implicit call, trigger re-processing of the basic block containing the caller
                     boolean changed = c.propagate(state, new BlockAndContext<>(node.getImplicitAfterCall(), caller_context), false);
                     if (changed) { // note: this cannot be changed into calling propagateToBasicBlock, since we add a different block to the worklist
                         c.addToWorklist(node.getBlock(), caller_context);
