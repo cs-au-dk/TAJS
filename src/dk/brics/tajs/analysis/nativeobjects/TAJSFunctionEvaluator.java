@@ -38,8 +38,7 @@ import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.TAJSFunctionName;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
-import dk.brics.tajs.lattice.ContextArguments;
-import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey.StringPKey;
@@ -666,17 +665,24 @@ public class TAJSFunctionEvaluator {
         }
     }
 
+    private static Context.Qualifier recursiveAllocationQualifier = new Context.Qualifier() {
+        @Override
+        public String toString() {
+            return "isRecursiveAllocation";
+        }
+    };
+
     /**
      * Instantiates a new object which inherits (parts of) the current calling context.
      */
     private static Value newInstanceForContext(Kind allocationKind, ObjectLabel prototype, State state, CallInfo call) {
-        ContextArguments funArgs = state.getContext().getFunArgs();
+        Context functionContext = state.getContext();
         // crude guard against infinite allocations due to recursion:
         // if the current receiver is using this allocation site already, then we do not nest the context further
         // (infinite recursive allocations should be guarded elsewhere)
         Set<ObjectLabel> callContextReceivers = newSet();
-        if (funArgs != null && funArgs.getSelectedClosureVariables() != null) {
-            callContextReceivers.addAll(funArgs.getSelectedClosureVariables().getOrDefault("this", Value.makeNone()).getObjectLabels());
+        if (functionContext != null && functionContext.getFreeVariables() != null) {
+            callContextReceivers.addAll(functionContext.getFreeVariables().getOrDefault("this", Value.makeNone()).getObjectLabels());
         }
         if (state.getContext().getThisVal() != null) {
             callContextReceivers.addAll(state.getContext().getThisVal().getAllObjectLabels());
@@ -685,11 +691,11 @@ public class TAJSFunctionEvaluator {
         ObjectLabel objlabel;
         SourceLocation allocationSite = call.getSourceNode().getSourceLocation();
         if (callContextReceiverAllocationSites.contains(allocationSite)) {
-            Map<String, Value> recursiveTagger = newMap();
-            recursiveTagger.put("isRecursiveAllocation", Value.makeBool(true)); // TODO: "isRecursiveAllocation"??? (see comment at the beginning of this method)
-            objlabel = ObjectLabel.make(call.getSourceNode(), allocationKind, HeapContext.make(null, recursiveTagger));
+            Map<Context.Qualifier, Value> recursiveTagger = newMap();
+            recursiveTagger.put(recursiveAllocationQualifier, Value.makeBool(true));
+            objlabel = ObjectLabel.make(call.getSourceNode(), allocationKind, Context.makeQualifiers(recursiveTagger));
         } else {
-            objlabel = ObjectLabel.make(call.getSourceNode(), allocationKind, HeapContext.make(funArgs, null));
+            objlabel = ObjectLabel.make(call.getSourceNode(), allocationKind, Context.make(functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables()));
         }
         state.newObject(objlabel);
         state.writeInternalPrototype(objlabel, Value.makeObject(prototype));

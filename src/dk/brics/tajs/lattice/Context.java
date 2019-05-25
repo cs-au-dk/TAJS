@@ -16,11 +16,23 @@
 
 package dk.brics.tajs.lattice;
 
+import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
+import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.IContext;
+import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Canonicalizer;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.DeepImmutable;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Stream;
+
+import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.newMap;
+import static dk.brics.tajs.util.Collections.newSet;
 
 /**
  * Context for context sensitive analysis.
@@ -33,61 +45,139 @@ public final class Context implements IContext<Context>, DeepImmutable {
      */
     private final int hashcode;
 
+    /**
+     * Value of 'this' (for object sensitivity), or null if none.
+     */
     private final Value thisval;
 
     /**
-     * Values of function arguments at function entry, or null if none.
+     * Value of arguments if unknown number of arguments (for parameter sensitivity), or null if not used.
      */
-    private final ContextArguments funArgs;
+    private final Value unknownArg;
 
     /**
-     * Values of special registers, or null if none.
+     * Parameter names (for parameter sensitivity), null if empty or not used.
+     */
+    private final List<String> parameterNames;
+
+    /**
+     * Argument values (for parameter sensitivity), null if empty or not used.
+     * Note that this list may not have the same length as parameterNames!
+     */
+    private final List<Value> arguments;
+
+    /**
+     * Values of selected free variables (for parameter sensitivity), or null if none.
+     */
+    private final Map<String, Value> freeVariables;
+
+    /**
+     * Values of special registers (for for-in specialization), or null if empty or not used.
      */
     private final Map<Integer, Value> specialRegs;
 
     /**
-     * Local context: e.g. number of times loops have been unrolled, or null if none.
+     * Values used to differentiate objects from the same allocation site.
      */
-    private final LocalContext localContext;
+    private final Map<Qualifier, Value> extraAllocationContexts;
+
+    public interface Qualifier {};
+
+     /**
+     * Loop unrolling, null if empty or not used.
+     */
+    private final Map<BeginLoopNode, Integer> loopUnrolling;
 
     /**
-     * Local context information at the function entry, or null if none.
-     * (Unlike the other components of this bean, {@link #localContext} can change without interacting with the call graph. This field is used to restore the original context without querying the call graph.)
+     * Context information at the function entry, or null if none.
+     *
+     * This information is uniquely determined by the other fields (so can be ignored in equals and hashCode).
      */
-    private final LocalContext localContextAtEntry;
+    private final Context contextAtEntry;
 
     /**
      * Constructs a new context object.
      */
-    private Context(Value thisval, ContextArguments funArgs, Map<Integer, Value> specialRegs,
-                    LocalContext localContext, LocalContext localContextAtEntry) {
+    private Context(Value thisval, Map<Integer, Value> specialRegs,
+                    Context contextAtEntry, Map<Qualifier, Value> extraAllocationContexts,
+                    Map<BeginLoopNode, Integer> loopUnrolling,
+                    Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> freeVariables) {
         // ensure canonical representation of empty maps
-        if (localContext != null && localContext.getQualifiers().isEmpty()) {
-            localContext = null;
-        }
-        if (localContextAtEntry != null && localContextAtEntry.getQualifiers().isEmpty()) {
-            localContextAtEntry = null;
-        }
-        if (specialRegs != null && specialRegs.isEmpty()) {
+        if (specialRegs != null && specialRegs.isEmpty())
             specialRegs = null;
-        }
+        if (extraAllocationContexts != null && extraAllocationContexts.isEmpty())
+            extraAllocationContexts = null;
+        if (loopUnrolling != null && loopUnrolling.isEmpty())
+            loopUnrolling = null;
+        if (freeVariables != null && freeVariables.isEmpty())
+            freeVariables = null;
+        if (parameterNames != null && parameterNames.isEmpty())
+            parameterNames = null;
+        if (arguments != null && arguments.isEmpty())
+            arguments = null;
+        if (contextAtEntry == null)
+            contextAtEntry = this;
         this.thisval = thisval;
-        this.funArgs = funArgs;
         this.specialRegs = specialRegs;
-        this.localContext = localContext;
-        this.localContextAtEntry = localContextAtEntry;
-
+        this.contextAtEntry = contextAtEntry;
+        this.extraAllocationContexts = extraAllocationContexts;
+        this.loopUnrolling = loopUnrolling;
+        this.unknownArg = unknownArg;
+        this.arguments = arguments;
+        List<String> relevantParameterNames = parameterNames != null ? parameterNames.subList(0, arguments == null ? 0 : Math.min(parameterNames.size(), arguments.size())) : null; // TODO: review
+        this.parameterNames = relevantParameterNames == null || relevantParameterNames.isEmpty() ? null : parameterNames;
+        this.freeVariables = freeVariables == null || freeVariables.isEmpty() ? null : freeVariables;
+        if (Options.get().isDebugOrTestEnabled()) {
+            if ((this.arguments != null && this.arguments.stream().anyMatch(a -> a != null && a.isPolymorphicOrUnknown())) ||
+                    (this.freeVariables != null && this.freeVariables.values().stream().anyMatch(a -> a != null && a.isPolymorphicOrUnknown()))) {
+                throw new AnalysisException("Attempting to be context sensitive in polymorphic or unknown value");
+            }
+        }
         int hashcode = 1;
         hashcode = 31 * hashcode + (thisval != null ? thisval.hashCode() : 0);
-        hashcode = 31 * hashcode + (funArgs != null ? funArgs.hashCode() : 0);
         hashcode = 31 * hashcode + (specialRegs != null ? specialRegs.hashCode() : 0);
-        hashcode = 31 * hashcode + (localContext != null ? localContext.hashCode() : 0);
+        hashcode = 31 * hashcode + (extraAllocationContexts != null ? extraAllocationContexts.hashCode() : 0);
+        hashcode = 31 * hashcode + (loopUnrolling != null ? loopUnrolling.hashCode() : 0);
+        hashcode = 31 * hashcode + (unknownArg != null ? unknownArg.hashCode() : 0);
+        hashcode = 31 * hashcode + (freeVariables != null ? freeVariables.hashCode() : 0);
+        hashcode = 31 * hashcode + (parameterNames != null ? parameterNames.hashCode() : 0);
+        hashcode = 31 * hashcode + (arguments != null ? arguments.hashCode() : 0);
         this.hashcode = hashcode;
     }
 
-    public static Context make(Value thisval, ContextArguments funArgs, Map<Integer, Value> specialRegs,
-                               LocalContext localContext, LocalContext localContextAtEntry) {
-        return Canonicalizer.get().canonicalize(new Context(thisval, funArgs, specialRegs, localContext, localContextAtEntry));
+    public static Context make(Value thisval, Map<Integer, Value> specialRegs,
+                               Context contextAtEntry, Map<Qualifier, Value> extraAllocationContexts,
+                               Map<BeginLoopNode, Integer> loopUnrolling,
+                               Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> freeVariables) {
+        return Canonicalizer.get().canonicalize(new Context(thisval, specialRegs, contextAtEntry,
+                extraAllocationContexts, loopUnrolling, unknownArg, parameterNames, arguments, freeVariables));
+    }
+
+    public static Context make(Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> freeVariables) {
+        return make(null, null, null, null, null, unknownArg, parameterNames, arguments, freeVariables);
+    }
+
+    public static Context makeThisVal(Value thisval) {
+        return make(thisval, null, null, null, null, null, null, null, null);
+    }
+
+    public static Context makeFreeVars(Map<String, Value> freeVariables) {
+        return make(null, null, null, null, null, null, null, null, freeVariables);
+    }
+
+    public static Context makeQualifiers(Map<Qualifier, Value> extraAllocationContexts) {
+        return make(null, null, null, extraAllocationContexts, null, null, null, null, null);
+    }
+
+    public static Context makeEmpty() {
+        return make(null, null, null, null, null, null, null, null, null);
+    }
+
+    /**
+     * Constructs a copy of this context with the given loop unrolling.
+     */
+    public Context copyWithLoopUnrolling(Map<BeginLoopNode, Integer> loopUnrolling) {
+        return make(thisval, specialRegs, contextAtEntry, extraAllocationContexts, loopUnrolling, unknownArg, parameterNames, arguments, freeVariables);
     }
 
     /**
@@ -98,13 +188,6 @@ public final class Context implements IContext<Context>, DeepImmutable {
     }
 
     /**
-     * Returns the function arguments.
-     */
-    public ContextArguments getFunArgs() {
-        return funArgs;
-    }
-
-    /**
      * Returns the special registers map.
      */
     public Map<Integer, Value> getSpecialRegisters() {
@@ -112,29 +195,59 @@ public final class Context implements IContext<Context>, DeepImmutable {
     }
 
     /**
-     * Returns the local context information.
+     * Returns the loop unrolling information.
      */
-    public LocalContext getLocalContext() {
-        return localContext;
+    public Map<BeginLoopNode, Integer> getLoopUnrolling() {
+        return loopUnrolling;
     }
 
     /**
-     * Returns the local context at entry information.
+     * Returns true iff the number and order of arguments to the function are unknown.
      */
-    public LocalContext getLocalContextAtEntry() {
-        return localContextAtEntry;
+    public boolean isUnknown() {
+        return unknownArg != null;
+    }
+
+    public Value getUnknownArg() {
+        return unknownArg;
+    }
+
+    public List<String> getParameterNames() {
+        return parameterNames;
+    }
+
+    public boolean hasArguments() {
+        return arguments != null;
     }
 
     /**
-     * Reconstructs the context at function or for-in entry.
+     * Returns the arguments the function was invoked with, or null if empty or not used.
+     */
+    public List<Value> getArguments() {
+        return arguments;
+    }
+
+    public Map<String, Value> getFreeVariables() {
+        return freeVariables;
+    }
+
+    public Value getParameterValue(String name) {
+        if (parameterNames == null)
+            return null;
+        int index = parameterNames.indexOf(name);
+        if (index == -1)
+            return null;
+        if (arguments.size() <= index)
+            return null;
+        return arguments.get(index);
+    }
+
+    /**
+     * Returns the context at entry.
      */
     @Override
-    public Context makeEntryContext() {
-        // reconstruct localContext from localContextAtEntry (all other properties are unchanged within a function or for-in body)
-        if (localContextAtEntry != null && localContextAtEntry.equals(localContext)) {
-            return this;
-        }
-        return make(thisval, funArgs, specialRegs, localContextAtEntry, localContextAtEntry);
+    public Context getContextAtEntry() {
+        return contextAtEntry;
     }
 
     @Override
@@ -146,24 +259,15 @@ public final class Context implements IContext<Context>, DeepImmutable {
         if (!(obj instanceof Context))
             return false;
         Context c = (Context) obj;
-        if (this.hashcode != c.hashcode) {
-            return false;
-        }
-        if ((thisval == null) != (c.thisval == null))
-            return false;
-        if (thisval != null && !thisval.equals(c.thisval)) // using collection equality
-            return false;
-        if ((funArgs == null) != (c.funArgs == null))
-            return false;
-        if (funArgs != null && !funArgs.equals(c.funArgs)) // using collection equality
-            return false;
-        if ((specialRegs == null) != (c.specialRegs == null))
-            return false;
-        if (specialRegs != null && !specialRegs.equals(c.specialRegs))
-            return false;
-        if ((localContext == null) != (c.localContext == null))
-            return false;
-        return !(localContext != null && !localContext.equals(c.localContext));
+        return hashcode == c.hashcode &&
+                Objects.equals(thisval, c.thisval) &&
+                Objects.equals(specialRegs, c.specialRegs) &&
+                Objects.equals(extraAllocationContexts, c.extraAllocationContexts) &&
+                Objects.equals(loopUnrolling, c.loopUnrolling) &&
+                Objects.equals(unknownArg, c.unknownArg) &&
+                Objects.equals(freeVariables, c.freeVariables) &&
+                Objects.equals(parameterNames, c.parameterNames) &&
+                Objects.equals(arguments, c.arguments);
     }
 
     @Override
@@ -172,18 +276,13 @@ public final class Context implements IContext<Context>, DeepImmutable {
     }
 
     @Override
-    public String toString() {
+    public String toString() { // TODO: cache resulting string?
         StringBuilder s = new StringBuilder();
-        s.append("{");
         boolean any = false;
         if (thisval != null) {
+//            if (any)
+//                s.append(", ");
             s.append("this=").append(thisval);
-            any = true;
-        }
-        if (funArgs != null) {
-            if (any)
-                s.append(", ");
-            s.append("funArgs=").append(funArgs);
             any = true;
         }
         if (specialRegs != null) {
@@ -192,13 +291,63 @@ public final class Context implements IContext<Context>, DeepImmutable {
             s.append("specialRegs=").append(specialRegs);
             any = true;
         }
-        if (localContext != null) {
+        if (extraAllocationContexts != null) {
             if (any)
                 s.append(", ");
-            s.append("localContext=").append(localContext);
-            //any = true;
+            s.append(extraAllocationContexts);
+            any = true;
         }
-        s.append("}");
+        if (loopUnrolling != null) {
+            if (any)
+                s.append(", ");
+            s.append(loopUnrolling);
+            any = true;
+        }
+        String freeVariablesString = freeVariables == null ? "" : freeVariables.toString();
+        if (isUnknown()) {
+            return "UnknownArg(" + unknownArg + ")" + freeVariablesString;
+        }
+        Map<String, String> mapLike = newMap();
+        List<String> parameterNames = this.parameterNames != null ? this.parameterNames : newList();
+        List<Value> arguments = this.arguments != null ? this.arguments : newList();
+        int max = Math.max(parameterNames.size(), arguments.size());
+        for (int i = 0; i < max; i++) {
+            Value argument = arguments.size() > i ? arguments.get(i) : null;
+            String parameterName = parameterNames.size() > i ? parameterNames.get(i) : "<" + i + ">";
+            mapLike.put(parameterName, argument == null ? "-" : argument.toString());
+        }
+        String t =  (mapLike.isEmpty() ? "" : mapLike) + freeVariablesString;
+        if (!t.isEmpty()) {
+            if (any)
+                s.append(", ");
+            s.append(t);
+//            any = true;
+        }
         return s.toString();
+    }
+
+    /**
+     * Utility function for extracting object labels
+     */
+    public static Set<ObjectLabel> extractTopLevelObjectLabels(Context context) { // TODO: review (+used where? for detecting recursion in StaticDeterminacyContextSensitivityStrategy)
+        if (context == null) {
+            return newSet();
+        }
+        return Stream.concat(
+                context.extraAllocationContexts != null ?
+                        context.extraAllocationContexts.values().stream().flatMap(v -> v.getObjectLabels().stream()) :
+                        Stream.empty(),
+                extractTopLevelObjectLabels2(context).stream())
+                .collect(Collectors.toSet());
+    }
+
+    private static Set<ObjectLabel> extractTopLevelObjectLabels2(Context arguments) { // TODO: review, inline?
+        Stream<Value> freeVariableValues = arguments.getFreeVariables() != null ? arguments.getFreeVariables().values().stream() : Stream.empty();
+        Stream<Value> argumentValues = arguments.hasArguments() ? arguments.getArguments().stream() : Stream.empty();
+        Stream<Value> unknownValues = arguments.unknownArg != null ? Stream.of(arguments.unknownArg) : Stream.empty();
+        return Stream.concat(unknownValues, Stream.concat(argumentValues, freeVariableValues))
+                .filter(Objects::nonNull)
+                .flatMap(v -> v.getObjectLabels().stream())
+                .collect(Collectors.toSet());
     }
 }

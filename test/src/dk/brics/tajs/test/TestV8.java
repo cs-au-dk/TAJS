@@ -2,6 +2,7 @@ package dk.brics.tajs.test;
 //import static org.junit.Assert.fail;
 
 import dk.brics.tajs.Main;
+import dk.brics.tajs.monitoring.soundness.SoundnessTesterMonitor;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.ParseError;
@@ -476,6 +477,18 @@ public class TestV8 { // TODO: check expected output for TestV8
         Options.get().enableUnevalizer();
         Misc.run("test-resources/src/v8tests/prologue.js", "test-resources/src/v8tests/enumeration_order.js");
         Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void testV8_Error_captureStackTrace() {
+        Misc.runSource("var obj = {};", "Error.captureStackTrace(obj);");
+        Misc.checkSystemOutput();
+    }
+
+    // TODO: GitHub #550
+    @Test(expected = SoundnessTesterMonitor.SoundnessException.class)
+    public void testV8_Error_prepareStackTrace() {
+        Misc.runSource("var obj = {};", "Error.prepareStackTrace = function(){};", "Error.captureStackTrace(obj);", "obj.stack");
     }
 
     @Test

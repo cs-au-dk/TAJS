@@ -1126,7 +1126,7 @@ public class State implements IState<State, Context, CallEdge> {
     }
 
     // TODO: replace with getPrototypeWithProperty, but check messages!
-    public Set<ObjectLabel> getPrototypesUsedForUnknown(ObjectLabel objlabel) { // TODO: review (used only in Monitoring)
+    public Set<ObjectLabel> getPrototypesUsedForUnknown(ObjectLabel objlabel) { // TODO: review (used only in AnalysisMonitor)
         State state = c.getState();
         Set<ObjectLabel> ol = Collections.singleton(objlabel);
         Set<ObjectLabel> visited = newSet();
@@ -1299,6 +1299,39 @@ public class State implements IState<State, Context, CallEdge> {
             if (log.isDebugEnabled())
                 log.debug("multiplyObject(" + objlabel + ")");
         }
+    }
+
+    /**
+     * Returns a copy of this state where the given object label has been replaced.
+     */
+    public void replaceObjectLabel(ObjectLabel oldlabel, ObjectLabel newlabel) {
+        makeWritableStore();
+        Map<ScopeChain, ScopeChain> cache = new HashMap<>();
+        for (ObjectLabel objlabel2 : newList(store.keySet())) {
+            if (getObject(objlabel2, false).containsObjectLabel(oldlabel)) {
+                Obj obj = getObject(objlabel2, true);
+                obj.replaceObjectLabel(oldlabel, newlabel, cache);
+            }
+            if (objlabel2.equals(oldlabel))
+                store.put(newlabel, store.remove(oldlabel));
+        }
+        makeWritableExecutionContext();
+        execution_context.replaceObjectLabel(oldlabel, newlabel, cache);
+        makeWritableRegisters();
+        for (int i = 0; i < registers.size(); i++) {
+            Value v = registers.get(i);
+            if (v != null) {
+                registers.set(i, v.replaceObjectLabel(oldlabel, newlabel));
+            }
+        }
+        extras.replaceObjectLabel(oldlabel, newlabel);
+        must_equals.replaceObjectLabel(oldlabel, newlabel);
+        if (Options.get().isLazyDisabled())
+            if (stacked_objlabels.contains(oldlabel)) {
+                makeWritableStacked();
+                stacked_objlabels.remove(oldlabel);
+                stacked_objlabels.add(newlabel);
+            }
     }
 
     /**

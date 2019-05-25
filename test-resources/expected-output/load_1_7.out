@@ -187,9 +187,6 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:318:2: [definite] Dead assign
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:319:2: [definite] Dead assignment, property sort is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:320:2: [definite] Dead assignment, property splice is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:521:49: [definite] Reading absent property nodeType
-benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:900:2: [definite] Dead assignment, property [object Boolean] is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:900:2: [definite] Dead assignment, property [object Date] is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:900:2: [definite] Dead assignment, property [object Number] is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:906:2: [definite] Dead assignment, property version is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:911:2: [definite] Dead assignment, property safari is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:1049:12: [definite] Reading absent property unique
@@ -1521,6 +1518,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:8603:3: [maybe] Converting ob
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:9229:13: [maybe] Converting object to string
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:9229:13: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:905:2: [info] Writing to unknown property that may cause loss of precision
+benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:514:4: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:1904:16: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:857:12: [unsound] Assuming Date.now returns fixed value
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:905:2: [unsound] Skipping write to property '__proto__'

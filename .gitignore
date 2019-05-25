@@ -6,5 +6,8 @@
 /doc
 /.idea/workspace.xml
 /.idea/kotlinc.xml
+/extras/babel/node_modules
+/test-resources/src/**/_babel
+package-lock.json
 tajs.properties
 *.iml

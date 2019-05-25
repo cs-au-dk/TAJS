@@ -109,6 +109,13 @@ public final class ExecutionContext implements Cloneable {
     }
 
     /**
+     * Creates a copy of this execution context, but with the given 'this' value.
+     */
+    public ExecutionContext copyWithThis(Value new_this) {
+        return new ExecutionContext(scope_chain, var_obj, new_this);
+    }
+
+    /**
      * Sets the variable object of this execution context.
      */
     public void setVariableObject(Set<ObjectLabel> new_var_obj) {

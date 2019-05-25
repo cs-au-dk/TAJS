@@ -23,8 +23,8 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.Bool;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
-import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
@@ -447,7 +447,7 @@ public class Conversion {
                 return Value.makeNum(0.0);
             else {
                 if (STR_DECIMAL_LITERAL.matcher(s).matches())
-                    v = Value.makeNum(new Double(s));
+                    v = Value.makeNum(Double.parseDouble(s));
                 else if (HEX_INTEGER_LITERAL.matcher(s).matches())
                     v = Value.makeNum(Long.parseLong(s.substring(2), 16));
                 else
@@ -736,7 +736,7 @@ public class Conversion {
             // Throw a TypeError exception.
             if (c != null) {
                 Exceptions.throwTypeError(c);
-                // TODO: warn about null-to-object conversion? (we already have Monitoring.visitPropertyAccess)
+                // TODO: warn about null-to-object conversion? (we already have AnalysisMonitor.visitPropertyAccess)
                 // c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "TypeError, attempt to convert null to object");
             }
         }
@@ -745,23 +745,30 @@ public class Conversion {
             // Throw a TypeError exception.
             if (c != null) {
                 Exceptions.throwTypeError(c);
-                // TODO: warn about undefined-to-object conversion? (we already have Monitoring.visitPropertyAccess)
+                // TODO: warn about undefined-to-object conversion? (we already have AnalysisMonitor.visitPropertyAccess)
                 // c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "TypeError, attempt to convert undefined to object");
             }
         }
         return result;
     }
 
+    private static Context.Qualifier boxedPrimitiveQualifier = new Context.Qualifier() {
+        @Override
+        public String toString() {
+            return "boxed-primitive";
+        }
+    };
+
     /**
      * Makes an object label for a boxed primitive, using heap context sensitivity to distinguish the underlying primitive values.
      */
     private static ObjectLabel makeBoxedPrimitiveLabel(AbstractNode node, Kind kind, Value primitive) {
-        Map<String, Value> qualifier = newMap();
-        qualifier.put("boxed-primitive", primitive);
-        HeapContext heapContext;
+        Map<Context.Qualifier, Value> qualifier = newMap();
+        qualifier.put(boxedPrimitiveQualifier, primitive);
+        Context heapContext;
         boolean isConcretePrimitive = primitive.isMaybeSingleStr() || primitive.isMaybeSingleNum() || primitive.isMaybeTrueButNotFalse() || primitive.isMaybeFalseButNotTrue();
         if (isConcretePrimitive || Options.get().isSpecializeAllBoxedPrimitivesEnabled()) {
-            heapContext = HeapContext.make(null, qualifier);
+            heapContext = Context.makeQualifiers(qualifier);
         } else {
             heapContext = null;
         }

@@ -1089,7 +1089,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
             if (num != null)
                 if (v.num != null) {
                     // both this and v are single numbers
-                    if (Double.compare(num, v.num) != 0) {
+                    if (!num.equals(v.num)) {
                         // both this and v are single numbers, and the numbers are different
                         joinSingleNumberAsFuzzy(num);
                         joinSingleNumberAsFuzzy(v.num);
@@ -1268,7 +1268,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
         // noinspection StringEquality
         return flags == v.flags
                 && (var == v.var || (var != null && v.var != null && var.equals(v.var)))
-                && ((num == null && v.num == null) || (num != null && v.num != null && Double.compare(num, v.num) == 0))
+                && ((num == null && v.num == null) || (num != null && v.num != null && num.equals(v.num)))
                 && (str == v.str || (str != null && v.str != null && str.equals(v.str)))
                 && (object_labels == v.object_labels || (object_labels != null && v.object_labels != null && object_labels.equals(v.object_labels)))
                 && (getters == v.getters || (getters != null && v.getters != null && getters.equals(v.getters)))
@@ -2292,7 +2292,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
         checkNotPolymorphicOrUnknown();
         if (Double.isNaN(v))
             return joinNumNaN();
-        if (num != null && Double.compare(num, v) == 0)
+        if (num != null && num.equals(v))
             return this;
         Value r = new Value(this);
         if (isNotNum())
@@ -2819,8 +2819,6 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
             return this;
         Value r = new Value(this);
         r.excluded_strings = removeStringsIf(r.excluded_strings, s::equals);
-        if (r.included_strings != null && !r.included_strings.contains(s))
-            r.included_strings = null;
         Value tmp = new Value();
         tmp.str = s;
         r.joinSingleStringOrPrefixString(tmp);
@@ -2952,6 +2950,10 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
             } else {
                 // this is a non-prefix fuzzy, v is a single/prefix string
                 modified = joinSingleStringOrPrefixStringAsFuzzyNonPrefix(v.str, v_is_prefix);
+                if (included_strings != null && !v_is_prefix) {
+                    included_strings = newSet(included_strings);
+                    modified |= included_strings.add(v.str);
+                }
             }
         } // otherwise, neither is a single/prefix string so do nothing
         if (switch_both_to_fuzzy) {
@@ -3120,7 +3122,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
             throw new NullPointerException();
         Value r = new Value();
         r.str = s;
-        return r;
+        return r; // don't canonicalize here!
     }
 
     @Override
@@ -3231,7 +3233,10 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
     @Override
     public Value restrictToNotStrings(Set<String> strings) {
         checkNotPolymorphicOrUnknown();
-        if (Options.get().isNoStringSets() || isNotStr() || strings.stream().noneMatch(this::isMaybeStr))
+        if (Options.get().isNoStringSets() || isNotStr())
+            return this;
+        strings = strings.stream().filter(this::isMaybeStr).collect(Collectors.toSet());
+        if (strings.isEmpty())
             return this;
         Value v = new Value(this);
         if (str != null && !isMaybeStrPrefix()) {
@@ -3257,7 +3262,6 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
         }
         return canonicalize(v);
     }
-
 
     /**
      * Constructs a value that is any string except for the provided collection of strings.
@@ -3524,6 +3528,25 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
         Value r = new Value(this);
         r.object_labels = newSet(r.object_labels);
         r.object_labels.removeAll(objs);
+        if (r.object_labels.isEmpty())
+            r.object_labels = null;
+        return canonicalize(r);
+    }
+
+    /**
+     * Constructs a value as a copy of this value but with only the given object labels.
+     */
+    public Value restrictToObject(Collection<ObjectLabel> objs) {
+        checkNotPolymorphicOrUnknown();
+        if (object_labels == null)
+            return this;
+        Value r = new Value(this);
+        r.flags &= ~PRIMITIVE;
+        r.num = null;
+        r.str = null;
+        r.excluded_strings = r.included_strings = null;
+        r.object_labels = newSet(object_labels);
+        r.object_labels.retainAll(objs);
         if (r.object_labels.isEmpty())
             r.object_labels = null;
         return canonicalize(r);
@@ -4388,7 +4411,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
                 r.removeIncludedAddExcludedString("0"); // could also exclude "0.0", "  -0 ", etc.
             }
             // remove non-zero number if v is definitely not that number or a string that is coerced to that number
-            if (r.num != null && r.num != 0 && !v.isMaybeNum(r.num) && vNumericStringNumber != null && vNumericStringNumber != r.num) {
+            if (r.num != null && r.num != 0 && !v.isMaybeNum(r.num) && vNumericStringNumber != null && vNumericStringNumber.doubleValue() != r.num.doubleValue()) {
                 r.num = null;
             }
             // remove non-empty string if v is definitely not that string or a number that is coerced to that string
@@ -4457,11 +4480,12 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
             r.removeIncludedAddExcludedString("0"); // could also exclude "0.0", "  -0 ", etc.
         } else if (vIsNumber) {
             // can't be that (non-zero) number, also not as string
-            if (r.num != null && r.num == v.num) // using == to handle +/- 0 correctly
+            if (r.num != null && r.num.doubleValue() == v.num.doubleValue()) // using == to handle +/- 0 correctly
                 r.num = null;
-            if (thisNumberIfStringNumeric != null && thisNumberIfStringNumeric == v.num)
+            if (thisNumberIfStringNumeric != null && v.num != null && thisNumberIfStringNumeric.doubleValue() == v.num.doubleValue())
                 r.str = null;
-            r.removeIncludedAddExcludedString(Double.toString(v.num));
+            if (v.num != null)
+                r.removeIncludedAddExcludedString(Double.toString(v.num));
         } else if (vIsStringZero || vIsStringEmpty) {
             // can't be 0, false, or that string
             if (r.num != null && r.num == 0)
@@ -4474,7 +4498,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
             // can't be that (non-zero, non-empty) string, also not as number
             if (r.isMaybeSingleStr() && r.str.equals(v.str))
                 r.str = null;
-            if (vNumberIfStringNumeric != null && vNumberIfStringNumeric == r.num)
+            if (vNumberIfStringNumeric != null && r.num != null && vNumberIfStringNumeric.doubleValue() == r.num.doubleValue())
                 r.num = null;
             r.removeIncludedAddExcludedString(v.str);
         }

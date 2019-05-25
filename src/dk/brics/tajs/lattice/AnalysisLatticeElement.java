@@ -24,8 +24,10 @@ import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.IAnalysisLatticeElement;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 import org.apache.log4j.Logger;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
@@ -104,6 +106,11 @@ public class AnalysisLatticeElement implements
         return block_entry_states.computeIfAbsent(block, k -> newMap());
     }
 
+    @Override
+    public Collection<State> getStatesWithEntryContext(BasicBlock block, Context entryContext) {
+        return getStates(block).entrySet().stream().filter(e -> e.getKey().getContextAtEntry().equals(entryContext)).map(Map.Entry::getValue).collect(Collectors.toList());
+    }
+
 //    @Override
 //    public int getSize(BasicBlock block) {
 //        return block_entry_states.get(block).size();
@@ -154,7 +161,7 @@ public class AnalysisLatticeElement implements
                 if (log.isDebugEnabled())
                     log.debug("after localization, before join: " + s);
             }
-            boolean backedge = !localize && state_current.getBasicBlock().getOrder() <= s.getBasicBlock().getOrder();
+            boolean backedge = !localize && state_current.getBasicBlock().getTopologicalOrder() <= s.getBasicBlock().getTopologicalOrder();
             boolean recursive = localize && s.getStackedFunctions().contains(new BlockAndContext<>(state_current.getBasicBlock(), state_current.getContext()));
             long time = System.currentTimeMillis();
             add = state_current.propagate(s, localize, backedge || recursive);

@@ -159,11 +159,12 @@ public class NativeFunctionSignatureChecker {
             Set<Pair<Value, Pair<Requirement, Optional<String>>>> requirements = newSet();
             Set<Pair<Value, Coercion>> coercions = newSet();
 
-            pairValueAndDescription(c.getState().readThis(), this.base, false, coercions, requirements, Optional.of("TypeError, native function " + hostobject + " called on invalid object kind"), c);
+            pairValueAndDescription(c.getState().readThis(), this.base, coercions, requirements, Optional.of("TypeError, native function " + hostobject + " called on invalid object kind"), c);
             for (int i = 0; i < parameters.size(); i++) {
                 Parameter parameter = parameters.get(i);
                 boolean absentButOptional = (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() <= i) && !parameter.isMandatory();
-                pairValueAndDescription(parameterValues.get(i), parameter.getValueDescription(), absentButOptional, coercions, requirements, Optional.empty(), c);
+                if(absentButOptional) continue;  // Do not generate requirements for absent optional arguments
+                pairValueAndDescription(parameterValues.get(i), parameter.getValueDescription(), coercions, requirements, Optional.empty(), c);
             }
 
             boolean definitelyFailingRequirement = requirements.stream()
@@ -180,14 +181,13 @@ public class NativeFunctionSignatureChecker {
             return maxArguments;
         }
 
-        private void pairValueAndDescription(Value value, ValueDescription description, boolean absentButOptional, Set<Pair<Value, Coercion>> coercions, Set<Pair<Value, Pair<Requirement, Optional<String>>>> requirements, Optional<String> failureMessage, Solver.SolverInterface c) {
+        private void pairValueAndDescription(Value value, ValueDescription description, Set<Pair<Value, Coercion>> coercions, Set<Pair<Value, Pair<Requirement, Optional<String>>>> requirements, Optional<String> failureMessage, Solver.SolverInterface c) {
             if (description.getRequirement().isPresent()) {
                 requirements.add(Pair.make(value, Pair.make(description.getRequirement().get(), failureMessage)));
             }
-            if (!absentButOptional) {
-                if (description.getCoercion().isPresent()) {
-                    coercions.add(Pair.make(value, description.getCoercion().get()));
-                }
+
+            if (description.getCoercion().isPresent()) {
+                coercions.add(Pair.make(value, description.getCoercion().get()));
             }
         }
 

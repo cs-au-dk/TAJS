@@ -112,8 +112,7 @@ import static dk.brics.tajs.util.Collections.singleton;
  */
 public class DOMBuilder {
 
-    private static final Set<ObjectLabel> ALL_HTML_OBJECT_LABELS = Collections.newSet();
-    private static final Set<ObjectLabel> ALL_NODE_OBJECT_LABELS = Collections.newSet();
+    private static Set<ObjectLabel> ALL_HTML_OBJECT_LABELS;
 
     private static boolean isDoneBuildingHTMLObjectLabels = false;
 
@@ -155,14 +154,18 @@ public class DOMBuilder {
         // Build initial AJAX state
         AjaxBuilder.build(c);
 
+        ALL_HTML_OBJECT_LABELS = Collections.newSet();
         ALL_HTML_OBJECT_LABELS.addAll(HTML5Builder.HTML5_OBJECT_LABELS);
         ALL_HTML_OBJECT_LABELS.addAll(HTMLBuilder.HTML4_OBJECT_LABELS);
 
+        Set<ObjectLabel> ALL_NODE_OBJECT_LABELS = Collections.newSet();
         ALL_NODE_OBJECT_LABELS.addAll(ALL_HTML_OBJECT_LABELS);
         ALL_NODE_OBJECT_LABELS.add(DOMDocumentType.INSTANCES);
         ALL_NODE_OBJECT_LABELS.add(DOMText.INSTANCES);
 
         isDoneBuildingHTMLObjectLabels = true;
+
+        DOMEvents.build();
 
         // Set some shared properties on DOM elements due to circularity, and convenience
         c.getAnalysis().getPropVarOperations().writeProperty(singleton(HTMLCollection.INSTANCES), Value.makeAnyStrUInt(), Value.makeObject(ALL_HTML_OBJECT_LABELS), false, true);

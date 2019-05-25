@@ -35,14 +35,15 @@ import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.monitoring.AnalysisMonitor;
 import dk.brics.tajs.monitoring.AnalysisPhase;
 import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
+import dk.brics.tajs.monitoring.CompositeMonitor;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.MaxMemoryUsageMonitor;
 import dk.brics.tajs.monitoring.MemoryUsageDiagnosisMonitor;
-import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.monitoring.ProgramExitReachabilityChecker;
+import dk.brics.tajs.monitoring.ProgressMonitor;
 import dk.brics.tajs.monitoring.TAJSAssertionReachabilityCheckerMonitor;
 import dk.brics.tajs.monitoring.inspector.datacollection.InspectorFactory;
 import dk.brics.tajs.monitoring.soundness.SoundnessTesterMonitor;
@@ -50,6 +51,7 @@ import dk.brics.tajs.options.ExperimentalOptions;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.options.TAJSEnvironmentConfig;
+import dk.brics.tajs.preprocessing.Babel;
 import dk.brics.tajs.solver.SolverSynchronizer;
 import dk.brics.tajs.typetesting.ITypeTester;
 import dk.brics.tajs.util.AnalysisException;
@@ -141,7 +143,7 @@ public class Main {
         try {
             options.parse(args);
             options.checkConsistency();
-            return init(options, Monitoring.make(), sync, transfer, null);
+            return init(options, null, sync, transfer, null);
         } catch (CmdLineException e) {
             showHeader();
             log.info(e.getMessage() + "\n");
@@ -162,10 +164,14 @@ public class Main {
         Options.set(options);
         TAJSEnvironmentConfig.init();
 
-        if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles()) {
+        if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomatically()
+                || Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles()
+                || Options.get().isBabelEnabled()) {
             setupOnlyInclude();
         }
 
+        if (monitoring == null)
+            monitoring = new AnalysisMonitor();
         monitoring = addOptionalMonitors(monitoring);
 
         Analysis analysis = new Analysis(monitoring, sync, transfer, ttr);
@@ -267,16 +273,21 @@ public class Main {
      * be the main file as well as all script files used by the main file.
      */
     private static void setupOnlyInclude() {
+        Set<Path> relevantFiles = newSet();
         Path testFile = Options.get().getArguments().get(Options.get().getArguments().size() - 1);
+        relevantFiles.add(testFile);
         if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles() && (testFile.toString().endsWith(".html") || testFile.toString().endsWith(".htm"))) {
-            Set<Path> relevantFiles = newSet();
-            relevantFiles.add(testFile);
             relevantFiles.addAll(HTMLParser.getScriptsInHTMLFile(PathAndURLUtils.toRealPath(testFile)));
+        }
+        Path commonAncestor = PathAndURLUtils.getCommonAncestorDirectory(relevantFiles);
+        Path rootDirFromMainDirectory = PathAndURLUtils.toRealPath(testFile).getParent().relativize(commonAncestor);
+        if ((Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomatically()
+                || Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles())) {
             Options.get().getSoundnessTesterOptions().setOnlyIncludesForInstrumentation(Optional.of(relevantFiles));
-            Path commonAncestor = PathAndURLUtils.getCommonAncestorDirectory(relevantFiles);
-            Path rootDirFromMainDirectory = PathAndURLUtils.toRealPath(testFile).getParent().relativize(commonAncestor);
             Options.get().getSoundnessTesterOptions().setRootDirFromMainDirectory(rootDirFromMainDirectory);
         }
+        if (Options.get().isBabelEnabled())
+            Babel.get().init(commonAncestor, relevantFiles);
     }
 
     /**
@@ -285,10 +296,14 @@ public class Main {
     private static IAnalysisMonitoring addOptionalMonitors(IAnalysisMonitoring monitoring) {
         List<IAnalysisMonitoring> extraMonitors = newList();
 
+        // Progress monitor
+        if (log.isDebugEnabled() || (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && !Options.get().isTestEnabled() && !Options.get().isIntermediateStatesEnabled()))
+            extraMonitors.add(new ProgressMonitor(true));
+
         // Analysis timeout monitor
         int timeLimit = Options.get().getAnalysisTimeLimit();
         int transferLimit = Options.get().getAnalysisTransferLimit();
-        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, transferLimit, Options.get().isTestEnabled());
+        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, transferLimit, !Options.get().isInspectorEnabled() && Options.get().isTestEnabled());
         if (timeLimit >= 0 || transferLimit > 0) {
             extraMonitors.add(timeLimiter);
         }
@@ -318,7 +333,7 @@ public class Main {
 
         if (!extraMonitors.isEmpty()) {
             extraMonitors.add(0, monitoring);
-            monitoring = CompositeMonitoring.buildFromList(extraMonitors);
+            monitoring = CompositeMonitor.make(extraMonitors);
         }
         return monitoring;
     }

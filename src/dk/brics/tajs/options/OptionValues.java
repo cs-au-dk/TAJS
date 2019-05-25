@@ -182,8 +182,8 @@ public class OptionValues {
     @Option(name = "-ignore-unreached", usage = "Ignore code that is unreached according to the log file")
     private boolean ignoreUnreached;
 
-    @Option(name = "-loop-unrolling", usage = "Enable unrolling of loops up to [n] times")
-    private int loopUnrollings = -1;
+    @Option(name = "-loop-unrolling", usage = "Enable unrolling of loops up to [n] times (default: 1)")
+    private int loopUnrollings = -1; // -1 represents the default value
 
     @Option(name = "-determinacy", usage = "Enable the techniques described in 'Determinacy in Static Analysis of jQuery', OOPSLA 2014")
     private boolean determinacy;
@@ -254,11 +254,17 @@ public class OptionValues {
     @Option(name = "-nodejs", usage = "Use Node.js environment for analysis and soundness testing (currently only 'require' is supported)")
     private boolean nodejs;
 
+    @Option(name = "-babel", usage = "Enables Babel preprocessing for source files")
+    private boolean babel;
+
     @Option(name = "-type-checks", usage = "Enables type checking")
     private boolean typeCheckEnabled;
 
     @Option(name = "-blended-analysis", usage = "Filter abstract values based on values observed concretely")
     private boolean blendedAnalysis;
+
+    @Option(name = "-no-filtering", usage = "Disable filtering")
+    private boolean noFiltering;
 
     @Argument
     private List<Path> arguments = new ArrayList<>();
@@ -336,6 +342,7 @@ public class OptionValues {
         if (analysisTimeLimit != that.analysisTimeLimit) return false;
         if (doNotExpectOrdinaryExit != that.doNotExpectOrdinaryExit) return false;
         if (inspector != that.inspector) return false;
+        if (babel != that.babel) return false;
         if (unsoundnessString != null ? !unsoundnessString.equals(that.unsoundnessString) : that.unsoundnessString != null)
             return false;
         if (unsoundness != null ? !unsoundness.equals(that.unsoundness) : that.unsoundness != null) return false;
@@ -348,6 +355,7 @@ public class OptionValues {
         if (config != null ? !config.equals(that.config) : that.config != null) return false;
         if (arguments != null ? !arguments.equals(that.arguments) : that.arguments != null) return false;
         if (blendedAnalysis != that.blendedAnalysis) return false;
+        if (noFiltering != that.noFiltering) return false;
         return soundnessTesterOptions != null ? soundnessTesterOptions.equals(that.soundnessTesterOptions) : that.soundnessTesterOptions == null;
     }
 
@@ -417,10 +425,12 @@ public class OptionValues {
         result = 31 * result + analysisTimeLimit;
         result = 31 * result + (doNotExpectOrdinaryExit ? 1 : 0);
         result = 31 * result + (inspector ? 1 : 0);
+        result = 31 * result + (babel ? 1 : 0);
         result = 31 * result + (arguments != null ? arguments.hashCode() : 0);
         result = 31 * result + (soundnessTesterOptions != null ? soundnessTesterOptions.hashCode() : 0);
         result = 31 * result + (typeCheckEnabled ? 1 : 0);
         result = 31 * result + (blendedAnalysis ? 1 : 0);
+        result = 31 * result + (noFiltering ? 1 : 0);
         return result;
     }
 
@@ -991,10 +1001,6 @@ public class OptionValues {
         return lowSeverity;
     }
 
-    public boolean isLoopUnrollingEnabled() {
-        return loopUnrollings != -1;
-    } // TODO: unused?
-
     public boolean isMemoryMeasurementEnabled() {
         return memoryUsage;
     }
@@ -1268,6 +1274,18 @@ public class OptionValues {
         nodejs = false;
     }
 
+    public boolean isBabelEnabled() {
+        return babel;
+    }
+
+    public void enableBabel() {
+        babel = true;
+    }
+
+    public void disableBabel() {
+        babel = false;
+    }
+
     public boolean isTypeCheckEnabled() {
         return this.typeCheckEnabled;
     }
@@ -1286,5 +1304,17 @@ public class OptionValues {
 
     public void disableBlendedAnalysis() {
         this.blendedAnalysis = false;
+    }
+
+    public boolean isNoFilteringEnabled() {
+        return this.noFiltering;
+    }
+
+    public void enableNoFiltering() {
+        this.noFiltering = true;
+    }
+
+    public void diableNoFilteringer() {
+        this.noFiltering = false;
     }
 }

@@ -22,11 +22,6 @@ import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndLoopNode;
 import dk.brics.tajs.lattice.Context;
-import dk.brics.tajs.lattice.ContextArguments;
-import dk.brics.tajs.lattice.HeapContext;
-import dk.brics.tajs.lattice.LocalContext;
-import dk.brics.tajs.lattice.LocalContext.LoopUnrollingQualifier;
-import dk.brics.tajs.lattice.LocalContext.Qualifier;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
@@ -55,28 +50,28 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
     private final Map<Function, Set<String>> contextSensitiveParameters = newMap();
 
     @Override
-    public HeapContext makeFunctionHeapContext(Function fun, Solver.SolverInterface c) {
-        return makeHeapContext(c.getState().getContext().getFunArgs());
+    public Context makeFunctionHeapContext(Function fun, Solver.SolverInterface c) {
+        return makeHeapContext(c.getState().getContext());
     }
 
     @Override
-    public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, Value thisval, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
-        return makeHeapContext(makeContextArgumentsForCall(function, state, callInfo)); // TODO: currently ignoring thisval (recency abstraction avoids some of the precision loss...)
-    }
-
-    @Override
-    public HeapContext makeConstructorHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+    public Context makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         return makeHeapContext(makeContextArgumentsForCall(function, state, callInfo));
     }
 
-    private HeapContext makeHeapContext(ContextArguments funargs) {
+    @Override
+    public Context makeConstructorHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+        return makeHeapContext(makeContextArgumentsForCall(function, state, callInfo));
+    }
+
+    private Context makeHeapContext(Context functionContext) {
         if (!Options.get().isContextSensitiveHeapEnabled()) {
             return null;
         }
-        return HeapContext.make(funargs, null);
+        return functionContext != null ? Context.make(functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables()) : Context.makeEmpty();
     }
 
-    private ContextArguments makeContextArgumentsForCall(ObjectLabel obj_f, State edge_state, FunctionCalls.CallInfo callInfo) {
+    private Context makeContextArgumentsForCall(ObjectLabel obj_f, State edge_state, FunctionCalls.CallInfo callInfo) {
         if (!Options.get().isParameterSensitivityEnabled()) {
             return null;
         }
@@ -85,14 +80,14 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         if (contextSensitiveParameterNames == null) {
             return null;
         }
-        final ContextArguments funArgs;
+        final Context functionContext;
         // apply the parameter sensitivity on the chosen special vars
         if (!contextSensitiveParameterNames.isEmpty() && callInfo.isUnknownNumberOfArgs()) {
             // sensitive in an unknown argument value
-            funArgs = new ContextArguments(callInfo.getUnknownArg(), null);
+            functionContext = Context.make(callInfo.getUnknownArg(), null, null, null);
         } else {
             // sensitive in specific argument values
-            List<Value> contextSensitiveArguments = newList();
+            List<Value> arguments = newList();
             for (String parameterName : f.getParameterNames()) {
                 Value v;
                 if (contextSensitiveParameterNames.contains(parameterName)) {
@@ -101,41 +96,38 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
                 } else {
                     v = null;
                 }
-                contextSensitiveArguments.add(v);
+                arguments.add(v);
             }
-            funArgs = new ContextArguments(f.getParameterNames(), contextSensitiveArguments, null);
+            functionContext = Context.make(null, f.getParameterNames(), arguments, null);
         }
-        return funArgs;
+        return functionContext;
     }
 
     @Override
-    public HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c) {
+    public Context makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c) {
         return makeHeapContext(null);
     }
 
     @Override
     public Context makeInitialContext() {
-        Context c = Context.make(null, null, null, null, null);
+        Context c = Context.makeEmpty();
         if (log.isDebugEnabled())
             log.debug("creating initial context " + c);
         return c;
     }
 
     @Override
-    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Value thisval, Solver.SolverInterface c) {
+    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         assert (function.getKind() == ObjectLabel.Kind.FUNCTION);
-        // set thisval for object sensitivity (unlike traditional object sensitivity we use abstract values instead of individual object labels)
-        /*Value*/ thisval = null; // FIXME: why not use the thisval argument? (github #479)
+        Value thisval = null;
         if (!Options.get().isObjectSensitivityDisabled()) {
             if (c.getFlowGraph().getSyntacticInformation().isFunctionWithThisReference(function.getFunction())) {
                 thisval = state.readThis();
             }
         }
-        ContextArguments contextArguments = makeContextArgumentsForCall(function, state, callInfo);
-
-        // note: c.localContext and c.localContextAtEntry are null by default, which will kill unrollings across calls
-        Context context = Context.make(thisval, contextArguments, null, null, null);
-
+        Context functionContext = makeContextArgumentsForCall(function, state, callInfo);
+        // note: c.loopUnrolling and c.contextAtEntry are null by default, which will kill unrollings across calls
+        Context context = functionContext != null ? Context.make(thisval, null, null, null, null, functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables()) : Context.makeThisVal(thisval);
         if (log.isDebugEnabled())
             log.debug("creating function entry context " + context);
         return context;
@@ -148,18 +140,15 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         if (currentContext.getSpecialRegisters() != null && currentContext.getSpecialRegisters().containsKey(reg) && currentContext.getSpecialRegisters().get(reg).equals(v)) {
             return currentContext;
         }
-
         // extend specialRegs with the given (register,value)
         Map<Integer, Value> specialRegs = null;
         if (!Options.get().isForInSpecializationDisabled()) {
             specialRegs = (currentContext.getSpecialRegisters() != null) ? newMap(currentContext.getSpecialRegisters()) : Collections.newMap();
             specialRegs.put(reg, v);
         }
-
         // for-in acts as entry, so update localContextAtEntry
-        Context c = Context.make(currentContext.getThisVal(), currentContext.getFunArgs(), specialRegs,
-                currentContext.getLocalContext(), currentContext.getLocalContext());
-
+        Context c = Context.make(currentContext.getThisVal(), specialRegs, null, null, currentContext.getLoopUnrolling(),
+                currentContext.getUnknownArg(), currentContext.getParameterNames(), currentContext.getArguments(), currentContext.getFreeVariables());
         if (log.isDebugEnabled())
             log.debug("creating for-in entry context " + c);
         return c;
@@ -167,31 +156,16 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
 
     @Override
     public Context makeNextLoopUnrollingContext(Context currentContext, BeginLoopNode node) {
-        LoopUnrollingQualifier key = LoopUnrollingQualifier.make(node);
-        // update loopUnrolling
-        Map<Qualifier, Value> localContextQualifiers = newMap();
-        if (currentContext.getLocalContext() != null) {
-            localContextQualifiers.putAll(currentContext.getLocalContext().getQualifiers());
-        }
-        int nextUnrollingCount;
-        if (localContextQualifiers.containsKey(key)) {
-            int currentUnrollingCount = localContextQualifiers.get(key).getNum().intValue();
-            if (currentUnrollingCount < Options.get().getLoopUnrollings()) {
-                nextUnrollingCount = currentUnrollingCount + 1;
-            } else {
-                // keep at max + 1 (if the count is reset to zero/removed here, it will begin increasing again!)
-                if (log.isDebugEnabled())
-                    log.debug("Reusing loop unrolling context " + currentContext);
-                return currentContext;
-            }
-        } else {
-            nextUnrollingCount = 0;
-        }
-        localContextQualifiers.put(key, Value.makeNum(nextUnrollingCount));
-
-        Context c = Context.make(currentContext.getThisVal(), currentContext.getFunArgs(), currentContext.getSpecialRegisters(),
-                LocalContext.make(localContextQualifiers), currentContext.getLocalContextAtEntry());
-
+        int limit = Options.get().getLoopUnrollings();
+        if (limit == -1) // -1 represents default
+            limit = 1; // default is 1
+        int currentUnrollingCount = currentContext.getLoopUnrolling() != null ? currentContext.getLoopUnrolling().getOrDefault(node, 0) : 0;
+        int nextUnrollingCount = currentUnrollingCount + 1;
+        if (nextUnrollingCount > limit)
+            return currentContext;
+        Map<BeginLoopNode, Integer> loopUnrolling = currentContext.getLoopUnrolling() != null ? newMap(currentContext.getLoopUnrolling()) : newMap();
+        loopUnrolling.put(node, nextUnrollingCount);
+        Context c = currentContext.copyWithLoopUnrolling(loopUnrolling);
         if (log.isDebugEnabled())
             log.debug("creating loop unrolling context " + c);
         return c;
@@ -199,18 +173,11 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
 
     @Override
     public Context makeLoopExitContext(Context currentContext, EndLoopNode node) {
-        LoopUnrollingQualifier key = LoopUnrollingQualifier.make(node.getBeginNode());
-        // reuse currentContext if possible
-        if (currentContext.getLocalContext() == null || !currentContext.getLocalContext().getQualifiers().containsKey(key))
+        if (currentContext.getLoopUnrolling() == null || !currentContext.getLoopUnrolling().containsKey(node.getBeginNode()))
             return currentContext;
-
-        // remove the begin-loop node from loopUnrolling
-        Map<Qualifier, Value> localContextQualifiers = newMap(currentContext.getLocalContext().getQualifiers());
-        localContextQualifiers.remove(key);
-
-        Context c = Context.make(currentContext.getThisVal(), currentContext.getFunArgs(), currentContext.getSpecialRegisters(),
-                LocalContext.make(localContextQualifiers), currentContext.getLocalContextAtEntry());
-
+        Map<BeginLoopNode, Integer> loopUnrolling = newMap(currentContext.getLoopUnrolling());
+        loopUnrolling.remove(node.getBeginNode());
+        Context c = currentContext.copyWithLoopUnrolling(loopUnrolling);
         if (log.isDebugEnabled())
             log.debug("creating loop unrolling exit context " + c);
         return c;

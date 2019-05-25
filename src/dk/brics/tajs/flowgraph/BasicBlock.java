@@ -47,7 +47,12 @@ public class BasicBlock implements Serializable {
     /**
      * Block order, used for worklist prioritization.
      */
-    private int order = -1;
+    private int worklistOrder = -1;
+
+    /**
+     * Block order, topological.
+     */
+    private int topologicalOrder = -1;
 
     /**
      * The nodes in this block.
@@ -135,17 +140,31 @@ public class BasicBlock implements Serializable {
     }
 
     /**
-     * Sets the block order.
+     * Sets the worklist block order.
      */
-    void setOrder(int order) {
-        this.order = order;
+    void setWorklistOrder(int worklistOrder) {
+        this.worklistOrder = worklistOrder;
     }
 
     /**
-     * Returns the block order.
+     * Returns the worklist block order.
      */
-    public int getOrder() {
-        return order;
+    public int getWorklistOrder() {
+        return worklistOrder;
+    }
+
+    /**
+     * Sets the topological block order.
+     */
+    void setTopologicalOrder(int topologicalOrder) {
+        this.topologicalOrder = topologicalOrder;
+    }
+
+    /**
+     * Returns the topological block order.
+     */
+    public int getTopologicalOrder() {
+        return topologicalOrder;
     }
 
     /**
@@ -341,8 +360,10 @@ public class BasicBlock implements Serializable {
             throw new AnalysisException("Basic block is empty: " + toString());
         if (getSourceLocation().getLineNumber() < 0)
             throw new AnalysisException("Negative line number in source information for block: " + toString());
-        if (order == -1)
-            throw new AnalysisException("Block order has not been set: " + toString());
+        if (worklistOrder == -1)
+            throw new AnalysisException("Block worklistOrder has not been set: " + toString());
+        if (topologicalOrder == -1)
+            throw new AnalysisException("Block topologicalOrder has not been set: " + toString());
         if (index == -1)
             throw new AnalysisException("Block has not been added to flow graph: " + toString());
         if (entry_block == null)
@@ -373,28 +394,28 @@ public class BasicBlock implements Serializable {
     }
 
     /**
-     * Returns the entry block
+     * Returns the entry block.
      */
     public BasicBlock getEntryBlock() {
         return entry_block;
     }
 
     /**
-     * Sets the entry block
+     * Sets the entry block.
      */
     public void setEntryBlock(BasicBlock entry_block) {
         this.entry_block = entry_block;
     }
 
     /**
-     * Returns the entry_predecessor_block, or null if not set.
+     * Returns the entry predecessor block, or null if not set.
      */
     public BasicBlock getEntryPredecessorBlock() {
         return entry_predecessor_block;
     }
 
     /**
-     * Sets the entry_predecessor_block
+     * Sets the entry predecessor block.
      */
     public void setEntryPredecessorBlock(BasicBlock entry_predecessor_block) {
         this.entry_predecessor_block = entry_predecessor_block;

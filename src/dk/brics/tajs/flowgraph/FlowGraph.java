@@ -201,7 +201,7 @@ public class FlowGraph {
                 b.append("<main> ");
             b.append(f).append('\n');
             List<BasicBlock> sortedBlocks = newList(f.getBlocks());
-            sortedBlocks.sort(Comparator.comparingInt(BasicBlock::getOrder));
+            sortedBlocks.sort(Comparator.comparingInt(BasicBlock::getTopologicalOrder));
             for (BasicBlock k : sortedBlocks) {
                 b.append("  ").append(k).append("\n");
             }

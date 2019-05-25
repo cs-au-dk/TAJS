@@ -352,7 +352,7 @@ public class FlowGraphBuilder {
         int blockCount = origBlockCount;
         for (Function function : sortedFunctions) {
             List<BasicBlock> blocks = newList(function.getBlocks());
-            blocks.sort(Comparator.comparingInt(BasicBlock::getOrder));
+            blocks.sort(Comparator.comparingInt(BasicBlock::getTopologicalOrder));
 
             for (BasicBlock block : blocks) {
                 if (block.getIndex() == -1) {
@@ -399,7 +399,7 @@ public class FlowGraphBuilder {
 
     /**
      * Recursively sets BasicBlock.entry_block
-     * All blocks between "Begin" and "End" nodes form a region with a changed entry block see {@link BasicBlock#entry_block}
+     * All blocks between "Begin" and "End" nodes form a region with a changed entry block, see {@link BasicBlock#getEntryBlock()}.
      */
     public static void setEntryBlocks(TripleForSetEntryBlocksWorklist startingPoint, Set<BasicBlock> visited, FunctionAndBlockManager functionAndBlocksManager) {
         LinkedList<TripleForSetEntryBlocksWorklist> worklist = new LinkedList<>();

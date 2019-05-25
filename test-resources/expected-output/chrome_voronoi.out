@@ -127,9 +127,6 @@ test-resources/src/chromeexperiments/voronoi.html:391:5: [maybe] Reading absent 
 test-resources/src/chromeexperiments/voronoi.html:391:16: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/voronoi.html:391:18: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/voronoi.html:396:77: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/voronoi.html:423:4: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/voronoi.html:423:14: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/voronoi.html:423:24: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/voronoi.html:423:52: [maybe] The variable cosmic has values with different types
 test-resources/src/chromeexperiments/voronoi.html:424:10: [maybe] The variable cosmic has values with different types
 test-resources/src/chromeexperiments/voronoi.html:477:8: [maybe] The variable exception has values with different types

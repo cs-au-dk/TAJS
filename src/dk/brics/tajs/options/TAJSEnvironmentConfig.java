@@ -95,6 +95,14 @@ public class TAJSEnvironmentConfig {
         if (jjsPath != null) {
             p.setProperty("jjs", jjsPath.toAbsolutePath().toString());
         }
+        String babel = "extras/babel/node_modules/.bin/babel";
+        if (System.getProperty("os.name").startsWith("Windows")) {
+            babel += ".cmd";
+        }
+        Path babelPath = Paths.get(babel).toAbsolutePath();
+        if (babelPath.toFile().exists()) {
+            p.setProperty("babel", babelPath.toString());
+        }
     }
 
     public static void init() {
@@ -138,6 +146,10 @@ public class TAJSEnvironmentConfig {
 
     public Path getNode() {
         return Paths.get(getRequiredProperty("node"));
+    }
+
+    public Path getBabel() {
+        return Paths.get(getRequiredProperty("babel"));
     }
 
     public Path getJSDelta() {

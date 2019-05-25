@@ -28,7 +28,7 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 
 public class HTML5Builder {
 
-    public static final Set<ObjectLabel> HTML5_OBJECT_LABELS = Collections.newSet();
+    public static Set<ObjectLabel> HTML5_OBJECT_LABELS;
 
     public static void build(Solver.SolverInterface c) {
         CanvasRenderingContext2D.build(c);
@@ -54,7 +54,7 @@ public class HTML5Builder {
         createDOMProperty(DOMWindow.WINDOW, "sessionStorage", Value.makeObject(StorageElement.INSTANCES), c);
         createDOMProperty(DOMWindow.WINDOW, "applicationCache", Value.makeObject(OfflineResourceList.INSTANCES), c);
 
-
+        HTML5_OBJECT_LABELS = Collections.newSet();
         HTML5_OBJECT_LABELS.add(HTMLCanvasElement.INSTANCES);
         HTML5_OBJECT_LABELS.add(HTMLAudioElement.INSTANCES);
     }

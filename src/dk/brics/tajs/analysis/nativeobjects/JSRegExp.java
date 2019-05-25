@@ -27,7 +27,7 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.SingleGamma;
 import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
-import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey.StringPKey;
@@ -143,7 +143,7 @@ public class JSRegExp {
         }
     }
 
-    private static ObjectLabel allocateUninitializedRegExp(AbstractNode sourceNode, HeapContext heapContext, State state) {
+    private static ObjectLabel allocateUninitializedRegExp(AbstractNode sourceNode, Context heapContext, State state) {
         ObjectLabel label = ObjectLabel.make(sourceNode, Kind.REGEXP, heapContext);
         state.newObject(label);
         state.writeInternalPrototype(label, Value.makeObject(InitialStateBuilder.REGEXP_PROTOTYPE));
@@ -281,7 +281,7 @@ public class JSRegExp {
         return Value.join(strs);
     }
 
-    public static ObjectLabel makeRegExp(AbstractNode sourceNode, String source, boolean global, boolean ignoreCase, boolean multiline, double lastIndex, HeapContext heapContext, Solver.SolverInterface c) {
+    public static ObjectLabel makeRegExp(AbstractNode sourceNode, String source, boolean global, boolean ignoreCase, boolean multiline, double lastIndex, Context heapContext, Solver.SolverInterface c) {
         ObjectLabel label = allocateUninitializedRegExp(sourceNode, heapContext, c.getState());
         writeRegExpProperties(singleton(label), c.getState(), Value.makeStr(source), Value.makeBool(global), Value.makeBool(ignoreCase), Value.makeBool(multiline), Value.makeNum(lastIndex), c.getAnalysis().getPropVarOperations());
         return label;

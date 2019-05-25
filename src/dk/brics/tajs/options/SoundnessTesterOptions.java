@@ -106,6 +106,11 @@ public class SoundnessTesterOptions {
     private boolean generateBeforeAnalysis = false;
 
     /**
+     * Automatically detects which files should be instrumented and sets rootDirFromMainDirectory, based on the main JavaScript file.
+     */
+    private boolean generateOnlyIncludeAutomatically = false;
+
+    /**
      * Automatically detects which files should be instrumented and sets rootDirFromMainDirectory, based on the main HTML file.
      */
     private boolean generateOnlyIncludeAutomaticallyForHTMLFiles = false;
@@ -132,6 +137,7 @@ public class SoundnessTesterOptions {
         if (ignoreShaDifference != that.ignoreShaDifference) return false;
         if (useUncompressedLogFileForInference != that.useUncompressedLogFileForInference) return false;
         if (generateBeforeAnalysis != that.generateBeforeAnalysis) return false;
+        if (generateOnlyIncludeAutomatically != that.generateOnlyIncludeAutomatically) return false;
         if (generateOnlyIncludeAutomaticallyForHTMLFiles != that.generateOnlyIncludeAutomaticallyForHTMLFiles) return false;
         if (rootDirFromMainDirectory != null ? !rootDirFromMainDirectory.equals(that.rootDirFromMainDirectory) : that.rootDirFromMainDirectory != null)
             return false;
@@ -161,6 +167,7 @@ public class SoundnessTesterOptions {
         result = 31 * result + (ignoreShaDifference ? 1 : 0);
         result = 31 * result + (useUncompressedLogFileForInference ? 1 : 0);
         result = 31 * result + (generateBeforeAnalysis ? 1 : 0);
+        result = 31 * result + (generateOnlyIncludeAutomatically ? 1 : 0);
         result = 31 * result + (generateOnlyIncludeAutomaticallyForHTMLFiles ? 1 : 0);
         return result;
     }
@@ -279,6 +286,14 @@ public class SoundnessTesterOptions {
 
     public void setGenerateBeforeAnalysis(boolean b) {
         generateBeforeAnalysis = true;
+    }
+
+    public void setGenerateOnlyIncludeAutomatically(boolean generateOnlyIncludeAutomatically) {
+        this.generateOnlyIncludeAutomatically = generateOnlyIncludeAutomatically;
+    }
+
+    public boolean isGenerateOnlyIncludeAutomatically() {
+        return generateOnlyIncludeAutomatically;
     }
 
     public void setGenerateOnlyIncludeAutomaticallyForHTMLFiles(boolean generateOnlyIncludeAutomaticallyForHTMLFiles) {

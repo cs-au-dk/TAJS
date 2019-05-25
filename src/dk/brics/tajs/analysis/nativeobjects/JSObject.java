@@ -322,7 +322,7 @@ public class JSObject {
         if (objectArg.isNone()) {
             return Value.makeNone();
         }
-        ObjectLabel array = JSArray.makeArray(call.getSourceNode(), c);
+        ObjectLabel array = JSArray.makeArray(call.getSourceNode(), Value.makeNum(0), c.getState().getContext(), c);
         boolean onlyEnumerable = nativeobject == ECMAScriptObjects.OBJECT_KEYS;
         ObjProperties.PropertyQuery propertyQuery = ObjProperties.PropertyQuery.makeQuery();
         propertyQuery = !symbols ? propertyQuery.setOnlyEnumerable(onlyEnumerable) : propertyQuery.onlySymbols();
@@ -341,7 +341,7 @@ public class JSObject {
                         // we know the *number* of property names
                         Value propertyNames = Value.makeStringsAndSymbols(properties.getMaybe());
                         List<Value> joinedPropertyNamesArray = properties.getDefinitely().stream().map(x -> propertyNames).collect(Collectors.toList());
-                        JSArray.setEntries(array, joinedPropertyNamesArray, c);
+                        JSArray.setUnknownEntries(array, Value.join(joinedPropertyNamesArray), c);
                     } else {
                         JSArray.setUnknownEntries(array, Value.makeStringsAndSymbols(properties.getMaybe()), c);
                     }

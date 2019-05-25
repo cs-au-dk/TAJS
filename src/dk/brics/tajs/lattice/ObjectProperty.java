@@ -18,6 +18,10 @@ package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.util.AnalysisException;
 
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  * Pair of an {@link ObjectLabel} and a {@link Property}.
  * Immutable.
@@ -95,6 +99,23 @@ public class ObjectProperty {
      */
     public ObjectProperty makeRenamed(ObjectLabel new_objlabel) {
         return new ObjectProperty(new_objlabel, property);
+    }
+
+    /**
+     * Constructs a copy of this ObjectProperty but with another object label according to the given map.
+     */
+    public ObjectProperty makeRenamed(Map<ObjectLabel, ObjectLabel> m) {
+        ObjectLabel new_label = m.get(objlabel);
+        if (new_label != null)
+            return makeRenamed(new_label);
+        return this;
+    }
+
+    /**
+     * Replaces all occurrences of oldlabel by newlabel.
+     */
+    public static Set<ObjectProperty> replaceObjectLabel(Set<ObjectProperty> ops, ObjectLabel oldlabel, ObjectLabel newlabel) {
+        return ops.stream().map(op -> op.objlabel.equals(oldlabel) ? op.makeRenamed(newlabel) : op).collect(Collectors.toSet());
     }
 
     /**

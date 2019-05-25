@@ -143,9 +143,9 @@ public class PropVarOperations {
      * The internal prototype chains are used.
      * Getters are not called.
      */
-    public Pair<Set<ObjectLabel>,Value> readPropertyWithAttributesAndObjs(Collection<ObjectLabel> objlabels, String propertyname) {
+    public Pair<Set<ObjectLabel>,Value> readPropertyWithAttributesAndObjs(Collection<ObjectLabel> objlabels, PKey propertyname) {
         Set<ObjectLabel> objs = newSet();
-        Value v = readPropertyRaw(objlabels, Value.makeTemporaryStr(propertyname), false, true, objs);
+        Value v = readPropertyRaw(objlabels, propertyname.toValue(), false, true, objs);
         if (log.isDebugEnabled())
             log.debug("readPropertyWithAttributesAndObjs(" + objlabels + "," + propertyname + ") = " + v);
         return Pair.make(objs, v);
@@ -1022,20 +1022,20 @@ public class PropVarOperations {
     }
 
     /**
-     * @see #readVariable(String, Collection, boolean)
+     * @see #readVariable(String, Collection, boolean, boolean)
      */
     public Value readVariable(String varname, Collection<ObjectLabel> base_objs) {
-        return readVariable(varname, base_objs, false);
+        return readVariable(varname, base_objs, false, false);
     }
 
     /**
      * Returns the value of the given variable.
-     *
      * @param varname   the variable name
      * @param base_objs collection where base objects are added (ignored if null)
      * @param not_invoke_getters if set, do not invoke getter (e.g. for assume-node variable updates)
+     * @param preserve_attributes if set, do not reset property data
      */
-    public Value readVariable(String varname, Collection<ObjectLabel> base_objs, boolean not_invoke_getters) {
+    public Value readVariable(String varname, Collection<ObjectLabel> base_objs, boolean not_invoke_getters, boolean preserve_attributes) {
         Collection<Value> values = newList();
         boolean definitely_found_at_some_level = false;
         for (Set<ObjectLabel> sc : ScopeChain.iterable(c.getState().getExecutionContext().getScopeChain())) {
@@ -1043,7 +1043,7 @@ public class PropVarOperations {
             for (ObjectLabel objlabel : sc) {
                 Value v = readPropertyRaw(Collections.singleton(objlabel), Value.makeTemporaryStr(varname), false, not_invoke_getters, null);
                 if (v.isMaybePresent()) { // found one (maybe)
-                    values.add(v.setBottomPropertyData());
+                    values.add(preserve_attributes ? v : v.setBottomPropertyData());
                     if (base_objs != null)
                         base_objs.add(objlabel); // collecting the object from the scope chain (although the property may be in its prototype chain)
                 }

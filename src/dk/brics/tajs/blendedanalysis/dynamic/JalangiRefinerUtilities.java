@@ -417,7 +417,7 @@ public class JalangiRefinerUtilities {
             if (tajsVariablesNotJalangiVariables.contains(rvn.getVariableName())) {
                 return true;
             }
-            if (c.getAnalysis().getPropVarOperations().readVariable(rvn.getVariableName(), null, true).isMaybeAbsent()) {
+            if (c.getAnalysis().getPropVarOperations().readVariable(rvn.getVariableName(), null, true, false).isMaybeAbsent()) {
                 // If the read throws a reference error, the log does not contain an entry for it.
                 return true;
             }

@@ -336,7 +336,7 @@ public class Function implements Serializable {
                 + " [tailport=s, headport=n, headlabel=\"    " + entry.getIndex() + "\"]");
         labels.add(entry);
         List<BasicBlock> sortedBlocks = newList(this.blocks);
-        sortedBlocks.sort(Comparator.comparingInt(BasicBlock::getOrder));
+        sortedBlocks.sort(Comparator.comparingInt(BasicBlock::getTopologicalOrder));
         for (BasicBlock b : sortedBlocks) {
             b.toDot(pw, false);
 //	        int color_index = 0;
@@ -348,7 +348,7 @@ public class Function implements Serializable {
 //				pw.print(", color=" + color);
                 if (!labels.contains(bs)) {
                     labels.add(bs);
-                    pw.print(", headlabel=\"      " + bs.getIndex() /*+ (bs.hasOrder() ? "[" +bs.getOrder() + "]" : "")*/ + "\"");
+                    pw.print(", headlabel=\"      " + bs.getIndex() /*+ (bs.hasOrder() ? "[" +bs.getWorklistOrder() + "]" : "")*/ + "\"");
                 }
                 pw.println("]");
             }
@@ -405,15 +405,25 @@ public class Function implements Serializable {
         List<BasicBlock> rootOrder = newList(roots);
         rootOrder.sort(Comparator.comparing(BasicBlock::getSourceLocation, new SourceLocation.Comparator()));
 
+        // set worklist order (topological order, except for loop body entry blocks, which are delayed to reduce worklist starvation when loop-unrolling is used)
         int i = 0;
-        for (BasicBlock block : BlockDependencyOrderer.produceDependencyOrder(topologicalBlocks, nonTopologicalBlocks, rootOrder)) {
-            block.setOrder(i++);
+        for (BasicBlock block : BlockDependencyOrderer.produceDependencyOrder(topologicalBlocks, nonTopologicalBlocks, rootOrder, true)) {
+            block.setWorklistOrder(i++);
         }
-
         if (ordinary_exit != null)
-            ordinary_exit.setOrder(i++);
+            ordinary_exit.setWorklistOrder(i++);
         if (exceptional_exit != null)
-            exceptional_exit.setOrder(i);
+            exceptional_exit.setWorklistOrder(i);
+
+        // topological order
+        i = 0;
+        for (BasicBlock block : BlockDependencyOrderer.produceDependencyOrder(topologicalBlocks, nonTopologicalBlocks, rootOrder, false)) {
+            block.setTopologicalOrder(i++);
+        }
+        if (ordinary_exit != null)
+            ordinary_exit.setTopologicalOrder(i++);
+        if (exceptional_exit != null)
+            exceptional_exit.setTopologicalOrder(i);
     }
 
     /**

@@ -69,6 +69,7 @@ public class Event {
         // Prototype object
         s.newObject(PROTOTYPE);
         s.writeInternalPrototype(PROTOTYPE, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
+        pv.writePropertyWithAttributes(PROTOTYPE, "eventName", Value.makeAnyStr().joinUndef().setAttributes(true, true, true)); // FIXME #552: EVENT_TARGET_DISPATCH_EVENT is incomplete, this hack is used for analyzing fireEvent_DOM in Prototype.js
 
         // Multiplied object
         s.newObject(INSTANCES);

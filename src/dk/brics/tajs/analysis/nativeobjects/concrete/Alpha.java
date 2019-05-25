@@ -21,7 +21,7 @@ import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.nativeobjects.JSArray;
 import dk.brics.tajs.analysis.nativeobjects.JSRegExp;
 import dk.brics.tajs.flowgraph.AbstractNode;
-import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.Value;
@@ -37,11 +37,18 @@ import static dk.brics.tajs.util.Collections.singleton;
  */
 public class Alpha {
 
+    private static Context.Qualifier concreteValueQualifier = new Context.Qualifier() {
+        @Override
+        public String toString() {
+            return "<CONCRETE>";
+        }
+    };
+
     private static Value createNewArrayValue(ConcreteArray array, AbstractNode sourceNode, Solver.SolverInterface c) {
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        final Map<String, Value> map = newMap();
-        map.put("<CONCRETE>", Value.makeStr(array.toSourceCode()));
-        ObjectLabel label = JSArray.makeArray(sourceNode, Value.makeNum(array.getLength()), HeapContext.make(null, map), c);
+        final Map<Context.Qualifier, Value> map = newMap();
+        map.put(concreteValueQualifier, Value.makeStr(array.toSourceCode()));
+        ObjectLabel label = JSArray.makeArray(sourceNode, Value.makeNum(array.getLength()), Context.makeQualifiers(map), c);
         Set<ObjectLabel> labels = singleton(label);
         array.getExtraProperties().forEach((PKey k, ConcreteValue v) -> pv.writeProperty(labels, k.toValue(), toValue(v, c), false, true));
         for (int i = 0; i < array.getLength(); i++) {
@@ -54,9 +61,9 @@ public class Alpha {
     }
 
     private static Value createNewRegExpValue(ConcreteRegularExpression regExp, AbstractNode sourceNode, Solver.SolverInterface c) {
-        final Map<String, Value> map = newMap();
-        map.put("<CONCRETE>", Value.makeStr(regExp.toSourceCode()));
-        ObjectLabel label = JSRegExp.makeRegExp(sourceNode, regExp.getSource().getString(), regExp.getGlobal().getBooleanValue(), regExp.getIgnoreCase().getBooleanValue(), regExp.getMultiline().getBooleanValue(), regExp.getLastIndex().getNumber(), HeapContext.make(null, map), c);
+        final Map<Context.Qualifier, Value> map = newMap();
+        map.put(concreteValueQualifier, Value.makeStr(regExp.toSourceCode()));
+        ObjectLabel label = JSRegExp.makeRegExp(sourceNode, regExp.getSource().getString(), regExp.getGlobal().getBooleanValue(), regExp.getIgnoreCase().getBooleanValue(), regExp.getMultiline().getBooleanValue(), regExp.getLastIndex().getNumber(), Context.makeQualifiers(map), c);
         return Value.makeObject(label);
     }
 

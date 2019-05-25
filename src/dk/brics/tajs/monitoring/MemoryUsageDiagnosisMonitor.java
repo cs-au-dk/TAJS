@@ -23,7 +23,6 @@ import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
-import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.MustReachingDefs;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -158,7 +157,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
 
     private Measurements measure() {
         Measurements measurements = new Measurements();
-        Set<HeapContext> heapContexts = makeIdentitySet(
+        Set<Context> heapContexts = makeIdentitySet(
                 labels.stream()
                         .map(ObjectLabel::getHeapContext)
                         .filter(Objects::nonNull)
@@ -168,7 +167,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
         measurements.measureIdentitySetDuplication("State", states);
         measurements.measureIdentitySetDuplication("ObjectLabel", labels);
         measurements.measureIdentitySetDuplication("Context", contexts);
-        measurements.measureIdentitySetDuplication("HeapContext", heapContexts);
+        measurements.measureIdentitySetDuplication("Context(heap)", heapContexts);
         measurements.measureIdentitySetDuplication("ExecutionContext", executionContexts);
         measurements.measureIdentitySetDuplication("ScopeChain", scopeChains);
         measurements.measureIdentitySetDuplication("Obj", objs);
@@ -188,8 +187,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
         specializeMeasurement(measurements, "ObjectLabel", labels, "host", ObjectLabel::isHostObject);
         specializeMeasurement(measurements, "ObjectLabel", labels, "heapCtx", l -> l.getHeapContext() != null);
 
-        specializeMeasurement(measurements, "Context", contexts, "localContext", c -> c.getLocalContext() != null && !c.getLocalContext().getQualifiers().isEmpty());
-        specializeMeasurement(measurements, "Context", contexts, "funArgs", c -> c.getFunArgs() != null);
+        specializeMeasurement(measurements, "Context", contexts, "loopUnrolling", c -> c.getLoopUnrolling() != null && !c.getLoopUnrolling().isEmpty());
         specializeMeasurement(measurements, "Context", contexts, "specialRegs", c -> c.getSpecialRegisters() != null && !c.getSpecialRegisters().isEmpty());
         specializeMeasurement(measurements, "Context", contexts, "thisVal", c -> c.getThisVal() != null && !c.getThisVal().isNone());
 

@@ -23,6 +23,8 @@ import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.UnknownValueResolver;
+import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.IEdgeTransfer;
 
@@ -43,9 +45,9 @@ public class EdgeTransfer implements IEdgeTransfer<Context> {
     /**
      * Initializes the connection to the solver.
      */
-    public void setSolverInterface(Solver.SolverInterface c) {
+    public void setSolverInterface(Filtering filtering, Solver.SolverInterface c) {
+        this.filtering = filtering;
         this.c = c;
-        filtering = new Filtering(c);
     }
 
     @Override
@@ -59,6 +61,25 @@ public class EdgeTransfer implements IEdgeTransfer<Context> {
             if (n instanceof IfNode) {
                 IfNode ifnode = (IfNode) n;
                 if (ifnode.getSuccTrue() != ifnode.getSuccFalse()) {
+                    if (Options.get().isNoFilteringEnabled()) {
+                        Value cond = c.getState().readRegister(ifnode.getConditionRegister());
+                        cond = UnknownValueResolver.getRealValue(cond, c.getState());
+                        // restrict the conditional register
+                        if (ifnode.getSuccTrue() == dst) {
+                            // at true branch, cond must be truthy
+                            cond = cond.restrictToTruthy();
+                        } else {
+                            // at false branch, cond must be falsy
+                            cond = cond.restrictToFalsy();
+                        }
+                        if (cond.isNone()) {
+                            // branch is infeasible, kill flow entirely
+                            return null;
+                        }
+                        // store the restricted register (may be used later for && or ||)
+                        c.getState().writeRegister(ifnode.getConditionRegister(), cond);
+                    }
+
                     // restrict the conditional register
                     if (ifnode.getSuccTrue() == dst) {
                         // at true branch, cond must be truthy

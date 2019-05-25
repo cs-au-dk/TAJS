@@ -35,7 +35,6 @@ import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.Message;
 
 import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -67,16 +66,6 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
 
     @Override
     public void visitPhasePost(AnalysisPhase phase) {
-    }
-
-    @Override
-    public Set<Message> getMessages() {
-        return null;
-    }
-
-    @Override
-    public Map<TypeCollector.VariableSummary, Value> getTypeInformation() {
-        return null;
     }
 
     @Override
@@ -217,5 +206,9 @@ public class DefaultAnalysisMonitoring implements IAnalysisMonitoring {
 
     @Override
     public void visitIterationDone(String terminatedEarlyMsg) {
+    }
+
+    @Override
+    public void visitSoundnessTestingDone(int numSoundnessChecks) {
     }
 }

@@ -20,6 +20,7 @@ import dk.brics.tajs.lattice.Obj;
 
 import java.lang.ref.WeakReference;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newMap;
@@ -94,6 +95,16 @@ public class Canonicalizer {
     }
 
     /**
+     * Canonicalizes a map into an immutable version.
+     */
+    public <K, V extends DeepImmutable> Map<K, V> canonicalizeMap(Map<K, V> map) {
+        if (map == null || map.isEmpty())
+            return null;
+
+        return canonicalizeViaImmutableBox(map);
+    }
+
+    /**
      * Canonicalizes a set of strings into an immutable version.
      */
     public Set<String> canonicalizeStringSet(Set<String> strings) {
@@ -109,6 +120,10 @@ public class Canonicalizer {
 
     private <T> Set<T> canonicalizeViaImmutableBox(Set<T> set) {
         return canonicalize(new ImmutableBox<>(java.util.Collections.unmodifiableSet(set))).get();
+    }
+
+    private <K, V> Map<K, V> canonicalizeViaImmutableBox(Map<K, V> map) {
+        return canonicalize(new ImmutableBox<>(java.util.Collections.unmodifiableMap(map))).get();
     }
 
     /**
@@ -130,7 +145,7 @@ public class Canonicalizer {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             ImmutableBox<?> that = (ImmutableBox<?>) o;
-            return element != null ? element.equals(that.element) : that.element == null;
+            return Objects.equals(element, that.element);
         }
 
         @Override

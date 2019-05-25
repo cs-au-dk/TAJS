@@ -12,8 +12,6 @@ import org.junit.runners.Suite;
         TestChromeExperiments.class,
         Test1K2012Love.class,
         Test1K2013Spring.class,
-        TestJQueryLoad.class,
-        TestApps.class
 })
 public class RunMediumDOMApps {
 

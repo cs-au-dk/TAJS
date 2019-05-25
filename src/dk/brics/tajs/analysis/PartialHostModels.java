@@ -18,6 +18,7 @@ package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.lattice.HostAPI;
 import dk.brics.tajs.lattice.HostObject;
+import dk.brics.tajs.monitoring.AnalysisMonitor;
 
 import static dk.brics.tajs.analysis.HostAPIs.PARTIAL_HOST_MODEL;
 
@@ -30,7 +31,7 @@ import static dk.brics.tajs.analysis.HostAPIs.PARTIAL_HOST_MODEL;
  * Current implementation features:
  * <ul>
  * <li>Partially modeled functions will cause an {@link dk.brics.tajs.util.AnalysisLimitationException.AnalysisModelLimitationException} when invoked.</li>
- * <li>Accessing definitely absent properties of Partial objects will give a special warning in {@link dk.brics.tajs.monitoring.Monitoring}</li>
+ * <li>Accessing definitely absent properties of Partial objects will give a special warning in {@link AnalysisMonitor}</li>
  * </ul>
  */
 public class PartialHostModels implements HostObject {

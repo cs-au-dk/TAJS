@@ -35,7 +35,6 @@ import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.Message;
 
 import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -67,7 +66,7 @@ public class TogglableMonitor implements IAnalysisMonitoring {
 
     @Override
     public void visitBlockTransferPre(BasicBlock b, State s) {
-        active.visitBlockTransferPost(b, s);
+        active.visitBlockTransferPre(b, s);
     }
 
     @Override
@@ -136,18 +135,8 @@ public class TogglableMonitor implements IAnalysisMonitoring {
     }
 
     @Override
-    public Set<Message> getMessages() {
-        return active.getMessages();
-    }
-
-    @Override
     public void visitPropagationPost(BlockAndContext<Context> from, BlockAndContext<Context> to, boolean changed) {
         active.visitPropagationPost(from, to, changed);
-    }
-
-    @Override
-    public Map<TypeCollector.VariableSummary, Value> getTypeInformation() {
-        return active.getTypeInformation();
     }
 
     @Override
@@ -268,6 +257,11 @@ public class TogglableMonitor implements IAnalysisMonitoring {
     @Override
     public void visitIterationDone(String terminatedEarlyMsg) {
         active.visitIterationDone(terminatedEarlyMsg);
+    }
+
+    @Override
+    public void visitSoundnessTestingDone(int numSoundnessChecks) {
+        active.visitSoundnessTestingDone(numSoundnessChecks);
     }
 
     public Toggler getController() {

@@ -24,26 +24,28 @@ import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReturnNode;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.util.AnalysisResultException;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
+import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
 
 /**
- * Monitor for reachability information.
+ * Monitor for reachability information, used by AnalysisMonitor.
  * <p>
  * Implementation note: the collected information is context sensitive, but the exposed API is currently context insensitive.
  */
-public class ReachabilityMonitor extends DefaultAnalysisMonitoring {
+public class ReachabilityMonitor {
 
     private Set<Pair<AbstractNode, Context>> reachable = newSet();
 
     private Set<Function> functions = newSet();
 
-    @Override
     public void visitFunction(Function f, Collection<State> entry_states) {
         functions.add(f);
     }
@@ -68,7 +70,6 @@ public class ReachabilityMonitor extends DefaultAnalysisMonitoring {
         return unreachable;
     }
 
-    @Override
     public void visitNodeTransferPre(AbstractNode n, State s) {
         n = n.getDuplicateOf() != null ? n.getDuplicateOf() : n;
         reachable.add(Pair.make(n, s.getContext()));
@@ -129,5 +130,25 @@ public class ReachabilityMonitor extends DefaultAnalysisMonitoring {
             }
         }
         return firstUnreachableNodes;
+    }
+
+    public void check() { // invoke via AnalysisMonitor.visitPhasePost
+        Set<Function> unreachableFunctions = getUnreachableFunctions();
+        Set<Function> reachableFunctions = getReachableFunctions();
+        Set<AbstractNode> unreachableNodes = reachableFunctions.stream().flatMap(f -> getUndominatedUnreachableNodes(f, false).stream()).collect(Collectors.toSet());
+        List<String> lines = newList();
+        // TODO support different levels of checking through provided enums?
+        if (!unreachableFunctions.isEmpty()) {
+            lines.add("\tUnreachable functions:");
+            unreachableFunctions.forEach(f -> lines.add(String.format("\t\t%s: %s", f.getSourceLocation(), f)));
+        }
+        if (!unreachableNodes.isEmpty()) {
+            lines.add("\tUnreachable nodes (undominated, in reachable functions):");
+            unreachableNodes.forEach(n -> lines.add(String.format("\t\t%s: %s", n.getSourceLocation(), n)));
+        }
+        if (!lines.isEmpty()) {
+            lines.add(0, "Some nodes are not reachable!");
+            throw new AnalysisResultException(String.join(String.format("%n"), lines));
+        }
     }
 }

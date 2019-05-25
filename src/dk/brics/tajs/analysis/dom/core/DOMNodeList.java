@@ -26,7 +26,7 @@ import dk.brics.tajs.analysis.dom.DOMFunctions;
 import dk.brics.tajs.analysis.dom.DOMObjects;
 import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.flowgraph.AbstractNode;
-import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
@@ -116,10 +116,17 @@ public class DOMNodeList {
         }
     }
 
+    private static Context.Qualifier extraLabelQualifier = new Context.Qualifier() {
+        @Override
+        public String toString() {
+            return "EXTRA_LABEL_KIND";
+        }
+    };
+
     private static ObjectLabel makeAllocationSiteInstance(AbstractNode node, State s) {
-        Map<String, Value> qualifier = newMap();
-        qualifier.put("EXTRA_LABEL_KIND", Value.makeStr("DOMNodeList"));
-        HeapContext ctx = HeapContext.make(null, qualifier);
+        Map<Context.Qualifier, Value> qualifier = newMap();
+        qualifier.put(extraLabelQualifier, Value.makeStr("DOMNodeList"));
+        Context ctx = Context.makeQualifiers(qualifier);
         ObjectLabel label = ObjectLabel.make(node, ObjectLabel.Kind.OBJECT, ctx);
         s.newObject(label);
         s.writeInternalPrototype(label, Value.makeObject(PROTOTYPE));

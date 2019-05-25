@@ -219,6 +219,9 @@ public class PathAndURLUtils {
         while (parent != null) {
             Path finalParent = parent;
             if (paths.stream().allMatch(child -> child.startsWith(finalParent))) {
+                if (!Files.isDirectory(parent)) // Must return path to directory
+                    parent = parent.getParent();
+
                 return parent;
             }
             parent = parent.getParent();
@@ -257,5 +260,17 @@ public class PathAndURLUtils {
             }
         }
         return url;
+    }
+
+    /**
+     * Return the file extension of the given path (including the dot).
+     */
+    public static String getFileExtension(Path file) {
+        String fileStr = file.toString();
+        int index = fileStr.lastIndexOf(".");
+        if(index == -1)
+            return "";
+
+        return fileStr.substring(index);
     }
 }

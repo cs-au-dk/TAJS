@@ -122,7 +122,7 @@ public class SyntaxMatcher {
                         .thenComparing(
                                 // in case of ambiguities due to (aux) nodes with the same source position
                                 Comparator.comparing((AbstractNode n) -> !n.isArtificial()) // prefer non-artificials
-                                        .thenComparing(n -> n.getBlock().getOrder()) // prefer later blocks
+                                        .thenComparing(n -> n.getBlock().getTopologicalOrder()) // prefer later blocks
                                         // in case of (unexpected) overlaps
                                         .thenComparing(n -> n.getSourceLocation().getEndLineNumber()) // prefer biggest line and column
                                         .thenComparing(n -> n.getSourceLocation().getEndColumnNumber())

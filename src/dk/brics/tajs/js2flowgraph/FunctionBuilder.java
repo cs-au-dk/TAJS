@@ -794,6 +794,9 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
             bodyEnv = bodyEnv.makeLabelledContinue(env.getLoopLabelName(tree), firstIncrementBlock);
         }
         process(body, bodyEnv).getAppendBlock().addSuccessor(lastBodyBlock);
+        if (!firstBodyBlock.getNodes().isEmpty()) {
+            firstBodyBlock.getFirstNode().setIsLoopEntryNode(true);
+        }
 
         // process increment
         if (increment != null) {
@@ -1677,11 +1680,17 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
 
     @Override
     public TranslationResult process(PropertyNameAssignmentTree tree, AstEnv env) {
-        if (tree.value == null) {
-            unsupportedLanguageFeature(tree, "Implicit property value assignment");
-        }
         AstEnv rhsEnv = env.makeResultRegister(nextRegister(env)).makeStatementLevel(false);
-        TranslationResult processedRhs = process(tree.value, rhsEnv);
+        TranslationResult processedRhs;
+        if (tree.value == null) {
+            // Implicit property value assignment ie.
+            // var b = {a};
+            SourceLocation location = makeSourceLocation(tree);
+            processedRhs = TranslationResult.makeAppendBlock(read(new Variable(tree.name.asIdentifier().value, location), rhsEnv));
+        } else {
+            processedRhs = process(tree.value, rhsEnv);
+        }
+
         Integer base = env.getThisRegister();
         int value = rhsEnv.getResultRegister();
         WritePropertyNode write = makeWriteFixedPropertyNode(base, tree.name, value, Kind.ORDINARY, makeSourceLocation(tree));

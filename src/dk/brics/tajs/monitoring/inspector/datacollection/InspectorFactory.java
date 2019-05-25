@@ -16,9 +16,9 @@
 
 package dk.brics.tajs.monitoring.inspector.datacollection;
 
-import dk.brics.tajs.monitoring.CompositeMonitoring;
+import dk.brics.tajs.monitoring.AnalysisMonitor;
+import dk.brics.tajs.monitoring.CompositeMonitor;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.monitoring.PhaseMonitoring;
 import dk.brics.tajs.monitoring.TogglableMonitor;
 import dk.brics.tajs.monitoring.TypeCollector;
@@ -57,11 +57,11 @@ public class InspectorFactory {
         gutterProviders.addAll(extraGutterProviders);
         gutterProviders.add(new DefaultGutters(creatorSetup.getSecond().getSecond()));
         InspectorMonitor inspector = new InspectorMonitor(togglableMonitor.getController(), creatorSetup.getSecond().getFirst(), gutterProviders);
-        return new CompositeMonitoring(togglableMonitor, inspector);
+        return CompositeMonitor.make(togglableMonitor, inspector);
     }
 
     private static Pair<IAnalysisMonitoring, Pair<InspectorDataProvider, DefaultGutterDataProvider>> makeInspectorCreatorSetup() {
-        final IAnalysisMonitoring monitoring = Monitoring.make(false);
+        final AnalysisMonitor monitoring = new AnalysisMonitor();
         final VisitationMonitoring visitation = new VisitationMonitoring();
 
         final TypeCollector typeCollector = new TypeCollector();
@@ -74,8 +74,8 @@ public class InspectorFactory {
         final ContextRegistrationMonitor contextRegistrationMonitor = new ContextRegistrationMonitor();
         final ObjectCollectionMonitor allocationCollectingMonitor = new ObjectCollectionMonitor();
 
-        IAnalysisMonitoring m1 = CompositeMonitoring.buildFromList(timeMonitor, lazyPropagationMonitor, monitoring, visitation, propagationMonitor, contextRegistrationMonitor);
-        IAnalysisMonitoring m2 = CompositeMonitoring.buildFromList(monitoring, stateCollector, nonLazyTypeCollectorMonitoring, eventHandlerRegistrationMonitor, allocationCollectingMonitor);
+        IAnalysisMonitoring m1 = CompositeMonitor.make(timeMonitor, lazyPropagationMonitor, monitoring, visitation, propagationMonitor, contextRegistrationMonitor);
+        IAnalysisMonitoring m2 = CompositeMonitor.make(monitoring, stateCollector, nonLazyTypeCollectorMonitoring, eventHandlerRegistrationMonitor, allocationCollectingMonitor);
         PhaseMonitoring<IAnalysisMonitoring,IAnalysisMonitoring> collectionMonitors = new PhaseMonitoring<>(m1, m2);
         DefaultGutterDataProvider gutterDataProvider = new DefaultGutterDataProvider(eventHandlerRegistrationMonitor, propagationMonitor, contextRegistrationMonitor, allocationCollectingMonitor, timeMonitor, monitoring::getMessages, visitation, typeCollector, lazyPropagationMonitor, stateCollector);
         InspectorDataProvider inspectorDataProvider = new InspectorDataProvider(eventHandlerRegistrationMonitor, propagationMonitor, contextRegistrationMonitor, allocationCollectingMonitor);

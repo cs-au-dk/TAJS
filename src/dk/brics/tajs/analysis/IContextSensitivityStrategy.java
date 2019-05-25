@@ -22,7 +22,6 @@ import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
 import dk.brics.tajs.flowgraph.jsnodes.EndLoopNode;
 import dk.brics.tajs.lattice.Context;
-import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
@@ -35,22 +34,22 @@ public interface IContextSensitivityStrategy {
     /**
      * Constructs a heap context for a function object.
      */
-    HeapContext makeFunctionHeapContext(Function fun, Solver.SolverInterface c);
+    Context makeFunctionHeapContext(Function fun, Solver.SolverInterface c);
 
     /**
      * Constructs a heap context for objects related to a call.
      */
-    HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, Value thisval, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c);
+    Context makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c);
 
     /**
      * Constructs a heap context for an object created at 'new'.
      */
-    HeapContext makeConstructorHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c);
+    Context makeConstructorHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c);
 
     /**
      * Constructs a heap context for an object literal.
      */
-    HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c);
+    Context makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c);
 
     /**
      * Constructs the initial context.
@@ -60,7 +59,7 @@ public interface IContextSensitivityStrategy {
     /**
      * Constructs a context for call.
      */
-    Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Value thisval, Solver.SolverInterface c);
+    Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c);
 
     /**
      * Constructs a context for entering a for-in body.

@@ -20,13 +20,9 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.SingleGamma;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
-import dk.brics.tajs.flowgraph.jsnodes.BeginForInNode;
 import dk.brics.tajs.flowgraph.jsnodes.BeginLoopNode;
-import dk.brics.tajs.flowgraph.jsnodes.EndLoopNode;
 import dk.brics.tajs.flowgraph.syntaticinfo.SyntacticQueries;
 import dk.brics.tajs.lattice.Context;
-import dk.brics.tajs.lattice.ContextArguments;
-import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
@@ -44,15 +40,11 @@ import static dk.brics.tajs.util.Collections.newMap;
 /**
  * Implementation of the heuristics for call- and heap-contexts according to "Determinacy in Static Analysis of jQuery", OOPSLA 2014.
  */
-public class StaticDeterminacyContextSensitivityStrategy implements IContextSensitivityStrategy {
+public class StaticDeterminacyContextSensitivityStrategy extends BasicContextSensitivityStrategy {
 
     private final SyntacticQueries syntacticInformation;
 
-    private final PreciseInterestingValuePredicate determinateInterestingValue = new PreciseInterestingValuePredicate(1);
-
-    private final Map<HeapContext, Map<String, Value>> closureVariableValuesAtAllocation = newMap();
-
-    private final BasicContextSensitivityStrategy basic = new BasicContextSensitivityStrategy();
+    private final Map<Context, Map<String, Value>> freeVariableValuesAtAllocation = newMap();
 
     public StaticDeterminacyContextSensitivityStrategy(SyntacticQueries syntacticInformation) {
         this.syntacticInformation = syntacticInformation;
@@ -69,20 +61,15 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
      * <p>
      */
     @Override
-    public HeapContext makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c) {
-        ContextArguments funArgs = state.getContext().getFunArgs();
-        if (!shouldLiteralBeHeapSensitive(node, funArgs)) {
+    public Context makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c) {
+        Context functionContext = state.getContext();
+        if (!shouldLiteralBeHeapSensitive(node, functionContext)) {
             return makeHeapContext(node, null, c);
         }
-        return makeHeapContext(node, funArgs, c);
+        return makeHeapContext(node, functionContext, c);
     }
 
-    @Override
-    public Context makeInitialContext() {
-        return basic.makeInitialContext();
-    }
-
-    private boolean shouldLiteralBeHeapSensitive(AbstractNode node, ContextArguments arguments) {
+    private boolean shouldLiteralBeHeapSensitive(AbstractNode node, Context arguments) {
         if (syntacticInformation.isCorrelatedAccessFunction(node.getBlock().getFunction())) {
             return true;
         }
@@ -104,7 +91,6 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                 argumentNumber++;
             }
         }
-
         return false;
     }
 
@@ -117,14 +103,14 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
      * created callee context.
      */
     @Override
-    public HeapContext makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, Value thisval, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+    public Context makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         // Due to implementation details, the callee context is created *after* the activation and argument objects.
         // So the callee-context is computed here (using the same algorithm) as well
-        return makeHeapContext(callInfo.getJSSourceNode(), decideCallContextArguments(function, callInfo, state, c), c); // TODO: currently not using this_objs...
+        return makeHeapContext(callInfo.getJSSourceNode(), decideCallContextArguments(function, callInfo, state, c), c);
     }
 
     @Override
-    public HeapContext makeConstructorHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
+    public Context makeConstructorHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         return makeHeapContext(callInfo.getJSSourceNode(), decideCallContextArguments(function, callInfo, state, c), c);
     }
 
@@ -138,24 +124,16 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
      * allocation site).
      */
     @Override
-    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Value thisval, Solver.SolverInterface c) {
+    public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         assert (function.getKind() == ObjectLabel.Kind.FUNCTION);
-        // set thisval for object sensitivity (unlike traditional object sensitivity we use abstract values instead of individual object labels)
-        /*Value*/ thisval = null; // FIXME: why not use the thisval argument? (github #479)
+        Value thisval = null;
         if (!Options.get().isObjectSensitivityDisabled()) {
             if (c.getFlowGraph().getSyntacticInformation().isFunctionWithThisReference(function.getFunction())) {
                 thisval = state.readThis();
             }
         }
-
-        ContextArguments funArgs = decideCallContextArguments(function, callInfo, state, c);
-
-        return Context.make(thisval, funArgs, null, null, null);
-    }
-
-    @Override
-    public Context makeForInEntryContext(Context currentContext, BeginForInNode n, Value v) {
-        return basic.makeForInEntryContext(currentContext, n, v);
+        Context functionContext = decideCallContextArguments(function, callInfo, state, c);
+        return Context.make(thisval, null, null, null, null, functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables());
     }
 
     @Override
@@ -163,12 +141,7 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
         if (node.isNested()) {
             return currentContext;
         }
-        return basic.makeNextLoopUnrollingContext(currentContext, node);
-    }
-
-    @Override
-    public Context makeLoopExitContext(Context currentContext, EndLoopNode node) {
-        return basic.makeLoopExitContext(currentContext, node);
+        return super.makeNextLoopUnrollingContext(currentContext, node);
     }
 
     @Override
@@ -176,25 +149,21 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
         // ignore
     }
 
-    private ContextArguments decideCallContextArguments(ObjectLabel obj_f, FunctionCalls.CallInfo call, State edge_state, Solver.SolverInterface c) {
-        Map<String, Value> closureVariables = null;
-        if (closureVariableValuesAtAllocation.containsKey(obj_f.getHeapContext())) {
+    private Context decideCallContextArguments(ObjectLabel obj_f, FunctionCalls.CallInfo call, State edge_state, Solver.SolverInterface c) {
+        Map<String, Value> freeVariables = null;
+        if (freeVariableValuesAtAllocation.containsKey(obj_f.getHeapContext())) {
             // Values of closure variables used as extra arguments (due to special-var removal).
             // We reuse the closure variables captured by decideCallContextArguments
-
             // NB: a proper implementation should be able to read the *current* value of the closure variables
             // .. but TAJS does not currently allow that, since the context is decided at the call-site
-
-            closureVariables = closureVariableValuesAtAllocation.get(obj_f.getHeapContext());
+            freeVariables = freeVariableValuesAtAllocation.get(obj_f.getHeapContext());
         }
-
         List<Value> arguments = newList();
         if (!call.isUnknownNumberOfArgs()) {
             for (int i = 0; i < call.getNumberOfArgs(); i++) {
                 arguments.add(FunctionCalls.readParameter(call, edge_state, i));
             }
         }
-
         List<Value> selectedArguments = newList();
         for (Value argument : arguments) {
             // avoid directly recursive context sensitivity components
@@ -203,22 +172,20 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
                             .filter(l -> c.getNode().equals(l.getNode()) || isRecursiveHeapContext(l))
                             .collect(Collectors.toSet()));
 
-            boolean isPrecise = determinateInterestingValue.isPrecise(argument, c);
-            if (isPrecise) {
+            if (isPrecise(argument, c)) {
                 selectedArguments.add(argument);
             } else {
                 selectedArguments.add(null);
             }
         }
-
-        return new ContextArguments(obj_f.getFunction().getParameterNames(), selectedArguments, closureVariables);
+        return Context.make(null, obj_f.getFunction().getParameterNames(), selectedArguments, freeVariables);
     }
 
     private boolean isRecursiveHeapContext(ObjectLabel l) {
         if (l.getNode() == null) {
             return false;
         }
-        Set<ObjectLabel> topLevelObjectLabels = HeapContext.extractTopLevelObjectLabels(l.getHeapContext());
+        Set<ObjectLabel> topLevelObjectLabels = Context.extractTopLevelObjectLabels(l.getHeapContext());
         Set<ObjectLabel> recursives = topLevelObjectLabels.stream()
                 .filter(innerLabel -> l.getNode().equals(innerLabel.getNode()))
                 .collect(Collectors.toSet());
@@ -248,75 +215,61 @@ public class StaticDeterminacyContextSensitivityStrategy implements IContextSens
      * But it turns out that the values caught in this way keeps functions separate regardless.
      */
     @Override
-    public HeapContext makeFunctionHeapContext(Function function, Solver.SolverInterface c) {
+    public Context makeFunctionHeapContext(Function function, Solver.SolverInterface c) {
         final Map<String, Value> map = newMap();
-
         Set<String> closureVariableNames = c.getFlowGraph().getSyntacticInformation().getClosureVariableNames(function);
         if (closureVariableNames != null) {
             for (String closureVariableName : closureVariableNames) {
                 Value value = UnknownValueResolver.getRealValue(c.getAnalysis().getPropVarOperations().readVariable(closureVariableName, null), c.getState());
                 boolean isLoopVariable = syntacticInformation.isLoopVariable(function.getOuterFunction(), closureVariableName)
                         && value.isMaybeSingleNum();
-                boolean isValidClosureVariables = isLoopVariable || determinateInterestingValue.isPrecise(value, c);
+                boolean isValidClosureVariables = isLoopVariable || isPrecise(value, c);
                 boolean isRecursive = value.toString().split(closureVariableName + "=").length > 2; //TODO: Less hacky way of detecting recursion
                 if (isValidClosureVariables && !isRecursive) {
                     map.put(closureVariableName, value);
                 }
             }
         }
-        HeapContext heapContext = makeHeapContext(c.getNode(), new ContextArguments(null, map), c);
-        closureVariableValuesAtAllocation.put(heapContext, map);
+        Context heapContext = makeHeapContext(c.getNode(), Context.makeFreeVars(map), c);
+        freeVariableValuesAtAllocation.put(heapContext, map);
         return heapContext;
     }
 
-    public HeapContext makeHeapContext(AbstractNode location, ContextArguments arguments, Solver.SolverInterface c) {
-        boolean recursive = ContextArguments.extractTopLevelObjectLabels(arguments).stream().anyMatch(l -> {
+    public Context makeHeapContext(AbstractNode location, Context arguments, Solver.SolverInterface c) {
+        boolean recursive = Context.extractTopLevelObjectLabels(arguments).stream().anyMatch(l -> {
             SourceLocation thisAllocationSite = location.getSourceLocation();
             SourceLocation otherAllocationSite = l.getSourceLocation();
             return thisAllocationSite.equals(otherAllocationSite);
         });
         if (recursive) {
             // System.out.printf("Avoiding creation of recursive objectlabel at %s: %s%n", location, arguments);
-            return HeapContext.make(null, null);
+            return Context.makeEmpty();
         }
-        return HeapContext.make(arguments, null);
+        return arguments != null ? Context.make(arguments.getUnknownArg(), arguments.getParameterNames(), arguments.getArguments(), arguments.getFreeVariables()) : Context.makeEmpty();
     }
 
     /**
      * A value is precise ("determinate") if it is a single string value or a bounded (ideally a single) number of abstract objects, or a single number (addition made to better support require).
      */
-    private static class PreciseInterestingValuePredicate {
-
-        private final int objectLimit;
-
-        public PreciseInterestingValuePredicate(int objectLimit) {
-            this.objectLimit = objectLimit;
-        }
-
-        public boolean isPrecise(Value value, Solver.SolverInterface c) {
-            if (value.typeSize() == 1) {
-                if (SingleGamma.isConcreteString(value, c)) {
-                    return true;
-                }
-                if (value.isMaybeObjectOrSymbol()) {
-                    for (ObjectLabel objectLabel : value.getObjectLabels()) { // FIxME: does not loop (github #501)
-                        switch (objectLabel.getKind()) {
-                            case OBJECT: // special case for experiments, limit is 1 in practice
-                                return value.getObjectLabels().size() <= objectLimit;
-                            default:
-                                return value.getObjectLabels().size() == 1;
-                        }
-                    }
-                }
-                if (value.isMaybeSingleNum() && value.getNum() != null) {
-                    return true;
-                }
-                if (!value.isNotBool() && (value.isMaybeTrueButNotFalse() || value.isMaybeFalseButNotTrue())) {
-                    return true;
-                }
+    public static boolean isPrecise(Value value, Solver.SolverInterface c) {
+        if (value.typeSize() == 1) {
+            if (SingleGamma.isConcreteString(value, c)) {
+                return true;
             }
-            return false;
+            if (value.isNullOrUndef()) {
+                return true;
+            }
+            if (value.isMaybeObjectOrSymbol()) {
+                return value.getObjectLabels().size() == 1;
+            }
+            if (value.isMaybeSingleNum() && value.getNum() != null) {
+                return true;
+            }
+            if (!value.isNotBool() && (value.isMaybeTrueButNotFalse() || value.isMaybeFalseButNotTrue())) {
+                return true;
+            }
         }
+        return false;
     }
 }
 

@@ -34,7 +34,7 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.MappedNativeResult;
 import dk.brics.tajs.analysis.nativeobjects.concrete.NativeResult;
 import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
@@ -303,6 +303,20 @@ public class JSString {
         return Alpha.toValue(concreteResult.getResult().getValue(), c).getStr();
     }
 
+    private static Context.Qualifier baseThisQualifier = new Context.Qualifier() {
+        @Override
+        public String toString() {
+            return "<base/this>";
+        }
+    };
+
+    private static Context.Qualifier argSeparatorQualifier = new Context.Qualifier() {
+        @Override
+        public String toString() {
+            return "<arg/separator>";
+        }
+    };
+
     private static Value splitString(ECMAScriptObjects nativeobject, final CallInfo call, final Solver.SolverInterface c) {
         State state = c.getState();
         Value sentinel = Value.makeNull();
@@ -342,11 +356,11 @@ public class JSString {
 
         if (separator.isMaybeSingleStr() && thisStringValue.isMaybeSingleStr() && separator.equals(Value.makeStr(separator.getStr())) && thisStringValue.equals(Value.makeStr(thisStringValue.getStr()))) {
             // precise case: both this and input are definite single strings
-            final Map<String, Value> argsMap = newMap();
-            argsMap.put("<base/this>", Value.makeStr(thisStringValue.getStr()));
-            argsMap.put("<arg/separator>", Value.makeStr(separator.getStr()));
+            final Map<Context.Qualifier, Value> argsMap = newMap();
+            argsMap.put(baseThisQualifier, Value.makeStr(thisStringValue.getStr()));
+            argsMap.put(argSeparatorQualifier, Value.makeStr(separator.getStr()));
             // we are precise, so allocate a unique array
-            resultArray = ObjectLabel.make(call.getSourceNode(), Kind.ARRAY, HeapContext.make(null, argsMap));
+            resultArray = ObjectLabel.make(call.getSourceNode(), Kind.ARRAY, Context.makeQualifiers(argsMap));
             state.newObject(resultArray);
             state.writeInternalPrototype(resultArray, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));
             final List<Value> splitValues = new ArrayList<>();

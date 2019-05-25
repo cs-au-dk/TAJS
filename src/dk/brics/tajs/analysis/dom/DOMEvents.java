@@ -45,23 +45,23 @@ public class DOMEvents {
 
     private static final Logger log = Logger.getLogger(DOMEvents.class);
 
-    private static final Value domContentLoadedEvent;
+    private static Value domContentLoadedEvent;
 
-    private static final Value loadEvent;
+    private static Value loadEvent;
 
-    private static final Value keyboardEvent;
+    private static Value keyboardEvent;
 
-    private static final Value mouseEvent;
+    private static Value mouseEvent;
 
-    private static final Value ajaxEvent;
+    private static Value ajaxEvent;
 
-    private static final Value anyEvent;
+    private static Value anyEvent;
 
-    private static final Value timeoutEvent;
+    private static Value timeoutEvent;
 
-    private static final Value unloadEvent;
+    private static Value unloadEvent;
 
-    static {
+    public static void build() {
         anyEvent = createAnyEvent();
         domContentLoadedEvent = createAnyDOMContentLoadedEvent();
         loadEvent = createAnyLoadEvent();
@@ -197,8 +197,10 @@ public class DOMEvents {
         }
         State callState = requiresStateCloning ? currentState.clone() : currentState;
         c.withState(callState, () -> {
-            for (ObjectLabel l : handlers) {
-                log.debug("Triggering eventHandlers <" + type + ">: " + l);
+            if (log.isDebugEnabled()) {
+                for (ObjectLabel l : handlers) {
+                    log.debug("Triggering eventHandlers <" + type + ">: " + l);
+                }
             }
             if (!event.isNone()) {
                 // Support the unofficial window.event property that is set by the browser

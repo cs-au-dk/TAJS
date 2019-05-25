@@ -29,7 +29,7 @@ import static dk.brics.tajs.analysis.dom.DOMFunctions.createDOMProperty;
 
 public class HTMLBuilder {
 
-    public static final Set<ObjectLabel> HTML4_OBJECT_LABELS = Collections.newSet();
+    public static Set<ObjectLabel> HTML4_OBJECT_LABELS;
 
     /**
      * Build HTML objects
@@ -97,6 +97,7 @@ public class HTMLBuilder {
         HTMLUListElement.build(c);
         HTMLUnknownElement.build(c);
 
+        HTML4_OBJECT_LABELS = Collections.newSet();
         HTML4_OBJECT_LABELS.add(HTMLAnchorElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLAppletElement.INSTANCES);
         HTML4_OBJECT_LABELS.add(HTMLAreaElement.INSTANCES);

@@ -41,7 +41,7 @@ public final class BlockAndContext<ContextType extends IContext<?>> {
      * Constructs a new pair using the entry block of the given block and the entry context of the given context.
      */
     public static <ContextType extends IContext<ContextType>> BlockAndContext<ContextType> makeEntry(BasicBlock b, ContextType c) {
-        return new BlockAndContext<>(b.getEntryBlock(), c.makeEntryContext());
+        return new BlockAndContext<>(b.getEntryBlock(), c.getContextAtEntry());
     }
 
     /**
@@ -80,6 +80,6 @@ public final class BlockAndContext<ContextType extends IContext<?>> {
 
     @Override
     public String toString() {
-        return "block " + b.getIndex() + ", context " + c;
+        return "block " + b.getIndex() + ", context {" + c + "}";
     }
 }

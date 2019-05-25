@@ -26,6 +26,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static dk.brics.tajs.util.Collections.singleton;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
@@ -450,5 +451,30 @@ public class TestValue {
         Value identStr = Value.makeAnyStrIdent();
         Value excludedStrings = Value.makeAnyStrIdent().restrictToNotStrings(Stream.of("a", "b").collect(Collectors.toSet()));
         assertEquals(excludedStrings, identStr.restrictToStrictEquals(excludedStrings));
+    }
+
+    @Test
+    public void testRestrictToLooseEqualsSoundnessBug() {
+        Value str = Value.makeStr("1");
+        Value num = Value.makeNum(1);
+        assertEquals(str, str.restrictToLooseEquals(num));
+        assertEquals(num, num.restrictToLooseEquals(str));
+    }
+
+   @Test
+   public void testJoinSingleStrToStringSetSoundnessBug() {
+        Value stringSet = Value.makeStrings(Stream.of("a", "b", "c").collect(Collectors.toSet()));
+        Value stringSetWithAdditionalString = stringSet.joinStr("d");
+        assertEquals(4, stringSetWithAdditionalString.getAllKnownStr().size());
+        assertTrue(stringSetWithAdditionalString.isMaybeStr("d"));
+   }
+
+   @Test
+   public void testRestrictToNotStringsInvalidExcludedStringsBug() {
+        Value anyOtherNumString = Value.makeAnyStrOtherNum();
+        Value anyOtherNumStringRestricted = anyOtherNumString.restrictToNotStrings(Stream.of("a", "NaN").collect(Collectors.toSet()));
+        assertTrue(anyOtherNumStringRestricted.restrictToNotStrOtherNum().isNone());
+        assertEquals(anyOtherNumStringRestricted.restrictToNotStrings(singleton("NaN")), anyOtherNumStringRestricted);
+
     }
 }

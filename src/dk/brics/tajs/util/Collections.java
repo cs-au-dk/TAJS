@@ -19,6 +19,7 @@ package dk.brics.tajs.util;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -91,6 +92,13 @@ public class Collections {
      */
     public static <T1, T2> void addAllToMapSet(Map<T1, Set<T2>> map, T1 key, Collection<T2> values) {
         map.computeIfAbsent(key, k -> newSet()).addAll(values);
+    }
+
+    /**
+     * Adds an element to a map of maps of sets. Creates a new set and new map if they do not already exist in the map.
+     */
+    public static <T1, T2, T3> void addAllToMapMapSet(Map<T1, Map<T2, Set<T3>>> map, T1 key1, T2 key2, Collection<T3> value) {
+        map.computeIfAbsent(key1, k -> newMap()).computeIfAbsent(key2, k -> newSet()).addAll(value);
     }
 
     /**
@@ -230,7 +238,7 @@ public class Collections {
      * Returns an ordered set of map entries, sorted by the natural order of the entry keys.
      */
     public static <K extends Comparable<K>, V> TreeSet<Map.Entry<K, V>> sortedEntries(Map<K, V> m) {
-        TreeSet<Map.Entry<K, V>> s = new TreeSet<>(new MapEntryComparator<>());
+        TreeSet<Map.Entry<K, V>> s = new TreeSet<>(new MapEntryComparatorNatural<>());
         for (Map.Entry<K, V> me : m.entrySet())
             s.add(new MapEntry<>(me.getKey(), me.getValue()));
         return s;
@@ -240,7 +248,7 @@ public class Collections {
      * Returns an ordered set of map entries, sorted using the given comparator.
      */
     public static <K, V> TreeSet<Map.Entry<K, V>> sortedEntries(Map<K, V> m, Comparator<K> c) {
-        TreeSet<Map.Entry<K, V>> s = new TreeSet<>(new MapEntryComparator2<>(c));
+        TreeSet<Map.Entry<K, V>> s = new TreeSet<>(new MapEntryComparatorSpecial<>(c));
         for (Map.Entry<K, V> me : m.entrySet())
             s.add(new MapEntry<>(me.getKey(), me.getValue()));
         return s;
@@ -271,5 +279,37 @@ public class Collections {
      */
     public static <C,T> Collection<T> map(Collection<C> ts, Function<C,T> f) {
         return ts.stream().map(f).collect(Collectors.toList());
+    }
+
+    /**
+     * Comparator for map entries using the given entry key comparator.
+     */
+    static class MapEntryComparatorSpecial<K, V> implements Comparator<Map.Entry<K, V>>, Serializable {
+
+        private static final long serialVersionUID = 1L;
+
+        private Comparator<K> c;
+
+        public MapEntryComparatorSpecial(Comparator<K> c) {
+            this.c = c;
+        }
+
+        @Override
+        public int compare(Map.Entry<K, V> e1, Map.Entry<K, V> e2) {
+            return c.compare(e1.getKey(), e2.getKey());
+        }
+    }
+
+    /**
+     * Comparator for map entries using the natural order of the entry keys.
+     */
+    static class MapEntryComparatorNatural<K extends Comparable<K>, V> implements Comparator<Map.Entry<K, V>>, Serializable {
+
+        private static final long serialVersionUID = 1L;
+
+        @Override
+        public int compare(Map.Entry<K, V> e1, Map.Entry<K, V> e2) {
+            return e1.getKey().compareTo(e2.getKey());
+        }
     }
 }

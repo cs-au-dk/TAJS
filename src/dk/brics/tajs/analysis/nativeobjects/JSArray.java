@@ -30,7 +30,7 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.lattice.Bool;
-import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey.StringPKey;
@@ -206,7 +206,7 @@ public class JSArray {
                             if (arrayLength == null || (expectedLengthArrayLength != null && !Objects.equals(expectedLengthArrayLength, arrayLength))) {
                                 isPreciseUnfolding = false;
                             }
-
+                            expectedLengthArrayLength = arrayLength; // The arrays need to be of same length to use precise unfoldings
                             // unfold the array
                             if (arrayLength == null) {
                                 // imprecise case: just add the element
@@ -296,7 +296,7 @@ public class JSArray {
                     if (call.getNumberOfArgs() == 0) {
                         new_len = old_len;
                     } else {
-                        new_len = Value.makeAnyNumUIntPos();
+                        new_len = Value.makeAnyNumUInt();
                     }
                     if (arr.size() == 1 && arr.iterator().next().isSingleton()) {
                         Double length_prop = old_len.getNum();
@@ -667,7 +667,7 @@ public class JSArray {
     }
 
     public static ObjectLabel makeArray(AbstractNode allocationNode, Value length, Solver.SolverInterface c) {
-        return makeArray(allocationNode, length, (HeapContext)null, c);
+        return makeArray(allocationNode, length, (Context)null, c);
     }
 
     /**
@@ -679,10 +679,10 @@ public class JSArray {
         if (thisObj != null && thisObj.isMaybeSingleObjectLabel()) {
             return makeArray(allocationNode, length, thisObj.getAllObjectLabels().iterator().next().getHeapContext(), c);
         }
-        return makeArray(allocationNode, length, (HeapContext)null, c);
+        return makeArray(allocationNode, length, (Context)null, c);
     }
 
-    public static ObjectLabel makeArray(AbstractNode allocationNode, Value length, HeapContext heapContext, Solver.SolverInterface c) {
+    public static ObjectLabel makeArray(AbstractNode allocationNode, Value length, Context heapContext, Solver.SolverInterface c) {
         ObjectLabel array = ObjectLabel.make(allocationNode, Kind.ARRAY, heapContext);
         c.getState().newObject(array);
         c.getState().writeInternalPrototype(array, Value.makeObject(InitialStateBuilder.ARRAY_PROTOTYPE));

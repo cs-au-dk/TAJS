@@ -66,6 +66,8 @@ Some of the available options (run TAJS without arguments to see the full list):
 
 - `-unsound X` - enable unsound assumption X, e.g. `-ignore-unlikely-property-reads` causes some unlikely properties to be ignored during dynamic property read operations, and `-show-unsoundness-usage` outputs usage of unsound assumptions
 
+- `-babel` - enable preprocessing using Babel (see [below](#Babel-preprocessing))
+
 Note that the analysis produces lots of addition information that is not output by default. If you want full access to the abstract states and call graphs, as a starting point see the source code for `dk.brics.tajs.Main`. 
 The javadoc for TAJS is available at <http://www.brics.dk/TAJS/doc/>.
 
@@ -180,6 +182,18 @@ jjs = /usr/bin/jjs
 
 `jjs` is only needed if using Nashorn as generator environment instead of Node.js, which can be set programmatically in the soundness tester options.
 
+### Babel preprocessing
+
+To enable preprocessing of source files to support recent ECMAScript features you need to enable Babel with the `-babel` option and install the required files:
+```bash
+cd extras/babel
+npm install
+```
+Alternatively, if you already have Babel installed elsewhere, set the location in tajs.properties:
+```properties
+babel = /usr/bin/babel
+```
+
 ## Running regression tests
 
 The directory `test` contains a collection of tests that can be executed by running [dk.brics.tajs.test.RunFast](test/src/dk/brics/tajs/test/RunFast.java) with JUnit from Eclipse/IntelliJ or with `ant test-fast` from the command-line. 
@@ -218,4 +232,4 @@ The following people have contributed to the source code:
 - Gianluca Mezzetti
 - Martin Torp
 - Simon Gregersen
-
+- Oskar Haarklou Veileborg

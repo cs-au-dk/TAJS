@@ -17,6 +17,7 @@
 package dk.brics.tajs.analysis;
 
 import dk.brics.tajs.analysis.js.EdgeTransfer;
+import dk.brics.tajs.analysis.js.Filtering;
 import dk.brics.tajs.analysis.js.NodeTransfer;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
@@ -55,8 +56,9 @@ public class Transfer implements
      * Initializes the connection to the solver.
      */
     public void setSolverInterface(Solver.SolverInterface c) {
-        js_node_transfer.setSolverInterface(c);
-        js_edge_transfer.setSolverInterface(c);
+        Filtering filtering = new Filtering(c);
+        js_node_transfer.setSolverInterface(filtering, c);
+        js_edge_transfer.setSolverInterface(filtering, c);
     }
 
     @Override

@@ -31,7 +31,7 @@ import static dk.brics.tajs.util.Collections.newSet;
 /**
  * Orders blocks according to their dependencies.
  *
- * @see #produceDependencyOrder(Collection, Set, List)
+ * @see #produceDependencyOrder(Collection, Set, List, boolean)
  */
 public class BlockDependencyOrderer {
 
@@ -45,13 +45,16 @@ public class BlockDependencyOrderer {
 
     private Stack<Task> worklist;
 
-    private BlockDependencyOrderer(Collection<BasicBlock> blocks, Set<BasicBlock> ignored, List<BasicBlock> rootOrder) {
+    private boolean delayFirstBlockInLoopBody;
+
+    private BlockDependencyOrderer(Collection<BasicBlock> blocks, Set<BasicBlock> ignored, List<BasicBlock> rootOrder, boolean delayFirstBlockInLoopBody) {
         // TODO consider the amount of reversals in this implementation, some of them might cancel each other out!
         this.ignored = ignored;
         this.notPermanentlyMarked = newSet(blocks);
         this.temporarilyMarked = newSet();
         this.sorted = newList();
         this.worklist = new Stack<>();
+        this.delayFirstBlockInLoopBody = delayFirstBlockInLoopBody;
         // Implementation choice in topological sort: process roots only, and in reverse order
         List<BasicBlock> reverseRootOrder = newList(rootOrder);
         Collections.reverse(reverseRootOrder);
@@ -74,8 +77,8 @@ public class BlockDependencyOrderer {
      * - slightly modified to produce prettier orders
      * - rewritten to iterative form (with callbacks) to avoid blowing the call stack
      */
-    public static List<BasicBlock> produceDependencyOrder(Collection<BasicBlock> blocks, Set<BasicBlock> ignored, List<BasicBlock> rootOrder) {
-        return new BlockDependencyOrderer(blocks, ignored, rootOrder).sorted;
+    public static List<BasicBlock> produceDependencyOrder(Collection<BasicBlock> blocks, Set<BasicBlock> ignored, List<BasicBlock> rootOrder, boolean delayFirstBlockInLoopBody) {
+        return new BlockDependencyOrderer(blocks, ignored, rootOrder, delayFirstBlockInLoopBody).sorted;
     }
 
     private interface Task {
@@ -120,13 +123,17 @@ public class BlockDependencyOrderer {
                 if (block.getExceptionHandler() != null) {
                     successors.add(block.getExceptionHandler());
                 }
-
-
                 successors.removeAll(ignored);
-                worklist.push(new PostProcessBlock(block)); // post-process needs to be below the processing of the current block's successors!
+                boolean delay = delayFirstBlockInLoopBody && block.getFirstNode().isLoopEntryNode();
+                if (!delay) {
+                    worklist.push(new PostProcessBlock(block)); // post-process needs to be below the processing of the current block's successors - except for the first basic block in a loop if delayFirstBlockInLoopBody is set
+                }
                 Collections.reverse(successors); // reverse to get the right stack order
                 for (BasicBlock m : successors) {
                     worklist.push(new ProcessBlock(m));
+                }
+                if (delay) { // if delayFirstBlockInLoopBody is set, the first basic block in a loop should be processed (immediately) after the rest of the loop body
+                    worklist.push(new PostProcessBlock(block));
                 }
             }
         }

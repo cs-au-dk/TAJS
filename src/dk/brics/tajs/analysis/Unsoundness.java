@@ -106,10 +106,10 @@ public class Unsoundness {
      */
     public boolean maySkipPropertyWrite(AbstractNode node, ObjectProperty property) {
         // TODO: enable by option?
-        return addMessageIfUnsound(
+        return false; /*addMessageIfUnsound(
                 node,
                 false,
-                "Skipping write of property '" + property + "'");
+                "Skipping write of property '" + property + "'");*/
     }
 
     /**
@@ -296,7 +296,7 @@ public class Unsoundness {
         return addMessageIfUnsound(
                 node,
                 allowUnsoundness,
-                String.format("Ignoring result of 'in' operator is maybe false, because value to test is numeric and is maybe in object"));
+                "Ignoring result of 'in' operator is maybe false, because value to test is numeric and is maybe in object");
     }
 
     public void ignoringException(AbstractNode node, String exceptionKind) {

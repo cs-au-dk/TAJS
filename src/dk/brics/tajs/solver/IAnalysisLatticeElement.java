@@ -18,6 +18,7 @@ package dk.brics.tajs.solver;
 
 import dk.brics.tajs.flowgraph.BasicBlock;
 
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -66,6 +67,11 @@ public interface IAnalysisLatticeElement<StateType extends IState<StateType, Con
      * Returns the contexts and abstract states for the entry of the given basic block.
      */
     Map<ContextType, StateType> getStates(BasicBlock block);
+
+    /**
+     * Returns the abstract states at the given block that have the given entry context.
+     */
+    Collection<StateType> getStatesWithEntryContext(BasicBlock block, ContextType entryContext);
 
     /**
      * Returns the call graph.

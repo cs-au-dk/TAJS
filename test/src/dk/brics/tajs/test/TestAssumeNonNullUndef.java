@@ -1,8 +1,7 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
+import dk.brics.tajs.monitoring.AnalysisMonitor;
 import dk.brics.tajs.options.OptionValues;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message;
@@ -206,7 +205,7 @@ public class TestAssumeNonNullUndef {
         try {
             OptionValues baseOptions = new OptionValues();
             baseOptions.enableTest();
-            IAnalysisMonitoring monitoring = Monitoring.make();
+            AnalysisMonitor monitoring = new AnalysisMonitor();
             Misc.runSource(source, monitoring);
             Set<Message> nullUndefWarnings = new HashSet<>();
             for (Message message : monitoring.getMessages()) {

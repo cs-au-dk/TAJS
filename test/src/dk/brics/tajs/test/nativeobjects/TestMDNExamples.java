@@ -1,7 +1,6 @@
 package dk.brics.tajs.test.nativeobjects;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
 import dk.brics.tajs.util.AnalysisLimitationException;
@@ -48,7 +47,7 @@ public class TestMDNExamples {
     @Test
     public void test() throws IOException {
         try {
-            Misc.runPart("[" + file.getFileName() + "]", Monitoring.make(), file.toString());
+            Misc.runPart("[" + file.getFileName() + "]", file.toString());
         } catch (AnalysisLimitationException e) {
             // Ignore. We only care about black-box soundness correctness
             // (likely caused by ES6 syntax)

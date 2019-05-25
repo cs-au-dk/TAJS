@@ -31,10 +31,8 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.PKeys;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.solver.Message.Severity;
 
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -67,20 +65,6 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
      * Uses the message as key (must be a fixed string).
      */
     void addMessageInfo(AbstractNode n, Severity severity, String msg);
-
-    /**
-     * Returns the collected messages.
-     * (Used by the Eclipse plugin.)
-     */
-    @SuppressWarnings("unused")
-    Set<Message> getMessages();
-
-    /**
-     * Returns the collected type information.
-     * (Used by the Eclipse plugin.)
-     */
-    @SuppressWarnings("unused")
-    Map<TypeCollector.VariableSummary, Value> getTypeInformation();
 
     /**
      * Sets the solver interface which will be used by the analysis.
@@ -232,7 +216,7 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
      * @param n read variable operation
      * @param v the value being read
      */
-    void visitReadVariable(ReadVariableNode n, Value v, State state); // TODO: why "Variables named 'undefined' are ignored" (see javadoc)? ignored by the caller or the implementation? (also in implementation in Monitoring)
+    void visitReadVariable(ReadVariableNode n, Value v, State state); // TODO: why "Variables named 'undefined' are ignored" (see javadoc)? ignored by the caller or the implementation? (also in implementation in AnalysisMonitor)
     // TODO: merge visitReadVariable, visitReadThis, visitReadNonThisVariable, visitVariableAsRead?
 
     /**
@@ -269,4 +253,9 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
      * Invoked when an event handler is registered.
      */
     void visitEventHandlerRegistration(AbstractNode node, Context context, Value handler);
+
+    /**
+     * Invoked wheb soundness testing is completed.
+     */
+    void visitSoundnessTestingDone(int numSoundnessChecks);
 }

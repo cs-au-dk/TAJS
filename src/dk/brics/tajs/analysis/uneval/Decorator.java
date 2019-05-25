@@ -39,7 +39,7 @@ public class Decorator {
                          (the fix prevents a StackOverflowError)
                      */
                 // the flowgraph block order forms a topological ordering: loop back edges can be identified easily
-                boolean isLoopBackEdge = predecessor.getOrder() > successor.getOrder();
+                boolean isLoopBackEdge = predecessor.getTopologicalOrder() > successor.getTopologicalOrder();
                 // the unevalizer mechanisms does not need to consider loop back edges
                 if (!isLoopBackEdge) {
                     Collections.addToMapSet(predecessorBlocks, successor, predecessor);

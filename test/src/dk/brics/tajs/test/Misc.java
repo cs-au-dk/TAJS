@@ -6,7 +6,6 @@ import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collectors;
@@ -95,11 +94,15 @@ public class Misc {
     }
 
     public static void run(String... args) throws AnalysisException {
-        runPart(null, Monitoring.make(), args);
+        runPart(null, null, args);
     }
 
     public static void run(String arg, IAnalysisMonitoring monitoring) throws AnalysisException {
         runPart(null, monitoring, arg);
+    }
+
+    public static void runPart(String suffix, String... args) throws AnalysisException {
+        runPart(suffix, null, args);
     }
 
     public static void runPart(String suffix, IAnalysisMonitoring monitoring, String... args) throws AnalysisException {
@@ -226,11 +229,7 @@ public class Misc {
     private static void runSourcePart(String suffix, String[] src, IAnalysisMonitoring monitoring) {
         File file = makeTempSourceFile(suffix, src);
         String[] args = {file.getPath()};
-        if (monitoring == null) {
-            Misc.runPart(suffix, Monitoring.make(), args);
-        } else {
-            Misc.runPart(suffix, monitoring, args);
-        }
+        Misc.runPart(suffix, monitoring, args);
     }
 
     private static File makeTempSourceFile(String suffix, String[] src) {

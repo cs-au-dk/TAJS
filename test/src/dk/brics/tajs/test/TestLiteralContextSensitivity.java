@@ -2,14 +2,13 @@ package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.lattice.ContextArguments;
-import dk.brics.tajs.lattice.HeapContext;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
+import dk.brics.tajs.monitoring.AnalysisMonitor;
+import dk.brics.tajs.monitoring.CompositeMonitor;
 import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Collectors;
@@ -101,14 +100,13 @@ public class TestLiteralContextSensitivity {
 
     private void test(String objectVariable, Supplier<Set<Value>> contextValues, String... sourceLines) {
         TestMonitor testMonitor = new TestMonitor();
-        Misc.runSource(sourceLines, CompositeMonitoring.buildFromList(Monitoring.make(), testMonitor));
+        Misc.runSource(sourceLines, CompositeMonitor.make(new AnalysisMonitor(), testMonitor));
         Set<ObjectLabel> objectLabels = testMonitor.state.readVariableDirect(objectVariable).getObjectLabels();
         Set<Value> values = newSet();
         for (ObjectLabel objectLabel : objectLabels) {
-            HeapContext heapContext = objectLabel.getHeapContext();
-            ContextArguments arguments = heapContext.getFunctionArguments();
-            if (arguments != null)
-                values.addAll(arguments.getArguments().stream().filter(Objects::nonNull).collect(Collectors.toList()));
+            Context heapContext = objectLabel.getHeapContext();
+            if (heapContext != null && heapContext.getArguments() != null)
+                values.addAll(heapContext.getArguments().stream().filter(Objects::nonNull).collect(Collectors.toList()));
         }
         values.remove(null);
         try {

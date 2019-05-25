@@ -35,7 +35,6 @@ import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.Message;
 
 import java.util.Collection;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -43,7 +42,7 @@ import java.util.Set;
  *
  * The monitors that are run before the scan phase should be side effect free wrt. the analysis state.
  *
- * Composing multiple monitors for each phase should be done with {@link CompositeMonitoring}
+ * Composing multiple monitors for each phase should be done with {@link CompositeMonitor}
  */
 public class PhaseMonitoring<PreScanMonitorType extends IAnalysisMonitoring, ScanMonitorType extends IAnalysisMonitoring> implements IAnalysisMonitoring {
 
@@ -99,16 +98,6 @@ public class PhaseMonitoring<PreScanMonitorType extends IAnalysisMonitoring, Sca
     @Override
     public void visitPhasePost(AnalysisPhase phase) {
         activeMonitor.visitPhasePost(phase);
-    }
-
-    @Override
-    public Set<Message> getMessages() {
-        return activeMonitor.getMessages();
-    }
-
-    @Override
-    public Map<TypeCollector.VariableSummary, Value> getTypeInformation() {
-        return activeMonitor.getTypeInformation();
     }
 
     @Override
@@ -285,5 +274,10 @@ public class PhaseMonitoring<PreScanMonitorType extends IAnalysisMonitoring, Sca
     @Override
     public void visitIterationDone(String terminatedEarlyMsg) {
         activeMonitor.visitIterationDone(terminatedEarlyMsg);
+    }
+
+    @Override
+    public void visitSoundnessTestingDone(int numSoundnessChecks) {
+        activeMonitor.visitSoundnessTestingDone(numSoundnessChecks);
     }
 }

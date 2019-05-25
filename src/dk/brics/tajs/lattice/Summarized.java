@@ -56,8 +56,7 @@ public final class Summarized {
      * Constructs a new pair of summarized sets representing the given object label being definitely summarized.
      */
     public Summarized(ObjectLabel objlabel) {
-        maybe_summarized = newSet();
-        definitely_summarized = newSet();
+        this();
         maybe_summarized.add(objlabel);
         definitely_summarized.add(objlabel);
     }

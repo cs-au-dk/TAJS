@@ -34,7 +34,6 @@ import dk.brics.tajs.flowgraph.jsnodes.NopNode;
 import dk.brics.tajs.lattice.CallEdge;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
-import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.MustReachingDefs;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -119,7 +118,7 @@ public class UserFunctionCalls {
      */
     public static ObjectLabel instantiateFunction(Function fun, ScopeChain scope, AbstractNode node, State state, Solver.SolverInterface c) {
         // TODO: join function objects (p.72)? (if same n and same scope)
-        HeapContext functionHeapContext = c.getAnalysis().getContextSensitivityStrategy().makeFunctionHeapContext(fun, c);
+        Context functionHeapContext = c.getAnalysis().getContextSensitivityStrategy().makeFunctionHeapContext(fun, c);
         ObjectLabel fn = ObjectLabel.make(fun, functionHeapContext);
 
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
@@ -201,7 +200,7 @@ public class UserFunctionCalls {
             Summarized extra_summarized = new Summarized();
             if (call.isConstructorCall()) {
                 // 13.2.2.1-2 create new object
-                HeapContext thisHeapContext = c.getAnalysis().getContextSensitivityStrategy().makeConstructorHeapContext(edge_state, obj_f, call, c);
+                Context thisHeapContext = c.getAnalysis().getContextSensitivityStrategy().makeConstructorHeapContext(edge_state, obj_f, call, c);
                 ObjectLabel new_obj = ObjectLabel.make(n, Kind.OBJECT, thisHeapContext);
                 edge_state.newObject(new_obj);
                 extra_summarized.addDefinitelySummarized(new_obj);
@@ -224,7 +223,8 @@ public class UserFunctionCalls {
                     }
                 }
             }
-            HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeActivationAndArgumentsHeapContext(edge_state, obj_f, thisVal, call, c);
+            edge_state.setExecutionContext(edge_state.getExecutionContext().copyWithThis(thisVal)); // must set 'this' before creating heapContext
+            Context heapContext = c.getAnalysis().getContextSensitivityStrategy().makeActivationAndArgumentsHeapContext(edge_state, obj_f, call, c);
 
             // 10.2.3 enter new execution context, 13.2.1 transfer parameters, 10.1.6/8 provide 'arguments' object
             ObjectLabel varobj = ObjectLabel.make(f.getEntry().getFirstNode(), Kind.ACTIVATION, heapContext); // better to use entry than invoke here
@@ -299,7 +299,7 @@ public class UserFunctionCalls {
     }
 
     private static void propagateToFunctionEntry(State edge_state, AbstractNode n, ObjectLabel obj_f, CallInfo call, boolean implicit, Solver.SolverInterface c) {
-        Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge_state, obj_f, call, edge_state.readThis(), c);
+        Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge_state, obj_f, call, c);
         CallKind callKind = !implicit ? CallKind.ORDINARY : call.isConstructorCall() ? CallKind.IMPLICIT_CONSTRUCTOR : CallKind.IMPLICIT;
         c.propagateToFunctionEntry(n, edge_state.getContext(), edge_state, edge_context, obj_f.getFunction().getEntry(), callKind);
     }
@@ -387,7 +387,7 @@ public class UserFunctionCalls {
 
         // merge newstate with caller state and call edge state
         Summarized callee_summarized = new Summarized(state.getSummarized());
-        HeapContext heapContext = state.getScopeChain().getObject().iterator().next().getHeapContext(); // this should give us the heapContext that was created at enterUserFunction
+        Context heapContext = state.getScopeChain().getObject().iterator().next().getHeapContext(); // this should give us the heapContext that was created at enterUserFunction
         if (is_constructor) {
             ObjectLabel this_obj = ObjectLabel.make(node, Kind.OBJECT, heapContext);
             callee_summarized.addDefinitelySummarized(this_obj);

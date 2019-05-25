@@ -1,7 +1,6 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
-import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.Collectors;
 import org.junit.Before;
@@ -36,6 +35,6 @@ public class TestSoundnessTesterAssignments {
     @Test
     public void test() throws IOException {
 //        System.out.println(String.join("\n", Files.readAllLines(file)));
-        Misc.runPart("[" + file.getFileName() + "]", Monitoring.make(), file.toString());
+        Misc.runPart("[" + file.getFileName() + "]", file.toString());
     }
 }

@@ -58,6 +58,8 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
 
         private long preStateSize;
 
+        private long analysisTime;
+
         private Set<AbstractNode> visitedNonHostNodes = newSet();
 
         private Solver.SolverInterface c;
@@ -68,6 +70,10 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
 
         public long getStateSize() {
             return stateSize;
+        }
+
+        public long getAnalysisTime() {
+            return analysisTime;
         }
 
         public Set<AbstractNode> getVisitedNonHostNodes() {
@@ -87,6 +93,12 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
         public void visitPhasePre(AnalysisPhase phase) {
             if (phase == AnalysisPhase.ANALYSIS)
                 startTime = System.currentTimeMillis();
+        }
+
+        @Override
+        public void visitPhasePost(AnalysisPhase phase) {
+            if (phase == AnalysisPhase.ANALYSIS)
+                analysisTime = System.currentTimeMillis() - startTime;
         }
 
         @Override

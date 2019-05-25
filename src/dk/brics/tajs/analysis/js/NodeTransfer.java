@@ -61,7 +61,6 @@ import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.lattice.Context;
-import dk.brics.tajs.lattice.HeapContext;
 import dk.brics.tajs.lattice.MustEquals;
 import dk.brics.tajs.lattice.ObjProperties;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -116,11 +115,11 @@ public class NodeTransfer implements NodeVisitor {
     /**
      * Initializes the connection to the solver.
      */
-    public void setSolverInterface(Solver.SolverInterface c) {
+    public void setSolverInterface(Filtering filtering, Solver.SolverInterface c) {
+        this.filtering = filtering;
         this.c = c;
         m = c.getMonitoring();
         pv = c.getAnalysis().getPropVarOperations();
-        filtering = new Filtering(c);
     }
 
     /**
@@ -137,28 +136,25 @@ public class NodeTransfer implements NodeVisitor {
                                Context edge_context, CallKind callKind) {
         if (call_node instanceof BeginForInNode) {
             for (EndForInNode endNode : ((BeginForInNode) call_node).getEndNodes()) {
-                State end_state = c.getAnalysisLatticeElement().getState(endNode.getBlock(), callee_context); // (EndForInNode uses same context as corresponding BeginForInNode)
-                if (end_state != null) {
-                    c.withStateAndNode(end_state, endNode, () -> { transferEndForIn(endNode); return null; });
-                }
+                for (State end_state : c.getAnalysisLatticeElement().getStatesWithEntryContext(endNode.getBlock(), callee_context))
+                    c.withStateAndNode(end_state, endNode, () -> {
+                        transferEndForIn(endNode);
+                        return null;
+                    });
             }
         } else { // call_node is an ordinary call node or an implicit call
             Function callee = callee_entry.getFunction();
             NodeAndContext<Context> caller = new NodeAndContext<>(call_node, caller_context);
             BasicBlock ordinary_exit = callee.getOrdinaryExit();
-            State ordinary_exit_state = c.getAnalysisLatticeElement().getState(ordinary_exit, callee_context); // (ReturnNode uses same context as corresponding function entry node)
-            if (ordinary_exit_state != null) {
+            for (State ordinary_exit_state : c.getAnalysisLatticeElement().getStatesWithEntryContext(ordinary_exit, callee_context))
                 if (ordinary_exit.getFirstNode() instanceof ReturnNode) {
                     ReturnNode returnNode = (ReturnNode) ordinary_exit.getFirstNode();
                     transferReturn(returnNode.getReturnValueRegister(), ordinary_exit, ordinary_exit_state.clone(), caller, edge_context, callKind);
                 } else
                     throw new AnalysisException("ReturnNode expected");
-            }
             BasicBlock exceptional_exit = callee.getExceptionalExit();
-            State exceptional_exit_state = c.getAnalysisLatticeElement().getState(exceptional_exit, callee_context);
-            if (exceptional_exit_state != null) {
+            for (State exceptional_exit_state : c.getAnalysisLatticeElement().getStatesWithEntryContext(exceptional_exit, callee_context))
                 transferExceptionalReturn(exceptional_exit, exceptional_exit_state.clone(), caller, edge_context, callKind);
-            }
         }
     }
 
@@ -214,7 +210,7 @@ public class NodeTransfer implements NodeVisitor {
      */
     @Override
     public void visit(NewObjectNode n) {
-        HeapContext heapContext = c.getAnalysis().getContextSensitivityStrategy().makeObjectLiteralHeapContext(n, c.getState(), c);
+        Context heapContext = c.getAnalysis().getContextSensitivityStrategy().makeObjectLiteralHeapContext(n, c.getState(), c);
         ObjectLabel objlabel = ObjectLabel.make(n, Kind.OBJECT, heapContext);
         c.getState().newObject(objlabel);
         c.getState().writeInternalPrototype(objlabel, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
@@ -1121,6 +1117,9 @@ public class NodeTransfer implements NodeVisitor {
         c.getState().setToBottom();
     }
 
+    /**
+     * Event dispatch.
+     */
     @Override
     public void visit(EventDispatcherNode n) {
         if (Options.get().isDOMEnabled()) {

@@ -80,6 +80,11 @@ public abstract class AbstractNode implements Cloneable, Serializable {
     private BasicBlock implicitAfterCall;
 
     /**
+     * If set, this node is the first node in a loop body.
+     */
+    private boolean isLoopEntryNode;
+
+    /**
      * Constructs a new node.
      */
     protected AbstractNode(SourceLocation location) {
@@ -207,6 +212,20 @@ public abstract class AbstractNode implements Cloneable, Serializable {
      */
     public void setRegistersDone(boolean registers_done) {
         this.registers_done = registers_done;
+    }
+
+    /**
+     * Returns true if this node is the first node in a loop body.
+     */
+    public boolean isLoopEntryNode() {
+        return isLoopEntryNode;
+    }
+
+    /**
+     * Sets the flag to indicate if this node is the first node in a loop body.
+     */
+    public void setIsLoopEntryNode(boolean isLoopEntryNode) {
+        this.isLoopEntryNode = isLoopEntryNode;
     }
 
     /**

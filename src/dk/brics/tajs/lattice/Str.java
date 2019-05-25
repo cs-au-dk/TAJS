@@ -170,6 +170,7 @@ public interface Str {
 
     /**
      * Constructs a value as the join of this value and the given concrete string.
+     * Note that the string should be effectively constant to ensure termination.
      */
     Value joinStr(String v);
 

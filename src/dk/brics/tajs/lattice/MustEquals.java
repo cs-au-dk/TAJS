@@ -16,6 +16,8 @@
 
 package dk.brics.tajs.lattice;
 
+import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 
 import java.util.Iterator;
@@ -63,6 +65,30 @@ public class MustEquals {// TODO: use copy-on-write?
         });
         mustEqualsReverse = newMap();
         old.mustEqualsReverse.forEach((reg, s) -> mustEqualsReverse.put(reg, newSet(s)));
+        checkInvariants();
+    }
+
+    private void checkInvariants() {
+        if (Options.get().isDebugEnabled()) {
+            for (int reg : mustEqualsReverse.keySet()) {
+                Set<ObjectProperty> objectProperties = mustEqualsReverse.get(reg);
+                for (ObjectProperty objectProperty : objectProperties) {
+                    Set<Integer> regs = mustEquals.get(objectProperty.getObjectLabel()).get(objectProperty.getPropertyName());
+                    if (regs == null || !regs.contains(reg)) {
+                        throw new AnalysisException("MustEqualsReverse contains information not in MustEquals");
+                    }
+                }
+            }
+            for (ObjectLabel objectLabel : mustEquals.keySet()) {
+                for (PKey propname : mustEquals.get(objectLabel).keySet()) {
+                    for (int reg : mustEquals.get(objectLabel).get(propname)) {
+                        if (!mustEqualsReverse.get(reg).contains(ObjectProperty.makeOrdinary(objectLabel, propname))) {
+                            throw new AnalysisException("MustEquals contains information not in MustEqualsReverse");
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -87,6 +113,7 @@ public class MustEquals {// TODO: use copy-on-write?
                         mustEqualsReverse.remove(reg);
                 }
             }));
+        checkInvariants();
     }
 
     /**
@@ -108,6 +135,7 @@ public class MustEquals {// TODO: use copy-on-write?
             if (m.isEmpty())
                 mustEquals.remove(objlabel);
         }
+        checkInvariants();
     }
 
     /**
@@ -118,22 +146,29 @@ public class MustEquals {// TODO: use copy-on-write?
             setToBottom(objprop.getObjectLabel(), objprop.getPropertyName());
         else
             setToBottom(objprop.getObjectLabel());
+        checkInvariants();
     }
 
     /**
      * Removes the given register from all must-equal sets.
      */
     public void setToBottom(int reg) {
+        checkInvariants();
         Set<ObjectProperty> ops = mustEqualsReverse.remove(reg);
         if (ops != null)
             ops.forEach(op -> {
                 Map<PKey, Set<Integer>> m = mustEquals.get(op.getObjectLabel());
                 if (m != null) {
-                    m.remove(op.getPropertyName());
+                    Set<Integer> registers = m.get(op.getPropertyName());
+                    registers.remove(reg);
+                    if (registers.isEmpty()) {
+                        m.remove(op.getPropertyName());
+                    }
                     if (m.isEmpty())
                         mustEquals.remove(op.getObjectLabel());
                 }
             });
+        checkInvariants();
     }
 
     /**
@@ -158,6 +193,7 @@ public class MustEquals {// TODO: use copy-on-write?
         }
         Collections.addToMapMapSet(mustEquals, objlabel, pkey, reg);
         Collections.addToMapSet(mustEqualsReverse, reg, ObjectProperty.makeOrdinary(objlabel, pkey));
+        checkInvariants();
     }
 
     /**
@@ -180,6 +216,7 @@ public class MustEquals {// TODO: use copy-on-write?
      * @return if this MustEquals changed
      */
     public boolean propagate(MustEquals other) {
+        checkInvariants();
         boolean changed = false;
         for (Iterator<Map.Entry<ObjectLabel, Map<PKey, Set<Integer>>>> it1 = mustEquals.entrySet().iterator(); it1.hasNext();) {
             Map.Entry<ObjectLabel, Map<PKey, Set<Integer>>> thisme1 = it1.next();
@@ -222,7 +259,25 @@ public class MustEquals {// TODO: use copy-on-write?
             } else
                 it.remove();
         }
+        checkInvariants();
         return changed;
+    }
+
+    /**
+     * Replaces all occurrences of oldlabel by newlabel.
+     */
+    public void replaceObjectLabel(ObjectLabel oldlabel, ObjectLabel newlabel) {
+        checkInvariants();
+        if (oldlabel.getKind() == ObjectLabel.Kind.SYMBOL)
+            throw new AnalysisException("Unexpected symbol"); // the code below doesn't replace PKeys in mustEquals
+        Map<PKey, Set<Integer>> m = mustEquals.remove(oldlabel);
+        if (m != null) {
+            mustEquals.put(newlabel, m);
+            for (Set<Integer> regs : m.values())
+                for (int reg : regs)
+                    mustEqualsReverse.put(reg, ObjectProperty.replaceObjectLabel(mustEqualsReverse.get(reg), oldlabel, newlabel));
+        }
+        checkInvariants();
     }
 
     @Override

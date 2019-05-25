@@ -104,9 +104,9 @@ import static dk.brics.tajs.util.Collections.newSet;
 /**
  * Records various information during analysis.
  */
-public class Monitoring implements IAnalysisMonitoring {
+public class AnalysisMonitor implements IAnalysisMonitoring {
 
-    private static Logger log = Logger.getLogger(Monitoring.class);
+    private static Logger log = Logger.getLogger(AnalysisMonitor.class);
 
     /**
      * Set if in scan phase (at the fixpoint).
@@ -262,12 +262,13 @@ public class Monitoring implements IAnalysisMonitoring {
 
     private long joinTime;
 
+    private int numSoundnessChecks;
+
     /**
-     * Constructs a new monitoring object.
-     * New instances should be constructed with {@link #make()} to ensure auxiliary monitors are invoked properly.
+     * Constructs a new analysis monitoring object.
      */
-    private Monitoring(ReachabilityMonitor reachabilityMonitor) {
-        this.reachabilityMonitor = reachabilityMonitor;
+    public AnalysisMonitor() {
+        reachabilityMonitor = new ReachabilityMonitor();
         call_to_non_function = newSet();
         absent_variable_read = newSet();
         null_undef_base = newSet();
@@ -284,24 +285,6 @@ public class Monitoring implements IAnalysisMonitoring {
         recovery_graph_sizes = newMap();
 //        next_newflow_file = 1;
         messages = null;
-    }
-
-    public static IAnalysisMonitoring make() {
-        return make(true);
-    }
-
-    /**
-     * Constructs a new monitoring object.
-     */
-    public static IAnalysisMonitoring make(boolean allow_progress_monitor) {
-        List<IAnalysisMonitoring> monitors = newList();
-        ReachabilityMonitor reachabilityMonitor = new ReachabilityMonitor();
-        monitors.add(reachabilityMonitor);
-        monitors.add(new Monitoring(reachabilityMonitor));
-        if (allow_progress_monitor && (log.isDebugEnabled() || (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && !Options.get().isTestEnabled() && !Options.get().isIntermediateStatesEnabled()))) {
-            monitors.add(new ProgressMonitor(true));
-        }
-        return CompositeMonitoring.buildFromList(monitors);
     }
 
     private void reportDeadAssignments() {
@@ -726,6 +709,7 @@ public class Monitoring implements IAnalysisMonitoring {
      */
     @Override
     public void visitNodeTransferPre(AbstractNode n, State s) {
+        reachabilityMonitor.visitNodeTransferPre(n, s);
         node_transfers++;
     }
 
@@ -807,6 +791,7 @@ public class Monitoring implements IAnalysisMonitoring {
      */
     @Override
     public void visitFunction(Function f, Collection<State> entry_states) {
+        reachabilityMonitor.visitFunction(f, entry_states);
         functions.add(f);
     }
 
@@ -1487,7 +1472,7 @@ public class Monitoring implements IAnalysisMonitoring {
      * If the message already exists, the status is joined.
      * Uses the message as key (must be a fixed string).
      */
-    private void addMessage(AbstractNode n, Status s, Severity severity, String msg) { // TODO: collect all message generation in Monitoring? (then make addMessage private?)
+    private void addMessage(AbstractNode n, Status s, Severity severity, String msg) { // TODO: collect all message generation in AnalysisMonitor? (then make addMessage private?)
         addMessage(n, s, severity, msg, msg);
     }
 
@@ -1532,7 +1517,6 @@ public class Monitoring implements IAnalysisMonitoring {
     /**
      * Returns the collected messages.
      */
-    @Override
     public Set<Message> getMessages() {
         return newSet(messages.values());
     }
@@ -1555,7 +1539,10 @@ public class Monitoring implements IAnalysisMonitoring {
         return es;
     }
 
-    @Override
+    /**
+     * Returns the collected type information.
+     * (Used by the Eclipse plugin.)
+     */
     public Map<TypeCollector.VariableSummary, Value> getTypeInformation() {
         return type_collector.getTypeInformation();
     }
@@ -1575,6 +1562,7 @@ public class Monitoring implements IAnalysisMonitoring {
     @Override
     public void visitPhasePost(AnalysisPhase phase) {
         if (phase == AnalysisPhase.SCAN) {
+//            reachabilityMonitor.check(); // TODO: currently disabled, enable by option?
             emit();
         }
     }
@@ -1633,6 +1621,15 @@ public class Monitoring implements IAnalysisMonitoring {
     @Override
     public void visitIterationDone(String terminatedEarlyMsg) {
         // ignore
+    }
+
+    @Override
+    public void visitSoundnessTestingDone(int numSoundnessChecks) {
+        this.numSoundnessChecks = numSoundnessChecks;
+    }
+
+    public int getNumberOfSoundnessChecks() {
+        return numSoundnessChecks;
     }
 
     private void checkValueSuspicious(AbstractNode n, Value v) {

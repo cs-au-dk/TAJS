@@ -97,7 +97,7 @@ public final class ObjectLabel implements DeepImmutable {
 
     private final Function function; // non-null for user defined functions
 
-    private final HeapContext heapContext; // for context sensitivity
+    private final Context heapContext; // for context sensitivity
 
     /**
      * Cached hashcode for immutable instance.
@@ -109,7 +109,7 @@ public final class ObjectLabel implements DeepImmutable {
      */
     private String toString;
 
-    private ObjectLabel(HostObject hostobject, AbstractNode node, Function function, Kind kind, HeapContext heapContext, boolean singleton) {
+    private ObjectLabel(HostObject hostobject, AbstractNode node, Function function, Kind kind, Context heapContext, boolean singleton) {
         this.hostobject = hostobject;
         this.node = node;
         this.function = function;
@@ -120,7 +120,7 @@ public final class ObjectLabel implements DeepImmutable {
             this.singleton = singleton;
         }
         if (heapContext == null) {
-            this.heapContext = HeapContext.make(null, null);
+            this.heapContext = Context.makeEmpty();
         } else {
             this.heapContext = heapContext;
         }
@@ -132,7 +132,7 @@ public final class ObjectLabel implements DeepImmutable {
                 this.kind.ordinal() * 117; // avoids using enum hashcodes
     }
 
-    public static ObjectLabel make(HostObject hostobject, AbstractNode node, Function function, Kind kind, HeapContext heapContext, boolean singleton){
+    public static ObjectLabel make(HostObject hostobject, AbstractNode node, Function function, Kind kind, Context heapContext, boolean singleton){
         return Canonicalizer.get().canonicalize(new ObjectLabel(hostobject, node, function, kind, heapContext, singleton));
     }
     /**
@@ -148,7 +148,7 @@ public final class ObjectLabel implements DeepImmutable {
      * represents a single concrete object (otherwise, it may represent any
      * number of concrete objects).
      */
-    public static ObjectLabel make(AbstractNode n, Kind kind, HeapContext heapContext) {
+    public static ObjectLabel make(AbstractNode n, Kind kind, Context heapContext) {
         return make(null, n, null, kind, heapContext, true);
     }
 
@@ -165,7 +165,7 @@ public final class ObjectLabel implements DeepImmutable {
      * represents a single concrete object (otherwise, it may represent any
      * number of concrete objects).
      */
-    public static ObjectLabel make(Function f, HeapContext heapContext) {
+    public static ObjectLabel make(Function f, Context heapContext) {
         return make(null, null, f, Kind.FUNCTION, heapContext, true);
     }
 
@@ -177,6 +177,13 @@ public final class ObjectLabel implements DeepImmutable {
      */
     public static ObjectLabel make(HostObject hostobject, Kind kind) {
         return make(hostobject, null, null, kind, null, true);
+    }
+
+    /**
+     * Constructs a copy of this object label with the given heap context.
+     */
+    public ObjectLabel copyWith(Context newHeapContext) {
+        return make(hostobject, node, function, kind, newHeapContext, singleton);
     }
 
     /**
@@ -241,7 +248,7 @@ public final class ObjectLabel implements DeepImmutable {
     /**
      * Returns the heap context.
      */
-    public HeapContext getHeapContext() {
+    public Context getHeapContext() {
         return heapContext;
     }
 
@@ -298,9 +305,15 @@ public final class ObjectLabel implements DeepImmutable {
      */
     @Override
     public boolean equals(Object obj) {
-// TODO: currently not exploiting object identity here, requires refactoring of all static fields of type ObjectLabel (in dk.brics.tajs.analysis.dom and sub-packages) -- see also HeapContext.equals
-//        if (!Canonicalizer.get().isCanonicalizing())
-//            return this == obj;
+        if (!Canonicalizer.get().isCanonicalizing()) {
+            if (Options.get().isDebugOrTestEnabled() && this != obj && this.eq(obj))
+                throw new AnalysisException("Canonicalization error, objects are equal but not identical");
+            return this == obj;
+        }
+        return eq(obj);
+    }
+
+    private boolean eq(Object obj) {
         if (obj == this)
             return true;
         if (!(obj instanceof ObjectLabel))
@@ -311,7 +324,7 @@ public final class ObjectLabel implements DeepImmutable {
         }
         if ((hostobject == null) != (x.hostobject == null))
             return false;
-        if (!heapContext.equals(x.heapContext)) // using collection equality
+        if (!heapContext.equals(x.heapContext))
             return false;
         return (hostobject == null || hostobject.equals(x.hostobject)) &&
                 function == x.function && node == x.node &&

@@ -2211,7 +2211,6 @@ public class TestMicro {
                 "TAJS_assert(Object.keys(o1).length === 1);",
                 "TAJS_assert(Object.keys(o1)[0] === 'p');",
                 "var o2 = {p: 42, q: 87};",
-                "TAJS_assert(Object.keys(o2).length === 2);",
                 "TAJS_assert(Object.keys(o2)[0], 'isStrIdentifier||isMaybeUndef');",
                 "TAJS_assert(Object.keys(o2)[1], 'isStrIdentifier||isMaybeUndef');",
                 "var oMaybe1 = {};",
@@ -4195,5 +4194,21 @@ public class TestMicro {
     public void testMustEqualsBaseCoercion() {
         Misc.runSource("var x = 'foo';",
                 "(x[2]) ? typeof x === 'object' && x : false");
+    }
+
+    @Test
+    public void testShorthandPropertyNames() {
+        Misc.runSource("var a = 2;",
+                "var b = {a};",
+                "TAJS_assertEquals(b.a, 2);");
+    }
+
+    @Test
+    public void testArrayConcatSoundnessBug() {
+        Misc.runSource("var a = [1];",
+                "var b = [2, 3];",
+                "var c = Math.random() ? a : b;",
+                "var y = [4].concat(c)",
+                "var l = y.length");
     }
 }

@@ -4,10 +4,10 @@ import dk.brics.tajs.Main;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
+import dk.brics.tajs.monitoring.AnalysisMonitor;
+import dk.brics.tajs.monitoring.CompositeMonitor;
 import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.options.Options;
 import org.junit.Before;
 import org.junit.Test;
@@ -164,7 +164,7 @@ public class TestClosureContextSensitivity {
 
     private void test(Supplier<Value> expected, String... sourceLines) {
         TestMonitor testMonitor = new TestMonitor();
-        IAnalysisMonitoring monitor = CompositeMonitoring.buildFromList(testMonitor, Monitoring.make());
+        IAnalysisMonitoring monitor = CompositeMonitor.make(new AnalysisMonitor(), testMonitor);
         Misc.runSource(sourceLines, monitor);
         try {
             assertEquals(expected.get().toString(), testMonitor.state.readVariableDirect("RESULT").toString());

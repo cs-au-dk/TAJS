@@ -19,7 +19,7 @@ package dk.brics.tajs.monitoring.inspector;
 import dk.brics.tajs.Main;
 import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
+import dk.brics.tajs.monitoring.CompositeMonitor;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.monitoring.inspector.datacollection.InspectorFactory;
 import dk.brics.tajs.options.Options;
@@ -51,7 +51,7 @@ public class QuickShow {
         IAnalysisMonitoring inspector = InspectorFactory.createInspectorMonitor();
         String target = "test-resources/src/google/richards.js";
         Options.get().getArguments().add(Paths.get(target));
-        Analysis a = Main.init(Options.get(), new CompositeMonitoring(inspector, new AnalysisTimeLimiter(30)), null);
+        Analysis a = Main.init(Options.get(), CompositeMonitor.make(inspector, new AnalysisTimeLimiter(30)), null);
         if (a == null)
             throw new AnalysisException("Error during initialization");
         Main.run(a);

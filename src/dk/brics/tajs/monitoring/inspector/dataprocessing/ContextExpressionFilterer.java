@@ -70,7 +70,7 @@ public class ContextExpressionFilterer {
         return contexts.stream()
                 .filter(context -> {
                     Value variableValue = intermediaryStateComputer.withTempState(node, intermediaryStateComputer.makeIntermediaryPostState(node, context),
-                            () -> UnknownValueResolver.getRealValue(c.getAnalysis().getPropVarOperations().readVariable(variableName, null, true), c.getState()));
+                            () -> UnknownValueResolver.getRealValue(c.getAnalysis().getPropVarOperations().readVariable(variableName, null, true, false), c.getState()));
                     try {
                         if (!variableValue.isMaybePresent()) {
                             throw new IllegalArgumentException("Variable is not in scope: " + variableName);

@@ -61,7 +61,7 @@ public class WorkList<ContextType extends IContext<ContextType>> {
     public boolean add(BlockAndContext<ContextType> bc) {
         Entry e = new Entry(bc);
         boolean added = pending_queue.add(e);
-        if (added)
+        if (added && log.isDebugEnabled())
             log.debug("Adding worklist entry for " + bc);
         if (Options.get().isTestEnabled() && pending_set.add(e) != added)
             throw new AnalysisException("Failed to add to worklist - entries perhaps not totally ordered?");
@@ -189,9 +189,9 @@ public class WorkList<ContextType extends IContext<ContextType>> {
 
             if (funentry.equals(other.funentry)) {
                 // same function and same context at entry: use block order (reverse post order)
-                if (bc.getBlock().getOrder() < other.bc.getBlock().getOrder())
+                if (bc.getBlock().getWorklistOrder() < other.bc.getBlock().getWorklistOrder())
                     return THIS_FIRST;
-                else if (other.bc.getBlock().getOrder() < bc.getBlock().getOrder())
+                else if (other.bc.getBlock().getWorklistOrder() < bc.getBlock().getWorklistOrder())
                     return OTHER_FIRST;
                 // same block, same function and context at entry, but different context: order by context number (not important, but need a tiebreaker)
                 return context_order - other.context_order;

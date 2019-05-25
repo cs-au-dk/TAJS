@@ -101,6 +101,7 @@ public class SoundnessTester {
         boolean reachabilityFailure = programExitReachabilitySoundnessTester.test(runResult);
         logEntrySoundnessTester.test(entries);
         soundnessTesterPerformance.endTest();
+        c.getMonitoring().visitSoundnessTestingDone(checks.size());
 
         // report
         CategorizedSoundnessCheckResults categorized = new CategorizedSoundnessCheckResults(checks, mainFile);

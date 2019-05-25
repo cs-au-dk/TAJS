@@ -99,7 +99,7 @@ public class Filtering {
      * Variant of {@link #assumeObjectPropertySatisfies(ObjectLabel, PKey, Restriction)} that uses the prototype chain.
      * (This method is only needed for call nodes where the function is given as a property read.)
      */
-    private boolean assumeObjectPropertySatisfies(Set<ObjectLabel> baseobjs, String propname, Restriction restriction) {
+    private boolean assumeObjectPropertySatisfies(Set<ObjectLabel> baseobjs, PKey propname, Restriction restriction) {
         Pair<Set<ObjectLabel>, Value> p = pv.readPropertyWithAttributesAndObjs(baseobjs, propname);
         Set<ObjectLabel> objs = p.getFirst();
         Value v = p.getSecond();
@@ -108,8 +108,8 @@ public class Filtering {
             Value oldv = v;
             v = restriction.restrict(v);
             if (v != oldv)
-                pv.writePropertyWithAttributes(objs, PKey.StringPKey.make(propname), v, false, true);
-            if (assumeRegistersEqualToSatisfy(objs.iterator().next(), PKey.StringPKey.make(propname), restriction))
+                pv.writePropertyWithAttributes(objs, propname, v, false, true);
+            if (assumeRegistersEqualToSatisfy(objs.iterator().next(), propname, restriction))
                 return true;
         }
         return false;
@@ -123,7 +123,7 @@ public class Filtering {
         if (!varname.equals("this")) { // TODO: could also filter 'this'?
             Set<ObjectLabel> baseObjs = newSet();
             ObjectLabel baseObj;
-            pv.readVariable(varname, baseObjs, true);
+            pv.readVariable(varname, baseObjs, true, false);
             if (baseObjs.size() == 1 && (baseObj = baseObjs.iterator().next()).isSingleton()) {
                 Value v = UnknownValueResolver.getValue(ObjectProperty.makeOrdinary(baseObj, PKey.StringPKey.make(varname)), c.getState(), false); // FIXME: may not be same value as when typeof when executed! - example: typeof x==(x=null)
                 Value oldv = v;
@@ -254,7 +254,7 @@ public class Filtering {
      * @return true if the state was set to bottom
      */
     private boolean assume(int reg, Restriction restriction) {
-        if (Options.get().isControlSensitivityDisabled())
+        if (Options.get().isNoFilteringEnabled() || Options.get().isControlSensitivityDisabled())
             return false;
 
         // restrict the register itself
@@ -348,13 +348,13 @@ public class Filtering {
      * Variant of {@link #assumeFunction(int)} for call nodes where the function is given as a property read.
      */
     public boolean assumeFunction(int basereg, Set<ObjectLabel> baseobjs, String propname) {
-        if (propname == null || Options.get().isControlSensitivityDisabled())
+        if (propname == null || Options.get().isNoFilteringEnabled() || Options.get().isControlSensitivityDisabled())
             return false;
 
         Restriction restriction = new Restriction(Restriction.Kind.FUNCTION);
 
         // the property can be restricted (provided that strong update is possible)
-        if (assumeObjectPropertySatisfies(baseobjs, propname, restriction))
+        if (assumeObjectPropertySatisfies(baseobjs, PKey.StringPKey.make(propname), restriction))
             return true;
 
         // if the base object was read from a variable, then if its value is an object, that object must have a property named propname whose value maybe satisfies the restriction
@@ -362,5 +362,12 @@ public class Filtering {
             return true;
 
         return false;
+    }
+
+    /**
+     * Assumes the value of the register is equal to the given one.
+     */
+    public void assumeRegisterEquals(int reg, Value value) {
+        assume(reg, new Restriction(Restriction.Kind.STRICT_EQUAL).set(value));
     }
 }

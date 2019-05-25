@@ -1692,7 +1692,7 @@ public class TestFlowgraphBuilder {
 
     @Test
     public void forLoopContinue_issue200() {
-        Options.get().enableLoopUnrolling(1);
+        Options.get().enableLoopUnrolling(2);
         Misc.runSource(//
                 "var first = true;",
                 "for (var i = 0; i === 0; i++) {",

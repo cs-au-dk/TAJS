@@ -1,5 +1,4 @@
 test-resources/src/1k2012love/1219.js:30:82: [definite] Variable D is null/undefined
-test-resources/src/1k2012love/1219.js:82:5: [definite] The conditional expression is always true
 test-resources/src/1k2012love/1219.js:6:5: [maybe] ReferenceError, reading absent variable o
 test-resources/src/1k2012love/1219.js:6:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1219.js:11:11: [maybe] ReferenceError, reading absent variable a

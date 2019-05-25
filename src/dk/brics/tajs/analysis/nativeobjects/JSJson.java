@@ -21,7 +21,6 @@ import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.Collections;
 
@@ -36,11 +35,7 @@ public class JSJson {
                 return makeAnyJSONObject(c);
             }
             case JSON_STRINGIFY: {
-                if (!call.isUnknownNumberOfArgs() && call.getNumberOfArgs() != 0 && !UnknownValueResolver.getRealValue(call.getArg(0), c.getState()).isMaybeUndef()) {
-                    return Value.makeAnyStr();
-                } else {
-                    return Value.makeAnyStr().joinUndef();
-                }
+                return Value.makeAnyStr().joinUndef(); // note: the result is 'undefined' if stringifying a function
             }
             default:
                 return null;

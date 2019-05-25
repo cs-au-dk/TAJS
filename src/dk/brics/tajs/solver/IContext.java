@@ -25,7 +25,7 @@ public interface IContext<ContextType extends IContext<?>> {
     /**
      * Reconstructs the context at function or for-in entry.
      */
-    ContextType makeEntryContext();
+    ContextType getContextAtEntry();
 
     /**
      * Checks whether this context is equal to the given object.

@@ -13,7 +13,6 @@ test-resources/src/1k2013spring/1400.js:48:15: [maybe] RangeError, assigning inv
 test-resources/src/1k2013spring/1400.js:80:5: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2013spring/1400.js:104:15: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2013spring/1400.js:104:15: [maybe] ReferenceError, reading absent variable I
-test-resources/src/1k2013spring/1400.js:104:38: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1400.js:116:11: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/1k2013spring/1400.js:116:11: [maybe] ReferenceError, reading absent variable I
 test-resources/src/1k2013spring/1400.js:121:16: [maybe] ReferenceError, reading absent variable w
@@ -34,7 +33,7 @@ test-resources/src/1k2013spring/1400.js:41:18: [maybe] Reading absent property d
 test-resources/src/1k2013spring/1400.js:148:7: [maybe] Reading absent property which of host object
 test-resources/src/1k2013spring/1400.js:164:7: [maybe] Reading absent property m
 test-resources/src/1k2013spring/1400.js:171:23: [maybe] Reading absent property c of host object
-test-resources/src/1k2013spring/1400.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1400.js:14:9, test-resources/src/1k2013spring/1400.js:15:26, test-resources/src/1k2013spring/1400.js:23:11, test-resources/src/1k2013spring/1400.js:27:25, test-resources/src/1k2013spring/1400.js:28:21, test-resources/src/1k2013spring/1400.js:41:18, test-resources/src/1k2013spring/1400.js:47:15, test-resources/src/1k2013spring/1400.js:48:15, test-resources/src/1k2013spring/1400.js:52:24, test-resources/src/1k2013spring/1400.js:80:5, test-resources/src/1k2013spring/1400.js:104:15, test-resources/src/1k2013spring/1400.js:104:38, test-resources/src/1k2013spring/1400.js:116:11, test-resources/src/1k2013spring/1400.js:121:16, test-resources/src/1k2013spring/1400.js:121:23, test-resources/src/1k2013spring/1400.js:128:16, test-resources/src/1k2013spring/1400.js:128:23, test-resources/src/1k2013spring/1400.js:134:16, test-resources/src/1k2013spring/1400.js:134:23, test-resources/src/1k2013spring/1400.js:161:6, test-resources/src/1k2013spring/1400.js:163:20, test-resources/src/1k2013spring/1400.js:164:7, test-resources/src/1k2013spring/1400.js:165:7, test-resources/src/1k2013spring/1400.js:171:9, test-resources/src/1k2013spring/1400.js:171:23, test-resources/src/1k2013spring/1400.js:171:25, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1400.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1400.js:14:9, test-resources/src/1k2013spring/1400.js:15:26, test-resources/src/1k2013spring/1400.js:23:11, test-resources/src/1k2013spring/1400.js:27:25, test-resources/src/1k2013spring/1400.js:28:21, test-resources/src/1k2013spring/1400.js:41:18, test-resources/src/1k2013spring/1400.js:47:15, test-resources/src/1k2013spring/1400.js:48:15, test-resources/src/1k2013spring/1400.js:52:24, test-resources/src/1k2013spring/1400.js:80:5, test-resources/src/1k2013spring/1400.js:104:15, test-resources/src/1k2013spring/1400.js:116:11, test-resources/src/1k2013spring/1400.js:121:16, test-resources/src/1k2013spring/1400.js:121:23, test-resources/src/1k2013spring/1400.js:128:16, test-resources/src/1k2013spring/1400.js:128:23, test-resources/src/1k2013spring/1400.js:134:16, test-resources/src/1k2013spring/1400.js:134:23, test-resources/src/1k2013spring/1400.js:161:6, test-resources/src/1k2013spring/1400.js:163:20, test-resources/src/1k2013spring/1400.js:164:7, test-resources/src/1k2013spring/1400.js:165:7, test-resources/src/1k2013spring/1400.js:171:9, test-resources/src/1k2013spring/1400.js:171:23, test-resources/src/1k2013spring/1400.js:171:25, test-resources/src/1k2013spring/shim.js:9:5]
 test-resources/src/1k2013spring/1400.js:14:9: [maybe] Converting object to string
 test-resources/src/1k2013spring/1400.js:17:12: [maybe] Converting object to string
 test-resources/src/1k2013spring/1400.js:17:12: [maybe] Reading absent property (computed name)
@@ -90,7 +89,6 @@ test-resources/src/1k2013spring/1400.js:104:25: [maybe] Conversion to number yie
 test-resources/src/1k2013spring/1400.js:104:25: [maybe] Converting object to number
 test-resources/src/1k2013spring/1400.js:104:25: [maybe] Converting object to string
 test-resources/src/1k2013spring/1400.js:104:25: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:104:38: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1400.js:116:11: [maybe] Converting object to string
 test-resources/src/1k2013spring/1400.js:118:14: [maybe] Converting object to string
 test-resources/src/1k2013spring/1400.js:118:14: [maybe] Reading absent property (computed name)

@@ -11,11 +11,7 @@ import org.junit.runners.Suite;
         TestSunspider.class,
         TestV8.class,
         TestGoogle.class,
-        TestGoogle2.class,
-        TestStrLat2014.class,
-        TestSparse2014.class,
-        TestJSAI2014.class,
-        TestJSAI2015.class,
+        TestGoogle2.class
 })
 public class RunMediumECMAApps {
 

@@ -14,11 +14,11 @@ import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.monitoring.AnalysisMonitor;
 import dk.brics.tajs.monitoring.AnalysisPhase;
 import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
-import dk.brics.tajs.monitoring.CompositeMonitoring;
+import dk.brics.tajs.monitoring.CompositeMonitor;
 import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
-import dk.brics.tajs.monitoring.Monitoring;
 import dk.brics.tajs.monitoring.PhaseMonitoring;
 import dk.brics.tajs.monitoring.ProgressMonitor;
 import dk.brics.tajs.options.OptionValues;
@@ -949,10 +949,8 @@ public class Stats {
             optionValues.getSoundnessTesterOptions().setRootDirFromMainDirectory(Paths.get("../.."));
             optionValues.getSoundnessTesterOptions().setGenerateOnlyIncludeAutomaticallyForHTMLFiles(true);
             optionValues.enableIncludeDom();
-
             optionValues.enableBlendedAnalysis();
             optionValues.enableIgnoreUnreached();
-
             run("underscore", 220, 500000, Optional.of(optionValues), underscoreTestSuite);
         }
     }
@@ -964,7 +962,6 @@ public class Stats {
             optionValues.enableTest();
             optionValues.getSoundnessTesterOptions().setRootDirFromMainDirectory(Paths.get("../../"));
             optionValues.getSoundnessTesterOptions().setGenerateOnlyIncludeAutomaticallyForHTMLFiles(true);
-
             optionValues.enableDeterminacy();
             optionValues.enablePolyfillMDN();
             optionValues.enablePolyfillTypedArrays();
@@ -973,12 +970,9 @@ public class Stats {
             optionValues.enableConsoleModel();
             optionValues.enableNoMessages();
             optionValues.enableIncludeDom();
-
             optionValues.enableBlendedAnalysis();
             optionValues.enableIgnoreUnreached();
-
             optionValues.getUnsoundness().setUsePreciseFunctionToString(true);
-
             run("lodash_3.0.0", 220, 500000, Optional.of(optionValues), lodash3TestSuite);
         }
     }
@@ -990,7 +984,6 @@ public class Stats {
             optionValues.enableTest();
             optionValues.getSoundnessTesterOptions().setRootDirFromMainDirectory(Paths.get("../../"));
             optionValues.getSoundnessTesterOptions().setGenerateOnlyIncludeAutomaticallyForHTMLFiles(true);
-
             optionValues.enableDeterminacy();
             optionValues.enablePolyfillMDN();
             optionValues.enablePolyfillTypedArrays();
@@ -999,10 +992,9 @@ public class Stats {
             optionValues.enableConsoleModel();
             optionValues.enableNoMessages();
             optionValues.enableIncludeDom();
-
             optionValues.enableBlendedAnalysis();
             optionValues.enableIgnoreUnreached();
-
+            optionValues.getUnsoundness().setUsePreciseFunctionToString(true);
             run("lodash_4.17.10", 120, 500000, Optional.of(optionValues), lodash4TestSuite);
         }
     }
@@ -1014,9 +1006,10 @@ public class Stats {
         //noinspection ResultOfMethodCallIgnored
         statDir.toFile().mkdirs();
         try (InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("stats.html")) {
+            if (is == null)
+                throw new IOException("stats.html not found");
             Files.copy(is, statsFile, StandardCopyOption.REPLACE_EXISTING);
         }
-        //noinspection ResultOfMethodCallIgnored
         try (FileWriter fw = new FileWriter(f.toFile())) {
             Main.initLogging();
             JsonWriter w = new JsonWriter(fw);
@@ -1042,18 +1035,16 @@ public class Stats {
                     TerminationMonitor terminationMonitor = new TerminationMonitor();
                     Analysis a = null;
                     Throwable throwable = null;
-                    long time = 0;
                     try {
-                        a = Main.init(options, CompositeMonitoring.buildFromList(Monitoring.make(), progressMonitor, analysisTimeLimiter, suspiciousnessMonitor, terminationMonitor), null);
-                        time = System.currentTimeMillis();
+                        a = Main.init(options, CompositeMonitor.make(new AnalysisMonitor(), progressMonitor, analysisTimeLimiter, suspiciousnessMonitor, terminationMonitor), null);
                         if (a == null)
                             throw new AnalysisException("Error during initialization");
                         Main.run(a);
                     } catch (Throwable e) {
-                        System.out.println("Error: " + e.getMessage());
+                        if (terminationMonitor.getTerminatedEarlyMsg() == null)
+                            System.out.println("Error: " + e.getMessage());
                         throwable = e;
                     }
-                    long elapsed = System.currentTimeMillis() - time;
                     w.beginObject();
                     String name = testArgs[testArgs.length - 1];
                     String exceptionMsg = throwable != null ? throwable.getMessage() : null;
@@ -1066,10 +1057,9 @@ public class Stats {
                     } else {
                         w.name("error").value(categorizeErrorMsg(errorMsg) + ": " + (errorMsg.length() > 500 ? errorMsg.substring(0, 500) + "..." : errorMsg));
                     }
-                    if (time != 0) {
-                        w.name("time").value(((double) elapsed) / 1000);
-                    }
                     if (a != null) {
+                        long time = progressMonitor.getPreScanMonitor().getAnalysisTime();
+                        w.name("time").value(((double)time)/1000);
                         w.name("node_transfers").value(progressMonitor.getPreScanMonitor().getNodeTransfers());
                         w.name("visited_usercode_node").value(progressMonitor.getPreScanMonitor().getVisitedNonHostNodes().size());
                         w.name("transfers_per_visited_node").value(!progressMonitor.getPreScanMonitor().getVisitedNonHostNodes().isEmpty() ? ((double) progressMonitor.getPreScanMonitor().getNodeTransfers()) / progressMonitor.getPreScanMonitor().getVisitedNonHostNodes().size() : -1);
@@ -1079,7 +1069,7 @@ public class Stats {
                         w.name("abstract_states").value(a.getSolver().getAnalysisLatticeElement().getNumberOfStates());
                         w.name("states_per_block").value(((double) a.getSolver().getAnalysisLatticeElement().getNumberOfStates()) / a.getSolver().getFlowGraph().getNumberOfBlocks());
                         w.name("average_state_size").value(((double) progressMonitor.getPreScanMonitor().getStateSize()) / a.getSolver().getAnalysisLatticeElement().getNumberOfStates());
-                        w.name("average_node_transfer_time").value( progressMonitor.getPreScanMonitor().getNodeTransfers() != 0 ? ((double) elapsed / progressMonitor.getPreScanMonitor().getNodeTransfers()) : -1);
+                        w.name("average_node_transfer_time").value( progressMonitor.getPreScanMonitor().getNodeTransfers() != 0 ? ((double)time / progressMonitor.getPreScanMonitor().getNodeTransfers()) : -1);
                         w.name("callgraph_edges").value(a.getSolver().getAnalysisLatticeElement().getCallGraph().getSizeIgnoringContexts());
                         w.name("callnodes_to_nonfunction").value(suspiciousnessMonitor.getScanMonitor().getCallToNonFunction().size());
                         w.name("callnodes_to_mixed_functions").value(suspiciousnessMonitor.getScanMonitor().getCallToMixedFunctions().size());

@@ -96,9 +96,9 @@ public class HTMLParser {
                     String messageWithoutRawPosition = String.format("%s %s", matcher.group(1), last);
                     int row = Integer.parseInt(matcher.group(2));
                     int column = Integer.parseInt(matcher.group(3));
-                    log.info(String.format("%s: HTML %s", sourceLocationMaker.make(row, column, row, column), messageWithoutRawPosition)); // TODO: use Monitoring instead (github #535)
+                    log.info(String.format("%s: HTML %s", sourceLocationMaker.make(row, column, row, column), messageWithoutRawPosition)); // TODO: use AnalysisMonitor instead (github #535)
                 } else {
-                    log.info(String.format("%s: HTML %s", sourceLocationMaker.makeUnspecifiedPosition(), msg)); // TODO: use Monitoring instead (github #535)
+                    log.info(String.format("%s: HTML %s", sourceLocationMaker.makeUnspecifiedPosition(), msg)); // TODO: use AnalysisMonitor instead (github #535)
                 }
             }
         }));

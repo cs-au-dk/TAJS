@@ -55,7 +55,6 @@ test-resources/src/1k2013spring/1510.js:74:43: [maybe] Reading absent property (
 test-resources/src/1k2013spring/1510.js:74:102: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1510.js:79:7: [maybe] The variable s has values with different types
 test-resources/src/1k2013spring/1510.js:79:10: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1510.js:92:10: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1510.js:128:57: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1510.js:128:80: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1510.js:128:103: [maybe] Reading absent property (computed name)

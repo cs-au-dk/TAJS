@@ -759,7 +759,6 @@ benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1327:30: [maybe] Reading absent pr
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1348:4: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1370:5: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1370:5: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1386:15: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1523:36: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1524:3: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/jscrypto/jscrypto.js:1524:15: [maybe] Reading absent property (computed name)
