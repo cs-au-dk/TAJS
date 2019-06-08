@@ -19,7 +19,7 @@ fg2: <main> function()
     node 6: call[v6,v7,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0191.js:1:1)
     ->[block 6]
   block 6:
-    node 7: read-property[v5,'b',-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0191.js:1:1)
+    node 7: read-property[v5,'b',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0191.js:1:1)
     ->[block 7]
   block 7: [exit-ordinary]
     node 8: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0191.js)

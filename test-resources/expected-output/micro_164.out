@@ -27,8 +27,39 @@ Abstract state:
     @replace#fun6 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node112],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node99],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+    v2="tajs-host-env:string-replace-model.js"
+    v3=true
+    v4=[@<anonymous>#fun5]
+    v5=[@Object#node14]
+    v6=[@f2#fun2]
+    v7=[@f1#fun1]
+    v8=[@Object#node17]
+    v9=[@f2#fun2]
+    v10=[@Object#node21]
+    v11=[@g2#fun4]
+    v12=[@g1#fun3]
+    v13=[@Object#node24]
+    v14=[@g2#fun4]
+    v15=[@Object#node17]
+    v16=[@<the global object>[native]]
+    v17=[@Object#node24]
   MustReachingDefs: 
     v1: node 0 (test-resources/src/micro/test164.js)
+    v2: node 8 (host-environment-sources-loader)
+    v3: node 9 (host-environment-sources-loader)
+    v4: node 10 (host-environment-sources-loader)
+    v6: node 12 (test-resources/src/micro/test164.js:7:1)
+    v7: node 13 (test-resources/src/micro/test164.js:7:20)
+    v5: node 14 (test-resources/src/micro/test164.js:7:16)
+    v9: node 16 (test-resources/src/micro/test164.js:8:13)
+    v8: node 17 (test-resources/src/micro/test164.js:8:9)
+    v11: node 19 (test-resources/src/micro/test164.js:16:1)
+    v12: node 20 (test-resources/src/micro/test164.js:16:20)
+    v10: node 21 (test-resources/src/micro/test164.js:16:16)
+    v14: node 23 (test-resources/src/micro/test164.js:17:13)
+    v13: node 24 (test-resources/src/micro/test164.js:17:9)
+    v15: node 26 (test-resources/src/micro/test164.js:19:7)
+    v17: node 28 (test-resources/src/micro/test164.js:20:8)
   MustEquals: 
     @<the global object>[native].y: [v13, v17]
     @<the global object>[native].x: [v15]
@@ -69,6 +100,41 @@ Abstract state:
     @replace#fun6 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node112],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node99],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+    v2="tajs-host-env:string-replace-model.js"
+    v3=true
+    v4=[@<anonymous>#fun5]
+    v5=[@Object#node14]
+    v6=[@f2#fun2]
+    v7=[@f1#fun1]
+    v8=[@Object#node17]
+    v9=[@f2#fun2]
+    v10=[@Object#node21]
+    v11=[@g2#fun4]
+    v12=[@g1#fun3]
+    v13=[@Object#node24]
+    v14=[@g2#fun4]
+    v15=[@Object#node17]
+    v16=[@<the global object>[native]]
+    v17=[@Object#node24]
+    v18=[@<the global object>[native]]
+    v21="v1#"
+    v22="v1"
+    v23="#"
+    v24="v2#"
+    v25="v2"
+    v26="#"
+    v27="w1#"
+    v28="w1"
+    v29="#"
+    v30="w2#"
+    v31="w2"
+    v32="#"
+    v33=42.0
+    v36="v1#"
+    v39="v2#"
+    v42="w1#"
+    v45="w2#"
+    v48=42.0
   MustEquals: 
     @<the global object>[native].y: [v13, v17]
     @<the global object>[native].x: [v15]
@@ -119,6 +185,41 @@ Abstract state:
     @replace#fun6 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node112],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node99],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+    v2="tajs-host-env:string-replace-model.js"
+    v3=true
+    v4=[@<anonymous>#fun5]
+    v5=[@Object#node14]
+    v6=[@f2#fun2]
+    v7=[@f1#fun1]
+    v8=[@Object#node17]
+    v9=[@f2#fun2]
+    v10=[@Object#node21]
+    v11=[@g2#fun4]
+    v12=[@g1#fun3]
+    v13=[@Object#node24]
+    v14=[@g2#fun4]
+    v15=[@Object#node17]
+    v16=[@<the global object>[native]]
+    v17=[@Object#node24]
+    v18=[@<the global object>[native]]
+    v21="v1#"
+    v22="v1"
+    v23="#"
+    v24="v2#"
+    v25="v2"
+    v26="#"
+    v27="w1#"
+    v28="w1"
+    v29="#"
+    v30="w2#"
+    v31="w2"
+    v32="#"
+    v33=42.0
+    v36="v1#"
+    v39="v2#"
+    v42="w1#"
+    v45="w2#"
+    v48=42.0
   MustEquals: 
     @<the global object>[native].y: [v13, v17]
     @<the global object>[native].x: [v15]

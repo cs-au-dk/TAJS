@@ -17,10 +17,10 @@
 package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Pair of an {@link ObjectLabel} and a {@link Property}.

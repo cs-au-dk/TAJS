@@ -1,8 +1,8 @@
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
-    node 1: function-decl[function A(),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:3:1)
-    node 2: function-decl[function(),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    node 1: function-decl[function A(),-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:3:1)
+    node 2: function-decl[function(),-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
     ->[block 1]
   block 1:
     node 3: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -18,74 +18,74 @@ fg2: <main> function()
     node 7: nop(eventDispatchers: entry) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 5,block 9] ~>[block 25]
   block 5:
-    node 8: event-dispatcher <CONTENT_LOADED>* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 8: event-dispatcher <CONTENT_LOADED> (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 8] ~>[block 6]
   block 6:
     node 9: catch[v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     node 10: nop(eventDispatchers: exceptional exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 7,block 9]
   block 7:
-    node 11: throw[v6]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 11: throw[v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[]
   block 8:
-    node 12: nop(eventDispatchers: ordinary exit DOMContentLoaded)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 12: nop(eventDispatchers: ordinary exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 9] ~>[block 25]
   block 9:
-    node 13: nop(eventDispatchers: post DOMContentLoaded)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 13: nop(eventDispatchers: post DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 5,block 10,block 14] ~>[block 25]
   block 10:
-    node 14: event-dispatcher <LOAD>* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 14: event-dispatcher <LOAD> (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 13] ~>[block 11]
   block 11:
     node 15: catch[v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     node 16: nop(eventDispatchers: exceptional exit Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 12,block 14]
   block 12:
-    node 17: throw[v7]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 17: throw[v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[]
   block 13:
-    node 18: nop(eventDispatchers: ordinary exit Load)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 18: nop(eventDispatchers: ordinary exit Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 14] ~>[block 25]
   block 14:
-    node 19: nop(eventDispatchers: post Load)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 19: nop(eventDispatchers: post Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 10,block 15,block 19] ~>[block 25]
   block 15:
-    node 20: event-dispatcher <OTHER>* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 20: event-dispatcher <OTHER> (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 18] ~>[block 16]
   block 16:
     node 21: catch[v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     node 22: nop(eventDispatchers: exceptional exit Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 17,block 19]
   block 17:
-    node 23: throw[v8]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 23: throw[v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[]
   block 18:
-    node 24: nop(eventDispatchers: ordinary exit Other)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 24: nop(eventDispatchers: ordinary exit Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 19] ~>[block 25]
   block 19:
-    node 25: nop(eventDispatchers: post Other)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 25: nop(eventDispatchers: post Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 15,block 20,block 24] ~>[block 25]
   block 20:
-    node 26: event-dispatcher <UNLOAD>* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 26: event-dispatcher <UNLOAD> (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 23] ~>[block 21]
   block 21:
     node 27: catch[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     node 28: nop(eventDispatchers: exceptional exit Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 22,block 24]
   block 22:
-    node 29: throw[v9]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 29: throw[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[]
   block 23:
-    node 30: nop(eventDispatchers: ordinary exit Unload)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 30: nop(eventDispatchers: ordinary exit Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 24] ~>[block 25]
   block 24:
-    node 31: nop(eventDispatchers: post Unload)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 31: nop(eventDispatchers: post Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 20,block 27] ~>[block 25]
   block 25:
     node 32: catch[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[block 4,block 26]
   block 26:
-    node 33: throw[v5]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
+    node 33: throw[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
     ->[]
   block 27: [exit-ordinary]
     node 34: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html)
@@ -100,7 +100,7 @@ function A()
   block 30:
     node 37: read-variable['this',v3,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:4:5)
     node 38: function-expr[function(),v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:4:14)
-    node 39: write-property[v3,'f',v2]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:4:5)
+    node 39: write-property[v3,'f',v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:4:5)
     ->[block 31]
   block 31: [exit-ordinary]
     node 40: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:3:1)
@@ -120,7 +120,7 @@ function()
     node 45: call[v4,v5,v6,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:5:13)
     ->[block 36]
   block 36:
-    node 46: write-variable[v3,'p']* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:5:9)
+    node 46: write-variable[v3,'p'] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:5:9)
     ->[block 37]
   block 37: [exit-ordinary]
     node 47: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:4:14)
@@ -142,7 +142,7 @@ function()
     node 52: read-property[v3,'f',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
     ->[block 43]
   block 43:
-    node 53: call[v3,'f',-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
+    node 53: call[v3,'f',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:9:15)
     ->[block 44]
   block 44: [exit-ordinary]
     node 54: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156b.html:9:15)

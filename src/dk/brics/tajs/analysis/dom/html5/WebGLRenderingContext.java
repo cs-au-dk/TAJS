@@ -26,7 +26,7 @@ import dk.brics.tajs.analysis.dom.DOMWindow;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -99,7 +99,7 @@ public class WebGLRenderingContext {
                 Exceptions.throwTypeError(c);
                 s.setToBottom();
             case WEBGLRENDERINGCONTEXT_TAJS_UNSUPPORTED_FUNCTION:
-                throw new AnalysisException("This function from WebGLRenderingContext is not yet supported: " + call.getJSSourceNode().getSourceLocation());
+                throw new AnalysisLimitationException.AnalysisModelLimitationException("This function from WebGLRenderingContext is not yet supported: " + call.getJSSourceNode().getSourceLocation());
             default: {
                 throw new UnsupportedOperationException("Unsupported Native Object: " + nativeObject);
             }

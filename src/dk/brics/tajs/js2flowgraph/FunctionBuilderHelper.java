@@ -68,7 +68,6 @@ public class FunctionBuilderHelper {
      */
     public static void addNodeToBlock(AbstractNode node, BasicBlock block, AstEnv env) {
         block.addNode(node);
-        node.setRegistersDone(env.isStatementLevel());
     }
 
     /**

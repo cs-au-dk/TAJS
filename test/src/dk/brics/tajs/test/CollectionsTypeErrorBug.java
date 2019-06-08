@@ -1,5 +1,6 @@
 package dk.brics.tajs.test;
 
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.HybridArrayHashMap;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +19,6 @@ import java.util.Set;
 import java.util.WeakHashMap;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -100,10 +100,10 @@ public class CollectionsTypeErrorBug {
 
     private Map<Integer, Optional<Integer>> makeMap() {
         return Stream.of(0)
-                .collect(Collectors.groupingBy(
+                .collect(java.util.stream.Collectors.groupingBy(
                         e -> 1,
                         constructor,
-                        Collectors.reducing((e1, e2) -> 0)));
+                        java.util.stream.Collectors.reducing((e1, e2) -> 0)));
     }
 
     /**

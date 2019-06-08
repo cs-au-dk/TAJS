@@ -22,7 +22,7 @@ fg2: <main> function()
     node 7: read-variable['z',v5,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0053.js:1:10)
     ->[block 7]
   block 7:
-    node 8: write-variable[v5,'x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0053.js:1:1)
+    node 8: write-variable[v5,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0053.js:1:1)
     ->[block 8]
   block 8: [exit-ordinary]
     node 9: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0053.js)

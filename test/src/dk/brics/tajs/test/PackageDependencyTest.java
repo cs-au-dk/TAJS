@@ -51,7 +51,7 @@ public class PackageDependencyTest {
     }
 
     /**
-     * Builds the graph that can be seen in /package-dependencies.png
+     * Builds the graph that can be seen in misc/package-dependencies.png
      */
     private static Graph<TAJSPackage> makeGraph() {
         Graph<TAJSPackage> graph = new Graph<>();
@@ -122,7 +122,7 @@ public class PackageDependencyTest {
             String line;
             List<String> lines = newList();
             while ((line = br.readLine()) != null) {
-                if (!line.startsWith("split package"))
+                if (!line.startsWith("split package") && !line.startsWith("Warning: split package"))
                     lines.add(line);
             }
             process.waitFor();
@@ -141,7 +141,7 @@ public class PackageDependencyTest {
         if (!failure.isPresent()) {
             return;
         }
-        String headline = String.format("Bad dependency '%s' is present: (output from 'jdeps')", antiDependency.toString());
+        String headline = String.format("TEST FAILED: Bad dependency '%s' (output from 'jdeps')", antiDependency.toString());
         String fullOutput = failure.get();
         System.out.format("%s%n%s\n", headline, fullOutput);
         throw new AssertionError(headline);

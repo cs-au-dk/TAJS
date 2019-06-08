@@ -275,7 +275,7 @@ public class Unsoundness {
     }
 
     /**
-     * Decides if undefined should be ignored as the first argument to addition
+     * Decides if undefined should be ignored as the first argument to addition.
      */
     public boolean mayIgnoreUnlikelyUndefinedAsFirstArgumentToAddition(AbstractNode node, Value v) {
         boolean allowUnsoundness = options.isIgnoreUnlikelyUndefinedAsFirstArgumentToAddition()
@@ -297,6 +297,17 @@ public class Unsoundness {
                 node,
                 allowUnsoundness,
                 "Ignoring result of 'in' operator is maybe false, because value to test is numeric and is maybe in object");
+    }
+
+    /**
+     * Decides if a partition can be ignored.
+     */
+    public boolean mayIgnorePartition(AbstractNode node, Value valuePartition) {
+        boolean allowUnsoundness = options.isIgnoreUndefinedPartitions()
+                && !valuePartition.isMaybeOtherThanUndef(); // may unsoundly skip the partition if the value is definitely 'undefined'
+        return addMessageIfUnsound(node,
+                allowUnsoundness,
+                "Ignoring value partition");
     }
 
     public void ignoringException(AbstractNode node, String exceptionKind) {

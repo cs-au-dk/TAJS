@@ -14,12 +14,12 @@ fg2: <main> function()
     ->[block 4]
   block 4:
     node 5: constant[1.0,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0021.js:1:5)
-    node 6: write-variable[v5,'x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0021.js:1:1)
+    node 6: write-variable[v5,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0021.js:1:1)
     node 7: read-variable['this',v6,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0021.js:2:1)
     node 8: constant["x",v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0021.js:2:6)
     node 9: constant["",v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0021.js:2:12)
     node 10: +[v8,v9,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0021.js:2:6)
-    node 11: read-property[v6,v7,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0021.js:2:1)
+    node 11: read-property[v6,v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0021.js:2:1)
     ->[block 5]
   block 5: [exit-ordinary]
     node 12: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0021.js)

@@ -19,6 +19,7 @@ package dk.brics.tajs.options;
 import dk.au.cs.casa.jer.Logger;
 
 import java.nio.file.Path;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -111,6 +112,13 @@ public class SoundnessTesterOptions {
     private boolean generateOnlyIncludeAutomatically = false;
 
     /**
+     * If set, the soundness tester just uses the first node, if ambiguous node for source location.
+     * If not set, throw an exception instead.
+     * (Ambiguous node for source location often indicates a bug, but may also happen if the same file is loaded twice.)
+     */
+    private boolean doNotCheckAmbiguousNodeQueries = false;
+
+    /**
      * Automatically detects which files should be instrumented and sets rootDirFromMainDirectory, based on the main HTML file.
      */
     private boolean generateOnlyIncludeAutomaticallyForHTMLFiles = false;
@@ -139,17 +147,18 @@ public class SoundnessTesterOptions {
         if (generateBeforeAnalysis != that.generateBeforeAnalysis) return false;
         if (generateOnlyIncludeAutomatically != that.generateOnlyIncludeAutomatically) return false;
         if (generateOnlyIncludeAutomaticallyForHTMLFiles != that.generateOnlyIncludeAutomaticallyForHTMLFiles) return false;
-        if (rootDirFromMainDirectory != null ? !rootDirFromMainDirectory.equals(that.rootDirFromMainDirectory) : that.rootDirFromMainDirectory != null)
+        if (doNotCheckAmbiguousNodeQueries != that.doNotCheckAmbiguousNodeQueries) return false;
+        if (!Objects.equals(rootDirFromMainDirectory, that.rootDirFromMainDirectory))
             return false;
-        if (explicitSoundnessLogFile != null ? !explicitSoundnessLogFile.equals(that.explicitSoundnessLogFile) : that.explicitSoundnessLogFile != null)
+        if (!Objects.equals(explicitSoundnessLogFile, that.explicitSoundnessLogFile))
             return false;
-        if (generatorEnvironmentExplicitly != null ? !generatorEnvironmentExplicitly.equals(that.generatorEnvironmentExplicitly) : that.generatorEnvironmentExplicitly != null)
+        if (!Objects.equals(generatorEnvironmentExplicitly, that.generatorEnvironmentExplicitly))
             return false;
-        if (timeLimitExplicitly != null ? !timeLimitExplicitly.equals(that.timeLimitExplicitly) : that.timeLimitExplicitly != null)
+        if (!Objects.equals(timeLimitExplicitly, that.timeLimitExplicitly))
             return false;
-        if (instrumentationTimeLimitExplicitly != null ? !instrumentationTimeLimitExplicitly.equals(that.instrumentationTimeLimitExplicitly) : that.instrumentationTimeLimitExplicitly != null)
+        if (!Objects.equals(instrumentationTimeLimitExplicitly, that.instrumentationTimeLimitExplicitly))
             return false;
-        return onlyIncludesForInstrumentation != null ? onlyIncludesForInstrumentation.equals(that.onlyIncludesForInstrumentation) : that.onlyIncludesForInstrumentation == null;
+        return Objects.equals(onlyIncludesForInstrumentation, that.onlyIncludesForInstrumentation);
     }
 
     @Override
@@ -169,6 +178,7 @@ public class SoundnessTesterOptions {
         result = 31 * result + (generateBeforeAnalysis ? 1 : 0);
         result = 31 * result + (generateOnlyIncludeAutomatically ? 1 : 0);
         result = 31 * result + (generateOnlyIncludeAutomaticallyForHTMLFiles ? 1 : 0);
+        result = 31 * result + (doNotCheckAmbiguousNodeQueries ? 1 : 0);
         return result;
     }
 
@@ -302,5 +312,13 @@ public class SoundnessTesterOptions {
 
     public boolean isGenerateOnlyIncludeAutomaticallyForHTMLFiles() {
         return generateOnlyIncludeAutomaticallyForHTMLFiles;
+    }
+
+    public boolean isDoNotCheckAmbiguousNodeQueries() {
+        return doNotCheckAmbiguousNodeQueries;
+    }
+
+    public void setDoNotCheckAmbiguousNodeQueries(boolean doNotCheckAmbiguousNodeQueries) {
+        this.doNotCheckAmbiguousNodeQueries = doNotCheckAmbiguousNodeQueries;
     }
 }

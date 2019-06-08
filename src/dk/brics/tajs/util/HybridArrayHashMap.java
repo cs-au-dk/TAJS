@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -546,7 +547,7 @@ public final class HybridArrayHashMap<K, V> implements Map<K, V>, Serializable {
         if (this_size == 1 && obj instanceof HybridArrayHashMap<?, ?>) {
             HybridArrayHashMap<?, ?> h = (HybridArrayHashMap<?, ?>) obj;
             if (singleton_key != null && h.singleton_key != null)
-                return singleton_key.equals(h.singleton_key) && (singleton_value != null ? singleton_value.equals(h.singleton_value) : h.singleton_value == null);
+                return singleton_key.equals(h.singleton_key) && (Objects.equals(singleton_value, h.singleton_value));
         }
         return entrySet().equals(m.entrySet());
     }

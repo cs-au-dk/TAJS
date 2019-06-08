@@ -16,6 +16,8 @@
 
 package dk.brics.tajs.analysis.nativeobjects.concrete;
 
+import java.util.Objects;
+
 public class ConcreteString implements PrimitiveConcreteValue {
 
     private final String string;
@@ -62,7 +64,7 @@ public class ConcreteString implements PrimitiveConcreteValue {
 
         ConcreteString that = (ConcreteString) o;
 
-        return string != null ? string.equals(that.string) : that.string == null;
+        return Objects.equals(string, that.string);
     }
 
     @Override

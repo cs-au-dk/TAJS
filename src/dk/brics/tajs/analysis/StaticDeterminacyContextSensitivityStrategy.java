@@ -133,7 +133,7 @@ public class StaticDeterminacyContextSensitivityStrategy extends BasicContextSen
             }
         }
         Context functionContext = decideCallContextArguments(function, callInfo, state, c);
-        return Context.make(thisval, null, null, null, null, functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables());
+        return Context.make(thisval, null, null, null, null, functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables(), callInfo.getFreeVariablePartitioning());
     }
 
     @Override

@@ -9,6 +9,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+        TestPropertyNamePartitioning.class,
         TestAddContextSensitivity.class,
         TestMakeContextSensitive.class,
         TestSyntacticObjectSensitivity.class,

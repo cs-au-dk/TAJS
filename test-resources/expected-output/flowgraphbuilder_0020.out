@@ -14,9 +14,9 @@ fg2: <main> function()
     ->[block 4]
   block 4:
     node 5: constant[1.0,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0020.js:1:5)
-    node 6: write-variable[v5,'x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0020.js:1:1)
+    node 6: write-variable[v5,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0020.js:1:1)
     node 7: read-variable['this',v6,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0020.js:2:1)
-    node 8: read-property[v6,'x',-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0020.js:2:1)
+    node 8: read-property[v6,'x',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0020.js:2:1)
     ->[block 5]
   block 5: [exit-ordinary]
     node 9: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0020.js)

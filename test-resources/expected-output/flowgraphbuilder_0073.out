@@ -24,17 +24,17 @@ fg2: <main> function()
     node 9: call[v8,v9,v10,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0073.js:1:16)
     ->[block 9]
   block 7:
-    node 10: read-variable['SyntaxError',v9,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0073.js:1:36)
-    node 11: constant["ho",v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0073.js:1:48)
+    node 10: read-variable['SyntaxError',v12,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0073.js:1:36)
+    node 11: constant["ho",v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0073.js:1:48)
     ->[block 8]
   block 8:
-    node 12: call[v8,v9,v10,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0073.js:1:36)
+    node 12: call[v11,v12,v13,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0073.js:1:36)
     ->[block 9]
   block 9:
     node 13: construct[-,v6,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0073.js:1:7)
     ->[block 10]
   block 10:
-    node 14: throw[v5]* (test-resources/src/flowgraphbuilder/flowgraph_builder0073.js:1:1)
+    node 14: throw[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0073.js:1:1)
     ->[block 11]
   block 11: [exit-ordinary]
     node 15: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0073.js)

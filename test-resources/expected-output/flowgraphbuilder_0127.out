@@ -16,31 +16,31 @@ fg2: <main> function()
     node 5: new[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:1:5)
     node 6: constant["funny",v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:1:10)
     node 7: write-property[v5,'gt',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:1:6)
-    node 8: write-variable[v5,'g']* (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:1:1)
+    node 8: write-variable[v5,'g'] (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:1:1)
     ->[block 5]
   block 5:
     node 9: read-variable['g',v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:4:10)
-    node 10: begin-with[v7]* (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:4:5)
+    node 10: begin-with[v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:4:5)
     ->[block 6] ~>[block 9]
   block 6:
     node 11: read-variable['gt',v9,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:5:8)
-    node 12: throw[v9]* (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:5:2)
+    node 12: throw[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:5:2)
     ->[block 8] ~>[block 7]
   block 7:
-    node 13: end-with* (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:4:5)
+    node 13: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:4:5)
     ->[block 9]
   block 8:
-    node 14: end-with* (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:4:5)
+    node 14: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:4:5)
     ->[block 12] ~>[block 9]
   block 9:
     node 15: catch[e,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:7:3)
-    node 16: begin-with[v10]* (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:7:3)
+    node 16: begin-with[v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:7:3)
     ->[block 10]
   block 10:
-    node 17: end-with* (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:7:3)
+    node 17: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:7:3)
     ->[block 12]
   block 11:
-    node 18: end-with* (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:7:3)
+    node 18: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js:7:3)
     ->[block 13]
   block 12: [exit-ordinary]
     node 19: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0127.js)

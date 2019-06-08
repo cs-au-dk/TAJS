@@ -16,13 +16,13 @@ fg2: <main> function()
     node 5: read-variable['o',v5,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:11)
     ->[block 8]
   block 5:
-    node 6: end-for-in(begin-node:9)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:1)
+    node 6: end-for-in(begin-node:9) (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:1)
     ->[block 8]
   block 6:
-    node 7: nop(continue <DEFAULT>)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:3:5)
+    node 7: nop(continue <DEFAULT>) (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:3:5)
     ->[block 7] ~>[block 11]
   block 7:
-    node 8(~-1): end-for-in(begin-node:9)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:1)
+    node 8(~-1): end-for-in(begin-node:9) (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:1)
     ->[block 8]
   block 8:
     node 9: begin-for-in[v5,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:1)
@@ -33,16 +33,16 @@ fg2: <main> function()
     ->[block 10,block 13] ~>[block 11]
   block 10:
     node 12: next-property[v6,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:6)
-    node 13: write-variable[v8,'p']* (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:6)
+    node 13: write-variable[v8,'p'] (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:6)
     ->[block 12] ~>[block 11]
   block 11:
-    node 14: end-for-in(begin-node:9)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:1)
+    node 14: end-for-in(begin-node:9) (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:1)
     ->[block 15]
   block 12:
-    node 15(~-1): end-for-in(begin-node:9)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:1)
+    node 15(~-1): end-for-in(begin-node:9) (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:1)
     ->[block 14]
   block 13:
-    node 16: end-for-in(begin-node:9)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:1)
+    node 16: end-for-in(begin-node:9) (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js:1:1)
     ->[block 14]
   block 14: [exit-ordinary]
     node 17: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0201b.js)

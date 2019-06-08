@@ -185,6 +185,16 @@ public interface Str {
     Value restrictToStr();
 
     /**
+     * Constructs a value from this value where only the numeric strings are considered.
+     */
+    Value restrictToStrNumeric();
+
+    /**
+     * Constructs a value from this value where only the non-numeric strings are considered.
+     */
+    Value restrictToStrNotNumeric();
+
+    /**
      * Constructs a value from this value but definitely not a string.
      */
     Value restrictToNotStr();

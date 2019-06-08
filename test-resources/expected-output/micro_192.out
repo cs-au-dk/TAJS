@@ -20,8 +20,21 @@ Abstract state:
     @replace#fun3 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node40],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node27],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+    v2="tajs-host-env:string-replace-model.js"
+    v3=true
+    v4=[@<anonymous>#fun2]
+    v5=42.0
+    v6=[@<the global object>[native]]
+    v7=[@f#fun1]
+    v8=10.0
   MustReachingDefs: 
     v1: node 0 (test-resources/src/micro/test192.js)
+    v2: node 3 (host-environment-sources-loader)
+    v3: node 4 (host-environment-sources-loader)
+    v4: node 5 (host-environment-sources-loader)
+    v7: node 7 (test-resources/src/micro/test192.js:8:9)
+    v8: node 8 (test-resources/src/micro/test192.js:8:11)
+    v5: node 9 (test-resources/src/micro/test192.js:8:9)
   MustEquals: 
     @<the global object>[native].t: [v5]
     v5: [@<the global object>[native].t]

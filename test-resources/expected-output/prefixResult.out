@@ -18,7 +18,7 @@ fg2: <main> function()
     node 7: constant[1.0,v8] (out/temp-sources/TestFlowgraphBuilder.prefixResult.js:1:5)
     node 8: +[v7,v8,v5] (out/temp-sources/TestFlowgraphBuilder.prefixResult.js:1:5)
     node 9: write-variable[v5,'a'] (out/temp-sources/TestFlowgraphBuilder.prefixResult.js:1:7)
-    node 10: write-variable[v5,'x']* (out/temp-sources/TestFlowgraphBuilder.prefixResult.js:1:1)
+    node 10: write-variable[v5,'x'] (out/temp-sources/TestFlowgraphBuilder.prefixResult.js:1:1)
     ->[block 5]
   block 5: [exit-ordinary]
     node 11: return[v1] (out/temp-sources/TestFlowgraphBuilder.prefixResult.js)

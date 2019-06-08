@@ -1,9 +1,9 @@
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js)
-    node 1: vardecl['x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:5)
-    node 2: vardecl['y']* (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:12)
-    node 3: vardecl['z']* (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:32)
+    node 1: vardecl['x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:5)
+    node 2: vardecl['y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:12)
+    node 3: vardecl['z'] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:32)
     ->[block 1]
   block 1:
     node 4: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -17,7 +17,7 @@ fg2: <main> function()
     ->[block 4]
   block 4:
     node 8: constant[1.0,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:9)
-    node 9: write-variable[v5,'x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:5)
+    node 9: write-variable[v5,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:5)
     node 10: read-variable['x',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:16)
     node 11: constant[1.0,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:21)
     node 12: ==[v8,v9,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:16)
@@ -30,9 +30,9 @@ fg2: <main> function()
     node 15: constant[3.0,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:29)
     ->[block 7]
   block 7:
-    node 16: write-variable[v6,'y']* (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:12)
+    node 16: write-variable[v6,'y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:12)
     node 17: constant[4.0,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:36)
-    node 18: write-variable[v10,'z']* (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:32)
+    node 18: write-variable[v10,'z'] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js:1:32)
     ->[block 8]
   block 8: [exit-ordinary]
     node 19: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0031.js)

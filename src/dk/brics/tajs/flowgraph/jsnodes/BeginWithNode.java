@@ -62,6 +62,6 @@ public class BeginWithNode extends Node {
     @Override
     public void check(BasicBlock b) {
         if (object_reg == NO_VALUE)
-            throw new AnalysisException("Invalid object register: " + toString());
+            throw new AnalysisException("Invalid object register: " + this);
     }
 }

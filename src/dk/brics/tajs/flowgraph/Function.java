@@ -325,7 +325,7 @@ public class Function implements Serializable {
         } else {
             pw.println("subgraph " + "cluster" + index + " {");
             String outerFunction = outer_function == null ? "" : "\\nouter: " + (outer_function.isMain() ? "<main>" : (outer_function.getName() == null ? "<anonymous>" : outer_function.getName()));
-            pw.println("label=\"" + (main ? "<main> " : "") + toString() + "\\n" + location + outerFunction + "\";");
+            pw.println("label=\"" + (main ? "<main> " : "") + this + "\\n" + location + outerFunction + "\";");
             pw.println("labelloc=\"t\";");
             pw.println("fontsize=18;");
         }
@@ -431,15 +431,15 @@ public class Function implements Serializable {
      */
     public void check(Function main, Set<Integer> seen_functions, Set<Integer> seen_blocks, Set<Integer> seen_nodes) {
         if (!seen_functions.add(index))
-            throw new AnalysisException("Duplicate function index: " + index + " for " + toString());
+            throw new AnalysisException("Duplicate function index: " + index + " for " + this);
         if (index == -1)
-            throw new AnalysisException("Function has not been added to flow graph: " + toString());
+            throw new AnalysisException("Function has not been added to flow graph: " + this);
         if ((this == main) != isMain())
-            throw new AnalysisException("Function is confused about main: " + toString());
+            throw new AnalysisException("Function is confused about main: " + this);
         if (ordinary_exit == null)
-            throw new AnalysisException("Function is missing ordinary exit: " + toString());
+            throw new AnalysisException("Function is missing ordinary exit: " + this);
         if (exceptional_exit == null)
-            throw new AnalysisException("Function is missing exceptional exit: " + toString());
+            throw new AnalysisException("Function is missing exceptional exit: " + this);
         for (BasicBlock bb : blocks)
             bb.check(entry, ordinary_exit, exceptional_exit, seen_blocks, seen_nodes);
     }

@@ -1,0 +1,9 @@
+benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html:9:10: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html:15:3: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html:15:7: [definite] Variable _f is null/undefined
+benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html:9:10: [definite] Reading absent property ivymap
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html:14:8):1:15: [definite] Reading absent property pc.sy.banner.duilian.
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html:14:8):1:15: [definite] Reading absent property pc.sy.banner.tcck.
+benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html: [definite] Exceptional program exit is unreachable
+benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html:18:4: [definite] Unreachable code
+Soundness testing succeeded for 26 checks (with 0 expected failures)

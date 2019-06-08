@@ -1,0 +1,42 @@
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:87:1: HTML StartTag missing required end tag
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:87:6: HTML StartTag missing required end tag
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:73:9: [definite] ReferenceError, reading absent variable showTab
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:5:5: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:7:14: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:9:14: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:26:9: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:61:9: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:11:5: [definite] Dead assignment, property np is never read
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:13:5: [definite] Dead assignment, property intrvl is never read
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:14:5: [definite] Dead assignment, property as is never read
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:15:5: [definite] Dead assignment, property stct is never read
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:16:5: [definite] Dead assignment, property astopl is never read
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:17:5: [definite] Dead assignment, property astopr is never read
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:19:5: [definite] Dead assignment, property autointrvl is never read
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:56:9: [definite] Dead assignment, property intrvl is never read
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:57:9: [definite] Dead assignment, property np is never read
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:85:1: [definite] Dead assignment, property autointrvl is never read
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:91:76: [definite] Dead assignment, property as is never read
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:32:21: [definite] The variable tmpvl1 is never used
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:34:21: [definite] The variable tmpvl2 is never used
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:59:17: [definite] The variable d is never used
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:67:18: [definite] The variable d is never used
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:70:22: [definite] The variable d is never used
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:70:22: [definite] The variable o is never used
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:73:17: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:7:28: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:91:50: [maybe] TypeError, accessing property of null/undefined
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:56:23):1:1: [maybe] TypeError, accessing property of null/undefined
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:24: [maybe] TypeError, accessing property of null/undefined
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:54: [maybe] TypeError, accessing property of null/undefined
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:85:16):1:1: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:7:28: [maybe] Reading absent property cells of host object
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:7:28: [maybe] Reading absent property offsetWidth of host object
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:24: [maybe] Reading absent property left of host object
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:54: [maybe] Reading absent property left of host object
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:7:28, benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:73:9, benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:91:50, TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:56:23):1:1, TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:24, TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:54, TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:85:16):1:1]
+benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:62:37: [maybe] Conversion to number yields NaN
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:24: [maybe] Converting object to string
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:24: [maybe] Converting primitive string to object
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:54: [maybe] Converting primitive string to object
+Soundness testing succeeded for 24 checks (with 0 expected failures)

@@ -24,6 +24,7 @@
 <div class="container-fluid">
     <h1>TAJS Statistics</h1>
     <p id="timestamp"></p>
+    <p id="cputime"></p>
     <p id="defaultoptions"></p>
     <table id="table" class="table table-sm" data-show-columns="true">
         <thead>
@@ -47,6 +48,9 @@
             <th data-field="callnodes_to_mixed_functions" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke multiple native and also user-defined functions">Mixed calls</th>
             <th data-field="callnodes_to_nonfunction" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke a non-function value (ignoring 'undefined')">Non-function calls</th>
             <th data-field="callnodes_polymorphic" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke multiple user-defined functions (ignoring callee contexts)">Polymorphic calls</th>
+            <th data-field="average_types" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average number of types at reads">Average types</th>
+            <th data-field="unique_type" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Fraction of reads with unique type">Unique type</th>
+            <th data-field="unique_callee" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Fraction of calls with unique callee">Unique callee</th>
         </tr>
         </thead>
     </table>
@@ -63,7 +67,10 @@ if (q.startsWith("?")) {
         $('#table').bootstrapTable({data: data, search: true}).bootstrapTable('hideLoading');
         $('[data-toggle="tooltip"]').tooltip();
         var d = new Date(timestamp);
-        $('#timestamp').text("Generated " + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " + d.getHours() + ":" + (d.getMinutes() <= 9 ? "0" : "") + d.getMinutes());
+        $('#timestamp').text("Generated " + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " + d.getHours() + ":" + (d.getMinutes() <= 9 ? "0" : "") + d.getMinutes() + " on " + machine);
+        var cputimeMinutes = Math.floor(cputime / 60000000000);
+        var cputimeSeconds =  Math.round(cputime / 1000000000) - cputimeMinutes * 60;
+        $('#cputime').text("CPU time: " + cputimeMinutes + " minute" + (cputimeMinutes != 1 ? "s " : " ") + cputimeSeconds + " seconds");
         $('#defaultoptions').text("Default options: " + defaultOptions);
     }
     document.getElementsByTagName('body')[0].appendChild(s);
@@ -128,13 +135,34 @@ function cellStyle(value, row, index, field) {
         status = 'medium';
     else
         status = 'good';
-  } else if (field = 'average_node_transfer_time') {
+  } else if (field == 'average_node_transfer_time') {
     if (value > 25)
         status = 'bad';
     else if (value > 5)
         status = 'medium';
     else
         status = 'good';
+  } else if (field == 'average_types') {
+      if (value > 2)
+          status = 'bad';
+      else if (value > 1.5)
+          status = 'medium';
+      else
+          status = 'good';
+  } else if (field == 'unique_type') {
+      if (value > 0.95)
+          status = 'good';
+      else if (value > 0.8)
+          status = 'medium';
+      else
+          status = 'bad';
+  } else if (field == 'unique_callee') {
+      if (value > 0.95)
+          status = 'good';
+      else if (value > 0.8)
+          status = 'medium';
+      else
+          status = 'bad';
   }
   return {
     classes: status,

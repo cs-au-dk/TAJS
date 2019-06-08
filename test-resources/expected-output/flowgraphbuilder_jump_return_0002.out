@@ -1,7 +1,7 @@
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js)
-    node 1: function-decl[function f(),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:1:1)
+    node 1: function-decl[function f(),-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:1:1)
     ->[block 1]
   block 1:
     node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -17,19 +17,19 @@ fg2: <main> function()
     node 6: read-variable['f',v6,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:12:1)
     ->[block 5]
   block 5:
-    node 7: call[v5,v6,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:12:1)
+    node 7: call[v5,v6,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:12:1)
     ->[block 6]
   block 6:
     node 8: read-variable['v',v9,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:13:13)
     ->[block 7]
   block 7:
-    node 9: call[TAJS_assert,v9,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:13:1)
+    node 9: call[TAJS_assert,v9,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:13:1)
     ->[block 8]
   block 8:
     node 10: constant["OK",v12] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:15:16)
     ->[block 9]
   block 9:
-    node 11: call[TAJS_dumpValue,v12,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:15:1)
+    node 11: call[TAJS_dumpValue,v12,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:15:1)
     ->[block 10]
   block 10: [exit-ordinary]
     node 12: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js)
@@ -42,41 +42,41 @@ function f()
     node 14: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:1:1)
     ->[block 13]
   block 13:
-    node 15: constant[undefined,v1]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:4:13)
+    node 15: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:4:13)
     ->[block 15] ~>[block 14]
   block 14:
     node 16: catch[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:3:9)
     node 17(~26): constant[false,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:6:17)
-    node 18(~27): write-variable[v10,'v']* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:6:13)
-    node 19: throw[v9]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:3:9)
+    node 18(~27): write-variable[v10,'v'] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:6:13)
+    node 19: throw[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:3:9)
     ->[block 18] ~>[block 18]
   block 15:
     node 20(~26): constant[false,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:6:17)
-    node 21(~27): write-variable[v11,'v']* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:6:13)
+    node 21(~27): write-variable[v11,'v'] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:6:13)
     ->[block 16] ~>[block 18]
   block 16:
     node 22(~34): read-variable['v',v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:13)
     node 23(~35): constant[false,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:19)
     node 24(~36): ===[v7,v8,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:13)
-    node 25(~37): write-variable[v6,'v']* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:9)
+    node 25(~37): write-variable[v6,'v'] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:9)
     ->[block 20]
   block 17:
     node 26: constant[false,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:6:17)
-    node 27: write-variable[v11,'v']* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:6:13)
+    node 27: write-variable[v11,'v'] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:6:13)
     ->[block 19] ~>[block 18]
   block 18:
     node 28: catch[v2] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:2:5)
     node 29(~34): read-variable['v',v4,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:13)
     node 30(~35): constant[false,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:19)
     node 31(~36): ===[v4,v5,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:13)
-    node 32(~37): write-variable[v3,'v']* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:9)
-    node 33: throw[v2]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:2:5)
+    node 32(~37): write-variable[v3,'v'] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:9)
+    node 33: throw[v2] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:2:5)
     ->[block 21]
   block 19:
     node 34: read-variable['v',v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:13)
     node 35: constant[false,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:19)
     node 36: ===[v7,v8,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:13)
-    node 37: write-variable[v6,'v']* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:9)
+    node 37: write-variable[v6,'v'] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:9:9)
     ->[block 20]
   block 20: [exit-ordinary]
     node 38: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_return_0002.js:1:1)

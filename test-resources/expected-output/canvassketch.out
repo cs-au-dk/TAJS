@@ -1,0 +1,743 @@
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:67:5: [definite] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:108:7: [definite] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:171:5: [definite] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:176:5: [definite] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:183:16: [definite] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:229:22: [definite] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:249:4: [definite] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:263:3: [definite] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:48:17: [definite] Variable met is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:72:3: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:72:7: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:107:6: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:110:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:139:4: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:178:40: [definite] Variable met is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:185:44: [definite] Variable met is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:43:4: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:49:5: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:55:6: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:55:9: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:57:6: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:183:6: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:225:4: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:271:4: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:43: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1899: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1902: [definite] Variable o is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5975: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5978: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6421: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6936: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6939: [definite] Variable o is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6979: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7016: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7293: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7296: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7467: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7470: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7622: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7625: [definite] Variable o is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8560: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8563: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8670: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8673: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8754: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8757: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9066: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9069: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9285: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9288: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9595: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9599: [definite] Variable S is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9602: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9605: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9815: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9821: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9824: [definite] Variable o is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9949: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9955: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9958: [definite] Variable o is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10728: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10933: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:11228: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:11231: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:11235: [definite] Variable o is null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:7:17: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:7:18: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:190:2: [definite] Dead assignment, property setMethod is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:195:2: [definite] Dead assignment, property getMethod is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:206:2: [definite] Dead assignment, property setAssicrono is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:216:2: [definite] Dead assignment, property getAssicrono is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:220:2: [definite] Dead assignment, property isVezNull is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:67:5: [definite] Reading absent property limparTelaPrev
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:99:7: [definite] Dead assignment, property is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:108:7: [definite] Reading absent property limparTelaPrev
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:171:5: [definite] Reading absent property mudaAlpha
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:176:5: [definite] Reading absent property transparencia
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:183:16: [definite] Reading absent property hasCanvasPrev
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:229:22: [definite] Reading absent property getLiberado
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:249:4: [definite] Reading absent property limparTelaPrev
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:263:3: [definite] Reading absent property limparTelaPrev
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:276:2: [definite] Dead assignment, property getVelocidade1 is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:280:2: [definite] Dead assignment, property getVelocidade2 is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:284:2: [definite] Dead assignment, property getVelocidadeDireto is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:288:2: [definite] Dead assignment, property setVelocidades is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:294:2: [definite] Dead assignment, property setCursor is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:301:2: [definite] Dead assignment, property setAtualizar is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:305:2: [definite] Dead assignment, property setTempo is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:313:2: [definite] Dead assignment, property onTerminar is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:315:2: [definite] Dead assignment, property onPausar is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:43: [definite] Reading absent property all of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4230: [definite] Dead assignment, property h is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4436: [definite] Dead assignment, property w is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4647: [definite] Dead assignment, property w is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6982: [definite] Reading absent property layers of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10170: [definite] Dead assignment, property salvarPNG is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10255: [definite] Dead assignment, property salvarJPG is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10428: [definite] Dead assignment, property setSequencia is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10474: [definite] Dead assignment, property getCor is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10620: [definite] Dead assignment, property getUltimaAcao is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10933: [definite] Reading absent property all of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:7:18: [definite] Reading absent property all of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:146:2: [definite] Dead assignment, property onPausar is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:154:2: [definite] Dead assignment, property onTerminar is never read
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:28:3: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:32:4: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:36:5: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:75:8: [definite] The variable parametro is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:83:3: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:95:5: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:144:3: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:190:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:195:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:206:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:216:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:220:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:225:1: [definite] Unreachable function url_encode
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:11:1: [definite] The variable fracoes is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:27:6: [definite] The variable mudarTempoRef is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:28:6: [definite] The variable fracoesDesenho is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:30:6: [definite] The variable tempRodar is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:33:6: [definite] The variable declaration desenho shadows a parameter
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:69:5: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:109:7: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:147:9: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:172:17: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:177:5: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:182:2: [definite] The variable cx is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:182:2: [definite] The variable cy is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:183:6: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:192:8: [definite] The variable corDesenho is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:193:8: [definite] The variable bordaDesenho is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:194:8: [definite] The variable alphaDesenho is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:229:4: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:241:15: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:250:7: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:264:6: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:276:24: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:280:24: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:284:29: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:288:24: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:294:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:301:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:305:18: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:100: [definite] The variable p is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:655: [definite] Unreachable function C
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:717: [definite] The variable U is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6413: [definite] The variable P is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8613: [definite] The variable P is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10185: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10270: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10446: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10486: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10639: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10994: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:11041: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:7:5: [definite] The variable iexplorer is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:11:5: [definite] The variable des_cod is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:17:6: [definite] The variable jTop is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:17:12: [definite] The variable jLeft is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:49:1: [definite] Unreachable function alterarDimencao
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:82:6: [definite] The variable dados is never used
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:146:17: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:154:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:211:1: [definite] Unreachable function UTCTime
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:222:1: [definite] Unreachable function url_encode
+benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:164:52: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:169:52: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:72:7: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:107:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:79:13: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:80:14: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:137:6: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:141:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:144:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:160:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:166:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:224:4: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:226:10: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:262:3: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:141: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:141: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:749: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:858: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:904: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:921: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:938: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:955: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:972: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:986: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1243: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1296: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1411: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1559: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1608: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1771: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1783: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1839: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1851: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1973: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1990: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2009: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2059: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2109: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2159: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2209: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2413: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2432: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2449: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2464: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2622: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2641: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2658: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2673: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2810: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2827: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2846: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2896: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2946: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2996: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3046: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3225: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3277: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3329: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3381: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3549: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3601: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3653: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3705: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3852: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3870: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3915: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4063: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4081: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4126: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4274: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4292: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4337: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4485: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4503: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4548: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4775: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4798: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4822: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4911: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4943: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5092: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5136: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5168: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5308: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5352: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5384: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5528: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5572: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5604: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5750: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5794: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5826: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5890: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5923: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6163: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6197: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6207: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6256: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6304: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6371: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6424: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7352: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7371: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7526: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7569: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7590: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7913: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7941: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8004: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8041: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8083: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8120: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8290: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8318: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8449: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8477: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8809: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8838: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8905: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8941: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8953: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8993: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9019: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9159: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9173: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9190: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9204: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9209: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9221: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9235: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9247: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9375: [maybe] RangeError, invalid value of array length
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9409: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9414: [maybe] RangeError, invalid value of array length
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9448: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9460: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9478: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9518: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9529: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9556: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9567: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9656: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9677: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9696: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9720: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9732: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9749: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9841: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9841: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9902: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9910: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9980: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10001: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10020: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10044: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10044: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10065: [maybe] RangeError, invalid value of array length
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10099: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10104: [maybe] RangeError, invalid value of array length
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10138: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10146: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10541: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10734: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10773: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10885: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:11317: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:19:2: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:20:2: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:22:2: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:31:2: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:32:2: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:38:2: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:40:107: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:41:107: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:79:2: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:82:14: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:51: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:84: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:116: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:96:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:116:5: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:119:38: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:127:2: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:135:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:135:46: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:139:4: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:143:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:144:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:151:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:152:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:178:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:180:5: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:182:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:186:2: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:187:2: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:191:2: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:192:2: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:198:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:200:5: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:202:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:206:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:207:5: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:207:48: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:159:32: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:163:32: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:164:32: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:168:32: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:169:32: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:5: [maybe] Reading absent property desenhar
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:137:6: [maybe] Reading absent property retanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:141:5: [maybe] Reading absent property limparTela
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:144:5: [maybe] Reading absent property borracha
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:160:5: [maybe] Reading absent property mudaCor
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:166:5: [maybe] Reading absent property mudaBorda
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:224:4: [maybe] Reading absent property limparTela
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:226:10: [maybe] Reading absent property getSequencia
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:262:3: [maybe] Reading absent property liberar
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:141: [maybe] Reading absent property getContext of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1243: [maybe] Reading absent property gElipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1296: [maybe] Reading absent property gElipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3225: [maybe] Reading absent property gElipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3277: [maybe] Reading absent property gElipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3329: [maybe] Reading absent property gElipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3381: [maybe] Reading absent property gElipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3549: [maybe] Reading absent property gElipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3601: [maybe] Reading absent property gElipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3653: [maybe] Reading absent property gElipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3705: [maybe] Reading absent property gElipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4922: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4926: [maybe] Reading absent property y
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4943: [maybe] Reading absent property gRetanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4957: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4961: [maybe] Reading absent property y
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5168: [maybe] Reading absent property gRetanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5384: [maybe] Reading absent property gRetanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5604: [maybe] Reading absent property gRetanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5826: [maybe] Reading absent property gRetanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5978: [maybe] Reading absent property onCodigo
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6163: [maybe] Reading absent property balde
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6197: [maybe] Reading absent property mudaCor
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6224: [maybe] Reading absent property onSelCor
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6256: [maybe] Reading absent property onSelCor
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6304: [maybe] Reading absent property borracha
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6336: [maybe] Reading absent property onStartDraw
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6371: [maybe] Reading absent property onStartDraw
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6521: [maybe] Reading absent property scrollLeft of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6560: [maybe] Reading absent property scrollTop of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7052: [maybe] Reading absent property scrollLeft of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7099: [maybe] Reading absent property scrollTop of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7296: [maybe] Reading absent property onCodigo
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7352: [maybe] Reading absent property linha
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7371: [maybe] Reading absent property gLinha
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7470: [maybe] Reading absent property onCodigo
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7526: [maybe] Reading absent property borracha
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7590: [maybe] Reading absent property desenhar
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7913: [maybe] Reading absent property linha
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7941: [maybe] Reading absent property gLinha
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8004: [maybe] Reading absent property retanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8041: [maybe] Reading absent property gRetanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8083: [maybe] Reading absent property retanguloB
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8120: [maybe] Reading absent property gRetanguloB
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8290: [maybe] Reading absent property elipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8318: [maybe] Reading absent property gElipseF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8449: [maybe] Reading absent property elipseB
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8477: [maybe] Reading absent property gElipseB
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8563: [maybe] Reading absent property onCodigo
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8673: [maybe] Reading absent property onCodigo
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8757: [maybe] Reading absent property onCodigo
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8809: [maybe] Reading absent property desenhar
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9069: [maybe] Reading absent property onCodigo
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9288: [maybe] Reading absent property onCodigo
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9605: [maybe] Reading absent property onCodigo
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9696: [maybe] Reading absent property retanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10020: [maybe] Reading absent property retanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10885: [maybe] Reading absent property getContext of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:40:107: [maybe] Reading absent property getLargura of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:41:107: [maybe] Reading absent property getAltura
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:82:14: [maybe] Reading absent property getSequencia of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:51: [maybe] Reading absent property getSequencia
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:84: [maybe] Reading absent property getLargura
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:116: [maybe] Reading absent property getAltura
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:135:46: [maybe] Reading absent property getCorReal
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:182:5: [maybe] Reading absent property mudaOpcao of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:187:2: [maybe] Reading absent property desfazer of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:192:2: [maybe] Reading absent property limparTela of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:202:5: [maybe] Reading absent property mudaBorda of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:206:5: [maybe] Reading absent property mudaCor of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:207:48: [maybe] Reading absent property getCorReal
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:167:20: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:41:4: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:48:16: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:48:16: [maybe] The variable seq has values with different types
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:79:13: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:79:13: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:79:13: [maybe] The variable seq has values with different types
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:80:14: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:80:14: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:80:14: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:84:11: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:84:20: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:33: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:42: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:74: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:83: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:115: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:124: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:156: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:165: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:186: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:195: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:88:25: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:88:34: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:88:66: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:88:75: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:95:33: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:95:42: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:95:74: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:95:83: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:96:32: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:96:41: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:96:73: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:96:82: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:99:7: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:99:7: [maybe] The variable seq has values with different types
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:100:7: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:121:26: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:121:35: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:121:67: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:121:76: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:133:22: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:133:31: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:134:22: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:134:31: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:135:22: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:135:31: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:136:22: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:136:31: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:144:33: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:144:42: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:144:74: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:144:83: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:145:25: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:145:34: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:145:66: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:145:75: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:160:21: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:165:28: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:165:37: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:171:23: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:226:10: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:226:10: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:257:17: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:257:17: [maybe] The variable seq has values with different types
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:259:4: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:735: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:738: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:742: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:745: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:768: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:774: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:798: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:824: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:858: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:904: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:921: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:938: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:938: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:955: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:955: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:972: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:986: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1055: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1069: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1143: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1162: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1232: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1269: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1285: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1322: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1338: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1361: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1411: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1411: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1476: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1486: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1493: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1533: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1554: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1559: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1608: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1608: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1685: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1696: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1710: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1718: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1723: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1771: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1783: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1839: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1851: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1973: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1990: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2009: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2059: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2109: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2159: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2209: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2413: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2415: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2423: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2432: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2434: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2440: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2449: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2451: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2457: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2464: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2466: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2474: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2622: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2624: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2632: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2641: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2643: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2649: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2658: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2660: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2666: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2673: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2675: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2683: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2810: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2827: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2846: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2896: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2946: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2996: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3046: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3255: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3271: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3307: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3323: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3359: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3375: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3411: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3427: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3579: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3595: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3631: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3647: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3683: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3699: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3735: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3751: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3852: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3870: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3872: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3884: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3901: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3905: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3915: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3964: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3974: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4063: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4081: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4126: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4274: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4292: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4337: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4485: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4503: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4548: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4775: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4798: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4800: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4812: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4822: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4827: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4836: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4911: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4980: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4980: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4991: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5053: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5063: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5092: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5279: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5285: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5308: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5495: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5501: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5528: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5572: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5715: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5727: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5750: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5890: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5923: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6138: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6207: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6296: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6518: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6557: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7050: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7097: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7158: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7169: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7176: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7205: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7212: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7256: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7344: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7400: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7429: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7518: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7552: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7569: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8022: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8027: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8060: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8065: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8101: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8106: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8139: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8144: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8210: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8237: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8262: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8285: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8369: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8396: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8421: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8444: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8516: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8838: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8953: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9147: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9156: [maybe] The variable P has values with different types
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9173: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9204: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9221: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9247: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9448: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9518: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9529: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9556: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9567: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9580: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9587: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9656: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9732: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9749: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9902: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9910: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9921: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9921: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9980: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10138: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10146: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10541: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:11516: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:11516: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:38:35: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:31: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:88:15: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:88:15: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:90:6: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:92:19: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:92:40: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:178:11: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:178:17: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:198:11: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:198:21: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/index.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:72:7, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:107:9, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:67:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:79:13, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:80:14, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:87:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:108:7, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:137:6, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:141:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:144:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:160:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:166:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:171:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:176:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:183:16, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:224:4, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:226:10, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:229:22, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:249:4, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:262:3, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:263:3, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:141, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:749, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:858, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:904, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:921, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:938, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:955, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:972, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:986, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1243, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1296, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1411, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1559, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1608, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1771, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1783, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1839, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1851, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1973, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1990, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2009, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2059, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2109, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2159, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2209, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2413, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2432, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2449, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2464, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2622, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2641, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2658, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2673, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2810, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2827, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2846, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2896, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2946, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:2996, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3046, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3225, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3277, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3329, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3381, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3549, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3601, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3653, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3705, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3852, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3870, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3915, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4063, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4081, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4126, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4274, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4292, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4337, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4485, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4503, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4548, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4775, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4798, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4822, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4911, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4943, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5092, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5136, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5168, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5308, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5352, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5384, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5528, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5572, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5604, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5750, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5794, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5826, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5890, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5923, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6163, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6197, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6207, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6256, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6304, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6371, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6424, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7352, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7371, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7526, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7569, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7590, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7913, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7941, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8004, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8041, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8083, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8120, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8290, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8318, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8449, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8477, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8809, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8838, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8905, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8941, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8953, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8993, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9019, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9159, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9173, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9190, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9204, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9209, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9221, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9235, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9247, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9375, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9409, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9414, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9448, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9460, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9478, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9518, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9529, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9556, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9567, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9656, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9677, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9696, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9720, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9732, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9749, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9841, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9902, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9910, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9980, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10001, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10020, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10044, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10065, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10099, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10104, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10138, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10146, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10541, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10734, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10773, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10885, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:11317, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:19:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:20:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:22:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:31:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:32:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:38:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:40:107, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:41:107, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:79:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:82:14, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:51, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:84, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:116, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:96:3, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:116:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:119:38, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:127:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:135:3, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:135:46, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:143:3, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:144:3, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:151:3, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:152:3, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:178:9, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:180:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:182:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:186:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:187:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:191:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:192:2, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:198:9, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:200:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:202:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:206:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:207:5, benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:207:48, benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:159:32, benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:163:32, benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:164:32, benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:168:32, benchmarks/tajs/src/unevalizer/canvas-sketch/index.html:169:32]
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:135:46: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:135:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

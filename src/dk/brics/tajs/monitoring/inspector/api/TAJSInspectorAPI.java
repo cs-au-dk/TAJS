@@ -257,8 +257,8 @@ public class TAJSInspectorAPI implements InspectorAPI {
         }
         Map<BlockAndContext<Context>, Set<CallGraph.ReverseEdge<Context>>> callSources = c.getAnalysisLatticeElement().getCallGraph().getCallSources();
         BasicBlock entryBlock = label.getFunction().getEntry();
-        return c.getAnalysisLatticeElement().getStates(entryBlock).entrySet().stream()
-                .map(e -> new BlockAndContext<>(entryBlock, e.getKey()))
+        return c.getAnalysisLatticeElement().getStates(entryBlock).keySet().stream()
+                .map(state -> new BlockAndContext<>(entryBlock, state))
                 .map(callSources::get)
                 .flatMap(Set::stream)
                 .map(e -> mapper.makeDescribedLocation(e.getCallNode(), e.getCallerContext()))

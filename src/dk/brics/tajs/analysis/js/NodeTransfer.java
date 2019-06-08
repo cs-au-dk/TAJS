@@ -61,12 +61,15 @@ import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.FreeVariablePartitioning;
 import dk.brics.tajs.lattice.MustEquals;
 import dk.brics.tajs.lattice.ObjProperties;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.PKeys;
+import dk.brics.tajs.lattice.PartitionedValue;
+import dk.brics.tajs.lattice.PartitioningQualifier;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
@@ -259,10 +262,27 @@ public class NodeTransfer implements NodeVisitor {
      */
     @Override
     public void visit(BinaryOperatorNode n) {
-        Value arg1 = c.getState().readRegister(n.getArg1Register());
-        Value arg2 = c.getState().readRegister(n.getArg2Register());
-        arg1 = UnknownValueResolver.getRealValue(arg1, c.getState());
-        arg2 = UnknownValueResolver.getRealValue(arg2, c.getState());
+        Value arg1 = UnknownValueResolver.getRealValue(c.getState().readRegister(n.getArg1Register()), c.getState());
+        Value arg2 = UnknownValueResolver.getRealValue(c.getState().readRegister(n.getArg2Register()), c.getState());
+        Map<AbstractNode, Set<PartitioningQualifier>> partitioningQualifiers = Partitioning.getPartitionQualifiersForBinop(n, arg1, arg2);
+        Value v = partitioningQualifiers.isEmpty() ?
+                binop(n, arg1, arg2) :
+                PartitionedValue.make(partitioningQualifiers.entrySet().stream().collect(
+                        Collectors.toMap(Entry::getKey,
+                                e -> e.getValue().stream().collect(Collectors.toMap(q -> q, q ->
+                                        binop(n, PartitionedValue.getPartition(arg1, e.getKey(), q), PartitionedValue.getPartition(arg2, e.getKey(), q))
+                                )))));
+        if (v.isNotPresent() && !Options.get().isPropagateDeadFlow()) {
+            c.getState().setToBottom();
+            return;
+        }
+        if (n.getResultRegister() != AbstractNode.NO_VALUE) {
+            c.getState().writeRegister(n.getResultRegister(), v);
+            c.getState().getMustReachingDefs().addReachingDef(n.getResultRegister(), n);
+        }
+    }
+
+    private Value binop(BinaryOperatorNode n, Value arg1, Value arg2) {
         Value v;
         switch (n.getOperator()) {
             case ADD:
@@ -331,14 +351,7 @@ public class NodeTransfer implements NodeVisitor {
             default:
                 throw new AnalysisException();
         }
-        if (v.isNotPresent() && !Options.get().isPropagateDeadFlow()) {
-            c.getState().setToBottom();
-            return;
-        }
-        if (n.getResultRegister() != AbstractNode.NO_VALUE) {
-            c.getState().writeRegister(n.getResultRegister(), v);
-            c.getState().getMustReachingDefs().addReachingDef(n.getResultRegister(), n);
-        }
+        return v;
     }
 
     /**
@@ -359,6 +372,10 @@ public class NodeTransfer implements NodeVisitor {
             v = pv.readVariable(varname, base_objs);
             if (Options.get().isBlendedAnalysisEnabled()) {
                 v = c.getAnalysis().getBlendedAnalysis().getVariableValue(v, n, c.getState());
+            }
+            if (Options.get().isPropNamePartitioning()) {
+                // if varname is a free variable with partitioned value, then refine using the context
+                v = Partitioning.getVariableValueFromPartition(varname, v, c);
             }
             m.visitPropertyRead(n, base_objs, Value.makeTemporaryStr(varname), c.getState(), true);
             m.visitVariableAsRead(n, varname, v, c.getState());
@@ -407,7 +424,7 @@ public class NodeTransfer implements NodeVisitor {
         }
         m.visitPropertyWrite(n, objsDef.getFirst(), Value.makeTemporaryStr(n.getVariableName()));
         m.visitVariableOrProperty(n, n.getVariableName(), n.getSourceLocation(), v, c.getState().getContext(), c.getState());
-        if (objsDef.getSecond() && MustEquals.ALIAS_TRACKING)
+        if (objsDef.getSecond())
             c.getState().getMustEquals().addMustEquals(n.getValueRegister(), MustEquals.getSingleton(objsDef.getFirst()), StringPKey.make(n.getVariableName()));
     }
 
@@ -430,7 +447,7 @@ public class NodeTransfer implements NodeVisitor {
         if (filtering.assumeNotNullUndef(n.getBaseRegister()))
             return;
         if (!baseval.restrictToNotNullNotUndef().equals(Value.makeObject(objlabels)))
-            c.getState().writeRegister(n.getBaseRegister(), Value.makeObject(objlabels), true); // write coerced value back to the base register (maybe used by CallNode later)
+            c.getState().writeRegister(n.getBaseRegister(), Value.makeObject(objlabels).setFreeVariablePartitioning(baseval.getFreeVariablePartitioning()), true); // write coerced value back to the base register (maybe used by CallNode later)
         // get the property name value, separate the undefined/null/NaN components, coerce with ToString
         Value propertyval;
         if (n.isPropertyFixed()) {
@@ -454,37 +471,53 @@ public class NodeTransfer implements NodeVisitor {
         }
         // read the object property value, as fixed property name or unknown property name, and separately for "undefined"/"null"/"NaN"
         Value v;
-        boolean read_undefined = false;
-        boolean read_null = false;
-        boolean read_nan = false;
-        Set<ObjectLabel> base_objs = newSet();;
-        if (propertystr.isMaybeSingleStr()) {
+        boolean undefinedCovered = false;
+        boolean nullCovered = false;
+        boolean nanCovered = false;
+        Set<ObjectLabel> base_objs = newSet();
+        if (propertystr.isMaybeSingleStr()) { // fast-track for single-string property name
             String propertyname = propertystr.getStr();
             if (c.isScanning())
                 m.visitReadProperty(n, objlabels, propertystr, maybe_undef || maybe_null || maybe_nan, c.getState(), pv.readPropertyWithAttributes(objlabels, propertystr), InitialStateBuilder.GLOBAL);
             v = pv.readPropertyValue(objlabels, propertyname, base_objs);
             m.visitPropertyRead(n, objlabels, propertystr, c.getState(), true);
-        } else if (!propertystr.isNotStr() || propertystr.isMaybeSymbol()) {
-            if (c.isScanning())
-                m.visitReadProperty(n, objlabels, propertystr, true, c.getState(), pv.readPropertyWithAttributes(objlabels, propertystr), InitialStateBuilder.GLOBAL);
-            m.visitPropertyRead(n, objlabels, propertystr, c.getState(), true);
-            v = pv.readPropertyValue(objlabels, propertystr, base_objs);
-            read_undefined = propertystr.isMaybeStr("undefined");
-            read_null = propertystr.isMaybeStr("null");
-            read_nan = propertystr.isMaybeStr("NaN");
-        } else
-            v = Value.makeNone();
-        if (maybe_undef && !read_undefined) {
+        } else { // fuzzy property name
+            if (!propertystr.isNotStr() || propertystr.isMaybeSymbol()) {
+                if (c.isScanning())
+                    m.visitReadProperty(n, objlabels, propertystr, true, c.getState(), pv.readPropertyWithAttributes(objlabels, propertystr), InitialStateBuilder.GLOBAL);
+                m.visitPropertyRead(n, objlabels, propertystr, c.getState(), true);
+            }
+            if (!Options.get().isPropNamePartitioning() || !propertystr.isMaybeFuzzyStr() || propertystr.restrictToNotStrOtherNum().restrictToNotStrUInt().isNone()) {
+                // don't use value partitioning (if not enabled, if not fuzzy string, or if only numeric)
+                v = pv.readPropertyValue(objlabels, propertystr, base_objs);
+            } else { // potentially use value partitioning
+                Value propertystrall = propertystr;
+                if (maybe_undef) {
+                    propertystrall = propertystrall.joinStr("undefined");
+                    undefinedCovered = true;
+                }
+                if (maybe_null) {
+                    propertystrall = propertystrall.joinStr("null");
+                    nullCovered = true;
+                }
+                if (maybe_nan) {
+                    propertystrall = propertystrall.joinStr("NaN");
+                    nanCovered = true;
+                }
+                v = Partitioning.partitionPropValue(n, objlabels, originalPropertyVal, propertystrall, base_objs, c, filtering, pv);
+            }
+        }
+        if (maybe_undef && !undefinedCovered) {
             if (c.isScanning())
                 m.visitReadProperty(n, objlabels, Value.makeTemporaryStr("undefined"), true, c.getState(), pv.readPropertyWithAttributes(objlabels, propertystr), InitialStateBuilder.GLOBAL);
             v = UnknownValueResolver.join(v, pv.readPropertyValue(objlabels, "undefined"), c.getState());
         }
-        if (maybe_null && !read_null) {
+        if (maybe_null && !nullCovered) {
             if (c.isScanning())
                 m.visitReadProperty(n, objlabels, Value.makeTemporaryStr("null"), true, c.getState(), pv.readPropertyWithAttributes(objlabels, propertystr), InitialStateBuilder.GLOBAL);
             v = UnknownValueResolver.join(v, pv.readPropertyValue(objlabels, "null"), c.getState());
         }
-        if (maybe_nan && !read_nan) {
+        if (maybe_nan && !nanCovered) {
             if (c.isScanning())
                 m.visitReadProperty(n, objlabels, Value.makeTemporaryStr("NaN"), true, c.getState(), pv.readPropertyWithAttributes(objlabels, propertystr), InitialStateBuilder.GLOBAL);
             v = UnknownValueResolver.join(v, pv.readPropertyValue(objlabels, "NaN"), c.getState());
@@ -546,6 +579,7 @@ public class NodeTransfer implements NodeVisitor {
             if (v.isNone()) {
                 continue;
             }
+            Value originalPVal = pval;
             pval = pval.restrictToNotNullNotUndef().restrictToNotNaN().restrictToNotSymbol();
             Value propertystr = Conversion.toString(pval, c).join(Value.makeObject(symbols));
             if ((propertystr.isNone() && !maybe_undef && !maybe_null && !maybe_nan) && !Options.get().isPropagateDeadFlow()) { // TODO: maybe need more aborts like this one?
@@ -564,16 +598,23 @@ public class NodeTransfer implements NodeVisitor {
                 default:
                     throw new AnalysisException("Unexpected case: " + n.getKind());
             }
-            // write the object property value, and separately for "undefined"/"null"/"NaN"
-            Value finalV = v;
-            if (!propertystr.isNone())
-                pt.add(() -> pv.writeProperty(objlabels, propertystr, finalV, false, n.isDecl()));
-            if (maybe_undef && !propertystr.isMaybeStr("undefined"))
-                pt.add(() -> pv.writeProperty(objlabels, Value.makeTemporaryStr("undefined"), finalV, false, n.isDecl()));
-            if (maybe_null && !propertystr.isMaybeStr("null"))
-                pt.add(() -> pv.writeProperty(objlabels, Value.makeTemporaryStr("null"), finalV, false, n.isDecl()));
-            if (maybe_nan && !propertystr.isMaybeStr("NaN"))
-                pt.add(() -> pv.writeProperty(objlabels, Value.makeTemporaryStr("NaN"), finalV, false, n.isDecl()));
+            Value finalV = PartitionedValue.ignorePartitions(v);
+            if (!Partitioning.usePartitionedWriteProperty(propertystr, v)) { // not using value partitioning
+                // write the object property value, and separately for "undefined"/"null"/"NaN"
+                if (!propertystr.isNone())
+                    pt.add(() -> pv.writeProperty(objlabels, propertystr, finalV, false, n.isDecl()));
+                if (maybe_undef && !propertystr.isMaybeStr("undefined"))
+                    pt.add(() -> pv.writeProperty(objlabels, Value.makeTemporaryStr("undefined"), finalV, false, n.isDecl()));
+                if (maybe_null && !propertystr.isMaybeStr("null"))
+                    pt.add(() -> pv.writeProperty(objlabels, Value.makeTemporaryStr("null"), finalV, false, n.isDecl()));
+                if (maybe_nan && !propertystr.isMaybeStr("NaN"))
+                    pt.add(() -> pv.writeProperty(objlabels, Value.makeTemporaryStr("NaN"), finalV, false, n.isDecl()));
+            } else { // using value partitioning
+                Value propertystrall = propertystr;
+                if (maybe_undef || maybe_null || maybe_nan)
+                    propertystrall = Partitioning.joinUndefNullNaNStrings((PartitionedValue) originalPVal, (PartitionedValue) propertystr);
+                Partitioning.writePropertyWithPartitioning(pt, objlabels, propertystrall, v, n, c, pv);
+            }
             m.visitPropertyWrite(n, objlabels, propertystr); // TODO: more monitoring around here?
             if (Options.get().isEvalStatistics()
                     && propertystr.isMaybeSingleStr()
@@ -706,7 +747,8 @@ public class NodeTransfer implements NodeVisitor {
                 c.getState().setToBottom();
                 return;
             }
-            FunctionCalls.callFunction(new OrdinaryCallInfo(n, c) {
+            Value functionValue = UnknownValueResolver.getRealValue(Value.join(refinedFunctionValues), c.getState());
+            FunctionCalls.callFunction(new OrdinaryCallInfo(n, c, functionValue.getFreeVariablePartitioning()) {
 
                 @Override
                 public Value getFunctionValue() {
@@ -721,7 +763,7 @@ public class NodeTransfer implements NodeVisitor {
                                 throw new AnalysisException("Unhandled literal constructor type: " + n.getLiteralConstructorKind());
                         }
                     }
-                    return Value.join(refinedFunctionValues);
+                    return functionValue;
                 }
 
                 @Override
@@ -771,7 +813,7 @@ public class NodeTransfer implements NodeVisitor {
             propertyval = propertyval.restrictToNotNullNotUndef().restrictToNotNaN();
             PKeys propertystr = Conversion.toString(propertyval, c);
             // read the object property value, as fixed property name or unknown property name, and separately for "undefined"/"null"/"NaN"
-            Map<ObjectLabel, Set<ObjectLabel>> target2this = newMap();
+            Map<Pair<FreeVariablePartitioning, ObjectLabel>, Set<ObjectLabel>> target2this = newMap();
             List<Value> nonfunctions = newList();
             for (ObjectLabel objlabel : objlabels) { // find possible targets for each possible base object
                 Set<ObjectLabel> singleton = singleton(objlabel);
@@ -804,7 +846,7 @@ public class NodeTransfer implements NodeVisitor {
 
                 for (ObjectLabel target : v.getObjectLabels()) {
                     if (target.getKind() == Kind.FUNCTION) {
-                        addToMapSet(target2this, target, objlabel);
+                        addToMapSet(target2this, Pair.make(v.getFreeVariablePartitioning(), target), objlabel); // the single target function paired with the freeVariablePartitioning is associated with objlabel as 'this' value
                     } else {
                         nonfunctions.add(Value.makeObject(target));
                     }
@@ -814,10 +856,12 @@ public class NodeTransfer implements NodeVisitor {
                 }
             }
             // do calls to each target with the corresponding values of this
-            for (Entry<ObjectLabel, Set<ObjectLabel>> me : target2this.entrySet()) {
-                ObjectLabel target = me.getKey();
+            for (Entry<Pair<FreeVariablePartitioning, ObjectLabel>, Set<ObjectLabel>> me : target2this.entrySet()) {
+                FreeVariablePartitioning partitions = me.getKey().getFirst();
+                ObjectLabel target = me.getKey().getSecond();
                 Set<ObjectLabel> this_objs = me.getValue();
-                FunctionCalls.callFunction(new OrdinaryCallInfo(n, c) {
+                Value thisValue = Value.makeObject(this_objs).setFreeVariablePartitioning(baseval.getFreeVariablePartitioning());
+                FunctionCalls.callFunction(new OrdinaryCallInfo(n, c, partitions) {
 
                     @Override
                     public Value getFunctionValue() {
@@ -826,7 +870,7 @@ public class NodeTransfer implements NodeVisitor {
 
                     @Override
                     public Value getThis() {
-                        return Value.makeObject(this_objs);
+                        return thisValue;
                     }
 
                     @Override

@@ -1,8 +1,8 @@
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js)
-    node 1: vardecl['x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:1:5)
-    node 2: vardecl['y']* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:2:5)
+    node 1: vardecl['x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:1:5)
+    node 2: vardecl['y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:2:5)
     ->[block 1]
   block 1:
     node 3: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -20,13 +20,13 @@ fg2: <main> function()
     node 9: write-property[v5,'x',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:1:10)
     node 10: constant[2.0,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:1:16)
     node 11: write-property[v5,'y',v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:1:14)
-    node 12: write-variable[v5,'x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:1:5)
+    node 12: write-variable[v5,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:1:5)
     node 13: new[v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:2:9)
-    node 14: write-variable[v8,'y']* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:2:5)
+    node 14: write-variable[v8,'y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:2:5)
     node 15: read-variable['y',v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:3:17)
     ->[block 5]
   block 5:
-    node 16: call[TAJS_dumpObject,v11,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:3:1)
+    node 16: call[TAJS_dumpObject,v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:3:1)
     ->[block 6]
   block 6:
     node 17: read-variable['x',v12,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:11)
@@ -40,32 +40,32 @@ fg2: <main> function()
     ->[block 9,block 13] ~>[block 11]
   block 9:
     node 21: next-property[v13,v15] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:6)
-    node 22: write-variable[v15,'p']* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:6)
+    node 22: write-variable[v15,'p'] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:6)
     node 23: read-variable['y',v17,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:2)
     node 24: read-variable['p',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:4)
     node 25: read-variable['x',v19,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:9)
     node 26: read-variable['p',v20,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:11)
     node 27: read-property[v19,v20,v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:9)
-    node 28: write-property[v17,v18,v16]* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:2)
+    node 28: write-property[v17,v18,v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:6:2)
     node 29: read-variable['y',v23,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:7:18)
     ->[block 10] ~>[block 11]
   block 10:
-    node 30: call[TAJS_dumpObject,v23,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:7:2)
+    node 30: call[TAJS_dumpObject,v23,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:7:2)
     ->[block 12] ~>[block 11]
   block 11:
-    node 31: end-for-in(begin-node:18)* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
+    node 31: end-for-in(begin-node:18) (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
     ->[block 17]
   block 12:
-    node 32: end-for-in(begin-node:18)* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
+    node 32: end-for-in(begin-node:18) (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
     ->[block 7]
   block 13:
-    node 33: end-for-in(begin-node:18)* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
+    node 33: end-for-in(begin-node:18) (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:5:1)
     ->[block 14]
   block 14:
     node 34: read-variable['y',v26,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:10:17)
     ->[block 15]
   block 15:
-    node 35: call[TAJS_dumpObject,v26,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:10:1)
+    node 35: call[TAJS_dumpObject,v26,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js:10:1)
     ->[block 16]
   block 16: [exit-ordinary]
     node 36: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0187.js)

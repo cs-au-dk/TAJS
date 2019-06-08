@@ -21,6 +21,9 @@ package dk.brics.tajs.monitoring;
 */
 public enum AnalysisPhase {
 
+    // preprocessing source files
+    PREPROCESSING,
+
     // loading of the initial files, and setup of initial state
     INITIALIZATION,
 

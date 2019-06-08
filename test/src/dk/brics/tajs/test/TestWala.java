@@ -119,7 +119,7 @@ public class TestWala {
     }
 
     @Test
-    public void wala_upward() throws Exception {
+    public void wala_upward() throws Exception { // assertion fails if value partitioning is enabled (precision loss due to call to writePropertyWithAttributes in Partitioning.getInstantiatedFunctions)
         String[] args = {"test-resources/src/wala/upward.js"};
         Misc.run(args);
         Misc.checkSystemOutput();

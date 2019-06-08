@@ -27,6 +27,7 @@ import dk.brics.tajs.analysis.signatures.types.Signature;
 import dk.brics.tajs.analysis.signatures.types.ValueDescription;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.ExecutionContext;
+import dk.brics.tajs.lattice.FreeVariablePartitioning;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
@@ -371,6 +372,11 @@ public class NativeFunctionSignatureChecker {
                 @Override
                 public boolean assumeFunction() {
                     return false;
+                }
+
+                @Override
+                public FreeVariablePartitioning getFreeVariablePartitioning() {
+                    return null;
                 }
             }, c);
         }

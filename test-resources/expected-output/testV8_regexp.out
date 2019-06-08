@@ -28,4 +28,4 @@ test-resources/src/v8tests/regexp.js:240:24: [maybe] Converting primitive string
 test-resources/src/v8tests/regexp.js:241:25: [maybe] Converting primitive string to object
 test-resources/src/v8tests/regexp.js:242:22: [maybe] Converting primitive string to object
 test-resources/src/v8tests/regexp.js:243:23: [maybe] Converting primitive string to object
-Soundness testing succeeded for 1490 checks (with 9 expected failures)
+Soundness testing succeeded for 1490 checks (with 6 expected failures)

@@ -1,0 +1,21 @@
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:6:1: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:6:6: [definite] Property is null/undefined
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:30:3: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:30:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:9:5: [definite] Dead assignment, property boomerang_enable_bandwidth_test is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:10:5: [definite] Dead assignment, property boomerang_action_probability_word/view is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:11:5: [definite] Dead assignment, property boomerang_action_probability_explore/index is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:12:5: [definite] Dead assignment, property boomerang_action_probability_solr/documents is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:13:5: [definite] Dead assignment, property boomerang_action_probability_login/login is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:14:5: [definite] Dead assignment, property boomerang_action_probability_home/index is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:15:5: [definite] Dead assignment, property boomerang_send_to_ga is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:16:5: [definite] Dead assignment, property boomerang_logging_enabled is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:17:5: [definite] Dead assignment, property boomerang_action_probability_people/view is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:18:5: [definite] Dead assignment, property boomerang_action_probability_word/show is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:19:5: [definite] Dead assignment, property boomerang_default_probability is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:20:5: [definite] Dead assignment, property boomerang_action_probability_upload/upload_new is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:21:5: [definite] Dead assignment, property boomerang_action_probability_user_document_collections/show is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:25:5: [definite] Dead assignment, property boomerang_send_to_scribd is never read
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html: [definite] Exceptional program exit is unreachable
+benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:29:25: [definite] The variable default_value is never used
+Soundness testing succeeded for 43 checks (with 0 expected failures)

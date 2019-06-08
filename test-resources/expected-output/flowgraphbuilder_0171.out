@@ -20,11 +20,11 @@ fg2: <main> function()
     node 7: call[v6,v7,v8,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:1:9)
     ->[block 6]
   block 6:
-    node 8: write-variable[v5,'wt_va']* (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:1:1)
+    node 8: write-variable[v5,'wt_va'] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:1:1)
     ->[block 7]
   block 7:
     node 9: constant[0.0,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:10)
-    node 10: write-variable[v9,'i']* (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:6)
+    node 10: write-variable[v9,'i'] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:6)
     ->[block 8]
   block 8:
     node 11: read-variable['i',v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:13)
@@ -34,7 +34,7 @@ fg2: <main> function()
     node 15: begin-loop[v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:36)
     ->[block 9] ~>[block 13]
   block 9:
-    node 16: if[v10](true-block:10,false-block:14)* (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:13)
+    node 16: if[v10](true-block:10,false-block:14) (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:13)
     ->[block 10,block 14] ~>[block 13]
   block 10:
     node 17: read-variable['eval',v15,v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:3:5)
@@ -45,20 +45,20 @@ fg2: <main> function()
     node 22: +[v17,v18,v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:3:10)
     ->[block 11] ~>[block 13]
   block 11:
-    node 23: call[v14,v15,v16,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:3:5)
+    node 23: call[v14,v15,v16,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:3:5)
     ->[block 12] ~>[block 13]
   block 12:
     node 24: read-variable['i',v21,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:31)
     node 25: +[v21,v22] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:31)
     node 26: constant[1.0,v23] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:31)
     node 27: +[v22,v23,v24] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:31)
-    node 28: write-variable[v24,'i']* (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:31)
+    node 28: write-variable[v24,'i'] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:31)
     ->[block 8] ~>[block 13]
   block 13:
-    node 29: end-loop[v10]* (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:13)
+    node 29: end-loop[v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:13)
     ->[block 16]
   block 14:
-    node 30: end-loop[v10]* (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:13)
+    node 30: end-loop[v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js:2:13)
     ->[block 15]
   block 15: [exit-ordinary]
     node 31: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0171.js)

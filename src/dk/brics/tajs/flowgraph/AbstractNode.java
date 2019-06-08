@@ -70,11 +70,6 @@ public abstract class AbstractNode implements Cloneable, Serializable {
     private AbstractNode duplicate_of;
 
     /**
-     * If set, all ordinary registers can be considered dead after this node.
-     */
-    private boolean registers_done;
-
-    /**
      * Basic block used for implicit calls.
      */
     private BasicBlock implicitAfterCall;
@@ -194,24 +189,6 @@ public abstract class AbstractNode implements Cloneable, Serializable {
      */
     public void check(BasicBlock b) { // TODO: override check() for more node classes?
         // do nothing
-    }
-
-    /**
-     * Returns the registers done flag.
-     *
-     * @return true if all ordinary registers can be considered dead at the end of this block
-     */
-    public boolean isRegistersDone() {
-        return registers_done;
-    }
-
-    /**
-     * Sets the registers done flag.
-     *
-     * @param registers_done true if all ordinary registers can be considered dead at the end of this block
-     */
-    public void setRegistersDone(boolean registers_done) {
-        this.registers_done = registers_done;
     }
 
     /**

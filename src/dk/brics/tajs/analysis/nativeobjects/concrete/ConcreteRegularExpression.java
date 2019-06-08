@@ -16,6 +16,8 @@
 
 package dk.brics.tajs.analysis.nativeobjects.concrete;
 
+import java.util.Objects;
+
 public class ConcreteRegularExpression implements ConcreteValue {
 
     private final ConcreteString source;
@@ -73,11 +75,11 @@ public class ConcreteRegularExpression implements ConcreteValue {
 
         ConcreteRegularExpression that = (ConcreteRegularExpression) o;
 
-        if (source != null ? !source.equals(that.source) : that.source != null) return false;
-        if (global != null ? !global.equals(that.global) : that.global != null) return false;
-        if (ignoreCase != null ? !ignoreCase.equals(that.ignoreCase) : that.ignoreCase != null) return false;
-        if (multiline != null ? !multiline.equals(that.multiline) : that.multiline != null) return false;
-        return lastIndex != null ? lastIndex.equals(that.lastIndex) : that.lastIndex == null;
+        if (!Objects.equals(source, that.source)) return false;
+        if (!Objects.equals(global, that.global)) return false;
+        if (!Objects.equals(ignoreCase, that.ignoreCase)) return false;
+        if (!Objects.equals(multiline, that.multiline)) return false;
+        return Objects.equals(lastIndex, that.lastIndex);
     }
 
     @Override

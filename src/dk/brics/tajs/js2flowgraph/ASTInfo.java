@@ -51,6 +51,7 @@ import dk.brics.tajs.util.Collectors;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.Stack;
@@ -359,7 +360,7 @@ public class ASTInfo {
 
             LoopTree loopTree = (LoopTree) o;
 
-            return tree != null ? tree.equals(loopTree.tree) : loopTree.tree == null;
+            return Objects.equals(tree, loopTree.tree);
         }
 
         @Override
@@ -390,7 +391,7 @@ public class ASTInfo {
 
             LiteralTree that = (LiteralTree) o;
 
-            return tree != null ? tree.equals(that.tree) : that.tree == null;
+            return Objects.equals(tree, that.tree);
         }
 
         @Override
@@ -430,7 +431,7 @@ public class ASTInfo {
 
             ConditionTree that = (ConditionTree) o;
 
-            return tree != null ? tree.equals(that.tree) : that.tree == null;
+            return Objects.equals(tree, that.tree);
         }
 
         @Override

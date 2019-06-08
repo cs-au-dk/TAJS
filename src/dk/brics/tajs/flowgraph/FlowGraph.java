@@ -29,6 +29,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
@@ -296,6 +297,7 @@ public class FlowGraph {
         this.rawSyntacticInformation.getConditionRefinedArgumentVariables().putAll(rawSyntacticInformation.getConditionRefinedArgumentVariables());
         this.rawSyntacticInformation.getStackVariables().putAll(rawSyntacticInformation.getStackVariables());
         this.rawSyntacticInformation.getFunctionClosureVariables().putAll(rawSyntacticInformation.getFunctionClosureVariables());
+        this.rawSyntacticInformation.getFunctionClosureVariablesTransitively().putAll(rawSyntacticInformation.getFunctionClosureVariablesTransitively());
         this.rawSyntacticInformation.getFunctionsWithThisReference().addAll(rawSyntacticInformation.getFunctionsWithThisReference());
 
         this.valueLogLocationInformation.getDeclaredAccessorAllocationSites().addAll(valueLogLocationInformation.getDeclaredAccessorAllocationSites());
@@ -366,11 +368,11 @@ public class FlowGraph {
 
             FunctionDynamicSourceCacheKey that = (FunctionDynamicSourceCacheKey) o;
 
-            if (location != null ? !location.equals(that.location) : that.location != null)
+            if (!Objects.equals(location, that.location))
                 return false;
-            if (parameterNames != null ? !parameterNames.equals(that.parameterNames) : that.parameterNames != null)
+            if (!Objects.equals(parameterNames, that.parameterNames))
                 return false;
-            return source != null ? source.equals(that.source) : that.source == null;
+            return Objects.equals(source, that.source);
         }
 
         @Override
@@ -403,8 +405,8 @@ public class FlowGraph {
 
             FunctionFileSourceCacheKey that = (FunctionFileSourceCacheKey) o;
 
-            if (file != null ? !file.equals(that.file) : that.file != null) return false;
-            return parameterNames != null ? parameterNames.equals(that.parameterNames) : that.parameterNames == null;
+            if (!Objects.equals(file, that.file)) return false;
+            return Objects.equals(parameterNames, that.parameterNames);
         }
 
         @Override

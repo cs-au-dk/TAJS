@@ -81,6 +81,6 @@ public class ReadVariableNode extends LoadNode {
     @Override
     public void check(BasicBlock b) {
         if (varname == null)
-            throw new AnalysisException("Null variable name: " + toString());
+            throw new AnalysisException("Null variable name: " + this);
     }
 }

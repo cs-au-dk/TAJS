@@ -67,6 +67,15 @@ public class Collections {
     }
 
     /**
+     * Constructs a new map with the element key -> value.
+     */
+    public static <T1, T2> Map<T1, T2> mapOf(T1 key, T2 value) {
+        Map<T1, T2> map = newMap();
+        map.put(key, value);
+        return map;
+    }
+
+    /**
      * Adds an element to a map of maps. Creates a new map for the key if it does not already exist.
      */
     public static <T1, T2, T3> void addToMapMap(Map<T1, Map<T2, T3>> map, T1 key1, T2 key2, T3 value) {

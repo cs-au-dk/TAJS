@@ -30,7 +30,7 @@ fg2: <main> function()
   block 7:
     node 14: *[v7,v8,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:1:6)
     node 15: +[v5,v6,v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:1:1)
-    node 16: write-variable[v13,'u']* (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:1:1)
+    node 16: write-variable[v13,'u'] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:1:1)
     node 17: read-variable['v',v14,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:2:1)
     node 18: read-variable['k',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:2:6)
     node 19: read-property[v18,'y',v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:2:6)
@@ -48,9 +48,9 @@ fg2: <main> function()
   block 10:
     node 26: *[v16,v17,v15] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:2:6)
     node 27: +[v14,v15,v22] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:2:1)
-    node 28: write-variable[v22,'v']* (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:2:1)
+    node 28: write-variable[v22,'v'] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:2:1)
     node 29: constant[false,v23] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:3:5)
-    node 30: write-variable[v23,'c']* (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:3:1)
+    node 30: write-variable[v23,'c'] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js:3:1)
     ->[block 11]
   block 11: [exit-ordinary]
     node 31: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0207.js)

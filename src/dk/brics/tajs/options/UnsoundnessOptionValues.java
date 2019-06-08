@@ -86,6 +86,9 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
     @Option(name = "-no-exceptions", usage = "Disable implicit exception flow")
     private boolean noExceptions;
 
+    @Option(name = "-ignore-undefined-partitions", usage = "Ignore value partitions that are definitely 'undefined' at property writes and function expressions")
+    private boolean ignoreUndefinedPartitions;
+
     public UnsoundnessOptionValues(UnsoundnessOptionValues base, String[] args) {
         if (base != null) {
             OptionsUtil.cloneAllFields(base, this);
@@ -124,6 +127,7 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
         if (ignoreUnlikelyUndefinedAsFirstArgumentToAddition != that.ignoreUnlikelyUndefinedAsFirstArgumentToAddition) return false;
         if (assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber != that.assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber) return false;
         if (noExceptions != that.noExceptions) return false;
+        if (ignoreUndefinedPartitions != that.ignoreUndefinedPartitions) return false;
         return true;
     }
 
@@ -146,6 +150,7 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
         result = 31 * result + (assumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber ? 1 : 0);
         result = 31 * result + (noExceptions ? 1 : 0);
         result = 31 * result + (ignoreEventsAfterExceptions ? 1 : 0);
+        result = 31 * result + (ignoreUndefinedPartitions ? 1 : 0);
         return result;
     }
 
@@ -315,5 +320,13 @@ public class UnsoundnessOptionValues { // NOTE: only booleans allowed here
 
     public void setNoExceptions(boolean noExceptions) {
         this.noExceptions = noExceptions;
+    }
+
+    public boolean isIgnoreUndefinedPartitions() {
+        return ignoreUndefinedPartitions;
+    }
+
+    public void setIgnoreUndefinedPartitions(boolean ignoreUndefinedPartitions) {
+        this.ignoreUndefinedPartitions = ignoreUndefinedPartitions;
     }
 }

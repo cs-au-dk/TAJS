@@ -89,9 +89,9 @@ public class DeclareFunctionNode extends LoadNode {
     @Override
     public void check(BasicBlock b) {
         if (f == null)
-            throw new AnalysisException("Declare function node with null function: " + toString());
+            throw new AnalysisException("Declare function node with null function: " + this);
         if (!expression && getResultRegister() != NO_VALUE)
-            throw new AnalysisException("Declare function node with nonsense result register: " + toString());
+            throw new AnalysisException("Declare function node with nonsense result register: " + this);
     }
 
     public void setDomEventType(EventType domEventType) {

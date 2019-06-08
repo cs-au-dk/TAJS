@@ -25,7 +25,25 @@ Abstract state:
     @replace#fun4 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node47],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node34],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+    v2="tajs-host-env:string-replace-model.js"
+    v3=true
+    v4=[@<anonymous>#fun3]
+    v5=[@<anonymous>#fun1]
+    v6=[@Object#node11]
+    v7=[@<anonymous>#fun1]
+    v8=7.0
+    v11=8.0
+    v13=[@Object#node11]
   MustReachingDefs: 
     v1: node 0 (test-resources/src/micro/test141.js)
+    v2: node 3 (host-environment-sources-loader)
+    v3: node 4 (host-environment-sources-loader)
+    v4: node 5 (host-environment-sources-loader)
+    v5: node 7 (test-resources/src/micro/test141.js:1:9)
+    v7: node 9 (test-resources/src/micro/test141.js:5:13)
+    v8: node 10 (test-resources/src/micro/test141.js:5:15)
+    v6: node 11 (test-resources/src/micro/test141.js:5:9)
+    v13: node 13 (test-resources/src/micro/test141.js:7:16)
+    v11: node 15 (test-resources/src/micro/test141.js:7:16)
   Functions in stack: []
 Soundness testing succeeded for 22 checks (with 0 expected failures)

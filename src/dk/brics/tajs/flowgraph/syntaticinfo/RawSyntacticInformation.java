@@ -26,6 +26,8 @@ import dk.brics.tajs.util.AnalysisException;
 import java.util.Map;
 import java.util.Set;
 
+import static dk.brics.tajs.util.Collections.addAllToMapSet;
+import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
@@ -60,6 +62,8 @@ public class RawSyntacticInformation {
 
     private final Set<Function> functionsWithThisReference;
 
+    private final Map<Function, Set<String>> functionClosureVariablesTransitively;
+
     public RawSyntacticInformation() {
         this.variableDependencies = newMap();
         this.correlatedAccessFunctions = newSet();
@@ -74,6 +78,7 @@ public class RawSyntacticInformation {
         this.stackVariables = newMap();
         this.functionClosureVariables = newMap();
         this.functionsWithThisReference = newSet();
+        this.functionClosureVariablesTransitively = newMap();
     }
 
     public Map<AbstractNode, Set<String>> getVariableDependencies() {
@@ -126,6 +131,32 @@ public class RawSyntacticInformation {
 
     public Set<Function> getFunctionsWithThisReference() {
         return functionsWithThisReference;
+    }
+
+    public Map<Function, Set<String>> getFunctionClosureVariablesTransitively() {
+        return functionClosureVariablesTransitively;
+    }
+
+    /**
+     * Registers that fun has the given closure variables.
+     */
+    public void registerFunctionClosureVariables(Function fun, Set<String> varnames) {
+        if (varnames == null) {
+            return;
+        }
+        functionClosureVariables.put(fun, varnames);
+        for (String varname : varnames) {
+            Function currentFunction = fun;
+
+            Map<Function, Set<String>> resForVarname = newMap();
+            while (!(currentFunction == null || currentFunction.getVariableNames().contains(varname) || currentFunction.getParameterNames().contains(varname))) {
+                addToMapSet(resForVarname, currentFunction, varname);
+                currentFunction = currentFunction.getOuterFunction();
+            }
+            if (currentFunction != null) {
+                resForVarname.entrySet().forEach(e -> addAllToMapSet(functionClosureVariablesTransitively, e.getKey(), e.getValue()));
+            }
+        }
     }
 
     public SyntacticQueries getQueryView() {
@@ -193,6 +224,11 @@ public class RawSyntacticInformation {
         @Override
         public boolean isFunctionWithThisReference(Function function) {
             return functionsWithThisReference.contains(function);
+        }
+
+        @Override
+        public Set<String> getClosureVariableNamesTransitively(Function function) {
+            return functionClosureVariablesTransitively.getOrDefault(function, newSet());
         }
     }
 }

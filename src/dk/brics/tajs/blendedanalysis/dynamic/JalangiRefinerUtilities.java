@@ -51,6 +51,7 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.soundness.LogFileHelper;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 import org.apache.log4j.Logger;
 
@@ -62,7 +63,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static dk.brics.tajs.monitoring.soundness.ValueLoggerSourceLocationMapper.makeTAJSSourceLocation;
@@ -226,9 +226,9 @@ public class JalangiRefinerUtilities {
                         Set<ObjectLabel> filteredObjectLabels = objectLabels.stream()
                                 .filter(objLabel -> {
                                     if (flowGraph.isHostEnvironmentSource(objLabel.getSourceLocation()) // isHostEnvironmentSource
-                                        || objLabel.isHostObject() && !registeredHostObjects.contains(objLabel.getHostObject()) // isHostObjectNotKnownByJalangi
-                                        || objLabel.getSourceLocation().getLoaderLocation() != null // definedInDynamicCode
-                                            ) {
+                                            || objLabel.isHostObject() && !registeredHostObjects.contains(objLabel.getHostObject()) // isHostObjectNotKnownByJalangi
+                                            || objLabel.getSourceLocation().getLoaderLocation() != null // definedInDynamicCode
+                                    ) {
                                         // The origin of the object in Jalangi and TAJS are uncomparable
                                         return true;
                                     }

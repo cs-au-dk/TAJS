@@ -81,12 +81,19 @@ public final class Context implements IContext<Context>, DeepImmutable {
      */
     private final Map<Qualifier, Value> extraAllocationContexts;
 
-    public interface Qualifier {};
+    public interface Qualifier {}
 
      /**
      * Loop unrolling, null if empty or not used.
      */
     private final Map<BeginLoopNode, Integer> loopUnrolling;
+
+    /**
+     * Partitioning information for free variables, null if empty or not used.
+     * If freeVariablePartitioning, for example, maps x to {(partitioning-node, pkey), ...},
+     * then it is safe to ignore partitions of x that are not in that set, for any choice of partitioning node.
+     */
+    private final FreeVariablePartitioning freeVariablePartitioning;
 
     /**
      * Context information at the function entry, or null if none.
@@ -101,7 +108,8 @@ public final class Context implements IContext<Context>, DeepImmutable {
     private Context(Value thisval, Map<Integer, Value> specialRegs,
                     Context contextAtEntry, Map<Qualifier, Value> extraAllocationContexts,
                     Map<BeginLoopNode, Integer> loopUnrolling,
-                    Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> freeVariables) {
+                    Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> freeVariables,
+                    FreeVariablePartitioning freeVariablePartitioning) {
         // ensure canonical representation of empty maps
         if (specialRegs != null && specialRegs.isEmpty())
             specialRegs = null;
@@ -127,6 +135,7 @@ public final class Context implements IContext<Context>, DeepImmutable {
         List<String> relevantParameterNames = parameterNames != null ? parameterNames.subList(0, arguments == null ? 0 : Math.min(parameterNames.size(), arguments.size())) : null; // TODO: review
         this.parameterNames = relevantParameterNames == null || relevantParameterNames.isEmpty() ? null : parameterNames;
         this.freeVariables = freeVariables == null || freeVariables.isEmpty() ? null : freeVariables;
+        this.freeVariablePartitioning = freeVariablePartitioning;
         if (Options.get().isDebugOrTestEnabled()) {
             if ((this.arguments != null && this.arguments.stream().anyMatch(a -> a != null && a.isPolymorphicOrUnknown())) ||
                     (this.freeVariables != null && this.freeVariables.values().stream().anyMatch(a -> a != null && a.isPolymorphicOrUnknown()))) {
@@ -142,42 +151,43 @@ public final class Context implements IContext<Context>, DeepImmutable {
         hashcode = 31 * hashcode + (freeVariables != null ? freeVariables.hashCode() : 0);
         hashcode = 31 * hashcode + (parameterNames != null ? parameterNames.hashCode() : 0);
         hashcode = 31 * hashcode + (arguments != null ? arguments.hashCode() : 0);
+        hashcode = 31 * hashcode + (freeVariablePartitioning != null ? freeVariablePartitioning.hashCode() : 0);
         this.hashcode = hashcode;
     }
 
     public static Context make(Value thisval, Map<Integer, Value> specialRegs,
                                Context contextAtEntry, Map<Qualifier, Value> extraAllocationContexts,
                                Map<BeginLoopNode, Integer> loopUnrolling,
-                               Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> freeVariables) {
+                               Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> freeVariables, FreeVariablePartitioning partitionings) {
         return Canonicalizer.get().canonicalize(new Context(thisval, specialRegs, contextAtEntry,
-                extraAllocationContexts, loopUnrolling, unknownArg, parameterNames, arguments, freeVariables));
+                extraAllocationContexts, loopUnrolling, unknownArg, parameterNames, arguments, freeVariables, partitionings));
     }
 
     public static Context make(Value unknownArg, List<String> parameterNames, List<Value> arguments, Map<String, Value> freeVariables) {
-        return make(null, null, null, null, null, unknownArg, parameterNames, arguments, freeVariables);
+        return make(null, null, null, null, null, unknownArg, parameterNames, arguments, freeVariables, null);
     }
 
-    public static Context makeThisVal(Value thisval) {
-        return make(thisval, null, null, null, null, null, null, null, null);
+    public static Context makeThisVal(Value thisval, FreeVariablePartitioning partitionings) {
+        return make(thisval, null, null, null, null, null, null, null, null, partitionings);
     }
 
     public static Context makeFreeVars(Map<String, Value> freeVariables) {
-        return make(null, null, null, null, null, null, null, null, freeVariables);
+        return make(null, null, null, null, null, null, null, null, freeVariables, null);
     }
 
     public static Context makeQualifiers(Map<Qualifier, Value> extraAllocationContexts) {
-        return make(null, null, null, extraAllocationContexts, null, null, null, null, null);
+        return make(null, null, null, extraAllocationContexts, null, null, null, null, null, null);
     }
 
     public static Context makeEmpty() {
-        return make(null, null, null, null, null, null, null, null, null);
+        return make(null, null, null, null, null, null, null, null, null, null);
     }
 
     /**
      * Constructs a copy of this context with the given loop unrolling.
      */
     public Context copyWithLoopUnrolling(Map<BeginLoopNode, Integer> loopUnrolling) {
-        return make(thisval, specialRegs, contextAtEntry, extraAllocationContexts, loopUnrolling, unknownArg, parameterNames, arguments, freeVariables);
+        return make(thisval, specialRegs, contextAtEntry, extraAllocationContexts, loopUnrolling, unknownArg, parameterNames, arguments, freeVariables, freeVariablePartitioning);
     }
 
     /**
@@ -250,6 +260,13 @@ public final class Context implements IContext<Context>, DeepImmutable {
         return contextAtEntry;
     }
 
+    /**
+     * Returns the freeVariablePartitioning, or null if empty or not used.
+     */
+    public FreeVariablePartitioning getFreeVariablePartitioning() {
+        return freeVariablePartitioning;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (!Canonicalizer.get().isCanonicalizing())
@@ -267,7 +284,8 @@ public final class Context implements IContext<Context>, DeepImmutable {
                 Objects.equals(unknownArg, c.unknownArg) &&
                 Objects.equals(freeVariables, c.freeVariables) &&
                 Objects.equals(parameterNames, c.parameterNames) &&
-                Objects.equals(arguments, c.arguments);
+                Objects.equals(arguments, c.arguments) &&
+                Objects.equals(freeVariablePartitioning, c.freeVariablePartitioning);
     }
 
     @Override
@@ -321,6 +339,12 @@ public final class Context implements IContext<Context>, DeepImmutable {
             if (any)
                 s.append(", ");
             s.append(t);
+            any = true;
+        }
+        if (freeVariablePartitioning != null) {
+            if (any)
+                s.append(", ");
+            s.append(freeVariablePartitioning);
 //            any = true;
         }
         return s.toString();

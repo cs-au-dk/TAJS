@@ -555,4 +555,175 @@ public class TestUneval {
                 "f();"
         );
     }
+
+    @Test
+    public void bertsbreakdown() { // uneval paper: 1 eval call site, fails
+        Options.get().getSoundnessTesterOptions().setTest(false); // FIXME: jalangilogger produces log with wrong source locations?!
+        Misc.run("benchmarks/tajs/src/unevalizer/berts-breakdown/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void bildde() { // uneval paper: 1 eval call site, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/bild.de-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void bildde2() { // uneval paper: 1 eval call site, fails
+        Misc.run("benchmarks/tajs/src/unevalizer/bild.de-slice/index-2.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class) // TODO: ???
+    public void canvascycle() { // uneval paper: 1 eval call site, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/canvas-cycle/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void canvassketch() { // uneval paper: 1 eval call site, succeeds
+        Options.get().getSoundnessTesterOptions().setTest(false); // FIXME: jalangilogger fails
+        Misc.run("benchmarks/tajs/src/unevalizer/canvas-sketch/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void conduitcom() { // uneval paper: 1 eval call site, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void dailymotioncouk() { // uneval paper: 1 eval call site, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void fiverrcom() { // uneval paper: 1 eval call site, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/fiverr.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
+    public void huffpostcom() { // uneval paper: 1 eval call site, fails
+        Misc.run("benchmarks/tajs/src/unevalizer/huffpost.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class) // TODO: ???
+    public void imdbcom() { // uneval paper: 2 eval call sites, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/imdb.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void indiatimescom() { // uneval paper: 2 eval call sites, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class) // TODO: ???
+    public void myspacecom() { // uneval paper: 1 eval call site, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/myspace.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
+    public void onetpl() { // uneval paper: 1 eval call site, fails
+        Misc.run("benchmarks/tajs/src/unevalizer/onet.pl-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void onetpl2() { // uneval paper: 1 eval call site, fails
+        Misc.run("benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void pconlinecomcn() { // uneval paper: 1 eval call site, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void pconlinecomcn2() { // uneval paper: 1 eval call site, fails
+        Misc.run("benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void rakutencojp() { // uneval paper: 1 eval call site, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/rakuten.co.jp-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void scribdcom() { // uneval paper: 2 eval call sites, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void sohucom() { // uneval paper: 2 eval call sites, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void telegraphcouk() { // uneval paper: 1 eval call site, fails
+        Misc.run("benchmarks/tajs/src/unevalizer/telegraph.co.uk-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void telegraphcouk2() { // uneval paper: 2 eval call sites, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/telegraph.co.uk-slice/index-2.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
+    public void washingtonpostcom() { // uneval paper: 1 eval call site, fails
+        Misc.run("benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void wppl() { // uneval paper: 1 eval call site, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
+    public void xingcom() { // uneval paper: 3 eval call sites, fails
+        Misc.run("benchmarks/tajs/src/unevalizer/xing.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void xunleicom() { // uneval paper: 6 eval call sites, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/xunlei.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void zedocom() { // uneval paper: 3 eval call sites, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/zedo.com-slice/index.html");
+        Misc.checkSystemOutput();
+    }
+
+
+    @Test
+    public void zedocom2() { // uneval paper: 3 eval call sites, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/zedo.com-slice/index-2.html");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void zedocom3() { // uneval paper: 1 eval call site, succeeds
+        Misc.run("benchmarks/tajs/src/unevalizer/zedo.com-slice/index-3.html");
+        Misc.checkSystemOutput();
+    }
 }

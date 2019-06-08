@@ -292,9 +292,8 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
                 branchEnv = branchEnv.makeEnclosingIfNode(right, enclosingIfNode);
             }
         }
-        int currentRegister = env.getRegisterManager().getRegister(); /* mutual exclusive branches, so let them share registers */
-        TranslationResult processedLeft = process(left, branchEnv.makeRegisterManager(new RegisterManager(currentRegister)).makeAppendBlock(trueBranch));
-        TranslationResult processedRight = right == null ? TranslationResult.makeAppendBlock(falseBranch) : process(right, branchEnv.makeRegisterManager(new RegisterManager(currentRegister)).makeAppendBlock(falseBranch));
+        TranslationResult processedLeft = process(left, branchEnv.makeAppendBlock(trueBranch));
+        TranslationResult processedRight = right == null ? TranslationResult.makeAppendBlock(falseBranch) : process(right, branchEnv.makeAppendBlock(falseBranch));
 
         BasicBlock joinBlock = makeJoinBasicBlock(processedLeft.getAppendBlock(), processedRight.getAppendBlock(), functionAndBlocksManager);
         return TranslationResult.makeAppendBlock(joinBlock);
@@ -635,10 +634,6 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
             NopNode nop = new NopNode(prettyJumpName, location);
             nop.setArtificial();
             addNodeToBlock(nop, appendBlock, env);
-        }
-        if (!appendBlock.isEmpty()) {
-            // a jump will enable clearing the registers
-            appendBlock.getLastNode().setRegistersDone(true);
         }
         appendBlock.addSuccessor(target);
 

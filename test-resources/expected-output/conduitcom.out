@@ -1,0 +1,16 @@
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:10:5: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:11:9: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:15:12: [definite] Variable e is null/undefined
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:47:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:47:9: [definite] Variable dot is null/undefined
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:50:9: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:50:10: [definite] Variable parent is null/undefined
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:57:1: [definite] Dead assignment, property RemoveBalloon is never read
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html: [definite] Exceptional program exit is unreachable
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:6:5: [definite] The variable locationDotImageSrc is never used
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:7:5: [definite] The variable eventIntervalMs is never used
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:18:1: [definite] Unreachable function xAniOpacity
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:23:27: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:45:9: [definite] The variable balloon is never used
+benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:57:21: [definite] Unreachable function
+Soundness testing succeeded for 232 checks (with 0 expected failures)

@@ -1,0 +1,25 @@
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:23:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:28:16: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:28:35: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:36:5: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:41:5: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:41:9: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:42:9: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:28:17: [definite] Reading absent property p
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:28:23: [definite] Reading absent property p
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:28:36: [definite] Reading absent property p
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:28:43: [definite] Reading absent property p
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:71:1: [definite] The variable o is never used
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:72:1: [definite] The variable o is never used
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:75:1: [definite] The variable b is never used
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:28:17: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:28:23: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:31:10: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:36:26: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:28:17, benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:28:23, benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:31:10, benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:36:26]
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:28:17: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:31:10: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:32:21: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:36:9):1:22: [info] Reading from unknown property that may cause loss of precision
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/sohu.com-slice/index.html:37:9):1:1: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 0 checks (with 0 expected failures)

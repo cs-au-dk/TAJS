@@ -36,6 +36,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
@@ -266,6 +267,9 @@ public class OptionValues {
     @Option(name = "-no-filtering", usage = "Disable filtering")
     private boolean noFiltering;
 
+    @Option(name = "-prop-name-partitioning", usage = "Partitions the property name value at imprecise dynamic property reads")
+    private boolean propNamePartitioning;
+
     @Argument
     private List<Path> arguments = new ArrayList<>();
 
@@ -343,20 +347,17 @@ public class OptionValues {
         if (doNotExpectOrdinaryExit != that.doNotExpectOrdinaryExit) return false;
         if (inspector != that.inspector) return false;
         if (babel != that.babel) return false;
-        if (unsoundnessString != null ? !unsoundnessString.equals(that.unsoundnessString) : that.unsoundnessString != null)
-            return false;
-        if (unsoundness != null ? !unsoundness.equals(that.unsoundness) : that.unsoundness != null) return false;
-        if (ignoredLibrariesString != null ? !ignoredLibrariesString.equals(that.ignoredLibrariesString) : that.ignoredLibrariesString != null)
-            return false;
-        if (ignoredLibraries != null ? !ignoredLibraries.equals(that.ignoredLibraries) : that.ignoredLibraries != null)
-            return false;
-        if (logFile != null ? !logFile.equals(that.logFile) : that.logFile != null)
-            return false;
-        if (config != null ? !config.equals(that.config) : that.config != null) return false;
-        if (arguments != null ? !arguments.equals(that.arguments) : that.arguments != null) return false;
+        if (propNamePartitioning != that.propNamePartitioning) return false;
+        if (!Objects.equals(unsoundnessString, that.unsoundnessString)) return false;
+        if (!Objects.equals(unsoundness, that.unsoundness)) return false;
+        if (!Objects.equals(ignoredLibrariesString, that.ignoredLibrariesString)) return false;
+        if (!Objects.equals(ignoredLibraries, that.ignoredLibraries)) return false;
+        if (!Objects.equals(logFile, that.logFile)) return false;
+        if (!Objects.equals(config, that.config)) return false;
+        if (!Objects.equals(arguments, that.arguments)) return false;
         if (blendedAnalysis != that.blendedAnalysis) return false;
         if (noFiltering != that.noFiltering) return false;
-        return soundnessTesterOptions != null ? soundnessTesterOptions.equals(that.soundnessTesterOptions) : that.soundnessTesterOptions == null;
+        return Objects.equals(soundnessTesterOptions, that.soundnessTesterOptions);
     }
 
     @Override
@@ -430,6 +431,7 @@ public class OptionValues {
         result = 31 * result + (soundnessTesterOptions != null ? soundnessTesterOptions.hashCode() : 0);
         result = 31 * result + (typeCheckEnabled ? 1 : 0);
         result = 31 * result + (blendedAnalysis ? 1 : 0);
+        result = 31 * result + (propNamePartitioning ? 1 : 0);
         result = 31 * result + (noFiltering ? 1 : 0);
         return result;
     }
@@ -1316,5 +1318,17 @@ public class OptionValues {
 
     public void diableNoFilteringer() {
         this.noFiltering = false;
+    }
+
+    public boolean isPropNamePartitioning() {
+        return propNamePartitioning;
+    }
+
+    public void enablePropNamePartitioning() {
+        this.propNamePartitioning = true;
+    }
+
+    public void disablePropNamePartitioning() {
+        this.propNamePartitioning = false;
     }
 }

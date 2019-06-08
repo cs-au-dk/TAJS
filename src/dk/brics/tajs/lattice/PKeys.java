@@ -26,7 +26,7 @@ public interface PKeys extends Str { // XXX: rename to StrOrSymbol
     /**
      * Returns true if this value may be a symbol.
      */
-    public boolean isMaybeSymbol();
+    boolean isMaybeSymbol();
 
     /**
      * Returns true if this value may be a non-property-key.

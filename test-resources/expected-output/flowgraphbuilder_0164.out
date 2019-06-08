@@ -18,7 +18,7 @@ fg2: <main> function()
     node 7: read-property[v8,'rows',v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
     node 8: read-property[v7,'cells',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
     node 9: read-property[v6,'item',v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
-    node 10: read-property[v5,'offsetHeight',-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
+    node 10: read-property[v5,'offsetHeight',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js:1:1)
     ->[block 5]
   block 5: [exit-ordinary]
     node 11: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0164.js)

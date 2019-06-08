@@ -21,8 +21,6 @@ import dk.brics.tajs.analysis.js.Filtering;
 import dk.brics.tajs.analysis.js.NodeTransfer;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
-import dk.brics.tajs.flowgraph.jsnodes.CallNode;
-import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.flowgraph.jsnodes.Node;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.State;
@@ -75,8 +73,6 @@ public class Transfer implements
     @Override
     public void visit(Node n) {
         n.visitBy(js_node_transfer);
-        if (!(n instanceof CallNode) && !(n instanceof IfNode) && n.isRegistersDone()) // call and if nodes are treated elsewhere
-            js_node_transfer.getSolverInterface().getState().clearOrdinaryRegisters();
     }
 
     @Override

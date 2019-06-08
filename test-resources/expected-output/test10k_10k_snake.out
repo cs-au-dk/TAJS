@@ -71,4 +71,4 @@ test-resources/src/10k/10k_snake.html:52:26: [info] 'this' refers to a summary a
 test-resources/src/10k/10k_snake.html:53:16: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/10k/10k_snake.html:93:30: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/10k/10k_snake.html:176:22: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 504 checks (with 0 expected failures)
+Soundness testing succeeded for 1113 checks (with 0 expected failures)

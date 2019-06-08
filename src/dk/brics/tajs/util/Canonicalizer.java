@@ -16,8 +16,6 @@
 
 package dk.brics.tajs.util;
 
-import dk.brics.tajs.lattice.Obj;
-
 import java.lang.ref.WeakReference;
 import java.util.Map;
 import java.util.Objects;
@@ -114,7 +112,7 @@ public class Canonicalizer {
     /**
      * Canonicalizes an Obj into an immutable version.
      */
-    public Obj canonicalizeObj(Obj obj) {
+    public <T> T canonicalizeViaImmutableBox(T obj) {
         return canonicalize(new ImmutableBox<>(obj)).get();
     }
 

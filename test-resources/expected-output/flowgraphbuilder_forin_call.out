@@ -13,7 +13,7 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: read-variable['a',-,-]* (test-resources/src/flowgraphbuilder/forin_call.js:1:1)
+    node 5: read-variable['a',-,-] (test-resources/src/flowgraphbuilder/forin_call.js:1:1)
     node 6: read-variable['c',v5,-] (test-resources/src/flowgraphbuilder/forin_call.js:2:11)
     ->[block 5]
   block 5:
@@ -25,23 +25,23 @@ fg2: <main> function()
     ->[block 7,block 11] ~>[block 9]
   block 7:
     node 10: next-property[v6,v8] (test-resources/src/flowgraphbuilder/forin_call.js:2:6)
-    node 11: write-variable[v8,'b']* (test-resources/src/flowgraphbuilder/forin_call.js:2:6)
+    node 11: write-variable[v8,'b'] (test-resources/src/flowgraphbuilder/forin_call.js:2:6)
     node 12: read-variable['d',v10,v9] (test-resources/src/flowgraphbuilder/forin_call.js:3:5)
     ->[block 8] ~>[block 9]
   block 8:
-    node 13: call[v9,v10,-]* (test-resources/src/flowgraphbuilder/forin_call.js:3:5)
+    node 13: call[v9,v10,-] (test-resources/src/flowgraphbuilder/forin_call.js:3:5)
     ->[block 10] ~>[block 9]
   block 9:
-    node 14: end-for-in(begin-node:7)* (test-resources/src/flowgraphbuilder/forin_call.js:2:1)
+    node 14: end-for-in(begin-node:7) (test-resources/src/flowgraphbuilder/forin_call.js:2:1)
     ->[block 14]
   block 10:
-    node 15: end-for-in(begin-node:7)* (test-resources/src/flowgraphbuilder/forin_call.js:2:1)
+    node 15: end-for-in(begin-node:7) (test-resources/src/flowgraphbuilder/forin_call.js:2:1)
     ->[block 5]
   block 11:
-    node 16: end-for-in(begin-node:7)* (test-resources/src/flowgraphbuilder/forin_call.js:2:1)
+    node 16: end-for-in(begin-node:7) (test-resources/src/flowgraphbuilder/forin_call.js:2:1)
     ->[block 12]
   block 12:
-    node 17: read-variable['e',-,-]* (test-resources/src/flowgraphbuilder/forin_call.js:5:1)
+    node 17: read-variable['e',-,-] (test-resources/src/flowgraphbuilder/forin_call.js:5:1)
     ->[block 13]
   block 13: [exit-ordinary]
     node 18: return[v1] (test-resources/src/flowgraphbuilder/forin_call.js)

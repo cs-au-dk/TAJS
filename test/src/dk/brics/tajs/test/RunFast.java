@@ -28,6 +28,7 @@ import org.junit.runners.Suite;
         TestGettersSetters.class,
         TestStrict.class,
         TestConversion.class,
+        TestMicroDifferentLoopKinds.class
 })
 public class RunFast {
 

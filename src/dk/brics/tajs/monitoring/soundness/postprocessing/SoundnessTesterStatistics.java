@@ -48,7 +48,7 @@ public class SoundnessTesterStatistics {
         this.results = results;
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         TAJSEnvironmentConfig.init(TAJSEnvironmentConfig.findProperties());
         Map<Path, TestResult> results = EasyPersistence.load().results;
 

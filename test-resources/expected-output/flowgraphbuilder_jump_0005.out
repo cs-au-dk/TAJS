@@ -13,31 +13,31 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: nop(break l1)* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:4:13)
+    node 5: nop(break l1) (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:4:13)
     ->[block 6] ~>[block 5]
   block 5:
-    node 6: catch[v5]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:3:9)
+    node 6: catch[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:3:9)
     ->[block 11]
   block 6:
-    node 7(~9): nop(break l2)* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:6:13)
+    node 7(~9): nop(break l2) (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:6:13)
     ->[block 11]
   block 7:
-    node 8: throw[v5]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:3:9)
+    node 8: throw[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:3:9)
     ->[block 14]
   block 8:
-    node 9: nop(break l2)* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:6:13)
+    node 9: nop(break l2) (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:6:13)
     ->[block 11]
   block 9:
     node 10: constant[false,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:9:17)
     ->[block 10]
   block 10:
-    node 11: call[TAJS_assert,v8,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:9:5)
+    node 11: call[TAJS_assert,v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:9:5)
     ->[block 11]
   block 11:
     node 12: constant["OK",v11] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:13:16)
     ->[block 12]
   block 12:
-    node 13: call[TAJS_dumpValue,v11,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:13:1)
+    node 13: call[TAJS_dumpValue,v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js:13:1)
     ->[block 13]
   block 13: [exit-ordinary]
     node 14: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0005.js)

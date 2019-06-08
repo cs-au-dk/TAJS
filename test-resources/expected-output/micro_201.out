@@ -43,9 +43,27 @@ Abstract state:
     @replace#fun4 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node77],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node64],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+    v2="tajs-host-env:string-replace-model.js"
+    v3=true
+    v4=[@<anonymous>#fun3]
+    v5=[@Object#node9]
+    v8=[@callback#fun1]
+    v9=0.0
+    v10=[@Object#node14]
+    v11="get"
+    v12="post"
     v13=[@Object#node14]
   MustReachingDefs: 
     v1: node 0 (test-resources/src/micro/test201.js)
+    v2: node 5 (host-environment-sources-loader)
+    v3: node 6 (host-environment-sources-loader)
+    v4: node 7 (host-environment-sources-loader)
+    v5: node 9 (test-resources/src/micro/test201.js:1:14)
+    v8: node 11 (test-resources/src/micro/test201.js:8:28)
+    v9: node 12 (test-resources/src/micro/test201.js:8:38)
+    v10: node 14 (test-resources/src/micro/test201.js:10:11)
+    v11: node 15 (test-resources/src/micro/test201.js:10:18)
+    v12: node 17 (test-resources/src/micro/test201.js:10:30)
     v13: node 20 (test-resources/src/micro/test201.js:11:18)
   Functions in stack: []
 test-resources/src/micro/test201.js:16:1: [info] Abstract object: {get:[@<anonymous>#fun2{method="get"}]|absent,post:[@<anonymous>#fun2{method="post"}]|absent,[[Prototype]]=[@Object.prototype[native]]}

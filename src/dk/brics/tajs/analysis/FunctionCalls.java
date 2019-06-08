@@ -22,6 +22,7 @@ import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.lattice.ExecutionContext;
+import dk.brics.tajs.lattice.FreeVariablePartitioning;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
@@ -118,6 +119,11 @@ public class FunctionCalls {
          * Assumes that a function is called.
          */
         boolean assumeFunction();
+
+        /**
+         * Information about value partitioning of free variables in the function being called.
+         */
+        FreeVariablePartitioning getFreeVariablePartitioning();
     }
 
     /**
@@ -131,10 +137,22 @@ public class FunctionCalls {
 
         private Solver.SolverInterface c;
 
+        private FreeVariablePartitioning freeVariablePartitioning;
+
         public OrdinaryCallInfo(CallNode n, Solver.SolverInterface c) {
+            this(n, c, null);
+        }
+
+        public OrdinaryCallInfo(CallNode n, Solver.SolverInterface c, FreeVariablePartitioning freeVariablePartitioning) {
             this.n = n;
             this.state = c.getState();
             this.c = c;
+            this.freeVariablePartitioning = freeVariablePartitioning;
+        }
+
+        @Override
+        public FreeVariablePartitioning getFreeVariablePartitioning() {
+            return freeVariablePartitioning;
         }
 
         @Override
@@ -170,7 +188,6 @@ public class FunctionCalls {
                     return Value.makeAbsent(); // happens for array literal with empty entries: `[foo, , , 42]`
                 }
                 Value res = state.readRegister(argRegister);
-
                 if (Options.get().isBlendedAnalysisEnabled()) {
                     Value finalRes = res;
                     res = c.withState(state, () -> c.getAnalysis().getBlendedAnalysis().getArg(finalRes, i, getFunctionValue(), getThis(), n, state));
@@ -301,6 +318,11 @@ public class FunctionCalls {
         public boolean assumeFunction() {
             return false;
         }
+
+        @Override
+        public FreeVariablePartitioning getFreeVariablePartitioning() {
+            return null;
+        }
     }
 
     /**
@@ -354,6 +376,11 @@ public class FunctionCalls {
         public boolean assumeFunction() {
             return false;
         }
+
+        @Override
+        public FreeVariablePartitioning getFreeVariablePartitioning() {
+            return null;
+        }
     }
 
     /**
@@ -381,8 +408,6 @@ public class FunctionCalls {
                                     throw new AnalysisException("null result from " + objlabel.getHostObject());
                                 }
                                 c.getMonitoring().visitNativeFunctionReturn(call.getSourceNode(), objlabel.getHostObject(), res);
-                                if (call.getSourceNode().isRegistersDone())
-                                    c.getState().clearOrdinaryRegisters();
                                 if ((!res.isNone() && !c.getState().isBottom()) || Options.get().isPropagateDeadFlow()) {
                                     c.getState().setExecutionContext(call.getExecutionContext());
                                     if (call.getResultRegister() != AbstractNode.NO_VALUE) {

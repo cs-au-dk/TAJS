@@ -750,7 +750,7 @@ public class JSArray {
             if (length_prop == null) {
                 return Value.makeAnyStr();
             }
-            long length = length_prop == null ? -1 : Conversion.toUInt32(length_prop);
+            long length = Conversion.toUInt32(length_prop);
             if (length == 0)
                 return Value.makeStr("");
             if (separatorValue.isMaybeUndef() && !is_toLocaleString) {

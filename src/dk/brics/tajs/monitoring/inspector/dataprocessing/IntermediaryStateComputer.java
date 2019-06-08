@@ -81,10 +81,7 @@ public class IntermediaryStateComputer {
             List<AbstractNode> nodes = node.getBlock().getNodes();
             for (AbstractNode n : nodes) {
                 c.setNode(n);
-                boolean registersDone = n.isRegistersDone();
-                n.setRegistersDone(false); // disable temporarily
                 c.getAnalysis().getNodeTransferFunctions().transfer(n);
-                n.setRegistersDone(registersDone);
                 if (node.equals(n)) {
                     break;
                 }

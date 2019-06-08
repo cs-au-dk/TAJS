@@ -27,6 +27,7 @@ import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.lattice.ExecutionContext;
+import dk.brics.tajs.lattice.FreeVariablePartitioning;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
@@ -114,6 +115,10 @@ public class JSFunction {
                     } else {
                         throw new AnalysisLimitationException.AnalysisPrecisionLimitationException(call.getJSSourceNode().getSourceLocation() + ": Too imprecise calls to Function");
                     }
+                }
+
+                if (vParameterNames.stream().anyMatch(v -> !v.isMaybeSingleStr())) {
+                    throw new AnalysisLimitationException.AnalysisPrecisionLimitationException(call.getJSSourceNode().getSourceLocation() + ": Too imprecise calls to Function: Known but not single string arguments");
                 }
 
                 List<String> parameterNames = vParameterNames.stream()
@@ -241,6 +246,11 @@ public class JSFunction {
                         public boolean assumeFunction() {
                             return false; // TODO: could do filtering like for ordinary calls
                         }
+
+                        @Override
+                        public FreeVariablePartitioning getFreeVariablePartitioning() {
+                            return state.readThis().getFreeVariablePartitioning();
+                        }
                     }, c);
                 }, c);
                 return Value.makeNone();
@@ -308,6 +318,11 @@ public class JSFunction {
                     @Override
                     public boolean assumeFunction() {
                         return false; // TODO: could do filtering like for ordinary calls
+                    }
+
+                    @Override
+                    public FreeVariablePartitioning getFreeVariablePartitioning() {
+                        return call.getThis().getFreeVariablePartitioning();
                     }
                 }, c);
                 return Value.makeNone(); // no direct flow to the successor

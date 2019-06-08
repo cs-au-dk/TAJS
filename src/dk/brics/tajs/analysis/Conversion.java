@@ -25,6 +25,7 @@ import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.Bool;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
+import dk.brics.tajs.lattice.FreeVariablePartitioning;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
@@ -278,6 +279,11 @@ public class Conversion {
                     @Override
                     public boolean assumeFunction() {
                         return false;
+                    }
+
+                    @Override
+                    public FreeVariablePartitioning getFreeVariablePartitioning() {
+                        return null;
                     }
                 }, c);
             }

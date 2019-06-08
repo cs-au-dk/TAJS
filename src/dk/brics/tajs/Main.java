@@ -57,6 +57,7 @@ import dk.brics.tajs.typetesting.ITypeTester;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.Collectors;
+import dk.brics.tajs.util.Lists;
 import dk.brics.tajs.util.Loader;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.PathAndURLUtils;
@@ -164,19 +165,19 @@ public class Main {
         Options.set(options);
         TAJSEnvironmentConfig.init();
 
-        if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomatically()
-                || Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles()
-                || Options.get().isBabelEnabled()) {
-            setupOnlyInclude();
-        }
-
         if (monitoring == null)
             monitoring = new AnalysisMonitor();
         monitoring = addOptionalMonitors(monitoring);
 
-        Analysis analysis = new Analysis(monitoring, sync, transfer, ttr);
-
         showHeader();
+
+        if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomatically()
+                || Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles()
+                || Options.get().isBabelEnabled()) {
+            preprocess(monitoring);
+        }
+
+        Analysis analysis = new Analysis(monitoring, sync, transfer, ttr);
 
         if (Options.get().isDebugEnabled())
             Options.dump();
@@ -198,7 +199,7 @@ public class Main {
                     js_files.add(fn);
             }
 
-            FlowGraphBuilder builder = FlowGraphBuilder.makeForMain(new SourceLocation.StaticLocationMaker(resolvedFiles.get(resolvedFiles.size() - 1)));
+            FlowGraphBuilder builder = FlowGraphBuilder.makeForMain(new SourceLocation.StaticLocationMaker(Lists.getLast(resolvedFiles)));
             builder.addLoadersForHostFunctionSources(HostEnvSources.getAccordingToOptions());
             if (Options.get().isNodeJS()) {
                 NodeJSRequire.init();
@@ -271,23 +272,28 @@ public class Main {
     /**
      * If the main file is a .html file, then set onlyInclude for instrumentation to
      * be the main file as well as all script files used by the main file.
+     * Also performs Babel preprocessing.
      */
-    private static void setupOnlyInclude() {
+    private static void preprocess(IAnalysisMonitoring monitoring) {
         Set<Path> relevantFiles = newSet();
-        Path testFile = Options.get().getArguments().get(Options.get().getArguments().size() - 1);
+        Path testFile = Lists.getLast(Options.get().getArguments());
         relevantFiles.add(testFile);
         if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles() && (testFile.toString().endsWith(".html") || testFile.toString().endsWith(".htm"))) {
             relevantFiles.addAll(HTMLParser.getScriptsInHTMLFile(PathAndURLUtils.toRealPath(testFile)));
         }
+        relevantFiles = relevantFiles.stream().map(PathAndURLUtils::toRealPath).collect(Collectors.toSet());
         Path commonAncestor = PathAndURLUtils.getCommonAncestorDirectory(relevantFiles);
         Path rootDirFromMainDirectory = PathAndURLUtils.toRealPath(testFile).getParent().relativize(commonAncestor);
-        if ((Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomatically()
-                || Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles())) {
+        if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomatically()
+            || Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles()) {
             Options.get().getSoundnessTesterOptions().setOnlyIncludesForInstrumentation(Optional.of(relevantFiles));
             Options.get().getSoundnessTesterOptions().setRootDirFromMainDirectory(rootDirFromMainDirectory);
         }
-        if (Options.get().isBabelEnabled())
-            Babel.get().init(commonAncestor, relevantFiles);
+        if (Options.get().isBabelEnabled()) {
+            enterPhase(AnalysisPhase.PREPROCESSING, monitoring);
+            Babel.translate(commonAncestor, relevantFiles);
+            leavePhase(AnalysisPhase.PREPROCESSING, monitoring);
+        }
     }
 
     /**
@@ -303,7 +309,8 @@ public class Main {
         // Analysis timeout monitor
         int timeLimit = Options.get().getAnalysisTimeLimit();
         int transferLimit = Options.get().getAnalysisTransferLimit();
-        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, transferLimit, !Options.get().isInspectorEnabled() && Options.get().isTestEnabled());
+        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, transferLimit,
+                !Options.get().isInspectorEnabled() && Options.get().isTestEnabled() && !Options.get().isAnalysisLimitationWarnOnly());
         if (timeLimit >= 0 || transferLimit > 0) {
             extraMonitors.add(timeLimiter);
         }
@@ -434,6 +441,8 @@ public class Main {
 
     private static String prettyPhaseName(AnalysisPhase phase) {
         switch (phase) {
+            case PREPROCESSING:
+                return "Preprocessing";
             case INITIALIZATION:
                 return "Loading files";
             case ANALYSIS:

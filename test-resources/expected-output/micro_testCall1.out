@@ -8,8 +8,10 @@ Abstract state:
   Store (excluding basis and default objects): 
   Registers: 
     v1=Undef
+    v5=[@Object#node9]
   MustReachingDefs: 
     v1: node 35 (test-resources/src/micro/testCall1.js:1:15)
+    v5: node 36 (test-resources/src/micro/testCall1.js:2:17)
   Functions in stack: [block 15, context {this=[@Object#node9]}]
 test-resources/src/micro/testCall1.js:7:2: [info] Abstract value: [@Object#node13]
 test-resources/src/micro/testCall1.js:8:2: [info] Abstract state:
@@ -19,8 +21,10 @@ Abstract state:
   Store (excluding basis and default objects): 
   Registers: 
     v1=Undef
+    v5=[@Object#node13]
   MustReachingDefs: 
     v1: node 44 (test-resources/src/micro/testCall1.js:6:15)
+    v5: node 45 (test-resources/src/micro/testCall1.js:7:17)
   Functions in stack: [block 22, context {this=[@Object#node13]}]
 test-resources/src/micro/testCall1.js:19:1: [info] Abstract state:
 Abstract state:
@@ -47,10 +51,38 @@ Abstract state:
     @replace#fun4 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node66],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node53],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+    v2="tajs-host-env:string-replace-model.js"
+    v3=true
+    v4=[@<anonymous>#fun3]
+    v5=[@Object#node9]
+    v6=[@<anonymous>#fun1]
+    v7=[@Object#node13]
+    v8=[@<anonymous>#fun2]
+    v9=Bool
+    v10=UInt|NotUInt
+    v11=0.5
+    v13=[@Math[native]]
+    v16=8.0|"7foo"
+    v18=[@Object#node9, @Object#node13]
+    v19=7.0
   MustReachingDefs: 
     v1: node 0 (test-resources/src/micro/testCall1.js)
+    v2: node 5 (host-environment-sources-loader)
+    v3: node 6 (host-environment-sources-loader)
+    v4: node 7 (host-environment-sources-loader)
+    v5: node 9 (test-resources/src/micro/testCall1.js:1:10)
+    v6: node 10 (test-resources/src/micro/testCall1.js:1:15)
+    v7: node 13 (test-resources/src/micro/testCall1.js:6:10)
+    v8: node 14 (test-resources/src/micro/testCall1.js:6:15)
+    v13: node 17 (test-resources/src/micro/testCall1.js:13:5)
+    v10: node 19 (test-resources/src/micro/testCall1.js:13:5)
+    v11: node 20 (test-resources/src/micro/testCall1.js:13:21)
+    v9: node 21 (test-resources/src/micro/testCall1.js:13:5)
+    v18: node 27 (test-resources/src/micro/testCall1.js:18:9)
+    v19: node 29 (test-resources/src/micro/testCall1.js:18:13)
+    v16: node 30 (test-resources/src/micro/testCall1.js:18:9)
   MustEquals: 
-    @<the global object>[native].y: [v14]
-    v14: [@<the global object>[native].y]
+    @<the global object>[native].y: [v16]
+    v16: [@<the global object>[native].y]
   Functions in stack: []
 Soundness testing succeeded for 22 checks (with 0 expected failures)

@@ -26,6 +26,7 @@ import javax.annotation.Nonnull;
 import java.io.Serializable;
 import java.net.URL;
 import java.nio.file.Path;
+import java.util.Objects;
 
 /**
  * Source location.
@@ -135,10 +136,9 @@ public class SourceLocation implements DeepImmutable, Serializable {
 
         if (lineNumber != that.lineNumber) return false;
         if (columnNumber != that.columnNumber) return false;
-        if (customName != null ? !customName.equals(that.customName) : that.customName != null) return false;
-        if (location != null ? !location.equals(that.location) : that.location != null) return false;
-        if (loaderLocation != null ? !loaderLocation.equals(that.loaderLocation) : that.loaderLocation != null)
-            return false;
+        if (!Objects.equals(customName, that.customName)) return false;
+        if (!Objects.equals(location, that.location)) return false;
+        if (!Objects.equals(loaderLocation, that.loaderLocation)) return false;
         return kind == that.kind;
     }
 

@@ -155,7 +155,7 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
     void visitPropertyAccess(Node n, Value baseval);
 
     /**
-     * Invoked when a property read operation cccurs.
+     * Invoked when a property read operation occurs.
      *
      * @param n             the node responsible for the read
      * @param objs          the objects being read from
@@ -165,7 +165,7 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
     void visitPropertyRead(AbstractNode n, Set<ObjectLabel> objs, PKeys propertyname, State state, boolean check_unknown);
 
     /**
-     * Invoked when a property write operation cccurs.
+     * Invoked when a property write operation occurs.
      *
      * @param n            the node responsible for the write
      * @param objs         the objects being written to
@@ -174,12 +174,12 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
     void visitPropertyWrite(Node n, Set<ObjectLabel> objs, PKeys propertyname);
 
     /**
-     * Invoked when a variable or property read operation cccurs.
+     * Invoked when a variable or property read operation occurs.
      */
     void visitRead(Node n, Value v, State state);
 
     /**
-     * Invoked when a non-this variable read operation cccurs.
+     * Invoked when a non-this variable read operation occurs.
      *
      * @param n (non-this) read variable operation
      * @param v the value being read
@@ -187,7 +187,7 @@ public interface IAnalysisMonitoring extends ILatticeMonitoring {
     void visitReadNonThisVariable(ReadVariableNode n, Value v);
 
     /**
-     * Invoked when a property read operation cccurs.
+     * Invoked when a property read operation occurs.
      *
      * @param n            read property operation
      * @param objlabels    objects being read from

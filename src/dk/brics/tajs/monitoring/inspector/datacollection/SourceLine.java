@@ -17,6 +17,7 @@
 package dk.brics.tajs.monitoring.inspector.datacollection;
 
 import java.net.URL;
+import java.util.Objects;
 
 /**
  * Represents a line of source code.
@@ -44,7 +45,7 @@ public class SourceLine {
         SourceLine that = (SourceLine) o;
 
         if (line != that.line) return false;
-        return location != null ? location.equals(that.location) : that.location == null;
+        return Objects.equals(location, that.location);
     }
 
     @Override

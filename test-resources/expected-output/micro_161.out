@@ -22,8 +22,35 @@ Abstract state:
     @replace#fun3 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node58],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node45],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+    v2="tajs-host-env:string-replace-model.js"
+    v3=true
+    v4=[@<anonymous>#fun2]
+    v5=[@Object#node8]
+    v6=42.0
+    v7=[@Object#node8]
+    v8=[@<the global object>[native]]
+    v9=[@f#fun1]
+    v10=123.0
+    v13=true
+    v14=7.0
+    v15=7.0
+    v16=[@Object#node8]
+    v19=[@Object#node8]
   MustReachingDefs: 
     v1: node 0 (test-resources/src/micro/test161.js)
+    v2: node 4 (host-environment-sources-loader)
+    v3: node 5 (host-environment-sources-loader)
+    v4: node 6 (host-environment-sources-loader)
+    v5: node 8 (test-resources/src/micro/test161.js:1:9)
+    v6: node 9 (test-resources/src/micro/test161.js:1:12)
+    v7: node 12 (test-resources/src/micro/test161.js:2:9)
+    v9: node 14 (test-resources/src/micro/test161.js:10:1)
+    v10: node 15 (test-resources/src/micro/test161.js:10:3)
+    v16: node 17 (test-resources/src/micro/test161.js:11:13)
+    v14: node 18 (test-resources/src/micro/test161.js:11:13)
+    v15: node 19 (test-resources/src/micro/test161.js:11:21)
+    v13: node 20 (test-resources/src/micro/test161.js:11:13)
+    v19: node 22 (test-resources/src/micro/test161.js:12:17)
   MustEquals: 
     @<the global object>[native].y: [v16, v19]
     @Object#node8.a: [v14]

@@ -20,7 +20,7 @@ fg2: <main> function()
     node 7: construct[-,v6,v7,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0072.js:1:7)
     ->[block 6]
   block 6:
-    node 8: throw[v5]* (test-resources/src/flowgraphbuilder/flowgraph_builder0072.js:1:1)
+    node 8: throw[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0072.js:1:1)
     ->[block 7]
   block 7: [exit-ordinary]
     node 9: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0072.js)

@@ -1,8 +1,8 @@
 <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js)
-    node 1: function-decl[function labelled(),-]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:1)
-    node 2: function-decl[function unlabelled(),-]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:1)
+    node 1: function-decl[function labelled(),-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    node 2: function-decl[function unlabelled(),-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:1)
     ->[block 1]
   block 1:
     node 3: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -29,16 +29,16 @@ function labelled()
     node 11: begin-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:41)
     ->[block 8] ~>[block 10]
   block 8:
-    node 12: if[v2](true-block:9,false-block:11)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
+    node 12: if[v2](true-block:9,false-block:11) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
     ->[block 9,block 11] ~>[block 10]
   block 9:
-    node 13: nop(continue label)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:42)
+    node 13: nop(continue label) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:42)
     ->[block 7] ~>[block 10]
   block 10:
-    node 14: end-loop[v2]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
+    node 14: end-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
     ->[block 13]
   block 11:
-    node 15: end-loop[v2]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
+    node 15: end-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
     ->[block 12]
   block 12: [exit-ordinary]
     node 16: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:1)
@@ -55,16 +55,16 @@ function unlabelled()
     node 20: begin-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:36)
     ->[block 16] ~>[block 18]
   block 16:
-    node 21: if[v2](true-block:17,false-block:19)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
+    node 21: if[v2](true-block:17,false-block:19) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
     ->[block 17,block 19] ~>[block 18]
   block 17:
-    node 22: nop(continue <DEFAULT>)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:37)
+    node 22: nop(continue <DEFAULT>) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:37)
     ->[block 15] ~>[block 18]
   block 18:
-    node 23: end-loop[v2]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
+    node 23: end-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
     ->[block 21]
   block 19:
-    node 24: end-loop[v2]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
+    node 24: end-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
     ->[block 20]
   block 20: [exit-ordinary]
     node 25: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:1)
@@ -76,8 +76,8 @@ function unlabelled()
 <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js)
-    node 1: function-decl[function labelled(),-]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:1)
-    node 2: function-decl[function unlabelled(),-]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:1)
+    node 1: function-decl[function labelled(),-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:1)
+    node 2: function-decl[function unlabelled(),-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:1)
     ->[block 1]
   block 1:
     node 3: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -104,16 +104,16 @@ function labelled()
     node 11: begin-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:41)
     ->[block 8] ~>[block 10]
   block 8:
-    node 12: if[v2](true-block:9,false-block:11)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
+    node 12: if[v2](true-block:9,false-block:11) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
     ->[block 9,block 11] ~>[block 10]
   block 9:
-    node 13: nop(continue label)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:42)
+    node 13: nop(continue label) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:42)
     ->[block 7] ~>[block 10]
   block 10:
-    node 14: end-loop[v2]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
+    node 14: end-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
     ->[block 13]
   block 11:
-    node 15: end-loop[v2]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
+    node 15: end-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:34)
     ->[block 12]
   block 12: [exit-ordinary]
     node 16: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:1:1)
@@ -130,16 +130,16 @@ function unlabelled()
     node 20: begin-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:36)
     ->[block 16] ~>[block 18]
   block 16:
-    node 21: if[v2](true-block:17,false-block:19)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
+    node 21: if[v2](true-block:17,false-block:19) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
     ->[block 17,block 19] ~>[block 18]
   block 17:
-    node 22: nop(continue <DEFAULT>)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:37)
+    node 22: nop(continue <DEFAULT>) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:37)
     ->[block 15] ~>[block 18]
   block 18:
-    node 23: end-loop[v2]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
+    node 23: end-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
     ->[block 21]
   block 19:
-    node 24: end-loop[v2]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
+    node 24: end-loop[v2] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:29)
     ->[block 20]
   block 20: [exit-ordinary]
     node 25: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_labelledcontinue.js:2:1)

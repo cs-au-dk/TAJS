@@ -98,7 +98,7 @@ public class IfNode extends Node {
     @Override
     public void check(BasicBlock b) {
         if (condition_reg == NO_VALUE)
-            throw new AnalysisException("Invalid condition register: " + toString());
+            throw new AnalysisException("Invalid condition register: " + this);
         if (this != b.getLastNode())
             throw new AnalysisException("If node not at the end of the block: " + b);
         Collection<BasicBlock> successors = b.getSuccessors();

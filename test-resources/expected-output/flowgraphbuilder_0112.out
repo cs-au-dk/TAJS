@@ -1,7 +1,7 @@
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js)
-    node 1: vardecl['b']* (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:10)
+    node 1: vardecl['b'] (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:10)
     ->[block 1]
   block 1:
     node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -17,7 +17,7 @@ fg2: <main> function()
     node 6: new[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:1:5)
     node 7: constant[42.0,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:1:8)
     node 8: write-property[v5,'a',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:1:6)
-    node 9: write-variable[v5,'x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:1:1)
+    node 9: write-variable[v5,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:1:1)
     node 10: read-variable['x',v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:15)
     ->[block 5]
   block 5:
@@ -29,16 +29,16 @@ fg2: <main> function()
     ->[block 7,block 10] ~>[block 8]
   block 7:
     node 14: next-property[v8,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:10)
-    node 15: write-variable[v10,'b']* (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:10)
+    node 15: write-variable[v10,'b'] (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:10)
     ->[block 9] ~>[block 8]
   block 8:
-    node 16: end-for-in(begin-node:11)* (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:1)
+    node 16: end-for-in(begin-node:11) (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:1)
     ->[block 12]
   block 9:
-    node 17: end-for-in(begin-node:11)* (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:1)
+    node 17: end-for-in(begin-node:11) (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:1)
     ->[block 5]
   block 10:
-    node 18: end-for-in(begin-node:11)* (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:1)
+    node 18: end-for-in(begin-node:11) (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js:3:1)
     ->[block 11]
   block 11: [exit-ordinary]
     node 19: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0112.js)

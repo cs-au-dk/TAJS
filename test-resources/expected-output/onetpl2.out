@@ -1,0 +1,19 @@
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:26:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:27:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:35:39: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:29:5: [definite] Dead assignment, property is never read
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:30:5: [definite] Dead assignment, property is never read
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html: [definite] Exceptional program exit is unreachable
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:34:9: [definite] The variable csr is never used
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:37:8: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:26:9: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:27:9: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:34:15: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:34:15: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:35:48: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:28:5: [info] Writing to unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:29:5: [info] Writing to unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:30:5: [info] Writing to unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:26:9: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html:27:9: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 270 checks (with 0 expected failures)

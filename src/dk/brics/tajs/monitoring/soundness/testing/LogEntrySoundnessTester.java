@@ -66,6 +66,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -573,7 +574,7 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
 
         if (nodes.isEmpty()) {
             return Optional.empty();
-        } else if (nodes.size() > 1) {
+        } else if (nodes.size() > 1 && !Options.get().getSoundnessTesterOptions().isDoNotCheckAmbiguousNodeQueries()) {
             throw new AnalysisException(String.format("Ambiguous node query for %s at %s: %s. Add a custom filter?", class1.getSimpleName(), sourceLocation, nodes));
         }
         return nodes.stream().findFirst();
@@ -716,7 +717,7 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
             Collection<String> abstractValueStrings = abstractValues.stream().map(v -> {
                 Set<SourceLocation> locs = v.getObjectSourceLocations();
                 return locs.isEmpty() ? v.toString() : v + "@" + locs;
-            }).collect(java.util.stream.Collectors.toList());
+            }).collect(Collectors.toList());
             return String.format("Value mismatch for %s. Concrete: %s. Abstract: %s.", kind, concreteValue, abstractValueStrings); // XXX do *not* move this computation to the constructor. It can be very expensive!
         }
 
@@ -747,13 +748,10 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
             ValueCheck that = (ValueCheck) o;
 
             if (failure != that.failure) return false;
-            if (sourceLocation != null ? !sourceLocation.equals(that.sourceLocation) : that.sourceLocation != null)
-                return false;
-            if (kind != null ? !kind.equals(that.kind) : that.kind != null) return false;
-            if (concreteValue != null ? !concreteValue.equals(that.concreteValue) : that.concreteValue != null)
-                return false;
-            if (abstractValues != null ? !abstractValues.equals(that.abstractValues) : that.abstractValues != null)
-                return false;
+            if (!Objects.equals(sourceLocation, that.sourceLocation)) return false;
+            if (!Objects.equals(kind, that.kind)) return false;
+            if (!Objects.equals(concreteValue, that.concreteValue)) return false;
+            if (!Objects.equals(abstractValues, that.abstractValues)) return false;
 
             return true;
         }

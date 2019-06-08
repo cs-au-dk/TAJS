@@ -1,7 +1,7 @@
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js)
-    node 1: function-decl[function f(),-]* (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)
+    node 1: function-decl[function f(),-] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)
     ->[block 1]
   block 1:
     node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -24,7 +24,7 @@ function f()
     node 8: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)
     ->[block 7]
   block 7:
-    node 9: constant["BODY",-]* (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:14)
+    node 9: constant["BODY",-] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:14)
     ->[block 8]
   block 8: [exit-ordinary]
     node 10: return[v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)

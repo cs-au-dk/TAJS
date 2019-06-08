@@ -19,6 +19,7 @@ package dk.brics.tajs.preprocessing;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.options.TAJSEnvironmentConfig;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.PathAndURLUtils;
 import org.apache.log4j.Logger;
 
@@ -34,34 +35,20 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Babel {
 
     private static final Logger log = Logger.getLogger(Babel.class);
 
-    /**
-     * Methods for singleton.
-     */
-    private Babel() {}
-
-    private static Babel babel = null;
-
-    public static Babel get() {
-        if (babel == null)
-            babel = new Babel();
-        return babel;
-    }
-
-    private final String babelPlugins =
+    private static final String babelPlugins =
             Stream.of("arrow-functions", "block-scoping", "classes", "shorthand-properties", // "for-of" generates code we cannot handle
                       "template-literals", "parameters", "spread", "destructuring", "computed-properties")
-            .map(name -> "@babel/plugin-transform-" + name).collect(Collectors.joining(","));
+            .map(name -> "@babel/plugin-transform-" + name).collect(java.util.stream.Collectors.joining(","));
 
-    private final Pattern successPattern = Pattern.compile("Successfully compiled (\\d+) files? with Babel\\.");
+    private static final Pattern successPattern = Pattern.compile("Successfully compiled (\\d+) files? with Babel\\.");
 
-    private final Set<String> supportedFileExtensions = new HashSet<>(Arrays.asList(".es6", ".js", ".es", ".jsx", ".mjs", ""));
+    private static final Set<String> supportedFileExtensions = new HashSet<>(Arrays.asList(".es6", ".js", ".es", ".jsx", ".mjs", ""));
 
     /**
      * This method performs babel preprocessing on the files listed in the *files* parameter.
@@ -80,7 +67,7 @@ public class Babel {
      * @param files A set of files to be processed by babel. Other files found in the directory
      *              specified by *commonAncestor* will be copied as-is.
      */
-    public void init(Path commonAncestor, Set<Path> files) {
+    public static void translate(Path commonAncestor, Set<Path> files) {
         List<Path> args = Options.get().getArguments();
         Path testFile = args.get(args.size() - 1);
         Path babelRoot = commonAncestor.resolve("_babel");
@@ -91,27 +78,22 @@ public class Babel {
         if (commonAncestor.endsWith("TAJS-private") || commonAncestor.endsWith("TAJS"))
             throw new IllegalArgumentException("Common ancestor of analysed files is the project root!");
 
-        Set<Path> relativeFiles = files.stream()  // Babel does not handle json files so let us filter those out
+        List<Path> relativeFiles = files.stream()  // Babel does not handle json files so let us filter those out
                 .filter(file -> !PathAndURLUtils.getFileExtension(file).equals(".json"))
                 .map(file -> PathAndURLUtils.toRealPath(commonAncestor).relativize(file.toAbsolutePath()))
-                .collect(Collectors.toSet());
+                .distinct().collect(Collectors.toList());
 
         Set<String> fileExtensions = relativeFiles.stream().map(PathAndURLUtils::getFileExtension).collect(Collectors.toSet());
         fileExtensions.retainAll(supportedFileExtensions);
 
-        ArrayList<String> cmd = new ArrayList<>(Arrays.asList(
+        ArrayList<String> baseCmd = new ArrayList<>(Arrays.asList(
                 babelPath.toString(),
                 "--root-mode", "upward",            // Find the nearest babel.config.js in the file-system
                 "--extensions", String.join(",", fileExtensions),
                 "--keep-file-extension",
                 "--verbose",
                 "--plugins", babelPlugins,          // Plugins used for transformations
-                "--out-dir", babelRoot.toString(),  // Output directory
-                "--delete-dir-on-start",
-                "--copy-files",
-                "--only",                           // Control which files to transform (must be absolute for babel to work correctly)
-                relativeFiles.stream().map(file -> commonAncestor.resolve(file).toString()).collect(Collectors.joining(",")),
-                commonAncestor.toString()           // Input directory
+                "--out-dir", babelRoot.toString()   // Output directory
         ));
 
         /* For debugging
@@ -122,31 +104,51 @@ public class Babel {
         */
 
         try {
-            // Run the babel command
-            Process process = new ProcessBuilder(cmd).directory(babelPath.getParent().toFile()).start();
-            String output, err;
+            // Split list into sublists to avoid argument list length limit
+            final int sublistSize = 100;
+            for(int i = 0; i < relativeFiles.size(); i += sublistSize) {
+                List<Path> subFiles = relativeFiles.subList(i, Math.min(i + sublistSize, relativeFiles.size()));
+                ArrayList<String>  cmd = new ArrayList<>(baseCmd);
 
-            try (BufferedReader stdBr = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                BufferedReader errBr = new BufferedReader(new InputStreamReader(process.getErrorStream()))) {
+                if(i == 0) { // Delete and copy other files in the first pass
+                    cmd.add("--delete-dir-on-start");
+                    cmd.add("--copy-files");
+                }
 
-                output = stdBr.lines().collect(Collectors.joining("\n"));
-                err = errBr.lines().collect(Collectors.joining("\n"));
-                process.waitFor();
-            }
+                cmd.add("--only"); // Control which files to transform (must be absolute for babel to work correctly)
+                cmd.add(subFiles.stream().map(file -> commonAncestor.resolve(file).toString()).collect(java.util.stream.Collectors.joining(",")));
+                cmd.add(commonAncestor.toString()); // Input directory
 
-            if (process.exitValue() != 0)
-                throw new AnalysisException("Error occurred while running babel:\n" + err);
+                // Run the babel command
+                Process process = new ProcessBuilder(cmd).directory(babelPath.getParent().toFile()).start();
+                String output, err;
 
-            Matcher m = successPattern.matcher(output);
-            if (!m.find())
-                log.warn("Babel might not have run successfully!\n" + output);
-            else {
-                int processedFiles = Integer.parseInt(m.group(1));
-                if (processedFiles != relativeFiles.size())
-                    throw new AnalysisException(String.format("Babel processed %d/%d files", processedFiles, relativeFiles.size()));
+                try (BufferedReader stdBr = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                     BufferedReader errBr = new BufferedReader(new InputStreamReader(process.getErrorStream()))) {
+
+                    output = stdBr.lines().collect(java.util.stream.Collectors.joining("\n"));
+                    err = errBr.lines().collect(java.util.stream.Collectors.joining("\n"));
+                    process.waitFor();
+                }
+
+                if (process.exitValue() != 0)
+                    throw new AnalysisException("Error occurred while running babel:\n" + err);
+
+                if (!Options.get().isQuietEnabled())
+                    System.out.println(output);
+
+                Matcher m = successPattern.matcher(output);
+                if (!m.find())
+                    log.warn("Babel might not have run successfully!\n" + output);
+                else {
+                    int processedFiles = Integer.parseInt(m.group(1));
+                    if (processedFiles != subFiles.size())
+                        throw new AnalysisException(String.format("Babel processed %d/%d files", processedFiles, subFiles.size()));
+                }
             }
         } catch (InterruptedException | IOException e) {
-            throw new AnalysisException("Error occurred while running babel: " + e);
+
+            throw new AnalysisException("Error occurred while running babel:\n" + e);
         }
 
         // Override soundness tester options with new files
@@ -160,7 +162,7 @@ public class Babel {
 
         // Fix the main file path
         Path babelTestFile = PathAndURLUtils.getRelativeToTAJS(
-                babelRoot.resolve(PathAndURLUtils.toRealPath(commonAncestor).relativize(testFile.toAbsolutePath()))
+                babelRoot.resolve(PathAndURLUtils.toRealPath(commonAncestor).relativize(PathAndURLUtils.toRealPath(testFile)))
         ).get();
         args.set(args.size() - 1, babelTestFile);
     }

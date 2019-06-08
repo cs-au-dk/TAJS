@@ -3,7 +3,6 @@ package dk.brics.tajs.test.nativeobjects;
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.test.Misc;
-import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Collectors;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,11 +45,6 @@ public class TestMDNExamples {
 
     @Test
     public void test() throws IOException {
-        try {
-            Misc.runPart("[" + file.getFileName() + "]", file.toString());
-        } catch (AnalysisLimitationException e) {
-            // Ignore. We only care about black-box soundness correctness
-            // (likely caused by ES6 syntax)
-        }
+        Misc.runPart("[" + file.getFileName() + "]", true, file.toString()); // Ignore AnalysisLimitationException. We only care about black-box soundness correctness (likely caused by ES6 syntax)
     }
 }

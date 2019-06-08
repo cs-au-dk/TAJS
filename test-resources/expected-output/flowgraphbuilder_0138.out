@@ -17,16 +17,16 @@ fg2: <main> function()
     node 6: begin-loop[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0138.js:1:4)
     ->[block 5] ~>[block 7]
   block 5:
-    node 7: if[v5](true-block:6,false-block:8)* (test-resources/src/flowgraphbuilder/flowgraph_builder0138.js:3:10)
+    node 7: if[v5](true-block:6,false-block:8) (test-resources/src/flowgraphbuilder/flowgraph_builder0138.js:3:10)
     ->[block 6,block 8] ~>[block 7]
   block 6:
-    node 8: nop(break <DEFAULT>)* (test-resources/src/flowgraphbuilder/flowgraph_builder0138.js:2:5)
+    node 8: nop(break <DEFAULT>) (test-resources/src/flowgraphbuilder/flowgraph_builder0138.js:2:5)
     ->[block 8] ~>[block 7]
   block 7:
-    node 9: end-loop[v5]* (test-resources/src/flowgraphbuilder/flowgraph_builder0138.js:3:10)
+    node 9: end-loop[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0138.js:3:10)
     ->[block 10]
   block 8:
-    node 10: end-loop[v5]* (test-resources/src/flowgraphbuilder/flowgraph_builder0138.js:3:10)
+    node 10: end-loop[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0138.js:3:10)
     ->[block 9]
   block 9: [exit-ordinary]
     node 11: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0138.js)

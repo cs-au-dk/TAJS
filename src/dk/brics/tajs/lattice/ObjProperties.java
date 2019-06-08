@@ -19,6 +19,7 @@ package dk.brics.tajs.lattice;
 import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.PKey.SymbolPKey;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Strings;
 
@@ -216,9 +217,9 @@ public class ObjProperties {
                 props.put(ol, makeFromObjectLabel(ol, s, flags));
             }
         }
-        ObjProperties candidate = props.entrySet().stream()
-                .filter(x -> objlabels.contains(x.getKey()))
-                .map(x -> props.get(x.getKey()))
+        ObjProperties candidate = props.keySet().stream()
+                .filter(objlabels::contains)
+                .map(props::get)
                 .reduce(new ObjProperties(), ObjProperties::join);
         if (flags.isOnlyEnumerable())
             candidate = candidate.filterEnumerableObjectProperties();
@@ -279,6 +280,23 @@ public class ObjProperties {
      */
     public boolean isDefaultOtherMaybePresent() {
         return default_other_property.isMaybePresent();
+    }
+
+    /**
+     * Returns the value stored at property p. If p is a ordinary property that does
+     * not exist then 'none' is returned.
+     */
+    public Value getValue(Property p) {
+        switch (p.getKind()) {
+            case ORDINARY:
+                return properties.getOrDefault(p.getPropertyName(), Value.makeNone());
+            case DEFAULT_NUMERIC:
+                return default_numeric_property;
+            case DEFAULT_OTHER:
+                return default_other_property;
+            default:
+                throw new AnalysisException("Unsupported property kind");
+        }
     }
 
     /**

@@ -1,8 +1,8 @@
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/forin_call2.js)
-    node 1: function-decl[function f(),-]* (test-resources/src/flowgraphbuilder/forin_call2.js:1:1)
-    node 2: vardecl['i']* (test-resources/src/flowgraphbuilder/forin_call2.js:4:10)
+    node 1: function-decl[function f(),-] (test-resources/src/flowgraphbuilder/forin_call2.js:1:1)
+    node 2: vardecl['i'] (test-resources/src/flowgraphbuilder/forin_call2.js:4:10)
     ->[block 1]
   block 1:
     node 3: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -30,22 +30,22 @@ fg2: <main> function()
     ->[block 7,block 11] ~>[block 9]
   block 7:
     node 15: next-property[v6,v8] (test-resources/src/flowgraphbuilder/forin_call2.js:4:10)
-    node 16: write-variable[v8,'i']* (test-resources/src/flowgraphbuilder/forin_call2.js:4:10)
+    node 16: write-variable[v8,'i'] (test-resources/src/flowgraphbuilder/forin_call2.js:4:10)
     node 17: constant[0.0,v12] (test-resources/src/flowgraphbuilder/forin_call2.js:5:6)
     node 18: read-variable['f',v13,-] (test-resources/src/flowgraphbuilder/forin_call2.js:5:9)
     node 19: read-property[v12,v13,-] (test-resources/src/flowgraphbuilder/forin_call2.js:5:5)
     ->[block 8] ~>[block 9]
   block 8:
-    node 20: call[v12,[v13],-]* (test-resources/src/flowgraphbuilder/forin_call2.js:5:5)
+    node 20: call[v12,[v13],-] (test-resources/src/flowgraphbuilder/forin_call2.js:5:5)
     ->[block 10] ~>[block 9]
   block 9:
-    node 21: end-for-in(begin-node:12)* (test-resources/src/flowgraphbuilder/forin_call2.js:4:1)
+    node 21: end-for-in(begin-node:12) (test-resources/src/flowgraphbuilder/forin_call2.js:4:1)
     ->[block 13]
   block 10:
-    node 22: end-for-in(begin-node:12)* (test-resources/src/flowgraphbuilder/forin_call2.js:4:1)
+    node 22: end-for-in(begin-node:12) (test-resources/src/flowgraphbuilder/forin_call2.js:4:1)
     ->[block 5]
   block 11:
-    node 23: end-for-in(begin-node:12)* (test-resources/src/flowgraphbuilder/forin_call2.js:4:1)
+    node 23: end-for-in(begin-node:12) (test-resources/src/flowgraphbuilder/forin_call2.js:4:1)
     ->[block 12]
   block 12: [exit-ordinary]
     node 24: return[v1] (test-resources/src/flowgraphbuilder/forin_call2.js)

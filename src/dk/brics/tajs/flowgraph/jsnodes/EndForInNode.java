@@ -48,7 +48,7 @@ public class EndForInNode extends Node {
     @Override
     public void check(BasicBlock b) {
         if (b.getNodes().size() != 1)
-            throw new AnalysisException("Node should have its own basic block: " + toString());
+            throw new AnalysisException("Node should have its own basic block: " + this);
         if (b.getSuccessors().size() > 1)
             throw new AnalysisException("More than one successor for EndForInNode-block: " + b);
     }

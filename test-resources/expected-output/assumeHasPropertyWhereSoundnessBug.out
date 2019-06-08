@@ -1,0 +1,7 @@
+test-resources/src/micro/assumeHasPropertyWhereSoundnessBug.js:1:19: [definite] The conditional expression is always true
+test-resources/src/micro/assumeHasPropertyWhereSoundnessBug.js:2:21: [definite] The conditional expression is always true
+test-resources/src/micro/assumeHasPropertyWhereSoundnessBug.js:3:22: [definite] The conditional expression is always true
+test-resources/src/micro/assumeHasPropertyWhereSoundnessBug.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/assumeHasPropertyWhereSoundnessBug.js:2:5: [definite] The variable symbolValueOf is never used
+test-resources/src/micro/assumeHasPropertyWhereSoundnessBug.js:3:5: [definite] The variable symbolToString is never used
+Soundness testing succeeded for 13 checks (with 0 expected failures)

@@ -18,14 +18,17 @@ package dk.brics.tajs.analysis.js;
 
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
+import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.BinaryOperatorNode;
+import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectProperty;
 import dk.brics.tajs.lattice.PKey;
+import dk.brics.tajs.lattice.PartitionedValue;
 import dk.brics.tajs.lattice.Restriction;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
@@ -34,6 +37,7 @@ import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Pair;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newSet;
@@ -46,6 +50,13 @@ public class Filtering {
     private Solver.SolverInterface c;
 
     private PropVarOperations pv;
+
+    private static final class Visited extends HashSet<Pair<Integer, Restriction>> {
+
+        boolean add(int reg, Restriction restriction) {
+            return add(Pair.make(reg, restriction));
+        }
+    }
 
     public Filtering(Solver.SolverInterface c) {
         this.c = c;
@@ -70,11 +81,10 @@ public class Filtering {
     /**
      * Restricts the value of the register that are equal to the given memory location.
      */
-    private boolean assumeRegistersEqualToSatisfy(ObjectLabel objlabel, PKey pkey, Restriction restriction) {
+    private boolean assumeRegistersEqualToSatisfy(ObjectLabel objlabel, PKey pkey, Restriction restriction, Visited visited) {
         for (int reg : c.getState().getMustEquals().getMustEquals(objlabel, pkey))
-            if (c.getState().isRegisterDefined(reg))
-                if (assumeRegisterSatisfies(reg, restriction))
-                    return true;
+            if (assume(reg, restriction, visited))
+                return true;
         return false;
     }
 
@@ -82,10 +92,10 @@ public class Filtering {
      * Restricts the value of the given object property.
      * Accesses the object directly, without using the prototype chain.
      */
-    private boolean assumeObjectPropertySatisfies(ObjectLabel objlabel, PKey pkey, Restriction restriction) {
+    private boolean assumeObjectPropertySatisfies(ObjectLabel objlabel, PKey pkey, Restriction restriction, Visited visited) {
         if (!objlabel.isSingleton())
             throw new AnalysisException("Expected singleton object label");
-        if (assumeRegistersEqualToSatisfy(objlabel, pkey, restriction))
+        if (assumeRegistersEqualToSatisfy(objlabel, pkey, restriction, visited))
             return true;
         Value v = UnknownValueResolver.getProperty(objlabel, pkey, c.getState(), false);
         Value oldv = v;
@@ -96,10 +106,10 @@ public class Filtering {
     }
 
     /**
-     * Variant of {@link #assumeObjectPropertySatisfies(ObjectLabel, PKey, Restriction)} that uses the prototype chain.
+     * Variant of {@link #assumeObjectPropertySatisfies(ObjectLabel, PKey, Restriction, Visited)} that uses the prototype chain.
      * (This method is only needed for call nodes where the function is given as a property read.)
      */
-    private boolean assumeObjectPropertySatisfies(Set<ObjectLabel> baseobjs, PKey propname, Restriction restriction) {
+    private boolean assumeObjectPropertySatisfies(Set<ObjectLabel> baseobjs, PKey propname, Restriction restriction, Visited visited) {
         Pair<Set<ObjectLabel>, Value> p = pv.readPropertyWithAttributesAndObjs(baseobjs, propname);
         Set<ObjectLabel> objs = p.getFirst();
         Value v = p.getSecond();
@@ -109,7 +119,7 @@ public class Filtering {
             v = restriction.restrict(v);
             if (v != oldv)
                 pv.writePropertyWithAttributes(objs, propname, v, false, true);
-            if (assumeRegistersEqualToSatisfy(objs.iterator().next(), propname, restriction))
+            if (assumeRegistersEqualToSatisfy(objs.iterator().next(), propname, restriction, visited))
                 return true;
         }
         return false;
@@ -119,7 +129,7 @@ public class Filtering {
      * Restricts the value of the given variable.
      * (This method is only needed because 'typeof x' doesn't read x like an ordinary variable read.)
      */
-    private boolean assumeVariableSatisfies(String varname, Restriction restriction) {
+    private boolean assumeVariableSatisfies(String varname, Restriction restriction, Visited visited) {
         if (!varname.equals("this")) { // TODO: could also filter 'this'?
             Set<ObjectLabel> baseObjs = newSet();
             ObjectLabel baseObj;
@@ -134,7 +144,7 @@ public class Filtering {
                 }
                 if (v != oldv)
                     c.getState().getObject(baseObj, true).setProperty(PKey.StringPKey.make(varname), v);
-                if (assumeRegistersEqualToSatisfy(baseObjs.iterator().next(), PKey.StringPKey.make(varname), restriction))
+                if (assumeRegistersEqualToSatisfy(baseObjs.iterator().next(), PKey.StringPKey.make(varname), restriction, visited))
                     return true;
             }
         }
@@ -175,33 +185,11 @@ public class Filtering {
      * @param negated use not-equals if set
      * @return true if the state was set to bottom
      */
-    private boolean assumeEqual(int reg1, int reg2, boolean strict, boolean negated) {
-        if (c.getState().getMustReachingDefs().getReachingDef(reg2) instanceof TypeofNode) {
-            //swap sides
-            int t = reg1;
-            reg1 = reg2;
-            reg2 = t;
-        }
+    private boolean assumeEqual(int reg1, int reg2, boolean strict, boolean negated, Visited visited) {
         Value val1 = c.getState().readRegister(reg1);
         val1 = UnknownValueResolver.getRealValue(val1, c.getState());
         Value val2 = c.getState().readRegister(reg2);
         val2 = UnknownValueResolver.getRealValue(val2, c.getState());
-        AbstractNode arg1def = c.getState().getMustReachingDefs().getReachingDef(reg1);
-        if (arg1def instanceof TypeofNode && val2.isMaybeSingleStr() && !val2.isMaybeOtherThanStr()) {
-            // typeof ... == "..."
-            TypeofNode typeofNode = (TypeofNode) arg1def;
-            Restriction r = Restriction.typeofToRestriction(val2.getStr());
-            if (r != null) {
-                if (negated)
-                    r = r.negate();
-                if (r != null) {
-                    if (typeofNode.isVariable())
-                        return assumeVariableSatisfies(typeofNode.getVariableName(), r);
-                    else
-                        return assume(typeofNode.getArgRegister(), r);
-                }
-            }
-        }
         Restriction.Kind k = strict ? Restriction.Kind.STRICT_EQUAL : Restriction.Kind.LOOSE_EQUAL;
         Restriction r1 = new Restriction(k).set(val2);
         Restriction r2 = new Restriction(k).set(val1);
@@ -209,7 +197,11 @@ public class Filtering {
             r1 = r1.negate();
             r2 = r2.negate();
         }
-        return assume(reg1, r1) || assume(reg2, r2);
+        if (r1.getKind() == Restriction.Kind.STRICT_EQUAL && !val1.isMaybeNaN() && !val2.isMaybeNaN()) {
+            // introduce must-equals facts if strict-equals and the values are definitely not NaN
+            c.getState().getMustEquals().addMustEquals(reg1, reg2);
+        }
+        return assume(reg1, r1, visited) || assume(reg2, r2, visited);
     }
 
     /**
@@ -248,22 +240,27 @@ public class Filtering {
         return false;
     }
 
+    private boolean assume(int reg, Restriction restriction) {
+        return assume(reg, restriction, new Visited());
+    }
+
     /**
      * Assumes the given register satisfies the restriction.
      * Unlike {@link #assumeRegisterSatisfies(int, Restriction)}, this method also handles additional restrictions derived using must-reaching definitions and must-equals information.
      * @return true if the state was set to bottom
      */
-    private boolean assume(int reg, Restriction restriction) {
+    private boolean assume(int reg, Restriction restriction, Visited visited) {
         if (Options.get().isNoFilteringEnabled() || Options.get().isControlSensitivityDisabled())
             return false;
-
+        if (!visited.add(reg, restriction))
+            return false;
         // restrict the register itself
         if (assumeRegisterSatisfies(reg, restriction))
             return true;
 
         // restrict all must-equals object properties
         for (ObjectProperty objprop : c.getState().getMustEquals().getMustEquals(reg))
-            if (assumeObjectPropertySatisfies(objprop.getObjectLabel(), objprop.getPropertyName(), restriction))
+            if (assumeObjectPropertySatisfies(objprop.getObjectLabel(), objprop.getPropertyName(), restriction, visited))
                 return true;
 
         AbstractNode def = c.getState().getMustReachingDefs().getReachingDef(reg);
@@ -272,10 +269,12 @@ public class Filtering {
 
             // register defined at ReadPropertyNode, remove those base objects that do not have a matching property whose value satisfies the restriction
             ReadPropertyNode n = (ReadPropertyNode) def;
-            if (n.isPropertyFixed()) // dynamic property reads may involve toString coercion, which we don't want to mess with here
-                if (assumeHasPropertyWhere(n.getBaseRegister(), n.getPropertyString(), restriction))
+            if (n.isPropertyFixed()) {// dynamic property reads may involve toString coercion, which we don't want to mess with here
+                AbstractNode baseDefinition = c.getState().getMustReachingDefs().getReachingDef(n.getBaseRegister());
+                if (baseDefinition != null && baseDefinition.getBlock() == def.getBlock() && // only use assumeHasPropertyWhere if the base register definitely hasn't been overwritten
+                        assumeHasPropertyWhere(n.getBaseRegister(), n.getPropertyString(), restriction))
                     return true;
-
+            }
         } else if (restriction.getKind() == Restriction.Kind.TRUTHY || restriction.getKind() == Restriction.Kind.FALSY) {
 
             if (def instanceof UnaryOperatorNode) { // recognize negations
@@ -283,7 +282,7 @@ public class Filtering {
                 if (n.getOperator() == UnaryOperatorNode.Op.NOT) {
                     Restriction r = restriction.negate();
                     if (r != null)
-                        assume(n.getArgRegister(), r);
+                        assume(n.getArgRegister(), r, visited);
                 }
 
             } else if (def instanceof BinaryOperatorNode) {
@@ -291,19 +290,53 @@ public class Filtering {
                 BinaryOperatorNode n = (BinaryOperatorNode) def;
                 switch (n.getOperator()) {
                     case NE:
-                        return assumeEqual(n.getArg1Register(), n.getArg2Register(), false, !negated);
+                        return assumeEqual(n.getArg1Register(), n.getArg2Register(), false, !negated, visited);
                     case SNE:
-                        return assumeEqual(n.getArg1Register(), n.getArg2Register(), true, !negated);
+                        return assumeEqual(n.getArg1Register(), n.getArg2Register(), true, !negated, visited);
                     case EQ:
-                        return assumeEqual(n.getArg1Register(), n.getArg2Register(), false, negated);
+                        return assumeEqual(n.getArg1Register(), n.getArg2Register(), false, negated, visited);
                     case SEQ:
-                        return assumeEqual(n.getArg1Register(), n.getArg2Register(), true, negated);
+                        return assumeEqual(n.getArg1Register(), n.getArg2Register(), true, negated, visited);
                     case IN:
                         return assumeIn(n.getArg1Register(), n.getArg2Register(), negated);
                     case INSTANCEOF:
                         // TODO
                         break;
                     // TODO: recognize other binary operators?
+                }
+            }
+        } else if (restriction.getKind() == Restriction.Kind.STRICT_EQUAL || restriction.getKind() == Restriction.Kind.LOOSE_EQUAL
+                || restriction.getKind() == Restriction.Kind.STRICT_NOT_EQUAL || restriction.getKind() == Restriction.Kind.LOOSE_NOT_EQUAL) {
+            if (def instanceof TypeofNode && restriction.getValue().isMaybeSingleStr() && !restriction.getValue().isMaybeOtherThanStr()) {
+                TypeofNode typeofNode = (TypeofNode) def;
+                Restriction r = Restriction.typeofToRestriction(restriction.getValue().getStr());
+                if (r != null) {
+                    if (restriction.getKind() == Restriction.Kind.STRICT_NOT_EQUAL || restriction.getKind() == Restriction.Kind.LOOSE_NOT_EQUAL)
+                        r = r.negate();
+                    if (typeofNode.isVariable())
+                        return assumeVariableSatisfies(typeofNode.getVariableName(), r, visited);
+                    else
+                        return assume(typeofNode.getArgRegister(), r, visited);
+                }
+            } else if (def instanceof CallNode) {
+                CallNode callNode = (CallNode) def;
+                if (callNode.getBaseRegister() != AbstractNode.NO_VALUE) {
+                    Value base = c.getState().readRegister(callNode.getBaseRegister());
+                    boolean baseIsObjectToString = base.equals(Value.makeObject(ObjectLabel.make(ECMAScriptObjects.OBJECT_TOSTRING, ObjectLabel.Kind.FUNCTION)));
+                    if (baseIsObjectToString) {
+                        Value functionToCall = callNode.isPropertyFixed() ?
+                                pv.readPropertyValue(base.getObjectLabels(), callNode.getPropertyString())
+                                : pv.readPropertyValue(base.getObjectLabels(), c.getState().readRegister(callNode.getPropertyRegister()));
+                        functionToCall = UnknownValueResolver.getRealValue(functionToCall, c.getState());
+                        if (functionToCall.equals(Value.makeObject(ObjectLabel.make(ECMAScriptObjects.FUNCTION_CALL, ObjectLabel.Kind.FUNCTION))) ||
+                                functionToCall.equals(Value.makeObject(ObjectLabel.make(ECMAScriptObjects.FUNCTION_APPLY, ObjectLabel.Kind.FUNCTION)))) {
+                            Restriction r = new Restriction(Restriction.Kind.OBJECT_TO_STRING).set(restriction.getValue());
+                            if (restriction.getKind() == Restriction.Kind.STRICT_NOT_EQUAL || restriction.getKind() == Restriction.Kind.LOOSE_NOT_EQUAL)
+                                r = r.negate();
+
+                            return assume(callNode.getArgRegister(0), r, visited);
+                        }
+                    }
                 }
             }
             // TODO: recognize more operations? x.hasOwnProperty(y)? Object.is?
@@ -354,7 +387,7 @@ public class Filtering {
         Restriction restriction = new Restriction(Restriction.Kind.FUNCTION);
 
         // the property can be restricted (provided that strong update is possible)
-        if (assumeObjectPropertySatisfies(baseobjs, PKey.StringPKey.make(propname), restriction))
+        if (assumeObjectPropertySatisfies(baseobjs, PKey.StringPKey.make(propname), restriction, new Visited()))
             return true;
 
         // if the base object was read from a variable, then if its value is an object, that object must have a property named propname whose value maybe satisfies the restriction
@@ -365,9 +398,10 @@ public class Filtering {
     }
 
     /**
-     * Assumes the value of the register is equal to the given one.
+     * Adds the partitions from the given value to the value of the given register
+     * (and to values that must equal the register).
      */
-    public void assumeRegisterEquals(int reg, Value value) {
-        assume(reg, new Restriction(Restriction.Kind.STRICT_EQUAL).set(value));
+    public void assumePartitions(int reg, PartitionedValue value) {
+        assume(reg, new Restriction(Restriction.Kind.PARTITIONS).set(value));
     }
 }

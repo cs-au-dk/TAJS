@@ -18,6 +18,8 @@ package dk.brics.tajs.analysis.nativeobjects.concrete;
 
 import dk.brics.tajs.util.AnalysisException;
 
+import java.util.Objects;
+
 public class NativeResult<T> {
 
     public final Kind kind;
@@ -59,7 +61,7 @@ public class NativeResult<T> {
         NativeResult<?> that = (NativeResult<?>) o;
 
         if (kind != that.kind) return false;
-        return value != null ? value.equals(that.value) : that.value == null;
+        return Objects.equals(value, that.value);
     }
 
     @Override

@@ -17,6 +17,10 @@
 package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.Collectors;
+
+import java.util.Arrays;
+import java.util.Optional;
 
 /**
  * Represention of a value restriction.
@@ -24,6 +28,10 @@ import dk.brics.tajs.util.AnalysisException;
 public class Restriction {
 
     private Value val;
+
+    public Value getValue() {
+        return val;
+    }
 
     public enum Kind {
 
@@ -96,6 +104,21 @@ public class Restriction {
          * Type-of value is not "symbol".
          */
         NOT_TYPEOF_SYMBOL,
+
+        /**
+         * Value has the partitions of the selected value.
+         */
+        PARTITIONS,
+
+        /**
+         * Object.prototype.toString of value is the selected value.
+         */
+        OBJECT_TO_STRING,
+
+        /**
+         * Object.prototype.toString of value is not the selected value.
+         */
+        NOT_OBJECT_TO_STRING,
     }
 
     private Kind kind;
@@ -154,9 +177,64 @@ public class Restriction {
                 return v.restrictToNotTypeofObject();
             case NOT_TYPEOF_SYMBOL:
                 return v.restrictToNotSymbol();
+            case PARTITIONS:
+                if (!(val instanceof PartitionedValue))
+                    throw new AnalysisException("PARTITIONS should only be used with partitioned values");
+                if (v instanceof PartitionedValue) // v already partitioned, add the new partitioning
+                    return ((PartitionedValue) v).addPartitions((PartitionedValue)val.joinMeta(v));
+                else // v not already partitioned
+                    return val.joinMeta(v);
+            case OBJECT_TO_STRING:
+                if (val.isMaybeSingleStr()) {
+                    Optional<ObjectLabel.Kind> kind = getObjectLabelKindFromString(val.getStr());
+                    if (kind.isPresent()) {
+                        Value value = Value.makeObject(v.getObjectLabels().stream().filter(obj -> obj.getKind() == kind.get()).collect(Collectors.toSet())).joinMeta(v);
+                        switch (kind.get()) {
+                            case BOOLEAN:
+                                value = value.join(v.restrictToBool());
+                                break;
+                            case NUMBER:
+                                value = value.join(v.restrictToNum());
+                                break;
+                            case STRING:
+                                value = value.join(v.restrictToStr());
+                                break;
+                        }
+                        return value;
+                    }
+                }
+                return v;
+            case NOT_OBJECT_TO_STRING:
+                if (val.isMaybeSingleStr()) {
+                    Optional<ObjectLabel.Kind> kind = getObjectLabelKindFromString(val.getStr());
+                    if (kind.isPresent()) {
+                        Value value = v.removeObjects(v.getObjectLabels().stream().filter(obj -> obj.getKind() == kind.get()).collect(Collectors.toSet()));
+                        switch (kind.get()) {
+                            case BOOLEAN:
+                                value = value.restrictToNotBool();
+                                break;
+                            case NUMBER:
+                                value = value.restrictToNotNum();
+                                break;
+                            case STRING:
+                                value = value.restrictToNotStr();
+                                break;
+                        }
+                        return value;
+                    }
+                }
+                return v;
             default:
                 return v;
         }
+    }
+
+    /**
+     * Finds the object label kind described by str.
+     */
+    private Optional<ObjectLabel.Kind> getObjectLabelKindFromString(String str) {
+        String kindName = str.substring(str.indexOf(' ') + 1, str.length() - 1);
+        return Arrays.stream(ObjectLabel.Kind.values()).filter(k -> k.toString().equals(kindName)).findAny();
     }
 
     /**
@@ -188,6 +266,10 @@ public class Restriction {
                 return new Restriction(Kind.TYPEOF_OBJECT);
             case NOT_TYPEOF_SYMBOL:
                 return new Restriction(Kind.TYPEOF_SYMBOL);
+            case OBJECT_TO_STRING:
+                return new Restriction(Kind.NOT_OBJECT_TO_STRING).set(val);
+            case NOT_OBJECT_TO_STRING:
+                return new Restriction(Kind.OBJECT_TO_STRING).set(val);
             default: // no need for negated versions of NOT_NULL_UNDEF and FUNCTION
                 return null;
         }
@@ -212,6 +294,11 @@ public class Restriction {
             default:
                 return null;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "(" + kind + ", " + val + ")";
     }
 }
 

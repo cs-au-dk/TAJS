@@ -20,7 +20,7 @@ fg2: <main> function()
     node 9: constant[0.0,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0165.js:1:15)
     ->[block 5]
   block 5:
-    node 10: call[v6,'item',v9,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0165.js:1:1)
+    node 10: call[v6,'item',v9,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0165.js:1:1)
     ->[block 6]
   block 6: [exit-ordinary]
     node 11: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0165.js)

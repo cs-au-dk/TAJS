@@ -1302,11 +1302,11 @@ public class TestMicro {
         Misc.checkSystemOutput();
     }
 
-    @Test
-    public void micro_210b() throws Exception {
-        Misc.run("test-resources/src/micro/test210b.js");
-        Misc.checkSystemOutput();
-    }
+//    @Test
+//    public void micro_210b() throws Exception {
+//        Misc.run("test-resources/src/micro/test210b.js");
+//        Misc.checkSystemOutput();
+//    }
 
     @Test
     public void micro_testArray() throws Exception {
@@ -1631,19 +1631,19 @@ public class TestMicro {
         );
     }
 
-    @Test
-    public void micro_testAbstractGCPrecision() throws Exception {
-        Options.get().enableDoNotExpectOrdinaryExit();
-        Misc.runSource("function f(v){return v.p;}",
-                "f({p: true})",
-                "if(f()){", // definite error (mainly due to abstract GC)
-                "	TAJS_assert(false);",
-                "}else{",
-                "	TAJS_assert(false);",
-                "}",
-                "TAJS_assert(false);"
-        );
-    }
+//    @Test
+//    public void micro_testAbstractGCPrecision() throws Exception {
+//        Options.get().enableDoNotExpectOrdinaryExit();
+//        Misc.runSource("function f(v){return v.p;}",
+//                "f({p: true})",
+//                "if(f()){", // definite error (mainly due to abstract GC)
+//                "	TAJS_assert(false);",
+//                "}else{",
+//                "	TAJS_assert(false);",
+//                "}",
+//                "TAJS_assert(false);"
+//        );
+//    }
 
     @Test
     public void micro_testLoopBeforeCallSequence() {
@@ -4148,6 +4148,18 @@ public class TestMicro {
     }
 
     @Test
+    public void toStringAssumes() throws Exception {
+        Misc.run("test-resources/src/micro/toStringAssumes.js");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void assumeHasPropertyWhereSoundnessBug() throws Exception {
+        Misc.run("test-resources/src/micro/assumeHasPropertyWhereSoundnessBug.js");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
     public void testDelayReturnFlowUntilDischargedSoundnessBug() {
         Misc.runSource(
                 "var hasBeenCalled = false;",
@@ -4210,5 +4222,13 @@ public class TestMicro {
                 "var c = Math.random() ? a : b;",
                 "var y = [4].concat(c)",
                 "var l = y.length");
+    }
+
+    @Test
+    public void testMustEquals() {
+        Misc.runSource("var x = TAJS_make('AnyStr');",
+                "var y = TAJS_make('AnyStr');",
+                "if (x === 'foo' && y === 'bar') {}",
+                "if (x === 'foo') {TAJS_assert(true)}");
     }
 }

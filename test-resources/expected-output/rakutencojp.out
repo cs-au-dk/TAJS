@@ -1,0 +1,6 @@
+benchmarks/tajs/src/unevalizer/rakuten.co.jp-slice/index.html:12:5: [definite] The conditional expression is always false
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/rakuten.co.jp-slice/index.html:19:5):1:1: [definite] Dead assignment, property eVar43 is never read
+benchmarks/tajs/src/unevalizer/rakuten.co.jp-slice/index.html: [definite] Exceptional program exit is unreachable
+benchmarks/tajs/src/unevalizer/rakuten.co.jp-slice/index.html:18:23: [definite] The variable b is never used
+benchmarks/tajs/src/unevalizer/rakuten.co.jp-slice/index.html:18:23: [definite] The variable d is never used
+Soundness testing succeeded for 31 checks (with 0 expected failures)

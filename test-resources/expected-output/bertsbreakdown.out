@@ -1,0 +1,783 @@
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:227:18: [definite] ReferenceError, reading absent variable dumpValue
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:117:5: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:182:3: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:210:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:383:3: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:392:8: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:401:6: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:423:4: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:423:7: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:435:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:452:7: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:464:5: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:56:4: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:65:4: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:3:2: [definite] Dead assignment, property SOLID is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:4:2: [definite] Dead assignment, property SPRING is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:8:1: [definite] Dead assignment, property collisionObject is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:26:1: [definite] Dead assignment, property floorObject is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:94:4: [definite] Dead assignment, property is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:101:2: [definite] Dead assignment, property frameRate is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:102:2: [definite] Dead assignment, property lasttick is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:137:2: [definite] Dead assignment, property blockAt is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:154:2: [definite] Dead assignment, property environment is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:161:2: [definite] Dead assignment, property setCenter is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:210:8: [definite] Reading absent property onFloor
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:309:1: [definite] Dead assignment, property playerObject is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:313:1: [definite] Dead assignment, property physicsObject is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:360:2: [definite] Dead assignment, property togglePause is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:369:3: [definite] Dead assignment, property lastTick is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:377:3: [definite] Dead assignment, property gamestart is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:380:2: [definite] Dead assignment, property restart is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:386:4: [definite] Dead assignment, property lastTick is never read
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:423:8: [definite] Reading absent property foreground
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:435:8: [definite] Reading absent property alpha
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:452:7: [definite] Reading absent property foreground
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:464:8: [definite] Reading absent property alpha
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:507:45: [definite] Reading absent property responseText of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:8:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:9:18: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:10:14: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:26:18: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:30:14: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:137:15: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:161:17: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:180:12: [definite] The variable time is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:262:20: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:281:20: [definite] The variable frame is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:309:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:313:20: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:320:14: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:360:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:489:16: [definite] The variable e is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:505:30: [definite] The variable e is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:79:5: [definite] The variable coin is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:79:10: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:88:5: [definite] The variable baddie1 is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:88:13: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:97:20: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:115:5: [definite] The variable Livescnt is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:227:28: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:239:8: [definite] The variable mylayer is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:273:12: [definite] The variable i is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:274:9: [definite] The variable mycoin is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:281:9: [definite] The variable mybaddie is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:289:9: [definite] The variable gameexit is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:297:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:303:8: [definite] The variable Score is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:309:8: [definite] The variable Lives is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:315:8: [definite] The variable fadeout is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:315:16: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:335:8: [definite] The variable Level1 is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:340:8: [definite] The variable desc is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:347:8: [definite] The variable Totaltime is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:351:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:369:8: [definite] The variable Totalcoins is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:373:23: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:385:8: [definite] The variable Totalscore is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:389:23: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:407:8: [definite] The variable Pressspace is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:410:23: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:421:8: [definite] The variable Gameover is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:428:8: [definite] The variable Player is never used
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:457:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:463:23: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:503:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:94:4: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:117:8: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:120:51: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:15: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:40: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:15: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:40: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:10: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:205:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:17: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:208:5: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:16: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:46: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:217:22: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:219:8: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:220:25: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:222:15: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:232:4: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:15: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:45: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:242:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:243:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:244:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:245:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:246:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:247:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:248:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:249:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:253:6: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:12: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:51: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:81: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:107: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:133: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:163: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:294:17: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:18: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:46: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:68: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:85: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:107: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:124: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:146: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:163: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:185: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:212: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:234: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:251: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:273: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:20: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:42: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:345:4: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:364:23: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:375:4: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:388:18: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:389:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:33: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:65: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:144: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:176: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:34: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:66: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:145: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:177: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:392:11: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:393:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:401:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:403:7: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:408:4: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:414:13: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:423:8: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:423:41: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:427:6: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:427:20: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:433:8: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:434:13: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:434:13: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:435:8: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:439:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:7: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:72: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:141: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:7: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:72: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:130: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:163: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:221: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:254: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:285: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:452:7: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:462:7: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:463:13: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:463:13: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:464:8: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:468:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:7: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:72: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:117: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:7: [maybe] TypeError, non-HTMLImageElement or non-HTMLCanvasElement as argument to drawImage
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:72: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:106: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:139: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:173: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:206: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:237: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:141:4: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:143:4: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:151:4: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:153:4: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:161:4: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:163:4: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:171:4: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:172:4: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:176:5: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:177:8: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:178:6: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:182:6: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:184:8: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:185:6: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:189:6: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:191:8: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:192:6: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:196:6: [maybe] TypeError, call to non-function
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:199:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:200:7: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:201:7: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:203:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:204:7: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:206:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:207:7: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:210:36: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:210:52: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:29: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:44: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:213:38: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:213:54: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:9: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:28: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:43: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:216:8: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:216:26: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:6: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:23: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:41: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:58: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:17: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:34: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:57: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:74: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:717:3: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:202:6: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:203:28: [maybe] Reading absent property frameRate
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:203:49: [maybe] Reading absent property startTime
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:204:17: [maybe] Reading absent property frame
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:205:5: [maybe] Reading absent property onFrameChange
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:205:24: [maybe] Reading absent property frame
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:17: [maybe] Reading absent property frames
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:17: [maybe] Reading absent property frames of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:17: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:29: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:51: [maybe] Reading absent property nextstate
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:208:5: [maybe] Reading absent property onAnimationStart
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:209:16: [maybe] Reading absent property nextstate
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:16: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:16: [maybe] Reading absent property width
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:16: [maybe] Reading absent property width of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:28: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:46: [maybe] Reading absent property height
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:46: [maybe] Reading absent property height of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:46: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:58: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:217:22: [maybe] Reading absent property frames
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:217:22: [maybe] Reading absent property frames of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:217:22: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:217:34: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:219:8: [maybe] Reading absent property loop
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:219:8: [maybe] Reading absent property loop of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:219:8: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:219:20: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:220:25: [maybe] Reading absent property frames
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:220:25: [maybe] Reading absent property frames of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:220:25: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:220:37: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:222:15: [maybe] Reading absent property frames
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:222:15: [maybe] Reading absent property frames of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:222:15: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:222:27: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:225:17: [maybe] Reading absent property frame
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:231:11: [maybe] Reading absent property nextstate
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:232:4: [maybe] Reading absent property onAnimationStart
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:233:15: [maybe] Reading absent property nextstate
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:15: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:15: [maybe] Reading absent property width
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:15: [maybe] Reading absent property width of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:27: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:45: [maybe] Reading absent property height
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:45: [maybe] Reading absent property height of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:45: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:57: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:242:3: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:253:6: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:12: [maybe] Reading absent property img of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:12: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:24: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:40: [maybe] Reading absent property frame
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:51: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:51: [maybe] Reading absent property width of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:63: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:81: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:81: [maybe] Reading absent property x of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:93: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:107: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:107: [maybe] Reading absent property y of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:119: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:133: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:133: [maybe] Reading absent property width of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:145: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:163: [maybe] Reading absent property height of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:163: [maybe] Reading absent property states
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:175: [maybe] Reading absent property state
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:294:17: [maybe] Reading absent property text
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:29: [maybe] Reading absent property font
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:57: [maybe] Reading absent property font
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:68: [maybe] Reading absent property text
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:96: [maybe] Reading absent property font
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:107: [maybe] Reading absent property text
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:135: [maybe] Reading absent property font
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:146: [maybe] Reading absent property text
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:174: [maybe] Reading absent property font
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:185: [maybe] Reading absent property text
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:223: [maybe] Reading absent property font
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:234: [maybe] Reading absent property text
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:262: [maybe] Reading absent property font
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:273: [maybe] Reading absent property text
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:31: [maybe] Reading absent property font
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:42: [maybe] Reading absent property text
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:345:4: [maybe] Reading absent property tickfunction
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:388:18: [maybe] Reading absent property gameObjects
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:389:9: [maybe] Reading absent property overlay
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:9: [maybe] Reading absent property map
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:33: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:65: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:144: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:176: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:34: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:66: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:145: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:177: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:408:4: [maybe] Reading absent property map
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:433:8: [maybe] Reading absent property overlay
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:434:13: [maybe] Reading absent property getSprite
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:72: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:141: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:72: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:130: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:163: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:221: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:254: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:285: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:462:7: [maybe] Reading absent property overlay
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:463:13: [maybe] Reading absent property getSprite
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:72: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:117: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:72: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:106: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:139: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:173: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:206: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:237: [maybe] Reading absent property size
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:490:33: [maybe] Reading 'this' yields the global object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:490:33: [maybe] Reading absent property name of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:490:44: [maybe] Reading 'this' yields the global object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:506:8: [maybe] Reading 'this' yields the global object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:506:8: [maybe] Reading absent property readyState of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:507:34: [maybe] Reading 'this' yields the global object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:507:34: [maybe] Reading absent property name of host object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:507:45: [maybe] Reading 'this' yields the global object
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:123:16: [maybe] Reading absent property mount
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:131:16: [maybe] Reading absent property menu
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:141:4: [maybe] Reading absent property addState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:141:30: [maybe] Reading absent property newgame
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:142:28: [maybe] Reading absent property newgame
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:143:4: [maybe] Reading absent property changeState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:151:4: [maybe] Reading absent property addState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:151:30: [maybe] Reading absent property highscores
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:152:28: [maybe] Reading absent property highscores
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:153:4: [maybe] Reading absent property changeState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:161:4: [maybe] Reading absent property addState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:161:30: [maybe] Reading absent property credits
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:162:28: [maybe] Reading absent property credits
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:163:4: [maybe] Reading absent property changeState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:171:4: [maybe] Reading absent property addState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:171:29: [maybe] Reading absent property cursor
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:172:4: [maybe] Reading absent property changeState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:176:5: [maybe] Reading absent property game
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:176:5: [maybe] Reading absent property map
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:176:50: [maybe] Reading absent property startTime
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:177:8: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:178:6: [maybe] Reading absent property changeState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:182:6: [maybe] Reading absent property changeState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:184:8: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:185:6: [maybe] Reading absent property changeState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:189:6: [maybe] Reading absent property changeState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:191:8: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:192:6: [maybe] Reading absent property changeState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:196:6: [maybe] Reading absent property changeState
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:199:9: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:200:7: [maybe] Reading absent property game
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:201:7: [maybe] Reading absent property game
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:203:9: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:206:9: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:210:36: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:210:52: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:9: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:29: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:44: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:213:38: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:213:54: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:9: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:28: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:43: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:216:8: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:216:26: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:6: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:23: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:41: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:58: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:17: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:34: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:57: [maybe] Reading absent property position
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:74: [maybe] Reading absent property target
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:91:11: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:93:8: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:94:4: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:117:8: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:120:51: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:132:16: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:133:26: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:15: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:40: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:15: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:40: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:10: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:203:28: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:203:44: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:17: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:16: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:46: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:217:22: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:219:8: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:220:15: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:220:25: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:222:15: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:222:15: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:15: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:45: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:243:3: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:244:3: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:245:3: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:246:3: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:247:3: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:248:3: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:249:3: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:253:6: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:12: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:40: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:51: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:81: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:107: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:133: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:163: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:294:17: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:46: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:46: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:68: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:68: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:85: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:85: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:107: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:107: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:124: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:124: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:146: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:146: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:163: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:163: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:185: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:185: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:202: [maybe] The variable offsetX has values with different types
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:212: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:212: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:234: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:234: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:251: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:251: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:273: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:273: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:12: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:12: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:12: [maybe] The variable offsetX has values with different types
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:20: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:20: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:42: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:42: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:344:22: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:375:4: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:389:9: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:33: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:65: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:65: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:144: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:176: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:176: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:34: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:66: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:66: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:145: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:177: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:177: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:392:11: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:393:9: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:394:33: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:401:9: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:403:7: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:404:31: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:423:8: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:423:41: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:426:13: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:433:8: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:434:13: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:435:8: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:438:13: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:7: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:7: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:72: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:72: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:130: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:141: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:141: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:199: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:210: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:221: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:7: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:7: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:72: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:130: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:130: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:163: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:221: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:221: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:254: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:285: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:452:7: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:462:7: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:463:13: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:464:8: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:467:17: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:7: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:7: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:72: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:72: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:106: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:117: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:117: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:151: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:162: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:173: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:7: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:7: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:72: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:106: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:106: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:139: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:173: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:173: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:206: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:237: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:506:8: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:94:4, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:117:8, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:120:51, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:15, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:40, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:15, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:40, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:10, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:205:5, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:17, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:208:5, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:16, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:46, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:217:22, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:219:8, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:220:25, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:222:15, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:232:4, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:15, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:45, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:242:3, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:243:3, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:244:3, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:245:3, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:246:3, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:247:3, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:248:3, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:249:3, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:253:6, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:12, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:51, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:81, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:107, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:133, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:163, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:294:17, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:18, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:46, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:68, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:85, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:107, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:124, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:146, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:163, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:185, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:212, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:234, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:251, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:273, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:20, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:42, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:345:4, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:364:23, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:375:4, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:388:18, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:389:9, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:9, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:33, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:65, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:144, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:390:176, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:34, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:66, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:145, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:391:177, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:392:11, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:393:9, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:401:9, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:403:7, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:408:4, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:414:13, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:423:8, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:423:41, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:427:20, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:433:8, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:434:13, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:435:8, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:439:9, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:72, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:440:141, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:72, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:130, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:163, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:221, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:254, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:444:285, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:452:7, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:462:7, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:463:13, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:464:8, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:468:9, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:72, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:469:117, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:72, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:106, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:139, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:173, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:206, benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:473:237, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:141:4, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:143:4, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:151:4, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:153:4, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:161:4, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:163:4, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:171:4, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:172:4, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:176:5, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:177:8, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:178:6, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:182:6, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:184:8, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:185:6, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:189:6, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:191:8, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:192:6, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:196:6, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:199:9, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:200:7, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:201:7, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:203:9, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:204:7, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:206:9, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:207:7, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:210:36, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:210:52, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:9, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:29, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:44, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:213:38, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:213:54, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:9, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:28, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:43, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:216:8, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:216:26, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:6, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:23, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:41, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:58, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:17, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:34, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:57, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:74, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:227:18, benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:717:3]
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:176:45: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:242:3: [info] Writing to unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:490:4: [info] Writing to unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:507:5: [info] Writing to unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:107:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:107:55: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:108:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:109:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:110:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:110:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:111:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:112:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:117:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:120:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:120:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:123:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:125:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:126:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:132:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:133:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:134:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:134:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:134:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:134:70: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:134:88: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:15: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:40: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:70: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:70: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:90: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:90: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:103: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:172:103: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:15: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:40: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:70: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:70: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:90: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:90: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:103: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:173:103: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:10: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:87: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:87: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:115: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:115: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:133: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:174:133: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:27: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:48: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:48: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:68: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:68: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:89: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:89: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:109: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:181:109: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:182:6: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:182:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:182:27: [info] 'this' refers to a summary abstract object, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:182:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:202:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:203:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:203:49: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:204:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:205:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:205:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:17: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:207:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:208:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:209:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:209:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:210:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:16: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:46: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:46: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:211:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:212:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:213:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:215:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:217:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:217:22: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:217:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:219:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:219:8: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:219:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:220:25: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:220:25: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:220:37: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:222:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:222:15: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:222:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:225:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:226:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:229:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:231:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:232:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:232:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:233:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:233:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:234:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:235:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:15: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:45: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:236:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:243:3: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:244:3: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:245:3: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:246:3: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:247:3: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:248:3: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:249:3: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:253:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:253:6: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:254:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:12: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:51: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:51: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:63: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:81: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:81: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:93: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:107: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:107: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:119: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:133: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:133: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:145: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:163: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:163: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:278:175: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:294:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:46: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:68: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:85: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:96: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:107: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:124: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:135: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:146: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:163: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:174: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:185: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:212: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:223: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:234: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:251: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:262: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:295:273: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:20: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:296:42: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:340:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:343:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:344:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:344:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:345:4: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:490:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:490:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:506:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:507:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/berts-breakdown-filer/CPGE.js:507:45: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:176:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:176:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:177:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:184:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:191:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:199:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:200:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:201:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:203:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:206:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:210:36: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:210:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:211:44: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:213:38: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:213:54: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:214:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:216:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:216:26: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:41: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:217:58: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:57: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:219:74: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+benchmarks/tajs/src/unevalizer/berts-breakdown/index.html:716:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

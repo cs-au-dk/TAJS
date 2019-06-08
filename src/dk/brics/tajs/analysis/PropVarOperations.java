@@ -22,6 +22,7 @@ import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.Bool;
 import dk.brics.tajs.lattice.ExecutionContext;
+import dk.brics.tajs.lattice.FreeVariablePartitioning;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectProperty;
@@ -194,75 +195,8 @@ public class PropVarOperations {
                         if (!no_call_getters) {
                             if (v.isMaybePresentAccessor())
                                 v = UnknownValueResolver.getRealValue(v, c.getState());
-                            for (ObjectLabel obj : v.getGetters()) {
-                                if (obj == ObjectLabel.absent_accessor_function) {
-                                    values.add(Value.makeUndef()); // TODO: warn about call to dummy getter?
-                                } else {
-                                    implicitAfterCall = UserFunctionCalls.implicitUserFunctionCall(obj, new FunctionCalls.CallInfo() {
-                                        @Override
-                                        public AbstractNode getSourceNode() {
-                                            return c.getNode();
-                                        }
-
-                                        @Override
-                                        public AbstractNode getJSSourceNode() {
-                                            return c.getNode();
-                                        }
-
-                                        @Override
-                                        public boolean isConstructorCall() {
-                                            return false;
-                                        }
-
-                                        @Override
-                                        public Value getFunctionValue() {
-                                            throw new AnalysisException("Unexpected usage of getFunctionValue");
-                                        }
-
-                                        @Override
-                                        public Value getThis() {
-                                            return Value.makeObject(base);
-                                        }
-
-                                        @Override
-                                        public int getResultRegister() {
-                                            return AbstractNode.NO_VALUE;
-                                        }
-
-                                        @Override
-                                        public ExecutionContext getExecutionContext() {
-                                            return c.getState().getExecutionContext();
-                                        }
-
-                                        @Override
-                                        public Value getArg(int i) {
-                                            return Value.makeAbsent();
-                                        }
-
-                                        @Override
-                                        public int getNumberOfArgs() {
-                                            return 0;
-                                        }
-
-                                        @Override
-                                        public Value getUnknownArg() {
-                                            throw new AnalysisException("Should not be called. Arguments are not unknown.");
-                                        }
-
-                                        @Override
-                                        public boolean isUnknownNumberOfArgs() {
-                                            return false;
-                                        }
-
-                                        @Override
-                                        public boolean assumeFunction() {
-                                            return false;
-                                        }
-                                    }, c);
-                                }
-                            }
+                            implicitAfterCall = callGetters(values, singleton(base), v, implicitAfterCall);
                         }
-
                         // add data values
                         Value v2 = v.restrictToNotAbsent();
                         if (v2.isMaybePresent()) {
@@ -293,6 +227,90 @@ public class PropVarOperations {
             }
         }
         return UserFunctionCalls.implicitUserFunctionReturn(values, !values.isEmpty() || no_call_getters, implicitAfterCall, c);
+    }
+
+    /**
+     * Calls the getters in v.
+     * @param values if the absent accessor function is among the getters, then undefined is added to 'values'
+     * @param base the base objects holding the getters
+     * @param v the value containing the getters
+     * @param implicitAfterCall existing after-call node, or null if none
+     * @return after-call node, or null if none
+     */
+    public BasicBlock callGetters(Collection<Value> values, Set<ObjectLabel> base, Value v, BasicBlock implicitAfterCall) {
+        for (ObjectLabel obj : v.getGetters()) {
+            if (obj == ObjectLabel.absent_accessor_function) {
+                values.add(Value.makeUndef()); // TODO: warn about call to dummy getter?
+            } else {
+                implicitAfterCall = UserFunctionCalls.implicitUserFunctionCall(obj, new FunctionCalls.CallInfo() {
+                    @Override
+                    public AbstractNode getSourceNode() {
+                        return c.getNode();
+                    }
+
+                    @Override
+                    public AbstractNode getJSSourceNode() {
+                        return c.getNode();
+                    }
+
+                    @Override
+                    public boolean isConstructorCall() {
+                        return false;
+                    }
+
+                    @Override
+                    public Value getFunctionValue() {
+                        throw new AnalysisException("Unexpected usage of getFunctionValue");
+                    }
+
+                    @Override
+                    public Value getThis() {
+                        return Value.makeObject(base);
+                    }
+
+                    @Override
+                    public int getResultRegister() {
+                        return AbstractNode.NO_VALUE;
+                    }
+
+                    @Override
+                    public ExecutionContext getExecutionContext() {
+                        return c.getState().getExecutionContext();
+                    }
+
+                    @Override
+                    public Value getArg(int i) {
+                        return Value.makeAbsent();
+                    }
+
+                    @Override
+                    public int getNumberOfArgs() {
+                        return 0;
+                    }
+
+                    @Override
+                    public Value getUnknownArg() {
+                        throw new AnalysisException("Should not be called. Arguments are not unknown.");
+                    }
+
+                    @Override
+                    public boolean isUnknownNumberOfArgs() {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean assumeFunction() {
+                        return false;
+                    }
+
+                    @Override
+                    public FreeVariablePartitioning getFreeVariablePartitioning() {
+                        return null;
+                    }
+                }, c);
+            }
+        }
+        return implicitAfterCall;
     }
 
     /**
@@ -708,6 +726,11 @@ public class PropVarOperations {
                             public boolean assumeFunction() {
                                 return false;
                             }
+
+                            @Override
+                            public FreeVariablePartitioning getFreeVariablePartitioning() {
+                                return null;
+                            }
                         }, c);
                     }
                 }
@@ -741,7 +764,7 @@ public class PropVarOperations {
                                     v = v.setAttributes(true, true, false);
                                 // TODO: should also set attributes (weakly) if writeInternalPrototype_dynamic and !maySkipInternalProtoPropertyWrite - see also #356
                                 c.getState().getObject(objprop.getObjectLabel(), true).setValue(objprop, v);
-                                c.getState().getMustEquals().setToBottom(objprop);
+                                c.getState().getMustEquals().setToBottom(objprop); // TODO: no need to reset must-equals if called from Filtering
                             }
                         }
                     });

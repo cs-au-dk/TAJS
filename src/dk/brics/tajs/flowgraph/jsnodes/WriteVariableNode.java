@@ -80,8 +80,8 @@ public class WriteVariableNode extends Node {
     @Override
     public void check(BasicBlock b) {
         if (value_reg == NO_VALUE)
-            throw new AnalysisException("Invalid source register: " + toString());
+            throw new AnalysisException("Invalid source register: " + this);
         if (varname == null || varname.isEmpty())
-            throw new AnalysisException("Variable name is null: " + toString());
+            throw new AnalysisException("Variable name is null: " + this);
     }
 }

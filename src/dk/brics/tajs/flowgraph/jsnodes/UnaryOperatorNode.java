@@ -129,6 +129,6 @@ public class UnaryOperatorNode extends LoadNode {
     @Override
     public void check(BasicBlock b) {
         if (arg_reg == NO_VALUE)
-            throw new AnalysisException("Invalid argument register: " + toString());
+            throw new AnalysisException("Invalid argument register: " + this);
     }
 }

@@ -24,6 +24,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
@@ -297,11 +298,6 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/getterssetters/so8.js", 0, 0),
                         make("test-resources/src/micro/testEval.js", 0, 0),
 
-                        // Fails due to Nashorn bug. Sent email to Nashorn mailing list (nashorn-dev@openjdk.java.net): "Minor discepancy for multiline regexps" 2017-1-6
-                        make("test-resources/src/v8tests/regexp.js", 201, 1),
-                        make("test-resources/src/v8tests/regexp.js", 201, 17),
-                        make("test-resources/src/v8tests/regexp.js", 202, 1),
-
                         // Fails due to Nashorn bug(?). Character classes with \S behave differently from v8
                         make("test-resources/src/v8tests/regexp.js", 108, 1),
                         make("test-resources/src/v8tests/regexp.js", 109, 1),
@@ -452,7 +448,12 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/micro/test64.js", 14, 1),
 
                         // 2016-09-15 logger produces stackoverflow exceptions on both node and jjs
-                        make("out/temp-sources/TestMicro.maybe_infinite_loop.js", 0, 0)
+                        make("out/temp-sources/TestMicro.maybe_infinite_loop.js", 0, 0),
+
+                        // Logger calls toString, but it is not called when running the uninstrumented file
+                        make("benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/prototype.js", 142, 38),
+                        make("benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/prototype.js", 142, 18),
+                        make("benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/prototype.js", 142, 59)
 
                 )
         );
@@ -543,7 +544,7 @@ public class KnownUnsoundnesses {
 
             if (lineNumber != that.lineNumber) return false;
             if (columnNumber != that.columnNumber) return false;
-            return file != null ? file.equals(that.file) : that.file == null;
+            return Objects.equals(file, that.file);
         }
 
         @Override

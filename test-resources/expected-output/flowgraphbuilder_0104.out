@@ -20,7 +20,7 @@ fg2: <main> function()
     node 7: call[v7,'toString',v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0104.js:1:5)
     ->[block 6]
   block 6:
-    node 8: write-variable[v5,'x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0104.js:1:1)
+    node 8: write-variable[v5,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0104.js:1:1)
     ->[block 7]
   block 7: [exit-ordinary]
     node 9: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0104.js)

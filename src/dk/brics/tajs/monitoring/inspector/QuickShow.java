@@ -46,7 +46,7 @@ public class QuickShow {
         Options.get().enableTest();
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         TestInit();
         IAnalysisMonitoring inspector = InspectorFactory.createInspectorMonitor();
         String target = "test-resources/src/google/richards.js";

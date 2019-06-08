@@ -17,29 +17,29 @@
     node 6: begin-loop[v5] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:23)
     ->[block 5] ~>[block 12]
   block 5:
-    node 7: if[v5](true-block:7,false-block:6)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 7: if[v5](true-block:7,false-block:6) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 6,block 7] ~>[block 12]
   block 6:
-    node 8: end-loop[v5]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 8: end-loop[v5] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 13]
   block 7:
     node 9: constant["COND2",v6] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     node 10: begin-loop[v6] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:47)
     ->[block 8] ~>[block 10]
   block 8:
-    node 11: if[v6](true-block:9,false-block:11)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 11: if[v6](true-block:9,false-block:11) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 9,block 11] ~>[block 10]
   block 9:
-    node 12: nop(continue while2)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:48)
+    node 12: nop(continue while2) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:48)
     ->[block 7] ~>[block 10]
   block 10:
-    node 13: end-loop[v6]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 13: end-loop[v6] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 12]
   block 11:
-    node 14: end-loop[v6]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 14: end-loop[v6] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 4] ~>[block 12]
   block 12:
-    node 15: end-loop[v5]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 15: end-loop[v5] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 14]
   block 13: [exit-ordinary]
     node 16: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js)
@@ -67,29 +67,29 @@
     node 6: begin-loop[v5] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:23)
     ->[block 5] ~>[block 12]
   block 5:
-    node 7: if[v5](true-block:7,false-block:6)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 7: if[v5](true-block:7,false-block:6) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 6,block 7] ~>[block 12]
   block 6:
-    node 8: end-loop[v5]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 8: end-loop[v5] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 13]
   block 7:
     node 9: constant["COND2",v6] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     node 10: begin-loop[v6] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:47)
     ->[block 8] ~>[block 10]
   block 8:
-    node 11: if[v6](true-block:9,false-block:11)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 11: if[v6](true-block:9,false-block:11) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 9,block 11] ~>[block 10]
   block 9:
-    node 12: nop(continue while2)* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:48)
+    node 12: nop(continue while2) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:48)
     ->[block 7] ~>[block 10]
   block 10:
-    node 13: end-loop[v6]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 13: end-loop[v6] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 12]
   block 11:
-    node 14: end-loop[v6]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 14: end-loop[v6] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 4] ~>[block 12]
   block 12:
-    node 15: end-loop[v5]* (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 15: end-loop[v5] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 14]
   block 13: [exit-ordinary]
     node 16: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js)

@@ -31,10 +31,10 @@ fg2: <main> function()
     node 12: ==[v7,v8,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0166.js:1:26)
     ->[block 9]
   block 9:
-    node 13: if[v5](true-block:10,false-block:11)* (test-resources/src/flowgraphbuilder/flowgraph_builder0166.js:1:1)
+    node 13: if[v5](true-block:10,false-block:11) (test-resources/src/flowgraphbuilder/flowgraph_builder0166.js:1:1)
     ->[block 10,block 11]
   block 10:
-    node 14: constant[3.0,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0166.js:1:37)
+    node 14: constant[3.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0166.js:1:37)
     ->[block 11]
   block 11: [exit-ordinary]
     node 15: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0166.js)

@@ -603,7 +603,7 @@ public class Test1K2012Love {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test
     public void test1k_2012_love_1276() {
         Misc.run("test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1276.js");
         Misc.checkSystemOutput();

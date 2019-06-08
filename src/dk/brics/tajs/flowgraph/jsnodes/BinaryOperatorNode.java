@@ -252,8 +252,8 @@ public class BinaryOperatorNode extends LoadNode {
     @Override
     public void check(BasicBlock b) {
         if (arg1_reg == NO_VALUE)
-            throw new AnalysisException("Invalid left argument: " + toString());
+            throw new AnalysisException("Invalid left argument: " + this);
         if (arg2_reg == NO_VALUE)
-            throw new AnalysisException("Invalid right argument: " + toString());
+            throw new AnalysisException("Invalid right argument: " + this);
     }
 }

@@ -43,7 +43,7 @@ fg2: <main> function()
     node 22: +[v14,v15,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0211.js:3:25)
     ->[block 10]
   block 10:
-    node 23: write-property[v10,v11,v9]* (test-resources/src/flowgraphbuilder/flowgraph_builder0211.js:3:9)
+    node 23: write-property[v10,v11,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0211.js:3:9)
     ->[block 11]
   block 11: [exit-ordinary]
     node 24: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0211.js)

@@ -18,6 +18,8 @@ package dk.brics.tajs.monitoring.soundness.testing;
 
 import dk.brics.tajs.flowgraph.SourceLocation;
 
+import java.util.Objects;
+
 import static dk.brics.tajs.monitoring.soundness.ValueLoggerSourceLocationMapper.makeTAJSSourceLocation;
 
 /**
@@ -64,9 +66,9 @@ public abstract class SoundnessCheckImpl implements SoundnessCheck {
         SoundnessCheckImpl that = (SoundnessCheckImpl) o;
 
         if (failure != that.failure) return false;
-        if (sourceLocation != null ? !sourceLocation.equals(that.sourceLocation) : that.sourceLocation != null)
+        if (!Objects.equals(sourceLocation, that.sourceLocation))
             return false;
-        if (message != null ? !message.equals(that.message) : that.message != null) return false;
+        if (!Objects.equals(message, that.message)) return false;
 
         return true;
     }

@@ -19,7 +19,7 @@ fg2: <main> function()
     node 8: if[v7](true-block:5,false-block:6) (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:1:1)
     ->[block 5,block 6]
   block 5:
-    node 9: constant[5.0,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:3:2)
+    node 9: constant[5.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:3:2)
     ->[block 11]
   block 6:
     node 10: constant[2.0,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:6:8)
@@ -27,7 +27,7 @@ fg2: <main> function()
     node 12: if[v7](true-block:7,false-block:8) (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:1:1)
     ->[block 7,block 8]
   block 7:
-    node 13: constant[8.0,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:7:2)
+    node 13: constant[8.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:7:2)
     ->[block 11]
   block 8:
     node 14: constant[9.0,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:10:8)
@@ -35,10 +35,10 @@ fg2: <main> function()
     node 16: if[v7](true-block:9,false-block:10) (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:1:1)
     ->[block 9,block 10]
   block 9:
-    node 17: constant[3.0,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:11:2)
+    node 17: constant[3.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:11:2)
     ->[block 11]
   block 10:
-    node 18: constant[19.0,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:14:12)
+    node 18: constant[19.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js:14:12)
     ->[block 11]
   block 11: [exit-ordinary]
     node 19: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0144.js)

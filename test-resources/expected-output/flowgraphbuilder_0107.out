@@ -20,19 +20,19 @@ fg2: <main> function()
     node 7: call[v7,'random',v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:1:5)
     ->[block 6]
   block 6:
-    node 8: if[v5](true-block:7,false-block:8)* (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:1:1)
+    node 8: if[v5](true-block:7,false-block:8) (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:1:1)
     ->[block 7,block 8]
   block 7:
     node 9: constant[null,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:2:6)
-    node 10: write-variable[v8,'y']* (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:2:2)
+    node 10: write-variable[v8,'y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:2:2)
     ->[block 9]
   block 8:
-    node 11: new[v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:4:6)
-    node 12: write-variable[v8,'y']* (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:4:2)
+    node 11: new[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:4:6)
+    node 12: write-variable[v9,'y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:4:2)
     ->[block 9]
   block 9:
-    node 13: read-variable['y',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:6:1)
-    node 14: read-property[v8,'a',-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:6:1)
+    node 13: read-variable['y',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:6:1)
+    node 14: read-property[v10,'a',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js:6:1)
     ->[block 10]
   block 10: [exit-ordinary]
     node 15: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0107.js)

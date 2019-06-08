@@ -1,8 +1,8 @@
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js)
-    node 1: function-decl[function h(),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:1:1)
-    node 2: function-decl[function g(),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:4:1)
+    node 1: function-decl[function h(),-] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:1:1)
+    node 2: function-decl[function g(),-] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:4:1)
     ->[block 1]
   block 1:
     node 3: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -30,7 +30,7 @@ function h()
     node 12: constant[1.0,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:2:9)
     node 13: +[v2,v3,v4] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:2:9)
     node 14: write-variable[v4,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:2:9)
-    node 15: write-variable[v2,'v']* (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:2:5)
+    node 15: write-variable[v2,'v'] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:2:5)
     ->[block 8]
   block 8: [exit-ordinary]
     node 16: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:1:1)
@@ -48,7 +48,7 @@ function g()
     node 21: constant[1.0,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:5:9)
     node 22: +[v4,v5,v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:5:9)
     node 23: write-variable[v2,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:5:11)
-    node 24: write-variable[v2,'v']* (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:5:5)
+    node 24: write-variable[v2,'v'] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:5:5)
     ->[block 12]
   block 12: [exit-ordinary]
     node 25: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0198.js:4:1)

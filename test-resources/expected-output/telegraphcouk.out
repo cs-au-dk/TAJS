@@ -1,0 +1,9 @@
+benchmarks/tajs/src/unevalizer/telegraph.co.uk-slice/index.html:12:13: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/telegraph.co.uk-slice/index.html:7:5: [definite] Dead assignment, property asConnect is never read
+benchmarks/tajs/src/unevalizer/telegraph.co.uk-slice/index.html: [definite] Exceptional program exit is unreachable
+benchmarks/tajs/src/unevalizer/telegraph.co.uk-slice/index.html:19:5: [definite] The variable tmgAds is never used
+benchmarks/tajs/src/unevalizer/telegraph.co.uk-slice/index.html:12:18: [maybe] Converting undefined to string
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/telegraph.co.uk-slice/index.html:10:24):1:15: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/telegraph.co.uk-slice/index.html:12:13):1:15: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/telegraph.co.uk-slice/index.html:12:13):1:15: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 102 checks (with 0 expected failures)

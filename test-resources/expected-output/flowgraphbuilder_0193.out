@@ -20,7 +20,7 @@ fg2: <main> function()
     ->[block 6]
   block 6:
     node 7: constant[1.0,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0193.js:1:7)
-    node 8: write-property[v6,'p',v5]* (test-resources/src/flowgraphbuilder/flowgraph_builder0193.js:1:1)
+    node 8: write-property[v6,'p',v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0193.js:1:1)
     ->[block 7]
   block 7: [exit-ordinary]
     node 9: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0193.js)

@@ -79,6 +79,6 @@ public class NextPropertyNode extends Node {
     @Override
     public void check(BasicBlock b) {
         if (propertylist_reg == NO_VALUE)
-            throw new AnalysisException("Invalid propertylist register: " + toString());
+            throw new AnalysisException("Invalid propertylist register: " + this);
     }
 }

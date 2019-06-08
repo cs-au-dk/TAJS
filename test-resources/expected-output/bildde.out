@@ -1,0 +1,192 @@
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:143:1: HTML StartTag body contains a '/' character before the closing '>', which is ignored because tags of this name cannot be empty-element tags
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:21:1: [definite] Dead assignment, property $iTXT.debug.Util is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:22:1: [definite] Dead assignment, property $iTXT.fx.Base is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:23:1: [definite] Dead assignment, property $iTXT.fx.Util is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:24:1: [definite] Dead assignment, property $iTXT.fx.Fade is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:25:1: [definite] Dead assignment, property $iTXT.fx.Move is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:26:1: [definite] Dead assignment, property $iTXT.fx.Size is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:27:1: [definite] Dead assignment, property $iTXT.fx.Queue is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:28:1: [definite] Dead assignment, property $iTXT.fx.Combination is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:29:1: [definite] Dead assignment, property $iTXT.metrics.Events is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:30:1: [definite] Dead assignment, property $iTXT.itxt.Controller is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:31:1: [definite] Dead assignment, property $iTXT.itxt.GoogleAnalytics is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:32:1: [definite] Dead assignment, property $iTXT.core.Util is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:33:1: [definite] Dead assignment, property $iTXT.core.Regex is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:34:1: [definite] Dead assignment, property $iTXT.core.Flash is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:35:1: [definite] Dead assignment, property $iTXT.core.Math is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:36:1: [definite] Dead assignment, property $iTXT.core.Builder is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:37:1: [definite] Dead assignment, property $iTXT.core.Class is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:38:1: [definite] Dead assignment, property $iTXT.core.Browser is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:39:1: [definite] Dead assignment, property $iTXT.core.Event is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:40:1: [definite] Dead assignment, property $iTXT.core.Ajax is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:41:1: [definite] Dead assignment, property $iTXT.core.Array is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:42:1: [definite] Dead assignment, property $iTXT.core.Dom is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:43:1: [definite] Dead assignment, property $iTXT.tmpl.Row is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:44:1: [definite] Dead assignment, property $iTXT.tmpl.Input is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:45:1: [definite] Dead assignment, property $iTXT.tmpl.Iframe is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:46:1: [definite] Dead assignment, property $iTXT.tmpl.Image is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:47:1: [definite] Dead assignment, property $iTXT.tmpl.Flash is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:48:1: [definite] Dead assignment, property $iTXT.tmpl.Cell is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:49:1: [definite] Dead assignment, property $iTXT.tmpl.ElementBase is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:50:1: [definite] Dead assignment, property $iTXT.tmpl.TemplateBase is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:51:1: [definite] Dead assignment, property $iTXT.tmpl.Text is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:52:1: [definite] Dead assignment, property $iTXT.tmpl.Link is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:53:1: [definite] Dead assignment, property $iTXT.tmpl.Html is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:54:1: [definite] Dead assignment, property $iTXT.tmpl.Html5Video is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:55:1: [definite] Dead assignment, property $iTXT.data.Country is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:56:1: [definite] Dead assignment, property $iTXT.data.Pixel is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:57:1: [definite] Dead assignment, property $iTXT.data.Param is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:58:1: [definite] Dead assignment, property $iTXT.data.Context is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:59:1: [definite] Dead assignment, property $iTXT.data.Advert is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:60:1: [definite] Dead assignment, property $iTXT.data.Dom is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:61:1: [definite] Dead assignment, property $iTXT.data.AdLogger is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:62:1: [definite] Dead assignment, property $iTXT.data.AdvertHandler is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:63:1: [definite] Dead assignment, property $iTXT.data.Channel is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:64:1: [definite] Dead assignment, property $iTXT.ui.MobileTooltipChrome is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:65:1: [definite] Dead assignment, property $iTXT.ui.TooltipShadow is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:66:1: [definite] Dead assignment, property $iTXT.ui.TooltipDrawer is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:67:1: [definite] Dead assignment, property $iTXT.ui.LightboxChrome is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:68:1: [definite] Dead assignment, property $iTXT.ui.MobileTooltip is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:69:1: [definite] Dead assignment, property $iTXT.ui.TooltipDrawerFooter is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:70:1: [definite] Dead assignment, property $iTXT.ui.TooltipTail is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:71:1: [definite] Dead assignment, property $iTXT.ui.ComponentBase is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:72:1: [definite] Dead assignment, property $iTXT.ui.TooltipContent is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:73:1: [definite] Dead assignment, property $iTXT.ui.Hook is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:74:1: [definite] Dead assignment, property $iTXT.ui.TooltipSlideOut is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:75:1: [definite] Dead assignment, property $iTXT.ui.Tooltip is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:76:1: [definite] Dead assignment, property $iTXT.ui.TooltipChrome is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:77:1: [definite] Dead assignment, property $iTXT.ui.TooltipFooter is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:78:1: [definite] Dead assignment, property $iTXT.ui.TooltipPlacer is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:79:1: [definite] Dead assignment, property $iTXT.ui.TooltipHeader is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:80:1: [definite] Dead assignment, property $iTXT.ui.MobileTooltipHeader is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:81:1: [definite] Dead assignment, property Util_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:82:1: [definite] Dead assignment, property Base_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:83:1: [definite] Dead assignment, property Util_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:84:1: [definite] Dead assignment, property Fade_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:85:1: [definite] Dead assignment, property Move_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:86:1: [definite] Dead assignment, property Size_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:87:1: [definite] Dead assignment, property Queue_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:88:1: [definite] Dead assignment, property Combination_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:89:1: [definite] Dead assignment, property Events_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:90:1: [definite] Dead assignment, property Controller_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:91:1: [definite] Dead assignment, property GoogleAnalytics_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:92:1: [definite] Dead assignment, property Util_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:93:1: [definite] Dead assignment, property Regex_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:94:1: [definite] Dead assignment, property Flash_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:95:1: [definite] Dead assignment, property Math_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:96:1: [definite] Dead assignment, property Builder_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:97:1: [definite] Dead assignment, property Class_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:98:1: [definite] Dead assignment, property Browser_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:99:1: [definite] Dead assignment, property Event_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:100:1: [definite] Dead assignment, property Ajax_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:101:1: [definite] Dead assignment, property Array_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:102:1: [definite] Dead assignment, property Dom_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:103:1: [definite] Dead assignment, property Row_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:104:1: [definite] Dead assignment, property Input_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:105:1: [definite] Dead assignment, property Iframe_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:106:1: [definite] Dead assignment, property Image_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:107:1: [definite] Dead assignment, property Flash_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:108:1: [definite] Dead assignment, property Cell_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:109:1: [definite] Dead assignment, property ElementBase_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:110:1: [definite] Dead assignment, property TemplateBase_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:111:1: [definite] Dead assignment, property Text_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:112:1: [definite] Dead assignment, property Link_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:113:1: [definite] Dead assignment, property Html_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:114:1: [definite] Dead assignment, property Html5Video_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:115:1: [definite] Dead assignment, property Country_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:116:1: [definite] Dead assignment, property Pixel_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:117:1: [definite] Dead assignment, property Param_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:118:1: [definite] Dead assignment, property Context_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:119:1: [definite] Dead assignment, property Advert_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:120:1: [definite] Dead assignment, property Dom_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:121:1: [definite] Dead assignment, property AdLogger_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:122:1: [definite] Dead assignment, property AdvertHandler_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:123:1: [definite] Dead assignment, property Channel_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:124:1: [definite] Dead assignment, property MobileTooltipChrome_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:125:1: [definite] Dead assignment, property TooltipShadow_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:126:1: [definite] Dead assignment, property TooltipDrawer_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:127:1: [definite] Dead assignment, property LightboxChrome_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:128:1: [definite] Dead assignment, property MobileTooltip_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:129:1: [definite] Dead assignment, property TooltipDrawerFooter_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:130:1: [definite] Dead assignment, property TooltipTail_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:131:1: [definite] Dead assignment, property ComponentBase_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:132:1: [definite] Dead assignment, property TooltipContent_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:133:1: [definite] Dead assignment, property Hook_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:134:1: [definite] Dead assignment, property TooltipSlideOut_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:135:1: [definite] Dead assignment, property Tooltip_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:136:1: [definite] Dead assignment, property TooltipChrome_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:137:1: [definite] Dead assignment, property TooltipFooter_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:138:1: [definite] Dead assignment, property TooltipPlacer_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:139:1: [definite] Dead assignment, property TooltipHeader_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:140:1: [definite] Dead assignment, property MobileTooltipHeader_Load is never read
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html: [definite] Exceptional program exit is unreachable
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:3:5: [definite] The variable wt_version is never used
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:81:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:82:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:83:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:84:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:85:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:86:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:87:23: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:88:29: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:89:29: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:90:30: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:91:35: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:92:24: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:93:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:94:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:95:24: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:96:27: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:97:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:98:27: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:99:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:100:24: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:101:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:102:23: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:103:23: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:104:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:105:26: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:106:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:107:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:108:24: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:109:31: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:110:32: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:111:24: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:112:24: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:113:24: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:114:30: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:115:27: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:116:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:117:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:118:27: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:119:26: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:120:23: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:121:28: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:122:33: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:123:27: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:124:37: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:125:31: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:126:31: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:127:32: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:128:31: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:129:37: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:130:29: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:131:31: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:132:32: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:133:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:134:33: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:135:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:136:31: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:137:31: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:138:31: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:139:31: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:140:37: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:10: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:25: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:54: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:5):1:11: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:5):1:19: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:5):1:52: [maybe] Reading absent property (computed name)
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:5):1:44: [info] Writing to unknown property that may cause loss of precision
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:5):1:11: [info] Reading from unknown property that may cause loss of precision
+Soundness testing succeeded for 504 checks (with 0 expected failures)

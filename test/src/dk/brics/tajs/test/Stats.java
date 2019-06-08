@@ -10,9 +10,13 @@ import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.DefaultNodeVisitor;
+import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
+import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PKeys;
 import dk.brics.tajs.lattice.State;
+import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.AnalysisMonitor;
 import dk.brics.tajs.monitoring.AnalysisPhase;
@@ -22,21 +26,25 @@ import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
 import dk.brics.tajs.monitoring.PhaseMonitoring;
 import dk.brics.tajs.monitoring.ProgressMonitor;
 import dk.brics.tajs.options.OptionValues;
+import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
 import org.kohsuke.args4j.CmdLineException;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadMXBean;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
+import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
 public class Stats {
@@ -723,7 +731,7 @@ public class Stats {
     };
 
     /**
-     * The benchmarks used in the evaluation of TSTest
+     * The benchmarks used in the evaluation of TSTest.
      */
     public static String[][] tstest = {
         {"benchmarks/tajs/src/tstest/accounting/accounting.js"},
@@ -825,6 +833,19 @@ public class Stats {
         }
     }
 
+    public static String[][] prototypeTestSuite = {
+            {"benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/testcases/ajax.html"},
+            {"benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/testcases/classes.html"},
+            {"benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/testcases/justload.html"},
+            {"benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/testcases/observe.html"},
+            {"benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/testcases/query.html"},
+            {"benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/testcases/trythese.html"}
+    };
+
+    public static String[][] scriptaculousTestSuite = {
+            {"benchmarks/tajs/src/popular-libs/scriptaculous-modified/justload.html"}
+    };
+
     public static class Standard {
 
         public static void main(String[] args) throws IOException, CmdLineException {
@@ -845,7 +866,7 @@ public class Stats {
         }
     }
 
-    public static class TSTestLibs {
+    public static class TSTest {
 
         public static void main(String[] args) throws IOException, CmdLineException {
             String outfile = args.length > 0 ? args[0] : "tstest";
@@ -933,6 +954,8 @@ public class Stats {
             defaultOptions.getUnsoundness().setUseFixedRandom(true);
             defaultOptions.getUnsoundness().setShowUnsoundnessUsage(true);
             defaultOptions.getUnsoundness().setIgnoreMissingNativeModels(true);
+            defaultOptions.enablePropNamePartitioning();
+            defaultOptions.getUnsoundness().setIgnoreUndefinedPartitions(true);
             run(outfile, 220, 500000, Optional.of(defaultOptions), libs);
         }
     }
@@ -999,6 +1022,57 @@ public class Stats {
         }
     }
 
+    public static class TestPrototype {
+
+        public static void main(String[] args) throws IOException, CmdLineException {
+            OptionValues optionValues = new OptionValues();
+            optionValues.enableTest();
+            optionValues.getSoundnessTesterOptions().setRootDirFromMainDirectory(Paths.get("../../"));
+            optionValues.getSoundnessTesterOptions().setGenerateOnlyIncludeAutomaticallyForHTMLFiles(true);
+
+            optionValues.enableDeterminacy();
+            optionValues.enablePolyfillMDN();
+            optionValues.enablePolyfillTypedArrays();
+            optionValues.enablePolyfillES6Collections();
+            optionValues.enablePolyfillES6Promises();
+            optionValues.enableConsoleModel();
+            optionValues.enableNoMessages();
+            optionValues.enableIncludeDom();
+
+            optionValues.getUnsoundness().setUsePreciseFunctionToString(true);
+
+            optionValues.enablePropNamePartitioning();
+
+            run("prototype", 600, 500000, Optional.of(optionValues), prototypeTestSuite);
+        }
+    }
+
+    public static class TestScriptaculous {
+
+        public static void main(String[] args) throws IOException, CmdLineException {
+            OptionValues optionValues = new OptionValues();
+            optionValues.enableTest();
+            optionValues.getSoundnessTesterOptions().setRootDirFromMainDirectory(Paths.get("../../"));
+            optionValues.getSoundnessTesterOptions().setGenerateOnlyIncludeAutomaticallyForHTMLFiles(true);
+
+            optionValues.enableDeterminacy();
+            optionValues.enablePolyfillMDN();
+            optionValues.enablePolyfillTypedArrays();
+            optionValues.enablePolyfillES6Collections();
+            optionValues.enablePolyfillES6Promises();
+            optionValues.enableConsoleModel();
+            optionValues.enableNoMessages();
+            optionValues.enableIncludeDom();
+
+            optionValues.getUnsoundness().setUsePreciseFunctionToString(true);
+
+            optionValues.getSoundnessTesterOptions().setDoNotCheckAmbiguousNodeQueries(true);
+            optionValues.enablePropNamePartitioning();
+
+            run("scriptaculous", 600, 500000, Optional.of(optionValues), scriptaculousTestSuite);
+        }
+    }
+
     public static void run(String outfile, int secondsTimeLimit, int nodeTransferLimit, Optional<OptionValues> initialOptions, String[][]... tests) throws IOException, CmdLineException {
         Path statDir = Paths.get("out/stats");
         Path f = statDir.resolve(outfile + ".jsonp");
@@ -1013,7 +1087,17 @@ public class Stats {
         try (FileWriter fw = new FileWriter(f.toFile())) {
             Main.initLogging();
             JsonWriter w = new JsonWriter(fw);
+            String machine = System.getenv("CI_RUNNER_DESCRIPTION");
+            if (machine == null)
+                machine = System.getenv("COMPUTERNAME");
+            if (machine == null)
+                machine = System.getenv("HOSTNAME");
+            if (machine == null)
+                machine = "?";
+            ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
+            long cpustart = threadMXBean.getCurrentThreadCpuTime();
             fw.write("timestamp = " + System.currentTimeMillis() + ";\n");
+            fw.write("machine = \"" + machine + "\";\n");
             fw.write("defaultOptions = \"" + (initialOptions.isPresent() ? initialOptions.get() : "") + "\";\n");
             fw.write("data = ");
             w.beginArray();
@@ -1033,10 +1117,11 @@ public class Stats {
                     AnalysisTimeLimiter analysisTimeLimiter = new AnalysisTimeLimiter(secondsTimeLimit, nodeTransferLimit, false);
                     SuspiciousnessMonitor suspiciousnessMonitor = new SuspiciousnessMonitor();
                     TerminationMonitor terminationMonitor = new TerminationMonitor();
+                    PrecisionMonitor precisionMonitor = new PrecisionMonitor();
                     Analysis a = null;
                     Throwable throwable = null;
                     try {
-                        a = Main.init(options, CompositeMonitor.make(new AnalysisMonitor(), progressMonitor, analysisTimeLimiter, suspiciousnessMonitor, terminationMonitor), null);
+                        a = Main.init(options, CompositeMonitor.make(new AnalysisMonitor(), progressMonitor, analysisTimeLimiter, suspiciousnessMonitor, terminationMonitor, precisionMonitor), null);
                         if (a == null)
                             throw new AnalysisException("Error during initialization");
                         Main.run(a);
@@ -1051,7 +1136,7 @@ public class Stats {
                     String terminatedEarlyMsg = terminationMonitor.getTerminatedEarlyMsg();
                     String errorMsg = exceptionMsg != null ? exceptionMsg : terminatedEarlyMsg != null ? terminatedEarlyMsg : "";
                     w.name("name").value(name.replace("test-resources/src", "").replace("benchmarks/tajs/src", ""));
-                    w.name("options").value(Arrays.stream(testArgs).filter(s -> !s.endsWith(".js") && !s.endsWith(".html")).collect(Collectors.joining(" ")));
+                    w.name("options").value(Arrays.stream(testArgs).filter(s -> !s.endsWith(".js") && !s.endsWith(".html")).collect(java.util.stream.Collectors.joining(" ")));
                     if (errorMsg.isEmpty()) {
                         w.name("error").value("");
                     } else {
@@ -1075,6 +1160,9 @@ public class Stats {
                         w.name("callnodes_to_mixed_functions").value(suspiciousnessMonitor.getScanMonitor().getCallToMixedFunctions().size());
                         w.name("callnodes_polymorphic").value(suspiciousnessMonitor.getScanMonitor().getCallPolymorphic().size());
                         w.name("mixed_readwrites").value(suspiciousnessMonitor.getScanMonitor().getMixedReadOrWrite().size());
+                        w.name("average_types").value(precisionMonitor.getScanMonitor().getAverageNumberOfTypesAtReads());
+                        w.name("unique_type").value(precisionMonitor.getScanMonitor().getFractionUniqueTypesAtReads());
+                        w.name("unique_callee").value(precisionMonitor.getScanMonitor().getFractionUniqueCallees());
                     }
                     // TODO: average and max suspiciousness at function value at call, property name at dynamic-property-accesses, value at read-property, value at read-variable
                     w.endObject();
@@ -1084,6 +1172,7 @@ public class Stats {
                 }
             }
             w.endArray();
+            fw.write(";\ncputime = " + (threadMXBean.getCurrentThreadCpuTime() - cpustart) + ";\n");
         }
         System.out.println("Output written to " + f + ", open stats.html?" + outfile + " in a browser to view the results");
     }
@@ -1246,6 +1335,105 @@ public class Stats {
                     call_to_mixed_functions.add(n);
                 }
                 if (getNumberOfNonNativeFunctions(funval.getObjectLabels()) > 1) {
+                    call_polymorphic.add(n);
+                }
+            }
+        }
+    }
+
+    public static class PrecisionMonitor extends PhaseMonitoring<DefaultAnalysisMonitoring, PrecisionMonitor.ScanPrecisionMonitor> { // TODO: would be nice to be able to extract information from other monitors...
+
+        public PrecisionMonitor() {
+            super(new DefaultAnalysisMonitoring(), new ScanPrecisionMonitor());
+        }
+
+        public static class ScanPrecisionMonitor extends DefaultAnalysisMonitoring {
+
+            /**
+             * Number of call/construct nodes visited context sensitively.
+             */
+            private int call_nodes_context_sensitively = 0;
+
+            /**
+             * Number of reachable read variable nodes context sensitively.
+             */
+            private int number_read_variables_with_single_type = 0;
+
+            /**
+             * Number of reachable read property nodes context sensitively.
+             */
+            private int number_read_property_with_single_type = 0;
+
+            /**
+             * Call/construct nodes that may involve calls to multiple user-defined functions in the same call context (ignoring callee contexts).
+             */
+            private Set<AbstractNode> call_polymorphic = newSet();
+
+            /**
+             * ReadVariableNode/ReadPropertyNode and contexts that yield values of different type.
+             */
+            private Map<NodeAndContext, Integer> polymorphic_reads_context_sensitive = newMap();
+
+            public ScanPrecisionMonitor() {}
+
+            /**
+             * Returns the average number of types read at ReadVariableNodes and ReadPropertyNodes (context sensitively).
+             */
+            public float getAverageNumberOfTypesAtReads() {
+                float numberPreciseReads = number_read_property_with_single_type + number_read_variables_with_single_type;
+                float totalNumberTypes = numberPreciseReads + polymorphic_reads_context_sensitive.values().stream().reduce(0, Integer::sum);
+                float totalNumberReads = numberPreciseReads + polymorphic_reads_context_sensitive.size();
+                return totalNumberTypes / totalNumberReads;
+            }
+
+            /**
+             * Returns the fraction of ReadVariableNodes and ReadPropertyNodes with unique type (context sensitively).
+             */
+            public float getFractionUniqueTypesAtReads() {
+                float numberPreciseReads = number_read_property_with_single_type + number_read_variables_with_single_type;
+                float totalNumberReads = numberPreciseReads + polymorphic_reads_context_sensitive.size();
+                return numberPreciseReads / totalNumberReads;
+            }
+
+            /**
+             * Returns the fraction of CallNodes with unique callee (context sensitively).
+             */
+            public float getFractionUniqueCallees() {
+                float numberCallNodes = call_nodes_context_sensitively;
+                float numberPreciseCallNodes = numberCallNodes - call_polymorphic.size();
+                return numberPreciseCallNodes / numberCallNodes;
+            }
+
+            @Override
+            public void visitNodeTransferPre(AbstractNode n, State s) {
+                if (n instanceof CallNode) {
+                    call_nodes_context_sensitively++;
+                }
+            }
+
+            @Override
+            public void visitReadProperty(ReadPropertyNode n, Set<ObjectLabel> objlabels, PKeys propertyname, boolean maybe, State state, Value v, ObjectLabel global_obj) {
+                int numberTypes = UnknownValueResolver.getRealValue(v, state).typeSize();
+                if (numberTypes <= 1) {
+                    number_read_property_with_single_type++;
+                } else {
+                    polymorphic_reads_context_sensitive.put(new NodeAndContext<>(n, state.getContext()), numberTypes);
+                }
+            }
+
+            @Override
+            public void visitReadVariable(ReadVariableNode n, Value v, State state) {
+                int numberTypes = UnknownValueResolver.getRealValue(v, state).typeSize();
+                if (numberTypes <= 1) {
+                    number_read_variables_with_single_type++;
+                } else {
+                    polymorphic_reads_context_sensitive.put(new NodeAndContext<>(n, state.getContext()), numberTypes);
+                }
+            }
+
+            @Override
+            public void visitCall(AbstractNode n, Value funval) {
+                if (funval.getObjectLabels().size() > 1) {
                     call_polymorphic.add(n);
                 }
             }

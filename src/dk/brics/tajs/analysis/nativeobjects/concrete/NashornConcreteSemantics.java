@@ -38,6 +38,7 @@ import static dk.brics.tajs.util.Collections.newMap;
  * Concrete semantics implementation.
  * Will perform concrete evaluation of concrete values using the Java native implementation of JavaScript.
  */
+@SuppressWarnings("removal")
 public class NashornConcreteSemantics implements NativeConcreteSemantics {
 
     private static final Logger log = Logger.getLogger(NashornConcreteSemantics.class);

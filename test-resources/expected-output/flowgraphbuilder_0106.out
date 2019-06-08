@@ -17,7 +17,7 @@ fg2: <main> function()
     node 6: read-property[v5,'a',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0106.js:1:1)
     node 7: constant[1.0,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0106.js:1:8)
     node 8: +[v6,v7,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0106.js:1:1)
-    node 9: write-property[v5,'a',v8]* (test-resources/src/flowgraphbuilder/flowgraph_builder0106.js:1:1)
+    node 9: write-property[v5,'a',v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0106.js:1:1)
     ->[block 5]
   block 5: [exit-ordinary]
     node 10: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0106.js)

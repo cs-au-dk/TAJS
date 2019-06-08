@@ -89,19 +89,20 @@ public class UserFunctionCalls {
         State state = c.getState();
         Function fun = n.getFunction();
         ObjectLabel fn = instantiateFunction(fun, state.getScopeChain(), n, state, c);
+        Value fnval = Partitioning.getInstantiatedFunctions(fn, fun, n, c);
 
         if (!n.isExpression() && fun.getName() != null) {
             // p.79 (function declaration)
-            c.getAnalysis().getPropVarOperations().declareAndWriteVariable(fun.getName(), Value.makeObject(fn), true);
+            c.getAnalysis().getPropVarOperations().declareAndWriteVariable(fun.getName(), fnval, true);
         }
 
         if (Options.get().isDOMEnabled() && n.getDomEventType() != null) {
-            DOMEvents.addEventHandler(Value.makeObject(singleton(fn)), n.getDomEventType(), c);
+            DOMEvents.addEventHandler(fnval, n.getDomEventType(), c);
         }
 
         int result_reg = n.getResultRegister();
         if (result_reg != AbstractNode.NO_VALUE) {
-            c.getState().writeRegister(result_reg, Value.makeObject(fn));
+            c.getState().writeRegister(result_reg, fnval);
             c.getState().getMustReachingDefs().addReachingDef(n.getResultRegister(), n);
         }
     }
@@ -402,8 +403,6 @@ public class UserFunctionCalls {
                 c.getAnalysisLatticeElement().getState(BlockAndContext.makeEntry(node.getBlock(), caller_context)),
                 callee_summarized,
                 returnval, null); // TODO: not obvious why this part is in dk.brics.tajs.analysis and the renaming and localization is done via dk.brics.tajs.solver...
-        if (node.isRegistersDone())
-            state.clearOrdinaryRegisters();
         if (callInfo.isImplicit()) {
             state.setBasicBlock(node.getImplicitAfterCall());
             state.setContext(caller_context);
@@ -413,8 +412,10 @@ public class UserFunctionCalls {
         }
 
         if (exceptional) {
-            // collect garbage
-            state.reduce(returnval);
+            if (!callInfo.isImplicit()) {
+                // collect garbage (but not if implicit, because some objects may only be reachable via registers which we don't have here)
+                state.reduce(returnval);
+            }
 
             // transfer exception value to caller
             Exceptions.throwException(state, returnval, c, node);
@@ -481,7 +482,7 @@ public class UserFunctionCalls {
     public static Value mergeFunctionReturn(State return_state, State caller_state, State calledge_state, State caller_entry_state,
                                             Summarized callee_summarized, Value returnval, Value exval) {
         return_state.makeWritableStore();
-        Obj store_default = Canonicalizer.get().canonicalizeObj(caller_state.getStoreDefault().freeze());
+        Obj store_default = Canonicalizer.get().canonicalizeViaImmutableBox(caller_state.getStoreDefault().freeze());
         return_state.setStoreDefault(store_default);
         caller_state.setStoreDefault(store_default); // write back canonicalized object
         // strengthen each object and replace polymorphic values

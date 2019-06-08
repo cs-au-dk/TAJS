@@ -94,10 +94,6 @@ public class EdgeTransfer implements IEdgeTransfer<Context> {
             }
         }
 
-        if (n instanceof IfNode && n.isRegistersDone()) {
-            c.getState().clearOrdinaryRegisters();
-        }
-
         return c.getState().getContext();
     }
 }

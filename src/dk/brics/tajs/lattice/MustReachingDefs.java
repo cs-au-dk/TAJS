@@ -17,6 +17,7 @@
 package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.Map;
 
@@ -67,7 +68,18 @@ public class MustReachingDefs { // TODO: use copy-on-write?
      * Adds a must-reaching definition for a register.
      */
     public void addReachingDef(int reg, AbstractNode node) {
+        discardOldEntries();
         registerDefs.put(reg, node);
+    }
+
+    /**
+     * Discard old entries if too many.
+     */
+    private void discardOldEntries() {
+        int LIMIT = 50;
+        if (registerDefs.size() > LIMIT) {
+            registerDefs = registerDefs.entrySet().stream().sorted((e1, e2) -> e2.getValue().getIndex() - e1.getValue().getIndex()).limit(LIMIT / 2).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        }
     }
 
     /**

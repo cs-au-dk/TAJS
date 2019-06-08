@@ -14,13 +14,13 @@ fg2: <main> function()
     ->[block 4]
   block 4:
     node 5: new[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js:1:5)
-    node 6: write-variable[v5,'o']* (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js:1:1)
+    node 6: write-variable[v5,'o'] (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js:1:1)
     node 7: read-variable['o',v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js:2:1)
     node 8: constant[1.0,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js:2:7)
-    node 9: write-property[v7,'x',v6]* (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js:2:1)
+    node 9: write-property[v7,'x',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js:2:1)
     node 10: read-variable['o',v9,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js:3:5)
     node 11: read-property[v9,'x',v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js:3:5)
-    node 12: write-variable[v8,'y']* (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js:3:1)
+    node 12: write-variable[v8,'y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js:3:1)
     ->[block 5]
   block 5: [exit-ordinary]
     node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0078.js)

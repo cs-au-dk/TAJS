@@ -165,14 +165,14 @@ public class State implements IState<State, Context, CallEdge> {
      */
     private void setToState(State x) {
         summarized = new Summarized(x.summarized);
-        store_default = x.store_default = Canonicalizer.get().canonicalizeObj(x.store_default.freeze());
+        store_default = x.store_default = Canonicalizer.get().canonicalizeViaImmutableBox(x.store_default.freeze());
         extras = new StateExtras(x.extras);
         must_reaching_defs = new MustReachingDefs(x.must_reaching_defs);
         must_equals = new MustEquals(x.must_equals);
 //        if (Options.get().isCopyOnWriteDisabled()) {
             store = newMap();
             for (Map.Entry<ObjectLabel, Obj> xs : x.store.entrySet()) {
-                Obj obj =  Canonicalizer.get().canonicalizeObj(xs.getValue().freeze());
+                Obj obj =  Canonicalizer.get().canonicalizeViaImmutableBox(xs.getValue().freeze());
                 writeToStore(xs.getKey(), obj);
                 xs.setValue(obj); // write back canonicalized object
             }
@@ -416,7 +416,7 @@ public class State implements IState<State, Context, CallEdge> {
 
     /**
      * Returns the object labels that appear on the stack.
-     * Not used if lazy propagation is enabled
+     * (Not used if lazy propagation is enabled.)
      */
     public Set<ObjectLabel> getStackedObjects() {
         return stacked_objlabels;
@@ -424,7 +424,6 @@ public class State implements IState<State, Context, CallEdge> {
 
     /**
      * Returns the functions that appear on the stack.
-     * Not used if lazy propagation is enabled
      */
     public Set<BlockAndContext<Context>> getStackedFunctions() {
         return stacked_funentries;
@@ -894,10 +893,8 @@ public class State implements IState<State, Context, CallEdge> {
                 Value v1 = i < registers.size() ? registers.get(i) : null;
                 Value v2 = i < s.registers.size() ? s.registers.get(i) : null;
                 Value v;
-                if (v1 == null)
-                    v = v2;
-                else if (v2 == null)
-                    v = v1;
+                if (v1 == null || v2 == null)
+                    v = null;
                 else
                     v = UnknownValueResolver.join(v1, this, v2, s, widen);
                 if (i < registers.size())
@@ -915,7 +912,7 @@ public class State implements IState<State, Context, CallEdge> {
                     writeToStore(lab, store_default);
                 }
             }
-            store_default = s.store_default = Canonicalizer.get().canonicalizeObj(s.store_default.freeze());
+            store_default = s.store_default = Canonicalizer.get().canonicalizeViaImmutableBox(s.store_default.freeze());
             changed = true;
         }
         if (log.isDebugEnabled()) {
@@ -2116,41 +2113,6 @@ public class State implements IState<State, Context, CallEdge> {
     }
 
     /**
-     * Clears the registers, starting from {@link AbstractNode#FIRST_ORDINARY_REG}, and excluding property list values.
-     */
-    public void clearOrdinaryRegisters() {
-        List<Value> new_registers = newList();
-        int reg = 0;
-        for (Value v : registers) {
-            if (reg >= AbstractNode.FIRST_ORDINARY_REG && v != null && !v.isExtendedScope())
-                v = null;
-            if (v == null) {
-                must_reaching_defs.setToBottom(reg);
-                if (!MustEquals.ALIAS_TRACKING) // must_equals shouldn't be modified if using alias filtering
-                    must_equals.setToBottom(reg);
-            }
-            new_registers.add(v);
-            reg++;
-        }
-        registers = new_registers;
-        writable_registers = true;
-    }
-
-//    /**
-//     * Clears the non-live registers.
-//     */
-//    public void clearDeadRegisters(int[] live_regs) {
-//        for (int reg = 0, i = 0; reg < registers.size(); reg++) {
-//            if (i < live_regs.length && live_regs[i] == reg)
-//                i++;
-//            else if (registers.get(reg) != null && reg >= AbstractNode.FIRST_ORDINARY_REG) {
-//                makeWritableRegisters();
-//                registers.set(reg, null);
-//            }
-//        }
-//    }
-
-    /**
      * Returns the value of 'this'.
      */
     public Value readThis() {
@@ -2164,7 +2126,10 @@ public class State implements IState<State, Context, CallEdge> {
      * Returns the value of 'this'.
      */
     public Set<ObjectLabel> readThisObjects() {
-        return readThis().getObjectLabels(); // TODO: assert no primitive values (Github #479) ?
+        Set<ObjectLabel> objs = readThis().getObjectLabels(); // TODO: assert no primitive values (Github #479) ? -- see OrdinaryCallBindThis in the ECMAScript spec
+        if (objs.isEmpty())
+            throw new AnalysisException("empty result from readThisObjects");
+        return objs;
     }
 
     /**

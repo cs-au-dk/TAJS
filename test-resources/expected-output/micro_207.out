@@ -1,5 +1,5 @@
 test-resources/src/micro/test207.js: [definite] Ordinary program exit is unreachable
-test-resources/src/micro/test207.js:7:8: [definite] Unreachable code
+test-resources/src/micro/test207.js:7:8: [definite] The conditional expression is always true
 test-resources/src/micro/test207.js:2:12: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/micro/test207.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test207.js:2:12]
 Soundness testing succeeded for 16 checks (with 0 expected failures)

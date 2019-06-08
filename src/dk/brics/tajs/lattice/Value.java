@@ -28,6 +28,7 @@ import dk.brics.tajs.util.Strings;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -38,7 +39,7 @@ import static dk.brics.tajs.util.Collections.singleton;
  * Abstract value.
  * Value objects are immutable.
  */
-public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable {
+public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable {
 
     private final static int BOOL_TRUE = 0x00000001; // true
 
@@ -253,11 +254,16 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
     private Set<String> included_strings;
 
     /**
+     * Information about partitioning of free variables in object_values, or null if none.
+     */
+    private FreeVariablePartitioning freeVariablePartitioning;
+
+    /**
      * Hash code.
      */
-    private int hashcode;
+    protected int hashcode;
 
-    private static boolean canonicalizing; // set during canonicalization
+    protected static boolean canonicalizing; // set during canonicalization
 
     static {
         init();
@@ -294,12 +300,13 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
     /**
      * Constructs a new none-value.
      */
-    private Value() {
+    protected Value() {
         flags = 0;
         num = null;
         str = null;
         object_labels = getters = setters = null;
         excluded_strings = included_strings = null;
+        freeVariablePartitioning = null;
         var = null;
         hashcode = 0;
     }
@@ -307,7 +314,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
     /**
      * Constructs a shallow clone of the given value object.
      */
-    private Value(Value v) {
+   protected Value(Value v) {
         flags = v.flags;
         num = v.num;
         str = v.str;
@@ -316,6 +323,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
         setters = v.setters;
         excluded_strings = v.excluded_strings;
         included_strings = v.included_strings;
+        freeVariablePartitioning = v.freeVariablePartitioning;
         var = v.var;
         hashcode = v.hashcode;
     }
@@ -323,7 +331,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
     /**
      * Put the value into canonical form.
      */
-    private static Value canonicalize(Value v) {
+    protected static Value canonicalize(Value v) {
         if (Options.get().isDebugOrTestEnabled()) { // checking representation invariants
             String msg = null;
             if ((v.flags & (STR_OTHERNUM | STR_IDENTIFIERPARTS | STR_OTHER)) != 0 && v.str != null)
@@ -383,18 +391,26 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
             v.excluded_strings = Canonicalizer.get().canonicalizeStringSet(v.excluded_strings);
         if (v.included_strings != null)
             v.included_strings = Canonicalizer.get().canonicalizeStringSet(v.included_strings);
-        v.hashcode = v.flags * 17
-                + (v.var != null ? v.var.hashCode() : 0)
-                + (v.num != null ? v.num.hashCode() : 0)
-                + (v.str != null ? v.str.hashCode() : 0)
-                + (v.object_labels != null ? v.object_labels.hashCode() : 0)
-                + (v.getters != null ? v.getters.hashCode() : 0)
-                + (v.setters != null ? v.setters.hashCode() : 0)
-                + (v.excluded_strings != null ? v.excluded_strings.hashCode() : 0)
-                + (v.included_strings != null ? v.included_strings.hashCode() : 0);
+        v.hashcode = v.computeHashCode();
         Value cv = Canonicalizer.get().canonicalize(v);
         canonicalizing = false;
         return cv;
+    }
+
+    /**
+     * Computes the hash code for this value.
+     */
+    protected int computeHashCode() {
+        return flags * 17
+                + (var != null ? var.hashCode() : 0)
+                + (num != null ? num.hashCode() : 0)
+                + (str != null ? str.hashCode() : 0)
+                + (object_labels != null ? object_labels.hashCode() : 0)
+                + (getters != null ? getters.hashCode() : 0)
+                + (setters != null ? setters.hashCode() : 0)
+                + (excluded_strings != null ? excluded_strings.hashCode() : 0)
+                + (included_strings != null ? included_strings.hashCode() : 0)
+                + (freeVariablePartitioning != null ? freeVariablePartitioning.hashCode() : 0);
     }
 
     /**
@@ -402,6 +418,25 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
      */
     public static void reset() {
         init();
+    }
+
+    /**
+     * Returns the free variable info, of null if empty.
+     */
+    public FreeVariablePartitioning getFreeVariablePartitioning() {
+        checkNotPolymorphicOrUnknown();
+        return freeVariablePartitioning;
+    }
+
+    /**
+     * Constructs a new value as a copy of this one but with the given FreeVariablePartitioning.
+     */
+    public Value setFreeVariablePartitioning(FreeVariablePartitioning freeVariablePartitioning) {
+        if (Objects.equals(freeVariablePartitioning, this.freeVariablePartitioning))
+            return this;
+        Value r = new Value(this);
+        r.freeVariablePartitioning = freeVariablePartitioning;
+        return canonicalize(r);
     }
 
     /**
@@ -467,7 +502,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
      *
      * @throws AnalysisException if the value is polymorphic or 'unknown'.
      */
-    private void checkNotPolymorphicOrUnknown() {
+    public void checkNotPolymorphicOrUnknown() {
         if (isPolymorphic())
             throw new AnalysisException("Unexpected polymorphic value!");
         if (isUnknown())
@@ -1020,10 +1055,14 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
      * @param widen if true, apply widening
      */
     public Value join(Value v, boolean widen) {
+        return PartitionedValue.join(this, v, widen);
+    }
+
+    protected Value joinSingleValue(Value v, boolean widen) {
         if (v == this)
             return this;
         Value r = new Value(this);
-        if (r.joinMutable(v, widen)) {
+        if (r.joinMutableSingleValue(v, widen)) {
             return canonicalize(r);
         }
         return this;
@@ -1040,19 +1079,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
      * Constructs a value as the join of the given collection of values.
      */
     public static Value join(Collection<Value> values) {
-        if (values.size() == 1)
-            return values.iterator().next();
-        Value r = null;
-        boolean first = true;
-        for (Value v : values)
-            if (first) {
-                r = new Value(v);
-                first = false;
-            } else
-                r.joinMutable(v, false);
-        if (r == null)
-            r = makeNone();
-        return canonicalize(r);
+        return PartitionedValue.join(values);
     }
 
     /**
@@ -1065,7 +1092,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
     /**
      * Joins the given value into this one.
      */
-    private boolean joinMutable(Value v, boolean widen) {
+    protected boolean joinMutableSingleValue(Value v, boolean widen) {
         if (v.isUnknown())
             return false;
         if (isPolymorphic() && v.isPolymorphic() && !var.equals(v.var))
@@ -1160,7 +1187,21 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
             flags &= ~STR_PREFIX;
         if (flags != oldflags)
             modified = true;
+        if (joinMutableFreeVariablePartitioning(v)) {
+            modified = true;
+        }
         return modified;
+    }
+
+    /**
+     * Joins the freeVariablePartitioning from v into the freeVariablePartitioning of this.
+     */
+    private boolean joinMutableFreeVariablePartitioning(Value v) {
+        if (v.freeVariablePartitioning == null)
+            return false;
+        FreeVariablePartitioning old = freeVariablePartitioning;
+        freeVariablePartitioning = v.freeVariablePartitioning.join(freeVariablePartitioning);
+        return !freeVariablePartitioning.equals(old);
     }
 
     /**
@@ -1274,7 +1315,8 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
                 && (getters == v.getters || (getters != null && v.getters != null && getters.equals(v.getters)))
                 && (setters == v.setters || (setters != null && v.setters != null && setters.equals(v.setters)))
                 && (excluded_strings == v.excluded_strings || (excluded_strings != null && v.excluded_strings != null && excluded_strings.equals(v.excluded_strings)))
-                && (included_strings == v.included_strings || (included_strings != null && v.included_strings != null && included_strings.equals(v.included_strings)));
+                && (included_strings == v.included_strings || (included_strings != null && v.included_strings != null && included_strings.equals(v.included_strings)))
+                && Objects.equals(freeVariablePartitioning, v.freeVariablePartitioning);
     }
 
     /**
@@ -1531,6 +1573,11 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
                     b.append('|');
                 b.append("absent");
                 any = true;
+            }
+            if (freeVariablePartitioning != null) {
+                if (any)
+                    b.append(',');
+                b.append("freeVariablePartitioning=").append(freeVariablePartitioning);
             }
         }
         if (!any)
@@ -3137,6 +3184,40 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
     }
 
     @Override
+    public Value restrictToStrNumeric() {
+        checkNotPolymorphicOrUnknown();
+        Value r = new Value();
+        if (included_strings != null) {
+            r.included_strings = included_strings.stream().filter(Strings::isNumeric).collect(Collectors.toSet());
+        }
+        r.flags = flags & (STR_OTHERNUM | STR_UINT);
+        if (isMaybeStrPrefix() && Strings.isNumeric(str)) {
+            r.flags |= STR_PREFIX;
+            r.str = str;
+        } else if (str != null && Strings.isNumeric(str))
+            r.str = str;
+        r.cleanupIncludedExcluded();
+        return canonicalize(r);
+    }
+
+    @Override
+    public Value restrictToStrNotNumeric() {
+        checkNotPolymorphicOrUnknown();
+        Value r = new Value();
+        if (included_strings != null) {
+            r.included_strings = included_strings.stream().filter(s -> !Strings.isNumeric(s)).collect(Collectors.toSet());
+        }
+        r.flags = flags & (STR & ~(STR_OTHERNUM | STR_UINT));
+        if (isMaybeStrPrefix()) {
+            r.flags |= STR_PREFIX;
+            r.str = str;
+        } else if (str != null && !Strings.isNumeric(str))
+            r.str = str;
+        r.cleanupIncludedExcluded();
+        return canonicalize(r);
+    }
+
+    @Override
     public Value restrictToNotStr() {
         checkNotPolymorphicOrUnknown();
         Value r = new Value(this);
@@ -4419,7 +4500,7 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
                 r.str = null;
             }
         }
-        cleanupIncludedExcluded(r);
+        r.cleanupIncludedExcluded();
         return canonicalize(r);
     }
 
@@ -4502,27 +4583,31 @@ public final class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmu
                 r.num = null;
             r.removeIncludedAddExcludedString(v.str);
         }
-        cleanupIncludedExcluded(r);
+        r.cleanupIncludedExcluded();
         return canonicalize(r);
     }
 
-    public void cleanupIncludedExcluded(Value r) {
-        if (r.included_strings != null) {
+    private void cleanupIncludedExcluded() {
+        if (included_strings != null) {
             if (!isMaybeStrPrefix()) {
                 // clean up flags according to included_strings
-                r.flags &= ~STR;
-                r.excluded_strings = null;
-                r.included_strings.forEach(s -> r.joinSingleStringOrPrefixStringAsFuzzyNonPrefix(s, false));
+                flags &= ~STR;
+                excluded_strings = null;
+                included_strings.forEach(s -> joinSingleStringOrPrefixStringAsFuzzyNonPrefix(s, false));
             }
-            r.fixSingletonIncluded();
-            if (r.included_strings != null && r.included_strings.isEmpty())
-                r.included_strings = null;
+            fixSingletonIncluded();
+            if (included_strings != null && included_strings.isEmpty())
+                included_strings = null;
         }
-        if (r.excluded_strings != null) {
+        if (excluded_strings != null) {
             // remove excluded strings that don't match any of the STR flags
-            r.excluded_strings = r.excluded_strings.stream().filter(r::isMaybeStrIgnoreIncludedExcluded).collect(Collectors.toSet());
-            if (r.excluded_strings.isEmpty())
-                r.excluded_strings = null;
+            excluded_strings = excluded_strings.stream().filter(this::isMaybeStrIgnoreIncludedExcluded).collect(Collectors.toSet());
+            if (isMaybeSingleStr() && excluded_strings.contains(str)) {
+                excluded_strings.remove(str);
+                str = null;
+            }
+            if (excluded_strings.isEmpty())
+                excluded_strings = null;
         }
     }
 

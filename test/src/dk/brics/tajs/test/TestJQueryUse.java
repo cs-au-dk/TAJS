@@ -2,6 +2,7 @@ package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import org.junit.Test;
 
@@ -76,12 +77,12 @@ public class TestJQueryUse {
         test("dom_appendPrepend");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
+    @Test(expected = AnalysisLimitationException.AnalysisModelLimitationException.class)
     public void auto_dom_appendPrepend2() {
         test("dom_appendPrepend2");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
+    @Test(expected = AnalysisLimitationException.AnalysisModelLimitationException.class)
     public void auto_dom_appendPrepend3() {
         test("dom_appendPrepend3");
     }
@@ -91,12 +92,12 @@ public class TestJQueryUse {
         test("dom_beforeAfter");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
+    @Test(expected = AnalysisLimitationException.AnalysisModelLimitationException.class)
     public void auto_dom_beforeAfter2() {
         test("dom_beforeAfter2");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
+    @Test(expected = AnalysisLimitationException.AnalysisModelLimitationException.class)
     public void auto_dom_beforeAfter3() {
         test("dom_beforeAfter3");
     }
@@ -161,7 +162,7 @@ public class TestJQueryUse {
         test("fading_fadeTimed");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void auto_ajax_get() {
         test("ajax_get");
     }
@@ -291,7 +292,7 @@ public class TestJQueryUse {
         test("selectors_attributeValues");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test(expected = AnalysisException.class)
     public void auto_selectors_attributes() {
         test("selectors_attributes");
     }
@@ -361,7 +362,7 @@ public class TestJQueryUse {
         test("animate_simple");
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisTimeException.class)
+    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
     public void auto_ajax_post() {
         test("ajax_post");
     }
@@ -377,6 +378,11 @@ public class TestJQueryUse {
         Options.get().getUnsoundness().setUseFixedRandom(true);
         Options.get().getUnsoundness().setShowUnsoundnessUsage(true);
         Options.get().getSoundnessTesterOptions().setGenerateOnlyIncludeAutomaticallyForHTMLFiles(true);
+        Options.get().getUnsoundness().setIgnoreSomePrototypesDuringDynamicPropertyReads(true);
+        Options.get().getUnsoundness().setIgnoreImpreciseEvals(true);
+        Options.get().getUnsoundness().setIgnoreUnlikelyUndefinedAsFirstArgumentToAddition(true);
+        Options.get().getUnsoundness().setAssumeInOperatorReturnsTrueWhenSoundResultIsMaybeTrueAndPropNameIsNumber(true);
+        Options.get().getUnsoundness().setIgnoreUnlikelyPropertyReads(true);
         Misc.run("benchmarks/tajs/src/jquery/test-suite/1.10/" + testCase + ".html");
         Misc.checkSystemOutput();
     }

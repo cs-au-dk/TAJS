@@ -36,7 +36,7 @@ fg2: <main> function()
     node 21: construct[-,v10,v11,v20,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:13)
     ->[block 7]
   block 7:
-    node 22: write-variable[v9,'a']* (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:9)
+    node 22: write-variable[v9,'a'] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js:3:9)
     ->[block 8]
   block 8: [exit-ordinary]
     node 23: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0213.js)

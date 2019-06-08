@@ -253,7 +253,7 @@ public class DefaultGutters implements GutterProvider {
             }
             int key = me.getKey().getLine();
             Collection<Integer> values = me.getValue().getMapView().values();
-            if (values == null || values.isEmpty()) {
+            if (values.isEmpty()) {
                 continue;
             }
             long maxValue = Collections.max(values);

@@ -77,7 +77,7 @@ public interface SyntacticQueries {
     boolean isStackVariable(Function function, String variableName); // TODO: currently unused
 
     /**
-     * The set of free variables of a function that are bound in an outer function (closure variables).
+     * The set of free variables of a function that are bound in an outer function (closure variables) - includes only variables used directly in function.
      */
     Set<String> getClosureVariableNames(Function function);
 
@@ -85,4 +85,9 @@ public interface SyntacticQueries {
      * True iff the function has an occurence of 'this'.
      */
     boolean isFunctionWithThisReference(Function function);
+
+    /**
+     * The set of free variables of a function that are bound in an outer function (closure variables) - includes variables used in functions defined inside fun.
+     */
+    Set<String> getClosureVariableNamesTransitively(Function fun);
 }

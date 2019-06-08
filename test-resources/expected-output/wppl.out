@@ -1,0 +1,32 @@
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:6:9: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:10:25: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:13:29: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:16:23: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:19:29: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:22:28: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:25:30: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:28:23: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:31:28: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:34:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:37:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:40:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:43:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:46:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:49:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:52:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:55:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:58:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:61:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:64:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:67:24: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:70:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:73:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:76:27: [definite] Variable PWAd is null/undefined
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:107:9: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html: [definite] Exceptional program exit is unreachable
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:78:7: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:83:1: [definite] Unreachable function PWAjel
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:106:1: [definite] The variable c is never used
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:108:13: [definite] The variable declaration dgg shadows a parameter
+benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:110:9: [definite] The variable document is never used
+Soundness testing succeeded for 655 checks (with 0 expected failures)

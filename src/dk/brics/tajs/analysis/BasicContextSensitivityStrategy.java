@@ -127,7 +127,7 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         }
         Context functionContext = makeContextArgumentsForCall(function, state, callInfo);
         // note: c.loopUnrolling and c.contextAtEntry are null by default, which will kill unrollings across calls
-        Context context = functionContext != null ? Context.make(thisval, null, null, null, null, functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables()) : Context.makeThisVal(thisval);
+        Context context = functionContext != null ? Context.make(thisval, null, null, null, null, functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables(), callInfo.getFreeVariablePartitioning()) : Context.makeThisVal(thisval, callInfo.getFreeVariablePartitioning());
         if (log.isDebugEnabled())
             log.debug("creating function entry context " + context);
         return context;
@@ -148,7 +148,7 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         }
         // for-in acts as entry, so update localContextAtEntry
         Context c = Context.make(currentContext.getThisVal(), specialRegs, null, null, currentContext.getLoopUnrolling(),
-                currentContext.getUnknownArg(), currentContext.getParameterNames(), currentContext.getArguments(), currentContext.getFreeVariables());
+                currentContext.getUnknownArg(), currentContext.getParameterNames(), currentContext.getArguments(), currentContext.getFreeVariables(), currentContext.getFreeVariablePartitioning());
         if (log.isDebugEnabled())
             log.debug("creating for-in entry context " + c);
         return c;

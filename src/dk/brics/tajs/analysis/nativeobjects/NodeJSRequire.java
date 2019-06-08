@@ -74,7 +74,7 @@ public class NodeJSRequire {
         if(!arg.startsWith(".") && !arg.startsWith("/")) {
             try {
                 resolved = HostEnvSources.resolve(Paths.get("nodejs/modules").resolve(arg + ".js").toString());
-            } catch (AnalysisException e) {}
+            } catch (AnalysisException e) {} // TODO: empty catch block?!
         }
         if (resolved == null) {
             if (!"file".equals(location.getProtocol())) {

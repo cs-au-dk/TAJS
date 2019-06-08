@@ -16,7 +16,7 @@ fg2: <main> function()
     node 5: read-variable['o',v5,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:11)
     ->[block 6]
   block 5:
-    node 6: end-for-in(begin-node:7)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:1)
+    node 6: end-for-in(begin-node:7) (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:1)
     ->[block 6]
   block 6:
     node 7: begin-for-in[v5,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:1)
@@ -27,16 +27,16 @@ fg2: <main> function()
     ->[block 8,block 11] ~>[block 9]
   block 8:
     node 10: next-property[v6,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:6)
-    node 11: write-variable[v8,'p']* (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:6)
+    node 11: write-variable[v8,'p'] (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:6)
     ->[block 10] ~>[block 9]
   block 9:
-    node 12: end-for-in(begin-node:7)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:1)
+    node 12: end-for-in(begin-node:7) (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:1)
     ->[block 13]
   block 10:
-    node 13(~-1): end-for-in(begin-node:7)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:1)
+    node 13(~-1): end-for-in(begin-node:7) (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:1)
     ->[block 12]
   block 11:
-    node 14: end-for-in(begin-node:7)* (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:1)
+    node 14: end-for-in(begin-node:7) (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js:1:1)
     ->[block 12]
   block 12: [exit-ordinary]
     node 15: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0201c.js)

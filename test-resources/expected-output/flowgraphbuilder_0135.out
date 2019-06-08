@@ -20,7 +20,7 @@ fg2: <main> function()
     node 7: call[v8,v9,v10,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js:1:17)
     ->[block 6]
   block 6:
-    node 8: call[TAJS_dumpObject,v7,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js:1:1)
+    node 8: call[TAJS_dumpObject,v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js:1:1)
     ->[block 7]
   block 7: [exit-ordinary]
     node 9: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js)

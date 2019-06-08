@@ -12,6 +12,7 @@ import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -23,7 +24,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static dk.brics.tajs.util.Collections.singleton;
@@ -476,5 +476,12 @@ public class TestValue {
         assertTrue(anyOtherNumStringRestricted.restrictToNotStrOtherNum().isNone());
         assertEquals(anyOtherNumStringRestricted.restrictToNotStrings(singleton("NaN")), anyOtherNumStringRestricted);
 
+    }
+
+    @Test
+    public void testRestrictToLooseNotEqualsBug() {
+        Value v1 = Value.makeStr("");
+        Value v2 = Value.makeNum(0.0);
+        assertEquals(Value.makeNone(), v1.restrictToLooseNotEquals(v2));
     }
 }

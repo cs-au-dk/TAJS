@@ -21,7 +21,7 @@ import dk.brics.tajs.lattice.PKey.StringPKey;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class ConcreteArray implements ConcreteValue {
 
@@ -49,7 +49,7 @@ public class ConcreteArray implements ConcreteValue {
     public String toSourceCode() {
         return array.stream()
                 .map(ConcreteValue::toSourceCode)
-                .collect(Collectors.joining(",", "[", "]"));
+                .collect(java.util.stream.Collectors.joining(",", "[", "]"));
     }
 
     @Override
@@ -77,8 +77,8 @@ public class ConcreteArray implements ConcreteValue {
 
         ConcreteArray that = (ConcreteArray) o;
 
-        if (array != null ? !array.equals(that.array) : that.array != null) return false;
-        return extraProperties != null ? extraProperties.equals(that.extraProperties) : that.extraProperties == null;
+        if (!Objects.equals(array, that.array)) return false;
+        return Objects.equals(extraProperties, that.extraProperties);
 
     }
 

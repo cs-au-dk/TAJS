@@ -53,4 +53,20 @@ public class TestBabel { // TODO: add to RunFast?
         Misc.runSource(letProgram);
         Misc.checkSystemOutput();
     }
+
+    /** We need a model of Array.prototype.values for this benchmark to work
+     *  (and to enable the for-of plugin in the Babel preprocessing class).
+     *  Once this is done it is actually not that hard to implement the
+     *  For..of statement ourselves.
+     */
+    //@Test(expected = AnalysisLimitationException.AnalysisModelLimitationException.class)
+    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
+    public void testForOfProgramWithBabel() {
+        Options.get().enableBabel();
+        Misc.runSource("function dump(arr) {",
+                                "for(var x of arr) { TAJS_dumpValue(x); }",
+                            "}",
+                        "dump([1, 2, 3])");
+    }
+
 }

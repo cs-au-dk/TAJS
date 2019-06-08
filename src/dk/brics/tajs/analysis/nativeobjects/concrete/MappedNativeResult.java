@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.analysis.nativeobjects.concrete;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -39,8 +40,8 @@ public class MappedNativeResult<T> {
 
         MappedNativeResult<?> that = (MappedNativeResult<?>) o;
 
-        if (mapped != null ? !mapped.equals(that.mapped) : that.mapped != null) return false;
-        return result != null ? result.equals(that.result) : that.result == null;
+        if (!Objects.equals(mapped, that.mapped)) return false;
+        return Objects.equals(result, that.result);
     }
 
     @Override

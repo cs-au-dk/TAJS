@@ -33,7 +33,7 @@ public class Constraint {
     public Constraint(InstructionComponent ic, Value value) {
         this.ic = ic;
         this.value = value;
-    };
+    }
 
     public InstructionComponent getInstructionComponent() {
         return ic;

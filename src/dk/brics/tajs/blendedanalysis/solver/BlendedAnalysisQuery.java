@@ -20,6 +20,7 @@ import dk.brics.tajs.blendedanalysis.InstructionComponent;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.Value;
 
+import java.util.Objects;
 import java.util.Set;
 
 public class BlendedAnalysisQuery {
@@ -80,10 +81,10 @@ public class BlendedAnalysisQuery {
 
         BlendedAnalysisQuery that = (BlendedAnalysisQuery) o;
 
-        if (node != null ? !node.equals(that.node) : that.node != null) return false;
-        if (ic != null ? !ic.equals(that.ic) : that.ic != null) return false;
-        if (constraints != null ? !constraints.equals(that.constraints) : that.constraints != null) return false;
-        return soundDefault != null ? soundDefault.equals(that.soundDefault) : that.soundDefault == null;
+        if (!Objects.equals(node, that.node)) return false;
+        if (!Objects.equals(ic, that.ic)) return false;
+        if (!Objects.equals(constraints, that.constraints)) return false;
+        return Objects.equals(soundDefault, that.soundDefault);
     }
 
     @Override

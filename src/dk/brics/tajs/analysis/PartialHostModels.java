@@ -20,6 +20,8 @@ import dk.brics.tajs.lattice.HostAPI;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.monitoring.AnalysisMonitor;
 
+import java.util.Objects;
+
 import static dk.brics.tajs.analysis.HostAPIs.PARTIAL_HOST_MODEL;
 
 /**
@@ -49,7 +51,7 @@ public class PartialHostModels implements HostObject {
 
         PartialHostModels that = (PartialHostModels) o;
 
-        return identifier != null ? identifier.equals(that.identifier) : that.identifier == null;
+        return Objects.equals(identifier, that.identifier);
     }
 
     @Override

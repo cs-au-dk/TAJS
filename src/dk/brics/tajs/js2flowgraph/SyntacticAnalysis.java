@@ -114,7 +114,7 @@ public class SyntacticAnalysis {
         stackVariables.addAll(function.getParameterNames());
         stackVariables.removeAll(astInfo.getNonStackVariables().getOrDefault(functionTree, newSet()));
         rawSyntacticInformation.getStackVariables().put(function, stackVariables);
-        rawSyntacticInformation.getFunctionClosureVariables().put(function, astInfo.getFunctionClosureVariables().get(functionTree));
+        rawSyntacticInformation.registerFunctionClosureVariables(function, astInfo.getFunctionClosureVariables().get(functionTree));
         if (astInfo.getFunctionsWithThisReference().contains(functionTree)) {
             rawSyntacticInformation.getFunctionsWithThisReference().add(function);
         }

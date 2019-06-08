@@ -14,10 +14,10 @@ fg2: <main> function()
     ->[block 4]
   block 4:
     node 5: constant[20.0,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0097.js:1:5)
-    node 6: if[v5](true-block:5,false-block:6)* (test-resources/src/flowgraphbuilder/flowgraph_builder0097.js:1:1)
+    node 6: if[v5](true-block:5,false-block:6) (test-resources/src/flowgraphbuilder/flowgraph_builder0097.js:1:1)
     ->[block 5,block 6]
   block 5:
-    node 7: constant[10.0,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0097.js:2:2)
+    node 7: constant[10.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0097.js:2:2)
     ->[block 6]
   block 6: [exit-ordinary]
     node 8: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0097.js)

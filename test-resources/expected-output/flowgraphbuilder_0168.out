@@ -15,7 +15,7 @@ fg2: <main> function()
   block 4:
     node 5: read-variable['this',v6,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:1:5)
     node 6: read-property[v6,'as',v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:1:5)
-    node 7: if[v5](true-block:5,false-block:7)* (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:1:1)
+    node 7: if[v5](true-block:5,false-block:7) (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:1:1)
     ->[block 5,block 7]
   block 5:
     node 8: read-variable['this',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:13)
@@ -24,12 +24,12 @@ fg2: <main> function()
     node 11: read-variable['o',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:32)
     ->[block 6]
   block 6:
-    node 12: call[v8,'startSlide',v9,v10,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:13)
+    node 12: call[v8,'startSlide',v9,v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:13)
     ->[block 8]
   block 7:
-    node 13: read-variable['this',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:3)
-    node 14: constant[false,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:13)
-    node 15: write-property[v8,'as',v7]* (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:3)
+    node 13: read-variable['this',v12,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:3)
+    node 14: constant[false,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:13)
+    node 15: write-property[v12,'as',v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:3)
     ->[block 8]
   block 8: [exit-ordinary]
     node 16: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js)

@@ -164,11 +164,11 @@ public class WritePropertyNode extends Node {
     @Override
     public void check(BasicBlock b) {
         if (base_reg == NO_VALUE)
-            throw new AnalysisException("Base register is NO_VALUE:" + toString());
+            throw new AnalysisException("Base register is NO_VALUE:" + this);
         if (property_reg == NO_VALUE && property_str == null)
-            throw new AnalysisException("Both property register and property string are undefined: " + toString());
+            throw new AnalysisException("Both property register and property string are undefined: " + this);
         if (value_reg == NO_VALUE)
-            throw new AnalysisException("No real destination for write property node: " + toString());
+            throw new AnalysisException("No real destination for write property node: " + this);
     }
 
     /**

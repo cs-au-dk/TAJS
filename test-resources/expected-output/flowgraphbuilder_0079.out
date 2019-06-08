@@ -21,10 +21,10 @@ fg2: <main> function()
     node 8: construct[-,v6,v7,v8,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0079.js:1:7)
     ->[block 6]
   block 6:
-    node 9: write-variable[v5,'arr']* (test-resources/src/flowgraphbuilder/flowgraph_builder0079.js:1:1)
+    node 9: write-variable[v5,'arr'] (test-resources/src/flowgraphbuilder/flowgraph_builder0079.js:1:1)
     node 10: read-variable['arr',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0079.js:2:8)
     node 11: constant[1.0,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0079.js:2:12)
-    node 12: delete-property[v10,v11,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0079.js:2:1)
+    node 12: delete-property[v10,v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0079.js:2:1)
     ->[block 7]
   block 7: [exit-ordinary]
     node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0079.js)

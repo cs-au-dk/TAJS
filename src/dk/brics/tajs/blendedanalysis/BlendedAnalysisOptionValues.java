@@ -17,10 +17,10 @@
 package dk.brics.tajs.blendedanalysis;
 
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.util.Collectors;
 
 import java.io.Serializable;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class BlendedAnalysisOptionValues implements Serializable {
 

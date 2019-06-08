@@ -1,0 +1,84 @@
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:3:1: [definite] ReferenceError, reading absent variable dumpValue
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:3:11: [definite] Unreachable code
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:6:5: [definite] The variable t is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:10:14: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:13:13: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:16:15: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:19:18: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:22:11: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:42:16: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:50:25: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:67:14: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:71:9: [definite] Unreachable function fn
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:78:20: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:80:66: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:88:5: [definite] The variable temp1 is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:90:5: [definite] The variable end_template is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:92:5: [definite] The variable startTemplate is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:94:5: [definite] The variable startTemplate2 is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:96:5: [definite] The variable temp2 is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:98:5: [definite] The variable rTemplate is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:100:5: [definite] The variable commentTemplate is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:102:5: [definite] The variable link_gr5 is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:104:5: [definite] The variable gr0x is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:106:5: [definite] The variable listTemplate is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:108:5: [definite] The variable itemTemplate is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:110:5: [definite] The variable optTemplate is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:112:5: [definite] The variable myTemplate is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:114:5: [definite] The variable temp3 is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:116:5: [definite] The variable temp4 is never used
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:119:16: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:134:5: [definite] Unreachable function child
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:147:5: [definite] Unreachable function next
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:151:5: [definite] Unreachable function prev
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:155:5: [definite] Unreachable function children
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:170:5: [definite] Unreachable function byClassName
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:184:5: [definite] Unreachable function attrValue
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:199:5: [definite] Unreachable function getNodes
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:253:5: [definite] Unreachable function concat
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:262:5: [definite] Unreachable function byTag
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:279:5: [definite] Unreachable function byId
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:296:5: [definite] Unreachable function byAttribute
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:334:5: [definite] Unreachable function byPseudo
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:337:5: [definite] Unreachable function nodupIEXml
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:354:5: [definite] Unreachable function nodup
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:388:5: [definite] Unreachable function quickDiffIEXml
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:404:5: [definite] Unreachable function quickDiff
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:424:5: [definite] Unreachable function quickId
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:433:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:436:18: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:482:69: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:503:17: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:530:21: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:533:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:547:23: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:551:13: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:559:17: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:584:18: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:587:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:590:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:593:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:596:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:599:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:602:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:605:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:610:28: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:622:27: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:634:26: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:663:27: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:673:20: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:693:23: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:703:24: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:713:22: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:723:18: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:726:18: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:741:18: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:744:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:747:18: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:750:20: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:753:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:756:18: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:767:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:779:19: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/unevalizer/dailymotion.co.uk-slice/index.html:3:1]
+Soundness testing succeeded for 0 checks (with 0 expected failures)

@@ -64,6 +64,7 @@ import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -417,10 +418,10 @@ public class LineValueComputer {
 
             LineValueDescription that = (LineValueDescription) o;
 
-            if (node != null ? !node.equals(that.node) : that.node != null) return false;
-            if (description != null ? !description.equals(that.description) : that.description != null) return false;
+            if (!Objects.equals(node, that.node)) return false;
+            if (!Objects.equals(description, that.description)) return false;
             if (kind != that.kind) return false;
-            return context != null ? context.equals(that.context) : that.context == null;
+            return Objects.equals(context, that.context);
         }
 
         @Override

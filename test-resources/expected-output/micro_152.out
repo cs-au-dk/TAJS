@@ -9,8 +9,11 @@ Abstract state:
     @f4#fun4 (test-resources/src/micro/test152.js:4:1): {prototype:^(@f4#fun4.prototype[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=[[@<the global object>[native]]]}
   Registers: 
     v1=Undef
+    v2=[@<the global object>[native]]
+    v3=^(@<the global object>[native].f4[present])
   MustReachingDefs: 
     v1: node 31 (test-resources/src/micro/test152.js:3:1)
+    v3: node 32 (test-resources/src/micro/test152.js:3:16)
   Functions in stack: [block 20, context {}, block 15, context {}, block 10, context {}]
 test-resources/src/micro/test152.js:8:1: [info] Abstract value: 2.0
 Soundness testing succeeded for 31 checks (with 0 expected failures)

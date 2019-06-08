@@ -1457,7 +1457,6 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3804:48: [maybe] Converting 
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3804:48: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3807:11: [maybe] The variable noData has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3807:21: [maybe] The variable noData has values with different types
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3807:73: [maybe] The variable noData has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4527:14: [maybe] Converting object to string
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4527:14: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4528:15: [maybe] Reading absent property (computed name)
@@ -1505,7 +1504,25 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3477:2: [info] Reading from 
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3804:33: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:381:39: [unsound] Assuming Math.random returns fixed value
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:890:12: [unsound] Assuming Date.now returns fixed value
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:997:47: [unsound] Ignoring result of 'in' operator is maybe false, because value to test is numeric and is maybe in object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1035:25: [unsound] Assuming Date.now returns fixed value
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1150:2: [unsound] Assuming array-like reads do not use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1150:2: [unsound] Assuming dynamic property read does not need to use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1151:10: [unsound] Assuming array-like reads do not use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1156:2: [unsound] Assuming array-like reads do not use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1670:5: [unsound] Assuming dynamic property read does not need to use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1686:5: [unsound] Assuming dynamic property read does not need to use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1692:5: [unsound] Assuming dynamic property read does not need to use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1697:4: [unsound] Assuming dynamic property read does not need to use prototypes
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3063:48: [unsound] Assuming UInt-addition is closed
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3064:10: [unsound] Assuming array-like reads do not use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3073:13: [unsound] Assuming dynamic property read does not need to use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3094:10: [unsound] Assuming dynamic property read does not need to use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3174:7: [unsound] Assuming dynamic property read does not need to use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3804:33: [unsound] Assuming dynamic property read does not need to use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3804:33: [unsound] Skipping read of property '__proto__'
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4998:5: [unsound] Assuming dynamic property read does not need to use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5004:5: [unsound] Assuming dynamic property read does not need to use prototypes
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5010:18: [unsound] Assuming array-like reads do not use prototypes
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5010:28: [unsound] Assuming UInt-addition is closed
 Soundness testing succeeded for 7572 checks (with 1 expected failures)

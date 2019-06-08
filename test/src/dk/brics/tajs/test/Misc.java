@@ -8,6 +8,7 @@ import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
 import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Collectors;
 import org.apache.log4j.Appender;
 import org.apache.log4j.Logger;
@@ -94,18 +95,22 @@ public class Misc {
     }
 
     public static void run(String... args) throws AnalysisException {
-        runPart(null, null, args);
+        runPart(null, false, null, args);
     }
 
     public static void run(String arg, IAnalysisMonitoring monitoring) throws AnalysisException {
-        runPart(null, monitoring, arg);
+        runPart(null, false, monitoring, arg);
+    }
+
+    public static void runPart(String suffix, boolean ignoreAnalysisLimitationException, String... args) throws AnalysisException {
+        runPart(suffix, ignoreAnalysisLimitationException, null, args);
     }
 
     public static void runPart(String suffix, String... args) throws AnalysisException {
-        runPart(suffix, null, args);
+        runPart(suffix, false, null, args);
     }
 
-    public static void runPart(String suffix, IAnalysisMonitoring monitoring, String... args) throws AnalysisException {
+    public static void runPart(String suffix, boolean ignoreAnalysisLimitationException, IAnalysisMonitoring monitoring, String... args) throws AnalysisException {
         start(suffix);
         try {
             Options.get().getArguments().addAll(Arrays.stream(args).map(Paths::get).collect(Collectors.toList()));
@@ -118,14 +123,23 @@ public class Misc {
             if (msg == null) {
                 msg = e.toString();
             }
+            if (ignoreAnalysisLimitationException && e instanceof AnalysisLimitationException) {
+                System.out.println("Ignoring AnalysisLimitationException: " + msg);
+                return;
+            }
             try {
                 Class<?> cls = Class.forName(getClassName(true));
                 Method met = cls.getMethod(getMethodName());
                 Test an = met.getDeclaredAnnotation(Test.class);
-                boolean expected = !an.expected().equals(Test.None.class);
-                if (expected)
-                    System.out.println("Error (expected): " + msg);
-                else {
+                if (!an.expected().equals(Test.None.class)) {
+                    if (an.expected().isAssignableFrom(e.getClass()))
+                        System.out.println("Error (expected): " + msg);
+                    else {
+                        System.out.println("TEST FAILED (another exception was expected): " + msg);
+                        if (!(e instanceof AnalysisException))
+                            e.printStackTrace(System.out);
+                    }
+                } else {
                     System.out.println("TEST FAILED: " + msg);
                     if (!(e instanceof AnalysisException))
                         e.printStackTrace(System.out);
@@ -229,7 +243,7 @@ public class Misc {
     private static void runSourcePart(String suffix, String[] src, IAnalysisMonitoring monitoring) {
         File file = makeTempSourceFile(suffix, src);
         String[] args = {file.getPath()};
-        Misc.runPart(suffix, monitoring, args);
+        Misc.runPart(suffix, false, monitoring, args);
     }
 
     private static File makeTempSourceFile(String suffix, String[] src) {

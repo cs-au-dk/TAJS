@@ -19,11 +19,11 @@ package dk.brics.tajs.lattice;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -32,11 +32,8 @@ import static dk.brics.tajs.util.Collections.newSet;
  * Local must-equals information.
  *
  * Map from singleton object label and property key to set of registers that must have the same value as the memory location.
- * (Register values may be garbage collected without affecting the must-equals information, to support alias filtering.)
  */
 public class MustEquals {// TODO: use copy-on-write?
-
-    public static boolean ALIAS_TRACKING = true; // if true, enable tracking variable writes
 
     /**
      * Map from singleton object label to fixed property key to set of registers that must have the same value.
@@ -173,27 +170,35 @@ public class MustEquals {// TODO: use copy-on-write?
 
     /**
      * Adds a must-equals fact.
+     * Records that the value of reg must be equal to the value of objlabel.pkey.
      */
     public void addMustEquals(int reg, ObjectLabel objlabel, PKey pkey) {
         if (objlabel == null || pkey == null)
             return;
-        if (ALIAS_TRACKING) {
-            Map<PKey, Set<Integer>> m = mustEquals.get(objlabel);
-            if (m != null)
-                for (int aliasreg : m.getOrDefault(pkey, java.util.Collections.emptySet())) {
-                    Set<ObjectProperty> aliases = mustEqualsReverse.get(aliasreg);
-                    if (aliases != null) {
-                        for (ObjectProperty alias : aliases)
-                            if (!alias.getObjectLabel().equals(objlabel) || !alias.getPropertyName().equals(pkey)) {
-                                Collections.addToMapMapSet(mustEquals, alias.getObjectLabel(), alias.getPropertyName(), reg);
-                                Collections.addToMapSet(mustEqualsReverse, reg, alias);
-                            }
-                    }
+        Map<PKey, Set<Integer>> m = mustEquals.get(objlabel);
+        if (m != null)
+            for (int aliasreg : m.getOrDefault(pkey, java.util.Collections.emptySet())) {
+                Set<ObjectProperty> aliases = mustEqualsReverse.get(aliasreg);
+                if (aliases != null) {
+                    for (ObjectProperty alias : aliases)
+                        if (!alias.getObjectLabel().equals(objlabel) || !alias.getPropertyName().equals(pkey)) {
+                            Collections.addToMapMapSet(mustEquals, alias.getObjectLabel(), alias.getPropertyName(), reg);
+                            Collections.addToMapSet(mustEqualsReverse, reg, alias);
+                        }
                 }
-        }
+            }
         Collections.addToMapMapSet(mustEquals, objlabel, pkey, reg);
         Collections.addToMapSet(mustEqualsReverse, reg, ObjectProperty.makeOrdinary(objlabel, pkey));
         checkInvariants();
+    }
+
+    /**
+     * Adds must-equals facts.
+     * Records that the values of reg1 and reg2 must be equal.
+     */
+    public void addMustEquals(int reg1, int reg2) {
+        getMustEquals(reg1).forEach(objProp -> addMustEquals(reg2, objProp.getObjectLabel(), objProp.getPropertyName()));
+        getMustEquals(reg2).forEach(objProp -> addMustEquals(reg1, objProp.getObjectLabel(), objProp.getPropertyName()));
     }
 
     /**

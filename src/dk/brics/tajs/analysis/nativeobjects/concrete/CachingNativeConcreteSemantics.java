@@ -18,6 +18,7 @@ package dk.brics.tajs.analysis.nativeobjects.concrete;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.WeakHashMap;
 
 /**
@@ -81,10 +82,9 @@ public class CachingNativeConcreteSemantics implements NativeConcreteSemantics {
 
             Signature signature = (Signature) o;
 
-            if (functionName != null ? !functionName.equals(signature.functionName) : signature.functionName != null)
-                return false;
-            if (base != null ? !base.equals(signature.base) : signature.base != null) return false;
-            return arguments != null ? arguments.equals(signature.arguments) : signature.arguments == null;
+            if (!Objects.equals(functionName, signature.functionName)) return false;
+            if (!Objects.equals(base, signature.base)) return false;
+            return Objects.equals(arguments, signature.arguments);
         }
 
         @Override

@@ -1,7 +1,7 @@
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js)
-    node 1: function-decl[function f(),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:1:1)
+    node 1: function-decl[function f(),-] (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:1:1)
     ->[block 1]
   block 1:
     node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -26,11 +26,11 @@ fg2: <main> function()
     node 9: constant[true,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:5:12)
     ->[block 8]
   block 8:
-    node 10: write-variable[v5,'x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:5:1)
+    node 10: write-variable[v5,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:5:1)
     node 11: read-variable['x',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:7:16)
     ->[block 9]
   block 9:
-    node 12: call[TAJS_dumpValue,v10,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:7:1)
+    node 12: call[TAJS_dumpValue,v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:7:1)
     ->[block 10]
   block 10: [exit-ordinary]
     node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js)
@@ -43,7 +43,7 @@ function f()
     node 15: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:1:1)
     ->[block 13]
   block 13:
-    node 16: constant[1.0,v1]* (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:2:10)
+    node 16: constant[1.0,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:2:10)
     ->[block 14]
   block 14: [exit-ordinary]
     node 17: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0055.js:1:1)

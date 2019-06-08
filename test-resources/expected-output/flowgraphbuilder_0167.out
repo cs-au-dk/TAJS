@@ -28,10 +28,10 @@ fg2: <main> function()
   block 8:
     node 10: read-variable['this',v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0167.js:1:27)
     node 11: read-property[v7,'astopl',v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0167.js:1:27)
-    node 12: if[v5](true-block:9,false-block:10)* (test-resources/src/flowgraphbuilder/flowgraph_builder0167.js:1:1)
+    node 12: if[v5](true-block:9,false-block:10) (test-resources/src/flowgraphbuilder/flowgraph_builder0167.js:1:1)
     ->[block 9,block 10]
   block 9:
-    node 13: constant[3.0,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0167.js:1:40)
+    node 13: constant[3.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0167.js:1:40)
     ->[block 10]
   block 10: [exit-ordinary]
     node 14: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0167.js)

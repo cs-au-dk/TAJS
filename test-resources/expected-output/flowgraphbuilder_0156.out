@@ -1,9 +1,9 @@
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
-    node 1: function-decl[function CSlider(c,t,n),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:3:1)
-    node 2: vardecl['cs1']* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:15:5)
-    node 3: function-decl[function(),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
+    node 1: function-decl[function CSlider(c,t,n),-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:3:1)
+    node 2: vardecl['cs1'] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:15:5)
+    node 3: function-decl[function(),-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
     ->[block 1]
   block 1:
     node 4: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -25,80 +25,80 @@ fg2: <main> function()
     node 12: construct[-,v6,v7,v8,v9,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:15:11)
     ->[block 6] ~>[block 28]
   block 6:
-    node 13: write-variable[v5,'cs1']* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:15:5)
+    node 13: write-variable[v5,'cs1'] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:15:5)
     ->[block 7] ~>[block 28]
   block 7:
     node 14: nop(eventDispatchers: entry) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 8,block 12] ~>[block 28]
   block 8:
-    node 15: event-dispatcher <CONTENT_LOADED>* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 15: event-dispatcher <CONTENT_LOADED> (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 11] ~>[block 9]
   block 9:
     node 16: catch[v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     node 17: nop(eventDispatchers: exceptional exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 10,block 12]
   block 10:
-    node 18: throw[v11]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 18: throw[v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[]
   block 11:
-    node 19: nop(eventDispatchers: ordinary exit DOMContentLoaded)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 19: nop(eventDispatchers: ordinary exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 12] ~>[block 28]
   block 12:
-    node 20: nop(eventDispatchers: post DOMContentLoaded)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 20: nop(eventDispatchers: post DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 8,block 13,block 17] ~>[block 28]
   block 13:
-    node 21: event-dispatcher <LOAD>* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 21: event-dispatcher <LOAD> (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 16] ~>[block 14]
   block 14:
     node 22: catch[v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     node 23: nop(eventDispatchers: exceptional exit Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 15,block 17]
   block 15:
-    node 24: throw[v12]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 24: throw[v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[]
   block 16:
-    node 25: nop(eventDispatchers: ordinary exit Load)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 25: nop(eventDispatchers: ordinary exit Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 17] ~>[block 28]
   block 17:
-    node 26: nop(eventDispatchers: post Load)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 26: nop(eventDispatchers: post Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 13,block 18,block 22] ~>[block 28]
   block 18:
-    node 27: event-dispatcher <OTHER>* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 27: event-dispatcher <OTHER> (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 21] ~>[block 19]
   block 19:
     node 28: catch[v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     node 29: nop(eventDispatchers: exceptional exit Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 20,block 22]
   block 20:
-    node 30: throw[v13]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 30: throw[v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[]
   block 21:
-    node 31: nop(eventDispatchers: ordinary exit Other)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 31: nop(eventDispatchers: ordinary exit Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 22] ~>[block 28]
   block 22:
-    node 32: nop(eventDispatchers: post Other)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 32: nop(eventDispatchers: post Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 18,block 23,block 27] ~>[block 28]
   block 23:
-    node 33: event-dispatcher <UNLOAD>* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 33: event-dispatcher <UNLOAD> (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 26] ~>[block 24]
   block 24:
     node 34: catch[v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     node 35: nop(eventDispatchers: exceptional exit Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 25,block 27]
   block 25:
-    node 36: throw[v14]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 36: throw[v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[]
   block 26:
-    node 37: nop(eventDispatchers: ordinary exit Unload)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 37: nop(eventDispatchers: ordinary exit Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 27] ~>[block 28]
   block 27:
-    node 38: nop(eventDispatchers: post Unload)* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 38: nop(eventDispatchers: post Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 23,block 30] ~>[block 28]
   block 28:
     node 39: catch[v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[block 7,block 29]
   block 29:
-    node 40: throw[v10]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
+    node 40: throw[v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
     ->[]
   block 30: [exit-ordinary]
     node 41: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html)
@@ -124,13 +124,13 @@ function CSlider(c,t,n)
     node 50: constant["top",v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:4:37)
     ->[block 36]
   block 36:
-    node 51: write-property[v3,'p',v2]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:4:5)
+    node 51: write-property[v3,'p',v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:4:5)
     node 52: read-variable['this',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:5:5)
     node 53: function-expr[function(d,o),v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:5:23)
-    node 54: write-property[v8,'startSlide',v7]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:5:5)
+    node 54: write-property[v8,'startSlide',v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:5:5)
     node 55: read-variable['this',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:9:5)
     node 56: function-expr[function(d),v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:9:18)
-    node 57: write-property[v10,'getCP',v9]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:9:5)
+    node 57: write-property[v10,'getCP',v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:9:5)
     ->[block 37]
   block 37: [exit-ordinary]
     node 58: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:3:1)
@@ -160,7 +160,7 @@ function(d,o)
     node 73: call[v5,v6,v7,v16,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:6:23)
     ->[block 42]
   block 42:
-    node 74: write-property[v4,'intrvl',v3]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:6:9)
+    node 74: write-property[v4,'intrvl',v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:6:9)
     node 75: read-variable['this',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:7:9)
     node 76: read-variable['this',v20,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:7:19)
     node 77: read-property[v20,'getCP',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:7:19)
@@ -169,7 +169,7 @@ function(d,o)
     node 78: call[v20,'getCP',v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:7:19)
     ->[block 44]
   block 44:
-    node 79: write-property[v18,'np',v17]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:7:9)
+    node 79: write-property[v18,'np',v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:7:9)
     ->[block 45]
   block 45: [exit-ordinary]
     node 80: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:5:23)
@@ -215,12 +215,12 @@ function()
     node 102: constant["cs1",v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:69)
     ->[block 54]
   block 54:
-    node 103: call[v3,'startSlide',v4,v5,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
+    node 103: call[v3,'startSlide',v4,v5,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)
     ->[block 55]
   block 55:
     node 104: read-variable['cs1',v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:76)
     node 105: constant[false,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:83)
-    node 106: write-property[v7,'as',v6]* (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:76)
+    node 106: write-property[v7,'as',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:76)
     ->[block 56]
   block 56: [exit-ordinary]
     node 107: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156.html:17:50)

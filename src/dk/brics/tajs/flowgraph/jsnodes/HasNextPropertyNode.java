@@ -62,8 +62,8 @@ public class HasNextPropertyNode extends LoadNode {
     @Override
     public void check(BasicBlock b) {
         if (propertylist_reg == NO_VALUE)
-            throw new AnalysisException("Invalid propertylist register: " + toString());
+            throw new AnalysisException("Invalid propertylist register: " + this);
         if (getResultRegister() == NO_VALUE)
-            throw new AnalysisException("No result register for node: " + toString());
+            throw new AnalysisException("No result register for node: " + this);
     }
 }

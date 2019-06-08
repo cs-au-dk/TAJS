@@ -286,8 +286,6 @@ public class BasicBlock implements Serializable {
             if (d != null)
                 s.append("(~").append(d.getIndex()).append(")");
             s.append(": ").append(n);
-            if (n.isRegistersDone())
-                s.append('*');
             if (n.getImplicitAfterCall() != null)
                 s.append(" [implicitAfterCall]");
             s.append(" (").append(n.getSourceLocation()).append(")\n");
@@ -340,8 +338,6 @@ public class BasicBlock implements Serializable {
             if (d != null)
                 pw.print("(~" + d.getIndex() + ")");
             pw.print(": " + Strings.escape(n.toString()));
-            if (n.isRegistersDone())
-                pw.print('*');
         }
         pw.print("}\" ] " + "\n");
         if (standalone) {
@@ -355,33 +351,33 @@ public class BasicBlock implements Serializable {
      */
     public void check(BasicBlock entry, BasicBlock ordinary_exit, BasicBlock exceptional_exit, Set<Integer> seen_blocks, Set<Integer> seen_nodes) {
         if (this != ordinary_exit && this != exceptional_exit && !(this.getLastNode() instanceof ThrowNode) && successors.isEmpty())
-            throw new AnalysisException("No successor for block: " + toString());
+            throw new AnalysisException("No successor for block: " + this);
         if (isEmpty())
-            throw new AnalysisException("Basic block is empty: " + toString());
+            throw new AnalysisException("Basic block is empty: " + this);
         if (getSourceLocation().getLineNumber() < 0)
-            throw new AnalysisException("Negative line number in source information for block: " + toString());
+            throw new AnalysisException("Negative line number in source information for block: " + this);
         if (worklistOrder == -1)
-            throw new AnalysisException("Block worklistOrder has not been set: " + toString());
+            throw new AnalysisException("Block worklistOrder has not been set: " + this);
         if (topologicalOrder == -1)
-            throw new AnalysisException("Block topologicalOrder has not been set: " + toString());
+            throw new AnalysisException("Block topologicalOrder has not been set: " + this);
         if (index == -1)
-            throw new AnalysisException("Block has not been added to flow graph: " + toString());
+            throw new AnalysisException("Block has not been added to flow graph: " + this);
         if (entry_block == null)
-            throw new AnalysisException("Block does not have an entry_block: " + toString());
+            throw new AnalysisException("Block does not have an entry_block: " + this);
         if (entry_block == this && entry_predecessor_block == null && this != entry) {
-            throw new AnalysisException("Block with self-entry_block does not have an entry_predecessor_block, and it is not the functionEntry-block: " + toString());
+            throw new AnalysisException("Block with self-entry_block does not have an entry_predecessor_block, and it is not the functionEntry-block: " + this);
         }
         if (entry_block != this && entry_predecessor_block != null) {
-            throw new AnalysisException("Block without self-entry_block has an entry_predecessor_block: " + toString());
+            throw new AnalysisException("Block without self-entry_block has an entry_predecessor_block: " + this);
         }
         if ((this == entry || this == ordinary_exit || this == exceptional_exit) && entry != entry_block)
             throw new AnalysisException("function-entry or function-exit does not have the function-entry as entry_block. entry_block is: " + entry_block);
         if (!seen_blocks.add(index))
-            throw new AnalysisException("Duplicate block index: " + toString());
+            throw new AnalysisException("Duplicate block index: " + this);
         if (exceptional_exit == null && canThrowExceptions())
-            throw new AnalysisException("No exception handler for block " + toString());
+            throw new AnalysisException("No exception handler for block " + this);
         if (this == ordinary_exit && !(getFirstNode() instanceof ReturnNode))
-            throw new AnalysisException("Last node in function is not a return node: " + toString());
+            throw new AnalysisException("Last node in function is not a return node: " + this);
         for (AbstractNode node : nodes) {
             if (node.getIndex() == -1)
                 throw new AnalysisException("Node has not been added to flow graph: " + node);

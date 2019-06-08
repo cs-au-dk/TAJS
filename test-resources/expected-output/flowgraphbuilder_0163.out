@@ -31,7 +31,7 @@ fg2: <main> function()
     node 14: call[v7,'item',v14,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0163.js:1:1)
     ->[block 8]
   block 8:
-    node 15: read-property[v5,'offsetHeight',-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0163.js:1:1)
+    node 15: read-property[v5,'offsetHeight',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0163.js:1:1)
     ->[block 9]
   block 9: [exit-ordinary]
     node 16: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0163.js)

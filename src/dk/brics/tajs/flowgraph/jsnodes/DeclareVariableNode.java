@@ -63,6 +63,6 @@ public class DeclareVariableNode extends Node {
     @Override
     public void check(BasicBlock b) {
         if (varname == null || varname.isEmpty())
-            throw new AnalysisException("Empty variable name:" + toString());
+            throw new AnalysisException("Empty variable name:" + this);
     }
 }

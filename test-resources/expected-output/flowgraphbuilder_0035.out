@@ -15,7 +15,7 @@ fg2: <main> function()
   block 4:
     node 5: constant[1.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0035.js:1:6)
     node 6: constant[2.0,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0035.js:1:9)
-    node 7: write-variable[v5,'x']* (test-resources/src/flowgraphbuilder/flowgraph_builder0035.js:1:1)
+    node 7: write-variable[v5,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0035.js:1:1)
     ->[block 5]
   block 5: [exit-ordinary]
     node 8: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0035.js)

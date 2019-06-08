@@ -1,7 +1,7 @@
 fg2: <main> function()
   block 0: [entry]
     node 0: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js)
-    node 1: function-decl[function f(x),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:1:1)
+    node 1: function-decl[function f(x),-] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:1:1)
     ->[block 1]
   block 1:
     node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -18,7 +18,7 @@ fg2: <main> function()
     node 7: constant[10.0,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:6:3)
     ->[block 5]
   block 5:
-    node 8: call[v5,v6,v7,-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:6:1)
+    node 8: call[v5,v6,v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:6:1)
     ->[block 6]
   block 6: [exit-ordinary]
     node 9: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js)
@@ -29,7 +29,7 @@ fg2: <main> function()
 function f(x)
   block 8: [entry]
     node 11: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:1:1)
-    node 12: function-decl[function g(),-]* (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:3:2)
+    node 12: function-decl[function g(),-] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:3:2)
     ->[block 9]
   block 9:
     node 13: read-variable['g',v3,v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:2:9)
@@ -50,7 +50,7 @@ function g()
   block 14:
     node 18: read-variable['x',v2,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:3:23)
     node 19: constant[2.0,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:3:25)
-    node 20: +[v2,v3,v1]* (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:3:23)
+    node 20: +[v2,v3,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:3:23)
     ->[block 15]
   block 15: [exit-ordinary]
     node 21: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0114.js:3:2)
