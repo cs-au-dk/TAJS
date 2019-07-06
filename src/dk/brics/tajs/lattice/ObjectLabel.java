@@ -114,7 +114,7 @@ public final class ObjectLabel implements DeepImmutable {
         this.node = node;
         this.function = function;
         this.kind = kind;
-        if (Options.get().isRecencyDisabled()) {
+        if (Options.get().isRecencyDisabled() || (kind == Kind.SYMBOL && hostobject == null)) { // non-host symbol objects always modeled as summary objects to avoid problem when summarizing objects with symbol property keys and polymorphic values
             this.singleton = false;
         } else {
             this.singleton = singleton;

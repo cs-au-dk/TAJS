@@ -1,4 +1,6 @@
-out/temp-sources/TestMicro.symbol14.js: [definite] Exceptional program exit is unreachable
+out/temp-sources/TestMicro.symbol14.js:2:16: [maybe] ReferenceError, reading absent variable p
+out/temp-sources/TestMicro.symbol14.js:3:9: [maybe] ReferenceError, reading absent variable p
+out/temp-sources/TestMicro.symbol14.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestMicro.symbol14.js:2:16, out/temp-sources/TestMicro.symbol14.js:3:9]
 out/temp-sources/TestMicro.symbol14.js:2:1: [info] Abstract value: [@Symbol.prototype[native]]
 out/temp-sources/TestMicro.symbol14.js:4:1: [info] Abstract value: [@Symbol[native]]
 out/temp-sources/TestMicro.symbol14.js:6:1: [info] Abstract value: [@Symbol[native]]

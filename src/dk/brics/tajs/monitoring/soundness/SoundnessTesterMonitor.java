@@ -39,6 +39,7 @@ import org.apache.log4j.Logger;
 import java.net.URL;
 import java.nio.file.Path;
 import java.util.Set;
+import java.util.function.Supplier;
 
 import static dk.brics.tajs.util.Collections.newSet;
 
@@ -65,7 +66,11 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
 
     private boolean scanning = false;
 
-    public SoundnessTesterMonitor() { }
+    private final Supplier<Boolean> analysisCompleted;
+
+    public SoundnessTesterMonitor(Supplier<Boolean> analysisCompleted) {
+        this.analysisCompleted = analysisCompleted;
+    }
 
     @Override
     public void setSolverInterface(Solver.SolverInterface c) {
@@ -77,7 +82,7 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
      */
     @Override
     public void visitVariableOrProperty(AbstractNode node, String var, SourceLocation loc, Value value, Context context, State state) {
-        if (scanning) {
+        if (scanning && analysisCompleted.get()) {
             type_collector.record(var, loc, UnknownValueResolver.getRealValue(value, state), context);
         }
     }
@@ -87,7 +92,7 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
      */
     @Override
     public void visitNativeFunctionCall(AbstractNode n, HostObject hostobject, boolean num_actuals_unknown, int num_actuals, int min, int max) {
-        if (scanning && hostobject.getAPI() == HostAPIs.DOCUMENT_OBJECT_MODEL) {
+        if (scanning && analysisCompleted.get() && hostobject.getAPI() == HostAPIs.DOCUMENT_OBJECT_MODEL) {
             if (hostobject.toString().endsWith(" constructor") || hostobject.toString().endsWith(".constructor")) { // quite hacky, but robust
                 domObjectAllocationSites.add(n.getSourceLocation());
             }
@@ -111,7 +116,7 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
      */
     @Override
     public void visitPhasePost(AnalysisPhase phase) {
-        if (phase == AnalysisPhase.SCAN) {
+        if (phase == AnalysisPhase.SCAN && analysisCompleted.get()) {
             URL logFile = generateLog();
             if (logFile == null)
                 return;

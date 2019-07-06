@@ -21,7 +21,7 @@ public class Test1K2012Love {
         Options.get().enableIncludeDom();
         Options.get().enableUnevalizer();
         Options.get().enablePolyfillMDN();
-        Options.get().setAnalysisTransferLimit(100000);
+        Options.get().setAnalysisTransferLimit(120000);
     }
 
     @Test

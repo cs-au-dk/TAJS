@@ -423,10 +423,6 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_SPLICE, "splice", 2, c);
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_UNSHIFT, "unshift", 1, c);
         createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_INDEXOF, "indexOf", 1, c);
-        createPrimitiveFunction(lArrayProto, lFunProto, ECMAScriptObjects.ARRAY_VALUES, "values", 0, c);
-
-        pv.writePropertyWithAttributes(lArrayProto, PKey.SymbolPKey.make(WELLKNOWN_SYMBOL_ITERATOR),
-                pv.readPropertyValue(singleton(lArrayProto), Value.makeStr("values")).setAttributes(true, false, false));
 
         // 15.5.3 properties of the String constructor
         createPrimitiveFunction(lString, lFunProto, ECMAScriptObjects.STRING_FROMCHARCODE, "fromCharCode", 1, c);

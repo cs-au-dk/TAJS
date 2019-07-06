@@ -38,7 +38,7 @@ public class ProgramExitReachabilityChecker extends DefaultAnalysisMonitoring {
 
     private final boolean allowExceptionalExit;
 
-    private final Supplier<Boolean> analysisReachedFixedPoint;
+    private final Supplier<Boolean> analysisCompleted;
 
     private boolean seenOrdinaryExit = false;
 
@@ -47,13 +47,13 @@ public class ProgramExitReachabilityChecker extends DefaultAnalysisMonitoring {
     /**
      * @param makeAssertionErrorInScanPhase if set, throw {@link AssertionError} if flow to the program exit does not satisfy the other paramaters.
      */
-    public ProgramExitReachabilityChecker(boolean makeAssertionErrorInScanPhase, boolean requireOrdinaryExit, boolean allowOrdinaryExit, boolean requireExceptionalExit, boolean allowExceptionalExit, Supplier<Boolean> analysisReachedFixedPoint) {
+    public ProgramExitReachabilityChecker(boolean makeAssertionErrorInScanPhase, boolean requireOrdinaryExit, boolean allowOrdinaryExit, boolean requireExceptionalExit, boolean allowExceptionalExit, Supplier<Boolean> analysisCompleted) {
         this.makeAssertionErrorInScanPhase = makeAssertionErrorInScanPhase;
         this.requireOrdinaryExit = requireOrdinaryExit;
         this.allowOrdinaryExit = allowOrdinaryExit;
         this.requireExceptionalExit = requireExceptionalExit;
         this.allowExceptionalExit = allowExceptionalExit;
-        this.analysisReachedFixedPoint = analysisReachedFixedPoint;
+        this.analysisCompleted = analysisCompleted;
     }
 
     @SuppressWarnings("unused" /* used by TAJS-meta */)
@@ -64,7 +64,7 @@ public class ProgramExitReachabilityChecker extends DefaultAnalysisMonitoring {
     @Override
     public void visitPhasePost(AnalysisPhase phase) {
         if (makeAssertionErrorInScanPhase && phase == AnalysisPhase.SCAN) {
-            if (analysisReachedFixedPoint.get()) {
+            if (analysisCompleted.get()) {
                 if (requireOrdinaryExit && !seenOrdinaryExit) {
                     throw new AnalysisResultException("Did not observe flow to ordinary program exit!");
                 }

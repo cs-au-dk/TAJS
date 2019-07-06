@@ -89,9 +89,6 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:305
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:313:2: [definite] Dead assignment, property onTerminar is never read
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:315:2: [definite] Dead assignment, property onPausar is never read
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:43: [definite] Reading absent property all of host object
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4230: [definite] Dead assignment, property h is never read
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4436: [definite] Dead assignment, property w is never read
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4647: [definite] Dead assignment, property w is never read
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6982: [definite] Reading absent property layers of host object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10170: [definite] Dead assignment, property salvarPNG is never read
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10255: [definite] Dead assignment, property salvarJPG is never read
@@ -398,10 +395,34 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4943: [maybe] Reading absent property gRetanguloF
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4957: [maybe] Reading absent property x
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4961: [maybe] Reading absent property y
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5108: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5112: [maybe] Reading absent property y
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5147: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5151: [maybe] Reading absent property y
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5168: [maybe] Reading absent property gRetanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5182: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5186: [maybe] Reading absent property y
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5324: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5328: [maybe] Reading absent property y
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5363: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5367: [maybe] Reading absent property y
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5384: [maybe] Reading absent property gRetanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5398: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5402: [maybe] Reading absent property y
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5544: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5548: [maybe] Reading absent property y
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5583: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5587: [maybe] Reading absent property y
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5604: [maybe] Reading absent property gRetanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5618: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5622: [maybe] Reading absent property y
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5766: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5770: [maybe] Reading absent property y
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5805: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5809: [maybe] Reading absent property y
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5826: [maybe] Reading absent property gRetanguloF
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5840: [maybe] Reading absent property x
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5844: [maybe] Reading absent property y
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5978: [maybe] Reading absent property onCodigo
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6163: [maybe] Reading absent property balde
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6197: [maybe] Reading absent property mudaCor
@@ -441,18 +462,18 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10020: [maybe] Reading absent property retanguloF
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10885: [maybe] Reading absent property getContext of host object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:40:107: [maybe] Reading absent property getLargura of host object
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:41:107: [maybe] Reading absent property getAltura
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:41:107: [maybe] Reading absent property getAltura of host object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:82:14: [maybe] Reading absent property getSequencia of host object
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:51: [maybe] Reading absent property getSequencia
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:84: [maybe] Reading absent property getLargura
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:116: [maybe] Reading absent property getAltura
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:51: [maybe] Reading absent property getSequencia of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:84: [maybe] Reading absent property getLargura of host object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:116: [maybe] Reading absent property getAltura of host object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:135:46: [maybe] Reading absent property getCorReal
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:182:5: [maybe] Reading absent property mudaOpcao of host object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:187:2: [maybe] Reading absent property desfazer of host object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:192:2: [maybe] Reading absent property limparTela of host object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:202:5: [maybe] Reading absent property mudaBorda of host object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:206:5: [maybe] Reading absent property mudaCor of host object
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:207:48: [maybe] Reading absent property getCorReal
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:207:48: [maybe] Reading absent property getCorReal of host object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:167:20: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:41:4: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:48:16: [maybe] Converting primitive string to object
@@ -651,9 +672,11 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5053: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5063: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5092: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5136: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5279: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5285: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5308: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5352: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5495: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5501: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5528: [maybe] Reading absent property (computed name)
@@ -661,6 +684,7 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5715: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5727: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5750: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5794: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5890: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5923: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:6138: [maybe] Converting undefined to string

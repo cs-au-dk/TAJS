@@ -20,7 +20,6 @@ import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.AnalysisMonitor;
 import dk.brics.tajs.monitoring.AnalysisPhase;
-import dk.brics.tajs.monitoring.AnalysisTimeLimiter;
 import dk.brics.tajs.monitoring.CompositeMonitor;
 import dk.brics.tajs.monitoring.DefaultAnalysisMonitoring;
 import dk.brics.tajs.monitoring.PhaseMonitoring;
@@ -853,7 +852,7 @@ public class Stats {
             OptionValues defaultOptions = new OptionValues();
             defaultOptions.getUnsoundness().setUseFixedRandom(true);
             defaultOptions.getUnsoundness().setShowUnsoundnessUsage(true);
-            run(outfile, 60, 100000, Optional.of(defaultOptions),
+            run(outfile, 60, 120000, Optional.of(defaultOptions),
                     // from RunMedium:
                     testSunspider,
                     testGoogle,
@@ -1110,18 +1109,20 @@ public class Stats {
                     options.parse(testArgs);
                     options.checkConsistency();
                     options.enableNoMessages();
+                    options.setAnalysisTimeLimit(secondsTimeLimit);
+                    options.setAnalysisTransferLimit(nodeTransferLimit);
+                    options.enableAnalysisLimitationWarnOnly();
                     if (System.getProperty("statsquiet", "false").equalsIgnoreCase("true"))
                         options.enableQuiet();
 
                     ProgressMonitor progressMonitor = new ProgressMonitor(false);
-                    AnalysisTimeLimiter analysisTimeLimiter = new AnalysisTimeLimiter(secondsTimeLimit, nodeTransferLimit, false);
                     SuspiciousnessMonitor suspiciousnessMonitor = new SuspiciousnessMonitor();
                     TerminationMonitor terminationMonitor = new TerminationMonitor();
                     PrecisionMonitor precisionMonitor = new PrecisionMonitor();
                     Analysis a = null;
                     Throwable throwable = null;
                     try {
-                        a = Main.init(options, CompositeMonitor.make(new AnalysisMonitor(), progressMonitor, analysisTimeLimiter, suspiciousnessMonitor, terminationMonitor, precisionMonitor), null);
+                        a = Main.init(options, CompositeMonitor.make(new AnalysisMonitor(), progressMonitor, suspiciousnessMonitor, terminationMonitor, precisionMonitor), null);
                         if (a == null)
                             throw new AnalysisException("Error during initialization");
                         Main.run(a);
@@ -1150,12 +1151,12 @@ public class Stats {
                         w.name("transfers_per_visited_node").value(!progressMonitor.getPreScanMonitor().getVisitedNonHostNodes().isEmpty() ? ((double) progressMonitor.getPreScanMonitor().getNodeTransfers()) / progressMonitor.getPreScanMonitor().getVisitedNonHostNodes().size() : -1);
                         w.name("visited_div_total_nodes").value(a.getSolver().getFlowGraph().getNumberOfUserCodeNodes() != 0 ? ((double) progressMonitor.getPreScanMonitor().getVisitedNonHostNodes().size()) / a.getSolver().getFlowGraph().getNumberOfUserCodeNodes() : -1);
                         w.name("total_usercode_nodes").value(a.getSolver().getFlowGraph().getNumberOfUserCodeNodes());
-                        w.name("total_call_nodes").value(suspiciousnessMonitor.getScanMonitor().getNumberOfCallNodes());
                         w.name("abstract_states").value(a.getSolver().getAnalysisLatticeElement().getNumberOfStates());
                         w.name("states_per_block").value(((double) a.getSolver().getAnalysisLatticeElement().getNumberOfStates()) / a.getSolver().getFlowGraph().getNumberOfBlocks());
                         w.name("average_state_size").value(((double) progressMonitor.getPreScanMonitor().getStateSize()) / a.getSolver().getAnalysisLatticeElement().getNumberOfStates());
-                        w.name("average_node_transfer_time").value( progressMonitor.getPreScanMonitor().getNodeTransfers() != 0 ? ((double)time / progressMonitor.getPreScanMonitor().getNodeTransfers()) : -1);
+                        w.name("average_node_transfer_time").value(progressMonitor.getPreScanMonitor().getNodeTransfers() != 0 ? ((double)time / progressMonitor.getPreScanMonitor().getNodeTransfers()) : -1);
                         w.name("callgraph_edges").value(a.getSolver().getAnalysisLatticeElement().getCallGraph().getSizeIgnoringContexts());
+                        w.name("total_call_nodes").value(suspiciousnessMonitor.getScanMonitor().getNumberOfCallNodes());
                         w.name("callnodes_to_nonfunction").value(suspiciousnessMonitor.getScanMonitor().getCallToNonFunction().size());
                         w.name("callnodes_to_mixed_functions").value(suspiciousnessMonitor.getScanMonitor().getCallToMixedFunctions().size());
                         w.name("callnodes_polymorphic").value(suspiciousnessMonitor.getScanMonitor().getCallPolymorphic().size());
@@ -1383,7 +1384,7 @@ public class Stats {
                 float numberPreciseReads = number_read_property_with_single_type + number_read_variables_with_single_type;
                 float totalNumberTypes = numberPreciseReads + polymorphic_reads_context_sensitive.values().stream().reduce(0, Integer::sum);
                 float totalNumberReads = numberPreciseReads + polymorphic_reads_context_sensitive.size();
-                return totalNumberTypes / totalNumberReads;
+                return totalNumberReads != 0 ? totalNumberTypes / totalNumberReads : -1;
             }
 
             /**
@@ -1392,7 +1393,7 @@ public class Stats {
             public float getFractionUniqueTypesAtReads() {
                 float numberPreciseReads = number_read_property_with_single_type + number_read_variables_with_single_type;
                 float totalNumberReads = numberPreciseReads + polymorphic_reads_context_sensitive.size();
-                return numberPreciseReads / totalNumberReads;
+                return totalNumberReads != 0 ? numberPreciseReads / totalNumberReads : -1;
             }
 
             /**
@@ -1401,7 +1402,7 @@ public class Stats {
             public float getFractionUniqueCallees() {
                 float numberCallNodes = call_nodes_context_sensitively;
                 float numberPreciseCallNodes = numberCallNodes - call_polymorphic.size();
-                return numberPreciseCallNodes / numberCallNodes;
+                return numberCallNodes != 0 ? numberPreciseCallNodes / numberCallNodes : -1;
             }
 
             @Override

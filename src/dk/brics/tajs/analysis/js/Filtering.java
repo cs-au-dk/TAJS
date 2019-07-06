@@ -22,7 +22,6 @@ import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.BinaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
-import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -152,34 +151,6 @@ public class Filtering {
     }
 
     /**
-     * Removes those base objects that do not have a matching property whose value satisfies the restriction.
-     */
-    private boolean assumeHasPropertyWhere(int basereg, String propname, Restriction restriction) {
-        for (ObjectProperty base : c.getState().getMustEquals().getMustEquals(basereg)) {
-            if (base.getObjectLabel().getKind() == ObjectLabel.Kind.STRING)
-                continue; // String objects have their own [[GetOwnProperty]]
-            Value v = UnknownValueResolver.getProperty(base.getObjectLabel(), base.getPropertyName(), c.getState(), false);
-            Value oldv = v;
-            Set<ObjectLabel> objs = newSet(v.getObjectLabels());
-            v = v.restrictToNotObject();
-            for (ObjectLabel objlabel : objs) {
-                // does obj have a property named propname whose value satisfies the restriction? if maybe yes, keep it
-                Value v2 = pv.readPropertyWithAttributes(Collections.singleton(objlabel), propname); // TODO: measure time, this is repeating much the work done by the ordinary transfer function earlier... - maybe just omit this reduction?
-                v2 = UnknownValueResolver.getRealValue(v2, c.getState());
-                if (!restriction.restrict(v2).isNotPresentNotAbsent())
-                    v = v.joinObject(objlabel);
-            }
-            if (v.isNotPresentNotAbsent() && !Options.get().isPropagateDeadFlow()) {
-                c.getState().setToBottom();
-                return true;
-            }
-            if (v != oldv)
-                c.getState().getObject(base.getObjectLabel(), true).setProperty(base.getPropertyName(), v);
-        }
-        return false;
-    }
-
-    /**
      * Assumes that the values of the given registers are equal.
      * @param strict use strict equality if set, otherwise non-strict
      * @param negated use not-equals if set
@@ -265,17 +236,7 @@ public class Filtering {
 
         AbstractNode def = c.getState().getMustReachingDefs().getReachingDef(reg);
 
-        if (def instanceof ReadPropertyNode) {
-
-            // register defined at ReadPropertyNode, remove those base objects that do not have a matching property whose value satisfies the restriction
-            ReadPropertyNode n = (ReadPropertyNode) def;
-            if (n.isPropertyFixed()) {// dynamic property reads may involve toString coercion, which we don't want to mess with here
-                AbstractNode baseDefinition = c.getState().getMustReachingDefs().getReachingDef(n.getBaseRegister());
-                if (baseDefinition != null && baseDefinition.getBlock() == def.getBlock() && // only use assumeHasPropertyWhere if the base register definitely hasn't been overwritten
-                        assumeHasPropertyWhere(n.getBaseRegister(), n.getPropertyString(), restriction))
-                    return true;
-            }
-        } else if (restriction.getKind() == Restriction.Kind.TRUTHY || restriction.getKind() == Restriction.Kind.FALSY) {
+        if (restriction.getKind() == Restriction.Kind.TRUTHY || restriction.getKind() == Restriction.Kind.FALSY) {
 
             if (def instanceof UnaryOperatorNode) { // recognize negations
                 UnaryOperatorNode n = (UnaryOperatorNode) def;
@@ -380,21 +341,10 @@ public class Filtering {
     /**
      * Variant of {@link #assumeFunction(int)} for call nodes where the function is given as a property read.
      */
-    public boolean assumeFunction(int basereg, Set<ObjectLabel> baseobjs, String propname) {
+    public boolean assumeFunction(Set<ObjectLabel> baseobjs, String propname) {
         if (propname == null || Options.get().isNoFilteringEnabled() || Options.get().isControlSensitivityDisabled())
             return false;
-
-        Restriction restriction = new Restriction(Restriction.Kind.FUNCTION);
-
-        // the property can be restricted (provided that strong update is possible)
-        if (assumeObjectPropertySatisfies(baseobjs, PKey.StringPKey.make(propname), restriction, new Visited()))
-            return true;
-
-        // if the base object was read from a variable, then if its value is an object, that object must have a property named propname whose value maybe satisfies the restriction
-        if (assumeHasPropertyWhere(basereg, propname, restriction))
-            return true;
-
-        return false;
+        return assumeObjectPropertySatisfies(baseobjs, PKey.StringPKey.make(propname), new Restriction(Restriction.Kind.FUNCTION), new Visited());
     }
 
     /**

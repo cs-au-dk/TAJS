@@ -90,7 +90,7 @@ public class SourceLocation implements DeepImmutable, Serializable {
     private static void checkNormalizedFileURL(URL location) {
         if (location != null && Options.get().isDebugOrTestEnabled()) {
             URL normalized = PathAndURLUtils.normalizeFileURL(location);
-            if (!location.equals(normalized)) {
+            if (!location.toString().equalsIgnoreCase(normalized.toString())) { // equalsIgnoreCase necessary for Windows, which sometimes chooses to convert case based on real file name
                 throw new IllegalArgumentException(String.format("File URLs should be normalized before being used for source locations: %s normalizes to %s!", location, normalized));
             }
         }

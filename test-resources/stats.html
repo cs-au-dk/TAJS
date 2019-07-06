@@ -15,6 +15,7 @@
         .good {background: #afa}
         .medium {background: #ffa}
         .bad {background: #faa}
+        .na {background: #fff}
         table,.search input {font-size: 10px}
         th {font-size: 13px}
 
@@ -35,7 +36,7 @@
             <th data-field="error" data-align="left" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Analysis errors, if any">Error</th>
             <th data-field="node_transfers" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of node transfers">Node transfers</th>
             <th data-field="total_usercode_nodes" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of nodes">Nodes</th>
-            <th data-field="total_call_nodes" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of call nodes">Call nodes</th>
+            <th data-field="total_call_nodes" data-formatter="posint" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of call nodes">Call nodes</th>
             <th data-field="visited_usercode_node" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of visited nodes">Visited nodes</th>
             <th data-field="abstract_states" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of abstract states (at basic block entries, for different contexts)">Abstract states</th>
             <th data-field="callgraph_edges" data-align="right" data-sortable="true" data-searchable="false" data-toggle="tooltip" title="Number of call graph edges (counted without context-sensitivity)">Call graph edges</th>
@@ -44,10 +45,10 @@
             <th data-field="states_per_block" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average number of abstract states per basic block">States per block</th>
             <th data-field="average_state_size" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average size of all abstract states (counting object labels and number of different types for all object properties, context-sensitively)">Average state size</th>
             <th data-field="average_node_transfer_time" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average number of milliseconds per node transfer">Average node transfer time</th>
-            <th data-field="mixed_readwrites" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of variable/property read/write nodes that in some call context have a value with multiple native and also user-defined functions">Mixed reads/writes</th>
-            <th data-field="callnodes_to_mixed_functions" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke multiple native and also user-defined functions">Mixed calls</th>
-            <th data-field="callnodes_to_nonfunction" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke a non-function value (ignoring 'undefined')">Non-function calls</th>
-            <th data-field="callnodes_polymorphic" data-align="right" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke multiple user-defined functions (ignoring callee contexts)">Polymorphic calls</th>
+            <th data-field="mixed_readwrites" data-align="right" data-formatter="posint" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of variable/property read/write nodes that in some call context have a value with multiple native and also user-defined functions">Mixed reads/writes</th>
+            <th data-field="callnodes_to_mixed_functions" data-align="right" data-formatter="posint" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke multiple native and also user-defined functions">Mixed calls</th>
+            <th data-field="callnodes_to_nonfunction" data-align="right" data-formatter="posint" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke a non-function value (ignoring 'undefined')">Non-function calls</th>
+            <th data-field="callnodes_polymorphic" data-align="right" data-formatter="posint" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Number of calls that in some call context may invoke multiple user-defined functions (ignoring callee contexts)">Polymorphic calls</th>
             <th data-field="average_types" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Average number of types at reads">Average types</th>
             <th data-field="unique_type" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Fraction of reads with unique type">Unique type</th>
             <th data-field="unique_callee" data-align="right" data-formatter="twodecimals" data-sortable="true" data-searchable="false" data-cell-style="cellStyle" data-toggle="tooltip" title="Fraction of calls with unique callee">Unique callee</th>
@@ -70,9 +71,9 @@ if (q.startsWith("?")) {
         $('#timestamp').text("Generated " + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " + d.getHours() + ":" + (d.getMinutes() <= 9 ? "0" : "") + d.getMinutes() + " on " + machine);
         var cputimeMinutes = Math.floor(cputime / 60000000000);
         var cputimeSeconds =  Math.round(cputime / 1000000000) - cputimeMinutes * 60;
-        $('#cputime').text("CPU time: " + cputimeMinutes + " minute" + (cputimeMinutes != 1 ? "s " : " ") + cputimeSeconds + " seconds");
+        $('#cputime').text("CPU time: " + cputimeMinutes + " minute" + (cputimeMinutes !== 1 ? "s " : " ") + cputimeSeconds + " seconds");
         $('#defaultoptions').text("Default options: " + defaultOptions);
-    }
+    };
     document.getElementsByTagName('body')[0].appendChild(s);
 } else {
     $(function () {
@@ -81,92 +82,111 @@ if (q.startsWith("?")) {
 }
 
 function twodecimals(v) {
-    return v !== undefined ? v.toFixed(2) : "";
+    return v !== undefined && v !== -1 ? v.toFixed(2) : "";
+}
+
+function posint(v) {
+    return v !== -1 ? v : "";
 }
 
 function cellStyle(value, row, index, field) {
-  var status = '';
-  if (field == 'transfers_per_visited_node') {
-    if (value > 20)
-        status = 'bad';
-    else if (value > 10)
-        status = 'medium';
+    var status = '';
+    if (value === -1)
+        status = 'na';
     else
-        status = 'good';
-  } else if (field == 'states_per_block') {
-    if (value > 5)
-        status = 'bad';
-    else if (value > 3)
-        status = 'medium';
-    else
-        status = 'good';
-  } else if (field == 'average_state_size') {
-    if (value > 500)
-        status = 'bad';
-    else if (value > 200)
-        status = 'medium';
-    else
-        status = 'good';
-  } else if (field == 'visited_div_total_nodes') {
-    if (value < 0.3)
-        status = 'bad';
-    else if (value < 0.7)
-        status = 'medium';
-    else
-        status = 'good';
-  } else if (field == 'error') {
-    if (value)
-        status = 'bad';
-    else
-        status = 'good';
-  } else if (field == 'callnodes_to_nonfunction') {
-    if (value > 0.2)
-        status = 'bad';
-    else if (value > 0.1)
-        status = 'medium';
-    else
-        status = 'good';
-  } else if (field == 'callnodes_to_mixed_functions' ||
-             field == 'mixed_readwrites' ||
-             field == 'callnodes_polymorphic') {
-    if (value > 5)
-        status = 'bad';
-    else if (value > 0)
-        status = 'medium';
-    else
-        status = 'good';
-  } else if (field == 'average_node_transfer_time') {
-    if (value > 25)
-        status = 'bad';
-    else if (value > 5)
-        status = 'medium';
-    else
-        status = 'good';
-  } else if (field == 'average_types') {
-      if (value > 2)
-          status = 'bad';
-      else if (value > 1.5)
-          status = 'medium';
-      else
-          status = 'good';
-  } else if (field == 'unique_type') {
-      if (value > 0.95)
-          status = 'good';
-      else if (value > 0.8)
-          status = 'medium';
-      else
-          status = 'bad';
-  } else if (field == 'unique_callee') {
-      if (value > 0.95)
-          status = 'good';
-      else if (value > 0.8)
-          status = 'medium';
-      else
-          status = 'bad';
-  }
-  return {
-    classes: status,
-  };
+        switch (field) {
+            case 'transfers_per_visited_node':
+                if (value > 20)
+                    status = 'bad';
+                else if (value > 10)
+                    status = 'medium';
+                else
+                    status = 'good';
+                break;
+            case 'states_per_block':
+                if (value > 5)
+                    status = 'bad';
+                else if (value > 3)
+                    status = 'medium';
+                else
+                    status = 'good';
+                break;
+            case 'average_state_size':
+                if (value > 500)
+                    status = 'bad';
+                else if (value > 200)
+                    status = 'medium';
+                else
+                    status = 'good';
+                break;
+            case 'visited_div_total_nodes':
+                if (value < 0.3)
+                    status = 'bad';
+                else if (value < 0.7)
+                    status = 'medium';
+                else
+                    status = 'good';
+                break;
+            case 'error':
+                if (value)
+                    status = 'bad';
+                else
+                    status = 'good';
+                break;
+            case 'callnodes_to_nonfunction':
+                if (value > 0.2)
+                    status = 'bad';
+                else if (value > 0.1)
+                    status = 'medium';
+                else
+                    status = 'good';
+                break;
+            case 'callnodes_to_mixed_functions':
+            case 'mixed_readwrites':
+            case 'callnodes_polymorphic':
+                if (value > 5)
+                    status = 'bad';
+                else if (value > 0)
+                    status = 'medium';
+                else
+                    status = 'good';
+                break;
+            case 'average_node_transfer_time':
+                if (value > 25)
+                    status = 'bad';
+                else if (value > 5)
+                    status = 'medium';
+                else
+                    status = 'good';
+                break;
+            case 'average_types':
+                if (value > 2)
+                    status = 'bad';
+                else if (value > 1.5)
+                    status = 'medium';
+                else
+                    status = 'good';
+                break;
+            case 'unique_type':
+                if (value > 0.95)
+                    status = 'good';
+                else if (value > 0.8)
+                    status = 'medium';
+                else
+                    status = 'bad';
+                break;
+            case 'unique_callee':
+                if (value > 0.95)
+                    status = 'good';
+                else if (value > 0.8)
+                    status = 'medium';
+                else
+                    status = 'bad';
+                break;
+        }
+    return {
+        classes: status
+    };
 }
 
 </script>

@@ -82,6 +82,9 @@ public class HostEnvSources {
         if (Options.get().isPolyfillES6CollectionsEnabled()) {
             sourcePaths.add("es6-collections.js");
         }
+        if (Options.get().isPolyfillES6IteratorsEnabled()) {
+            sourcePaths.add("es6-iterator.js");
+        }
         if (Options.get().isPolyfillES6PromisesEnabled()) {
             sourcePaths.add("es6-promise.js");
         }
@@ -94,7 +97,6 @@ public class HostEnvSources {
         if (Options.get().isConsoleModelEnabled()) {
             sourcePaths.add("console-model.js");
         }
-
         if (Options.get().isNodeJS()) {
             sourcePaths.add("nodejs/simple-bootstrap-node.js");
         }

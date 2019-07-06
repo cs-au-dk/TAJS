@@ -46,6 +46,7 @@ public class NashornConcreteSemantics implements NativeConcreteSemantics {
     private final ScriptEngine engine;
 
     public NashornConcreteSemantics() {
+        System.getProperties().setProperty("nashorn.args", "--no-deprecation-warning");
         engine = new ScriptEngineManager().getEngineByName("JavaScript");
     }
 

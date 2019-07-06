@@ -1,4 +1,12 @@
 out/temp-sources/TestMicro.symbol15.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.symbol15.js:10:1: [info] Abstract value: 5.0
-out/temp-sources/TestMicro.symbol15.js:12:1: [info] Abstract value: "foo"
+out/temp-sources/TestMicro.symbol15.js:9:9: [maybe] Reading absent property (computed name)
+out/temp-sources/TestMicro.symbol15.js:10:16: [maybe] The variable t has values with different types
+out/temp-sources/TestMicro.symbol15.js:11:10: [maybe] Reading absent property (computed name)
+out/temp-sources/TestMicro.symbol15.js:12:16: [maybe] The variable t2 has values with different types
+out/temp-sources/TestMicro.symbol15.js:13:19: [maybe] Reading absent property (computed name)
+out/temp-sources/TestMicro.symbol15.js:13:27: [maybe] Reading absent property (computed name)
+out/temp-sources/TestMicro.symbol15.js:14:19: [maybe] Reading absent property (computed name)
+out/temp-sources/TestMicro.symbol15.js:14:27: [maybe] Reading absent property (computed name)
+out/temp-sources/TestMicro.symbol15.js:10:1: [info] Abstract value: Undef|5.0|"foo"
+out/temp-sources/TestMicro.symbol15.js:12:1: [info] Abstract value: Undef|5.0|"foo"
 Soundness testing succeeded for 45 checks (with 0 expected failures)

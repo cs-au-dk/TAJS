@@ -1,6 +1,5 @@
+out/temp-sources/TestMicro.symbol9.js:22:17: [definite] ReferenceError, reading absent variable Exception
 out/temp-sources/TestMicro.symbol9.js:8:3: [definite] The conditional expression is always false
-out/temp-sources/TestMicro.symbol9.js:8:3: [definite] The conditional expression is always true
-out/temp-sources/TestMicro.symbol9.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.symbol9.js:5:5: [definite] The variable COLOR_BLUE is never used
-out/temp-sources/TestMicro.symbol9.js:6:5: [definite] The variable COLOR_VIOLET is never used
-Soundness testing succeeded for 54 checks (with 0 expected failures)
+out/temp-sources/TestMicro.symbol9.js:22:27: [definite] Unreachable code
+out/temp-sources/TestMicro.symbol9.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestMicro.symbol9.js:22:17]
+Soundness testing succeeded for 55 checks (with 0 expected failures)

@@ -1,9 +1,6 @@
 test-resources/src/chromeexperiments/blob.html:65:17: [definite] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/blob.html:74:17: [definite] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/blob.html:395:9: [definite] The conditional expression is always true
-test-resources/src/chromeexperiments/blob.html:353:13: [definite] Dead assignment, property fillStyle is never read
-test-resources/src/chromeexperiments/blob.html:354:13: [definite] Dead assignment, property strokeStyle is never read
-test-resources/src/chromeexperiments/blob.html:355:13: [definite] Dead assignment, property lineWidth is never read
 test-resources/src/chromeexperiments/blob.html:65:17: [definite] Reading absent property (computed name)
 test-resources/src/chromeexperiments/blob.html:65:39: [definite] Unreachable code
 test-resources/src/chromeexperiments/blob.html:74:17: [definite] Reading absent property (computed name)

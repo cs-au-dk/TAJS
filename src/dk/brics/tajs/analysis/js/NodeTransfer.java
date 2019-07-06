@@ -811,7 +811,7 @@ public class NodeTransfer implements NodeVisitor {
             boolean maybe_null = propertyval.isMaybeNull();
             boolean maybe_nan = propertyval.isMaybeNaN();
             propertyval = propertyval.restrictToNotNullNotUndef().restrictToNotNaN();
-            PKeys propertystr = Conversion.toString(propertyval, c);
+            Value propertystr = Conversion.toString(propertyval.restrictToNotSymbol(), c).join(Value.makeObject(propertyval.getSymbols()));
             // read the object property value, as fixed property name or unknown property name, and separately for "undefined"/"null"/"NaN"
             Map<Pair<FreeVariablePartitioning, ObjectLabel>, Set<ObjectLabel>> target2this = newMap();
             List<Value> nonfunctions = newList();
@@ -875,7 +875,7 @@ public class NodeTransfer implements NodeVisitor {
 
                     @Override
                     public boolean assumeFunction() {
-                        return filtering.assumeFunction(n.getBaseRegister(), this_objs, n.getPropertyString());
+                        return filtering.assumeFunction(this_objs, n.getPropertyString());
                     }
                 }, c);
             }

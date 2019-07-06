@@ -78,7 +78,6 @@ public enum ECMAScriptObjects implements HostObject {
     ARRAY_SPLICE("Array.prototype.splice"),
     ARRAY_UNSHIFT("Array.prototype.unshift"),
     ARRAY_INDEXOF("Array.prototype.indexOf"),
-    ARRAY_VALUES("Array.prototype.values"),
 
     STRING("String"),
     STRING_PROTOTYPE("String.prototype"),

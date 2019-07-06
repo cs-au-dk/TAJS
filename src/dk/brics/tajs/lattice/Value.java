@@ -3579,11 +3579,9 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
 
     /**
      * Constructs a value as a copy of this value but only with non-object values. (Symbols are not objects.)
-     * Unknown and polymorphic values are returned unmodified.
-     * @throws AnalysisException if the value contains getters or setters.
+     * Unknown, polymorphic values, and getters/setters are returned unmodified.
      */
     public Value restrictToNotObject() {
-        checkNoGettersSetters();
         if (object_labels == null)
             return this;
         Value r = new Value(this);

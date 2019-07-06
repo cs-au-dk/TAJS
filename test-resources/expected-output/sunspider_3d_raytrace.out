@@ -12,18 +12,20 @@ test-resources/src/sunspider/3d-raytrace.js:361:23: [definite] The variable view
 test-resources/src/sunspider/3d-raytrace.js:76:22: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/3d-raytrace.js:88:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/3d-raytrace.js:197:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/sunspider/3d-raytrace.js:214:18: [maybe] TypeError, call to non-function
 test-resources/src/sunspider/3d-raytrace.js:239:32: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/3d-raytrace.js:253:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/3d-raytrace.js:304:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/3d-raytrace.js:399:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/3d-raytrace.js:416:24: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/3d-raytrace.js:213:9: [maybe] Reading absent property shader
+test-resources/src/sunspider/3d-raytrace.js:214:18: [maybe] Reading absent property shader
 test-resources/src/sunspider/3d-raytrace.js:221:9: [maybe] Reading absent property reflection
 test-resources/src/sunspider/3d-raytrace.js:224:13: [maybe] Reading absent property reflection
 test-resources/src/sunspider/3d-raytrace.js:239:32: [maybe] Reading absent property colour
 test-resources/src/sunspider/3d-raytrace.js:243:42: [maybe] Reading absent property reflection
 test-resources/src/sunspider/3d-raytrace.js:243:85: [maybe] Reading absent property reflection
-test-resources/src/sunspider/3d-raytrace.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/3d-raytrace.js:76:22, test-resources/src/sunspider/3d-raytrace.js:88:13, test-resources/src/sunspider/3d-raytrace.js:197:17, test-resources/src/sunspider/3d-raytrace.js:239:32, test-resources/src/sunspider/3d-raytrace.js:253:17, test-resources/src/sunspider/3d-raytrace.js:304:13, test-resources/src/sunspider/3d-raytrace.js:399:13, test-resources/src/sunspider/3d-raytrace.js:416:24]
+test-resources/src/sunspider/3d-raytrace.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/3d-raytrace.js:76:22, test-resources/src/sunspider/3d-raytrace.js:88:13, test-resources/src/sunspider/3d-raytrace.js:197:17, test-resources/src/sunspider/3d-raytrace.js:214:18, test-resources/src/sunspider/3d-raytrace.js:239:32, test-resources/src/sunspider/3d-raytrace.js:253:17, test-resources/src/sunspider/3d-raytrace.js:304:13, test-resources/src/sunspider/3d-raytrace.js:399:13, test-resources/src/sunspider/3d-raytrace.js:416:24]
 test-resources/src/sunspider/3d-raytrace.js:57:5: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-raytrace.js:58:5: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-raytrace.js:59:5: [maybe] Conversion to number yields NaN

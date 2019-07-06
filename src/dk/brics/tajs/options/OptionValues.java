@@ -201,6 +201,9 @@ public class OptionValues {
     @Option(name = "-polyfill-es6-promises", usage = "Enable use of polyfills for ES6 promises")
     private boolean polyfillES6Promises;
 
+    @Option(name = "-polyfill-es6-iterators", usage = "Enable use of polyfills for ES6 iterators")
+    private boolean polyfillES6Iterators;
+
     @Option(name = "-async-events", usage = "Enable execution of asynchronous event handlers with TAJS_asyncListen")
     private boolean asyncEvents;
 
@@ -333,6 +336,7 @@ public class OptionValues {
         if (polyfillES6Collections != that.polyfillES6Collections) return false;
         if (polyfillTypedArrays != that.polyfillTypedArrays) return false;
         if (polyfillES6Promises != that.polyfillES6Promises) return false;
+        if (polyfillES6Iterators != that.polyfillES6Iterators) return false;
         if (asyncEvents != that.asyncEvents) return false;
         if (noStringSets != that.noStringSets) return false;
         if (testSoundness != that.testSoundness) return false;
@@ -411,6 +415,7 @@ public class OptionValues {
         result = 31 * result + (polyfillES6Collections ? 1 : 0);
         result = 31 * result + (polyfillTypedArrays ? 1 : 0);
         result = 31 * result + (polyfillES6Promises ? 1 : 0);
+        result = 31 * result + (polyfillES6Iterators ? 1 : 0);
         result = 31 * result + (asyncEvents ? 1 : 0);
         result = 31 * result + (noStringSets ? 1 : 0);
         result = 31 * result + (testSoundness ? 1 : 0);
@@ -1116,6 +1121,10 @@ public class OptionValues {
         polyfillES6Promises = true;
     }
 
+    public void enablePolyfillES6Iterators() {
+        polyfillES6Iterators = true;
+    }
+
     public boolean isPolyfillMDNEnabled() {
         return polyfillMDN;
     }
@@ -1130,6 +1139,10 @@ public class OptionValues {
 
     public boolean isPolyfillES6PromisesEnabled() {
         return polyfillES6Promises;
+    }
+
+    public boolean isPolyfillES6IteratorsEnabled() {
+        return polyfillES6Iterators;
     }
 
     public void enableAsyncEvents() {

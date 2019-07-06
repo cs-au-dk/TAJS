@@ -1,0 +1,4 @@
+out/temp-sources/_babel/TestBabel.testForOfArrayProgramWithBabel.js:16:11: [definite] The conditional expression is always false
+out/temp-sources/_babel/TestBabel.testForOfArrayProgramWithBabel.js: [maybe] Uncaught exception, constructed at [out/temp-sources/_babel/TestBabel.testForOfArrayProgramWithBabel.js:7:26]
+out/temp-sources/_babel/TestBabel.testForOfArrayProgramWithBabel.js:9:7: [info] Abstract value: Undef|UIntPos
+Soundness testing succeeded for 45 checks (with 0 expected failures)

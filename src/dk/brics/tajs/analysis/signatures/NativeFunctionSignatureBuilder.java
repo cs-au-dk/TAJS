@@ -41,7 +41,6 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ARRAY_SPLIC
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ARRAY_TOLOCALESTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ARRAY_TOSTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ARRAY_UNSHIFT;
-import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ARRAY_VALUES;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.BOOLEAN;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.BOOLEAN_TOSTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.BOOLEAN_VALUEOF;
@@ -403,7 +402,6 @@ public class NativeFunctionSignatureBuilder {
         addSig(ARRAY_SORT, Receivers.CoerceObject, OptionalParameters.DontCare /* yep, non-functions are silently ignored! */);
         addSig(ARRAY_TOLOCALESTRING, Receivers.CoerceObject);
         addSig(ARRAY_TOSTRING, Receivers.CoerceObject);
-        addSig(ARRAY_VALUES, Receivers.CoerceObject);
 
         addStaticSig(ARRAY_ISARRAY, MandatoryParameters.DontCare);
 

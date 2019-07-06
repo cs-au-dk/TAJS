@@ -28,6 +28,10 @@ public class TestBabel { // TODO: add to RunFast?
     private static String arrowProgram = "(a => a + 2)(3)";
     private static String letProgram = "let a = 10;";
 
+    // If you give babel a plain array with for-of it will turn it into an indexed for loop
+    private static String forOfArrayProgram = "function dump(arr) {\n\tfor(var x of arr) TAJS_dumpValue(x);\n}\ndump([1, 2, 3])";
+    private static String forOfStringProgram = "for(var c of 'abcdef') TAJS_dumpValue(c);";
+
     @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
     public void testArrowProgramWithoutBabel() {
         Misc.runSource(arrowProgram);
@@ -54,19 +58,19 @@ public class TestBabel { // TODO: add to RunFast?
         Misc.checkSystemOutput();
     }
 
-    /** We need a model of Array.prototype.values for this benchmark to work
-     *  (and to enable the for-of plugin in the Babel preprocessing class).
-     *  Once this is done it is actually not that hard to implement the
-     *  For..of statement ourselves.
-     */
-    //@Test(expected = AnalysisLimitationException.AnalysisModelLimitationException.class)
-    @Test(expected = AnalysisLimitationException.SyntacticSupportNotImplemented.class)
-    public void testForOfProgramWithBabel() {
+    @Test
+    public void testForOfArrayProgramWithBabel() {
         Options.get().enableBabel();
-        Misc.runSource("function dump(arr) {",
-                                "for(var x of arr) { TAJS_dumpValue(x); }",
-                            "}",
-                        "dump([1, 2, 3])");
+        Options.get().enablePolyfillES6Iterators();
+        Misc.runSource(forOfArrayProgram);
+        Misc.checkSystemOutput();
     }
 
+    @Test
+    public void testForOfStringProgramWithBabel() {
+        Options.get().enableBabel();
+        Options.get().enablePolyfillES6Iterators();
+        Misc.runSource(forOfStringProgram);
+        Misc.checkSystemOutput();
+    }
 }

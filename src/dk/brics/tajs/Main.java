@@ -311,9 +311,7 @@ public class Main {
         int transferLimit = Options.get().getAnalysisTransferLimit();
         AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, transferLimit,
                 !Options.get().isInspectorEnabled() && Options.get().isTestEnabled() && !Options.get().isAnalysisLimitationWarnOnly());
-        if (timeLimit >= 0 || transferLimit > 0) {
-            extraMonitors.add(timeLimiter);
-        }
+        extraMonitors.add(timeLimiter);
 
         // Analysis result measuring monitors
         if (Options.get().isMemoryMeasurementEnabled()) {
@@ -326,12 +324,12 @@ public class Main {
         // Analysis results checking monitors
         // Note: the first one to throw an exception will prevent the others from reporting errors
         if (Options.get().getSoundnessTesterOptions().isTest()) {
-            extraMonitors.add(new SoundnessTesterMonitor());
+            extraMonitors.add(new SoundnessTesterMonitor(timeLimiter::analysisCompleted));
         } else if (Options.get().isTestEnabled()) {
             // (no need to test reachability if using soundness testing)
-            extraMonitors.add(new ProgramExitReachabilityChecker(true, !Options.get().isDoNotExpectOrdinaryExitEnabled(), true, false, true, timeLimiter::analysisNotExceededLimit));
+            extraMonitors.add(new ProgramExitReachabilityChecker(true, !Options.get().isDoNotExpectOrdinaryExitEnabled(), true, false, true, timeLimiter::analysisCompleted));
         }
-        extraMonitors.add(new TAJSAssertionReachabilityCheckerMonitor(timeLimiter::analysisNotExceededLimit));
+        extraMonitors.add(new TAJSAssertionReachabilityCheckerMonitor(timeLimiter::analysisCompleted));
 
         // put inspector *after* checking
         if (Options.get().isInspectorEnabled()) {
@@ -377,8 +375,11 @@ public class Main {
         long time = System.currentTimeMillis();
 
         enterPhase(AnalysisPhase.ANALYSIS, monitoring);
-        analysis.getSolver().solve();
-        leavePhase(AnalysisPhase.ANALYSIS, monitoring);
+        try {
+            analysis.getSolver().solve();
+        } finally {
+            leavePhase(AnalysisPhase.ANALYSIS, monitoring);
+        }
 
         long elapsed = System.currentTimeMillis() - time;
         if (Options.get().isTimingEnabled())

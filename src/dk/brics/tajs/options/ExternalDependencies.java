@@ -22,7 +22,7 @@ import java.nio.file.Paths;
 import java.util.Optional;
 
 /**
- * Resolves the external dependencies of TAJS that can be installed using "external-dependencies/install-external-dependencies.sh".
+ * Resolves the external dependencies of TAJS that can be installed using "extras/install.sh".
  * This resolution can be overridden with entries in tajs.properties.
  */
 public class ExternalDependencies {

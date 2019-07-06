@@ -485,7 +485,13 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
         List<Value> values = states.values().stream().map(s -> {
             Value result = c.withStateAndNode(s, node, () -> {
                 Set<ObjectLabel> baseObjects = Conversion.toObject(node, UnknownValueResolver.getRealValue(s.readRegister(base), s), c).getObjectLabels();
-                Set<Value> allPropertyNames = singleton(propName != null ? propName.toValue() : Conversion.toString(UnknownValueResolver.getRealValue(s.readRegister(propertyNameRegister), s), c));
+                Set<Value> allPropertyNames;
+                if (propName != null) {
+                    allPropertyNames = singleton(propName.toValue());
+                } else {
+                    Value propertyval = UnknownValueResolver.getRealValue(s.readRegister(propertyNameRegister), s);
+                    allPropertyNames = singleton(Conversion.toString(propertyval.restrictToNotSymbol(), c).join(Value.makeObject(propertyval.getSymbols())));
+                }
                 Set<Value> propertyValues = allPropertyNames.stream()
                         .map(name -> {
                             Value value = c.getAnalysis().getPropVarOperations().readPropertyValue(baseObjects, name);

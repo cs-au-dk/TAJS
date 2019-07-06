@@ -71,17 +71,19 @@ public class NodeJSRequire {
         }
 
         URL resolved = null;
-        if(!arg.startsWith(".") && !arg.startsWith("/")) {
+        if (!arg.startsWith(".") && !arg.startsWith("/")) {
             try {
                 resolved = HostEnvSources.resolve(Paths.get("nodejs/modules").resolve(arg + ".js").toString());
-            } catch (AnalysisException e) {} // TODO: empty catch block?!
+            } catch (AnalysisException e) {
+                // ignore
+            }
         }
         if (resolved == null) {
             if (!"file".equals(location.getProtocol())) {
                 // TODO: if we implement NodeJS's 'require.resolve' manually, we could support other protocols
                 throw new AnalysisLimitationException.NodeJSRequireException(String.format("NodeJS process cannot 'resolve' inside %s-protocol file systems", location.getProtocol()));
             }
-            String expression = "console.log(require.resolve('" + arg + "'))"; // <-- malicious injection possible here
+            String expression = "console.log(require.resolve('" + arg + "'))"; // <-- FIXME: malicious injection possible here
             String[] cmd = {TAJSEnvironmentConfig.get().getNode().toString(), "-e", expression};
             final ProcessBuilder pb = new ProcessBuilder(cmd);
             Path resolveLocation = PathAndURLUtils.toPath(location, false);

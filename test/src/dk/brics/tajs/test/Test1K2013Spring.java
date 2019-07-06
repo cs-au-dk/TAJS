@@ -430,7 +430,7 @@ public class Test1K2013Spring {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisModelLimitationException.class)
+    @Test
     public void test1k_2013_spring_1528() {
         Misc.run("test-resources/src/1k2013spring/shim.js", "test-resources/src/1k2013spring/1528.js");
         Misc.checkSystemOutput();

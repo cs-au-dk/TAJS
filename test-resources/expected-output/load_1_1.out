@@ -412,10 +412,12 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2788:19: [maybe] Reading abse
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2790:21: [maybe] Reading 'this' yields the global object
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2805:9: [maybe] Reading absent property target of host object
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2805:25: [maybe] Reading absent property srcElement of host object
+benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2806:19: [maybe] Reading absent property srcElement of host object
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2809:8: [maybe] Reading absent property pageX of host object
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2816:32: [maybe] Reading absent property nodeType of host object
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2816:32: [maybe] Reading absent property target of host object
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2823:19: [maybe] Reading absent property parentNode of host object
+benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2823:19: [maybe] Reading absent property target of host object
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2836:8: [maybe] Reading absent property preventDefault of host object
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2841:8: [maybe] Reading absent property stopPropagation of host object
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:3137:9: [maybe] Reading absent property isReady

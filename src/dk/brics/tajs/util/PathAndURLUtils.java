@@ -103,7 +103,7 @@ public class PathAndURLUtils {
                 path = Paths.get(uri);
             }
             if (normalize)
-                path =  toRealPath(path);
+                path = toRealPath(path);
             return path;
         });
     }
@@ -221,7 +221,6 @@ public class PathAndURLUtils {
             if (paths.stream().allMatch(child -> child.startsWith(finalParent))) {
                 if (!Files.isDirectory(parent)) // Must return path to directory
                     parent = parent.getParent();
-
                 return parent;
             }
             parent = parent.getParent();
@@ -268,9 +267,8 @@ public class PathAndURLUtils {
     public static String getFileExtension(Path file) {
         String fileStr = file.toString();
         int index = fileStr.lastIndexOf(".");
-        if(index == -1)
+        if (index == -1)
             return "";
-
         return fileStr.substring(index);
     }
 }

@@ -52,10 +52,10 @@ public class TAJSAssertionReachabilityCheckerMonitor extends DefaultAnalysisMoni
 
     private Set<CallNode> reachableAssertionCallNodes = newSet();
 
-    private final Supplier<Boolean> analysisReachedFixedPoint;
+    private final Supplier<Boolean> analysisCompleted;
 
-    public TAJSAssertionReachabilityCheckerMonitor(Supplier<Boolean> analysisReachedFixedPoint) {
-        this.analysisReachedFixedPoint = analysisReachedFixedPoint;
+    public TAJSAssertionReachabilityCheckerMonitor(Supplier<Boolean> analysisCompleted) {
+        this.analysisCompleted = analysisCompleted;
     }
 
     private static Set<CallNode> getAssertionCallNodes(FlowGraph flowGraph) {
@@ -93,7 +93,7 @@ public class TAJSAssertionReachabilityCheckerMonitor extends DefaultAnalysisMoni
 
     @Override
     public void visitPhasePost(AnalysisPhase phase) {
-        if (phase == AnalysisPhase.SCAN && analysisReachedFixedPoint.get()) {
+        if (phase == AnalysisPhase.SCAN && analysisCompleted.get()) {
             Set<CallNode> unreachable = newSet(assertionCallNodes);
             unreachable.removeAll(reachableAssertionCallNodes);
             if (!unreachable.isEmpty()) {

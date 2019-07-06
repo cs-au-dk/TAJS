@@ -1176,7 +1176,7 @@ public class State implements IState<State, Context, CallEdge> {
             throw new AnalysisException("Attempt to summarize object from basis store");
         makeWritableStore();
         c.getMonitoring().visitNewObject(c.getNode(), objlabel, this);
-        if (!Options.get().isRecencyDisabled()) {
+        if (!Options.get().isRecencyDisabled() && (objlabel.getKind() != Kind.SYMBOL || objlabel.isHostObject())) { // non-host symbol objects always modeled as summary objects to avoid problem when summarizing objects with symbol property keys and polymorphic values
             if (!objlabel.isSingleton())
                 throw new AnalysisException("Expected singleton object label");
             summarizeObj(objlabel, objlabel.makeSummary(), Obj.makeAbsentModified());

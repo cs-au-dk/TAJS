@@ -20,6 +20,7 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.options.TAJSEnvironmentConfig;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collectors;
+import dk.brics.tajs.util.Lists;
 import dk.brics.tajs.util.PathAndURLUtils;
 import org.apache.log4j.Logger;
 
@@ -29,7 +30,6 @@ import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -42,13 +42,13 @@ public class Babel {
     private static final Logger log = Logger.getLogger(Babel.class);
 
     private static final String babelPlugins =
-            Stream.of("arrow-functions", "block-scoping", "classes", "shorthand-properties", // "for-of" generates code we cannot handle
+            Stream.of("arrow-functions", "block-scoping", "classes", "shorthand-properties", "for-of",
                       "template-literals", "parameters", "spread", "destructuring", "computed-properties")
             .map(name -> "@babel/plugin-transform-" + name).collect(java.util.stream.Collectors.joining(","));
 
     private static final Pattern successPattern = Pattern.compile("Successfully compiled (\\d+) files? with Babel\\.");
 
-    private static final Set<String> supportedFileExtensions = new HashSet<>(Arrays.asList(".es6", ".js", ".es", ".jsx", ".mjs", ""));
+    private static final Set<String> supportedFileExtensions = Set.of(".es6", ".js", ".es", ".jsx", ".mjs", "");
 
     /**
      * This method performs babel preprocessing on the files listed in the *files* parameter.
@@ -69,24 +69,31 @@ public class Babel {
      */
     public static void translate(Path commonAncestor, Set<Path> files) {
         List<Path> args = Options.get().getArguments();
-        Path testFile = args.get(args.size() - 1);
+        Path testFile = Lists.getLast(args);
+        Path realCommonAncestor = PathAndURLUtils.toRealPath(commonAncestor);
         Path babelRoot = commonAncestor.resolve("_babel");
         Path babelPath = TAJSEnvironmentConfig.get().getBabel();
 
-        /* If we run babel with the project root as input directory, it will copy all files in it!
-            TODO: Better detection of error condition */
-        if (commonAncestor.endsWith("TAJS-private") || commonAncestor.endsWith("TAJS"))
-            throw new IllegalArgumentException("Common ancestor of analysed files is the project root!");
+        /* If we run babel with the project root as input directory, it will copy all files in it! */
+        if (PathAndURLUtils.getWorkingDirectory().startsWith(realCommonAncestor)) {
+            throw new IllegalArgumentException(
+                    "Babel: The current working directory is in the subtree of the common ancestor of the analysed files!" +
+                            "\nWorking directory: " + PathAndURLUtils.getWorkingDirectory() +
+                            "\nCommon ancestor: " + realCommonAncestor +
+                            "\nFiles (" + files.size() + "):\n" +
+                            files.stream().map(Path::toString).collect(java.util.stream.Collectors.joining("\n"))
+            );
+        }
 
         List<Path> relativeFiles = files.stream()  // Babel does not handle json files so let us filter those out
                 .filter(file -> !PathAndURLUtils.getFileExtension(file).equals(".json"))
-                .map(file -> PathAndURLUtils.toRealPath(commonAncestor).relativize(file.toAbsolutePath()))
+                .map(file -> realCommonAncestor.relativize(file.toAbsolutePath()))
                 .distinct().collect(Collectors.toList());
 
         Set<String> fileExtensions = relativeFiles.stream().map(PathAndURLUtils::getFileExtension).collect(Collectors.toSet());
         fileExtensions.retainAll(supportedFileExtensions);
 
-        ArrayList<String> baseCmd = new ArrayList<>(Arrays.asList(
+        List<String> baseCmd = Arrays.asList(
                 babelPath.toString(),
                 "--root-mode", "upward",            // Find the nearest babel.config.js in the file-system
                 "--extensions", String.join(",", fileExtensions),
@@ -94,21 +101,14 @@ public class Babel {
                 "--verbose",
                 "--plugins", babelPlugins,          // Plugins used for transformations
                 "--out-dir", babelRoot.toString()   // Output directory
-        ));
-
-        /* For debugging
-        System.err.println("commonAncestor: " + commonAncestor);
-        relativeFiles.stream().sorted().forEach(System.err::println);
-        System.err.println(cmd);
-        System.exit(1);
-        */
+        );
 
         try {
             // Split list into sublists to avoid argument list length limit
             final int sublistSize = 100;
             for(int i = 0; i < relativeFiles.size(); i += sublistSize) {
                 List<Path> subFiles = relativeFiles.subList(i, Math.min(i + sublistSize, relativeFiles.size()));
-                ArrayList<String>  cmd = new ArrayList<>(baseCmd);
+                ArrayList<String> cmd = new ArrayList<>(baseCmd);
 
                 if(i == 0) { // Delete and copy other files in the first pass
                     cmd.add("--delete-dir-on-start");
@@ -162,8 +162,9 @@ public class Babel {
 
         // Fix the main file path
         Path babelTestFile = PathAndURLUtils.getRelativeToTAJS(
-                babelRoot.resolve(PathAndURLUtils.toRealPath(commonAncestor).relativize(PathAndURLUtils.toRealPath(testFile)))
+                babelRoot.resolve(realCommonAncestor.relativize(PathAndURLUtils.toRealPath(testFile)))
         ).get();
+
         args.set(args.size() - 1, babelTestFile);
     }
 }

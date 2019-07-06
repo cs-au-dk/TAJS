@@ -102,7 +102,6 @@ public class ECMAScriptFunctions {
             case ARRAY_UNSHIFT:
             case ARRAY_INDEXOF:
             case ARRAY_ISARRAY:
-            case ARRAY_VALUES:
                 res = JSArray.evaluate(nativeobject, call, c);
                 break;
 

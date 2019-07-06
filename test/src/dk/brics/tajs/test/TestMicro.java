@@ -3788,18 +3788,18 @@ public class TestMicro {
         Misc.checkSystemOutput();
     }
 
-    @Test
-    public void symbol3() {
-        Misc.runSource(
-                "function mk() { return Symbol(\"gen-symbol\"); }",
-                "var s1 = mk();",
-                "TAJS_dumpValue(s1);",
-                "var s2 = mk();",
-                "TAJS_dumpValue(s2);",
-                "TAJS_assertEquals(s1, s2, false);"
-        );
-        Misc.checkSystemOutput();
-    }
+//    @Test
+//    public void symbol3() {
+//        Misc.runSource(
+//                "function mk() { return Symbol(\"gen-symbol\"); }",
+//                "var s1 = mk();",
+//                "TAJS_dumpValue(s1);",
+//                "var s2 = mk();",
+//                "TAJS_dumpValue(s2);",
+//                "TAJS_assertEquals(s1, s2, false);"
+//        );
+//        Misc.checkSystemOutput();
+//    }
 
     @Test
     public void symbol4() {
@@ -3807,7 +3807,7 @@ public class TestMicro {
                 "var o1 = {};",
                 "var x = Symbol.iterator;",
                 "o1[x] = 5;",
-                "TAJS_assertEquals(o1[Symbol.iterator], 5);");
+                "TAJS_assertEquals(5, o1[Symbol.iterator]);");
         Misc.checkSystemOutput();
     }
 
@@ -3816,7 +3816,7 @@ public class TestMicro {
         Misc.runSource(
                 "var o1 = {};",
                 "o1[Symbol.iterator] = 5;",
-                "TAJS_assertEquals(o1[Symbol.iterator], 5);");
+                "TAJS_assertEquals(5, o1[Symbol.iterator]);");
         Misc.checkSystemOutput();
     }
 
@@ -3835,7 +3835,7 @@ public class TestMicro {
                 "var o1 = {};",
                 "o1[Symbol.iterator] = 5;",
                 "TAJS_dumpObject(o1);",
-                "TAJS_assertEquals(o1[Symbol.iterator], 5);",
+                "TAJS_assertEquals(5, o1[Symbol.iterator]);",
                 "TAJS_assert(typeof o1[Symbol.iterator] != 'undefined');",
                 "delete o1[Symbol.iterator];",
                 "TAJS_dumpValue(o1[Symbol.iterator]);",
@@ -3892,7 +3892,7 @@ public class TestMicro {
                 "      throw new Exception('Unknown color: '+color);",
                 "  }",
                 "}",
-                "TAJS_assert(getComplement(COLOR_GREEN) == COLOR_RED);");
+                "TAJS_assertEquals(getComplement(COLOR_GREEN), COLOR_RED);");
         Misc.checkSystemOutput();
     }
 
@@ -4230,5 +4230,13 @@ public class TestMicro {
                 "var y = TAJS_make('AnyStr');",
                 "if (x === 'foo' && y === 'bar') {}",
                 "if (x === 'foo') {TAJS_assert(true)}");
+    }
+
+    @Test
+    public void testAssumeObjectPropertySatisfies() {
+        Misc.runSource("var x = {f:2};",
+                "var y = x.f;",
+                "x.f = 3;",
+                "if (y === 2) {TAJS_assert(true)}");
     }
 }

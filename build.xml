@@ -3,7 +3,7 @@
 <project name="TAJS" default="all" basedir=".">
 
     <property name="project" value="tajs" />
-    <property name="version" value="0.22" />
+    <property name="version" value="0.23" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
@@ -39,7 +39,11 @@
         <pathelement location="antbuild"/>
     </path>
 
-    <target name="all" depends="clean,jar-all,tajs-functions,doc" />
+    <condition property="isWindows">
+        <os family="windows"/>
+    </condition>
+
+    <target name="all" depends="clean,install-javascript-modules,jar-all,tajs-functions,doc" />
 
     <target name="compile">
         <!--
@@ -58,6 +62,20 @@
         <copy todir="antbuild">
             <fileset dir="resources"/>
         </copy>
+    </target>
+
+    <target name="install-javascript-modules" depends="install-javascript-modules-windows, install-javascript-modules-linux"/>
+
+    <target name="install-javascript-modules-windows" if="isWindows">
+        <exec dir="extras/jalangilogger/javascript" executable="npm.cmd">
+            <arg line="install --no-audit" />
+        </exec>
+    </target>
+
+    <target name="install-javascript-modules-linux" unless="isWindows">
+        <exec dir="extras/jalangilogger/javascript" executable="npm">
+            <arg line="install --no-audit" />
+        </exec>
     </target>
 
     <target name="tajs-functions" depends="compile">
@@ -97,7 +115,7 @@
                 <![CDATA[Type Analyzer for JavaScript (TAJS) API Specification]]>
             </doctitle>
             <bottom><![CDATA[<i> Copyright &#169; 2009-2019 Aarhus University </i>]]></bottom>
-            <link href="http://docs.oracle.com/javase/8/docs/api/"/>
+            <link href="http://docs.oracle.com/en/java/javase/11/docs/api/"/>
             <link href="http://www.mozilla.org/rhino/apidocs/" />
             <classpath refid="classpath" />
         </javadoc>

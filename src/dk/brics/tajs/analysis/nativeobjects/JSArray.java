@@ -591,10 +591,6 @@ public class JSArray {
                 return Value.makeAnyNumNotNaNInf();
             }
 
-            case ARRAY_VALUES: { // 15.4.4.14
-                throw new AnalysisLimitationException.AnalysisModelLimitationException(call.getJSSourceNode().getSourceLocation() + ": Model for Array.prototype.values not implemented"); // TODO (Github #450):
-            }
-
             default:
                 return null;
         }
