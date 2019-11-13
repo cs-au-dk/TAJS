@@ -53,6 +53,23 @@ public class FunctionFileLoader {
      * @return value representing the loaded and instantiated function.
      */
     public static Value loadFunction(String target, boolean isHostEnvironment, List<String> parameterNames, Solver.SolverInterface c) {
+        URL url = getURL(target, c);
+        final SourceLocation.SourceLocationMaker sourceLocationMaker;
+        if (isHostEnvironment) {
+            String customName = String.format("HOST(%s)", url.getPath());
+            sourceLocationMaker = new SourceLocation.CustomStaticLocationMaker(customName, url);
+        } else {
+            sourceLocationMaker = new SourceLocation.StaticLocationMaker(url);
+        }
+        Function function = FlowGraphMutator.extendFlowGraphWithTopLevelFunction(parameterNames, url, isHostEnvironment, c.getFlowGraph(), sourceLocationMaker);
+        ObjectLabel functionLabel = UserFunctionCalls.instantiateFunction(function, ScopeChain.make(InitialStateBuilder.GLOBAL), c.getNode(), c.getState(), c);
+        return Value.makeObject(functionLabel);
+    }
+
+    /**
+     * Finds the URL for the given JavaScript file.
+     */
+    public static URL getURL(String target, Solver.SolverInterface c) {
         URL url;
         try {
             url = new URL(target);
@@ -78,16 +95,6 @@ public class FunctionFileLoader {
             // now we have a valid URL
             url = PathAndURLUtils.toURL(likelyPath);
         }
-        url = normalizeFileURL(url);
-        final SourceLocation.SourceLocationMaker sourceLocationMaker;
-        if (isHostEnvironment) {
-            String customName = String.format("HOST(%s)", url.getPath());
-            sourceLocationMaker = new SourceLocation.CustomStaticLocationMaker(customName, url);
-        } else {
-            sourceLocationMaker = new SourceLocation.StaticLocationMaker(url);
-        }
-        Function function = FlowGraphMutator.extendFlowGraphWithTopLevelFunction(parameterNames, url, isHostEnvironment, c.getFlowGraph(), sourceLocationMaker);
-        ObjectLabel functionLabel = UserFunctionCalls.instantiateFunction(function, ScopeChain.make(InitialStateBuilder.GLOBAL), c.getNode(), c.getState(), c);
-        return Value.makeObject(functionLabel);
+        return normalizeFileURL(url);
     }
 }

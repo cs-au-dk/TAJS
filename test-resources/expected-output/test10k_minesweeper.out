@@ -88,4 +88,4 @@ test-resources/src/10k/minesweeper.html:134:15: [maybe] Converting undefined to 
 test-resources/src/10k/minesweeper.html:164:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/minesweeper.html:165:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/minesweeper.html:166:123: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 847 checks (with 0 expected failures)
+Soundness testing succeeded for 836 checks (with 0 expected failures)

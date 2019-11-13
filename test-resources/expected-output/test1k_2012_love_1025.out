@@ -37,4 +37,4 @@ test-resources/src/1k2012love/1025.js:53:23: [maybe] Converting primitive string
 test-resources/src/1k2012love/1025.js:71:9: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1025.js:76:11: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1025.js:80:11: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 1087 checks (with 0 expected failures)
+Soundness testing succeeded for 1082 checks (with 0 expected failures)

@@ -1,2 +1,2 @@
 test-resources/src/wala/forin.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 37 checks (with 0 expected failures)
+Soundness testing succeeded for 35 checks (with 0 expected failures)

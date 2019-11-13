@@ -92,14 +92,16 @@ public class NativeObjectToString {
         Set<ObjectLabel.Kind> nonDomElementKinds = nonDOMElementInstanceObjects.stream()
                 .map(ObjectLabel::getKind).collect(Collectors.toSet());
 
-        vObject.getObjectLabels().forEach(obj -> {
+        for (ObjectLabel obj : vObject.getObjectLabels()) {
             Value toStringTag = UnknownValueResolver.getRealValue(c.getAnalysis().getPropVarOperations().readPropertyValue(singleton(obj), Value.makeObject(InitialStateBuilder.WELLKNOWN_SYMBOL_TO_STRING_TAG)), c.getState());
-            if (toStringTag.isMaybeSingleStr()) {
-                separator.choose(true, toStringTag.getStr());
+            if (toStringTag.isMaybeAllKnownStr()) {
+                toStringTag.getAllKnownStr().forEach(str -> separator.choose(true, str));
+            } else if (toStringTag.isMaybeFuzzyStr()) {
+                return Value.makeNone().joinPrefix("[object ");
             } else {
                 separator.choose(nonDomElementKinds.contains(obj.getKind()), obj.getKind().toString()); // NB: relying on enum.toString
             }
-        });
+        }
 
         if (separator.positive.isEmpty()) {
             throw new AnalysisException("No case for toString on " + v + "???");

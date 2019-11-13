@@ -14,64 +14,74 @@ fg2: <main> function()
     node 5: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 6: function-expr[function(),v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:8:9)
-    node 7: throw[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:8:2)
-    ->[block 11] ~>[block 5]
+    node 6: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 7: constant[true,v6] (host-environment-sources-loader)
+    ->[block 5]
   block 5:
-    node 8: catch[x,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:11:3)
-    node 9: begin-with[v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:11:3)
+    node 8: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 10: read-variable['x',v10,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:12:10)
-    ->[block 7] ~>[block 9]
+    node 9: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7]
   block 7:
-    node 11: call[v9,v10,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:12:10)
-    ->[block 8] ~>[block 9]
+    node 10: function-expr[function(),v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:8:9)
+    node 11: throw[v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:8:2)
+    ->[block 14] ~>[block 8]
   block 8:
-    node 12: write-variable[v8,'scope'] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:12:2)
-    ->[block 10] ~>[block 9]
+    node 12: catch[x,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:11:3)
+    node 13: begin-with[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:11:3)
+    ->[block 9]
   block 9:
-    node 13: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:11:3)
-    ->[block 16]
+    node 14: read-variable['x',v13,v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:12:10)
+    ->[block 10] ~>[block 12]
   block 10:
-    node 14: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:11:3)
-    ->[block 11]
+    node 15: call[v12,v13,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:12:10)
+    ->[block 11] ~>[block 12]
   block 11:
-    node 15: read-variable['scope',v13,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:15:16)
-    ->[block 12]
+    node 16: write-variable[v11,'scope'] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:12:2)
+    ->[block 13] ~>[block 12]
   block 12:
-    node 16: call[TAJS_dumpValue,v13,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:15:1)
-    ->[block 13]
+    node 17: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:11:3)
+    ->[block 19]
   block 13:
-    node 17: read-variable['scope',v17,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:16:13)
-    node 18: read-variable['this',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:16:23)
-    node 19: !==[v17,v18,v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:16:13)
+    node 18: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:11:3)
     ->[block 14]
   block 14:
-    node 20: call[TAJS_assert,v16,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:16:1)
+    node 19: read-variable['scope',v16,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:15:16)
     ->[block 15]
-  block 15: [exit-ordinary]
-    node 21: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js)
+  block 15:
+    node 20: call[TAJS_dumpValue,v16,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:15:1)
+    ->[block 16]
+  block 16:
+    node 21: read-variable['scope',v20,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:16:13)
+    node 22: read-variable['this',v21,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:16:23)
+    node 23: !==[v20,v21,v19] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:16:13)
+    ->[block 17]
+  block 17:
+    node 24: call[TAJS_assert,v19,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:16:1)
+    ->[block 18]
+  block 18: [exit-ordinary]
+    node 25: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js)
     ->[]
-  block 16: [exit-exceptional]
-    node 22: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js)
+  block 19: [exit-exceptional]
+    node 26: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js)
     ->[]
 function()
-  block 17: [entry]
-    node 23: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:8:9)
-    ->[block 18]
-  block 18:
-    node 24: read-variable['this',v1,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:9:10)
-    ->[block 19]
-  block 19: [exit-ordinary]
-    node 25: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:8:9)
+  block 20: [entry]
+    node 27: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:8:9)
+    ->[block 21]
+  block 21:
+    node 28: read-variable['this',v1,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:9:10)
+    ->[block 22]
+  block 22: [exit-ordinary]
+    node 29: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:8:9)
     ->[]
-  block 20: [exit-exceptional]
-    node 26: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:8:9)
+  block 23: [exit-exceptional]
+    node 30: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:8:9)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:16:23: [definite] Reading 'this' yields the global object
 test-resources/src/flowgraphbuilder/flowgraph_builder0123.js: [definite] Exceptional program exit is unreachable
-test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:15:1: [info] Abstract value: [@Object#node8]
-Disabling soundness testing for test-resources/src/flowgraphbuilder/flowgraph_builder0123.js entirely (7 uninspected soundness errors).
-Soundness testing succeeded for 12 checks (with 7 expected failures)
+test-resources/src/flowgraphbuilder/flowgraph_builder0123.js:15:1: [info] Abstract value: [@Object#node12]
+Disabling soundness testing for test-resources/src/flowgraphbuilder/flowgraph_builder0123.js entirely (6 uninspected soundness errors).
+Soundness testing succeeded for 11 checks (with 6 expected failures)

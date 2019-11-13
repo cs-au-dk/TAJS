@@ -377,6 +377,8 @@ benchmarks/tajs/src/underscore/test-suite/functions/test93.html:7:1: [definite] 
 benchmarks/tajs/src/underscore/test-suite/functions/test93.html:8:1: [definite] Unreachable function notStrictEqual
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:806:19: [maybe] The variable timeout has values with different types
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/test-suite/functions/test93.html:23:13: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/test-suite/functions/test93.html:24:13: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/test-suite/functions/test93.html:25:13: [maybe] Reading absent property (computed name)
@@ -384,4 +386,4 @@ benchmarks/tajs/src/underscore/test-suite/functions/test93.html:26:13: [maybe] R
 benchmarks/tajs/src/underscore/test-suite/functions/test93.html:27:13: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/test-suite/functions/test93.html:28:13: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 3861 checks (with 0 expected failures)
+Soundness testing succeeded for 3827 checks (with 0 expected failures)

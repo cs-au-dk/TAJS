@@ -77,4 +77,4 @@ benchmarks/tajs/src/apps/minesweeper/minesweeper.html:483:38: [maybe] Conversion
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:486:14: [maybe] Converting undefined to string
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:486:28: [maybe] The variable pic has values with different types
 Disabling soundness testing for benchmarks/tajs/src/apps/minesweeper/minesweeper.html entirely (5 uninspected soundness errors).
-Soundness testing succeeded for 900 checks (with 5 expected failures)
+Soundness testing succeeded for 869 checks (with 5 expected failures)

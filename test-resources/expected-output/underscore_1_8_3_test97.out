@@ -374,6 +374,8 @@ benchmarks/tajs/src/underscore/test-suite/functions/test97.html:6:1: [definite] 
 benchmarks/tajs/src/underscore/test-suite/functions/test97.html:8:1: [definite] Unreachable function notStrictEqual
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:806:19: [maybe] The variable timeout has values with different types
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/test-suite/functions/test97.html:16:12: [maybe] Converting object to number
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 4070 checks (with 0 expected failures)
+Soundness testing succeeded for 4037 checks (with 0 expected failures)

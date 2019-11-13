@@ -31,7 +31,9 @@ import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
+import org.apache.log4j.Logger;
 
+import java.net.URL;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -43,7 +45,7 @@ import static dk.brics.tajs.util.Collections.singleton;
 
 public class BlendedAnalysisManager {
 
-    private Solver.SolverInterface c;
+    private static Logger log = Logger.getLogger(BlendedAnalysisManager.class);
 
     private JalangiRefiner jalangiRefiner;
 
@@ -51,11 +53,17 @@ public class BlendedAnalysisManager {
 
     private Map<BlendedAnalysisQuery, Collection<Value>> queryCache;
 
+    private URL mainURL;
+
+    private Set<String> initializingModules;
+
     public BlendedAnalysisManager() {
         jalangiRefinerUtilities = new JalangiRefinerUtilities();
         jalangiRefiner = new JalangiRefiner(jalangiRefinerUtilities);
+        initializingModules = newSet();
         queryCache = newMap();
     }
+
     /**
      * Returns the meet of two collections of values.
      */
@@ -72,8 +80,8 @@ public class BlendedAnalysisManager {
     }
 
     public void setSolverInterface(Solver.SolverInterface c) {
-        this.c = c;
         jalangiRefinerUtilities.setSolverInterface(c);
+        mainURL = c.getFlowGraph().getMain().getSourceLocation().getLocation();
     }
 
     public boolean isReachable(AbstractNode n) {
@@ -154,6 +162,18 @@ public class BlendedAnalysisManager {
         });
     }
 
+    public Collection<Value> getModuleExportsPropertyValue(Value defaultres, Value propertyName, URL moduleUrl, State state) {
+        return solveQuery(defaultres, null, () -> {
+            Set<Constraint> constraints = newSet();
+            if (propertyName != null) {
+                constraints.add(new Constraint(InstructionComponent.mkProperty(), propertyName));
+            }
+            return new BlendedAnalysisQuery(moduleUrl,
+                    InstructionComponent.mkTarget(), constraints,
+                    UnknownValueResolver.getRealValue(defaultres, state));
+        });
+    }
+
     /**
      * Attempts to solve the argument value for the given call, relative to the given function, base (if not null), and propertyName (if not null).
      */
@@ -191,5 +211,39 @@ public class BlendedAnalysisManager {
             res = res.joinAbsent(); // Valuelogger cannot distinguish unreachable and absent variable
         }
         return res;
+    }
+
+    /**
+     * Enters the initialization of a module specified by {@code fileName}.
+     */
+    public void enterModuleInit(String fileName) {
+        if (BlendedAnalysisOptions.get().isOnlyForModuleInit()) {
+            if (!isIgnoredModule(fileName)) {
+                initializingModules.add(fileName);
+                if (!Options.get().isBlendedAnalysisEnabled()) {
+                    log.info("Enable blended analysis");
+                    Options.get().enableBlendedAnalysis();
+                }
+            }
+        }
+    }
+
+    /**
+     * Exits the initialization of a module specified by {@code fileName}.
+     */
+    public void exitModuleInit(String fileName) {
+        if (BlendedAnalysisOptions.get().isOnlyForModuleInit()) {
+            if (!isIgnoredModule(fileName)) {
+                initializingModules.remove(fileName);
+                if (initializingModules.isEmpty()) { // no module is initializing
+                    log.info("Disable blended analysis");
+                    Options.get().disableBlendedAnalysis();
+                }
+            }
+        }
+    }
+
+    private boolean isIgnoredModule(String fileName) {
+        return mainURL.toString().equals(fileName);
     }
 }

@@ -1,4 +1,4 @@
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index.html:6:17):1:15: [definite] Reading absent property PicFocus_
 benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index.html: [definite] Exceptional program exit is unreachable
 benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index.html:6:13: [definite] The variable y is never used
-Soundness testing succeeded for 11 checks (with 0 expected failures)
+Soundness testing succeeded for 10 checks (with 0 expected failures)

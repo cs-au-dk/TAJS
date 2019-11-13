@@ -21,7 +21,6 @@ import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
-import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.util.Collectors;
@@ -53,9 +52,6 @@ public class SyntaxMatcher {
                 .filter(n -> n.getSourceLocation().getLocation() != null)
                 .forEach(n -> {
                     SourceLocation sourceLocation = n.getSourceLocation();
-                    if (n instanceof TypeofNode) {
-                        sourceLocation = ((TypeofNode) n).getOperandSourceLocation();
-                    }
                     URL url = sourceLocation.getLocation();
                     int lineNumber = sourceLocation.getLineNumber();
                     int columnNumber = sourceLocation.getColumnNumber();
@@ -87,8 +83,6 @@ public class SyntaxMatcher {
                         return name.equals(((ReadPropertyNode) n).getPropertyString());
                     } else if (n instanceof WritePropertyNode) {
                         return name.equals(((WritePropertyNode) n).getPropertyString());
-                    } else if (n instanceof TypeofNode) {
-                        return name.equals(((TypeofNode) n).getVariableName());
                     }
                     return false;
                 })

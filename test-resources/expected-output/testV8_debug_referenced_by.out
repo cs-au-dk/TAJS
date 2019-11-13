@@ -13,4 +13,4 @@ test-resources/src/v8tests/debug-referenced-by.js:77:10: [definite] Unreachable 
 test-resources/src/v8tests/debug-referenced-by.js:89:5: [definite] The variable x is never used
 test-resources/src/v8tests/debug-referenced-by.js:110:10: [definite] The variable i is never used
 test-resources/src/v8tests/debug-referenced-by.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-referenced-by.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 4 checks (with 0 expected failures)

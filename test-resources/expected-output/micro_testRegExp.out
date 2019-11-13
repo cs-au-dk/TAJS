@@ -5,19 +5,19 @@ test-resources/src/micro/testRegExp.js:36:13: [definite] Unreachable code
 test-resources/src/micro/testRegExp.js:29:5: [maybe] TypeError, native function RegExp.prototype.exec called on invalid object kind
 test-resources/src/micro/testRegExp.js:35:1: [maybe] SyntaxError, invalid flags at RegExp constructor
 test-resources/src/micro/testRegExp.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/testRegExp.js:35:1]
-test-resources/src/micro/testRegExp.js:2:1: [info] Abstract value: [@RegExp#node15]
+test-resources/src/micro/testRegExp.js:2:1: [info] Abstract value: [@RegExp#node19]
 test-resources/src/micro/testRegExp.js:3:1: [info] Abstract value: "ab*"
 test-resources/src/micro/testRegExp.js:4:1: [info] Abstract value: 0.0
 test-resources/src/micro/testRegExp.js:5:1: [info] Abstract value: true
-test-resources/src/micro/testRegExp.js:7:1: [info] Abstract value: [@RegExp#node30]
-test-resources/src/micro/testRegExp.js:9:1: [info] Abstract value: [@RegExp#node15]
-test-resources/src/micro/testRegExp.js:12:1: [info] Abstract value: [@Array#node43{<CONCRETE>="[\"abbb\"]"}]
+test-resources/src/micro/testRegExp.js:7:1: [info] Abstract value: [@RegExp#node34]
+test-resources/src/micro/testRegExp.js:9:1: [info] Abstract value: [@RegExp#node19]
+test-resources/src/micro/testRegExp.js:12:1: [info] Abstract value: [@Array#node47{<CONCRETE>="[\"abbb\"]"}]
 test-resources/src/micro/testRegExp.js:13:1: [info] Abstract value: 1.0
 test-resources/src/micro/testRegExp.js:14:1: [info] Abstract value: "abbb"
 test-resources/src/micro/testRegExp.js:15:1: [info] Abstract value: 0.0
 test-resources/src/micro/testRegExp.js:16:1: [info] Abstract value: "abbb"
 test-resources/src/micro/testRegExp.js:17:1: [info] Abstract value: Undef
 test-resources/src/micro/testRegExp.js:19:1: [info] Abstract value: "/ab*/gi"
-test-resources/src/micro/testRegExp.js:22:1: [info] Abstract value: [@RegExp#node71]
+test-resources/src/micro/testRegExp.js:22:1: [info] Abstract value: [@RegExp#node75]
 test-resources/src/micro/testRegExp.js:34:1: [info] Abstract value: true
 Soundness testing succeeded for 93 checks (with 0 expected failures)

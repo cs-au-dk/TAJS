@@ -329,4 +329,4 @@ test-resources/src/chromeexperiments/harmony.html:729:9: [info] 'this' refers to
 test-resources/src/chromeexperiments/harmony.html:729:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/harmony.html:729:75: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/harmony.html:735:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 3329 checks (with 0 expected failures)
+Soundness testing succeeded for 3302 checks (with 0 expected failures)

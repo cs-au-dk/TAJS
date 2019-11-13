@@ -26,4 +26,4 @@ test-resources/src/1k2012love/1229.js:69:35: [info] 'this' refers to multiple ab
 test-resources/src/1k2012love/1229.js:71:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2012love/1229.js:71:35: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2012love/1229.js:71:43: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 362 checks (with 0 expected failures)
+Soundness testing succeeded for 355 checks (with 0 expected failures)

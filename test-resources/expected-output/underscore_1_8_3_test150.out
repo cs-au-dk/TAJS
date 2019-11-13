@@ -378,21 +378,20 @@ benchmarks/tajs/src/underscore/test-suite/objects/test150.html: [definite] Excep
 benchmarks/tajs/src/underscore/test-suite/objects/test150.html:6:1: [definite] Unreachable function strictEqual
 benchmarks/tajs/src/underscore/test-suite/objects/test150.html:8:1: [definite] Unreachable function notStrictEqual
 benchmarks/tajs/src/underscore/test-suite/objects/test150.html:9:1: [definite] Unreachable function start
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:104:29: [maybe] The variable source has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:107:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:108:65: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:218:46: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:289:36: [maybe] The variable attrs has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:929:21: [maybe] The variable obj has values with different types
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1085:15: [maybe] Converting primitive number to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1087:17: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1088:11: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1088:26: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1213:16: [maybe] The variable obj has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1307:29: [maybe] The variable attrs has values with different types
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1213:23: [maybe] The variable obj has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:108:65: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1088:11: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1088:26: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 5115 checks (with 0 expected failures)
+Soundness testing succeeded for 5074 checks (with 0 expected failures)

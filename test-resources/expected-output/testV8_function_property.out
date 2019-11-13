@@ -1,3 +1,3 @@
 test-resources/src/v8tests/function-property.js: [definite] Exceptional program exit is unreachable
 test-resources/src/v8tests/function-property.js:28:1: [definite] Unreachable function f
-Soundness testing succeeded for 8 checks (with 0 expected failures)
+Soundness testing succeeded for 9 checks (with 0 expected failures)

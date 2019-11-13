@@ -5,4 +5,4 @@ test-resources/src/v8tests/function-names.js:31:18: [maybe] Reading absent prope
 test-resources/src/v8tests/function-names.js:31:28: [maybe] Reading absent property (computed name)
 test-resources/src/v8tests/function-names.js:31:35: [maybe] Reading absent property (computed name)
 test-resources/src/v8tests/function-names.js:31:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 970 checks (with 0 expected failures)
+Soundness testing succeeded for 968 checks (with 0 expected failures)

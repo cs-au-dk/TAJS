@@ -45,23 +45,75 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
     private static Logger log = Logger.getLogger(BasicContextSensitivityStrategy.class);
 
     /**
-     * Parameters that should be treated context-sensitively
+     * Parameters that should be treated context-sensitively. (Set via TAJS_addContextSensitivity and Unevalizer.)
      */
     private final Map<Function, Set<String>> contextSensitiveParameters = newMap();
 
+    /**
+     * Constructs a heap context for a function object.
+     *
+     * If -context-sensitive-heap is enabled, creates a context based on the current context's parameter sensitivity fields.
+     * Otherwise returns the empty context.
+     */
     @Override
     public Context makeFunctionHeapContext(Function fun, Solver.SolverInterface c) {
         return makeHeapContext(c.getState().getContext());
     }
 
+    /**
+     * Constructs a heap context for objects related to a call.
+     *
+     * If -context-sensitive-heap and -parameter-sensitivity are enabled, creates a context with parameter sensitivity based on hints from TAJS_addContextSensitivity and Unevalizer.
+     * Otherwise returns the empty context.
+     */
     @Override
     public Context makeActivationAndArgumentsHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         return makeHeapContext(makeContextArgumentsForCall(function, state, callInfo));
     }
 
+    /**
+     * Constructs a heap context for an object created at 'new'.
+     *
+     * If -context-sensitive-heap and -parameter-sensitivity are enabled, creates a context with parameter sensitivity based on hints from TAJS_addContextSensitivity and Unevalizer.
+     * Otherwise returns the empty context.
+     */
     @Override
     public Context makeConstructorHeapContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         return makeHeapContext(makeContextArgumentsForCall(function, state, callInfo));
+    }
+
+    /**
+     * Constructs a heap context for an object literal.
+     *
+     * Simply returns the empty context.
+     */
+    @Override
+    public Context makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c) {
+        return null;
+    }
+
+    private static Context.Qualifier boxedPrimitiveQualifier = new Context.Qualifier() {
+        @Override
+        public String toString() {
+            return "boxed-primitive";
+        }
+    };
+
+    /**
+     * Constructs a heap context for a boxed primitive.
+     *
+     * Uses the primitive value itself as context if it is a concrete value or -specialize-all-boxed-primitives is enabled.
+     */
+    @Override
+    public Context makeBoxedPrimitiveHeapContext(Value primitive) {
+        Map<Context.Qualifier, Value> qualifier = newMap();
+        qualifier.put(boxedPrimitiveQualifier, primitive);
+        boolean isConcretePrimitive = primitive.isMaybeSingleStr() || primitive.isMaybeSingleNum() || primitive.isMaybeTrueButNotFalse() || primitive.isMaybeFalseButNotTrue();
+        if (isConcretePrimitive || Options.get().isSpecializeAllBoxedPrimitivesEnabled()) {
+            return Context.makeQualifiers(qualifier);
+        } else {
+           return null;
+        }
     }
 
     private Context makeHeapContext(Context functionContext) {
@@ -71,6 +123,10 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         return functionContext != null ? Context.make(functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables()) : Context.makeEmpty();
     }
 
+    /**
+     * Creates a context for parameter sensitivity (according to hints from TAJS_addContextSensitivity and Unevalizer).
+     * If -parameter-sensitivity is disabled, it returns the empty context.
+     */
     private Context makeContextArgumentsForCall(ObjectLabel obj_f, State edge_state, FunctionCalls.CallInfo callInfo) {
         if (!Options.get().isParameterSensitivityEnabled()) {
             return null;
@@ -104,11 +160,6 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
     }
 
     @Override
-    public Context makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c) {
-        return makeHeapContext(null);
-    }
-
-    @Override
     public Context makeInitialContext() {
         Context c = Context.makeEmpty();
         if (log.isDebugEnabled())
@@ -116,6 +167,12 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         return c;
     }
 
+    /**
+     * Constructs a context for a call.
+     *
+     * Unless -no-object-sensitivity is enabled, the context uses object sensitivity.
+     * If -parameter-sensitivity is enabled, parameter sensitivity is used according to hints from TAJS_addContextSensitivity and Unevalizer.
+     */
     @Override
     public Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c) {
         assert (function.getKind() == ObjectLabel.Kind.FUNCTION);
@@ -127,7 +184,7 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         }
         Context functionContext = makeContextArgumentsForCall(function, state, callInfo);
         // note: c.loopUnrolling and c.contextAtEntry are null by default, which will kill unrollings across calls
-        Context context = functionContext != null ? Context.make(thisval, null, null, null, null, functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables(), callInfo.getFreeVariablePartitioning()) : Context.makeThisVal(thisval, callInfo.getFreeVariablePartitioning());
+        Context context = functionContext != null ? Context.make(thisval, null, null, null, null, functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables(), callInfo.getFunctionPartitions(function)) : Context.makeThisVal(thisval, callInfo.getFunctionPartitions(function));
         if (log.isDebugEnabled())
             log.debug("creating function entry context " + context);
         return context;
@@ -148,7 +205,7 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         }
         // for-in acts as entry, so update localContextAtEntry
         Context c = Context.make(currentContext.getThisVal(), specialRegs, null, null, currentContext.getLoopUnrolling(),
-                currentContext.getUnknownArg(), currentContext.getParameterNames(), currentContext.getArguments(), currentContext.getFreeVariables(), currentContext.getFreeVariablePartitioning());
+                currentContext.getUnknownArg(), currentContext.getParameterNames(), currentContext.getArguments(), currentContext.getFreeVariables(), currentContext.getFunctionPartitions());
         if (log.isDebugEnabled())
             log.debug("creating for-in entry context " + c);
         return c;

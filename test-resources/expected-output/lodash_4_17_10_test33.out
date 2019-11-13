@@ -159,6 +159,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11332:14: [definite] The 
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11403:20: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11403:20: [definite] Variable nativeIsBuffer is null/undefined
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11422:18: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11647:7: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11653:14: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11713:14: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11772:14: [definite] The conditional expression is always true
@@ -1256,7 +1257,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5790:23: [maybe] Conversi
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5801:19: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5817:15: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11772:14: [maybe] The variable value has values with different types
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11772:31: [maybe] The variable value has values with different types
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11772:38: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/test-suite/4.17.10/lodash_test_33.html: [maybe] Uncaught exception, constructed at [HOST(es6-collections.js):122:65, HOST(es6-collections.js):268:36]
@@ -1264,4 +1265,4 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3036:27: [info] Reading f
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3507:7: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:24: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 20493 checks (with 0 expected failures)
+Soundness testing succeeded for 20391 checks (with 0 expected failures)

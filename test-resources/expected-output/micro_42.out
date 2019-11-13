@@ -5,5 +5,5 @@ test-resources/src/micro/test42.js:11:5: [definite] Unreachable code
 test-resources/src/micro/test42.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test42.js:11:9]
 test-resources/src/micro/test42.js:10:16: [maybe] The variable f has values with different types
 test-resources/src/micro/test42.js:11:9: [maybe] The variable f has values with different types
-test-resources/src/micro/test42.js:10:1: [info] Abstract value: 1.0|"sdf"|[@Object#node26]
-Soundness testing succeeded for 13 checks (with 0 expected failures)
+test-resources/src/micro/test42.js:10:1: [info] Abstract value: 1.0|"sdf"|[@Object#node30]
+Soundness testing succeeded for 16 checks (with 0 expected failures)

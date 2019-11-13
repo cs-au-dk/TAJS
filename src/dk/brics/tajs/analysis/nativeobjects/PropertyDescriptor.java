@@ -22,6 +22,7 @@ import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.lattice.Bool;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
@@ -172,7 +173,7 @@ public class PropertyDescriptor {
             }
 
             @Override
-            public Optional<ObjectLabel> newPropertyDescriptorObject(Solver.SolverInterface c) {
+            public Optional<ObjectLabel> newPropertyDescriptorObject(Solver.SolverInterface c, Context heapContext) {
                 return Optional.empty();
             }
         };
@@ -319,9 +320,9 @@ public class PropertyDescriptor {
     /**
      * Instantiates a valid property-descriptor object. Invalid descriptor objects are not constructed.
      */
-    public Optional<ObjectLabel> newPropertyDescriptorObject(Solver.SolverInterface c) {
+    public Optional<ObjectLabel> newPropertyDescriptorObject(Solver.SolverInterface c, Context heapContext) {
         PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-        ObjectLabel desc = ObjectLabel.make(c.getNode(), ObjectLabel.Kind.OBJECT);
+        ObjectLabel desc = ObjectLabel.make(c.getNode(), ObjectLabel.Kind.OBJECT, heapContext);
         c.getState().newObject(desc);
         c.getState().writeInternalPrototype(desc, Value.makeObject(InitialStateBuilder.OBJECT_PROTOTYPE));
         if (isMaybeDataDescriptor()) {

@@ -370,6 +370,8 @@ benchmarks/tajs/src/underscore/test-suite/objects/test134.html:9:1: [definite] U
 benchmarks/tajs/src/underscore/test-suite/objects/test134.html:12:9: [definite] The variable obj is never used
 benchmarks/tajs/src/underscore/test-suite/objects/test134.html:13:5: [definite] Unreachable code
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/test-suite/objects/test134.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/underscore/test-suite/objects/test134.html:13:9]
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 3598 checks (with 0 expected failures)
+Soundness testing succeeded for 3574 checks (with 0 expected failures)

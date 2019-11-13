@@ -7,4 +7,4 @@ test-resources/src/v8tests/instanceof.js:76:13: [maybe] TypeError, non-function 
 test-resources/src/v8tests/instanceof.js:76:13: [maybe] TypeError, non-object prototype at 'instanceof'
 test-resources/src/v8tests/instanceof.js:76:13: [maybe] Reading absent property (computed name)
 test-resources/src/v8tests/instanceof.js:76:33: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 346 checks (with 0 expected failures)
+Soundness testing succeeded for 348 checks (with 0 expected failures)

@@ -92,6 +92,11 @@ public class CustomContextSensitivityStrategy implements IContextSensitivityStra
     }
 
     @Override
+    public Context makeBoxedPrimitiveHeapContext(Value primitive) {
+        return defaultContextSensitivity.makeBoxedPrimitiveHeapContext(primitive);
+    }
+
+    @Override
     public Context makeInitialContext() {
         return defaultContextSensitivity.makeInitialContext();
     }
@@ -154,7 +159,7 @@ public class CustomContextSensitivityStrategy implements IContextSensitivityStra
         addToMapSet(sensitiveFunctions, Pair.make(caller, callee), sensitivity);
     }
 
-    public Context makeClosureVariableContext(Function fun, Solver.SolverInterface c) {
+    private Context makeClosureVariableContext(Function fun, Solver.SolverInterface c) {
         // "inherit" parameter sensitivity of outer function parameters that are used as closure variables
         State state = c.getState();
         Function outerFun = state.getBasicBlock().getFunction();

@@ -17,6 +17,11 @@ Make sure you clone not only the TAJS repository but also the submodules, for ex
 git submodule update --init --recursive
 ``` 
 
+To build TAJS, you must first install 
+[Java](https://www.oracle.com/technetwork/java/javase/downloads),
+[Ant](https://ant.apache.org/bindownload.cgi), and
+[Node.js](https://nodejs.org/en/download/). 
+
 The simplest way to build TAJS is to run Ant:
 ```
 ant
@@ -67,6 +72,8 @@ Some of the available options (run TAJS without arguments to see the full list):
 - `-unsound X` - enable unsound assumption X, e.g. `-ignore-unlikely-property-reads` causes some unlikely properties to be ignored during dynamic property read operations, and `-show-unsoundness-usage` outputs usage of unsound assumptions
 
 - `-babel` - enable preprocessing using Babel (see [below](#Babel-preprocessing))
+
+- `-type-filtering` - enable type filtering using TypeScript declaration files for npm packages (see [below](#Type-filtering))
 
 Note that the analysis produces lots of addition information that is not output by default. If you want full access to the abstract states and call graphs, as a starting point see the source code for `dk.brics.tajs.Main`. 
 The javadoc for TAJS is available at <http://www.brics.dk/TAJS/doc/>.
@@ -144,6 +151,20 @@ Blended analysis with a freshly generated log file can be performed like this:
 java -jar dist/tajs-all.jar -blended-analysis -generate-log -log-file my-log-file.log test-resources/src/google/richards.js
 ```
 
+## Type filtering
+
+Another way to increase precision is *type filtering*, which filters dataflow according to types obtained from TypeScript declaration files for npm modules.
+
+Example:
+```
+java -jar dist/tajs-all.jar -nodejs -type-filtering test-resources/src/tsspecs/myapp/myapp.js
+
+```
+
+The soundness of this mechanism relies on the assumption that the TypeScript declaration files are correct with respect to the module implementations.
+
+The script `resources/tsspecs/install-types.js` can be used for quickly installing TypeScript declaration files from [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped) for all modules in the `node_modules` sub-directory of the current directory.
+
 ## Environment configuration
 
 Some advanced features of TAJS require additional environment configuration which can be defined in a tajs.properties [properties](https://docs.oracle.com/javase/8/docs/api/java/util/Properties.html) file. 
@@ -172,13 +193,16 @@ tajs = /home/tajs-user/tajs
 
 ### Configurations for log file generation 
 
-For generation of log files for soundness testing, TAJS needs to know the locations of `node` or `jjs`: 
+For generation of log files for soundness testing, TAJS needs to know the locations of `graalVmNode`, `node` or `jjs`: 
 
 ```properties
+graalVmNode = /usr/graalvm/bin/node
 node = /usr/bin/nodejs
 jjs = /usr/bin/jjs
 ```
-(On Windows, the paths are something like `C:/Program Files/nodejs/node.exe` and `C:/Program Files/Java/jdk1.8.0_131/bin/jjs.exe` and .)
+(On Windows, the paths are something like `C:/Program Files/nodejs/node.exe` and `C:/Program Files/Java/jdk1.8.0_131/bin/jjs.exe`.)
+
+If `graalVmNode` is defined, the log file will be generated using NodeProf. Otherwise `node` needs to be defined and it will then be used with Jalangi to generate the log file.
 
 `jjs` is only needed if using Nashorn as generator environment instead of Node.js, which can be set programmatically in the soundness tester options.
 
@@ -198,6 +222,10 @@ babel = /usr/bin/babel
 
 The directory `test` contains a collection of tests that can be executed by running [dk.brics.tajs.test.RunFast](test/src/dk/brics/tajs/test/RunFast.java) with JUnit from Eclipse/IntelliJ or with `ant test-fast` from the command-line. 
 (A more thorough but slower test located in [dk.brics.tajs.test.RunAll](test/src/dk/brics/tajs/test/RunAll.java) can be run with `ant test-all`.)
+
+## Delta debugging
+
+See the [jsdelta package](src/dk/brics/tajs/jsdelta/README.md) for how to use [jsdelta](https://www.npmjs.com/package/jsdelta) with TAJS.
 
 ## Dependencies
 

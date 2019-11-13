@@ -1,3 +1,3 @@
 test-resources/src/resig/ejohn54.js:15:14: [definite] Reading absent property slices
 test-resources/src/resig/ejohn54.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 32 checks (with 0 expected failures)
+Soundness testing succeeded for 30 checks (with 0 expected failures)

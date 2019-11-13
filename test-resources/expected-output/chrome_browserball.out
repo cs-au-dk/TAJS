@@ -252,4 +252,4 @@ test-resources/src/chromeexperiments/browserball.html:338:25: [maybe] Reading ab
 test-resources/src/chromeexperiments/browserball.html:339:32: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/browserball.html:340:32: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/browserball.html:355:21: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 718 checks (with 0 expected failures)
+Soundness testing succeeded for 705 checks (with 0 expected failures)

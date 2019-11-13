@@ -30,6 +30,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 import static dk.brics.tajs.util.Collections.newSet;
@@ -254,9 +255,14 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
     private Set<String> included_strings;
 
     /**
-     * Information about partitioning of free variables in object_values, or null if none.
+     * Information about partitions that are sound to use for partitioned variables, or null if none.
      */
-    private FreeVariablePartitioning freeVariablePartitioning;
+    private FunctionPartitions functionPartitions;
+
+    /**
+     * Function type signatures, or null if none.
+     */
+    private FunctionTypeSignatures functionTypeSignatures;
 
     /**
      * Hash code.
@@ -306,7 +312,8 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
         str = null;
         object_labels = getters = setters = null;
         excluded_strings = included_strings = null;
-        freeVariablePartitioning = null;
+        functionPartitions = null;
+        functionTypeSignatures = null;
         var = null;
         hashcode = 0;
     }
@@ -314,7 +321,7 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
     /**
      * Constructs a shallow clone of the given value object.
      */
-   protected Value(Value v) {
+    protected Value(Value v) {
         flags = v.flags;
         num = v.num;
         str = v.str;
@@ -323,7 +330,8 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
         setters = v.setters;
         excluded_strings = v.excluded_strings;
         included_strings = v.included_strings;
-        freeVariablePartitioning = v.freeVariablePartitioning;
+        functionPartitions = v.functionPartitions;
+        functionTypeSignatures = v.functionTypeSignatures;
         var = v.var;
         hashcode = v.hashcode;
     }
@@ -410,7 +418,8 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
                 + (setters != null ? setters.hashCode() : 0)
                 + (excluded_strings != null ? excluded_strings.hashCode() : 0)
                 + (included_strings != null ? included_strings.hashCode() : 0)
-                + (freeVariablePartitioning != null ? freeVariablePartitioning.hashCode() : 0);
+                + (functionPartitions != null ? functionPartitions.hashCode() : 0)
+                + (functionTypeSignatures != null ? functionTypeSignatures.hashCode() : 0);
     }
 
     /**
@@ -421,21 +430,39 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
     }
 
     /**
-     * Returns the free variable info, of null if empty.
+     * Returns the free variable info, or null if empty.
      */
-    public FreeVariablePartitioning getFreeVariablePartitioning() {
+    public FunctionPartitions getFunctionPartitions() {
         checkNotPolymorphicOrUnknown();
-        return freeVariablePartitioning;
+        return functionPartitions;
     }
 
     /**
-     * Constructs a new value as a copy of this one but with the given FreeVariablePartitioning.
+     * Returns the function type signatures, or null if none.
      */
-    public Value setFreeVariablePartitioning(FreeVariablePartitioning freeVariablePartitioning) {
-        if (Objects.equals(freeVariablePartitioning, this.freeVariablePartitioning))
+    public FunctionTypeSignatures getFunctionTypeSignatures() {
+        return functionTypeSignatures;
+    }
+
+    /**
+     * Constructs a new value as a copy of this one but with the given FunctionPartitions.
+     */
+    public Value setFunctionPartitions(FunctionPartitions functionPartitions) {
+        if (Objects.equals(functionPartitions, this.functionPartitions))
             return this;
         Value r = new Value(this);
-        r.freeVariablePartitioning = freeVariablePartitioning;
+        r.functionPartitions = functionPartitions;
+        return canonicalize(r);
+    }
+
+    /**
+     * Constructs a new value as a copy of this one but with the given additional function type signatures.
+     */
+    public Value addFunctionTypeSignatures(FunctionTypeSignatures functionTypeSignatures) {
+        if (FunctionTypeSignatures.containsAll(this.functionTypeSignatures, functionTypeSignatures))
+            return this;
+        Value r = new Value(this);
+        r.functionTypeSignatures = FunctionTypeSignatures.union(this.functionTypeSignatures, functionTypeSignatures);
         return canonicalize(r);
     }
 
@@ -1052,6 +1079,7 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
 
     /**
      * Constructs a value as the join of this value and the given value.
+     *
      * @param widen if true, apply widening
      */
     public Value join(Value v, boolean widen) {
@@ -1187,21 +1215,33 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
             flags &= ~STR_PREFIX;
         if (flags != oldflags)
             modified = true;
-        if (joinMutableFreeVariablePartitioning(v)) {
+        if (joinMutableFunctionPartitions(v))
             modified = true;
-        }
+        if (joinMutableFunctionTypeSignatures(v))
+            modified = true;
         return modified;
     }
 
     /**
-     * Joins the freeVariablePartitioning from v into the freeVariablePartitioning of this.
+     * Joins the FunctionPartitions from v into the FunctionPartitions of this.
      */
-    private boolean joinMutableFreeVariablePartitioning(Value v) {
-        if (v.freeVariablePartitioning == null)
+    private boolean joinMutableFunctionPartitions(Value v) {
+        if (v.functionPartitions == null)
             return false;
-        FreeVariablePartitioning old = freeVariablePartitioning;
-        freeVariablePartitioning = v.freeVariablePartitioning.join(freeVariablePartitioning);
-        return !freeVariablePartitioning.equals(old);
+        FunctionPartitions old = functionPartitions;
+        functionPartitions = v.functionPartitions.join(functionPartitions);
+        return !functionPartitions.equals(old);
+    }
+
+    /**
+     * Joins the functionTypeSignatures from v into the functionTypeSignatures of this.
+     */
+    private boolean joinMutableFunctionTypeSignatures(Value v) {
+        if (v.functionTypeSignatures == null)
+            return false;
+        FunctionTypeSignatures old = functionTypeSignatures;
+        functionTypeSignatures = FunctionTypeSignatures.join(functionTypeSignatures, v.functionTypeSignatures);
+        return !functionTypeSignatures.equals(old);
     }
 
     /**
@@ -1316,7 +1356,8 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
                 && (setters == v.setters || (setters != null && v.setters != null && setters.equals(v.setters)))
                 && (excluded_strings == v.excluded_strings || (excluded_strings != null && v.excluded_strings != null && excluded_strings.equals(v.excluded_strings)))
                 && (included_strings == v.included_strings || (included_strings != null && v.included_strings != null && included_strings.equals(v.included_strings)))
-                && Objects.equals(freeVariablePartitioning, v.freeVariablePartitioning);
+                && Objects.equals(functionPartitions, v.functionPartitions)
+                && Objects.equals(functionTypeSignatures, v.functionTypeSignatures);
     }
 
     /**
@@ -1405,8 +1446,6 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
                 b.append("present");
             }
             b.append("])");
-//            if (var_summarized != null)
-//            b.append('<').append(var_summarized).append('>');
             any = true;
         } else {
             if (isMaybeUndef()) {
@@ -1574,10 +1613,17 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
                 b.append("absent");
                 any = true;
             }
-            if (freeVariablePartitioning != null) {
+            if (functionPartitions != null) {
                 if (any)
                     b.append(',');
-                b.append("freeVariablePartitioning=").append(freeVariablePartitioning);
+                b.append("functionPartitions=").append(functionPartitions);
+                any = true;
+            }
+            if (functionTypeSignatures != null) {
+                if (any)
+                    b.append(',');
+                b.append("functionTypeSignatures=").append(functionTypeSignatures);
+                // any = true;
             }
         }
         if (!any)
@@ -2716,6 +2762,27 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
         return canonicalize(r);
     }
 
+    /**
+     * Constructs a value as a copy of this value but definitely an object of the given kind.
+     */
+    public Value restrictToObjKind(ObjectLabel.Kind kind) {
+        checkNotPolymorphicOrUnknown();
+        Value r = new Value(this);
+        r.flags &= ~PRIMITIVE;
+        r.num = null;
+        r.str = null;
+        r.getters = r.setters = null;
+        r.excluded_strings = r.included_strings = null;
+        r.object_labels = newSet();
+        if (object_labels != null)
+            for (ObjectLabel objlabel : object_labels)
+                if (objlabel.getKind() == kind)
+                    r.object_labels.add(objlabel);
+        if (r.object_labels.isEmpty())
+            r.object_labels = null;
+        return canonicalize(r);
+    }
+
     @Override
     public boolean isMaybeFuzzyStr() {
         checkNotPolymorphicOrUnknown();
@@ -2943,7 +3010,8 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
     /**
      * Joins the single string or prefix string part of the given value into this value.
      * No other parts of v are used.
-     * Also converts the existing single string or prefix string to a fuzzy value if necessary.
+     * Also converts the existing single string or prefix string to a fuzzy value
+     * if v is a non-prefix fuzzy string or a prefix string with no nontrivial shared prefix.
      *
      * @return true if this value is modified
      */
@@ -2952,10 +3020,10 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
         boolean modified = false;
         boolean this_is_prefix = (flags & STR_PREFIX) != 0;
         boolean v_is_prefix = (v.flags & STR_PREFIX) != 0;
-        boolean switch_both_to_fuzzy = false;
         if (str != null)
             if (v.str != null) {
                 if (!this_is_prefix && !v_is_prefix) {
+                    // both this and v are single strings
                     if (str.equals(v.str)) {
                         // same single string
                         return false;
@@ -2970,7 +3038,13 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
                 // both this and v are single/prefix strings
                 String sharedPrefix = Strings.getSharedPrefix(str, v.str);
                 if (sharedPrefix.isEmpty()) {
-                    switch_both_to_fuzzy = true;
+                    // no nontrivial prefix, switch both to fuzzy
+                    String oldstr = str;
+                    str = null;
+                    flags &= ~STR_PREFIX;
+                    joinSingleStringOrPrefixStringAsFuzzyNonPrefix(v.str, v_is_prefix);
+                    joinSingleStringOrPrefixStringAsFuzzyNonPrefix(oldstr, this_is_prefix);
+                    modified = true;
                 } else {
                     flags |= STR_PREFIX;
                     modified |= !str.equals(v.str);
@@ -2997,19 +3071,12 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
             } else {
                 // this is a non-prefix fuzzy, v is a single/prefix string
                 modified = joinSingleStringOrPrefixStringAsFuzzyNonPrefix(v.str, v_is_prefix);
-                if (included_strings != null && !v_is_prefix) {
-                    included_strings = newSet(included_strings);
-                    modified |= included_strings.add(v.str);
-                }
             }
         } // otherwise, neither is a single/prefix string so do nothing
-        if (switch_both_to_fuzzy) {
-            String oldstr = str;
-            str = null;
-            flags &= ~STR_PREFIX;
-            joinSingleStringOrPrefixStringAsFuzzyNonPrefix(v.str, v_is_prefix);
-            joinSingleStringOrPrefixStringAsFuzzyNonPrefix(oldstr, this_is_prefix);
-            modified = true;
+        // if this has included_strings and v is a single string, then add it
+        if (included_strings != null && v.str != null && !v_is_prefix) {
+            included_strings = newSet(included_strings);
+            modified |= included_strings.add(v.str);
         }
         return modified;
     }
@@ -3334,8 +3401,7 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
                 v.str = null;
             } else
                 v.fixSingletonIncluded();
-        }
-        else {
+        } else {
             // fuzzy, without explicitly included strings
             v.excluded_strings = newSet(strings);
             if (excluded_strings != null)
@@ -3404,7 +3470,7 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
      */
     public static Value makeStringsAndSymbols(Collection<PKey> properties) {
         Value rSymb = new Value(join(properties.stream().map(PKey::toValue).collect(Collectors.toSet())));
-        Value rStr = makeStrings(properties.stream().filter(x -> x instanceof PKey.StringPKey).map(x -> ((PKey.StringPKey)x).getStr()).collect(Collectors.toList()));
+        Value rStr = makeStrings(properties.stream().filter(x -> x instanceof PKey.StringPKey).map(x -> ((PKey.StringPKey) x).getStr()).collect(Collectors.toList()));
         return rSymb.join(rStr);
     }
 
@@ -3597,6 +3663,7 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
 
     /**
      * Constructs a value as a copy of this value but with the given object labels removed.
+     *
      * @throws AnalysisException if the value contains getters or setters.
      */
     public Value removeObjects(Set<ObjectLabel> objs) {
@@ -3652,15 +3719,15 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
     }
 
     /**
-     * Constructs a value as a copy of this value but with object labels summarized.
+     * Constructs a value as a copy of this value but with object labels renamed.
      * If s is null or the value is unknown or polymorphic, this value is returned instead.
      */
-    public Value summarize(Summarized s) {
+    public Value rename(Renamings s) {
         if (s == null || isUnknown() || isPolymorphic())
             return this;
-        Set<ObjectLabel> ss = s.summarize(object_labels);
-        Set<ObjectLabel> ss_getters = s.summarize(getters);
-        Set<ObjectLabel> ss_setters = s.summarize(setters);
+        Set<ObjectLabel> ss = s.rename(object_labels);
+        Set<ObjectLabel> ss_getters = s.rename(getters);
+        Set<ObjectLabel> ss_setters = s.rename(setters);
         if ((ss == null || ss.equals(object_labels))
                 && (ss_getters == null || ss_getters.equals(getters))
                 && (ss_setters == null || ss_setters.equals(setters)))
@@ -4125,6 +4192,7 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
 
     /**
      * Returns true if this value contains the given object label.
+     *
      * @throws AnalysisException if the value contains getters or setters.
      */
     public boolean containsObjectLabel(ObjectLabel objlabel) {
@@ -4623,5 +4691,12 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
                 excluded_strings = newSet(excluded_strings);
             excluded_strings.add(s);
         }
+    }
+
+    /**
+     * Applies the given function to this value.
+     */
+    public Value applyFunction(Function<Value, Value> func) {
+        return func.apply(this);
     }
 }

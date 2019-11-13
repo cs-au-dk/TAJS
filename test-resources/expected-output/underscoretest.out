@@ -1,0 +1,279 @@
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:14:14: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:24:21: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:53:3: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:53:7: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:54:5: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:54:9: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:69:5: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:69:9: [definite] Variable context is null/undefined
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:113:18: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:113:18: [definite] Variable startIndex is null/undefined
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:121:7: [definite] The conditional expression is always false
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:121:7: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:147:14: [definite] The conditional expression is always false
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:172:12: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:182:37: [definite] Variable context is null/undefined
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:998:5: [definite] The conditional expression is always false
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:999:5: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1009:5: [definite] The conditional expression is always false
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1013:5: [definite] The conditional expression is always false
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1078:7: [definite] The conditional expression is always false
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1078:11: [definite] Variable defaults is null/undefined
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1079:7: [definite] The conditional expression is always false
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1079:11: [definite] The conditional expression is always false
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1086:15: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1086:16: [definite] Variable defaults is null/undefined
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1315:15: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1322:12: [definite] The conditional expression is always false
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1322:35: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1334:3: [definite] The conditional expression is always false
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1342:18: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1343:3: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1343:7: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1463:11: [definite] The conditional expression is always true
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1687:7: [definite] The conditional expression is always false
+test-resources/src/tsspecs/underscoretest/app.js:7:10: [definite] Dead assignment, property a is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:20:28: [definite] Reading absent property _
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:53:41: [definite] Reading absent property nodeType
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:54:42: [definite] Reading absent property nodeType
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:119:9: [definite] Dead assignment, property 0 is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:119:9: [definite] Dead assignment, property 1 is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:974:22: [definite] Dead assignment, property toString is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1059:7: [definite] Dead assignment, property is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1086:49: [definite] Dead assignment, property b is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1526:5: [definite] Dead assignment, property evaluate is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1527:5: [definite] Dead assignment, property interpolate is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1528:5: [definite] Dead assignment, property escape is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1539:5: [definite] Dead assignment, property ' is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1540:5: [definite] Dead assignment, property \\ is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1541:5: [definite] Dead assignment, property \r is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1542:5: [definite] Dead assignment, property \n is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1543:5: [definite] Dead assignment, property \u2028 is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1544:5: [definite] Dead assignment, property \u2029 is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1651:5: [definite] Dead assignment, property pop is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1651:5: [definite] Dead assignment, property push is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1651:5: [definite] Dead assignment, property reverse is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1651:5: [definite] Dead assignment, property shift is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1651:5: [definite] Dead assignment, property sort is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1651:5: [definite] Dead assignment, property splice is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1651:5: [definite] Dead assignment, property unshift is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1662:5: [definite] Dead assignment, property concat is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1662:5: [definite] Dead assignment, property join is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1662:5: [definite] Dead assignment, property slice is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1674:3: [definite] Dead assignment, property valueOf is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1674:25: [definite] Dead assignment, property toJSON is never read
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1676:3: [definite] Dead assignment, property toString is never read
+test-resources/src/tsspecs/underscoretest/app.js: [definite] Exceptional program exit is unreachable
+test-resources/src/tsspecs/underscoretest/app.js:6:1: [definite] The variable __dirname is never used
+test-resources/src/tsspecs/underscoretest/app.js:6:1: [definite] The variable __filename is never used
+test-resources/src/tsspecs/underscoretest/app.js:6:1: [definite] The variable exports is never used
+test-resources/src/tsspecs/underscoretest/app.js:6:1: [definite] The variable module is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:6:1: [definite] The variable __dirname is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:6:1: [definite] The variable __filename is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:6:1: [definite] The variable require is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:20:7: [definite] The variable previousUnderscore is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:24:7: [definite] The variable SymbolProto is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:27:7: [definite] The variable push is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:28:7: [definite] The variable slice is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:30:7: [definite] The variable hasOwnProperty is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:36:7: [definite] The variable nativeCreate is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:39:7: [definite] The variable Ctor is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:39:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:42:11: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:68:20: [definite] The variable argCount is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:71:22: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:75:22: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:78:22: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:82:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:87:7: [definite] The variable builtinIteratee is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:92:7: [definite] The variable cb is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:92:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:103:34: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:126:11: [definite] The variable args is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:136:7: [definite] The variable baseCreate is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:136:20: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:151:7: [definite] The variable has is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:151:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:155:7: [definite] The variable deepGet is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:155:17: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:198:23: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:211:22: [definite] The variable dir is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:214:9: [definite] The variable reducer is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:214:19: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:229:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:243:23: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:251:25: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:254:17: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:261:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:267:21: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:280:20: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:293:41: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:300:28: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:308:23: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:322:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:328:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:334:17: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:339:11: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:352:19: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:364:11: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:377:19: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:389:15: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:397:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:416:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:419:31: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:425:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:437:15: [definite] The variable behavior is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:437:15: [definite] The variable partition is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:438:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:441:19: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:451:21: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:457:21: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:464:21: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:468:7: [definite] The variable reStrSymbol is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:470:15: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:482:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:489:23: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:499:31: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:508:15: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:514:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:523:30: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:528:15: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:533:7: [definite] The variable flatten is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:533:17: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:555:15: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:560:29: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:570:23: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:599:27: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:605:20: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:622:32: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:624:28: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:631:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:648:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:661:36: [definite] The variable dir is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:662:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:679:19: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:691:27: [definite] The variable dir is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:691:27: [definite] The variable predicateFind is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:691:27: [definite] The variable sortedIndex is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:692:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:725:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:746:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:761:7: [definite] The variable executeBound is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:761:22: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:772:26: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:774:31: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:784:29: [definite] The variable boundArgs is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:784:29: [definite] The variable func is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:785:9: [definite] The variable placeholder is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:786:17: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:803:29: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:814:15: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:815:19: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:827:27: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:828:23: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:842:16: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:847:17: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:854:21: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:874:24: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:887:16: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:890:17: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:895:35: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:908:24: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:919:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:924:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:925:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:932:15: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:935:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:944:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:945:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:953:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:955:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:975:7: [definite] The variable nonEnumerableProps is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:978:7: [definite] The variable collectNonEnumProps is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:978:29: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1000:9: [definite] The variable keys is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1001:14: [definite] The variable key is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1018:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1030:17: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1044:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1101:15: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1111:7: [definite] The variable keyInObj is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1111:18: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1116:26: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1136:26: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1143:18: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1156:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1163:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1171:11: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1177:15: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1190:7: [definite] The variable eq is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1190:11: [definite] The variable deepEq is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1191:8: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1206:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1296:15: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1302:15: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1309:17: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1315:32: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1335:21: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1350:16: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1355:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1360:17: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1365:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1370:19: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1376:11: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1396:18: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1402:16: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1407:16: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1408:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1413:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1417:16: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1421:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1427:18: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1429:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1431:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1438:27: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1440:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1446:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1454:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1463:23: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1480:9: [definite] The variable escaper is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1480:19: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1485:9: [definite] The variable testRegexp is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1486:9: [definite] The variable replaceRegexp is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1487:12: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1498:14: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1517:7: [definite] The variable idCounter is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1518:16: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1534:7: [definite] The variable noMatch is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1538:7: [definite] The variable escapes is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1547:7: [definite] The variable escapeRegExp is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1549:7: [definite] The variable escapeChar is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1549:20: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1557:16: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1571:27: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1603:20: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1615:13: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1628:7: [definite] The variable chainResult is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1628:21: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1635:11: [definite] The variable func is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1636:27: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1650:9: [definite] The variable method is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1651:25: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1661:9: [definite] The variable method is never used
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1662:25: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1668:23: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1676:26: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1688:30: [definite] Unreachable function
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:186:18: [maybe] Reading absent property (computed name)
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:191:18: [maybe] Reading absent property (computed name)
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:191:22: [maybe] Reading absent property (computed name)
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:191:32: [maybe] Reading absent property (computed name)
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1059:18: [maybe] Reading absent property (computed name)
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1059:30: [maybe] Reading absent property (computed name)
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1085:21: [maybe] Reading absent property (computed name)
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1635:28: [maybe] Reading absent property (computed name)
+test-resources/src/tsspecs/underscoretest/app.js:10:1: [info] Abstract object: {a:1.0,b:Undef|2.0|absent,undefined:Undef|2.0|absent,[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1059:7: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1635:18: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1636:7: [info] Writing to unknown property that may cause loss of precision
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1635:28: [info] Reading from unknown property that may cause loss of precision

@@ -7,7 +7,10 @@
 /.idea/workspace.xml
 /.idea/kotlinc.xml
 /extras/babel/node_modules
+/extras/jsdelta/node_modules
 /test-resources/src/**/_babel
+/test-resources/src/**/node_modules
+!/test-resources/src/nodejs/**/node_modules
 package-lock.json
 tajs.properties
 *.iml

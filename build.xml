@@ -3,7 +3,7 @@
 <project name="TAJS" default="all" basedir=".">
 
     <property name="project" value="tajs" />
-    <property name="version" value="0.23" />
+    <property name="version" value="0.24" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
@@ -17,6 +17,7 @@
             <include name="lib/*.jar"/>
             <include name="extras/jalangilogger/build/libs/*.jar"/>
             <include name="extras/inspector/dist/*.jar"/>
+            <include name="extras/ts-spec-reader/build/libs/*.jar"/>
         </fileset>
     </path>
 
@@ -24,6 +25,7 @@
         <fileset dir=".">
             <include name="lib/*.jar"/>
             <include name="extras/jalangilogger/build/libs/*.jar"/>
+            <include name="extras/ts-spec-reader/build/libs/*.jar"/>
             <include name="extras/inspector/dist/*.jar"/>
             <include name="lib/test/*.jar"/>
         </fileset>
@@ -64,17 +66,21 @@
         </copy>
     </target>
 
-    <target name="install-javascript-modules" depends="install-javascript-modules-windows, install-javascript-modules-linux"/>
-
-    <target name="install-javascript-modules-windows" if="isWindows">
-        <exec dir="extras/jalangilogger/javascript" executable="npm.cmd">
-            <arg line="install --no-audit" />
+    <target name="install-javascript-modules">
+        <exec executable="node" dir="extras/jsdelta">
+            <arg line="install"/>
         </exec>
-    </target>
-
-    <target name="install-javascript-modules-linux" unless="isWindows">
-        <exec dir="extras/jalangilogger/javascript" executable="npm">
-            <arg line="install --no-audit" />
+        <exec executable="node" dir="extras/babel">
+            <arg line="install"/>
+        </exec>
+        <exec executable="node" dir="extras/jalangilogger/javascript">
+            <arg line="install"/>
+        </exec>
+        <exec executable="node" dir="extras/ts-spec-reader">
+            <arg line="install"/>
+        </exec>
+        <exec executable="node" dir="test-resources/src/tsspecs">
+            <arg line="install"/>
         </exec>
     </target>
 
@@ -94,6 +100,7 @@
             <zipgroupfileset dir="lib" includes="*.jar"/>
             <zipgroupfileset dir="extras/jalangilogger/build/libs" includes="*.jar"/>
             <zipgroupfileset dir="extras/inspector/dist" includes="*.jar"/>
+            <zipgroupfileset dir="extras/ts-spec-reader/build/libs" includes="*.jar"/>
             <zipfileset src="dist/${project}.jar"/>
             <manifest>
                 <attribute name="Main-Class" value="dk.brics.tajs.Main" />
@@ -153,15 +160,9 @@
         <delete dir="${dir}" />
     </target>
 
-    <target name="install-babel">
-        <exec executable="node" dir="extras/babel">
-            <arg line="install.js"/>
-        </exec>
-    </target>
-
     <target name="compile-test" depends="compile">
         <javac srcdir="test/src" includes="**" destdir="antbuild" optimize="${optimize}" debug="${debug}"
-               includeantruntime="false" source="1.8">
+               includeantruntime="false">
             <classpath refid="classpath.test"/>
             <compilerarg line="-encoding ISO-8859-1" compiler="modern"/>
             <compilerarg line="-Xlint -Xlint:-serial -Xlint:-path" compiler="modern"/>

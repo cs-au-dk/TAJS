@@ -1,4 +1,4 @@
 TAJS-dynamic-code(test-resources/src/v8tests/body-not-visible.js:33:4):1:8: [definite] ReferenceError, reading absent variable body
 test-resources/src/v8tests/body-not-visible.js: [definite] Exceptional program exit is unreachable
 test-resources/src/v8tests/body-not-visible.js:34:3: [definite] Unreachable code
-Soundness testing succeeded for 24 checks (with 0 expected failures)
+Soundness testing succeeded for 22 checks (with 0 expected failures)

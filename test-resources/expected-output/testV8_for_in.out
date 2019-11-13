@@ -6,4 +6,4 @@ test-resources/src/v8tests/for-in.js:84:17: [definite] Unreachable function
 test-resources/src/v8tests/for-in.js:84:29: [definite] Unreachable function
 test-resources/src/v8tests/for-in.js:55:3: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/v8tests/for-in.js:30:3: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 2463 checks (with 0 expected failures)
+Soundness testing succeeded for 2464 checks (with 3 expected failures)

@@ -19,6 +19,7 @@ package dk.brics.tajs.js2flowgraph;
 import com.google.javascript.jscomp.parsing.parser.trees.BinaryOperatorTree;
 import com.google.javascript.jscomp.parsing.parser.trees.CommaExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ForInStatementTree;
+import com.google.javascript.jscomp.parsing.parser.trees.ParenExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTreeType;
 import com.google.javascript.jscomp.parsing.parser.trees.VariableDeclarationTree;
@@ -114,5 +115,9 @@ public class ValueLogLocationRemapping {
         SourceLocation jalangiLocation = sourceLocationMaker.make(sourceLocation.getLineNumber(), sourceLocation.getColumnNumber() + parenthesisOffset, sourceLocation.getEndLineNumber(), sourceLocation.getEndColumnNumber() + parenthesisOffset);
         addRawMapping(sourceLocation, jalangiLocation); // for matching function-entries
         state.getDeclaredAccessorAllocationSites().add(sourceLocation); // for matching function-values
+    }
+
+    public void registerParenExpression(ParenExpressionTree tree, SourceLocation.SourceLocationMaker sourceLocationMaker) {
+        addRawMapping(FunctionBuilderHelper.makeSourceLocation(tree, sourceLocationMaker), FunctionBuilderHelper.makeSourceLocation(tree.expression, sourceLocationMaker));
     }
 }

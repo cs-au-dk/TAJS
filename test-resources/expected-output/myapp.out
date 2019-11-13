@@ -1,0 +1,101 @@
+test-resources/src/tsspecs/myapp/base-64/index.js:5:20: [definite] The conditional expression is always true
+test-resources/src/tsspecs/myapp/base-64/index.js:8:19: [definite] The conditional expression is always true
+test-resources/src/tsspecs/myapp/base-64/index.js:13:19: [definite] The conditional expression is always false
+test-resources/src/tsspecs/myapp/base-64/index.js:14:2: [definite] The conditional expression is always false
+test-resources/src/tsspecs/myapp/base-64/index.js:14:6: [definite] The conditional expression is always false
+test-resources/src/tsspecs/myapp/base-64/index.js:44:3: [definite] The conditional expression is always true
+test-resources/src/tsspecs/myapp/base-64/index.js:48:3: [definite] The conditional expression is always false
+test-resources/src/tsspecs/myapp/base-64/index.js:49:4: [definite] The conditional expression is always false
+test-resources/src/tsspecs/myapp/base-64/index.js:80:3: [definite] The conditional expression is always false
+test-resources/src/tsspecs/myapp/base-64/index.js:115:3: [definite] The conditional expression is always true
+test-resources/src/tsspecs/myapp/base-64/index.js:146:3: [definite] The conditional expression is always false
+test-resources/src/tsspecs/myapp/base-64/index.js:153:9: [definite] The conditional expression is always true
+test-resources/src/tsspecs/myapp/base-64/index.js:153:13: [definite] The conditional expression is always true
+test-resources/src/tsspecs/myapp/base-64/index.js:154:3: [definite] The conditional expression is always true
+test-resources/src/tsspecs/myapp/node_modules/date-now/index.js:1:18: [definite] The conditional expression is always true
+test-resources/src/tsspecs/myapp/base-64/index.js:14:6: [definite] Reading absent property global
+test-resources/src/tsspecs/myapp/base-64/index.js:14:42: [definite] Reading absent property window
+test-resources/src/tsspecs/myapp/base-64/index.js:24:2: [definite] Dead assignment, property name is never read
+test-resources/src/tsspecs/myapp/base-64/index.js:140:3: [definite] Dead assignment, property version is never read
+test-resources/src/tsspecs/myapp/base-64/index.js:153:29: [definite] Reading absent property nodeType
+test-resources/src/tsspecs/myapp/mylib.js:15:1: [definite] Dead assignment, property myarray1 is never read
+test-resources/src/tsspecs/myapp/mylib.js:16:1: [definite] Dead assignment, property myarray2 is never read
+test-resources/src/tsspecs/myapp/mylib.js:17:1: [definite] Dead assignment, property mytuple is never read
+test-resources/src/tsspecs/myapp/mylib.js:29:5: [definite] Dead assignment, property myarray1 is never read
+test-resources/src/tsspecs/myapp/mylib.js:29:25: [definite] Dead assignment, property 2 is never read
+test-resources/src/tsspecs/myapp/mylib.js:30:5: [definite] Dead assignment, property myarray2 is never read
+test-resources/src/tsspecs/myapp/mylib.js:30:25: [definite] Dead assignment, property 2 is never read
+test-resources/src/tsspecs/myapp/mylib.js:31:5: [definite] Dead assignment, property mytuple is never read
+test-resources/src/tsspecs/myapp/mylib.js:36:5: [definite] Dead assignment, property mytuple is never read
+test-resources/src/tsspecs/myapp/base-64/index.js:2:1: [definite] The variable __dirname is never used
+test-resources/src/tsspecs/myapp/base-64/index.js:2:1: [definite] The variable __filename is never used
+test-resources/src/tsspecs/myapp/base-64/index.js:2:1: [definite] The variable require is never used
+test-resources/src/tsspecs/myapp/base-64/index.js:2:3: [definite] The variable root is never used
+test-resources/src/tsspecs/myapp/base-64/index.js:20:30: [definite] Unreachable function
+test-resources/src/tsspecs/myapp/base-64/index.js:26:6: [definite] The variable error is never used
+test-resources/src/tsspecs/myapp/base-64/index.js:26:14: [definite] Unreachable function
+test-resources/src/tsspecs/myapp/base-64/index.js:94:7: [definite] The variable d is never used
+test-resources/src/tsspecs/myapp/base-64/index.js:150:10: [definite] Unreachable function
+test-resources/src/tsspecs/myapp/base-64/index.js:157:13: [definite] The variable key is never used
+test-resources/src/tsspecs/myapp/myapp.js: [definite] Exceptional program exit is unreachable
+test-resources/src/tsspecs/myapp/myapp.js:6:1: [definite] The variable __dirname is never used
+test-resources/src/tsspecs/myapp/myapp.js:6:1: [definite] The variable __filename is never used
+test-resources/src/tsspecs/myapp/myapp.js:6:1: [definite] The variable exports is never used
+test-resources/src/tsspecs/myapp/myapp.js:6:1: [definite] The variable module is never used
+test-resources/src/tsspecs/myapp/mylib.js:1:1: [definite] The variable __dirname is never used
+test-resources/src/tsspecs/myapp/mylib.js:1:1: [definite] The variable __filename is never used
+test-resources/src/tsspecs/myapp/mylib.js:1:1: [definite] The variable module is never used
+test-resources/src/tsspecs/myapp/mylib.js:1:1: [definite] The variable require is never used
+test-resources/src/tsspecs/myapp/mylib.js:9:18: [definite] The variable x is never used
+test-resources/src/tsspecs/myapp/node_modules/date-now/index.js:1:1: [definite] The variable __dirname is never used
+test-resources/src/tsspecs/myapp/node_modules/date-now/index.js:1:1: [definite] The variable __filename is never used
+test-resources/src/tsspecs/myapp/node_modules/date-now/index.js:1:1: [definite] The variable exports is never used
+test-resources/src/tsspecs/myapp/node_modules/date-now/index.js:1:1: [definite] The variable require is never used
+test-resources/src/tsspecs/myapp/node_modules/date-now/index.js:3:1: [definite] Unreachable function now
+test-resources/src/tsspecs/myapp/base-64/index.js:14:6: [maybe] Converting primitive boolean to object
+test-resources/src/tsspecs/myapp/base-64/index.js:14:42: [maybe] Converting primitive boolean to object
+test-resources/src/tsspecs/myapp/base-64/index.js:41:11: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:43:16: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:45:12: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:46:13: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:63:13: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:63:13: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:63:27: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:63:27: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:88:17: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:97:16: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:101:8: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:101:8: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:102:8: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:102:8: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:103:8: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:103:8: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:108:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:108:5: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:109:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:109:5: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:110:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:110:5: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:111:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:111:5: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:116:8: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:116:8: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:117:8: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:117:8: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:120:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:120:5: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:121:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:121:5: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/base-64/index.js:122:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:122:5: [maybe] Converting primitive string to object
+test-resources/src/tsspecs/myapp/mylib.js:35:5: [maybe] Converting primitive number to object
+test-resources/src/tsspecs/myapp/myapp.js:8:1: [info] Abstract value: "foobar"
+test-resources/src/tsspecs/myapp/myapp.js:9:1: [info] Abstract value: "hello"
+test-resources/src/tsspecs/myapp/myapp.js:10:1: [info] Abstract value: "world"
+test-resources/src/tsspecs/myapp/myapp.js:11:1: [info] Abstract value: "again"
+test-resources/src/tsspecs/myapp/myapp.js:12:1: [info] Abstract value: true
+test-resources/src/tsspecs/myapp/myapp.js:13:1: [info] Abstract value: 111.0
+test-resources/src/tsspecs/myapp/myapp.js:16:1: [info] Abstract value: "dyt"
+test-resources/src/tsspecs/myapp/myapp.js:17:1: [info] Abstract value: [@Date#node6546]
+test-resources/src/tsspecs/myapp/myapp.js:27:1: [info] Abstract value: Num
+test-resources/src/tsspecs/myapp/myapp.js:32:1: [info] Abstract value: "hello"

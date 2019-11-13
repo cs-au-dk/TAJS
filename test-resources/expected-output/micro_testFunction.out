@@ -3,10 +3,10 @@ test-resources/src/micro/testFunction.js:2:1: [definite] Unreachable function g
 TAJS-dynamic-code(test-resources/src/micro/testFunction.js:1:9):1:1: [definite] Unreachable function
 TAJS-dynamic-code(test-resources/src/micro/testFunction.js:3:9):1:1: [definite] Unreachable function
 TAJS-dynamic-code(test-resources/src/micro/testFunction.js:4:9):1:1: [definite] Unreachable function
-test-resources/src/micro/testFunction.js:6:1: [info] Abstract value: [@Object#node12]
+test-resources/src/micro/testFunction.js:6:1: [info] Abstract value: [@Object#node16]
 test-resources/src/micro/testFunction.js:7:1: [info] Abstract value: [@Object#node2]
-test-resources/src/micro/testFunction.js:8:1: [info] Abstract value: [@Object#node16]
-test-resources/src/micro/testFunction.js:9:1: [info] Abstract value: [@<anonymous>#fun6]
+test-resources/src/micro/testFunction.js:8:1: [info] Abstract value: [@Object#node20]
+test-resources/src/micro/testFunction.js:9:1: [info] Abstract value: [@<anonymous>#fun19]
 test-resources/src/micro/testFunction.js:11:1: [info] Abstract value: [@Function.prototype[native]]
 test-resources/src/micro/testFunction.js:12:1: [info] Abstract value: Undef
-Soundness testing succeeded for 46 checks (with 0 expected failures)
+Soundness testing succeeded for 47 checks (with 0 expected failures)

@@ -122,17 +122,17 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
      * @return true if the call edge changed as result of this operation
      */
     public boolean addTarget(AbstractNode caller, ContextType caller_context, BasicBlock callee, ContextType edge_context,
-                             StateType edge_state, SolverSynchronizer sync, IAnalysis<StateType, ContextType, CallEdgeType, ?, ?> analysis, ISolverMonitoring<StateType, ContextType> monitoring) {
+                             CallEdgeType edge, SolverSynchronizer sync, IAnalysis<StateType, ContextType, CallEdgeType, ?, ?> analysis, ISolverMonitoring<StateType, ContextType> monitoring) {
         boolean changed;
         NodeAndContext<ContextType> nc = new NodeAndContext<>(caller, caller_context);
         Map<BlockAndContext<ContextType>, CallEdgeType> mb = call_edge_info.computeIfAbsent(nc, k -> newMap());
         BlockAndContext<ContextType> to = new BlockAndContext<>(callee, edge_context);
         CallEdgeType call_edge = mb.get(to); // old call edge state must be subsumed by the new edge state *modulo recovery operations*
-        BlockAndContext<ContextType> from = new BlockAndContext<>(edge_state.getBasicBlock(), edge_state.getContext());
+        BlockAndContext<ContextType> from = new BlockAndContext<>(edge.getState().getBasicBlock(), edge.getState().getContext());
         monitoring.visitPropagationPre(from, to);
         if (call_edge == null) {
             // new edge
-            mb.put(to, analysis.makeCallEdge(edge_state.clone()));
+            mb.put(to, analysis.cloneCallEdge(edge));
             if (sync != null && isOrdinaryCallEdge(callee))
                 sync.callEdgeAdded(caller.getBlock().getFunction(), callee.getFunction());
             changed = true;
@@ -146,7 +146,7 @@ public class CallGraph<StateType extends IState<StateType, ContextType, CallEdge
                 size_ignoring_contexts++;
         } else {
             // propagate into existing edge
-            changed = call_edge.getState().propagate(edge_state, true, false);
+            changed = call_edge.getState().propagate(edge.getState(), true, false);
         }
         monitoring.visitPropagationPost(from, to, changed);
         if (log.isDebugEnabled())

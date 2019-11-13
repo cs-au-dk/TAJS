@@ -137,4 +137,4 @@ test-resources/src/sunspider/3d-cube.js:323:5: [maybe] Reading absent property (
 test-resources/src/sunspider/3d-cube.js:323:29: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-cube.js:344:26: [maybe] Converting object to number
 test-resources/src/sunspider/3d-cube.js:346:1: [info] Abstract value: Num
-Soundness testing succeeded for 3399 checks (with 0 expected failures)
+Soundness testing succeeded for 3391 checks (with 0 expected failures)

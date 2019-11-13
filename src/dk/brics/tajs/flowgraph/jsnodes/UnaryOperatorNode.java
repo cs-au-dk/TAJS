@@ -50,7 +50,12 @@ public class UnaryOperatorNode extends LoadNode {
         /**
          * +
          */
-        PLUS
+        PLUS,
+
+        /**
+         * typeof
+         */
+        TYPEOF
     }
 
     private int arg_reg;
@@ -105,6 +110,8 @@ public class UnaryOperatorNode extends LoadNode {
                 return "-";
             case PLUS:
                 return "+";
+            case TYPEOF:
+                return "typeof";
             default:
                 throw new AnalysisException("Unexpected operator");
         }

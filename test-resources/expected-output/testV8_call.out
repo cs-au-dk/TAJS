@@ -17,4 +17,4 @@ test-resources/src/v8tests/call.js:86:25: [definite] Reading 'this' yields the g
 test-resources/src/v8tests/call.js:87:25: [definite] Reading 'this' yields the global object
 test-resources/src/v8tests/call.js: [definite] Exceptional program exit is unreachable
 test-resources/src/v8tests/call.js:29:10: [maybe] Reading 'this' yields the global object
-Soundness testing succeeded for 324 checks (with 0 expected failures)
+Soundness testing succeeded for 327 checks (with 0 expected failures)

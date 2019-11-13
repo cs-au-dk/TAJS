@@ -299,7 +299,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3226:1: [definite] Dead assig
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3256:14: [definite] Reading absent property type
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3276:2: [definite] Dead assignment, property timeStamp is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3276:26: [definite] Reading absent property timeStamp
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3279:2: [definite] Dead assignment, property jQuery18007583796755609278 is never read
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3279:2: [definite] Dead assignment, property jQuery18007580213484721079 is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3292:2: [definite] Dead assignment, property preventDefault is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3309:2: [definite] Dead assignment, property stopPropagation is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3323:2: [definite] Dead assignment, property stopImmediatePropagation is never read
@@ -1291,8 +1291,8 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3577:4: [maybe] TypeError, ac
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3607:4: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3801:21: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3801:21: [maybe] TypeError, call to non-function
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3819:8: [maybe] <HTMLDocument.prototype.getElementsByName>(sizcache0161857575075613050) did not match any elements
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3820:25: [maybe] <Document.getElementById>("sizcache016185757507561305") did not match any elements
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3819:8: [maybe] <HTMLDocument.prototype.getElementsByName>(sizcache0089565427632908090) did not match any elements
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3820:25: [maybe] <Document.getElementById>("sizcache008956542763290809") did not match any elements
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3838:35: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3839:4: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3839:4: [maybe] TypeError, call to non-function
@@ -1548,4 +1548,4 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1521:43: [unsound] Assuming M
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2934:71: [unsound] Assuming UInt-addition is closed
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3695:27: [unsound] Assuming Math.random returns fixed value
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6293:2: [unsound] Skipping write to property '__proto__'
-Soundness testing succeeded for 6807 checks (with 2 expected failures)
+Soundness testing succeeded for 6694 checks (with 1 expected failures)

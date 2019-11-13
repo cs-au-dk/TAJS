@@ -126,7 +126,6 @@ public class ECMAScriptFunctions {
             case TYPE_ERROR:
             case URI_ERROR:
             case ERROR:
-            case ERROR_CAPTURESTACKTRACE:
             case ERROR_TOSTRING:
                 res = JSError.evaluate(nativeobject, call, c);
                 break;
@@ -221,8 +220,8 @@ public class ECMAScriptFunctions {
             case STRING_CHARCODEAT:
             case STRING_CHARAT:
             case STRING_TRIM:
-            case STRING_TRIMLEFT:
-            case STRING_TRIMRIGHT:
+            case STRING_TRIMSTART:
+            case STRING_TRIMEND:
             case STRING_ENDSWITH:
             case STRING_STARTSWITH:
             case STRING_INCLUDES:

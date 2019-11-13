@@ -32,4 +32,4 @@ test-resources/src/1k2013spring/1436.js:51:26: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1436.js:51:28: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1436.js:55:20: [maybe] The variable v has values with different types
 test-resources/src/1k2013spring/1436.js:56:5: [maybe] The variable v has values with different types
-Soundness testing succeeded for 225 checks (with 0 expected failures)
+Soundness testing succeeded for 219 checks (with 0 expected failures)

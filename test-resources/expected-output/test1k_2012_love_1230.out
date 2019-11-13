@@ -15,4 +15,4 @@ test-resources/src/1k2012love/1230.js:98:27: [maybe] Reading absent property (co
 test-resources/src/1k2012love/1230.js:123:17: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1230.js:134:37: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1230.js:134:53: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 560 checks (with 0 expected failures)
+Soundness testing succeeded for 546 checks (with 0 expected failures)

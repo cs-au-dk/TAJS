@@ -131,4 +131,4 @@ benchmarks/tajs/src/apps/solitaire/spider.html:388:38: [maybe] Reading absent pr
 benchmarks/tajs/src/apps/solitaire/spider.html:389:39: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/solitaire/spider.html:389:39: [maybe] Reading absent property (computed name)
 Disabling soundness testing for benchmarks/tajs/src/apps/solitaire/spider.html entirely (12 uninspected soundness errors).
-Soundness testing succeeded for 684 checks (with 12 expected failures)
+Soundness testing succeeded for 675 checks (with 12 expected failures)

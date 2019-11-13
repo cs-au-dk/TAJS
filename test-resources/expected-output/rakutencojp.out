@@ -3,4 +3,4 @@ TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/rakuten.co.jp-slice/index.html:
 benchmarks/tajs/src/unevalizer/rakuten.co.jp-slice/index.html: [definite] Exceptional program exit is unreachable
 benchmarks/tajs/src/unevalizer/rakuten.co.jp-slice/index.html:18:23: [definite] The variable b is never used
 benchmarks/tajs/src/unevalizer/rakuten.co.jp-slice/index.html:18:23: [definite] The variable d is never used
-Soundness testing succeeded for 31 checks (with 0 expected failures)
+Soundness testing succeeded for 29 checks (with 0 expected failures)

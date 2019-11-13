@@ -58,4 +58,4 @@ TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/xunlei.com-slice/index.html:49:
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/xunlei.com-slice/index.html:121:2):1:56: [maybe] Conversion to number yields NaN
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/xunlei.com-slice/index.html:121:2):1:223: [maybe] Conversion to number yields NaN
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/xunlei.com-slice/index.html:121:2):1:223: [maybe] Converting undefined to string
-Soundness testing succeeded for 80 checks (with 0 expected failures)
+Soundness testing succeeded for 78 checks (with 0 expected failures)

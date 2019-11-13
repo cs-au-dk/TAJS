@@ -187,4 +187,4 @@ test-resources/src/chromeexperiments/starfield.html:211:173: [maybe] Converting 
 test-resources/src/chromeexperiments/starfield.html:211:193: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/starfield.html:211:219: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/starfield.html:228:106: [maybe] Converting undefined to string
-Soundness testing succeeded for 1119 checks (with 0 expected failures)
+Soundness testing succeeded for 1111 checks (with 0 expected failures)

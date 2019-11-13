@@ -7,4 +7,4 @@ out/temp-sources/TestMicro.testFixedRandom1.js:2:1: [info] Abstract value: Prefi
 out/temp-sources/TestMicro.testFixedRandom1.js:3:1: [info] Abstract value: PrefixStr[foo]
 out/temp-sources/TestMicro.testFixedRandom1.js:4:1: [info] Abstract value: PrefixStr[foo]
 out/temp-sources/TestMicro.testFixedRandom1.js:5:1: [info] Abstract value: PrefixStr[foo]
-Soundness testing succeeded for 45 checks (with 0 expected failures)
+Soundness testing succeeded for 43 checks (with 0 expected failures)

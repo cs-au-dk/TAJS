@@ -13,23 +13,33 @@ fg2: <main> function()
   block 3:
     node 5: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
-  block 4: [exit-ordinary]
-    node 6: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0043.js)
-    ->[]
-  block 5: [exit-exceptional]
-    node 7: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0043.js)
-    ->[]
-function f()
-  block 6: [entry]
-    node 8: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0043.js:1:1)
+  block 4:
+    node 6: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 7: constant[true,v6] (host-environment-sources-loader)
+    ->[block 5]
+  block 5:
+    node 8: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6]
+  block 6:
+    node 9: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7: [exit-ordinary]
-    node 9: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0043.js:1:1)
+    node 10: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0043.js)
     ->[]
   block 8: [exit-exceptional]
-    node 10: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0043.js:1:1)
+    node 11: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0043.js)
+    ->[]
+function f()
+  block 9: [entry]
+    node 12: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0043.js:1:1)
+    ->[block 10]
+  block 10: [exit-ordinary]
+    node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0043.js:1:1)
+    ->[]
+  block 11: [exit-exceptional]
+    node 14: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0043.js:1:1)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0043.js: [definite] Exceptional program exit is unreachable
 test-resources/src/flowgraphbuilder/flowgraph_builder0043.js:1:1: [definite] Unreachable function f
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 2 checks (with 0 expected failures)

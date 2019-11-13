@@ -6,4 +6,4 @@ test-resources/src/micro/test109.js:10:16: [maybe] Converting primitive number t
 test-resources/src/micro/test109.js:5:1: [info] Abstract value: 42.0
 test-resources/src/micro/test109.js:10:1: [info] Abstract value: NaN
 test-resources/src/micro/test109.js:12:1: [info] Abstract value: UIntPos|NaN
-Soundness testing succeeded for 64 checks (with 0 expected failures)
+Soundness testing succeeded for 63 checks (with 0 expected failures)

@@ -622,4 +622,4 @@ test-resources/src/google2/crypto.js:1043:13: [info] 'this' refers to a summary 
 test-resources/src/google2/crypto.js:1043:27: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:1043:56: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google2/crypto.js:1108:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-Soundness testing succeeded for 14998 checks (with 0 expected failures)
+Soundness testing succeeded for 12581 checks (with 0 expected failures)

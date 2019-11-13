@@ -302,7 +302,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3478:1: [definite] Dead assig
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3499:14: [definite] Reading absent property type
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3519:2: [definite] Dead assignment, property timeStamp is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3519:26: [definite] Reading absent property timeStamp
-benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3522:2: [definite] Dead assignment, property jQuery170733655225641645 is never read
+benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3522:2: [definite] Dead assignment, property jQuery1707332968985528251 is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3535:2: [definite] Dead assignment, property preventDefault is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3552:2: [definite] Dead assignment, property stopPropagation is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3566:2: [definite] Dead assignment, property stopImmediatePropagation is never read
@@ -1283,7 +1283,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3813:4: [maybe] TypeError, ac
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3821:10: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3843:4: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:4839:2: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:4978:7: [maybe] <Document.getElementById>("script1543012512020") did not match any elements
+benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:4978:7: [maybe] <Document.getElementById>("script1543012512460") did not match any elements
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:5037:32: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:5038:4: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:5038:4: [maybe] TypeError, call to non-function
@@ -1537,4 +1537,4 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:1684:43: [unsound] Assuming M
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3200:38: [unsound] Assuming UInt-addition is closed
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:3923:26: [unsound] Assuming Math.random returns fixed value
 benchmarks/tajs/src/jquery/libraries/jquery-1.7.js:4968:20: [unsound] Assuming Date.now returns fixed value
-Soundness testing succeeded for 6449 checks (with 2 expected failures)
+Soundness testing succeeded for 6360 checks (with 0 expected failures)

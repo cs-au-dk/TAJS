@@ -39,4 +39,4 @@ test-resources/src/1k2012love/1143.js:94:34: [maybe] Reading absent property (co
 test-resources/src/1k2012love/1143.js:94:50: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1143.js:97:14: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1143.js:106:3: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 414 checks (with 0 expected failures)
+Soundness testing succeeded for 405 checks (with 0 expected failures)

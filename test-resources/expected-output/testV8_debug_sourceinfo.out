@@ -17,4 +17,4 @@ test-resources/src/v8tests/debug-sourceinfo.js:70:10: [definite] The variable p 
 test-resources/src/v8tests/debug-sourceinfo.js:71:7: [definite] The variable location is never used
 test-resources/src/v8tests/debug-sourceinfo.js:202:10: [definite] The variable i is never used
 test-resources/src/v8tests/debug-sourceinfo.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-sourceinfo.js:43:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 4 checks (with 0 expected failures)

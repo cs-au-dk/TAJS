@@ -13,7 +13,7 @@ test-resources/src/micro/toStringAssumes.js:20:17: [maybe] Converting primitive 
 test-resources/src/micro/toStringAssumes.js:20:49: [maybe] The variable a has values with different types
 test-resources/src/micro/toStringAssumes.js:24:27: [maybe] The variable b has values with different types
 test-resources/src/micro/toStringAssumes.js:24:30: [maybe] The variable a has values with different types
-test-resources/src/micro/toStringAssumes.js:34:19: [maybe] The variable a has values with different types
+test-resources/src/micro/toStringAssumes.js:34:26: [maybe] The variable a has values with different types
 test-resources/src/micro/toStringAssumes.js:40:17: [maybe] Converting primitive boolean to object
 test-resources/src/micro/toStringAssumes.js:40:17: [maybe] Converting primitive number to object
 test-resources/src/micro/toStringAssumes.js:40:17: [maybe] Converting primitive string to object
@@ -22,4 +22,4 @@ test-resources/src/micro/toStringAssumes.js:42:23: [maybe] Converting primitive 
 test-resources/src/micro/toStringAssumes.js:42:23: [maybe] Converting primitive number to object
 test-resources/src/micro/toStringAssumes.js:42:23: [maybe] Converting primitive string to object
 test-resources/src/micro/toStringAssumes.js:42:37: [maybe] The variable b has values with different types
-Soundness testing succeeded for 83 checks (with 0 expected failures)
+Soundness testing succeeded for 82 checks (with 0 expected failures)

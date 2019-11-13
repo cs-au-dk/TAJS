@@ -635,4 +635,4 @@ test-resources/src/google/cryptobench.js:1073:13: [info] 'this' refers to a summ
 test-resources/src/google/cryptobench.js:1073:27: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1073:56: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/cryptobench.js:1138:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-Soundness testing succeeded for 15956 checks (with 0 expected failures)
+Soundness testing succeeded for 12492 checks (with 0 expected failures)

@@ -16,4 +16,4 @@ test-resources/src/v8tests/fuzz-accessors.js:85:39: [maybe] The variable obj has
 test-resources/src/v8tests/fuzz-accessors.js:85:43: [maybe] The variable name has values with different types
 test-resources/src/v8tests/fuzz-accessors.js:85:39: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/v8tests/fuzz-accessors.js:84:39: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 361 checks (with 0 expected failures)
+Soundness testing succeeded for 244 checks (with 1 expected failures)

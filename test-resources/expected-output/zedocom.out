@@ -23,4 +23,4 @@ TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/zedo.com-slice/index.html:33:93
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/zedo.com-slice/index.html:29:12):1:15: [info] Reading from unknown property that may cause loss of precision
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/zedo.com-slice/index.html:31:77):1:15: [info] Reading from unknown property that may cause loss of precision
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/zedo.com-slice/index.html:33:93):1:15: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 184 checks (with 0 expected failures)
+Soundness testing succeeded for 183 checks (with 0 expected failures)

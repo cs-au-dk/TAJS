@@ -13,4 +13,4 @@ benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:18:1: [definite] Unr
 benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:23:27: [definite] Unreachable function
 benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:45:9: [definite] The variable balloon is never used
 benchmarks/tajs/src/unevalizer/conduit.com-slice/index.html:57:21: [definite] Unreachable function
-Soundness testing succeeded for 232 checks (with 0 expected failures)
+Soundness testing succeeded for 230 checks (with 0 expected failures)

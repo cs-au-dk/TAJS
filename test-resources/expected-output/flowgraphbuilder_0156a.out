@@ -7,213 +7,223 @@ fg2: <main> function()
   block 1:
     node 3: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
     node 4: constant[true,v3] (host-environment-sources-loader)
-    ->[block 2] ~>[block 30]
+    ->[block 2] ~>[block 33]
   block 2:
     node 5: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
-    ->[block 3] ~>[block 30]
+    ->[block 3] ~>[block 33]
   block 3:
     node 6: call[-,v4,-] (host-environment-sources-loader)
-    ->[block 4] ~>[block 30]
+    ->[block 4] ~>[block 33]
   block 4:
-    node 7: read-variable['CSlider',v6,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:15)
-    node 8: constant["vs_cntr11",v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:23)
-    node 9: constant["lr",v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:36)
-    node 10: constant[1.0,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:42)
-    ->[block 5] ~>[block 30]
+    node 7: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 8: constant[true,v6] (host-environment-sources-loader)
+    ->[block 5] ~>[block 33]
   block 5:
-    node 11: construct[-,v6,v7,v8,v9,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:11)
-    ->[block 6] ~>[block 30]
+    node 9: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6] ~>[block 33]
   block 6:
-    node 12: write-variable[v5,'cs1'] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:5)
-    node 13: read-variable['cs1',v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
-    node 14: read-property[v11,'startSlide',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
-    node 15: constant["l",v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:14:16)
-    node 16: constant["cs1",v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:14:21)
-    ->[block 7] ~>[block 30]
+    node 10: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7] ~>[block 33]
   block 7:
-    node 17: call[v11,'startSlide',v12,v13,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
-    ->[block 8] ~>[block 30]
+    node 11: read-variable['CSlider',v9,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:15)
+    node 12: constant["vs_cntr11",v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:23)
+    node 13: constant["lr",v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:36)
+    node 14: constant[1.0,v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:42)
+    ->[block 8] ~>[block 33]
   block 8:
-    node 18: read-variable['cs1',v15,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:15:1)
-    node 19: constant[false,v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:15:10)
-    node 20: write-property[v15,'as',v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:15:1)
-    ->[block 9] ~>[block 30]
+    node 15: construct[-,v9,v10,v11,v12,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:11)
+    ->[block 9] ~>[block 33]
   block 9:
-    node 21: nop(eventDispatchers: entry) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 10,block 14] ~>[block 30]
+    node 16: write-variable[v8,'cs1'] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:13:5)
+    node 17: read-variable['cs1',v14,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
+    node 18: read-property[v14,'startSlide',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
+    node 19: constant["l",v15] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:14:16)
+    node 20: constant["cs1",v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:14:21)
+    ->[block 10] ~>[block 33]
   block 10:
-    node 22: event-dispatcher <CONTENT_LOADED> (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 13] ~>[block 11]
+    node 21: call[v14,'startSlide',v15,v16,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:14:1)
+    ->[block 11] ~>[block 33]
   block 11:
-    node 23: catch[v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    node 24: nop(eventDispatchers: exceptional exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 12,block 14]
+    node 22: read-variable['cs1',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:15:1)
+    node 23: constant[false,v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:15:10)
+    node 24: write-property[v18,'as',v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:15:1)
+    ->[block 12] ~>[block 33]
   block 12:
-    node 25: throw[v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[]
+    node 25: nop(eventDispatchers: entry) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 13,block 17] ~>[block 33]
   block 13:
-    node 26: nop(eventDispatchers: ordinary exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 14] ~>[block 30]
+    node 26: event-dispatcher <CONTENT_LOADED> (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 16] ~>[block 14]
   block 14:
-    node 27: nop(eventDispatchers: post DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 10,block 15,block 19] ~>[block 30]
+    node 27: catch[v20] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    node 28: nop(eventDispatchers: exceptional exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 15,block 17]
   block 15:
-    node 28: event-dispatcher <LOAD> (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 18] ~>[block 16]
+    node 29: throw[v20] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[]
   block 16:
-    node 29: catch[v18] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    node 30: nop(eventDispatchers: exceptional exit Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 17,block 19]
+    node 30: nop(eventDispatchers: ordinary exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 17] ~>[block 33]
   block 17:
-    node 31: throw[v18] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[]
+    node 31: nop(eventDispatchers: post DOMContentLoaded) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 13,block 18,block 22] ~>[block 33]
   block 18:
-    node 32: nop(eventDispatchers: ordinary exit Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 19] ~>[block 30]
+    node 32: event-dispatcher <LOAD> (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 21] ~>[block 19]
   block 19:
-    node 33: nop(eventDispatchers: post Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 15,block 20,block 24] ~>[block 30]
+    node 33: catch[v21] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    node 34: nop(eventDispatchers: exceptional exit Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 20,block 22]
   block 20:
-    node 34: event-dispatcher <OTHER> (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 23] ~>[block 21]
+    node 35: throw[v21] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[]
   block 21:
-    node 35: catch[v19] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    node 36: nop(eventDispatchers: exceptional exit Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 22,block 24]
+    node 36: nop(eventDispatchers: ordinary exit Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 22] ~>[block 33]
   block 22:
-    node 37: throw[v19] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[]
+    node 37: nop(eventDispatchers: post Load) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 18,block 23,block 27] ~>[block 33]
   block 23:
-    node 38: nop(eventDispatchers: ordinary exit Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 24] ~>[block 30]
+    node 38: event-dispatcher <OTHER> (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 26] ~>[block 24]
   block 24:
-    node 39: nop(eventDispatchers: post Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 20,block 25,block 29] ~>[block 30]
+    node 39: catch[v22] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    node 40: nop(eventDispatchers: exceptional exit Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 25,block 27]
   block 25:
-    node 40: event-dispatcher <UNLOAD> (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 28] ~>[block 26]
+    node 41: throw[v22] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[]
   block 26:
-    node 41: catch[v20] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    node 42: nop(eventDispatchers: exceptional exit Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 27,block 29]
+    node 42: nop(eventDispatchers: ordinary exit Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 27] ~>[block 33]
   block 27:
-    node 43: throw[v20] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[]
+    node 43: nop(eventDispatchers: post Other) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 23,block 28,block 32] ~>[block 33]
   block 28:
-    node 44: nop(eventDispatchers: ordinary exit Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 29] ~>[block 30]
+    node 44: event-dispatcher <UNLOAD> (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 31] ~>[block 29]
   block 29:
-    node 45: nop(eventDispatchers: post Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 25,block 32] ~>[block 30]
+    node 45: catch[v23] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    node 46: nop(eventDispatchers: exceptional exit Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 30,block 32]
   block 30:
-    node 46: catch[v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
-    ->[block 9,block 31]
+    node 47: throw[v23] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[]
   block 31:
-    node 47: throw[v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    node 48: nop(eventDispatchers: ordinary exit Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 32] ~>[block 33]
+  block 32:
+    node 49: nop(eventDispatchers: post Unload) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 28,block 35] ~>[block 33]
+  block 33:
+    node 50: catch[v19] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+    ->[block 12,block 34]
+  block 34:
+    node 51: throw[v19] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[]
-  block 32: [exit-ordinary]
-    node 48: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+  block 35: [exit-ordinary]
+    node 52: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[]
-  block 33: [exit-exceptional]
-    node 49: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
+  block 36: [exit-exceptional]
+    node 53: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js)
     ->[]
 function CSlider(c,t,n)
-  block 34: [entry]
-    node 50: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
-    ->[block 35]
-  block 35:
-    node 51: read-variable['this',v3,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:5)
-    node 52: read-variable['t',v5,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:15)
-    node 53: constant["lr",v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:20)
-    node 54: ==[v5,v6,v4] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:15)
-    node 55: if[v4](true-block:36,false-block:37) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:14)
-    ->[block 36,block 37]
-  block 36:
-    node 56: constant["left",v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:28)
-    ->[block 38]
-  block 37:
-    node 57: constant["top",v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:37)
+  block 37: [entry]
+    node 54: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     ->[block 38]
   block 38:
-    node 58: write-property[v3,'p',v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:5)
-    node 59: read-variable['this',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:5)
-    node 60: function-expr[function(d,o),v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
-    node 61: write-property[v8,'startSlide',v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:5)
-    node 62: read-variable['this',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:5)
-    node 63: function-expr[function(d),v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
-    node 64: write-property[v10,'getCP',v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:5)
-    ->[block 39]
-  block 39: [exit-ordinary]
-    node 65: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+    node 55: read-variable['this',v3,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:5)
+    node 56: read-variable['t',v5,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:15)
+    node 57: constant["lr",v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:20)
+    node 58: ==[v5,v6,v4] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:15)
+    node 59: if[v4](true-block:39,false-block:40) (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:14)
+    ->[block 39,block 40]
+  block 39:
+    node 60: constant["left",v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:28)
+    ->[block 41]
+  block 40:
+    node 61: constant["top",v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:37)
+    ->[block 41]
+  block 41:
+    node 62: write-property[v3,'p',v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:2:5)
+    node 63: read-variable['this',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:5)
+    node 64: function-expr[function(d,o),v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
+    node 65: write-property[v8,'startSlide',v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:5)
+    node 66: read-variable['this',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:5)
+    node 67: function-expr[function(d),v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
+    node 68: write-property[v10,'getCP',v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:5)
+    ->[block 42]
+  block 42: [exit-ordinary]
+    node 69: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     ->[]
-  block 40: [exit-exceptional]
-    node 66: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
+  block 43: [exit-exceptional]
+    node 70: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:1:1)
     ->[]
 function(d,o)
-  block 41: [entry]
-    node 67: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
-    ->[block 42]
-  block 42:
-    node 68: read-variable['this',v4,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:9)
-    node 69: read-variable['setInterval',v6,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:23)
-    node 70: constant["",v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:35)
-    node 71: read-variable['o',v15,v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:40)
-    node 72: +[v14,v15,v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:35)
-    node 73: constant[".move('",v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:44)
-    node 74: +[v12,v13,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:35)
-    node 75: read-variable['d',v11,v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:56)
-    node 76: +[v10,v11,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:35)
-    node 77: constant["')",v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:60)
-    node 78: +[v8,v9,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:35)
-    node 79: constant[10.0,v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:66)
-    ->[block 43]
-  block 43:
-    node 80: call[v5,v6,v7,v16,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:23)
-    ->[block 44]
-  block 44:
-    node 81: write-property[v4,'intrvl',v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:9)
-    node 82: read-variable['this',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:5:9)
-    node 83: read-variable['this',v20,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:5:19)
-    node 84: read-property[v20,'getCP',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:5:19)
+  block 44: [entry]
+    node 71: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
     ->[block 45]
   block 45:
-    node 85: call[v20,'getCP',v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:5:19)
+    node 72: read-variable['this',v4,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:9)
+    node 73: read-variable['setInterval',v6,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:23)
+    node 74: constant["",v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:35)
+    node 75: read-variable['o',v15,v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:40)
+    node 76: +[v14,v15,v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:35)
+    node 77: constant[".move('",v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:44)
+    node 78: +[v12,v13,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:35)
+    node 79: read-variable['d',v11,v2] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:56)
+    node 80: +[v10,v11,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:35)
+    node 81: constant["')",v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:60)
+    node 82: +[v8,v9,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:35)
+    node 83: constant[10.0,v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:66)
     ->[block 46]
   block 46:
-    node 86: write-property[v18,'np',v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:5:9)
+    node 84: call[v5,v6,v7,v16,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:23)
     ->[block 47]
-  block 47: [exit-ordinary]
-    node 87: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
+  block 47:
+    node 85: write-property[v4,'intrvl',v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:9)
+    node 86: read-variable['this',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:5:9)
+    node 87: read-variable['this',v20,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:5:19)
+    node 88: read-property[v20,'getCP',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:5:19)
+    ->[block 48]
+  block 48:
+    node 89: call[v20,'getCP',v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:5:19)
+    ->[block 49]
+  block 49:
+    node 90: write-property[v18,'np',v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:5:9)
+    ->[block 50]
+  block 50: [exit-ordinary]
+    node 91: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
     ->[]
-  block 48: [exit-exceptional]
-    node 88: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
+  block 51: [exit-exceptional]
+    node 92: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:3:23)
     ->[]
 function(d)
-  block 49: [entry]
-    node 89: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
-    ->[block 50]
-  block 50:
-    node 90: read-variable['eval',v4,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:16)
-    node 91: constant["parseInt(this.c.style.",v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:21)
-    node 92: read-variable['this',v14,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:48)
-    node 93: read-property[v14,'p',v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:48)
-    node 94: +[v12,v13,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:21)
-    node 95: constant[".substring(0,this.c.style.",v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:57)
-    node 96: +[v10,v11,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:21)
-    node 97: read-variable['this',v15,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:88)
-    node 98: read-property[v15,'p',v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:88)
-    node 99: +[v8,v9,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:21)
-    node 100: constant[".length-2))",v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:97)
-    node 101: +[v6,v7,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:21)
-    ->[block 51]
-  block 51:
-    node 102: call[v3,v4,v5,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:16)
-    ->[block 52]
-  block 52: [exit-ordinary]
-    node 103: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
+  block 52: [entry]
+    node 93: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
+    ->[block 53]
+  block 53:
+    node 94: read-variable['eval',v4,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:16)
+    node 95: constant["parseInt(this.c.style.",v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:21)
+    node 96: read-variable['this',v14,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:48)
+    node 97: read-property[v14,'p',v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:48)
+    node 98: +[v12,v13,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:21)
+    node 99: constant[".substring(0,this.c.style.",v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:57)
+    node 100: +[v10,v11,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:21)
+    node 101: read-variable['this',v15,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:88)
+    node 102: read-property[v15,'p',v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:88)
+    node 103: +[v8,v9,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:21)
+    node 104: constant[".length-2))",v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:97)
+    node 105: +[v6,v7,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:21)
+    ->[block 54]
+  block 54:
+    node 106: call[v3,v4,v5,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:16)
+    ->[block 55]
+  block 55: [exit-ordinary]
+    node 107: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
     ->[]
-  block 53: [exit-exceptional]
-    node 104: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
+  block 56: [exit-exceptional]
+    node 108: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:7:18)
     ->[]
 
 TAJS-dynamic-code(test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:1: [definite] TypeError, call to non-function
@@ -229,4 +239,4 @@ test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:15:1: [definite] U
 TAJS-dynamic-code(test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24: [definite] Unreachable code
 TAJS-dynamic-code(test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js: [maybe] Uncaught exception, constructed at [TAJS-dynamic-code(test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:4:23):1:1, TAJS-dynamic-code(test-resources/src/flowgraphbuilder/flowgraph_builder0156a.js:8:16):1:24]
-Soundness testing succeeded for 45 checks (with 0 expected failures)
+Soundness testing succeeded for 42 checks (with 0 expected failures)

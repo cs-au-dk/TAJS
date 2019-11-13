@@ -13,25 +13,35 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: read-variable['a',v5,-] (test-resources/src/flowgraphbuilder/multipleLazyOrs.js:1:1)
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 6: if[v5](true-block:9,false-block:6) (test-resources/src/flowgraphbuilder/multipleLazyOrs.js:1:1)
-    ->[block 6,block 9]
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6]
   block 6:
-    node 7: read-variable['b',v5,-] (test-resources/src/flowgraphbuilder/multipleLazyOrs.js:1:6)
+    node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 8: if[v5](true-block:9,false-block:8) (test-resources/src/flowgraphbuilder/multipleLazyOrs.js:1:1)
-    ->[block 8,block 9]
+    node 9: read-variable['a',v8,-] (test-resources/src/flowgraphbuilder/multipleLazyOrs.js:1:1)
+    ->[block 8]
   block 8:
-    node 9: read-variable['c',-,-] (test-resources/src/flowgraphbuilder/multipleLazyOrs.js:1:11)
-    ->[block 9]
-  block 9: [exit-ordinary]
-    node 10: return[v1] (test-resources/src/flowgraphbuilder/multipleLazyOrs.js)
+    node 10: if[v8](true-block:12,false-block:9) (test-resources/src/flowgraphbuilder/multipleLazyOrs.js:1:1)
+    ->[block 9,block 12]
+  block 9:
+    node 11: read-variable['b',v8,-] (test-resources/src/flowgraphbuilder/multipleLazyOrs.js:1:6)
+    ->[block 10]
+  block 10:
+    node 12: if[v8](true-block:12,false-block:11) (test-resources/src/flowgraphbuilder/multipleLazyOrs.js:1:1)
+    ->[block 11,block 12]
+  block 11:
+    node 13: read-variable['c',-,-] (test-resources/src/flowgraphbuilder/multipleLazyOrs.js:1:11)
+    ->[block 12]
+  block 12: [exit-ordinary]
+    node 14: return[v1] (test-resources/src/flowgraphbuilder/multipleLazyOrs.js)
     ->[]
-  block 10: [exit-exceptional]
-    node 11: exceptional-return (test-resources/src/flowgraphbuilder/multipleLazyOrs.js)
+  block 13: [exit-exceptional]
+    node 15: exceptional-return (test-resources/src/flowgraphbuilder/multipleLazyOrs.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/multipleLazyOrs.js: [definite] Ordinary program exit is unreachable

@@ -20,5 +20,5 @@ test-resources/src/1k2013spring/1526.js:5:11: [definite] Unreachable function
 test-resources/src/1k2013spring/1526.js:8:13: [definite] Unreachable function
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1526.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1526.js:1:75, test-resources/src/1k2013spring/shim.js:9:5]
-Disabling soundness testing for test-resources/src/1k2013spring/1526.js entirely (282 uninspected soundness errors).
-Soundness testing succeeded for 327 checks (with 282 expected failures)
+Disabling soundness testing for test-resources/src/1k2013spring/1526.js entirely (281 uninspected soundness errors).
+Soundness testing succeeded for 326 checks (with 281 expected failures)

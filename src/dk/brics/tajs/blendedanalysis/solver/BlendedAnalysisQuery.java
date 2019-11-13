@@ -20,6 +20,7 @@ import dk.brics.tajs.blendedanalysis.InstructionComponent;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.Value;
 
+import java.net.URL;
 import java.util.Objects;
 import java.util.Set;
 
@@ -29,6 +30,11 @@ public class BlendedAnalysisQuery {
      *  Node, which blended analysis should be performed at.
      */
     private final AbstractNode node;
+
+    /**
+     * URL of the module to be filtered.
+     */
+    private final URL moduleUrl;
 
     /**
      *  Which part of the node, do we want to increase precision for, using blended analysis.
@@ -51,15 +57,30 @@ public class BlendedAnalysisQuery {
     private final int hashCode;
 
     public BlendedAnalysisQuery(AbstractNode node, InstructionComponent ic, Set<Constraint> constraints, Value soundDefault) {
+        this(node, null, ic, constraints, soundDefault);
+    }
+
+    public BlendedAnalysisQuery(URL moduleUrl, InstructionComponent ic, Set<Constraint> constraints, Value soundDefault) {
+        this(null, moduleUrl, ic, constraints, soundDefault);
+    }
+
+    public BlendedAnalysisQuery(AbstractNode node, URL moduleUrl,
+                                InstructionComponent ic, Set<Constraint> constraints,
+                                Value soundDefault) {
         this.node = node;
+        this.moduleUrl = moduleUrl;
         this.ic = ic;
         this.constraints = constraints;
         this.soundDefault = soundDefault;
-        this.hashCode = calculateHashCode();
+        this.hashCode = Objects.hash(node, moduleUrl, ic, constraints, soundDefault);
     }
 
     public AbstractNode getNode() {
         return node;
+    }
+
+    public URL getModuleUrl() {
+        return moduleUrl;
     }
 
     public InstructionComponent getInstructionComponent() {
@@ -82,6 +103,7 @@ public class BlendedAnalysisQuery {
         BlendedAnalysisQuery that = (BlendedAnalysisQuery) o;
 
         if (!Objects.equals(node, that.node)) return false;
+        if (!Objects.equals(moduleUrl, that.moduleUrl)) return false;
         if (!Objects.equals(ic, that.ic)) return false;
         if (!Objects.equals(constraints, that.constraints)) return false;
         return Objects.equals(soundDefault, that.soundDefault);
@@ -92,18 +114,11 @@ public class BlendedAnalysisQuery {
         return hashCode;
     }
 
-    private int calculateHashCode() {
-        int result = node != null ? node.hashCode() : 0;
-        result = 31 * result + (ic != null ? ic.hashCode() : 0);
-        result = 31 * result + (constraints != null ? constraints.hashCode() : 0);
-        result = 31 * result + (soundDefault != null ? soundDefault.hashCode() : 0);
-        return result;
-    }
-
     @Override
     public String toString() {
         return "BlendedAnalysisQuery{" +
                 "node=" + node +
+                ", moduleUrl=" + moduleUrl +
                 ", ic=" + ic +
                 ", constraints=" + constraints +
                 ", soundDefault=" + soundDefault +

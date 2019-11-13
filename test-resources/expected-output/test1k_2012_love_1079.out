@@ -17,4 +17,4 @@ test-resources/src/1k2012love/1079.js:38:3: [maybe] Converting primitive string 
 test-resources/src/1k2012love/1079.js:38:3: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1079.js:39:4: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1079.js:39:7: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 347 checks (with 0 expected failures)
+Soundness testing succeeded for 346 checks (with 0 expected failures)

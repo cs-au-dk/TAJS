@@ -1448,4 +1448,4 @@ test-resources/src/chromeexperiments/raytracer.html:766:33: [info] 'this' refers
 test-resources/src/chromeexperiments/raytracer.html:772:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/raytracer.html:788:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 Disabling soundness testing for test-resources/src/chromeexperiments/raytracer.html entirely (4 uninspected soundness errors).
-Soundness testing succeeded for 4332 checks (with 4 expected failures)
+Soundness testing succeeded for 4285 checks (with 4 expected failures)

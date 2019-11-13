@@ -1227,4 +1227,4 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3507:7: [info] Reading fr
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:24: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15708:60: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-Soundness testing succeeded for 20108 checks (with 0 expected failures)
+Soundness testing succeeded for 20010 checks (with 0 expected failures)

@@ -50,4 +50,4 @@ test-resources/src/chromeexperiments/watertype.html:297:12: [maybe] Conversion t
 test-resources/src/chromeexperiments/watertype.html:297:25: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/watertype.html:298:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/watertype.html:298:25: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 3887 checks (with 0 expected failures)
+Soundness testing succeeded for 3877 checks (with 0 expected failures)

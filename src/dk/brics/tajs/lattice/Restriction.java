@@ -20,6 +20,8 @@ import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collectors;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Optional;
 
 /**
@@ -29,8 +31,22 @@ public class Restriction {
 
     private Value val;
 
+    private FunctionTypeSignatures signatures;
+
+    private Collection<Restriction> union;
+
+    private ObjectLabel.Kind objkind;
+
     public Value getValue() {
         return val;
+    }
+
+    public FunctionTypeSignatures getFunctionTypeSignatures() {
+        return signatures;
+    }
+
+    public Collection<Restriction> getUnion() {
+        return union;
     }
 
     public enum Kind {
@@ -54,6 +70,11 @@ public class Restriction {
          * Value is a function.
          */
         FUNCTION,
+
+        /**
+         * Value is a function with a TypeScript type signature.
+         */
+        TYPED_FUNCTION,
 
         /**
          * Value is strictly equal to the selected value.
@@ -119,6 +140,21 @@ public class Restriction {
          * Object.prototype.toString of value is not the selected value.
          */
         NOT_OBJECT_TO_STRING,
+
+        /**
+         * Type-of value is "object" or "function".
+         */
+        TYPEOF_OBJECT_OR_FUNCTION,
+
+        /**
+         * Value is restricted to the selected union of restrictions.
+         */
+        UNION,
+
+        /**
+         * Value is object of the select kind.
+         */
+        OBJKIND,
     }
 
     private Kind kind;
@@ -131,10 +167,35 @@ public class Restriction {
     }
 
     /**
-     * Sets the value (only for {@link Kind#STRICT_EQUAL}, {@link Kind#STRICT_NOT_EQUAL} {@link Kind#LOOSE_EQUAL}, and {@link Kind#LOOSE_NOT_EQUAL}).
+     * Sets the value (only for {@link Kind#STRICT_EQUAL}, {@link Kind#STRICT_NOT_EQUAL} {@link Kind#LOOSE_EQUAL}, {@link Kind#LOOSE_NOT_EQUAL},
+     * and {@link Kind#OBJECT_TO_STRING}).
      */
     public Restriction set(Value v) {
         val = v;
+        return this;
+    }
+
+    /**
+     * Sets the function type signatures (only for {@link Kind#TYPED_FUNCTION}).
+     */
+    public Restriction set(FunctionTypeSignatures s) {
+        signatures = s;
+        return this;
+    }
+
+    /**
+     * Sets the union of restrictions (only for {@link Kind#UNION}).
+     */
+    public Restriction set(Collection<Restriction> u) {
+        union = u;
+        return this;
+    }
+
+    /**
+     * Sets the object kind (only for {@link Kind#OBJKIND}).
+     */
+    public Restriction set(ObjectLabel.Kind k) {
+        objkind = k;
         return this;
     }
 
@@ -157,6 +218,12 @@ public class Restriction {
                 return v.restrictToNotNullNotUndef().restrictToNotAbsent();
             case FUNCTION:
                 return v.restrictToFunction().joinGettersSetters(v).restrictToNotNullNotUndef().restrictToNotAbsent();
+            case TYPED_FUNCTION:
+                Value v2 = v.restrictToFunction().joinGettersSetters(v).addFunctionTypeSignatures(signatures);
+                Value v3 = v2.restrictToNotNullNotUndef().restrictToNotAbsent();
+                if (v3.isNone())
+                    v3 = v2; // don't remove null, undef, and absent if it leads to bottom (to be a little resilient to bugs in TypeScript declaration files)
+                return v3;
             case STRICT_EQUAL:
                 return v.restrictToStrictEquals(val);
             case STRICT_NOT_EQUAL:
@@ -180,9 +247,12 @@ public class Restriction {
             case PARTITIONS:
                 if (!(val instanceof PartitionedValue))
                     throw new AnalysisException("PARTITIONS should only be used with partitioned values");
-                if (v instanceof PartitionedValue) // v already partitioned, add the new partitioning
-                    return ((PartitionedValue) v).addPartitions((PartitionedValue)val.joinMeta(v));
-                else // v not already partitioned
+                if (v instanceof PartitionedValue) {// v already partitioned, add the new partitioning
+                    if (Collections.disjoint(((PartitionedValue) val).getPartitionNodes(), ((PartitionedValue) v).getPartitionNodes()))
+                        return ((PartitionedValue) v).addPartitions((PartitionedValue) val.joinMeta(v));
+                    else
+                        return v.join(val);
+                } else // v not already partitioned
                     return val.joinMeta(v);
             case OBJECT_TO_STRING:
                 if (val.isMaybeSingleStr()) {
@@ -224,6 +294,12 @@ public class Restriction {
                     }
                 }
                 return v;
+            case TYPEOF_OBJECT_OR_FUNCTION:
+                return v.restrictToTypeofObject().joinMeta(v).join(v.restrictToFunction().joinGettersSetters(v)).restrictToNotNullNotUndef().restrictToNotAbsent();
+            case UNION:
+                return Value.join(union.stream().map(r -> r.restrict(v)).collect(java.util.stream.Collectors.toList()));
+            case OBJKIND:
+                return v.restrictToObjKind(objkind);
             default:
                 return v;
         }
@@ -270,7 +346,7 @@ public class Restriction {
                 return new Restriction(Kind.NOT_OBJECT_TO_STRING).set(val);
             case NOT_OBJECT_TO_STRING:
                 return new Restriction(Kind.OBJECT_TO_STRING).set(val);
-            default: // no need for negated versions of NOT_NULL_UNDEF and FUNCTION
+            default: // no need for negated versions of NOT_NULL_UNDEF, FUNCTION, TYPED_FUNCTION, TYPEOF_OBJECT_OR_FUNCTION, UNION
                 return null;
         }
     }
@@ -298,7 +374,6 @@ public class Restriction {
 
     @Override
     public String toString() {
-        return "(" + kind + ", " + val + ")";
+        return "(" + kind + ", " + val + ", " + signatures + "," + union + ")";
     }
 }
-

@@ -370,5 +370,7 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:305:17: [maybe] Rea
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:314:13: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:314:66: [maybe] The variable result has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:320:12: [maybe] The variable result has values with different types
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 5965 checks (with 0 expected failures)
+Soundness testing succeeded for 5929 checks (with 0 expected failures)

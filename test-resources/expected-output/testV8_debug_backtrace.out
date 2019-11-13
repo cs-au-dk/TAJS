@@ -6,4 +6,4 @@ test-resources/src/v8tests/debug-backtrace.js:41:9: [definite] Unreachable code
 test-resources/src/v8tests/debug-backtrace.js:46:1: [definite] Unreachable function safeEval
 test-resources/src/v8tests/debug-backtrace.js:54:1: [definite] Unreachable function listener
 test-resources/src/v8tests/debug-backtrace.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-backtrace.js:41:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 5 checks (with 0 expected failures)

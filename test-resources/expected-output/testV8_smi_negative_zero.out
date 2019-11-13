@@ -1,2 +1,2 @@
 test-resources/src/v8tests/smi-negative-zero.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 343 checks (with 0 expected failures)
+Soundness testing succeeded for 381 checks (with 0 expected failures)

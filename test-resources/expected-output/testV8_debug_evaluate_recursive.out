@@ -10,4 +10,4 @@ test-resources/src/v8tests/debug-evaluate-recursive.js:108:1: [definite] Unreach
 test-resources/src/v8tests/debug-evaluate-recursive.js:135:1: [definite] Unreachable function f
 test-resources/src/v8tests/debug-evaluate-recursive.js:139:1: [definite] Unreachable function g
 test-resources/src/v8tests/debug-evaluate-recursive.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-evaluate-recursive.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 7 checks (with 0 expected failures)

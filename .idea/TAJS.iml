@@ -16,7 +16,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/src" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/test" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/test-resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/antbuild" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
@@ -64,6 +63,16 @@
         <JAVADOC />
         <SOURCES />
         <jarDirectory url="file://$MODULE_DIR$/extras/jalangilogger/build/libs" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/extras/ts-spec-reader/build/libs" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/extras/ts-spec-reader/build/libs" recursive="false" />
       </library>
     </orderEntry>
   </component>

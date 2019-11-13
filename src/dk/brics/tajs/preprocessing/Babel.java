@@ -37,6 +37,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
+import static dk.brics.tajs.util.Collections.newSet;
+
 public class Babel {
 
     private static final Logger log = Logger.getLogger(Babel.class);
@@ -48,7 +50,7 @@ public class Babel {
 
     private static final Pattern successPattern = Pattern.compile("Successfully compiled (\\d+) files? with Babel\\.");
 
-    private static final Set<String> supportedFileExtensions = Set.of(".es6", ".js", ".es", ".jsx", ".mjs", "");
+    private static final Set<String> supportedFileExtensions = newSet(Arrays.asList(".es6", ".js", ".es", ".jsx", ".mjs", ""));
 
     /**
      * This method performs babel preprocessing on the files listed in the *files* parameter.

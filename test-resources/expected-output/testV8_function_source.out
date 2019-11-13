@@ -6,4 +6,4 @@ test-resources/src/v8tests/function-source.js:34:3: [definite] Unreachable funct
 test-resources/src/v8tests/function-source.js:40:1: [definite] Unreachable function g
 test-resources/src/v8tests/function-source.js:41:3: [definite] Unreachable function h
 test-resources/src/v8tests/function-source.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/function-source.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 3 checks (with 0 expected failures)

@@ -22,7 +22,6 @@ import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.BinaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
-import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectProperty;
@@ -35,6 +34,7 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Pair;
+import org.apache.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -45,6 +45,12 @@ import static dk.brics.tajs.util.Collections.newSet;
  * Filters dataflow using control sensitivity assumptions.
  */
 public class Filtering {
+
+    private static Logger log = Logger.getLogger(Filtering.class);
+
+//    static {
+//        LogManager.getLogger(Filtering.class).setLevel(Level.DEBUG);
+//    }
 
     private Solver.SolverInterface c;
 
@@ -57,7 +63,15 @@ public class Filtering {
         }
     }
 
-    public Filtering(Solver.SolverInterface c) {
+    /**
+     * Constructs a new Filtering object.
+     */
+    public Filtering() { }
+
+    /**
+     * Initializes the connection to the solver.
+     */
+    public void setSolverInterface(Solver.SolverInterface c) {
         this.c = c;
         this.pv = c.getAnalysis().getPropVarOperations();
     }
@@ -105,6 +119,17 @@ public class Filtering {
     }
 
     /**
+     * Restricts the value of the given object property (potentially via the prototype chain).
+     * The null restriction is ignored.
+     * @return the restriction given as argument
+     */
+    public Restriction assumeObjectPropertySatisfies(Set<ObjectLabel> baseobjs, PKey propname, Restriction restriction) {
+        if (restriction != null)
+            assumeObjectPropertySatisfies(baseobjs, propname, restriction, new Visited());
+        return restriction;
+    }
+
+    /**
      * Variant of {@link #assumeObjectPropertySatisfies(ObjectLabel, PKey, Restriction, Visited)} that uses the prototype chain.
      * (This method is only needed for call nodes where the function is given as a property read.)
      */
@@ -112,40 +137,17 @@ public class Filtering {
         Pair<Set<ObjectLabel>, Value> p = pv.readPropertyWithAttributesAndObjs(baseobjs, propname);
         Set<ObjectLabel> objs = p.getFirst();
         Value v = p.getSecond();
-        if (objs.size() == 1 && objs.iterator().next().isSingleton()) {
+        if (ObjectLabel.allowStrongUpdate(objs)) {
             v = UnknownValueResolver.getRealValue(v, c.getState());
             Value oldv = v;
             v = restriction.restrict(v);
-            if (v != oldv)
+            if (v != oldv) {
+                if (log.isDebugEnabled())
+                    log.debug("Restricting object property " + objs + "." + propname + " from " + oldv + " to " + v + " (at " + c.getNode().getSourceLocation() + ")");
                 pv.writePropertyWithAttributes(objs, propname, v, false, true);
+            }
             if (assumeRegistersEqualToSatisfy(objs.iterator().next(), propname, restriction, visited))
                 return true;
-        }
-        return false;
-    }
-
-    /**
-     * Restricts the value of the given variable.
-     * (This method is only needed because 'typeof x' doesn't read x like an ordinary variable read.)
-     */
-    private boolean assumeVariableSatisfies(String varname, Restriction restriction, Visited visited) {
-        if (!varname.equals("this")) { // TODO: could also filter 'this'?
-            Set<ObjectLabel> baseObjs = newSet();
-            ObjectLabel baseObj;
-            pv.readVariable(varname, baseObjs, true, false);
-            if (baseObjs.size() == 1 && (baseObj = baseObjs.iterator().next()).isSingleton()) {
-                Value v = UnknownValueResolver.getValue(ObjectProperty.makeOrdinary(baseObj, PKey.StringPKey.make(varname)), c.getState(), false); // FIXME: may not be same value as when typeof when executed! - example: typeof x==(x=null)
-                Value oldv = v;
-                v = restriction.restrict(v);
-                if (v.isNotPresentNotAbsent() && !Options.get().isPropagateDeadFlow()) {
-                    c.getState().setToBottom();
-                    return true;
-                }
-                if (v != oldv)
-                    c.getState().getObject(baseObj, true).setProperty(PKey.StringPKey.make(varname), v);
-                if (assumeRegistersEqualToSatisfy(baseObjs.iterator().next(), PKey.StringPKey.make(varname), restriction, visited))
-                    return true;
-            }
         }
         return false;
     }
@@ -238,12 +240,12 @@ public class Filtering {
 
         if (restriction.getKind() == Restriction.Kind.TRUTHY || restriction.getKind() == Restriction.Kind.FALSY) {
 
-            if (def instanceof UnaryOperatorNode) { // recognize negations
+            if (def instanceof UnaryOperatorNode) {
                 UnaryOperatorNode n = (UnaryOperatorNode) def;
                 if (n.getOperator() == UnaryOperatorNode.Op.NOT) {
                     Restriction r = restriction.negate();
                     if (r != null)
-                        assume(n.getArgRegister(), r, visited);
+                        return assume(n.getArgRegister(), r, visited);
                 }
 
             } else if (def instanceof BinaryOperatorNode) {
@@ -268,16 +270,17 @@ public class Filtering {
             }
         } else if (restriction.getKind() == Restriction.Kind.STRICT_EQUAL || restriction.getKind() == Restriction.Kind.LOOSE_EQUAL
                 || restriction.getKind() == Restriction.Kind.STRICT_NOT_EQUAL || restriction.getKind() == Restriction.Kind.LOOSE_NOT_EQUAL) {
-            if (def instanceof TypeofNode && restriction.getValue().isMaybeSingleStr() && !restriction.getValue().isMaybeOtherThanStr()) {
-                TypeofNode typeofNode = (TypeofNode) def;
-                Restriction r = Restriction.typeofToRestriction(restriction.getValue().getStr());
-                if (r != null) {
-                    if (restriction.getKind() == Restriction.Kind.STRICT_NOT_EQUAL || restriction.getKind() == Restriction.Kind.LOOSE_NOT_EQUAL)
-                        r = r.negate();
-                    if (typeofNode.isVariable())
-                        return assumeVariableSatisfies(typeofNode.getVariableName(), r, visited);
-                    else
-                        return assume(typeofNode.getArgRegister(), r, visited);
+            if (def instanceof UnaryOperatorNode) {
+                UnaryOperatorNode n = (UnaryOperatorNode) def;
+                if (n.getOperator() == UnaryOperatorNode.Op.TYPEOF) {
+                    if (restriction.getValue().isMaybeSingleStr() && !restriction.getValue().isMaybeOtherThanStr()) {
+                        Restriction r = Restriction.typeofToRestriction(restriction.getValue().getStr());
+                        if (r != null) {
+                            if (restriction.getKind() == Restriction.Kind.STRICT_NOT_EQUAL || restriction.getKind() == Restriction.Kind.LOOSE_NOT_EQUAL)
+                                r = r.negate();
+                            return assume(n.getArgRegister(), r, visited);
+                        }
+                    }
                 }
             } else if (def instanceof CallNode) {
                 CallNode callNode = (CallNode) def;
@@ -353,5 +356,18 @@ public class Filtering {
      */
     public void assumePartitions(int reg, PartitionedValue value) {
         assume(reg, new Restriction(Restriction.Kind.PARTITIONS).set(value));
+    }
+
+    /**
+     * Assumes that the value satisfies the given restriction.
+     * The null restriction is ignored.
+     */
+    public Value assumeValueSatisfies(Value v, Restriction restriction) {
+        if (restriction == null)
+            return v;
+        Value res = restriction.restrict(v);
+        if (log.isDebugEnabled() && !res.equals(v))
+            log.debug("Restricting value " + v + " to " + res + " (at " + c.getNode().getSourceLocation() + ")");
+        return res;
     }
 }

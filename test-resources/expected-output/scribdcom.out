@@ -18,4 +18,4 @@ benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:21:5: [definite] Dead
 benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:25:5: [definite] Dead assignment, property boomerang_send_to_scribd is never read
 benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html: [definite] Exceptional program exit is unreachable
 benchmarks/tajs/src/unevalizer/scribd.com-slice/index.html:29:25: [definite] The variable default_value is never used
-Soundness testing succeeded for 43 checks (with 0 expected failures)
+Soundness testing succeeded for 42 checks (with 0 expected failures)

@@ -4,4 +4,4 @@ test-resources/src/v8tests/debug-breakpoints.js:30:9: [definite] Unreachable cod
 test-resources/src/v8tests/debug-breakpoints.js:32:1: [definite] Unreachable function f
 test-resources/src/v8tests/debug-breakpoints.js:33:1: [definite] Unreachable function g
 test-resources/src/v8tests/debug-breakpoints.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-breakpoints.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 3 checks (with 0 expected failures)

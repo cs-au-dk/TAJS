@@ -1,6 +1,7 @@
 package dk.brics.tajs.test;
 
 import dk.brics.tajs.Main;
+import dk.brics.tajs.monitoring.soundness.SoundnessTesterMonitor;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.AnalysisResultException;
@@ -1326,6 +1327,13 @@ public class TestMicro {
         Options.get().enableUnevalizer();
         Options.get().enableDoNotExpectOrdinaryExit();
         Misc.run("test-resources/src/micro/testEval.js");
+        Misc.checkSystemOutput();
+    }
+
+    @Test(expected = AnalysisResultException.class /* TODO: github #553 */)
+    public void micro_testEval_unsound() throws Exception {
+        Options.get().enableUnevalizer();
+        Misc.run("test-resources/src/micro/testEvalUnsound.js");
         Misc.checkSystemOutput();
     }
 
@@ -2976,7 +2984,7 @@ public class TestMicro {
     public void exceptionFromNativeFunction1() {
         Options.get().enableDoNotExpectOrdinaryExit();
         Misc.runSource("1.2.toFixed(10);",
-                "3.4.toFixed(100);",
+                "3.4.toFixed(101);",
                 "TAJS_assert(false);");
     }
 
@@ -4238,5 +4246,25 @@ public class TestMicro {
                 "var y = x.f;",
                 "x.f = 3;",
                 "if (y === 2) {TAJS_assert(true)}");
+    }
+
+    @Test(expected = SoundnessTesterMonitor.SoundnessException.class /* TODO: GitHub #554 */)
+    public void evalSyntaxErrorUnsoundness() {
+        Options.get().enableUnevalizer();
+        Misc.runSource("function f (arg) { return arg; }",
+                "eval('f(1,)')");
+    }
+
+    @Test
+    public void testPlus() {
+        Misc.runSource("TAJS_dumpValue((TAJS_make('AnyBool') ? 5 : 'foo') + (TAJS_make('AnyBool') ? 10 : 'bar'))");
+        Misc.checkSystemOutput();
+    }
+
+    @Test
+    public void unexpectedPendingFlowBug() {
+        Options.get().enablePropNamePartitioning();
+        Options.get().enableTypePartitioning();
+        Misc.run("test-resources/src/micro/unexpectedPendingFlowBug.js");
     }
 }

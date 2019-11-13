@@ -1,4 +1,4 @@
 out/temp-sources/TestMicro.sizzle1.js: [definite] Exceptional program exit is unreachable
 out/temp-sources/TestMicro.sizzle1.js:15:5: [info] Abstract value: "f"
 out/temp-sources/TestMicro.sizzle1.js:15:5: [info] Abstract value: "g"
-Soundness testing succeeded for 36 checks (with 0 expected failures)
+Soundness testing succeeded for 34 checks (with 0 expected failures)

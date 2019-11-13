@@ -57,4 +57,4 @@ test-resources/src/sunspider/string-unpack-code.js:20:230: [info] Reading from u
 test-resources/src/sunspider/string-unpack-code.js:34:228: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/sunspider/string-unpack-code.js:55:226: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/sunspider/string-unpack-code.js:70:233: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 24007 checks (with 0 expected failures)
+Soundness testing succeeded for 24239 checks (with 0 expected failures)

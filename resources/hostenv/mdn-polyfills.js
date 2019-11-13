@@ -136,6 +136,7 @@ if (!Function.prototype.bind) {
                 }
             }
 
+            TAJS_makeContextSensitive(contextSensitivityHack, 0);
             TAJS_makeContextSensitive(contextSensitivityHack, 1);
             TAJS_makeContextSensitive(contextSensitivityHack, 2);
             TAJS_makeContextSensitive(contextSensitivityHack, 3);

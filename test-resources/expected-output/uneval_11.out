@@ -1,4 +1,4 @@
 test-resources/src/uneval/uneval11.js: [definite] Exceptional program exit is unreachable
 test-resources/src/uneval/uneval11.js:6:1: [info] Abstract value: 34.0
 test-resources/src/uneval/uneval11.js:8:1: [info] Abstract value: 100.0
-Soundness testing succeeded for 15 checks (with 0 expected failures)
+Soundness testing succeeded for 17 checks (with 0 expected failures)

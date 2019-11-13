@@ -155,4 +155,4 @@ test-resources/src/1k2012love/1254.js:208:9: [maybe] Converting primitive number
 test-resources/src/1k2012love/1254.js:40:3: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/1k2012love/1254.js:38:1: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/1k2012love/1254.js:47:5: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 423 checks (with 0 expected failures)
+Soundness testing succeeded for 421 checks (with 0 expected failures)

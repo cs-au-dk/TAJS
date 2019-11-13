@@ -318,7 +318,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:3250:2: [definite] Dead assig
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:3301:14: [definite] Reading absent property type
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:3321:2: [definite] Dead assignment, property timeStamp is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:3321:26: [definite] Reading absent property timeStamp
-benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:3324:2: [definite] Dead assignment, property jQuery19007560505494835985 is never read
+benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:3324:2: [definite] Dead assignment, property jQuery19007556922372959398 is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:3332:2: [definite] Dead assignment, property isImmediatePropagationStopped is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:3334:2: [definite] Dead assignment, property preventDefault is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:3352:2: [definite] Dead assignment, property stopPropagation is never read
@@ -1325,8 +1325,8 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:3639:4: [maybe] TypeError, ac
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:4027:21: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:4027:21: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:4041:3: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:4058:4: [maybe] <HTMLDocument.prototype.getElementsByName>(sizzle-15430124670300) did not match any elements
-benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:4059:27: [maybe] <Document.getElementById>("sizzle-1543012467030") did not match any elements
+benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:4058:4: [maybe] <HTMLDocument.prototype.getElementsByName>(sizzle-15430124674920) did not match any elements
+benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:4059:27: [maybe] <Document.getElementById>("sizzle-1543012467492") did not match any elements
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:4070:35: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:4071:4: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:4071:4: [maybe] TypeError, call to non-function
@@ -1571,4 +1571,4 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:1016:48: [unsound] Assuming U
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:1712:39: [unsound] Assuming Math.random returns fixed value
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:2948:28: [unsound] Assuming UInt-addition is closed
 benchmarks/tajs/src/jquery/libraries/jquery-1.9.js:3702:25: [unsound] Assuming Date.now returns fixed value
-Soundness testing succeeded for 7118 checks (with 2 expected failures)
+Soundness testing succeeded for 7002 checks (with 1 expected failures)

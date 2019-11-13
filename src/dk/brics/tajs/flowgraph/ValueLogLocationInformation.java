@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.flowgraph;
 
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
@@ -38,6 +39,20 @@ public class ValueLogLocationInformation {
 
     public Map<SourceLocation, Set<SourceLocation>> getTajsLocation2jalangiLocation() {
         return tajsLocation2jalangiLocation;
+    }
+
+    public Set<SourceLocation> getJalangiLocations(SourceLocation tajsLocation) {
+        Set<SourceLocation> aliases = newSet();
+        LinkedList<SourceLocation> worklist = new LinkedList<>();
+        worklist.add(tajsLocation);
+        while (!worklist.isEmpty()) {
+            SourceLocation current = worklist.removeFirst();
+            if (aliases.contains(current))
+                continue;
+            aliases.add(current);
+            worklist.addAll(tajsLocation2jalangiLocation.getOrDefault(current, newSet()));
+        }
+        return aliases;
     }
 
     public Set<SourceLocation> getDeclaredAccessorAllocationSites() {

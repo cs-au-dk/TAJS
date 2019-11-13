@@ -1,21 +1,28 @@
 test-resources/src/micro/testPaper.js:9:5: [definite] The function Person is invoked both as constructor and function
 test-resources/src/micro/testPaper.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/testPaper.js:11:22: [maybe] Converting primitive number to object
-test-resources/src/micro/testPaper.js:19:3: [info] Abstract object: {name:"Joe Average",studentid:"100026",[[Prototype]]=[@Object#node20]}
-test-resources/src/micro/testPaper.js:20:3: [info] Abstract object: {name:"John Q. Doe",studentid:"100027",[[Prototype]]=[@Object#node20]}
+test-resources/src/micro/testPaper.js:19:3: [info] Abstract object: {name:"Joe Average",studentid:"100026",[[Prototype]]=[@Object#node24]}
+test-resources/src/micro/testPaper.js:20:3: [info] Abstract object: {name:"John Q. Doe",studentid:"100027",[[Prototype]]=[@Object#node24]}
 test-resources/src/micro/testPaper.js:26:1: [info] Abstract state (modified parts):
   @<the global object>[native] (<initial state>):
     Person: [@Person#fun1]
     Student: [@Student#fun3]
     t: 100027.0
-    x: [@Object#node31]
-    y: [@Object#node36]
+    x: [@Object#node35]
+    y: [@Object#node40]
+  @Error[native] (<initial state>):
+    captureStackTrace: [@<anonymous>#fun7]
+  @Function.prototype[native] (<initial state>):
   @Number.prototype[native] (<initial state>):
   @Object.prototype[native] (<initial state>):
   @Object[native] (<initial state>):
   @String.prototype[native] (<initial state>):
     replace: [@replace#fun5]
   @String[native] (<initial state>):
+  @Object#node12 (host-environment-sources-loader):
+    constructor: [@<anonymous>#fun6]
+    [[Prototype]] = [@Object.prototype[native]]
+    [[Value]] = NaN
   @Object#node8 (host-environment-sources-loader):
     constructor: [@<anonymous>#fun4]
     [[Prototype]] = [@Object.prototype[native]]
@@ -34,46 +41,66 @@ test-resources/src/micro/testPaper.js:26:1: [info] Abstract state (modified part
   @<anonymous>#fun2 (test-resources/src/micro/testPaper.js:6:30):
     length: 1.0
     name: ""
-    prototype: [@Object#node16]
+    prototype: [@Object#node20]
     [[Prototype]] = [@Function.prototype[native]]
-  @Object#node16 (test-resources/src/micro/testPaper.js:6:30):
+  @Object#node20 (test-resources/src/micro/testPaper.js:6:30):
     constructor: [@<anonymous>#fun2]
     [[Prototype]] = [@Object.prototype[native]]
     [[Value]] = NaN
   @Student#fun3 (test-resources/src/micro/testPaper.js:7:3):
     length: 2.0
     name: "Student"
-    prototype: [@Object#node20]
+    prototype: [@Object#node24]
     [[Prototype]] = [@Function.prototype[native]]
-  @Object#node20 (test-resources/src/micro/testPaper.js:13:23):
+  @Object#node24 (test-resources/src/micro/testPaper.js:13:23):
     name: Undef
     [[Prototype]] = [@Object#node1]
-  @Object#node31 (test-resources/src/micro/testPaper.js:16:11):
+  @Object#node35 (test-resources/src/micro/testPaper.js:16:11):
     name: "Joe Average"
     studentid: "100026"
-    [[Prototype]] = [@Object#node20]
-  @Object#node36 (test-resources/src/micro/testPaper.js:17:11):
+    [[Prototype]] = [@Object#node24]
+  @Object#node40 (test-resources/src/micro/testPaper.js:17:11):
     name: "John Q. Doe"
     studentid: "100027"
-    [[Prototype]] = [@Object#node20]
+    [[Prototype]] = [@Object#node24]
+  @<anonymous>#fun6 (HOST(error-captureStackTrace-model.js):1:1):
+    length: 0.0
+    name: ""
+    prototype: [@Object#node12]
+    [[Prototype]] = [@Function.prototype[native]]
+  @activation#node394 (HOST(error-captureStackTrace-model.js):1:1):
+    arguments: [@arguments#node394]
+  @arguments#node394 (HOST(error-captureStackTrace-model.js):1:1):
+    callee: [@<anonymous>#fun6]
+    length: 0.0
+    [[Prototype]] = [@Object.prototype[native]]
+  @<anonymous>#fun7 (HOST(error-captureStackTrace-model.js):5:12):
+    length: 2.0
+    name: ""
+    prototype: [@Object#node406]
+    [[Prototype]] = [@Function.prototype[native]]
+  @Object#node406 (HOST(error-captureStackTrace-model.js):5:12):
+    constructor: [@<anonymous>#fun7]
+    [[Prototype]] = [@Object.prototype[native]]
+    [[Value]] = NaN
   @<anonymous>#fun4 (HOST(string-replace-model.js):1:1):
     length: 0.0
     name: ""
     prototype: [@Object#node8]
     [[Prototype]] = [@Function.prototype[native]]
-  @activation#node106 (HOST(string-replace-model.js):1:1):
-    arguments: [@arguments#node106]
-  @arguments#node106 (HOST(string-replace-model.js):1:1):
+  @activation#node110 (HOST(string-replace-model.js):1:1):
+    arguments: [@arguments#node110]
+  @arguments#node110 (HOST(string-replace-model.js):1:1):
     callee: [@<anonymous>#fun4]
     length: 0.0
     [[Prototype]] = [@Object.prototype[native]]
-  @Object#node119 (HOST(string-replace-model.js):3:12):
+  @Object#node123 (HOST(string-replace-model.js):3:12):
     constructor: [@replace#fun5]
     [[Prototype]] = [@Object.prototype[native]]
     [[Value]] = NaN
   @replace#fun5 (HOST(string-replace-model.js):3:12):
     length: 2.0
     name: "replace"
-    prototype: [@Object#node119]
+    prototype: [@Object#node123]
     [[Prototype]] = [@Function.prototype[native]]
-Soundness testing succeeded for 116 checks (with 0 expected failures)
+Soundness testing succeeded for 110 checks (with 0 expected failures)

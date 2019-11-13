@@ -5,4 +5,4 @@ test-resources/src/v8tests/new.js:32:13: [maybe] Conversion from string to numbe
 test-resources/src/v8tests/new.js:33:13: [maybe] Conversion from string to number yields NaN
 test-resources/src/v8tests/new.js:34:13: [maybe] Conversion from string to number yields NaN
 test-resources/src/v8tests/new.js:36:13: [maybe] Conversion from string to number yields NaN
-Soundness testing succeeded for 280 checks (with 0 expected failures)
+Soundness testing succeeded for 262 checks (with 0 expected failures)

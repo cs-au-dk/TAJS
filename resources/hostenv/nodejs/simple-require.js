@@ -79,6 +79,8 @@
 
         var dirname = TAJS_parentDir(filename);
         f.apply(module.exports, [module.exports, require, module, TAJS_unURL(filename), TAJS_unURL(dirname)]);
+        TAJS_moduleExportsFiltering(module.exports, filename);
+        TAJS_assumeModuleType(filename, module);
     }
 
     function require_with_parentFilename(filename, parentFilename) {

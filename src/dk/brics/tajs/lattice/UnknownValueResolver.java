@@ -22,8 +22,8 @@ import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.GenericSolver;
-import dk.brics.tajs.solver.NodeAndContext;
 import dk.brics.tajs.util.AnalysisException;
+import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Pair;
 import org.apache.log4j.Level;
@@ -73,10 +73,6 @@ public final class UnknownValueResolver {
             this.n = n;
             this.c = c;
             this.p = p;
-        }
-
-        public RGNode(NodeAndContext<Context> nc, ObjectProperty p) {
-            this(nc.getNode(), nc.getContext(), p);
         }
 
         public AbstractNode getNode() {
@@ -260,16 +256,6 @@ public final class UnknownValueResolver {
         }
     }
 
-    /**
-     * One or two object properties.
-     */
-    private static class ObjectPropertyPair {
-
-        ObjectProperty prop1;
-
-        ObjectProperty prop2; // null if absent
-    }
-
     private UnknownValueResolver() {
     }
 
@@ -283,8 +269,8 @@ public final class UnknownValueResolver {
             res.setValue(prop, Value.makeAbsent());
             return res;
         }
-        ObjectPropertyPair entry_prop = toEntry(s, prop);
-        if (partial && entry_prop.prop1 != null && entry_prop.prop2 != null) {
+        Set<ObjectProperty> entry_prop = toEntry(s, prop);
+        if (partial && entry_prop.size() > 1) {
             if (log.isDebugEnabled())
                 log.debug("switching from partial to full recover");
             return recover(s, prop, false);
@@ -296,10 +282,9 @@ public final class UnknownValueResolver {
         // build recovery graph
         RecoveryGraph g = new RecoveryGraph();
         State entry_state = getEntryState(s);
-        if (entry_prop.prop1 != null && !isOK(entry_state, entry_prop.prop1, partial))
-            g.addNode(new RGNode(s.getBasicBlock().getFirstNode(), s.getContext(), entry_prop.prop1));
-        if (entry_prop.prop2 != null && !isOK(entry_state, entry_prop.prop2, partial))
-            g.addNode(new RGNode(s.getBasicBlock().getFirstNode(), s.getContext(), entry_prop.prop2));
+        for (ObjectProperty p : entry_prop)
+            if (!isOK(entry_state, p, partial))
+                g.addNode(new RGNode(s.getBasicBlock().getFirstNode(), s.getContext(), p));
         while (!g.pendingIsEmpty()) {
             RGNode n = g.getNextPending();
             BlockAndContext<Context> n_entry = BlockAndContext.makeEntry(n.getNode().getBlock(), n.getContext());
@@ -316,16 +301,14 @@ public final class UnknownValueResolver {
                     g.addRoot(n);
                 else { // need to go to the function entry of the caller
                     State caller_functionentry_state = getEntryState(c, cs.getCallerContext(), cs.getCallNode());
-                    ObjectPropertyPair caller_functionentry_prop = toEntry(call_edge_state, call_edge_prop);
-                    if (partial && caller_functionentry_prop.prop1 != null && caller_functionentry_prop.prop2 != null) {
+                    Set<ObjectProperty> caller_functionentry_prop = toEntry(call_edge_state, call_edge_prop);
+                    if (partial && caller_functionentry_prop.size() > 1) {
                         if (log.isDebugEnabled())
                             log.debug("switching from partial to full recover");
                         return recover(s, prop, false);
                     }
-                    if (caller_functionentry_prop.prop1 != null)
-                        addRootOrPredecessors(n, cs.getCallNode(), cs.getCallerContext(), cs.getEdgeContext(), caller_functionentry_state, caller_functionentry_prop.prop1, g, partial);
-                    if (caller_functionentry_prop.prop2 != null)
-                        addRootOrPredecessors(n, cs.getCallNode(), cs.getCallerContext(), cs.getEdgeContext(), caller_functionentry_state, caller_functionentry_prop.prop2, g, partial);
+                    for (ObjectProperty p : caller_functionentry_prop)
+                        addRootOrPredecessors(n, cs.getCallNode(), cs.getCallerContext(), cs.getEdgeContext(), caller_functionentry_state, p, g, partial);
                 }
             }
         }
@@ -341,14 +324,12 @@ public final class UnknownValueResolver {
                 ObjectProperty call_edge_prop = n.getObjectProperty();
                 if (isOK(call_edge_state, call_edge_prop, partial)) { // recover from call edge
                     Value poly_at_n_entry = partial ? null : g.getPolymorphic(n_entry.getBlock().getFirstNode(), n_entry.getContext(), n.getObjectProperty());
-                    changed |= propagate(call_edge_state, call_edge_prop, callee_functionentry_state, n.getObjectProperty(), null, partial, true, poly_at_n_entry); // no summarization
+                    changed |= propagate(call_edge_state, call_edge_prop, callee_functionentry_state, n.getObjectProperty(), null, partial, true, poly_at_n_entry); // no renaming
                 } else { // recover from the function entry of the caller
                     State caller_functionentry_state = getEntryState(c, cs.getCallerContext(), cs.getCallNode());
-                    ObjectPropertyPair caller_functionentry_prop = toEntry(call_edge_state, call_edge_prop);
-                    if (caller_functionentry_prop.prop1 != null)
-                        changed |= recoverAtRootFromCallerFunctionEntry(n, caller_functionentry_state, caller_functionentry_prop.prop1, call_edge_state, call_edge_prop, callee_functionentry_state, partial, g);
-                    if (caller_functionentry_prop.prop2 != null)
-                        changed |= recoverAtRootFromCallerFunctionEntry(n, caller_functionentry_state, caller_functionentry_prop.prop2, call_edge_state, call_edge_prop, callee_functionentry_state, partial, g);
+                    Set<ObjectProperty> caller_functionentry_prop = toEntry(call_edge_state, call_edge_prop);
+                    for (ObjectProperty p : caller_functionentry_prop)
+                        changed |= recoverAtRootFromCallerFunctionEntry(n, caller_functionentry_state, p, call_edge_state, call_edge_prop, callee_functionentry_state, partial, g);
                 }
             }
             if (changed) {
@@ -374,7 +355,7 @@ public final class UnknownValueResolver {
                 State callee_functionentry_state = c.getAnalysisLatticeElement().getState(callee_functionentry_n.getNode().getBlock(), callee_functionentry_n.getContext());
                 ObjectProperty call_edge_prop = callee_functionentry_n.getObjectProperty();
                 Value value_at_call_edge = partial ? null : getValue(call_edge_state, call_edge_prop);
-                propagate(n_functionentry_state, n.getObjectProperty(), call_edge_state, call_edge_prop, call_edge_state.getSummarized(), partial, false, value_at_call_edge);
+                propagate(n_functionentry_state, n.getObjectProperty(), call_edge_state, call_edge_prop, call_edge_state.getRenamings(), partial, false, value_at_call_edge);
                 Value poly_at_callee_functionentry = partial ? null : g.getPolymorphic(callee_functionentry_n);
                 boolean changed = propagate(call_edge_state, call_edge_prop, callee_functionentry_state, callee_functionentry_n.getObjectProperty(), null, partial, true, poly_at_callee_functionentry);
                 if (changed) {
@@ -398,10 +379,8 @@ public final class UnknownValueResolver {
             }
         }
         // propagate to the current state (necessary for materializing all properties and for abstract gc)
-        if (entry_prop.prop1 != null)
-            propagate(entry_state, entry_prop.prop1, s, prop, s.getSummarized(), partial, false, value_at_s);
-        if (entry_prop.prop2 != null)
-            propagate(entry_state, entry_prop.prop2, s, prop, s.getSummarized(), partial, false, value_at_s);
+        for (ObjectProperty p : entry_prop)
+            propagate(entry_state, p, s, prop, s.getRenamings(), partial, false, value_at_s);
         return s.getObject(prop.getObjectLabel(), false);
     }
 
@@ -445,7 +424,7 @@ public final class UnknownValueResolver {
                                                                 RecoveryGraph g) {
         if (isOK(caller_functionentry_state, caller_functionentry_prop, partial)) { // recover from entry of caller function
             Value value_at_call_edge = partial ? null : getValue(call_edge_state, call_edge_prop);
-            propagate(caller_functionentry_state, caller_functionentry_prop, call_edge_state, call_edge_prop, call_edge_state.getSummarized(), partial, false, value_at_call_edge);
+            propagate(caller_functionentry_state, caller_functionentry_prop, call_edge_state, call_edge_prop, call_edge_state.getRenamings(), partial, false, value_at_call_edge);
             BlockAndContext<Context> ce = BlockAndContext.makeEntry(n.getNode().getBlock(), n.getContext());
             Value poly_at_callee_functionentry = partial ? null : g.getPolymorphic(ce.getBlock().getFirstNode(), ce.getContext(), n.getObjectProperty());
             return propagate(call_edge_state, call_edge_prop, callee_functionentry_state, n.getObjectProperty(), null, partial, true, poly_at_callee_functionentry);
@@ -462,8 +441,8 @@ public final class UnknownValueResolver {
      * 3) the object label has (maybe) been summarized since entry,
      * then both the given property reference and its singleton variant are returned.
      */
-    private static ObjectPropertyPair toEntry(State s, ObjectProperty prop) {
-        ObjectPropertyPair p = new ObjectPropertyPair();
+    private static Set<ObjectProperty> toEntry(State s, ObjectProperty prop) {
+        Set<ObjectProperty> p = newSet();
         Obj obj = s.getObject(prop.getObjectLabel(), false);
         Value v = null;
         switch (prop.getKind()) {
@@ -476,16 +455,15 @@ public final class UnknownValueResolver {
             case INTERNAL_PROTOTYPE:
                 v = obj.getInternalPrototype();
                 break;
-            default:
-                break; // other kinds aren't polymorphic (after call to isOK)
+            case DEFAULT_NUMERIC:
+            case DEFAULT_OTHER:
+            case INTERNAL_SCOPE:
+                break; // these kinds aren't polymorphic (after call to isOK)
         }
         if (v != null && v.isPolymorphic())
-            p.prop1 = v.getObjectProperty();
-        else {
-            p.prop1 = prop;
-            if ((v == null || v.isUnknown()) && !prop.getObjectLabel().isSingleton() && s.getSummarized().isMaybeSummarized(prop.getObjectLabel().makeSingleton()))
-                p.prop2 = prop.makeSingleton();
-        }
+            p.add(v.getObjectProperty());
+        else
+            p.addAll(s.getRenamings().renameInverse(prop));
         return p;
     }
 
@@ -493,13 +471,10 @@ public final class UnknownValueResolver {
      * Returns the designated value, or null if internal scope.
      */
     private static Value getValue(State s, ObjectProperty prop) {
-        switch (prop.getKind()) {
-            case INTERNAL_SCOPE:
-                return null;
-            default:
-                Obj obj = s.getObject(prop.getObjectLabel(), false);
-                return obj.getValue(prop);
-        }
+        if (prop.getKind() == Kind.INTERNAL_SCOPE)
+            return null;
+        Obj obj = s.getObject(prop.getObjectLabel(), false);
+        return obj.getValue(prop);
     }
 
     /**
@@ -508,12 +483,9 @@ public final class UnknownValueResolver {
      */
     private static boolean isOK(State s, ObjectProperty prop, boolean partial) {
         Obj obj = s.getObject(prop.getObjectLabel(), false);
-        switch (prop.getKind()) {
-            case INTERNAL_SCOPE:
-                return isScopeChainOK(obj, partial);
-            default:
-                return isValueOK(obj.getValue(prop), partial);
-        }
+        if (prop.getKind() == Kind.INTERNAL_SCOPE)
+            return isScopeChainOK(obj, partial);
+        return isValueOK(obj.getValue(prop), partial);
     }
 
     /**
@@ -538,13 +510,16 @@ public final class UnknownValueResolver {
      * Propagates a property from src into dst.
      * Must pass isOK for the src arguments.
      *
-     * @param summarized summarization sets, null if no summarization necessary
+     * @param renamings  renamings, null if no renaming necessary
      * @param to_entry   propagation to function entry if true, propagating from function entry if false
      * @param orig_dst_v original value at dst, if polymorphic
      * @return true if dst is changed
      */
     private static boolean propagate(State src_s, ObjectProperty src_prop, State dst_s, ObjectProperty dst_prop,
-                                     Summarized summarized, boolean partial, boolean to_entry, Value orig_dst_v) {
+                                     Renamings renamings, boolean partial, boolean to_entry, Value orig_dst_v) {
+        if (!src_s.getSolverInterface().isScanning() && !src_s.getSolverInterface().getMonitoring().allowNextIteration()) {
+            throw new AnalysisLimitationException.AnalysisTimeException("Next iteration not allowed");
+        }
         if (src_s == dst_s && src_prop == dst_prop)
             return false; // joining to itself, nothing changes
         Obj src_obj = src_s.getObject(src_prop.getObjectLabel(), false);
@@ -560,7 +535,7 @@ public final class UnknownValueResolver {
             Value old_dst_v = dst_obj.getValue(dst_prop);
             Value src_v = to_entry ?
                     old_src_v.restrictToNotModified() : // to entry: remove modified flags
-                    (partial ? old_src_v : old_src_v.summarize(summarized)); // to non-entry and full: summarize
+                    (partial ? old_src_v : old_src_v.rename(renamings)); // to non-entry and full: summarize
             Value dst_v = old_dst_v;
             if (partial) {
                 if (to_entry)
@@ -601,7 +576,7 @@ public final class UnknownValueResolver {
         } else {
             ScopeChain src_v = src_obj.getScopeChain();
             if (src_v != null && !to_entry) {
-                src_v = ScopeChain.summarize(src_v, summarized);
+                src_v = ScopeChain.rename(src_v, renamings);
             }
             if (!dst_obj.isWritable())
                 dst_obj = dst_s.getObject(dst_prop.getObjectLabel(), true);
@@ -793,7 +768,7 @@ public final class UnknownValueResolver {
             default:
                 throw new AnalysisException("Unexpected property reference kind");
         }
-        res = v.replaceValue(res.summarize(s.getSummarized()));
+        res = v.replaceValue(res.rename(s.getRenamings()));
         // note: it is possible to have e.g. v.isMaybePolymorphicPresent() && res.isNotPresent() due to abstract gc
         return res;
     }

@@ -26,10 +26,10 @@ import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.MustReachingDefs;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.Renamings;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.StateExtras;
-import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
@@ -76,7 +76,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
 
     private final Set<MustReachingDefs> mustReachingDefs;
 
-    private final Set<Summarized> summarized;
+    private final Set<Renamings> renamings;
 
     private FlowGraph flowGraph;
 
@@ -93,7 +93,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
         extras = makeIdentitySet();
         mustReachingDefs = makeIdentitySet();
         states = makeIdentitySet();
-        summarized = makeIdentitySet();
+        renamings = makeIdentitySet();
     }
 
     private <T> Set<T> makeIdentitySet() {
@@ -134,7 +134,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
         objs.addAll(state.getStore().values());
         extras.add(state.getExtras());
         mustReachingDefs.add(state.getMustReachingDefs());
-        summarized.add(state.getSummarized());
+        renamings.add(state.getRenamings());
         states.add(state); // could delay all the other recording, but the collection states might be removed later
     }
 
@@ -171,7 +171,7 @@ public class MemoryUsageDiagnosisMonitor extends DefaultAnalysisMonitoring {
         measurements.measureIdentitySetDuplication("ExecutionContext", executionContexts);
         measurements.measureIdentitySetDuplication("ScopeChain", scopeChains);
         measurements.measureIdentitySetDuplication("Obj", objs);
-        measurements.measureIdentitySetDuplication("Summarized", summarized);
+        measurements.measureIdentitySetDuplication("Renamings", renamings);
         measurements.measureIdentitySetDuplication("Extras", extras);
         measurements.measureIdentitySetDuplication("MustReachingDefs", mustReachingDefs);
 

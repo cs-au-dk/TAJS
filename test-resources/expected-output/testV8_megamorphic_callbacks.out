@@ -1,4 +1,4 @@
 test-resources/src/v8tests/megamorphic-callbacks.js:41:37: [definite] Dead assignment, property z is never read
 test-resources/src/v8tests/megamorphic-callbacks.js:52:11: [definite] Dead assignment, property z is never read
 test-resources/src/v8tests/megamorphic-callbacks.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 161 checks (with 0 expected failures)
+Soundness testing succeeded for 156 checks (with 0 expected failures)

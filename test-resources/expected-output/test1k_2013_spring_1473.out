@@ -285,4 +285,4 @@ test-resources/src/1k2013spring/1473.js:99:2: [maybe] Converting undefined to st
 test-resources/src/1k2013spring/1473.js:2:12: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/1k2013spring/1473.js:2:1: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/1k2013spring/1473.js:2:33: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 677 checks (with 0 expected failures)
+Soundness testing succeeded for 674 checks (with 0 expected failures)

@@ -130,8 +130,9 @@ public class SoundnessTester {
     private Map<Pair<SourceLocation, String>, Set<Value>> resolveTypeMap(Map<VariableSummary, Value> type_map) {
         Map<Pair<SourceLocation, String>, Set<Value>> map = newMap();
         type_map.forEach((k, v) -> {
-            Set<SourceLocation> aliases = valueLogLocationInformation.getTajsLocation2jalangiLocation().getOrDefault(k.getVariableLocation(), singleton(k.getVariableLocation()));
+            Set<SourceLocation> aliases = valueLogLocationInformation.getJalangiLocations(k.getVariableLocation());
             aliases.forEach(alias -> addToMapSet(map, Pair.make(alias, k.getVariableName()), v));
+            addToMapSet(map, Pair.make(k.getVariableLocation(), k.getVariableName()), v);
         });
         return map;
     }
@@ -150,7 +151,7 @@ public class SoundnessTester {
                 loc2Node.put(n.getClass(), newMap());
             }
             Map<SourceLocation, Set<AbstractNode>> currentGroup = loc2Node.get(n.getClass());
-            Set<SourceLocation> aliases = valueLogLocationInformation.getTajsLocation2jalangiLocation().getOrDefault(n.getSourceLocation(), singleton(n.getSourceLocation()));
+            Set<SourceLocation> aliases = valueLogLocationInformation.getJalangiLocations(n.getSourceLocation());
             aliases.forEach(alias -> addToMapSet(currentGroup, alias, n));
         });
         return loc2Node;

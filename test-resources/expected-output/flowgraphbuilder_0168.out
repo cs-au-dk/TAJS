@@ -13,29 +13,39 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: read-variable['this',v6,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:1:5)
-    node 6: read-property[v6,'as',v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:1:5)
-    node 7: if[v5](true-block:5,false-block:7) (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:1:1)
-    ->[block 5,block 7]
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
+    ->[block 5]
   block 5:
-    node 8: read-variable['this',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:13)
-    node 9: read-property[v8,'startSlide',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:13)
-    node 10: read-variable['d',v9,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:29)
-    node 11: read-variable['o',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:32)
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 12: call[v8,'startSlide',v9,v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:13)
-    ->[block 8]
+    node 8: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7]
   block 7:
-    node 13: read-variable['this',v12,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:3)
-    node 14: constant[false,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:13)
-    node 15: write-property[v12,'as',v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:3)
-    ->[block 8]
-  block 8: [exit-ordinary]
-    node 16: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js)
+    node 9: read-variable['this',v9,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:1:5)
+    node 10: read-property[v9,'as',v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:1:5)
+    node 11: if[v8](true-block:8,false-block:10) (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:1:1)
+    ->[block 8,block 10]
+  block 8:
+    node 12: read-variable['this',v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:13)
+    node 13: read-property[v11,'startSlide',-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:13)
+    node 14: read-variable['d',v12,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:29)
+    node 15: read-variable['o',v13,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:32)
+    ->[block 9]
+  block 9:
+    node 16: call[v11,'startSlide',v12,v13,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:2:13)
+    ->[block 11]
+  block 10:
+    node 17: read-variable['this',v15,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:3)
+    node 18: constant[false,v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:13)
+    node 19: write-property[v15,'as',v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:4:3)
+    ->[block 11]
+  block 11: [exit-ordinary]
+    node 20: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js)
     ->[]
-  block 9: [exit-exceptional]
-    node 17: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js)
+  block 12: [exit-exceptional]
+    node 21: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0168.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0168.js:1:1: [definite] The conditional expression is always false

@@ -701,9 +701,9 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:9190:11: [maybe] Converting
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10081:26: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10082:20: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10539:14: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/lodash/test-suite/3.0.0/lodash_test_147.html: [maybe] Uncaught exception, constructed at [HOST(es6-collections.js):122:65, HOST(string-replace-model.js):49:30, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
+benchmarks/tajs/src/lodash/test-suite/3.0.0/lodash_test_147.html: [maybe] Uncaught exception, constructed at [HOST(es6-collections.js):122:65, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1971:22: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2058:24: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10082:20: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10539:14: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 9424 checks (with 0 expected failures)
+Soundness testing succeeded for 9385 checks (with 0 expected failures)

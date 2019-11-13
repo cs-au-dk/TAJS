@@ -323,4 +323,4 @@ test-resources/src/google/delta-blue.js:536:7: [info] 'this' refers to a summary
 test-resources/src/google/delta-blue.js:536:7: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google/delta-blue.js:536:31: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/google/delta-blue.js:536:31: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 13073 checks (with 0 expected failures)
+Soundness testing succeeded for 12986 checks (with 0 expected failures)

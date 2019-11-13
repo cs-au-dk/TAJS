@@ -250,36 +250,51 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
             if (es != null) {
                 for (Edge e : newList(es)) {
                     dischargeCallEdge(e);
+                    processPendingReturnFlow(Pair.make(e.caller, e.caller_context), newSet());
                 }
             }
         }
     }
 
+    /**
+     * Process delayed returns.
+     * @param d entry of the function being returned from
+     * @param processed for collecting the edges that are being processed
+     */
     private void processReturns(BlockAndContext<ContextType> d, Set<Edge> processed) {
         Set<Edge> es = charged_call_edges_backward_map.get(d);
         if (es != null) {
             for (Edge e : es) {
                 if (DELAY_RETURN_FLOW_UNTIL_INACTIVE) {
+                    // delay further until all outgoing edges have been discharged
                     Pair<AbstractNode, ContextType> p = Pair.make(e.caller, e.caller_context);
                     addToMapSet(pending_returnflow, p, e);
-                    boolean all_charged_inactive = true;
-                    for (Edge f : node_charged_call_edges.get(p)) {
-                        if (f.caller.equals(e.caller) && f.caller_context.equals(e.caller_context))
-                            if (isFunctionActive(new BlockAndContext<>(f.callee, f.callee_context))) {
-                                all_charged_inactive = false;
-                                break;
-                            }
-                    }
-                    if (all_charged_inactive) {
-                        for (Edge f : pending_returnflow.remove(p)) {
-                            if (processed.add(f))
-                                c.getAnalysis().getNodeTransferFunctions().transferReturn(f.caller, f.callee, f.caller_context, f.callee_context, f.edge_context, f.getCallKind());
-                        }
-                    }
+                    processPendingReturnFlow(p, processed);
                 } else {
                     if (processed.add(e))
                         c.getAnalysis().getNodeTransferFunctions().transferReturn(e.caller, e.callee, e.caller_context, e.callee_context, e.edge_context, e.getCallKind());
                 }
+            }
+        }
+    }
+
+    /**
+     * Process pending return flow if all call edges from p are inactive.
+     * Only used if DELAY_RETURN_FLOW_UNTIL_INACTIVE is enabled.
+     */
+    private void processPendingReturnFlow(Pair<AbstractNode, ContextType> p, Set<Edge> processed) {
+        if (!pending_returnflow.containsKey(p))
+            return;
+        boolean all_charged_inactive = true;
+        for (Edge f : node_charged_call_edges.get(p))
+            if (isFunctionActive(new BlockAndContext<>(f.callee, f.callee_context))) {
+                all_charged_inactive = false;
+                break;
+            }
+        if (all_charged_inactive) {
+            for (Edge f : pending_returnflow.remove(p)) {
+                if (processed.add(f))
+                    c.getAnalysis().getNodeTransferFunctions().transferReturn(f.caller, f.callee, f.caller_context, f.callee_context, f.edge_context, f.getCallKind());
             }
         }
     }
@@ -393,13 +408,17 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
             return;
         if (!charged_call_edges.isEmpty())
             throw new AnalysisException("unexpected charged call edges: " + charged_call_edges);
+        if (!charged_call_edges_forward_map.isEmpty())
+            throw new AnalysisException("unexpected charged call edges forward: " + charged_call_edges_forward_map);
+        if (!charged_call_edges_backward_map.isEmpty())
+            throw new AnalysisException("unexpected charged call edges backward: " + charged_call_edges_backward_map);
         if (!function_activity_level.isEmpty())
             throw new AnalysisException("unexpected active functions: " + function_activity_level);
-        for (Set<Edge> se : pending_returnflow.values())
-            if (!se.isEmpty())
-                throw new AnalysisException("unexpected pending return flow: " + se);
-        for (Set<Edge> se : node_charged_call_edges.values())
-            if (!se.isEmpty())
-                throw new AnalysisException("unexpected node charged call edges: " + se);
+        if (!delayed_returns.isEmpty())
+            throw new AnalysisException("unexpected delayed returns: " + delayed_returns);
+        if (!pending_returnflow.isEmpty())
+            throw new AnalysisException("unexpected pending return flow: " + pending_returnflow);
+        if (!node_charged_call_edges.isEmpty())
+            throw new AnalysisException("unexpectednode charged call edges: " + node_charged_call_edges);
     }
 }

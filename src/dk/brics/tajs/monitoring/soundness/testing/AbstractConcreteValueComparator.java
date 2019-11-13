@@ -327,7 +327,7 @@ public class AbstractConcreteValueComparator {
      * @return true iff the abstract value over-approximates the concrete value.
      */
     private Boolean isAbstractValueSound(ConcreteStringDescription d, Value abstractValue) {
-        return abstractValue.isMaybeStr(d.getString());
+        return abstractValue.isMaybeStr(d.getString()) || isBoxed(abstractValue, ObjectLabel.Kind.STRING);
     }
 
     /**
@@ -338,7 +338,7 @@ public class AbstractConcreteValueComparator {
             Value abstractConcretePrefix = Value.makeNone().joinPrefix(d.getString());
             return abstractConcretePrefix.join(abstractValue).equals(abstractValue);
         }
-        return abstractValue.isMaybeFuzzyStr(); // TODO improve precision
+        return abstractValue.isMaybeFuzzyStr() || isBoxed(abstractValue, ObjectLabel.Kind.STRING); // TODO improve precision
     }
 
     /**

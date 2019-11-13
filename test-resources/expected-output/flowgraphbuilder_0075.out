@@ -13,31 +13,41 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: constant[3.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:7)
-    ->[block 7] ~>[block 5]
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
+    ->[block 5]
   block 5:
-    node 6: catch[e,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:11)
-    node 7: begin-with[v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:11)
-    ->[block 6] ~>[block 9]
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6]
   block 6:
-    node 8: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:11)
-    ->[block 7] ~>[block 9]
+    node 8: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7]
   block 7:
-    node 9: constant[4.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:35)
-    ->[block 10]
+    node 9: constant[3.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:7)
+    ->[block 10] ~>[block 8]
   block 8:
-    node 10: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:11)
-    ->[block 9]
+    node 10: catch[e,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:11)
+    node 11: begin-with[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:11)
+    ->[block 9] ~>[block 12]
   block 9:
-    node 11: catch[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:1)
-    node 12(~9): constant[4.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:35)
-    node 13: throw[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:1)
-    ->[block 11]
-  block 10: [exit-ordinary]
-    node 14: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js)
+    node 12: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:11)
+    ->[block 10] ~>[block 12]
+  block 10:
+    node 13: constant[4.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:35)
+    ->[block 13]
+  block 11:
+    node 14: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:11)
+    ->[block 12]
+  block 12:
+    node 15: catch[v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:1)
+    node 16(~13): constant[4.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:35)
+    node 17: throw[v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js:1:1)
+    ->[block 14]
+  block 13: [exit-ordinary]
+    node 18: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js)
     ->[]
-  block 11: [exit-exceptional]
-    node 15: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js)
+  block 14: [exit-exceptional]
+    node 19: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0075.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0075.js: [definite] Exceptional program exit is unreachable

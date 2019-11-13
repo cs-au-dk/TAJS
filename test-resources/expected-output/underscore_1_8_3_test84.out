@@ -383,6 +383,8 @@ benchmarks/tajs/src/underscore/test-suite/functions/test84.html:30:12: [definite
 benchmarks/tajs/src/underscore/test-suite/functions/test84.html:31:12: [definite] Unreachable function
 benchmarks/tajs/src/underscore/test-suite/functions/test84.html:35:9: [definite] The variable sayLast is never used
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/test-suite/functions/test84.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/underscore/test-suite/functions/test84.html:29:5]
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 3703 checks (with 0 expected failures)
+Soundness testing succeeded for 3674 checks (with 0 expected failures)

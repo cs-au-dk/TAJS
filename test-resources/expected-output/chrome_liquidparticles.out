@@ -17,4 +17,4 @@ test-resources/src/chromeexperiments/liquidparticles.html:74:15: [maybe] Convers
 test-resources/src/chromeexperiments/liquidparticles.html:94:17: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/liquidparticles.html:100:18: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/liquidparticles.html:101:18: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 3090 checks (with 0 expected failures)
+Soundness testing succeeded for 3082 checks (with 0 expected failures)

@@ -17,6 +17,7 @@
 package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Canonicalizer;
@@ -32,6 +33,7 @@ import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -45,7 +47,7 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
      * Partitioning of the abstract value.
      * Each partition value is generally more precise than the single value.
      * This map groups the partitions according to the abstract nodes (represents the program locations where the partitionings are introduced).
-     * If no value is available in a Partitions map for a given PartitionsQualifier, the default value is 'none'.
+     * If no value is available in a Partitions map for a given token, the default value is 'none'.
      */
     @Nonnull
     private Map<AbstractNode, Partitions> partitions;
@@ -62,6 +64,22 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
                 throw new AnalysisException("Unexpected PartitionValue");
     }
 
+    /**
+     * Removes free variable partitioning if the object label is not the activation object corresponding to the free variable partitioning.
+     */
+    public static Value removePartitionsNotMatchingObjectLabel(ObjectLabel objectLabel, PartitionedValue v) {
+        Map<AbstractNode, Partitions> partitions = newMap(v.partitions);
+        newMap(partitions).entrySet().stream()
+                .filter(e -> e.getKey() instanceof DeclareFunctionNode &&
+                        !(objectLabel.getKind() == ObjectLabel.Kind.ACTIVATION && e.getKey().getBlock().getFunction().getEntry().getFirstNode().equals(objectLabel.getNode()))).forEach(e -> partitions.remove(e.getKey())
+        );
+        if (partitions.isEmpty())
+            return v.ignorePartitions();
+        if (partitions.size() == v.partitions.size())
+            return v;
+        return PartitionedValue.make(partitions.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().getPartitions())));
+    }
+
     protected int computeHashCode() {
         return 3 * super.computeHashCode() + partitions.hashCode();
     }
@@ -70,7 +88,7 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
      * Constructs a new (canonicalized) partitioned value.
      * @param v single abstract value that overapproximates the partitions
      */
-    private static PartitionedValue make(Value v, Map<AbstractNode, Map<PartitioningQualifier, Value>> partitions) {
+    private static PartitionedValue make(Value v, Map<AbstractNode, Map<PartitionToken, Value>> partitions) {
         Map<AbstractNode, Partitions> transformedMap =
                 partitions.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -> Partitions.make(e.getValue())));
         canonicalizing = true;
@@ -83,8 +101,8 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
      * Constructs a new (canonicalized) partitioned value.
      * @return a partitioned value with a single abstract value that is the join of the partition values
      */
-    public static PartitionedValue make(AbstractNode node, Map<PartitioningQualifier, Value> partitions) {
-        Map<AbstractNode, Map<PartitioningQualifier, Value>> mp = newMap();
+    public static PartitionedValue make(AbstractNode node, Map<PartitionToken, Value> partitions) {
+        Map<AbstractNode, Map<PartitionToken, Value>> mp = newMap();
         mp.put(node, partitions);
         return make(mp);
     }
@@ -93,7 +111,7 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
      * Constructs a new (canonicalized) partitioned value.
      * @return a partitioned value with a single abstract value that is the join of the partition values
      */
-    public static PartitionedValue make(Map<AbstractNode, Map<PartitioningQualifier, Value>> partitions) {
+    public static PartitionedValue make(Map<AbstractNode, Map<PartitionToken, Value>> partitions) {
         return make(Value.join(partitions.values().stream().flatMap(e -> e.values().stream()).collect(Collectors.toSet())), partitions);
     }
 
@@ -104,14 +122,18 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
     public static Value join(Value v1, Value v2, boolean widen) {
         if (v1 instanceof PartitionedValue) {
             if (v2 instanceof PartitionedValue) {
-                Set<AbstractNode> pns = newSet(((PartitionedValue)v1).partitions.keySet());
-                pns.addAll(((PartitionedValue)v2).partitions.keySet());
-                Map<AbstractNode, Map<PartitioningQualifier, Value>> resPartitionings = newMap();
+                Set<AbstractNode> pns = Stream.concat(((PartitionedValue) v1).partitions.keySet().stream(), ((PartitionedValue) v2).partitions.keySet().stream())
+                        .filter(n -> n instanceof DeclareFunctionNode || (((PartitionedValue) v1).partitions.containsKey(n) && ((PartitionedValue) v2).partitions.containsKey(n)))
+                        .collect(Collectors.toSet());
+                if (pns.isEmpty()) {
+                    return new Value(v1.joinSingleValue(v2, widen));
+                }
+                Map<AbstractNode, Map<PartitionToken, Value>> resPartitionings = newMap();
                 for (AbstractNode n : pns) {
-                    // find the union of the partition qualifiers
-                    Set<PartitioningQualifier> ps = newSet(((PartitionedValue) v1).getPartitionQualifiers(n));
-                    ps.addAll(((PartitionedValue) v2).getPartitionQualifiers(n));
-                    Map<PartitioningQualifier, Value> partitioningsForNode =
+                    // find the union of the partition tokens
+                    Set<PartitionToken> ps = newSet(((PartitionedValue) v1).getPartitionTokens(n));
+                    ps.addAll(((PartitionedValue) v2).getPartitionTokens(n));
+                    Map<PartitionToken, Value> partitioningsForNode =
                             ps.stream().collect(Collectors.toMap(q -> q, q -> ((PartitionedValue)v1).getPartitionValue(n, q, false).joinSingleValue(((PartitionedValue)v2).getPartitionValue(n, q, false), widen)));
                     resPartitionings.put(n, partitioningsForNode);
                 }
@@ -177,9 +199,9 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
                 Set<AbstractNode> pns = newSet(((PartitionedValue)v1).partitions.keySet());
                 pns.addAll(((PartitionedValue)v2).partitions.keySet());
                 for (AbstractNode n : pns) {
-                    // find the union of the partition qualifiers
-                    Set<PartitioningQualifier> ps = newSet(((PartitionedValue) v1).getPartitionQualifiers(n));
-                    ps.addAll(((PartitionedValue) v2).getPartitionQualifiers(n));
+                    // find the union of the partition tokens
+                    Set<PartitionToken> ps = newSet(((PartitionedValue) v1).getPartitionTokens(n));
+                    ps.addAll(((PartitionedValue) v2).getPartitionTokens(n));
                     ps.forEach(q -> ((PartitionedValue)v1).getPartitionValue(n, q, true).joinMutableSingleValue(((PartitionedValue)v2).getPartitionValue(n, q, false), false));
                 }
                 v1.joinMutableSingleValue(v2, false);
@@ -218,12 +240,22 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
         return v instanceof PartitionedValue ? ((PartitionedValue)v).ignorePartitions() : v;
     }
 
+    public static Value removePartitions(Value v, Set<AbstractNode> partitionsToRemove) {
+        return v instanceof PartitionedValue ? ((PartitionedValue) v).removePartitions(partitionsToRemove) : v;
+    }
     /**
      * Returns the selected partition value.
      */
-    private Value getPartitionValue(AbstractNode node, PartitioningQualifier q, boolean mutable) {
+    private Value getPartitionValue(AbstractNode node, PartitionToken q, boolean mutable) {
         Partitions partitionsForNode = partitions.get(node);
         if (partitionsForNode == null) {
+            if (q instanceof PartitionToken.FunctionPartitionToken) {
+                if (mutable) {
+                    return new Value();
+                } else {
+                    return Value.makeNone();
+                }
+            }
             return ignorePartitions();
         }
         Value res = partitionsForNode.get(q);
@@ -242,20 +274,23 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
     /**
      * Returns the selected partition value.
      */
-    public Value getPartition(AbstractNode n, PartitioningQualifier q) {
+    public Value getPartition(AbstractNode n, PartitionToken q) {
         Partitions partitionsAtNode = partitions.get(n);
         if (partitionsAtNode == null)
             return ignorePartitions();
         Value p = partitionsAtNode.get(q);
-        if (p == null)
-            return Value.makeNone();
+        if (p == null) {
+            if (q instanceof PartitionToken.FunctionPartitionToken)
+                return Value.makeNone();
+            return ignorePartitions();
+        }
         return p;
     }
 
     /**
      * Returns the selected partition value, or the full value if not partitioned.
      */
-    public static Value getPartition(Value v, AbstractNode n, PartitioningQualifier q) {
+    public static Value getPartition(Value v, AbstractNode n, PartitionToken q) {
         return v instanceof PartitionedValue ? ((PartitionedValue)v).getPartition(n, q) : v;
     }
 
@@ -263,7 +298,7 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
      * Adds additional partitions to this partitioned value.
      */
     public PartitionedValue addPartitions(PartitionedValue v) {
-        Map<AbstractNode, Map<PartitioningQualifier, Value>> newPartitions = partitions.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().partitions));
+        Map<AbstractNode, Map<PartitionToken, Value>> newPartitions = partitions.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().partitions));
         v.partitions.forEach((key, value) -> newPartitions.put(key, value.partitions));
         return make(new Value(this), newPartitions);
     }
@@ -300,14 +335,15 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
     /**
      * Applies the given function to the single value and each partition value.
      */
-    private PartitionedValue applyFunction(Function<Value, Value> func) {
+    @Override
+    public PartitionedValue applyFunction(Function<Value, Value> func) {
         return make(func.apply(new Value(this)), applyForEachPartition((e, n) -> func.apply(e.getValue())));
     }
 
     /**
      * Applies the given function to each partition value.
      */
-    private Map<AbstractNode, Map<PartitioningQualifier, Value>> applyForEachPartition(BiFunction<Map.Entry<PartitioningQualifier, Value>, AbstractNode, Value> func) {
+    private Map<AbstractNode, Map<PartitionToken, Value>> applyForEachPartition(BiFunction<Map.Entry<PartitionToken, Value>, AbstractNode, Value> func) {
         return getPartitionNodes().stream().collect(Collectors.toMap(n -> n,
                         n -> partitions.get(n).entrySet().stream().collect(
                                 Collectors.toMap(Map.Entry::getKey, e -> func.apply(e, n)))));
@@ -316,30 +352,57 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
     /**
      * Applies the given function to each partition value.
      */
-    private void applyMutableForEachPartition(BiConsumer<Map.Entry<PartitioningQualifier, Value>, AbstractNode> func) {
+    private void applyMutableForEachPartition(BiConsumer<Map.Entry<PartitionToken, Value>, AbstractNode> func) {
         getPartitionNodes().forEach(n -> partitions.get(n).entrySet().forEach(e -> func.accept(e, n)));
     }
 
     /**
-     * Returns all the partition qualifiers.
+     * Returns all the partition values.
      */
-    public Map<AbstractNode, Set<PartitioningQualifier>> getPartitionQualifiers() {
+    public Collection<Value> getPartitionValues() {
+        return partitions.values().stream().flatMap(p -> p.values().stream()).collect(Collectors.toList());
+    }
+
+    /**
+     * Returns all the partition tokens.
+     */
+    public Map<AbstractNode, Set<PartitionToken>> getPartitionTokens() {
         return partitions.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().keySet()));
     }
 
     /**
-     * Returns the set of all partition qualifiers used by this partitioned value.
+     * Returns the set of all partition tokens used by this partitioned value.
      */
-    public Set<PartitioningQualifier> getPartitionQualifiers(AbstractNode n) {
+    public Set<PartitionToken> getPartitionTokens(AbstractNode n) {
         Partitions partitionsForNode = partitions.get(n);
         if (partitionsForNode == null)
             return Collections.emptySet();
         return partitionsForNode.keySet();
     }
 
+    /**
+     * Returns the set of all partition tokens used by this partitioned value.
+     */
+    public Set<PartitionToken.PropertyNamePartitionToken> getPropertyNamePartitions(AbstractNode n) {
+        Partitions partitionsForNode = partitions.get(n);
+        if (partitionsForNode == null)
+            return Collections.emptySet();
+        return partitionsForNode.keySet().stream().filter(q -> q instanceof PartitionToken.PropertyNamePartitionToken).map(q -> (PartitionToken.PropertyNamePartitionToken) q).collect(Collectors.toSet());
+    }
+
     @Override
     public String toString() {
         return super.toString() + "[partitions: " + partitions.values() + "]"; // omitting keys since they are also in values
+    }
+
+    @Override
+    public Value setFunctionPartitions(FunctionPartitions functionPartitions) {
+        return applyFunction(v -> v.setFunctionPartitions(functionPartitions));
+    }
+
+    @Override
+    public Value addFunctionTypeSignatures(FunctionTypeSignatures functionTypeSignatures) {
+        return applyFunction(v -> v.addFunctionTypeSignatures(functionTypeSignatures));
     }
 
     @Override
@@ -628,6 +691,11 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
     }
 
     @Override
+    public Value restrictToObjKind(ObjectLabel.Kind kind) {
+        return applyFunction(v -> v.restrictToObjKind(kind));
+    }
+
+    @Override
     public Value joinAnyStr() {
         return applyFunction(Value::joinAnyStr);
     }
@@ -670,6 +738,16 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
     @Override
     public Value restrictToStr() {
         return applyFunction(Value::restrictToStr);
+    }
+
+    @Override
+    public Value restrictToStrNumeric() {
+        return applyFunction(Value::restrictToStrNumeric);
+    }
+
+    @Override
+    public Value restrictToStrNotNumeric() {
+        return applyFunction(Value::restrictToStrNotNumeric);
     }
 
     @Override
@@ -748,6 +826,11 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
     }
 
     @Override
+    public Value restrictToObject(Collection<ObjectLabel> objs) {
+        return applyFunction(v1 -> v1.restrictToObject(objs));
+    }
+
+    @Override
     public Value makeGetter() {
         return applyFunction(Value::makeGetter);
     }
@@ -758,8 +841,8 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
     }
 
     @Override
-    public Value summarize(Summarized s) {
-        return applyFunction(v1 -> v1.summarize(s));
+    public Value rename(Renamings s) {
+        return applyFunction(v1 -> v1.rename(s));
     }
 
     @Override
@@ -822,22 +905,33 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
         return applyFunction(v, Value::joinGettersSetters);
     }
 
+    public Value removePartitions(Set<AbstractNode> nodes) {
+        if (nodes.stream().noneMatch(n -> getPartitionNodes().contains(n)))
+            return this;
+        Map<AbstractNode, Map<PartitionToken, Value>> newPartitions = partitions.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().partitions));
+        nodes.forEach(newPartitions::remove);
+        if (newPartitions.isEmpty()) {
+            return canonicalize(new Value(this));
+        }
+        return make(new Value(this), newPartitions);
+    }
+
     /**
-     * Map from partition qualifier to value.
+     * Map from partition token to value.
      */
     static private class Partitions implements DeepImmutable {
 
-        private final Map<PartitioningQualifier, Value> partitions;
+        private final Map<PartitionToken, Value> partitions;
 
-        private Partitions(Map<PartitioningQualifier, Value> partitions) {
+        private Partitions(Map<PartitionToken, Value> partitions) {
             this.partitions = partitions;
         }
 
-        static Partitions make(Map<PartitioningQualifier, Value> partitions) {
+        static Partitions make(Map<PartitionToken, Value> partitions) {
             return Canonicalizer.get().canonicalize(new Partitions(Canonicalizer.get().canonicalizeMap(partitions)));
         }
 
-        public Value get(PartitioningQualifier q) {
+        public Value get(PartitionToken q) {
             return partitions.get(q);
         }
 
@@ -845,16 +939,20 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
             return partitions.values();
         }
 
-        public Set<Map.Entry<PartitioningQualifier, Value>> entrySet() {
+        public Set<Map.Entry<PartitionToken, Value>> entrySet() {
             return partitions.entrySet();
         }
 
-        public Set<PartitioningQualifier> keySet() {
+        public Set<PartitionToken> keySet() {
             return partitions.keySet();
         }
 
-        public void put(PartitioningQualifier p, Value v) {
+        public void put(PartitionToken p, Value v) {
             partitions.put(p, v);
+        }
+
+        public Map<PartitionToken, Value> getPartitions() {
+            return partitions;
         }
 
         @Override
@@ -875,6 +973,8 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
 
         @Override
         public String toString() {
+            if (partitions.size() > 5)
+                return partitions.size() + " partitions";
             return partitions.toString();
         }
     }

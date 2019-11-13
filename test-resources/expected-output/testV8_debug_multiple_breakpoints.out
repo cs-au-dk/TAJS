@@ -8,4 +8,4 @@ test-resources/src/v8tests/debug-multiple-breakpoints.js:46:1: [definite] Unreac
 test-resources/src/v8tests/debug-multiple-breakpoints.js:47:1: [definite] Unreachable function h
 test-resources/src/v8tests/debug-multiple-breakpoints.js:95:10: [definite] The variable i is never used
 test-resources/src/v8tests/debug-multiple-breakpoints.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-multiple-breakpoints.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 5 checks (with 0 expected failures)

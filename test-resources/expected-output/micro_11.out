@@ -4,7 +4,7 @@ test-resources/src/micro/test11.js:12:9: [maybe] Conversion to number yields NaN
 test-resources/src/micro/test11.js:20:16: [maybe] The variable qqq2 has values with different types
 test-resources/src/micro/test11.js:21:13: [maybe] The variable qqq2 has values with different types
 test-resources/src/micro/test11.js:16:1: [info] Abstract value: 306.0
-test-resources/src/micro/test11.js:20:1: [info] Abstract value: 306.0|(IdentStr|OtherIdentPartsStr){"x101102103","x101102x103","x101x102103","x101x102x103"}
+test-resources/src/micro/test11.js:20:1: [info] Abstract value: 306.0|(IdentStr|OtherIdentPartsStr){"101x102103","101x102x103","203x103","x101102103","x101102x103","x101x102103","x101x102x103"}
 test-resources/src/micro/test11.js:24:1: [info] Abstract value: "x101x102x103"
 test-resources/src/micro/test11.js:28:1: [info] Abstract value: 306.0
 test-resources/src/micro/test11.js:32:1: [info] Abstract value: NaN

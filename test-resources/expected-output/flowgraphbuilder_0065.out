@@ -14,36 +14,46 @@ fg2: <main> function()
     node 5: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 6: read-variable['o',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5)
-    node 7: read-variable['f',v11,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:7)
+    node 6: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 7: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 8: call[v10,v11,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:7)
+    node 8: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 9: read-property[v8,v9,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5)
-    node 10: constant[3.0,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:14)
-    node 11: *[v6,v7,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5)
-    node 12: write-variable[v5,'y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:1)
+    node 9: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
-  block 7: [exit-ordinary]
-    node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js)
+  block 7:
+    node 10: read-variable['o',v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5)
+    node 11: read-variable['f',v14,v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:7)
+    ->[block 8]
+  block 8:
+    node 12: call[v13,v14,v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:7)
+    ->[block 9]
+  block 9:
+    node 13: read-property[v11,v12,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5)
+    node 14: constant[3.0,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:14)
+    node 15: *[v9,v10,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5)
+    node 16: write-variable[v8,'y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:1)
+    ->[block 10]
+  block 10: [exit-ordinary]
+    node 17: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js)
     ->[]
-  block 8: [exit-exceptional]
-    node 14: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js)
+  block 11: [exit-exceptional]
+    node 18: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js)
     ->[]
 function f()
-  block 9: [entry]
-    node 15: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
-    ->[block 10]
-  block 10:
-    node 16: constant["hi",v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:2:11)
-    ->[block 11]
-  block 11: [exit-ordinary]
-    node 17: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
+  block 12: [entry]
+    node 19: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
+    ->[block 13]
+  block 13:
+    node 20: constant["hi",v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:2:11)
+    ->[block 14]
+  block 14: [exit-ordinary]
+    node 21: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
     ->[]
-  block 12: [exit-exceptional]
-    node 18: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
+  block 15: [exit-exceptional]
+    node 22: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0065.js: [definite] Ordinary program exit is unreachable
@@ -51,4 +61,4 @@ test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5: [definite] Ref
 test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:1:1: [definite] Unreachable function f
 test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:7: [definite] Unreachable code
 test-resources/src/flowgraphbuilder/flowgraph_builder0065.js: [maybe] Uncaught exception, constructed at [test-resources/src/flowgraphbuilder/flowgraph_builder0065.js:5:5]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 2 checks (with 0 expected failures)

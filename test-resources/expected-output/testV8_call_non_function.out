@@ -4,4 +4,4 @@ test-resources/src/v8tests/call-non-function.js:47:9: [definite] Reading 'this' 
 test-resources/src/v8tests/call-non-function.js: [definite] Exceptional program exit is unreachable
 test-resources/src/v8tests/call-non-function.js:31:5: [maybe] The variable x has values with different types
 test-resources/src/v8tests/call-non-function.js:37:9: [maybe] The variable x has values with different types
-Soundness testing succeeded for 73 checks (with 0 expected failures)
+Soundness testing succeeded for 87 checks (with 0 expected failures)

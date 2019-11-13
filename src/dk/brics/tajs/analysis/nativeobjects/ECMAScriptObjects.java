@@ -102,8 +102,8 @@ public enum ECMAScriptObjects implements HostObject {
     STRING_TOUPPERCASE("String.prototype.toUpperCase"),
     STRING_TOLOCALEUPPERCASE("String.prototype.toLocaleUpperCase"),
     STRING_TRIM("String.prototype.trim"),
-    STRING_TRIMLEFT("String.prototype.trimLeft"),
-    STRING_TRIMRIGHT("String.prototype.trimRight"),
+    STRING_TRIMSTART("String.prototype.trimStart"),
+    STRING_TRIMEND("String.prototype.trimEnd"),
     STRING_STARTSWITH("String.prototype.startsWith"),
     STRING_ENDSWITH("String.prototype.endsWith"),
     STRING_INCLUDES("String.prototype.includes"),
@@ -250,7 +250,6 @@ public enum ECMAScriptObjects implements HostObject {
 
     ERROR("Error"),
     ERROR_PROTOTYPE("Error.prototype"),
-    ERROR_CAPTURESTACKTRACE("Error.captureStackTrace"),
     ERROR_TOSTRING("Error.toString"),
     EVAL_ERROR("EvalError"),
     EVAL_ERROR_PROTOTYPE("EvalError.prototype"),

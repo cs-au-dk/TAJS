@@ -372,7 +372,9 @@ benchmarks/tajs/src/underscore/test-suite/collections/test66.html:7:1: [definite
 benchmarks/tajs/src/underscore/test-suite/collections/test66.html:8:1: [definite] Unreachable function notStrictEqual
 benchmarks/tajs/src/underscore/test-suite/collections/test66.html:9:1: [definite] Unreachable function start
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/test-suite/collections/test66.html:17:11: [maybe] Converting primitive string to object
 benchmarks/tajs/src/underscore/test-suite/collections/test66.html:22:11: [maybe] Converting primitive string to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 3795 checks (with 0 expected failures)
+Soundness testing succeeded for 3764 checks (with 0 expected failures)

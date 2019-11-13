@@ -3,4 +3,4 @@ test-resources/src/v8tests/date-parse.js: [maybe] Uncaught exception, constructe
 test-resources/src/v8tests/date-parse.js:35:11: [maybe] Converting undefined to string
 test-resources/src/v8tests/date-parse.js:43:11: [maybe] Converting undefined to string
 test-resources/src/v8tests/date-parse.js:265:59: [maybe] Converting undefined to string
-Soundness testing succeeded for 46920 checks (with 0 expected failures)
+Soundness testing succeeded for 46923 checks (with 0 expected failures)

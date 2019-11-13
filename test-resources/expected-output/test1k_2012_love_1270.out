@@ -63,4 +63,4 @@ test-resources/src/1k2012love/1270.js:46:96: [maybe] Reading absent property (co
 test-resources/src/1k2012love/1270.js:46:131: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1270.js:52:16: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1270.js:46:36: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 267 checks (with 0 expected failures)
+Soundness testing succeeded for 264 checks (with 0 expected failures)

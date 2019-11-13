@@ -51,8 +51,8 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIM;
-import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMLEFT;
-import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMRIGHT;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMEND;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMSTART;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.singleton;
@@ -92,7 +92,7 @@ public class JSString {
                 }
 
                 if (call.isConstructorCall()) { // 15.5.2
-                    return Conversion.toObject(call.getSourceNode(), s, false, c);
+                    return Conversion.toObject(call.getSourceNode(), s, false, false, c);
                 } else // 15.5.1
                     return s;
             }
@@ -185,8 +185,8 @@ public class JSString {
             }
 
             case STRING_TRIM: // 15.5.4.20
-            case STRING_TRIMLEFT:
-            case STRING_TRIMRIGHT: {
+            case STRING_TRIMSTART:
+            case STRING_TRIMEND: {
                 Value thisString = Conversion.toString(state.readThis(), c);
                 if (thisString.isMaybeAnyStr()) {
                     return Value.makeAnyStr();
@@ -196,10 +196,11 @@ public class JSString {
                     String m = null;
                     if (nativeobject == STRING_TRIM)
                         m = "String.prototype.trim";
-                    else if (nativeobject == STRING_TRIMRIGHT)
+                    else if (nativeobject == STRING_TRIMEND)
                         m = "String.prototype.trimRight";
-                    else if (nativeobject == STRING_TRIMLEFT)
+                    else if (nativeobject == STRING_TRIMSTART)
                         m = "String.prototype.trimLeft";
+                    // Nashorn only supports the aliases trimRight and trimLeft
                     return TAJSConcreteSemantics.convertTAJSCall(thisString, m, 0, call, c, Value::makeAnyStr);
                 } else if (thisString.isMaybeStrUInt()
                         || thisString.isMaybeStrOtherNum()
@@ -207,7 +208,7 @@ public class JSString {
                         || thisString.isMaybeStrIdentifier()
                         || thisString.isMaybeStrOtherIdentifierParts()) {
                     trimmedString = thisString;
-                } else if (thisString.isMaybeStrPrefix() && (nativeobject == STRING_TRIM || nativeobject == STRING_TRIMLEFT)) {
+                } else if (thisString.isMaybeStrPrefix() && (nativeobject == STRING_TRIM || nativeobject == STRING_TRIMSTART)) {
                     Pattern LTRIM = Pattern.compile("^[\\s\\uFEFF\\xA0]+");
                     String trimmedPrefixString = thisString.getPrefix().replaceAll(LTRIM.toString(), "");
                     trimmedString = !trimmedPrefixString.isEmpty() ? Value.makeNone().joinPrefix(trimmedPrefixString) : Value.makeAnyStr();

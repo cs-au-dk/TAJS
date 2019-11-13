@@ -41,4 +41,4 @@ test-resources/src/v8tests/try.js:46:69: [maybe] The variable x has values with 
 test-resources/src/v8tests/try.js:47:77: [maybe] The variable x has values with different types
 test-resources/src/v8tests/try.js:60:53: [maybe] The variable o has values with different types
 test-resources/src/v8tests/try.js:56:51: [info] Writing to unknown property that may cause loss of precision
-Soundness testing succeeded for 728 checks (with 0 expected failures)
+Soundness testing succeeded for 724 checks (with 0 expected failures)

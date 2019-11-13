@@ -1215,6 +1215,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17090:12: [definite] Unre
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11332:40: [maybe] Reading absent property length
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:516:20: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:581:19: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:639:32: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1472:7: [maybe] Converting primitive string to object
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3036:27: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4924:21: [maybe] Reading absent property (computed name)
@@ -1231,4 +1232,4 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3036:27: [info] Reading f
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3507:7: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:24: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 19872 checks (with 0 expected failures)
+Soundness testing succeeded for 19781 checks (with 0 expected failures)

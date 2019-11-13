@@ -25,6 +25,7 @@ import dk.au.cs.casa.jer.entries.EntryVisitor;
 import dk.au.cs.casa.jer.entries.FunctionEntry;
 import dk.au.cs.casa.jer.entries.FunctionExitEntry;
 import dk.au.cs.casa.jer.entries.IEntry;
+import dk.au.cs.casa.jer.entries.ModuleExportsEntry;
 import dk.au.cs.casa.jer.entries.ObjectDescription;
 import dk.au.cs.casa.jer.entries.ObjectDescriptionVisitor;
 import dk.au.cs.casa.jer.entries.OtherDescription;
@@ -95,6 +96,8 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
 
     private Map<Class<? extends AbstractNode>, Map<SourceLocation, Set<AbstractNode>>> loc2nodes;
 
+    private Map<Pair<BasicBlock, Integer>, Value> readRegisterCache;
+
     public LogEntrySoundnessTester(Map<Pair<SourceLocation, String>, Set<Value>> type_map, Map<Class<? extends AbstractNode>, Map<SourceLocation, Set<AbstractNode>>> loc2nodes, Set<SoundnessCheck> checks, ValueLogSourceLocationEqualityDecider equalityDecider, ValueLogLocationInformation valueLogLocationInformation, Set<SourceLocation> domObjectAllocationSites, Solver.SolverInterface c) {
         this.type_map = type_map;
         this.loc2nodes = loc2nodes;
@@ -111,6 +114,7 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
                 .map(name -> name.startsWith("Window.") ? name.substring("Window.".length()) : name)
                 .collect(Collectors.toSet());
         abstractConcreteValueComparator = new AbstractConcreteValueComparator(canonicalNamesForBuiltins, equalityDecider, domObjectAllocationSites, valueLogLocationInformation, c.getFlowGraph()::isHostEnvironmentSource);
+        readRegisterCache = newMap();
     }
 
     boolean isAbstractValueSound(ValueDescription concreteValue, Value abstractValue) {
@@ -251,7 +255,10 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
 
             if (!isCall && !isApply /* XXX skipping the checks for call and apply, they seem to behave weirdly */) {
                 checks.add(new ValueCheck(e.getSourceLocation(), "callee", dynamicCallee, staticCallees, !foundCalleeMatch));
-                checks.add(new ValueCheck(e.getSourceLocation(), "call receiver", dynamicReceiver, staticReceivers, !foundReceiverMatch));
+                if (!cns.stream().anyMatch(cn -> cn.isConstructorCall() && cn.getFunctionRegister() == AbstractNode.NO_VALUE)) {
+                    // Always add the check, once https://github.com/Haiyang-Sun/nodeprof.js/issues/38 has been fixed.
+                    checks.add(new ValueCheck(e.getSourceLocation(), "call receiver", dynamicReceiver, staticReceivers, !foundReceiverMatch));
+                }
             }
         }
 
@@ -514,6 +521,10 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
     }
 
     private Value readRegister(BasicBlock block, int register) {
+        Pair<BasicBlock, Integer> key = Pair.make(block, register);
+        if (readRegisterCache.containsKey(key)) {
+            return readRegisterCache.get(key);
+        }
         Map<Context, State> states = c.getAnalysisLatticeElement().getStates(block);
         List<Value> values = states.values().stream().map(s ->
                 s.isBottom() ? Value.makeNone() : UnknownValueResolver.getRealValue(s.readRegister(register), s)
@@ -522,6 +533,7 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
         if (log.isDebugEnabled()) {
             log.debug(String.format("readRegister(%s, %d) = %s", block, register, result));
         }
+        readRegisterCache.put(key, result);
         return result;
     }
 
@@ -658,13 +670,20 @@ class LogEntrySoundnessTester implements EntryVisitor<Void> {
 
         Value staticBase = readThis(block);
         ValueDescription dynBase = e.getBase();
-        checks.add(new ValueCheck(e.getSourceLocation(), "receiver", dynBase, staticBase, !isAbstractValueSound(dynBase, staticBase)));
+        boolean nodeprofIssueFixed = false;
+        if (nodeprofIssueFixed) // TODO: Remove this branch, once https://github.com/Haiyang-Sun/nodeprof.js/issues/35 is fixed
+            checks.add(new ValueCheck(e.getSourceLocation(), "receiver", dynBase, staticBase, !isAbstractValueSound(dynBase, staticBase)));
 
         return null;
     }
 
     @Override
     public Void visit(DynamicCodeEntry e) {
+        return null;
+    }
+
+    @Override
+    public Void visit(ModuleExportsEntry moduleExportsEntry) {
         return null;
     }
 

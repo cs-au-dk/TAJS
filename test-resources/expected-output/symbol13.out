@@ -1,5 +1,5 @@
 out/temp-sources/TestMicro.symbol13.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.symbol13.js:2:1: [info] Abstract value: [*Symbol#node8]
+out/temp-sources/TestMicro.symbol13.js:2:1: [info] Abstract value: [*Symbol#node12]
 out/temp-sources/TestMicro.symbol13.js:3:1: [info] Abstract value: "symbol"
 out/temp-sources/TestMicro.symbol13.js:4:1: [info] Abstract value: Str
 Soundness testing succeeded for 25 checks (with 0 expected failures)

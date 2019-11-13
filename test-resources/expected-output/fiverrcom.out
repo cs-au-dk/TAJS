@@ -11,4 +11,4 @@ benchmarks/tajs/src/unevalizer/fiverr.com-slice/index.html:10:33: [maybe] Readin
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/fiverr.com-slice/index.html:9:21):1:15: [maybe] Converting object to string
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/fiverr.com-slice/index.html:9:21):1:15: [maybe] Converting primitive string to object
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/fiverr.com-slice/index.html:9:21):1:15: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 65 checks (with 0 expected failures)
+Soundness testing succeeded for 63 checks (with 0 expected failures)

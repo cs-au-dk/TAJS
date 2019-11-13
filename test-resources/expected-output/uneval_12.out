@@ -17,4 +17,4 @@ test-resources/src/uneval/uneval12.js:18:1: [info] Exp: (o)[(4.0)]
 test-resources/src/uneval/uneval12.js:19:1: [info] Exp: (o)[((as)())]
 test-resources/src/uneval/uneval12.js:20:1: [info] Exp: ((o).p)()
 test-resources/src/uneval/uneval12.js:21:1: [info] Exp: (((o).p)())[(y)]
-Soundness testing succeeded for 61 checks (with 0 expected failures)
+Soundness testing succeeded for 60 checks (with 0 expected failures)

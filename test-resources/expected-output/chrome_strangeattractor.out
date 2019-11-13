@@ -171,4 +171,4 @@ test-resources/src/chromeexperiments/strangeattractor.html:909:17: [maybe] Readi
 test-resources/src/chromeexperiments/strangeattractor.html:328:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/strangeattractor.html:384:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/chromeexperiments/strangeattractor.html:390:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-Soundness testing succeeded for 5024 checks (with 0 expected failures)
+Soundness testing succeeded for 4942 checks (with 0 expected failures)

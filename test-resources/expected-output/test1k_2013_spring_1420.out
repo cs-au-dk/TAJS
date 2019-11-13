@@ -147,4 +147,4 @@ test-resources/src/1k2013spring/1420.js:129:15: [maybe] Conversion to number yie
 test-resources/src/1k2013spring/1420.js:129:15: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1420.js:136:12: [maybe] Converting object to string
 test-resources/src/1k2013spring/1420.js:136:12: [maybe] Converting primitive string to object
-Soundness testing succeeded for 547 checks (with 0 expected failures)
+Soundness testing succeeded for 546 checks (with 0 expected failures)

@@ -28,14 +28,14 @@ test-resources/src/micro/testString.js:7:1: [info] Abstract value: ""
 test-resources/src/micro/testString.js:8:1: [info] Abstract value: "true"
 test-resources/src/micro/testString.js:9:1: [info] Abstract value: "77"
 test-resources/src/micro/testString.js:10:1: [info] Abstract value: "77"
-test-resources/src/micro/testString.js:16:1: [info] Abstract value: [@String#node36{boxed-primitive=""}]
+test-resources/src/micro/testString.js:16:1: [info] Abstract value: [@String#node40{boxed-primitive=""}]
 test-resources/src/micro/testString.js:17:1: [info] Abstract value: ""
 test-resources/src/micro/testString.js:18:1: [info] Abstract value: 0.0
-test-resources/src/micro/testString.js:19:1: [info] Abstract value: [@String#node40{boxed-primitive="false"}]
+test-resources/src/micro/testString.js:19:1: [info] Abstract value: [@String#node44{boxed-primitive="false"}]
 test-resources/src/micro/testString.js:20:1: [info] Abstract value: "false"
 test-resources/src/micro/testString.js:21:1: [info] Abstract value: "FALSE"
 test-resources/src/micro/testString.js:22:1: [info] Abstract value: 5.0
-test-resources/src/micro/testString.js:23:1: [info] Abstract value: [@String#node44{boxed-primitive="77.77"}]
+test-resources/src/micro/testString.js:23:1: [info] Abstract value: [@String#node48{boxed-primitive="77.77"}]
 test-resources/src/micro/testString.js:24:1: [info] Abstract value: "77.77"
 test-resources/src/micro/testString.js:25:1: [info] Abstract value: 5.0
 test-resources/src/micro/testString.js:27:1: [info] Abstract value: ""

@@ -249,4 +249,4 @@ test-resources/src/v8tests/array-splice.js:241:25: [info] Reading from unknown p
 test-resources/src/v8tests/array-splice.js:244:25: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/v8tests/array-splice.js:248:25: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/v8tests/array-splice.js:259:25: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 1358 checks (with 0 expected failures)
+Soundness testing succeeded for 1667 checks (with 0 expected failures)

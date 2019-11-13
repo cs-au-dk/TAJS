@@ -375,6 +375,8 @@ benchmarks/tajs/src/underscore/test-suite/collections/test64.html:22:12: [defini
 benchmarks/tajs/src/underscore/test-suite/collections/test64.html:22:12: [definite] Unreachable function
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:276:36: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/test-suite/collections/test64.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/underscore/test-suite/collections/test64.html:22:5]
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 3976 checks (with 0 expected failures)
+Soundness testing succeeded for 3942 checks (with 0 expected failures)

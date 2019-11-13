@@ -13,54 +13,64 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: constant["x",v6] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:4:19)
-    node 6: throw[v6] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:4:13)
-    ->[block 13] ~>[block 5]
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
+    ->[block 5]
   block 5:
-    node 7: catch[e,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:5:11)
-    node 8: begin-with[v7] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:5:11)
-    ->[block 6] ~>[block 12]
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6]
   block 6:
-    node 9: nop(break l1) (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:6:13)
-    ->[block 7] ~>[block 8]
+    node 8: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7]
   block 7:
-    node 10(~-1): end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:5:11)
-    ->[block 9] ~>[block 8]
+    node 9: constant["x",v9] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:4:19)
+    node 10: throw[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:4:13)
+    ->[block 16] ~>[block 8]
   block 8:
-    node 11: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:5:11)
-    ->[block 12]
+    node 11: catch[e,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:5:11)
+    node 12: begin-with[v10] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:5:11)
+    ->[block 9] ~>[block 15]
   block 9:
-    node 12(~16): nop(break l2) (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:8:13)
-    ->[block 16]
+    node 13: nop(break l1) (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:6:13)
+    ->[block 10] ~>[block 11]
   block 10:
-    node 13: throw[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:3:9)
-    ->[block 19]
+    node 14(~-1): end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:5:11)
+    ->[block 12] ~>[block 11]
   block 11:
-    node 14: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:5:11)
-    ->[block 13] ~>[block 12]
-  block 12:
-    node 15: catch[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:3:9)
-    ->[block 16]
-  block 13:
-    node 16: nop(break l2) (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:8:13)
-    ->[block 16]
-  block 14:
-    node 17: constant[false,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:11:17)
+    node 15: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:5:11)
     ->[block 15]
+  block 12:
+    node 16(~20): nop(break l2) (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:8:13)
+    ->[block 19]
+  block 13:
+    node 17: throw[v8] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:3:9)
+    ->[block 22]
+  block 14:
+    node 18: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:5:11)
+    ->[block 16] ~>[block 15]
   block 15:
-    node 18: call[TAJS_assert,v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:11:5)
-    ->[block 16]
+    node 19: catch[v8] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:3:9)
+    ->[block 19]
   block 16:
-    node 19: constant["OK",v14] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:15:16)
-    ->[block 17]
+    node 20: nop(break l2) (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:8:13)
+    ->[block 19]
   block 17:
-    node 20: call[TAJS_dumpValue,v14,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:15:1)
+    node 21: constant[false,v14] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:11:17)
     ->[block 18]
-  block 18: [exit-ordinary]
-    node 21: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js)
+  block 18:
+    node 22: call[TAJS_assert,v14,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:11:5)
+    ->[block 19]
+  block 19:
+    node 23: constant["OK",v17] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:15:16)
+    ->[block 20]
+  block 20:
+    node 24: call[TAJS_dumpValue,v17,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js:15:1)
+    ->[block 21]
+  block 21: [exit-ordinary]
+    node 25: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js)
     ->[]
-  block 19: [exit-exceptional]
-    node 22: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js)
+  block 22: [exit-exceptional]
+    node 26: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0006.js: [definite] Exceptional program exit is unreachable

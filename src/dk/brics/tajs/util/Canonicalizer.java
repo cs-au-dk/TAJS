@@ -110,7 +110,7 @@ public class Canonicalizer {
     }
 
     /**
-     * Canonicalizes an Obj into an immutable version.
+     * Canonicalizes an object into an immutable version.
      */
     public <T> T canonicalizeViaImmutableBox(T obj) {
         return canonicalize(new ImmutableBox<>(obj)).get();

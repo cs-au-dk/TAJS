@@ -204,4 +204,4 @@ test-resources/src/1k2012love/1183.js:107:14: [maybe] The variable X has values 
 test-resources/src/1k2012love/1183.js:107:17: [maybe] The variable Y has values with different types
 test-resources/src/1k2012love/1183.js:110:14: [maybe] The variable R has values with different types
 test-resources/src/1k2012love/1183.js:116:14: [maybe] The variable Q has values with different types
-Soundness testing succeeded for 80 checks (with 1 expected failures)
+Soundness testing succeeded for 78 checks (with 1 expected failures)

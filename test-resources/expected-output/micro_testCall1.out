@@ -1,88 +1,102 @@
 test-resources/src/micro/testCall1.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/testCall1.js:18:5: [definite] The variable y is never used
-test-resources/src/micro/testCall1.js:2:2: [info] Abstract value: [@Object#node9]
+test-resources/src/micro/testCall1.js:2:2: [info] Abstract value: [@Object#node13]
 test-resources/src/micro/testCall1.js:3:2: [info] Abstract state:
 Abstract state:
-  Execution context: ScopeChain=[[@activation#node35],[@<the global object>[native]]], VariableObject=[@activation#node35], this=Null
-  Summarized: maybe=[], definitely=[]
-  Store (excluding basis and default objects): 
-  Registers: 
-    v1=Undef
-    v5=[@Object#node9]
-  MustReachingDefs: 
-    v1: node 35 (test-resources/src/micro/testCall1.js:1:15)
-    v5: node 36 (test-resources/src/micro/testCall1.js:2:17)
-  Functions in stack: [block 15, context {this=[@Object#node9]}]
-test-resources/src/micro/testCall1.js:7:2: [info] Abstract value: [@Object#node13]
-test-resources/src/micro/testCall1.js:8:2: [info] Abstract state:
-Abstract state:
-  Execution context: ScopeChain=[[@activation#node44],[@<the global object>[native]]], VariableObject=[@activation#node44], this=Null
-  Summarized: maybe=[], definitely=[]
+  Execution context: ScopeChain=[[@activation#node39],[@<the global object>[native]]], VariableObject=[@activation#node39], this=Null
+  Renamings: maybe=[], definitely=[]
   Store (excluding basis and default objects): 
   Registers: 
     v1=Undef
     v5=[@Object#node13]
   MustReachingDefs: 
-    v1: node 44 (test-resources/src/micro/testCall1.js:6:15)
-    v5: node 45 (test-resources/src/micro/testCall1.js:7:17)
-  Functions in stack: [block 22, context {this=[@Object#node13]}]
+    v1: node 39 (test-resources/src/micro/testCall1.js:1:15)
+    v5: node 40 (test-resources/src/micro/testCall1.js:2:17)
+  Functions in stack: [block 18, context {this=[@Object#node13]}]
+test-resources/src/micro/testCall1.js:7:2: [info] Abstract value: [@Object#node17]
+test-resources/src/micro/testCall1.js:8:2: [info] Abstract state:
+Abstract state:
+  Execution context: ScopeChain=[[@activation#node48],[@<the global object>[native]]], VariableObject=[@activation#node48], this=Null
+  Renamings: maybe=[], definitely=[]
+  Store (excluding basis and default objects): 
+  Registers: 
+    v1=Undef
+    v5=[@Object#node17]
+  MustReachingDefs: 
+    v1: node 48 (test-resources/src/micro/testCall1.js:6:15)
+    v5: node 49 (test-resources/src/micro/testCall1.js:7:17)
+  Functions in stack: [block 25, context {this=[@Object#node17]}]
 test-resources/src/micro/testCall1.js:19:1: [info] Abstract state:
 Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
-  Summarized: maybe=[@replace#fun4, @arguments#node53, @arguments#node44, @arguments#node35, @activation#node53, @activation#node44, @activation#node35, @Object#node9, @Object#node7, @Object#node66, @Object#node59, @Object#node14, @Object#node13, @Object#node10, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1], definitely=[@replace#fun4, @arguments#node53, @activation#node53, @Object#node9, @Object#node7, @Object#node66, @Object#node59, @Object#node14, @Object#node13, @Object#node10, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1]
+  Renamings: maybe=[@replace#fun4, @arguments#node57, @arguments#node48, @arguments#node39, @arguments#node341, @activation#node57, @activation#node48, @activation#node39, @activation#node341, @Object#node70, @Object#node7, @Object#node63, @Object#node353, @Object#node346, @Object#node18, @Object#node17, @Object#node14, @Object#node13, @Object#node11, @<anonymous>#fun6, @<anonymous>#fun5, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1], definitely=[@replace#fun4, @arguments#node57, @arguments#node341, @activation#node57, @activation#node341, @Object#node70, @Object#node7, @Object#node63, @Object#node353, @Object#node346, @Object#node18, @Object#node17, @Object#node14, @Object#node13, @Object#node11, @<anonymous>#fun6, @<anonymous>#fun5, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {Math:[@Math[native]],Object:[@Object[native]],String:[@String[native]],x:[@Object#node9, @Object#node13],x1:[@Object#node9],x2:[@Object#node13],y:8.0|"7foo",[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {Error:[@Error[native]],Math:[@Math[native]],Object:[@Object[native]],String:[@String[native]],x:[@Object#node17, @Object#node13],x1:[@Object#node13],x2:[@Object#node17],y:8.0|"7foo",[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @Error[native] (<initial state>): {captureStackTrace:[@<anonymous>#fun6],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Function.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @Function.prototype[native] (<initial state>): {captureStackTrace:^(@Function.prototype[native].captureStackTrace[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Math[native] (<initial state>): {random:^(@Math[native].random[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @Object.prototype[native] (<initial state>): {configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),get:^(@Object.prototype[native].get[absent]),m:^(@Object.prototype[native].m[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),value:^(@Object.prototype[native].value[absent]),writable:^(@Object.prototype[native].writable[absent]),x:^(@Object.prototype[native].x[absent]),x1:^(@Object.prototype[native].x1[absent]),x2:^(@Object.prototype[native].x2[absent]),y:^(@Object.prototype[native].y[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @Object.prototype[native] (<initial state>): {captureStackTrace:^(@Object.prototype[native].captureStackTrace[absent]),configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),get:^(@Object.prototype[native].get[absent]),m:^(@Object.prototype[native].m[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),value:^(@Object.prototype[native].value[absent]),writable:^(@Object.prototype[native].writable[absent]),x:^(@Object.prototype[native].x[absent]),x1:^(@Object.prototype[native].x1[absent]),x2:^(@Object.prototype[native].x2[absent]),y:^(@Object.prototype[native].y[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @String.prototype[native] (<initial state>): {replace:[@replace#fun4],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
     @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Object#node11 (host-environment-sources-loader): {constructor:[@<anonymous>#fun5],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @Object#node7 (host-environment-sources-loader): {constructor:[@<anonymous>#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @Object#node9 (test-resources/src/micro/testCall1.js:1:10): {m:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]]}
-    @<anonymous>#fun1 (test-resources/src/micro/testCall1.js:1:15): {length:1.0,name:"",prototype:[@Object#node10],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node10 (test-resources/src/micro/testCall1.js:1:15): {constructor:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @Object#node13 (test-resources/src/micro/testCall1.js:6:10): {m:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]]}
-    @<anonymous>#fun2 (test-resources/src/micro/testCall1.js:6:15): {length:1.0,name:"",prototype:[@Object#node14],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node14 (test-resources/src/micro/testCall1.js:6:15): {constructor:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @Object#node13 (test-resources/src/micro/testCall1.js:1:10): {m:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]]}
+    @<anonymous>#fun1 (test-resources/src/micro/testCall1.js:1:15): {length:1.0,name:"",prototype:[@Object#node14],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node14 (test-resources/src/micro/testCall1.js:1:15): {constructor:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @Object#node17 (test-resources/src/micro/testCall1.js:6:10): {m:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]]}
+    @<anonymous>#fun2 (test-resources/src/micro/testCall1.js:6:15): {length:1.0,name:"",prototype:[@Object#node18],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node18 (test-resources/src/micro/testCall1.js:6:15): {constructor:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @<anonymous>#fun5 (HOST(error-captureStackTrace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node11],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @activation#node341 (HOST(error-captureStackTrace-model.js):1:1): {arguments:[@arguments#node341]}
+    @arguments#node341 (HOST(error-captureStackTrace-model.js):1:1): {callee:[@<anonymous>#fun5],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
+    @<anonymous>#fun6 (HOST(error-captureStackTrace-model.js):5:12): {length:2.0,name:"",prototype:[@Object#node353],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node341],[@<the global object>[native]]]}
+    @Object#node353 (HOST(error-captureStackTrace-model.js):5:12): {constructor:[@<anonymous>#fun6],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @<anonymous>#fun3 (HOST(string-replace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node7],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @activation#node53 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node53]}
-    @arguments#node53 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun3],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node66 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun4],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @replace#fun4 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node66],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node53],[@<the global object>[native]]]}
+    @activation#node57 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node57]}
+    @arguments#node57 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun3],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node70 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun4],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @replace#fun4 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node70],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node57],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
     v2="tajs-host-env:string-replace-model.js"
     v3=true
     v4=[@<anonymous>#fun3]
-    v5=[@Object#node9]
-    v6=[@<anonymous>#fun1]
-    v7=[@Object#node13]
-    v8=[@<anonymous>#fun2]
-    v9=Bool
-    v10=UInt|NotUInt
-    v11=0.5
-    v13=[@Math[native]]
-    v16=8.0|"7foo"
-    v18=[@Object#node9, @Object#node13]
-    v19=7.0
+    v5="tajs-host-env:error-captureStackTrace-model.js"
+    v6=true
+    v7=[@<anonymous>#fun5]
+    v8=[@Object#node13]
+    v9=[@<anonymous>#fun1]
+    v10=[@Object#node17]
+    v11=[@<anonymous>#fun2]
+    v12=Bool
+    v13=UInt|NotUInt
+    v14=0.5
+    v16=[@Math[native]]
+    v19=8.0|"7foo"
+    v21=[@Object#node17, @Object#node13]
+    v22=7.0
   MustReachingDefs: 
     v1: node 0 (test-resources/src/micro/testCall1.js)
     v2: node 5 (host-environment-sources-loader)
     v3: node 6 (host-environment-sources-loader)
     v4: node 7 (host-environment-sources-loader)
-    v5: node 9 (test-resources/src/micro/testCall1.js:1:10)
-    v6: node 10 (test-resources/src/micro/testCall1.js:1:15)
-    v7: node 13 (test-resources/src/micro/testCall1.js:6:10)
-    v8: node 14 (test-resources/src/micro/testCall1.js:6:15)
-    v13: node 17 (test-resources/src/micro/testCall1.js:13:5)
-    v10: node 19 (test-resources/src/micro/testCall1.js:13:5)
-    v11: node 20 (test-resources/src/micro/testCall1.js:13:21)
-    v9: node 21 (test-resources/src/micro/testCall1.js:13:5)
-    v18: node 27 (test-resources/src/micro/testCall1.js:18:9)
-    v19: node 29 (test-resources/src/micro/testCall1.js:18:13)
-    v16: node 30 (test-resources/src/micro/testCall1.js:18:9)
+    v5: node 9 (host-environment-sources-loader)
+    v6: node 10 (host-environment-sources-loader)
+    v7: node 11 (host-environment-sources-loader)
+    v8: node 13 (test-resources/src/micro/testCall1.js:1:10)
+    v9: node 14 (test-resources/src/micro/testCall1.js:1:15)
+    v10: node 17 (test-resources/src/micro/testCall1.js:6:10)
+    v11: node 18 (test-resources/src/micro/testCall1.js:6:15)
+    v16: node 21 (test-resources/src/micro/testCall1.js:13:5)
+    v13: node 23 (test-resources/src/micro/testCall1.js:13:5)
+    v14: node 24 (test-resources/src/micro/testCall1.js:13:21)
+    v12: node 25 (test-resources/src/micro/testCall1.js:13:5)
+    v21: node 31 (test-resources/src/micro/testCall1.js:18:9)
+    v22: node 33 (test-resources/src/micro/testCall1.js:18:13)
+    v19: node 34 (test-resources/src/micro/testCall1.js:18:9)
   MustEquals: 
-    @<the global object>[native].y: [v16]
-    v16: [@<the global object>[native].y]
+    @<the global object>[native].y: [v19]
+    v19: [@<the global object>[native].y]
   Functions in stack: []
-Soundness testing succeeded for 22 checks (with 0 expected failures)
+Soundness testing succeeded for 21 checks (with 0 expected failures)

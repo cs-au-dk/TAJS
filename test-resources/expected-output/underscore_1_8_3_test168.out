@@ -386,6 +386,8 @@ benchmarks/tajs/src/underscore/test-suite/utility/test168.html:15:20: [maybe] Re
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:107:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:108:33: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1429:5: [maybe] Converting primitive string to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1430:17: [maybe] Converting object to string
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1430:17: [maybe] Converting primitive string to object
@@ -394,4 +396,4 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1431:24: [maybe] Th
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:108:33: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:108:65: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 3851 checks (with 0 expected failures)
+Soundness testing succeeded for 3822 checks (with 0 expected failures)

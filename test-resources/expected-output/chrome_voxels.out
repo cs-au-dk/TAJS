@@ -393,5 +393,5 @@ test-resources/src/chromeexperiments/voxels.html:2808:4: [definite] Unreachable 
 test-resources/src/chromeexperiments/voxels.html:2811:20: [definite] Unreachable function
 test-resources/src/chromeexperiments/voxels.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/voxels.html:2171:13, test-resources/src/chromeexperiments/voxels.html:2757:5, test-resources/src/chromeexperiments/voxels.html:2780:17]
 test-resources/src/chromeexperiments/voxels.html:1283:34: [maybe] Conversion to number yields NaN
-Disabling soundness testing for test-resources/src/chromeexperiments/voxels.html entirely (10692 uninspected soundness errors).
-Soundness testing succeeded for 12219 checks (with 10692 expected failures)
+Disabling soundness testing for test-resources/src/chromeexperiments/voxels.html entirely (10395 uninspected soundness errors).
+Soundness testing succeeded for 11787 checks (with 10395 expected failures)

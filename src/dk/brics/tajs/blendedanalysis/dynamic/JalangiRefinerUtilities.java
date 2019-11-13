@@ -25,6 +25,7 @@ import dk.au.cs.casa.jer.entries.EntryVisitor;
 import dk.au.cs.casa.jer.entries.FunctionEntry;
 import dk.au.cs.casa.jer.entries.FunctionExitEntry;
 import dk.au.cs.casa.jer.entries.IEntry;
+import dk.au.cs.casa.jer.entries.ModuleExportsEntry;
 import dk.au.cs.casa.jer.entries.ObjectDescription;
 import dk.au.cs.casa.jer.entries.ObjectDescriptionVisitor;
 import dk.au.cs.casa.jer.entries.OtherDescription;
@@ -144,6 +145,11 @@ public class JalangiRefinerUtilities {
                         addToMapSet(dynamicCodeEntriesMap, slWithoutColumnNumber, e);
                         return null;
                     }
+
+                    @Override
+                    public Void visit(ModuleExportsEntry moduleExportsEntry) {
+                        return null;
+                    }
                 }));
 
         List<HostObject> allHostObjects = newList();
@@ -182,7 +188,7 @@ public class JalangiRefinerUtilities {
     }
 
     public <E> Set<E> getEntriesFromMap(Map<SourceLocation, Set<E>> map, SourceLocation sourceLocation, int columnOffset) {
-        Set<SourceLocation> jalangiAliases = flowGraph.getValueLogLocationInformation().getTajsLocation2jalangiLocation().getOrDefault(sourceLocation, singleton(sourceLocation));
+        Set<SourceLocation> jalangiAliases = flowGraph.getValueLogLocationInformation().getJalangiLocations(sourceLocation);
         return jalangiAliases.stream().map(sl -> addOffsetToTAJSLocation(sl, columnOffset)).flatMap(sl -> map.getOrDefault(sl, newSet()).stream()).collect(Collectors.toSet());
     }
 

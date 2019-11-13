@@ -17,4 +17,5 @@ test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] Converting undefi
 test-resources/src/v8tests/html-string-funcs.js:32:16: [maybe] Reading absent property (computed name)
 test-resources/src/v8tests/html-string-funcs.js:42:16: [maybe] Converting primitive string to object
 test-resources/src/v8tests/html-string-funcs.js:32:16: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 23 checks (with 0 expected failures)
+Disabling soundness testing for test-resources/src/v8tests/html-string-funcs.js entirely (50 uninspected soundness errors).
+Soundness testing succeeded for 243 checks (with 50 expected failures)

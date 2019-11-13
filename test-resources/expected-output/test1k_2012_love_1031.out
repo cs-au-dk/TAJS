@@ -14,4 +14,4 @@ test-resources/src/1k2012love/1031.js:17:5: [maybe] ReferenceError, reading abse
 test-resources/src/1k2012love/1031.js:20:3: [maybe] ReferenceError, reading absent variable counter
 test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1031.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1031.js:6:3, test-resources/src/1k2012love/1031.js:7:18, test-resources/src/1k2012love/1031.js:7:20, test-resources/src/1k2012love/1031.js:8:20, test-resources/src/1k2012love/1031.js:8:26, test-resources/src/1k2012love/1031.js:9:9, test-resources/src/1k2012love/1031.js:9:28, test-resources/src/1k2012love/1031.js:9:37, test-resources/src/1k2012love/1031.js:9:48, test-resources/src/1k2012love/1031.js:10:24, test-resources/src/1k2012love/1031.js:11:25, test-resources/src/1k2012love/1031.js:14:25, test-resources/src/1k2012love/1031.js:17:5, test-resources/src/1k2012love/1031.js:20:3, test-resources/src/1k2012love/shim.js:9:5]
-Soundness testing succeeded for 145 checks (with 0 expected failures)
+Soundness testing succeeded for 144 checks (with 0 expected failures)

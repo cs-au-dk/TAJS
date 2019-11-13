@@ -13,15 +13,25 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: constant[1.0,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0034.js:1:5)
-    node 6: write-variable[v5,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0034.js:1:1)
-    node 7: constant[2.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0034.js:1:8)
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
-  block 5: [exit-ordinary]
-    node 8: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0034.js)
+  block 5:
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6]
+  block 6:
+    node 8: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7]
+  block 7:
+    node 9: constant[1.0,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0034.js:1:5)
+    node 10: write-variable[v8,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0034.js:1:1)
+    node 11: constant[2.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0034.js:1:8)
+    ->[block 8]
+  block 8: [exit-ordinary]
+    node 12: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0034.js)
     ->[]
-  block 6: [exit-exceptional]
-    node 9: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0034.js)
+  block 9: [exit-exceptional]
+    node 13: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0034.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0034.js: [definite] Exceptional program exit is unreachable

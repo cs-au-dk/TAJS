@@ -17,75 +17,85 @@ fg2: <main> function()
     node 8: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 9: function-expr[function(),v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
-    node 10: write-variable[v5,'K'] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:5)
-    node 11: read-variable['K',v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:2:13)
+    node 9: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 10: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 12: construct[-,v7,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:2:9)
+    node 11: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 13: write-variable[v6,'k'] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:2:5)
-    node 14: read-variable['k',v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:16)
-    node 15: read-property[v11,'p',v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:16)
+    node 12: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 16: call[TAJS_dumpValue,v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:1)
+    node 13: function-expr[function(),v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
+    node 14: write-variable[v8,'K'] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:5)
+    node 15: read-variable['K',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:2:13)
     ->[block 8]
   block 8:
-    node 17: function-expr[function(),v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
-    node 18: write-variable[v12,'K_bug'] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:5)
-    node 19: read-variable['K_bug',v14,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:17)
+    node 16: construct[-,v10,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:2:9)
     ->[block 9]
   block 9:
-    node 20: construct[-,v14,v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:13)
+    node 17: write-variable[v9,'k'] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:2:5)
+    node 18: read-variable['k',v14,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:16)
+    node 19: read-property[v14,'p',v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:16)
     ->[block 10]
   block 10:
-    node 21: write-variable[v13,'k_bug'] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:5)
-    node 22: read-variable['k_bug',v18,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:16)
-    node 23: read-property[v18,'p',v17] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:16)
+    node 20: call[TAJS_dumpValue,v13,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:1)
     ->[block 11]
   block 11:
-    node 24: call[TAJS_dumpValue,v17,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:1)
+    node 21: function-expr[function(),v15] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
+    node 22: write-variable[v15,'K_bug'] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:5)
+    node 23: read-variable['K_bug',v17,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:17)
     ->[block 12]
-  block 12: [exit-ordinary]
-    node 25: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js)
-    ->[]
-  block 13: [exit-exceptional]
-    node 26: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js)
-    ->[]
-function()
-  block 14: [entry]
-    node 27: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
+  block 12:
+    node 24: construct[-,v17,v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:13)
+    ->[block 13]
+  block 13:
+    node 25: write-variable[v16,'k_bug'] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:6:5)
+    node 26: read-variable['k_bug',v21,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:16)
+    node 27: read-property[v21,'p',v20] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:16)
+    ->[block 14]
+  block 14:
+    node 28: call[TAJS_dumpValue,v20,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:1)
     ->[block 15]
-  block 15:
-    node 28: read-variable['this',v4,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:23)
-    node 29: constant[42.0,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:32)
-    node 30: write-property[v4,'p',v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:23)
-    ->[block 16]
-  block 16: [exit-ordinary]
-    node 31: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
+  block 15: [exit-ordinary]
+    node 29: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js)
     ->[]
-  block 17: [exit-exceptional]
-    node 32: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
+  block 16: [exit-exceptional]
+    node 30: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js)
     ->[]
 function()
-  block 18: [entry]
-    node 33: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
+  block 17: [entry]
+    node 31: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
+    ->[block 18]
+  block 18:
+    node 32: read-variable['this',v4,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:23)
+    node 33: constant[42.0,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:32)
+    node 34: write-property[v4,'p',v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:23)
     ->[block 19]
-  block 19:
-    node 34: read-variable['this',v4,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:28)
-    node 35: constant[42.0,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:37)
-    node 36: write-property[v4,'p',v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:28)
-    ->[block 20]
-  block 20: [exit-ordinary]
-    node 37: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
+  block 19: [exit-ordinary]
+    node 35: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
     ->[]
-  block 21: [exit-exceptional]
-    node 38: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
+  block 20: [exit-exceptional]
+    node 36: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:1:9)
+    ->[]
+function()
+  block 21: [entry]
+    node 37: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
+    ->[block 22]
+  block 22:
+    node 38: read-variable['this',v4,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:28)
+    node 39: constant[42.0,v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:37)
+    node 40: write-property[v4,'p',v3] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:28)
+    ->[block 23]
+  block 23: [exit-ordinary]
+    node 41: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
+    ->[]
+  block 24: [exit-exceptional]
+    node 42: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:5:14)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0197.js: [definite] Exceptional program exit is unreachable
 test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:3:1: [info] Abstract value: 42.0
 test-resources/src/flowgraphbuilder/flowgraph_builder0197.js:7:1: [info] Abstract value: 42.0
-Soundness testing succeeded for 25 checks (with 0 expected failures)
+Soundness testing succeeded for 23 checks (with 0 expected failures)

@@ -1,4 +1,4 @@
 test-resources/src/v8tests/global-vars-with.js:29:1: [definite] Reading 'this' yields the global object
 test-resources/src/v8tests/global-vars-with.js:37:3: [definite] Reading 'this' yields the global object
 test-resources/src/v8tests/global-vars-with.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 47 checks (with 0 expected failures)
+Soundness testing succeeded for 40 checks (with 0 expected failures)

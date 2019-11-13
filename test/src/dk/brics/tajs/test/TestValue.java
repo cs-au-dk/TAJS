@@ -10,14 +10,18 @@ import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.jsnodes.NopNode;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.PartitionedValue;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 import org.apache.log4j.Logger;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -483,5 +487,33 @@ public class TestValue {
         Value v1 = Value.makeStr("");
         Value v2 = Value.makeNum(0.0);
         assertEquals(Value.makeNone(), v1.restrictToLooseNotEquals(v2));
+    }
+
+    /*
+     * Public non-static methods in Value that return a Value (except 'join'), should be overwritten in PartitionedValue
+     */
+    @Test
+    public void testMethodsOverwrittenInPartitionedValue() {
+        Stream<Method> methodsThatShouldBeOverwritten = Stream.of(Value.class.getDeclaredMethods())
+                .filter(m -> m.getReturnType() == Value.class)
+                .filter(m -> Modifier.isPublic(m.getModifiers()) && !Modifier.isStatic(m.getModifiers()))
+                .filter(m -> !m.getName().equals("join"));
+        List<Method> methodsMissingInPartitionedValue = methodsThatShouldBeOverwritten.filter(m -> !hasPartitionedValueMethod(m)).collect(Collectors.toList());
+        if (!methodsMissingInPartitionedValue.isEmpty()) {
+            Assert.fail(String.format("The following methods need to be overwritten in the class PartitionedValue: %s",
+                    methodsMissingInPartitionedValue.stream().map(m -> m.toString()).reduce("", (acc, elem) -> String.format("%s \n\t %s", acc, elem))));
+        }
+    }
+
+    /**
+     * Returns whether PartitionedValue has the method m.
+     */
+    private boolean hasPartitionedValueMethod(Method m) {
+        try {
+            PartitionedValue.class.getDeclaredMethod(m.getName(), m.getParameterTypes()); //getDeclaredMethod throws exception if the method is not declared in PartitionedValue
+            return true;
+        } catch (NoSuchMethodException e) {
+            return false;
+        }
     }
 }

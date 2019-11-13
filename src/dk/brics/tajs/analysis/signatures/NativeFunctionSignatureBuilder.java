@@ -96,7 +96,6 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.DECODEURICO
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ENCODEURI;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ENCODEURICOMPONENT;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ERROR;
-import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ERROR_CAPTURESTACKTRACE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ERROR_TOSTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.ESCAPE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.EVAL;
@@ -219,8 +218,8 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TOLO
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TOSTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TOUPPERCASE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIM;
-import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMLEFT;
-import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMRIGHT;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMSTART;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMEND;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_VALUEOF;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.SYMBOL;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.SYMBOL_FOR;
@@ -367,8 +366,8 @@ public class NativeFunctionSignatureBuilder {
         addSig(STRING_TOUPPERCASE, Receivers.NotNullUndefCoerceString);
         addSig(STRING_TOLOCALEUPPERCASE, Receivers.NotNullUndefCoerceString);
         addSig(STRING_TRIM, Receivers.NotNullUndefCoerceString);
-        addSig(STRING_TRIMLEFT, Receivers.NotNullUndefCoerceString);
-        addSig(STRING_TRIMRIGHT, Receivers.NotNullUndefCoerceString);
+        addSig(STRING_TRIMSTART, Receivers.NotNullUndefCoerceString);
+        addSig(STRING_TRIMEND, Receivers.NotNullUndefCoerceString);
         addSig(STRING_STARTSWITH, Receivers.NotNullUndefCoerceString, MandatoryParameters.NotRegExpCoerceString, OptionalParameters.Integer);
         addSig(STRING_ENDSWITH, Receivers.NotNullUndefCoerceString, MandatoryParameters.NotRegExpCoerceString, OptionalParameters.Integer);
         addSig(STRING_INCLUDES, Receivers.NotNullUndefCoerceString, MandatoryParameters.StringThrowOnRegExp, OptionalParameters.Integer);
@@ -510,7 +509,6 @@ public class NativeFunctionSignatureBuilder {
 
         // ERROR FUNCTIONS
         addSig(ERROR_TOSTRING, none);
-        addStaticSig(ERROR_CAPTURESTACKTRACE, MandatoryParameters.Object, OptionalParameters.Function);
 
         // JSON FUNCTIONS
         addSig(JSON_PARSE, none, OptionalParameters.String);

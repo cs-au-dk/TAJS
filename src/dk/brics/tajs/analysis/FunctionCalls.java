@@ -22,13 +22,15 @@ import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.lattice.ExecutionContext;
-import dk.brics.tajs.lattice.FreeVariablePartitioning;
+import dk.brics.tajs.lattice.FunctionPartitions;
+import dk.brics.tajs.lattice.FunctionTypeSignatures;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.typescript.TypeFiltering;
 import dk.brics.tajs.util.AnalysisException;
 
 import java.util.List;
@@ -121,9 +123,14 @@ public class FunctionCalls {
         boolean assumeFunction();
 
         /**
-         * Information about value partitioning of free variables in the function being called.
+         * Information about value partitioning of free variables in the function being called, or null if not applicable.
          */
-        FreeVariablePartitioning getFreeVariablePartitioning();
+        FunctionPartitions getFunctionPartitions(ObjectLabel function);
+
+        /**
+         * Returns the function type signatures, or null if not applicable.
+         */
+        FunctionTypeSignatures getFunctionTypeSignatures();
     }
 
     /**
@@ -137,22 +144,35 @@ public class FunctionCalls {
 
         private Solver.SolverInterface c;
 
-        private FreeVariablePartitioning freeVariablePartitioning;
+        private FunctionPartitions functionPartitions;
+
+        private FunctionTypeSignatures functionTypeSignatures;
 
         public OrdinaryCallInfo(CallNode n, Solver.SolverInterface c) {
-            this(n, c, null);
+            this(n, c, null, null);
         }
 
-        public OrdinaryCallInfo(CallNode n, Solver.SolverInterface c, FreeVariablePartitioning freeVariablePartitioning) {
+        public OrdinaryCallInfo(CallNode n, Solver.SolverInterface c,
+                                FunctionPartitions functionPartitions,
+                                FunctionTypeSignatures functionTypeSignatures) {
             this.n = n;
             this.state = c.getState();
             this.c = c;
-            this.freeVariablePartitioning = freeVariablePartitioning;
+            this.functionPartitions = functionPartitions;
+            this.functionTypeSignatures = functionTypeSignatures;
         }
 
         @Override
-        public FreeVariablePartitioning getFreeVariablePartitioning() {
-            return freeVariablePartitioning;
+        public FunctionPartitions getFunctionPartitions(ObjectLabel function) {
+            if (functionPartitions == null) {
+                return null;
+            }
+            return functionPartitions.filterByFunction(function);
+        }
+
+        @Override
+        public FunctionTypeSignatures getFunctionTypeSignatures() {
+            return functionTypeSignatures;
         }
 
         @Override
@@ -188,13 +208,11 @@ public class FunctionCalls {
                     return Value.makeAbsent(); // happens for array literal with empty entries: `[foo, , , 42]`
                 }
                 Value res = state.readRegister(argRegister);
-                if (Options.get().isBlendedAnalysisEnabled()) {
-                    Value finalRes = res;
-                    res = c.withState(state, () -> c.getAnalysis().getBlendedAnalysis().getArg(finalRes, i, getFunctionValue(), getThis(), n, state));
-                    if (res.isNone()) {
-                        return Value.makeAbsent();
-                    }
-                }
+                Value funval = getFunctionValue();
+                if (funval.getFunctionTypeSignatures() != null)
+                    res = new TypeFiltering(c).assumeParameterType(res, funval.getFunctionTypeSignatures(), i);
+                if (Options.get().isBlendedAnalysisEnabled())
+                    res = c.getAnalysis().getBlendedAnalysis().getArg(res, i, getFunctionValue(), getThis(), n, state);
                 return res;
             } else
                 return Value.makeAbsent();
@@ -320,7 +338,12 @@ public class FunctionCalls {
         }
 
         @Override
-        public FreeVariablePartitioning getFreeVariablePartitioning() {
+        public FunctionPartitions getFunctionPartitions(ObjectLabel function) {
+            return null;
+        }
+
+        @Override
+        public FunctionTypeSignatures getFunctionTypeSignatures() {
             return null;
         }
     }
@@ -378,7 +401,12 @@ public class FunctionCalls {
         }
 
         @Override
-        public FreeVariablePartitioning getFreeVariablePartitioning() {
+        public FunctionPartitions getFunctionPartitions(ObjectLabel function) {
+            return null;
+        }
+
+        @Override
+        public FunctionTypeSignatures getFunctionTypeSignatures() {
             return null;
         }
     }

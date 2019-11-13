@@ -1221,4 +1221,4 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3036:27: [info] Reading f
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3507:7: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:24: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 19691 checks (with 0 expected failures)
+Soundness testing succeeded for 19607 checks (with 0 expected failures)

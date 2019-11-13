@@ -88,4 +88,4 @@ test-resources/src/1k2013spring/1415.js:93:27: [maybe] Converting object to stri
 test-resources/src/1k2013spring/1415.js:93:27: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1415.js:93:48: [maybe] Converting object to string
 test-resources/src/1k2013spring/1415.js:93:48: [maybe] Converting primitive string to object
-Soundness testing succeeded for 402 checks (with 0 expected failures)
+Soundness testing succeeded for 398 checks (with 0 expected failures)

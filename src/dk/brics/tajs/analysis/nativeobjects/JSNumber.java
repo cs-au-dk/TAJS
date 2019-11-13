@@ -61,7 +61,7 @@ public class JSNumber {
                 else
                     v = Value.makeNum(+0.0d);
                 if (call.isConstructorCall()) { // 15.7.2
-                    return Conversion.toObject(call.getSourceNode(), v, false, c);
+                    return Conversion.toObject(call.getSourceNode(), v, false, false, c);
                 } else // 15.7.1
                     return v;
             }

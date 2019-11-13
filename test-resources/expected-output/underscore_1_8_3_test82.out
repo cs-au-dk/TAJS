@@ -387,7 +387,9 @@ benchmarks/tajs/src/underscore/test-suite/functions/test82.html:13:51: [maybe] R
 benchmarks/tajs/src/underscore/test-suite/functions/test82.html:16:13: [maybe] Reading absent property bind
 benchmarks/tajs/src/underscore/test-suite/functions/test82.html:36:34: [maybe] Reading 'this' yields the global object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/test-suite/functions/test82.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/underscore/test-suite/functions/test82.html:43:5]
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/test-suite/functions/test82.html:36:34: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 3945 checks (with 0 expected failures)
+Soundness testing succeeded for 3907 checks (with 0 expected failures)

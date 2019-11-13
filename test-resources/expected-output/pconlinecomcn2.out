@@ -6,4 +6,4 @@ TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.h
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html:14:8):1:15: [definite] Reading absent property pc.sy.banner.tcck.
 benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html: [definite] Exceptional program exit is unreachable
 benchmarks/tajs/src/unevalizer/pconline.com.cn-slice/index-2.html:18:4: [definite] Unreachable code
-Soundness testing succeeded for 26 checks (with 0 expected failures)
+Soundness testing succeeded for 25 checks (with 0 expected failures)

@@ -206,4 +206,4 @@ test-resources/src/1k2012love/1190.js:120:9: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1190.js:113:14: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/1k2012love/1190.js:113:1: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/1k2012love/1190.js:113:29: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 416 checks (with 2 expected failures)
+Soundness testing succeeded for 414 checks (with 2 expected failures)

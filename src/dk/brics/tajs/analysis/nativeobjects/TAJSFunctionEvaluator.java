@@ -33,20 +33,25 @@ import dk.brics.tajs.analysis.dom.event.WheelEvent;
 import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.analysis.uneval.NormalForm;
 import dk.brics.tajs.analysis.uneval.UnevalTools;
+import dk.brics.tajs.blendedanalysis.BlendedAnalysisOptions;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.TAJSFunctionName;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.ObjProperties;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey.StringPKey;
+import dk.brics.tajs.lattice.PartitionedValue;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.Message.Severity;
+import dk.brics.tajs.typescript.TypeFiltering;
+import dk.brics.tajs.typescript.TypeScriptDeclLoader;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.AnalysisResultException;
@@ -71,6 +76,7 @@ import java.util.regex.Pattern;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_ADD_CONTEXT_SENSITIVITY;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_ASSERT;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_ASSERT_EQUALS;
+import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_ASSUMEMODULETYPE;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_ASYNC_LISTEN;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_CONVERSION_TO_PRIMITIVE;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_DUMPATTRIBUTES;
@@ -96,6 +102,7 @@ import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MAKE;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MAKE_CONTEXT_SENSITIVE;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MAKE_EXCLUDED_STRINGS;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MAKE_PARTIAL;
+import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_MODULE_EXPORTS_FILTERING;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NEW_ARRAY;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NEW_OBJECT;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NODE_PARENT_DIR;
@@ -105,6 +112,7 @@ import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_NOT_IMPLEMENTED;
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * Evaluates the TAJS_* functions (see {@link TAJSFunction}).
@@ -464,6 +472,35 @@ public class TAJSFunctionEvaluator {
                     return Value.makeObject(objlabel);
                 });
         register(implementations,
+                TAJS_MODULE_EXPORTS_FILTERING,
+                "Value exports, String fileName",
+                "Filters spurious property values of module.exports by blended analysis",
+                (call, state, pv, c) -> {
+                    if (BlendedAnalysisOptions.get().isOnlyForModuleInit()) {
+                        Value exports = FunctionCalls.readParameter(call, state, 0);
+                        String fileName = FunctionCalls.readParameter(call, state, 1).getStr();
+                        boolean isBuiltinModule = fileName.contains("hostenv")
+                                && fileName.contains("nodejs") && fileName.contains("modules");
+                        if (!isBuiltinModule) {
+                            URL url = PathAndURLUtils.toURL(fileName);
+                            exports.getObjectLabels().forEach(objlabel -> {
+                                Set<ObjectLabel> singleton = singleton(objlabel);
+                                ObjProperties.PropertyQuery propertyQuery = ObjProperties.PropertyQuery.makeQuery();
+                                ObjProperties properties = state.getProperties(singleton, propertyQuery);
+                                properties.getProperties().forEach((key, v) -> {
+                                    if (!key.isMaybeFuzzyStrOrSymbol()) {
+                                        Value finalV = Value.join(c.getAnalysis()
+                                                .getBlendedAnalysis()
+                                                .getModuleExportsPropertyValue(v, (Value) key, url, state));
+                                        pv.writeProperty(singleton, key, finalV,
+                                                false, true, false, true);
+                                    }
+                                });
+                            });
+                        }
+                    }
+                });
+        register(implementations,
                 TAJS_JOIN,
                 "Value ... values",
                 "Value",
@@ -498,7 +535,7 @@ public class TAJSFunctionEvaluator {
                     } else {
                         expectedResult = true;
                     }
-                    if (expected.forgetExcludedIncludedStrings().equals(actual.forgetExcludedIncludedStrings()) != expectedResult) {
+                    if (PartitionedValue.ignorePartitions(expected).forgetExcludedIncludedStrings().equals(PartitionedValue.ignorePartitions(actual).forgetExcludedIncludedStrings()) != expectedResult) {
                         String reason;
                         if (expectedResult) {
                             reason = String.format("Expected=%s, Actual=%s", expected, actual);
@@ -518,6 +555,8 @@ public class TAJSFunctionEvaluator {
                 (call, state, pv, c) -> {
                     Value target = FunctionCalls.readParameter(call, state, 0);
                     Value isHostEnvironment = FunctionCalls.readParameter(call, state, 1);
+                    if (c.isScanning())
+                        return Value.makeNone();
                     if (target.isMaybeFuzzyStr() || target.isNotStr()) {
                         throw new AnalysisException("Only constant-string TAJS_loads supported: " + target);
                     }
@@ -535,8 +574,28 @@ public class TAJSFunctionEvaluator {
                         }
                         parameterNames.add(argument.getStr());
                     }
-
-                return FunctionFileLoader.loadFunction(target.getStr(), isHostEnvironment.isMaybeTrueButNotFalse(), parameterNames, c);
+                    return FunctionFileLoader.loadFunction(target.getStr(), isHostEnvironment.isMaybeTrueButNotFalse(), parameterNames, c);
+                });
+        register(implementations,
+                TAJS_ASSUMEMODULETYPE,
+                "String file, Object module",
+                "Undefined",
+                "Attempts to load a TypeScript declaration file for the chosen JavaScript module and then applies type filtering on module.exports accordingly",
+                (call, state, pv, c) -> {
+                    if (Options.get().isTypeFilteringEnabled()) {
+                        Value target = FunctionCalls.readParameter(call, state, 0);
+                        Value module = FunctionCalls.readParameter(call, state, 1);
+                        if (c.isScanning())
+                            return Value.makeNone();
+                        if (target.isMaybeFuzzyStr() || target.isNotStr()) {
+                            throw new AnalysisException("Only constant-string TAJS_assumeModuleType file name supported: " + target);
+                        }
+                        if (call.isUnknownNumberOfArgs()) {
+                            throw new AnalysisException("Only known number of arguments supported");
+                        }
+                        new TypeFiltering(c).assumeModuleType(TypeScriptDeclLoader.loadModuleType(target.getStr(), c), module);
+                    }
+                    return Value.makeUndef();
                 });
         register(implementations,
                 TAJS_FIRST_ORDER_STRING_REPLACE,
@@ -695,7 +754,7 @@ public class TAJSFunctionEvaluator {
             recursiveTagger.put(recursiveAllocationQualifier, Value.makeBool(true));
             objlabel = ObjectLabel.make(call.getSourceNode(), allocationKind, Context.makeQualifiers(recursiveTagger));
         } else {
-            objlabel = ObjectLabel.make(call.getSourceNode(), allocationKind, Context.make(functionContext.getUnknownArg(), functionContext.getParameterNames(), functionContext.getArguments(), functionContext.getFreeVariables()));
+            objlabel = ObjectLabel.make(call.getSourceNode(), allocationKind, functionContext);
         }
         state.newObject(objlabel);
         state.writeInternalPrototype(objlabel, Value.makeObject(prototype));

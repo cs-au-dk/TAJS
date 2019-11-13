@@ -135,6 +135,9 @@ public class KnownUnsoundnesses {
                 // Arrays.from does not support ES6 iterators
                 "benchmarks/tajs/src/lodash/test-suite/4.17.10/lodash_test_73.html",
 
+                // Missing models for some html string functions
+                "test-resources/src/v8tests/html-string-funcs.js",
+
                 // missing TAJS call at inline eventhandlers???
                 // <button onclick="load()">Render</button><br/><br/>
                 "test-resources/src/chromeexperiments/raytracer.html",
@@ -206,12 +209,12 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/mdnexamples/Object.assign_8.js", 0, 0),
 
                         // UInt + UInt -> UInt
-                        make("test-resources/src/v8tests/greedy.js", 33, 14),
+                        make("test-resources/src/v8tests/greedy.js", 33, 9),
                         make("test-resources/src/v8tests/greedy.js", 33, 14),
                         make("test-resources/src/v8tests/greedy.js", 33, 19),
+                        make("test-resources/src/v8tests/greedy.js", 34, 5),
                         make("test-resources/src/v8tests/greedy.js", 34, 10),
-                        make("test-resources/src/v8tests/greedy.js", 34, 10),
-                        make("test-resources/src/v8tests/greedy.js", 34, 19),
+                        make("test-resources/src/v8tests/greedy.js", 34, 14),
                         make("test-resources/src/v8tests/greedy.js", 34, 19),
                         make("test-resources/src/v8tests/greedy.js", 36, 10),
                         make("test-resources/src/v8tests/greedy.js", 60, 1),
@@ -225,9 +228,13 @@ public class KnownUnsoundnesses {
                         make("out/temp-sources/TestFlowgraphBuilder.constConstDoubleDeclaration.js", 0, 0),
                         make("out/temp-sources/TestFlowgraphBuilder.constConstDoubleDeclaration_singleStatement.js", 0, 0),
                         make("out/temp-sources/TestFlowgraphBuilder.varConstDoubleDeclaration.js", 0, 0),
+                        make("out/temp-sources/TestFlowgraphBuilder.constVarDoubleDeclaration.js", 0, 0),
 
                         // missing support for document.write
                         make("test-resources/src/1k2012love/1274.js", 29, 24),
+
+                        // Eval model throws SyntaxError on function calls where arguments end with a comma
+                        make("test-resources/src/v8tests/extra-commas.js", 34, 5),
 
                         //
                         // MINOR UNSOUNDNESS:
@@ -256,6 +263,7 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/v8tests/delete-vars-from-eval.js", 34, 21),
                         make("test-resources/src/v8tests/delete-vars-from-eval.js", 40, 19),
                         make("test-resources/src/v8tests/delete-vars-from-eval.js", 33, 3),
+                        make("test-resources/src/v8tests/delete-vars-from-eval.js", 33, 14),
                         make("test-resources/src/v8tests/delete-vars-from-eval.js", 34, 3),
                         make("test-resources/src/v8tests/delete-vars-from-eval.js", 39, 1),
                         make("test-resources/src/v8tests/delete-vars-from-eval.js", 40, 1),
@@ -271,9 +279,7 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/v8tests/function-caller.js", 34, 23),
 
                         // (in the parser?): '\400' ->  '\u0100' != STR_OTHER
-                        make("test-resources/src/v8tests/no-octal-constants-above-256.js", 31, 35),
                         make("test-resources/src/v8tests/no-octal-constants-above-256.js", 32, 1),
-                        make("test-resources/src/v8tests/no-octal-constants-above-256.js", 32, 19),
                         make("test-resources/src/v8tests/no-octal-constants-above-256.js", 30, 1),
                         make("test-resources/src/v8tests/no-octal-constants-above-256.js", 30, 17),
                         make("test-resources/src/v8tests/no-octal-constants-above-256.js", 31, 1),
@@ -284,9 +290,12 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/v8tests/regexp-indexof.js", 41, 5),
                         make("test-resources/src/v8tests/regexp-indexof.js", 41, 45),
 
+                        // RegExp compile behaves wrong on undefined.
+                        make("out/temp-sources/TestMicro.regExpConstructionWithUndefinedOrAbsent.js", 11, 1),
+                        make("test-resources/src/v8tests/regexp.js", 220, 1),
+
                         // ES3 legacy, catch no longer introduce a new with-like scope object
-                        make("test-resources/src/micro/test127.js", 8, 9),
-                        make("test-resources/src/micro/test127.js", 12, 10),
+                        make("test-resources/src/micro/test127.js", 12, 2),
                         make("test-resources/src/micro/test127.js", 12, 10),
                         make("test-resources/src/micro/test127.js", 15, 1),
                         make("test-resources/src/micro/test127.js", 15, 16),
@@ -306,28 +315,17 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/v8tests/regexp.js", 127, 1),
                         make("test-resources/src/v8tests/regexp.js", 128, 1),
 
-                        // Fails due to wrong receiver, for a function called from a function defined by new Function
-                        make("test-resources/src/refinement/underscore/test-suite/utility/test180.html", 14, 18),
-                        make("test-resources/src/refinement/underscore/test-suite/utility/test180.html", 17, 25),
-
                         // Fails due to 0x80000000 | 0 incorrectly being abstractly evaluated to 2147483647 (should be -2147483648)
                         make("benchmarks/tajs/src/jsai2014benchmarks/ems-fourinarow.js", 6000, 30),
 
                         // Fails due to -use-fixed-random (see also AbstractConcreteValueComparator.isAbstractStringValueMorePreciseThanSemiConcreteValue)
-                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.5.js", 1310, 22),
-                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.6.js", 1391, 22),
-                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.7.js", 1684, 22),
-                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.7.js", 3923, 25),
-                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.8.js", 1521, 22),
                         make("benchmarks/tajs/src/jquery/libraries/jquery-1.8.js", 3811, 3),
-                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.9.js", 1712, 22),
                         make("benchmarks/tajs/src/jquery/libraries/jquery-1.9.js", 4050, 3),
-                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.10.js", 381, 22),
-                        make("benchmarks/tajs/src/jquery/libraries/jquery-1.11.js", 242, 22),
 
-                        // Fails due to wrong receiver, for a function called from a function defined by new Function
-                        make("benchmarks/tajs/src/underscore/test-suite/utility/test180.html", 14, 18),
-                        make("benchmarks/tajs/src/underscore/test-suite/utility/test180.html", 17, 25),
+                        // parse error
+                        make("test-resources/src/v8tests/for-in.js", 68, 10),
+                        make("test-resources/src/v8tests/for-in.js", 69, 1),
+                        make("test-resources/src/v8tests/for-in.js", 69, 22),
 
                         //
                         // DELIBERATE UNSOUNDNESS:
@@ -347,7 +345,7 @@ public class KnownUnsoundnesses {
                         make("out/temp-sources/TestMicro.testNoImplicitGlobalVarDeclarations.js", 4, 20),
 
                         // Ignoring type error for: property with getter, but no setter, that is not writable from *native* code. // GitHub #393
-                        make("test-resources/src/getterssetters/implicits_unsound.js", 12, 23),
+                        make("test-resources/src/getterssetters/implicits_unsound.js", 12, 5),
                         make("test-resources/src/getterssetters/implicits_unsound.js", 15, 1),
                         make("test-resources/src/getterssetters/implicits_unsound.js", 15, 14)
                 )
@@ -359,9 +357,6 @@ public class KnownUnsoundnesses {
                         //
 
                         // Jalangi does not support the with-statement calls properly: https://github.com/Samsung/jalangi2/issues/57
-                        make("test-resources/src/flowgraphbuilder/flowgraph_builder0137.js", 1, 20),
-                        make("test-resources/src/flowgraphbuilder/flowgraph_builder0137.js", 4, 2),
-                        make("test-resources/src/flowgraphbuilder/flowgraph_builder0137.js", 4, 17),
                         make("test-resources/src/1k2012love/1008.js", 1, 2),
                         make("test-resources/src/1k2012love/1008.js", 7, 3),
                         make("test-resources/src/1k2012love/1008.js", 30, 3),
@@ -394,52 +389,8 @@ public class KnownUnsoundnesses {
                         make("test-resources/src/1k2013spring/1511.js", 69, 4),
                         make("test-resources/src/1k2013spring/1529.js", 41, 25),
 
-                        make("test-resources/src/micro/test129.js", 7, 14),
-                        make("test-resources/src/micro/test129.js", 10, 10),
-                        make("test-resources/src/micro/test129.js", 10, 10),
-                        make("test-resources/src/micro/test129.js", 14, 1),
-                        make("test-resources/src/micro/test129.js", 14, 16),
-                        make("test-resources/src/micro/test129.js", 15, 1),
-                        make("test-resources/src/micro/test129.js", 15, 13),
-
-                        make("test-resources/src/micro/testCall2.js", 1, 20),
-                        make("test-resources/src/micro/testCall2.js", 1, 39),
-                        make("test-resources/src/micro/testCall2.js", 4, 10),
-                        make("test-resources/src/micro/testCall2.js", 4, 10),
-                        make("test-resources/src/micro/testCall2.js", 5, 2),
-                        make("test-resources/src/micro/testCall2.js", 5, 17),
-
-                        // strict mode is not supported by Jalangi (it is in the tracifier project fork)
-                        make("out/temp-sources/TestStrict.selfStrict.js", 3, 6),
-                        make("out/temp-sources/TestStrict.selfStrict.js", 3, 33),
-                        make("out/temp-sources/TestStrict.callStrictWithoutReceiver.js", 1, 2),
-                        make("out/temp-sources/TestStrict.callStrictWithoutReceiver.js", 4, 6),
-                        make("out/temp-sources/TestStrict.callStrictWithoutReceiver.js", 4, 19),
-                        make("out/temp-sources/TestStrict.deepInheritStrict.js", 1, 2),
-                        make("out/temp-sources/TestStrict.deepInheritStrict.js", 3, 5),
-                        make("out/temp-sources/TestStrict.deepInheritStrict.js", 5, 12),
-                        make("out/temp-sources/TestStrict.deepInheritStrict.js", 5, 25),
-                        make("out/temp-sources/TestStrict.inheritStrict.js", 1, 2),
-                        make("out/temp-sources/TestStrict.inheritStrict.js", 4, 6),
-                        make("out/temp-sources/TestStrict.inheritStrict.js", 4, 19),
-                        make("out/temp-sources/TestStrict.callStringThisStrict.js", 1, 2),
-                        make("out/temp-sources/TestStrict.callStringThisStrict.js", 4, 6),
-                        make("out/temp-sources/TestStrict.callStringThisStrict.js", 4, 19),
-                        make("out/temp-sources/TestStrict.strictUndefined.js", 1, 2),
-                        make("out/temp-sources/TestStrict.strictUndefined.js", 3, 4),
-                        make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 1, 2),
-                        make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 3, 4),
-                        make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 4, 4),
-                        make("out/temp-sources/TestStrict.strictUndefinedNullReceivers.js", 5, 8),
-                        make("benchmarks/tajs/src/sparse2014benchmarks/jpg.js", 27, 18),
-                        make("benchmarks/tajs/src/sparse2014benchmarks/jpg.js", 522, 7),
-                        make("benchmarks/tajs/src/jsai2015benchmarks/buckets_many_extra_prints.js", 3, 2),
-                        make("benchmarks/tajs/src/jsai2015benchmarks/buckets_many_extra_prints.js", 36, 29),
-                        make("benchmarks/tajs/src/jsai2015benchmarks/buckets_many_extra_prints.js", 1905, 22),
-                        make("benchmarks/tajs/src/jsai2015benchmarks/buckets_many_extra_prints.js", 2052, 33),
-
                         // this-mismatch between TAJS/Jalangi (!!??)
-                        make("out/temp-sources/TestUneval.uneval_stackOverflowRegression.js", 2, 2),
+                        make("out/temp-sources/TestUneval.uneval_stackOverflowRegression.js", 2, 11),
 
                         // non-terminating concrete execution (deliberate) -- maybe-terminating abstract execution
                         make("test-resources/src/getterssetters/callToWeakRecursiveGetter.js", 0, 0),
@@ -450,11 +401,16 @@ public class KnownUnsoundnesses {
                         // 2016-09-15 logger produces stackoverflow exceptions on both node and jjs
                         make("out/temp-sources/TestMicro.maybe_infinite_loop.js", 0, 0),
 
-                        // Logger calls toString, but it is not called when running the uninstrumented file
-                        make("benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/prototype.js", 142, 38),
-                        make("benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/prototype.js", 142, 18),
-                        make("benchmarks/tajs/src/popular-libs/prototype/prototype-1.7.2-modified/prototype.js", 142, 59)
+                        // logger produces stackoverflow exception
+                        make("test-resources/src/v8tests/cyclic-array-to-string.js", 0, 0),
 
+                        // GraalVM node is incorrect for array join, with cyclic arrays and redefined toString
+                        make("test-resources/src/v8tests/array-join.js", 38, 1),
+                        make("test-resources/src/v8tests/array-join.js", 44,1),
+
+                        // Concrete run throws exception due to an error happening due to the dynamic analysis
+                        make("test-resources/src/v8tests/fuzz-accessors.js", 0, 0),
+                        make("test-resources/src/v8tests/array-functions-prototype.js", 0, 0)
                 )
         );
     }

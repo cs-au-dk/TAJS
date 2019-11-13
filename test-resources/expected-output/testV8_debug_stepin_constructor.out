@@ -7,4 +7,4 @@ test-resources/src/v8tests/debug-stepin-constructor.js:51:1: [definite] Unreacha
 test-resources/src/v8tests/debug-stepin-constructor.js:54:1: [definite] Unreachable function f
 test-resources/src/v8tests/debug-stepin-constructor.js:64:1: [definite] Unreachable function g
 test-resources/src/v8tests/debug-stepin-constructor.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-stepin-constructor.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 5 checks (with 0 expected failures)

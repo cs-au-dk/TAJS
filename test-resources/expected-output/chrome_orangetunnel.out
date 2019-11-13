@@ -59,4 +59,4 @@ test-resources/src/chromeexperiments/orangetunnel.html:69:40: [maybe] Reading ab
 test-resources/src/chromeexperiments/orangetunnel.html:69:47: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/orangetunnel.html:69:75: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/orangetunnel.html:69:82: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 6113 checks (with 0 expected failures)
+Soundness testing succeeded for 6108 checks (with 0 expected failures)

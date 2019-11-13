@@ -16,9 +16,9 @@ test-resources/src/wala/try.js:52:5: [definite] Unreachable code
 test-resources/src/wala/try.js:59:1: [definite] The variable targetOne is never used
 test-resources/src/wala/try.js:59:1: [definite] The variable targetTwo is never used
 test-resources/src/wala/try.js:65:5: [definite] Unreachable code
-test-resources/src/wala/try.js:84:1: [info] Abstract value: [@Object#node12]
-test-resources/src/wala/try.js:85:1: [info] Abstract value: [@Object#node12]
-test-resources/src/wala/try.js:86:1: [info] Abstract value: [@Object#node12]
+test-resources/src/wala/try.js:84:1: [info] Abstract value: [@Object#node16]
+test-resources/src/wala/try.js:85:1: [info] Abstract value: [@Object#node16]
+test-resources/src/wala/try.js:86:1: [info] Abstract value: [@Object#node16]
 test-resources/src/wala/try.js:87:1: [info] Abstract value: 8.0
 test-resources/src/wala/try.js:88:1: [info] Abstract value: 8.0
-Soundness testing succeeded for 137 checks (with 0 expected failures)
+Soundness testing succeeded for 136 checks (with 0 expected failures)

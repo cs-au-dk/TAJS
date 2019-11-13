@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.lattice;
 
+import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.util.AnalysisException;
@@ -268,47 +269,48 @@ public final class Obj {
     }
 
     /**
-     * Summarizes the object labels in this object.
+     * Renames the object labels in this object.
      *
      * @return new object
      */
-    public Obj summarize(Summarized s) {
+    public Obj rename(Renamings s) {
         Obj res = new Obj();
         res.writable = true;
         res.properties = newMap();
         for (Entry<PKey, Value> me : properties.entrySet()) {
-            Set<PKey> summarized_key = me.getKey().summarize(s);
-            Value summarized_value = me.getValue().summarize(s);
-            for (PKey k : summarized_key) {
+            Set<PKey> renamed_key = me.getKey().rename(s);
+            Value renamed_value = me.getValue().rename(s);
+            for (PKey k : renamed_key) {
                 Value old_value = res.properties.get(k);
                 Value new_value;
                 if (old_value == null)
-                    new_value = summarized_value;
+                    new_value = renamed_value;
                 else
-                    new_value = old_value.join(summarized_value);
+                    new_value = old_value.join(renamed_value);
                 res.properties.put(k, new_value);
             }
         }
         res.writable_properties = true;
-        res.default_numeric_property = default_numeric_property.summarize(s);
-        res.default_other_property = default_other_property.summarize(s);
-        res.internal_prototype = internal_prototype.summarize(s);
-        res.internal_value = internal_value.summarize(s);
-        res.scope = ScopeChain.summarize(scope, s);
+        res.default_numeric_property = default_numeric_property.rename(s);
+        res.default_other_property = default_other_property.rename(s);
+        res.internal_prototype = internal_prototype.rename(s);
+        res.internal_value = internal_value.rename(s);
+        res.scope = ScopeChain.rename(scope, s);
         res.scope_unknown = scope_unknown;
         return res;
     }
 
     /**
      * Replaces all definitely non-modified properties in this object by the corresponding properties of other.
+     * @param maybePartitionNodes nodes in callee used in partitionings, to be removed from values in caller state
      */
-    public void replaceNonModifiedParts(Obj other) {
+    public void replaceNonModifiedParts(Obj other, Set<AbstractNode> maybePartitionNodes) {
         checkWritable();
         Map<PKey, Value> newproperties = newMap();
         for (Entry<PKey, Value> me : properties.entrySet()) {
             Value v = me.getValue();
             if (!v.isMaybeModified()) { // property is definitely not modified, so replace it
-                v = other.getProperty(me.getKey());
+                v = PartitionedValue.removePartitions(other.getProperty(me.getKey()), maybePartitionNodes);
             }
             newproperties.put(me.getKey(), v);
         }
@@ -318,15 +320,15 @@ public final class Obj {
             for (Entry<PKey, Value> me : other.properties.entrySet())
                 if (!newproperties.containsKey(me.getKey())
                         && (me.getKey().isNumeric() ? !default_numeric_property_maybe_modified : !default_other_property_maybe_modified))
-                    newproperties.put(me.getKey(), me.getValue());
+                    newproperties.put(me.getKey(), PartitionedValue.removePartitions(me.getValue(), maybePartitionNodes));
         if (!default_numeric_property_maybe_modified)
-            default_numeric_property = other.default_numeric_property;
+            default_numeric_property = PartitionedValue.removePartitions(other.default_numeric_property, maybePartitionNodes);
         if (!default_other_property_maybe_modified)
-            default_other_property = other.default_other_property;
+            default_other_property = PartitionedValue.removePartitions(other.default_other_property, maybePartitionNodes);
         if (!internal_prototype.isMaybeModified())
-            internal_prototype = other.internal_prototype;
+            internal_prototype = PartitionedValue.removePartitions(other.internal_prototype, maybePartitionNodes);
         if (!internal_value.isMaybeModified())
-            internal_value = other.internal_value;
+            internal_value = PartitionedValue.removePartitions(other.internal_value, maybePartitionNodes);
         if (scope_unknown && !other.scope_unknown) {
             scope = other.scope;
             scope_unknown = false;

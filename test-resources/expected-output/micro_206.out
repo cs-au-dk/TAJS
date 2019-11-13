@@ -20,11 +20,12 @@ test-resources/src/micro/test206.js:69:11: [maybe] Reading absent property (comp
 test-resources/src/micro/test206.js:122:1: [info] Abstract state:
 Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
-  Summarized: maybe=[@replace#fun7, @arguments#node84{obj=[@RegExp#node63]}, @arguments#node84{obj=[@Object#node66]}, @arguments#node84{obj=[@Object#node60]}, @arguments#node84{obj=[@Object#node56]}, @arguments#node84{obj=[@Object#node40]}, @arguments#node84{obj=[@Object#node40, @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]}, @arguments#node84{obj=[@Object#node40, @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]}, @arguments#node84{obj=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]}, @arguments#node84{obj=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]}, @arguments#node84{obj=[@FOO#fun4]}, @arguments#node84{obj=[@BAR#fun5]}, @arguments#node84{obj="text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"}, @arguments#node84{obj="callback"}, @arguments#node303, @arguments#node140{ARG1=true, ARG2=[@Object#node40], ARG3=[@Object#node56]}, @arguments#node140{ARG1=true, ARG2=[@Object#node40, @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node56]}, @arguments#node140{ARG1=true, ARG2=[@Object#node40, @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node56]}, @arguments#node140{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, @arguments#node140{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node46]}, @arguments#node140{ARG1=true, ARG2=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node66]}, @arguments#node140{ARG1=true, ARG2=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node60]}, @arguments#node140{ARG1=true, ARG2=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node66]}, @arguments#node140{ARG1=true, ARG2=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node60]}, @activation#node84{obj=[@RegExp#node63]}, @activation#node84{obj=[@Object#node66]}, @activation#node84{obj=[@Object#node60]}, @activation#node84{obj=[@Object#node56]}, @activation#node84{obj=[@Object#node40]}, @activation#node84{obj=[@Object#node40, @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]}, @activation#node84{obj=[@Object#node40, @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]}, @activation#node84{obj=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]}, @activation#node84{obj=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]}, @activation#node84{obj=[@FOO#fun4]}, @activation#node84{obj=[@BAR#fun5]}, @activation#node84{obj="text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"}, @activation#node84{obj="callback"}, @activation#node303, @activation#node140{ARG1=true, ARG2=[@Object#node40], ARG3=[@Object#node56]}, @activation#node140{ARG1=true, ARG2=[@Object#node40, @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node56]}, @activation#node140{ARG1=true, ARG2=[@Object#node40, @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node56]}, @activation#node140{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, @activation#node140{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node46]}, @activation#node140{ARG1=true, ARG2=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node66]}, @activation#node140{ARG1=true, ARG2=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node60]}, @activation#node140{ARG1=true, ARG2=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node66]}, @activation#node140{ARG1=true, ARG2=[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}], ARG3=[@Object#node60]}, @RegExp#node63, @Object#node9, @Object#node67, @Object#node66, @Object#node60, @Object#node56, @Object#node55, @Object#node49, @Object#node46, @Object#node40, @Object#node39, @Object#node316, @Object#node309, @Object#node28, @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, @Object#node23, @Object#node15, @FOO#fun4, @BAR#fun5, @<anonymous>#fun6, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1], definitely=[@replace#fun7, @arguments#node303, @arguments#node140{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, @arguments#node140{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node46]}, @activation#node303, @activation#node140{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, @activation#node140{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node46]}, @RegExp#node63, @Object#node9, @Object#node67, @Object#node66, @Object#node60, @Object#node56, @Object#node55, @Object#node49, @Object#node46, @Object#node40, @Object#node39, @Object#node316, @Object#node309, @Object#node28, @Object#node23, @Object#node15, @FOO#fun4, @BAR#fun5, @<anonymous>#fun6, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1]
+  Renamings: maybe=[@replace#fun7, @arguments#node89{obj=[@RegExp#node67]}, @arguments#node89{obj=[@Object#node70]}, @arguments#node89{obj=[@Object#node64]}, @arguments#node89{obj=[@Object#node60]}, @arguments#node89{obj=[@Object#node44]}, @arguments#node89{obj=[@Object#node44, @Object#node274this=[@<the global object>[native]], specialRegs={45="accepts"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}]}, @arguments#node89{obj=[@Object#node274this=[@<the global object>[native]], specialRegs={45="converters"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}]}, @arguments#node89{obj=[@Object#node274this=[@<the global object>[native]], specialRegs={45="contents"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}]}, @arguments#node89{obj=[@FOO#fun4]}, @arguments#node89{obj=[@BAR#fun5]}, @arguments#node89{obj="text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"}, @arguments#node89{obj="callback"}, @arguments#node595, @arguments#node311, @arguments#node146{ARG1=true, ARG2=[@Object#node44], ARG3=[@Object#node60]}, @arguments#node146{ARG1=true, ARG2=[@Object#node44, @Object#node274this=[@<the global object>[native]], specialRegs={45="accepts"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}], ARG3=[@Object#node60]}, @arguments#node146{ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}, @arguments#node146{ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node50]}, @arguments#node146{ARG1=true, ARG2=[@Object#node274this=[@<the global object>[native]], specialRegs={45="converters"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}], ARG3=[@Object#node70]}, @arguments#node146{ARG1=true, ARG2=[@Object#node274this=[@<the global object>[native]], specialRegs={45="contents"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}], ARG3=[@Object#node64]}, @activation#node89{obj=[@RegExp#node67]}, @activation#node89{obj=[@Object#node70]}, @activation#node89{obj=[@Object#node64]}, @activation#node89{obj=[@Object#node60]}, @activation#node89{obj=[@Object#node44]}, @activation#node89{obj=[@Object#node44, @Object#node274this=[@<the global object>[native]], specialRegs={45="accepts"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}]}, @activation#node89{obj=[@Object#node274this=[@<the global object>[native]], specialRegs={45="converters"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}]}, @activation#node89{obj=[@Object#node274this=[@<the global object>[native]], specialRegs={45="contents"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}]}, @activation#node89{obj=[@FOO#fun4]}, @activation#node89{obj=[@BAR#fun5]}, @activation#node89{obj="text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"}, @activation#node89{obj="callback"}, @activation#node595, @activation#node311, @activation#node146{ARG1=true, ARG2=[@Object#node44], ARG3=[@Object#node60]}, @activation#node146{ARG1=true, ARG2=[@Object#node44, @Object#node274this=[@<the global object>[native]], specialRegs={45="accepts"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}], ARG3=[@Object#node60]}, @activation#node146{ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}, @activation#node146{ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node50]}, @activation#node146{ARG1=true, ARG2=[@Object#node274this=[@<the global object>[native]], specialRegs={45="converters"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}], ARG3=[@Object#node70]}, @activation#node146{ARG1=true, ARG2=[@Object#node274this=[@<the global object>[native]], specialRegs={45="contents"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}], ARG3=[@Object#node64]}, @RegExp#node67, @Object#node9, @Object#node71, @Object#node70, @Object#node64, @Object#node607, @Object#node600, @Object#node60, @Object#node59, @Object#node53, @Object#node50, @Object#node44, @Object#node43, @Object#node324, @Object#node32, @Object#node317, @Object#node274this=[@<the global object>[native]], specialRegs={45="converters"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}, @Object#node274this=[@<the global object>[native]], specialRegs={45="contents"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}, @Object#node274this=[@<the global object>[native]], specialRegs={45="accepts"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}, @Object#node27, @Object#node19, @Object#node13, @FOO#fun4, @BAR#fun5, @<anonymous>#fun9, @<anonymous>#fun8, @<anonymous>#fun6, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1], definitely=[@replace#fun7, @arguments#node595, @arguments#node311, @arguments#node146{ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}, @arguments#node146{ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node50]}, @activation#node595, @activation#node311, @activation#node146{ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}, @activation#node146{ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node50]}, @RegExp#node67, @Object#node9, @Object#node71, @Object#node70, @Object#node64, @Object#node607, @Object#node600, @Object#node60, @Object#node59, @Object#node53, @Object#node50, @Object#node44, @Object#node43, @Object#node324, @Object#node32, @Object#node317, @Object#node27, @Object#node19, @Object#node13, @FOO#fun4, @BAR#fun5, @<anonymous>#fun9, @<anonymous>#fun8, @<anonymous>#fun6, @<anonymous>#fun3, @<anonymous>#fun2, @<anonymous>#fun1]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {Array:[@Array[native]],Object:[@Object[native]],RegExp:^(@<the global object>[native].RegExp[present]),String:[@String[native]],ajaxSettings:[@Object#node39],core_hasOwn:[@Object.prototype.hasOwnProperty[native]],extend:[@<anonymous>#fun3],isArray:[@Array.isArray[native]],isFunction:[@<anonymous>#fun1],isPlainObject:[@<anonymous>#fun2],undefined:Undef,[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {Array:[@Array[native]],Error:[@Error[native]],Object:[@Object[native]],RegExp:^(@<the global object>[native].RegExp[present]),String:[@String[native]],ajaxSettings:[@Object#node43],core_hasOwn:[@Object.prototype.hasOwnProperty[native]],extend:[@<anonymous>#fun3],isArray:[@Array.isArray[native]],isFunction:[@<anonymous>#fun1],isPlainObject:[@<anonymous>#fun2],undefined:Undef,[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Array[native] (<initial state>): {isArray:^(@Array[native].isArray[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @Function.prototype[native] (<initial state>): {call:[@Function.prototype.call[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Error[native] (<initial state>): {captureStackTrace:[@<anonymous>#fun9],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Function.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @Function.prototype[native] (<initial state>): {call:[@Function.prototype.call[native]],captureStackTrace:^(@Function.prototype[native].captureStackTrace[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Object.prototype.hasOwnProperty[native] (<initial state>): {call:^(@Object.prototype.hasOwnProperty[native].call[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Function.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Object.prototype[native] (<initial state>): {__defineGetter__:[@Object.prototype.__defineGetter__[native]],__defineSetter__:[@Object.prototype.__defineSetter__[native]],constructor:[@Object[native]],hasOwnProperty:[@Object.prototype.hasOwnProperty[native]],isPrototypeOf:[@Object.prototype.isPrototypeOf[native]],propertyIsEnumerable:[@Object.prototype.propertyIsEnumerable[native]],toLocaleString:[@Object.prototype.toLocaleString[native]],toString:[@Object.prototype.toString[native]],valueOf:[@Object.prototype.valueOf[native]],[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],prototype:[@Object.prototype[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
@@ -32,121 +33,134 @@ Abstract state:
     @RegExp[native] (<initial state>): {prototype:[@RegExp.prototype[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @String.prototype[native] (<initial state>): {replace:[@replace#fun7],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
     @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
+    @Object#node13 (host-environment-sources-loader): {constructor:[@<anonymous>#fun8],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @Object#node9 (host-environment-sources-loader): {constructor:[@<anonymous>#fun6],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @<anonymous>#fun1 (test-resources/src/micro/test206.js:5:18): {length:1.0,name:"",prototype:[@Object#node15],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node15 (test-resources/src/micro/test206.js:5:18): {constructor:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @<anonymous>#fun2 (test-resources/src/micro/test206.js:12:21): {length:1.0,name:"",prototype:[@Object#node23],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node23 (test-resources/src/micro/test206.js:12:21): {constructor:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @<anonymous>#fun3 (test-resources/src/micro/test206.js:37:14): {length:3.0,name:"",prototype:[@Object#node28],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node28 (test-resources/src/micro/test206.js:37:14): {constructor:[@<anonymous>#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]} (test-resources/src/micro/test206.js:84:67): {script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"|[@RegExp#node63]|absent,text script:[@BAR#fun5]|absent,[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]} (test-resources/src/micro/test206.js:84:67): {script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"|[@RegExp#node63]|absent,text script:[@BAR#fun5]|absent,[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node39 (test-resources/src/micro/test206.js:105:20): {accepts:[@Object#node40, @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}],contents:[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]|absent,converters:[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]|absent,jsonp:"callback"|absent,jsonpCallback:[@FOO#fun4]|absent,[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node40 (test-resources/src/micro/test206.js:105:29): {script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"|absent,[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node46 (test-resources/src/micro/test206.js:107:28): {jsonp:"callback",jsonpCallback:[@FOO#fun4],[[Prototype]]=[@Object.prototype[native]]}
-    @FOO#fun4 (test-resources/src/micro/test206.js:109:17): {length:0.0,name:"FOO",prototype:[@Object#node49],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node49 (test-resources/src/micro/test206.js:109:17): {constructor:[@FOO#fun4],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @Object#node55 (test-resources/src/micro/test206.js:111:28): {accepts:[@Object#node56],contents:[@Object#node60],converters:[@Object#node66],[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node56 (test-resources/src/micro/test206.js:112:11): {script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript",[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node60 (test-resources/src/micro/test206.js:115:12): {script:[@RegExp#node63],[[Prototype]]=[@Object.prototype[native]]}
-    @RegExp#node63 (test-resources/src/micro/test206.js:116:11): {global:false,ignoreCase:false,lastIndex:0.0,multiline:false,source:"javascript\|ecmascript",[[Prototype]]=[@RegExp.prototype[native]],[[Value]]="javascript\|ecmascript"}
-    @Object#node66 (test-resources/src/micro/test206.js:118:14): {text script:[@BAR#fun5],[[Prototype]]=[@Object.prototype[native]]}
-    @BAR#fun5 (test-resources/src/micro/test206.js:119:18): {length:1.0,name:"BAR",prototype:[@Object#node67],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @Object#node67 (test-resources/src/micro/test206.js:119:18): {constructor:[@BAR#fun5],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @<anonymous>#fun1 (test-resources/src/micro/test206.js:5:18): {length:1.0,name:"",prototype:[@Object#node19],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node19 (test-resources/src/micro/test206.js:5:18): {constructor:[@<anonymous>#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @<anonymous>#fun2 (test-resources/src/micro/test206.js:12:21): {length:1.0,name:"",prototype:[@Object#node27],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node27 (test-resources/src/micro/test206.js:12:21): {constructor:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @<anonymous>#fun3 (test-resources/src/micro/test206.js:37:14): {length:3.0,name:"",prototype:[@Object#node32],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node32 (test-resources/src/micro/test206.js:37:14): {constructor:[@<anonymous>#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @Object#node274this=[@<the global object>[native]], specialRegs={45="accepts"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]} (test-resources/src/micro/test206.js:84:67): {script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"|absent,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node274this=[@<the global object>[native]], specialRegs={45="contents"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]} (test-resources/src/micro/test206.js:84:67): {script:[@RegExp#node67]|absent,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node274this=[@<the global object>[native]], specialRegs={45="converters"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]} (test-resources/src/micro/test206.js:84:67): {text script:[@BAR#fun5]|absent,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node43 (test-resources/src/micro/test206.js:105:20): {accepts:[@Object#node44, @Object#node274this=[@<the global object>[native]], specialRegs={45="accepts"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}],contents:[@Object#node274this=[@<the global object>[native]], specialRegs={45="contents"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}]|absent,converters:[@Object#node274this=[@<the global object>[native]], specialRegs={45="converters"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}]|absent,jsonp:"callback"|absent,jsonpCallback:[@FOO#fun4]|absent,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node44 (test-resources/src/micro/test206.js:105:29): {script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"|absent,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node50 (test-resources/src/micro/test206.js:107:28): {jsonp:"callback",jsonpCallback:[@FOO#fun4],[[Prototype]]=[@Object.prototype[native]]}
+    @FOO#fun4 (test-resources/src/micro/test206.js:109:17): {length:0.0,name:"FOO",prototype:[@Object#node53],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node53 (test-resources/src/micro/test206.js:109:17): {constructor:[@FOO#fun4],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @Object#node59 (test-resources/src/micro/test206.js:111:28): {accepts:[@Object#node60],contents:[@Object#node64],converters:[@Object#node70],[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node60 (test-resources/src/micro/test206.js:112:11): {script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript",[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node64 (test-resources/src/micro/test206.js:115:12): {script:[@RegExp#node67],[[Prototype]]=[@Object.prototype[native]]}
+    @RegExp#node67 (test-resources/src/micro/test206.js:116:11): {global:false,ignoreCase:false,lastIndex:0.0,multiline:false,source:"javascript\|ecmascript",[[Prototype]]=[@RegExp.prototype[native]],[[Value]]="javascript\|ecmascript"}
+    @Object#node70 (test-resources/src/micro/test206.js:118:14): {text script:[@BAR#fun5],[[Prototype]]=[@Object.prototype[native]]}
+    @BAR#fun5 (test-resources/src/micro/test206.js:119:18): {length:1.0,name:"BAR",prototype:[@Object#node71],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @Object#node71 (test-resources/src/micro/test206.js:119:18): {constructor:[@BAR#fun5],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @<anonymous>#fun8 (HOST(error-captureStackTrace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node13],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @activation#node595 (HOST(error-captureStackTrace-model.js):1:1): {arguments:[@arguments#node595]}
+    @arguments#node595 (HOST(error-captureStackTrace-model.js):1:1): {callee:[@<anonymous>#fun8],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
+    @<anonymous>#fun9 (HOST(error-captureStackTrace-model.js):5:12): {length:2.0,name:"",prototype:[@Object#node607],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node595],[@<the global object>[native]]]}
+    @Object#node607 (HOST(error-captureStackTrace-model.js):5:12): {constructor:[@<anonymous>#fun9],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @<anonymous>#fun6 (HOST(string-replace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node9],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @activation#node303 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node303]}
-    @arguments#node303 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun6],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node316 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun7],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @replace#fun7 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node316],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node303],[@<the global object>[native]]]}
+    @activation#node311 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node311]}
+    @arguments#node311 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun6],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node324 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun7],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @replace#fun7 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node324],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node311],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
     v2="tajs-host-env:string-replace-model.js"
     v3=true
     v4=[@<anonymous>#fun6]
-    v5=^(@Object.prototype[native].hasOwnProperty[present])
-    v6=[@Object.prototype[native]]
-    v7=[@Object[native]]
-    v8=[@<anonymous>#fun1]
+    v5="tajs-host-env:error-captureStackTrace-model.js"
+    v6=true
+    v7=[@<anonymous>#fun8]
+    v8=^(@Object.prototype[native].hasOwnProperty[present])
+    v9=[@Object.prototype[native]]
+    v10=[@Object[native]]
     v11=[@<anonymous>#fun1]
-    v12="obj"
-    v13=^(@Array[native].isArray[present])
-    v14=[@Array[native]]
-    v15=[@<anonymous>#fun2]
+    v14=[@<anonymous>#fun1]
+    v15="obj"
+    v16=^(@Array[native].isArray[present])
+    v17=[@Array[native]]
     v18=[@<anonymous>#fun2]
-    v19=0.0
-    v20=[@<anonymous>#fun3]
+    v21=[@<anonymous>#fun2]
+    v22=0.0
     v23=[@<anonymous>#fun3]
-    v24=0.0
-    v27=[@<anonymous>#fun3]
-    v28=1.0
-    v31=[@<anonymous>#fun3]
-    v32=2.0
-    v33=[@Object#node39]
-    v34=[@Object#node40]
-    v35=[@<the global object>[native]]
-    v36=[@<anonymous>#fun3]
-    v37=true
-    v38=[@Object#node39]
-    v39=[@Object#node46]
-    v40="callback"
-    v41=[@FOO#fun4]
-    v42=[@<the global object>[native]]
-    v43=[@<anonymous>#fun3]
-    v44=true
-    v45=[@Object#node39]
-    v46=[@Object#node55]
-    v47=[@Object#node56]
-    v48="text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
-    v49=[@Object#node60]
-    v50=[@RegExp#node63]
-    v51=^(@<the global object>[native].RegExp[present])
-    v52="javascript\|ecmascript"
-    v53=[@Object#node66]
-    v54=[@BAR#fun5]
+    v26=[@<anonymous>#fun3]
+    v27=0.0
+    v30=[@<anonymous>#fun3]
+    v31=1.0
+    v34=[@<anonymous>#fun3]
+    v35=2.0
+    v36=[@Object#node43]
+    v37=[@Object#node44]
+    v38=[@<the global object>[native]]
+    v39=[@<anonymous>#fun3]
+    v40=true
+    v41=[@Object#node43]
+    v42=[@Object#node50]
+    v43="callback"
+    v44=[@FOO#fun4]
+    v45=[@<the global object>[native]]
+    v46=[@<anonymous>#fun3]
+    v47=true
+    v48=[@Object#node43]
+    v49=[@Object#node59]
+    v50=[@Object#node60]
+    v51="text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
+    v52=[@Object#node64]
+    v53=[@RegExp#node67]
+    v54=^(@<the global object>[native].RegExp[present])
+    v55="javascript\|ecmascript"
+    v56=[@Object#node70]
+    v57=[@BAR#fun5]
   MustReachingDefs: 
     v1: node 0 (test-resources/src/micro/test206.js)
     v2: node 7 (host-environment-sources-loader)
     v3: node 8 (host-environment-sources-loader)
     v4: node 9 (host-environment-sources-loader)
-    v7: node 11 (test-resources/src/micro/test206.js:3:19)
-    v6: node 12 (test-resources/src/micro/test206.js:3:19)
-    v5: node 13 (test-resources/src/micro/test206.js:3:19)
-    v8: node 15 (test-resources/src/micro/test206.js:5:18)
-    v11: node 17 (test-resources/src/micro/test206.js:8:28)
-    v12: node 18 (test-resources/src/micro/test206.js:8:39)
-    v14: node 20 (test-resources/src/micro/test206.js:10:15)
-    v13: node 21 (test-resources/src/micro/test206.js:10:15)
-    v15: node 23 (test-resources/src/micro/test206.js:12:21)
-    v18: node 25 (test-resources/src/micro/test206.js:34:36)
-    v19: node 26 (test-resources/src/micro/test206.js:34:51)
-    v20: node 28 (test-resources/src/micro/test206.js:37:14)
-    v23: node 30 (test-resources/src/micro/test206.js:101:28)
-    v24: node 31 (test-resources/src/micro/test206.js:101:36)
-    v27: node 33 (test-resources/src/micro/test206.js:102:28)
-    v28: node 34 (test-resources/src/micro/test206.js:102:36)
-    v31: node 36 (test-resources/src/micro/test206.js:103:28)
-    v32: node 37 (test-resources/src/micro/test206.js:103:36)
-    v33: node 39 (test-resources/src/micro/test206.js:105:20)
-    v34: node 40 (test-resources/src/micro/test206.js:105:29)
-    v36: node 43 (test-resources/src/micro/test206.js:107:1)
-    v37: node 44 (test-resources/src/micro/test206.js:107:8)
-    v38: node 45 (test-resources/src/micro/test206.js:107:14)
-    v39: node 46 (test-resources/src/micro/test206.js:107:28)
-    v40: node 47 (test-resources/src/micro/test206.js:108:9)
-    v41: node 49 (test-resources/src/micro/test206.js:109:17)
-    v43: node 52 (test-resources/src/micro/test206.js:111:1)
-    v44: node 53 (test-resources/src/micro/test206.js:111:8)
-    v45: node 54 (test-resources/src/micro/test206.js:111:14)
-    v46: node 55 (test-resources/src/micro/test206.js:111:28)
-    v47: node 56 (test-resources/src/micro/test206.js:112:11)
-    v48: node 57 (test-resources/src/micro/test206.js:113:11)
-    v49: node 60 (test-resources/src/micro/test206.js:115:12)
-    v51: node 61 (test-resources/src/micro/test206.js:116:11)
-    v52: node 62 (test-resources/src/micro/test206.js:116:11)
-    v50: node 63 (test-resources/src/micro/test206.js:116:11)
-    v53: node 66 (test-resources/src/micro/test206.js:118:14)
-    v54: node 67 (test-resources/src/micro/test206.js:119:18)
+    v5: node 11 (host-environment-sources-loader)
+    v6: node 12 (host-environment-sources-loader)
+    v7: node 13 (host-environment-sources-loader)
+    v10: node 15 (test-resources/src/micro/test206.js:3:19)
+    v9: node 16 (test-resources/src/micro/test206.js:3:19)
+    v8: node 17 (test-resources/src/micro/test206.js:3:19)
+    v11: node 19 (test-resources/src/micro/test206.js:5:18)
+    v14: node 21 (test-resources/src/micro/test206.js:8:28)
+    v15: node 22 (test-resources/src/micro/test206.js:8:39)
+    v17: node 24 (test-resources/src/micro/test206.js:10:15)
+    v16: node 25 (test-resources/src/micro/test206.js:10:15)
+    v18: node 27 (test-resources/src/micro/test206.js:12:21)
+    v21: node 29 (test-resources/src/micro/test206.js:34:36)
+    v22: node 30 (test-resources/src/micro/test206.js:34:51)
+    v23: node 32 (test-resources/src/micro/test206.js:37:14)
+    v26: node 34 (test-resources/src/micro/test206.js:101:28)
+    v27: node 35 (test-resources/src/micro/test206.js:101:36)
+    v30: node 37 (test-resources/src/micro/test206.js:102:28)
+    v31: node 38 (test-resources/src/micro/test206.js:102:36)
+    v34: node 40 (test-resources/src/micro/test206.js:103:28)
+    v35: node 41 (test-resources/src/micro/test206.js:103:36)
+    v36: node 43 (test-resources/src/micro/test206.js:105:20)
+    v37: node 44 (test-resources/src/micro/test206.js:105:29)
+    v39: node 47 (test-resources/src/micro/test206.js:107:1)
+    v40: node 48 (test-resources/src/micro/test206.js:107:8)
+    v41: node 49 (test-resources/src/micro/test206.js:107:14)
+    v42: node 50 (test-resources/src/micro/test206.js:107:28)
+    v43: node 51 (test-resources/src/micro/test206.js:108:9)
+    v44: node 53 (test-resources/src/micro/test206.js:109:17)
+    v46: node 56 (test-resources/src/micro/test206.js:111:1)
+    v47: node 57 (test-resources/src/micro/test206.js:111:8)
+    v48: node 58 (test-resources/src/micro/test206.js:111:14)
+    v49: node 59 (test-resources/src/micro/test206.js:111:28)
+    v50: node 60 (test-resources/src/micro/test206.js:112:11)
+    v51: node 61 (test-resources/src/micro/test206.js:113:11)
+    v52: node 64 (test-resources/src/micro/test206.js:115:12)
+    v54: node 65 (test-resources/src/micro/test206.js:116:11)
+    v55: node 66 (test-resources/src/micro/test206.js:116:11)
+    v53: node 67 (test-resources/src/micro/test206.js:116:11)
+    v56: node 70 (test-resources/src/micro/test206.js:118:14)
+    v57: node 71 (test-resources/src/micro/test206.js:119:18)
   Functions in stack: []
-test-resources/src/micro/test206.js:123:1: [info] Abstract value: [@Object#node39]
-test-resources/src/micro/test206.js:124:1: [info] Abstract object: {accepts:[@Object#node40, @Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}],contents:[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]|absent,converters:[@Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}, *Object#node266{ARG1=true, ARG2=[@Object#node39], ARG3=[@Object#node55]}]|absent,jsonp:"callback"|absent,jsonpCallback:[@FOO#fun4]|absent,[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/test206.js:123:1: [info] Abstract value: [@Object#node43]
+test-resources/src/micro/test206.js:124:1: [info] Abstract object: {accepts:[@Object#node44, @Object#node274this=[@<the global object>[native]], specialRegs={45="accepts"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}],contents:[@Object#node274this=[@<the global object>[native]], specialRegs={45="contents"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}]|absent,converters:[@Object#node274this=[@<the global object>[native]], specialRegs={45="converters"}, {begin-loop[v36]=1}, {ARG1=true, ARG2=[@Object#node43], ARG3=[@Object#node59]}]|absent,jsonp:"callback"|absent,jsonpCallback:[@FOO#fun4]|absent,[[Prototype]]=[@Object.prototype[native]]}
 Soundness testing succeeded for 335 checks (with 0 expected failures)

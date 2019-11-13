@@ -2,4 +2,4 @@ test-resources/src/v8tests/prototype.js:64:3: [definite] Dead assignment, proper
 test-resources/src/v8tests/prototype.js:89:1: [definite] Dead assignment, property __proto__ is never read
 test-resources/src/v8tests/prototype.js: [definite] Exceptional program exit is unreachable
 test-resources/src/v8tests/prototype.js:80:15: [definite] Unreachable function
-Soundness testing succeeded for 191 checks (with 0 expected failures)
+Soundness testing succeeded for 190 checks (with 0 expected failures)

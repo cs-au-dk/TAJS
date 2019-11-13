@@ -49,7 +49,6 @@ import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReturnNode;
 import dk.brics.tajs.flowgraph.jsnodes.ThrowNode;
-import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
@@ -202,7 +201,7 @@ public class LineValueComputer {
 
         private Value readProperty(AbstractNode node, int baseRegister, Value propertyName) {
             Value uncoercedBase = UnknownValueResolver.getRealValue(state.readRegister(baseRegister), state);
-            Set<ObjectLabel> base = Conversion.toObjectLabels(node, uncoercedBase, false, null);
+            Set<ObjectLabel> base = Conversion.toObjectLabels(node, uncoercedBase, false,  true, c);
             propertyName = UnknownValueResolver.getRealValue(propertyName, state);
             // TODO Unify the string-coercion implementation for dynamic property-names (GitHub #402)
 //             Set<Value> propertyNames = new SplittingUtil(SplittingUtil.Strategies::kinds, SplittingUtil.Strategies::singletons).getToPropertyCoercions(propertyName, false, SplittingUtil.Purpose.DPA, c);
@@ -330,12 +329,6 @@ public class LineValueComputer {
         @Override
         public void visit(ThrowNode n) {
             addRegister(n, n.getValueRegister());
-        }
-
-        @Override
-        public void visit(TypeofNode n) {
-            addRegister(n, n.getArgRegister());
-            addVariable(n, n.getVariableName(), AbstractNode.NO_VALUE);
         }
 
         @Override

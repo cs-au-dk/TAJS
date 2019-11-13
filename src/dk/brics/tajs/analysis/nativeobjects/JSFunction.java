@@ -27,7 +27,8 @@ import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.lattice.ExecutionContext;
-import dk.brics.tajs.lattice.FreeVariablePartitioning;
+import dk.brics.tajs.lattice.FunctionPartitions;
+import dk.brics.tajs.lattice.FunctionTypeSignatures;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
@@ -248,8 +249,15 @@ public class JSFunction {
                         }
 
                         @Override
-                        public FreeVariablePartitioning getFreeVariablePartitioning() {
-                            return state.readThis().getFreeVariablePartitioning();
+                        public FunctionPartitions getFunctionPartitions(ObjectLabel function) {
+                            if (functionValue.getFunctionPartitions() == null)
+                                return null;
+                            return functionValue.getFunctionPartitions().filterByFunction(function);
+                        }
+
+                        @Override
+                        public FunctionTypeSignatures getFunctionTypeSignatures() {
+                            return functionValue.getFunctionTypeSignatures();
                         }
                     }, c);
                 }, c);
@@ -321,8 +329,15 @@ public class JSFunction {
                     }
 
                     @Override
-                    public FreeVariablePartitioning getFreeVariablePartitioning() {
-                        return call.getThis().getFreeVariablePartitioning();
+                    public FunctionPartitions getFunctionPartitions(ObjectLabel function) {
+                        if (call.getThis().getFunctionPartitions() == null)
+                            return null;
+                        return call.getThis().getFunctionPartitions().filterByFunction(function);
+                    }
+
+                    @Override
+                    public FunctionTypeSignatures getFunctionTypeSignatures() {
+                        return call.getThis().getFunctionTypeSignatures();
                     }
                 }, c);
                 return Value.makeNone(); // no direct flow to the successor

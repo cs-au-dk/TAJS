@@ -885,4 +885,4 @@ test-resources/src/chromeexperiments/sandtrap.html:996:21: [info] 'this' refers 
 test-resources/src/chromeexperiments/sandtrap.html:1009:21: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/chromeexperiments/sandtrap.html:1092:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/sandtrap.html:1095:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 14694 checks (with 0 expected failures)
+Soundness testing succeeded for 14634 checks (with 0 expected failures)

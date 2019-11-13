@@ -77,6 +77,11 @@ dependencies {
     // To use multi-project build with the submodule
     compile project(":inspector");
 
+    // To use copy-pasted ts-spec-reader.jar
+    //compile group: "ts-spec-reader", name: "ts-spec-reader"
+    // To use multi-project build with the submodule
+    compile project(":ts-spec-reader");
+
     // Testing
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'

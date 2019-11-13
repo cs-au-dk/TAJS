@@ -21,8 +21,6 @@ import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.util.AnalysisResultException;
 
-import java.util.function.Supplier;
-
 /**
  * Monitor that checks whether dataflow appears at the ordinary/exceptional program exit at the end of the scan phase.
  */
@@ -38,7 +36,7 @@ public class ProgramExitReachabilityChecker extends DefaultAnalysisMonitoring {
 
     private final boolean allowExceptionalExit;
 
-    private final Supplier<Boolean> analysisCompleted;
+    private boolean analysisCompleted = false;
 
     private boolean seenOrdinaryExit = false;
 
@@ -47,13 +45,12 @@ public class ProgramExitReachabilityChecker extends DefaultAnalysisMonitoring {
     /**
      * @param makeAssertionErrorInScanPhase if set, throw {@link AssertionError} if flow to the program exit does not satisfy the other paramaters.
      */
-    public ProgramExitReachabilityChecker(boolean makeAssertionErrorInScanPhase, boolean requireOrdinaryExit, boolean allowOrdinaryExit, boolean requireExceptionalExit, boolean allowExceptionalExit, Supplier<Boolean> analysisCompleted) {
+    public ProgramExitReachabilityChecker(boolean makeAssertionErrorInScanPhase, boolean requireOrdinaryExit, boolean allowOrdinaryExit, boolean requireExceptionalExit, boolean allowExceptionalExit) {
         this.makeAssertionErrorInScanPhase = makeAssertionErrorInScanPhase;
         this.requireOrdinaryExit = requireOrdinaryExit;
         this.allowOrdinaryExit = allowOrdinaryExit;
         this.requireExceptionalExit = requireExceptionalExit;
         this.allowExceptionalExit = allowExceptionalExit;
-        this.analysisCompleted = analysisCompleted;
     }
 
     @SuppressWarnings("unused" /* used by TAJS-meta */)
@@ -64,7 +61,7 @@ public class ProgramExitReachabilityChecker extends DefaultAnalysisMonitoring {
     @Override
     public void visitPhasePost(AnalysisPhase phase) {
         if (makeAssertionErrorInScanPhase && phase == AnalysisPhase.SCAN) {
-            if (analysisCompleted.get()) {
+            if (analysisCompleted) {
                 if (requireOrdinaryExit && !seenOrdinaryExit) {
                     throw new AnalysisResultException("Did not observe flow to ordinary program exit!");
                 }
@@ -92,5 +89,11 @@ public class ProgramExitReachabilityChecker extends DefaultAnalysisMonitoring {
                 seenExceptionalExit = true;
             }
         }
+    }
+
+    @Override
+    public void visitIterationDone(String msg) {
+        if (msg == null)
+            analysisCompleted = true;
     }
 }

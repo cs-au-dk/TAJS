@@ -52,12 +52,17 @@ public interface IContextSensitivityStrategy {
     Context makeObjectLiteralHeapContext(AbstractNode node, State state, Solver.SolverInterface c);
 
     /**
+     * Constructs a heap context for a boxed primitive.
+     */
+    Context makeBoxedPrimitiveHeapContext(Value primitive);
+
+    /**
      * Constructs the initial context.
      */
     Context makeInitialContext();
 
     /**
-     * Constructs a context for call.
+     * Constructs a context for a call.
      */
     Context makeFunctionEntryContext(State state, ObjectLabel function, FunctionCalls.CallInfo callInfo, Solver.SolverInterface c);
 

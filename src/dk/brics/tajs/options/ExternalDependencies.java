@@ -16,6 +16,8 @@
 
 package dk.brics.tajs.options;
 
+import dk.brics.tajs.util.AnalysisException;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -31,6 +33,22 @@ public class ExternalDependencies {
         return getExternalDependency(
                 "jalangilogger",
                 Paths.get("javascript"));
+    }
+
+    public static Optional<Path> getTSSpecReaderDirectory() {
+        return getExternalDependency(
+                "ts-spec-reader",
+                Paths.get("."));
+    }
+
+    public static Path getJSDelta() {
+        Optional<Path> jsdelta = getExternalDependency(
+                "jsdelta",
+                Paths.get("node_modules/jsdelta/delta.js"));
+        if (!jsdelta.isPresent()) {
+            throw new AnalysisException(String.format("Couldn't find jsdelta."));
+        }
+        return jsdelta.get();
     }
 
     /**

@@ -3,5 +3,5 @@ test-resources/src/micro/test46.js:8:5: [definite] The function Polygon is invok
 test-resources/src/micro/test46.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test46.js:3:15: [definite] Unreachable function
 test-resources/src/micro/test46.js:25:1: [info] Abstract object: {area:[@<anonymous>#fun2],temp:[@Polygon#fun1],[[Prototype]]=[@Object#node2]}
-test-resources/src/micro/test46.js:26:1: [info] Abstract object: {[[Prototype]]=[@Object#node14]}
-Soundness testing succeeded for 47 checks (with 0 expected failures)
+test-resources/src/micro/test46.js:26:1: [info] Abstract object: {[[Prototype]]=[@Object#node18]}
+Soundness testing succeeded for 46 checks (with 0 expected failures)

@@ -80,4 +80,4 @@ test-resources/src/chromeexperiments/core.html:409:136: [maybe] Converting primi
 test-resources/src/chromeexperiments/core.html:524:13: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/core.html:475:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/core.html:476:15: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 6915 checks (with 0 expected failures)
+Soundness testing succeeded for 6893 checks (with 0 expected failures)

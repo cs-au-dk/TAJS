@@ -7,4 +7,4 @@ test-resources/src/v8tests/debug-evaluate-arguments.js:77:1: [definite] Unreacha
 test-resources/src/v8tests/debug-evaluate-arguments.js:81:1: [definite] Unreachable function g
 test-resources/src/v8tests/debug-evaluate-arguments.js:85:1: [definite] Unreachable function f
 test-resources/src/v8tests/debug-evaluate-arguments.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-evaluate-arguments.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 6 checks (with 0 expected failures)

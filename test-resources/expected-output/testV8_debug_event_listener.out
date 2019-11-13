@@ -5,4 +5,4 @@ test-resources/src/v8tests/debug-event-listener.js:34:1: [definite] Unreachable 
 test-resources/src/v8tests/debug-event-listener.js:50:2: [definite] Unreachable function f
 test-resources/src/v8tests/debug-event-listener.js:63:1: [definite] Unreachable function a
 test-resources/src/v8tests/debug-event-listener.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-event-listener.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 3 checks (with 0 expected failures)

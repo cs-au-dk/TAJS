@@ -387,13 +387,17 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:108:33: [maybe] Rea
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:108:65: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:127:37: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:158:22: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:158:32: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1357:40: [maybe] Converting primitive string to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1429:5: [maybe] Converting primitive string to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1430:17: [maybe] Converting object to string
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1430:17: [maybe] Converting primitive string to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1431:24: [maybe] Converting primitive string to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1431:24: [maybe] The variable match has values with different types
-benchmarks/tajs/src/underscore/test-suite/utility/test167.html: [maybe] Uncaught exception, constructed at [HOST(string-replace-model.js):49:30, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:5, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:7, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:8, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:9, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:18, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:20, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):6:8]
+benchmarks/tajs/src/underscore/test-suite/utility/test167.html: [maybe] Uncaught exception, constructed at [HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:5, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:7, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:8, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:9, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:18, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:20, TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):6:8]
 benchmarks/tajs/src/underscore/test-suite/utility/test167.html:64:11: [maybe] Converting primitive string to object
 TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:9: [maybe] Converting object to string
 TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:9: [maybe] Converting primitive string to object
@@ -402,4 +406,4 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:108:65: [info] Read
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
 TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 TAJS-dynamic-code(benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1454:20):4:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 5147 checks (with 0 expected failures)
+Soundness testing succeeded for 5113 checks (with 0 expected failures)

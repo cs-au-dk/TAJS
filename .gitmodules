@@ -6,3 +6,7 @@
 	path = extras/inspector
 	url = ../TAJS-Inspector.git
 	branch = master
+[submodule "extras/ts-spec-reader"]
+	path = extras/ts-spec-reader
+	url = ../ts-spec-reader.git
+	branch = master

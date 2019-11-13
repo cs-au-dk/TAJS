@@ -24,6 +24,7 @@ public class TestMicroDifferentLoopKinds {
     private void testWithValuePartitioning(String testFile){
         Options.get().enableNoForInSpecialization();
         Options.get().enablePropNamePartitioning();
+        Options.get().enableFreeVariablePartitioning();
         test(testFile);
     }
 

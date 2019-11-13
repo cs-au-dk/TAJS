@@ -24,6 +24,7 @@ import com.google.javascript.jscomp.parsing.parser.trees.FunctionDeclarationTree
 import com.google.javascript.jscomp.parsing.parser.trees.IdentifierExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.MemberExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.MemberLookupExpressionTree;
+import com.google.javascript.jscomp.parsing.parser.trees.ParenExpressionTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTree;
 import com.google.javascript.jscomp.parsing.parser.trees.ParseTreeType;
 import com.google.javascript.jscomp.parsing.parser.trees.ThisExpressionTree;
@@ -201,5 +202,9 @@ public class SyntacticAnalysis {
 
     public void registerDeclaredAccessor(ParseTree accessorTree, SourceLocation sourceLocation, SourceLocation.SourceLocationMaker sourceLocationMaker) {
         valueLogLocationRemapping.registerDeclaredAccessor(accessorTree, sourceLocation, sourceLocationMaker);
+    }
+
+    public void registerParenExpression(ParenExpressionTree tree, SourceLocation.SourceLocationMaker sourceLocationMaker) {
+        valueLogLocationRemapping.registerParenExpression(tree, sourceLocationMaker);
     }
 }

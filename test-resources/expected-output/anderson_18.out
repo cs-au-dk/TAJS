@@ -3,4 +3,4 @@ test-resources/src/anderson/anderson18.js:13:2: [definite] Dead assignment, prop
 test-resources/src/anderson/anderson18.js: [definite] Exceptional program exit is unreachable
 test-resources/src/anderson/anderson18.js:3:2: [definite] Unreachable function f
 test-resources/src/anderson/anderson18.js:5:1: [definite] Unreachable function h
-Soundness testing succeeded for 21 checks (with 0 expected failures)
+Soundness testing succeeded for 23 checks (with 0 expected failures)

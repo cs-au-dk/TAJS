@@ -132,4 +132,4 @@ test-resources/src/google2/navier-stokes.js:264:61: [maybe] Reading absent prope
 test-resources/src/google2/navier-stokes.js:357:19: [maybe] Conversion to number yields NaN
 test-resources/src/google2/navier-stokes.js:358:17: [maybe] Conversion to number yields NaN
 test-resources/src/google2/navier-stokes.js:358:27: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 14559 checks (with 0 expected failures)
+Soundness testing succeeded for 10140 checks (with 0 expected failures)

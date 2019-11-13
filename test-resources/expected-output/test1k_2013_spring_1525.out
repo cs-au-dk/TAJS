@@ -72,4 +72,4 @@ test-resources/src/1k2013spring/1525.js:59:12: [maybe] Converting primitive stri
 test-resources/src/1k2013spring/1525.js:59:23: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1525.js:62:28: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1525.js:70:7: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 94 checks (with 2 expected failures)
+Soundness testing succeeded for 92 checks (with 2 expected failures)

@@ -13,58 +13,68 @@
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: read-variable['PRE',v6,v5] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:1)
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 6: call[v5,v6,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:1)
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 7: read-variable['INIT',v8,v7] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:12)
+    node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 8: call[v7,v8,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:12)
+    node 9: read-variable['PRE',v9,v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:1)
     ->[block 8]
   block 8:
-    node 9: read-variable['COND',v11,v10] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
-    ->[block 9] ~>[block 16]
+    node 10: call[v8,v9,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:1)
+    ->[block 9]
   block 9:
-    node 10: call[v10,v11,v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
-    ->[block 10] ~>[block 16]
+    node 11: read-variable['INIT',v11,v10] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:12)
+    ->[block 10]
   block 10:
-    node 11: begin-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:34)
-    ->[block 11] ~>[block 16]
+    node 12: call[v10,v11,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:12)
+    ->[block 11]
   block 11:
-    node 12: if[v9](true-block:12,false-block:17) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
-    ->[block 12,block 17] ~>[block 16]
+    node 13: read-variable['COND',v14,v13] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
+    ->[block 12] ~>[block 19]
   block 12:
-    node 13: read-variable['BODY',v13,v12] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:36)
-    ->[block 13] ~>[block 16]
+    node 14: call[v13,v14,v12] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
+    ->[block 13] ~>[block 19]
   block 13:
-    node 14: call[v12,v13,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:36)
-    ->[block 14] ~>[block 16]
+    node 15: begin-loop[v12] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:34)
+    ->[block 14] ~>[block 19]
   block 14:
-    node 15: read-variable['INC',v15,v14] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:28)
-    ->[block 15] ~>[block 16]
+    node 16: if[v12](true-block:15,false-block:20) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
+    ->[block 15,block 20] ~>[block 19]
   block 15:
-    node 16: call[v14,v15,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:28)
-    ->[block 8] ~>[block 16]
+    node 17: read-variable['BODY',v16,v15] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:36)
+    ->[block 16] ~>[block 19]
   block 16:
-    node 17: end-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
-    ->[block 21]
+    node 18: call[v15,v16,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:36)
+    ->[block 17] ~>[block 19]
   block 17:
-    node 18: end-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
-    ->[block 18]
+    node 19: read-variable['INC',v18,v17] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:28)
+    ->[block 18] ~>[block 19]
   block 18:
-    node 19: read-variable['POST',v17,v16] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:46)
-    ->[block 19]
+    node 20: call[v17,v18,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:28)
+    ->[block 11] ~>[block 19]
   block 19:
-    node 20: call[v16,v17,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:46)
-    ->[block 20]
-  block 20: [exit-ordinary]
-    node 21: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js)
+    node 21: end-loop[v12] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
+    ->[block 24]
+  block 20:
+    node 22: end-loop[v12] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
+    ->[block 21]
+  block 21:
+    node 23: read-variable['POST',v20,v19] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:46)
+    ->[block 22]
+  block 22:
+    node 24: call[v19,v20,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:46)
+    ->[block 23]
+  block 23: [exit-ordinary]
+    node 25: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js)
     ->[]
-  block 21: [exit-exceptional]
-    node 22: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js)
+  block 24: [exit-exceptional]
+    node 26: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js)
     ->[]
 
 <main> function()
@@ -82,58 +92,68 @@
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: read-variable['PRE',v6,v5] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:1)
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 6: call[v5,v6,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:1)
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 7: read-variable['INIT',v8,v7] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:12)
+    node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 8: call[v7,v8,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:12)
+    node 9: read-variable['PRE',v9,v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:1)
     ->[block 8]
   block 8:
-    node 9: read-variable['COND',v11,v10] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
-    ->[block 9] ~>[block 16]
+    node 10: call[v8,v9,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:1)
+    ->[block 9]
   block 9:
-    node 10: call[v10,v11,v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
-    ->[block 10] ~>[block 16]
+    node 11: read-variable['INIT',v11,v10] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:12)
+    ->[block 10]
   block 10:
-    node 11: begin-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:34)
-    ->[block 11] ~>[block 16]
+    node 12: call[v10,v11,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:12)
+    ->[block 11]
   block 11:
-    node 12: if[v9](true-block:12,false-block:17) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
-    ->[block 12,block 17] ~>[block 16]
+    node 13: read-variable['COND',v14,v13] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
+    ->[block 12] ~>[block 19]
   block 12:
-    node 13: read-variable['BODY',v13,v12] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:36)
-    ->[block 13] ~>[block 16]
+    node 14: call[v13,v14,v12] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
+    ->[block 13] ~>[block 19]
   block 13:
-    node 14: call[v12,v13,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:36)
-    ->[block 14] ~>[block 16]
+    node 15: begin-loop[v12] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:34)
+    ->[block 14] ~>[block 19]
   block 14:
-    node 15: read-variable['INC',v15,v14] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:28)
-    ->[block 15] ~>[block 16]
+    node 16: if[v12](true-block:15,false-block:20) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
+    ->[block 15,block 20] ~>[block 19]
   block 15:
-    node 16: call[v14,v15,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:28)
-    ->[block 8] ~>[block 16]
+    node 17: read-variable['BODY',v16,v15] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:36)
+    ->[block 16] ~>[block 19]
   block 16:
-    node 17: end-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
-    ->[block 21]
+    node 18: call[v15,v16,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:36)
+    ->[block 17] ~>[block 19]
   block 17:
-    node 18: end-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
-    ->[block 18]
+    node 19: read-variable['INC',v18,v17] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:28)
+    ->[block 18] ~>[block 19]
   block 18:
-    node 19: read-variable['POST',v17,v16] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:46)
-    ->[block 19]
+    node 20: call[v17,v18,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:28)
+    ->[block 11] ~>[block 19]
   block 19:
-    node 20: call[v16,v17,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:46)
-    ->[block 20]
-  block 20: [exit-ordinary]
-    node 21: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js)
+    node 21: end-loop[v12] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
+    ->[block 24]
+  block 20:
+    node 22: end-loop[v12] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:20)
+    ->[block 21]
+  block 21:
+    node 23: read-variable['POST',v20,v19] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:46)
+    ->[block 22]
+  block 22:
+    node 24: call[v19,v20,-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js:1:46)
+    ->[block 23]
+  block 23: [exit-ordinary]
+    node 25: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js)
     ->[]
-  block 21: [exit-exceptional]
-    node 22: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js)
+  block 24: [exit-exceptional]
+    node 26: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js)
     ->[]
 
 out/temp-sources/TestUnrolling.loopunrolling_flowgraph_calls.js: [definite] Ordinary program exit is unreachable

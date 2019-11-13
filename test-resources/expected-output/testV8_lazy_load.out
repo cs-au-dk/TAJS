@@ -1,4 +1,4 @@
 test-resources/src/v8tests/lazy-load.js:29:17: [definite] Reading 'this' yields the global object
 test-resources/src/v8tests/lazy-load.js: [definite] Exceptional program exit is unreachable
 test-resources/src/v8tests/lazy-load.js:34:5: [definite] The variable re is never used
-Soundness testing succeeded for 20 checks (with 0 expected failures)
+Soundness testing succeeded for 19 checks (with 0 expected failures)

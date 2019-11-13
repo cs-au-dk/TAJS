@@ -23,4 +23,4 @@ test-resources/src/1k2013spring/1438.js:51:62: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1438.js:66:5: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1438.js:68:9: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1438.js:70:35: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 217 checks (with 0 expected failures)
+Soundness testing succeeded for 213 checks (with 0 expected failures)

@@ -231,7 +231,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
          * The given state may be modified by this operation.
          * Ignored if in scan phase.
          */
-        public void propagateToFunctionEntry(AbstractNode call_node, ContextType caller_context, StateType edge_state,
+        public void propagateToFunctionEntry(AbstractNode call_node, ContextType caller_context, CallEdgeType edge,
                                              ContextType edge_context, BasicBlock callee_entry, CallKind callKind) {
             if (messages_enabled)
                 return;
@@ -239,11 +239,11 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
             ContextType callee_context = edge_context; // FIXME: change if using edge transformations: edge_state.transform(cg.getCallEdge(call_node, caller_context, callee_entry, edge_context), edge_context, the_analysis_lattice_element.getStates(callee_entry), callee_entry);
             the_analysis_lattice_element.getCallGraph().registerFunctionEntry(new BlockAndContext<>(callee_entry, callee_context));
             // add to existing call edge
-            if (cg.addTarget(call_node, caller_context, callee_entry, edge_context, edge_state, sync, analysis, c.getMonitoring())) {
+            if (cg.addTarget(call_node, caller_context, callee_entry, edge_context, edge, sync, analysis, c.getMonitoring())) {
                 // new flow at call edge, transform it relative to the function entry states and contexts
                 cg.addSource(call_node, caller_context, callee_entry, callee_context, edge_context);
                 // propagate transformed state into function entry
-                propagateAndUpdateWorklist(edge_state, callee_entry, callee_context, true);
+                propagateAndUpdateWorklist(edge.getState(), callee_entry, callee_context, true);
                 if (deps.isFunctionActive(new BlockAndContext<>(callee_entry, callee_context))) {
                     // charge the call edge
                     deps.chargeCallEdge(call_node, caller_context, edge_context, callee_entry, callee_context, callKind);
@@ -269,7 +269,7 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
             CallEdgeType edge = the_analysis_lattice_element.getCallGraph().getCallEdge(call_node, caller_context, callee_entry, edge_context);
             if (return_state.transformInverse(edge, callee_entry, return_state.getContext())) {
                 // need to re-process the incoming flow at function entry
-                propagateToFunctionEntry(call_node, caller_context, edge.getState(), edge_context, callee_entry, callKind);
+                propagateToFunctionEntry(call_node, caller_context, edge, edge_context, callee_entry, callKind);
             }
         }
 

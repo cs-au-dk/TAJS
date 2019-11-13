@@ -34,4 +34,4 @@ test-resources/src/1k2012love/1154.js:125:15: [maybe] Conversion to number yield
 test-resources/src/1k2012love/1154.js:125:37: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1154.js:125:39: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1154.js:91:19: [info] Writing to unknown property that may cause loss of precision
-Soundness testing succeeded for 356 checks (with 0 expected failures)
+Soundness testing succeeded for 352 checks (with 0 expected failures)

@@ -1,3 +1,3 @@
 test-resources/src/micro/testCall2.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/testCall2.js:5:2: [info] Abstract value: 42.0
-Soundness testing succeeded for 13 checks (with 6 expected failures)
+Soundness testing succeeded for 9 checks (with 0 expected failures)

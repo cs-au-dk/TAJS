@@ -186,4 +186,4 @@ test-resources/src/chromeexperiments/keylight.html:652:2: [info] 'this' refers t
 test-resources/src/chromeexperiments/keylight.html:653:2: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/keylight.html:661:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/keylight.html:680:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 36511 checks (with 0 expected failures)
+Soundness testing succeeded for 36475 checks (with 0 expected failures)

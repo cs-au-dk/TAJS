@@ -277,4 +277,4 @@ test-resources/src/1k2013spring/1457.js:48:28: [maybe] Reading absent property (
 test-resources/src/1k2013spring/1457.js:9:3: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/1k2013spring/1457.js:8:2: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/1k2013spring/1457.js:9:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 495 checks (with 1 expected failures)
+Soundness testing succeeded for 493 checks (with 1 expected failures)

@@ -372,7 +372,9 @@ benchmarks/tajs/src/underscore/test-suite/utility/test166.html:28:34: [definite]
 benchmarks/tajs/src/underscore/test-suite/utility/test166.html:33:9: [definite] The variable str is never used
 benchmarks/tajs/src/underscore/test-suite/utility/test166.html:34:9: [definite] The variable escaped is never used
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1357:40: [maybe] Converting primitive string to object
-benchmarks/tajs/src/underscore/test-suite/utility/test166.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/underscore/test-suite/utility/test166.html:17:7, HOST(string-replace-model.js):49:30, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
+benchmarks/tajs/src/underscore/test-suite/utility/test166.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/underscore/test-suite/utility/test166.html:17:7, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 3670 checks (with 0 expected failures)
+Soundness testing succeeded for 3643 checks (with 0 expected failures)

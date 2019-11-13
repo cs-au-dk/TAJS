@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.analysis.nativeobjects;
 
+import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.analysis.Conversion;
 import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
@@ -26,6 +27,11 @@ import dk.brics.tajs.analysis.ParallelTransfer;
 import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.analysis.dom.DOMFunctions;
+import dk.brics.tajs.analysis.js.Partitioning;
+import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.flowgraph.jsnodes.CallNode;
+import dk.brics.tajs.lattice.CallEdge;
+import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjProperties;
 import dk.brics.tajs.lattice.ObjectLabel;
@@ -33,22 +39,29 @@ import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.PKeys;
+import dk.brics.tajs.lattice.PartitionedValue;
+import dk.brics.tajs.lattice.PartitionToken;
+import dk.brics.tajs.lattice.Renamings;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
+import dk.brics.tajs.monitoring.IAnalysisMonitoring;
 import dk.brics.tajs.options.Options;
+import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.AnalysisLimitationException;
+import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.Pair;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newList;
+import static dk.brics.tajs.util.Collections.newSet;
 import static dk.brics.tajs.util.Collections.singleton;
 import static dk.brics.tajs.util.Collections.singletonList;
 
@@ -89,7 +102,7 @@ public class JSObject {
             case OBJECT_CREATE: {
                 ObjectLabel obj = ObjectLabel.make(call.getSourceNode(), Kind.OBJECT);
                 state.newObject(obj);
-                Value prototype = FunctionCalls.readParameter(call, state, 0).summarize(new Summarized(obj));
+                Value prototype = FunctionCalls.readParameter(call, state, 0).rename(new Renamings(obj));
                 if (prototype.restrictToNotNull().isMaybePrimitiveOrSymbol()) {
                     Exceptions.throwTypeError(c);
                 }
@@ -98,7 +111,7 @@ public class JSObject {
                 }
                 state.writeInternalPrototype(obj, prototype);
 
-                Value properties = FunctionCalls.readParameter(call, state, 1).summarize(new Summarized(obj));
+                Value properties = FunctionCalls.readParameter(call, state, 1).rename(new Renamings(obj));
                 Value propertiesObject = Conversion.toObject(call.getSourceNode(), properties.restrictToNotUndef(), c);
                 boolean stopPropagation = false;
                 if (propertiesObject.isMaybeObject()) {
@@ -140,11 +153,13 @@ public class JSObject {
 
             case OBJECT_TOSTRING: // 15.2.4.2
             case OBJECT_TOLOCALESTRING: { // 15.2.4.3
-                Value v = evaluateToString(state.readThis(), c);
-                if (nativeobject == ECMAScriptObjects.OBJECT_TOLOCALESTRING && !c.getAnalysis().getUnsoundness().mayAssumeFixedLocale(call.getSourceNode())) {
-                    return Value.makeAnyStr();
-                }
-                return v;
+                return state.readThis().applyFunction(thisVal -> {
+                    Value v = evaluateToString(thisVal, c);
+                    if (nativeobject == ECMAScriptObjects.OBJECT_TOLOCALESTRING && !c.getAnalysis().getUnsoundness().mayAssumeFixedLocale(call.getSourceNode())) {
+                        return Value.makeAnyStr();
+                    }
+                    return v;
+                });
             }
 
             case OBJECT_VALUEOF: { // 15.2.4.4
@@ -222,23 +237,24 @@ public class JSObject {
             case OBJECT_GETOWNPROPERTYDESCRIPTOR: // FIXME: handle toObject/missing-object-typeerror cases (GitHub #354)
                 Set<ObjectLabel> receivers = Conversion.toObjectLabels(c.getNode(), FunctionCalls.readParameter(call, state, 0), c);
                 Value name = FunctionCalls.readParameter(call, state, 1);
-                PKeys nameStr = Conversion.toString(name, c);
+                Value nameStr = Conversion.toString(name, c);
                 c.getMonitoring().visitPropertyRead(c.getNode(), receivers, nameStr, c.getState(), true);
-                Value property = Value.join(dk.brics.tajs.util.Collections.map(receivers, objlabel ->
+                if (Options.get().isPropNamePartitioning() && nameStr.isMaybeFuzzyStrOrSymbol()) {
+                    // partition the property name
+                    PartitionedValue property = Partitioning.partitionPropValue(c.getNode(), ((CallNode) call.getJSSourceNode()).getArgRegister(1), receivers, name, nameStr, newSet(), false, c);
+                    // partition the resulting value
+                    return PartitionedValue.make(property.getPartitionTokens().entrySet().stream().collect(
+                            Collectors.toMap(Map.Entry::getKey, e -> e.getValue().stream()
+                                    .filter(q -> !c.getAnalysis().getUnsoundness().mayIgnorePartition(c.getNode(), property.getPartition(e.getKey(), q)))
+                                    .collect(Collectors.toMap(q -> q, q ->
+                                            getPropertyDescriptorValue(c,
+                                                    c.getState().getContext().copyWithNewExtraAllocationContext(getOwnPropertyDescriptorQualifier, property.getPartition(e.getKey(), q)),
+                                                    property.getPartition(e.getKey(), q)))))));
+                }
+                Value property = Value.join(Collections.map(receivers, objlabel ->
                         UnknownValueResolver.getRealValue(pv.readPropertyDirect(objlabel, nameStr), state)
                 ));
-                Value result = Value.makeNone();
-                if (!property.isNotPresent()) {
-                    Optional<ObjectLabel> descriptorObject = PropertyDescriptor.fromProperty(property).newPropertyDescriptorObject(c);
-                    if (!descriptorObject.isPresent()) {
-                        throw new AnalysisException("It should not be possible to construct an invalid descriptor from an existing property!");
-                    }
-                    result = result.joinObject(descriptorObject.get());
-                }
-                if (property.isMaybeAbsent()) {
-                    result = result.joinUndef();
-                }
-                return result;
+                return getPropertyDescriptorValue(c, c.getState().getContext(), property);
 
             case OBJECT_GETPROTOTYPEOF: {
                 Value arg = UnknownValueResolver.getRealValue(FunctionCalls.readParameter(call, state, 0), state);
@@ -284,6 +300,28 @@ public class JSObject {
         }
     }
 
+    private static Context.Qualifier getOwnPropertyDescriptorQualifier = new Context.Qualifier() {
+        @Override
+        public String toString() {
+            return "<getOwnPropertyDescriptor>";
+        }
+    };
+
+    private static Value getPropertyDescriptorValue(GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c, Context context, Value property) {
+        Value result = Value.makeNone();
+        if (!property.isNotPresent()) {
+            Optional<ObjectLabel> descriptorObject = PropertyDescriptor.fromProperty(property).newPropertyDescriptorObject(c, context);
+            if (!descriptorObject.isPresent()) {
+                throw new AnalysisException("It should not be possible to construct an invalid descriptor from an existing property!");
+            }
+            result = result.joinObject(descriptorObject.get());
+        }
+        if (property.isMaybeAbsent()) {
+            result = result.joinUndef();
+        }
+        return result;
+    }
+
     /**
      * Implementation of 'Object.defineProperties(target, propertyDescriptorsObject)' after argument resolution.
      *
@@ -308,12 +346,33 @@ public class JSObject {
     }
 
     private static Value defineProperty(Value o, PKeys propertyName, Value propertyDescriptorObject, boolean forceWeak, Solver.SolverInterface c) {
-        PropertyDescriptor desc = PropertyDescriptor.toDefinePropertyPropertyDescriptor(propertyDescriptorObject, c);
-        Value value = desc.makePropertyWithAttributes();
+        if (propertyName instanceof PartitionedValue && propertyDescriptorObject instanceof PartitionedValue) {
+            Optional<AbstractNode> partitionNodeOpt = Partitioning.findPartitionNode((PartitionedValue) propertyName, (PartitionedValue) propertyDescriptorObject);
+            if (partitionNodeOpt.isPresent()) {
+                ParallelTransfer pt = new ParallelTransfer(c);
+                for (PartitionToken q : ((PartitionedValue) propertyName).getPartitionTokens(partitionNodeOpt.get())) {
+                    Value partitionedPropName = ((PartitionedValue) propertyName).getPartition(partitionNodeOpt.get(), q);
+                    Value partitionDescriptorObject = ((PartitionedValue) propertyDescriptorObject).getPartition(partitionNodeOpt.get(), q);
+                    if (!partitionedPropName.isNone() && !partitionDescriptorObject.isNone()) {
+                        Value value = getValueFromDescriptorObject(c, partitionDescriptorObject);
+                        if (value.isNone() || c.getAnalysis().getUnsoundness().mayIgnorePartition(c.getNode(), value))
+                            continue;
+                        pt.add(() -> c.getAnalysis().getPropVarOperations().writeProperty(o.getObjectLabels(), partitionedPropName, value, false, true, forceWeak, true)); // FIXME: trigger TypeError exception if attempt to overwrite non-writable (#291)
+                    }
+                }
+                pt.complete();
+                return o;
+            }
+        }
+        Value value = getValueFromDescriptorObject(c, propertyDescriptorObject);
         if (value.isNone())
             return Value.makeNone();
         c.getAnalysis().getPropVarOperations().writeProperty(o.getObjectLabels(), propertyName, value, true, true, forceWeak, true); // FIXME: trigger TypeError exception if attempt to overwrite non-writable (#291)
         return o;
+    }
+
+    private static Value getValueFromDescriptorObject(GenericSolver<State, Context, CallEdge, IAnalysisMonitoring, Analysis>.SolverInterface c, Value partitionDescriptorObject) {
+        return PropertyDescriptor.toDefinePropertyPropertyDescriptor(partitionDescriptorObject, c).makePropertyWithAttributes();
     }
 
     private static Value getPropertyNamesOrSymbolsArray(ECMAScriptObjects nativeobject, CallInfo call, Solver.SolverInterface c, boolean symbols) {
@@ -433,7 +492,7 @@ public class JSObject {
         Set<ObjectLabel> sourceObjects = sources.stream()
                 .map(v -> UnknownValueResolver.getRealValue(v, c.getState()))
                 .map(Value::restrictToNotNullNotUndef)
-                .map(v -> Conversion.toObject(call.getSourceNode(), v, null))
+                .map(v -> Conversion.toObject(call.getSourceNode(), v, true, true, c)) // TODO: why are side effects disabled here?
                 .map(Value::getObjectLabels)
                 .flatMap(Set::stream)
                 .collect(Collectors.toSet());

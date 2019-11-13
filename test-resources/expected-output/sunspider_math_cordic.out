@@ -7,4 +7,4 @@ test-resources/src/sunspider/math-cordic.js:80:13: [maybe] Conversion to number 
 test-resources/src/sunspider/math-cordic.js:80:26: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/math-cordic.js:102:26: [maybe] Converting object to number
 test-resources/src/sunspider/math-cordic.js:104:1: [info] Abstract value: Num
-Soundness testing succeeded for 427 checks (with 0 expected failures)
+Soundness testing succeeded for 429 checks (with 0 expected failures)

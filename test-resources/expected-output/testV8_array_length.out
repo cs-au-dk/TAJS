@@ -25,4 +25,4 @@ test-resources/src/v8tests/array_length.js:71:1: [info] Abstract value: "number"
 test-resources/src/v8tests/array_length.js:72:1: [info] Abstract value: 42.0
 test-resources/src/v8tests/array_length.js:78:1: [info] Abstract value: "number"
 test-resources/src/v8tests/array_length.js:79:1: [info] Abstract value: 42.0
-Soundness testing succeeded for 84 checks (with 0 expected failures)
+Soundness testing succeeded for 81 checks (with 0 expected failures)

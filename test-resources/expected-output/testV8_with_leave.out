@@ -6,4 +6,4 @@ test-resources/src/v8tests/with-leave.js:31:3: [definite] Unreachable code
 test-resources/src/v8tests/with-leave.js:38:5: [definite] Unreachable code
 test-resources/src/v8tests/with-leave.js:44:29: [definite] Unreachable code
 test-resources/src/v8tests/with-leave.js:54:7: [definite] Unreachable code
-Soundness testing succeeded for 44 checks (with 0 expected failures)
+Soundness testing succeeded for 36 checks (with 0 expected failures)

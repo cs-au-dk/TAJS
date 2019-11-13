@@ -13,8 +13,8 @@ test-resources/src/micro/test13.js:20:10: [definite] Dead assignment, property G
 test-resources/src/micro/test13.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test13.js:30:1: [info] Abstract value: "example glossary"
 test-resources/src/micro/test13.js:31:1: [info] Abstract value: "example glossaryhat"
-test-resources/src/micro/test13.js:32:1: [info] Abstract object: {glossary:[@Object#node9],[[Prototype]]=[@Object.prototype[native]]}
-test-resources/src/micro/test13.js:33:1: [info] Abstract object: {GlossDiv:[@Object#node12],title:"example glossary",[[Prototype]]=[@Object.prototype[native]]}
-test-resources/src/micro/test13.js:34:1: [info] Abstract object: {GlossDiv:[@Object#node12],title:"example glossary",[[Prototype]]=[@Object.prototype[native]]}
-test-resources/src/micro/test13.js:35:1: [info] Abstract object: {GlossList:[@Object#node15],title:"S",[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/test13.js:32:1: [info] Abstract object: {glossary:[@Object#node13],[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/test13.js:33:1: [info] Abstract object: {GlossDiv:[@Object#node16],title:"example glossary",[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/test13.js:34:1: [info] Abstract object: {GlossDiv:[@Object#node16],title:"example glossary",[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/test13.js:35:1: [info] Abstract object: {GlossList:[@Object#node19],title:"S",[[Prototype]]=[@Object.prototype[native]]}
 Soundness testing succeeded for 24 checks (with 0 expected failures)

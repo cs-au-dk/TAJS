@@ -3,4 +3,4 @@ test-resources/src/micro/test181.js:2:7: [definite] The variable declaration x s
 test-resources/src/micro/test181.js:8:3: [definite] Unreachable function x
 test-resources/src/micro/test181.js:5:1: [info] Abstract value: 7.0
 test-resources/src/micro/test181.js:11:1: [info] Abstract value: [@x#fun3]
-Soundness testing succeeded for 21 checks (with 0 expected failures)
+Soundness testing succeeded for 22 checks (with 0 expected failures)

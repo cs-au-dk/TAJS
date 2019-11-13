@@ -1,7 +1,7 @@
 test-resources/src/micro/test19.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test19.js:7:1: [info] Abstract value: [@Object[native], @Boolean[native]]
-test-resources/src/micro/test19.js:8:1: [info] Abstract value: [@Object#node16, @Boolean#node16{boxed-primitive=false}]
+test-resources/src/micro/test19.js:8:1: [info] Abstract value: [@Object#node20, @Boolean#node20{boxed-primitive=false}]
 test-resources/src/micro/test19.js:9:1: [info] Abstract value: [@Object[native]]
-test-resources/src/micro/test19.js:10:1: [info] Abstract value: [@Object#node25]
+test-resources/src/micro/test19.js:10:1: [info] Abstract value: [@Object#node29]
 test-resources/src/micro/test19.js:12:1: [info] Abstract object: {foo:42.0|absent,[[Prototype]]=[@Boolean.prototype[native]],[[Value]]=false}, {foo:42.0|absent,[[Prototype]]=[@Object.prototype[native]]}
 Soundness testing succeeded for 28 checks (with 0 expected failures)

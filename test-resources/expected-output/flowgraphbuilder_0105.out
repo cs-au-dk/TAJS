@@ -13,26 +13,36 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: new[v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:1:5)
-    node 6: constant[1.0,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:1:8)
-    node 7: write-property[v5,'a',v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:1:6)
-    node 8: write-variable[v5,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:1:1)
-    node 9: new[v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:2:5)
-    node 10: read-variable['x',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:2:8)
-    node 11: write-property[v7,'b',v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:2:6)
-    node 12: write-variable[v7,'y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:2:1)
-    node 13: read-variable['y',v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
-    node 14: read-property[v10,'b',v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
-    node 15: read-property[v9,'a',v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
-    node 16: constant[2.0,v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:10)
-    node 17: +[v11,v12,v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
-    node 18: write-property[v9,'a',v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
-  block 5: [exit-ordinary]
-    node 19: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js)
+  block 5:
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6]
+  block 6:
+    node 8: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7]
+  block 7:
+    node 9: new[v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:1:5)
+    node 10: constant[1.0,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:1:8)
+    node 11: write-property[v8,'a',v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:1:6)
+    node 12: write-variable[v8,'x'] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:1:1)
+    node 13: new[v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:2:5)
+    node 14: read-variable['x',v11,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:2:8)
+    node 15: write-property[v10,'b',v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:2:6)
+    node 16: write-variable[v10,'y'] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:2:1)
+    node 17: read-variable['y',v13,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 18: read-property[v13,'b',v12] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 19: read-property[v12,'a',v14] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 20: constant[2.0,v15] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:10)
+    node 21: +[v14,v15,v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    node 22: write-property[v12,'a',v16] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js:3:1)
+    ->[block 8]
+  block 8: [exit-ordinary]
+    node 23: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js)
     ->[]
-  block 6: [exit-exceptional]
-    node 20: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js)
+  block 9: [exit-exceptional]
+    node 24: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0105.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0105.js: [definite] Exceptional program exit is unreachable

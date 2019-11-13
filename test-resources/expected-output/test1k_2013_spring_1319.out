@@ -128,4 +128,4 @@ test-resources/src/1k2013spring/1319.js:119:17: [info] Reading from unknown prop
 test-resources/src/1k2013spring/1319.js:119:56: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/1k2013spring/1319.js:159:4: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/1k2013spring/1319.js:159:43: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 349 checks (with 7 expected failures)
+Soundness testing succeeded for 345 checks (with 7 expected failures)

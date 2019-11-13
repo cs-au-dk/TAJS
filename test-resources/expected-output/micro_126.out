@@ -5,4 +5,4 @@ test-resources/src/micro/test126.js:4:30: [definite] Dead assignment, property c
 test-resources/src/micro/test126.js:12:5: [definite] Unreachable code
 test-resources/src/micro/test126.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test126.js:12:20]
 test-resources/src/micro/test126.js:11:5: [info] Abstract value: "funny"
-Soundness testing succeeded for 15 checks (with 0 expected failures)
+Soundness testing succeeded for 13 checks (with 0 expected failures)

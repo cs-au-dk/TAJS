@@ -14,64 +14,74 @@ fg2: <main> function()
     node 5: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 6: constant[true,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:1:9)
-    node 7: write-variable[v5,'p'] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:1:5)
+    node 6: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 7: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 8: new[v6] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:14)
-    node 9: constant[false,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:18)
-    node 10: write-property[v6,'p',v7] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:15)
-    node 11: begin-with[v6] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:9)
-    ->[block 6] ~>[block 9]
+    node 8: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6]
   block 6:
-    node 12: constant["x",v9] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:5:19)
-    node 13: throw[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:5:13)
-    ->[block 8] ~>[block 7]
+    node 9: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7]
   block 7:
-    node 14: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:9)
-    ->[block 9]
+    node 10: constant[true,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:1:9)
+    node 11: write-variable[v8,'p'] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:1:5)
+    ->[block 8]
   block 8:
-    node 15: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:9)
-    ->[block 14] ~>[block 9]
+    node 12: new[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:14)
+    node 13: constant[false,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:18)
+    node 14: write-property[v9,'p',v10] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:15)
+    node 15: begin-with[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:9)
+    ->[block 9] ~>[block 12]
   block 9:
-    node 16: catch[e,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:7:6)
-    node 17: begin-with[v10] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:7:6)
-    ->[block 10]
+    node 16: constant["x",v12] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:5:19)
+    node 17: throw[v12] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:5:13)
+    ->[block 11] ~>[block 10]
   block 10:
-    node 18: nop(break l1) (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:8:8)
-    ->[block 11] ~>[block 12]
+    node 18: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:9)
+    ->[block 12]
   block 11:
-    node 19(~-1): end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:7:6)
-    ->[block 16] ~>[block 12]
+    node 19: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:9)
+    ->[block 17] ~>[block 12]
   block 12:
-    node 20: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:7:6)
-    ->[block 21]
+    node 20: catch[e,v13] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:7:6)
+    node 21: begin-with[v13] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:7:6)
+    ->[block 13]
   block 13:
-    node 21: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:7:6)
-    ->[block 14]
+    node 22: nop(break l1) (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:8:8)
+    ->[block 14] ~>[block 15]
   block 14:
-    node 22: constant[false,v14] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:12:17)
-    ->[block 15]
+    node 23(~-1): end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:7:6)
+    ->[block 19] ~>[block 15]
   block 15:
-    node 23: call[TAJS_assert,v14,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:12:5)
-    ->[block 16]
+    node 24: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:7:6)
+    ->[block 24]
   block 16:
-    node 24: read-variable['p',v17,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:14:13)
+    node 25: end-with (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:7:6)
     ->[block 17]
   block 17:
-    node 25: call[TAJS_assert,v17,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:14:1)
+    node 26: constant[false,v17] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:12:17)
     ->[block 18]
   block 18:
-    node 26: constant["OK",v20] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:16:16)
+    node 27: call[TAJS_assert,v17,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:12:5)
     ->[block 19]
   block 19:
-    node 27: call[TAJS_dumpValue,v20,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:16:1)
+    node 28: read-variable['p',v20,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:14:13)
     ->[block 20]
-  block 20: [exit-ordinary]
-    node 28: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js)
+  block 20:
+    node 29: call[TAJS_assert,v20,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:14:1)
+    ->[block 21]
+  block 21:
+    node 30: constant["OK",v23] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:16:16)
+    ->[block 22]
+  block 22:
+    node 31: call[TAJS_dumpValue,v23,-] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:16:1)
+    ->[block 23]
+  block 23: [exit-ordinary]
+    node 32: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js)
     ->[]
-  block 21: [exit-exceptional]
-    node 29: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js)
+  block 24: [exit-exceptional]
+    node 33: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder_jump_0012.js:4:15: [definite] Dead assignment, property p is never read

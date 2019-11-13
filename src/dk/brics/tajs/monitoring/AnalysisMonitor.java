@@ -49,7 +49,6 @@ import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReturnNode;
 import dk.brics.tajs.flowgraph.jsnodes.ThrowNode;
-import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
@@ -462,10 +461,6 @@ public class AnalysisMonitor implements IAnalysisMonitoring {
                         }
 
                         @Override
-                        public void visit(TypeofNode n) {
-                        }
-
-                        @Override
                         public void visit(IfNode n) {
                         }
 
@@ -852,11 +847,11 @@ public class AnalysisMonitor implements IAnalysisMonitoring {
 
     /**
      * Checks whether the variable read yields null/undefined.
-     * Variables named 'undefined' are ignored.
+     * Variables named 'undefined' and variable operands to 'typeof' are ignored.
      */
     @Override
     public void visitReadVariable(ReadVariableNode n, Value v, State state) {
-        if (!scan_phase) {
+        if (!scan_phase || n.isKeepAbsent()) {
             return;
         }
         String varname = n.getVariableName();

@@ -4,4 +4,4 @@ test-resources/src/v8tests/fun-as-prototype.js:31:17: [maybe] Converting primiti
 test-resources/src/v8tests/fun-as-prototype.js:32:23: [maybe] Converting primitive number to object
 test-resources/src/v8tests/fun-as-prototype.js:33:31: [maybe] Converting primitive number to object
 test-resources/src/v8tests/fun-as-prototype.js:36:17: [maybe] Converting primitive number to object
-Soundness testing succeeded for 43 checks (with 0 expected failures)
+Soundness testing succeeded for 44 checks (with 0 expected failures)

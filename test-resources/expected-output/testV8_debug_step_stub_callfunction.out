@@ -7,4 +7,4 @@ test-resources/src/v8tests/debug-step-stub-callfunction.js:49:1: [definite] Unre
 test-resources/src/v8tests/debug-step-stub-callfunction.js:62:1: [definite] Unreachable function g
 test-resources/src/v8tests/debug-step-stub-callfunction.js:63:3: [definite] Unreachable function h
 test-resources/src/v8tests/debug-step-stub-callfunction.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-step-stub-callfunction.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 4 checks (with 0 expected failures)

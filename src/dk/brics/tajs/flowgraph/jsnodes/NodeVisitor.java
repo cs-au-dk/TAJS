@@ -117,11 +117,6 @@ public interface NodeVisitor {
     void visit(ThrowNode n);
 
     /**
-     * Visits a TypeofNode.
-     */
-    void visit(TypeofNode n);
-
-    /**
      * Visits a UnaryOperatorNode.
      */
     void visit(UnaryOperatorNode n);

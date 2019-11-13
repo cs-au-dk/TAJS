@@ -6,4 +6,4 @@ test-resources/src/v8tests/debug-constructed-by.js:36:5: [definite] The variable
 test-resources/src/v8tests/debug-constructed-by.js:45:5: [definite] The variable p is never used
 test-resources/src/v8tests/debug-constructed-by.js:54:10: [definite] The variable i is never used
 test-resources/src/v8tests/debug-constructed-by.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-constructed-by.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 2 checks (with 0 expected failures)

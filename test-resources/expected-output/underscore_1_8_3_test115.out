@@ -366,7 +366,7 @@ benchmarks/tajs/src/underscore/test-suite/objects/test115.html:8:1: [definite] U
 benchmarks/tajs/src/underscore/test-suite/objects/test115.html:9:1: [definite] Unreachable function start
 benchmarks/tajs/src/underscore/test-suite/objects/test115.html:39:5: [definite] Unreachable function y
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:940:21: [maybe] The variable obj has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1213:16: [maybe] The variable obj has values with different types
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 3975 checks (with 0 expected failures)
+Soundness testing succeeded for 3947 checks (with 0 expected failures)

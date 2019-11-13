@@ -82,9 +82,9 @@ abstract public class PKey implements DeepImmutable { // XXX: rename class (and 
     abstract public boolean containsObjectLabel(ObjectLabel objlabel);
 
     /**
-     * Constructs a property key as a copy of this value but with object labels summarized.
+     * Constructs a property key as a copy of this value but with object labels renamed.
      */
-    abstract public Set<PKey> summarize(Summarized s);
+    abstract public Set<PKey> rename(Renamings s);
 
     /**
      * Property key for fixed string.
@@ -175,7 +175,7 @@ abstract public class PKey implements DeepImmutable { // XXX: rename class (and 
             return false;
         }
 
-        public Set<PKey> summarize(Summarized s) {
+        public Set<PKey> rename(Renamings s) {
             return Collections.singleton(this);
         }
     }
@@ -253,8 +253,8 @@ abstract public class PKey implements DeepImmutable { // XXX: rename class (and 
             return objlabel.equals(ol);
         }
 
-        public Set<PKey> summarize(Summarized s) {
-            return s.summarize(Collections.singleton(objlabel)).stream().map(SymbolPKey::make).collect(Collectors.toSet());
+        public Set<PKey> rename(Renamings s) {
+            return s.rename(Collections.singleton(objlabel)).stream().map(SymbolPKey::make).collect(Collectors.toSet());
         }
     }
 

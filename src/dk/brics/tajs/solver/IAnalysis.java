@@ -70,9 +70,9 @@ public interface IAnalysis<StateType extends IState<StateType, ContextType, Call
     void setSolverInterface(GenericSolver<StateType, ContextType, CallEdgeType, MonitoringType, AnalysisType>.SolverInterface c);
 
     /**
-     * Constructs a new call edge for the given abstract state.
+     * Creates a copy of this edge with a cloned abstract state.
      */
-    CallEdgeType makeCallEdge(StateType edge_state);
+    CallEdgeType cloneCallEdge(CallEdgeType edge);
 
     /**
      * Returns the type tester, or null if not available.

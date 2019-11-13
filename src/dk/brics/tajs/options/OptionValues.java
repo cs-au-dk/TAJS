@@ -174,10 +174,10 @@ public class OptionValues {
 
     private Set<String> ignoredLibraries = new LinkedHashSet<>();
 
-    @Option(name = "-context-sensitive-heap", usage = "Enable selective context sensitive heap abstractions")
+    @Option(name = "-context-sensitive-heap", usage = "Enable selective context sensitive heap abstractions (ignored if -determinacy is enabled)")
     private boolean contextSensitiveHeap;
 
-    @Option(name = "-parameter-sensitivity", usage = "Enable usage of different contexts for (some) calls based on the argument values")
+    @Option(name = "-parameter-sensitivity", usage = "Enable usage of different contexts for (some) calls based on the argument values (ignored if -determinacy is enabled)")
     private boolean parameterSensitivity;
 
     @Option(name = "-ignore-unreached", usage = "Ignore code that is unreached according to the log file")
@@ -258,10 +258,13 @@ public class OptionValues {
     @Option(name = "-nodejs", usage = "Use Node.js environment for analysis and soundness testing (currently only 'require' is supported)")
     private boolean nodejs;
 
+    @Option(name = "-type-filtering", usage = "Use TypeScript type declarations for dataflow filtering (use with -nodejs)")
+    private boolean typeFiltering;
+
     @Option(name = "-babel", usage = "Enables Babel preprocessing for source files")
     private boolean babel;
 
-    @Option(name = "-type-checks", usage = "Enables type checking")
+    @Option(name = "-type-checks", usage = "Enables type checking (currently only used with ReaGenT)")
     private boolean typeCheckEnabled;
 
     @Option(name = "-blended-analysis", usage = "Filter abstract values based on values observed concretely")
@@ -270,8 +273,20 @@ public class OptionValues {
     @Option(name = "-no-filtering", usage = "Disable filtering")
     private boolean noFiltering;
 
-    @Option(name = "-prop-name-partitioning", usage = "Partitions the property name value at imprecise dynamic property reads")
+    @Option(name = "-property-name-partitioning", usage = "Partitions the property name value at imprecise dynamic property reads")
     private boolean propNamePartitioning;
+
+    @Option(name = "-type-partitioning", usage = "Partitions the argument at calls with one argument based on the types of that argument")
+    private boolean typePartitioning;
+
+    @Option(name = "-free-variable-partitioning", usage = "Partitions free variables and function expressions with free variables")
+    private boolean freeVariablePartitioning;
+
+    @Option(name = "-no-string-replace-polyfill", usage = "Disables the use of the String.prototype.replace polyfill")
+    private boolean noStringReplacePolyfill;
+
+    @Option(name = "-no-error-capture-stack-trace-polyfill", usage = "Disables the use of Error.captureStackTrace polyfill")
+    private boolean noErrorCaptureStackTracePolyfill;
 
     @Argument
     private List<Path> arguments = new ArrayList<>();
@@ -352,6 +367,10 @@ public class OptionValues {
         if (inspector != that.inspector) return false;
         if (babel != that.babel) return false;
         if (propNamePartitioning != that.propNamePartitioning) return false;
+        if (typePartitioning != that.typePartitioning) return false;
+        if (freeVariablePartitioning != that.freeVariablePartitioning) return false;
+        if (noStringReplacePolyfill != that.noStringReplacePolyfill) return false;
+        if (noErrorCaptureStackTracePolyfill != that.noErrorCaptureStackTracePolyfill) return false;
         if (!Objects.equals(unsoundnessString, that.unsoundnessString)) return false;
         if (!Objects.equals(unsoundness, that.unsoundness)) return false;
         if (!Objects.equals(ignoredLibrariesString, that.ignoredLibrariesString)) return false;
@@ -437,7 +456,11 @@ public class OptionValues {
         result = 31 * result + (typeCheckEnabled ? 1 : 0);
         result = 31 * result + (blendedAnalysis ? 1 : 0);
         result = 31 * result + (propNamePartitioning ? 1 : 0);
+        result = 31 * result + (typePartitioning ? 1 : 0);
+        result = 31 * result + (freeVariablePartitioning? 1 : 0);
         result = 31 * result + (noFiltering ? 1 : 0);
+        result = 31 * result + (noStringReplacePolyfill ? 1 : 0);
+        result = 31 * result + (noErrorCaptureStackTracePolyfill ? 1 : 0);
         return result;
     }
 
@@ -612,7 +635,7 @@ public class OptionValues {
     }
 
     public void disableLoopUnrolling() {
-        this.loopUnrollings = -1;
+        loopUnrollings = -1;
     }
 
     public void disableMemoryUsage() {
@@ -837,8 +860,6 @@ public class OptionValues {
 
     public void enableDeterminacy() {
         determinacy = true;
-        enableContextSensitiveHeap();
-        enableParameterSensitivity();
         enableLoopUnrolling(50);
     }
 
@@ -1109,6 +1130,10 @@ public class OptionValues {
         polyfillMDN = true;
     }
 
+    public void disablePolyfillMDN() {
+        polyfillMDN = false;
+    }
+
     public void enablePolyfillES6Collections() {
         polyfillES6Collections = true;
     }
@@ -1170,7 +1195,7 @@ public class OptionValues {
     }
 
     public void enableNoStringSets() {
-        this.noStringSets = true;
+        noStringSets = true;
     }
 
     public SoundnessTesterOptions getSoundnessTesterOptions() {
@@ -1289,6 +1314,18 @@ public class OptionValues {
         nodejs = false;
     }
 
+    public boolean isTypeFilteringEnabled() {
+        return typeFiltering;
+    }
+
+    public void enableTypeFiltering() {
+        typeFiltering = true;
+    }
+
+    public void disableTypeFiltering() {
+        typeFiltering = false;
+    }
+
     public boolean isBabelEnabled() {
         return babel;
     }
@@ -1302,11 +1339,11 @@ public class OptionValues {
     }
 
     public boolean isTypeCheckEnabled() {
-        return this.typeCheckEnabled;
+        return typeCheckEnabled;
     }
 
     public void enableTypeCheck() {
-        this.typeCheckEnabled = true;
+        typeCheckEnabled = true;
     }
 
     public boolean isBlendedAnalysisEnabled() {
@@ -1314,23 +1351,23 @@ public class OptionValues {
     }
 
     public void enableBlendedAnalysis() {
-        this.blendedAnalysis = true;
+        blendedAnalysis = true;
     }
 
     public void disableBlendedAnalysis() {
-        this.blendedAnalysis = false;
+        blendedAnalysis = false;
     }
 
     public boolean isNoFilteringEnabled() {
-        return this.noFiltering;
+        return noFiltering;
     }
 
     public void enableNoFiltering() {
-        this.noFiltering = true;
+        noFiltering = true;
     }
 
     public void diableNoFilteringer() {
-        this.noFiltering = false;
+        noFiltering = false;
     }
 
     public boolean isPropNamePartitioning() {
@@ -1338,10 +1375,54 @@ public class OptionValues {
     }
 
     public void enablePropNamePartitioning() {
-        this.propNamePartitioning = true;
+        propNamePartitioning = true;
     }
 
     public void disablePropNamePartitioning() {
-        this.propNamePartitioning = false;
+        propNamePartitioning = false;
+    }
+
+    public boolean isTypePartitioningEnabled() {
+        return typePartitioning;
+    }
+
+    public void enableTypePartitioning() {
+        typePartitioning = true;
+    }
+
+    public void disableTypePartitioning() {
+        typePartitioning = false;
+    }
+
+    public boolean isFreeVariablePartitioning() {
+        return freeVariablePartitioning;
+    }
+
+    public void enableFreeVariablePartitioning() {
+        freeVariablePartitioning = true;
+    }
+
+    public void disableFreeVariablePartitioning() {
+        freeVariablePartitioning = false;
+    }
+
+    public void enableNoStringReplacePolyfill() {
+        noStringReplacePolyfill = true;
+    }
+
+    public void disableNoStringReplacePolyfill() {
+        noStringReplacePolyfill = false;
+    }
+
+    public boolean isNoStringReplacePolyfillEnabled() {
+        return noStringReplacePolyfill;
+    }
+
+    public void enableNoErrorCaptureStackTracePolyfill() {
+        noErrorCaptureStackTracePolyfill = true;
+    }
+
+    public boolean isNoErrorCaptureStackTracePolyfillEnabled() {
+        return noErrorCaptureStackTracePolyfill;
     }
 }

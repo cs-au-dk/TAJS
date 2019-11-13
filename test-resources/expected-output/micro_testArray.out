@@ -20,10 +20,10 @@ test-resources/src/micro/testArray.js:9:1: [info] Abstract object: {0:"a",length
 test-resources/src/micro/testArray.js:11:1: [info] Abstract object: {0:"test",length:1.0,[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:13:1: [info] Abstract object: {0:42.0,1:45.0,length:2.0,[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:15:1: [info] Abstract object: {length:42.0,[[Prototype]]=[@Array.prototype[native]]}
-test-resources/src/micro/testArray.js:20:1: [info] Abstract value: 42.0|[@Object#node66]
-test-resources/src/micro/testArray.js:23:1: [info] Abstract object: {0:[@Object#node66]|absent,length:UIntPos,[[Prototype]]=[@Array.prototype[native]]}
-test-resources/src/micro/testArray.js:29:1: [info] Abstract value: UIntPos|[@Object#node86]
-test-resources/src/micro/testArray.js:32:1: [info] Abstract object: {0:[@Object#node86]|absent,length:UInt,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/testArray.js:20:1: [info] Abstract value: 42.0|[@Object#node70]
+test-resources/src/micro/testArray.js:23:1: [info] Abstract object: {0:[@Object#node70]|absent,length:UIntPos,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/testArray.js:29:1: [info] Abstract value: UIntPos|[@Object#node90]
+test-resources/src/micro/testArray.js:32:1: [info] Abstract object: {0:[@Object#node90]|absent,length:UInt,[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:36:1: [info] Abstract object: {0:1.0,1:2.0,length:2.0,[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:38:1: [info] Abstract object: {0:1.0,1:2.0,42:"string",length:43.0,[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:42:1: [info] Abstract object: {0:1.0,1:2.0,length:2.0,[[Prototype]]=[@Array.prototype[native]]}
@@ -43,8 +43,8 @@ test-resources/src/micro/testArray.js:78:1: [info] Abstract value: Str
 test-resources/src/micro/testArray.js:80:1: [info] Abstract value: Str
 test-resources/src/micro/testArray.js:85:1: [info] Abstract value: (OtherStr){"1,2","9,2,8"}
 test-resources/src/micro/testArray.js:90:1: [info] Abstract object: {0:1.0,1:3.0,2:4.0,3:5.0,4:"dfg",5:1.0,6:43.0,7:"sdf",8:34.0,length:9.0,[[Prototype]]=[@Array.prototype[native]]}
-test-resources/src/micro/testArray.js:91:1: [info] Abstract object: {0:1.0,1:3.0,2:4.0,3:5.0,4:"dfg",5:[@Object#node294],length:6.0,[[Prototype]]=[@Array.prototype[native]]}
-test-resources/src/micro/testArray.js:96:1: [info] Abstract object: {0:1.0,1:3.0,2:4.0,3:5.0,4:"dfg",length:UInt,[[DefaultNumeric]]=UIntPos|"dfg"|[@Object#node305]|absent,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/testArray.js:91:1: [info] Abstract object: {0:1.0,1:3.0,2:4.0,3:5.0,4:"dfg",5:[@Object#node298],length:6.0,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/testArray.js:96:1: [info] Abstract object: {0:1.0,1:3.0,2:4.0,3:5.0,4:"dfg",length:UInt,[[DefaultNumeric]]=UIntPos|"dfg"|[@Object#node309]|absent,[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:98:1: [info] Abstract object: {0:1.0,1:3.0,2:4.0,3:5.0,4:"dfg",5:"string",length:6.0,[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:103:1: [info] Abstract object: {0:1.0,1:"string",2:34.0,length:3.0,[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:104:1: [info] Abstract value: 34.0

@@ -1,0 +1,9 @@
+{
+  "name": "underscoretest",
+  "version": "0.1.0",
+  "main": "app.js",
+  "dependencies": {
+    "@types/underscore": "^1.9.0",
+    "underscore": "^1.9.1"
+  }
+}

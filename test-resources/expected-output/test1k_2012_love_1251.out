@@ -57,4 +57,4 @@ test-resources/src/1k2012love/1251.js:184:5: [definite] Unreachable function
 test-resources/src/1k2012love/1251.js:2:12: [maybe] <Document.getElementById>("clock") did not match any elements
 test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1251.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1251.js:3:14, test-resources/src/1k2012love/shim.js:9:5]
-Soundness testing succeeded for 22 checks (with 0 expected failures)
+Soundness testing succeeded for 20 checks (with 0 expected failures)

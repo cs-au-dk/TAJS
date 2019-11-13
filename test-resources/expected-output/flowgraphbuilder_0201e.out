@@ -13,33 +13,43 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: read-variable['o',v5,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:11)
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 6: begin-for-in[v5,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 7: has-next[v6,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
-    node 8: if[v7](true-block:7,false-block:10) (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
-    ->[block 7,block 10] ~>[block 8]
+    node 8: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7]
   block 7:
-    node 9: next-property[v6,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:6)
-    node 10: write-variable[v8,'p'] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:6)
-    ->[block 9] ~>[block 8]
+    node 9: read-variable['o',v8,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:11)
+    ->[block 8]
   block 8:
-    node 11: end-for-in(begin-node:6) (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
-    ->[block 12]
+    node 10: begin-for-in[v8,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
+    ->[block 9]
   block 9:
-    node 12: end-for-in(begin-node:6) (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
-    ->[block 5]
+    node 11: has-next[v9,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
+    node 12: if[v10](true-block:10,false-block:13) (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
+    ->[block 10,block 13] ~>[block 11]
   block 10:
-    node 13: end-for-in(begin-node:6) (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
-    ->[block 11]
-  block 11: [exit-ordinary]
-    node 14: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js)
+    node 13: next-property[v9,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:6)
+    node 14: write-variable[v11,'p'] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:6)
+    ->[block 12] ~>[block 11]
+  block 11:
+    node 15: end-for-in(begin-node:10) (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
+    ->[block 15]
+  block 12:
+    node 16: end-for-in(begin-node:10) (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
+    ->[block 8]
+  block 13:
+    node 17: end-for-in(begin-node:10) (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js:1:1)
+    ->[block 14]
+  block 14: [exit-ordinary]
+    node 18: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js)
     ->[]
-  block 12: [exit-exceptional]
-    node 15: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js)
+  block 15: [exit-exceptional]
+    node 19: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0201e.js: [definite] Ordinary program exit is unreachable

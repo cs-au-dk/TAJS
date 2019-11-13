@@ -7,14 +7,21 @@ test-resources/src/micro/test138.js: [definite] Exceptional program exit is unre
 test-resources/src/micro/test138.js:18:1: [info] Abstract state (modified parts):
   @<the global object>[native] (<initial state>):
     make: [@make#fun1]
-    x: [@Object#node37, *Object#node37]
-    y: Undef|[@Object#node37]
+    x: [@Object#node41, *Object#node41]
+    y: Undef|[@Object#node41]
+  @Error[native] (<initial state>):
+    captureStackTrace: [@<anonymous>#fun5]
+  @Function.prototype[native] (<initial state>):
   @Math[native] (<initial state>):
   @Object.prototype[native] (<initial state>):
   @Object[native] (<initial state>):
   @String.prototype[native] (<initial state>):
     replace: [@replace#fun3]
   @String[native] (<initial state>):
+  @Object#node10 (host-environment-sources-loader):
+    constructor: [@<anonymous>#fun4]
+    [[Prototype]] = [@Object.prototype[native]]
+    [[Value]] = NaN
   @Object#node6 (host-environment-sources-loader):
     constructor: [@<anonymous>#fun2]
     [[Prototype]] = [@Object.prototype[native]]
@@ -28,34 +35,54 @@ test-resources/src/micro/test138.js:18:1: [info] Abstract state (modified parts)
     name: "make"
     prototype: [@Object#node1]
     [[Prototype]] = [@Function.prototype[native]]
-  *Object#node37 (test-resources/src/micro/test138.js:2:9):
+  *Object#node41 (test-resources/src/micro/test138.js:2:9):
     a: 7.0
-    b: [*Object#node37]
+    b: [*Object#node41]
     [[Prototype]] = [@Object.prototype[native]]
-  @Object#node37 (test-resources/src/micro/test138.js:2:9):
+  @Object#node41 (test-resources/src/micro/test138.js:2:9):
     a: 7.0|"foo"
-    b: [@Object#node37]|absent
-    c: [@Object#node37]|absent
-    d: [*Object#node37]|absent
+    b: [@Object#node41]|absent
+    c: [@Object#node41]|absent
+    d: [*Object#node41]|absent
     [[Prototype]] = [@Object.prototype[native]]
+  @<anonymous>#fun4 (HOST(error-captureStackTrace-model.js):1:1):
+    length: 0.0
+    name: ""
+    prototype: [@Object#node10]
+    [[Prototype]] = [@Function.prototype[native]]
+  @activation#node328 (HOST(error-captureStackTrace-model.js):1:1):
+    arguments: [@arguments#node328]
+  @arguments#node328 (HOST(error-captureStackTrace-model.js):1:1):
+    callee: [@<anonymous>#fun4]
+    length: 0.0
+    [[Prototype]] = [@Object.prototype[native]]
+  @<anonymous>#fun5 (HOST(error-captureStackTrace-model.js):5:12):
+    length: 2.0
+    name: ""
+    prototype: [@Object#node340]
+    [[Prototype]] = [@Function.prototype[native]]
+  @Object#node340 (HOST(error-captureStackTrace-model.js):5:12):
+    constructor: [@<anonymous>#fun5]
+    [[Prototype]] = [@Object.prototype[native]]
+    [[Value]] = NaN
   @<anonymous>#fun2 (HOST(string-replace-model.js):1:1):
     length: 0.0
     name: ""
     prototype: [@Object#node6]
     [[Prototype]] = [@Function.prototype[native]]
-  @activation#node40 (HOST(string-replace-model.js):1:1):
-    arguments: [@arguments#node40]
-  @arguments#node40 (HOST(string-replace-model.js):1:1):
+  @activation#node44 (HOST(string-replace-model.js):1:1):
+    arguments: [@arguments#node44]
+  @arguments#node44 (HOST(string-replace-model.js):1:1):
     callee: [@<anonymous>#fun2]
     length: 0.0
     [[Prototype]] = [@Object.prototype[native]]
-  @Object#node53 (HOST(string-replace-model.js):3:12):
+  @Object#node57 (HOST(string-replace-model.js):3:12):
     constructor: [@replace#fun3]
     [[Prototype]] = [@Object.prototype[native]]
     [[Value]] = NaN
   @replace#fun3 (HOST(string-replace-model.js):3:12):
     length: 2.0
     name: "replace"
-    prototype: [@Object#node53]
+    prototype: [@Object#node57]
     [[Prototype]] = [@Function.prototype[native]]
 Soundness testing succeeded for 31 checks (with 0 expected failures)

@@ -2,6 +2,6 @@ test-resources/src/micro/test158.js:9:1: [definite] Dead assignment, property de
 test-resources/src/micro/test158.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test158.js:8:16: [maybe] Reading absent property pro
 test-resources/src/micro/test158.js:3:2: [info] Abstract value: 3.0
-test-resources/src/micro/test158.js:7:1: [info] Abstract value: [@Object#node6]
+test-resources/src/micro/test158.js:7:1: [info] Abstract value: [@Object#node10]
 test-resources/src/micro/test158.js:8:1: [info] Abstract value: Undef|"seje"
-Soundness testing succeeded for 21 checks (with 0 expected failures)
+Soundness testing succeeded for 22 checks (with 0 expected failures)

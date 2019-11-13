@@ -77,4 +77,4 @@ test-resources/src/1k2013spring/1507.js:3:896: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1507.js:3:901: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1507.js:3:918: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1507.js:3:965: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 172 checks (with 0 expected failures)
+Soundness testing succeeded for 171 checks (with 0 expected failures)

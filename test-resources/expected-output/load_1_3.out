@@ -715,7 +715,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:1282:4: [maybe] TypeError, ac
 benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:1291:12: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:1295:9: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:1297:5: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:2074:9: [maybe] <Document.getElementById>("script1543012428409") did not match any elements
+benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:2074:9: [maybe] <Document.getElementById>("script1543012428706") did not match any elements
 benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:2123:7: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:2123:7: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:2324:9: [maybe] TypeError, accessing property of null/undefined
@@ -937,4 +937,4 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:690:79: [unsound] Assuming UI
 benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:1269:27: [unsound] Assuming UInt-addition is closed
 benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:2065:20: [unsound] Assuming Date.now returns fixed value
 benchmarks/tajs/src/jquery/libraries/jquery-1.3.js:2992:20: [unsound] Assuming Date.now returns fixed value
-Soundness testing succeeded for 3672 checks (with 6 expected failures)
+Soundness testing succeeded for 3603 checks (with 6 expected failures)

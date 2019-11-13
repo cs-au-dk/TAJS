@@ -15,6 +15,7 @@ public class TestPropertyNamePartitioning {
         Options.get().enableTest();
         Options.get().enableDeterminacy();
         Options.get().enablePropNamePartitioning();
+        Options.get().enableFreeVariablePartitioning();
     }
 
     public void test(String file) {
@@ -305,6 +306,26 @@ public class TestPropertyNamePartitioning {
     public void testHeapContext2ThroughParameters() {
         Options.get().enableDeterminacy();
         test("test-resources/src/property-name-partitioning/heapContextTest2ThroughParameters.js");
+    }
+
+    @Test
+    public void testGetOwnPropertyDescriptorAndDefinePropertyPropNameAlreadyPartitioned() {
+        test("test-resources/src/property-name-partitioning/testGetOwnPropertyDescriptorPropNameAlreadyPartitioned.js");
+    }
+
+    @Test
+    public void testGetOwnPropertyDescriptorAndDefineProperty() {
+        test("test-resources/src/property-name-partitioning/testGetOwnPropertyDescriptor.js");
+    }
+
+    @Test
+    public void testPartitionsShouldBeKilledWhenReturningFromCalls() {
+        test("test-resources/src/property-name-partitioning/partitionsShouldBeKilledWhenReturningFromCalls.js");
+    }
+
+    @Test
+    public void testFreeVariablePartitioningUnsoundIfFreeVariableQualifiersEscape() {
+        test("test-resources/src/property-name-partitioning/freeVariablePartitioningUnsoundIfFreeVariableQualifiersEscape.js");
     }
 
 }

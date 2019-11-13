@@ -16,4 +16,4 @@ test-resources/src/1k2012love/1010.js:10:10: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1010.js:11:14: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1010.js:35:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1010.js:40:11: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 186 checks (with 0 expected failures)
+Soundness testing succeeded for 184 checks (with 0 expected failures)

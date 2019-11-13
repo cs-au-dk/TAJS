@@ -73,7 +73,13 @@ public class HostEnvSources {
         // note: not using java.nio.Path since Windows uses \ instead of /
         List<String> sourcePaths = newList();
 
-        sourcePaths.add("string-replace-model.js");
+        if (!Options.get().isNoStringReplacePolyfillEnabled()) {
+            sourcePaths.add("string-replace-model.js");
+        }
+
+        if(!Options.get().isNoErrorCaptureStackTracePolyfillEnabled()) {
+            sourcePaths.add("error-captureStackTrace-model.js");
+        }
 
         // be careful about changing orders here! the later files might depend on the earlier ones
         if (Options.get().isPolyfillMDNEnabled() || Options.get().isPolyfillTypedArraysEnabled()) {

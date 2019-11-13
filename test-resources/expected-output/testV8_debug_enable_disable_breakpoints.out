@@ -5,4 +5,4 @@ test-resources/src/v8tests/debug-enable-disable-breakpoints.js:33:5: [definite] 
 test-resources/src/v8tests/debug-enable-disable-breakpoints.js:35:1: [definite] Unreachable function listener
 test-resources/src/v8tests/debug-enable-disable-breakpoints.js:45:1: [definite] Unreachable function f
 test-resources/src/v8tests/debug-enable-disable-breakpoints.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-enable-disable-breakpoints.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 3 checks (with 0 expected failures)

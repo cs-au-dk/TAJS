@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.analysis;
 
+import dk.brics.tajs.analysis.js.Filtering;
 import dk.brics.tajs.blendedanalysis.solver.BlendedAnalysisManager;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.lattice.AnalysisLatticeElement;
@@ -56,6 +57,8 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
 
     private ITypeTester<Context> ttr;
 
+    private Filtering filtering;
+
     /**
      * Constructs a new analysis object.
      */
@@ -68,6 +71,7 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
         eval_cache = new EvalCache();
         solver = new Solver(this, sync);
         state_util = new PropVarOperations(unsoundness);
+        filtering = new Filtering();
         if (Options.get().isBlendedAnalysisEnabled() || Options.get().isIgnoreUnreachedEnabled())
             blended_analysis_manager = new BlendedAnalysisManager();
     }
@@ -133,6 +137,7 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
         transfer.setSolverInterface(c);
         state_util.setSolverInterface(c);
         monitoring.setSolverInterface(c);
+        filtering.setSolverInterface(c);
         if (Options.get().isBlendedAnalysisEnabled() || Options.get().isIgnoreUnreachedEnabled())
             blended_analysis_manager.setSolverInterface(c);
     }
@@ -152,8 +157,8 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
     }
 
     @Override
-    public CallEdge makeCallEdge(State edge_state) {
-        return new CallEdge(edge_state);
+    public CallEdge cloneCallEdge(CallEdge edge) {
+        return new CallEdge(edge.getState().clone(), edge.getFunctionTypeSignatures());
     }
 
     /**
@@ -177,5 +182,9 @@ public final class Analysis implements IAnalysis<State, Context, CallEdge, IAnal
     @Override
     public ITypeTester<Context> getTypeTester() {
         return ttr;
+    }
+
+    public Filtering getFiltering() {
+        return filtering;
     }
 }

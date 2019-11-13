@@ -105,6 +105,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11332:14: [definite] The 
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11403:20: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11403:20: [definite] Variable nativeIsBuffer is null/undefined
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11422:18: [definite] The conditional expression is always false
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11647:7: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11653:14: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11713:14: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11772:14: [definite] The conditional expression is always true
@@ -416,8 +417,6 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2383:5: [definite] Dead a
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2384:5: [definite] Dead assignment, property has is never read
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2385:5: [definite] Dead assignment, property set is never read
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:10555:29: [definite] Reading absent property Cache
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13253:9: [definite] Dead assignment, property 2 is never read
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13253:9: [definite] Dead assignment, property group2 is never read
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property compact is never read
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property drop is never read
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:40: [definite] Dead assignment, property dropRight is never read
@@ -1215,13 +1214,20 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3036:27: [maybe] Reading 
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4924:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:24: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5459:35: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13245:11: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13246:18: [maybe] Converting primitive number to object
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13246:18: [maybe] Converting primitive string to object
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13246:18: [maybe] The variable value has values with different types
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13250:39: [maybe] The variable value has values with different types
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13251:9: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13251:16: [maybe] The variable value has values with different types
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13253:16: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/test-suite/4.17.10/lodash_test_203.html: [maybe] Uncaught exception, constructed at [HOST(es6-collections.js):122:65, HOST(es6-collections.js):268:36]
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3036:27: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3507:7: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:24: [info] Reading from unknown property that may cause loss of precision
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13251:9: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 19689 checks (with 0 expected failures)
+Soundness testing succeeded for 19601 checks (with 0 expected failures)

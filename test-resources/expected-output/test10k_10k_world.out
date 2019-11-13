@@ -117,7 +117,7 @@ test-resources/src/10k/10k_world.html:427:17: [maybe] Reading absent property cl
 test-resources/src/10k/10k_world.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/10k_world.html:34:22, test-resources/src/10k/10k_world.html:36:22, test-resources/src/10k/10k_world.html:70:13, test-resources/src/10k/10k_world.html:90:46, test-resources/src/10k/10k_world.html:90:64, test-resources/src/10k/10k_world.html:109:63, test-resources/src/10k/10k_world.html:112:63, test-resources/src/10k/10k_world.html:130:29, test-resources/src/10k/10k_world.html:131:29, test-resources/src/10k/10k_world.html:146:54, test-resources/src/10k/10k_world.html:153:57, test-resources/src/10k/10k_world.html:208:25, test-resources/src/10k/10k_world.html:213:17, test-resources/src/10k/10k_world.html:222:29, test-resources/src/10k/10k_world.html:223:52, test-resources/src/10k/10k_world.html:241:36, test-resources/src/10k/10k_world.html:245:59, test-resources/src/10k/10k_world.html:245:74, test-resources/src/10k/10k_world.html:266:33, test-resources/src/10k/10k_world.html:266:61, test-resources/src/10k/10k_world.html:315:21, test-resources/src/10k/10k_world.html:339:17, test-resources/src/10k/10k_world.html:346:45, test-resources/src/10k/10k_world.html:346:97, test-resources/src/10k/10k_world.html:347:25, test-resources/src/10k/10k_world.html:348:25, test-resources/src/10k/10k_world.html:350:36, test-resources/src/10k/10k_world.html:351:27, test-resources/src/10k/10k_world.html:387:57, test-resources/src/10k/10k_world.html:388:27, test-resources/src/10k/10k_world.html:400:30, test-resources/src/10k/10k_world.html:401:30, test-resources/src/10k/10k_world.html:408:39, test-resources/src/10k/10k_world.html:416:9, test-resources/src/10k/10k_world.html:417:13, test-resources/src/10k/10k_world.html:422:13]
 test-resources/src/10k/10k_world.html:55:48: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:55:69: [maybe] Conversion to number yields NaN
-test-resources/src/10k/10k_world.html:61:20: [maybe] The variable a has values with different types
+test-resources/src/10k/10k_world.html:61:27: [maybe] The variable a has values with different types
 test-resources/src/10k/10k_world.html:64:20: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:67:26: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:88:330: [maybe] Converting object to string
@@ -226,5 +226,5 @@ test-resources/src/10k/10k_world.html:90:46: [info] Reading from unknown propert
 test-resources/src/10k/10k_world.html:90:64: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/10k/10k_world.html:118:17: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/10k/10k_world.html:118:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Disabling soundness testing for test-resources/src/10k/10k_world.html entirely (26 uninspected soundness errors).
-Soundness testing succeeded for 1538 checks (with 26 expected failures)
+Disabling soundness testing for test-resources/src/10k/10k_world.html entirely (17 uninspected soundness errors).
+Soundness testing succeeded for 1497 checks (with 17 expected failures)

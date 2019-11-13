@@ -9,7 +9,7 @@ var c0 = new Boolean(b);
 var c = eval(c0);
 TAJS_dumpValue(c);
 TAJS_assertEquals(c0, c);
-var d = eval("function funfun(x) { funfun(x); }");
+var d = eval("(function funfun(x) { funfun(x); })");
 TAJS_dumpValue(d);
 TAJS_dumpObject(d);
 var f = d(1,2,3,4);

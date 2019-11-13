@@ -45,5 +45,5 @@ test-resources/src/1k2012love/1252.js:98:3: [maybe] Conversion to number yields 
 test-resources/src/1k2012love/1252.js:115:3: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1252.js:97:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2012love/1252.js:98:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Disabling soundness testing for test-resources/src/1k2012love/1252.js entirely (128 uninspected soundness errors).
-Soundness testing succeeded for 394 checks (with 128 expected failures)
+Disabling soundness testing for test-resources/src/1k2012love/1252.js entirely (126 uninspected soundness errors).
+Soundness testing succeeded for 389 checks (with 126 expected failures)

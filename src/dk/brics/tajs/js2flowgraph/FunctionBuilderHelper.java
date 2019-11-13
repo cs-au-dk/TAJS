@@ -258,6 +258,8 @@ public class FunctionBuilderHelper {
                 return UnaryOperatorNode.Op.PLUS;
             case MINUS:
                 return UnaryOperatorNode.Op.MINUS;
+            case TYPEOF:
+                return UnaryOperatorNode.Op.TYPEOF;
             case DELETE:
             default:
                 throw new AnalysisException("Unhandled unary type: " + type);

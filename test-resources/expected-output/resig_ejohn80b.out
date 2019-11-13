@@ -5,4 +5,4 @@ test-resources/src/resig/ejohn80b.js:4:11: [maybe] Reading absent property (comp
 test-resources/src/resig/ejohn80b.js:11:3: [info] Abstract value: Undef|(IdentStr){"a","b","c"}
 test-resources/src/resig/ejohn80b.js:12:3: [info] Abstract value: UInt
 test-resources/src/resig/ejohn80b.js:13:3: [info] Abstract value: 3.0
-Soundness testing succeeded for 73 checks (with 0 expected failures)
+Soundness testing succeeded for 71 checks (with 0 expected failures)

@@ -1,3 +1,3 @@
 test-resources/src/resig/ejohn13.js:3:20: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/resig/ejohn13.js: [maybe] Uncaught exception, constructed at [test-resources/src/resig/ejohn13.js:3:20]
-Soundness testing succeeded for 48 checks (with 0 expected failures)
+Soundness testing succeeded for 46 checks (with 0 expected failures)

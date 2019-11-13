@@ -13,27 +13,37 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: constant[1.0,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:10)
-    node 6: write-variable[v5,'a'] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:6)
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 7: constant[true,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:12)
-    node 8: begin-loop[v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:15)
-    ->[block 6] ~>[block 7]
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6]
   block 6:
-    node 9: if[v6](true-block:5,false-block:8) (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:12)
-    ->[block 5,block 8] ~>[block 7]
+    node 8: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7]
   block 7:
-    node 10: end-loop[v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:12)
-    ->[block 10]
+    node 9: constant[1.0,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:10)
+    node 10: write-variable[v8,'a'] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:6)
+    ->[block 8]
   block 8:
-    node 11: end-loop[v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:12)
-    ->[block 9]
-  block 9: [exit-ordinary]
-    node 12: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js)
+    node 11: constant[true,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:12)
+    node 12: begin-loop[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:15)
+    ->[block 9] ~>[block 10]
+  block 9:
+    node 13: if[v9](true-block:8,false-block:11) (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:12)
+    ->[block 8,block 11] ~>[block 10]
+  block 10:
+    node 14: end-loop[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:12)
+    ->[block 13]
+  block 11:
+    node 15: end-loop[v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js:2:12)
+    ->[block 12]
+  block 12: [exit-ordinary]
+    node 16: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js)
     ->[]
-  block 10: [exit-exceptional]
-    node 13: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js)
+  block 13: [exit-exceptional]
+    node 17: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0111.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0111.js: [definite] Ordinary program exit is unreachable

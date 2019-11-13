@@ -68,4 +68,4 @@ test-resources/src/1k2013spring/1498.js:20:24: [maybe] Converting object to stri
 test-resources/src/1k2013spring/1498.js:20:24: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1498.js:23:16: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1498.js:23:33: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 441 checks (with 0 expected failures)
+Soundness testing succeeded for 440 checks (with 0 expected failures)

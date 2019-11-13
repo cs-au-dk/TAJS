@@ -2,4 +2,4 @@ test-resources/src/v8tests/value-callic-prototype-change.js: [definite] Exceptio
 test-resources/src/v8tests/value-callic-prototype-change.js:33:18: [maybe] Converting primitive string to object
 test-resources/src/v8tests/value-callic-prototype-change.js:57:18: [maybe] Converting primitive number to object
 test-resources/src/v8tests/value-callic-prototype-change.js:79:18: [maybe] Converting primitive boolean to object
-Soundness testing succeeded for 594 checks (with 0 expected failures)
+Soundness testing succeeded for 589 checks (with 0 expected failures)

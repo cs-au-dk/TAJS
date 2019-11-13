@@ -378,10 +378,12 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:40:9: [maybe] The v
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:41:44: [maybe] The variable obj has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:42:21: [maybe] The variable obj has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1473:22: [maybe] The variable obj has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1486:32: [maybe] The variable obj has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1494:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1496:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1525:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 3940 checks (with 0 expected failures)
+Soundness testing succeeded for 3903 checks (with 0 expected failures)

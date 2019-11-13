@@ -99,7 +99,6 @@ import dk.brics.tajs.flowgraph.jsnodes.NopNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadPropertyNode;
 import dk.brics.tajs.flowgraph.jsnodes.ReadVariableNode;
 import dk.brics.tajs.flowgraph.jsnodes.ThrowNode;
-import dk.brics.tajs.flowgraph.jsnodes.TypeofNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode;
 import dk.brics.tajs.flowgraph.jsnodes.UnaryOperatorNode.Op;
 import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
@@ -385,6 +384,9 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
      * @return The return-values {@link TranslationResult#getResultReference()} should be consulted.
      */
     private TranslationResult processAccessPartly(ParseTree access, AstEnv env) {
+        if (access instanceof ParenExpressionTree) {
+            syntacticInformationCollector.registerParenExpression((ParenExpressionTree) access, sourceLocationMaker);
+        }
         access = stripParens(access);
         access = potentiallySimplifyMemberLookupExpression(access);
         switch (access.type) {
@@ -453,7 +455,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
         final AbstractNode read;
         switch (target.type) {
             case Variable:
-                read = new ReadVariableNode(target.asVariable().name, env.getResultRegister(), env.getBaseRegister(), target.location);
+                read = new ReadVariableNode(target.asVariable().name, env.getResultRegister(), env.getBaseRegister(), env.isTypeofOperand(), target.location);
                 break;
             case StaticProperty:
                 StaticProperty staticProperty = target.asStaticProperty();
@@ -860,7 +862,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
         List<Integer> elementRegisters = newList();
         AstEnv variableEnv = env.makeResultRegister(nextRegister(env)).makeBaseRegister(AbstractNode.NO_VALUE).makeStatementLevel(false);
         SourceLocation location = makeSourceLocation(tree);
-        addNodeToBlock(new ReadVariableNode("Array", variableEnv.getResultRegister(), variableEnv.getBaseRegister(), location), env.getAppendBlock(), variableEnv);
+        addNodeToBlock(new ReadVariableNode("Array", variableEnv.getResultRegister(), variableEnv.getBaseRegister(), false, location), env.getAppendBlock(), variableEnv);
         TranslationResult processed = TranslationResult.makeAppendBlock(env.getAppendBlock());
         if (tree.elements != null) {
             for (ParseTree element : tree.elements) {
@@ -1220,6 +1222,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
 
     @Override
     public TranslationResult process(ParenExpressionTree tree, AstEnv env) {
+        syntacticInformationCollector.registerParenExpression(tree, sourceLocationMaker);
         return process(tree.expression, env.makeStatementLevel(false));
     }
 
@@ -1473,16 +1476,12 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
         SourceLocation sourceLocation = makeSourceLocation(tree);
         switch (tree.operator.type) {
             case TYPEOF: {
-                // typeof is a special unary operator, with two variants
-                if (operand.type == ParseTreeType.IDENTIFIER_EXPRESSION) {
-                    node = new TypeofNode(operand.asIdentifierExpression().identifierToken.value, env.getResultRegister(), sourceLocation, makeSourceLocation(operand));
-                    syntacticInformationCollector.registerSimpleRead(operand.asIdentifierExpression(), new Variable(operand.asIdentifierExpression().identifierToken.value, null));
-                    processedSub = TranslationResult.makeAppendBlock(env.getAppendBlock());
-                } else {
-                    AstEnv subEnv = env.makeResultRegister(nextRegister(env));
-                    processedSub = process(operand, subEnv.makeStatementLevel(false));
-                    node = new TypeofNode(subEnv.getResultRegister(), env.getResultRegister(), sourceLocation, makeSourceLocation(operand));
-                }
+                AstEnv subEnv = env.makeResultRegister(nextRegister(env));
+                AstEnv e = subEnv.makeStatementLevel(false);
+                if (operand.type == ParseTreeType.IDENTIFIER_EXPRESSION)
+                    e = e.makeTypeofOperand(); // FIXME: 'typeof this' should be treated specially
+                processedSub = process(operand, e);
+                node = new UnaryOperatorNode(getFlowGraphUnaryNonAssignmentOp(tree.operator.type), subEnv.getResultRegister(), env.getResultRegister(), sourceLocation);
                 break;
             }
             case VOID: {
@@ -1749,7 +1748,7 @@ public class FunctionBuilder extends DefaultDispatchingParseTreeAuxVisitor<Trans
 
             // 1. prepare the constructor call
             AstEnv variableEnv = env.makeResultRegister(nextRegister(env)).makeBaseRegister(AbstractNode.NO_VALUE).makeStatementLevel(false);
-            addNodeToBlock(new ReadVariableNode("RegExp", variableEnv.getResultRegister(), variableEnv.getBaseRegister(), location), env.getAppendBlock(), variableEnv);
+            addNodeToBlock(new ReadVariableNode("RegExp", variableEnv.getResultRegister(), variableEnv.getBaseRegister(), false, location), env.getAppendBlock(), variableEnv);
 
             // 2. prepare the arguments
             Pair<String, String> parsed = parseRegExpLiteral(tree.literalToken.asLiteral());

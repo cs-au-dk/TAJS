@@ -30,4 +30,4 @@ test-resources/src/1k2012love/1225.js:17:7: [maybe] Reading absent property (com
 test-resources/src/1k2012love/1225.js:35:19: [maybe] Converting primitive number to object
 test-resources/src/1k2012love/1225.js:36:16: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1225.js:36:35: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 275 checks (with 0 expected failures)
+Soundness testing succeeded for 270 checks (with 0 expected failures)

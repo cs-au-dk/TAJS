@@ -451,4 +451,4 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:1172:37: [info] Reading from 
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2779:11: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2779:11: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/jquery/libraries/jquery-1.1.js:2790:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 1324 checks (with 0 expected failures)
+Soundness testing succeeded for 1301 checks (with 0 expected failures)

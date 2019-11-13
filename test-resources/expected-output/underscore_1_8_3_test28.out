@@ -370,5 +370,7 @@ benchmarks/tajs/src/underscore/test-suite/arrays/test28.html:9:1: [definite] Unr
 benchmarks/tajs/src/underscore/test-suite/arrays/test28.html:32:31: [definite] The variable a is never used
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:618:33: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 4145 checks (with 0 expected failures)
+Soundness testing succeeded for 4107 checks (with 0 expected failures)

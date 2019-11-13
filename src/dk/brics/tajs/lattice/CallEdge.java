@@ -25,16 +25,23 @@ public class CallEdge implements ICallEdge<State> {
 
     private State state;
 
+    private FunctionTypeSignatures functionTypeSignatures;
+
     /**
      * Constructs a new edge object.
      */
-    public CallEdge(State state) {
+    public CallEdge(State state, FunctionTypeSignatures functionTypeSignatures) {
         this.state = state;
+        this.functionTypeSignatures = functionTypeSignatures;
     }
 
     @Override
     public State getState() {
         return state;
+    }
+
+    public FunctionTypeSignatures getFunctionTypeSignatures() {
+        return functionTypeSignatures;
     }
 
     @Override

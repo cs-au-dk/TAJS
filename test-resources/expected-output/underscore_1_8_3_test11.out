@@ -12,6 +12,7 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:225:31: [definite] 
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:267:9: [definite] The conditional expression is always true
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:492:18: [definite] The conditional expression is always true
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:494:7: [definite] The conditional expression is always true
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:494:11: [definite] The conditional expression is always true
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:494:34: [definite] The conditional expression is always true
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:496:9: [definite] The conditional expression is always false
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:647:7: [definite] The conditional expression is always true
@@ -256,7 +257,7 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:465:15: [definite] 
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:471:12: [definite] Unreachable function
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:480:30: [definite] Unreachable function
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:485:15: [definite] Unreachable function
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:502:18: [definite] Unreachable code
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:490:17: [definite] The variable strict is never used
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:510:15: [definite] Unreachable function
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:522:23: [definite] Unreachable function
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:551:13: [definite] Unreachable function
@@ -377,5 +378,7 @@ benchmarks/tajs/src/underscore/test-suite/arrays/test11.html:9:1: [definite] Unr
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:500:27: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:662:13: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 4130 checks (with 0 expected failures)
+Soundness testing succeeded for 4094 checks (with 0 expected failures)

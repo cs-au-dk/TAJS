@@ -25,7 +25,6 @@ import dk.brics.tajs.lattice.ExecutionContext;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
-import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Value;
@@ -452,8 +451,10 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TOUPPERCASE, "toUpperCase", 0, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TOLOCALEUPPERCASE, "toLocaleUpperCase", 0, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TRIM, "trim", 0, c);
-        createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TRIMLEFT, "trimLeft", 0, c);
-        createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TRIMRIGHT, "trimRight", 0, c);
+        ObjectLabel trimStart = createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TRIMSTART, "trimStart", 0, c);
+        pv.writePropertyWithAttributes(lStringProto, "trimLeft", Value.makeObject(trimStart).setAttributes(true, false, false));
+        ObjectLabel trimEnd = createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_TRIMEND, "trimEnd", 0, c);
+        pv.writePropertyWithAttributes(lStringProto, "trimRight", Value.makeObject(trimEnd).setAttributes(true, false, false));
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_STARTSWITH, "startsWith", 1, c);
         createPrimitiveFunction(lStringProto, lFunProto, ECMAScriptObjects.STRING_ENDSWITH, "endsWith", 1, c);
 
@@ -628,7 +629,6 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
 
         // properties of the Error object
         pv.writeProperty(lError, "stackTraceLimit", Value.makeAnyNumUInt());
-        createPrimitiveFunction(lError, lFunProto, ECMAScriptObjects.ERROR_CAPTURESTACKTRACE, "captureStackTrace", 2, c);
 
         // ES6 Symbol properties
         pv.writePropertyWithAttributes(global, "Symbol", Value.makeObject(lSymb).setAttributes(true, false, false));
@@ -679,7 +679,6 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
 
         // properties of the Error object
         pv.writeProperty(lError, "stackTraceLimit", Value.makeAnyNumUInt());
-        createPrimitiveFunction(lError, lFunProto, ECMAScriptObjects.ERROR_CAPTURESTACKTRACE, "captureStackTrace", 2, c);
 
         // 15.11.4 properties of the Error prototype object
         s.writeInternalPrototype(lErrorProto, Value.makeObject(lObjectPrototype));
@@ -737,10 +736,11 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
     /**
      * Creates a new built-in function.
      */
-    public static void createPrimitiveFunction(ObjectLabel target, ObjectLabel internal_proto, HostObject primitive, String name, int arity, Solver.SolverInterface c) {
+    public static ObjectLabel createPrimitiveFunction(ObjectLabel target, ObjectLabel internal_proto, HostObject primitive, String name, int arity, Solver.SolverInterface c) {
         ObjectLabel objlabel = ObjectLabel.make(primitive, Kind.FUNCTION);
         c.getState().newObject(objlabel);
         createPrimitiveFunctionOrConstructor(target, internal_proto, name, arity, objlabel, c);
+        return objlabel;
     }
 
     /**

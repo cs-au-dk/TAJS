@@ -31,4 +31,4 @@ test-resources/src/1k2013spring/1337.js:17:13: [info] 'this' refers to a summary
 test-resources/src/1k2013spring/1337.js:17:44: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/1k2013spring/1337.js:17:72: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 test-resources/src/1k2013spring/1337.js:18:13: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-Soundness testing succeeded for 61941 checks (with 89 expected failures)
+Soundness testing succeeded for 61934 checks (with 89 expected failures)

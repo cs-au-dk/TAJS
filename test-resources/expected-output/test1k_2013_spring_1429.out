@@ -8,4 +8,4 @@ test-resources/src/1k2013spring/1429.js: [maybe] Uncaught exception, constructed
 test-resources/src/1k2013spring/1429.js:115:13: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1429.js:116:13: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1429.js:121:17: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 170 checks (with 4 expected failures)
+Soundness testing succeeded for 168 checks (with 4 expected failures)

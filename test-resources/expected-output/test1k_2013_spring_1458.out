@@ -86,4 +86,4 @@ test-resources/src/1k2013spring/1458.js:161:18: [maybe] Reading absent property 
 test-resources/src/1k2013spring/1458.js:169:16: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1458.js:185:9: [maybe] The variable S has values with different types
 test-resources/src/1k2013spring/1458.js:191:9: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 410 checks (with 0 expected failures)
+Soundness testing succeeded for 409 checks (with 0 expected failures)

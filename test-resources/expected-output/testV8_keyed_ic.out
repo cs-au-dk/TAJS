@@ -20,4 +20,4 @@ test-resources/src/v8tests/keyed-ic.js:102:15: [info] Reading from unknown prope
 test-resources/src/v8tests/keyed-ic.js:130:22: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/v8tests/keyed-ic.js:163:22: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/v8tests/keyed-ic.js:193:22: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 1036 checks (with 0 expected failures)
+Soundness testing succeeded for 1031 checks (with 0 expected failures)

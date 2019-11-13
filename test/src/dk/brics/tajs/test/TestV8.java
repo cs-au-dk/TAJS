@@ -485,8 +485,7 @@ public class TestV8 { // TODO: check expected output for TestV8
         Misc.checkSystemOutput();
     }
 
-    // TODO: GitHub #550
-    @Test(expected = SoundnessTesterMonitor.SoundnessException.class)
+    @Test
     public void testV8_Error_prepareStackTrace() {
         Misc.runSource("var obj = {};", "Error.prepareStackTrace = function(){};", "Error.captureStackTrace(obj);", "obj.stack");
     }
@@ -916,6 +915,9 @@ public class TestV8 { // TODO: check expected output for TestV8
 
     @Test
     public void testV8_obj_construct() throws Exception {
+        Options.get().enableNoStringReplacePolyfill();
+        Options.get().enableNoErrorCaptureStackTracePolyfill();
+        Options.get().disablePolyfillMDN();
         Misc.run("test-resources/src/v8tests/prologue.js", "test-resources/src/v8tests/obj-construct.js");
         Misc.checkSystemOutput();
     }

@@ -1,9 +1,9 @@
 test-resources/src/micro/test04.js:5:16: [definite] Property is null/undefined
 test-resources/src/micro/test04.js:4:52: [definite] Dead assignment, property wwwww is never read
 test-resources/src/micro/test04.js: [definite] Exceptional program exit is unreachable
-test-resources/src/micro/test04.js:2:1: [info] Abstract value: [@Object#node11]
+test-resources/src/micro/test04.js:2:1: [info] Abstract value: [@Object#node15]
 test-resources/src/micro/test04.js:5:1: [info] Abstract value: Null
-test-resources/src/micro/test04.js:6:1: [info] Abstract value: [@Object#node11]
+test-resources/src/micro/test04.js:6:1: [info] Abstract value: [@Object#node15]
 test-resources/src/micro/test04.js:7:1: [info] Abstract value: true
 test-resources/src/micro/test04.js:8:1: [info] Abstract value: 99999.0
 test-resources/src/micro/test04.js:9:1: [info] Abstract value: "dfgcfdc"
@@ -12,4 +12,4 @@ test-resources/src/micro/test04.js:18:1: [info] Abstract value: 958818.0
 test-resources/src/micro/test04.js:23:1: [info] Abstract value: "x11418458"
 test-resources/src/micro/test04.js:26:1: [info] Abstract value: 4.060226064E9
 test-resources/src/micro/test04.js:29:1: [info] Abstract value: 99999.0
-Soundness testing succeeded for 54 checks (with 0 expected failures)
+Soundness testing succeeded for 52 checks (with 0 expected failures)

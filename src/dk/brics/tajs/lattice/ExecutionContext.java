@@ -139,12 +139,12 @@ public final class ExecutionContext implements Cloneable {
     }
 
     /**
-     * Summarizes this execution context.
+     * Renames this execution context.
      */
-    public void summarize(Summarized s) {
-        scope_chain = ScopeChain.summarize(scope_chain, s);
-        var_obj = s.summarize(var_obj);
-        thisval = thisval.summarize(s);
+    public void rename(Renamings s) {
+        scope_chain = ScopeChain.rename(scope_chain, s);
+        var_obj = s.rename(var_obj);
+        thisval = thisval.rename(s);
     }
 
     /**

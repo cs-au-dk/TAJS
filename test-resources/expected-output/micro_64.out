@@ -7,10 +7,10 @@ test-resources/src/micro/test64.js:11:17: [definite] Reading 'this' yields the g
 test-resources/src/micro/test64.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test64.js:3:1: [info] Abstract object: {gb:10.0,gh:32.0,[[Prototype]]=[@Object.prototype[native]]}
 test-resources/src/micro/test64.js:5:1: [info] Abstract object: {gh:32.0,[[Prototype]]=[@Object.prototype[native]]}
-test-resources/src/micro/test64.js:7:1: [info] Abstract object: {Object:[@Object[native]],String:[@String[native]],arr:Undef,id:[@id#fun1],p:[@Object#node10],s:Undef,t:Undef,[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+test-resources/src/micro/test64.js:7:1: [info] Abstract object: {Error:[@Error[native]],Object:[@Object[native]],String:[@String[native]],arr:Undef,id:[@id#fun1],p:[@Object#node14],s:Undef,t:Undef,[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
 test-resources/src/micro/test64.js:9:1: [info] Property attributes: (DontDelete-)(DontEnum+)(ReadOnly-)
 test-resources/src/micro/test64.js:10:1: [info] Abstract value: true
-test-resources/src/micro/test64.js:11:1: [info] Abstract object: {Function:absent,Object:[@Object[native]],String:[@String[native]],arr:Undef,id:[@id#fun1],p:[@Object#node10],s:Undef,t:Undef,[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+test-resources/src/micro/test64.js:11:1: [info] Abstract object: {Error:[@Error[native]],Function:absent,Object:[@Object[native]],String:[@String[native]],arr:Undef,id:[@id#fun1],p:[@Object#node14],s:Undef,t:Undef,[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
 test-resources/src/micro/test64.js:13:1: [info] Property attributes: (DontDelete+)(DontEnum+)(ReadOnly+)
 test-resources/src/micro/test64.js:14:1: [info] Abstract value: false
 test-resources/src/micro/test64.js:15:1: [info] Abstract object: {length:^(@Number[native].length[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}

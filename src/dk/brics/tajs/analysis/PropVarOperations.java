@@ -22,7 +22,8 @@ import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.Bool;
 import dk.brics.tajs.lattice.ExecutionContext;
-import dk.brics.tajs.lattice.FreeVariablePartitioning;
+import dk.brics.tajs.lattice.FunctionPartitions;
+import dk.brics.tajs.lattice.FunctionTypeSignatures;
 import dk.brics.tajs.lattice.Obj;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectProperty;
@@ -30,6 +31,7 @@ import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.PKey.SymbolPKey;
 import dk.brics.tajs.lattice.PKeys;
+import dk.brics.tajs.lattice.PartitionedValue;
 import dk.brics.tajs.lattice.Property;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
@@ -304,7 +306,12 @@ public class PropVarOperations {
                     }
 
                     @Override
-                    public FreeVariablePartitioning getFreeVariablePartitioning() {
+                    public FunctionPartitions getFunctionPartitions(ObjectLabel function) {
+                        return null;
+                    }
+
+                    @Override
+                    public FunctionTypeSignatures getFunctionTypeSignatures() {
                         return null;
                     }
                 }, c);
@@ -728,7 +735,12 @@ public class PropVarOperations {
                             }
 
                             @Override
-                            public FreeVariablePartitioning getFreeVariablePartitioning() {
+                            public FunctionPartitions getFunctionPartitions(ObjectLabel function) {
+                                return null;
+                            }
+
+                            @Override
+                            public FunctionTypeSignatures getFunctionTypeSignatures() {
                                 return null;
                             }
                         }, c);
@@ -763,6 +775,8 @@ public class PropVarOperations {
                                 if (writeInternalPrototype_fixed)
                                     v = v.setAttributes(true, true, false);
                                 // TODO: should also set attributes (weakly) if writeInternalPrototype_dynamic and !maySkipInternalProtoPropertyWrite - see also #356
+                                if (v instanceof PartitionedValue) // ensure that free variable partitioning tokens only appear in variables declared in the right function
+                                    v = PartitionedValue.removePartitionsNotMatchingObjectLabel(objprop.getObjectLabel(), ((PartitionedValue) v));
                                 c.getState().getObject(objprop.getObjectLabel(), true).setValue(objprop, v);
                                 c.getState().getMustEquals().setToBottom(objprop); // TODO: no need to reset must-equals if called from Filtering
                             }

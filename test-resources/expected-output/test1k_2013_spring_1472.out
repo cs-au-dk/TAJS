@@ -37,5 +37,5 @@ test-resources/src/1k2013spring/1472.js:105:49: [maybe] Conversion to number yie
 test-resources/src/1k2013spring/1472.js:111:16: [maybe] Converting undefined to string
 test-resources/src/1k2013spring/1472.js:112:6: [maybe] The variable alive has values with different types
 test-resources/src/1k2013spring/1472.js:112:16: [maybe] Conversion to number yields NaN
-Disabling soundness testing for test-resources/src/1k2013spring/1472.js entirely (15 uninspected soundness errors).
-Soundness testing succeeded for 177 checks (with 15 expected failures)
+Disabling soundness testing for test-resources/src/1k2013spring/1472.js entirely (14 uninspected soundness errors).
+Soundness testing succeeded for 171 checks (with 14 expected failures)

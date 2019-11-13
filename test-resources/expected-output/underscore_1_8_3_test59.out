@@ -363,16 +363,13 @@ benchmarks/tajs/src/underscore/test-suite/collections/test59.html:8:1: [definite
 benchmarks/tajs/src/underscore/test-suite/collections/test59.html:9:1: [definite] Unreachable function start
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:41:11: [maybe] Reading 'this' yields the global object
 benchmarks/tajs/src/underscore/test-suite/collections/test59.html:19:8: [maybe] Reading absent property includes
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:127:14: [maybe] The variable obj has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:127:37: [maybe] Converting primitive number to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:127:37: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:138:28: [maybe] The variable collection has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:266:22: [maybe] The variable obj has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:266:43: [maybe] The variable obj has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:662:13: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:929:21: [maybe] The variable obj has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:950:23: [maybe] The variable obj has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1213:16: [maybe] The variable obj has values with different types
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:954:23: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:954:19: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 4155 checks (with 0 expected failures)
+Soundness testing succeeded for 4121 checks (with 0 expected failures)

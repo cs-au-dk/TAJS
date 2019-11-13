@@ -21,4 +21,4 @@ test-resources/src/v8tests/array-iteration.js:180:85: [maybe] Conversion to numb
 test-resources/src/v8tests/array-iteration.js:186:34: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-iteration.js:187:36: [maybe] Reading absent property (computed name)
 test-resources/src/v8tests/array-iteration.js:210:64: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 932 checks (with 0 expected failures)
+Soundness testing succeeded for 898 checks (with 0 expected failures)

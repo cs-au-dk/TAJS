@@ -6,12 +6,12 @@ test-resources/src/micro/test118.js:17:10: [maybe] Reading absent property b
 test-resources/src/micro/test118.js:18:10: [maybe] Reading absent property b
 test-resources/src/micro/test118.js:21:16: [maybe] Reading absent property b
 test-resources/src/micro/test118.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test118.js:10:10, test-resources/src/micro/test118.js:17:10, test-resources/src/micro/test118.js:18:10]
-test-resources/src/micro/test118.js:9:1: [info] Abstract value: Null|[@Object#node24, @Object#node20]
+test-resources/src/micro/test118.js:9:1: [info] Abstract value: Null|[@Object#node28, @Object#node24]
 test-resources/src/micro/test118.js:12:1: [info] Abstract value: 42.0
 test-resources/src/micro/test118.js:13:1: [info] Abstract value: 42.0
-test-resources/src/micro/test118.js:14:1: [info] Abstract value: [@Object#node24, @Object#node20]
-test-resources/src/micro/test118.js:16:1: [info] Abstract value: Undef|[@Object#node27]
+test-resources/src/micro/test118.js:14:1: [info] Abstract value: [@Object#node28, @Object#node24]
+test-resources/src/micro/test118.js:16:1: [info] Abstract value: Undef|[@Object#node31]
 test-resources/src/micro/test118.js:19:1: [info] Abstract value: 87.0
 test-resources/src/micro/test118.js:20:1: [info] Abstract value: 87.0
-test-resources/src/micro/test118.js:21:1: [info] Abstract value: Undef|[@Object#node27]
+test-resources/src/micro/test118.js:21:1: [info] Abstract value: Undef|[@Object#node31]
 Soundness testing succeeded for 10 checks (with 0 expected failures)

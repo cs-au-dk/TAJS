@@ -39,4 +39,4 @@ benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:62:37: [maybe] Co
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:24: [maybe] Converting object to string
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:24: [maybe] Converting primitive string to object
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:54: [maybe] Converting primitive string to object
-Soundness testing succeeded for 24 checks (with 0 expected failures)
+Soundness testing succeeded for 23 checks (with 0 expected failures)

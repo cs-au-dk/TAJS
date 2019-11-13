@@ -34,8 +34,8 @@ import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey.StringPKey;
+import dk.brics.tajs.lattice.Renamings;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message.Severity;
@@ -83,11 +83,11 @@ public class JSArray {
 
                 boolean isArrayLiteral = call.getSourceNode() instanceof CallNode && ((CallNode) call.getSourceNode()).getLiteralConstructorKind() == CallNode.LiteralConstructorKinds.ARRAY;
                 if (call.isUnknownNumberOfArgs())
-                    pv.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), call.getUnknownArg().summarize(new Summarized(objlabel)));
+                    pv.writeProperty(Collections.singleton(objlabel), Value.makeAnyStrUInt(), call.getUnknownArg().rename(new Renamings(objlabel)));
                 else {
                     int numArgs = call.getNumberOfArgs();
                     if (numArgs == 1 && !isArrayLiteral) { // 15.4.2.2, paragraph 2.
-                        Value lenarg = FunctionCalls.readParameter(call, state, 0).summarize(new Summarized(objlabel));
+                        Value lenarg = FunctionCalls.readParameter(call, state, 0).rename(new Renamings(objlabel));
                         Status s;
                         if (lenarg.isMaybeSingleNum()) {
                             double d = lenarg.getNum();
@@ -127,7 +127,7 @@ public class JSArray {
                             boolean isAbsent = isArrayLiteral && ((CallNode) call.getSourceNode()).getArgRegister(i) == AbstractNode.NO_VALUE;
                             // support for the array literal syntax with omitted values: ['foo',,,,'bar']
                             if (!isAbsent) {
-                                Value parameter = FunctionCalls.readParameter(call, state, i).summarize(new Summarized(objlabel));
+                                Value parameter = FunctionCalls.readParameter(call, state, i).rename(new Renamings(objlabel));
                                 pv.writeProperty(objlabel, Integer.toString(i), parameter);
                             }
                         }
@@ -138,17 +138,18 @@ public class JSArray {
             }
 
             case ARRAY_ISARRAY: { // 15.4.3.2
-                Value arg = FunctionCalls.readParameter(call, state, 0);
-                Value result = Value.makeNone();
-                if (arg.isMaybePrimitive())
-                    result = result.joinBool(false);
-                for (ObjectLabel l : arg.getObjectLabels()) {
-                    if (l.getKind() == Kind.ARRAY)
-                        result = result.joinBool(true);
-                    else
+                return  FunctionCalls.readParameter(call, state, 0).applyFunction(arg -> {
+                    Value result = Value.makeNone();
+                    if (arg.isMaybePrimitive())
                         result = result.joinBool(false);
-                }
-                return result;
+                    for (ObjectLabel l : arg.getObjectLabels()) {
+                        if (l.getKind() == Kind.ARRAY)
+                            result = result.joinBool(true);
+                        else
+                            result = result.joinBool(false);
+                    }
+                    return result;
+                });
             }
 
             case ARRAY_TOSTRING: { // 15.4.4.2
@@ -181,7 +182,7 @@ public class JSArray {
                         if (i == -1) {
                             element = state.readThis();
                         } else {
-                            element = FunctionCalls.readParameter(call, state, i).summarize(new Summarized(resultLabel));
+                            element = FunctionCalls.readParameter(call, state, i).rename(new Renamings(resultLabel));
                         }
 
                         Pair<Set<ObjectLabel>, Value> separatedArrayValues = separateArrayValues(element, state);
@@ -227,7 +228,7 @@ public class JSArray {
                         unfoldedElements.addAll(unfoldedElement);
                     }
                 } else {
-                    unfoldedElements.add(call.getUnknownArg().summarize(new Summarized(resultLabel)));
+                    unfoldedElements.add(call.getUnknownArg().rename(new Renamings(resultLabel)));
                     isPreciseUnfolding = false;
                 }
 
@@ -399,7 +400,7 @@ public class JSArray {
                 ObjectLabel resultArray = makeArray(call.getSourceNode(), Value.makeNum(0), state.readThis(), c);
 
                 // resolve the fromIndex, a value of null means that it is not coercible to a single, precise number
-                Value fromIndexValue = FunctionCalls.readParameter(call, state, 0).summarize(new Summarized(resultArray));
+                Value fromIndexValue = FunctionCalls.readParameter(call, state, 0).rename(new Renamings(resultArray));
                 if (fromIndexValue.isMaybeUndef()) {
                     fromIndexValue = fromIndexValue.restrictToNotUndef().joinNum(0);
                 }
@@ -407,7 +408,7 @@ public class JSArray {
                 Long fromIndex = fromIndexNum != null ? Conversion.toUInt32(fromIndexNum) : null;
 
                 // resolve the toIndex, a value of null means that it is not coercible to a single, precise number
-                Value toIndexValue = FunctionCalls.readParameter(call, state, 1).summarize(new Summarized(resultArray));
+                Value toIndexValue = FunctionCalls.readParameter(call, state, 1).rename(new Renamings(resultArray));
                 Long toIndex;
                 if (toIndexValue.isMaybeUndef() && !toIndexValue.isMaybeOtherThanUndef()) {
                     toIndex =  Math.round(Math.pow(2, 32)-1); // default value: array length, resolved later
@@ -527,10 +528,10 @@ public class JSArray {
                 readLength(thisObjects, c); // force read-side-effects
                 Value parameters = Value.makeNone();
                 if (call.isUnknownNumberOfArgs())
-                    parameters = UnknownValueResolver.join(parameters, call.getUnknownArg().summarize(new Summarized(resultArray)), state);
+                    parameters = UnknownValueResolver.join(parameters, call.getUnknownArg().rename(new Renamings(resultArray)), state);
                 else
                     for (int i = 2; i < call.getNumberOfArgs(); i++)
-                        parameters = UnknownValueResolver.join(parameters, FunctionCalls.readParameter(call, state, i).summarize(new Summarized(resultArray)), state);
+                        parameters = UnknownValueResolver.join(parameters, FunctionCalls.readParameter(call, state, i).rename(new Renamings(resultArray)), state);
                 pv.deleteProperty(thisObjects, Value.makeAnyStrUInt(), true);
                 pv.writeProperty(thisObjects, Value.makeAnyStrUInt(), parameters.join(arrayValues).removeAttributes(), true);
                 writeLength(thisObjects, Value.makeAnyNumUInt(), c);
@@ -577,7 +578,7 @@ public class JSArray {
 
             case ARRAY_INDEXOF: { // 15.4.4.14
                 c.getMonitoring().visitPropertyRead(call.getJSSourceNode(), state.readThisObjects(), Value.makeAnyStrUInt(), state, false);
-            /* Value searchElement =*/
+                /* Value searchElement =*/
                 FunctionCalls.readParameter(call, state, 0);
                 Value fromIndex = call.getNumberOfArgs() > 1 ? Conversion.toInteger(FunctionCalls.readParameter(call, state, 1), c) : Value.makeNum(0); // TODO: sometimes certain?
                 Double fromindex_num = UnknownValueResolver.getRealValue(fromIndex, state).getNum();
@@ -738,61 +739,61 @@ public class JSArray {
     }
 
     public static Value evaluateJoinOrToLocaleString(AbstractNode node, Set<ObjectLabel> objlabels, Value separatorValue, boolean is_toLocaleString, Solver.SolverInterface c) {
-            State state = c.getState();
-            PropVarOperations pv = c.getAnalysis().getPropVarOperations();
-            c.getMonitoring().visitPropertyRead(node, objlabels, Value.makeAnyStrUInt(), state, false);
-            Value length_val = readLength(objlabels, c);
-            Double length_prop = UnknownValueResolver.getRealValue(length_val, state).getNum();
-            if (length_prop == null) {
-                return Value.makeAnyStr();
-            }
-            long length = Conversion.toUInt32(length_prop);
-            if (length == 0)
-                return Value.makeStr("");
-            if (separatorValue.isMaybeUndef() && !is_toLocaleString) {
-                separatorValue = separatorValue.restrictToNotUndef().joinStr(",");
-            }
-            Value v = Conversion.toString(separatorValue, c);
-            String separator = v.isMaybeSingleStr() ? v.getStr() : null;
-            if ((length != 1 && separator == null /* = sep is a fuzzy string */))
-                return Value.makeAnyStr();
+        State state = c.getState();
+        PropVarOperations pv = c.getAnalysis().getPropVarOperations();
+        c.getMonitoring().visitPropertyRead(node, objlabels, Value.makeAnyStrUInt(), state, false);
+        Value length_val = readLength(objlabels, c);
+        Double length_prop = UnknownValueResolver.getRealValue(length_val, state).getNum();
+        if (length_prop == null) {
+            return Value.makeAnyStr();
+        }
+        long length = Conversion.toUInt32(length_prop);
+        if (length == 0)
+            return Value.makeStr("");
+        if (separatorValue.isMaybeUndef() && !is_toLocaleString) {
+            separatorValue = separatorValue.restrictToNotUndef().joinStr(",");
+        }
+        Value v = Conversion.toString(separatorValue, c);
+        String separator = v.isMaybeSingleStr() ? v.getStr() : null;
+        if ((length != 1 && separator == null /* = sep is a fuzzy string */))
+            return Value.makeAnyStr();
 
-            List<String> strings = newList();
-            for (int i = 0; i < length; i++) {
-                Value prop = pv.readPropertyValue(objlabels, i + "");
-                prop = UnknownValueResolver.getRealValue(prop, state);
-                if(isMaybeCyclicJoin(prop)){
-                    // NB: both v8 and firefox returns the empty string for the cyclic element
-                    return Value.makeAnyStr();
-                }
-                boolean isMaybeNullUndef = prop.isMaybeUndef() || prop.isMaybeNull();
-                boolean isMaybeNotNullUndef = !prop.restrictToNotNullNotUndef().isNone();
-                final String string;
-                if (isMaybeNullUndef && !isMaybeNotNullUndef) {
-                    string = "";
-                } else if (!isMaybeNullUndef && isMaybeNotNullUndef) {
-                    if (is_toLocaleString) {
-                        return Value.makeAnyStr(); // TODO make a call to toLocaleString and use that
-                    }
-                    try {
-                        cyclicJoinGuard.push(objlabels);
-                        Value v2 = Conversion.toString(prop.restrictToNotNullNotUndef(), c);
-                        string = v2.isMaybeSingleStr() ? v2.getStr() : null;
-                    } finally {
-                        cyclicJoinGuard.pop();
-                    }
-                } else {
-                    string = null;
-                }
-                if (string == null) {
-                    return Value.makeAnyStr();
-                }
-                strings.add(string);
+        List<String> strings = newList();
+        for (int i = 0; i < length; i++) {
+            Value prop = pv.readPropertyValue(objlabels, i + "");
+            prop = UnknownValueResolver.getRealValue(prop, state);
+            if(isMaybeCyclicJoin(prop)){
+                // NB: both v8 and firefox returns the empty string for the cyclic element
+                return Value.makeAnyStr();
             }
-            if (strings.size() == 1) { // separator might be null, if strings.size() == 1
-                return Value.makeStr(strings.iterator().next());
+            boolean isMaybeNullUndef = prop.isMaybeUndef() || prop.isMaybeNull();
+            boolean isMaybeNotNullUndef = !prop.restrictToNotNullNotUndef().isNone();
+            final String string;
+            if (isMaybeNullUndef && !isMaybeNotNullUndef) {
+                string = "";
+            } else if (!isMaybeNullUndef && isMaybeNotNullUndef) {
+                if (is_toLocaleString) {
+                    return Value.makeAnyStr(); // TODO make a call to toLocaleString and use that
+                }
+                try {
+                    cyclicJoinGuard.push(objlabels);
+                    Value v2 = Conversion.toString(prop.restrictToNotNullNotUndef(), c);
+                    string = v2.isMaybeSingleStr() ? v2.getStr() : null;
+                } finally {
+                    cyclicJoinGuard.pop();
+                }
+            } else {
+                string = null;
             }
-            return Value.makeStr(String.join(separator, strings));
+            if (string == null) {
+                return Value.makeAnyStr();
+            }
+            strings.add(string);
+        }
+        if (strings.size() == 1) { // separator might be null, if strings.size() == 1
+            return Value.makeStr(strings.iterator().next());
+        }
+        return Value.makeStr(String.join(separator, strings));
     }
 
     private static boolean isMaybeCyclicJoin(Value prop) {

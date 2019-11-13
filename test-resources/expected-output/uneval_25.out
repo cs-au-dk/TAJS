@@ -18,4 +18,4 @@ test-resources/src/uneval/uneval25.html:21:5: [definite] Dead assignment, proper
 test-resources/src/uneval/uneval25.html:25:5: [definite] Dead assignment, property boomerang_send_to_scribd is never read
 test-resources/src/uneval/uneval25.html: [definite] Exceptional program exit is unreachable
 test-resources/src/uneval/uneval25.html:29:25: [definite] The variable default_value is never used
-Soundness testing succeeded for 37 checks (with 0 expected failures)
+Soundness testing succeeded for 36 checks (with 0 expected failures)

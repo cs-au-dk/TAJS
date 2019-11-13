@@ -8,4 +8,4 @@ test-resources/src/v8tests/debug-continue.js:65:1: [definite] Unreachable functi
 test-resources/src/v8tests/debug-continue.js:99:1: [definite] Unreachable function f
 test-resources/src/v8tests/debug-continue.js:103:1: [definite] Unreachable function g
 test-resources/src/v8tests/debug-continue.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-continue.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 6 checks (with 0 expected failures)

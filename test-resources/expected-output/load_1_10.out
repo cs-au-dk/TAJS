@@ -389,7 +389,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5328:2: [definite] Dead assi
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5380:14: [definite] Reading absent property type
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5400:2: [definite] Dead assignment, property timeStamp is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5400:26: [definite] Reading absent property timeStamp
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5403:2: [definite] Dead assignment, property jQuery110007463757776901062 is never read
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5403:2: [definite] Dead assignment, property jQuery110007459278688290814 is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5411:2: [definite] Dead assignment, property isImmediatePropagationStopped is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5413:2: [definite] Dead assignment, property preventDefault is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5431:2: [definite] Dead assignment, property stopPropagation is never read
@@ -1207,7 +1207,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1533:3: [maybe] TypeError, c
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1534:10: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1534:10: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1556:3: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1568:37: [maybe] <HTMLDocument.prototype.getElementsByName>(sizzle-1543012392285) did not match any elements
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1568:37: [maybe] <HTMLDocument.prototype.getElementsByName>(sizzle-1543012392516) did not match any elements
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3061:19: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3064:10: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3064:37: [maybe] TypeError, accessing property of null/undefined
@@ -1507,4 +1507,4 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:890:12: [unsound] Assuming D
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1035:25: [unsound] Assuming Date.now returns fixed value
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3063:48: [unsound] Assuming UInt-addition is closed
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5010:28: [unsound] Assuming UInt-addition is closed
-Soundness testing succeeded for 7565 checks (with 1 expected failures)
+Soundness testing succeeded for 7441 checks (with 0 expected failures)

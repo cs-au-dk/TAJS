@@ -6,4 +6,4 @@ test-resources/src/v8tests/debug-scripts-request.js:39:1: [definite] Unreachable
 test-resources/src/v8tests/debug-scripts-request.js:48:1: [definite] Unreachable function testArguments
 test-resources/src/v8tests/debug-scripts-request.js:59:1: [definite] Unreachable function listener
 test-resources/src/v8tests/debug-scripts-request.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-scripts-request.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 4 checks (with 0 expected failures)

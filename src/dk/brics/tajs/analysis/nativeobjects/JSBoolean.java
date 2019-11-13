@@ -50,7 +50,7 @@ public class JSBoolean {
             case BOOLEAN: {
                 Value b = Conversion.toBoolean(FunctionCalls.readParameter(call, state, 0));
                 if (call.isConstructorCall()) { // 15.6.2
-                    return Conversion.toObject(call.getSourceNode(), b, false, c);
+                    return Conversion.toObject(call.getSourceNode(), b, false, false, c);
                 } else // 15.6.1
                     return b;
             }

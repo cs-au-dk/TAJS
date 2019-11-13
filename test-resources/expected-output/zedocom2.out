@@ -6,4 +6,4 @@ TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/zedo.com-slice/index-2.html:13:
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/zedo.com-slice/index-2.html:13:8):1:29: [maybe] Converting undefined to string
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/zedo.com-slice/index-2.html:13:8):1:39: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/zedo.com-slice/index-2.html:13:8):1:22: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 79 checks (with 0 expected failures)
+Soundness testing succeeded for 78 checks (with 0 expected failures)

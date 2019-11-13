@@ -169,4 +169,4 @@ test-resources/src/chromeexperiments/kaleidoscope.html:206:2: [maybe] Conversion
 test-resources/src/chromeexperiments/kaleidoscope.html:206:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:223:11: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:236:14: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 6332 checks (with 0 expected failures)
+Soundness testing succeeded for 6325 checks (with 0 expected failures)

@@ -47,4 +47,4 @@ test-resources/src/1k2013spring/1470.js:52:28: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1470.js:52:30: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1470.js:54:27: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1470.js:87:49: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 231 checks (with 0 expected failures)
+Soundness testing succeeded for 230 checks (with 0 expected failures)

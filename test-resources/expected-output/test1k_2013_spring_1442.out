@@ -84,4 +84,4 @@ test-resources/src/1k2013spring/1442.js:139:31: [maybe] Reading absent property 
 test-resources/src/1k2013spring/1442.js:149:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1442.js:150:17: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1442.js:153:12: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 50358 checks (with 0 expected failures)
+Soundness testing succeeded for 50353 checks (with 0 expected failures)

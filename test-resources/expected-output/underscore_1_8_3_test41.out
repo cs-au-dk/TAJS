@@ -369,5 +369,7 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:73:16: [maybe] Conv
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:73:16: [maybe] Converting primitive number to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:73:16: [maybe] Converting primitive string to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 3765 checks (with 0 expected failures)
+Soundness testing succeeded for 3736 checks (with 0 expected failures)

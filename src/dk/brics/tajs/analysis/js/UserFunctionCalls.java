@@ -41,9 +41,10 @@ import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.ObjectProperty;
 import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.PKey.StringPKey;
+import dk.brics.tajs.lattice.PartitionedValue;
+import dk.brics.tajs.lattice.Renamings;
 import dk.brics.tajs.lattice.ScopeChain;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
@@ -53,6 +54,7 @@ import dk.brics.tajs.solver.CallKind;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.solver.NodeAndContext;
+import dk.brics.tajs.typescript.TypeFiltering;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.Collectors;
@@ -198,13 +200,13 @@ public class UserFunctionCalls {
             if (call.assumeFunction())
                 return;
             final Value thisVal;
-            Summarized extra_summarized = new Summarized();
+            Renamings extra_renamings = new Renamings();
             if (call.isConstructorCall()) {
                 // 13.2.2.1-2 create new object
                 Context thisHeapContext = c.getAnalysis().getContextSensitivityStrategy().makeConstructorHeapContext(edge_state, obj_f, call, c);
                 ObjectLabel new_obj = ObjectLabel.make(n, Kind.OBJECT, thisHeapContext);
                 edge_state.newObject(new_obj);
-                extra_summarized.addDefinitelySummarized(new_obj);
+                extra_renamings.addDefinitelySummarized(new_obj);
                 thisVal = Value.makeObject(new_obj);
                 // 13.2.2.3-5 provide [[Prototype]]
                 Value prototypeFinal = UnknownValueResolver.getRealValue(prototype, edge_state);
@@ -230,10 +232,10 @@ public class UserFunctionCalls {
             // 10.2.3 enter new execution context, 13.2.1 transfer parameters, 10.1.6/8 provide 'arguments' object
             ObjectLabel varobj = ObjectLabel.make(f.getEntry().getFirstNode(), Kind.ACTIVATION, heapContext); // better to use entry than invoke here
             edge_state.newObject(varobj);
-            extra_summarized.addDefinitelySummarized(varobj);
+            extra_renamings.addDefinitelySummarized(varobj);
             ObjectLabel argobj = ObjectLabel.make(f.getEntry().getFirstNode(), Kind.ARGUMENTS, heapContext);
             edge_state.newObject(argobj);
-            extra_summarized.addDefinitelySummarized(argobj);
+            extra_renamings.addDefinitelySummarized(argobj);
             ScopeChain sc = ScopeChain.make(Collections.singleton(varobj), obj_f_sc);
 
             edge_state.setExecutionContext(new ExecutionContext(sc, singleton(varobj), thisVal));
@@ -257,19 +259,21 @@ public class UserFunctionCalls {
                 if (Options.get().isDebugOrTestEnabled() && !v.isMaybeUndef()) {
                     throw new AnalysisException("Unknown arg not possibly undefined?");
                 }
-                Value summarized = v.summarize(extra_summarized);
-                pv.writeProperty(singleton(argobj), Value.makeAnyStrUInt(), summarized); // the first arguments will be overwritten below with something more precise
+                Value renamed = v.rename(extra_renamings);
+                pv.writeProperty(singleton(argobj), Value.makeAnyStrUInt(), renamed); // the first arguments will be overwritten below with something more precise
             }
             // write argument values to the arguments object and the named parameters
             final int numberOfUnknownArgumentsToKeepDisjoint = Options.Constants.NUMBER_OF_UNKNOWN_ARGUMENTS_TO_KEEP_DISJOINT; // number of parameters to keep separate, if the actual number is unknown
             for (int i = 0; i < f.getParameterNames().size() || i < (call.isUnknownNumberOfArgs() ? numberOfUnknownArgumentsToKeepDisjoint : call.getNumberOfArgs()); i++) {
                 Value v = call.getArg(i);
-                Value summarized = v.summarize(extra_summarized);
-                pv.writeProperty(argobj, StringPKey.make(Integer.toString(i)), summarized); // from ES5 Annex E: "In Edition 5 the array indexed properties of argument objects that correspond to actual formal parameters are enumerable. In Edition 3, such properties were not enumerable."
+                if (v.isNone()) // can happen because of type filtering and blended analysis
+                    return;
+                Value renamed = v.rename(extra_renamings);
+                pv.writeProperty(argobj, StringPKey.make(Integer.toString(i)), renamed); // from ES5 Annex E: "In Edition 5 the array indexed properties of argument objects that correspond to actual formal parameters are enumerable. In Edition 3, such properties were not enumerable."
                 if (i < f.getParameterNames().size()) {
-                    if (summarized.isMaybeAbsent())
-                        summarized = summarized.restrictToNotAbsent().joinUndef(); // convert absent to undefined
-                    pv.declareAndWriteVariable(f.getParameterNames().get(i), summarized, true); // 10.1.3
+                    if (renamed.isMaybeAbsent())
+                        renamed = renamed.restrictToNotAbsent().joinUndef(); // convert absent to undefined
+                    pv.declareAndWriteVariable(f.getParameterNames().get(i), renamed, true); // 10.1.3
                 }
             }
             // FIXME: properties of 'arguments' should be shared with the formal parameters (see 10.1.8 item 4) - easy solution that does not require Reference types? - github #21
@@ -281,6 +285,7 @@ public class UserFunctionCalls {
             edge_state.stackObjectLabels();
             edge_state.clearRegisters();
             edge_state.getMustReachingDefs().setToBottom();
+            edge_state.getPartitioning().clearMaybePartitioned();
 
             if (thisVal.getObjectLabels().size() > 1
                     && (Options.get().isContextSpecializationEnabled()
@@ -292,17 +297,17 @@ public class UserFunctionCalls {
                     ObjectLabel this_obj = it.next();
                     State next_edge_state = it.hasNext() ? edge_state.clone() : edge_state;
                     next_edge_state.getExecutionContext().setThis(Value.makeObject(this_obj)); // (execution context should be writable here)
-                    propagateToFunctionEntry(next_edge_state, n, obj_f, call, implicit, c);
+                    propagateToFunctionEntry(new CallEdge(next_edge_state, call.getFunctionTypeSignatures()), n, obj_f, call, implicit, c);
                 }
             } else
-                propagateToFunctionEntry(edge_state, n, obj_f, call, implicit, c);
+                propagateToFunctionEntry(new CallEdge(edge_state, call.getFunctionTypeSignatures()), n, obj_f, call, implicit, c);
         });
     }
 
-    private static void propagateToFunctionEntry(State edge_state, AbstractNode n, ObjectLabel obj_f, CallInfo call, boolean implicit, Solver.SolverInterface c) {
-        Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge_state, obj_f, call, c);
+    private static void propagateToFunctionEntry(CallEdge edge, AbstractNode n, ObjectLabel obj_f, CallInfo call, boolean implicit, Solver.SolverInterface c) {
+        Context edge_context = c.getAnalysis().getContextSensitivityStrategy().makeFunctionEntryContext(edge.getState(), obj_f, call, c);
         CallKind callKind = !implicit ? CallKind.ORDINARY : call.isConstructorCall() ? CallKind.IMPLICIT_CONSTRUCTOR : CallKind.IMPLICIT;
-        c.propagateToFunctionEntry(n, edge_state.getContext(), edge_state, edge_context, obj_f.getFunction().getEntry(), callKind);
+        c.propagateToFunctionEntry(n, edge.getState().getContext(), edge, edge_context, obj_f.getFunction().getEntry(), callKind);
     }
 
     /**
@@ -387,21 +392,28 @@ public class UserFunctionCalls {
             return; // flow was cancelled, probably something needs to be recomputed
 
         // merge newstate with caller state and call edge state
-        Summarized callee_summarized = new Summarized(state.getSummarized());
+        Renamings callee_renamings = new Renamings(state.getRenamings());
         Context heapContext = state.getScopeChain().getObject().iterator().next().getHeapContext(); // this should give us the heapContext that was created at enterUserFunction
         if (is_constructor) {
             ObjectLabel this_obj = ObjectLabel.make(node, Kind.OBJECT, heapContext);
-            callee_summarized.addDefinitelySummarized(this_obj);
+            callee_renamings.addDefinitelySummarized(this_obj);
         }
         ObjectLabel activation_obj = ObjectLabel.make(f.getEntry().getFirstNode(), Kind.ACTIVATION, heapContext);
-        callee_summarized.addDefinitelySummarized(activation_obj);
+        callee_renamings.addDefinitelySummarized(activation_obj);
         ObjectLabel arguments_obj = ObjectLabel.make(f.getEntry().getFirstNode(), Kind.ARGUMENTS, heapContext);
-        callee_summarized.addDefinitelySummarized(arguments_obj);
-        State calledge_state = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(node, caller_context, f.getEntry(), edge_context).getState();
-        returnval = mergeFunctionReturn(state, c.getAnalysisLatticeElement().getStates(node.getBlock()).get(caller_context),
-                calledge_state,
+        callee_renamings.addDefinitelySummarized(arguments_obj);
+        CallEdge calledge = c.getAnalysisLatticeElement().getCallGraph().getCallEdge(node, caller_context, f.getEntry(), edge_context);
+
+        State caller_state = c.getAnalysisLatticeElement().getStates(node.getBlock()).get(caller_context);
+        if (node instanceof CallNode) {
+            // need to re-apply type-partitioning here, since the caller-state is the one at the
+            // entry of the call-node and not the one that was updated during the transfer of the call node, which originally did the type-partitioning
+            c.withState(caller_state, () -> Partitioning.applyTypePartitioning((CallNode) node, c));
+        }
+        returnval = mergeFunctionReturn(state, caller_state,
+                calledge.getState(),
                 c.getAnalysisLatticeElement().getState(BlockAndContext.makeEntry(node.getBlock(), caller_context)),
-                callee_summarized,
+                callee_renamings,
                 returnval, null); // TODO: not obvious why this part is in dk.brics.tajs.analysis and the renaming and localization is done via dk.brics.tajs.solver...
         if (callInfo.isImplicit()) {
             state.setBasicBlock(node.getImplicitAfterCall());
@@ -421,11 +433,13 @@ public class UserFunctionCalls {
             Exceptions.throwException(state, returnval, c, node);
         } else {
             returnval = UnknownValueResolver.getRealValue(returnval, state);
+            if (!is_constructor && calledge.getFunctionTypeSignatures() != null)
+                returnval = new TypeFiltering(c).assumeReturnValueType(returnval, calledge.getFunctionTypeSignatures()); // FIXME: is current state in c the right one here?
             if (!returnval.isNone()) { // skip if no value (can happen when propagateToFunctionEntry calls transferReturn)
 
                 if (is_constructor && returnval.isMaybePrimitiveOrSymbol()) {
                     // 13.2.2.7-8 replace non-object by the new object (which is kept in 'this' at the call edge)
-                    returnval = returnval.restrictToNonSymbolObject().join(calledge_state.getExecutionContext().getThis());
+                    returnval = returnval.restrictToNonSymbolObject().join(calledge.getState().getExecutionContext().getThis());
                 }
 
                 if (!callInfo.isImplicit()) {
@@ -480,50 +494,51 @@ public class UserFunctionCalls {
      * Returns the updated returnval if non-null.
      */
     public static Value mergeFunctionReturn(State return_state, State caller_state, State calledge_state, State caller_entry_state,
-                                            Summarized callee_summarized, Value returnval, Value exval) {
+                                            Renamings callee_renamings, Value returnval, Value exval) {
         return_state.makeWritableStore();
         Obj store_default = Canonicalizer.get().canonicalizeViaImmutableBox(caller_state.getStoreDefault().freeze());
         return_state.setStoreDefault(store_default);
         caller_state.setStoreDefault(store_default); // write back canonicalized object
         // strengthen each object and replace polymorphic values
-        State summarized_calledge = calledge_state.clone();
-        summarizeStoreAndRegisters(summarized_calledge, return_state.getSummarized());
+        State renamed_calledge = calledge_state.clone();
+        renameStoreAndRegisters(renamed_calledge, return_state.getRenamings());
         for (ObjectLabel objlabel : return_state.getStore().keySet()) {
             Obj obj = return_state.getObject(objlabel, true); // always preparing for object updates, even if no changes are made
             replacePolymorphicValues(obj, calledge_state, caller_entry_state, return_state);
-            Obj calledge_obj = summarized_calledge.getObject(objlabel, false);
+            Obj calledge_obj = renamed_calledge.getObject(objlabel, false);
 //            if (log.isDebugEnabled())
 //                log.debug("strengthenNonModifiedParts on " + objlabel);
-            obj.replaceNonModifiedParts(calledge_obj);
+            obj.replaceNonModifiedParts(calledge_obj, return_state.getPartitioning().getMaybePartitionNodes());
         }
         // restore objects that were not used by the callee (i.e. either 'unknown' or never retrieved from basis_store to store)
-        for (Map.Entry<ObjectLabel, Obj> me : summarized_calledge.getStore().entrySet())
+        for (Map.Entry<ObjectLabel, Obj> me : renamed_calledge.getStore().entrySet())
             if (!return_state.getStore().containsKey(me.getKey()))
-                return_state.putObject(me.getKey(), me.getValue()); // obj is freshly created at summarizeStoreAndRegisters, so freeze() unnecessary
+                return_state.putObject(me.getKey(), me.getValue()); // obj is freshly created at renameStoreAndRegisters, so freeze() unnecessary
         // remove objects that are equal to the default object
         return_state.removeObjectsEqualToDefault(caller_entry_state.getStoreDefault().isAllNone());
         // restore execution_context, stacked_objlabels, and stacked_funentries from caller
         return_state.setExecutionContext(caller_state.getExecutionContext().clone());
-        return_state.getExecutionContext().summarize(callee_summarized);
-        return_state.setRegisters(summarize(caller_state.getRegisters(), callee_summarized));
+        return_state.getExecutionContext().rename(callee_renamings);
+        return_state.setRegisters(renameAndRemovePartitions(caller_state.getRegisters(), callee_renamings, return_state.getPartitioning().getMaybePartitionNodes()));
         return_state.setMustReachingDefs(new MustReachingDefs(caller_state.getMustReachingDefs()));
         return_state.getMustEquals().setToBottom(); // TODO: could kill only the heap locations that may have been written by the function?
-        return_state.setStacked(Options.get().isLazyDisabled() ? newSet(callee_summarized.summarize(caller_state.getStackedObjects())) : null,
+        return_state.setStacked(Options.get().isLazyDisabled() ? newSet(callee_renamings.rename(caller_state.getStackedObjects())) : null,
                 newSet(caller_state.getStackedFunctions()));
         // replace polymorphic values in returnval and exval
         Value res = returnval == null ? null : replacePolymorphicValue(returnval, calledge_state, caller_entry_state, return_state);
         if (exval != null) {
             return_state.writeRegister(AbstractNode.EXCEPTION_REG, replacePolymorphicValue(exval, calledge_state, caller_entry_state, return_state));
         }
-        // merge summarized sets
-        return_state.getSummarized().add(calledge_state.getSummarized());
+        // merge renamings
+        return_state.getRenamings().add(calledge_state.getRenamings());
+        return_state.getPartitioning().addMaybePartitionedNodes(caller_state.getPartitioning().getMaybePartitionNodes());
         log.debug("mergeFunctionReturn(...) done");
         return res;
     }
 
     /**
      * Replaces the polymorphic properties of the given object.
-     * Used by {@link #mergeFunctionReturn(State, State, State, State, Summarized, Value, Value)}.
+     * Used by {@link #mergeFunctionReturn(State, State, State, State, Renamings, Value, Value)}.
      */
     private static void replacePolymorphicValues(Obj obj,
                                                  State calledge_state,
@@ -589,48 +604,48 @@ public class UserFunctionCalls {
             }
             if (res.isUnknown())
                 throw new AnalysisException("Unexpected value (property reference: " + p + ", edge object label: " + edge_objlabel + ")");
-            res = res.summarize(calledge_state.getSummarized());
+            res = res.rename(calledge_state.getRenamings());
         }
-        res = res.summarize(return_state.getSummarized());
+        res = res.rename(return_state.getRenamings());
         return v.replaceValue(res);
     }
 
     /**
-     * Summarizes the specified list of values.
+     * Renames the specified list of values and removes the partitions origined from nodes in removePartitionNodes.
      * Always returns a new list.
      */
-    private static List<Value> summarize(List<Value> vs, Summarized s) {
+    private static List<Value> renameAndRemovePartitions(List<Value> vs, Renamings s, Set<AbstractNode> removePartitionNodes) {
         List<Value> res = newList();
         for (int i = 0; i < vs.size(); i++) {
             Value v = vs.get(i);
-            res.add(i, v != null ? v.summarize(s) : null);
+            res.add(i, v != null ? PartitionedValue.removePartitions(v.rename(s), removePartitionNodes) : null);
         }
         return res;
     }
 
     /**
-     * Summarizes the store and registers according to the given summarization.
-     * Used by {@link #mergeFunctionReturn(State, State, State, State, Summarized, Value, Value)}.
+     * Renames the store and registers according to the given renamings.
+     * Used by {@link #mergeFunctionReturn(State, State, State, State, Renamings, Value, Value)}.
      */
-    private static void summarizeStoreAndRegisters(State state, Summarized s) {
+    private static void renameStoreAndRegisters(State state, Renamings s) {
         state.makeWritableStore();
         for (ObjectLabel objlabel : newList(state.getStore().keySet())) {
-            // summarize the object property values
+            // rename the object property values
             Obj obj = state.getObject(objlabel, false);
-            Obj summarized_obj = obj.summarize(s);
-            if (!summarized_obj.equals(obj))
-                state.putObject(objlabel, summarized_obj);
-            if (objlabel.isSingleton()) {
-                if (s.isMaybeSummarized(objlabel))
-                    state.propagateObj(objlabel.makeSummary(), state, objlabel, true, false);
-                if (s.isDefinitelySummarized(objlabel))
-                    state.removeObject(objlabel);
-            }
+            Obj renamed_obj = obj.rename(s);
+            if (!renamed_obj.equals(obj))
+                state.putObject(objlabel, renamed_obj);
+            Set<ObjectLabel> newobjlabels = s.rename(objlabel);
+            for (ObjectLabel newobjlabel : newobjlabels)
+                if (!newobjlabel.equals(objlabel))
+                    state.propagateObj(newobjlabel, state, objlabel, true, false);
+            if (!newobjlabels.contains(objlabel))
+                state.removeObject(objlabel);
         }
         List<Value> registers = state.getRegisters();
         for (int i = 0; i < registers.size(); i++)
             if (registers.get(i) != null)
-                registers.set(i, registers.get(i).summarize(s));
+                registers.set(i, registers.get(i).rename(s));
     }
 
     /**

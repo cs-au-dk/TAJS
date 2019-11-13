@@ -400,5 +400,7 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:657:11: [maybe] The
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:657:20: [maybe] The variable item has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:662:13: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:662:28: [maybe] The variable item has values with different types
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 4199 checks (with 0 expected failures)
+Soundness testing succeeded for 4167 checks (with 0 expected failures)

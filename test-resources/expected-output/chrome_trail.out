@@ -25,4 +25,4 @@ test-resources/src/chromeexperiments/trail.html: [maybe] Uncaught exception, con
 test-resources/src/chromeexperiments/trail.html:100:22: [maybe] Converting primitive number to object
 test-resources/src/chromeexperiments/trail.html:166:6: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/trail.html:169:19: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 756 checks (with 0 expected failures)
+Soundness testing succeeded for 749 checks (with 0 expected failures)

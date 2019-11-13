@@ -19,4 +19,4 @@ test-resources/src/sunspider/string-fasta.js:72:17: [maybe] Reading absent prope
 test-resources/src/sunspider/string-fasta.js:92:26: [maybe] Converting object to number
 test-resources/src/sunspider/string-fasta.js:94:1: [info] Abstract value: Num
 test-resources/src/sunspider/string-fasta.js:43:27: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 2850 checks (with 0 expected failures)
+Soundness testing succeeded for 2412 checks (with 0 expected failures)

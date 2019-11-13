@@ -44,4 +44,4 @@ test-resources/src/google/benchpress.js:368:10: [info] 'this' refers to multiple
 test-resources/src/google/benchpress.js:373:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google/benchpress.js:373:33: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google/benchpress.js:373:53: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 9390 checks (with 0 expected failures)
+Soundness testing succeeded for 8214 checks (with 0 expected failures)

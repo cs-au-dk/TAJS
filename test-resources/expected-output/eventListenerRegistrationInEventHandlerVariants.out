@@ -7,4 +7,4 @@ out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:10
 out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:16:2: [info] Abstract value: "direct_load_click_registration invoked"
 out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:17:47: [info] Abstract value: "indirect_load_click_registration invoked"
 out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:23:2: [info] Abstract value: "direct_click_load_registration invoked"
-Soundness testing succeeded for 54 checks (with 0 expected failures)
+Soundness testing succeeded for 52 checks (with 0 expected failures)

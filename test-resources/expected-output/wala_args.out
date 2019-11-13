@@ -2,4 +2,4 @@ test-resources/src/wala/args.js:22:1: [definite] Unreachable function wrong
 test-resources/src/wala/args.js:5:4: [maybe] TypeError, call to non-function
 test-resources/src/wala/args.js: [maybe] Uncaught exception, constructed at [test-resources/src/wala/args.js:5:4]
 test-resources/src/wala/args.js:5:4: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 55 checks (with 0 expected failures)
+Soundness testing succeeded for 56 checks (with 0 expected failures)

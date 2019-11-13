@@ -8,7 +8,7 @@ test-resources/src/micro/test187.js:3:1: [info] Abstract value: Undef
 test-resources/src/micro/test187.js:4:1: [info] Abstract value: true
 test-resources/src/micro/test187.js:5:1: [info] Abstract value: Undef
 test-resources/src/micro/test187.js:6:1: [info] Abstract value: false
-test-resources/src/micro/test187.js:7:1: [info] Abstract value: [@Object#node7]
+test-resources/src/micro/test187.js:7:1: [info] Abstract value: [@Object#node11]
 test-resources/src/micro/test187.js:10:1: [info] Abstract value: true
 test-resources/src/micro/test187.js:15:2: [info] Abstract value: false
 test-resources/src/micro/test187.js:16:2: [info] Abstract value: 7.0

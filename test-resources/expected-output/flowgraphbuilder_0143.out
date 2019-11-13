@@ -13,30 +13,40 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: constant[3.0,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:1:9)
-    node 6: constant[1.0,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:2:8)
-    node 7: ===[v5,v6,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:1:1)
-    node 8: if[v7](true-block:5,false-block:6) (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:1:1)
-    ->[block 5,block 6]
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
+    ->[block 5]
   block 5:
-    node 9: constant[5.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:3:2)
-    ->[block 9]
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6]
   block 6:
-    node 10: constant[2.0,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:6:8)
-    node 11: ===[v5,v6,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:1:1)
-    node 12: if[v7](true-block:7,false-block:8) (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:1:1)
-    ->[block 7,block 8]
+    node 8: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7]
   block 7:
-    node 13: constant[8.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:6:11)
-    ->[block 8]
+    node 9: constant[3.0,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:1:9)
+    node 10: constant[1.0,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:2:8)
+    node 11: ===[v8,v9,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:1:1)
+    node 12: if[v10](true-block:8,false-block:9) (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:1:1)
+    ->[block 8,block 9]
   block 8:
-    node 14: constant[19.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:7:12)
-    ->[block 9]
-  block 9: [exit-ordinary]
-    node 15: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js)
+    node 13: constant[5.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:3:2)
+    ->[block 12]
+  block 9:
+    node 14: constant[2.0,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:6:8)
+    node 15: ===[v8,v9,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:1:1)
+    node 16: if[v10](true-block:10,false-block:11) (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:1:1)
+    ->[block 10,block 11]
+  block 10:
+    node 17: constant[8.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:6:11)
+    ->[block 11]
+  block 11:
+    node 18: constant[19.0,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:7:12)
+    ->[block 12]
+  block 12: [exit-ordinary]
+    node 19: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js)
     ->[]
-  block 10: [exit-exceptional]
-    node 16: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js)
+  block 13: [exit-exceptional]
+    node 20: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0143.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0143.js:1:1: [definite] The conditional expression is always false

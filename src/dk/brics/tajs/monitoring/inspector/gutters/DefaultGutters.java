@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.monitoring.inspector.gutters;
 
+import dk.au.cs.casa.jer.entries.ModuleExportsEntry;
 import dk.brics.inspector.api.model.lines.Gutter;
 import dk.brics.inspector.api.model.lines.GutterKind;
 import dk.brics.inspector.api.model.lines.LineMap;
@@ -292,6 +293,7 @@ public class DefaultGutters implements GutterProvider {
             Path main = Options.get().getArguments().get(Options.get().getArguments().size() - 1);
             Path mainDir = main.getParent();
             Set<Integer> concreteLiveLines = LogFileHelper.makeLogParser(logFile).getEntries().stream()
+                    .filter(e -> !(e instanceof ModuleExportsEntry))
                     .map(e -> Pair.make(normalizeFileURL(PathAndURLUtils.toURL(mainDir.resolve(e.getSourceLocation().getFileName()))), e.getSourceLocation().getLineNumber()))
                     .filter(l -> url.equals(l.getFirst()))
                     .map(Pair::getSecond)

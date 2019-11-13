@@ -1,4 +1,4 @@
 test-resources/src/uneval/uneval14.html: [definite] Exceptional program exit is unreachable
 test-resources/src/uneval/uneval14.html:2:15: [info] Abstract value: 33.0
 TAJS-dynamic-code(test-resources/src/uneval/uneval14.html:4:1):1:1: [info] Abstract value: 3.0
-Soundness testing succeeded for 18 checks (with 0 expected failures)
+Soundness testing succeeded for 17 checks (with 0 expected failures)

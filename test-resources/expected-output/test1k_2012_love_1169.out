@@ -33,4 +33,4 @@ test-resources/src/1k2012love/1169.js:111:30: [maybe] Conversion to number yield
 test-resources/src/1k2012love/1169.js:111:33: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1169.js:111:42: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1169.js:111:45: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 352 checks (with 0 expected failures)
+Soundness testing succeeded for 351 checks (with 0 expected failures)

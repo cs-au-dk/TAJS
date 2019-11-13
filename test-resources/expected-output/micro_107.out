@@ -5,4 +5,4 @@ test-resources/src/micro/test107.js:10:4: [definite] Dead assignment, property d
 test-resources/src/micro/test107.js:11:4: [definite] The function product is invoked both as constructor and function
 test-resources/src/micro/test107.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test107.js:3:7: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 65 checks (with 0 expected failures)
+Soundness testing succeeded for 62 checks (with 0 expected failures)

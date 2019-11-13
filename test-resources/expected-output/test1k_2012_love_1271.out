@@ -8,5 +8,5 @@ test-resources/src/1k2012love/1271.js:157:12: [definite] Unreachable function
 test-resources/src/1k2012love/1271.js:159:25: [definite] Unreachable function
 test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1271.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1271.js:154:19, test-resources/src/1k2012love/shim.js:9:5]
-Disabling soundness testing for test-resources/src/1k2012love/1271.js entirely (116 uninspected soundness errors).
-Soundness testing succeeded for 144 checks (with 116 expected failures)
+Disabling soundness testing for test-resources/src/1k2012love/1271.js entirely (114 uninspected soundness errors).
+Soundness testing succeeded for 142 checks (with 114 expected failures)

@@ -326,4 +326,4 @@ test-resources/src/v8tests/number-tostring-small.js:391:1: [maybe] Converting pr
 test-resources/src/v8tests/number-tostring-small.js:392:1: [maybe] Converting primitive number to object
 test-resources/src/v8tests/number-tostring-small.js:393:1: [maybe] Converting primitive number to object
 test-resources/src/v8tests/number-tostring-small.js:394:1: [maybe] Converting primitive number to object
-Soundness testing succeeded for 1612 checks (with 0 expected failures)
+Soundness testing succeeded for 1616 checks (with 0 expected failures)

@@ -21,6 +21,7 @@ import dk.brics.tajs.analysis.KnownUnsoundnesses;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.flowgraph.jsnodes.DeclareFunctionNode;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.HostObject;
 import dk.brics.tajs.lattice.State;
@@ -39,7 +40,6 @@ import org.apache.log4j.Logger;
 import java.net.URL;
 import java.nio.file.Path;
 import java.util.Set;
-import java.util.function.Supplier;
 
 import static dk.brics.tajs.util.Collections.newSet;
 
@@ -64,13 +64,9 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
 
     private Solver.SolverInterface c;
 
-    private boolean scanning = false;
+    private boolean analysisCompleted = false;
 
-    private final Supplier<Boolean> analysisCompleted;
-
-    public SoundnessTesterMonitor(Supplier<Boolean> analysisCompleted) {
-        this.analysisCompleted = analysisCompleted;
-    }
+    public SoundnessTesterMonitor() { }
 
     @Override
     public void setSolverInterface(Solver.SolverInterface c) {
@@ -82,8 +78,23 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
      */
     @Override
     public void visitVariableOrProperty(AbstractNode node, String var, SourceLocation loc, Value value, Context context, State state) {
-        if (scanning && analysisCompleted.get()) {
+        if (analysisCompleted) {
             type_collector.record(var, loc, UnknownValueResolver.getRealValue(value, state), context);
+        }
+    }
+
+    @Override
+    public void visitNodeTransferPost(AbstractNode n, State s) {
+        if (c.isScanning()) {
+            if (n instanceof DeclareFunctionNode) {
+                DeclareFunctionNode declareFunctionNode = (DeclareFunctionNode) n;
+                if (!declareFunctionNode.isExpression()) {
+                    String functionName = declareFunctionNode.getFunction().getName();
+                    if (functionName != null) {
+                        type_collector.record(functionName, n.getSourceLocation(), s.readVariableDirect(functionName), s.getContext());
+                    }
+                }
+            }
         }
     }
 
@@ -92,7 +103,7 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
      */
     @Override
     public void visitNativeFunctionCall(AbstractNode n, HostObject hostobject, boolean num_actuals_unknown, int num_actuals, int min, int max) {
-        if (scanning && analysisCompleted.get() && hostobject.getAPI() == HostAPIs.DOCUMENT_OBJECT_MODEL) {
+        if (analysisCompleted && hostobject.getAPI() == HostAPIs.DOCUMENT_OBJECT_MODEL) {
             if (hostobject.toString().endsWith(" constructor") || hostobject.toString().endsWith(".constructor")) { // quite hacky, but robust
                 domObjectAllocationSites.add(n.getSourceLocation());
             }
@@ -106,8 +117,6 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
     public void visitPhasePre(AnalysisPhase phase) {
         if (phase == AnalysisPhase.ANALYSIS && Options.get().getSoundnessTesterOptions().generateBeforeAnalysis()) {
             generateLog();
-        } else if (phase == AnalysisPhase.SCAN) {
-            scanning = true;
         }
     }
 
@@ -116,7 +125,7 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
      */
     @Override
     public void visitPhasePost(AnalysisPhase phase) {
-        if (phase == AnalysisPhase.SCAN && analysisCompleted.get()) {
+        if (phase == AnalysisPhase.SCAN && analysisCompleted) {
             URL logFile = generateLog();
             if (logFile == null)
                 return;
@@ -152,6 +161,12 @@ public class SoundnessTesterMonitor extends DefaultAnalysisMonitoring {
             return null;
         }
         return logFile;
+    }
+
+    @Override
+    public void visitIterationDone(String msg) {
+        if (msg == null)
+            analysisCompleted = true;
     }
 
     /**

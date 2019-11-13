@@ -22,4 +22,4 @@ test-resources/src/1k2013spring/1309.js:21:50: [maybe] Converting primitive stri
 test-resources/src/1k2013spring/1309.js:22:45: [maybe] Converting object to string
 test-resources/src/1k2013spring/1309.js:22:45: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1309.js:46:44: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 472 checks (with 0 expected failures)
+Soundness testing succeeded for 470 checks (with 0 expected failures)

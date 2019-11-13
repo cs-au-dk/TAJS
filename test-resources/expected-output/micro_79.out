@@ -5,7 +5,7 @@ test-resources/src/micro/test79.js:17:20: [maybe] The variable e has values with
 test-resources/src/micro/test79.js:18:21: [maybe] The variable e has values with different types
 test-resources/src/micro/test79.js:21:16: [maybe] The variable glob has values with different types
 test-resources/src/micro/test79.js:12:2: [info] Abstract value: 30.0
-test-resources/src/micro/test79.js:17:5: [info] Abstract value: "30"|[@Object#node35]
+test-resources/src/micro/test79.js:17:5: [info] Abstract value: "30"|[@Object#node39]
 test-resources/src/micro/test79.js:18:5: [info] Abstract object: {ex:"yes",[[Prototype]]=[@Object.prototype[native]]}
 test-resources/src/micro/test79.js:21:1: [info] Abstract value: 42.0|"42"
 Soundness testing succeeded for 27 checks (with 0 expected failures)

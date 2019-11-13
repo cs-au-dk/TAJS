@@ -8,4 +8,4 @@ test-resources/src/v8tests/debug-setbreakpoint.js:59:1: [definite] Unreachable f
 test-resources/src/v8tests/debug-setbreakpoint.js:106:1: [definite] Unreachable function f
 test-resources/src/v8tests/debug-setbreakpoint.js:110:1: [definite] Unreachable function g
 test-resources/src/v8tests/debug-setbreakpoint.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-setbreakpoint.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 6 checks (with 0 expected failures)

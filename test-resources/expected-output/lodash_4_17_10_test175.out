@@ -1210,6 +1210,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17090:12: [definite] Unre
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11332:40: [maybe] Reading absent property length
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:516:20: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:581:19: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:639:32: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:750:12: [maybe] Converting object to string
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:750:12: [maybe] Converting primitive string to object
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1198:19: [maybe] Converting primitive number to object
@@ -1228,8 +1229,9 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:12325:26: [maybe] Reading
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/test-suite/4.17.10/lodash_test_175.html: [maybe] Uncaught exception, constructed at [HOST(es6-collections.js):122:65, HOST(es6-collections.js):268:36]
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1021:14: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3036:27: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3507:7: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:24: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 19753 checks (with 0 expected failures)
+Soundness testing succeeded for 19664 checks (with 0 expected failures)

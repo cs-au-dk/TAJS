@@ -1373,7 +1373,7 @@ public class Stats {
             /**
              * ReadVariableNode/ReadPropertyNode and contexts that yield values of different type.
              */
-            private Map<NodeAndContext, Integer> polymorphic_reads_context_sensitive = newMap();
+            private Map<NodeAndContext<Context>, Integer> polymorphic_reads_context_sensitive = newMap();
 
             public ScanPrecisionMonitor() {}
 

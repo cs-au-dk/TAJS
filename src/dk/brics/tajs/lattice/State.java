@@ -41,6 +41,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.Function;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newMap;
@@ -91,9 +92,9 @@ public class State implements IState<State, Context, CallEdge> {
     private boolean writable_execution_context; // for copy-on-write
 
     /**
-     * Maybe/definitely summarized objects since function entry. (Contains the singleton object labels.)
+     * Maybe/definitely renamings objects since function entry. (Contains the singleton object labels.)
      */
-    private Summarized summarized;
+    private Renamings renamings;
 
     /**
      * Register values.
@@ -127,13 +128,15 @@ public class State implements IState<State, Context, CallEdge> {
 
     private static int number_of_makewritable_registers; // TODO: currently not used
 
+    private PartitioningInfo partitioning;
+
     /**
      * Constructs a new none-state (representing the empty set of concrete states).
      */
     public State(GenericSolver<State, Context, CallEdge, ? extends ILatticeMonitoring, ?>.SolverInterface c, BasicBlock block) {
         this.c = c;
         this.block = block;
-        summarized = new Summarized();
+        renamings = new Renamings();
         extras = new StateExtras();
         must_reaching_defs = new MustReachingDefs();
         must_equals = new MustEquals();
@@ -164,26 +167,28 @@ public class State implements IState<State, Context, CallEdge> {
      * Sets this state to the same as the given one.
      */
     private void setToState(State x) {
-        summarized = new Summarized(x.summarized);
+        renamings = new Renamings(x.renamings);
         store_default = x.store_default = Canonicalizer.get().canonicalizeViaImmutableBox(x.store_default.freeze());
         extras = new StateExtras(x.extras);
         must_reaching_defs = new MustReachingDefs(x.must_reaching_defs);
         must_equals = new MustEquals(x.must_equals);
 //        if (Options.get().isCopyOnWriteDisabled()) {
-            store = newMap();
-            for (Map.Entry<ObjectLabel, Obj> xs : x.store.entrySet()) {
-                Obj obj =  Canonicalizer.get().canonicalizeViaImmutableBox(xs.getValue().freeze());
-                writeToStore(xs.getKey(), obj);
-                xs.setValue(obj); // write back canonicalized object
-            }
-            basis_store = x.basis_store;
-            writable_store = true;
-            execution_context = x.execution_context.clone();
-            registers = newList(x.registers);
-            writable_registers = true;
-            stacked_objlabels = newSet(x.stacked_objlabels);
-            stacked_funentries = newSet(x.stacked_funentries);
-            writable_stacked = true;
+        store = newMap();
+        for (Map.Entry<ObjectLabel, Obj> xs : x.store.entrySet()) {
+            Obj obj =  Canonicalizer.get().canonicalizeViaImmutableBox(xs.getValue().freeze());
+            writeToStore(xs.getKey(), obj);
+            xs.setValue(obj); // write back canonicalized object
+        }
+        basis_store = x.basis_store;
+        writable_store = true;
+        execution_context = x.execution_context.clone();
+        writable_execution_context = true;
+        registers = newList(x.registers);
+        writable_registers = true;
+        stacked_objlabels = newSet(x.stacked_objlabels);
+        stacked_funentries = newSet(x.stacked_funentries);
+        writable_stacked = true;
+        partitioning = new PartitioningInfo(x.partitioning);
 //        } else {
 //            store = x.store;
 //            basis_store = x.basis_store;
@@ -362,15 +367,15 @@ public class State implements IState<State, Context, CallEdge> {
     }
 
     /**
-     * Returns the summarized sets.
+     * Returns the renamings sets.
      */
-    public Summarized getSummarized() {
-        return summarized;
+    public Renamings getRenamings() {
+        return renamings;
     }
 
     /**
      * Sets the current store contents as the basis store.
-     * After this, objects in the basis store should never be summarized.
+     * After this, objects in the basis store should never be renamings.
      * Ignored if lazy propagation is enabled.
      */
     public void freezeBasisStore() {
@@ -497,7 +502,7 @@ public class State implements IState<State, Context, CallEdge> {
     @Override
     public void setToBottom() {
         basis_store = null;
-        summarized.clear();
+        renamings.clear();
         extras.setToBottom();
         must_reaching_defs.setToBottom();
         must_equals.setToBottom();
@@ -521,6 +526,7 @@ public class State implements IState<State, Context, CallEdge> {
         execution_context = new ExecutionContext();
         writable_execution_context = true;
         store_default = Obj.makeNone();
+        partitioning = new PartitioningInfo(newSet(), newSet());
     }
 
 //    /**
@@ -704,8 +710,8 @@ public class State implements IState<State, Context, CallEdge> {
 //                this_obj.setScopeChain(new_this_scopechain);
 //            }
 //        }
-//        summarized.getMaybeSummarized().addAll(other.summarized.getMaybeSummarized());
-//        summarized.getDefinitelySummarized().addAll(other.summarized.getDefinitelySummarized());
+//        renamings.getMaybeSummarized().addAll(other.renamings.getMaybeSummarized());
+//        renamings.getDefinitelySummarized().addAll(other.renamings.getDefinitelySummarized());
 //        return conflict;
 //    }
 
@@ -887,7 +893,8 @@ public class State implements IState<State, Context, CallEdge> {
         changed |= extras.propagate(s.extras);
         changed |= must_reaching_defs.propagate(s.must_reaching_defs);
         changed |= must_equals.propagate(s.must_equals);
-        changed |= summarized.join(s.summarized);
+        changed |= renamings.join(s.renamings);
+        changed |= partitioning.propagate(s.partitioning);
         if (!funentry) {
             for (int i = 0; i < registers.size() || i < s.registers.size(); i++) {
                 Value v1 = i < registers.size() ? registers.get(i) : null;
@@ -1161,7 +1168,7 @@ public class State implements IState<State, Context, CallEdge> {
         ObjectLabel singleton = summary.makeSingleton();
         Obj oldSummaryObj = getObject(summary, true);
         summarizeObj(singleton, summary, new Obj(oldSummaryObj));
-        summarized.removeSummarized(singleton, definitely_only_one);
+        renamings.removeSummarized(singleton, definitely_only_one);
         if (log.isDebugEnabled())
             log.debug("materializeObj(" + summary + ")");
         return singleton;
@@ -1169,7 +1176,7 @@ public class State implements IState<State, Context, CallEdge> {
     /**
      * Adds an object label, representing a new empty object, to the store.
      * Takes recency abstraction into account.
-     * Updates sets of summarized objects.
+     * Updates sets of renamings objects.
      */
     public void newObject(ObjectLabel objlabel) {
         if (basis_store != null && basis_store.containsKey(objlabel))
@@ -1236,7 +1243,7 @@ public class State implements IState<State, Context, CallEdge> {
                 store.remove(summary);
         }
         // now the old object is gone
-        summarized.addDefinitelySummarized(singleton);
+        renamings.addDefinitelySummarized(singleton);
         makeWritableStore();
         writeToStore(singleton, newObj);
     }
@@ -1536,7 +1543,7 @@ public class State implements IState<State, Context, CallEdge> {
 //            obj.remove(other_obj);
 //        }
 //        execution_context.remove(other.execution_context);
-//        // don't remove from summarized (lattice order of definitely_summarized is reversed, so removal isn't trivial)
+//        // don't remove from renamings (lattice order of definitely_summarized is reversed, so removal isn't trivial)
 //        for (int i = 0; i < registers.size(); i++) {
 //            Value v_this = registers.get(i);
 //            if (v_this != null) {
@@ -1573,14 +1580,7 @@ public class State implements IState<State, Context, CallEdge> {
         }
         if (!ScopeChain.isEmpty(ScopeChain.remove(execution_context.getScopeChain(), old.execution_context.getScopeChain())))
             b.append("\n      new scope chain: ").append(ScopeChain.remove(execution_context.getScopeChain(), old.execution_context.getScopeChain()));
-        temp = newSet(summarized.getMaybeSummarized());
-        temp.removeAll(old.summarized.getMaybeSummarized());
-        if (!temp.isEmpty())
-            b.append("\n      new maybe-summarized: ").append(temp);
-        temp = newSet(summarized.getDefinitelySummarized());
-        temp.removeAll(old.summarized.getDefinitelySummarized());
-        if (!temp.isEmpty())
-            b.append("\n      new definitely-summarized: ").append(temp);
+        renamings.diff(old.renamings, b);
         temp = newSet(stacked_objlabels);
         temp.removeAll(old.stacked_objlabels);
         if (!temp.isEmpty())
@@ -1602,7 +1602,7 @@ public class State implements IState<State, Context, CallEdge> {
     public String toString() {
         StringBuilder b = new StringBuilder("Abstract state:");
         b.append("\n  Execution context: ").append(execution_context);
-        b.append("\n  Summarized: ").append(summarized);
+        b.append("\n  Renamings: ").append(renamings);
         b.append("\n  Store (excluding basis and default objects): ");
         for (Map.Entry<ObjectLabel, Obj> me : sortedEntries(store, new ObjectLabel.Comparator())) {
             b.append("\n    ").append(me.getKey()).append(" (").append(me.getKey().getSourceLocation()).append("): ").append(me.getValue());
@@ -1623,6 +1623,8 @@ public class State implements IState<State, Context, CallEdge> {
         if (Options.get().isLazyDisabled())
             b.append("\n  Objects used by outer scopes: ").append(stacked_objlabels);
         b.append("\n  Functions in stack: ").append(stacked_funentries);
+        if (!partitioning.isEmpty())
+            b.append("\n  Partitioning: ").append(partitioning);
         return b.toString();
     }
 
@@ -1646,7 +1648,7 @@ public class State implements IState<State, Context, CallEdge> {
     public String toStringBrief() {
         StringBuilder b = new StringBuilder("Abstract state:");
         b.append("\n  Execution context: ").append(execution_context);
-        b.append("\n  Summarized: ").append(summarized);
+        b.append("\n  Renamings: ").append(renamings);
         b.append("\n  Store (excluding non-modified): ");
         printModifiedStore(b);
         //b.append("\n  Default object: ").append(store_default);
@@ -1895,7 +1897,7 @@ public class State implements IState<State, Context, CallEdge> {
             else
                 writeToStore(objlabel, Obj.makeNoneModified());
         }
-        // don't remove from summarized (it may contain dead object labels)
+        // don't remove from renamings (it may contain dead object labels)
         if (Options.get().isIntermediateStatesEnabled())
             if (log.isDebugEnabled())
                 log.debug("gc(): After: " + this);
@@ -1910,7 +1912,7 @@ public class State implements IState<State, Context, CallEdge> {
 
     /**
      * Finds live object labels (i.e. those reachable from the execution context, registers, or stacked object labels).
-     * Note that the summarized sets may contain dead object labels.
+     * Note that the renamings sets may contain dead object labels.
      *
      * @param extra       extra value that should be treated as root, ignored if null
      * @param entry_state at function entry
@@ -1927,9 +1929,9 @@ public class State implements IState<State, Context, CallEdge> {
         if (!Options.get().isLazyDisabled())
             for (ObjectLabel objlabel : store.keySet()) {
                 // some object represented by objlabel may originate from the caller (so it must be treated as live),
-                // unless it is a singleton object marked as definitely summarized or it is 'none' at function entry
-                if (!((objlabel.isSingleton() && summarized.isDefinitelySummarized(objlabel)) ||
-                        (noneAtEntry(objlabel, entry_state) && (objlabel.isSingleton() || (summarized.isMaybeSummarized(objlabel.makeSingleton()) && noneAtEntry(objlabel.makeSingleton(), entry_state))))))
+                // unless it is a singleton object marked as definitely new or it is 'none' at function entry
+                if (!((objlabel.isSingleton() && renamings.isDefinitelyNew(objlabel)) ||
+                        (noneAtEntry(objlabel, entry_state) && (objlabel.isSingleton() || (renamings.isMaybeNew(objlabel.makeSingleton()) && noneAtEntry(objlabel.makeSingleton(), entry_state))))))
                     live.add(objlabel);
             }
         LinkedHashSet<ObjectLabel> pending = new LinkedHashSet<>(live);
@@ -2010,8 +2012,6 @@ public class State implements IState<State, Context, CallEdge> {
      * @param ordinary if set, kill must-equals information for that register
      */
     public void writeRegister(int reg, Value value, boolean ordinary) {
-        if (ordinary)
-            value.assertNonEmpty();
         value = value.setBottomPropertyData();
         if (value.isUnknown())
             throw new AnalysisException("Unexpected 'unknown'");
@@ -2134,7 +2134,7 @@ public class State implements IState<State, Context, CallEdge> {
 
     /**
      * Introduces 'unknown' values in this state according to the given function entry state.
-     * Also clears modified flags and summarized sets.
+     * Also clears modified flags and renamings sets.
      */
     @Override
     public void localize(State s) {
@@ -2168,16 +2168,16 @@ public class State implements IState<State, Context, CallEdge> {
         } else {
             clearModified();
         }
-        summarized.clear();
+        renamings.clear();
         must_equals.setToBottom();
     }
 
     /**
-     * Clears effects and summarized sets (for function entry).
+     * Clears effects and renamings sets (for function entry).
      */
     public void clearEffects() {
         clearModified();
-        summarized.clear();
+        renamings.clear();
     }
 
     @Override
@@ -2191,5 +2191,83 @@ public class State implements IState<State, Context, CallEdge> {
     @Override
     public boolean transformInverse(CallEdge edge, BasicBlock callee, Context callee_context) {
         return false;
+    }
+
+    public PartitioningInfo getPartitioning() {
+        return partitioning;
+    }
+
+    /**
+     * Applies the given function to all (non-unknown) values in this state.
+     */
+    public void applyToAllValues(Function<Value, Value> func) {
+        // values in execution context
+        makeWritableExecutionContext();
+        execution_context.setThis(func.apply(execution_context.getThis()));
+        // values in registers
+        makeWritableRegisters();
+        for (int i = 0; i < registers.size(); i++) {
+            Value v1 = registers.get(i);
+            if (v1 == null)
+                continue;
+            registers.set(i, func.apply(v1));
+        }
+        // values in store
+        makeWritableStore();
+        for (ObjectLabel lab : store.keySet()) {
+            Obj obj = getObject(lab, false);
+
+            for (PKey propertyname : newList(obj.getPropertyNames())) { // TODO: need newList (to avoid ConcurrentModificationException)?
+                Value v = obj.getProperty(propertyname);
+                if (!v.isUnknown()) {
+                    Value new_v_to = func.apply(v);
+                    if (!new_v_to.equals(v)) {
+                        if (!obj.isWritable())
+                            obj = getObject(lab, true);
+                        obj.setProperty(propertyname, new_v_to);
+                    }
+                }
+            }
+
+            Value default_numeric = obj.getDefaultNumericProperty();
+            if (!default_numeric.isUnknown()) {
+                Value new_v1 = func.apply(default_numeric);
+                if (!new_v1.equals(default_numeric)) {
+                    if (!obj.isWritable())
+                        obj = getObject(lab, true);
+                    obj.setDefaultNumericProperty(new_v1);
+                }
+            }
+
+            Value default_other = obj.getDefaultOtherProperty();
+            if (!default_other.isUnknown()) {
+                Value new_default_other = func.apply(default_other);
+                if (!new_default_other.equals(default_other)) {
+                    if (!obj.isWritable())
+                        obj = getObject(lab, true);
+                    obj.setDefaultOtherProperty(new_default_other);
+                }
+            }
+
+            Value internal_value = obj.getInternalValue();
+            if (!internal_value.isUnknown()) {
+                Value new_internal_value = func.apply(internal_value);
+                if (!new_internal_value.equals(internal_value)) {
+                    if (!obj.isWritable())
+                        obj = getObject(lab, true);
+                    obj.setInternalValue(new_internal_value);
+                }
+            }
+
+            Value internal_prototype = obj.getInternalPrototype();
+            if (!internal_prototype.isUnknown()) {
+                Value new_internal_prototype = func.apply(internal_prototype);
+                if (!new_internal_prototype.equals(internal_prototype)) {
+                    if (!obj.isWritable())
+                        obj = getObject(lab, true);
+                    obj.setInternalPrototype(new_internal_prototype);
+                }
+            }
+        }
     }
 }

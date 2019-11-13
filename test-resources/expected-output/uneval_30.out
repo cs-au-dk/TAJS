@@ -23,4 +23,4 @@ TAJS-dynamic-code(test-resources/src/uneval/uneval30.html:33:93):1:15: [maybe] R
 TAJS-dynamic-code(test-resources/src/uneval/uneval30.html:29:12):1:15: [info] Reading from unknown property that may cause loss of precision
 TAJS-dynamic-code(test-resources/src/uneval/uneval30.html:31:77):1:15: [info] Reading from unknown property that may cause loss of precision
 TAJS-dynamic-code(test-resources/src/uneval/uneval30.html:33:93):1:15: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 145 checks (with 0 expected failures)
+Soundness testing succeeded for 144 checks (with 0 expected failures)

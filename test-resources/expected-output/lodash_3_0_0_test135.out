@@ -719,7 +719,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2057:19: [maybe] Reading ab
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2058:24: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3738:23: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3853:19: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:7973:14: [maybe] The variable value has values with different types
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:7973:21: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8761:27: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:9190:11: [maybe] Converting primitive string to object
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10081:26: [maybe] Reading absent property (computed name)
@@ -730,4 +730,4 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1971:22: [info] Reading fro
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2058:24: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10082:20: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10539:14: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 9792 checks (with 0 expected failures)
+Soundness testing succeeded for 9742 checks (with 0 expected failures)

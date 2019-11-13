@@ -14,38 +14,48 @@ fg2: <main> function()
     node 5: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 6: new[v5] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:15)
-    node 7: constant["a",v9] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:19)
-    node 8: write-property[v5,'a',v9] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:16)
-    ->[block 6]
+    node 6: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 7: constant[true,v6] (host-environment-sources-loader)
+    ->[block 5]
   block 5:
-    node 9: end-for-in(begin-node:10) (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
+    node 8: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 10: begin-for-in[v5,v6] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
+    node 9: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 11: has-next[v6,v7] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
-    node 12: if[v7](true-block:8,false-block:11) (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
-    ->[block 8,block 11] ~>[block 9]
+    node 10: new[v8] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:15)
+    node 11: constant["a",v12] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:19)
+    node 12: write-property[v8,'a',v12] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:16)
+    ->[block 9]
   block 8:
-    node 13: next-property[v6,v8] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:10)
-    node 14: write-variable[v8,'p'] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:10)
-    ->[block 10] ~>[block 9]
+    node 13: end-for-in(begin-node:14) (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
+    ->[block 9]
   block 9:
-    node 15: end-for-in(begin-node:10) (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
-    ->[block 13]
+    node 14: begin-for-in[v8,v9] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
+    ->[block 10]
   block 10:
-    node 16(~-1): end-for-in(begin-node:10) (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
-    ->[block 6]
+    node 15: has-next[v9,v10] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
+    node 16: if[v10](true-block:11,false-block:14) (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
+    ->[block 11,block 14] ~>[block 12]
   block 11:
-    node 17: end-for-in(begin-node:10) (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
-    ->[block 12]
-  block 12: [exit-ordinary]
-    node 18: return[v1] (test-resources/src/flowgraphbuilder/forin_only_continue.js)
+    node 17: next-property[v9,v11] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:10)
+    node 18: write-variable[v11,'p'] (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:10)
+    ->[block 13] ~>[block 12]
+  block 12:
+    node 19: end-for-in(begin-node:14) (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
+    ->[block 16]
+  block 13:
+    node 20(~-1): end-for-in(begin-node:14) (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
+    ->[block 9]
+  block 14:
+    node 21: end-for-in(begin-node:14) (test-resources/src/flowgraphbuilder/forin_only_continue.js:1:1)
+    ->[block 15]
+  block 15: [exit-ordinary]
+    node 22: return[v1] (test-resources/src/flowgraphbuilder/forin_only_continue.js)
     ->[]
-  block 13: [exit-exceptional]
-    node 19: exceptional-return (test-resources/src/flowgraphbuilder/forin_only_continue.js)
+  block 16: [exit-exceptional]
+    node 23: exceptional-return (test-resources/src/flowgraphbuilder/forin_only_continue.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/forin_only_continue.js: [definite] Exceptional program exit is unreachable

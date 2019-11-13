@@ -380,15 +380,14 @@ benchmarks/tajs/src/underscore/test-suite/objects/test148.html: [definite] Excep
 benchmarks/tajs/src/underscore/test-suite/objects/test148.html:8:1: [definite] Unreachable function notStrictEqual
 benchmarks/tajs/src/underscore/test-suite/objects/test148.html:9:1: [definite] Unreachable function start
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:929:21: [maybe] The variable obj has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1083:23: [maybe] The variable attrs has values with different types
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1084:9: [maybe] The variable object has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1085:15: [maybe] Converting primitive number to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1085:22: [maybe] The variable object has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1087:17: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1088:26: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1213:16: [maybe] The variable obj has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1088:11: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1088:26: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 4525 checks (with 0 expected failures)
+Soundness testing succeeded for 4487 checks (with 0 expected failures)

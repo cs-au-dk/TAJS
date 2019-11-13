@@ -5,11 +5,11 @@ test-resources/src/micro/testNumber.js:36:16: [maybe] Converting primitive numbe
 test-resources/src/micro/testNumber.js:6:1: [info] Abstract value: 0.0
 test-resources/src/micro/testNumber.js:7:1: [info] Abstract value: 42.66
 test-resources/src/micro/testNumber.js:8:1: [info] Abstract value: 1.0
-test-resources/src/micro/testNumber.js:17:1: [info] Abstract value: [@Number#node41{boxed-primitive=0.0}]
+test-resources/src/micro/testNumber.js:17:1: [info] Abstract value: [@Number#node45{boxed-primitive=0.0}]
 test-resources/src/micro/testNumber.js:18:1: [info] Abstract value: 0.0
-test-resources/src/micro/testNumber.js:19:1: [info] Abstract value: [@Number#node45{boxed-primitive=47.11}]
+test-resources/src/micro/testNumber.js:19:1: [info] Abstract value: [@Number#node49{boxed-primitive=47.11}]
 test-resources/src/micro/testNumber.js:20:1: [info] Abstract value: 47.11
-test-resources/src/micro/testNumber.js:21:1: [info] Abstract value: [@Number#node49{boxed-primitive=1.0}]
+test-resources/src/micro/testNumber.js:21:1: [info] Abstract value: [@Number#node53{boxed-primitive=1.0}]
 test-resources/src/micro/testNumber.js:22:1: [info] Abstract value: 1.0
 test-resources/src/micro/testNumber.js:25:1: [info] Abstract value: 0.0
 test-resources/src/micro/testNumber.js:26:1: [info] Abstract value: 1.7976931348623157E308

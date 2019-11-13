@@ -17,7 +17,6 @@
 package dk.brics.tajs.analysis.nativeobjects;
 
 import dk.brics.tajs.analysis.Conversion;
-import dk.brics.tajs.analysis.Exceptions;
 import dk.brics.tajs.analysis.FunctionCalls;
 import dk.brics.tajs.analysis.FunctionCalls.CallInfo;
 import dk.brics.tajs.analysis.InitialStateBuilder;
@@ -25,8 +24,8 @@ import dk.brics.tajs.analysis.PropVarOperations;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
+import dk.brics.tajs.lattice.Renamings;
 import dk.brics.tajs.lattice.State;
-import dk.brics.tajs.lattice.Summarized;
 import dk.brics.tajs.lattice.Value;
 
 /**
@@ -71,14 +70,6 @@ public class JSError {
                 return createErrorObject(InitialStateBuilder.URI_ERROR_PROTOTYPE, nativeobject, call, c);
             }
 
-            case ERROR_CAPTURESTACKTRACE: { // V8 specific
-                Value targetObj = FunctionCalls.readParameter(call, c.getState(), 0);
-                if (!targetObj.restrictToNotObject().isNone())
-                    Exceptions.throwTypeError(c);
-
-                c.getAnalysis().getPropVarOperations().writeProperty(targetObj.getObjectLabels(), Value.makeStr("stack"), Value.makeAnyStr());
-            }
-
             case ERROR_TOSTRING: { // 15.11.4.4
                 return evaluateToString();
             }
@@ -98,7 +89,7 @@ public class JSError {
         state.newObject(obj);
         pv.writeProperty(obj, "stack", Value.makeAnyStr());
         state.writeInternalPrototype(obj, Value.makeObject(proto));
-        Value message = FunctionCalls.readParameter(call, state, 0).summarize(new Summarized(obj));
+        Value message = FunctionCalls.readParameter(call, state, 0).rename(new Renamings(obj));
         if (message.isMaybeOtherThanUndef())
             c.getAnalysis().getPropVarOperations().writeProperty(obj, "message", Conversion.toString(message.restrictToNotUndef(), c).removeAttributes());
         return Value.makeObject(obj);

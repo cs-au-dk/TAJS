@@ -83,4 +83,4 @@ test-resources/src/1k2013spring/1533.js:103:44: [maybe] Reading absent property 
 test-resources/src/1k2013spring/1533.js:105:32: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1533.js:114:30: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1533.js:130:3: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 541 checks (with 0 expected failures)
+Soundness testing succeeded for 536 checks (with 0 expected failures)

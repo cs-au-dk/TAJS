@@ -15,13 +15,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:361:12: [definite] The cond
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:517:12: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:517:13: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:688:20: [definite] The conditional expression is always true
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:719:23: [definite] The conditional expression is always true
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:720:23: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:720:46: [definite] The conditional expression is always true
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:727:15: [definite] The conditional expression is always true
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:730:22: [definite] The conditional expression is always true
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:732:19: [definite] The conditional expression is always true
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:740:20: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:741:22: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:768:37: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:778:19: [definite] The conditional expression is always true
@@ -63,10 +57,10 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3846:26: [definite] Variabl
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3854:13: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3854:14: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3854:14: [definite] Variable allowIndexes is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3886:14: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:7537:19: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:7602:5: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:7746:20: [definite] The conditional expression is always true
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:7772:5: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:7772:9: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:7772:29: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:7924:7: [definite] The conditional expression is always true
@@ -78,6 +72,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8571:7: [definite] The cond
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8571:12: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8572:43: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8572:43: [definite] Variable length is null/undefined
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8575:14: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8601:7: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8604:7: [definite] The conditional expression is always false
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8608:16: [definite] The conditional expression is always false
@@ -234,7 +229,6 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:253:5: [definite] Dead assi
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:262:57: [definite] Reading 'this' yields the global object
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:262:65: [definite] Reading 'this' yields the global object
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:262:90: [definite] Reading 'this' yields the global object
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:753:42: [definite] Reading absent property now
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:909:7: [definite] Dead assignment, property funcDecomp is never read
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:909:38: [definite] Reading absent property WinRTError
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:917:7: [definite] Dead assignment, property funcNames is never read
@@ -327,7 +321,6 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:725:9: [definite] The varia
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:728:9: [definite] The variable setTimeout is never used
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:729:9: [definite] The variable splice is never used
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:731:9: [definite] The variable unshift is never used
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:742:9: [definite] Unreachable code
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:749:9: [definite] The variable nativeIsFinite is never used
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:751:9: [definite] The variable nativeMax is never used
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:752:9: [definite] The variable nativeMin is never used
@@ -480,7 +473,6 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3809:5: [definite] Unreacha
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3826:24: [definite] Unreachable function
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3844:11: [definite] The variable support is never used
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3868:5: [definite] Unreachable function toIterable
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3886:47: [definite] Unreachable code
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3911:5: [definite] Unreachable function chunk
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3942:5: [definite] Unreachable function compact
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:3977:5: [definite] Unreachable function difference
@@ -713,7 +705,28 @@ benchmarks/tajs/src/lodash/test-suite/3.0.0/lodash_test_1.html:21:9: [definite] 
 benchmarks/tajs/src/lodash/test-suite/3.0.0/lodash_test_1.html:22:15: [definite] Unreachable function
 benchmarks/tajs/src/lodash/test-suite/3.0.0/lodash_test_1.html:28:34: [definite] Unreachable code
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:672:17: [maybe] Reading absent property Array
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:674:17: [maybe] Reading absent property Error
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:675:20: [maybe] Reading absent property Function
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:676:16: [maybe] Reading absent property Math
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:677:18: [maybe] Reading absent property Number
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:678:18: [maybe] Reading absent property Object
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:679:18: [maybe] Reading absent property RegExp
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:680:18: [maybe] Reading absent property String
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:681:21: [maybe] Reading absent property TypeError
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:688:32: [maybe] Reading absent property window
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:710:19: [maybe] Reading absent property _
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:719:46: [maybe] Reading absent property ArrayBuffer
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:720:61: [maybe] Reading absent property slice
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:722:24: [maybe] Reading absent property clearTimeout
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:727:30: [maybe] Reading absent property Set
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:728:22: [maybe] Reading absent property setTimeout
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:730:44: [maybe] Reading absent property Uint8Array
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:732:38: [maybe] Reading absent property WeakMap
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:740:36: [maybe] Reading absent property Float64Array
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:749:26: [maybe] Reading absent property isFinite
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:753:42: [maybe] Reading absent property now of host object
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:755:26: [maybe] Reading absent property parseInt
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:768:52: [maybe] Reading absent property BYTES_PER_ELEMENT
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8569:22: [maybe] Reading absent property length
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10743:32: [maybe] Reading absent property map
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10744:29: [maybe] Reading absent property first
@@ -721,6 +734,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10745:31: [maybe] Reading a
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10746:29: [maybe] Reading absent property rest
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:714:7: [maybe] Converting primitive string to object
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:909:61: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1541:19: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1542:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1942:34: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1970:19: [maybe] Reading absent property (computed name)
@@ -741,4 +755,4 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1971:22: [info] Reading fro
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2058:24: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10082:20: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10539:14: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 10939 checks (with 0 expected failures)
+Soundness testing succeeded for 10888 checks (with 0 expected failures)

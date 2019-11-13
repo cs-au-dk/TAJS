@@ -13,4 +13,4 @@ test-resources/src/micro/test202.js:27:3: [maybe] Converting primitive string to
 test-resources/src/micro/test202.js:37:1: [info] Abstract value: "ajaxError"
 test-resources/src/micro/test202.js:38:1: [info] Abstract value: (PrefixStr[ajax]){"ajaxComplete","ajaxError"}
 test-resources/src/micro/test202.js:39:1: [info] Abstract value: PrefixStr[ajax]
-Soundness testing succeeded for 177 checks (with 0 expected failures)
+Soundness testing succeeded for 172 checks (with 0 expected failures)

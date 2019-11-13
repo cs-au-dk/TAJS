@@ -14,38 +14,48 @@
     node 5: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 6: read-variable['foo',v5,-] (test-resources/src/micro/test73simple.js:5:5)
+    node 6: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 7: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 7: construct[-,v5,-] (test-resources/src/micro/test73simple.js:5:1)
+    node 8: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 8: read-variable['foo',v6,-] (test-resources/src/micro/test73simple.js:6:5)
+    node 9: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: construct[-,v6,-] (test-resources/src/micro/test73simple.js:6:1)
+    node 10: read-variable['foo',v8,-] (test-resources/src/micro/test73simple.js:5:5)
     ->[block 8]
-  block 8: [exit-ordinary]
-    node 10: return[v1] (test-resources/src/micro/test73simple.js)
+  block 8:
+    node 11: construct[-,v8,-] (test-resources/src/micro/test73simple.js:5:1)
+    ->[block 9]
+  block 9:
+    node 12: read-variable['foo',v9,-] (test-resources/src/micro/test73simple.js:6:5)
+    ->[block 10]
+  block 10:
+    node 13: construct[-,v9,-] (test-resources/src/micro/test73simple.js:6:1)
+    ->[block 11]
+  block 11: [exit-ordinary]
+    node 14: return[v1] (test-resources/src/micro/test73simple.js)
     ->[]
-  block 9: [exit-exceptional]
-    node 11: exceptional-return (test-resources/src/micro/test73simple.js)
+  block 12: [exit-exceptional]
+    node 15: exceptional-return (test-resources/src/micro/test73simple.js)
     ->[]
 function foo()
-  block 10: [entry]
-    node 12: constant[undefined,v1] (test-resources/src/micro/test73simple.js:1:1)
-    ->[block 11]
-  block 11:
-    node 13: read-variable['this',v4,-] (test-resources/src/micro/test73simple.js:2:20)
-    ->[block 12]
-  block 12:
-    node 14: call[TAJS_dumpValue,v4,-] (test-resources/src/micro/test73simple.js:2:5)
-    ->[block 13]
-  block 13: [exit-ordinary]
-    node 15: return[v1] (test-resources/src/micro/test73simple.js:1:1)
+  block 13: [entry]
+    node 16: constant[undefined,v1] (test-resources/src/micro/test73simple.js:1:1)
+    ->[block 14]
+  block 14:
+    node 17: read-variable['this',v4,-] (test-resources/src/micro/test73simple.js:2:20)
+    ->[block 15]
+  block 15:
+    node 18: call[TAJS_dumpValue,v4,-] (test-resources/src/micro/test73simple.js:2:5)
+    ->[block 16]
+  block 16: [exit-ordinary]
+    node 19: return[v1] (test-resources/src/micro/test73simple.js:1:1)
     ->[]
-  block 14: [exit-exceptional]
-    node 16: exceptional-return (test-resources/src/micro/test73simple.js:1:1)
+  block 17: [exit-exceptional]
+    node 20: exceptional-return (test-resources/src/micro/test73simple.js:1:1)
     ->[]
 
 <main> function()
@@ -64,41 +74,51 @@ function foo()
     node 5: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 6: read-variable['foo',v5,-] (test-resources/src/micro/test73simple.js:5:5)
+    node 6: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 7: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 7: construct[-,v5,-] (test-resources/src/micro/test73simple.js:5:1)
+    node 8: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 8: read-variable['foo',v6,-] (test-resources/src/micro/test73simple.js:6:5)
+    node 9: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: construct[-,v6,-] (test-resources/src/micro/test73simple.js:6:1)
+    node 10: read-variable['foo',v8,-] (test-resources/src/micro/test73simple.js:5:5)
     ->[block 8]
-  block 8: [exit-ordinary]
-    node 10: return[v1] (test-resources/src/micro/test73simple.js)
+  block 8:
+    node 11: construct[-,v8,-] (test-resources/src/micro/test73simple.js:5:1)
+    ->[block 9]
+  block 9:
+    node 12: read-variable['foo',v9,-] (test-resources/src/micro/test73simple.js:6:5)
+    ->[block 10]
+  block 10:
+    node 13: construct[-,v9,-] (test-resources/src/micro/test73simple.js:6:1)
+    ->[block 11]
+  block 11: [exit-ordinary]
+    node 14: return[v1] (test-resources/src/micro/test73simple.js)
     ->[]
-  block 9: [exit-exceptional]
-    node 11: exceptional-return (test-resources/src/micro/test73simple.js)
+  block 12: [exit-exceptional]
+    node 15: exceptional-return (test-resources/src/micro/test73simple.js)
     ->[]
 function foo()
-  block 10: [entry]
-    node 12: constant[undefined,v1] (test-resources/src/micro/test73simple.js:1:1)
-    ->[block 11]
-  block 11:
-    node 13: read-variable['this',v4,-] (test-resources/src/micro/test73simple.js:2:20)
-    ->[block 12]
-  block 12:
-    node 14: call[TAJS_dumpValue,v4,-] (test-resources/src/micro/test73simple.js:2:5)
-    ->[block 13]
-  block 13: [exit-ordinary]
-    node 15: return[v1] (test-resources/src/micro/test73simple.js:1:1)
+  block 13: [entry]
+    node 16: constant[undefined,v1] (test-resources/src/micro/test73simple.js:1:1)
+    ->[block 14]
+  block 14:
+    node 17: read-variable['this',v4,-] (test-resources/src/micro/test73simple.js:2:20)
+    ->[block 15]
+  block 15:
+    node 18: call[TAJS_dumpValue,v4,-] (test-resources/src/micro/test73simple.js:2:5)
+    ->[block 16]
+  block 16: [exit-ordinary]
+    node 19: return[v1] (test-resources/src/micro/test73simple.js:1:1)
     ->[]
-  block 14: [exit-exceptional]
-    node 16: exceptional-return (test-resources/src/micro/test73simple.js:1:1)
+  block 17: [exit-exceptional]
+    node 20: exceptional-return (test-resources/src/micro/test73simple.js:1:1)
     ->[]
 
 test-resources/src/micro/test73simple.js: [definite] Exceptional program exit is unreachable
-test-resources/src/micro/test73simple.js:2:5: [info] Abstract value: [@Object#node7]
-test-resources/src/micro/test73simple.js:2:5: [info] Abstract value: [@Object#node9]
-Soundness testing succeeded for 14 checks (with 0 expected failures)
+test-resources/src/micro/test73simple.js:2:5: [info] Abstract value: [@Object#node11]
+test-resources/src/micro/test73simple.js:2:5: [info] Abstract value: [@Object#node13]
+Soundness testing succeeded for 13 checks (with 0 expected failures)

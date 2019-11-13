@@ -95,4 +95,4 @@ test-resources/src/1k2012love/1188.js:64:31: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1188.js:66:26: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1188.js:70:60: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1188.js:84:14: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 224 checks (with 1 expected failures)
+Soundness testing succeeded for 222 checks (with 1 expected failures)

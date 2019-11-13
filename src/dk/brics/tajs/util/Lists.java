@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -83,5 +84,16 @@ public final class Lists {
      */
     public static <T> boolean isEmpty(final List<T> list) {
         return list == null || list.isEmpty();
+    }
+
+    /**
+     * Returns a new list that contains the concatenation of the given lists.
+     */
+    @SafeVarargs
+    public static <T> List<T> concat(List<T> ...lists) {
+        List<T> res = new ArrayList<>();
+        for (List<T> list : lists)
+            res.addAll(list);
+        return res;
     }
 }

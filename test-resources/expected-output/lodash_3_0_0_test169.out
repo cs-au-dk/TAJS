@@ -92,7 +92,6 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8622:15: [definite] The con
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:9189:14: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:9189:15: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:9344:9: [definite] The conditional expression is always false
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10058:27: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10077:14: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10085:9: [definite] The conditional expression is always true
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10089:15: [definite] The conditional expression is always false
@@ -715,4 +714,4 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2058:24: [info] Reading fro
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10082:20: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10091:49: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10539:14: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 9915 checks (with 0 expected failures)
+Soundness testing succeeded for 9861 checks (with 0 expected failures)

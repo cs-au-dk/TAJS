@@ -12,4 +12,4 @@ test-resources/src/1k2013spring/1334.js:40:29: [maybe] ReferenceError, reading a
 test-resources/src/1k2013spring/1334.js:40:42: [maybe] ReferenceError, reading absent variable c
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1334.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1334.js:35:29, test-resources/src/1k2013spring/1334.js:35:42, test-resources/src/1k2013spring/1334.js:40:29, test-resources/src/1k2013spring/1334.js:40:42, test-resources/src/1k2013spring/shim.js:9:5]
-Soundness testing succeeded for 154 checks (with 0 expected failures)
+Soundness testing succeeded for 152 checks (with 0 expected failures)

@@ -176,37 +176,27 @@ public final class ScopeChain {
 //    }
 
     /**
-     * Constructs a scope chain as a copy of the given one but with object labels summarized.
+     * Constructs a scope chain as a copy of the given one but with object labels renamed.
      */
-    public static ScopeChain summarize(ScopeChain sc, Summarized s) {
-        return summarize(sc, s, Collections.newMap());
+    public static ScopeChain rename(ScopeChain sc, Renamings s) {
+        return rename(sc, s, Collections.newMap());
     }
 
     /**
-     * Summarizes this scope chain.
+     * Renames objects in this scope chain.
      */
-    public static ScopeChain summarize(ScopeChain sc, Summarized s, Map<ScopeChain, ScopeChain> summarize_cache) {
+    public static ScopeChain rename(ScopeChain sc, Renamings s, Map<ScopeChain, ScopeChain> renaming_cache) {
         if (sc == null)
             return null;
         if (s == null)
             return sc;
-        ScopeChain cs = summarize_cache.get(sc);
+        ScopeChain cs = renaming_cache.get(sc);
         if (cs == null) {
             Set<ObjectLabel> newobj = newSet();
-            for (ObjectLabel l : sc.obj) {
-                if (l.isSingleton()) {
-                    if (s.isMaybeSummarized(l)) {
-                        newobj.add(l.makeSummary());
-                        if (!s.isDefinitelySummarized(l))
-                            newobj.add(l);
-                    } else
-                        newobj.add(l);
-                } else
-                    newobj.add(l);
-            }
-            ScopeChain n = summarize(sc.next, s, summarize_cache);
-            cs = make(newobj, n);
-            summarize_cache.put(sc, cs);
+            for (ObjectLabel l : sc.obj)
+                newobj.addAll(s.rename(l));
+            cs = make(newobj, rename(sc.next, s, renaming_cache));
+            renaming_cache.put(sc, cs);
         }
         return cs;
     }

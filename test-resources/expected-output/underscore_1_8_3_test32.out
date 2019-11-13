@@ -367,8 +367,10 @@ benchmarks/tajs/src/underscore/test-suite/chaining/test32.html:13:15: [maybe] Re
 benchmarks/tajs/src/underscore/test-suite/chaining/test32.html:13:15: [maybe] Reading absent property select
 benchmarks/tajs/src/underscore/test-suite/chaining/test32.html:13:15: [maybe] Reading absent property sortBy
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1494:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1496:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1525:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 4258 checks (with 0 expected failures)
+Soundness testing succeeded for 4212 checks (with 0 expected failures)

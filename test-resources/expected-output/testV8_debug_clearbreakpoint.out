@@ -7,4 +7,4 @@ test-resources/src/v8tests/debug-clearbreakpoint.js:47:1: [definite] Unreachable
 test-resources/src/v8tests/debug-clearbreakpoint.js:58:1: [definite] Unreachable function listener
 test-resources/src/v8tests/debug-clearbreakpoint.js:92:1: [definite] Unreachable function g
 test-resources/src/v8tests/debug-clearbreakpoint.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-clearbreakpoint.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 5 checks (with 0 expected failures)

@@ -1,5 +1,5 @@
 out/temp-sources/TestMicro.symbol1.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.symbol1.js:5:1: [info] Abstract value: [*Symbol#node11]
+out/temp-sources/TestMicro.symbol1.js:5:1: [info] Abstract value: [*Symbol#node15]
 out/temp-sources/TestMicro.symbol1.js:6:1: [info] Abstract value: [@Symbol.iterator[native]]
 out/temp-sources/TestMicro.symbol1.js:7:1: [info] Abstract value: [@Symbol.unscopables[native]]
 out/temp-sources/TestMicro.symbol1.js:8:1: [info] Abstract value: [@Symbol.species[native]]

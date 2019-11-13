@@ -23,16 +23,15 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.lattice.Bool;
-import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ExecutionContext;
-import dk.brics.tajs.lattice.FreeVariablePartitioning;
+import dk.brics.tajs.lattice.FunctionPartitions;
+import dk.brics.tajs.lattice.FunctionTypeSignatures;
 import dk.brics.tajs.lattice.ObjectLabel;
 import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.Str;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
-import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.solver.Message.Severity;
 import dk.brics.tajs.util.AnalysisException;
@@ -41,12 +40,10 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 import static dk.brics.tajs.util.Collections.newList;
-import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
 
 /**
@@ -109,7 +106,7 @@ public class Conversion {
             tostring = UnknownValueResolver.getRealValue(tostring, s);
             State tostringState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
             c.setState(tostringState);
-            result = convertToStringOrValueOf(obj, tostring.getObjectLabels(), true, c);
+            result = convertToStringOrValueOf(obj, tostring.getObjectLabels(), true, c, tostring.getFunctionPartitions());
             result = UnknownValueResolver.getRealValue(result, tostringState);
             c.setState(s);
             if (!isMaybeNonCallable(tostring)) {
@@ -122,7 +119,7 @@ public class Conversion {
                 valueof = UnknownValueResolver.getRealValue(valueof, s);
                 State valueOfState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
                 c.setState(valueOfState);
-                Value result2 = convertToStringOrValueOf(obj, valueof.getObjectLabels(), false, c);
+                Value result2 = convertToStringOrValueOf(obj, valueof.getObjectLabels(), false, c, valueof.getFunctionPartitions());
                 result2 = UnknownValueResolver.getRealValue(result2, valueOfState);
                 result = result.restrictToNotObject().join(result2);
                 c.setState(s);
@@ -149,7 +146,7 @@ public class Conversion {
             valueof = UnknownValueResolver.getRealValue(valueof, s);
             State valueofState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
             c.setState(valueofState);
-            result = convertToStringOrValueOf(obj, valueof.getObjectLabels(), false, c);
+            result = convertToStringOrValueOf(obj, valueof.getObjectLabels(), false, c, valueof.getFunctionPartitions());
             result = UnknownValueResolver.getRealValue(result, valueofState);
             c.setState(s);
             if (!isMaybeNonCallable(valueof)) {
@@ -162,7 +159,7 @@ public class Conversion {
                 tostring = UnknownValueResolver.getRealValue(tostring, s);
                 State toStringState = s.clone(); // TODO: no need to clone if certain that convertToStringOrValueOf will not call any user-defined functions
                 c.setState(toStringState);
-                Value result2 = convertToStringOrValueOf(obj, tostring.getObjectLabels(), true, c);
+                Value result2 = convertToStringOrValueOf(obj, tostring.getObjectLabels(), true, c, tostring.getFunctionPartitions());
                 result2 = UnknownValueResolver.getRealValue(result2, toStringState);
                 result = result.restrictToNotObject().join(result2);
                 c.setState(s);
@@ -202,7 +199,7 @@ public class Conversion {
      * @param objs     the toString or valueOf functions
      * @param toString true if toString, false if valueOf
      */
-    private static Value convertToStringOrValueOf(ObjectLabel thiss, Set<ObjectLabel> objs, boolean toString, Solver.SolverInterface c) {
+    private static Value convertToStringOrValueOf(ObjectLabel thiss, Set<ObjectLabel> objs, boolean toString, Solver.SolverInterface c, FunctionPartitions fvp) {
         List<Value> result = newList();
         BasicBlock implicitAfterCall = null;
         for (ObjectLabel obj : objs) {
@@ -282,7 +279,12 @@ public class Conversion {
                     }
 
                     @Override
-                    public FreeVariablePartitioning getFreeVariablePartitioning() {
+                    public FunctionPartitions getFunctionPartitions(ObjectLabel function) {
+                        return fvp;
+                    }
+
+                    @Override
+                    public FunctionTypeSignatures getFunctionTypeSignatures() {
                         return null;
                     }
                 }, c);
@@ -657,36 +659,36 @@ public class Conversion {
     }
 
     /**
-     * @see #toObject(AbstractNode, Value, boolean, GenericSolver.SolverInterface)
+     * @see #toObject(AbstractNode, Value, boolean, boolean, GenericSolver.SolverInterface)
      */
     public static Value toObject(AbstractNode node, Value v, Solver.SolverInterface c) {
-        return toObject(node, v, true, c);
+        return toObject(node, v, true, false, c);
     }
 
     /**
      * 9.9 ToObject, returning a Value.
      * Note that this may have side-effects on the current state!
-     * However, if the solver interface is null, no side-effects or messages are produced (but all object labels are still returned).
+     * @param no_sideeffects if true, no side-effects or messages are produced (but all object labels are still returned).
      */
-    public static Value toObject(AbstractNode node, Value v, boolean warnAboutCoercions, Solver.SolverInterface c) {
-        return Value.makeObject(toObjectLabels(node, v, warnAboutCoercions, c));
+    public static Value toObject(AbstractNode node, Value v, boolean warnAboutCoercions, boolean no_sideeffects, Solver.SolverInterface c) {
+        return v.applyFunction(v2 -> Value.makeObject(toObjectLabels(node, v2, warnAboutCoercions, no_sideeffects, c)).setFunctionPartitions(v2.getFunctionPartitions()));
     }
 
     /**
-     * @see #toObjectLabels(AbstractNode, Value, boolean, GenericSolver.SolverInterface)
+     * @see #toObjectLabels(AbstractNode, Value, boolean, boolean, GenericSolver.SolverInterface)
      */
     public static Set<ObjectLabel> toObjectLabels(AbstractNode node, Value v, Solver.SolverInterface c) {
-        return toObjectLabels(node, v, true, c);
+        return toObjectLabels(node, v, true, false, c);
     }
 
     /**
      * 9.9 ToObject, returning a set of object labels.
      * Note that this may have side-effects on the current state!
-     * However, if the solver interface is null, no side-effects or messages are produced (but all object labels are still returned).
+     * @param no_sideeffects if true, no side-effects or messages are produced (but all object labels are still returned).
      */
-    public static Set<ObjectLabel> toObjectLabels(AbstractNode node, Value v, boolean warnAboutCoercions, Solver.SolverInterface c) {
+    public static Set<ObjectLabel> toObjectLabels(AbstractNode node, Value v, boolean warnAboutCoercions, boolean no_sideeffects, Solver.SolverInterface c) {
         Set<ObjectLabel> result = newSet();
-        State state = c != null ? c.getState() : null;
+        State state = c.getState();
         // Object: The result is the input argument (no conversion).
         result.addAll(v.getObjectLabels());
         // FIXME: ToObject of symbol should create *new* Symbol object (see https://www.ecma-international.org/ecma-262/#sec-toobject) - github #516
@@ -694,8 +696,8 @@ public class Conversion {
         if (!v.isNotNum()) {
             // Create a new Number object whose [[value]] property is set to the value of the number.
             Value vNum = v.restrictToNum();
-            ObjectLabel lNum = makeBoxedPrimitiveLabel(node, Kind.NUMBER, vNum);
-            if (c != null) {
+            ObjectLabel lNum = makeBoxedPrimitiveLabel(node, Kind.NUMBER, vNum, c);
+            if (!no_sideeffects) {
                 state.newObject(lNum);
                 state.writeInternalPrototype(lNum, Value.makeObject(InitialStateBuilder.NUMBER_PROTOTYPE));
                 state.writeInternalValue(lNum, vNum);
@@ -709,8 +711,8 @@ public class Conversion {
         if (!v.isNotBool()) {
             // Create a new Boolean object whose [[value]] property is set to the value of the boolean.
             Value vBool = v.restrictToBool();
-            ObjectLabel lBool = makeBoxedPrimitiveLabel(node, Kind.BOOLEAN, vBool);
-            if (c != null) {
+            ObjectLabel lBool = makeBoxedPrimitiveLabel(node, Kind.BOOLEAN, vBool, c);
+            if (!no_sideeffects) {
                 state.newObject(lBool);
                 state.writeInternalPrototype(lBool, Value.makeObject(InitialStateBuilder.BOOLEAN_PROTOTYPE));
                 state.writeInternalValue(lBool, vBool);
@@ -725,8 +727,8 @@ public class Conversion {
             // Create a new String object whose [[value]] property is set to the value of the string.
             Value vstring = v.restrictToStr();
             Value vlength = vstring.isMaybeSingleStr() ? Value.makeNum(vstring.getStr().length()) : Value.makeAnyNumUInt();
-            ObjectLabel lString = makeBoxedPrimitiveLabel(node, Kind.STRING, vstring);
-            if (c != null) {
+            ObjectLabel lString = makeBoxedPrimitiveLabel(node, Kind.STRING, vstring, c);
+            if (!no_sideeffects) {
                 state.newObject(lString);
                 state.writeInternalPrototype(lString, Value.makeObject(InitialStateBuilder.STRING_PROTOTYPE));
                 state.writeInternalValue(lString, vstring);
@@ -740,7 +742,7 @@ public class Conversion {
         // null to object
         if (!v.isNotNull()) {
             // Throw a TypeError exception.
-            if (c != null) {
+            if (!no_sideeffects) {
                 Exceptions.throwTypeError(c);
                 // TODO: warn about null-to-object conversion? (we already have AnalysisMonitor.visitPropertyAccess)
                 // c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "TypeError, attempt to convert null to object");
@@ -749,7 +751,7 @@ public class Conversion {
         // undefined to object
         if (!v.isNotUndef()) {
             // Throw a TypeError exception.
-            if (c != null) {
+            if (!no_sideeffects) {
                 Exceptions.throwTypeError(c);
                 // TODO: warn about undefined-to-object conversion? (we already have AnalysisMonitor.visitPropertyAccess)
                 // c.getMonitoring().addMessage(c.getNode(), Severity.HIGH, "TypeError, attempt to convert undefined to object");
@@ -758,26 +760,10 @@ public class Conversion {
         return result;
     }
 
-    private static Context.Qualifier boxedPrimitiveQualifier = new Context.Qualifier() {
-        @Override
-        public String toString() {
-            return "boxed-primitive";
-        }
-    };
-
     /**
      * Makes an object label for a boxed primitive, using heap context sensitivity to distinguish the underlying primitive values.
      */
-    private static ObjectLabel makeBoxedPrimitiveLabel(AbstractNode node, Kind kind, Value primitive) {
-        Map<Context.Qualifier, Value> qualifier = newMap();
-        qualifier.put(boxedPrimitiveQualifier, primitive);
-        Context heapContext;
-        boolean isConcretePrimitive = primitive.isMaybeSingleStr() || primitive.isMaybeSingleNum() || primitive.isMaybeTrueButNotFalse() || primitive.isMaybeFalseButNotTrue();
-        if (isConcretePrimitive || Options.get().isSpecializeAllBoxedPrimitivesEnabled()) {
-            heapContext = Context.makeQualifiers(qualifier);
-        } else {
-            heapContext = null;
-        }
-        return ObjectLabel.make(node, kind, heapContext);
+    private static ObjectLabel makeBoxedPrimitiveLabel(AbstractNode node, Kind kind, Value primitive, Solver.SolverInterface c) {
+        return ObjectLabel.make(node, kind, c.getAnalysis().getContextSensitivityStrategy().makeBoxedPrimitiveHeapContext(primitive));
     }
 }

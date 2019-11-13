@@ -1,0 +1,9 @@
+{
+  "name": "myapp",
+  "version": "0.1.0",
+  "main": "myapp.js",
+  "dependencies": {
+    "@types/date-now": "^1.0.0",
+    "date-now": "^1.0.1"
+  }
+}

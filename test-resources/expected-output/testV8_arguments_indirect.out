@@ -6,4 +6,4 @@ test-resources/src/v8tests/arguments-indirect.js:40:3: [definite] Unreachable co
 test-resources/src/v8tests/arguments-indirect.js:47:1: [definite] Unreachable code
 test-resources/src/v8tests/arguments-indirect.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/arguments-indirect.js:40:19]
 Disabling soundness testing for test-resources/src/v8tests/arguments-indirect.js entirely (44 uninspected soundness errors).
-Soundness testing succeeded for 77 checks (with 44 expected failures)
+Soundness testing succeeded for 78 checks (with 44 expected failures)

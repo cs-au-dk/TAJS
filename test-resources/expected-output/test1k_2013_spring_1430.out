@@ -486,4 +486,4 @@ test-resources/src/1k2013spring/1430.js:21:1: [info] Reading from unknown proper
 test-resources/src/1k2013spring/1430.js:22:34: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/1k2013spring/1430.js:24:1: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/1k2013spring/1430.js:25:35: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 370 checks (with 0 expected failures)
+Soundness testing succeeded for 369 checks (with 0 expected failures)

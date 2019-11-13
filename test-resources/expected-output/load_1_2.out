@@ -446,4 +446,4 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:2104:14: [maybe] Converting o
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:2104:14: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:444:27: [unsound] Assuming Date.now returns fixed value
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:2110:12: [unsound] Assuming Date.now returns fixed value
-Soundness testing succeeded for 1654 checks (with 0 expected failures)
+Soundness testing succeeded for 1639 checks (with 0 expected failures)

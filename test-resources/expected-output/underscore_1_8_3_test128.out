@@ -10,6 +10,7 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:930:5: [definite] T
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1100:5: [definite] The conditional expression is always false
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1100:40: [definite] Variable a is null/undefined
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1100:46: [definite] Variable b is null/undefined
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1131:7: [definite] The conditional expression is always false
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1136:11: [definite] The conditional expression is always true
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1136:32: [definite] The conditional expression is always true
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1207:15: [definite] The conditional expression is always true
@@ -215,8 +216,6 @@ benchmarks/tajs/src/underscore/test-suite/objects/test128.html:122:42: [definite
 benchmarks/tajs/src/underscore/test-suite/objects/test128.html:122:48: [definite] Dead assignment, property z is never read
 benchmarks/tajs/src/underscore/test-suite/objects/test128.html:155:20: [definite] Dead assignment, property value is never read
 benchmarks/tajs/src/underscore/test-suite/objects/test128.html:156:20: [definite] Dead assignment, property value is never read
-benchmarks/tajs/src/underscore/test-suite/objects/test128.html:185:10: [definite] Dead assignment, property everything is never read
-benchmarks/tajs/src/underscore/test-suite/objects/test128.html:187:10: [definite] Dead assignment, property everything is never read
 benchmarks/tajs/src/underscore/test-suite/objects/test128.html:187:42: [definite] Dead assignment, property that is never read
 benchmarks/tajs/src/underscore/test-suite/objects/test128.html:208:19: [definite] The function is invoked both as constructor and function
 benchmarks/tajs/src/underscore/test-suite/objects/test128.html:208:22: [definite] Dead assignment, property x is never read
@@ -411,12 +410,12 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1167:19: [maybe] Re
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1167:30: [maybe] ReferenceError, reading absent variable length
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:41:11: [maybe] Reading 'this' yields the global object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1135:19: [maybe] Reading absent property constructor
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1163:16: [maybe] Reading absent property length
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1164:22: [maybe] Reading absent property length
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1486:12: [maybe] Reading absent property _chain
 benchmarks/tajs/src/underscore/test-suite/objects/test128.html:208:19: [maybe] Reading absent property chain
 benchmarks/tajs/src/underscore/test-suite/objects/test128.html:211:21: [maybe] Reading absent property isEqual
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1098:9: [maybe] The variable a has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1098:15: [maybe] The variable b has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1098:25: [maybe] The variable a has values with different types
@@ -450,26 +449,16 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1126:16: [maybe] Co
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1126:17: [maybe] The variable a has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1126:23: [maybe] Converting object to number
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1126:24: [maybe] The variable b has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1131:11: [maybe] The variable a has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1131:35: [maybe] The variable b has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1153:11: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1153:40: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1163:16: [maybe] The variable a has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1164:22: [maybe] The variable b has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1167:17: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1167:17: [maybe] The variable a has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1167:28: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1167:28: [maybe] The variable b has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1177:15: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1178:35: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1178:35: [maybe] The variable a has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1178:43: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1178:43: [maybe] The variable b has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1189:15: [maybe] The variable a has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1189:18: [maybe] The variable b has values with different types
 benchmarks/tajs/src/underscore/test-suite/objects/test128.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1166:14, benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1167:19, benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1167:30]
 benchmarks/tajs/src/underscore/test-suite/objects/test128.html:46:18: [maybe] Converting primitive number to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1178:35: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1178:43: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 8846 checks (with 0 expected failures)
+Soundness testing succeeded for 8804 checks (with 0 expected failures)

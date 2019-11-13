@@ -5,206 +5,216 @@ fg2: <main> function()
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
     node 2: constant[true,v3] (host-environment-sources-loader)
-    ->[block 2] ~>[block 27]
+    ->[block 2] ~>[block 30]
   block 2:
     node 3: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
-    ->[block 3] ~>[block 27]
+    ->[block 3] ~>[block 30]
   block 3:
     node 4: call[-,v4,-] (host-environment-sources-loader)
-    ->[block 4] ~>[block 27]
+    ->[block 4] ~>[block 30]
   block 4:
-    node 5: function-expr[function(),v5] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
-    node 6: write-variable[v5,'g'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
-    node 7: read-variable['g',v7,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
-    node 8: new[v6] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:9:15)
-    node 9: constant[0.0,v8] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:10:12)
-    node 10: write-property[v6,'xxx14',v8] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:10:5)
-    node 11: constant[0.0,v9] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:11:11)
-    node 12: write-property[v6,'xxx9',v9] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:11:5)
-    node 13: constant[0.0,v10] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:12:11)
-    node 14: write-property[v6,'xxx5',v10] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:12:5)
-    node 15: constant[0.0,v11] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:13:11)
-    node 16: write-property[v6,'xxx6',v11] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:13:5)
-    node 17: constant[0.0,v12] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:14:11)
-    node 18: write-property[v6,'xxx7',v12] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:14:5)
-    node 19: constant[0.0,v13] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:15:11)
-    node 20: write-property[v6,'xxx8',v13] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:15:5)
-    node 21: constant[0.0,v14] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:16:11)
-    node 22: write-property[v6,'xxx0',v14] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:16:5)
-    node 23: constant[0.0,v15] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:17:11)
-    node 24: write-property[v6,'xxx1',v15] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:17:5)
-    node 25: constant[0.0,v16] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:18:11)
-    node 26: write-property[v6,'xxx2',v16] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:18:5)
-    node 27: constant[0.0,v17] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:19:11)
-    node 28: write-property[v6,'xxx3',v17] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:19:5)
-    node 29: function-expr[function(o),v18] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
-    node 30: write-property[v6,'f',v18] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:20:5)
-    node 31: write-property[v7,'prototype',v6] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
-    node 32: read-variable['g',v19,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:30:5)
-    ->[block 5] ~>[block 27]
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
+    ->[block 5] ~>[block 30]
   block 5:
-    node 33: construct[-,v19,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:30:1)
-    ->[block 6] ~>[block 27]
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6] ~>[block 30]
   block 6:
-    node 34: nop(eventDispatchers: entry) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 7,block 11] ~>[block 27]
+    node 8: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7] ~>[block 30]
   block 7:
-    node 35: event-dispatcher <CONTENT_LOADED> (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 10] ~>[block 8]
+    node 9: function-expr[function(),v8] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+    node 10: write-variable[v8,'g'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:1:1)
+    node 11: read-variable['g',v10,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
+    node 12: new[v9] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:9:15)
+    node 13: constant[0.0,v11] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:10:12)
+    node 14: write-property[v9,'xxx14',v11] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:10:5)
+    node 15: constant[0.0,v12] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:11:11)
+    node 16: write-property[v9,'xxx9',v12] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:11:5)
+    node 17: constant[0.0,v13] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:12:11)
+    node 18: write-property[v9,'xxx5',v13] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:12:5)
+    node 19: constant[0.0,v14] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:13:11)
+    node 20: write-property[v9,'xxx6',v14] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:13:5)
+    node 21: constant[0.0,v15] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:14:11)
+    node 22: write-property[v9,'xxx7',v15] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:14:5)
+    node 23: constant[0.0,v16] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:15:11)
+    node 24: write-property[v9,'xxx8',v16] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:15:5)
+    node 25: constant[0.0,v17] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:16:11)
+    node 26: write-property[v9,'xxx0',v17] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:16:5)
+    node 27: constant[0.0,v18] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:17:11)
+    node 28: write-property[v9,'xxx1',v18] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:17:5)
+    node 29: constant[0.0,v19] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:18:11)
+    node 30: write-property[v9,'xxx2',v19] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:18:5)
+    node 31: constant[0.0,v20] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:19:11)
+    node 32: write-property[v9,'xxx3',v20] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:19:5)
+    node 33: function-expr[function(o),v21] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+    node 34: write-property[v9,'f',v21] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:20:5)
+    node 35: write-property[v10,'prototype',v9] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:9:1)
+    node 36: read-variable['g',v22,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:30:5)
+    ->[block 8] ~>[block 30]
   block 8:
-    node 36: catch[v21] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    node 37: nop(eventDispatchers: exceptional exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 9,block 11]
+    node 37: construct[-,v22,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:30:1)
+    ->[block 9] ~>[block 30]
   block 9:
-    node 38: throw[v21] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[]
+    node 38: nop(eventDispatchers: entry) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 10,block 14] ~>[block 30]
   block 10:
-    node 39: nop(eventDispatchers: ordinary exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 11] ~>[block 27]
+    node 39: event-dispatcher <CONTENT_LOADED> (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 13] ~>[block 11]
   block 11:
-    node 40: nop(eventDispatchers: post DOMContentLoaded) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 7,block 12,block 16] ~>[block 27]
+    node 40: catch[v24] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 41: nop(eventDispatchers: exceptional exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 12,block 14]
   block 12:
-    node 41: event-dispatcher <LOAD> (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 15] ~>[block 13]
+    node 42: throw[v24] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
   block 13:
-    node 42: catch[v22] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    node 43: nop(eventDispatchers: exceptional exit Load) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 14,block 16]
+    node 43: nop(eventDispatchers: ordinary exit DOMContentLoaded) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 14] ~>[block 30]
   block 14:
-    node 44: throw[v22] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[]
+    node 44: nop(eventDispatchers: post DOMContentLoaded) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 10,block 15,block 19] ~>[block 30]
   block 15:
-    node 45: nop(eventDispatchers: ordinary exit Load) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 16] ~>[block 27]
+    node 45: event-dispatcher <LOAD> (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 18] ~>[block 16]
   block 16:
-    node 46: nop(eventDispatchers: post Load) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 12,block 17,block 21] ~>[block 27]
+    node 46: catch[v25] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 47: nop(eventDispatchers: exceptional exit Load) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 17,block 19]
   block 17:
-    node 47: event-dispatcher <OTHER> (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 20] ~>[block 18]
+    node 48: throw[v25] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
   block 18:
-    node 48: catch[v23] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    node 49: nop(eventDispatchers: exceptional exit Other) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 19,block 21]
+    node 49: nop(eventDispatchers: ordinary exit Load) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 19] ~>[block 30]
   block 19:
-    node 50: throw[v23] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[]
+    node 50: nop(eventDispatchers: post Load) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 15,block 20,block 24] ~>[block 30]
   block 20:
-    node 51: nop(eventDispatchers: ordinary exit Other) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 21] ~>[block 27]
+    node 51: event-dispatcher <OTHER> (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 23] ~>[block 21]
   block 21:
-    node 52: nop(eventDispatchers: post Other) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 17,block 22,block 26] ~>[block 27]
+    node 52: catch[v26] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 53: nop(eventDispatchers: exceptional exit Other) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 22,block 24]
   block 22:
-    node 53: event-dispatcher <UNLOAD> (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 25] ~>[block 23]
+    node 54: throw[v26] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
   block 23:
-    node 54: catch[v24] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    node 55: nop(eventDispatchers: exceptional exit Unload) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 24,block 26]
+    node 55: nop(eventDispatchers: ordinary exit Other) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 24] ~>[block 30]
   block 24:
-    node 56: throw[v24] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[]
+    node 56: nop(eventDispatchers: post Other) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 20,block 25,block 29] ~>[block 30]
   block 25:
-    node 57: nop(eventDispatchers: ordinary exit Unload) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 26] ~>[block 27]
+    node 57: event-dispatcher <UNLOAD> (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 28] ~>[block 26]
   block 26:
-    node 58: nop(eventDispatchers: post Unload) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 22,block 29] ~>[block 27]
+    node 58: catch[v27] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 59: nop(eventDispatchers: exceptional exit Unload) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 27,block 29]
   block 27:
-    node 59: catch[v20] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
-    ->[block 6,block 28]
+    node 60: throw[v27] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[]
   block 28:
-    node 60: throw[v20] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    node 61: nop(eventDispatchers: ordinary exit Unload) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 29] ~>[block 30]
+  block 29:
+    node 62: nop(eventDispatchers: post Unload) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 25,block 32] ~>[block 30]
+  block 30:
+    node 63: catch[v23] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+    ->[block 9,block 31]
+  block 31:
+    node 64: throw[v23] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[]
-  block 29: [exit-ordinary]
-    node 61: return[v1] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+  block 32: [exit-ordinary]
+    node 65: return[v1] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[]
-  block 30: [exit-exceptional]
-    node 62: exceptional-return (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
+  block 33: [exit-exceptional]
+    node 66: exceptional-return (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js)
     ->[]
 function()
-  block 31: [entry]
-    node 63: constant[undefined,v1] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
-    node 64: vardecl['o'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:2:9)
-    node 65: vardecl['var0'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:5:9)
-    ->[block 32]
-  block 32:
-    node 66: new[v3] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:2:13)
-    node 67: write-variable[v3,'o'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:2:9)
-    node 68: read-variable['o',v5,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
-    node 69: new[v4] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:3:12)
-    node 70: write-property[v5,'p1',v4] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
-    node 71: read-variable['this',v7,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
-    node 72: read-property[v7,'f',-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
-    node 73: read-variable['o',v8,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:4:12)
-    ->[block 33]
-  block 33:
-    node 74: call[v7,'f',v8,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
-    ->[block 34]
-  block 34:
-    node 75: read-variable['o',v10,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
-    node 76: read-property[v10,'p2',v9] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
-    node 77: write-variable[v9,'var0'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:5:9)
-    node 78: read-variable['var0',v14,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:6:17)
-    node 79: read-variable['undefined',v15,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:6:26)
-    node 80: !==[v14,v15,v13] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:6:17)
+  block 34: [entry]
+    node 67: constant[undefined,v1] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+    node 68: vardecl['o'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:2:9)
+    node 69: vardecl['var0'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:5:9)
     ->[block 35]
   block 35:
-    node 81: call[TAJS_assert,v13,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:6:5)
+    node 70: new[v3] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:2:13)
+    node 71: write-variable[v3,'o'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:2:9)
+    node 72: read-variable['o',v5,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
+    node 73: new[v4] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:3:12)
+    node 74: write-property[v5,'p1',v4] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:3:5)
+    node 75: read-variable['this',v7,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
+    node 76: read-property[v7,'f',-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
+    node 77: read-variable['o',v8,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:4:12)
     ->[block 36]
-  block 36: [exit-ordinary]
-    node 82: return[v1] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+  block 36:
+    node 78: call[v7,'f',v8,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:4:5)
+    ->[block 37]
+  block 37:
+    node 79: read-variable['o',v10,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
+    node 80: read-property[v10,'p2',v9] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16)
+    node 81: write-variable[v9,'var0'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:5:9)
+    node 82: read-variable['var0',v14,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:6:17)
+    node 83: read-variable['undefined',v15,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:6:26)
+    node 84: !==[v14,v15,v13] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:6:17)
+    ->[block 38]
+  block 38:
+    node 85: call[TAJS_assert,v13,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:6:5)
+    ->[block 39]
+  block 39: [exit-ordinary]
+    node 86: return[v1] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
     ->[]
-  block 37: [exit-exceptional]
-    node 83: exceptional-return (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
+  block 40: [exit-exceptional]
+    node 87: exceptional-return (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:1:5)
     ->[]
 function(o)
-  block 38: [entry]
-    node 84: constant[undefined,v1] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
-    node 85: vardecl['var1'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:13)
-    node 86: vardecl['var2'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:22:13)
-    ->[block 39]
-  block 39:
-    node 87: read-variable['document',v5,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
-    node 88: read-property[v5,'createElement',-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
-    node 89: constant["canvas",v6] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:43)
-    ->[block 40]
-  block 40:
-    node 90: call[v5,'createElement',v6,v3] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
-    ->[block 41]
-  block 41:
-    node 91: write-variable[v3,'var1'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:13)
-    node 92: read-variable['o',v9,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
-    node 93: read-property[v9,'p1',v8] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
-    node 94: read-property[v8,'xxx15',v7] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
-    node 95: write-variable[v7,'var2'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:22:13)
-    node 96: read-variable['var1',v11,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
-    node 97: constant[0.0,v10] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:23:22)
-    node 98: write-property[v11,'xxx10',v10] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
-    node 99: read-variable['o',v13,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
-    node 100: constant[0.0,v12] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:24:19)
-    node 101: write-property[v13,'xxx12',v12] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
-    node 102: read-variable['var2',v14,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:25:13)
-    node 103: if[v14](true-block:42,false-block:42) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:25:9)
+  block 41: [entry]
+    node 88: constant[undefined,v1] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+    node 89: vardecl['var1'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:13)
+    node 90: vardecl['var2'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:22:13)
     ->[block 42]
   block 42:
-    node 104: read-variable['o',v16,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
-    node 105: read-variable['var1',v18,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
-    node 106: read-property[v18,'getContext',-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    node 91: read-variable['document',v5,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
+    node 92: read-property[v5,'createElement',-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
+    node 93: constant["canvas",v6] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:43)
     ->[block 43]
   block 43:
-    node 107: call[v18,'getContext',v15] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    node 94: call[v5,'createElement',v6,v3] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:20)
     ->[block 44]
   block 44:
-    node 108: write-property[v16,'p2',v15] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
+    node 95: write-variable[v3,'var1'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:21:13)
+    node 96: read-variable['o',v9,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 97: read-property[v9,'p1',v8] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 98: read-property[v8,'xxx15',v7] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:22:20)
+    node 99: write-variable[v7,'var2'] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:22:13)
+    node 100: read-variable['var1',v11,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
+    node 101: constant[0.0,v10] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:23:22)
+    node 102: write-property[v11,'xxx10',v10] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:23:9)
+    node 103: read-variable['o',v13,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
+    node 104: constant[0.0,v12] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:24:19)
+    node 105: write-property[v13,'xxx12',v12] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9)
+    node 106: read-variable['var2',v14,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:25:13)
+    node 107: if[v14](true-block:45,false-block:45) (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:25:9)
     ->[block 45]
-  block 45: [exit-ordinary]
-    node 109: return[v1] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+  block 45:
+    node 108: read-variable['o',v16,v2] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
+    node 109: read-variable['var1',v18,-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    node 110: read-property[v18,'getContext',-] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    ->[block 46]
+  block 46:
+    node 111: call[v18,'getContext',v15] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16)
+    ->[block 47]
+  block 47:
+    node 112: write-property[v16,'p2',v15] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:27:9)
+    ->[block 48]
+  block 48: [exit-ordinary]
+    node 113: return[v1] (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
     ->[]
-  block 46: [exit-exceptional]
-    node 110: exceptional-return (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
+  block 49: [exit-exceptional]
+    node 114: exceptional-return (test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:20:8)
     ->[]
 
 test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:5:16: [definite] Property is null/undefined
@@ -225,4 +235,4 @@ test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:22:
 test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:24:9: [definite] Dead assignment, property xxx12 is never read
 test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js: [definite] Exceptional program exit is unreachable
 test-resources/src/flowgraphbuilder/testExpressionStatementResultRegister.js:27:16: [maybe] Converting undefined to string
-Soundness testing succeeded for 43 checks (with 0 expected failures)
+Soundness testing succeeded for 41 checks (with 0 expected failures)

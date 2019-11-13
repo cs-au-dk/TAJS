@@ -5,4 +5,4 @@ test-resources/src/v8tests/debug-ignore-breakpoints.js:33:5: [definite] The vari
 test-resources/src/v8tests/debug-ignore-breakpoints.js:35:1: [definite] Unreachable function listener
 test-resources/src/v8tests/debug-ignore-breakpoints.js:45:1: [definite] Unreachable function f
 test-resources/src/v8tests/debug-ignore-breakpoints.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-ignore-breakpoints.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 3 checks (with 0 expected failures)

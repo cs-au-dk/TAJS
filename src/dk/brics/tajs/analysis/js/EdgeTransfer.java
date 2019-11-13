@@ -23,10 +23,16 @@ import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.flowgraph.jsnodes.EventDispatcherNode;
 import dk.brics.tajs.flowgraph.jsnodes.IfNode;
 import dk.brics.tajs.lattice.Context;
+import dk.brics.tajs.lattice.PartitionedValue;
+import dk.brics.tajs.lattice.PartitionToken;
 import dk.brics.tajs.lattice.UnknownValueResolver;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.options.Options;
 import dk.brics.tajs.solver.IEdgeTransfer;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Transfer for flow graph edges.
@@ -34,8 +40,6 @@ import dk.brics.tajs.solver.IEdgeTransfer;
 public class EdgeTransfer implements IEdgeTransfer<Context> {
 
     private Solver.SolverInterface c;
-
-    private Filtering filtering;
 
     /**
      * Constructs a new EdgeTransfer object.
@@ -45,8 +49,7 @@ public class EdgeTransfer implements IEdgeTransfer<Context> {
     /**
      * Initializes the connection to the solver.
      */
-    public void setSolverInterface(Filtering filtering, Solver.SolverInterface c) {
-        this.filtering = filtering;
+    public void setSolverInterface(Solver.SolverInterface c) {
         this.c = c;
     }
 
@@ -83,13 +86,14 @@ public class EdgeTransfer implements IEdgeTransfer<Context> {
                     // restrict the conditional register
                     if (ifnode.getSuccTrue() == dst) {
                         // at true branch, cond must be truthy
-                        if (filtering.assumeTruthy(ifnode.getConditionRegister()))
+                        if (c.getAnalysis().getFiltering().assumeTruthy(ifnode.getConditionRegister()))
                             return null;
                     } else {
                         // at false branch, cond must be falsy
-                        if (filtering.assumeFalsy(ifnode.getConditionRegister()))
+                        if (c.getAnalysis().getFiltering().assumeFalsy(ifnode.getConditionRegister()))
                             return null;
                     }
+                    Partitioning.controlSensitivityForPartitions(ifnode.getConditionRegister(), ifnode.getSuccTrue() == dst, c.getState());
                 }
             }
         }

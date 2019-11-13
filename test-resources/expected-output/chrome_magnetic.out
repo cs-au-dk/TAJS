@@ -37,4 +37,4 @@ test-resources/src/chromeexperiments/magnetic.html:299:42: [maybe] Reading absen
 test-resources/src/chromeexperiments/magnetic.html:300:42: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/magnetic.html:317:24: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/magnetic.html:327:26: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 2014 checks (with 0 expected failures)
+Soundness testing succeeded for 1998 checks (with 0 expected failures)

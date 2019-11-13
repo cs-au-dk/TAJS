@@ -6,4 +6,4 @@ test-resources/src/uneval/uneval27.html:10:24: [maybe] Reading absent property (
 test-resources/src/uneval/uneval27.html:12:18: [maybe] Converting undefined to string
 TAJS-dynamic-code(test-resources/src/uneval/uneval27.html:12:13):1:15: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test-resources/src/uneval/uneval27.html:12:13):1:15: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 42 checks (with 0 expected failures)
+Soundness testing succeeded for 41 checks (with 0 expected failures)

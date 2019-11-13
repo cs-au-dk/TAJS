@@ -244,7 +244,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:2978:4: [definite] Dead assig
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:3006:14: [definite] Reading absent property type
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:3017:3: [definite] Dead assignment, property type is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:3027:2: [definite] Dead assignment, property timeStamp is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:3030:2: [definite] Dead assignment, property jQuery160733476062097235 is never read
+benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:3030:2: [definite] Dead assignment, property jQuery1607331177350084152 is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:3060:2: [definite] Dead assignment, property stopPropagation is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:3074:2: [definite] Dead assignment, property stopImmediatePropagation is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:3080:2: [definite] Dead assignment, property isImmediatePropagationStopped is never read
@@ -1164,7 +1164,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:3027:19: [maybe] TypeError, c
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:3383:5: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:3405:4: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:4514:2: [maybe] TypeError, accessing property of null/undefined
-benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:4668:7: [maybe] <Document.getElementById>("script1543012501944") did not match any elements
+benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:4668:7: [maybe] <Document.getElementById>("script1543012502340") did not match any elements
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:4727:32: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:4728:4: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:4728:4: [maybe] TypeError, call to non-function
@@ -1409,4 +1409,4 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:831:11: [unsound] Assuming Da
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:879:2: [unsound] Skipping write to property '__proto__'
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:1391:43: [unsound] Assuming Math.random returns fixed value
 benchmarks/tajs/src/jquery/libraries/jquery-1.6.js:4658:20: [unsound] Assuming Date.now returns fixed value
-Soundness testing succeeded for 5698 checks (with 1 expected failures)
+Soundness testing succeeded for 5616 checks (with 0 expected failures)

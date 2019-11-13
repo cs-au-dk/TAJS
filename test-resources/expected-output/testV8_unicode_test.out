@@ -40,4 +40,4 @@ test-resources/src/v8tests/unicode-test.js:9056:16: [info] Reading from unknown 
 test-resources/src/v8tests/unicode-test.js:9058:5: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/v8tests/unicode-test.js:9061:3: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/v8tests/unicode-test.js:9062:9: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 46504 checks (with 0 expected failures)
+Soundness testing succeeded for 44470 checks (with 0 expected failures)

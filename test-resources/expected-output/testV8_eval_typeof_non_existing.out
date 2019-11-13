@@ -1,2 +1,2 @@
 test-resources/src/v8tests/eval-typeof-non-existing.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 14 checks (with 0 expected failures)
+Soundness testing succeeded for 1 checks (with 0 expected failures)

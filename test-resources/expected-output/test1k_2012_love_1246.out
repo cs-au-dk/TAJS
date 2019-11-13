@@ -165,4 +165,4 @@ test-resources/src/1k2012love/1246.js:149:55: [maybe] Converting primitive numbe
 test-resources/src/1k2012love/1246.js:149:55: [maybe] The variable ee has values with different types
 test-resources/src/1k2012love/1246.js:154:15: [maybe] Converting object to number
 test-resources/src/1k2012love/1246.js:154:15: [maybe] The variable step has values with different types
-Soundness testing succeeded for 2253 checks (with 0 expected failures)
+Soundness testing succeeded for 2244 checks (with 0 expected failures)

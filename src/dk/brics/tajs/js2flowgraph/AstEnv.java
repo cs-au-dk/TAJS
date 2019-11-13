@@ -62,9 +62,14 @@ public class AstEnv {
 
     /**
      * Set if processing at statement level.
-     * (Used for setting {@link AbstractNode#registers_done}.)
+     * (Currently unused.)
      */
     private Boolean statementLevel = null;
+
+    /**
+     * Set to true if processing a typeof operand.
+     */
+    private boolean typeofOperand = false;
 
     /**
      * Manages registers for the current function.
@@ -371,6 +376,13 @@ public class AstEnv {
     }
 
     /**
+     * Returns true if currently processing a typeof operand (excluding subexpressions of the operand).
+     */
+    public boolean isTypeofOperand() {
+        return typeofOperand;
+    }
+
+    /**
      * Creates a new environment with the given append block.
      */
     public AstEnv makeAppendBlock(BasicBlock b) {
@@ -472,6 +484,15 @@ public class AstEnv {
         }
         AstEnv newEnv = new AstEnv(this);
         newEnv.statementLevel = statement;
+        return newEnv;
+    }
+
+    /**
+     * Creates a new environment and sets the typeof flag.
+     */
+    public AstEnv makeTypeofOperand() {
+        AstEnv newEnv = new AstEnv(this);
+        newEnv.typeofOperand = true;
         return newEnv;
     }
 

@@ -1,4 +1,4 @@
 test-resources/src/resig/ejohn65.js:8:15: [definite] Variable ninjaA is null/undefined
 test-resources/src/resig/ejohn65.js:7:14: [definite] The function Ninja is invoked both as constructor and function
 test-resources/src/resig/ejohn65.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 27 checks (with 0 expected failures)
+Soundness testing succeeded for 25 checks (with 0 expected failures)

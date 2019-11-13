@@ -13,35 +13,45 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: function-expr[function(x),v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 6: call[-,v7,v5] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:1)
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 7: constant[5678.0,v6] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:3:8)
-    node 8: *[v5,v6,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:1)
+    node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
-  block 7: [exit-ordinary]
-    node 9: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js)
+  block 7:
+    node 9: function-expr[function(x),v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
+    ->[block 8]
+  block 8:
+    node 10: call[-,v10,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:1)
+    ->[block 9]
+  block 9:
+    node 11: constant[5678.0,v9] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:3:8)
+    node 12: *[v8,v9,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:1)
+    ->[block 10]
+  block 10: [exit-ordinary]
+    node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js)
     ->[]
-  block 8: [exit-exceptional]
-    node 10: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js)
+  block 11: [exit-exceptional]
+    node 14: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js)
     ->[]
 function(x)
-  block 9: [entry]
-    node 11: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
-    ->[block 10]
-  block 10:
-    node 12: constant[777.0,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:2:9)
-    ->[block 11]
-  block 11: [exit-ordinary]
-    node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
+  block 12: [entry]
+    node 15: constant[undefined,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
+    ->[block 13]
+  block 13:
+    node 16: constant[777.0,v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:2:9)
+    ->[block 14]
+  block 14: [exit-ordinary]
+    node 17: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
     ->[]
-  block 12: [exit-exceptional]
-    node 14: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
+  block 15: [exit-exceptional]
+    node 18: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0061.js: [definite] Exceptional program exit is unreachable
 test-resources/src/flowgraphbuilder/flowgraph_builder0061.js:1:2: [definite] The variable x is never used
-Soundness testing succeeded for 6 checks (with 0 expected failures)
+Soundness testing succeeded for 5 checks (with 0 expected failures)

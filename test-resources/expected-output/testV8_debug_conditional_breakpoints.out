@@ -6,4 +6,4 @@ test-resources/src/v8tests/debug-conditional-breakpoints.js:46:1: [definite] Unr
 test-resources/src/v8tests/debug-conditional-breakpoints.js:53:17: [definite] Unreachable code
 test-resources/src/v8tests/debug-conditional-breakpoints.js:99:10: [definite] The variable i is never used
 test-resources/src/v8tests/debug-conditional-breakpoints.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-conditional-breakpoints.js:53:17]
-Soundness testing succeeded for 17 checks (with 0 expected failures)
+Soundness testing succeeded for 20 checks (with 0 expected failures)

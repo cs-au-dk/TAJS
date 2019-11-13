@@ -162,4 +162,4 @@ test-resources/src/chromeexperiments/blob.html:563:5: [info] 'this' refers to mu
 test-resources/src/chromeexperiments/blob.html:563:68: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/blob.html:564:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/chromeexperiments/blob.html:565:5: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 4018 checks (with 0 expected failures)
+Soundness testing succeeded for 3987 checks (with 0 expected failures)

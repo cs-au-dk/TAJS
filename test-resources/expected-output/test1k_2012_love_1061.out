@@ -11,4 +11,4 @@ test-resources/src/1k2012love/1061.js: [maybe] Uncaught exception, constructed a
 test-resources/src/1k2012love/1061.js:62:7: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1061.js:63:12: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1061.js:63:29: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 142 checks (with 0 expected failures)
+Soundness testing succeeded for 139 checks (with 0 expected failures)

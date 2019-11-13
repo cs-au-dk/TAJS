@@ -8,4 +8,4 @@ test-resources/src/v8tests/debug-constructor.js:50:1: [definite] Unreachable fun
 test-resources/src/v8tests/debug-constructor.js:55:1: [definite] Unreachable function c
 test-resources/src/v8tests/debug-constructor.js:60:1: [definite] Unreachable function d
 test-resources/src/v8tests/debug-constructor.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/debug-constructor.js:30:9]
-Soundness testing succeeded for 1 checks (with 0 expected failures)
+Soundness testing succeeded for 6 checks (with 0 expected failures)

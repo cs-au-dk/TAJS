@@ -24,7 +24,7 @@ public enum TAJSFunctionName {
     TAJS_ADD_CONTEXT_SENSITIVITY("addContextSensitivity"),
     TAJS_ASSERT("assert"),
     TAJS_ASSERT_EQUALS("assertEquals"),
-    TAJS_ASYNC_LISTEN("asyncListen"),
+    TAJS_ASYNC_LISTEN("asyncListen"), // used only in common-async-polyfill.js
 
     TAJS_CONVERSION_TO_PRIMITIVE("conversionToPrimitive"),
 
@@ -37,33 +37,36 @@ public enum TAJSFunctionName {
     TAJS_DUMPSTATE("dumpState"),
     TAJS_DUMPVALUE("dumpValue"),
 
-    TAJS_FIRST_ORDER_STRING_REPLACE("firstOrderStringReplace"),
+    TAJS_FIRST_ORDER_STRING_REPLACE("firstOrderStringReplace"), // used only in string-replace-model.js
 
-    TAJS_GET_AJAX_EVENT("getAjaxEvent"),
-    TAJS_GET_EVENT_LISTENER("getEventListener"),
-    TAJS_GET_KEYBOARD_EVENT("getKeyboardEvent"),
-    TAJS_GET_MOUSE_EVENT("getMouseEvent"),
-    TAJS_GET_UI_EVENT("getUIEvent"),
-    TAJS_GET_WHEEL_EVENT("getWheelEvent"),
+    TAJS_GET_AJAX_EVENT("getAjaxEvent"), // only used for debugging
+    TAJS_GET_EVENT_LISTENER("getEventListener"), // only used for debugging
+    TAJS_GET_KEYBOARD_EVENT("getKeyboardEvent"), // only used for debugging
+    TAJS_GET_MOUSE_EVENT("getMouseEvent"), // only used for debugging
+    TAJS_GET_UI_EVENT("getUIEvent"), // only used for debugging
+    TAJS_GET_WHEEL_EVENT("getWheelEvent"), // only used for debugging
 
     TAJS_JOIN("join"),
 
     TAJS_LOAD("load"),
+    TAJS_ASSUMEMODULETYPE("assumeModuleType"), // used only in simple-require.js
 
     TAJS_MAKE("make"),
     TAJS_MAKE_EXCLUDED_STRINGS("makeExcludedStrings"),
     TAJS_MAKE_CONTEXT_SENSITIVE("makeContextSensitive"),
-    TAJS_MAKE_PARTIAL("makePartial"),
+    TAJS_MAKE_PARTIAL("makePartial"), // used only in error-captureStackTrace-model.js
+
+    TAJS_MODULE_EXPORTS_FILTERING("moduleExportsFiltering"), // used only in simple-require.js
 
     TAJS_NEW_ARRAY("newArray"),
     TAJS_NEW_OBJECT("newObject"),
 
-    TAJS_GET_MAIN("getMain"),
-    TAJS_NOT_IMPLEMENTED("NOT_IMPLEMENTED"),
-    TAJS_LOAD_JSON("loadJSON"),
-    TAJS_NODE_REQUIRE_RESOLVE("nodeRequireResolve"),
-    TAJS_NODE_PARENT_DIR("parentDir"),
-    TAJS_NODE_UNURL("unURL");
+    TAJS_GET_MAIN("getMain"), // used only in simple-bootstrap-node.js
+    TAJS_NOT_IMPLEMENTED("NOT_IMPLEMENTED"), // used only in simple-require.js
+    TAJS_LOAD_JSON("loadJSON"), // used only in simple-require.js
+    TAJS_NODE_REQUIRE_RESOLVE("nodeRequireResolve"), // used only in simple-require.js
+    TAJS_NODE_PARENT_DIR("parentDir"), // used only in simple-require.js
+    TAJS_NODE_UNURL("unURL"); // used only in simple-require.js
 
     private String string;
 

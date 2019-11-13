@@ -42,10 +42,6 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
 
     private int nodeTransfers = 0;
 
-    private boolean reachedScanPhase = false;
-
-    private boolean reachedTimeout = false;
-
     /**
      * @param secondsTimeLimit  the number of second the analysis is allowed to run, or -1 if no limit
      * @param nodeTransferLimit the number of node transfers the analysis is allowed to run, or -1 if no limit
@@ -68,7 +64,6 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
             long now = System.nanoTime();
             boolean timeOut = maxNanoTime != -1 && maxNanoTime < now;
             if (timeOut) {
-                reachedTimeout = true;
                 long overUsed = (now - maxNanoTime);
                 long used = (secondsTimeLimit * nanoFactor) + overUsed;
                 long allowed = secondsTimeLimit * nanoFactor;
@@ -84,7 +79,6 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
         }
         if (nodeTransferLimit != -1) {
             if (nodeTransfers > nodeTransferLimit) {
-                reachedTimeout = true;
                 String msg = "Analysis exceeded node transfer limit " + nodeTransferLimit;
                 if (crash)
                     throw new AnalysisLimitationException.AnalysisTimeException(msg);
@@ -105,8 +99,6 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
                 long future = now + delta;
                 maxNanoTime = future;
             }
-        } else if (phase == AnalysisPhase.SCAN) {
-            reachedScanPhase = true;
         }
     }
 
@@ -115,12 +107,5 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
         if (!s.getSolverInterface().isScanning()) {
             nodeTransfers++;
         }
-    }
-
-    /**
-     * @return true iff the analysis completed without crashes or timeout
-     */
-    public boolean analysisCompleted() {
-        return reachedScanPhase && !reachedTimeout;
     }
 }

@@ -67,4 +67,4 @@ test-resources/src/1k2013spring/1483.js:65:22: [maybe] Reading absent property (
 test-resources/src/1k2013spring/1483.js:65:28: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1483.js:65:34: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1483.js:65:35: [maybe] Reading absent property (computed name)
-Soundness testing succeeded for 165 checks (with 0 expected failures)
+Soundness testing succeeded for 164 checks (with 0 expected failures)

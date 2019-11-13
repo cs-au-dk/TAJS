@@ -124,11 +124,6 @@ public class DefaultNodeVisitor implements NodeVisitor, AbstractNodeVisitor {
     }
 
     @Override
-    public void visit(TypeofNode n) {
-        // empty
-    }
-
-    @Override
     public void visit(UnaryOperatorNode n) {
         // empty
     }

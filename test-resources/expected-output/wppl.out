@@ -29,4 +29,4 @@ benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:83:1: [definite] Unreachab
 benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:106:1: [definite] The variable c is never used
 benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:108:13: [definite] The variable declaration dgg shadows a parameter
 benchmarks/tajs/src/unevalizer/wp.pl-slice/index.html:110:9: [definite] The variable document is never used
-Soundness testing succeeded for 655 checks (with 0 expected failures)
+Soundness testing succeeded for 653 checks (with 0 expected failures)

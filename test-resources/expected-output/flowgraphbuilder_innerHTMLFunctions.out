@@ -6,130 +6,140 @@ fg2: <main> function()
   block 1:
     node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
     node 3: constant[true,v3] (host-environment-sources-loader)
-    ->[block 2] ~>[block 27]
+    ->[block 2] ~>[block 30]
   block 2:
     node 4: call[TAJS_load,v2,v3,v4] (host-environment-sources-loader)
-    ->[block 3] ~>[block 27]
+    ->[block 3] ~>[block 30]
   block 3:
     node 5: call[-,v4,-] (host-environment-sources-loader)
-    ->[block 4] ~>[block 27]
+    ->[block 4] ~>[block 30]
   block 4:
-    node 6: constant[false,v5] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:1:17)
-    node 7: write-variable[v5,'triggered'] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:1:5)
-    node 8: read-variable['document',v8,-] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:2:1)
-    node 9: read-property[v8,'body',v7] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:2:1)
-    node 10: constant["\<div onclick=\"triggered = true; TAJS_assert(true);\"\>\</div\>",v6] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:2:27)
-    node 11: write-property[v7,'innerHTML',v6] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:2:1)
-    node 12: read-variable['setTimeout',v10,v9] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:1)
-    node 13: function-expr[function(),v11] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:12)
-    ->[block 5] ~>[block 27]
+    node 6: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 7: constant[true,v6] (host-environment-sources-loader)
+    ->[block 5] ~>[block 30]
   block 5:
-    node 14: call[v9,v10,v11,-] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:1)
-    ->[block 6] ~>[block 27]
+    node 8: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6] ~>[block 30]
   block 6:
-    node 15: nop(eventDispatchers: entry) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 7,block 11] ~>[block 27]
+    node 9: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7] ~>[block 30]
   block 7:
-    node 16: event-dispatcher <CONTENT_LOADED> (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 10] ~>[block 8]
+    node 10: constant[false,v8] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:1:17)
+    node 11: write-variable[v8,'triggered'] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:1:5)
+    node 12: read-variable['document',v11,-] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:2:1)
+    node 13: read-property[v11,'body',v10] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:2:1)
+    node 14: constant["\<div onclick=\"triggered = true; TAJS_assert(true);\"\>\</div\>",v9] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:2:27)
+    node 15: write-property[v10,'innerHTML',v9] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:2:1)
+    node 16: read-variable['setTimeout',v13,v12] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:1)
+    node 17: function-expr[function(),v14] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:12)
+    ->[block 8] ~>[block 30]
   block 8:
-    node 17: catch[v13] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    node 18: nop(eventDispatchers: exceptional exit DOMContentLoaded) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 9,block 11]
+    node 18: call[v12,v13,v14,-] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:1)
+    ->[block 9] ~>[block 30]
   block 9:
-    node 19: throw[v13] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[]
+    node 19: nop(eventDispatchers: entry) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 10,block 14] ~>[block 30]
   block 10:
-    node 20: nop(eventDispatchers: ordinary exit DOMContentLoaded) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 11] ~>[block 27]
+    node 20: event-dispatcher <CONTENT_LOADED> (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 13] ~>[block 11]
   block 11:
-    node 21: nop(eventDispatchers: post DOMContentLoaded) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 7,block 12,block 16] ~>[block 27]
+    node 21: catch[v16] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    node 22: nop(eventDispatchers: exceptional exit DOMContentLoaded) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 12,block 14]
   block 12:
-    node 22: event-dispatcher <LOAD> (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 15] ~>[block 13]
+    node 23: throw[v16] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[]
   block 13:
-    node 23: catch[v14] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    node 24: nop(eventDispatchers: exceptional exit Load) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 14,block 16]
+    node 24: nop(eventDispatchers: ordinary exit DOMContentLoaded) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 14] ~>[block 30]
   block 14:
-    node 25: throw[v14] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[]
+    node 25: nop(eventDispatchers: post DOMContentLoaded) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 10,block 15,block 19] ~>[block 30]
   block 15:
-    node 26: nop(eventDispatchers: ordinary exit Load) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 16] ~>[block 27]
+    node 26: event-dispatcher <LOAD> (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 18] ~>[block 16]
   block 16:
-    node 27: nop(eventDispatchers: post Load) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 12,block 17,block 21] ~>[block 27]
+    node 27: catch[v17] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    node 28: nop(eventDispatchers: exceptional exit Load) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 17,block 19]
   block 17:
-    node 28: event-dispatcher <OTHER> (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 20] ~>[block 18]
+    node 29: throw[v17] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[]
   block 18:
-    node 29: catch[v15] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    node 30: nop(eventDispatchers: exceptional exit Other) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 19,block 21]
+    node 30: nop(eventDispatchers: ordinary exit Load) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 19] ~>[block 30]
   block 19:
-    node 31: throw[v15] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[]
+    node 31: nop(eventDispatchers: post Load) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 15,block 20,block 24] ~>[block 30]
   block 20:
-    node 32: nop(eventDispatchers: ordinary exit Other) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 21] ~>[block 27]
+    node 32: event-dispatcher <OTHER> (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 23] ~>[block 21]
   block 21:
-    node 33: nop(eventDispatchers: post Other) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 17,block 22,block 26] ~>[block 27]
+    node 33: catch[v18] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    node 34: nop(eventDispatchers: exceptional exit Other) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 22,block 24]
   block 22:
-    node 34: event-dispatcher <UNLOAD> (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 25] ~>[block 23]
+    node 35: throw[v18] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[]
   block 23:
-    node 35: catch[v16] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    node 36: nop(eventDispatchers: exceptional exit Unload) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 24,block 26]
+    node 36: nop(eventDispatchers: ordinary exit Other) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 24] ~>[block 30]
   block 24:
-    node 37: throw[v16] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[]
+    node 37: nop(eventDispatchers: post Other) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 20,block 25,block 29] ~>[block 30]
   block 25:
-    node 38: nop(eventDispatchers: ordinary exit Unload) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 26] ~>[block 27]
+    node 38: event-dispatcher <UNLOAD> (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 28] ~>[block 26]
   block 26:
-    node 39: nop(eventDispatchers: post Unload) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 22,block 29] ~>[block 27]
+    node 39: catch[v19] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    node 40: nop(eventDispatchers: exceptional exit Unload) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 27,block 29]
   block 27:
-    node 40: catch[v12] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
-    ->[block 6,block 28]
+    node 41: throw[v19] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[]
   block 28:
-    node 41: throw[v12] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    node 42: nop(eventDispatchers: ordinary exit Unload) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 29] ~>[block 30]
+  block 29:
+    node 43: nop(eventDispatchers: post Unload) (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 25,block 32] ~>[block 30]
+  block 30:
+    node 44: catch[v15] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+    ->[block 9,block 31]
+  block 31:
+    node 45: throw[v15] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
     ->[]
-  block 29: [exit-ordinary]
-    node 42: return[v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+  block 32: [exit-ordinary]
+    node 46: return[v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
     ->[]
-  block 30: [exit-exceptional]
-    node 43: exceptional-return (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
+  block 33: [exit-exceptional]
+    node 47: exceptional-return (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js)
     ->[]
 function()
-  block 31: [entry]
-    node 44: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:12)
-    ->[block 32]
-  block 32:
-    node 45: constant["AnyBool",v8] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:51)
-    ->[block 33]
-  block 33:
-    node 46: call[TAJS_make,v8,v5] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:41)
-    ->[block 34]
-  block 34:
-    node 47: read-variable['triggered',v9,v2] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:63)
+  block 34: [entry]
+    node 48: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:12)
     ->[block 35]
   block 35:
-    node 48: call[TAJS_assertEquals,v5,v9,-] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:23)
+    node 49: constant["AnyBool",v8] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:51)
     ->[block 36]
-  block 36: [exit-ordinary]
-    node 49: return[v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:12)
+  block 36:
+    node 50: call[TAJS_make,v8,v5] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:41)
+    ->[block 37]
+  block 37:
+    node 51: read-variable['triggered',v9,v2] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:63)
+    ->[block 38]
+  block 38:
+    node 52: call[TAJS_assertEquals,v5,v9,-] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:23)
+    ->[block 39]
+  block 39: [exit-ordinary]
+    node 53: return[v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:12)
     ->[]
-  block 37: [exit-exceptional]
-    node 50: exceptional-return (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:12)
+  block 40: [exit-exceptional]
+    node 54: exceptional-return (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:12)
     ->[]
 
 out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:1: [definite] Too few parameters to native function
 out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:2:1: [maybe] TypeError, accessing property of null/undefined
 out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:2:1]
 out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_innerHTMLFunctions.js:3:1: [maybe] Conversion to number yields NaN
-Soundness testing succeeded for 15 checks (with 0 expected failures)
+Soundness testing succeeded for 14 checks (with 0 expected failures)

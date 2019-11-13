@@ -271,4 +271,15 @@ public class PathAndURLUtils {
             return "";
         return fileStr.substring(index);
     }
+
+    /**
+     * Return the file name without the extension.
+     */
+    public static String removeExtension(Path file) {
+        String fileStr = file.toString();
+        int index = fileStr.lastIndexOf(".");
+        if (index == -1)
+            return fileStr;
+        return fileStr.substring(0, index);
+    }
 }

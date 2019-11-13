@@ -4,4 +4,4 @@ benchmarks/tajs/src/unevalizer/bild.de-slice/index-2.html:3:5: [definite] The va
 benchmarks/tajs/src/unevalizer/bild.de-slice/index-2.html:4:5: [definite] The variable wt_va is never used
 benchmarks/tajs/src/unevalizer/bild.de-slice/index-2.html:139:5: [definite] The variable currentLibName is never used
 benchmarks/tajs/src/unevalizer/bild.de-slice/index-2.html:145:3: [definite] Unreachable code
-Soundness testing succeeded for 805 checks (with 0 expected failures)
+Soundness testing succeeded for 745 checks (with 0 expected failures)

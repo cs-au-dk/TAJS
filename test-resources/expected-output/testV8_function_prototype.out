@@ -9,4 +9,4 @@ test-resources/src/v8tests/function-prototype.js:33:17: [maybe] The variable val
 test-resources/src/v8tests/function-prototype.js:35:16: [maybe] The variable value has values with different types
 test-resources/src/v8tests/function-prototype.js:63:10: [maybe] Converting primitive number to object
 test-resources/src/v8tests/function-prototype.js:63:10: [maybe] The variable f has values with different types
-Soundness testing succeeded for 251 checks (with 0 expected failures)
+Soundness testing succeeded for 252 checks (with 0 expected failures)

@@ -26,6 +26,7 @@ import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.DeepImmutable;
 
 import javax.annotation.Nonnull;
+import java.util.Set;
 
 /**
  * Label of abstract object.
@@ -268,6 +269,14 @@ public final class ObjectLabel implements DeepImmutable {
         if (singleton)
             return this;
         return make(hostobject, node, function, kind, heapContext, true);
+    }
+
+    /**
+     * Checks whether the given objects permit strong updating.
+     * @return true the set contains one singleton object label only
+     */
+    public static boolean allowStrongUpdate(Set<ObjectLabel> objs) {
+        return objs.size() == 1 && objs.iterator().next().isSingleton();
     }
 
     /**

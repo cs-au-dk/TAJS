@@ -2,5 +2,5 @@ test-resources/src/v8tests/const.js: [definite] Exceptional program exit is unre
 test-resources/src/v8tests/const.js:50:5: [definite] The variable valueOfCount is never used
 test-resources/src/v8tests/const.js:52:1: [definite] Unreachable function g
 test-resources/src/v8tests/const.js:53:24: [definite] Unreachable function
-Disabling soundness testing for test-resources/src/v8tests/const.js entirely (10 uninspected soundness errors).
-Soundness testing succeeded for 77 checks (with 10 expected failures)
+Disabling soundness testing for test-resources/src/v8tests/const.js entirely (1 uninspected soundness errors).
+Soundness testing succeeded for 9 checks (with 1 expected failures)

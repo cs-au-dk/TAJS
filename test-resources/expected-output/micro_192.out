@@ -3,40 +3,54 @@ test-resources/src/micro/test192.js:8:5: [definite] The variable t is never used
 test-resources/src/micro/test192.js:9:1: [info] Abstract state:
 Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
-  Summarized: maybe=[@replace#fun3, @f#fun1, @arguments#node27, @arguments#node14, @activation#node27, @activation#node14, @Object#node5, @Object#node40, @Object#node33, @Object#node1, @<anonymous>#fun2], definitely=[@replace#fun3, @f#fun1, @arguments#node27, @arguments#node14, @activation#node27, @activation#node14, @Object#node5, @Object#node40, @Object#node33, @Object#node1, @<anonymous>#fun2]
+  Renamings: maybe=[@replace#fun3, @f#fun1, @arguments#node315, @arguments#node31, @arguments#node18, @activation#node315, @activation#node31, @activation#node18, @Object#node9, @Object#node5, @Object#node44, @Object#node37, @Object#node327, @Object#node320, @Object#node1, @<anonymous>#fun5, @<anonymous>#fun4, @<anonymous>#fun2], definitely=[@replace#fun3, @f#fun1, @arguments#node315, @arguments#node31, @arguments#node18, @activation#node315, @activation#node31, @activation#node18, @Object#node9, @Object#node5, @Object#node44, @Object#node37, @Object#node327, @Object#node320, @Object#node1, @<anonymous>#fun5, @<anonymous>#fun4, @<anonymous>#fun2]
   Store (excluding basis and default objects): 
-    @<the global object>[native] (<initial state>): {Object:[@Object[native]],String:[@String[native]],f:[@f#fun1],t:42.0,[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
-    @Object.prototype[native] (<initial state>): {configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),f:^(@Object.prototype[native].f[absent]),get:^(@Object.prototype[native].get[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),t:^(@Object.prototype[native].t[absent]),value:^(@Object.prototype[native].value[absent]),writable:^(@Object.prototype[native].writable[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
+    @<the global object>[native] (<initial state>): {Error:[@Error[native]],Object:[@Object[native]],String:[@String[native]],f:[@f#fun1],t:42.0,[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @Error[native] (<initial state>): {captureStackTrace:[@<anonymous>#fun5],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Function.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @Function.prototype[native] (<initial state>): {captureStackTrace:^(@Function.prototype[native].captureStackTrace[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @Object.prototype[native] (<initial state>): {captureStackTrace:^(@Object.prototype[native].captureStackTrace[absent]),configurable:^(@Object.prototype[native].configurable[absent]),enumerable:^(@Object.prototype[native].enumerable[absent]),f:^(@Object.prototype[native].f[absent]),get:^(@Object.prototype[native].get[absent]),replace:^(@Object.prototype[native].replace[absent]),set:^(@Object.prototype[native].set[absent]),t:^(@Object.prototype[native].t[absent]),value:^(@Object.prototype[native].value[absent]),writable:^(@Object.prototype[native].writable[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @String.prototype[native] (<initial state>): {replace:[@replace#fun3],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
     @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @Object#node5 (host-environment-sources-loader): {constructor:[@<anonymous>#fun2],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @Object#node9 (host-environment-sources-loader): {constructor:[@<anonymous>#fun4],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @Object#node1 (test-resources/src/micro/test192.js:1:1): {constructor:[@f#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @f#fun1 (test-resources/src/micro/test192.js:1:1): {length:1.0,name:"f",prototype:[@Object#node1],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @<anonymous>#fun4 (HOST(error-captureStackTrace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node9],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
+    @activation#node315 (HOST(error-captureStackTrace-model.js):1:1): {arguments:[@arguments#node315]}
+    @arguments#node315 (HOST(error-captureStackTrace-model.js):1:1): {callee:[@<anonymous>#fun4],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
+    @<anonymous>#fun5 (HOST(error-captureStackTrace-model.js):5:12): {length:2.0,name:"",prototype:[@Object#node327],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node315],[@<the global object>[native]]]}
+    @Object#node327 (HOST(error-captureStackTrace-model.js):5:12): {constructor:[@<anonymous>#fun5],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @<anonymous>#fun2 (HOST(string-replace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node5],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    @activation#node27 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node27]}
-    @arguments#node27 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun2],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
-    @Object#node40 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @replace#fun3 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node40],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node27],[@<the global object>[native]]]}
+    @activation#node31 (HOST(string-replace-model.js):1:1): {arguments:[@arguments#node31]}
+    @arguments#node31 (HOST(string-replace-model.js):1:1): {callee:[@<anonymous>#fun2],length:0.0,[[Prototype]]=[@Object.prototype[native]]}
+    @Object#node44 (HOST(string-replace-model.js):3:12): {constructor:[@replace#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @replace#fun3 (HOST(string-replace-model.js):3:12): {length:2.0,name:"replace",prototype:[@Object#node44],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node31],[@<the global object>[native]]]}
   Registers: 
     v1=Undef
     v2="tajs-host-env:string-replace-model.js"
     v3=true
     v4=[@<anonymous>#fun2]
-    v5=42.0
-    v6=[@<the global object>[native]]
-    v7=[@f#fun1]
-    v8=10.0
+    v5="tajs-host-env:error-captureStackTrace-model.js"
+    v6=true
+    v7=[@<anonymous>#fun4]
+    v8=42.0
+    v9=[@<the global object>[native]]
+    v10=[@f#fun1]
+    v11=10.0
   MustReachingDefs: 
     v1: node 0 (test-resources/src/micro/test192.js)
     v2: node 3 (host-environment-sources-loader)
     v3: node 4 (host-environment-sources-loader)
     v4: node 5 (host-environment-sources-loader)
-    v7: node 7 (test-resources/src/micro/test192.js:8:9)
-    v8: node 8 (test-resources/src/micro/test192.js:8:11)
-    v5: node 9 (test-resources/src/micro/test192.js:8:9)
+    v5: node 7 (host-environment-sources-loader)
+    v6: node 8 (host-environment-sources-loader)
+    v7: node 9 (host-environment-sources-loader)
+    v10: node 11 (test-resources/src/micro/test192.js:8:9)
+    v11: node 12 (test-resources/src/micro/test192.js:8:11)
+    v8: node 13 (test-resources/src/micro/test192.js:8:9)
   MustEquals: 
-    @<the global object>[native].t: [v5]
-    v5: [@<the global object>[native].t]
+    @<the global object>[native].t: [v8]
+    v8: [@<the global object>[native].t]
   Functions in stack: []
 Soundness testing succeeded for 35 checks (with 0 expected failures)

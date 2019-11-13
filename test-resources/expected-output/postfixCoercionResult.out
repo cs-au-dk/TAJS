@@ -13,18 +13,28 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: read-variable['a',v5,-] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
-    node 6: +[v5,v5] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
-    node 7: constant[1.0,v6] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
-    node 8: +[v5,v6,v7] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
-    node 9: write-variable[v7,'a'] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
-    node 10: write-variable[v5,'x'] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:1)
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
-  block 5: [exit-ordinary]
-    node 11: return[v1] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js)
+  block 5:
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
+    ->[block 6]
+  block 6:
+    node 8: call[-,v7,-] (host-environment-sources-loader)
+    ->[block 7]
+  block 7:
+    node 9: read-variable['a',v8,-] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 10: +[v8,v8] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 11: constant[1.0,v9] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 12: +[v8,v9,v10] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 13: write-variable[v10,'a'] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 14: write-variable[v8,'x'] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:1)
+    ->[block 8]
+  block 8: [exit-ordinary]
+    node 15: return[v1] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js)
     ->[]
-  block 6: [exit-exceptional]
-    node 12: exceptional-return (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js)
+  block 9: [exit-exceptional]
+    node 16: exceptional-return (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js)
     ->[]
 
 out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js: [definite] Ordinary program exit is unreachable

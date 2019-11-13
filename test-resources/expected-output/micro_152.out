@@ -1,19 +1,19 @@
 test-resources/src/micro/test152.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test152.js:3:21: [info] Abstract state:
 Abstract state:
-  Execution context: ScopeChain=[[@activation#node31],[@<the global object>[native]]], VariableObject=[@activation#node31], this=Null
-  Summarized: maybe=[@arguments#node37, @activation#node37], definitely=[@arguments#node37, @activation#node37]
+  Execution context: ScopeChain=[[@activation#node35],[@<the global object>[native]]], VariableObject=[@activation#node35], this=Null
+  Renamings: maybe=[@arguments#node41, @activation#node41], definitely=[@arguments#node41, @activation#node41]
   Store (excluding basis and default objects): 
     @<the global object>[native] (<initial state>): {f4:[@f4#fun4],x:^(@<the global object>[native].y[present]),y:^(@<the global object>[native].y[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
-    @activation#node31 (test-resources/src/micro/test152.js:3:1): {f4:^(@activation#node31.f4[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Value]]=?,[[Scope]]=?}
+    @activation#node35 (test-resources/src/micro/test152.js:3:1): {f4:^(@activation#node35.f4[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Value]]=?,[[Scope]]=?}
     @f4#fun4 (test-resources/src/micro/test152.js:4:1): {prototype:^(@f4#fun4.prototype[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=[[@<the global object>[native]]]}
   Registers: 
     v1=Undef
     v2=[@<the global object>[native]]
     v3=^(@<the global object>[native].f4[present])
   MustReachingDefs: 
-    v1: node 31 (test-resources/src/micro/test152.js:3:1)
-    v3: node 32 (test-resources/src/micro/test152.js:3:16)
-  Functions in stack: [block 20, context {}, block 15, context {}, block 10, context {}]
+    v1: node 35 (test-resources/src/micro/test152.js:3:1)
+    v3: node 36 (test-resources/src/micro/test152.js:3:16)
+  Functions in stack: [block 23, context {}, block 18, context {}, block 13, context {}]
 test-resources/src/micro/test152.js:8:1: [info] Abstract value: 2.0
 Soundness testing succeeded for 31 checks (with 0 expected failures)

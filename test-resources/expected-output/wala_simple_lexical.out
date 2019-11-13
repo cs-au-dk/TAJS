@@ -1,3 +1,3 @@
 test-resources/src/wala/simple-lexical.js:15:5: [definite] The conditional expression is always false
 test-resources/src/wala/simple-lexical.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 132 checks (with 0 expected failures)
+Soundness testing succeeded for 135 checks (with 0 expected failures)

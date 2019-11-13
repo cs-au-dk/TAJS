@@ -140,6 +140,8 @@ public class LogFileHelper {
     public URL createOrGetLogFile() {
         LogFileLocation logFileLocation = getLogFileLocation();
         if (Options.get().getSoundnessTesterOptions().isRegenerate()) {
+            // if log file is asked for multiple times, do only regenerate the first time
+            Options.get().getSoundnessTesterOptions().setRegenerate(false);
             wipeLogFilesIfPossible(logFileLocation);
         }
         URL runtimeLocation = logFileLocation.runtimeLocation;
@@ -325,6 +327,7 @@ public class LogFileHelper {
         Optional<Integer> explicitTimeLimit = Options.get().getSoundnessTesterOptions().getTimeLimitExplicitly();
         Optional<Integer> explicitInstrumentationTimeLimit = Options.get().getSoundnessTesterOptions().getInstrumentationTimeLimitExplicitly();
         Optional<Logger.Environment> explicitEnvironment = Options.get().getSoundnessTesterOptions().getGeneratorEnvironmentExplicitly();
+        boolean hasGraalVmNode = TAJSEnvironmentConfig.get().hasProperty("graalVmNode");
         Logger.Environment environment = explicitEnvironment.orElseGet(() -> {
             if (Options.get().isDOMEnabled())
                 if (Options.get().getSoundnessTesterOptions().isNonInteractive())
@@ -332,12 +335,13 @@ public class LogFileHelper {
                 else
                     return Logger.Environment.BROWSER;
             else if (Options.get().isNodeJS())
-                return Logger.Environment.NODE;
+                return hasGraalVmNode ? Logger.Environment.NODE_PROF : Logger.Environment.NODE;
             else
-                return Logger.Environment.NODE_GLOBAL;
+                return hasGraalVmNode ? Logger.Environment.NODE_PROF_GLOBAL : Logger.Environment.NODE_GLOBAL;
         });
         Path node = TAJSEnvironmentConfig.get().getNode();
         Path jjs = environment == Logger.Environment.NASHORN ? Paths.get(TAJSEnvironmentConfig.get().getCustom("jjs")) : null;
+        Path graalVmNode = environment == Logger.Environment.NODE_PROF || environment == Logger.Environment.NODE_PROF_GLOBAL ? Paths.get(TAJSEnvironmentConfig.get().getCustom("graalVmNode")) : null;
         Integer timeLimit = explicitTimeLimit.orElse(30);
         Integer instrumentationTimeLimit = explicitInstrumentationTimeLimit.orElse(30);
         try {
@@ -346,10 +350,10 @@ public class LogFileHelper {
             Optional<Set<Path>> onlyInclude = Options.get().getSoundnessTesterOptions().getOnlyIncludesForInstrumentation();
             info("Generating log file for soundness testing...");
             if (customRootDirectory == null) {
-                return Logger.makeLoggerForIndependentMainFile(testFile, preambles, onlyInclude, instrumentationTimeLimit, timeLimit, environment, node, jalangilogger, jjs).log();
+                return Logger.makeLoggerForIndependentMainFile(testFile, preambles, onlyInclude, instrumentationTimeLimit, timeLimit, environment, node, jalangilogger, jjs, graalVmNode).log();
             } else {
                 Path rootRelativeMain = customRootDirectory.relativize(testFile.toAbsolutePath());
-                return Logger.makeLoggerForDirectoryWithMainFile(customRootDirectory, rootRelativeMain, preambles, onlyInclude, instrumentationTimeLimit, timeLimit, environment, node, jalangilogger, jjs).log();
+                return Logger.makeLoggerForDirectoryWithMainFile(customRootDirectory, rootRelativeMain, preambles, onlyInclude, instrumentationTimeLimit, timeLimit, environment, node, jalangilogger, jjs, graalVmNode).log();
             }
         } catch (IOException e) {
             throw new LogFileException("Failed to create new log file", e);

@@ -42,9 +42,23 @@ public class BlendedAnalysisOptionValues implements Serializable {
         this.disallowRefineToBottom = disallowRefineToBottom;
     }
 
+    /**
+     * If set, blended analysis will be enabled when analyzing module initialization (top-level) code
+     */
+    private boolean onlyForModuleInit = false;
+
+    public boolean isOnlyForModuleInit() {
+        return onlyForModuleInit;
+    }
+
+    public void setOnlyForModuleInit(boolean onlyForModuleInit) {
+        this.onlyForModuleInit = onlyForModuleInit;
+    }
+
     public void reset() {
         allowedBlendedAnalysisSourceLocations = null;
         disallowRefineToBottom = false;
+        onlyForModuleInit = false;
     }
 
     @Override
@@ -52,6 +66,7 @@ public class BlendedAnalysisOptionValues implements Serializable {
         return "BlendedAnalysisOptionValues{" +
                 "allowedBlendedAnalysisSourceLocations=" + allowedBlendedAnalysisSourceLocations +
                 ", disallowRefineToBottom=" + disallowRefineToBottom +
+                ", onlyForModuleInit=" + onlyForModuleInit +
                 '}';
     }
 

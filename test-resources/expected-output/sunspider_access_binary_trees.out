@@ -9,4 +9,4 @@ test-resources/src/sunspider/access-binary-trees.js:16:32: [info] 'this' refers 
 test-resources/src/sunspider/access-binary-trees.js:17:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/sunspider/access-binary-trees.js:17:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/sunspider/access-binary-trees.js:17:52: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-Soundness testing succeeded for 3658 checks (with 0 expected failures)
+Soundness testing succeeded for 3655 checks (with 0 expected failures)

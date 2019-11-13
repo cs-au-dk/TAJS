@@ -17,4 +17,4 @@ test-resources/src/v8tests/negate.js:55:12: [maybe] Converting object to number
 test-resources/src/v8tests/negate.js:57:21: [maybe] Converting object to number
 test-resources/src/v8tests/negate.js:59:20: [maybe] Converting object to number
 test-resources/src/v8tests/negate.js:59:25: [maybe] Converting object to number
-Soundness testing succeeded for 158 checks (with 0 expected failures)
+Soundness testing succeeded for 154 checks (with 0 expected failures)

@@ -32,18 +32,23 @@ public class ReadVariableNode extends LoadNode {
 
     private int result_base_reg;
 
+    private boolean keep_absent; // used for 'typeof variable'
+
     /**
      * Constructs a new read variable node.
      *
      * @param varname         The name of the variable.
      * @param result_reg      The register for the result.
      * @param result_base_reg The register for the base variable.
+     * @param keep_absent     If true, do not model exception if variable is absent.
      * @param location        The source location.
      */
-    public ReadVariableNode(String varname, int result_reg, int result_base_reg, SourceLocation location) {
+    public ReadVariableNode(String varname, int result_reg, int result_base_reg, boolean keep_absent, SourceLocation location) {
         super(result_reg, location);
         this.varname = varname;
         this.result_base_reg = result_base_reg;
+        this.keep_absent = keep_absent;
+
     }
 
     /**
@@ -61,11 +66,19 @@ public class ReadVariableNode extends LoadNode {
         return result_base_reg;
     }
 
+    /**
+     * Returns false if this is an ordinary read (throws exception if the variable is absent),
+     * returns false if keep absent without modeling exception.
+     */
+    public boolean isKeepAbsent() {
+        return keep_absent;
+    }
+
     @Override
     public String toString() {
         return "read-variable['" + Strings.escape(varname) + "'," +
                 (getResultRegister() == NO_VALUE ? "-" : ("v" + getResultRegister())) + "," +
-                (result_base_reg != NO_VALUE ? "v" + result_base_reg : "-") + "]";
+                (result_base_reg != NO_VALUE ? "v" + result_base_reg : "-") + (keep_absent ? ",KEEP" : "") + "]";
     }
 
     @Override

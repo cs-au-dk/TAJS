@@ -499,7 +499,7 @@ test-resources/src/10k/nbody.html:295:21: [maybe] Converting primitive string to
 test-resources/src/10k/nbody.html:295:21: [maybe] The variable rect has values with different types
 test-resources/src/10k/nbody.html:297:15: [maybe] The variable line has values with different types
 test-resources/src/10k/nbody.html:302:9: [maybe] The variable obj has values with different types
-test-resources/src/10k/nbody.html:302:24: [maybe] The variable obj has values with different types
+test-resources/src/10k/nbody.html:302:31: [maybe] The variable obj has values with different types
 test-resources/src/10k/nbody.html:303:16: [maybe] The variable obj has values with different types
 test-resources/src/10k/nbody.html:307:27: [maybe] Reading absent property (computed name)
 test-resources/src/10k/nbody.html:316:9: [maybe] Converting primitive number to object

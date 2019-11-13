@@ -13,20 +13,30 @@ fg2: <main> function()
     node 4: call[-,v4,-] (host-environment-sources-loader)
     ->[block 4]
   block 4:
-    node 5: read-variable['Object',v9,v8] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js:1:17)
-    node 6: constant[null,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js:1:24)
+    node 5: constant["tajs-host-env:error-captureStackTrace-model.js",v5] (host-environment-sources-loader)
+    node 6: constant[true,v6] (host-environment-sources-loader)
     ->[block 5]
   block 5:
-    node 7: call[v8,v9,v10,v7] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js:1:17)
+    node 7: call[TAJS_load,v5,v6,v7] (host-environment-sources-loader)
     ->[block 6]
   block 6:
-    node 8: call[TAJS_dumpObject,v7,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js:1:1)
+    node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
-  block 7: [exit-ordinary]
-    node 9: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js)
+  block 7:
+    node 9: read-variable['Object',v12,v11] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js:1:17)
+    node 10: constant[null,v13] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js:1:24)
+    ->[block 8]
+  block 8:
+    node 11: call[v11,v12,v13,v10] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js:1:17)
+    ->[block 9]
+  block 9:
+    node 12: call[TAJS_dumpObject,v10,-] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js:1:1)
+    ->[block 10]
+  block 10: [exit-ordinary]
+    node 13: return[v1] (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js)
     ->[]
-  block 8: [exit-exceptional]
-    node 10: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js)
+  block 11: [exit-exceptional]
+    node 14: exceptional-return (test-resources/src/flowgraphbuilder/flowgraph_builder0135.js)
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0135.js: [definite] Exceptional program exit is unreachable

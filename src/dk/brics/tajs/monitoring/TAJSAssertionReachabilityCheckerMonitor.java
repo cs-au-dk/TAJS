@@ -29,7 +29,6 @@ import dk.brics.tajs.util.Collectors;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Supplier;
 
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_ASSERT;
 import static dk.brics.tajs.flowgraph.TAJSFunctionName.TAJS_ASSERT_EQUALS;
@@ -52,11 +51,9 @@ public class TAJSAssertionReachabilityCheckerMonitor extends DefaultAnalysisMoni
 
     private Set<CallNode> reachableAssertionCallNodes = newSet();
 
-    private final Supplier<Boolean> analysisCompleted;
+    private boolean analysisCompleted = false;
 
-    public TAJSAssertionReachabilityCheckerMonitor(Supplier<Boolean> analysisCompleted) {
-        this.analysisCompleted = analysisCompleted;
-    }
+    public TAJSAssertionReachabilityCheckerMonitor() { }
 
     private static Set<CallNode> getAssertionCallNodes(FlowGraph flowGraph) {
         Set<TAJSFunctionName> assertionFunctions = newSet(Arrays.asList(TAJS_ASSERT, TAJS_ASSERT_EQUALS));
@@ -93,7 +90,7 @@ public class TAJSAssertionReachabilityCheckerMonitor extends DefaultAnalysisMoni
 
     @Override
     public void visitPhasePost(AnalysisPhase phase) {
-        if (phase == AnalysisPhase.SCAN && analysisCompleted.get()) {
+        if (phase == AnalysisPhase.SCAN && analysisCompleted) {
             Set<CallNode> unreachable = newSet(assertionCallNodes);
             unreachable.removeAll(reachableAssertionCallNodes);
             if (!unreachable.isEmpty()) {
@@ -101,5 +98,11 @@ public class TAJSAssertionReachabilityCheckerMonitor extends DefaultAnalysisMoni
                 throw new AnalysisResultException("Some TAJS assertions were not invoked: " + String.join(", ", sourceLocationStrings));
             }
         }
+    }
+
+    @Override
+    public void visitIterationDone(String msg) {
+        if (msg == null)
+            analysisCompleted = true;
     }
 }

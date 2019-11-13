@@ -1217,7 +1217,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6737:11: [maybe] Converti
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6737:11: [maybe] Converting primitive string to object
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:6740:7: [maybe] Converting primitive string to object
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11647:21: [maybe] The variable value has values with different types
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11743:18: [maybe] The variable value has values with different types
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11743:25: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11744:14: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13634:21: [maybe] The variable object has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13634:50: [maybe] Reading absent property (computed name)
@@ -1229,10 +1229,10 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13639:59: [maybe] The var
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13641:14: [maybe] The variable object has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:21: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/lodash/test-suite/4.17.10/lodash_test_215.html: [maybe] Uncaught exception, constructed at [HOST(es6-collections.js):122:65, HOST(es6-collections.js):268:36, HOST(string-replace-model.js):49:30, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
+benchmarks/tajs/src/lodash/test-suite/4.17.10/lodash_test_215.html: [maybe] Uncaught exception, constructed at [HOST(es6-collections.js):122:65, HOST(es6-collections.js):268:36, HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3036:27: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3507:7: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:24: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:13634:50: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 20214 checks (with 0 expected failures)
+Soundness testing succeeded for 20111 checks (with 0 expected failures)

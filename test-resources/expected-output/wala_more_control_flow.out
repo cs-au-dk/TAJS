@@ -6,4 +6,4 @@ test-resources/src/wala/more-control-flow.js:55:12: [definite] The conditional e
 test-resources/src/wala/more-control-flow.js:85:3: [definite] The conditional expression is always true
 test-resources/src/wala/more-control-flow.js:92:10: [definite] The conditional expression is always true
 test-resources/src/wala/more-control-flow.js: [definite] Exceptional program exit is unreachable
-Soundness testing succeeded for 194 checks (with 0 expected failures)
+Soundness testing succeeded for 188 checks (with 0 expected failures)

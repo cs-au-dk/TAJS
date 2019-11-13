@@ -38,4 +38,4 @@ test-resources/src/1k2013spring/1511.js: [maybe] Uncaught exception, constructed
 test-resources/src/1k2013spring/1511.js:66:36: [maybe] Converting primitive number to object
 test-resources/src/1k2013spring/1511.js:72:8: [maybe] The variable f has values with different types
 test-resources/src/1k2013spring/1511.js:96:7: [maybe] The variable f has values with different types
-Soundness testing succeeded for 153 checks (with 1 expected failures)
+Soundness testing succeeded for 150 checks (with 1 expected failures)

@@ -366,11 +366,12 @@ benchmarks/tajs/src/underscore/test-suite/objects/test141.html:6:1: [definite] U
 benchmarks/tajs/src/underscore/test-suite/objects/test141.html:8:1: [definite] Unreachable function notStrictEqual
 benchmarks/tajs/src/underscore/test-suite/objects/test141.html:9:1: [definite] Unreachable function start
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1242:12: [maybe] Conversion from string to number yields NaN
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1242:12: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1242:12: [maybe] Converting object to number
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1242:21: [maybe] The variable obj has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1242:36: [maybe] Converting null to string
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1242:36: [maybe] Converting object to string
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 3812 checks (with 0 expected failures)
+Soundness testing succeeded for 3786 checks (with 0 expected failures)

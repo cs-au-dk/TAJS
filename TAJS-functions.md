@@ -8,6 +8,8 @@
     - Asserts that the value satisfies the given predicates. A predicate name is the name of a predicate method in the lattice.Value class. A disjunction of predicates can be made by interleaving '||' between the predicate names. If expectedResult is false, then the predicate test is expected to fail. Finally, the assertion can be allowed to be unreachable (usually not the case).
 - **TAJS_assertEquals**(Value expected, Value actual, [Boolean expectedResult = true]) -> void:
     - Asserts that the two values are equal (if expectedResult is true) or that they are not equal (if expectedResult is false).
+- **TAJS_assumeModuleType**(String file, Object module) -> Undefined:
+    - Attempts to load a TypeScript declaration file for the chosen JavaScript module and then applies type filtering on module.exports accordingly.
 - **TAJS_asyncListen**(Function callback) -> void:
     - Registers a callback for asynchronous execution.
 - **TAJS_conversionToPrimitive**(Value value, [String hint]) -> PrimitiveValue:
@@ -58,6 +60,8 @@
     - Makes the abstract string consisting of all strings except the given strings.
 - **TAJS_makePartial**(String kind, String canonicalName) -> Object:
     - Creates a "partial" object of the given kind (FUNCTION, OBJECT, ARRAY) and canonical name. Partial functions cannot be invoked, and accessing properties of partial objects results in warnings.
+- **TAJS_moduleExportsFiltering**(Value exports, String fileName) -> void:
+    - Filters spurious property values of module.exports by blended analysis.
 - **TAJS_newArray**() -> Array:
     - Allocates a new Array with a heap-sensitivity that corresponds to the current calling context.
 - **TAJS_newObject**() -> Object:
