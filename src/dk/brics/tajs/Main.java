@@ -102,8 +102,10 @@ public class Main {
         try {
             initLogging();
             Analysis a = init(args, null);
-            if (a == null)
+            if (a == null) {
+                System.out.println("Arguemnts not found");
                 System.exit(-1);
+            }
             run(a);
             System.exit(0);
         } catch (AnalysisException e) {
