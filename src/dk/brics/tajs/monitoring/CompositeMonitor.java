@@ -64,6 +64,15 @@ public class CompositeMonitor implements IAnalysisMonitoring {
         return c;
     }
 
+    public AnalysisMonitor getAnalysisMonitor(){
+        for (IAnalysisMonitoring m : this.monitors){
+            if (m instanceof AnalysisMonitor){
+                return (AnalysisMonitor) m;
+            }
+        }
+        return null;
+    }
+
     public static CompositeMonitor make(IAnalysisMonitoring... monitors) {
         return make(Arrays.asList(monitors));
     }

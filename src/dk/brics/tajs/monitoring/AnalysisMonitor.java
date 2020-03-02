@@ -107,6 +107,8 @@ public class AnalysisMonitor implements IAnalysisMonitoring {
 
     private static Logger log = Logger.getLogger(AnalysisMonitor.class);
 
+    private boolean pointer_analysis_active = true;
+
     /**
      * Set if in scan phase (at the fixpoint).
      */
@@ -1147,7 +1149,7 @@ public class AnalysisMonitor implements IAnalysisMonitoring {
         if (!scan_phase) {
             checkValueSuspicious(node, value);
         }
-        if (scan_phase && Options.get().isShowVariableInfoEnabled()) {
+        if (scan_phase && Options.get().isShowVariableInfoEnabled() || pointer_analysis_active) {
             type_collector.record(var, loc, UnknownValueResolver.getRealValue(value, state), context);
         }
     }

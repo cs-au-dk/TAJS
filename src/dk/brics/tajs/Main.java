@@ -21,11 +21,16 @@ import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.Transfer;
 import dk.brics.tajs.analysis.nativeobjects.NodeJSRequire;
 import dk.brics.tajs.blendedanalysis.BlendedAnalysisOptions;
+import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.flowgraph.JavaScriptSource.Kind;
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.flowgraph.jsnodes.DeclareVariableNode;
+import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
+import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
 import dk.brics.tajs.js2flowgraph.HTMLParser;
 import dk.brics.tajs.lattice.Context;
@@ -45,6 +50,7 @@ import dk.brics.tajs.monitoring.MemoryUsageDiagnosisMonitor;
 import dk.brics.tajs.monitoring.ProgramExitReachabilityChecker;
 import dk.brics.tajs.monitoring.ProgressMonitor;
 import dk.brics.tajs.monitoring.TAJSAssertionReachabilityCheckerMonitor;
+import dk.brics.tajs.monitoring.TypeCollector;
 import dk.brics.tajs.monitoring.inspector.datacollection.InspectorFactory;
 import dk.brics.tajs.monitoring.soundness.SoundnessTesterMonitor;
 import dk.brics.tajs.options.ExperimentalOptions;
@@ -75,37 +81,38 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.Set;
+import java.util.concurrent.Flow;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
 
-/**
- * Main class for the TAJS program analysis.
- */
+/** Main class for the TAJS program analysis. */
 public class Main {
 
     private static Logger log = Logger.getLogger(Main.class);
 
-    private Main() {
-    }
+    private Main() {}
 
     /**
-     * Runs the analysis on the given source files.
-     * Run without arguments to see the usage.
-     * Terminates with System.exit.
+     * Runs the analysis on the given source files. Run without arguments to see the usage. Terminates
+     * with System.exit.
      */
     public static void main(String[] args) {
         try {
             initLogging();
             Analysis a = init(args, null);
-            if (a == null) {
-                System.out.println("Arguemnts not found");
-                System.exit(-1);
-            }
+            if (a == null) System.exit(-1);
+
+            //            FlowGraph flowGraph = a.getSolver().getFlowGraph();
+            //            pointsToAnalysis(flowGraph, a);
+
             run(a);
             System.exit(0);
         } catch (AnalysisException e) {
@@ -113,14 +120,78 @@ public class Main {
                 throw e;
             }
             log.error("Error: " + e.getMessage());
-            //e.printStackTrace();
+            // e.printStackTrace();
             System.exit(-2);
         }
     }
 
-    /**
-     * Resets all internal counters, caches, and canonicalized static fields.
-     */
+    private static void pointsToAnalysis(Analysis analysis) {
+        FlowGraph fg = analysis.getSolver().getFlowGraph();
+        Collection<BasicBlock> blocks = fg.getMain().getBlocks();
+        Iterator<BasicBlock> iterator = blocks.iterator();
+
+        AnalysisMonitor analysisMonitoring =
+                ((CompositeMonitor) analysis.getMonitoring()).getAnalysisMonitor();
+
+        Map<TypeCollector.VariableSummary, Value> typeInformation =
+                analysisMonitoring.getTypeInformation();
+
+        for (Map.Entry<TypeCollector.VariableSummary, Value> entry : typeInformation.entrySet()) {
+
+            TypeCollector.VariableSummary key = entry.getKey();
+            String variableName = key.getVariableName();
+            SourceLocation variableLocation = key.getVariableLocation();
+            Value pointsToSet = entry.getValue();
+
+
+            if (variableLocation.getKind() != SourceLocation.Kind.SYNTHETIC) {
+                System.out.println(
+                        "Variable name "
+                                + variableName
+                                + " defined in line: "
+                                + variableLocation.getLineNumber());
+                System.out.println("Points to set: " + pointsToSet);
+                System.out.println("========");
+
+            }
+        }
+
+    /* while (iterator.hasNext()){
+        BasicBlock block = iterator.next();
+        System.out.println("Traversing block: " + block.getIndex());
+        List<AbstractNode> nodes = block.getNodes();
+        Iterator<AbstractNode> nodeIterator = nodes.iterator();
+
+        while (nodeIterator.hasNext()){
+            AbstractNode node = nodeIterator.next();
+            if (node.isArtificial() || node.getSourceLocation().getKind() == SourceLocation.Kind.SYNTHETIC)
+                continue;
+            int lineNumber = node.getSourceLocation().getLineNumber();
+
+            if (node instanceof WriteVariableNode) {
+                WriteVariableNode writeNode = (WriteVariableNode) node;
+                String variableName = writeNode.getVariableName();
+                System.out.println(writeNode.toString());
+                System.out.println("Name of variable written to: " + variableName);
+                System.out.println("Line number: " + lineNumber);
+            }
+            else if (node instanceof DeclareVariableNode){
+                String variableName = ((DeclareVariableNode) node).getVariableName();
+                System.out.println("Name of variable declared: " + variableName);
+                System.out.println("Line number: " + lineNumber);
+            }
+            else if (node instanceof WritePropertyNode){
+                String variableName = ((WritePropertyNode) node).getPropertyString();
+                System.out.println("Name of property: " + variableName);
+                System.out.println("Line number: " + lineNumber);
+            }
+
+        }
+        System.out.println("=====================================");
+    }*/
+    }
+
+    /** Resets all internal counters, caches, and canonicalized static fields. */
     public static void reset() {
         Canonicalizer.reset();
         ExperimentalOptions.ExperimentalOptionsManager.reset();
@@ -138,10 +209,9 @@ public class Main {
         BlendedAnalysisOptions.reset();
     }
 
-    /**
-     * Reads the input and prepares an analysis object, using the default monitoring.
-     */
-    public static Analysis init(String[] args, SolverSynchronizer sync, Transfer transfer) throws AnalysisException {
+    /** Reads the input and prepares an analysis object, using the default monitoring. */
+    public static Analysis init(String[] args, SolverSynchronizer sync, Transfer transfer)
+            throws AnalysisException {
         OptionValues options = new OptionValues();
         try {
             options.parse(args);
@@ -162,27 +232,33 @@ public class Main {
      * @return analysis object, null if invalid input
      * @throws AnalysisException if internal error
      */
-    public static Analysis init(OptionValues options, IAnalysisMonitoring monitoring, SolverSynchronizer sync, Transfer transfer, ITypeTester<Context> ttr) throws AnalysisException {
+    public static Analysis init(
+            OptionValues options,
+            IAnalysisMonitoring monitoring,
+            SolverSynchronizer sync,
+            Transfer transfer,
+            ITypeTester<Context> ttr)
+            throws AnalysisException {
         checkValidOptions(options);
         Options.set(options);
         TAJSEnvironmentConfig.init();
 
-        if (monitoring == null)
-            monitoring = new AnalysisMonitor();
+        if (monitoring == null) monitoring = new AnalysisMonitor();
         monitoring = addOptionalMonitors(monitoring);
 
         showHeader();
 
         if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomatically()
-                || Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles()
+                || Options.get()
+                .getSoundnessTesterOptions()
+                .isGenerateOnlyIncludeAutomaticallyForHTMLFiles()
                 || Options.get().isBabelEnabled()) {
             preprocess(monitoring);
         }
 
         Analysis analysis = new Analysis(monitoring, sync, transfer, ttr);
 
-        if (Options.get().isDebugEnabled())
-            Options.dump();
+        if (Options.get().isDebugEnabled()) Options.dump();
 
         enterPhase(AnalysisPhase.INITIALIZATION, analysis.getMonitoring());
         Source document = null;
@@ -197,11 +273,12 @@ public class Main {
                     if (htmlFile != null)
                         throw new AnalysisException("Only one HTML file can be analyzed at a time");
                     htmlFile = fn;
-                } else
-                    js_files.add(fn);
+                } else js_files.add(fn);
             }
 
-            FlowGraphBuilder builder = FlowGraphBuilder.makeForMain(new SourceLocation.StaticLocationMaker(Lists.getLast(resolvedFiles)));
+            FlowGraphBuilder builder =
+                    FlowGraphBuilder.makeForMain(
+                            new SourceLocation.StaticLocationMaker(Lists.getLast(resolvedFiles)));
             builder.addLoadersForHostFunctionSources(HostEnvSources.getAccordingToOptions());
             if (Options.get().isNodeJS()) {
                 NodeJSRequire.init();
@@ -209,27 +286,31 @@ public class Main {
                     throw new AnalysisException("A single JavaScript file is expected for NodeJS analysis");
                 }
                 // noop, the bootstrapping has been done by addLoadersForHostFunctionSources above
-            }
-            else if (!js_files.isEmpty()) {
+            } else if (!js_files.isEmpty()) {
                 if (htmlFile != null)
-                    throw new AnalysisException("Cannot analyze an HTML file and JavaScript files at the same time");
+                    throw new AnalysisException(
+                            "Cannot analyze an HTML file and JavaScript files at the same time");
                 // build flowgraph for JS files
                 for (URL js_file : js_files) {
-                    if (!Options.get().isQuietEnabled())
-                        log.info("Loading " + js_file);
-                    builder.transformStandAloneCode(Loader.getString(js_file, Charset.forName("UTF-8")), new SourceLocation.StaticLocationMaker(js_file));
+                    if (!Options.get().isQuietEnabled()) log.info("Loading " + js_file);
+                    builder.transformStandAloneCode(
+                            Loader.getString(js_file, Charset.forName("UTF-8")),
+                            new SourceLocation.StaticLocationMaker(js_file));
                 }
             } else {
                 // build flowgraph for JavaScript code in or referenced from HTML file
                 Options.get().enableIncludeDom(); // always enable DOM if any HTML files are involved
-                if (!Options.get().isQuietEnabled())
-                    log.info("Loading " + htmlFile);
+                if (!Options.get().isQuietEnabled()) log.info("Loading " + htmlFile);
                 HTMLParser p = new HTMLParser(htmlFile);
                 document = p.getHTML();
                 for (Pair<URL, JavaScriptSource> js : p.getJavaScript()) {
                     if (!Options.get().isQuietEnabled() && js.getSecond().getKind() == Kind.FILE)
-                        log.info("Loading " + PathAndURLUtils.getRelativeToWorkingDirectory(PathAndURLUtils.toPath(js.getFirst(), false)));
-                    builder.transformWebAppCode(js.getSecond(), new SourceLocation.StaticLocationMaker(js.getFirst()));
+                        log.info(
+                                "Loading "
+                                        + PathAndURLUtils.getRelativeToWorkingDirectory(
+                                        PathAndURLUtils.toPath(js.getFirst(), false)));
+                    builder.transformWebAppCode(
+                            js.getSecond(), new SourceLocation.StaticLocationMaker(js.getFirst()));
                 }
             }
             fg = builder.close();
@@ -237,10 +318,8 @@ public class Main {
             log.error("Error: Unable to load and parse " + e.getMessage());
             return null;
         }
-        if (sync != null)
-            sync.setFlowGraph(fg);
-        if (Options.get().isFlowGraphEnabled())
-            dumpFlowGraph(fg, false);
+        if (sync != null) sync.setFlowGraph(fg);
+        if (Options.get().isFlowGraphEnabled()) dumpFlowGraph(fg, false);
 
         analysis.getSolver().init(fg, document);
 
@@ -250,16 +329,17 @@ public class Main {
     }
 
     /**
-     * Reads the input and prepares an analysis object, using the default monitoring and transfer functions.
+     * Reads the input and prepares an analysis object, using the default monitoring and transfer
+     * functions.
      */
     public static Analysis init(String[] args, SolverSynchronizer sync) throws AnalysisException {
         return init(args, sync, new Transfer());
     }
 
-    /**
-     * Reads the input and prepares an analysis object, using the default transfer functions.
-     */
-    public static Analysis init(OptionValues options, IAnalysisMonitoring monitoring, SolverSynchronizer sync) throws AnalysisException {
+    /** Reads the input and prepares an analysis object, using the default transfer functions. */
+    public static Analysis init(
+            OptionValues options, IAnalysisMonitoring monitoring, SolverSynchronizer sync)
+            throws AnalysisException {
         return init(options, monitoring, sync, new Transfer(), null);
     }
 
@@ -272,24 +352,32 @@ public class Main {
     }
 
     /**
-     * If the main file is a .html file, then set onlyInclude for instrumentation to
-     * be the main file as well as all script files used by the main file.
-     * Also performs Babel preprocessing.
+     * If the main file is a .html file, then set onlyInclude for instrumentation to be the main file
+     * as well as all script files used by the main file. Also performs Babel preprocessing.
      */
     private static void preprocess(IAnalysisMonitoring monitoring) {
         Set<Path> relevantFiles = newSet();
         Path testFile = Lists.getLast(Options.get().getArguments());
         relevantFiles.add(testFile);
-        if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles() && (testFile.toString().endsWith(".html") || testFile.toString().endsWith(".htm"))) {
+        if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles()
+                && (testFile.toString().endsWith(".html") || testFile.toString().endsWith(".htm"))) {
             relevantFiles.addAll(HTMLParser.getScriptsInHTMLFile(PathAndURLUtils.toRealPath(testFile)));
         }
-        relevantFiles = relevantFiles.stream().map(PathAndURLUtils::toRealPath).collect(Collectors.toSet());
+        relevantFiles =
+                relevantFiles.stream().map(PathAndURLUtils::toRealPath).collect(Collectors.toSet());
         Path commonAncestor = PathAndURLUtils.getCommonAncestorDirectory(relevantFiles);
-        Path rootDirFromMainDirectory = PathAndURLUtils.toRealPath(testFile).getParent().relativize(commonAncestor);
+        Path rootDirFromMainDirectory =
+                PathAndURLUtils.toRealPath(testFile).getParent().relativize(commonAncestor);
         if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomatically()
-            || Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomaticallyForHTMLFiles()) {
-            Options.get().getSoundnessTesterOptions().setOnlyIncludesForInstrumentation(Optional.of(relevantFiles));
-            Options.get().getSoundnessTesterOptions().setRootDirFromMainDirectory(rootDirFromMainDirectory);
+                || Options.get()
+                .getSoundnessTesterOptions()
+                .isGenerateOnlyIncludeAutomaticallyForHTMLFiles()) {
+            Options.get()
+                    .getSoundnessTesterOptions()
+                    .setOnlyIncludesForInstrumentation(Optional.of(relevantFiles));
+            Options.get()
+                    .getSoundnessTesterOptions()
+                    .setRootDirFromMainDirectory(rootDirFromMainDirectory);
         }
         if (Options.get().isBabelEnabled()) {
             enterPhase(AnalysisPhase.PREPROCESSING, monitoring);
@@ -298,21 +386,29 @@ public class Main {
         }
     }
 
-    /**
-     * Adds additional monitors according to the options.
-     */
+    /** Adds additional monitors according to the options. */
     private static IAnalysisMonitoring addOptionalMonitors(IAnalysisMonitoring monitoring) {
         List<IAnalysisMonitoring> extraMonitors = newList();
 
         // Progress monitor
-        if (log.isDebugEnabled() || (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && !Options.get().isTestEnabled() && !Options.get().isIntermediateStatesEnabled()))
+        if (log.isDebugEnabled()
+                || (!log.isDebugEnabled()
+                && log.isInfoEnabled()
+                && !Options.get().isQuietEnabled()
+                && !Options.get().isTestEnabled()
+                && !Options.get().isIntermediateStatesEnabled()))
             extraMonitors.add(new ProgressMonitor(true));
 
         // Analysis timeout monitor
         int timeLimit = Options.get().getAnalysisTimeLimit();
         int transferLimit = Options.get().getAnalysisTransferLimit();
-        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, transferLimit,
-                !Options.get().isInspectorEnabled() && Options.get().isTestEnabled() && !Options.get().isAnalysisLimitationWarnOnly());
+        AnalysisTimeLimiter timeLimiter =
+                new AnalysisTimeLimiter(
+                        timeLimit,
+                        transferLimit,
+                        !Options.get().isInspectorEnabled()
+                                && Options.get().isTestEnabled()
+                                && !Options.get().isAnalysisLimitationWarnOnly());
         extraMonitors.add(timeLimiter);
 
         // Analysis result measuring monitors
@@ -329,7 +425,9 @@ public class Main {
             extraMonitors.add(new SoundnessTesterMonitor());
         } else if (Options.get().isTestEnabled()) {
             // (no need to test reachability if using soundness testing)
-            extraMonitors.add(new ProgramExitReachabilityChecker(true, !Options.get().isDoNotExpectOrdinaryExitEnabled(), true, false, true));
+            extraMonitors.add(
+                    new ProgramExitReachabilityChecker(
+                            true, !Options.get().isDoNotExpectOrdinaryExitEnabled(), true, false, true));
         }
         extraMonitors.add(new TAJSAssertionReachabilityCheckerMonitor());
 
@@ -346,7 +444,9 @@ public class Main {
     }
 
     private static List<URL> resolveInputs(List<Path> files) {
-        return files.stream().map(f -> PathAndURLUtils.normalizeFileURL(PathAndURLUtils.toURL(f))).collect(Collectors.toList());
+        return files.stream()
+                .map(f -> PathAndURLUtils.normalizeFileURL(PathAndURLUtils.toURL(f)))
+                .collect(Collectors.toList());
     }
 
     private static boolean isHTMLFileName(String fileName) {
@@ -354,9 +454,7 @@ public class Main {
         return f.endsWith(".html") || f.endsWith(".xhtml") || f.endsWith(".htm");
     }
 
-    /**
-     * Configures log4j.
-     */
+    /** Configures log4j. */
     public static void initLogging() {
         Properties prop = new Properties();
         prop.put("log4j.rootLogger", "INFO, tajs"); // DEBUG / INFO / WARN / ERROR
@@ -384,20 +482,20 @@ public class Main {
         }
 
         long elapsed = System.currentTimeMillis() - time;
-        if (Options.get().isTimingEnabled())
-            log.info("Analysis finished in " + elapsed + "ms");
+        if (Options.get().isTimingEnabled()) log.info("Analysis finished in " + elapsed + "ms");
 
         if (Options.get().isFlowGraphEnabled())
             dumpFlowGraph(analysis.getSolver().getFlowGraph(), true);
 
         enterPhase(AnalysisPhase.SCAN, monitoring);
         analysis.getSolver().scan();
+
+        pointsToAnalysis(analysis);
+
         leavePhase(AnalysisPhase.SCAN, monitoring);
     }
 
-    /**
-     * Outputs the flowgraph (in graphviz dot files).
-     */
+    /** Outputs the flowgraph (in graphviz dot files). */
     private static void dumpFlowGraph(FlowGraph g, boolean end) {
         try {
             // create directories
@@ -427,8 +525,7 @@ public class Main {
 
     private static void showHeader() {
         if (!Options.get().isQuietEnabled()) {
-            log.info("TAJS - Type Analyzer for JavaScript\n" +
-                "Copyright 2009-2019 Aarhus University\n");
+            log.info("TAJS - Type Analyzer for JavaScript\n" + "Copyright 2009-2019 Aarhus University\n");
         }
     }
 
