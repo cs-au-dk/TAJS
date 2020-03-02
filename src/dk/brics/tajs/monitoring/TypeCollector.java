@@ -17,6 +17,7 @@
 package dk.brics.tajs.monitoring;
 
 import dk.brics.tajs.flowgraph.SourceLocation;
+import dk.brics.tajs.flowgraph.syntaticinfo.Variable;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.Value;
 import org.apache.log4j.Logger;
@@ -88,6 +89,8 @@ public class TypeCollector {
 
     private final Map<VariableSummary, Value> type_info_map = new LinkedHashMap<>();
 
+    private final Map<VariableSummary, Value> points_to_map = new LinkedHashMap<>();
+
     /**
      * Records a variable name along with its source location and abstract value.
      *
@@ -101,6 +104,11 @@ public class TypeCollector {
         if (existing_value != null)
             value = Value.join(existing_value, value); // joining values to accommodate for multiple contexts or imprecise location information
         type_info_map.put(new_location, value);
+
+        if (source_location.getLocation().getAuthority() != null){
+            points_to_map.put(new_location, value);
+        }
+
     }
 
     /**
@@ -108,6 +116,10 @@ public class TypeCollector {
      */
     public Map<VariableSummary, Value> getTypeInformation() {
         return type_info_map;
+    }
+
+    public Map<VariableSummary, Value> getPointsToMap(){
+        return points_to_map;
     }
 
     /**

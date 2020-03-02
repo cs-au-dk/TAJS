@@ -1541,7 +1541,7 @@ public class AnalysisMonitor implements IAnalysisMonitoring {
      * (Used by the Eclipse plugin.)
      */
     public Map<TypeCollector.VariableSummary, Value> getTypeInformation() {
-        return type_collector.getTypeInformation();
+        return type_collector.getPointsToMap();
     }
 
     @Override

@@ -1,5 +1,4 @@
-
-var src = {} 
+var src = {}
 var dest = {}
 
 src["ext"] = {}
