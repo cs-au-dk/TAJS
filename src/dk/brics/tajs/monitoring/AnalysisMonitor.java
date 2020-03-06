@@ -16,6 +16,7 @@
 
 package dk.brics.tajs.monitoring;
 
+import dk.brics.tajs.Tuple;
 import dk.brics.tajs.analysis.HostAPIs;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
@@ -1539,8 +1540,9 @@ public class AnalysisMonitor implements IAnalysisMonitoring {
     /**
      * Returns the collected type information.
      * (Used by the Eclipse plugin.)
+     * @return
      */
-    public Map<TypeCollector.VariableSummary, Value> getTypeInformation() {
+    public Map<Tuple<String, Integer>, Value> getTypeInformation() {
         return type_collector.getPointsToMap();
     }
 

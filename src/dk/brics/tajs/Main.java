@@ -88,6 +88,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.Set;
+import java.util.Scanner;
 import java.util.concurrent.Flow;
 
 import static dk.brics.tajs.util.Collections.newList;
@@ -133,28 +134,52 @@ public class Main {
         AnalysisMonitor analysisMonitoring =
                 ((CompositeMonitor) analysis.getMonitoring()).getAnalysisMonitor();
 
-        Map<TypeCollector.VariableSummary, Value> typeInformation =
+        Map<Tuple<String, Integer>, Value> typeInformation =
                 analysisMonitoring.getTypeInformation();
 
-        for (Map.Entry<TypeCollector.VariableSummary, Value> entry : typeInformation.entrySet()) {
 
-            TypeCollector.VariableSummary key = entry.getKey();
-            String variableName = key.getVariableName();
-            SourceLocation variableLocation = key.getVariableLocation();
-            Value pointsToSet = entry.getValue();
+        while (true){
+            Scanner scan = new Scanner(System.in);
+            System.out.println("Enter variable name followed by line number to prints its points to set");
+            System.out.println("Variable name: ");
+            String variableName = scan.next();
+            System.out.println("Line number: ");
+            int lineNumber = scan.nextInt();
 
-
-            if (variableLocation.getKind() != SourceLocation.Kind.SYNTHETIC) {
+            try{
+                 Value pointsToSet = typeInformation.get(new Tuple<>(variableName, lineNumber));
                 System.out.println(
                         "Variable name "
                                 + variableName
                                 + " defined in line: "
-                                + variableLocation.getLineNumber());
+                                + lineNumber);
                 System.out.println("Points to set: " + pointsToSet);
-                System.out.println("========");
 
+
+            } catch(Exception e){
+                System.out.println("Incorrect input values passed");
             }
         }
+
+//        for (Map.Entry<TypeCollector.VariableSummary, Value> entry : typeInformation.entrySet()) {
+//
+//            TypeCollector.VariableSummary key = entry.getKey();
+//            String variableName = key.getVariableName();
+//            SourceLocation variableLocation = key.getVariableLocation();
+//            Value pointsToSet = entry.getValue();
+//
+//
+//            if (variableLocation.getKind() != SourceLocation.Kind.SYNTHETIC) {
+//                System.out.println(
+//                        "Variable name "
+//                                + variableName
+//                                + " defined in line: "
+//                                + variableLocation.getLineNumber());
+//                System.out.println("Points to set: " + pointsToSet);
+//                System.out.println("========");
+//
+//            }
+//        }
 
     /* while (iterator.hasNext()){
         BasicBlock block = iterator.next();
