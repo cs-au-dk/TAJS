@@ -288,6 +288,12 @@ public class OptionValues {
     @Option(name = "-no-error-capture-stack-trace-polyfill", usage = "Disables the use of Error.captureStackTrace polyfill")
     private boolean noErrorCaptureStackTracePolyfill;
 
+    @Option(name = "-pointer", usage="Provide the source Pointer for points to set evaluation")
+    private String pointer;
+
+    @Option(name="-line", usage="Provide line number for points to set evaluation")
+    private Integer line;
+
     @Argument
     private List<Path> arguments = new ArrayList<>();
 
@@ -380,6 +386,8 @@ public class OptionValues {
         if (!Objects.equals(arguments, that.arguments)) return false;
         if (blendedAnalysis != that.blendedAnalysis) return false;
         if (noFiltering != that.noFiltering) return false;
+        if (pointer != that.pointer) return false;
+        if (line != that.line) return false;
         return Objects.equals(soundnessTesterOptions, that.soundnessTesterOptions);
     }
 
@@ -461,6 +469,8 @@ public class OptionValues {
         result = 31 * result + (noFiltering ? 1 : 0);
         result = 31 * result + (noStringReplacePolyfill ? 1 : 0);
         result = 31 * result + (noErrorCaptureStackTracePolyfill ? 1 : 0);
+        result = 31 * result + (pointer != null ? pointer.hashCode() : 0);
+        result = 31 * result + (line != null ? 1 : 0);
         return result;
     }
 
@@ -1424,5 +1434,13 @@ public class OptionValues {
 
     public boolean isNoErrorCaptureStackTracePolyfillEnabled() {
         return noErrorCaptureStackTracePolyfill;
+    }
+
+    public String getPointerVariable(){
+        return pointer;
+    }
+
+    public Integer getPointerLine(){
+        return line;
     }
 }

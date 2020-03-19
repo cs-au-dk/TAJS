@@ -89,7 +89,6 @@ import java.util.Optional;
 import java.util.Properties;
 import java.util.Set;
 import java.util.Scanner;
-import java.util.concurrent.Flow;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -126,7 +125,7 @@ public class Main {
         }
     }
 
-    private static void pointsToAnalysis(Analysis analysis) {
+    private static void pointsToAnalysis(Analysis analysis, String ptr, int lineNumber) {
         FlowGraph fg = analysis.getSolver().getFlowGraph();
         Collection<BasicBlock> blocks = fg.getMain().getBlocks();
         Iterator<BasicBlock> iterator = blocks.iterator();
@@ -138,28 +137,47 @@ public class Main {
                 analysisMonitoring.getTypeInformation();
 
 
-        while (true){
-            Scanner scan = new Scanner(System.in);
-            System.out.println("Enter variable name followed by line number to prints its points to set");
-            System.out.println("Variable name: ");
-            String variableName = scan.next();
-            System.out.println("Line number: ");
-            int lineNumber = scan.nextInt();
 
-            try{
-                 Value pointsToSet = typeInformation.get(new Tuple<>(variableName, lineNumber));
+        try{
+                 Value pointsToSet = typeInformation.get(new Tuple<>(ptr, lineNumber));
+                 if (pointsToSet == null){
+                     throw new Exception("Input error");
+                 }
                 System.out.println(
                         "Variable name "
-                                + variableName
+                                + ptr
                                 + " defined in line: "
                                 + lineNumber);
                 System.out.println("Points to set: " + pointsToSet);
 
 
             } catch(Exception e){
-                System.out.println("Incorrect input values passed");
+                System.out.println("invalid variable name and line number combination passed");
             }
-        }
+
+
+//        while (true){
+//            Scanner scan = new Scanner(System.in);
+//            System.out.println("Enter variable name followed by line number to prints its points to set");
+//            System.out.println("Variable name: ");
+//            String variableName = scan.next();
+//            System.out.println("Line number: ");
+//            int lineNumber = scan.nextInt();
+//
+//            try{
+//                 Value pointsToSet = typeInformation.get(new Tuple<>(variableName, lineNumber));
+//                System.out.println(
+//                        "Variable name "
+//                                + variableName
+//                                + " defined in line: "
+//                                + lineNumber);
+//                System.out.println("Points to set: " + pointsToSet);
+//
+//
+//            } catch(Exception e){
+//                System.out.println("Incorrect input values passed");
+//            }
+//        }
 
 //        for (Map.Entry<TypeCollector.VariableSummary, Value> entry : typeInformation.entrySet()) {
 //
@@ -515,7 +533,7 @@ public class Main {
         enterPhase(AnalysisPhase.SCAN, monitoring);
         analysis.getSolver().scan();
 
-        pointsToAnalysis(analysis);
+        pointsToAnalysis(analysis, Options.get().getPointerVariable(), Options.get().getPointerLine());
 
         leavePhase(AnalysisPhase.SCAN, monitoring);
     }

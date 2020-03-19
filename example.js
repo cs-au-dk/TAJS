@@ -1,5 +1,13 @@
-function baseContextSensitivity(x) {
-  return x;
-}
-var a = baseContextSensitivity('c');
-var d = baseContextSensitivity('d');
+var src = {}
+var dest = {}
+
+src["ext"] = {}
+src["ins"] = {}
+
+var prop = Math.random() > 0.50 ? "ext" : "ins";
+
+var t = src[prop];
+
+dest[prop] = t;
+
+
