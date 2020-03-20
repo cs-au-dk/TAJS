@@ -289,7 +289,8 @@ public class Main {
         if (monitoring == null) monitoring = new AnalysisMonitor();
         monitoring = addOptionalMonitors(monitoring);
 
-        showHeader();
+        // suppressed for piping purposes
+//        showHeader();
 
         if (Options.get().getSoundnessTesterOptions().isGenerateOnlyIncludeAutomatically()
                 || Options.get()
@@ -301,7 +302,7 @@ public class Main {
 
         Analysis analysis = new Analysis(monitoring, sync, transfer, ttr);
 
-        if (Options.get().isDebugEnabled()) Options.dump();
+//        if (Options.get().isDebugEnabled()) Options.dump();
 
         enterPhase(AnalysisPhase.INITIALIZATION, analysis.getMonitoring());
         Source document = null;
@@ -335,7 +336,7 @@ public class Main {
                             "Cannot analyze an HTML file and JavaScript files at the same time");
                 // build flowgraph for JS files
                 for (URL js_file : js_files) {
-                    if (!Options.get().isQuietEnabled()) log.info("Loading " + js_file);
+//                    if (!Options.get().isQuietEnabled()) log.info("Loading " + js_file);
                     builder.transformStandAloneCode(
                             Loader.getString(js_file, Charset.forName("UTF-8")),
                             new SourceLocation.StaticLocationMaker(js_file));
@@ -535,7 +536,8 @@ public class Main {
 
         pointsToAnalysis(analysis, Options.get().getPointerVariable(), Options.get().getPointerLine());
 
-        leavePhase(AnalysisPhase.SCAN, monitoring);
+        // suppressing logs for piping
+//        leavePhase(AnalysisPhase.SCAN, monitoring);
     }
 
     /** Outputs the flowgraph (in graphviz dot files). */
@@ -562,7 +564,7 @@ public class Main {
 
     private static void enterPhase(AnalysisPhase phase, IAnalysisMonitoring monitoring) {
         String phaseName = prettyPhaseName(phase);
-        showPhaseStart(phaseName);
+//        showPhaseStart(phaseName); // suppressing logs for piping
         monitoring.visitPhasePre(phase);
     }
 

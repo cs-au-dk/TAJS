@@ -149,7 +149,7 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
             if (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && print) {
                 long t = System.currentTimeMillis();
                 if (t - lastPrintProgress > 100 && ! c.getWorklist().isEmpty()) {
-                    printProgress();
+//                    printProgress();
                     lastPrintProgress = t;
                 }
             }
@@ -169,8 +169,8 @@ public class ProgressMonitor extends PhaseMonitoring<ProgressMonitor.PreScanProg
         @Override
         public void visitIterationDone(String terminatedEarlyMsg) {
             if (!log.isDebugEnabled() && log.isInfoEnabled() && !Options.get().isQuietEnabled() && print) {
-                printProgress();
-                System.out.println(); // needed due to '\r' in printProgress
+//                printProgress();
+//                System.out.println(); // needed due to '\r' in printProgress
             }
         }
     }
