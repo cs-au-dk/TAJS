@@ -21,16 +21,12 @@ import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.Transfer;
 import dk.brics.tajs.analysis.nativeobjects.NodeJSRequire;
 import dk.brics.tajs.blendedanalysis.BlendedAnalysisOptions;
-import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.BasicBlock;
 import dk.brics.tajs.flowgraph.FlowGraph;
 import dk.brics.tajs.flowgraph.HostEnvSources;
 import dk.brics.tajs.flowgraph.JavaScriptSource;
 import dk.brics.tajs.flowgraph.JavaScriptSource.Kind;
 import dk.brics.tajs.flowgraph.SourceLocation;
-import dk.brics.tajs.flowgraph.jsnodes.DeclareVariableNode;
-import dk.brics.tajs.flowgraph.jsnodes.WritePropertyNode;
-import dk.brics.tajs.flowgraph.jsnodes.WriteVariableNode;
 import dk.brics.tajs.js2flowgraph.FlowGraphBuilder;
 import dk.brics.tajs.js2flowgraph.HTMLParser;
 import dk.brics.tajs.lattice.Context;
@@ -50,7 +46,6 @@ import dk.brics.tajs.monitoring.MemoryUsageDiagnosisMonitor;
 import dk.brics.tajs.monitoring.ProgramExitReachabilityChecker;
 import dk.brics.tajs.monitoring.ProgressMonitor;
 import dk.brics.tajs.monitoring.TAJSAssertionReachabilityCheckerMonitor;
-import dk.brics.tajs.monitoring.TypeCollector;
 import dk.brics.tajs.monitoring.inspector.datacollection.InspectorFactory;
 import dk.brics.tajs.monitoring.soundness.SoundnessTesterMonitor;
 import dk.brics.tajs.options.ExperimentalOptions;
@@ -73,6 +68,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.kohsuke.args4j.CmdLineException;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -81,6 +77,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -88,7 +85,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
 import java.util.Set;
-import java.util.Scanner;
 
 import static dk.brics.tajs.util.Collections.newList;
 import static dk.brics.tajs.util.Collections.newSet;
@@ -125,7 +121,26 @@ public class Main {
         }
     }
 
-    private static void pointsToAnalysis(Analysis analysis, String ptr, int lineNumber) {
+    private static List<Tuple<String, Integer>> constructPointerTuples(String source){
+        List<Tuple<String, Integer>> ptrLinePairs = new ArrayList<>();
+
+        try {
+            Files.lines(new File(source).toPath())
+                    .map(s -> s.trim())
+                    .filter(s -> !s.isEmpty())
+                    .forEach((combo) -> {
+                String[] temp = combo.split(" ");
+                ptrLinePairs.add(new Tuple<String, Integer>(temp[0], Integer.parseInt(temp[1])) );
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return ptrLinePairs;
+    }
+
+    private static void pointsToAnalysis(Analysis analysis, String ptrSetFile) {
+        List<Tuple<String, Integer>> tuples = constructPointerTuples(ptrSetFile);
         FlowGraph fg = analysis.getSolver().getFlowGraph();
         Collection<BasicBlock> blocks = fg.getMain().getBlocks();
         Iterator<BasicBlock> iterator = blocks.iterator();
@@ -137,23 +152,21 @@ public class Main {
                 analysisMonitoring.getTypeInformation();
 
 
-
-        try{
-                 Value pointsToSet = typeInformation.get(new Tuple<>(ptr, lineNumber));
-                 if (pointsToSet == null){
-                     throw new Exception("Input error");
-                 }
-                System.out.println(
-                        "Variable name "
-                                + ptr
-                                + " defined in line: "
-                                + lineNumber);
-                System.out.println("Points to set: " + pointsToSet);
-
-
-            } catch(Exception e){
+        for (int i =0; i < tuples.size(); i++){
+            try{
+                Value pointsToSet = typeInformation.get(tuples.get(i));
+                Integer lineNumber = tuples.get(i).lineNumber;
+                String var = tuples.get(i).variableName;
+                if (pointsToSet == null){
+                    System.out.println("Invalid combination of " + var + " " + lineNumber);
+                }else{
+                    System.out.println("Variable name : " + var + ", Line number: " + lineNumber);
+                    System.out.println("Points to Set: " + pointsToSet);
+                }
+            }catch(Exception e){
                 System.out.println("invalid variable name and line number combination passed");
             }
+        }
 
 
 //        while (true){
@@ -534,7 +547,7 @@ public class Main {
         enterPhase(AnalysisPhase.SCAN, monitoring);
         analysis.getSolver().scan();
 
-        pointsToAnalysis(analysis, Options.get().getPointerVariable(), Options.get().getPointerLine());
+        pointsToAnalysis(analysis, Options.get().getPtrSetFile());
 
         // suppressing logs for piping
 //        leavePhase(AnalysisPhase.SCAN, monitoring);

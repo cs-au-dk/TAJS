@@ -294,6 +294,9 @@ public class OptionValues {
     @Option(name="-line", usage="Provide line number for points to set evaluation")
     private Integer line;
 
+    @Option(name="-ptrSetFile", usage = "Provide variable and lineNumber pairs in a text file")
+    private String ptrSetFile;
+
     @Argument
     private List<Path> arguments = new ArrayList<>();
 
@@ -388,6 +391,7 @@ public class OptionValues {
         if (noFiltering != that.noFiltering) return false;
         if (pointer != that.pointer) return false;
         if (line != that.line) return false;
+        if (ptrSetFile != that.ptrSetFile) return false;
         return Objects.equals(soundnessTesterOptions, that.soundnessTesterOptions);
     }
 
@@ -471,6 +475,7 @@ public class OptionValues {
         result = 31 * result + (noErrorCaptureStackTracePolyfill ? 1 : 0);
         result = 31 * result + (pointer != null ? pointer.hashCode() : 0);
         result = 31 * result + (line != null ? 1 : 0);
+        result = 31 * result + (ptrSetFile != null ? 1 : 0);
         return result;
     }
 
@@ -1443,4 +1448,6 @@ public class OptionValues {
     public Integer getPointerLine(){
         return line;
     }
+
+    public String getPtrSetFile() { return ptrSetFile; }
 }
