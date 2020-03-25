@@ -1542,7 +1542,7 @@ public class AnalysisMonitor implements IAnalysisMonitoring {
      * (Used by the Eclipse plugin.)
      * @return
      */
-    public Map<Tuple<String, Integer>, Value> getTypeInformation() {
+    public Map<Tuple<String, Integer>, String> getTypeInformation() {
         return type_collector.getPointsToMap();
     }
 

@@ -30,7 +30,7 @@ public class Triple<F, S, T> implements Serializable {
 
     private T trd;
 
-    private Triple(F fst, S snd, T trd) {
+    public Triple(F fst, S snd, T trd) {
         this.fst = fst;
         this.snd = snd;
         this.trd = trd;

@@ -16,6 +16,7 @@
 
 package dk.brics.tajs;
 
+import com.google.gson.JsonObject;
 import dk.brics.tajs.analysis.Analysis;
 import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.Transfer;
@@ -63,9 +64,11 @@ import dk.brics.tajs.util.Loader;
 import dk.brics.tajs.util.Pair;
 import dk.brics.tajs.util.PathAndURLUtils;
 import dk.brics.tajs.util.Strings;
+import dk.brics.tajs.util.Triple;
 import net.htmlparser.jericho.Source;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.json.JSONObject;
 import org.kohsuke.args4j.CmdLineException;
 
 import java.io.File;
@@ -148,26 +151,40 @@ public class Main {
         AnalysisMonitor analysisMonitoring =
                 ((CompositeMonitor) analysis.getMonitoring()).getAnalysisMonitor();
 
-        Map<Tuple<String, Integer>, Value> typeInformation =
+        Map<Tuple<String, Integer>, String> typeInformation =
                 analysisMonitoring.getTypeInformation();
+
+        JSONObject object = new JSONObject();
 
 
         for (int i =0; i < tuples.size(); i++){
             try{
-                Value pointsToSet = typeInformation.get(tuples.get(i));
+                String pointsToSet = typeInformation.get(tuples.get(i));
                 Integer lineNumber = tuples.get(i).lineNumber;
                 String var = tuples.get(i).variableName;
+                Triple<String, String, Integer> triple = new Triple<>("example.js", var, lineNumber);
                 if (pointsToSet == null){
-                    System.out.println("Invalid combination of " + var + " " + lineNumber);
+//                    System.out.println("Invalid combination of " + var + " " + lineNumber);
+                    object.put(String.valueOf(triple), (Collection<?>) null);
                 }else{
-                    System.out.println("Variable name : " + var + ", Line number: " + lineNumber);
-                    System.out.println("Points to Set: " + pointsToSet);
+//                    System.out.println("Variable name : " + var + ", Line number: " + lineNumber);
+//                    System.out.println("Points to Set: " + pointsToSet);
+                    object.put(String.valueOf(triple), pointsToSet);
                 }
             }catch(Exception e){
                 System.out.println("invalid variable name and line number combination passed");
             }
         }
 
+
+        try{
+            FileWriter fileWriter = new FileWriter("output.json");
+            fileWriter.write(object.toString());
+            System.out.println(object.toString());
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        while (true){
 //            Scanner scan = new Scanner(System.in);

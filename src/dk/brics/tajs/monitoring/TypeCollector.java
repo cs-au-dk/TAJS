@@ -89,7 +89,7 @@ public class TypeCollector {
 
     private final Map<VariableSummary, Value> type_info_map = new LinkedHashMap<>();
 
-    private final Map<Tuple<String, Integer>, Value> points_to_map = new LinkedHashMap<>();
+    private final Map<Tuple<String, Integer>, String> points_to_map = new LinkedHashMap<Tuple<String, Integer>, String>();
 
     /**
      * Records a variable name along with its source location and abstract value.
@@ -106,7 +106,7 @@ public class TypeCollector {
         type_info_map.put(new_location, value);
 
         if (source_location.getLocation().getAuthority() != null){
-            points_to_map.put(new Tuple<>(new_location.variable_name, new_location.getVariableLocation().getLineNumber()), value);
+            points_to_map.put(new Tuple<>(new_location.variable_name, new_location.getVariableLocation().getLineNumber()), value.representPointsToSet());
         }
 
     }
@@ -118,7 +118,7 @@ public class TypeCollector {
         return type_info_map;
     }
 
-    public Map<Tuple<String, Integer>, Value> getPointsToMap(){
+    public Map<Tuple<String, Integer>, String> getPointsToMap(){
         return points_to_map;
     }
 

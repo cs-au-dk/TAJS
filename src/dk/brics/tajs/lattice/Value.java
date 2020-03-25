@@ -25,9 +25,11 @@ import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.DeepImmutable;
 import dk.brics.tajs.util.Strings;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
@@ -4698,5 +4700,20 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
      */
     public Value applyFunction(Function<Value, Value> func) {
         return func.apply(this);
+    }
+
+    public String representPointsToSet(){
+        Set<ObjectLabel> object_labels = this.object_labels;
+
+        ArrayList<String> output = new ArrayList();
+
+        if (object_labels != null) {
+          object_labels.forEach(
+              label -> {
+                output.add("'" + label.toString() + "'");
+              });
+        }
+
+        return output.toString();
     }
 }

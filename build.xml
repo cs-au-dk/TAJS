@@ -102,6 +102,7 @@
             <zipgroupfileset dir="extras/inspector/dist" includes="*.jar"/>
             <zipgroupfileset dir="extras/ts-spec-reader/build/libs" includes="*.jar"/>
             <zipfileset src="dist/${project}.jar"/>
+
             <manifest>
                 <attribute name="Main-Class" value="dk.brics.tajs.Main" />
             </manifest>
