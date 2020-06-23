@@ -374,7 +374,7 @@ benchmarks/tajs/src/underscore/test-suite/functions/test99.html:6:1: [definite] 
 benchmarks/tajs/src/underscore/test-suite/functions/test99.html:7:1: [definite] Unreachable function ok
 benchmarks/tajs/src/underscore/test-suite/functions/test99.html:8:1: [definite] Unreachable function notStrictEqual
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:795:31: [maybe] Converting object to number
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:795:31: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:795:31: [maybe] The variable now has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:803:20: [maybe] The variable now has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)

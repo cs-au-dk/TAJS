@@ -67,25 +67,25 @@ test/1k2014dragons/1748.js:6:7: [maybe] The variable W has values with different
 test/1k2014dragons/1748.js:6:9: [maybe] The variable H has values with different types
 test/1k2014dragons/1748.js:6:11: [maybe] The variable W has values with different types
 test/1k2014dragons/1748.js:6:13: [maybe] The variable H has values with different types
-test/1k2014dragons/1748.js:7:7: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1748.js:7:7: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:7:7: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:7:7: [maybe] The variable S has values with different types
-test/1k2014dragons/1748.js:79:23: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1748.js:79:23: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:79:23: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:79:35: [maybe] The variable S has values with different types
-test/1k2014dragons/1748.js:79:44: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1748.js:79:44: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:79:44: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:79:56: [maybe] The variable S has values with different types
-test/1k2014dragons/1748.js:80:31: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1748.js:80:31: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:80:31: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:80:31: [maybe] The variable W has values with different types
-test/1k2014dragons/1748.js:80:64: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1748.js:80:64: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:80:64: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:80:64: [maybe] The variable H has values with different types
-test/1k2014dragons/1748.js:91:42: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1748.js:91:42: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:91:42: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:91:42: [maybe] The variable W has values with different types
-test/1k2014dragons/1748.js:91:47: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1748.js:91:47: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:91:47: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1748.js:91:47: [maybe] The variable H has values with different types
 test/1k2014dragons/1748.js:164:15: [maybe] The variable W has values with different types

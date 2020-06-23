@@ -119,7 +119,8 @@ public class TestWala {
     }
 
     @Test
-    public void wala_upward() throws Exception { // assertion fails if value partitioning is enabled (precision loss due to call to writePropertyWithAttributes in Partitioning.getInstantiatedFunctions)
+    public void wala_upward() throws Exception {
+        Options.get().enableNoPolymorphic(); // free variable partitioning kills polymorphic value, so disable polymorphic values to get predictable output
         String[] args = {"test-resources/src/wala/upward.js"};
         Misc.run(args);
         Misc.checkSystemOutput();

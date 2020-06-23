@@ -14,6 +14,8 @@ test-resources/src/1k2013spring/1535.js:35:2: [maybe] Conversion to number yield
 test-resources/src/1k2013spring/1535.js:37:3: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1535.js:38:3: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1535.js:39:3: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:49:17: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:50:18: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1535.js:51:23: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1535.js:51:47: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1535.js:51:62: [maybe] Conversion to number yields NaN
@@ -26,9 +28,11 @@ test-resources/src/1k2013spring/1535.js:107:6: [maybe] The variable q has values
 test-resources/src/1k2013spring/1535.js:112:14: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1535.js:117:5: [maybe] The variable p has values with different types
 test-resources/src/1k2013spring/1535.js:121:31: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1535.js:127:6: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1535.js:127:6: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1535.js:127:6: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1535.js:127:6: [maybe] The variable color has values with different types
 test-resources/src/1k2013spring/1535.js:129:26: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1535.js:146:6: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1535.js:148:61: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1535.js:149:7: [maybe] The variable reflection_color has values with different types
 test-resources/src/1k2013spring/1535.js:169:21: [maybe] Conversion to number yields NaN

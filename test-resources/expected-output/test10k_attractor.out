@@ -35,13 +35,16 @@ test-resources/src/10k/attractor.html: [maybe] Uncaught exception, constructed a
 test-resources/src/10k/attractor.html:81:83: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:82:37: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:82:37: [maybe] Reading absent property (computed name)
-test-resources/src/10k/attractor.html:101:12: [maybe] Converting object to string
+test-resources/src/10k/attractor.html:101:12: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:101:12: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:101:23: [maybe] Converting primitive number to object
+test-resources/src/10k/attractor.html:108:24: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:111:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:113:12: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:113:19: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:113:23: [maybe] Conversion to number yields NaN
+test-resources/src/10k/attractor.html:118:17: [maybe] Conversion to number yields NaN
+test-resources/src/10k/attractor.html:119:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:120:19: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:121:24: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:121:31: [maybe] Reading absent property (computed name)
@@ -55,10 +58,14 @@ test-resources/src/10k/attractor.html:132:14: [maybe] Conversion to number yield
 test-resources/src/10k/attractor.html:132:57: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:136:10: [maybe] The variable TDATA has values with different types
 test-resources/src/10k/attractor.html:136:35: [maybe] Conversion to number yields NaN
+test-resources/src/10k/attractor.html:140:17: [maybe] Conversion to number yields NaN
+test-resources/src/10k/attractor.html:141:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:142:19: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:162:14: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:163:14: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:164:14: [maybe] Conversion to number yields NaN
+test-resources/src/10k/attractor.html:167:17: [maybe] Conversion to number yields NaN
+test-resources/src/10k/attractor.html:168:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:169:26: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:170:17: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:170:17: [maybe] Reading absent property (computed name)
@@ -81,6 +88,8 @@ test-resources/src/10k/attractor.html:200:120: [maybe] Conversion to number yiel
 test-resources/src/10k/attractor.html:202:5: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:204:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:205:10: [maybe] The variable DATA has values with different types
+test-resources/src/10k/attractor.html:214:24: [maybe] Conversion to number yields NaN
+test-resources/src/10k/attractor.html:214:49: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:214:62: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:214:62: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:214:72: [maybe] Conversion to number yields NaN
@@ -93,9 +102,11 @@ test-resources/src/10k/attractor.html:217:29: [maybe] Conversion to number yield
 test-resources/src/10k/attractor.html:217:38: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:217:51: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:223:19: [maybe] Reading absent property (computed name)
+test-resources/src/10k/attractor.html:224:33: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:224:33: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:224:62: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:226:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/attractor.html:228:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:228:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:233:50: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:233:54: [maybe] Reading absent property (computed name)
@@ -126,75 +137,67 @@ test-resources/src/10k/attractor.html:319:12: [maybe] Converting undefined to st
 test-resources/src/10k/attractor.html:319:12: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:319:25: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:319:25: [maybe] Reading absent property (computed name)
-test-resources/src/10k/attractor.html:323:13: [maybe] Conversion from string to number yields NaN
-test-resources/src/10k/attractor.html:323:14: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/attractor.html:323:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:323:14: [maybe] Conversion to number yields NaN
-test-resources/src/10k/attractor.html:323:14: [maybe] Converting object to number
+test-resources/src/10k/attractor.html:323:14: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:323:19: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:323:27: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:323:27: [maybe] Reading absent property (computed name)
-test-resources/src/10k/attractor.html:323:35: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/attractor.html:323:35: [maybe] Conversion to number yields NaN
-test-resources/src/10k/attractor.html:323:35: [maybe] Converting object to number
+test-resources/src/10k/attractor.html:323:35: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:323:39: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:323:47: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:323:47: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:323:59: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:323:67: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:323:67: [maybe] Reading absent property (computed name)
-test-resources/src/10k/attractor.html:326:13: [maybe] Conversion from string to number yields NaN
-test-resources/src/10k/attractor.html:326:14: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/attractor.html:326:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:326:14: [maybe] Conversion to number yields NaN
-test-resources/src/10k/attractor.html:326:14: [maybe] Converting object to number
+test-resources/src/10k/attractor.html:326:14: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:326:19: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:326:27: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:326:27: [maybe] Reading absent property (computed name)
-test-resources/src/10k/attractor.html:326:35: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/attractor.html:326:35: [maybe] Conversion to number yields NaN
-test-resources/src/10k/attractor.html:326:35: [maybe] Converting object to number
+test-resources/src/10k/attractor.html:326:35: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:326:40: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:326:48: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:326:48: [maybe] Reading absent property (computed name)
-test-resources/src/10k/attractor.html:326:60: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/attractor.html:326:60: [maybe] Conversion to number yields NaN
-test-resources/src/10k/attractor.html:326:60: [maybe] Converting object to number
+test-resources/src/10k/attractor.html:326:60: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:326:64: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:326:72: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:326:72: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:326:84: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:326:92: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:326:92: [maybe] Reading absent property (computed name)
-test-resources/src/10k/attractor.html:329:12: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/attractor.html:329:12: [maybe] Conversion to number yields NaN
-test-resources/src/10k/attractor.html:329:12: [maybe] Converting object to number
+test-resources/src/10k/attractor.html:329:12: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:329:12: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:329:20: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:329:20: [maybe] Reading absent property (computed name)
-test-resources/src/10k/attractor.html:332:12: [maybe] Conversion from string to number yields NaN
-test-resources/src/10k/attractor.html:332:27: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/attractor.html:332:12: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:332:27: [maybe] Conversion to number yields NaN
-test-resources/src/10k/attractor.html:332:27: [maybe] Converting object to number
+test-resources/src/10k/attractor.html:332:27: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:332:31: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:332:39: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:332:39: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:332:47: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:332:55: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:332:55: [maybe] Reading absent property (computed name)
-test-resources/src/10k/attractor.html:338:23: [maybe] Converting object to string
+test-resources/src/10k/attractor.html:338:23: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:338:23: [maybe] Converting primitive string to object
-test-resources/src/10k/attractor.html:338:59: [maybe] Converting object to string
+test-resources/src/10k/attractor.html:338:59: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:338:59: [maybe] Converting primitive string to object
-test-resources/src/10k/attractor.html:338:95: [maybe] Converting object to string
+test-resources/src/10k/attractor.html:338:95: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:338:95: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:344:12: [maybe] Conversion to number yields NaN
 test-resources/src/10k/attractor.html:344:12: [maybe] Converting undefined to string
 test-resources/src/10k/attractor.html:363:31: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:364:31: [maybe] Reading absent property (computed name)
 test-resources/src/10k/attractor.html:390:9: [maybe] The variable hash has values with different types
-test-resources/src/10k/attractor.html:404:13: [maybe] Converting object to string
+test-resources/src/10k/attractor.html:404:13: [maybe] Converting object to primitive
 test-resources/src/10k/attractor.html:404:13: [maybe] Converting primitive string to object
 test-resources/src/10k/attractor.html:405:31: [maybe] Reading absent property (computed name)
-test-resources/src/10k/attractor.html:82:29: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/10k/attractor.html:323:19: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/10k/attractor.html:323:39: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/10k/attractor.html:323:59: [info] Reading from unknown property that may cause loss of precision

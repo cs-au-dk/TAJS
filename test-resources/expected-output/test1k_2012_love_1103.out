@@ -18,7 +18,7 @@ test-resources/src/1k2012love/1103.js:67:20: [maybe] The variable e has values w
 test-resources/src/1k2012love/1103.js:68:20: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1103.js:68:20: [maybe] Converting primitive number to object
 test-resources/src/1k2012love/1103.js:68:20: [maybe] The variable e has values with different types
-test-resources/src/1k2012love/1103.js:87:13: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1103.js:87:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1103.js:124:17: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1103.js:124:17: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1103.js:125:17: [maybe] Conversion to number yields NaN

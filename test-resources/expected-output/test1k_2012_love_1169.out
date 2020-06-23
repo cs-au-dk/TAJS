@@ -13,7 +13,9 @@ test-resources/src/1k2012love/1169.js: [maybe] Uncaught exception, constructed a
 test-resources/src/1k2012love/1169.js:61:9: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1169.js:61:9: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1169.js:61:25: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1169.js:63:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1169.js:63:13: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1169.js:63:26: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1169.js:63:26: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1169.js:64:22: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1169.js:64:50: [maybe] Reading absent property (computed name)
@@ -24,8 +26,10 @@ test-resources/src/1k2012love/1169.js:80:25: [maybe] Reading absent property (co
 test-resources/src/1k2012love/1169.js:80:40: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1169.js:80:60: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1169.js:86:5: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1169.js:91:17: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1169.js:95:16: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1169.js:95:16: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1169.js:97:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1169.js:99:17: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1169.js:99:17: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1169.js:99:37: [maybe] Conversion to number yields NaN

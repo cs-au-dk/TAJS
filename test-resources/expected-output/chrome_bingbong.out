@@ -66,9 +66,9 @@ test-resources/src/chromeexperiments/bingbong.html:115:15: [maybe] Reading absen
 test-resources/src/chromeexperiments/bingbong.html:117:16: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bingbong.html:117:16: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bingbong.html:211:11: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/bingbong.html:218:62: [maybe] Converting object to string
+test-resources/src/chromeexperiments/bingbong.html:218:62: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/bingbong.html:218:62: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/bingbong.html:304:15: [maybe] Converting object to string
+test-resources/src/chromeexperiments/bingbong.html:304:15: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/bingbong.html:304:15: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/bingbong.html:304:15: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bingbong.html:312:55: [maybe] Reading absent property (computed name)
@@ -83,12 +83,15 @@ test-resources/src/chromeexperiments/bingbong.html:412:24: [maybe] Conversion to
 test-resources/src/chromeexperiments/bingbong.html:412:24: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bingbong.html:412:46: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bingbong.html:412:46: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/bingbong.html:589:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bingbong.html:589:9: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/bingbong.html:591:11: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bingbong.html:591:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bingbong.html:591:47: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bingbong.html:591:47: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bingbong.html:591:74: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bingbong.html:591:74: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/bingbong.html:591:92: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bingbong.html:591:106: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bingbong.html:595:40: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/bingbong.html:595:40: [maybe] Reading absent property (computed name)
@@ -108,6 +111,6 @@ test-resources/src/chromeexperiments/bingbong.html:653:36: [maybe] Reading absen
 test-resources/src/chromeexperiments/bingbong.html:653:57: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bingbong.html:653:78: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/bingbong.html:756:9: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/bingbong.html:763:60: [maybe] Converting object to string
+test-resources/src/chromeexperiments/bingbong.html:763:60: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/bingbong.html:763:60: [maybe] Converting primitive string to object
 Soundness testing succeeded for 1239 checks (with 2 expected failures)

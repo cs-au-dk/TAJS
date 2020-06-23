@@ -5,18 +5,18 @@ test/1k2012love/1157.js:20:1: [maybe] Reading absent property children of host o
 test/1k2012love/1157.js:23:1: [maybe] Reading absent property children of host object
 test/1k2012love/1157.js: [maybe] Uncaught exception, constructed at [test/1k2012love/1157.js:20:1, test/1k2012love/1157.js:23:1, test/1k2012love/shim.js:9:5]
 test/1k2012love/1157.js:20:1: [maybe] Reading absent property (computed name)
-test/1k2012love/1157.js:20:25: [maybe] Converting object to string
+test/1k2012love/1157.js:20:25: [maybe] Converting object to primitive
 test/1k2012love/1157.js:20:25: [maybe] Converting primitive string to object
 test/1k2012love/1157.js:20:25: [maybe] Reading absent property (computed name)
 test/1k2012love/1157.js:20:57: [maybe] Converting undefined to string
-test/1k2012love/1157.js:20:76: [maybe] Converting object to string
+test/1k2012love/1157.js:20:76: [maybe] Converting object to primitive
 test/1k2012love/1157.js:20:76: [maybe] Converting primitive string to object
 test/1k2012love/1157.js:20:76: [maybe] Reading absent property (computed name)
 test/1k2012love/1157.js:23:1: [maybe] Reading absent property (computed name)
-test/1k2012love/1157.js:23:25: [maybe] Converting object to string
+test/1k2012love/1157.js:23:25: [maybe] Converting object to primitive
 test/1k2012love/1157.js:23:25: [maybe] Converting primitive string to object
 test/1k2012love/1157.js:23:25: [maybe] Reading absent property (computed name)
 test/1k2012love/1157.js:23:57: [maybe] Converting undefined to string
-test/1k2012love/1157.js:23:76: [maybe] Converting object to string
+test/1k2012love/1157.js:23:76: [maybe] Converting object to primitive
 test/1k2012love/1157.js:23:76: [maybe] Converting primitive string to object
 test/1k2012love/1157.js:23:76: [maybe] Reading absent property (computed name)

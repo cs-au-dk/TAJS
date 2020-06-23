@@ -1,4 +1,4 @@
 test-resources/src/v8tests/string-case.js: [definite] Exceptional program exit is unreachable
-test-resources/src/v8tests/string-case.js:28:14: [maybe] Converting object to string
+test-resources/src/v8tests/string-case.js:28:14: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-case.js:28:14: [maybe] Converting primitive string to object
 Soundness testing succeeded for 11 checks (with 0 expected failures)

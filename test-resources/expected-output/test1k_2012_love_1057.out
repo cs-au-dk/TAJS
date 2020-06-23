@@ -21,12 +21,13 @@ test-resources/src/1k2012love/1057.js:40:5: [maybe] ReferenceError, reading abse
 test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1057.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1057.js:10:23, test-resources/src/1k2012love/1057.js:14:3, test-resources/src/1k2012love/1057.js:24:6, test-resources/src/1k2012love/1057.js:24:14, test-resources/src/1k2012love/1057.js:25:4, test-resources/src/1k2012love/1057.js:30:45, test-resources/src/1k2012love/1057.js:32:49, test-resources/src/1k2012love/1057.js:32:66, test-resources/src/1k2012love/1057.js:35:8, test-resources/src/1k2012love/1057.js:36:18, test-resources/src/1k2012love/1057.js:36:20, test-resources/src/1k2012love/1057.js:36:30, test-resources/src/1k2012love/1057.js:37:13, test-resources/src/1k2012love/1057.js:37:25, test-resources/src/1k2012love/1057.js:37:61, test-resources/src/1k2012love/1057.js:37:92, test-resources/src/1k2012love/1057.js:37:96, test-resources/src/1k2012love/1057.js:38:7, test-resources/src/1k2012love/1057.js:40:3, test-resources/src/1k2012love/1057.js:40:5, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1057.js:24:6: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1057.js:24:14: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1057.js:24:14: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1057.js:25:4: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1057.js:30:45: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1057.js:37:25: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1057.js:37:61: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1057.js:37:61: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1057.js:37:92: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2012love/1057.js:37:96: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1057.js:37:92: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1057.js:37:96: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 62 checks (with 1 expected failures)

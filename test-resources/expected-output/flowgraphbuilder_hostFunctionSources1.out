@@ -1,6 +1,6 @@
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js)
+    node 0: constant[undefined,v1] (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -23,14 +23,14 @@ fg2: <main> function()
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: constant["BODY",-] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js:1:1)
+    node 9: constant["BODY",-] (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js:1:1)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 10: return[v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js)
+    node 10: return[v1] (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js)
     ->[]
   block 9: [exit-exceptional]
-    node 11: exceptional-return (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js)
+    node 11: exceptional-return (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js)
     ->[]
 
-out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js: [definite] Exceptional program exit is unreachable
+TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources1.js: [definite] Exceptional program exit is unreachable
 Soundness testing succeeded for 1 checks (with 0 expected failures)

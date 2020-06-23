@@ -1,85 +1,85 @@
 test-resources/src/v8tests/string-indexof.js:43:18: [definite] Too few parameters to native function
 test-resources/src/v8tests/string-indexof.js: [definite] Exceptional program exit is unreachable
-test-resources/src/v8tests/string-indexof.js:30:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:30:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:30:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:31:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:31:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:31:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:32:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:32:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:32:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:33:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:33:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:33:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:34:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:34:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:34:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:36:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:36:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:36:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:37:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:37:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:37:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:38:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:38:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:38:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:39:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:39:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:39:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:40:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:40:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:40:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:41:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:41:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:41:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:42:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:42:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:42:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:43:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:43:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:43:18: [maybe] Converting primitive string to object
 test-resources/src/v8tests/string-indexof.js:43:18: [maybe] Converting undefined to string
 test-resources/src/v8tests/string-indexof.js:45:21: [maybe] Converting primitive string to object
 test-resources/src/v8tests/string-indexof.js:46:22: [maybe] Converting primitive string to object
 test-resources/src/v8tests/string-indexof.js:46:37: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:47:26: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:47:26: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:47:26: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:52:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:52:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:52:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:53:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:53:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:53:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:61:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:61:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:61:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:62:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:62:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:62:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:63:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:63:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:63:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:64:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:64:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:64:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:65:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:65:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:65:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:66:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:66:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:66:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:69:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:69:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:69:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:70:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:70:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:70:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:71:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:71:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:71:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:72:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:72:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:72:17: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:74:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:74:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:74:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:78:17: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:78:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:78:17: [maybe] Converting primitive string to object
 test-resources/src/v8tests/string-indexof.js:90:20: [maybe] Converting primitive string to object
 test-resources/src/v8tests/string-indexof.js:90:34: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:91:15: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:91:15: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:91:15: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:94:19: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:94:19: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:94:19: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:95:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:95:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:95:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:98:19: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:98:19: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:98:19: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:99:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:99:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:99:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:125:19: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:125:19: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:125:19: [maybe] Converting primitive string to object
 test-resources/src/v8tests/string-indexof.js:128:20: [maybe] Converting primitive string to object
 test-resources/src/v8tests/string-indexof.js:129:30: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:130:21: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:130:21: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:130:21: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:133:15: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:133:15: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:133:15: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-indexof.js:136:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-indexof.js:136:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-indexof.js:136:20: [maybe] Converting primitive string to object
 Soundness testing succeeded for 109238 checks (with 0 expected failures)

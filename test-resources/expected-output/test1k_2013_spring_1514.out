@@ -15,7 +15,7 @@ test-resources/src/1k2013spring/1514.js:119:10: [maybe] TypeError, accessing pro
 test-resources/src/1k2013spring/1514.js:128:4: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1514.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1514.js:23:15, test-resources/src/1k2013spring/1514.js:26:18, test-resources/src/1k2013spring/1514.js:34:2, test-resources/src/1k2013spring/1514.js:34:12, test-resources/src/1k2013spring/1514.js:36:2, test-resources/src/1k2013spring/1514.js:94:8, test-resources/src/1k2013spring/1514.js:97:5, test-resources/src/1k2013spring/1514.js:101:14, test-resources/src/1k2013spring/1514.js:105:4, test-resources/src/1k2013spring/1514.js:108:3, test-resources/src/1k2013spring/1514.js:110:8, test-resources/src/1k2013spring/1514.js:110:26, test-resources/src/1k2013spring/1514.js:119:10, test-resources/src/1k2013spring/1514.js:128:4, test-resources/src/1k2013spring/shim.js:9:5]
-test-resources/src/1k2013spring/1514.js:26:18: [maybe] Converting object to string
+test-resources/src/1k2013spring/1514.js:26:18: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1514.js:26:18: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1514.js:34:23: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:34:36: [maybe] Conversion to number yields NaN
@@ -25,6 +25,7 @@ test-resources/src/1k2013spring/1514.js:41:17: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1514.js:42:9: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:44:10: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:49:14: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1514.js:51:15: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:52:12: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:53:4: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:53:17: [maybe] Conversion to number yields NaN
@@ -36,6 +37,7 @@ test-resources/src/1k2013spring/1514.js:64:25: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1514.js:64:41: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:65:7: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:74:15: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1514.js:76:16: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:77:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:78:9: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1514.js:79:10: [maybe] Reading absent property (computed name)
@@ -46,6 +48,8 @@ test-resources/src/1k2013spring/1514.js:82:7: [maybe] Conversion to number yield
 test-resources/src/1k2013spring/1514.js:91:8: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:91:27: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:91:48: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1514.js:92:6: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1514.js:92:15: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:94:8: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1514.js:94:8: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1514.js:101:14: [maybe] Conversion to number yields NaN

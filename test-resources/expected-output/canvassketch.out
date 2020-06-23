@@ -478,10 +478,10 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/ajax_site.js:16
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:41:4: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:48:16: [maybe] Converting primitive string to object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:48:16: [maybe] The variable seq has values with different types
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:79:13: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:79:13: [maybe] Converting object to primitive
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:79:13: [maybe] Converting primitive string to object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:79:13: [maybe] The variable seq has values with different types
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:80:14: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:80:14: [maybe] Converting object to primitive
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:80:14: [maybe] Converting primitive string to object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:80:14: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:84:11: [maybe] Converting undefined to string
@@ -535,8 +535,9 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:160
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:165:28: [maybe] Converting undefined to string
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:165:37: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:171:23: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:226:10: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:226:10: [maybe] Converting object to primitive
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:226:10: [maybe] Converting primitive string to object
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:257:9: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:257:17: [maybe] Converting primitive string to object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:257:17: [maybe] The variable seq has values with different types
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/animacao.js:259:4: [maybe] Conversion to number yields NaN
@@ -548,6 +549,8 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:774: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:798: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:824: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:848: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:853: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:858: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:904: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:921: [maybe] Reading absent property (computed name)
@@ -559,8 +562,11 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:986: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1055: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1069: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1107: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1143: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1162: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1196: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1227: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1232: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1269: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1285: [maybe] Conversion to number yields NaN
@@ -572,7 +578,9 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1476: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1486: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1493: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1529: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1533: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1550: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1554: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1559: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1608: [maybe] Conversion to number yields NaN
@@ -582,8 +590,10 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1710: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1718: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1723: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1762: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1771: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1783: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1830: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1839: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1851: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:1973: [maybe] Reading absent property (computed name)
@@ -647,6 +657,7 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3901: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3905: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3915: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3929: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3964: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:3974: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4063: [maybe] Reading absent property (computed name)
@@ -666,7 +677,7 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4827: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4836: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4911: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4980: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4980: [maybe] Converting object to primitive
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4980: [maybe] Converting primitive string to object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:4991: [maybe] Converting primitive string to object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:5053: [maybe] Conversion to number yields NaN
@@ -695,10 +706,14 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7050: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7097: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7158: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7166: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7169: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7176: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7188: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7202: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7205: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7212: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7224: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7256: [maybe] Converting primitive string to object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7344: [maybe] Converting undefined to string
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7400: [maybe] Converting undefined to string
@@ -706,6 +721,8 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7518: [maybe] Converting undefined to string
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7552: [maybe] Converting undefined to string
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7569: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7821: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:7853: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8022: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8027: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:8060: [maybe] Conversion to number yields NaN
@@ -731,9 +748,13 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9204: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9221: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9247: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9400: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9439: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9448: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9508: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9518: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9529: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9547: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9556: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9567: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9580: [maybe] Converting undefined to string
@@ -741,19 +762,23 @@ benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9656: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9732: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9749: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9872: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9893: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9902: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9910: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9921: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9921: [maybe] Converting object to primitive
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9921: [maybe] Converting primitive string to object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:9980: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10090: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10129: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10138: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10146: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:10541: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:11516: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:11516: [maybe] Converting object to primitive
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/desenho-min.js:1:11516: [maybe] Converting primitive string to object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:38:35: [maybe] Converting undefined to string
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:84:31: [maybe] Converting undefined to string
-benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:88:15: [maybe] Converting object to string
+benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:88:15: [maybe] Converting object to primitive
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:88:15: [maybe] Converting primitive string to object
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:90:6: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/unevalizer/canvas-sketch/canvas-sketch-filer/sketch.js:92:19: [maybe] Converting undefined to string

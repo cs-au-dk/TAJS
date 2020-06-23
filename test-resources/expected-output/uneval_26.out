@@ -1,0 +1,23 @@
+test-resources/src/uneval/uneval26.html:23:5: [definite] The conditional expression is always false
+test-resources/src/uneval/uneval26.html:28:16: [definite] The conditional expression is always false
+test-resources/src/uneval/uneval26.html:28:35: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval26.html:36:5: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval26.html:41:5: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval26.html:41:9: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval26.html:42:9: [definite] The conditional expression is always true
+test-resources/src/uneval/uneval26.html:28:17: [definite] Reading absent property p
+test-resources/src/uneval/uneval26.html:28:23: [definite] Reading absent property p
+test-resources/src/uneval/uneval26.html:28:36: [definite] Reading absent property p
+test-resources/src/uneval/uneval26.html:28:43: [definite] Reading absent property p
+test-resources/src/uneval/uneval26.html:71:1: [definite] The variable o is never used
+test-resources/src/uneval/uneval26.html:72:1: [definite] The variable o is never used
+test-resources/src/uneval/uneval26.html:75:1: [definite] The variable b is never used
+test-resources/src/uneval/uneval26.html:28:17: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/uneval/uneval26.html:28:23: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/uneval/uneval26.html:31:10: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/uneval/uneval26.html:36:26: [maybe] TypeError, accessing property of null/undefined
+test-resources/src/uneval/uneval26.html: [maybe] Uncaught exception, constructed at [test-resources/src/uneval/uneval26.html:28:17, test-resources/src/uneval/uneval26.html:28:23, test-resources/src/uneval/uneval26.html:31:10, test-resources/src/uneval/uneval26.html:36:26]
+test-resources/src/uneval/uneval26.html:28:17: [maybe] Conversion to number yields NaN
+test-resources/src/uneval/uneval26.html:31:10: [maybe] Reading absent property (computed name)
+test-resources/src/uneval/uneval26.html:32:21: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 0 checks (with 0 expected failures)

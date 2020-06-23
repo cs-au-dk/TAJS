@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -80,8 +80,8 @@ public class OptionValues {
     @Option(name = "-no-concrete", usage = "Disable concrete interpretation for selected native functions")
     private boolean noConcreteNative;
 
-    @Option(name = "-no-for-in", usage = "Disable for-in specialization")
-    private boolean noForInSpecialization;
+    @Option(name = "-for-in", usage = "Enable for-in specialization")
+    private boolean forInSpecialization;
 
     @Option(name = "-no-user-events", usage = "Disable modeling of user events")
     private boolean noUserEvents;
@@ -207,7 +207,7 @@ public class OptionValues {
     @Option(name = "-async-events", usage = "Enable execution of asynchronous event handlers with TAJS_asyncListen")
     private boolean asyncEvents;
 
-    @Option(name = "-no-string-sets", usage = "Disables the use of string sets")
+    @Option(name = "-no-string-sets", usage = "Disable the use of string sets")
     private boolean noStringSets;
 
     @Option(name = "-test-soundness", usage = "Test that the analysis fixpoint over-approximates concrete behaviors")
@@ -261,10 +261,10 @@ public class OptionValues {
     @Option(name = "-type-filtering", usage = "Use TypeScript type declarations for dataflow filtering (use with -nodejs)")
     private boolean typeFiltering;
 
-    @Option(name = "-babel", usage = "Enables Babel preprocessing for source files")
+    @Option(name = "-babel", usage = "Enable Babel preprocessing for source files")
     private boolean babel;
 
-    @Option(name = "-type-checks", usage = "Enables type checking (currently only used with ReaGenT)")
+    @Option(name = "-type-checks", usage = "Enable type checking (currently only used with ReaGenT)")
     private boolean typeCheckEnabled;
 
     @Option(name = "-blended-analysis", usage = "Filter abstract values based on values observed concretely")
@@ -273,19 +273,19 @@ public class OptionValues {
     @Option(name = "-no-filtering", usage = "Disable filtering")
     private boolean noFiltering;
 
-    @Option(name = "-property-name-partitioning", usage = "Partitions the property name value at imprecise dynamic property reads")
-    private boolean propNamePartitioning;
+    @Option(name = "-no-property-name-partitioning", usage = "Disable partitioning of property name values at imprecise dynamic property reads")
+    private boolean noPropNamePartitioning;
 
-    @Option(name = "-type-partitioning", usage = "Partitions the argument at calls with one argument based on the types of that argument")
-    private boolean typePartitioning;
+    @Option(name = "-no-type-partitioning", usage = "Disable partitioning of argument at calls with one argument based on the types of that argument")
+    private boolean noTypePartitioning;
 
-    @Option(name = "-free-variable-partitioning", usage = "Partitions free variables and function expressions with free variables")
-    private boolean freeVariablePartitioning;
+    @Option(name = "-no-free-variable-partitioning", usage = "Disable partitioning of free variables and function expressions with free variables")
+    private boolean noFreeVariablePartitioning;
 
-    @Option(name = "-no-string-replace-polyfill", usage = "Disables the use of the String.prototype.replace polyfill")
+    @Option(name = "-no-string-replace-polyfill", usage = "Disable the use of the String.prototype.replace polyfill")
     private boolean noStringReplacePolyfill;
 
-    @Option(name = "-no-error-capture-stack-trace-polyfill", usage = "Disables the use of Error.captureStackTrace polyfill")
+    @Option(name = "-no-error-capture-stack-trace-polyfill", usage = "Disable the use of Error.captureStackTrace polyfill")
     private boolean noErrorCaptureStackTracePolyfill;
 
     @Argument
@@ -315,7 +315,7 @@ public class OptionValues {
         if (noHybridCollections != that.noHybridCollections) return false;
         if (noChargedCalls != that.noChargedCalls) return false;
         if (noConcreteNative != that.noConcreteNative) return false;
-        if (noForInSpecialization != that.noForInSpecialization) return false;
+        if (forInSpecialization != that.forInSpecialization) return false;
         if (noUserEvents != that.noUserEvents) return false;
         if (contextSpecialization != that.contextSpecialization) return false;
         if (lowSeverity != that.lowSeverity) return false;
@@ -366,9 +366,9 @@ public class OptionValues {
         if (doNotExpectOrdinaryExit != that.doNotExpectOrdinaryExit) return false;
         if (inspector != that.inspector) return false;
         if (babel != that.babel) return false;
-        if (propNamePartitioning != that.propNamePartitioning) return false;
-        if (typePartitioning != that.typePartitioning) return false;
-        if (freeVariablePartitioning != that.freeVariablePartitioning) return false;
+        if (noPropNamePartitioning != that.noPropNamePartitioning) return false;
+        if (noTypePartitioning != that.noTypePartitioning) return false;
+        if (noFreeVariablePartitioning != that.noFreeVariablePartitioning) return false;
         if (noStringReplacePolyfill != that.noStringReplacePolyfill) return false;
         if (noErrorCaptureStackTracePolyfill != that.noErrorCaptureStackTracePolyfill) return false;
         if (!Objects.equals(unsoundnessString, that.unsoundnessString)) return false;
@@ -395,7 +395,7 @@ public class OptionValues {
         result = 31 * result + (noHybridCollections ? 1 : 0);
         result = 31 * result + (noChargedCalls ? 1 : 0);
         result = 31 * result + (noConcreteNative ? 1 : 0);
-        result = 31 * result + (noForInSpecialization ? 1 : 0);
+        result = 31 * result + (forInSpecialization ? 1 : 0);
         result = 31 * result + (noUserEvents ? 1 : 0);
         result = 31 * result + (contextSpecialization ? 1 : 0);
         result = 31 * result + (lowSeverity ? 1 : 0);
@@ -455,9 +455,9 @@ public class OptionValues {
         result = 31 * result + (soundnessTesterOptions != null ? soundnessTesterOptions.hashCode() : 0);
         result = 31 * result + (typeCheckEnabled ? 1 : 0);
         result = 31 * result + (blendedAnalysis ? 1 : 0);
-        result = 31 * result + (propNamePartitioning ? 1 : 0);
-        result = 31 * result + (typePartitioning ? 1 : 0);
-        result = 31 * result + (freeVariablePartitioning? 1 : 0);
+        result = 31 * result + (noPropNamePartitioning ? 1 : 0);
+        result = 31 * result + (noTypePartitioning ? 1 : 0);
+        result = 31 * result + (noFreeVariablePartitioning ? 1 : 0);
         result = 31 * result + (noFiltering ? 1 : 0);
         result = 31 * result + (noStringReplacePolyfill ? 1 : 0);
         result = 31 * result + (noErrorCaptureStackTracePolyfill ? 1 : 0);
@@ -609,8 +609,8 @@ public class OptionValues {
 //		flowgraphOptimization = false;
 //	}
 
-    public void disableNoForInSpecialization() {
-        noForInSpecialization = false;
+    public void disableForInSpecialization() {
+        forInSpecialization = false;
     }
 
     public void disableNoUserEvents() {
@@ -786,8 +786,8 @@ public class OptionValues {
         flowgraph = true;
     }
 
-    public void enableNoForInSpecialization() {
-        noForInSpecialization = true;
+    public void enableForInSpecialization() {
+        forInSpecialization = true;
     }
 
     public void enableNoUserEvents() {
@@ -997,8 +997,8 @@ public class OptionValues {
         return flowgraph;
     }
 
-    public boolean isForInSpecializationDisabled() {
-        return noForInSpecialization;
+    public boolean isForInSpecializationEnabled() {
+        return forInSpecialization;
     }
 
     public boolean isGCDisabled() {
@@ -1366,44 +1366,44 @@ public class OptionValues {
         noFiltering = true;
     }
 
-    public void diableNoFilteringer() {
+    public void disableNoFiltering() {
         noFiltering = false;
     }
 
-    public boolean isPropNamePartitioning() {
-        return propNamePartitioning;
+    public boolean isNoPropNamePartitioning() {
+        return noPropNamePartitioning;
     }
 
-    public void enablePropNamePartitioning() {
-        propNamePartitioning = true;
+    public void enableNoPropNamePartitioning() {
+        noPropNamePartitioning = true;
     }
 
-    public void disablePropNamePartitioning() {
-        propNamePartitioning = false;
+    public void disableNoPropNamePartitioning() {
+        noPropNamePartitioning = false;
     }
 
-    public boolean isTypePartitioningEnabled() {
-        return typePartitioning;
+    public boolean isNoTypePartitioningEnabled() {
+        return noTypePartitioning;
     }
 
-    public void enableTypePartitioning() {
-        typePartitioning = true;
+    public void enableNoTypePartitioning() {
+        noTypePartitioning = true;
     }
 
-    public void disableTypePartitioning() {
-        typePartitioning = false;
+    public void disableNoTypePartitioning() {
+        noTypePartitioning = false;
     }
 
-    public boolean isFreeVariablePartitioning() {
-        return freeVariablePartitioning;
+    public boolean isNoFreeVariablePartitioning() {
+        return noFreeVariablePartitioning;
     }
 
-    public void enableFreeVariablePartitioning() {
-        freeVariablePartitioning = true;
+    public void enableNoFreeVariablePartitioning() {
+        noFreeVariablePartitioning = true;
     }
 
-    public void disableFreeVariablePartitioning() {
-        freeVariablePartitioning = false;
+    public void disableNoFreeVariablePartitioning() {
+        noFreeVariablePartitioning = false;
     }
 
     public void enableNoStringReplacePolyfill() {

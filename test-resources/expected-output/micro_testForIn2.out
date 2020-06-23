@@ -1,5 +1,4 @@
-test-resources/src/micro/testForIn2.js:6:2: [definite] Dead assignment, property x is never read
-test-resources/src/micro/testForIn2.js:6:2: [definite] Dead assignment, property y is never read
+test-resources/src/micro/testForIn2.js:6:2: [definite] Dead assignment, property is never read
 test-resources/src/micro/testForIn2.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/testForIn2.js:11:1: [info] Abstract object: {x:1.0|absent,y:2.0|absent,[[Prototype]]=[@Object.prototype[native]]}
 Soundness testing succeeded for 20 checks (with 0 expected failures)

@@ -69,7 +69,7 @@ test-resources/src/10k/defend_yourself.html:154:18: [maybe] Reading absent prope
 test-resources/src/10k/defend_yourself.html:154:31: [maybe] Reading absent property (computed name)
 test-resources/src/10k/defend_yourself.html:167:5: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:205:9: [maybe] The variable hS has values with different types
-test-resources/src/10k/defend_yourself.html:206:14: [maybe] Converting object to string
+test-resources/src/10k/defend_yourself.html:206:14: [maybe] Converting object to primitive
 test-resources/src/10k/defend_yourself.html:206:14: [maybe] Converting primitive string to object
 test-resources/src/10k/defend_yourself.html:208:29: [maybe] Converting undefined to string
 test-resources/src/10k/defend_yourself.html:208:38: [maybe] Reading absent property (computed name)
@@ -86,6 +86,7 @@ test-resources/src/10k/defend_yourself.html:280:39: [maybe] Conversion to number
 test-resources/src/10k/defend_yourself.html:292:14: [maybe] The variable nextBulletAt has values with different types
 test-resources/src/10k/defend_yourself.html:293:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:294:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:299:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:299:28: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:307:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:309:32: [maybe] Conversion to number yields NaN
@@ -93,7 +94,9 @@ test-resources/src/10k/defend_yourself.html:311:32: [maybe] Conversion to number
 test-resources/src/10k/defend_yourself.html:315:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:315:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:318:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:320:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:325:9: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:326:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:333:9: [maybe] Reading absent property (computed name)
 test-resources/src/10k/defend_yourself.html:334:9: [maybe] Reading absent property (computed name)
 test-resources/src/10k/defend_yourself.html:335:9: [maybe] Reading absent property (computed name)
@@ -127,11 +130,13 @@ test-resources/src/10k/defend_yourself.html:382:27: [maybe] Conversion to number
 test-resources/src/10k/defend_yourself.html:382:66: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:386:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/defend_yourself.html:386:26: [maybe] Reading absent property (computed name)
+test-resources/src/10k/defend_yourself.html:386:45: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:386:45: [maybe] Reading absent property (computed name)
 test-resources/src/10k/defend_yourself.html:386:58: [maybe] Reading absent property (computed name)
 test-resources/src/10k/defend_yourself.html:386:85: [maybe] Reading absent property (computed name)
 test-resources/src/10k/defend_yourself.html:386:98: [maybe] Reading absent property (computed name)
 test-resources/src/10k/defend_yourself.html:386:112: [maybe] Conversion to number yields NaN
+test-resources/src/10k/defend_yourself.html:386:127: [maybe] Conversion to number yields NaN
 test-resources/src/10k/defend_yourself.html:386:127: [maybe] Reading absent property (computed name)
 test-resources/src/10k/defend_yourself.html:386:140: [maybe] Reading absent property (computed name)
 test-resources/src/10k/defend_yourself.html:388:13: [maybe] Conversion to number yields NaN

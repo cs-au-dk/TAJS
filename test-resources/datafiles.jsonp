@@ -1,0 +1,18 @@
+files = [
+  "standard",
+  "extra",
+  "jquery",
+  "libs",
+  "lodash_3.0.0",
+  "lodash_4.17.10",
+  "prototype",
+  "scriptaculous",
+  "tstest",
+  "underscore",
+  "value-partitioning-underscore",
+  "value-partitioning-lodash3",
+  "value-partitioning-lodash4",
+  "value-partitioning-prototype",
+  "value-partitioning-scriptaculous",
+  "value-partitioning-jquery"
+];

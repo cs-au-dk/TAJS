@@ -209,6 +209,7 @@ test-resources/src/10k/flatwar.html:114:57: [maybe] Reading absent property (com
 test-resources/src/10k/flatwar.html:116:32: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:116:46: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:117:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/flatwar.html:127:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:128:21: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:129:29: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:130:29: [maybe] Reading absent property (computed name)
@@ -222,6 +223,7 @@ test-resources/src/10k/flatwar.html:142:26: [maybe] Reading absent property (com
 test-resources/src/10k/flatwar.html:143:26: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:145:25: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:146:25: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:154:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:155:21: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:156:29: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:157:29: [maybe] Reading absent property (computed name)
@@ -233,6 +235,7 @@ test-resources/src/10k/flatwar.html:166:26: [maybe] Reading absent property (com
 test-resources/src/10k/flatwar.html:168:26: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:169:26: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:170:26: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:177:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:178:21: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:179:29: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:180:29: [maybe] Reading absent property (computed name)
@@ -240,6 +243,7 @@ test-resources/src/10k/flatwar.html:181:29: [maybe] Reading absent property (com
 test-resources/src/10k/flatwar.html:187:25: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:188:25: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:190:25: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:193:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:194:15: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:194:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:197:13: [maybe] Reading absent property (computed name)
@@ -255,16 +259,19 @@ test-resources/src/10k/flatwar.html:200:36: [maybe] Conversion to number yields 
 test-resources/src/10k/flatwar.html:201:16: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:201:32: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:202:40: [maybe] Conversion to number yields NaN
+test-resources/src/10k/flatwar.html:203:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:204:21: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:205:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:205:21: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:206:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:206:21: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:209:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:210:21: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:211:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:211:21: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:212:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:212:21: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:215:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:216:21: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:217:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:217:21: [maybe] Reading absent property (computed name)
@@ -279,7 +286,9 @@ test-resources/src/10k/flatwar.html:226:20: [maybe] Conversion to number yields 
 test-resources/src/10k/flatwar.html:227:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:227:20: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:228:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/flatwar.html:231:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:232:17: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:233:29: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:234:25: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:235:34: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:235:41: [maybe] Reading absent property (computed name)
@@ -307,10 +316,12 @@ test-resources/src/10k/flatwar.html:243:64: [maybe] Conversion to number yields 
 test-resources/src/10k/flatwar.html:243:64: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:243:73: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:244:33: [maybe] Conversion to number yields NaN
+test-resources/src/10k/flatwar.html:246:33: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:246:33: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:248:33: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:251:34: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:251:41: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:256:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:257:17: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:259:28: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:259:28: [maybe] Reading absent property (computed name)
@@ -328,6 +339,7 @@ test-resources/src/10k/flatwar.html:260:26: [maybe] Reading absent property (com
 test-resources/src/10k/flatwar.html:261:17: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:261:17: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:261:26: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:264:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:265:17: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:266:28: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:266:35: [maybe] Reading absent property (computed name)
@@ -336,6 +348,7 @@ test-resources/src/10k/flatwar.html:267:27: [maybe] Reading absent property (com
 test-resources/src/10k/flatwar.html:267:35: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:269:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:270:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/flatwar.html:277:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:278:17: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:280:28: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:280:28: [maybe] Reading absent property (computed name)
@@ -355,10 +368,13 @@ test-resources/src/10k/flatwar.html:283:37: [maybe] Conversion to number yields 
 test-resources/src/10k/flatwar.html:283:43: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:287:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:287:21: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:287:31: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:287:31: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:288:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:288:21: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:288:31: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:288:31: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:292:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:293:17: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:294:28: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:294:36: [maybe] Reading absent property (computed name)
@@ -367,7 +383,9 @@ test-resources/src/10k/flatwar.html:295:27: [maybe] Reading absent property (com
 test-resources/src/10k/flatwar.html:296:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:297:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:297:21: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:302:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:303:17: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:304:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:304:21: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:304:36: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:304:44: [maybe] Reading absent property (computed name)
@@ -386,9 +404,11 @@ test-resources/src/10k/flatwar.html:309:24: [maybe] Conversion to number yields 
 test-resources/src/10k/flatwar.html:309:31: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:310:17: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:310:17: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:310:28: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:310:28: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:311:17: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:311:17: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:311:28: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:311:28: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:314:40: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:316:17: [maybe] Conversion to number yields NaN
@@ -398,8 +418,10 @@ test-resources/src/10k/flatwar.html:320:17: [maybe] Conversion to number yields 
 test-resources/src/10k/flatwar.html:321:36: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:322:17: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:323:17: [maybe] Conversion to number yields NaN
+test-resources/src/10k/flatwar.html:329:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:330:14: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:330:25: [maybe] Reading absent property (computed name)
+test-resources/src/10k/flatwar.html:331:17: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:333:17: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:334:18: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:337:29: [maybe] Conversion to number yields NaN
@@ -431,6 +453,7 @@ test-resources/src/10k/flatwar.html:348:63: [maybe] Conversion to number yields 
 test-resources/src/10k/flatwar.html:348:75: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:349:20: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:349:30: [maybe] Conversion to number yields NaN
+test-resources/src/10k/flatwar.html:352:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:354:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:355:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:357:9: [maybe] Converting undefined to string
@@ -438,6 +461,6 @@ test-resources/src/10k/flatwar.html:367:31: [maybe] Converting undefined to stri
 test-resources/src/10k/flatwar.html:369:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/flatwar.html:374:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/flatwar.html:376:13: [maybe] Conversion to number yields NaN
-test-resources/src/10k/flatwar.html:438:17: [maybe] Converting object to string
+test-resources/src/10k/flatwar.html:438:17: [maybe] Converting object to primitive
 test-resources/src/10k/flatwar.html:438:17: [maybe] Converting primitive string to object
 Soundness testing succeeded for 1540 checks (with 0 expected failures)

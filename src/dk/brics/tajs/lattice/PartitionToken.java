@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
-import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.util.AnalysisException;
 import dk.brics.tajs.util.Canonicalizer;
 import dk.brics.tajs.util.DeepImmutable;
@@ -44,6 +43,10 @@ public abstract class PartitionToken implements DeepImmutable {
 
     public abstract String toString();
 
+    /**
+     * Partition token for property name partitioning.
+     * PROP(n,p) corresponds to VAL&lt;n,r,p&gt; where r is the property register of ReadPropertyNode n.
+     */
     public static class PropertyNamePartitionToken extends PartitionToken {
 
         /**
@@ -84,7 +87,7 @@ public abstract class PartitionToken implements DeepImmutable {
 
         @Override
         public String toString() {
-            return "(node" + getNode().getIndex() + "," + prop + ")";
+            return "PROP(node=" + getNode().getIndex() + ",prop=" + prop + ")";
         }
 
         public Property getProperty() {
@@ -92,6 +95,10 @@ public abstract class PartitionToken implements DeepImmutable {
         }
     }
 
+    /**
+     * Partition token for type partitioning.
+     * TYPE(n,t) corresponds to TYPE&lt;n,r,t&gt; (r is omitted since it is uniquely determined from n).
+     */
     public static class TypePartitionToken extends PartitionToken {
 
         private final Type type;
@@ -113,7 +120,7 @@ public abstract class PartitionToken implements DeepImmutable {
 
         @Override
         public String toString() {
-            return "(node" + getNode().getIndex() + "," + type + ")";
+            return "TYPE(node=" + getNode().getIndex() + ",type=" + type + ")";
         }
 
         @Override
@@ -131,7 +138,7 @@ public abstract class PartitionToken implements DeepImmutable {
         }
 
         /**
-         * Types
+         * Types.
          */
         public enum Type {
 
@@ -187,35 +194,36 @@ public abstract class PartitionToken implements DeepImmutable {
         }
     }
 
+    /**
+     * Partition token for function partitioning.
+     * FUN(n,c,t) corresponds to FUN&lt;n,c,t&gt; (where t is null represents ANY).
+     */
     public static class FunctionPartitionToken extends PartitionToken {
-
-        private final Function function;
 
         private final Context c;
 
-        private final PartitionToken q;
+        private final PartitionToken q; // null represents 'ANY'
 
         private final int hashcode;
 
-        private FunctionPartitionToken(AbstractNode n, Context c, Function function, PartitionToken q) {
+        private FunctionPartitionToken(AbstractNode n, Context c, PartitionToken q) {
             super(n);
             this.c = c;
             this.q = q;
-            this.function = function;
-            this.hashcode = Objects.hash(n, c, function, q);
+            this.hashcode = Objects.hash(n, c, q);
         }
 
-        public static FunctionPartitionToken make(AbstractNode n, Context c, Function function, PartitionToken q) {
-            return Canonicalizer.get().canonicalize(new FunctionPartitionToken(n, c, function, q));
+        public static FunctionPartitionToken make(AbstractNode n, Context c, PartitionToken q) {
+            return Canonicalizer.get().canonicalize(new FunctionPartitionToken(n, c, q));
         }
 
-        public Function getFunction() {
-            return function;
+        public static FunctionPartitionToken makeAnyToken(AbstractNode n, Context c) {
+            return make(n, c, null);
         }
 
         @Override
         public String toString() {
-            return "(node" + getNode().getIndex() + ",function" + function.getIndex() + ",context=" + c + ",token=" + q + ")";
+            return "FUN(node=" + getNode().getIndex() + ",context=" + c + ",token=" + (q == null ? "ANY" : q) + ")";
         }
 
         @Override
@@ -227,7 +235,6 @@ public abstract class PartitionToken implements DeepImmutable {
             FunctionPartitionToken that = (FunctionPartitionToken) o;
             return hashcode == that.hashcode &&
                     Objects.equals(q, that.q) &&
-                    Objects.equals(function, that.function) &&
                     Objects.equals(c, that.c);
         }
 

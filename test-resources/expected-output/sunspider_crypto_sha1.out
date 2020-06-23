@@ -26,17 +26,17 @@ test-resources/src/sunspider/crypto-sha1.js:135:26: [maybe] Conversion to number
 test-resources/src/sunspider/crypto-sha1.js:155:22: [maybe] Converting primitive string to object
 test-resources/src/sunspider/crypto-sha1.js:156:5: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/crypto-sha1.js:156:5: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/crypto-sha1.js:156:19: [maybe] Converting object to string
+test-resources/src/sunspider/crypto-sha1.js:156:19: [maybe] Converting object to primitive
 test-resources/src/sunspider/crypto-sha1.js:156:19: [maybe] Converting primitive string to object
-test-resources/src/sunspider/crypto-sha1.js:181:12: [maybe] Converting object to string
+test-resources/src/sunspider/crypto-sha1.js:181:12: [maybe] Converting object to primitive
 test-resources/src/sunspider/crypto-sha1.js:181:12: [maybe] Converting primitive string to object
 test-resources/src/sunspider/crypto-sha1.js:181:28: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/crypto-sha1.js:181:28: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/crypto-sha1.js:182:12: [maybe] Converting object to string
+test-resources/src/sunspider/crypto-sha1.js:182:12: [maybe] Converting object to primitive
 test-resources/src/sunspider/crypto-sha1.js:182:12: [maybe] Converting primitive string to object
 test-resources/src/sunspider/crypto-sha1.js:182:28: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/crypto-sha1.js:182:28: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/crypto-sha1.js:231:26: [maybe] Converting object to number
+test-resources/src/sunspider/crypto-sha1.js:231:26: [maybe] Converting object to primitive
 test-resources/src/sunspider/crypto-sha1.js:233:1: [info] Abstract value: Num
 Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
 Log of soundness facts is not available for test-resources/src/sunspider/crypto-sha1.js, skipping soundness checking

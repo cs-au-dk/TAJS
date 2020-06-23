@@ -44,23 +44,23 @@ test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
-test/1k2014dragons/1891.js:5:5: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1891.js:5:5: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1891.js:5:5: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1891.js:5:5: [maybe] The variable ht has values with different types
-test/1k2014dragons/1891.js:6:5: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1891.js:6:5: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1891.js:6:5: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1891.js:6:5: [maybe] The variable wd has values with different types
 test/1k2014dragons/1891.js:13:11: [maybe] The variable wd has values with different types
-test/1k2014dragons/1891.js:15:15: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1891.js:15:15: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1891.js:15:15: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1891.js:15:15: [maybe] The variable ht has values with different types
 test/1k2014dragons/1891.js:20:28: [maybe] The variable wd has values with different types
 test/1k2014dragons/1891.js:20:44: [maybe] The variable ht has values with different types
 test/1k2014dragons/1891.js:30:9: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1891.js:36:17: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1891.js:36:17: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1891.js:36:17: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1891.js:36:17: [maybe] The variable wd has values with different types
-test/1k2014dragons/1891.js:37:17: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1891.js:37:17: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1891.js:37:17: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1891.js:37:17: [maybe] The variable ht has values with different types
 test/1k2014dragons/1891.js:42:16: [maybe] The variable k has values with different types

@@ -1,2 +1,2 @@
-out/temp-sources/TestMicro.symbol12.js: [definite] Exceptional program exit is unreachable
+TestMicro.symbol12.js: [definite] Exceptional program exit is unreachable
 Soundness testing succeeded for 8 checks (with 0 expected failures)

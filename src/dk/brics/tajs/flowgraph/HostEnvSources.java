@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,14 +91,14 @@ public class HostEnvSources {
         if (Options.get().isPolyfillES6IteratorsEnabled()) {
             sourcePaths.add("es6-iterator.js");
         }
+        if (Options.get().isCommonAsyncPolyfillEnabled()) {
+            sourcePaths.add("common-async-polyfill.js");
+        }
         if (Options.get().isPolyfillES6PromisesEnabled()) {
             sourcePaths.add("es6-promise.js");
         }
         if (Options.get().isPolyfillTypedArraysEnabled()) {
             sourcePaths.add("typed-arrays-model.js");
-        }
-        if (Options.get().isCommonAsyncPolyfillEnabled()) {
-            sourcePaths.add("common-async-polyfill.js");
         }
         if (Options.get().isConsoleModelEnabled()) {
             sourcePaths.add("console-model.js");

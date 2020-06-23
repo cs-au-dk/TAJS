@@ -41,7 +41,9 @@ test-resources/src/1k2012love/1275.js:16:8: [maybe] Reading absent property (com
 test-resources/src/1k2012love/1275.js:16:17: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1275.js:16:29: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1275.js:18:7: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1275.js:28:8: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1275.js:29:6: [maybe] Converting undefined to string
+test-resources/src/1k2012love/1275.js:41:8: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1275.js:43:6: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1275.js:44:6: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1275.js:66:15: [maybe] Reading absent property (computed name)

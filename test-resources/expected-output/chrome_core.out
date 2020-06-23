@@ -71,11 +71,11 @@ test-resources/src/chromeexperiments/core.html:351:17: [maybe] Reading absent pr
 test-resources/src/chromeexperiments/core.html:352:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/core.html:353:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/core.html:356:13: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/core.html:409:13: [maybe] Converting object to string
+test-resources/src/chromeexperiments/core.html:409:13: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/core.html:409:13: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/core.html:409:75: [maybe] Converting object to string
+test-resources/src/chromeexperiments/core.html:409:75: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/core.html:409:75: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/core.html:409:136: [maybe] Converting object to string
+test-resources/src/chromeexperiments/core.html:409:136: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/core.html:409:136: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/core.html:524:13: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/core.html:475:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

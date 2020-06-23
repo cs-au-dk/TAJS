@@ -43,7 +43,7 @@ test-resources/src/chromeexperiments/kaleidoscope.html:37:15: [maybe] The variab
 test-resources/src/chromeexperiments/kaleidoscope.html:37:17: [maybe] The variable h has values with different types
 test-resources/src/chromeexperiments/kaleidoscope.html:82:21: [maybe] The variable canvas_w has values with different types
 test-resources/src/chromeexperiments/kaleidoscope.html:88:17: [maybe] The variable canvas_w has values with different types
-test-resources/src/chromeexperiments/kaleidoscope.html:93:42: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/kaleidoscope.html:93:42: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:93:42: [maybe] The variable canvas_w has values with different types
 test-resources/src/chromeexperiments/kaleidoscope.html:98:2: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/kaleidoscope.html:98:2: [maybe] Reading absent property (computed name)
@@ -51,9 +51,9 @@ test-resources/src/chromeexperiments/kaleidoscope.html:98:83: [maybe] The variab
 test-resources/src/chromeexperiments/kaleidoscope.html:99:2: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/kaleidoscope.html:99:2: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/kaleidoscope.html:107:2: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/kaleidoscope.html:117:20: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/kaleidoscope.html:117:20: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:117:21: [maybe] The variable canvas_w has values with different types
-test-resources/src/chromeexperiments/kaleidoscope.html:119:17: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/kaleidoscope.html:119:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:119:17: [maybe] The variable canvas_w has values with different types
 test-resources/src/chromeexperiments/kaleidoscope.html:121:5: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:121:12: [maybe] Reading absent property (computed name)
@@ -117,7 +117,7 @@ test-resources/src/chromeexperiments/kaleidoscope.html:162:26: [maybe] Conversio
 test-resources/src/chromeexperiments/kaleidoscope.html:165:20: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:165:26: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:168:20: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/kaleidoscope.html:175:3: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/kaleidoscope.html:175:3: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:175:24: [maybe] The variable canvas_w has values with different types
 test-resources/src/chromeexperiments/kaleidoscope.html:183:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:183:22: [maybe] Conversion to number yields NaN
@@ -167,6 +167,6 @@ test-resources/src/chromeexperiments/kaleidoscope.html:205:2: [maybe] Conversion
 test-resources/src/chromeexperiments/kaleidoscope.html:205:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:206:2: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:206:17: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/kaleidoscope.html:223:11: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/kaleidoscope.html:223:11: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/kaleidoscope.html:236:14: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 6325 checks (with 0 expected failures)

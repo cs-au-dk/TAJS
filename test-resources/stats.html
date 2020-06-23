@@ -23,7 +23,12 @@
 </head>
 <body>
 <div class="container-fluid">
-    <h1>TAJS Statistics</h1>
+    <h1 style="display:inline-block">TAJS Statistics</h1>
+    <span>for
+      <select id="file-selector">
+        <option></option>
+      </select>
+    </span>
     <p id="timestamp"></p>
     <p id="cputime"></p>
     <p id="defaultoptions"></p>
@@ -59,27 +64,54 @@
 </div>
 <script>
 
-var q = window.location.search;
-if (q.startsWith("?")) {
-    var s = document.createElement('script');
-    s.src = q.substring(1) + ".jsonp";
-    s.type = "text/javascript";
-    s.onload = function() {
-        $('#table').bootstrapTable({data: data, search: true}).bootstrapTable('hideLoading');
-        $('[data-toggle="tooltip"]').tooltip();
-        var d = new Date(timestamp);
-        $('#timestamp').text("Generated " + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " + d.getHours() + ":" + (d.getMinutes() <= 9 ? "0" : "") + d.getMinutes() + " on " + machine);
-        var cputimeMinutes = Math.floor(cputime / 60000000000);
-        var cputimeSeconds =  Math.round(cputime / 1000000000) - cputimeMinutes * 60;
-        $('#cputime').text("CPU time: " + cputimeMinutes + " minute" + (cputimeMinutes !== 1 ? "s " : " ") + cputimeSeconds + " seconds");
-        $('#defaultoptions').text("Default options: " + defaultOptions);
-    };
-    document.getElementsByTagName('body')[0].appendChild(s);
-} else {
-    $(function () {
+$(function () {
+    var dataFileName = null;
+    var q = window.location.search;
+    if (q.startsWith("?")) {
+        var dataFileName = q.substring(1);
+        var s1 = document.createElement('script');
+        s1.src = dataFileName + ".jsonp";
+        s1.type = "text/javascript";
+        var timer = setTimeout(function() {
+            $('#msg').text("Unable to load " + s1.src);
+        }, 100);
+        s1.onload = function() {
+            clearTimeout(timer);
+            $('#msg').text("");
+            $('#table').bootstrapTable({data: data, search: true}).bootstrapTable('hideLoading');
+            $('[data-toggle="tooltip"]').tooltip();
+            var d = new Date(timestamp);
+            $('#timestamp').text("Generated " + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + " " + d.getHours() + ":" + (d.getMinutes() <= 9 ? "0" : "") + d.getMinutes() + " on " + machine);
+            var cputimeMinutes = Math.floor(cputime / 60000000000);
+            var cputimeSeconds =  Math.round(cputime / 1000000000) - cputimeMinutes * 60;
+            $('#cputime').text("CPU time: " + cputimeMinutes + " minute" + (cputimeMinutes !== 1 ? "s " : " ") + cputimeSeconds + " seconds");
+            $('#defaultoptions').text("Default options: " + defaultOptions);
+        };
+        document.getElementsByTagName('body')[0].appendChild(s1);
+
+    } else {
         $('#msg').text("Data file name missing in URL");
-    });
-}
+    }
+
+    var s2 = document.createElement('script');
+    s2.src = "datafiles.jsonp";
+    s2.type = "text/javascript";
+    s2.onload = function() {
+        var fs = document.querySelector("#file-selector")
+        for (let item of files) {
+            let option = document.createElement("option");
+            if (item === dataFileName) {
+                option.setAttribute("selected", true)
+            }
+            option.innerText = item;
+            fs.appendChild(option);
+        }
+        fs.addEventListener("change", () => {
+            window.location.search = "?" + fs.value
+        });
+    };
+    document.getElementsByTagName('body')[0].appendChild(s2);
+});
 
 function twodecimals(v) {
     return v !== undefined && v !== -1 ? v.toFixed(2) : "";

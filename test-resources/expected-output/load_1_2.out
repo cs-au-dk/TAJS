@@ -41,29 +41,6 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:362:2: [definite] Dead assign
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:366:2: [definite] Dead assignment, property map is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:372:2: [definite] Dead assignment, property andSelf is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:376:2: [definite] Dead assignment, property domManip is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property _toggle is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property animate is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property bind is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property dequeue is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property fadeIn is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property fadeOut is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property fadeTo is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property hide is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property hover is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property load is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property one is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property queue is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property ready is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property serialize is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property serializeArray is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property show is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property slideDown is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property slideToggle is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property slideUp is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property stop is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property trigger is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property triggerHandler is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:437:6: [definite] Dead assignment, property unbind is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:584:3: [definite] Dead assignment, property add is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:592:3: [definite] Dead assignment, property remove is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:600:3: [definite] Dead assignment, property has is never read
@@ -82,26 +59,6 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1016:3: [definite] Dead assig
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1017:3: [definite] Dead assignment, property readonly is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1018:3: [definite] Dead assignment, property selected is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1019:3: [definite] Dead assignment, property maxlength is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1034:2: [definite] Dead assignment, property children is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1034:2: [definite] Dead assignment, property contents is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1034:2: [definite] Dead assignment, property next is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1034:2: [definite] Dead assignment, property nextAll is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1034:2: [definite] Dead assignment, property parent is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1034:2: [definite] Dead assignment, property parents is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1034:2: [definite] Dead assignment, property prev is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1034:2: [definite] Dead assignment, property prevAll is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1034:2: [definite] Dead assignment, property siblings is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1049:2: [definite] Dead assignment, property appendTo is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1049:2: [definite] Dead assignment, property insertAfter is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1049:2: [definite] Dead assignment, property insertBefore is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1049:2: [definite] Dead assignment, property prependTo is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1049:2: [definite] Dead assignment, property replaceAll is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1086:2: [definite] Dead assignment, property addClass is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1086:2: [definite] Dead assignment, property empty is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1086:2: [definite] Dead assignment, property remove is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1086:2: [definite] Dead assignment, property removeAttr is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1086:2: [definite] Dead assignment, property removeClass is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1086:2: [definite] Dead assignment, property toggleClass is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1094:2: [definite] Dead assignment, property height is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1094:2: [definite] Dead assignment, property width is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1118:3: [definite] Dead assignment, property  is never read
@@ -428,21 +385,22 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1023:1: [maybe] Reading absen
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:2510:11: [maybe] Reading absent property toggle
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:2714:1: [maybe] Reading absent property fx
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1023:1, benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:2714:1]
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:428:10: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:428:10: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:428:10: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:559:6: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:562:16: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:562:52: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:987:17: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:987:17: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:987:17: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:991:11: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:991:12: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:991:12: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:991:12: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1092:10: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1092:10: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1092:10: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1109:38: [maybe] Converting undefined to string
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1953:14: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1953:14: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:1953:14: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:2104:14: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:2104:14: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:2104:14: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:444:27: [unsound] Assuming Date.now returns fixed value
 benchmarks/tajs/src/jquery/libraries/jquery-1.2.js:2110:12: [unsound] Assuming Date.now returns fixed value

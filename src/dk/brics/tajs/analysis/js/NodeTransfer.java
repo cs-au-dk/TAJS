@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -377,7 +377,7 @@ public class NodeTransfer implements NodeVisitor {
             if (Options.get().isBlendedAnalysisEnabled()) {
                 v = c.getAnalysis().getBlendedAnalysis().getVariableValue(v, n, c.getState());
             }
-            if (Options.get().isPropNamePartitioning()) {
+            if (!Options.get().isNoPropNamePartitioning()) {
                 // if varname is a free variable with partitioned value, then refine using the context
                 v = Partitioning.getVariableValueFromPartition(v, c);
             }
@@ -497,27 +497,15 @@ public class NodeTransfer implements NodeVisitor {
                     m.visitReadProperty(n, objlabels, propertystr, true, c.getState(), pv.readPropertyWithAttributes(objlabels, propertystr), InitialStateBuilder.GLOBAL);
                 m.visitPropertyRead(n, objlabels, propertystr, c.getState(), true);
             }
-            if (!Options.get().isPropNamePartitioning() || !propertystr.isMaybeFuzzyStr() || propertystr.restrictToNotStrOtherNum().restrictToNotStrUInt().isNone()) {
+            if (Options.get().isNoPropNamePartitioning() || !propertystr.isMaybeFuzzyStr() || propertystr.restrictToNotStrOtherNum().restrictToNotStrUInt().isNone()) {
                 // don't use value partitioning (if not enabled, if not fuzzy string, or if only numeric)
                 v = pv.readPropertyValue(objlabels, propertystr, base_objs);
             } else { // potentially use value partitioning
-                Value propertystrall = propertystr;
-                if (maybe_undef) {
-                    propertystrall = propertystrall.joinStr("undefined");
-                    undefinedCovered = true;
-                }
-                if (maybe_null) {
-                    propertystrall = propertystrall.joinStr("null");
-                    nullCovered = true;
-                }
-                if (maybe_nan) {
-                    propertystrall = propertystrall.joinStr("NaN");
-                    nanCovered = true;
-                }
-                v = Partitioning.partitionPropValue(n, n.getPropertyRegister(), objlabels, originalPropertyVal, propertystrall, base_objs, true, c);
+                v = Partitioning.partitionPropValue(n, n.getPropertyRegister(), objlabels, originalPropertyVal, propertystr, base_objs, true, c);
                 if (v == null) { // no partitioning performed, fall back to non-partitioned reading
                     v = pv.readPropertyValue(objlabels, propertystr, base_objs);
-                    undefinedCovered = nullCovered = nanCovered = false; // undo, not covered after all
+                } else {
+                    undefinedCovered = nullCovered = nanCovered = true; //covered by partitionPropValue
                 }
             }
         }
@@ -614,10 +602,17 @@ public class NodeTransfer implements NodeVisitor {
                     throw new AnalysisException("Unexpected case: " + n.getKind());
             }
             if (!Partitioning.usePartitionedWriteProperty(coercedBaseval, propertystr, v)) { // not using value partitioning
+                if (propertystr instanceof PartitionedValue && !propertystr.isMaybeAllKnownStr() &&
+                        ((PartitionedValue) propertystr).getPartitionValues().stream().allMatch(Value::isMaybeAllKnownStr)) {
+                    // propertystr is a partitioned value, each partition value is precise but the single value is imprecise (due to widening), so use a string set of the partition values instead
+                    propertystr = Value.join(((PartitionedValue) propertystr).getPartitionValues());
+                }
                 Value finalV = PartitionedValue.ignorePartitions(v);
                 // write the object property value, and separately for "undefined"/"null"/"NaN"
-                if (!propertystr.isNone())
-                    pt.add(() -> pv.writeProperty(objlabels, propertystr, finalV, false, n.isDecl()));
+                if (!propertystr.isNone()) {
+                    Value finalPropertystr = propertystr;
+                    pt.add(() -> pv.writeProperty(objlabels, finalPropertystr, finalV, false, n.isDecl()));
+                }
                 if (maybe_undef && !propertystr.isMaybeStr("undefined"))
                     pt.add(() -> pv.writeProperty(objlabels, Value.makeTemporaryStr("undefined"), finalV, false, n.isDecl()));
                 if (maybe_null && !propertystr.isMaybeStr("null"))
@@ -961,12 +956,12 @@ public class NodeTransfer implements NodeVisitor {
             pv.writePropertyWithAttributes(objlabel, n.getVariableName(), v.setAttributes(false, true, false));
             c.getState().writeRegister(n.getScopeObjRegister(), Value.makeObject(objlabel));
             /* From ES5, Annex D:
-             In Edition 3, an object is created, as if by new Object() to serve as the scope for resolving 
-             the name of the exception parameter passed to a catch clause of a try statement. If the actual 
-             exception object is a function and it is called from within the catch clause, the scope object 
-             will be passed as the this value of the call. The body of the function can then define new 
-             properties on its this value and those property names become visible identifiers bindings 
-             within the scope of the catch clause after the function returns. In Edition 5, when an 
+             In Edition 3, an object is created, as if by new Object() to serve as the scope for resolving
+             the name of the exception parameter passed to a catch clause of a try statement. If the actual
+             exception object is a function and it is called from within the catch clause, the scope object
+             will be passed as the this value of the call. The body of the function can then define new
+             properties on its this value and those property names become visible identifiers bindings
+             within the scope of the catch clause after the function returns. In Edition 5, when an
              exception parameter is called as a function, undefined is passed as the this value.
              */ // TODO: use ES5 semantics of catch object?
         }
@@ -1010,7 +1005,7 @@ public class NodeTransfer implements NodeVisitor {
         Set<ObjectLabel> objs = Conversion.toObjectLabels(n, v1, c);
         ObjProperties p = c.getState().getProperties(objs, ObjProperties.PropertyQuery.makeQuery().onlyEnumerable().usePrototypes());
 
-        if (!Options.get().isForInSpecializationDisabled()) {
+        if (Options.get().isForInSpecializationEnabled()) {
             // 1. Find properties to iterate through
             Collection<Value> propertyNameValues = newList(p.getGroupedPropertyNames());
 
@@ -1082,7 +1077,7 @@ public class NodeTransfer implements NodeVisitor {
      */
     @Override
     public void visit(EndForInNode n) {
-        if (!Options.get().isForInSpecializationDisabled()) {
+        if (Options.get().isForInSpecializationEnabled()) {
             if (Options.get().isChargedCallsDisabled() || !CallDependencies.DELAY_RETURN_FLOW_UNTIL_DISCHARGED) {
                 transferEndForIn(n);
             } else { // transferEndForIn is invoked when the call edges are discharged
@@ -1093,7 +1088,7 @@ public class NodeTransfer implements NodeVisitor {
     }
 
     private void transferEndForIn(EndForInNode n) {
-        if (!Options.get().isForInSpecializationDisabled()) {
+        if (Options.get().isForInSpecializationEnabled()) {
             if (!c.isScanning()) {
                 // 1. Find successor block, context and base-state
                 for (CallGraph.ReverseEdge<Context> re : c.getAnalysisLatticeElement().getCallGraph().getSources(BlockAndContext.makeEntry(c.getState().getBasicBlock(), c.getState().getContext()))) {

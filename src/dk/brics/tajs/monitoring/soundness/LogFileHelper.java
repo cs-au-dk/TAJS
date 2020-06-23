@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -292,7 +292,7 @@ public class LogFileHelper {
                 .filter(m -> m.map(preMappedLogFile).isPresent())
                 .collect(Collectors.toList());
         if (mappers.size() != 1)
-            throw new AnalysisException("Expected to be able to map " + mainFile + " to its logs location, viable mappers: " + mappers);
+            throw new AnalysisException("Unable to determine log file for " + mainFile + ", viable mappers: " + (mappers.isEmpty() ? "none" : mappers) + " (try option -log-file)");
         ResourceMap m = mappers.get(0);
         Path mappedLogFilePath = m.map(preMappedLogFile).get();
         URL runtimeLogFileLocation = m.mapToResource(preMappedLogFile).get();

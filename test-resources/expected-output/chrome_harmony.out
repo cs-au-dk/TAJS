@@ -293,24 +293,24 @@ test-resources/src/chromeexperiments/harmony.html:697:9: [maybe] Conversion to n
 test-resources/src/chromeexperiments/harmony.html:723:49: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/harmony.html:723:78: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/harmony.html:723:107: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/harmony.html:813:27: [maybe] Converting object to string
+test-resources/src/chromeexperiments/harmony.html:813:27: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/harmony.html:813:27: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/harmony.html:813:27: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/harmony.html:838:23: [maybe] Converting undefined to string
 test-resources/src/chromeexperiments/harmony.html:845:23: [maybe] Converting undefined to string
-test-resources/src/chromeexperiments/harmony.html:900:153: [maybe] Converting object to string
+test-resources/src/chromeexperiments/harmony.html:900:153: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/harmony.html:900:153: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/harmony.html:920:9: [maybe] Converting object to string
+test-resources/src/chromeexperiments/harmony.html:920:9: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/harmony.html:920:9: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/harmony.html:920:46: [maybe] Converting object to string
+test-resources/src/chromeexperiments/harmony.html:920:46: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/harmony.html:920:46: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/harmony.html:923:9: [maybe] Converting object to string
+test-resources/src/chromeexperiments/harmony.html:923:9: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/harmony.html:923:9: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/harmony.html:923:45: [maybe] Converting object to string
+test-resources/src/chromeexperiments/harmony.html:923:45: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/harmony.html:923:45: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/harmony.html:927:5: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/harmony.html:960:9: [maybe] The variable STORAGE has values with different types
-test-resources/src/chromeexperiments/harmony.html:983:16: [maybe] Converting object to string
+test-resources/src/chromeexperiments/harmony.html:983:16: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/harmony.html:983:16: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/harmony.html:983:47: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/harmony.html:985:25: [maybe] Reading absent property (computed name)

@@ -271,9 +271,5 @@ test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:
 test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1059:18: [maybe] Reading absent property (computed name)
 test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1059:30: [maybe] Reading absent property (computed name)
 test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1085:21: [maybe] Reading absent property (computed name)
-test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1635:28: [maybe] Reading absent property (computed name)
+test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1345:21: [maybe] The variable obj has values with different types
 test-resources/src/tsspecs/underscoretest/app.js:10:1: [info] Abstract object: {a:1.0,b:Undef|2.0|absent,undefined:Undef|2.0|absent,[[Prototype]]=[@Object.prototype[native]]}
-test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1059:7: [info] Writing to unknown property that may cause loss of precision
-test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1635:18: [info] Writing to unknown property that may cause loss of precision
-test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1636:7: [info] Writing to unknown property that may cause loss of precision
-test-resources/src/tsspecs/underscoretest/node_modules/underscore/underscore.js:1635:28: [info] Reading from unknown property that may cause loss of precision

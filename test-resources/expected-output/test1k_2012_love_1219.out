@@ -80,17 +80,16 @@ test-resources/src/1k2012love/1219.js:6:15: [maybe] Converting primitive string 
 test-resources/src/1k2012love/1219.js:6:15: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1219.js:12:9: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1219.js:12:33: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1219.js:12:33: [maybe] Converting object to string
+test-resources/src/1k2012love/1219.js:12:33: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1219.js:12:33: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1219.js:35:6: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1219.js:38:13: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1219.js:38:13: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1219.js:38:13: [maybe] Converting object to number
+test-resources/src/1k2012love/1219.js:38:13: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1219.js:38:17: [maybe] The variable n has values with different types
 test-resources/src/1k2012love/1219.js:39:4: [maybe] Converting primitive number to object
 test-resources/src/1k2012love/1219.js:39:11: [maybe] The variable n has values with different types
-test-resources/src/1k2012love/1219.js:62:26: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2012love/1219.js:62:26: [maybe] Converting object to number
+test-resources/src/1k2012love/1219.js:62:26: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1219.js:62:26: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1219.js:62:30: [maybe] The variable n has values with different types
 test-resources/src/1k2012love/1219.js:94:34: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1219.js:98:5: [maybe] Reading absent property (computed name)

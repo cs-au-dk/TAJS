@@ -1,0 +1,3 @@
+TestMicro.testLogicalOr.js: [definite] Exceptional program exit is unreachable
+TestMicro.testLogicalOr.js:2:5: [definite] The variable y is never used
+Soundness testing succeeded for 4 checks (with 0 expected failures)

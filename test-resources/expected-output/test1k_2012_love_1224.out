@@ -11,6 +11,10 @@ test-resources/src/1k2012love/1224.js:59:13: [maybe] ReferenceError, reading abs
 test-resources/src/1k2012love/1224.js:61:16: [maybe] ReferenceError, reading absent variable l
 test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1224.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1224.js:22:9, test-resources/src/1k2012love/1224.js:25:9, test-resources/src/1k2012love/1224.js:27:5, test-resources/src/1k2012love/1224.js:43:5, test-resources/src/1k2012love/1224.js:43:14, test-resources/src/1k2012love/1224.js:45:27, test-resources/src/1k2012love/1224.js:45:36, test-resources/src/1k2012love/1224.js:47:17, test-resources/src/1k2012love/1224.js:59:13, test-resources/src/1k2012love/1224.js:61:16, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1224.js:16:9: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1224.js:16:18: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1224.js:16:30: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1224.js:16:39: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1224.js:16:44: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1224.js:18:9: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1224.js:21:9: [maybe] Conversion to number yields NaN
@@ -22,4 +26,5 @@ test-resources/src/1k2012love/1224.js:45:27: [maybe] Reading absent property (co
 test-resources/src/1k2012love/1224.js:45:36: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1224.js:45:36: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1224.js:47:17: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1224.js:50:17: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 223 checks (with 0 expected failures)

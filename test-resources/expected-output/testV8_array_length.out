@@ -4,13 +4,13 @@ test-resources/src/v8tests/array_length.js:84:3: [maybe] RangeError, assigning i
 test-resources/src/v8tests/array_length.js:89:3: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/v8tests/array_length.js:94:3: [maybe] RangeError, assigning invalid value to array 'length' property
 test-resources/src/v8tests/array_length.js:99:3: [maybe] RangeError, assigning invalid value to array 'length' property
-test-resources/src/v8tests/array_length.js:69:1: [maybe] Converting object to number
-test-resources/src/v8tests/array_length.js:76:1: [maybe] Converting object to number
-test-resources/src/v8tests/array_length.js:84:3: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/array_length.js:69:1: [maybe] Converting object to primitive
+test-resources/src/v8tests/array_length.js:76:1: [maybe] Converting object to primitive
+test-resources/src/v8tests/array_length.js:84:3: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array_length.js:89:3: [maybe] Conversion to number yields NaN
-test-resources/src/v8tests/array_length.js:94:3: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/array_length.js:94:3: [maybe] Converting object to number
-test-resources/src/v8tests/array_length.js:104:3: [maybe] Converting object to number
+test-resources/src/v8tests/array_length.js:94:3: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/array_length.js:94:3: [maybe] Converting object to primitive
+test-resources/src/v8tests/array_length.js:104:3: [maybe] Converting object to primitive
 test-resources/src/v8tests/array_length.js:36:1: [info] Abstract value: "number"
 test-resources/src/v8tests/array_length.js:37:1: [info] Abstract value: 2.147483648E9
 test-resources/src/v8tests/array_length.js:43:1: [info] Abstract value: "number"

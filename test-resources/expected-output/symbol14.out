@@ -1,7 +1,7 @@
-out/temp-sources/TestMicro.symbol14.js:2:16: [maybe] ReferenceError, reading absent variable p
-out/temp-sources/TestMicro.symbol14.js:3:9: [maybe] ReferenceError, reading absent variable p
-out/temp-sources/TestMicro.symbol14.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestMicro.symbol14.js:2:16, out/temp-sources/TestMicro.symbol14.js:3:9]
-out/temp-sources/TestMicro.symbol14.js:2:1: [info] Abstract value: [@Symbol.prototype[native]]
-out/temp-sources/TestMicro.symbol14.js:4:1: [info] Abstract value: [@Symbol[native]]
-out/temp-sources/TestMicro.symbol14.js:6:1: [info] Abstract value: [@Symbol[native]]
+TestMicro.symbol14.js:2:16: [maybe] ReferenceError, reading absent variable p
+TestMicro.symbol14.js:3:9: [maybe] ReferenceError, reading absent variable p
+TestMicro.symbol14.js: [maybe] Uncaught exception, constructed at [TestMicro.symbol14.js:2:16, TestMicro.symbol14.js:3:9]
+TestMicro.symbol14.js:2:1: [info] Abstract value: [@Symbol.prototype[native]]
+TestMicro.symbol14.js:4:1: [info] Abstract value: [@Symbol[native]]
+TestMicro.symbol14.js:6:1: [info] Abstract value: [@Symbol[native]]
 Soundness testing succeeded for 27 checks (with 0 expected failures)

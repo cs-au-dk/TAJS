@@ -1228,18 +1228,18 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4924:21: [maybe] Reading 
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4925:24: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:5459:35: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15079:23: [maybe] Converting primitive string to object
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15093:11: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15093:11: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15093:11: [maybe] Converting primitive string to object
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15102:13: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15102:13: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15102:13: [maybe] Converting primitive string to object
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15107:59: [maybe] Converting object to string
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15113:20: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15107:59: [maybe] Converting object to primitive
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15113:20: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15113:20: [maybe] Converting primitive string to object
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15115:18: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15115:18: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15115:18: [maybe] Converting primitive string to object
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15116:21: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15116:21: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15116:21: [maybe] Converting primitive string to object
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15118:20: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15118:20: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15118:20: [maybe] Converting primitive string to object
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:15701:20: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:17041:21: [maybe] Reading absent property (computed name)

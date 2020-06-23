@@ -1,87 +1,87 @@
 test-resources/src/v8tests/string-charcodeat.js:127:20: [definite] Too few parameters to native function
 test-resources/src/v8tests/string-charcodeat.js: [definite] Exceptional program exit is unreachable
-test-resources/src/v8tests/string-charcodeat.js:47:10: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:47:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:47:10: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:70:10: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:70:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:70:10: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:75:10: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:75:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:75:10: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:80:10: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:80:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:80:10: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:111:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:111:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:111:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:112:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:112:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:112:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:113:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:113:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:113:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:114:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:114:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:114:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:115:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:115:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:115:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:116:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:116:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:116:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:117:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:117:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:117:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:118:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:118:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:118:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:119:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:119:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:119:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:120:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:120:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:120:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:121:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:121:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:121:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:122:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:122:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:122:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:123:20: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/string-charcodeat.js:123:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:123:20: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/string-charcodeat.js:123:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:123:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:124:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:124:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:124:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:125:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:125:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:125:20: [maybe] Converting primitive string to object
 test-resources/src/v8tests/string-charcodeat.js:126:20: [maybe] Conversion to number yields NaN
-test-resources/src/v8tests/string-charcodeat.js:126:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:126:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:126:20: [maybe] Converting primitive string to object
 test-resources/src/v8tests/string-charcodeat.js:127:20: [maybe] Conversion to number yields NaN
-test-resources/src/v8tests/string-charcodeat.js:127:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:127:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:127:20: [maybe] Converting primitive string to object
 test-resources/src/v8tests/string-charcodeat.js:128:20: [maybe] Conversion to number yields NaN
-test-resources/src/v8tests/string-charcodeat.js:128:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:128:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:128:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:129:20: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:129:20: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:129:20: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:130:21: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:130:21: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:130:21: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:131:21: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:131:21: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:131:21: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:132:40: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:132:40: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:132:40: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:133:21: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:133:21: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:133:21: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:134:21: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:134:21: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:134:21: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:135:40: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:135:40: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:135:40: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:136:21: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:136:21: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:136:21: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:160:18: [maybe] Converting object to string
-test-resources/src/v8tests/string-charcodeat.js:161:18: [maybe] Converting object to string
-test-resources/src/v8tests/string-charcodeat.js:162:18: [maybe] Converting object to string
-test-resources/src/v8tests/string-charcodeat.js:163:18: [maybe] Converting object to string
-test-resources/src/v8tests/string-charcodeat.js:181:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:160:18: [maybe] Converting object to primitive
+test-resources/src/v8tests/string-charcodeat.js:161:18: [maybe] Converting object to primitive
+test-resources/src/v8tests/string-charcodeat.js:162:18: [maybe] Converting object to primitive
+test-resources/src/v8tests/string-charcodeat.js:163:18: [maybe] Converting object to primitive
+test-resources/src/v8tests/string-charcodeat.js:181:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:181:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:182:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:182:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:182:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:183:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:183:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:183:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:184:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:184:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:184:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:186:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:186:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:186:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:187:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:187:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:187:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:188:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:188:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:188:18: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-charcodeat.js:189:18: [maybe] Converting object to string
+test-resources/src/v8tests/string-charcodeat.js:189:18: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-charcodeat.js:189:18: [maybe] Converting primitive string to object
 Soundness testing succeeded for 1496 checks (with 0 expected failures)

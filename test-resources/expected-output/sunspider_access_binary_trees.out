@@ -2,7 +2,7 @@ test-resources/src/sunspider/access-binary-trees.js:33:5: [definite] The variabl
 test-resources/src/sunspider/access-binary-trees.js:17:28: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/access-binary-trees.js:17:52: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/sunspider/access-binary-trees.js: [maybe] Uncaught exception, constructed at [test-resources/src/sunspider/access-binary-trees.js:17:28, test-resources/src/sunspider/access-binary-trees.js:17:52]
-test-resources/src/sunspider/access-binary-trees.js:57:26: [maybe] Converting object to number
+test-resources/src/sunspider/access-binary-trees.js:57:26: [maybe] Converting object to primitive
 test-resources/src/sunspider/access-binary-trees.js:59:1: [info] Abstract value: Num
 test-resources/src/sunspider/access-binary-trees.js:16:8: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/sunspider/access-binary-trees.js:16:32: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

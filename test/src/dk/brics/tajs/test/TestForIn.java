@@ -370,6 +370,7 @@ public class TestForIn {
 
     @Test
     public void twoPropertiesBreakOnSpecific_weakOtherIterations() {
+        Options.get().enableForInSpecialization();
         Misc.runSource("",
                 "var x;",
                 "var o = {}",
@@ -542,7 +543,8 @@ public class TestForIn {
     }
 
     @Test
-    public void repeatedAllocations() {
+    public void repeatedAllocations() { // Note: no value partitioning in this case, but we could add a new form of partitioning token at for-in
+        Options.get().enableForInSpecialization();
         Misc.runSource("",
                 "var o;",
                 "for(var p in {a: 'a', b: 'b'}){",
@@ -560,6 +562,7 @@ public class TestForIn {
 
     @Test
     public void repeatedGuardedAllocations() {
+        Options.get().enableForInSpecialization();
         Misc.runSource("",
                 "var o;",
                 "for(var p in {a: 'a', b: 'b'}){",
@@ -577,6 +580,7 @@ public class TestForIn {
 
     @Test
     public void defaultArrayProperties() {
+        Options.get().enableForInSpecialization();
         Misc.runSource("",
                 "var o = {};",
                 "var x = {a: 'a', b: 'b'};",
@@ -629,6 +633,7 @@ public class TestForIn {
 
     @Test
     public void nestedForIns() {
+        Options.get().enableForInSpecialization();
         Misc.runSource("",
                 "var x;",
                 "var o = {};",
@@ -1105,7 +1110,7 @@ public class TestForIn {
     @Test
     public void compatibleWithLoopUnrolling1_whenDisabled() {
         Options.get().enableLoopUnrolling(50);
-        Options.get().enableNoForInSpecialization();
+        //Options.get().disableForInSpecialization();
         Misc.runSource("",
                 "for(var p in {a: 'a', b: 'b'}){",
                 "   for(var i = 0; i < 3; i++){",
@@ -1117,7 +1122,7 @@ public class TestForIn {
     @Test
     public void compatibleWithLoopUnrolling2_whenDisabled() {
         Options.get().enableLoopUnrolling(50);
-        Options.get().enableNoForInSpecialization();
+        //Options.get().disableForInSpecialization();
         Misc.runSource("",
                 "for(var i = 0; i < 3; i++){",
                 "   for(var p in {a: 'a', b: 'b'}){",

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -107,7 +107,7 @@ public class DeltaMinimizer {
     private static Path reduce(Path reduceFile, Class<? extends RunPredicate> tester, String testerArg, boolean quick, boolean batchMode) {
         try {
             Path fileName = reduceFile.getFileName();
-            Path dir = Files.createTempDirectory(fileName.toString() + ".dir");
+            Path dir = Files.createTempDirectory(fileName + ".dir");
             Path reduceFileCopy = dir.resolve(fileName);
             Files.copy(reduceFile, reduceFileCopy);
             return reduce(dir, reduceFileCopy, tester, testerArg, false, quick, batchMode);
@@ -185,22 +185,30 @@ public class DeltaMinimizer {
 
         Path predicateFile = Files.createTempFile("predicate", ".js");
         try (PrintWriter writer = new PrintWriter(predicateFile.toFile())) {
-            writer.print(predicate.toString());
+            writer.print(predicate);
         }
         return predicateFile;
     }
 
     private static String makeCommandLinePredicateString(String testerArg, Class<? extends RunPredicate> predicateClass) {
+        String tajsArgs = testerArg != null
+                ? String.format("['%s', '%s']", predicateClass.getCanonicalName(), testerArg)
+                : String.format("['%s']", predicateClass.getCanonicalName());
+        String java = TAJSEnvironmentConfig.get().getJava().toString().replace('\\', '/');
+        String mainclass =  JSDeltaCommandLineInterfaceToJava.class.getCanonicalName();
+        String classpath = System.getProperty("java.class.path").replace('\\', '/');
         return String.format("exports.test = " +
                         "makeJavaProcessPredicate(%n" +
-                        "['%s', '%s'], // TAJS-args %n" +
+                        "%s, // TAJS-args %n" +
+                        "'%s', // Java executable %n" +
                         "['-Xmx4G', '-ea'], // Java-args %n" +
                         "'%s', // main-class %n" +
                         "'%s' // classpath %n" +
                         ");",
-                predicateClass.getCanonicalName(), testerArg, // TAJS-args
-                JSDeltaCommandLineInterfaceToJava.class.getCanonicalName(), // main-class
-                System.getProperty("java.class.path") // classpath
+                tajsArgs,
+                java,
+                mainclass,
+                classpath
         );
     }
 

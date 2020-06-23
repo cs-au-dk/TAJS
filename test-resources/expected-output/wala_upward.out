@@ -1,4 +1,4 @@
 test-resources/src/wala/upward.js: [definite] Exceptional program exit is unreachable
 test-resources/src/wala/upward.js:21:1: [info] Abstract value: 3.0
-test-resources/src/wala/upward.js:22:1: [info] Abstract value: 7.0
-Soundness testing succeeded for 53 checks (with 0 expected failures)
+test-resources/src/wala/upward.js:22:1: [info] Abstract value: UIntPos
+Soundness testing succeeded for 55 checks (with 0 expected failures)

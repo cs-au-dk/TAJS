@@ -1501,7 +1501,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:8642:1: [maybe] Reading abse
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:9775:21: [maybe] Reading absent property addBack
 benchmarks/tajs/src/jquery/test-suite/1.10/selectors_child.html:16:1: [maybe] Reading absent property css
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:58:14: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:134:9: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:134:9: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:134:9: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:345:11: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:346:12: [maybe] Reading absent property (computed name)
@@ -1518,15 +1518,15 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:902:18: [maybe] Reading abse
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:903:25: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:910:25: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:927:4: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:979:13: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:979:13: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:979:13: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:980:42: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:980:42: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:980:42: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1035:23: [maybe] Converting object to number
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1035:23: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1080:15: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1092:108: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1109:29: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1135:14: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1135:14: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1135:14: [maybe] Converting undefined to string
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1135:21: [maybe] The variable escaped has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1139:27: [maybe] The variable escapedWhitespace has values with different types
@@ -1536,7 +1536,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1171:27: [maybe] Reading abs
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1239:25: [maybe] The variable rbuggyQSA has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1283:17: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1307:4: [maybe] Converting undefined to string
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1351:10: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1351:10: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1351:10: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1616:21: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:1914:19: [maybe] Converting undefined to string
@@ -1551,23 +1551,23 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2006:29: [maybe] Reading abs
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2008:9: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2009:16: [maybe] Converting undefined to string
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2009:22: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2026:15: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2026:15: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2026:15: [maybe] Converting primitive number to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2026:15: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2026:15: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2028:9: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2028:9: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2028:9: [maybe] Converting primitive number to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2028:9: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2028:9: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2030:11: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2031:20: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2036:16: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2036:16: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2036:19: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2036:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2036:42: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2036:65: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2036:88: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2037:16: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2037:16: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2037:21: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2037:21: [maybe] Converting undefined to string
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2037:21: [maybe] Reading absent property (computed name)
@@ -1586,7 +1586,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2060:16: [maybe] The variabl
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2060:42: [maybe] The variable unquoted has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2062:25: [maybe] The variable unquoted has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2064:15: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2064:15: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2064:15: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2064:15: [maybe] Converting primitive number to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2064:15: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2064:15: [maybe] The variable unquoted has values with different types
@@ -1598,12 +1598,12 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2064:67: [maybe] Converting 
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2064:67: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2064:67: [maybe] The variable unquoted has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2067:16: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2067:16: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2067:16: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2067:16: [maybe] Converting primitive number to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2067:16: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2067:16: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2068:16: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2068:16: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2068:16: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2068:16: [maybe] Converting primitive number to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2068:16: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2068:16: [maybe] The variable unquoted has values with different types
@@ -1614,7 +1614,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2468:10: [maybe] The variabl
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2471:9: [maybe] The variable matched has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2471:42: [maybe] The variable soFar has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2474:13: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2474:13: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2474:13: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2474:13: [maybe] Converting primitive number to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2474:13: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2474:13: [maybe] The variable soFar has values with different types
@@ -1628,7 +1628,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2487:11: [maybe] Converting 
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2487:11: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2487:11: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2489:12: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2489:12: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2489:12: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2489:12: [maybe] Converting primitive number to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2489:12: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2489:12: [maybe] The variable soFar has values with different types
@@ -1642,7 +1642,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2494:56: [maybe] Reading abs
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2495:14: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2498:13: [maybe] The variable matched has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2502:13: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2502:13: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2502:13: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2502:13: [maybe] Converting primitive number to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2502:13: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2502:13: [maybe] The variable soFar has values with different types
@@ -1691,7 +1691,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2916:34: [maybe] Converting 
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2916:34: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2916:34: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2920:16: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2920:16: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2920:16: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2920:16: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2920:32: [maybe] Converting primitive boolean to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2920:32: [maybe] Converting primitive number to object
@@ -1705,9 +1705,9 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2935:7: [maybe] Reading abse
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2936:7: [maybe] Converting undefined to string
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2936:22: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2942:13: [maybe] The variable selector has values with different types
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2977:22: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2977:22: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:2977:22: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3003:15: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3003:15: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3003:15: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3036:5: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3063:48: [maybe] Conversion to number yields NaN
@@ -1737,50 +1737,50 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3602:17: [maybe] Reading abs
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3602:39: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3776:40: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3804:33: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3804:48: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3804:48: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3804:48: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3807:11: [maybe] The variable noData has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:3807:21: [maybe] The variable noData has values with different types
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4527:14: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4527:14: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4527:14: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4528:15: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4693:18: [maybe] Converting object to string
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4703:2: [maybe] Converting object to string
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4711:3: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4693:18: [maybe] Converting object to primitive
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4703:2: [maybe] Converting object to primitive
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4711:3: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4937:11: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4938:17: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4948:26: [maybe] Converting undefined to string
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4952:8: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4952:8: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4952:8: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4958:12: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4958:12: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4958:12: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4961:11: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:4961:11: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5010:18: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5223:9: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5223:9: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5223:9: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5228:10: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5228:10: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5228:10: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5241:10: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5241:10: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5241:10: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5380:14: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5400:26: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5671:17: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5997:13: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5997:13: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:5997:13: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:6837:16: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:6837:16: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:6837:16: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:6837:47: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:6837:47: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:6837:47: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7001:10: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7005:11: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7563:14: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7563:14: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7563:14: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7633:13: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7633:13: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7633:13: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7648:27: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7648:27: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7648:27: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7663:16: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7663:16: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7663:16: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7667:24: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.10.js:7669:10: [maybe] Converting primitive string to object

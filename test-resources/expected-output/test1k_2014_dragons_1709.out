@@ -100,20 +100,20 @@ test/1k2014dragons/1709.js:66:5: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:71:5: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:77:4: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:81:12: [maybe] The variable z has values with different types
-test/1k2014dragons/1709.js:84:8: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1709.js:84:8: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1709.js:84:8: [maybe] Converting object to number
+test/1k2014dragons/1709.js:84:8: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1709.js:84:8: [maybe] Converting object to primitive
 test/1k2014dragons/1709.js:84:10: [maybe] The variable z has values with different types
 test/1k2014dragons/1709.js:85:5: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:90:13: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1709.js:91:5: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1709.js:91:5: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1709.js:91:5: [maybe] Converting object to number
+test/1k2014dragons/1709.js:91:5: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1709.js:91:5: [maybe] Converting object to primitive
 test/1k2014dragons/1709.js:91:5: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:91:5: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:97:7: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:97:7: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1709.js:98:4: [maybe] Converting object to string
+test/1k2014dragons/1709.js:98:4: [maybe] Converting object to primitive
 test/1k2014dragons/1709.js:98:4: [maybe] Converting primitive number to object
 test/1k2014dragons/1709.js:98:4: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:98:15: [maybe] Reading absent property (computed name)
@@ -122,7 +122,7 @@ test/1k2014dragons/1709.js:98:36: [maybe] Reading absent property (computed name
 test/1k2014dragons/1709.js:98:36: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:102:7: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:102:7: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1709.js:103:4: [maybe] Converting object to string
+test/1k2014dragons/1709.js:103:4: [maybe] Converting object to primitive
 test/1k2014dragons/1709.js:103:4: [maybe] Converting primitive number to object
 test/1k2014dragons/1709.js:103:4: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:103:15: [maybe] Reading absent property (computed name)
@@ -130,9 +130,9 @@ test/1k2014dragons/1709.js:103:15: [maybe] Reading absent property (computed nam
 test/1k2014dragons/1709.js:107:11: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:107:11: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:108:4: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1709.js:108:16: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1709.js:108:16: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1709.js:108:16: [maybe] Converting object to number
+test/1k2014dragons/1709.js:108:16: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1709.js:108:16: [maybe] Converting object to primitive
 test/1k2014dragons/1709.js:108:25: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:108:25: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:126:24: [maybe] Reading absent property (computed name)
@@ -147,7 +147,7 @@ test/1k2014dragons/1709.js:127:47: [maybe] Reading absent property (computed nam
 test/1k2014dragons/1709.js:127:47: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:127:47: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:134:17: [maybe] Converting undefined to string
-test/1k2014dragons/1709.js:134:27: [maybe] Converting object to string
+test/1k2014dragons/1709.js:134:27: [maybe] Converting object to primitive
 test/1k2014dragons/1709.js:134:27: [maybe] Converting primitive string to object
 test/1k2014dragons/1709.js:134:27: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:135:24: [maybe] Reading absent property (computed name)
@@ -162,7 +162,7 @@ test/1k2014dragons/1709.js:136:47: [maybe] Reading absent property (computed nam
 test/1k2014dragons/1709.js:136:47: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:136:47: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:142:17: [maybe] Converting undefined to string
-test/1k2014dragons/1709.js:142:27: [maybe] Converting object to string
+test/1k2014dragons/1709.js:142:27: [maybe] Converting object to primitive
 test/1k2014dragons/1709.js:142:27: [maybe] Converting primitive string to object
 test/1k2014dragons/1709.js:142:27: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:143:24: [maybe] Reading absent property (computed name)
@@ -176,9 +176,9 @@ test/1k2014dragons/1709.js:144:48: [maybe] Converting primitive number to object
 test/1k2014dragons/1709.js:144:48: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:144:48: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:144:48: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1709.js:154:20: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1709.js:154:20: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1709.js:155:20: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1709.js:154:20: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1709.js:155:20: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1709.js:155:20: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1709.js:165:17: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:165:17: [maybe] Reading absent property (computed name)
@@ -200,7 +200,7 @@ test/1k2014dragons/1709.js:176:10: [maybe] The variable w has values with differ
 test/1k2014dragons/1709.js:187:4: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:197:3: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1709.js:205:17: [maybe] Converting undefined to string
-test/1k2014dragons/1709.js:205:23: [maybe] Converting object to string
+test/1k2014dragons/1709.js:205:23: [maybe] Converting object to primitive
 test/1k2014dragons/1709.js:205:23: [maybe] Converting primitive string to object
 test/1k2014dragons/1709.js:205:23: [maybe] Reading absent property (computed name)
 test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)

@@ -56,21 +56,19 @@ test-resources/src/1k2012love/1201.js:53:22: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1201.js:57:5: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1201.js:76:6: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1201.js:80:4: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1201.js:95:6: [maybe] Converting object to string
+test-resources/src/1k2012love/1201.js:95:6: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1201.js:95:6: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1201.js:95:8: [maybe] The variable o has values with different types
 test-resources/src/1k2012love/1201.js:98:6: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1201.js:103:3: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1201.js:103:3: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1201.js:103:3: [maybe] Converting object to number
+test-resources/src/1k2012love/1201.js:103:3: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1201.js:103:12: [maybe] The variable o has values with different types
-test-resources/src/1k2012love/1201.js:113:9: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1201.js:113:9: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1201.js:113:9: [maybe] Converting object to number
+test-resources/src/1k2012love/1201.js:113:9: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1201.js:113:9: [maybe] The variable o has values with different types
 test-resources/src/1k2012love/1201.js:113:24: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1201.js:113:48: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1201.js:128:5: [maybe] Converting object to string
+test-resources/src/1k2012love/1201.js:128:5: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1201.js:128:5: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1201.js:128:7: [maybe] The variable o has values with different types
 test-resources/src/1k2012love/1201.js:128:24: [maybe] Reading absent property (computed name)

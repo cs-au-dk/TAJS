@@ -1,2 +1,5 @@
 test-resources/src/v8tests/large-object-allocation.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/large-object-allocation.js:292:18: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/large-object-allocation.js:291:3: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/v8tests/large-object-allocation.js:292:18: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 2059 checks (with 0 expected failures)

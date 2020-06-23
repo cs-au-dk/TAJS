@@ -68,23 +68,23 @@ test/v8tests/apply.js:144:9: [maybe] Conversion to number yields NaN
 test/v8tests/apply.js:146:9: [maybe] Conversion to number yields NaN
 test/v8tests/apply.js:163:16: [maybe] Reading absent property (computed name)
 test/v8tests/apply.js:163:27: [maybe] Reading absent property (computed name)
-test/v8tests/apply.js:173:26: [maybe] Conversion from string to number yields NaN
-test/v8tests/apply.js:173:26: [maybe] Converting object to string
+test/v8tests/apply.js:173:26: [maybe] Conversion to number yields NaN
+test/v8tests/apply.js:173:26: [maybe] Converting object to primitive
 test/v8tests/apply.js:173:26: [maybe] Converting primitive string to object
-test/v8tests/apply.js:174:26: [maybe] Conversion from string to number yields NaN
-test/v8tests/apply.js:174:26: [maybe] Converting object to string
+test/v8tests/apply.js:174:26: [maybe] Conversion to number yields NaN
+test/v8tests/apply.js:174:26: [maybe] Converting object to primitive
 test/v8tests/apply.js:174:26: [maybe] Converting primitive string to object
-test/v8tests/apply.js:175:26: [maybe] Conversion from string to number yields NaN
-test/v8tests/apply.js:175:26: [maybe] Converting object to string
+test/v8tests/apply.js:175:26: [maybe] Conversion to number yields NaN
+test/v8tests/apply.js:175:26: [maybe] Converting object to primitive
 test/v8tests/apply.js:175:26: [maybe] Converting primitive string to object
-test/v8tests/apply.js:176:26: [maybe] Conversion from string to number yields NaN
-test/v8tests/apply.js:176:26: [maybe] Converting object to string
+test/v8tests/apply.js:176:26: [maybe] Conversion to number yields NaN
+test/v8tests/apply.js:176:26: [maybe] Converting object to primitive
 test/v8tests/apply.js:176:26: [maybe] Converting primitive string to object
-test/v8tests/apply.js:177:26: [maybe] Conversion from string to number yields NaN
-test/v8tests/apply.js:177:26: [maybe] Converting object to string
+test/v8tests/apply.js:177:26: [maybe] Conversion to number yields NaN
+test/v8tests/apply.js:177:26: [maybe] Converting object to primitive
 test/v8tests/apply.js:177:26: [maybe] Converting primitive string to object
 test/v8tests/apply.js:182:26: [maybe] Conversion to number yields NaN
-test/v8tests/apply.js:182:26: [maybe] Converting object to string
+test/v8tests/apply.js:182:26: [maybe] Converting object to primitive
 test/v8tests/apply.js:182:26: [maybe] Converting primitive number to object
 test/v8tests/apply.js:182:26: [maybe] Converting primitive string to object
 test/v8tests/prologue.js,test/v8tests/apply.js: [maybe] Uncaught exception, constructed at [test/v8tests/apply.js:182:26]

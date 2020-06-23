@@ -16,12 +16,11 @@ test-resources/src/v8tests/sparse-array-reverse.js: [maybe] Uncaught exception, 
 test-resources/src/v8tests/sparse-array-reverse.js:73:16: [maybe] Reading absent property (computed name)
 test-resources/src/v8tests/sparse-array-reverse.js:77:23: [maybe] The variable size has values with different types
 test-resources/src/v8tests/sparse-array-reverse.js:83:17: [maybe] Reading absent property (computed name)
-test-resources/src/v8tests/sparse-array-reverse.js:86:9: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/sparse-array-reverse.js:86:9: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/sparse-array-reverse.js:86:11: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/sparse-array-reverse.js:90:9: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/sparse-array-reverse.js:90:9: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/sparse-array-reverse.js:90:25: [maybe] The variable pos has values with different types
 test-resources/src/v8tests/sparse-array-reverse.js:93:24: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/sparse-array-reverse.js:100:17: [maybe] Conversion from string to number yields NaN
 test-resources/src/v8tests/sparse-array-reverse.js:100:17: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/sparse-array-reverse.js:100:17: [maybe] The variable size has values with different types
 test-resources/src/v8tests/sparse-array-reverse.js:100:24: [maybe] Reading absent property (computed name)

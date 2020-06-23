@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import dk.au.cs.casa.jer.entries.CallEntry;
 import dk.au.cs.casa.jer.entries.IEntry;
 import dk.au.cs.casa.jer.entries.ValueDescription;
 import dk.au.cs.casa.jer.entries.VariableOrPropertyEntry;
+import dk.brics.tajs.analysis.InitialStateBuilder;
 import dk.brics.tajs.analysis.KnownUnsoundnesses;
 import dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects;
 import dk.brics.tajs.blendedanalysis.IRefiner;
@@ -29,6 +30,7 @@ import dk.brics.tajs.blendedanalysis.solver.Constraint;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.jsnodes.CallNode;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PartitionedValue;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.util.Collectors;
 
@@ -66,8 +68,13 @@ public class JalangiRefiner implements IRefiner {
             int columnOffset = node instanceof CallNode && ((CallNode) node).isConstructorCall() ? 4 : 0; // new f() has node sourcelocation at the beginning of new, but the VarOrProp entries locations is at the beginning of f
             entriesAtSl.addAll(jalangiRefinerUtilities.getVarOrPropEntriesAtSourceLocation(node.getSourceLocation(), columnOffset));
         }
-
-        Set<IEntry> filteredEntriesAtSl = getEntriesMatchingConstraints(entriesAtSl, query.getConstraints());
+        Set<Constraint> constraints = query.getConstraints();
+        if (node instanceof CallNode && ((CallNode) node).isConstructorCall()) { // NodeProf does not provide base object for constructor calls
+            if (ic.isBase())
+                return singleton(query.getSoundDefault());
+            constraints = constraints.stream().filter(c -> !c.getInstructionComponent().isBase()).collect(Collectors.toSet());
+        }
+        Set<IEntry> filteredEntriesAtSl = getEntriesMatchingConstraints(entriesAtSl, constraints);
 
         Set<Value> values = convertEntriesToTAJSValues(filteredEntriesAtSl, ic, query.getSoundDefault());
 
@@ -100,6 +107,12 @@ public class JalangiRefiner implements IRefiner {
         if (isSpecialLiteralConstructor || knownSoundnessError) {
             return false;
         }
+        // TODO: These source locations are probably due to a bug in NodeProf - should be checked otherwise and depending
+        // on the file. Maybe add to KnownUnsoundnesses.
+        if(node.getSourceLocation().getLineNumber() == 1122 && node.getSourceLocation().getColumnNumber() == 12)
+            return false;
+        if(node.getSourceLocation().getLineNumber() == 1016 && node.getSourceLocation().getColumnNumber() == 14)
+            return false;
         return true;
     }
 
@@ -114,7 +127,10 @@ public class JalangiRefiner implements IRefiner {
     private Value convertEntryToTAJSValue(IEntry entry, InstructionComponent ic, Value soundDefault) {
         ValueDescription valueDescription = getTargetedValueDescription(entry, ic);
 
-        if (valueDescription == null) {
+        if (valueDescription == null) { // NodeProf provides a null entry for global object as receiver to a property read
+            if (soundDefault.equals(Value.makeObject(InitialStateBuilder.GLOBAL))) {
+                return soundDefault;
+            }
             return Value.makeNone();
         }
 
@@ -125,11 +141,18 @@ public class JalangiRefiner implements IRefiner {
         InstructionComponent instructionComponent = c.getInstructionComponent();
         ValueDescription valueDescription = getTargetedValueDescription(entry, instructionComponent);
 
+        Value value = PartitionedValue.ignorePartitions(c.getValue());
         if (valueDescription == null) {
+            if (instructionComponent.isBase() && value.getObjectLabels().contains(InitialStateBuilder.GLOBAL)) { // NodeProf provides a null entry for global object as receiver to a property read
+                return true;
+            }
             return false;
         }
+        if (instructionComponent.isBase() && value.getObjectLabels().contains(InitialStateBuilder.GLOBAL)) { // For calls constructing an object, the entry created using NodeProf does not contain the receiver, i.e., it is undefined.
+            value = value.joinUndef();
+        }
 
-        return jalangiRefinerUtilities.valueDescriptionMatchesValue(valueDescription, c.getValue());
+        return jalangiRefinerUtilities.valueDescriptionMatchesValue(valueDescription, value);
     }
 
     private ValueDescription getTargetedValueDescription(IEntry entry, InstructionComponent instructionComponent) {

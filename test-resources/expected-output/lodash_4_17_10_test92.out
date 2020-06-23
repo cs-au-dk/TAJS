@@ -1248,7 +1248,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4617:40: [maybe] The vari
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4618:36: [maybe] The variable other has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4620:60: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4620:68: [maybe] The variable other has values with different types
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4627:60: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4627:60: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4627:60: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4627:68: [maybe] The variable other has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:4924:21: [maybe] Reading absent property (computed name)

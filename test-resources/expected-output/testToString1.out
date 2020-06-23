@@ -1,4 +1,6 @@
 test-resources/src/micro/toString1.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/toString1.js:3:9: [maybe] Converting object to primitive
+test-resources/src/micro/toString1.js:10:10: [maybe] Converting object to primitive
 test-resources/src/micro/toString1.js:4:1: [info] Abstract value: "foobar"
 test-resources/src/micro/toString1.js:5:1: [info] Abstract value: 1.0
 test-resources/src/micro/toString1.js:11:1: [info] Abstract value: "foobar"

@@ -66,11 +66,11 @@ test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
-test/1k2014dragons/1919.js:57:22: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1919.js:57:22: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1919.js:72:6: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1919.js:57:22: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1919.js:72:6: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1919.js:72:21: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1919.js:72:6: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1919.js:72:21: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1919.js:72:21: [maybe] The variable h has values with different types
 test/1k2014dragons/1919.js:72:31: [maybe] The variable h has values with different types
 test/1k2014dragons/1919.js:73:17: [maybe] The variable h has values with different types

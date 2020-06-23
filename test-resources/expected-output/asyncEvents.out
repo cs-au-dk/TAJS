@@ -1,3 +1,3 @@
-out/temp-sources/TestMicro.asyncEvents.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.asyncEvents.js:1:14: [info] Abstract value: "executed"
+TestMicro.asyncEvents.js: [definite] Exceptional program exit is unreachable
+TestMicro.asyncEvents.js:1:14: [info] Abstract value: "executed"
 Soundness testing succeeded for 6 checks (with 0 expected failures)

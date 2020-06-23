@@ -3,5 +3,5 @@ test-resources/src/1k2012love/1203.js:63:13: [maybe] TypeError, call to non-func
 test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1203.js:63:13: [maybe] Reading absent property getContext of host object
 test-resources/src/1k2012love/1203.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1203.js:63:13, test-resources/src/1k2012love/shim.js:9:5]
-test-resources/src/1k2012love/1203.js:199:45: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1203.js:199:45: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 324 checks (with 0 expected failures)

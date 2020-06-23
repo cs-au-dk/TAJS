@@ -7,7 +7,7 @@ test-resources/src/google/benchpress.js:427:26: [maybe] TypeError, accessing pro
 test-resources/src/google/benchpress.js:428:26: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google/benchpress.js:436:7: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/google/benchpress.js: [maybe] Uncaught exception, constructed at [test-resources/src/google/benchpress.js:85:23, test-resources/src/google/benchpress.js:365:10, test-resources/src/google/benchpress.js:368:10, test-resources/src/google/benchpress.js:426:26, test-resources/src/google/benchpress.js:427:26, test-resources/src/google/benchpress.js:428:26, test-resources/src/google/benchpress.js:436:7]
-test-resources/src/google/benchpress.js:20:15: [maybe] Converting object to number
+test-resources/src/google/benchpress.js:20:15: [maybe] Converting object to primitive
 test-resources/src/google/benchpress.js:75:13: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:83:13: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:131:9: [maybe] Reading absent property (computed name)
@@ -19,17 +19,26 @@ test-resources/src/google/benchpress.js:191:17: [maybe] Reading absent property 
 test-resources/src/google/benchpress.js:191:29: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:274:15: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:276:13: [maybe] Reading absent property (computed name)
+test-resources/src/google/benchpress.js:277:9: [maybe] Conversion to number yields NaN
+test-resources/src/google/benchpress.js:278:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/benchpress.js:290:8: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:290:30: [maybe] Reading absent property (computed name)
+test-resources/src/google/benchpress.js:293:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/benchpress.js:293:9: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:293:20: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:304:15: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:304:25: [maybe] Reading absent property (computed name)
+test-resources/src/google/benchpress.js:305:11: [maybe] Conversion to number yields NaN
 test-resources/src/google/benchpress.js:326:15: [maybe] Reading absent property (computed name)
+test-resources/src/google/benchpress.js:329:12: [maybe] Conversion to number yields NaN
 test-resources/src/google/benchpress.js:329:12: [maybe] Reading absent property (computed name)
+test-resources/src/google/benchpress.js:330:12: [maybe] Conversion to number yields NaN
 test-resources/src/google/benchpress.js:330:20: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:332:17: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:333:14: [maybe] Reading absent property (computed name)
+test-resources/src/google/benchpress.js:363:7: [maybe] Conversion to number yields NaN
+test-resources/src/google/benchpress.js:374:32: [maybe] Conversion to number yields NaN
+test-resources/src/google/benchpress.js:375:32: [maybe] Conversion to number yields NaN
 test-resources/src/google/benchpress.js:382:27: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:383:45: [maybe] Reading absent property (computed name)
 test-resources/src/google/benchpress.js:462:14: [maybe] Conversion to number yields NaN

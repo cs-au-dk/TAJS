@@ -21,6 +21,7 @@ test-resources/src/1k2012love/1154.js:57:25: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1154.js:57:33: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1154.js:68:31: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1154.js:68:39: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1154.js:71:15: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1154.js:71:22: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1154.js:91:24: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1154.js:91:24: [maybe] Reading absent property (computed name)
@@ -33,5 +34,4 @@ test-resources/src/1k2012love/1154.js:115:35: [maybe] Conversion to number yield
 test-resources/src/1k2012love/1154.js:125:15: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1154.js:125:37: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1154.js:125:39: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1154.js:91:19: [info] Writing to unknown property that may cause loss of precision
 Soundness testing succeeded for 352 checks (with 0 expected failures)

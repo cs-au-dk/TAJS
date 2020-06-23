@@ -48,7 +48,9 @@ test-resources/src/chromeexperiments/jstouch.html:647:15: [maybe] Reading absent
 test-resources/src/chromeexperiments/jstouch.html:647:41: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/jstouch.html:648:15: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/jstouch.html:648:41: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/jstouch.html:649:18: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:649:18: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/jstouch.html:649:40: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:649:40: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/jstouch.html:651:11: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:651:11: [maybe] Reading absent property (computed name)
@@ -56,7 +58,9 @@ test-resources/src/chromeexperiments/jstouch.html:653:15: [maybe] Reading absent
 test-resources/src/chromeexperiments/jstouch.html:653:41: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/jstouch.html:654:15: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/jstouch.html:654:41: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/jstouch.html:655:18: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:655:18: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/jstouch.html:655:40: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:655:40: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/jstouch.html:657:11: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:657:11: [maybe] Reading absent property (computed name)
@@ -64,7 +68,9 @@ test-resources/src/chromeexperiments/jstouch.html:659:15: [maybe] Reading absent
 test-resources/src/chromeexperiments/jstouch.html:659:41: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/jstouch.html:660:15: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/jstouch.html:660:41: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/jstouch.html:661:18: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:661:18: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/jstouch.html:661:40: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:661:40: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/jstouch.html:663:15: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:663:39: [maybe] Conversion to number yields NaN
@@ -76,19 +82,15 @@ test-resources/src/chromeexperiments/jstouch.html:673:18: [maybe] The variable u
 test-resources/src/chromeexperiments/jstouch.html:676:4: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:677:4: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:678:4: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/jstouch.html:683:14: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:683:14: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:683:14: [maybe] The variable uv_1u has values with different types
 test-resources/src/chromeexperiments/jstouch.html:683:22: [maybe] The variable uv_0u has values with different types
-test-resources/src/chromeexperiments/jstouch.html:683:30: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:683:30: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:683:30: [maybe] The variable uv_1v has values with different types
 test-resources/src/chromeexperiments/jstouch.html:683:38: [maybe] The variable uv_0v has values with different types
-test-resources/src/chromeexperiments/jstouch.html:684:14: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:684:14: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:684:14: [maybe] The variable uv_2u has values with different types
 test-resources/src/chromeexperiments/jstouch.html:684:22: [maybe] The variable uv_0u has values with different types
-test-resources/src/chromeexperiments/jstouch.html:684:30: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:684:30: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:684:30: [maybe] The variable uv_2v has values with different types
 test-resources/src/chromeexperiments/jstouch.html:684:38: [maybe] The variable uv_0v has values with different types
@@ -96,10 +98,8 @@ test-resources/src/chromeexperiments/jstouch.html:686:3: [maybe] Conversion to n
 test-resources/src/chromeexperiments/jstouch.html:687:3: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:689:3: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:690:3: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/jstouch.html:706:12: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:706:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:706:12: [maybe] The variable uv_0u has values with different types
-test-resources/src/chromeexperiments/jstouch.html:707:12: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:707:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/jstouch.html:707:12: [maybe] The variable uv_0v has values with different types
 test-resources/src/chromeexperiments/jstouch.html:714:3: [maybe] Conversion to number yields NaN

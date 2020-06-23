@@ -1,13 +1,13 @@
 function logTestEnd(success, indentation) {
     if (success) {
-        console.log("%s(***expected behaviour***)", indentation);
+        console.log("%s*** predicate satisfied ***", indentation);
     }
 }
 
 /**
- * Predicate that spawns a JVM instance for each query
+ * Predicate that spawns a JVM instance for each query.
  */
-function makeJavaProcessPredicate(tajs_args, java_args, tajs_main, classpath) {
+function makeJavaProcessPredicate(tajs_args, java, java_args, tajs_main, classpath) {
     var spawnSync = require("child_process").spawnSync;
 
     function checkArray(a) {
@@ -24,6 +24,7 @@ function makeJavaProcessPredicate(tajs_args, java_args, tajs_main, classpath) {
 
     checkArray(tajs_args);
     checkArray(java_args);
+    checkString(java);
     checkString(tajs_main);
     checkString(classpath);
 
@@ -36,13 +37,16 @@ function makeJavaProcessPredicate(tajs_args, java_args, tajs_main, classpath) {
 
         // run TAJS
         try {
-
-            var result = spawnSync("java", args_array);
-
+            var result = spawnSync(java, args_array);
+            if (result.error) {
+                console.error("Unable to spawn Java child process (check the value of 'java' in tajs.properties)");
+                console.error(result.error);
+            }
             var success = result.status === 0;
             logTestEnd(success, indentation);
             return success;
         } catch (e) {
+            console.error(e)
             return false;
         }
     }

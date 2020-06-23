@@ -1,6 +1,6 @@
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js)
+    node 0: constant[undefined,v1] (TestUnrolling.loopunrolling_flowgraph_strings.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -23,43 +23,43 @@
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: constant["PRE",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:1)
+    node 9: constant["PRE",-] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:1)
     ->[block 8]
   block 8:
-    node 10: constant["INIT",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:12)
+    node 10: constant["INIT",-] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:12)
     ->[block 9]
   block 9:
-    node 11: constant["COND",v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
-    node 12: begin-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:34)
+    node 11: constant["COND",v8] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
+    node 12: begin-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:34)
     ->[block 10] ~>[block 13]
   block 10:
-    node 13: if[v8](true-block:11,false-block:14) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
+    node 13: if[v8](true-block:11,false-block:14) (TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
     ->[block 11,block 14] ~>[block 13]
   block 11:
-    node 14: constant["BODY",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:36)
+    node 14: constant["BODY",-] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:36)
     ->[block 12] ~>[block 13]
   block 12:
-    node 15: constant["INC",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:28)
+    node 15: constant["INC",-] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:28)
     ->[block 9] ~>[block 13]
   block 13:
-    node 16: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
+    node 16: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
     ->[block 17]
   block 14:
-    node 17: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
+    node 17: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
     ->[block 15]
   block 15:
-    node 18: constant["POST",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:46)
+    node 18: constant["POST",-] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:46)
     ->[block 16]
   block 16: [exit-ordinary]
-    node 19: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js)
+    node 19: return[v1] (TestUnrolling.loopunrolling_flowgraph_strings.js)
     ->[]
   block 17: [exit-exceptional]
-    node 20: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js)
+    node 20: exceptional-return (TestUnrolling.loopunrolling_flowgraph_strings.js)
     ->[]
 
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js)
+    node 0: constant[undefined,v1] (TestUnrolling.loopunrolling_flowgraph_strings.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -82,41 +82,41 @@
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: constant["PRE",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:1)
+    node 9: constant["PRE",-] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:1)
     ->[block 8]
   block 8:
-    node 10: constant["INIT",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:12)
+    node 10: constant["INIT",-] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:12)
     ->[block 9]
   block 9:
-    node 11: constant["COND",v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
-    node 12: begin-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:34)
+    node 11: constant["COND",v8] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
+    node 12: begin-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:34)
     ->[block 10] ~>[block 13]
   block 10:
-    node 13: if[v8](true-block:11,false-block:14) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
+    node 13: if[v8](true-block:11,false-block:14) (TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
     ->[block 11,block 14] ~>[block 13]
   block 11:
-    node 14: constant["BODY",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:36)
+    node 14: constant["BODY",-] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:36)
     ->[block 12] ~>[block 13]
   block 12:
-    node 15: constant["INC",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:28)
+    node 15: constant["INC",-] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:28)
     ->[block 9] ~>[block 13]
   block 13:
-    node 16: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
+    node 16: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
     ->[block 17]
   block 14:
-    node 17: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
+    node 17: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:20)
     ->[block 15]
   block 15:
-    node 18: constant["POST",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:46)
+    node 18: constant["POST",-] (TestUnrolling.loopunrolling_flowgraph_strings.js:1:46)
     ->[block 16]
   block 16: [exit-ordinary]
-    node 19: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js)
+    node 19: return[v1] (TestUnrolling.loopunrolling_flowgraph_strings.js)
     ->[]
   block 17: [exit-exceptional]
-    node 20: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js)
+    node 20: exceptional-return (TestUnrolling.loopunrolling_flowgraph_strings.js)
     ->[]
 
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js: [definite] Ordinary program exit is unreachable
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js:1:20: [definite] The conditional expression is always true
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings.js: [definite] Exceptional program exit is unreachable
+TestUnrolling.loopunrolling_flowgraph_strings.js: [definite] Ordinary program exit is unreachable
+TestUnrolling.loopunrolling_flowgraph_strings.js:1:20: [definite] The conditional expression is always true
+TestUnrolling.loopunrolling_flowgraph_strings.js: [definite] Exceptional program exit is unreachable
 Soundness testing succeeded for 0 checks (with 0 expected failures)

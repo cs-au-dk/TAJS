@@ -13,7 +13,7 @@ test-resources/src/v8tests/date.js:111:1: [definite] Too few parameters to nativ
 test-resources/src/v8tests/date.js:118:1: [definite] Too few parameters to native function
 test-resources/src/v8tests/date.js:123:1: [definite] Too few parameters to native function
 test-resources/src/v8tests/date.js: [definite] Exceptional program exit is unreachable
-test-resources/src/v8tests/date.js:30:13: [maybe] Converting object to number
+test-resources/src/v8tests/date.js:30:13: [maybe] Converting object to primitive
 test-resources/src/v8tests/date.js:50:1: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/date.js:55:1: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/date.js:61:1: [maybe] Conversion to number yields NaN

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1024,7 +1024,7 @@ public class AnalysisMonitor implements IAnalysisMonitoring {
             return;
         }
         // warn about potential loss of precision
-        if (check_unknown && checkPropertyNameMayInterfereWithBuiltInProperties(propertyname)) {
+        if (check_unknown && checkPropertyNameImpreciseMayInterfereWithBuiltInProperties(propertyname)) {
             addMessage(n, Status.INFO, Severity.LOW,
                     "Reading from unknown property that may cause loss of precision"); // ...but still sound!
         }
@@ -1082,8 +1082,8 @@ public class AnalysisMonitor implements IAnalysisMonitoring {
         }
     }
 
-    private static boolean checkPropertyNameMayInterfereWithBuiltInProperties(PKeys propertyname) {
-        return !propertyname.isMaybeSingleStr() &&
+    private static boolean checkPropertyNameImpreciseMayInterfereWithBuiltInProperties(PKeys propertyname) {
+        return !propertyname.isMaybeSingleStr() && propertyname.getIncludedStrings() == null &&
                 (propertyname.isMaybeStrIdentifier() || propertyname.isMaybeStrOtherIdentifierParts() ||
                         propertyname.isMaybeStrPrefix() || propertyname.isMaybeStrJSON()); // TODO: more precise pattern of what may interfere?
     }
@@ -1100,7 +1100,7 @@ public class AnalysisMonitor implements IAnalysisMonitoring {
             return;
         }
         // warn about potential loss of precision
-        if (checkPropertyNameMayInterfereWithBuiltInProperties(propertyname)) {
+        if (checkPropertyNameImpreciseMayInterfereWithBuiltInProperties(propertyname)) {
             addMessage(n,
                     Status.INFO,
                     Severity.MEDIUM,

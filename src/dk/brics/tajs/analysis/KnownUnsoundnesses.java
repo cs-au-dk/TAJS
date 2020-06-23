@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -271,12 +271,14 @@ public class KnownUnsoundnesses {
                         // f.arguments is not modeled at all
                         make("test-resources/src/v8tests/function-arguments-null.js", 30, 1),
                         make("test-resources/src/v8tests/function-arguments-null.js", 30, 12),
+                        make("test-resources/src/v8tests/fuzz-accessors.js", 84, 39),
 
                         // f.caller is not modeled at all
                         make("test-resources/src/v8tests/function-caller.js", 33, 3),
                         make("test-resources/src/v8tests/function-caller.js", 33, 19),
                         make("test-resources/src/v8tests/function-caller.js", 34, 3),
                         make("test-resources/src/v8tests/function-caller.js", 34, 23),
+                        make("test-resources/src/v8tests/fuzz-accessors.js", 84, 39),
 
                         // (in the parser?): '\400' ->  '\u0100' != STR_OTHER
                         make("test-resources/src/v8tests/no-octal-constants-above-256.js", 32, 1),

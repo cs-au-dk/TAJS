@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -286,11 +286,13 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
         if (!pending_returnflow.containsKey(p))
             return;
         boolean all_charged_inactive = true;
-        for (Edge f : node_charged_call_edges.get(p))
-            if (isFunctionActive(new BlockAndContext<>(f.callee, f.callee_context))) {
-                all_charged_inactive = false;
-                break;
-            }
+        Set<Edge> fs = node_charged_call_edges.get(p);
+        if (fs != null)
+            for (Edge f : fs)
+                if (isFunctionActive(new BlockAndContext<>(f.callee, f.callee_context))) {
+                    all_charged_inactive = false;
+                    break;
+                }
         if (all_charged_inactive) {
             for (Edge f : pending_returnflow.remove(p)) {
                 if (processed.add(f))
@@ -419,6 +421,6 @@ public class CallDependencies<ContextType extends IContext<ContextType>> {
         if (!pending_returnflow.isEmpty())
             throw new AnalysisException("unexpected pending return flow: " + pending_returnflow);
         if (!node_charged_call_edges.isEmpty())
-            throw new AnalysisException("unexpectednode charged call edges: " + node_charged_call_edges);
+            throw new AnalysisException("unexpected node charged call edges: " + node_charged_call_edges);
     }
 }

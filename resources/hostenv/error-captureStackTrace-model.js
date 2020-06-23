@@ -18,7 +18,8 @@ Object.defineProperty(Error, 'captureStackTrace', {
                 isTopLevel : function () { return TAJS_make('AnyBool'); },
                 isEval : function () { return TAJS_make('AnyBool'); },
                 isNative : function () { return TAJS_make('AnyBool'); },
-                isConstructor : function () { return TAJS_make('AnyBool'); }
+                isConstructor : function () { return TAJS_make('AnyBool'); },
+                toString : function () { return TAJS_make('AnyStr'); }
             };
 
             structuredStackTrace[TAJS_make('AnyNumUInt')] = callSite;

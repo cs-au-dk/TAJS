@@ -8,8 +8,8 @@ test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property
 test-resources/src/1k2012love/1230.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1230.js:51:12, test-resources/src/1k2012love/1230.js:52:12, test-resources/src/1k2012love/1230.js:100:19, test-resources/src/1k2012love/1230.js:129:22, test-resources/src/1k2012love/1230.js:134:55, test-resources/src/1k2012love/1230.js:141:26, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1230.js:96:35: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1230.js:98:19: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1230.js:98:21: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2012love/1230.js:98:21: [maybe] Converting object to number
+test-resources/src/1k2012love/1230.js:98:21: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1230.js:98:21: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1230.js:98:21: [maybe] The variable g has values with different types
 test-resources/src/1k2012love/1230.js:98:27: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1230.js:123:17: [maybe] Reading absent property (computed name)

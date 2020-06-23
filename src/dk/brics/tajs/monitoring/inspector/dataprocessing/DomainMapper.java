@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,12 +27,16 @@ import dk.brics.inspector.api.model.locations.DescribedContext;
 import dk.brics.inspector.api.model.locations.SourceRange;
 import dk.brics.inspector.api.model.values.CompositeValue;
 import dk.brics.inspector.api.model.values.DescribedObject;
+import dk.brics.inspector.api.model.values.DescribedPartition;
+import dk.brics.inspector.api.model.values.DescribedPartitionedValue;
+import dk.brics.inspector.api.model.values.DescribedPartitionsForNode;
 import dk.brics.inspector.api.model.values.DescribedPrimitive;
 import dk.brics.inspector.api.model.values.SingleValue;
 import dk.brics.tajs.flowgraph.AbstractNode;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.lattice.Context;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PartitionedValue;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.solver.Message;
 import dk.brics.tajs.util.AnalysisException;
@@ -42,6 +46,7 @@ import dk.brics.tajs.util.Pair;
 import java.util.Set;
 
 import static dk.brics.tajs.util.Collections.newSet;
+import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * Main utility for mapping between the TAJS domain and the {@link dk.brics.inspector.api.InspectorAPI} domain.
@@ -73,6 +78,8 @@ public class DomainMapper {
     }
 
     public CompositeValue makeCompositeValue(Value value) {
+        if (value instanceof PartitionedValue)
+            return new CompositeValue(singleton(makePartitionedValue((PartitionedValue) value)));
         Set<Value> values = splitValue(value);
         Set<SingleValue> nonCompositeValues = values.stream().map(v -> {
             assert v.getObjectLabels().size() < 2;
@@ -111,6 +118,14 @@ public class DomainMapper {
         assert value.typeSize() < 2;
         assert !value.isMaybeObject();
         return new DescribedPrimitive(value.toString());
+    }
+
+    public DescribedPartitionedValue makePartitionedValue(PartitionedValue partitionedValue) {
+        return new DescribedPartitionedValue(partitionedValue.toString(), partitionedValue.getPartitionNodes().stream()
+                .map(n -> new DescribedPartitionsForNode(n.toString(), partitionedValue.getPartitionTokens(n).stream().map(q -> {
+                    Value partition = partitionedValue.getPartition(n, q);
+                    return new DescribedPartition(q + " - " + partition, makeCompositeValue(partition));
+                }).collect(Collectors.toSet()))).collect(Collectors.toSet()));
     }
 
     public DescribedObject makeObject(ObjectLabel label, ObjectID id) {

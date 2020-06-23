@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,7 @@ import dk.brics.tajs.analysis.nativeobjects.concrete.TAJSConcreteSemantics;
 import dk.brics.tajs.flowgraph.SourceLocation;
 import dk.brics.tajs.flowgraph.ValueLogLocationInformation;
 import dk.brics.tajs.lattice.ObjectLabel;
+import dk.brics.tajs.lattice.PartitionedValue;
 import dk.brics.tajs.lattice.Value;
 import dk.brics.tajs.monitoring.soundness.ValueLogSourceLocationEqualityDecider;
 import dk.brics.tajs.util.Strings;
@@ -93,7 +94,7 @@ public class AbstractConcreteValueComparator {
             return true;
         }
 
-        return isAbstractValueSound_noStringSets(concreteValue, abstractValue.forgetExcludedIncludedStrings());
+        return isAbstractValueSound_noStringSets(concreteValue, PartitionedValue.ignorePartitions(abstractValue).forgetExcludedIncludedStrings());
     }
 
     /**

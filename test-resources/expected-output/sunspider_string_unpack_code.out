@@ -6,48 +6,48 @@ test-resources/src/sunspider/string-unpack-code.js: [maybe] Uncaught exception, 
 test-resources/src/sunspider/string-unpack-code.js:20:134: [maybe] Converting primitive number to object
 test-resources/src/sunspider/string-unpack-code.js:20:155: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:20:197: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/string-unpack-code.js:20:230: [maybe] Converting object to string
+test-resources/src/sunspider/string-unpack-code.js:20:230: [maybe] Converting object to primitive
 test-resources/src/sunspider/string-unpack-code.js:20:230: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/string-unpack-code.js:20:232: [maybe] The variable e has values with different types
 test-resources/src/sunspider/string-unpack-code.js:20:282: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/string-unpack-code.js:20:289: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:20:332: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/string-unpack-code.js:20:52693: [maybe] Converting object to string
+test-resources/src/sunspider/string-unpack-code.js:20:52693: [maybe] Converting object to primitive
 test-resources/src/sunspider/string-unpack-code.js:20:52693: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:34:132: [maybe] Converting primitive number to object
 test-resources/src/sunspider/string-unpack-code.js:34:153: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:34:195: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/string-unpack-code.js:34:228: [maybe] Converting object to string
+test-resources/src/sunspider/string-unpack-code.js:34:228: [maybe] Converting object to primitive
 test-resources/src/sunspider/string-unpack-code.js:34:228: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/string-unpack-code.js:34:230: [maybe] The variable e has values with different types
 test-resources/src/sunspider/string-unpack-code.js:34:280: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/string-unpack-code.js:34:287: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:34:330: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/string-unpack-code.js:34:22442: [maybe] Converting object to string
+test-resources/src/sunspider/string-unpack-code.js:34:22442: [maybe] Converting object to primitive
 test-resources/src/sunspider/string-unpack-code.js:34:22442: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:55:130: [maybe] Converting primitive number to object
 test-resources/src/sunspider/string-unpack-code.js:55:151: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:55:193: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/string-unpack-code.js:55:226: [maybe] Converting object to string
+test-resources/src/sunspider/string-unpack-code.js:55:226: [maybe] Converting object to primitive
 test-resources/src/sunspider/string-unpack-code.js:55:226: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/string-unpack-code.js:55:228: [maybe] The variable e has values with different types
 test-resources/src/sunspider/string-unpack-code.js:55:278: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/string-unpack-code.js:55:285: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:55:328: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/string-unpack-code.js:55:38934: [maybe] Converting object to string
+test-resources/src/sunspider/string-unpack-code.js:55:38934: [maybe] Converting object to primitive
 test-resources/src/sunspider/string-unpack-code.js:55:38934: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:70:135: [maybe] Converting primitive number to object
 test-resources/src/sunspider/string-unpack-code.js:70:156: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:70:199: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/string-unpack-code.js:70:233: [maybe] Converting object to string
+test-resources/src/sunspider/string-unpack-code.js:70:233: [maybe] Converting object to primitive
 test-resources/src/sunspider/string-unpack-code.js:70:233: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/string-unpack-code.js:70:235: [maybe] The variable e has values with different types
 test-resources/src/sunspider/string-unpack-code.js:70:289: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/string-unpack-code.js:70:297: [maybe] Converting primitive string to object
 test-resources/src/sunspider/string-unpack-code.js:70:340: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/string-unpack-code.js:70:15492: [maybe] Converting object to string
+test-resources/src/sunspider/string-unpack-code.js:70:15492: [maybe] Converting object to primitive
 test-resources/src/sunspider/string-unpack-code.js:70:15492: [maybe] Converting primitive string to object
-test-resources/src/sunspider/string-unpack-code.js:74:26: [maybe] Converting object to number
+test-resources/src/sunspider/string-unpack-code.js:74:26: [maybe] Converting object to primitive
 test-resources/src/sunspider/string-unpack-code.js:76:1: [info] Abstract value: Num
 test-resources/src/sunspider/string-unpack-code.js:20:189: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/sunspider/string-unpack-code.js:34:187: [info] Writing to unknown property that may cause loss of precision

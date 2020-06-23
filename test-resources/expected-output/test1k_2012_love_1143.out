@@ -1,4 +1,3 @@
-test-resources/src/1k2012love/1143.js:31:5: [definite] Dead assignment, property to is never read
 test-resources/src/1k2012love/1143.js:25:10: [maybe] ReferenceError, reading absent variable M
 test-resources/src/1k2012love/1143.js:31:17: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1143.js:38:7: [maybe] ReferenceError, reading absent variable C
@@ -33,6 +32,7 @@ test-resources/src/1k2012love/1143.js:47:10: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1143.js:47:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1143.js:47:22: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1143.js:87:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1143.js:88:7: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1143.js:92:34: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1143.js:92:50: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1143.js:94:34: [maybe] Reading absent property (computed name)

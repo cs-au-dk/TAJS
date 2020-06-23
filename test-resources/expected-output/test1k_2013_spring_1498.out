@@ -58,13 +58,13 @@ test-resources/src/1k2013spring/1498.js:12:22: [maybe] Reading absent property (
 test-resources/src/1k2013spring/1498.js:12:45: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1498.js:13:26: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1498.js:13:53: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1498.js:14:24: [maybe] Converting object to string
+test-resources/src/1k2013spring/1498.js:14:24: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1498.js:14:24: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1498.js:18:22: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1498.js:18:45: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1498.js:19:24: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1498.js:19:55: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1498.js:20:24: [maybe] Converting object to string
+test-resources/src/1k2013spring/1498.js:20:24: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1498.js:20:24: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1498.js:23:16: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1498.js:23:33: [maybe] Reading absent property (computed name)

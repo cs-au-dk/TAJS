@@ -1,5 +1,6 @@
 test-resources/src/v8tests/with-function-expression.js: [definite] Exceptional program exit is unreachable
 test-resources/src/v8tests/with-function-expression.js:36:5: [definite] The variable res is never used
-test-resources/src/v8tests/with-function-expression.js:36:22: [maybe] Converting object to string
+test-resources/src/v8tests/with-function-expression.js:36:22: [maybe] Converting object to primitive
 test-resources/src/v8tests/with-function-expression.js:36:22: [maybe] Converting primitive string to object
+TAJS-dynamic-code(test-resources/src/v8tests/with-function-expression.js:36:22):1:43: [maybe] Converting object to primitive
 Soundness testing succeeded for 23 checks (with 0 expected failures)

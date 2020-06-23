@@ -57,17 +57,11 @@ test-resources/src/1k2012love/1276.js:130:55: [maybe] ReferenceError, reading ab
 test-resources/src/1k2012love/1276.js:130:61: [maybe] ReferenceError, reading absent variable W
 test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2012love/1276.js:57:6: [maybe] Reading absent property P of host object
-test-resources/src/1k2012love/1276.js:82:6: [maybe] Reading absent property p
 test-resources/src/1k2012love/1276.js:82:6: [maybe] Reading absent property p of host object
-test-resources/src/1k2012love/1276.js:82:12: [maybe] Reading absent property P
 test-resources/src/1k2012love/1276.js:82:12: [maybe] Reading absent property P of host object
-test-resources/src/1k2012love/1276.js:82:16: [maybe] Reading absent property p
 test-resources/src/1k2012love/1276.js:82:16: [maybe] Reading absent property p of host object
-test-resources/src/1k2012love/1276.js:83:6: [maybe] Reading absent property i
 test-resources/src/1k2012love/1276.js:83:6: [maybe] Reading absent property i of host object
-test-resources/src/1k2012love/1276.js:84:6: [maybe] Reading absent property x
 test-resources/src/1k2012love/1276.js:84:6: [maybe] Reading absent property x of host object
-test-resources/src/1k2012love/1276.js:85:6: [maybe] Reading absent property y
 test-resources/src/1k2012love/1276.js:85:6: [maybe] Reading absent property y of host object
 test-resources/src/1k2012love/1276.js:93:74: [maybe] Reading absent property P of host object
 test-resources/src/1k2012love/1276.js:93:79: [maybe] Reading absent property P of host object
@@ -83,8 +77,8 @@ test-resources/src/1k2012love/1276.js:57:6: [maybe] The variable z has values wi
 test-resources/src/1k2012love/1276.js:67:8: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1276.js:67:17: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1276.js:67:17: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1276.js:70:8: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2012love/1276.js:70:8: [maybe] Converting object to number
+test-resources/src/1k2012love/1276.js:70:8: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1276.js:70:8: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1276.js:81:11: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1276.js:82:6: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1276.js:82:6: [maybe] Converting primitive number to object
@@ -104,10 +98,10 @@ test-resources/src/1k2012love/1276.js:85:6: [maybe] Conversion to number yields 
 test-resources/src/1k2012love/1276.js:85:6: [maybe] Converting primitive number to object
 test-resources/src/1k2012love/1276.js:85:6: [maybe] The variable j has values with different types
 test-resources/src/1k2012love/1276.js:85:11: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1276.js:88:5: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2012love/1276.js:88:5: [maybe] Converting object to number
-test-resources/src/1k2012love/1276.js:89:5: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2012love/1276.js:89:5: [maybe] Converting object to number
+test-resources/src/1k2012love/1276.js:88:5: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1276.js:88:5: [maybe] Converting object to primitive
+test-resources/src/1k2012love/1276.js:89:5: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1276.js:89:5: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1276.js:93:32: [maybe] The variable j has values with different types
 test-resources/src/1k2012love/1276.js:93:36: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1276.js:93:44: [maybe] Reading absent property (computed name)

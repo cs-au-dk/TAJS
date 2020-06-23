@@ -17,6 +17,11 @@ Alternatively, if you already have jsdelta installed elsewhere, set the location
 jsdelta = /usr/bin/jsdelta/delta.js
 ```
 
+It also needs the location of the Java VM, to run TAJS from jsdelta:
+```
+java = /usr/bin/java
+```
+
 In order to speed up the minification process, a server-system can be set up (see `DeltaMinimizerServer`). 
 It is run by `DeltaMinimizer` if one or more ports are specified in `tajs.properties`:
 ```

@@ -17,6 +17,9 @@ test-resources/src/1k2013spring/1316.js:53:32: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1316.js:55:22: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1316.js:55:34: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1316.js:61:2: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:62:6: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:62:31: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1316.js:64:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1316.js:68:3: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1316.js:70:3: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 230 checks (with 0 expected failures)

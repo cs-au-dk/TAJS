@@ -54,9 +54,9 @@ test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
-test/1k2014dragons/1939.js:12:27: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1939.js:12:27: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1939.js:13:27: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1939.js:12:27: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1939.js:13:27: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1939.js:13:27: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1939.js:20:5: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1939.js:53:3: [maybe] Reading absent property (computed name)

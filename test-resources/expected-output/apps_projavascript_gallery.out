@@ -67,9 +67,9 @@ benchmarks/tajs/src/apps/projavascript/gallery/library.js:219:22: [maybe] Readin
 benchmarks/tajs/src/apps/projavascript/gallery/library.js:227:16: [maybe] Reading absent property nextSibling of host object
 benchmarks/tajs/src/apps/projavascript/gallery/library.js:234:16: [maybe] Reading absent property previousSibling of host object
 benchmarks/tajs/src/apps/projavascript/gallery/gallery.js:18:11: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/apps/projavascript/gallery/gallery.js:18:25: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/apps/projavascript/gallery/gallery.js:18:25: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/projavascript/gallery/gallery.js:24:11: [maybe] Conversion to number yields NaN
-benchmarks/tajs/src/apps/projavascript/gallery/gallery.js:24:25: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/apps/projavascript/gallery/gallery.js:24:25: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/projavascript/gallery/gallery.js:49:15: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/projavascript/gallery/gallery.js:89:23: [maybe] Converting undefined to string
 benchmarks/tajs/src/apps/projavascript/gallery/gallery.js:90:22: [maybe] Converting undefined to string
@@ -87,7 +87,7 @@ benchmarks/tajs/src/apps/projavascript/gallery/library.js:70:12: [maybe] Convert
 benchmarks/tajs/src/apps/projavascript/gallery/library.js:87:9: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/projavascript/gallery/library.js:88:16: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/projavascript/gallery/library.js:97:16: [maybe] Converting primitive string to object
-benchmarks/tajs/src/apps/projavascript/gallery/library.js:98:16: [maybe] Converting object to string
+benchmarks/tajs/src/apps/projavascript/gallery/library.js:98:16: [maybe] Converting object to primitive
 benchmarks/tajs/src/apps/projavascript/gallery/library.js:98:16: [maybe] Converting primitive string to object
 benchmarks/tajs/src/apps/projavascript/gallery/library.js:126:10: [maybe] The variable curDisplay has values with different types
 benchmarks/tajs/src/apps/projavascript/gallery/library.js:127:28: [maybe] The variable curDisplay has values with different types
@@ -95,6 +95,4 @@ benchmarks/tajs/src/apps/projavascript/gallery/library.js:219:14: [maybe] Conver
 benchmarks/tajs/src/apps/projavascript/gallery/library.js:219:22: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/projavascript/gallery/library.js:219:48: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/projavascript/gallery/gallery.js:253:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
-benchmarks/tajs/src/apps/projavascript/gallery/library.js:87:9: [info] Reading from unknown property that may cause loss of precision
-benchmarks/tajs/src/apps/projavascript/gallery/library.js:88:16: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 0 checks (with 0 expected failures)

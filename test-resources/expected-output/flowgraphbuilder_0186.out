@@ -56,4 +56,5 @@ function()
     ->[]
 
 test-resources/src/flowgraphbuilder/flowgraph_builder0186.js: [definite] Exceptional program exit is unreachable
+test-resources/src/flowgraphbuilder/flowgraph_builder0186.js:7:13: [maybe] Converting object to primitive
 Soundness testing succeeded for 5 checks (with 0 expected failures)

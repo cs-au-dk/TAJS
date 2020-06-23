@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -218,8 +218,8 @@ import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TOLO
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TOSTRING;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TOUPPERCASE;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIM;
-import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMSTART;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMEND;
+import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_TRIMSTART;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.STRING_VALUEOF;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.SYMBOL;
 import static dk.brics.tajs.analysis.nativeobjects.ECMAScriptObjects.SYMBOL_FOR;

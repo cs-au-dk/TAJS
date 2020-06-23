@@ -41,43 +41,32 @@ test-resources/src/1k2012love/1102.js: [maybe] Uncaught exception, constructed a
 test-resources/src/1k2012love/1102.js:38:29: [maybe] The variable N has values with different types
 test-resources/src/1k2012love/1102.js:38:33: [maybe] The variable M has values with different types
 test-resources/src/1k2012love/1102.js:38:37: [maybe] The variable K has values with different types
+test-resources/src/1k2012love/1102.js:41:11: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1102.js:41:14: [maybe] The variable Y has values with different types
-test-resources/src/1k2012love/1102.js:45:18: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1102.js:45:18: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1102.js:45:24: [maybe] The variable Y has values with different types
-test-resources/src/1k2012love/1102.js:46:9: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1102.js:46:9: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1102.js:46:15: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1102.js:46:15: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1102.js:46:15: [maybe] The variable V has values with different types
 test-resources/src/1k2012love/1102.js:46:29: [maybe] The variable F has values with different types
-test-resources/src/1k2012love/1102.js:46:32: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1102.js:46:32: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1102.js:46:38: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1102.js:46:38: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1102.js:46:38: [maybe] The variable V has values with different types
 test-resources/src/1k2012love/1102.js:46:52: [maybe] The variable G has values with different types
-test-resources/src/1k2012love/1102.js:46:55: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1102.js:46:55: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1102.js:46:57: [maybe] The variable E has values with different types
-test-resources/src/1k2012love/1102.js:47:29: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1102.js:47:29: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1102.js:47:38: [maybe] The variable k has values with different types
-test-resources/src/1k2012love/1102.js:47:45: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1102.js:47:45: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1102.js:47:54: [maybe] The variable k has values with different types
-test-resources/src/1k2012love/1102.js:64:8: [maybe] Converting object to string
+test-resources/src/1k2012love/1102.js:64:8: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1102.js:64:8: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1102.js:64:8: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1102.js:73:5: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1102.js:76:5: [maybe] The variable D has values with different types
 test-resources/src/1k2012love/1102.js:83:4: [maybe] The variable D has values with different types
-test-resources/src/1k2012love/1102.js:83:26: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2012love/1102.js:83:26: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1102.js:83:26: [maybe] The variable e has values with different types
 test-resources/src/1k2012love/1102.js:83:33: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1102.js:74:5: [info] Writing to unknown property that may cause loss of precision
-test-resources/src/1k2012love/1102.js:83:10: [info] Writing to unknown property that may cause loss of precision
-test-resources/src/1k2012love/1102.js:67:10: [info] Reading from unknown property that may cause loss of precision
 test-resources/src/1k2012love/1102.js:79:6: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 Soundness testing succeeded for 290 checks (with 0 expected failures)

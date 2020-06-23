@@ -14,8 +14,6 @@ public class TestPropertyNamePartitioning {
         Main.initLogging();
         Options.get().enableTest();
         Options.get().enableDeterminacy();
-        Options.get().enablePropNamePartitioning();
-        Options.get().enableFreeVariablePartitioning();
     }
 
     public void test(String file) {
@@ -39,7 +37,7 @@ public class TestPropertyNamePartitioning {
 
     @Test
     public void test1forIn() {
-        Options.get().enableNoForInSpecialization();
+        //Options.get().disableForInSpecialization();
         test("test-resources/src/property-name-partitioning/test1forIn.js");
     }
 
@@ -64,7 +62,7 @@ public class TestPropertyNamePartitioning {
 //
 //    @Test
 //    public void test2forIn() {
-//        Options.get().enableNoForInSpecialization();
+//        Options.get().disableForInSpecialization();
 //        test("test-resources/src/property-name-partitioning/test2forIn.js");
 //    }
 //
@@ -87,7 +85,7 @@ public class TestPropertyNamePartitioning {
 //
 //    @Test
 //    public void test3forIn() {
-//        Options.get().enableNoForInSpecialization();
+//        Options.get().disableForInSpecialization();
 //        test("test-resources/src/property-name-partitioning/test3forIn.js");
 //    }
 //
@@ -120,7 +118,7 @@ public class TestPropertyNamePartitioning {
 
     @Test
     public void test4forIn() {
-        Options.get().enableNoForInSpecialization();
+        //ptions.get().disableForInSpecialization();
         test("test-resources/src/property-name-partitioning/test4forIn.js");
     }
 
@@ -143,7 +141,7 @@ public class TestPropertyNamePartitioning {
 //
 //    @Test
 //    public void test5forIn() {
-//        Options.get().enableNoForInSpecialization();
+//        Options.get().disableForInSpecialization();
 //        test("test-resources/src/property-name-partitioning/test5forIn.js");
 //    }
 //
@@ -166,7 +164,7 @@ public class TestPropertyNamePartitioning {
 //
 //    @Test
 //    public void test6forIn() {
-//        Options.get().enableNoForInSpecialization();
+//        Options.get().disableForInSpecialization();
 //        test("test-resources/src/property-name-partitioning/test6forIn.js");
 //    }
 //
@@ -189,7 +187,7 @@ public class TestPropertyNamePartitioning {
 //
 //    @Test
 //    public void test7forIn() {
-//        Options.get().enableNoForInSpecialization();
+//        Options.get().disableForInSpecialization();
 //        test("test-resources/src/property-name-partitioning/test7forIn.js");
 //    }
 //

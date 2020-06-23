@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,8 @@ import static dk.brics.tajs.util.Collections.newSet;
  */
 public class Conversion {
 
+    public static final String CONVERSION_TO_NUMBER_YIELDS_NAN = "Conversion to number yields NaN";
+
     /**
      * Preferred type for conversion.
      */
@@ -82,6 +84,7 @@ public class Conversion {
     private static Value defaultValue(ObjectLabel obj, Hint hint, Solver.SolverInterface c) {
         if (obj.getKind() == Kind.SYMBOL)
             return Value.makeObject(obj);
+        c.getMonitoring().addMessage(c.getNode(), Severity.LOW, "Converting object to primitive");
         // When the [[DefaultValue]] method of O is called with no hint, then it behaves as if the hint were Number,
         // unless O is a Date object (section 15.9), in which case it behaves as if the hint were String.
         if (hint == Hint.NONE)
@@ -410,7 +413,6 @@ public class Conversion {
         if (v.isMaybeObject()) {
             // Call ToPrimitive(input argument, hint Number).
             v = toPrimitive(v, Hint.NUM, c);
-            c.getMonitoring().addMessage(c.getNode(), Severity.LOW, "Converting object to number");
         }
         if (v.isMaybeSymbol()) {
             Exceptions.throwTypeError(c);
@@ -419,7 +421,7 @@ public class Conversion {
         if (v.isMaybeUndef()) {
             // NaN
             result = result.joinNumNaN();
-            c.getMonitoring().addMessage(c.getNode(), Severity.LOW, "Conversion to number yields NaN");
+            c.getMonitoring().addMessage(c.getNode(), Severity.LOW, CONVERSION_TO_NUMBER_YIELDS_NAN);
         }
         if (v.isMaybeNull()) {
             // +0
@@ -490,7 +492,7 @@ public class Conversion {
             }
         }
         if (v.isMaybeNaN())
-            c.getMonitoring().addMessage(c.getNode(), Severity.LOW, "Conversion from string to number yields NaN");
+            c.getMonitoring().addMessage(c.getNode(), Severity.LOW, CONVERSION_TO_NUMBER_YIELDS_NAN);
         return v;
     }
 
@@ -537,7 +539,7 @@ public class Conversion {
             v += 4294967296L;
         if (v > 2147483648L)
             v -= 4294967296L;
-        return v.intValue();
+        return (int)v.longValue(); // using .intValue returns wrong result for v == 2147483648
     }
 
     /**
@@ -566,7 +568,6 @@ public class Conversion {
         if (v.isMaybeObject()) {
             // Call ToPrimitive(input argument, hint String).
             v = toPrimitive(v, Hint.STR, c);
-            c.getMonitoring().addMessage(c.getNode(), Severity.LOW, "Converting object to string");
         }
         // string
         Value result = v.restrictToStr(); // Return the input argument (no conversion)
@@ -671,7 +672,7 @@ public class Conversion {
      * @param no_sideeffects if true, no side-effects or messages are produced (but all object labels are still returned).
      */
     public static Value toObject(AbstractNode node, Value v, boolean warnAboutCoercions, boolean no_sideeffects, Solver.SolverInterface c) {
-        return v.applyFunction(v2 -> Value.makeObject(toObjectLabels(node, v2, warnAboutCoercions, no_sideeffects, c)).setFunctionPartitions(v2.getFunctionPartitions()));
+        return v.applyFunctionThatCanCreateObjects(v2 -> Value.makeObject(toObjectLabels(node, v2, warnAboutCoercions, no_sideeffects, c)).setFunctionPartitions(v2.getFunctionPartitions()));
     }
 
     /**

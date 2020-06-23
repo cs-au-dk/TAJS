@@ -45,23 +45,23 @@ test/1k2014dragons/1734.js:3:16: [maybe] The variable x has values with differen
 test/1k2014dragons/1734.js:4:14: [maybe] The variable y has values with different types
 test/1k2014dragons/1734.js:12:5: [maybe] The variable i has values with different types
 test/1k2014dragons/1734.js:12:7: [maybe] The variable j has values with different types
-test/1k2014dragons/1734.js:20:2: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1734.js:20:2: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1734.js:20:2: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1734.js:20:17: [maybe] The variable wd has values with different types
 test/1k2014dragons/1734.js:20:20: [maybe] The variable ht has values with different types
 test/1k2014dragons/1734.js:22:18: [maybe] The variable cl has values with different types
 test/1k2014dragons/1734.js:22:21: [maybe] The variable cl has values with different types
 test/1k2014dragons/1734.js:25:7: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1734.js:63:33: [maybe] Conversion from string to number yields NaN
-test/1k2014dragons/1734.js:63:33: [maybe] Converting object to number
+test/1k2014dragons/1734.js:63:33: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1734.js:63:33: [maybe] Converting object to primitive
 test/1k2014dragons/1734.js:63:37: [maybe] The variable d has values with different types
-test/1k2014dragons/1734.js:75:4: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1734.js:75:4: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1734.js:75:4: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1734.js:75:4: [maybe] The variable wd has values with different types
-test/1k2014dragons/1734.js:76:4: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1734.js:76:4: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1734.js:76:4: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1734.js:76:4: [maybe] The variable ht has values with different types
-test/1k2014dragons/1734.js:77:4: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1734.js:77:4: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1734.js:77:4: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1734.js:77:10: [maybe] The variable wd has values with different types
 test/1k2014dragons/1734.js:77:13: [maybe] The variable ht has values with different types

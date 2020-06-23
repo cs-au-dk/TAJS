@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -405,7 +405,7 @@ public class Operators {
                         && !(s1.isMaybeStrOtherNum() || s1.isMaybeStrOther())
                         && (s2.isMaybeStrUInt() || s2.isMaybeStrIdentifier() || s2.isMaybeStrOtherIdentifierParts())
                         && !(s2.isMaybeStrOtherNum() || s2.isMaybeStrOther()))
-                    r = r.joinAnyStrIdentifierParts();
+                    r = r.joinAnyStrIdentifierParts(); // TODO: could be more precise!
                 else
                     r = Value.makeAnyStr();
             }
@@ -530,16 +530,19 @@ public class Operators {
     }
 
     private static Value abstractRelationalComparison(Value v1, Value v2, boolean negateResultIfAllowed, Solver.SolverInterface c) {
-        Value p1 = Conversion.toPrimitive(v1, Hint.NUM, c);
-        Value p2 = Conversion.toPrimitive(v2, Hint.NUM, c);
-        if (p1.isMaybeFuzzyStr() || p2.isMaybeFuzzyStr() // TODO: could improve precision using Value.isStringDisjoint?
-                || p1.isMaybeAnyBool() || p2.isMaybeAnyBool()
-                || (p1.isMaybeFuzzyNum() && !p1.isNaN()) || (p2.isMaybeFuzzyNum() && !p2.isNaN()))
+        if (v1.isMaybeFuzzyStr() || v2.isMaybeFuzzyStr() // TODO: could improve precision using Value.isStringDisjoint?
+                || v1.isMaybeAnyBool() || v2.isMaybeAnyBool()
+                || (v1.isMaybeFuzzyNum() && !v1.isNaN()) || (v2.isMaybeFuzzyNum() && !v2.isNaN())) {
+            // invoke toNumber for warnings and exception modeling
+            Conversion.toNumber(v1, c);
+            Conversion.toNumber(v2, c);
             return Value.makeAnyBool();  // may be undefined according to items 6 and 7, but changed to false in 11.8.1-4
-        else if (p1.isNotStr() || p2.isNotStr()) {
+        } else if (v1.isNotStr() || v2.isNotStr()) {
             // at most one argument is a string: perform numeric comparison
-            return numericComparison(p1, p2, negateResultIfAllowed, c);
+            return numericComparison(v1, v2, negateResultIfAllowed, c);
         } else {
+            Value p1 = Conversion.toPrimitive(v1, Hint.NUM, c);
+            Value p2 = Conversion.toPrimitive(v2, Hint.NUM, c);
             // (at least) two defined string arguments: perform a string comparison
             Value r;
             String st1 = p1.getStr();

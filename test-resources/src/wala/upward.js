@@ -17,7 +17,7 @@ obj.set( function tester2() { return 7; } );
 var test2 = ( obj.get() )();
 
 TAJS_assert(test1 == 3);
-TAJS_assert(test2 == 7);
+TAJS_assert(test2 == 7, 'isMaybeAnyBool');
 TAJS_dumpValue(test1);
 TAJS_dumpValue(test2);
 

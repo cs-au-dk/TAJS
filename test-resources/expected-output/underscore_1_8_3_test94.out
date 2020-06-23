@@ -379,6 +379,6 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:799:13: [maybe] The
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:806:19: [maybe] The variable timeout has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/test-suite/functions/test94.html:17:12: [maybe] Converting object to number
+benchmarks/tajs/src/underscore/test-suite/functions/test94.html:17:12: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 3824 checks (with 0 expected failures)

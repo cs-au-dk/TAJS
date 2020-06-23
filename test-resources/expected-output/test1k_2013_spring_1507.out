@@ -56,6 +56,7 @@ test-resources/src/1k2013spring/1507.js:3:201: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1507.js:3:203: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1507.js:3:223: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1507.js:3:225: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1507.js:3:268: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1507.js:3:270: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1507.js:3:277: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1507.js:3:647: [maybe] Conversion to number yields NaN
@@ -66,6 +67,8 @@ test-resources/src/1k2013spring/1507.js:3:664: [maybe] Reading absent property (
 test-resources/src/1k2013spring/1507.js:3:687: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1507.js:3:687: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1507.js:3:696: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1507.js:3:796: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1507.js:3:796: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1507.js:3:800: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1507.js:3:824: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1507.js:3:841: [maybe] Conversion to number yields NaN
@@ -73,8 +76,13 @@ test-resources/src/1k2013spring/1507.js:3:843: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1507.js:3:845: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1507.js:3:850: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1507.js:3:856: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1507.js:3:879: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1507.js:3:892: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1507.js:3:896: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1507.js:3:901: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1507.js:3:914: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1507.js:3:918: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1507.js:3:958: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1507.js:3:965: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1507.js:3:971: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 171 checks (with 0 expected failures)

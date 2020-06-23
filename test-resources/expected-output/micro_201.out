@@ -7,36 +7,30 @@ test-resources/src/micro/test201.js:12:3: [maybe] Converting primitive string to
 test-resources/src/micro/test201.js:15:1: [info] Abstract state:
 Abstract state:
   Execution context: ScopeChain=[[@<the global object>[native]]], VariableObject=[@<the global object>[native]], this=Null
-  Renamings: maybe=[@replace#fun4, @callback#fun1, @arguments#node68, @arguments#node55{method="post"}, @arguments#node55{method="get"}, @arguments#node352, @activation#node68, @activation#node55{method="post"}, @activation#node55{method="get"}, @activation#node352, @String#node38{boxed-primitive="post"}, @String#node38{boxed-primitive="get"}, @Object#node81, @Object#node74, @Object#node7, @Object#node58{method="post"}, @Object#node58{method="get"}, @Object#node364, @Object#node357, @Object#node2, @Object#node18, @Object#node13, @Object#node11, @<anonymous>#fun6, @<anonymous>#fun5, @<anonymous>#fun3, @<anonymous>#fun2{method="post"}, @<anonymous>#fun2{method="get"}], definitely=[@replace#fun4, @callback#fun1, @arguments#node68, @arguments#node352, @activation#node68, @activation#node352, @Object#node81, @Object#node74, @Object#node7, @Object#node364, @Object#node357, @Object#node2, @Object#node18, @Object#node13, @Object#node11, @<anonymous>#fun6, @<anonymous>#fun5, @<anonymous>#fun3]
+  Renamings: maybe=[@replace#fun4, @callback#fun1, @arguments#node68, @arguments#node55{method=(IdentStr){"get","post"}}, @arguments#node352, @activation#node68, @activation#node55{method=(IdentStr){"get","post"}}, @activation#node352, @String#node38, @Object#node81, @Object#node74, @Object#node7, @Object#node58{method=(IdentStr){"get","post"}}, @Object#node364, @Object#node357, @Object#node2, @Object#node18, @Object#node13, @Object#node11, @<anonymous>#fun6, @<anonymous>#fun5, @<anonymous>#fun3, @<anonymous>#fun2{method=(IdentStr){"get","post"}}], definitely=[@replace#fun4, @callback#fun1, @arguments#node68, @arguments#node352, @activation#node68, @activation#node352, @Object#node81, @Object#node74, @Object#node7, @Object#node364, @Object#node357, @Object#node2, @Object#node18, @Object#node13, @Object#node11, @<anonymous>#fun6, @<anonymous>#fun5, @<anonymous>#fun3]
   Store (excluding basis and default objects): 
     @<the global object>[native] (<initial state>): {Error:[@Error[native]],Object:[@Object[native]],String:[@String[native]],callback:[@callback#fun1],jQuery:[@Object#node13],name:Undef|(UIntStr){"0","1"},obj:[@Object#node18],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Error[native] (<initial state>): {captureStackTrace:[@<anonymous>#fun6],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Function.prototype[native]],[[Value]]=?,[[Scope]]=?}
-    @Function.prototype[native] (<initial state>): {call:[@Function.prototype.call[native]],captureStackTrace:^(@Function.prototype[native].captureStackTrace[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
+    @Function.prototype[native] (<initial state>): {call:^(@Function.prototype[native].call[present]),captureStackTrace:^(@Function.prototype[native].captureStackTrace[absent]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
     @Object.prototype[native] (<initial state>): {__defineGetter__:[@Object.prototype.__defineGetter__[native]],__defineSetter__:[@Object.prototype.__defineSetter__[native]],constructor:[@Object[native]],hasOwnProperty:[@Object.prototype.hasOwnProperty[native]],isPrototypeOf:[@Object.prototype.isPrototypeOf[native]],propertyIsEnumerable:[@Object.prototype.propertyIsEnumerable[native]],toLocaleString:[@Object.prototype.toLocaleString[native]],toString:[@Object.prototype.toString[native]],valueOf:[@Object.prototype.valueOf[native]],[[Prototype]]=Null,[[Value]]=?,[[Scope]]=?}
     @Object[native] (<initial state>): {defineProperty:[@Object.defineProperty[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @String.prototype[native] (<initial state>): {replace:[@replace#fun4],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]="",[[Scope]]=?}
     @String[native] (<initial state>): {prototype:[@String.prototype[native]],[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=?,[[Value]]=?,[[Scope]]=?}
     @Object#node11 (host-environment-sources-loader): {constructor:[@<anonymous>#fun5],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
     @Object#node7 (host-environment-sources-loader): {constructor:[@<anonymous>#fun3],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @Object#node13 (test-resources/src/micro/test201.js:1:14): {get:[@<anonymous>#fun2{method="get"}]|absent,post:[@<anonymous>#fun2{method="post"}]|absent,[[Prototype]]=[@Object.prototype[native]]}
-    *activation#node55{method="get"} (test-resources/src/micro/test201.js:3:1): {arguments:[*arguments#node55{method="get"}],method:"get"}
-    *activation#node55{method="post"} (test-resources/src/micro/test201.js:3:1): {arguments:[*arguments#node55{method="post"}],method:"post"}
-    *arguments#node55{method="get"} (test-resources/src/micro/test201.js:3:1): {0:"get",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
-    *arguments#node55{method="post"} (test-resources/src/micro/test201.js:3:1): {0:"post",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
+    *Object#node13 (test-resources/src/micro/test201.js:1:14): {<none>}
+    @Object#node13 (test-resources/src/micro/test201.js:1:14): {get:[@<anonymous>#fun2{method=(IdentStr){"get","post"}}, *<anonymous>#fun2{method=(IdentStr){"get","post"}}]|absent,post:[@<anonymous>#fun2{method=(IdentStr){"get","post"}}, *<anonymous>#fun2{method=(IdentStr){"get","post"}}]|absent,[[Prototype]]=[@Object.prototype[native]]}
+    *activation#node55{method=(IdentStr){"get","post"}} (test-resources/src/micro/test201.js:3:1): {arguments:[*arguments#node55{method=(IdentStr){"get","post"}}],method:(IdentStr){"get","post"}}
+    *arguments#node55{method=(IdentStr){"get","post"}} (test-resources/src/micro/test201.js:3:1): {0:(IdentStr){"get","post"},callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
     @Object#node2 (test-resources/src/micro/test201.js:3:1): {constructor:[@callback#fun1],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @activation#node55{method="get"} (test-resources/src/micro/test201.js:3:1): {arguments:[@arguments#node55{method="get"}],method:"get"}
-    @activation#node55{method="post"} (test-resources/src/micro/test201.js:3:1): {arguments:[@arguments#node55{method="post"}],method:"post"}
-    @arguments#node55{method="get"} (test-resources/src/micro/test201.js:3:1): {0:"get",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
-    @arguments#node55{method="post"} (test-resources/src/micro/test201.js:3:1): {0:"post",callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
+    @activation#node55{method=(IdentStr){"get","post"}} (test-resources/src/micro/test201.js:3:1): {arguments:[@arguments#node55{method=(IdentStr){"get","post"}}],method:(IdentStr){"get","post"}}
+    @arguments#node55{method=(IdentStr){"get","post"}} (test-resources/src/micro/test201.js:3:1): {0:(IdentStr){"get","post"},callee:[@callback#fun1],length:1.0,[[Prototype]]=[@Object.prototype[native]]}
     @callback#fun1 (test-resources/src/micro/test201.js:3:1): {length:1.0,name:"callback",prototype:[@Object#node2],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
-    *<anonymous>#fun2{method="get"} (test-resources/src/micro/test201.js:4:20): {length:0.0,name:"",prototype:[*Object#node58{method="get"}],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[*activation#node55{method="get"}],[@<the global object>[native]]]}
-    *<anonymous>#fun2{method="post"} (test-resources/src/micro/test201.js:4:20): {length:0.0,name:"",prototype:[*Object#node58{method="post"}],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[*activation#node55{method="post"}],[@<the global object>[native]]]}
-    *Object#node58{method="get"} (test-resources/src/micro/test201.js:4:20): {constructor:[*<anonymous>#fun2{method="get"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    *Object#node58{method="post"} (test-resources/src/micro/test201.js:4:20): {constructor:[*<anonymous>#fun2{method="post"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @<anonymous>#fun2{method="get"} (test-resources/src/micro/test201.js:4:20): {length:0.0,name:"",prototype:[@Object#node58{method="get"}],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node55{method="get"}],[@<the global object>[native]]]}
-    @<anonymous>#fun2{method="post"} (test-resources/src/micro/test201.js:4:20): {length:0.0,name:"",prototype:[@Object#node58{method="post"}],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node55{method="post"}],[@<the global object>[native]]]}
-    @Object#node58{method="get"} (test-resources/src/micro/test201.js:4:20): {constructor:[@<anonymous>#fun2{method="get"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
-    @Object#node58{method="post"} (test-resources/src/micro/test201.js:4:20): {constructor:[@<anonymous>#fun2{method="post"}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    *<anonymous>#fun2{method=(IdentStr){"get","post"}} (test-resources/src/micro/test201.js:4:20): {length:0.0,name:"",prototype:[*Object#node58{method=(IdentStr){"get","post"}}],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[*activation#node55{method=(IdentStr){"get","post"}}],[@<the global object>[native]]]}
+    *Object#node58{method=(IdentStr){"get","post"}} (test-resources/src/micro/test201.js:4:20): {constructor:[*<anonymous>#fun2{method=(IdentStr){"get","post"}}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    @<anonymous>#fun2{method=(IdentStr){"get","post"}} (test-resources/src/micro/test201.js:4:20): {length:0.0,name:"",prototype:[@Object#node58{method=(IdentStr){"get","post"}}],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@activation#node55{method=(IdentStr){"get","post"}}],[@<the global object>[native]]]}
+    @Object#node58{method=(IdentStr){"get","post"}} (test-resources/src/micro/test201.js:4:20): {constructor:[@<anonymous>#fun2{method=(IdentStr){"get","post"}}],[[Prototype]]=[@Object.prototype[native]],[[Value]]=NaN}
+    *Object#node18 (test-resources/src/micro/test201.js:10:11): {<none>}
     @Object#node18 (test-resources/src/micro/test201.js:10:11): {0:"get",1:"post",[[Prototype]]=[@Object.prototype[native]]}
     @<anonymous>#fun5 (HOST(error-captureStackTrace-model.js):1:1): {length:0.0,name:"",prototype:[@Object#node11],[[Prototype]]=[@Function.prototype[native]],[[Scope]]=[[@<the global object>[native]]]}
     @activation#node352 (HOST(error-captureStackTrace-model.js):1:1): {arguments:[@arguments#node352]}
@@ -63,6 +57,8 @@ Abstract state:
     v14="get"
     v15="post"
     v16=[@Object#node18]
+    v17=Null|(UIntStr){"0","1"}
+    v18=false
   MustReachingDefs: 
     v1: node 0 (test-resources/src/micro/test201.js)
     v2: node 5 (host-environment-sources-loader)
@@ -79,7 +75,7 @@ Abstract state:
     v15: node 21 (test-resources/src/micro/test201.js:10:30)
     v16: node 24 (test-resources/src/micro/test201.js:11:18)
   Functions in stack: []
-test-resources/src/micro/test201.js:16:1: [info] Abstract object: {get:[@<anonymous>#fun2{method="get"}]|absent,post:[@<anonymous>#fun2{method="post"}]|absent,[[Prototype]]=[@Object.prototype[native]]}
-test-resources/src/micro/test201.js:17:1: [info] Abstract value: "I'm get"
+test-resources/src/micro/test201.js:16:1: [info] Abstract object: {get:[@<anonymous>#fun2{method=(IdentStr){"get","post"}}, *<anonymous>#fun2{method=(IdentStr){"get","post"}}]|absent,post:[@<anonymous>#fun2{method=(IdentStr){"get","post"}}, *<anonymous>#fun2{method=(IdentStr){"get","post"}}]|absent,[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/test201.js:17:1: [info] Abstract value: (PrefixStr[I'm ]){"I'm get","I'm post"}
 test-resources/src/micro/test201.js:18:1: [info] Abstract value: (PrefixStr[I'm ]){"I'm get","I'm post"}
 Soundness testing succeeded for 48 checks (with 0 expected failures)

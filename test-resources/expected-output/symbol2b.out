@@ -1,6 +1,6 @@
-out/temp-sources/TestMicro.symbol2b.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.symbol2b.js:7:19: [maybe] Reading absent property (computed name)
-out/temp-sources/TestMicro.symbol2b.js:7:27: [maybe] Reading absent property (computed name)
-out/temp-sources/TestMicro.symbol2b.js:3:1: [info] Abstract value: [*Symbol#node21, *Symbol#node13]
-out/temp-sources/TestMicro.symbol2b.js:6:1: [info] Abstract value: [@Object#node25]
+TestMicro.symbol2b.js: [definite] Exceptional program exit is unreachable
+TestMicro.symbol2b.js:7:19: [maybe] Reading absent property (computed name)
+TestMicro.symbol2b.js:7:27: [maybe] Reading absent property (computed name)
+TestMicro.symbol2b.js:3:1: [info] Abstract value: [*Symbol#node21, *Symbol#node13]
+TestMicro.symbol2b.js:6:1: [info] Abstract value: [@Object#node25]
 Soundness testing succeeded for 31 checks (with 0 expected failures)

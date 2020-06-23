@@ -58,35 +58,35 @@ test-resources/src/tsspecs/myapp/base-64/index.js:41:11: [maybe] Converting prim
 test-resources/src/tsspecs/myapp/base-64/index.js:43:16: [maybe] Converting primitive string to object
 test-resources/src/tsspecs/myapp/base-64/index.js:45:12: [maybe] Converting primitive string to object
 test-resources/src/tsspecs/myapp/base-64/index.js:46:13: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:63:13: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:63:13: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:63:13: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:63:27: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:63:27: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:63:27: [maybe] Converting primitive string to object
 test-resources/src/tsspecs/myapp/base-64/index.js:88:17: [maybe] Converting primitive string to object
 test-resources/src/tsspecs/myapp/base-64/index.js:97:16: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:101:8: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:101:8: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:101:8: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:102:8: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:102:8: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:102:8: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:103:8: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:103:8: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:103:8: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:108:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:108:5: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:108:5: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:109:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:109:5: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:109:5: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:110:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:110:5: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:110:5: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:111:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:111:5: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:111:5: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:116:8: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:116:8: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:116:8: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:117:8: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:117:8: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:117:8: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:120:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:120:5: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:120:5: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:121:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:121:5: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:121:5: [maybe] Converting primitive string to object
-test-resources/src/tsspecs/myapp/base-64/index.js:122:5: [maybe] Converting object to string
+test-resources/src/tsspecs/myapp/base-64/index.js:122:5: [maybe] Converting object to primitive
 test-resources/src/tsspecs/myapp/base-64/index.js:122:5: [maybe] Converting primitive string to object
 test-resources/src/tsspecs/myapp/mylib.js:35:5: [maybe] Converting primitive number to object
 test-resources/src/tsspecs/myapp/myapp.js:8:1: [info] Abstract value: "foobar"
@@ -96,6 +96,6 @@ test-resources/src/tsspecs/myapp/myapp.js:11:1: [info] Abstract value: "again"
 test-resources/src/tsspecs/myapp/myapp.js:12:1: [info] Abstract value: true
 test-resources/src/tsspecs/myapp/myapp.js:13:1: [info] Abstract value: 111.0
 test-resources/src/tsspecs/myapp/myapp.js:16:1: [info] Abstract value: "dyt"
-test-resources/src/tsspecs/myapp/myapp.js:17:1: [info] Abstract value: [@Date#node6546]
+test-resources/src/tsspecs/myapp/myapp.js:17:1: [info] Abstract value: [@Date#node6553]
 test-resources/src/tsspecs/myapp/myapp.js:27:1: [info] Abstract value: Num
 test-resources/src/tsspecs/myapp/myapp.js:32:1: [info] Abstract value: "hello"

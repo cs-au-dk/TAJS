@@ -1,7 +1,5 @@
-out/temp-sources/TestForIn.unorderedForInImplementation_withLazyPropagation.js:4:4: [definite] Dead assignment, property x is never read
-out/temp-sources/TestForIn.unorderedForInImplementation_withLazyPropagation.js:4:4: [definite] Dead assignment, property y is never read
-out/temp-sources/TestForIn.unorderedForInImplementation_withLazyPropagation.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestForIn.unorderedForInImplementation_withLazyPropagation.js:5:4: [info] Abstract object: {x:^(@Object#node12.x[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
-out/temp-sources/TestForIn.unorderedForInImplementation_withLazyPropagation.js:5:4: [info] Abstract object: {y:^(@Object#node12.y[present]),[[DefaultNumeric]]=?,[[DefaultOther]]=?,[[Prototype]]=[@Object.prototype[native]],[[Value]]=?,[[Scope]]=?}
-out/temp-sources/TestForIn.unorderedForInImplementation_withLazyPropagation.js:7:1: [info] Abstract object: {x:"A"|absent,y:"A"|absent,[[Prototype]]=[@Object.prototype[native]]}
+TestForIn.unorderedForInImplementation_withLazyPropagation.js:4:4: [definite] Dead assignment, property is never read
+TestForIn.unorderedForInImplementation_withLazyPropagation.js: [definite] Exceptional program exit is unreachable
+TestForIn.unorderedForInImplementation_withLazyPropagation.js:5:4: [info] Abstract object: {x:"A"|absent,y:"A"|absent,[[Prototype]]=[@Object.prototype[native]]}
+TestForIn.unorderedForInImplementation_withLazyPropagation.js:7:1: [info] Abstract object: {x:"A"|absent,y:"A"|absent,[[Prototype]]=[@Object.prototype[native]]}
 Soundness testing succeeded for 20 checks (with 0 expected failures)

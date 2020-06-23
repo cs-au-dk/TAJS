@@ -489,6 +489,14 @@ public class TestValue {
         assertEquals(Value.makeNone(), v1.restrictToLooseNotEquals(v2));
     }
 
+    @Test
+    public void testImpreciseJoinOfSingleStringAndPrefixString() {
+        Value v1 = Value.makeStr("foo");
+        Value v2 = Value.join(Value.makeStr("bar"), Value.makeStr("baz"));
+        assertEquals(Value.makeStrings(Stream.of("foo", "bar", "baz").collect(Collectors.toList())), v1.join(v2));
+        assertEquals(Value.makeStrings(Stream.of("foo", "bar", "baz").collect(Collectors.toList())), v2.join(v1));
+    }
+
     /*
      * Public non-static methods in Value that return a Value (except 'join'), should be overwritten in PartitionedValue
      */

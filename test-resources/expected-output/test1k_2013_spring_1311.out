@@ -6,6 +6,7 @@ test-resources/src/1k2013spring/1311.js:35:45: [maybe] TypeError, accessing prop
 test-resources/src/1k2013spring/1311.js:35:54: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1311.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1311.js:21:21, test-resources/src/1k2013spring/1311.js:22:2, test-resources/src/1k2013spring/1311.js:22:34, test-resources/src/1k2013spring/1311.js:30:7, test-resources/src/1k2013spring/1311.js:35:45, test-resources/src/1k2013spring/1311.js:35:54, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1311.js:30:7: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1311.js:30:7: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1311.js:35:45: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1311.js:35:54: [maybe] Reading absent property (computed name)

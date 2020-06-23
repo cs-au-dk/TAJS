@@ -44,7 +44,7 @@ test-resources/src/micro/testArray.js:80:1: [info] Abstract value: Str
 test-resources/src/micro/testArray.js:85:1: [info] Abstract value: (OtherStr){"1,2","9,2,8"}
 test-resources/src/micro/testArray.js:90:1: [info] Abstract object: {0:1.0,1:3.0,2:4.0,3:5.0,4:"dfg",5:1.0,6:43.0,7:"sdf",8:34.0,length:9.0,[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:91:1: [info] Abstract object: {0:1.0,1:3.0,2:4.0,3:5.0,4:"dfg",5:[@Object#node298],length:6.0,[[Prototype]]=[@Array.prototype[native]]}
-test-resources/src/micro/testArray.js:96:1: [info] Abstract object: {0:1.0,1:3.0,2:4.0,3:5.0,4:"dfg",length:UInt,[[DefaultNumeric]]=UIntPos|"dfg"|[@Object#node309]|absent,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/testArray.js:96:1: [info] Abstract object: {0:1.0,1:3.0,2:4.0,3:5.0,4:"dfg",length:UInt,[[DefaultNumeric]]=UIntPos|"dfg"|[@Object#node309]|absent[partitions: [{TYPE(node=321,type=OBJ_Object)=UIntPos|"dfg"|[@Object#node309]|absent, TYPE(node=321,type=OBJ_Array)=UIntPos|"dfg"|absent}]],[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:98:1: [info] Abstract object: {0:1.0,1:3.0,2:4.0,3:5.0,4:"dfg",5:"string",length:6.0,[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:103:1: [info] Abstract object: {0:1.0,1:"string",2:34.0,length:3.0,[[Prototype]]=[@Array.prototype[native]]}
 test-resources/src/micro/testArray.js:104:1: [info] Abstract value: 34.0

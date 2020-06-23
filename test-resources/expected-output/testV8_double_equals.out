@@ -2,4 +2,12 @@ test-resources/src/v8tests/double-equals.js: [definite] Exceptional program exit
 test-resources/src/v8tests/double-equals.js:70:14: [definite] The variable z is never used
 test-resources/src/v8tests/double-equals.js:76:14: [definite] The variable z is never used
 test-resources/src/v8tests/double-equals.js:82:14: [definite] The variable z is never used
+test-resources/src/v8tests/double-equals.js:96:12: [maybe] Converting object to primitive
+test-resources/src/v8tests/double-equals.js:97:12: [maybe] Converting object to primitive
+test-resources/src/v8tests/double-equals.js:98:12: [maybe] Converting object to primitive
+test-resources/src/v8tests/double-equals.js:99:12: [maybe] Converting object to primitive
+test-resources/src/v8tests/double-equals.js:106:12: [maybe] Converting object to primitive
+test-resources/src/v8tests/double-equals.js:107:12: [maybe] Converting object to primitive
+test-resources/src/v8tests/double-equals.js:108:12: [maybe] Converting object to primitive
+test-resources/src/v8tests/double-equals.js:109:12: [maybe] Converting object to primitive
 Soundness testing succeeded for 481 checks (with 0 expected failures)

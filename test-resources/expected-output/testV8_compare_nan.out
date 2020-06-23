@@ -1,12 +1,24 @@
 test-resources/src/v8tests/compare-nan.js: [definite] Exceptional program exit is unreachable
-test-resources/src/v8tests/compare-nan.js:31:15: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/compare-nan.js:33:15: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/compare-nan.js:34:15: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/compare-nan.js:35:15: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/compare-nan.js:36:15: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/compare-nan.js:38:15: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/compare-nan.js:40:15: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/compare-nan.js:41:15: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/compare-nan.js:42:15: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/compare-nan.js:43:15: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/compare-nan.js:31:15: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/compare-nan.js:31:22: [maybe] The variable x has values with different types
+test-resources/src/v8tests/compare-nan.js:32:23: [maybe] The variable x has values with different types
+test-resources/src/v8tests/compare-nan.js:33:15: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/compare-nan.js:33:21: [maybe] The variable x has values with different types
+test-resources/src/v8tests/compare-nan.js:34:15: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/compare-nan.js:34:21: [maybe] The variable x has values with different types
+test-resources/src/v8tests/compare-nan.js:35:15: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/compare-nan.js:35:22: [maybe] The variable x has values with different types
+test-resources/src/v8tests/compare-nan.js:36:15: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/compare-nan.js:36:22: [maybe] The variable x has values with different types
+test-resources/src/v8tests/compare-nan.js:38:15: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/compare-nan.js:38:15: [maybe] The variable x has values with different types
+test-resources/src/v8tests/compare-nan.js:39:15: [maybe] The variable x has values with different types
+test-resources/src/v8tests/compare-nan.js:40:15: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/compare-nan.js:40:15: [maybe] The variable x has values with different types
+test-resources/src/v8tests/compare-nan.js:41:15: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/compare-nan.js:41:15: [maybe] The variable x has values with different types
+test-resources/src/v8tests/compare-nan.js:42:15: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/compare-nan.js:42:15: [maybe] The variable x has values with different types
+test-resources/src/v8tests/compare-nan.js:43:15: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/compare-nan.js:43:15: [maybe] The variable x has values with different types
 Soundness testing succeeded for 240 checks (with 0 expected failures)

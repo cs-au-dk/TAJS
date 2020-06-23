@@ -1,6 +1,6 @@
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js)
+    node 0: constant[undefined,v1] (TestUnrolling.loopunrolling_flowgraph_strings_do.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -23,37 +23,37 @@
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: constant["PRE",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:1)
+    node 9: constant["PRE",-] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:1)
     ->[block 8]
   block 8:
-    node 10: constant["BODY",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:13)
+    node 10: constant["BODY",-] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:13)
     ->[block 9] ~>[block 11]
   block 9:
-    node 11: constant["COND",v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
-    node 12: begin-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:11)
+    node 11: constant["COND",v8] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
+    node 12: begin-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:11)
     ->[block 10] ~>[block 11]
   block 10:
-    node 13: if[v8](true-block:8,false-block:12) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
+    node 13: if[v8](true-block:8,false-block:12) (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
     ->[block 8,block 12] ~>[block 11]
   block 11:
-    node 14: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
+    node 14: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
     ->[block 15]
   block 12:
-    node 15: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
+    node 15: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
     ->[block 13]
   block 13:
-    node 16: constant["POST",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:40)
+    node 16: constant["POST",-] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:40)
     ->[block 14]
   block 14: [exit-ordinary]
-    node 17: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js)
+    node 17: return[v1] (TestUnrolling.loopunrolling_flowgraph_strings_do.js)
     ->[]
   block 15: [exit-exceptional]
-    node 18: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js)
+    node 18: exceptional-return (TestUnrolling.loopunrolling_flowgraph_strings_do.js)
     ->[]
 
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js)
+    node 0: constant[undefined,v1] (TestUnrolling.loopunrolling_flowgraph_strings_do.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -76,35 +76,35 @@
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: constant["PRE",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:1)
+    node 9: constant["PRE",-] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:1)
     ->[block 8]
   block 8:
-    node 10: constant["BODY",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:13)
+    node 10: constant["BODY",-] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:13)
     ->[block 9] ~>[block 11]
   block 9:
-    node 11: constant["COND",v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
-    node 12: begin-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:11)
+    node 11: constant["COND",v8] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
+    node 12: begin-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:11)
     ->[block 10] ~>[block 11]
   block 10:
-    node 13: if[v8](true-block:8,false-block:12) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
+    node 13: if[v8](true-block:8,false-block:12) (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
     ->[block 8,block 12] ~>[block 11]
   block 11:
-    node 14: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
+    node 14: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
     ->[block 15]
   block 12:
-    node 15: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
+    node 15: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31)
     ->[block 13]
   block 13:
-    node 16: constant["POST",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:40)
+    node 16: constant["POST",-] (TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:40)
     ->[block 14]
   block 14: [exit-ordinary]
-    node 17: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js)
+    node 17: return[v1] (TestUnrolling.loopunrolling_flowgraph_strings_do.js)
     ->[]
   block 15: [exit-exceptional]
-    node 18: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js)
+    node 18: exceptional-return (TestUnrolling.loopunrolling_flowgraph_strings_do.js)
     ->[]
 
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js: [definite] Ordinary program exit is unreachable
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31: [definite] The conditional expression is always true
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_strings_do.js: [definite] Exceptional program exit is unreachable
+TestUnrolling.loopunrolling_flowgraph_strings_do.js: [definite] Ordinary program exit is unreachable
+TestUnrolling.loopunrolling_flowgraph_strings_do.js:1:31: [definite] The conditional expression is always true
+TestUnrolling.loopunrolling_flowgraph_strings_do.js: [definite] Exceptional program exit is unreachable
 Soundness testing succeeded for 0 checks (with 0 expected failures)

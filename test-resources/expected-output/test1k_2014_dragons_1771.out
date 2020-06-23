@@ -66,8 +66,8 @@ test/1k2014dragons/1771.js:52:17: [maybe] Reading absent property (computed name
 test/1k2014dragons/1771.js:52:41: [maybe] Converting primitive number to object
 test/1k2014dragons/1771.js:52:41: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:52:41: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1771.js:76:13: [maybe] Conversion from string to number yields NaN
-test/1k2014dragons/1771.js:76:13: [maybe] Converting object to number
+test/1k2014dragons/1771.js:76:13: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1771.js:76:13: [maybe] Converting object to primitive
 test/1k2014dragons/1771.js:78:13: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1771.js:80:13: [maybe] Converting primitive number to object
 test/1k2014dragons/1771.js:80:13: [maybe] The variable M has values with different types

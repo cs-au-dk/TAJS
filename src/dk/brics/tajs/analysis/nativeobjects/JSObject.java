@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,8 +39,8 @@ import dk.brics.tajs.lattice.ObjectLabel.Kind;
 import dk.brics.tajs.lattice.PKey;
 import dk.brics.tajs.lattice.PKey.StringPKey;
 import dk.brics.tajs.lattice.PKeys;
-import dk.brics.tajs.lattice.PartitionedValue;
 import dk.brics.tajs.lattice.PartitionToken;
+import dk.brics.tajs.lattice.PartitionedValue;
 import dk.brics.tajs.lattice.Renamings;
 import dk.brics.tajs.lattice.State;
 import dk.brics.tajs.lattice.UnknownValueResolver;
@@ -239,7 +239,7 @@ public class JSObject {
                 Value name = FunctionCalls.readParameter(call, state, 1);
                 Value nameStr = Conversion.toString(name, c);
                 c.getMonitoring().visitPropertyRead(c.getNode(), receivers, nameStr, c.getState(), true);
-                if (Options.get().isPropNamePartitioning() && nameStr.isMaybeFuzzyStrOrSymbol()) {
+                if (!Options.get().isNoPropNamePartitioning() && nameStr.isMaybeFuzzyStrOrSymbol()) {
                     // partition the property name
                     PartitionedValue property = Partitioning.partitionPropValue(c.getNode(), ((CallNode) call.getJSSourceNode()).getArgRegister(1), receivers, name, nameStr, newSet(), false, c);
                     // partition the resulting value

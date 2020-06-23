@@ -16,18 +16,27 @@ test-resources/src/1k2013spring/1472.js:80:25: [maybe] TypeError, call to non-fu
 test-resources/src/1k2013spring/1472.js:88:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1472.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1472.js:27:5, test-resources/src/1k2013spring/1472.js:37:9, test-resources/src/1k2013spring/1472.js:54:5, test-resources/src/1k2013spring/1472.js:64:25, test-resources/src/1k2013spring/1472.js:68:5, test-resources/src/1k2013spring/1472.js:71:9, test-resources/src/1k2013spring/1472.js:78:17, test-resources/src/1k2013spring/1472.js:79:26, test-resources/src/1k2013spring/1472.js:80:25, test-resources/src/1k2013spring/1472.js:88:9, test-resources/src/1k2013spring/1472.js:89:13, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1472.js:49:5: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1472.js:49:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:49:29: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1472.js:49:45: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:49:53: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:49:76: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1472.js:54:16: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1472.js:54:36: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:64:6: [maybe] The variable alive has values with different types
 test-resources/src/1k2013spring/1472.js:70:9: [maybe] The variable alive has values with different types
+test-resources/src/1k2013spring/1472.js:73:17: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:74:17: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1472.js:76:17: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:76:35: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:79:26: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:84:14: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1472.js:86:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:86:37: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:86:48: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:91:22: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1472.js:95:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:96:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:97:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1472.js:98:21: [maybe] Conversion to number yields NaN

@@ -6,10 +6,10 @@ test-resources/src/sunspider/regexp-dna.js:1702:8: [maybe] Converting primitive 
 test-resources/src/sunspider/regexp-dna.js:1705:12: [maybe] Converting primitive string to object
 test-resources/src/sunspider/regexp-dna.js:1706:8: [maybe] Converting primitive string to object
 test-resources/src/sunspider/regexp-dna.js:1711:5: [maybe] Converting undefined to string
-test-resources/src/sunspider/regexp-dna.js:1711:48: [maybe] Converting object to string
+test-resources/src/sunspider/regexp-dna.js:1711:48: [maybe] Converting object to primitive
 test-resources/src/sunspider/regexp-dna.js:1711:48: [maybe] Converting primitive string to object
 test-resources/src/sunspider/regexp-dna.js:1715:13: [maybe] Converting primitive string to object
-test-resources/src/sunspider/regexp-dna.js:1719:26: [maybe] Converting object to number
+test-resources/src/sunspider/regexp-dna.js:1719:26: [maybe] Converting object to primitive
 test-resources/src/sunspider/regexp-dna.js:1721:1: [info] Abstract value: Num
 Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
 Log of soundness facts is not available for test-resources/src/sunspider/regexp-dna.js, skipping soundness checking

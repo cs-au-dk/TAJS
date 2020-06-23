@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -421,7 +421,7 @@ public class FlowGraphBuilder {
             }
             if (!current.target.isEmpty()) {
                 AbstractNode lastNode = current.target.getLastNode();
-                if (!Options.get().isForInSpecializationDisabled()) {
+                if (Options.get().isForInSpecializationEnabled()) {
                     if (lastNode instanceof BeginForInNode) {
                         successorEntryStack.push(current.target.getSingleSuccessor());
                     }

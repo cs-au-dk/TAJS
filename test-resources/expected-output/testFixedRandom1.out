@@ -1,10 +1,10 @@
-out/temp-sources/TestMicro.testFixedRandom1.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.testFixedRandom1.js:2:24: [maybe] Converting object to number
-out/temp-sources/TestMicro.testFixedRandom1.js:4:24: [maybe] Converting primitive string to object
-out/temp-sources/TestMicro.testFixedRandom1.js:5:24: [maybe] Converting primitive string to object
-out/temp-sources/TestMicro.testFixedRandom1.js:1:1: [info] Abstract value: PrefixStr[foo]
-out/temp-sources/TestMicro.testFixedRandom1.js:2:1: [info] Abstract value: PrefixStr[foo]
-out/temp-sources/TestMicro.testFixedRandom1.js:3:1: [info] Abstract value: PrefixStr[foo]
-out/temp-sources/TestMicro.testFixedRandom1.js:4:1: [info] Abstract value: PrefixStr[foo]
-out/temp-sources/TestMicro.testFixedRandom1.js:5:1: [info] Abstract value: PrefixStr[foo]
+TestMicro.testFixedRandom1.js: [definite] Exceptional program exit is unreachable
+TestMicro.testFixedRandom1.js:2:24: [maybe] Converting object to primitive
+TestMicro.testFixedRandom1.js:4:24: [maybe] Converting primitive string to object
+TestMicro.testFixedRandom1.js:5:24: [maybe] Converting primitive string to object
+TestMicro.testFixedRandom1.js:1:1: [info] Abstract value: PrefixStr[foo]
+TestMicro.testFixedRandom1.js:2:1: [info] Abstract value: PrefixStr[foo]
+TestMicro.testFixedRandom1.js:3:1: [info] Abstract value: PrefixStr[foo]
+TestMicro.testFixedRandom1.js:4:1: [info] Abstract value: PrefixStr[foo]
+TestMicro.testFixedRandom1.js:5:1: [info] Abstract value: PrefixStr[foo]
 Soundness testing succeeded for 43 checks (with 0 expected failures)

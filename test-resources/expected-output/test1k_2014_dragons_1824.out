@@ -160,8 +160,8 @@ test/1k2014dragons/1824.js:65:22: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:65:22: [maybe] Converting primitive number to object
 test/1k2014dragons/1824.js:65:22: [maybe] Converting primitive string to object
 test/1k2014dragons/1824.js:65:22: [maybe] The variable pos has values with different types
-test/1k2014dragons/1824.js:70:17: [maybe] Converting object to string
-test/1k2014dragons/1824.js:70:17: [maybe] Converting object to string
+test/1k2014dragons/1824.js:70:17: [maybe] Converting object to primitive
+test/1k2014dragons/1824.js:70:17: [maybe] Converting object to primitive
 test/1k2014dragons/1824.js:70:17: [maybe] Converting primitive string to object
 test/1k2014dragons/1824.js:70:17: [maybe] Converting primitive string to object
 test/1k2014dragons/1824.js:100:62: [maybe] Conversion to number yields NaN
@@ -183,40 +183,40 @@ test/1k2014dragons/1824.js:190:56: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:194:29: [maybe] Converting undefined to string
 test/1k2014dragons/1824.js:194:54: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1824.js:197:21: [maybe] The variable pos has values with different types
-test/1k2014dragons/1824.js:206:5: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1824.js:206:5: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1824.js:206:5: [maybe] Converting object to number
+test/1k2014dragons/1824.js:206:5: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:206:5: [maybe] Converting object to primitive
 test/1k2014dragons/1824.js:206:5: [maybe] The variable opts has values with different types
-test/1k2014dragons/1824.js:209:9: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1824.js:209:9: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1824.js:209:9: [maybe] Converting object to number
+test/1k2014dragons/1824.js:209:9: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:209:9: [maybe] Converting object to primitive
 test/1k2014dragons/1824.js:209:9: [maybe] The variable opts has values with different types
-test/1k2014dragons/1824.js:210:12: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1824.js:210:12: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1824.js:210:12: [maybe] Converting object to number
+test/1k2014dragons/1824.js:210:12: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:210:12: [maybe] Converting object to primitive
 test/1k2014dragons/1824.js:210:12: [maybe] The variable opts has values with different types
-test/1k2014dragons/1824.js:212:12: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1824.js:212:12: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1824.js:212:12: [maybe] Converting object to number
+test/1k2014dragons/1824.js:212:12: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:212:12: [maybe] Converting object to primitive
 test/1k2014dragons/1824.js:212:12: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:215:17: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1824.js:217:11: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1824.js:217:11: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1824.js:217:11: [maybe] Converting object to number
+test/1k2014dragons/1824.js:217:11: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:217:11: [maybe] Converting object to primitive
 test/1k2014dragons/1824.js:217:11: [maybe] The variable opts has values with different types
-test/1k2014dragons/1824.js:219:12: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1824.js:219:12: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1824.js:219:12: [maybe] Converting object to number
+test/1k2014dragons/1824.js:219:12: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:219:12: [maybe] Converting object to primitive
 test/1k2014dragons/1824.js:219:12: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:222:7: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1824.js:225:11: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1824.js:225:11: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1824.js:225:11: [maybe] Converting object to number
+test/1k2014dragons/1824.js:225:11: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:225:11: [maybe] Converting object to primitive
 test/1k2014dragons/1824.js:225:11: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:226:9: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1824.js:235:16: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1824.js:235:16: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1824.js:235:16: [maybe] Converting object to number
+test/1k2014dragons/1824.js:235:16: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1824.js:235:16: [maybe] Converting object to primitive
 test/1k2014dragons/1824.js:235:16: [maybe] The variable opts has values with different types
 test/1k2014dragons/1824.js:250:14: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1824.js:252:27: [maybe] Converting undefined to string

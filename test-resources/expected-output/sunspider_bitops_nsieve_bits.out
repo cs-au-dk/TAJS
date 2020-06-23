@@ -5,6 +5,6 @@ test-resources/src/sunspider/bitops-nsieve-bits.js:22:9: [maybe] Conversion to n
 test-resources/src/sunspider/bitops-nsieve-bits.js:22:9: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/bitops-nsieve-bits.js:24:9: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/bitops-nsieve-bits.js:24:9: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/bitops-nsieve-bits.js:39:26: [maybe] Converting object to number
+test-resources/src/sunspider/bitops-nsieve-bits.js:39:26: [maybe] Converting object to primitive
 test-resources/src/sunspider/bitops-nsieve-bits.js:41:1: [info] Abstract value: Num
 Soundness testing succeeded for 1248 checks (with 0 expected failures)

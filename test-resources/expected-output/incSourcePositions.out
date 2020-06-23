@@ -1,6 +1,6 @@
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js)
+    node 0: constant[undefined,v1] (TestFlowgraphBuilder.incSourcePositions.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -23,25 +23,25 @@ fg2: <main> function()
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: read-variable['a',v8,-] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:1)
-    node 10: read-variable['b',v9,-] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:6)
-    node 11: +[v8,v9,v10] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:1)
-    node 12: write-variable[v10,'a'] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:1)
-    node 13: read-variable['c',v11,-] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
-    node 14: read-property[v11,'d',v12] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
-    node 15: read-variable['e',v13,-] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:8)
-    node 16: +[v12,v13,v14] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
-    node 17: write-property[v11,'d',v14] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    node 9: read-variable['a',v8,-] (TestFlowgraphBuilder.incSourcePositions.js:1:1)
+    node 10: read-variable['b',v9,-] (TestFlowgraphBuilder.incSourcePositions.js:1:6)
+    node 11: +[v8,v9,v10] (TestFlowgraphBuilder.incSourcePositions.js:1:1)
+    node 12: write-variable[v10,'a'] (TestFlowgraphBuilder.incSourcePositions.js:1:1)
+    node 13: read-variable['c',v11,-] (TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    node 14: read-property[v11,'d',v12] (TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    node 15: read-variable['e',v13,-] (TestFlowgraphBuilder.incSourcePositions.js:2:8)
+    node 16: +[v12,v13,v14] (TestFlowgraphBuilder.incSourcePositions.js:2:1)
+    node 17: write-property[v11,'d',v14] (TestFlowgraphBuilder.incSourcePositions.js:2:1)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 18: return[v1] (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js)
+    node 18: return[v1] (TestFlowgraphBuilder.incSourcePositions.js)
     ->[]
   block 9: [exit-exceptional]
-    node 19: exceptional-return (out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js)
+    node 19: exceptional-return (TestFlowgraphBuilder.incSourcePositions.js)
     ->[]
 
-out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js: [definite] Ordinary program exit is unreachable
-out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:1: [definite] ReferenceError, reading absent variable a
-out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:6: [definite] Unreachable code
-out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestFlowgraphBuilder.incSourcePositions.js:1:1]
+TestFlowgraphBuilder.incSourcePositions.js: [definite] Ordinary program exit is unreachable
+TestFlowgraphBuilder.incSourcePositions.js:1:1: [definite] ReferenceError, reading absent variable a
+TestFlowgraphBuilder.incSourcePositions.js:1:6: [definite] Unreachable code
+TestFlowgraphBuilder.incSourcePositions.js: [maybe] Uncaught exception, constructed at [TestFlowgraphBuilder.incSourcePositions.js:1:1]
 Soundness testing succeeded for 1 checks (with 0 expected failures)

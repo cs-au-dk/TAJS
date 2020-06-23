@@ -87,6 +87,8 @@ test-resources/src/sunspider/3d-raytrace.js:168:42: [maybe] Conversion to number
 test-resources/src/sunspider/3d-raytrace.js:168:52: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-raytrace.js:168:62: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-raytrace.js:168:72: [maybe] Reading absent property (computed name)
+test-resources/src/sunspider/3d-raytrace.js:169:9: [maybe] Conversion to number yields NaN
+test-resources/src/sunspider/3d-raytrace.js:169:21: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-raytrace.js:171:14: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-raytrace.js:171:14: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-raytrace.js:171:24: [maybe] Conversion to number yields NaN
@@ -97,6 +99,8 @@ test-resources/src/sunspider/3d-raytrace.js:172:24: [maybe] Conversion to number
 test-resources/src/sunspider/3d-raytrace.js:172:28: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-raytrace.js:196:24: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-raytrace.js:198:13: [maybe] The variable d has values with different types
+test-resources/src/sunspider/3d-raytrace.js:198:26: [maybe] Conversion to number yields NaN
+test-resources/src/sunspider/3d-raytrace.js:198:37: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-raytrace.js:221:9: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-raytrace.js:224:13: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-raytrace.js:230:21: [maybe] Reading absent property (computed name)
@@ -105,9 +109,10 @@ test-resources/src/sunspider/3d-raytrace.js:252:24: [maybe] Reading absent prope
 test-resources/src/sunspider/3d-raytrace.js:254:13: [maybe] The variable d has values with different types
 test-resources/src/sunspider/3d-raytrace.js:304:13: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-raytrace.js:399:13: [maybe] Reading absent property (computed name)
+test-resources/src/sunspider/3d-raytrace.js:416:18: [maybe] Converting object to primitive
 test-resources/src/sunspider/3d-raytrace.js:416:18: [maybe] Converting undefined to string
 test-resources/src/sunspider/3d-raytrace.js:416:24: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/3d-raytrace.js:448:26: [maybe] Converting object to number
+test-resources/src/sunspider/3d-raytrace.js:448:26: [maybe] Converting object to primitive
 test-resources/src/sunspider/3d-raytrace.js:450:1: [info] Abstract value: Num
 test-resources/src/sunspider/3d-raytrace.js:165:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/sunspider/3d-raytrace.js:166:14: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

@@ -1211,8 +1211,8 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2245:41: [maybe] Reading 
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:11332:40: [maybe] Reading absent property length
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:516:20: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:581:19: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1005:14: [maybe] Conversion from string to number yields NaN
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1005:14: [maybe] Converting object to number
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1005:14: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1005:14: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1005:19: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1472:7: [maybe] Converting primitive string to object
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:1986:30: [maybe] Reading absent property (computed name)
@@ -1220,8 +1220,8 @@ benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2245:41: [maybe] Converti
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:2248:14: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3036:27: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3178:21: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3179:35: [maybe] Conversion from string to number yields NaN
-benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3179:35: [maybe] Converting object to number
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3179:35: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3179:35: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3179:44: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3181:32: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-4.17.10.js:3181:47: [maybe] The variable value has values with different types

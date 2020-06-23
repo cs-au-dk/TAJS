@@ -1,3 +1,3 @@
 test-resources/src/micro/test182.js: [definite] Exceptional program exit is unreachable
-test-resources/src/micro/test182.js:15:1: [maybe] Converting object to number
+test-resources/src/micro/test182.js:15:1: [maybe] Converting object to primitive
 Soundness testing succeeded for 8 checks (with 0 expected failures)

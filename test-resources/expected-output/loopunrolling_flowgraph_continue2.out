@@ -1,6 +1,6 @@
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js)
+    node 0: constant[undefined,v1] (TestUnrolling.loopunrolling_flowgraph_continue2.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -23,44 +23,44 @@
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: constant["COND1",v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
-    node 10: begin-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:23)
+    node 9: constant["COND1",v8] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 10: begin-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:23)
     ->[block 8] ~>[block 15]
   block 8:
-    node 11: if[v8](true-block:10,false-block:9) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 11: if[v8](true-block:10,false-block:9) (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 9,block 10] ~>[block 15]
   block 9:
-    node 12: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 12: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 16]
   block 10:
-    node 13: constant["COND2",v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
-    node 14: begin-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:47)
+    node 13: constant["COND2",v9] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 14: begin-loop[v9] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:47)
     ->[block 11] ~>[block 13]
   block 11:
-    node 15: if[v9](true-block:12,false-block:14) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 15: if[v9](true-block:12,false-block:14) (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 12,block 14] ~>[block 13]
   block 12:
-    node 16: nop(continue while2) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:48)
+    node 16: nop(continue while2) (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:48)
     ->[block 10] ~>[block 13]
   block 13:
-    node 17: end-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 17: end-loop[v9] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 15]
   block 14:
-    node 18: end-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 18: end-loop[v9] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 7] ~>[block 15]
   block 15:
-    node 19: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 19: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 17]
   block 16: [exit-ordinary]
-    node 20: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js)
+    node 20: return[v1] (TestUnrolling.loopunrolling_flowgraph_continue2.js)
     ->[]
   block 17: [exit-exceptional]
-    node 21: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js)
+    node 21: exceptional-return (TestUnrolling.loopunrolling_flowgraph_continue2.js)
     ->[]
 
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js)
+    node 0: constant[undefined,v1] (TestUnrolling.loopunrolling_flowgraph_continue2.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -83,43 +83,43 @@
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: constant["COND1",v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
-    node 10: begin-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:23)
+    node 9: constant["COND1",v8] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 10: begin-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:23)
     ->[block 8] ~>[block 15]
   block 8:
-    node 11: if[v8](true-block:10,false-block:9) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 11: if[v8](true-block:10,false-block:9) (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 9,block 10] ~>[block 15]
   block 9:
-    node 12: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 12: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 16]
   block 10:
-    node 13: constant["COND2",v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
-    node 14: begin-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:47)
+    node 13: constant["COND2",v9] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 14: begin-loop[v9] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:47)
     ->[block 11] ~>[block 13]
   block 11:
-    node 15: if[v9](true-block:12,false-block:14) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 15: if[v9](true-block:12,false-block:14) (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 12,block 14] ~>[block 13]
   block 12:
-    node 16: nop(continue while2) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:48)
+    node 16: nop(continue while2) (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:48)
     ->[block 10] ~>[block 13]
   block 13:
-    node 17: end-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 17: end-loop[v9] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 15]
   block 14:
-    node 18: end-loop[v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
+    node 18: end-loop[v9] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39)
     ->[block 7] ~>[block 15]
   block 15:
-    node 19: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
+    node 19: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15)
     ->[block 17]
   block 16: [exit-ordinary]
-    node 20: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js)
+    node 20: return[v1] (TestUnrolling.loopunrolling_flowgraph_continue2.js)
     ->[]
   block 17: [exit-exceptional]
-    node 21: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js)
+    node 21: exceptional-return (TestUnrolling.loopunrolling_flowgraph_continue2.js)
     ->[]
 
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js: [definite] Ordinary program exit is unreachable
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15: [definite] The conditional expression is always true
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39: [definite] The conditional expression is always true
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continue2.js: [definite] Exceptional program exit is unreachable
+TestUnrolling.loopunrolling_flowgraph_continue2.js: [definite] Ordinary program exit is unreachable
+TestUnrolling.loopunrolling_flowgraph_continue2.js:1:15: [definite] The conditional expression is always true
+TestUnrolling.loopunrolling_flowgraph_continue2.js:1:39: [definite] The conditional expression is always true
+TestUnrolling.loopunrolling_flowgraph_continue2.js: [definite] Exceptional program exit is unreachable
 Soundness testing succeeded for 0 checks (with 0 expected failures)

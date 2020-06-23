@@ -1,5 +1,5 @@
-out/temp-sources/_babel/TestBabel.testForOfStringProgramWithBabel.js:15:9: [definite] The conditional expression is always false
-out/temp-sources/_babel/TestBabel.testForOfStringProgramWithBabel.js: [maybe] Uncaught exception, constructed at [out/temp-sources/_babel/TestBabel.testForOfStringProgramWithBabel.js:6:24, HOST(es6-iterator.js):138:24]
-out/temp-sources/_babel/TestBabel.testForOfStringProgramWithBabel.js:6:24: [maybe] Converting primitive string to object
-out/temp-sources/_babel/TestBabel.testForOfStringProgramWithBabel.js:8:5: [info] Abstract value: Undef|IdentStr
+_babel/TestBabel.testForOfStringProgramWithBabel.js:15:9: [definite] The conditional expression is always false
+_babel/TestBabel.testForOfStringProgramWithBabel.js: [maybe] Uncaught exception, constructed at [_babel/TestBabel.testForOfStringProgramWithBabel.js:6:24, HOST(es6-iterator.js):138:24]
+_babel/TestBabel.testForOfStringProgramWithBabel.js:6:24: [maybe] Converting primitive string to object
+_babel/TestBabel.testForOfStringProgramWithBabel.js:8:5: [info] Abstract value: Undef|IdentStr
 Soundness testing succeeded for 48 checks (with 0 expected failures)

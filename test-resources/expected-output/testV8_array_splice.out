@@ -68,10 +68,8 @@ test-resources/src/v8tests/array-splice.js:170:18: [maybe] Reading absent proper
 test-resources/src/v8tests/array-splice.js:172:14: [maybe] Reading absent property join
 test-resources/src/v8tests/array-splice.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/array-splice.js:65:14, test-resources/src/v8tests/array-splice.js:68:14, test-resources/src/v8tests/array-splice.js:71:14, test-resources/src/v8tests/array-splice.js:74:14, test-resources/src/v8tests/array-splice.js:77:14, test-resources/src/v8tests/array-splice.js:80:14, test-resources/src/v8tests/array-splice.js:83:14, test-resources/src/v8tests/array-splice.js:86:14, test-resources/src/v8tests/array-splice.js:90:5, test-resources/src/v8tests/array-splice.js:98:7, test-resources/src/v8tests/array-splice.js:99:7, test-resources/src/v8tests/array-splice.js:102:14, test-resources/src/v8tests/array-splice.js:105:14, test-resources/src/v8tests/array-splice.js:108:14, test-resources/src/v8tests/array-splice.js:111:14, test-resources/src/v8tests/array-splice.js:114:14, test-resources/src/v8tests/array-splice.js:117:14, test-resources/src/v8tests/array-splice.js:120:14, test-resources/src/v8tests/array-splice.js:140:5, test-resources/src/v8tests/array-splice.js:149:38, test-resources/src/v8tests/array-splice.js:170:18, test-resources/src/v8tests/array-splice.js:172:14, test-resources/src/v8tests/array-splice.js:174:14, test-resources/src/v8tests/array-splice.js:176:14, test-resources/src/v8tests/array-splice.js:180:7, test-resources/src/v8tests/array-splice.js:181:7, test-resources/src/v8tests/array-splice.js:182:7, test-resources/src/v8tests/array-splice.js:183:7, test-resources/src/v8tests/array-splice.js:185:7, test-resources/src/v8tests/array-splice.js:186:7, test-resources/src/v8tests/array-splice.js:187:7, test-resources/src/v8tests/array-splice.js:188:7, test-resources/src/v8tests/array-splice.js:191:62, test-resources/src/v8tests/array-splice.js:230:22, test-resources/src/v8tests/array-splice.js:236:5, test-resources/src/v8tests/array-splice.js:280:13, test-resources/src/v8tests/array-splice.js:285:3, test-resources/src/v8tests/array-splice.js:296:13, test-resources/src/v8tests/array-splice.js:301:3, test-resources/src/v8tests/array-splice.js:309:17, test-resources/src/v8tests/array-splice.js:310:17]
 test-resources/src/v8tests/array-splice.js:61:24: [maybe] The variable length has values with different types
-test-resources/src/v8tests/array-splice.js:74:14: [maybe] Conversion from string to number yields NaN
 test-resources/src/v8tests/array-splice.js:74:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:74:27: [maybe] The variable start has values with different types
-test-resources/src/v8tests/array-splice.js:77:14: [maybe] Conversion from string to number yields NaN
 test-resources/src/v8tests/array-splice.js:77:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:77:27: [maybe] The variable start has values with different types
 test-resources/src/v8tests/array-splice.js:93:20: [maybe] The variable length has values with different types
@@ -79,11 +77,9 @@ test-resources/src/v8tests/array-splice.js:98:7: [maybe] Conversion to number yi
 test-resources/src/v8tests/array-splice.js:99:7: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:102:14: [maybe] Converting primitive string to object
 test-resources/src/v8tests/array-splice.js:105:14: [maybe] Converting primitive string to object
-test-resources/src/v8tests/array-splice.js:108:14: [maybe] Conversion from string to number yields NaN
 test-resources/src/v8tests/array-splice.js:108:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:108:14: [maybe] Converting primitive string to object
 test-resources/src/v8tests/array-splice.js:108:49: [maybe] The variable start has values with different types
-test-resources/src/v8tests/array-splice.js:111:14: [maybe] Conversion from string to number yields NaN
 test-resources/src/v8tests/array-splice.js:111:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:111:14: [maybe] Converting primitive string to object
 test-resources/src/v8tests/array-splice.js:111:49: [maybe] The variable start has values with different types
@@ -91,21 +87,20 @@ test-resources/src/v8tests/array-splice.js:114:14: [maybe] Converting primitive 
 test-resources/src/v8tests/array-splice.js:117:14: [maybe] Converting primitive string to object
 test-resources/src/v8tests/array-splice.js:120:14: [maybe] Converting primitive string to object
 test-resources/src/v8tests/array-splice.js:125:15: [maybe] Reading absent property (computed name)
+test-resources/src/v8tests/array-splice.js:126:9: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:126:9: [maybe] The variable pos has values with different types
 test-resources/src/v8tests/array-splice.js:127:28: [maybe] The variable pos has values with different types
 test-resources/src/v8tests/array-splice.js:128:20: [maybe] The variable pos has values with different types
 test-resources/src/v8tests/array-splice.js:130:20: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:130:20: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/array-splice.js:133:38: [maybe] Conversion from string to number yields NaN
 test-resources/src/v8tests/array-splice.js:133:38: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:133:38: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/array-splice.js:134:20: [maybe] Conversion from string to number yields NaN
 test-resources/src/v8tests/array-splice.js:134:20: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:134:20: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/array-splice.js:140:5: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/array-splice.js:140:5: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:140:25: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:140:25: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/array-splice.js:148:11: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/array-splice.js:148:11: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:148:11: [maybe] The variable pos has values with different types
 test-resources/src/v8tests/array-splice.js:153:28: [maybe] The variable pos has values with different types
 test-resources/src/v8tests/array-splice.js:155:27: [maybe] Reading absent property (computed name)
@@ -126,28 +121,28 @@ test-resources/src/v8tests/array-splice.js:165:30: [maybe] The variable pos has 
 test-resources/src/v8tests/array-splice.js:166:20: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:166:20: [maybe] The variable pos has values with different types
 test-resources/src/v8tests/array-splice.js:167:27: [maybe] Reading absent property (computed name)
-test-resources/src/v8tests/array-splice.js:180:7: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/array-splice.js:180:7: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:180:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:180:14: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/array-splice.js:181:7: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/array-splice.js:181:7: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:181:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:181:14: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/array-splice.js:182:7: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/array-splice.js:182:7: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:182:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:182:14: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/array-splice.js:183:7: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/array-splice.js:183:7: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:183:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:183:14: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/array-splice.js:185:7: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/array-splice.js:185:7: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:185:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:185:14: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/array-splice.js:186:7: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/array-splice.js:186:7: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:186:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:186:14: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/array-splice.js:187:7: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/array-splice.js:187:7: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:187:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:187:14: [maybe] The variable pos has values with different types
-test-resources/src/v8tests/array-splice.js:188:7: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/array-splice.js:188:7: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:188:14: [maybe] Conversion to number yields NaN
 test-resources/src/v8tests/array-splice.js:188:14: [maybe] The variable pos has values with different types
 test-resources/src/v8tests/array-splice.js:194:22: [maybe] The variable pos has values with different types

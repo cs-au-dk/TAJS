@@ -3,6 +3,9 @@ test-resources/src/v8tests/fuzz-accessors.js:85:39: [definite] Dead assignment, 
 test-resources/src/v8tests/fuzz-accessors.js: [definite] Exceptional program exit is unreachable
 test-resources/src/v8tests/fuzz-accessors.js:42:5: [definite] Unreachable function
 test-resources/src/v8tests/fuzz-accessors.js:54:11: [definite] Unreachable function
+test-resources/src/v8tests/fuzz-accessors.js:75:25: [maybe] The variable special has values with different types
+test-resources/src/v8tests/fuzz-accessors.js:78:13: [maybe] The variable obj has values with different types
+test-resources/src/v8tests/fuzz-accessors.js:78:18: [maybe] The variable propertyName has values with different types
 test-resources/src/v8tests/fuzz-accessors.js:84:39: [maybe] Converting primitive boolean to object
 test-resources/src/v8tests/fuzz-accessors.js:84:39: [maybe] Converting primitive number to object
 test-resources/src/v8tests/fuzz-accessors.js:84:39: [maybe] Converting primitive string to object
@@ -16,4 +19,4 @@ test-resources/src/v8tests/fuzz-accessors.js:85:39: [maybe] The variable obj has
 test-resources/src/v8tests/fuzz-accessors.js:85:43: [maybe] The variable name has values with different types
 test-resources/src/v8tests/fuzz-accessors.js:85:39: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/v8tests/fuzz-accessors.js:84:39: [info] Reading from unknown property that may cause loss of precision
-Soundness testing succeeded for 244 checks (with 1 expected failures)
+Soundness testing succeeded for 244 checks (with 3 expected failures)

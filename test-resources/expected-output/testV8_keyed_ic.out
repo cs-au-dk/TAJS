@@ -13,11 +13,4 @@ test-resources/src/v8tests/keyed-ic.js:165:27: [maybe] The variable property has
 test-resources/src/v8tests/keyed-ic.js:167:26: [maybe] The variable property has values with different types
 test-resources/src/v8tests/keyed-ic.js:195:27: [maybe] The variable property has values with different types
 test-resources/src/v8tests/keyed-ic.js:197:27: [maybe] The variable property has values with different types
-test-resources/src/v8tests/keyed-ic.js:192:7: [info] Writing to unknown property that may cause loss of precision
-test-resources/src/v8tests/keyed-ic.js:42:22: [info] Reading from unknown property that may cause loss of precision
-test-resources/src/v8tests/keyed-ic.js:74:15: [info] Reading from unknown property that may cause loss of precision
-test-resources/src/v8tests/keyed-ic.js:102:15: [info] Reading from unknown property that may cause loss of precision
-test-resources/src/v8tests/keyed-ic.js:130:22: [info] Reading from unknown property that may cause loss of precision
-test-resources/src/v8tests/keyed-ic.js:163:22: [info] Reading from unknown property that may cause loss of precision
-test-resources/src/v8tests/keyed-ic.js:193:22: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 1031 checks (with 0 expected failures)

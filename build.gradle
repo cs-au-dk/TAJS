@@ -102,25 +102,61 @@ task testMedium(type: Test) {
 
 task makeStatsStandard(type: JavaExec) {
     classpath sourceSets.test.runtimeClasspath
-    main = 'dk.brics.tajs.test.Stats$Standard'
+    main = 'dk.brics.tajs.test.stats.StatsStandard'
     systemProperty "statsquiet", System.getProperty("statsquiet", "false")
 }
 
 task makeStatsExtra(type: JavaExec) {
     classpath sourceSets.test.runtimeClasspath
-    main = 'dk.brics.tajs.test.Stats$Extra'
+    main = 'dk.brics.tajs.test.stats.StatsExtra'
     systemProperty "statsquiet", System.getProperty("statsquiet", "false")
 }
 
 task makeStatsLibs(type: JavaExec) {
     classpath sourceSets.test.runtimeClasspath
-    main = 'dk.brics.tajs.test.Stats$Libs'
+    main = 'dk.brics.tajs.test.stats.StatsLibs'
     systemProperty "statsquiet", System.getProperty("statsquiet", "false")
 }
 
 task makeStatsJQuery(type: JavaExec) {
     classpath sourceSets.test.runtimeClasspath
-    main = 'dk.brics.tajs.test.Stats$JQuery'
+    main = 'dk.brics.tajs.test.stats.StatsJQuery'
+    systemProperty "statsquiet", System.getProperty("statsquiet", "false")
+}
+
+task makeStatsValuePartitioningUnderscore(type: JavaExec) {
+    classpath sourceSets.test.runtimeClasspath
+    main = 'dk.brics.tajs.test.stats.StatsValuePartitioning$Underscore'
+    systemProperty "statsquiet", System.getProperty("statsquiet", "false")
+}
+
+task makeStatsValuePartitioningLodash3(type: JavaExec) {
+    classpath sourceSets.test.runtimeClasspath
+    main = 'dk.brics.tajs.test.stats.StatsValuePartitioning$Lodash3'
+    systemProperty "statsquiet", System.getProperty("statsquiet", "false")
+}
+
+task makeStatsValuePartitioningLodash4(type: JavaExec) {
+    classpath sourceSets.test.runtimeClasspath
+    main = 'dk.brics.tajs.test.stats.StatsValuePartitioning$Lodash4'
+    systemProperty "statsquiet", System.getProperty("statsquiet", "false")
+}
+
+task makeStatsValuePartitioningPrototype(type: JavaExec) {
+    classpath sourceSets.test.runtimeClasspath
+    main = 'dk.brics.tajs.test.stats.StatsValuePartitioning$Prototype'
+    systemProperty "statsquiet", System.getProperty("statsquiet", "false")
+}
+
+task makeStatsValuePartitioningScriptaculous(type: JavaExec) {
+    classpath sourceSets.test.runtimeClasspath
+    main = 'dk.brics.tajs.test.stats.StatsValuePartitioning$Scriptaculous'
+    systemProperty "statsquiet", System.getProperty("statsquiet", "false")
+}
+
+task makeStatsValuePartitioningJQuery(type: JavaExec) {
+    classpath sourceSets.test.runtimeClasspath
+    main = 'dk.brics.tajs.test.stats.StatsValuePartitioning$JQuery'
     systemProperty "statsquiet", System.getProperty("statsquiet", "false")
 }
 

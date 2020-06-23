@@ -83,7 +83,6 @@ test-resources/src/1k2013spring/1425.js:102:19: [maybe] Reading absent property 
 test-resources/src/1k2013spring/1425.js:102:34: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1425.js:114:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1425.js:114:13: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1425.js:116:13: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1425.js:116:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1425.js:116:13: [maybe] Converting primitive boolean to object
 test-resources/src/1k2013spring/1425.js:116:13: [maybe] Converting primitive number to object
@@ -96,7 +95,6 @@ test-resources/src/1k2013spring/1425.js:120:13: [maybe] Converting undefined to 
 test-resources/src/1k2013spring/1425.js:120:21: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1425.js:128:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1425.js:128:13: [maybe] Converting primitive number to object
-test-resources/src/1k2013spring/1425.js:133:13: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1425.js:133:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1425.js:133:13: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1425.js:155:13: [maybe] Conversion to number yields NaN

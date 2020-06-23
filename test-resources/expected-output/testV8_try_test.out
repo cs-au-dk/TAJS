@@ -32,6 +32,7 @@ test-resources/src/v8tests/try.js:340:11: [definite] Unreachable code
 test-resources/src/v8tests/try.js:341:3: [definite] Unreachable code
 test-resources/src/v8tests/try.js:32:39: [maybe] TypeError, call to non-function
 test-resources/src/v8tests/try.js:37:42: [maybe] TypeError, call to non-function
+test-resources/src/v8tests/try.js:57:17: [maybe] Reading absent property foo
 test-resources/src/v8tests/try.js:58:17: [maybe] Reading absent property bar
 test-resources/src/v8tests/try.js: [maybe] Uncaught exception, constructed at [test-resources/src/v8tests/try.js:32:39, test-resources/src/v8tests/try.js:37:42, test-resources/src/v8tests/try.js:71:22, test-resources/src/v8tests/try.js:73:22]
 test-resources/src/v8tests/try.js:32:41: [maybe] The variable o has values with different types
@@ -40,5 +41,4 @@ test-resources/src/v8tests/try.js:37:44: [maybe] The variable o has values with 
 test-resources/src/v8tests/try.js:46:69: [maybe] The variable x has values with different types
 test-resources/src/v8tests/try.js:47:77: [maybe] The variable x has values with different types
 test-resources/src/v8tests/try.js:60:53: [maybe] The variable o has values with different types
-test-resources/src/v8tests/try.js:56:51: [info] Writing to unknown property that may cause loss of precision
 Soundness testing succeeded for 724 checks (with 0 expected failures)

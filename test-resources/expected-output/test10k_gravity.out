@@ -76,11 +76,11 @@ test-resources/src/10k/gravity.html:76:39: [maybe] Reading absent property (comp
 test-resources/src/10k/gravity.html:76:54: [maybe] Reading absent property (computed name)
 test-resources/src/10k/gravity.html:77:24: [maybe] Reading absent property (computed name)
 test-resources/src/10k/gravity.html:77:39: [maybe] Reading absent property (computed name)
-test-resources/src/10k/gravity.html:105:25: [maybe] Converting object to number
+test-resources/src/10k/gravity.html:105:25: [maybe] Converting object to primitive
 test-resources/src/10k/gravity.html:141:22: [maybe] Reading absent property (computed name)
 test-resources/src/10k/gravity.html:142:22: [maybe] Reading absent property (computed name)
-test-resources/src/10k/gravity.html:150:26: [maybe] Converting object to number
-test-resources/src/10k/gravity.html:153:21: [maybe] Converting object to number
+test-resources/src/10k/gravity.html:150:26: [maybe] Converting object to primitive
+test-resources/src/10k/gravity.html:153:21: [maybe] Converting object to primitive
 test-resources/src/10k/gravity.html:172:20: [maybe] Reading absent property (computed name)
 test-resources/src/10k/gravity.html:172:35: [maybe] Reading absent property (computed name)
 test-resources/src/10k/gravity.html:172:50: [maybe] Reading absent property (computed name)

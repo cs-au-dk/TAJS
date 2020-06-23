@@ -391,7 +391,7 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Rea
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1429:5: [maybe] Converting primitive string to object
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1430:17: [maybe] Converting object to string
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1430:17: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1430:17: [maybe] Converting primitive string to object
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1431:24: [maybe] Converting primitive string to object
 benchmarks/tajs/src/underscore/test-suite/utility/test182.html: [maybe] Uncaught exception, constructed at [HOST(string-replace-model.js):49:41, HOST(string-replace-model.js):50:41, HOST(string-replace-model.js):61:46]

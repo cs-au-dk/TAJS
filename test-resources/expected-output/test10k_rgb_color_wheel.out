@@ -76,8 +76,12 @@ test-resources/src/10k/rgb_color_wheel.html:109:49: [maybe] Reading absent prope
 test-resources/src/10k/rgb_color_wheel.html:109:63: [maybe] Conversion to number yields NaN
 test-resources/src/10k/rgb_color_wheel.html:109:74: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:130:13: [maybe] Reading absent property (computed name)
+test-resources/src/10k/rgb_color_wheel.html:132:9: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:132:9: [maybe] Converting object to primitive
 test-resources/src/10k/rgb_color_wheel.html:132:9: [maybe] The variable scheme has values with different types
 test-resources/src/10k/rgb_color_wheel.html:135:20: [maybe] Reading absent property (computed name)
+test-resources/src/10k/rgb_color_wheel.html:139:9: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:139:9: [maybe] Converting object to primitive
 test-resources/src/10k/rgb_color_wheel.html:139:9: [maybe] The variable scheme has values with different types
 test-resources/src/10k/rgb_color_wheel.html:142:20: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:153:18: [maybe] Reading absent property (computed name)
@@ -97,8 +101,12 @@ test-resources/src/10k/rgb_color_wheel.html:201:27: [maybe] Reading absent prope
 test-resources/src/10k/rgb_color_wheel.html:201:41: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:201:55: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:210:13: [maybe] The variable scheme has values with different types
+test-resources/src/10k/rgb_color_wheel.html:218:9: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:218:9: [maybe] Converting object to primitive
 test-resources/src/10k/rgb_color_wheel.html:218:9: [maybe] The variable scheme has values with different types
 test-resources/src/10k/rgb_color_wheel.html:219:26: [maybe] Reading absent property (computed name)
+test-resources/src/10k/rgb_color_wheel.html:224:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:224:13: [maybe] Converting object to primitive
 test-resources/src/10k/rgb_color_wheel.html:224:13: [maybe] The variable scheme has values with different types
 test-resources/src/10k/rgb_color_wheel.html:242:28: [maybe] Converting undefined to string
 test-resources/src/10k/rgb_color_wheel.html:243:27: [maybe] Converting undefined to string
@@ -108,17 +116,22 @@ test-resources/src/10k/rgb_color_wheel.html:248:13: [maybe] Conversion to number
 test-resources/src/10k/rgb_color_wheel.html:249:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/rgb_color_wheel.html:258:29: [maybe] Conversion to number yields NaN
 test-resources/src/10k/rgb_color_wheel.html:258:57: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:259:9: [maybe] Conversion to number yields NaN
 test-resources/src/10k/rgb_color_wheel.html:272:25: [maybe] Reading absent property (computed name)
+test-resources/src/10k/rgb_color_wheel.html:288:9: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:288:9: [maybe] Converting object to primitive
 test-resources/src/10k/rgb_color_wheel.html:288:9: [maybe] The variable scheme has values with different types
 test-resources/src/10k/rgb_color_wheel.html:290:25: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:292:44: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:292:44: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:292:44: [maybe] Converting object to primitive
 test-resources/src/10k/rgb_color_wheel.html:292:44: [maybe] The variable scheme has values with different types
 test-resources/src/10k/rgb_color_wheel.html:293:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/rgb_color_wheel.html:293:43: [maybe] Conversion to number yields NaN
 test-resources/src/10k/rgb_color_wheel.html:296:34: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:298:17: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:299:34: [maybe] Reading absent property (computed name)
-test-resources/src/10k/rgb_color_wheel.html:302:13: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:302:13: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:302:13: [maybe] Converting object to primitive
 test-resources/src/10k/rgb_color_wheel.html:302:13: [maybe] The variable scheme has values with different types
 test-resources/src/10k/rgb_color_wheel.html:303:38: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:303:44: [maybe] Conversion to number yields NaN
@@ -129,6 +142,11 @@ test-resources/src/10k/rgb_color_wheel.html:309:45: [maybe] Conversion to number
 test-resources/src/10k/rgb_color_wheel.html:323:15: [maybe] Reading absent property (computed name)
 test-resources/src/10k/rgb_color_wheel.html:330:24: [maybe] Converting undefined to string
 test-resources/src/10k/rgb_color_wheel.html:330:48: [maybe] Reading absent property (computed name)
+test-resources/src/10k/rgb_color_wheel.html:337:19: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:338:19: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:342:32: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:343:36: [maybe] Conversion to number yields NaN
+test-resources/src/10k/rgb_color_wheel.html:344:9: [maybe] Conversion to number yields NaN
 test-resources/src/10k/rgb_color_wheel.html:356:16: [maybe] Converting undefined to string
 test-resources/src/10k/rgb_color_wheel.html:381:14: [maybe] Conversion to number yields NaN
 test-resources/src/10k/rgb_color_wheel.html:382:15: [maybe] Conversion to number yields NaN

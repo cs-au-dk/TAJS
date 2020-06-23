@@ -1,6 +1,6 @@
 # TAJS - Type Analyzer for JavaScript
 
-Copyright 2009-2019 Aarhus University
+Copyright 2009-2020 Aarhus University
 
 TAJS is a dataflow analysis for JavaScript that infers type information and call graphs.
 
@@ -29,6 +29,8 @@ ant
 This will build two jar files: `dist/tajs.jar` (contains only TAJS itself) and `dist/tajs-all.jar` (includes the relevant extra libraries).
 
 The jar files are also available for download at <http://www.brics.dk/TAJS/dist/>.
+
+(To see all available ant targets, run `ant -p`.)
 
 You can now run the analysis as, for example:
 ```
@@ -71,7 +73,7 @@ Some of the available options (run TAJS without arguments to see the full list):
 
 - `-unsound X` - enable unsound assumption X, e.g. `-ignore-unlikely-property-reads` causes some unlikely properties to be ignored during dynamic property read operations, and `-show-unsoundness-usage` outputs usage of unsound assumptions
 
-- `-babel` - enable preprocessing using Babel (see [below](#Babel-preprocessing))
+- `-babel` - enable preprocessing using Babel to support recent ECMAScript features
 
 - `-type-filtering` - enable type filtering using TypeScript declaration files for npm packages (see [below](#Type-filtering))
 
@@ -173,16 +175,12 @@ These features will automatically look for a tajs.properties file in the working
 ### Installing external dependencies 
 
 To generate log files for soundness testing, [Node.js](https://nodejs.org/en/download/) and [jalangilogger](https://www.npmjs.com/package/jalangilogger) must be installed.
-The jalangilogger tool can be installed like this:
-```
-cd extras/jalangilogger/javascript
-npm install
-```
 
 Individual external dependencies can be registered in tajs.properties like this:
 
 ```properties
 jalangilogger = /home/tajs-user/tajs/extras/jalangilogger
+babel = /home/tajs-user/tajs/extras/babel
 ```
 
 Alternatively, register the location of the TAJS installation:
@@ -205,18 +203,6 @@ jjs = /usr/bin/jjs
 If `graalVmNode` is defined, the log file will be generated using NodeProf. Otherwise `node` needs to be defined and it will then be used with Jalangi to generate the log file.
 
 `jjs` is only needed if using Nashorn as generator environment instead of Node.js, which can be set programmatically in the soundness tester options.
-
-### Babel preprocessing
-
-To enable preprocessing of source files to support recent ECMAScript features you need to enable Babel with the `-babel` option and install the required files:
-```bash
-cd extras/babel
-npm install
-```
-Alternatively, if you already have Babel installed elsewhere, set the location in tajs.properties:
-```properties
-babel = /usr/bin/babel
-```
 
 ## Running regression tests
 

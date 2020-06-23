@@ -24,7 +24,6 @@ test-resources/src/10k/canvas_aquarium.html:390:29: [maybe] TypeError, accessing
 test-resources/src/10k/canvas_aquarium.html:390:46: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/canvas_aquarium.html:391:9: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/10k/canvas_aquarium.html: [maybe] Uncaught exception, constructed at [test-resources/src/10k/canvas_aquarium.html:159:18, test-resources/src/10k/canvas_aquarium.html:202:16, test-resources/src/10k/canvas_aquarium.html:211:16, test-resources/src/10k/canvas_aquarium.html:240:13, test-resources/src/10k/canvas_aquarium.html:254:9, test-resources/src/10k/canvas_aquarium.html:255:9, test-resources/src/10k/canvas_aquarium.html:256:36, test-resources/src/10k/canvas_aquarium.html:315:30, test-resources/src/10k/canvas_aquarium.html:327:27, test-resources/src/10k/canvas_aquarium.html:344:39, test-resources/src/10k/canvas_aquarium.html:384:5, test-resources/src/10k/canvas_aquarium.html:386:9, test-resources/src/10k/canvas_aquarium.html:387:25, test-resources/src/10k/canvas_aquarium.html:388:21, test-resources/src/10k/canvas_aquarium.html:390:29, test-resources/src/10k/canvas_aquarium.html:390:46, test-resources/src/10k/canvas_aquarium.html:391:9]
-test-resources/src/10k/canvas_aquarium.html:41:20: [maybe] Conversion to number yields NaN
 test-resources/src/10k/canvas_aquarium.html:149:26: [maybe] Conversion to number yields NaN
 test-resources/src/10k/canvas_aquarium.html:150:26: [maybe] Conversion to number yields NaN
 test-resources/src/10k/canvas_aquarium.html:150:34: [maybe] Conversion to number yields NaN
@@ -49,7 +48,21 @@ test-resources/src/10k/canvas_aquarium.html:390:29: [maybe] Reading absent prope
 test-resources/src/10k/canvas_aquarium.html:390:46: [maybe] Reading absent property (computed name)
 test-resources/src/10k/canvas_aquarium.html:398:29: [maybe] Conversion to number yields NaN
 test-resources/src/10k/canvas_aquarium.html:398:45: [maybe] Conversion to number yields NaN
-test-resources/src/10k/canvas_aquarium.html:37:21: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:114:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:115:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:115:22: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:115:29: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:116:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:116:18: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:116:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:116:40: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:116:50: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:116:59: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:116:77: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:116:86: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:116:95: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:117:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
+test-resources/src/10k/canvas_aquarium.html:118:24: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/10k/canvas_aquarium.html:147:17: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/10k/canvas_aquarium.html:148:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/10k/canvas_aquarium.html:149:13: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

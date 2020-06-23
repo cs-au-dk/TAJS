@@ -51,22 +51,22 @@ test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
 test/1k2014dragons/1837.js:18:13: [maybe] The variable sw has values with different types
 test/1k2014dragons/1837.js:21:11: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1837.js:22:5: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1837.js:35:10: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1837.js:35:10: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:35:10: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:35:18: [maybe] The variable sw has values with different types
-test/1k2014dragons/1837.js:36:10: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1837.js:36:10: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:36:10: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:36:10: [maybe] The variable sh has values with different types
-test/1k2014dragons/1837.js:46:27: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1837.js:46:27: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:46:27: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:46:27: [maybe] The variable sw has values with different types
-test/1k2014dragons/1837.js:46:65: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1837.js:46:65: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:46:65: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:46:65: [maybe] The variable sh has values with different types
-test/1k2014dragons/1837.js:50:16: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1837.js:50:16: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:50:16: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:50:16: [maybe] The variable sw has values with different types
-test/1k2014dragons/1837.js:51:14: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1837.js:51:14: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:51:14: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:51:14: [maybe] The variable sh has values with different types
 test/1k2014dragons/1837.js:77:17: [maybe] Reading absent property (computed name)
@@ -90,9 +90,9 @@ test/1k2014dragons/1837.js:156:24: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:156:24: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:157:24: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1837.js:157:24: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1837.js:169:1: [maybe] Converting object to string
+test/1k2014dragons/1837.js:169:1: [maybe] Converting object to primitive
 test/1k2014dragons/1837.js:169:1: [maybe] Converting primitive string to object
-test/1k2014dragons/1837.js:170:14: [maybe] Converting object to string
+test/1k2014dragons/1837.js:170:14: [maybe] Converting object to primitive
 test/1k2014dragons/1837.js:170:14: [maybe] Converting primitive string to object
 test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
 test/1k2014dragons/shims.js,test/1k2014dragons/1837.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1837.js:22:5, test/1k2014dragons/1837.js:78:16, test/1k2014dragons/1837.js:78:29, test/1k2014dragons/1837.js:79:16, test/1k2014dragons/1837.js:92:9, test/1k2014dragons/1837.js:93:9, test/1k2014dragons/1837.js:95:9, test/1k2014dragons/1837.js:96:9, test/1k2014dragons/1837.js:115:14, test/1k2014dragons/1837.js:115:25, test/1k2014dragons/1837.js:150:9, test/1k2014dragons/1837.js:156:10, test/1k2014dragons/1837.js:170:14, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

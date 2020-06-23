@@ -40,19 +40,19 @@ test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
-test/1k2014dragons/1803.js:32:4: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1803.js:32:4: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1803.js:34:31: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1803.js:32:4: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1803.js:34:31: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1803.js:34:44: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1803.js:34:31: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1803.js:34:44: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1803.js:54:17: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1803.js:34:44: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1803.js:54:17: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1803.js:54:30: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1803.js:54:17: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1803.js:54:30: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1803.js:57:52: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1803.js:54:30: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1803.js:57:52: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1803.js:57:66: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1803.js:57:52: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1803.js:57:66: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1803.js:57:66: [maybe] Conversion to number yields NaN
 test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
 test/1k2014dragons/shims.js,test/1k2014dragons/1803.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

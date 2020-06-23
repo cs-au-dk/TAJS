@@ -433,21 +433,21 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1106:23: [maybe] Co
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1106:37: [maybe] The variable b has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1114:21: [maybe] The variable a has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1114:32: [maybe] The variable b has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1118:13: [maybe] Converting object to number
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1118:13: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1118:14: [maybe] The variable a has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1118:20: [maybe] Converting object to number
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1118:20: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1118:21: [maybe] The variable a has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:16: [maybe] Converting object to number
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:16: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:17: [maybe] The variable a has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:31: [maybe] Converting object to number
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:38: [maybe] Converting object to number
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:46: [maybe] Converting object to number
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:31: [maybe] Converting object to primitive
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:38: [maybe] Converting object to primitive
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:46: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:47: [maybe] The variable a has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:53: [maybe] Converting object to number
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:53: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1120:54: [maybe] The variable b has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1126:16: [maybe] Converting object to number
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1126:16: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1126:17: [maybe] The variable a has values with different types
-benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1126:23: [maybe] Converting object to number
+benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1126:23: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1126:24: [maybe] The variable b has values with different types
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1153:11: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1153:40: [maybe] Reading absent property (computed name)

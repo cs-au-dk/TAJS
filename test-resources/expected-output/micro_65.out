@@ -4,8 +4,8 @@ test-resources/src/micro/test65.js: [definite] Exceptional program exit is unrea
 test-resources/src/micro/test65.js:9:16: [maybe] Reading absent property (computed name)
 test-resources/src/micro/test65.js:12:16: [maybe] Reading absent property (computed name)
 test-resources/src/micro/test65.js:5:1: [info] Abstract value: (PrefixStr[aa]){"aaaa","aaab","aaba","aabb"}
-test-resources/src/micro/test65.js:9:1: [info] Abstract value: Undef|42.0
-test-resources/src/micro/test65.js:12:1: [info] Abstract value: Undef|42.0|"foo"
+test-resources/src/micro/test65.js:9:1: [info] Abstract value: Undef|42.0[partitions: [{PROP(node=37,prop=aabb)=42.0, PROP(node=37,prop=aaaa)=<no value>, PROP(node=37,prop=aaab)=<no value>, PROP(node=37,prop=aaba)=<no value>, PROP(node=37,prop=[[default-other]])=Undef}]]
+test-resources/src/micro/test65.js:12:1: [info] Abstract value: Undef|42.0|"foo"[partitions: [{PROP(node=37,prop=aabb)=42.0|"foo", PROP(node=37,prop=aaaa)=Undef|"foo", PROP(node=37,prop=aaab)=Undef|"foo", PROP(node=37,prop=aaba)=Undef|"foo", PROP(node=37,prop=[[default-other]])=Undef}]]
 test-resources/src/micro/test65.js:13:1: [info] Abstract value: 42.0|"foo"
 test-resources/src/micro/test65.js:20:1: [info] Abstract value: 487.0
 test-resources/src/micro/test65.js:25:1: [info] Abstract value: false
@@ -15,7 +15,4 @@ test-resources/src/micro/test65.js:30:1: [info] Abstract value: false
 test-resources/src/micro/test65.js:32:1: [info] Abstract value: "number"
 test-resources/src/micro/test65.js:43:1: [info] Abstract object: {a:123.0,[[Prototype]]=[@Object.prototype[native]]}
 test-resources/src/micro/test65.js:45:1: [info] Abstract object: {[[Prototype]]=[@Object#node88]}
-test-resources/src/micro/test65.js:11:1: [info] Writing to unknown property that may cause loss of precision
-test-resources/src/micro/test65.js:9:16: [info] Reading from unknown property that may cause loss of precision
-test-resources/src/micro/test65.js:12:16: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 89 checks (with 0 expected failures)

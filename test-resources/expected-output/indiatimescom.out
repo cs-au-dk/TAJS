@@ -36,7 +36,7 @@ TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:54: [maybe] Reading absent property left of host object
 benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:7:28, benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:73:9, benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:91:50, TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:56:23):1:1, TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:24, TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:54, TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:85:16):1:1]
 benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:62:37: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:24: [maybe] Converting object to string
+TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:24: [maybe] Converting object to primitive
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:24: [maybe] Converting primitive string to object
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/indiatimes.com-slice/index.html:68:16):1:54: [maybe] Converting primitive string to object
 Soundness testing succeeded for 23 checks (with 0 expected failures)

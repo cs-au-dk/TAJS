@@ -80,5 +80,5 @@ test-resources/src/flowgraphbuilder/flowgraph_builder0132.js:2:9: [definite] The
 test-resources/src/flowgraphbuilder/flowgraph_builder0132.js: [definite] Exceptional program exit is unreachable
 test-resources/src/flowgraphbuilder/flowgraph_builder0132.js:1:1: [definite] The variable c is never used
 test-resources/src/flowgraphbuilder/flowgraph_builder0132.js:3:13: [definite] The variable declaration dgg shadows a parameter
-test-resources/src/flowgraphbuilder/flowgraph_builder0132.js:2:53: [maybe] Conversion from string to number yields NaN
+test-resources/src/flowgraphbuilder/flowgraph_builder0132.js:2:53: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 14 checks (with 0 expected failures)

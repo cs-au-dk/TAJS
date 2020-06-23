@@ -701,7 +701,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10725:32: [definite] Unreac
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10766:12: [definite] Unreachable function
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8569:22: [maybe] Reading absent property length
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:714:7: [maybe] Converting primitive string to object
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:909:61: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:909:61: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1970:19: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2057:19: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2058:24: [maybe] Reading absent property (computed name)

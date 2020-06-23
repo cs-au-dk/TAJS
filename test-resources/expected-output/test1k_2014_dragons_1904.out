@@ -39,25 +39,25 @@ test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
-test/1k2014dragons/1904.js:2:9: [maybe] Converting object to string
+test/1k2014dragons/1904.js:2:9: [maybe] Converting object to primitive
 test/1k2014dragons/1904.js:2:9: [maybe] Converting primitive string to object
-test/1k2014dragons/1904.js:3:9: [maybe] Converting object to string
+test/1k2014dragons/1904.js:3:9: [maybe] Converting object to primitive
 test/1k2014dragons/1904.js:3:9: [maybe] Converting primitive string to object
-test/1k2014dragons/1904.js:5:9: [maybe] Converting object to string
+test/1k2014dragons/1904.js:5:9: [maybe] Converting object to primitive
 test/1k2014dragons/1904.js:5:9: [maybe] Converting primitive string to object
-test/1k2014dragons/1904.js:6:9: [maybe] Converting object to string
+test/1k2014dragons/1904.js:6:9: [maybe] Converting object to primitive
 test/1k2014dragons/1904.js:6:9: [maybe] Converting primitive string to object
 test/1k2014dragons/1904.js:9:37: [maybe] Converting undefined to string
 test/1k2014dragons/1904.js:9:41: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1904.js:10:38: [maybe] Converting primitive string to object
-test/1k2014dragons/1904.js:10:69: [maybe] Converting object to string
+test/1k2014dragons/1904.js:10:69: [maybe] Converting object to primitive
 test/1k2014dragons/1904.js:10:69: [maybe] Converting primitive string to object
 test/1k2014dragons/1904.js:10:90: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1904.js:10:91: [maybe] Converting primitive string to object
 test/1k2014dragons/1904.js:10:91: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1904.js:10:130: [maybe] Converting object to string
+test/1k2014dragons/1904.js:10:130: [maybe] Converting object to primitive
 test/1k2014dragons/1904.js:10:130: [maybe] Converting primitive string to object
-test/1k2014dragons/1904.js:10:176: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1904.js:10:176: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1904.js:10:176: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1904.js:10:177: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1904.js:30:9: [maybe] Reading absent property (computed name)

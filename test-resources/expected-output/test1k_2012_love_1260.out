@@ -58,7 +58,7 @@ test-resources/src/1k2012love/1260.js:96:10: [maybe] Reading absent property (co
 test-resources/src/1k2012love/1260.js:105:7: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1260.js:114:35: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1260.js:122:18: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1260.js:122:18: [maybe] Converting object to number
+test-resources/src/1k2012love/1260.js:122:18: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1260.js:127:7: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1260.js:132:30: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 257 checks (with 0 expected failures)

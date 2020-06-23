@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,10 @@
 
 package dk.brics.tajs.util;
 
+import dk.brics.tajs.options.Options;
+
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -71,6 +74,9 @@ public class Collectors {
 
     private static <K, V> Map<K, V> newMap_workaround() {
         // XXX replace with Collections::newMap and inline once dk.brics.tajs.test.CollectionsTypeErrorBug succeeds (GitHub #434)
-        return new HashMap<>();
+        if (Options.get().isDeterministicCollectionsEnabled())
+            return new LinkedHashMap<>();
+        else
+            return new HashMap<>();
     }
 }

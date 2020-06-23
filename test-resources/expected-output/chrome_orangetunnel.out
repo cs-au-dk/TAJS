@@ -18,6 +18,8 @@ test-resources/src/chromeexperiments/orangetunnel.html:69:75: [maybe] TypeError,
 test-resources/src/chromeexperiments/orangetunnel.html:71:29: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/chromeexperiments/orangetunnel.html:84:30: [maybe] TypeError, call to non-function
 test-resources/src/chromeexperiments/orangetunnel.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/orangetunnel.html:50:29, test-resources/src/chromeexperiments/orangetunnel.html:52:29, test-resources/src/chromeexperiments/orangetunnel.html:64:29, test-resources/src/chromeexperiments/orangetunnel.html:65:29, test-resources/src/chromeexperiments/orangetunnel.html:66:29, test-resources/src/chromeexperiments/orangetunnel.html:66:40, test-resources/src/chromeexperiments/orangetunnel.html:66:69, test-resources/src/chromeexperiments/orangetunnel.html:67:29, test-resources/src/chromeexperiments/orangetunnel.html:67:40, test-resources/src/chromeexperiments/orangetunnel.html:67:87, test-resources/src/chromeexperiments/orangetunnel.html:68:29, test-resources/src/chromeexperiments/orangetunnel.html:68:40, test-resources/src/chromeexperiments/orangetunnel.html:68:93, test-resources/src/chromeexperiments/orangetunnel.html:69:29, test-resources/src/chromeexperiments/orangetunnel.html:69:40, test-resources/src/chromeexperiments/orangetunnel.html:69:75, test-resources/src/chromeexperiments/orangetunnel.html:71:29, test-resources/src/chromeexperiments/orangetunnel.html:84:30]
+test-resources/src/chromeexperiments/orangetunnel.html:48:37: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/orangetunnel.html:49:41: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/orangetunnel.html:50:29: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/orangetunnel.html:50:36: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/orangetunnel.html:50:62: [maybe] Conversion to number yields NaN
@@ -36,6 +38,7 @@ test-resources/src/chromeexperiments/orangetunnel.html:53:60: [maybe] Reading ab
 test-resources/src/chromeexperiments/orangetunnel.html:53:74: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/orangetunnel.html:55:25: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/orangetunnel.html:58:41: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/orangetunnel.html:59:41: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/orangetunnel.html:60:42: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/orangetunnel.html:61:48: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/orangetunnel.html:61:58: [maybe] Conversion to number yields NaN

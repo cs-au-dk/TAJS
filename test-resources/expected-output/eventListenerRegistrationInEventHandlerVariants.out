@@ -1,10 +1,10 @@
-out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:24:2: [definite] Unreachable function indirect_click_load_registration
-out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:2:2: [info] Abstract value: "direct_click_click_registration invoked"
-out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:3:48: [info] Abstract value: "indirect_click_click_registration invoked"
-out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:9:2: [info] Abstract value: "direct_load_load_registration invoked"
-out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:10:46: [info] Abstract value: "indirect_load_load_registration invoked"
-out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:16:2: [info] Abstract value: "direct_load_click_registration invoked"
-out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:17:47: [info] Abstract value: "indirect_load_click_registration invoked"
-out/temp-sources/TestMicro.eventListenerRegistrationInEventHandlerVariants.js:23:2: [info] Abstract value: "direct_click_load_registration invoked"
+TestMicro.eventListenerRegistrationInEventHandlerVariants.js: [definite] Exceptional program exit is unreachable
+TestMicro.eventListenerRegistrationInEventHandlerVariants.js:24:2: [definite] Unreachable function indirect_click_load_registration
+TestMicro.eventListenerRegistrationInEventHandlerVariants.js:2:2: [info] Abstract value: "direct_click_click_registration invoked"
+TestMicro.eventListenerRegistrationInEventHandlerVariants.js:3:48: [info] Abstract value: "indirect_click_click_registration invoked"
+TestMicro.eventListenerRegistrationInEventHandlerVariants.js:9:2: [info] Abstract value: "direct_load_load_registration invoked"
+TestMicro.eventListenerRegistrationInEventHandlerVariants.js:10:46: [info] Abstract value: "indirect_load_load_registration invoked"
+TestMicro.eventListenerRegistrationInEventHandlerVariants.js:16:2: [info] Abstract value: "direct_load_click_registration invoked"
+TestMicro.eventListenerRegistrationInEventHandlerVariants.js:17:47: [info] Abstract value: "indirect_load_click_registration invoked"
+TestMicro.eventListenerRegistrationInEventHandlerVariants.js:23:2: [info] Abstract value: "direct_click_load_registration invoked"
 Soundness testing succeeded for 52 checks (with 0 expected failures)

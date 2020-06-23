@@ -836,7 +836,7 @@ test/apps/samegame/index.html:112:2608: [maybe] Reading 'this' yields the global
 ./main.js:219:20: [maybe] Converting primitive string to object
 ./main.js:219:20: [maybe] Reading absent property (computed name)
 ./main.js:219:20: [maybe] The variable light has values with different types
-./main.js:219:26: [maybe] Conversion from string to number yields NaN
+./main.js:219:26: [maybe] Conversion to number yields NaN
 ./main.js:219:26: [maybe] The variable ne has values with different types
 ./main.js:226:8: [maybe] Reading absent property (computed name)
 ./main.js:226:8: [maybe] Reading absent property (computed name)
@@ -845,7 +845,7 @@ test/apps/samegame/index.html:112:2608: [maybe] Reading 'this' yields the global
 ./main.js:231:20: [maybe] Converting primitive string to object
 ./main.js:231:20: [maybe] Reading absent property (computed name)
 ./main.js:231:20: [maybe] The variable dark has values with different types
-./main.js:231:25: [maybe] Conversion from string to number yields NaN
+./main.js:231:25: [maybe] Conversion to number yields NaN
 ./main.js:231:25: [maybe] The variable ne has values with different types
 ./main.js:256:13: [maybe] Reading absent property (computed name)
 ./main.js:256:13: [maybe] Reading absent property (computed name)

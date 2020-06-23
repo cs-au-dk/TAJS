@@ -66,7 +66,7 @@ public class NodeJSRequire {
         }
         // Whitelist-security: only accept paths with alphanumerics, periods, dashes, slashes and underscores
         // Example accepted path: ../foo-42.js
-        if (!arg.matches("^[a-zA-Z0-9./:_-]+$")) {
+        if (!arg.matches("^[@a-zA-Z0-9./:_-]+$")) {
             throw new AnalysisException("Unsupported (insecure) argument for require.resolve: " + arg);
         }
 

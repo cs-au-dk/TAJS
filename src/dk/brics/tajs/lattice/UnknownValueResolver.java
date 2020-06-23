@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,6 @@ import dk.brics.tajs.solver.BlockAndContext;
 import dk.brics.tajs.solver.CallGraph;
 import dk.brics.tajs.solver.GenericSolver;
 import dk.brics.tajs.util.AnalysisException;
-import dk.brics.tajs.util.AnalysisLimitationException;
 import dk.brics.tajs.util.Collections;
 import dk.brics.tajs.util.Pair;
 import org.apache.log4j.Level;
@@ -263,6 +262,8 @@ public final class UnknownValueResolver {
      * Generic function for recovering 'unknown' properties.
      */
     private static Obj recover(State s, ObjectProperty prop, boolean partial) {
+        if (!s.getSolverInterface().isScanning())
+            s.getSolverInterface().getMonitoring().allowNextIteration(); // throws AnalysisTimeException if timeout reached
         Value value_at_s = getValue(s, prop);
         if (!partial && value_at_s != null && value_at_s.isPolymorphic() && value_at_s.isMaybeAbsent() && !value_at_s.isMaybePresent()) { // optimization only
             Obj res = s.getObject(prop.getObjectLabel(), true);
@@ -517,9 +518,6 @@ public final class UnknownValueResolver {
      */
     private static boolean propagate(State src_s, ObjectProperty src_prop, State dst_s, ObjectProperty dst_prop,
                                      Renamings renamings, boolean partial, boolean to_entry, Value orig_dst_v) {
-        if (!src_s.getSolverInterface().isScanning() && !src_s.getSolverInterface().getMonitoring().allowNextIteration()) {
-            throw new AnalysisLimitationException.AnalysisTimeException("Next iteration not allowed");
-        }
         if (src_s == dst_s && src_prop == dst_prop)
             return false; // joining to itself, nothing changes
         Obj src_obj = src_s.getObject(src_prop.getObjectLabel(), false);

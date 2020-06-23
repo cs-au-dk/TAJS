@@ -25,6 +25,7 @@ test-resources/src/1k2013spring/1547.js:69:19: [maybe] Reading absent property x
 test-resources/src/1k2013spring/1547.js:70:19: [maybe] Reading absent property y
 test-resources/src/1k2013spring/1547.js:71:9: [maybe] Reading absent property length
 test-resources/src/1k2013spring/1547.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1547.js:61:11, test-resources/src/1k2013spring/1547.js:87:16, test-resources/src/1k2013spring/1547.js:87:25, test-resources/src/1k2013spring/1547.js:88:9, test-resources/src/1k2013spring/1547.js:94:8, test-resources/src/1k2013spring/1547.js:98:9, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1547.js:16:10: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1547.js:46:10: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1547.js:48:9: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1547.js:48:19: [maybe] Conversion to number yields NaN
@@ -45,44 +46,24 @@ test-resources/src/1k2013spring/1547.js:108:13: [maybe] Reading absent property 
 test-resources/src/1k2013spring/1547.js:109:13: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1547.js:110:13: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1547.js:46:10: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:46:10: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:48:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:48:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:48:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:48:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:49:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:49:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:49:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:49:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:50:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:50:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:51:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:51:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:52:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:52:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:52:23: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:52:23: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:53:12: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:53:12: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:55:16: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:55:16: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:63:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:63:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:63:28: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:63:28: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:64:20: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:64:20: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:64:27: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:64:27: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:69:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:69:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:69:19: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:69:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:70:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:70:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:70:19: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:70:19: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/1k2013spring/1547.js:71:9: [info] 'this' refers to a summary abstract object, which may cause loss of precision
-test-resources/src/1k2013spring/1547.js:71:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
 Log of soundness facts is not available for test-resources/src/1k2013spring/1547.js, skipping soundness checking

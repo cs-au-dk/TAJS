@@ -35,6 +35,7 @@ public class TestJQueryPatterns {
 
     @Test
     public void jQuery111_each_nestedObjectCreationIterationClosure() {
+        Options.get().enableForInSpecialization();
         Misc.run("test-resources/src/jquery-patterns/jquery-1.11_each.js", "test-resources/src/jquery-patterns/jquery-1.11_each_nestedObjectCreationIterationClosure.js");
     }
 

@@ -30,19 +30,19 @@ test-resources/src/1k2012love/1134.js:65:17: [maybe] Reading absent property c
 test-resources/src/1k2012love/1134.js:69:17: [maybe] Reading absent property c
 test-resources/src/1k2012love/1134.js:69:29: [maybe] Reading absent property c
 test-resources/src/1k2012love/1134.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1134.js:16:27, test-resources/src/1k2012love/1134.js:20:19, test-resources/src/1k2012love/1134.js:29:39, test-resources/src/1k2012love/1134.js:43:25, test-resources/src/1k2012love/1134.js:51:10, test-resources/src/1k2012love/1134.js:54:19, test-resources/src/1k2012love/1134.js:61:25, test-resources/src/1k2012love/1134.js:65:12, test-resources/src/1k2012love/1134.js:65:17, test-resources/src/1k2012love/1134.js:69:17, test-resources/src/1k2012love/1134.js:69:29, test-resources/src/1k2012love/shim.js:9:5]
-test-resources/src/1k2012love/1134.js:16:27: [maybe] Converting object to string
+test-resources/src/1k2012love/1134.js:16:27: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1134.js:16:27: [maybe] Converting primitive string to object
-test-resources/src/1k2012love/1134.js:20:19: [maybe] Converting object to string
+test-resources/src/1k2012love/1134.js:20:19: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1134.js:20:19: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1134.js:29:20: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1134.js:29:39: [maybe] Converting object to string
+test-resources/src/1k2012love/1134.js:29:39: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1134.js:29:39: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1134.js:41:13: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1134.js:43:25: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1134.js:43:25: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1134.js:50:14: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1134.js:57:30: [maybe] Converting undefined to string
-test-resources/src/1k2012love/1134.js:65:12: [maybe] Converting object to string
+test-resources/src/1k2012love/1134.js:65:12: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1134.js:65:12: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1134.js:65:17: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1134.js:65:17: [maybe] Reading absent property (computed name)

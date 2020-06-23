@@ -605,6 +605,7 @@ public class Test1K2012Love {
 
     @Test
     public void test1k_2012_love_1276() {
+        //Options.get().disableForInSpecialization();
         Misc.run("test-resources/src/1k2012love/shim.js", "test-resources/src/1k2012love/1276.js");
         Misc.checkSystemOutput();
     }

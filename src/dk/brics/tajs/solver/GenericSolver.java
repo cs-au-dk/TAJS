@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -328,15 +328,17 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
 
     /**
      * Runs the solver.
+     *
+     * @return true if reached fixpoint
      */
-    public void solve() {
+    public boolean solve() {
         String terminatedEarly = null;
         try {
             // iterate until fixpoint
             block_loop:
             while (!worklist.isEmpty()) {
                 if (!analysis.getMonitoring().allowNextIteration()) {
-                    terminatedEarly = "Terminating fixpoint solver early and unsoundly!";
+                    terminatedEarly = "Analysis aborted";
                     break;
                 }
                 if (sync != null) {
@@ -384,12 +386,13 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                                 try {
                                     analysis.getNodeTransferFunctions().transfer(current_node);
                                 } catch (Exception e) {
-                                    if (analysis.getTypeTester()!= null && analysis.getTypeTester().shouldIgnoreException(e, p))
+                                    if (analysis.getTypeTester() != null && analysis.getTypeTester().shouldIgnoreException(e, p))
                                         continue block_loop;
                                     throw e;
                                 }
                             } catch (AnalysisLimitationException e) {
-                                if (Options.get().isTestEnabled() && !Options.get().isAnalysisLimitationWarnOnly()) {
+                                if (e instanceof AnalysisLimitationException.AnalysisTimeException ||
+                                        (Options.get().isTestEnabled() && !Options.get().isInspectorEnabled() && !Options.get().isAnalysisLimitationWarnOnly())) {
                                     throw e;
                                 } else {
                                     terminatedEarly = String.format("Stopping analysis prematurely: %s", e.getMessage());
@@ -425,14 +428,20 @@ public class GenericSolver<StateType extends IState<StateType, ContextType, Call
                     deps.dischargeIfInactive(BlockAndContext.makeEntry(block, context));
                 }
             }
+        } catch (AnalysisLimitationException.AnalysisTimeException e) {
+            if (Options.get().isTestEnabled() && !Options.get().isInspectorEnabled() && !Options.get().isAnalysisLimitationWarnOnly())
+                throw e;
+            terminatedEarly = "Terminating fixpoint solver early and unsoundly!";
         } finally {
             analysis.getMonitoring().visitIterationDone(terminatedEarly);
             messages_enabled = true;
         }
         if (terminatedEarly != null) {
             log.warn(terminatedEarly);
+            return false;
         } else {
             deps.assertEmpty();
+            return true;
         }
     }
 

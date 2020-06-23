@@ -54,7 +54,7 @@ test-resources/src/1k2013spring/1336.js: [maybe] Uncaught exception, constructed
 test-resources/src/1k2013spring/1336.js:33:21: [maybe] The variable n has values with different types
 test-resources/src/1k2013spring/1336.js:35:12: [maybe] Converting undefined to string
 test-resources/src/1k2013spring/1336.js:36:13: [maybe] The variable C has values with different types
-test-resources/src/1k2013spring/1336.js:36:21: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1336.js:36:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1336.js:36:27: [maybe] The variable C has values with different types
 test-resources/src/1k2013spring/1336.js:53:13: [maybe] The variable m has values with different types
 test-resources/src/1k2013spring/1336.js:59:20: [maybe] Reading absent property (computed name)

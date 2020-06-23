@@ -7,11 +7,11 @@ test-resources/src/micro/toString4.js:24:3: [definite] Unreachable code
 test-resources/src/micro/toString4.js:31:3: [definite] Unreachable code
 test-resources/src/micro/toString4.js:13:3: [maybe] TypeError when computing default value for object
 test-resources/src/micro/toString4.js:31:18: [maybe] TypeError when computing default value for object
-test-resources/src/micro/toString4.js:5:3: [maybe] Converting object to string
-test-resources/src/micro/toString4.js:13:3: [maybe] Converting object to string
-test-resources/src/micro/toString4.js:22:18: [maybe] Conversion from string to number yields NaN
-test-resources/src/micro/toString4.js:22:18: [maybe] Converting object to number
-test-resources/src/micro/toString4.js:31:18: [maybe] Converting object to number
+test-resources/src/micro/toString4.js:5:3: [maybe] Converting object to primitive
+test-resources/src/micro/toString4.js:13:3: [maybe] Converting object to primitive
+test-resources/src/micro/toString4.js:22:18: [maybe] Conversion to number yields NaN
+test-resources/src/micro/toString4.js:22:18: [maybe] Converting object to primitive
+test-resources/src/micro/toString4.js:31:18: [maybe] Converting object to primitive
 test-resources/src/micro/toString4.js:9:1: [info] Abstract object: {[object Object]:true,[[Prototype]]=[@Object.prototype[native]]}
 test-resources/src/micro/toString4.js:18:1: [info] Abstract object: {[object Object]:true,[[Prototype]]=[@Object.prototype[native]]}
 test-resources/src/micro/toString4.js:22:3: [info] Abstract value: NaN

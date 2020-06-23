@@ -696,7 +696,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10744:29: [maybe] Reading a
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10745:31: [maybe] Reading absent property filter
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10746:29: [maybe] Reading absent property rest
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:714:7: [maybe] Converting primitive string to object
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:909:61: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:909:61: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1970:19: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2057:19: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2058:24: [maybe] Reading absent property (computed name)

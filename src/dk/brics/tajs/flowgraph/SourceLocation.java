@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -221,7 +221,11 @@ public class SourceLocation implements DeepImmutable, Serializable {
                 } else {
                     Path actual = PathAndURLUtils.toPath(location, true);
                     Path relativeToWorkingDirectory = PathAndURLUtils.getRelativeToWorkingDirectory(actual);
-                    selectedFileName = PathAndURLUtils.toPortableString(relativeToWorkingDirectory);
+                    String s = PathAndURLUtils.toPortableString(relativeToWorkingDirectory);
+                    final String OUT_TEMP_SOURCES = "out/temp-sources/";
+                    if (s.startsWith(OUT_TEMP_SOURCES)) // fix for inline tests
+                        s = s.substring(OUT_TEMP_SOURCES.length());
+                    selectedFileName = s;
                 }
                 break;
             default:

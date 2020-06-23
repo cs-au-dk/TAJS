@@ -105,22 +105,22 @@ test-resources/src/chromeexperiments/keylight.html:613:24: [maybe] Reading absen
 test-resources/src/chromeexperiments/keylight.html:709:15: [maybe] Reading absent property x
 test-resources/src/chromeexperiments/keylight.html:710:15: [maybe] Reading absent property y
 test-resources/src/chromeexperiments/keylight.html: [maybe] Uncaught exception, constructed at [test-resources/src/chromeexperiments/keylight.html:103:4, test-resources/src/chromeexperiments/keylight.html:104:4, test-resources/src/chromeexperiments/keylight.html:105:4, test-resources/src/chromeexperiments/keylight.html:106:4, test-resources/src/chromeexperiments/keylight.html:124:5, test-resources/src/chromeexperiments/keylight.html:166:6, test-resources/src/chromeexperiments/keylight.html:176:6, test-resources/src/chromeexperiments/keylight.html:206:3, test-resources/src/chromeexperiments/keylight.html:213:3, test-resources/src/chromeexperiments/keylight.html:217:3, test-resources/src/chromeexperiments/keylight.html:239:24, test-resources/src/chromeexperiments/keylight.html:239:86, test-resources/src/chromeexperiments/keylight.html:259:8, test-resources/src/chromeexperiments/keylight.html:292:3, test-resources/src/chromeexperiments/keylight.html:330:3, test-resources/src/chromeexperiments/keylight.html:341:22, test-resources/src/chromeexperiments/keylight.html:350:4, test-resources/src/chromeexperiments/keylight.html:356:4, test-resources/src/chromeexperiments/keylight.html:379:3, test-resources/src/chromeexperiments/keylight.html:399:3, test-resources/src/chromeexperiments/keylight.html:412:4, test-resources/src/chromeexperiments/keylight.html:416:4, test-resources/src/chromeexperiments/keylight.html:419:3, test-resources/src/chromeexperiments/keylight.html:428:8, test-resources/src/chromeexperiments/keylight.html:434:7, test-resources/src/chromeexperiments/keylight.html:534:8, test-resources/src/chromeexperiments/keylight.html:540:21, test-resources/src/chromeexperiments/keylight.html:540:50, test-resources/src/chromeexperiments/keylight.html:540:83, test-resources/src/chromeexperiments/keylight.html:540:104, test-resources/src/chromeexperiments/keylight.html:540:135, test-resources/src/chromeexperiments/keylight.html:542:40, test-resources/src/chromeexperiments/keylight.html:543:40, test-resources/src/chromeexperiments/keylight.html:545:43, test-resources/src/chromeexperiments/keylight.html:546:43, test-resources/src/chromeexperiments/keylight.html:561:21, test-resources/src/chromeexperiments/keylight.html:587:32, test-resources/src/chromeexperiments/keylight.html:587:53, test-resources/src/chromeexperiments/keylight.html:607:32, test-resources/src/chromeexperiments/keylight.html:607:56, test-resources/src/chromeexperiments/keylight.html:613:19, test-resources/src/chromeexperiments/keylight.html:709:15]
-test-resources/src/chromeexperiments/keylight.html:39:14: [maybe] Converting object to string
+test-resources/src/chromeexperiments/keylight.html:39:14: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/keylight.html:39:14: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/keylight.html:40:18: [maybe] Converting object to string
+test-resources/src/chromeexperiments/keylight.html:40:18: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/keylight.html:40:18: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/keylight.html:40:54: [maybe] Converting object to string
+test-resources/src/chromeexperiments/keylight.html:40:54: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/keylight.html:40:54: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/keylight.html:224:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/keylight.html:225:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/keylight.html:239:24: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/keylight.html:239:86: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/keylight.html:244:16: [maybe] Converting primitive number to object
-test-resources/src/chromeexperiments/keylight.html:252:17: [maybe] Converting object to string
+test-resources/src/chromeexperiments/keylight.html:252:17: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/keylight.html:252:17: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/keylight.html:252:46: [maybe] Converting object to string
+test-resources/src/chromeexperiments/keylight.html:252:46: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/keylight.html:252:46: [maybe] Converting primitive string to object
-test-resources/src/chromeexperiments/keylight.html:259:8: [maybe] Converting object to string
+test-resources/src/chromeexperiments/keylight.html:259:8: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/keylight.html:259:8: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/keylight.html:264:9: [maybe] Converting undefined to string
 test-resources/src/chromeexperiments/keylight.html:264:18: [maybe] Reading absent property (computed name)

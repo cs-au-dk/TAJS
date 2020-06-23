@@ -50,6 +50,7 @@ test-resources/src/1k2012love/1196.js:116:9: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1196.js:133:15: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1196.js:145:3: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1196.js:147:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1196.js:158:3: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1196.js:158:3: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1196.js:166:12: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 49 checks (with 1 expected failures)

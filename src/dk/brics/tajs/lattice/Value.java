@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -269,6 +269,11 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
      */
     protected int hashcode;
 
+    /**
+     * Locked after canonicalization.
+     */
+    protected boolean locked;
+
     protected static boolean canonicalizing; // set during canonicalization
 
     static {
@@ -402,6 +407,7 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
         v.hashcode = v.computeHashCode();
         Value cv = Canonicalizer.get().canonicalize(v);
         canonicalizing = false;
+        cv.locked = true;
         return cv;
     }
 
@@ -1121,6 +1127,8 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
      * Joins the given value into this one.
      */
     protected boolean joinMutableSingleValue(Value v, boolean widen) {
+        if (locked)
+            throw new AnalysisException("Attempt to mutate locked object");
         if (v.isUnknown())
             return false;
         if (isPolymorphic() && v.isPolymorphic() && !var.equals(v.var))
@@ -1246,7 +1254,7 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
 
     /**
      * Joins included_strings from v into this value.
-     * No other parts of v are used.
+     * No other parts of v are used, and no other parts of this are modified.
      *
      * @return true if this value is modified
      */
@@ -1293,10 +1301,19 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
                 return true;
             } else {
                 // this has strings
-                if (str != null && (flags & STR_PREFIX) == 0 && v.included_strings.contains(str)) {
-                    // this contains a fixed string that is already in v.included_strings
-                    included_strings = v.included_strings;
-                    return true;
+                if (str != null && (flags & STR_PREFIX) == 0) {
+                    if (v.included_strings.contains(str)) {
+                        // this contains a fixed string that is already in v.included_strings
+                        included_strings = v.included_strings;
+                        return true;
+                    } else {
+                        // this contains a fixed string that is not already in v.included_strings
+                        included_strings = newSet(v.included_strings);
+                        included_strings.add(str); // str is set to null later by joinSingleStringOrPrefixString
+                        if (included_strings.size() > Options.Constants.STRING_SETS_BOUND)
+                            included_strings = null;
+                        return true;
+                    }
                 }
                 // this contains infinitely many strings
                 return false;
@@ -4697,6 +4714,13 @@ public class Value implements Undef, Null, Bool, Num, Str, PKeys, DeepImmutable 
      * Applies the given function to this value.
      */
     public Value applyFunction(Function<Value, Value> func) {
+        return func.apply(this);
+    }
+
+    /**
+     * Applies the given function that can create objects to this value.
+     */
+    public Value applyFunctionThatCanCreateObjects(Function<Value, Value> func) {
         return func.apply(this);
     }
 }

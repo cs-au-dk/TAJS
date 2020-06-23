@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,10 +33,13 @@ public class JSDeltaCommandLineInterfaceToJava {
      * Invoked from jsdelta (because of {@link DeltaMinimizer#reduce(Path, Path, Class, String, boolean, boolean, boolean)}  with the canonical name of a JSDeltaTester and the Path to test
      */
     public static void main(String... args) {
-        @SuppressWarnings("unchecked")
+        if (args.length < 2 || args.length > 3) {
+            System.err.println("Arguments missing");
+            System.exit(3);
+        }
         String testerClassName = args[0];
-        String testerArg = args[1];
-        String mainFile = args[2];
+        String testerArg = args.length == 3 ? args[1] : null;
+        String mainFile = args.length == 3 ? args[2] : args[1];
         try {
             boolean result = performTestFromStringArgs(testerClassName, testerArg, mainFile);
             System.exit(result ? 0 : 1);

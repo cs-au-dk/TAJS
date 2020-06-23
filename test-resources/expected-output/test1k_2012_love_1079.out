@@ -12,7 +12,7 @@ test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property
 test-resources/src/1k2012love/1079.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1079.js:38:3, test-resources/src/1k2012love/1079.js:38:5, test-resources/src/1k2012love/1079.js:39:4, test-resources/src/1k2012love/1079.js:39:9, test-resources/src/1k2012love/1079.js:40:1, test-resources/src/1k2012love/1079.js:43:1, test-resources/src/1k2012love/1079.js:43:5, test-resources/src/1k2012love/1079.js:44:21, test-resources/src/1k2012love/1079.js:45:4, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1079.js:27:18: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1079.js:27:29: [maybe] Reading absent property (computed name)
-test-resources/src/1k2012love/1079.js:38:3: [maybe] Converting object to string
+test-resources/src/1k2012love/1079.js:38:3: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1079.js:38:3: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1079.js:38:3: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1079.js:39:4: [maybe] Converting undefined to string

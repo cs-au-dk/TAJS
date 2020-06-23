@@ -25,6 +25,7 @@ test-resources/src/google2/richards.js:480:17: [maybe] TypeError, accessing prop
 test-resources/src/google2/richards.js: [maybe] Uncaught exception, constructed at [test-resources/src/google2/richards.js:70:11, test-resources/src/google2/richards.js:236:23, test-resources/src/google2/richards.js:322:18, test-resources/src/google2/richards.js:468:17, test-resources/src/google2/richards.js:473:19, test-resources/src/google2/richards.js:474:9, test-resources/src/google2/richards.js:474:16, test-resources/src/google2/richards.js:475:9, test-resources/src/google2/richards.js:480:17]
 test-resources/src/google2/richards.js:199:13: [maybe] Reading absent property (computed name)
 test-resources/src/google2/richards.js:236:11: [maybe] Reading absent property (computed name)
+test-resources/src/google2/richards.js:470:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/richards.js:474:16: [maybe] Reading absent property (computed name)
 test-resources/src/google2/richards.js:475:22: [maybe] Conversion to number yields NaN
 test-resources/src/google2/richards.js:296:3: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

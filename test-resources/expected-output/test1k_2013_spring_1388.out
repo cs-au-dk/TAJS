@@ -27,9 +27,8 @@ test-resources/src/1k2013spring/1388.js:70:33: [maybe] ReferenceError, reading a
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1388.js:34:5: [maybe] Reading absent property getContext of host object
 test-resources/src/1k2013spring/1388.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1388.js:34:5, test-resources/src/1k2013spring/1388.js:39:5, test-resources/src/1k2013spring/1388.js:40:16, test-resources/src/1k2013spring/1388.js:43:18, test-resources/src/1k2013spring/1388.js:46:4, test-resources/src/1k2013spring/1388.js:46:22, test-resources/src/1k2013spring/1388.js:47:13, test-resources/src/1k2013spring/1388.js:59:2, test-resources/src/1k2013spring/1388.js:59:4, test-resources/src/1k2013spring/1388.js:60:4, test-resources/src/1k2013spring/1388.js:61:4, test-resources/src/1k2013spring/1388.js:62:2, test-resources/src/1k2013spring/1388.js:66:2, test-resources/src/1k2013spring/1388.js:66:14, test-resources/src/1k2013spring/1388.js:67:2, test-resources/src/1k2013spring/1388.js:68:17, test-resources/src/1k2013spring/1388.js:68:19, test-resources/src/1k2013spring/1388.js:70:14, test-resources/src/1k2013spring/1388.js:70:20, test-resources/src/1k2013spring/1388.js:70:22, test-resources/src/1k2013spring/1388.js:70:28, test-resources/src/1k2013spring/1388.js:70:33, test-resources/src/1k2013spring/shim.js:9:5]
-test-resources/src/1k2013spring/1388.js:4:5: [maybe] Converting object to string
+test-resources/src/1k2013spring/1388.js:4:5: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1388.js:4:5: [maybe] Converting primitive string to object
-test-resources/src/1k2013spring/1388.js:15:25: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1388.js:15:25: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1388.js:15:25: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1388.js:40:7: [maybe] Converting undefined to string

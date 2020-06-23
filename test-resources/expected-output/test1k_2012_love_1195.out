@@ -95,6 +95,7 @@ test-resources/src/1k2012love/1195.js:24:12: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1195.js:24:16: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1195.js:24:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1195.js:25:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1195.js:26:7: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1195.js:29:19: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1195.js:29:29: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1195.js:29:29: [maybe] Reading absent property (computed name)
@@ -107,6 +108,7 @@ test-resources/src/1k2012love/1195.js:42:23: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1195.js:42:30: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1195.js:42:34: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1195.js:43:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1195.js:44:7: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1195.js:47:8: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1195.js:47:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1195.js:47:13: [maybe] Reading absent property (computed name)

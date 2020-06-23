@@ -153,7 +153,6 @@ test-resources/src/1k2013spring/1457.js:12:15: [maybe] Converting primitive numb
 test-resources/src/1k2013spring/1457.js:12:15: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1457.js:12:15: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1457.js:12:15: [maybe] The variable T has values with different types
-test-resources/src/1k2013spring/1457.js:13:6: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1457.js:13:6: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:13:6: [maybe] Converting primitive number to object
 test-resources/src/1k2013spring/1457.js:13:6: [maybe] Converting primitive string to object
@@ -182,7 +181,6 @@ test-resources/src/1k2013spring/1457.js:13:36: [maybe] Converting primitive numb
 test-resources/src/1k2013spring/1457.js:13:36: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1457.js:13:36: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1457.js:13:36: [maybe] The variable T has values with different types
-test-resources/src/1k2013spring/1457.js:14:4: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1457.js:14:4: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:14:4: [maybe] Converting primitive boolean to object
 test-resources/src/1k2013spring/1457.js:14:4: [maybe] Converting primitive number to object
@@ -190,7 +188,6 @@ test-resources/src/1k2013spring/1457.js:14:4: [maybe] Converting primitive strin
 test-resources/src/1k2013spring/1457.js:14:4: [maybe] Converting undefined to string
 test-resources/src/1k2013spring/1457.js:14:4: [maybe] The variable G has values with different types
 test-resources/src/1k2013spring/1457.js:14:21: [maybe] The variable c has values with different types
-test-resources/src/1k2013spring/1457.js:15:4: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1457.js:15:4: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:15:4: [maybe] Converting primitive boolean to object
 test-resources/src/1k2013spring/1457.js:15:4: [maybe] Converting primitive number to object
@@ -201,7 +198,6 @@ test-resources/src/1k2013spring/1457.js:15:21: [maybe] Converting primitive numb
 test-resources/src/1k2013spring/1457.js:15:21: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1457.js:15:21: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1457.js:15:21: [maybe] The variable T has values with different types
-test-resources/src/1k2013spring/1457.js:16:7: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1457.js:16:7: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:16:7: [maybe] Converting primitive boolean to object
 test-resources/src/1k2013spring/1457.js:16:7: [maybe] Converting primitive number to object
@@ -216,25 +212,27 @@ test-resources/src/1k2013spring/1457.js:19:3: [maybe] Converting primitive numbe
 test-resources/src/1k2013spring/1457.js:19:3: [maybe] Converting undefined to string
 test-resources/src/1k2013spring/1457.js:19:9: [maybe] The variable T has values with different types
 test-resources/src/1k2013spring/1457.js:19:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1457.js:20:11: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1457.js:20:11: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1457.js:20:12: [maybe] The variable T has values with different types
 test-resources/src/1k2013spring/1457.js:21:4: [maybe] The variable T has values with different types
 test-resources/src/1k2013spring/1457.js:21:6: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:21:6: [maybe] Converting primitive number to object
 test-resources/src/1k2013spring/1457.js:21:11: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1457.js:21:17: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2013spring/1457.js:21:17: [maybe] Converting object to number
+test-resources/src/1k2013spring/1457.js:21:17: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1457.js:21:17: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1457.js:21:22: [maybe] The variable T has values with different types
 test-resources/src/1k2013spring/1457.js:21:33: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1457.js:21:39: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2013spring/1457.js:21:39: [maybe] Converting object to number
+test-resources/src/1k2013spring/1457.js:21:39: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1457.js:21:39: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1457.js:21:44: [maybe] The variable T has values with different types
 test-resources/src/1k2013spring/1457.js:21:55: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1457.js:21:61: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2013spring/1457.js:21:61: [maybe] Converting object to number
+test-resources/src/1k2013spring/1457.js:21:61: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1457.js:21:61: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1457.js:21:66: [maybe] The variable T has values with different types
 test-resources/src/1k2013spring/1457.js:21:73: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1457.js:21:79: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2013spring/1457.js:21:79: [maybe] Converting object to number
+test-resources/src/1k2013spring/1457.js:21:79: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1457.js:21:79: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1457.js:21:84: [maybe] The variable T has values with different types
 test-resources/src/1k2013spring/1457.js:21:91: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:21:100: [maybe] Conversion to number yields NaN
@@ -246,15 +244,14 @@ test-resources/src/1k2013spring/1457.js:21:113: [maybe] Converting primitive num
 test-resources/src/1k2013spring/1457.js:21:113: [maybe] Converting undefined to string
 test-resources/src/1k2013spring/1457.js:22:3: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:22:3: [maybe] Converting undefined to string
-test-resources/src/1k2013spring/1457.js:23:3: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2013spring/1457.js:23:3: [maybe] Converting object to number
+test-resources/src/1k2013spring/1457.js:23:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1457.js:23:3: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1457.js:23:5: [maybe] The variable T has values with different types
 test-resources/src/1k2013spring/1457.js:23:8: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:23:8: [maybe] Converting primitive number to object
 test-resources/src/1k2013spring/1457.js:23:8: [maybe] Converting undefined to string
 test-resources/src/1k2013spring/1457.js:24:5: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:24:5: [maybe] Converting undefined to string
-test-resources/src/1k2013spring/1457.js:24:14: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1457.js:24:14: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:24:14: [maybe] Converting primitive number to object
 test-resources/src/1k2013spring/1457.js:24:14: [maybe] Converting primitive string to object
@@ -273,6 +270,7 @@ test-resources/src/1k2013spring/1457.js:36:53: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1457.js:36:58: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:36:83: [maybe] Converting primitive number to object
 test-resources/src/1k2013spring/1457.js:36:83: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1457.js:36:134: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1457.js:48:28: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1457.js:9:3: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/1k2013spring/1457.js:8:2: [info] Reading from unknown property that may cause loss of precision

@@ -65,7 +65,7 @@ test-resources/src/1k2012love/1005.js:49:16: [maybe] Reading absent property (co
 test-resources/src/1k2012love/1005.js:56:7: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1005.js:57:8: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1005.js:58:8: [maybe] Converting primitive number to object
-test-resources/src/1k2012love/1005.js:58:10: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1005.js:58:10: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1005.js:58:10: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1005.js:58:15: [maybe] The variable cl has values with different types
 test-resources/src/1k2012love/1005.js:59:11: [maybe] Converting primitive string to object

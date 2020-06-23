@@ -9,7 +9,6 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:307:2: [definite] The conditi
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:319:3: [definite] The conditional expression is always true
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:326:5: [definite] The conditional expression is always false
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:332:6: [definite] The conditional expression is always false
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:332:11: [definite] Variable copyIsArray is null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:388:8: [definite] The conditional expression is always false
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:401:8: [definite] The conditional expression is always true
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:421:11: [definite] The conditional expression is always true
@@ -159,30 +158,11 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8980:6: [definite] The condit
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:9223:6: [definite] The conditional expression is always false
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:28:12: [definite] Reading absent property jQuery
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:31:7: [definite] Reading absent property $
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:96:2: [definite] Dead assignment, property constructor is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:106:8: [definite] Reading absent property nodeType
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:107:4: [definite] Dead assignment, property context is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:186:2: [definite] Dead assignment, property selector is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:192:2: [definite] Dead assignment, property length is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:195:2: [definite] Dead assignment, property size is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:199:2: [definite] Dead assignment, property toArray is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:205:2: [definite] Dead assignment, property get is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:217:2: [definite] Dead assignment, property pushStack is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:251:2: [definite] Dead assignment, property eq is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:258:2: [definite] Dead assignment, property first is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:262:2: [definite] Dead assignment, property last is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:266:2: [definite] Dead assignment, property slice is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:271:2: [definite] Dead assignment, property map is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:277:2: [definite] Dead assignment, property end is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:283:2: [definite] Dead assignment, property push is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:284:2: [definite] Dead assignment, property sort is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:285:2: [definite] Dead assignment, property splice is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:426:32: [definite] Reading absent property window
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:426:32: [definite] Reading absent property window of host object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:443:49: [definite] Reading absent property nodeType
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:901:2: [definite] Dead assignment, property [object Boolean] is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:901:2: [definite] Dead assignment, property [object Date] is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:901:2: [definite] Dead assignment, property [object Number] is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1000:44: [definite] Reading absent property unique
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1022:4: [definite] Dead assignment, property remove is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1043:4: [definite] Dead assignment, property has is never read
@@ -190,32 +170,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1047:4: [definite] Dead assig
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1057:4: [definite] Dead assignment, property disabled is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1069:4: [definite] Dead assignment, property locked is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1091:4: [definite] Dead assignment, property fired is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1171:4: [definite] Dead assignment, property notify is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1171:4: [definite] Dead assignment, property reject is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1171:4: [definite] Dead assignment, property resolve is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1172:4: [definite] Dead assignment, property notifyWith is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1172:4: [definite] Dead assignment, property rejectWith is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1274:3: [definite] Dead assignment, property leadingWhitespace is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1278:3: [definite] Dead assignment, property tbody is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1318:3: [definite] Dead assignment, property html5Clone is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1321:3: [definite] Dead assignment, property boxModel is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1327:3: [definite] Dead assignment, property deleteExpando is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1328:3: [definite] Dead assignment, property noCloneEvent is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1329:3: [definite] Dead assignment, property inlineBlockNeedsLayout is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1330:3: [definite] Dead assignment, property shrinkWrapBlocks is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1332:3: [definite] Dead assignment, property boxSizingReliable is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1338:2: [definite] Dead assignment, property noCloneChecked is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1343:2: [definite] Dead assignment, property optDisabled is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1368:2: [definite] Dead assignment, property radioValue is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1380:2: [definite] Dead assignment, property checkClone is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1384:2: [definite] Dead assignment, property appendChecked is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1395:7: [definite] Reading absent property attachEvent of host object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1447:3: [definite] Dead assignment, property reliableHiddenOffsets is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1452:3: [definite] Dead assignment, property boxSizing is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1453:3: [definite] Dead assignment, property doesNotIncludeMarginInBodyOffset is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1461:4: [definite] Dead assignment, property boxSizingReliable is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1484:4: [definite] Dead assignment, property inlineBlockNeedsLayout is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1492:4: [definite] Dead assignment, property shrinkWrapBlocks is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2206:3: [definite] Dead assignment, property option is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2207:4: [definite] Dead assignment, property get is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2214:3: [definite] Dead assignment, property select is never read
@@ -304,8 +259,6 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3292:2: [definite] Dead assig
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3309:2: [definite] Dead assignment, property stopPropagation is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3323:2: [definite] Dead assignment, property stopImmediatePropagation is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3329:2: [definite] Dead assignment, property isImmediatePropagationStopped is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3337:2: [definite] Dead assignment, property mouseenter is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3337:2: [definite] Dead assignment, property mouseleave is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3338:3: [definite] Dead assignment, property delegateType is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3339:3: [definite] Dead assignment, property bindType is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3341:3: [definite] Dead assignment, property handle is never read
@@ -317,35 +270,9 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3410:2: [definite] Dead assig
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3412:3: [definite] Dead assignment, property setup is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3449:3: [definite] Dead assignment, property handle is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3458:3: [definite] Dead assignment, property teardown is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3476:3: [definite] Dead assignment, property focusin is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3476:3: [definite] Dead assignment, property focusout is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3477:4: [definite] Dead assignment, property setup is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3482:4: [definite] Dead assignment, property teardown is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3551:17: [definite] Reading absent property preventDefault
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property blur is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property change is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property click is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property contextmenu is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property dblclick is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property error is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property focus is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property focusin is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property focusout is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property keydown is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property keypress is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property keyup is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property mousedown is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property mouseenter is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property mouseleave is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property mousemove is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property mouseout is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property mouseover is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property mouseup is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property resize is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property scroll is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property select is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property submit is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3652:2: [definite] Dead assignment, property unload is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3664:3: [definite] Dead assignment, property keydown is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3664:3: [definite] Dead assignment, property keypress is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3664:3: [definite] Dead assignment, property keyup is never read
@@ -434,19 +361,6 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5146:3: [definite] Dead assig
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5147:3: [definite] Dead assignment, property contents is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5148:3: [definite] Dead assignment, property next is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5149:3: [definite] Dead assignment, property prev is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5286:1: [definite] Dead assignment, property andSelf is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property children is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property contents is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property next is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property nextAll is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property nextUntil is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property parent is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property parents is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property parentsUntil is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property prev is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property prevAll is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property prevUntil is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5343:2: [definite] Dead assignment, property siblings is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5439:7: [definite] Reading absent property createElement of host object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5467:3: [definite] Dead assignment, property legend is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5469:3: [definite] Dead assignment, property tr is never read
@@ -460,11 +374,6 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5479:33: [definite] Dead assi
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5479:52: [definite] Dead assignment, property caption is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5480:1: [definite] Dead assignment, property th is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5485:2: [definite] Dead assignment, property _default is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5975:2: [definite] Dead assignment, property appendTo is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5975:2: [definite] Dead assignment, property insertAfter is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5975:2: [definite] Dead assignment, property insertBefore is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5975:2: [definite] Dead assignment, property prependTo is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5975:2: [definite] Dead assignment, property replaceAll is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6294:2: [definite] Dead assignment, property version is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6300:2: [definite] Dead assignment, property safari is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6337:14: [definite] Dead assignment, property position is never read
@@ -473,7 +382,6 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6337:58: [definite] Dead assi
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6339:3: [definite] Dead assignment, property letterSpacing is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6340:3: [definite] Dead assignment, property fontWeight is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6341:3: [definite] Dead assignment, property lineHeight is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6461:3: [definite] Dead assignment, property opacity is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6462:4: [definite] Dead assignment, property get is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6475:3: [definite] Dead assignment, property fillOpacity is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6476:3: [definite] Dead assignment, property fontWeight is never read
@@ -484,45 +392,21 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6480:3: [definite] Dead assig
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6481:3: [definite] Dead assignment, property zIndex is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6482:3: [definite] Dead assignment, property zoom is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6489:3: [definite] Dead assignment, property float is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6817:2: [definite] Dead assignment, property height is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6817:2: [definite] Dead assignment, property width is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6818:3: [definite] Dead assignment, property get is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6830:3: [definite] Dead assignment, property set is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6844:2: [definite] Dead assignment, property opacity is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6845:3: [definite] Dead assignment, property get is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6852:3: [definite] Dead assignment, property set is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6889:3: [definite] Dead assignment, property marginRight is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6890:4: [definite] Dead assignment, property get is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6907:4: [definite] Dead assignment, property left is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6907:4: [definite] Dead assignment, property top is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6908:5: [definite] Dead assignment, property get is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6922:2: [definite] Dead assignment, property hidden is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6926:2: [definite] Dead assignment, property visible is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6937:2: [definite] Dead assignment, property margin is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6938:3: [definite] Dead assignment, property expand is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6955:3: [definite] Dead assignment, property set is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7140:12: [definite] Dead assignment, property * is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7140:12: [definite] Dead assignment, property json is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7140:12: [definite] Dead assignment, property jsonp is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7140:12: [definite] Dead assignment, property script is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7276:2: [definite] Dead assignment, property ajaxComplete is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7276:2: [definite] Dead assignment, property ajaxError is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7276:2: [definite] Dead assignment, property ajaxSend is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7276:2: [definite] Dead assignment, property ajaxStart is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7276:2: [definite] Dead assignment, property ajaxStop is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7276:2: [definite] Dead assignment, property ajaxSuccess is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7327:3: [definite] Dead assignment, property url is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7328:3: [definite] Dead assignment, property isLocal is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7329:3: [definite] Dead assignment, property global is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7330:3: [definite] Dead assignment, property type is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7331:3: [definite] Dead assignment, property contentType is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7332:3: [definite] Dead assignment, property processData is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7333:3: [definite] Dead assignment, property async is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7360:3: [definite] Dead assignment, property responseFields is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7361:4: [definite] Dead assignment, property xml is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7362:4: [definite] Dead assignment, property text is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7388:4: [definite] Dead assignment, property context is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7389:4: [definite] Dead assignment, property url is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8115:21: [definite] Reading absent property ActiveXObject
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8138:27: [definite] Reading absent property ActiveXObject
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8340:3: [definite] Dead assignment, property * is never read
@@ -541,29 +425,14 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8872:31: [definite] Dead assi
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8887:12: [definite] Dead assignment, property opacity is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8888:13: [definite] Dead assignment, property opacity is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8889:16: [definite] Dead assignment, property opacity is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8891:2: [definite] Dead assignment, property fadeIn is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8891:2: [definite] Dead assignment, property fadeOut is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8891:2: [definite] Dead assignment, property fadeToggle is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8891:2: [definite] Dead assignment, property slideDown is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8891:2: [definite] Dead assignment, property slideToggle is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8891:2: [definite] Dead assignment, property slideUp is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8929:2: [definite] Dead assignment, property linear is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8932:2: [definite] Dead assignment, property swing is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8971:2: [definite] Dead assignment, property slow is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8972:2: [definite] Dead assignment, property fast is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8974:2: [definite] Dead assignment, property _default is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8981:2: [definite] Dead assignment, property animated is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8989:1: [definite] Dead assignment, property offset is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:9031:2: [definite] Dead assignment, property bodyOffset is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:9043:2: [definite] Dead assignment, property setOffset is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:9137:2: [definite] Dead assignment, property scrollLeft is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:9137:2: [definite] Dead assignment, property scrollTop is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:9171:3: [definite] Dead assignment, property height is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:9171:3: [definite] Dead assignment, property innerHeight is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:9171:3: [definite] Dead assignment, property innerWidth is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:9171:3: [definite] Dead assignment, property outerHeight is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:9171:3: [definite] Dead assignment, property outerWidth is never read
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:9171:3: [definite] Dead assignment, property width is never read
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:28:2: [definite] The variable _jQuery is never used
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:31:2: [definite] The variable _$ is never used
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:35:2: [definite] The variable core_slice is never used
@@ -1108,7 +977,6 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7076:2: [definite] The variab
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7103:3: [definite] Unreachable code
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7140:36: [definite] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7149:1: [definite] Unreachable function inspectPrefiltersOrTransports
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7196:6: [definite] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7204:18: [definite] Unreachable function
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7243:13: [definite] Unreachable function
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7248:10: [definite] Unreachable function
@@ -1305,6 +1173,7 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6889:3: [maybe] TypeError, ac
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6906:3: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6907:4: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6937:2: [maybe] TypeError, accessing property of null/undefined
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6955:3: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7130:8: [maybe] TypeError, call to non-function
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7193:17: [maybe] TypeError, accessing property of null/undefined
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7944:10: [maybe] TypeError, call to non-function
@@ -1438,21 +1307,32 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7957:1: [maybe] Reading absen
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8056:1: [maybe] Reading absent property ajaxTransport
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8138:1: [maybe] Reading absent property ajaxSettings
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8160:6: [maybe] Reading absent property ajax
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:83:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:173:15, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:241:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:307:38, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:331:28, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:331:73, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:394:11, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:406:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:410:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:418:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:443:16, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:443:65, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:584:36, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:842:1, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:845:15, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:896:9, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:900:1, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:970:19, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:973:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:973:37, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:981:11, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:982:13, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1078:7, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1260:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1274:24, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1286:22, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1290:21, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1304:14, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1380:23, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1439:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1440:19, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1442:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1443:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1447:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1447:52, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1491:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1533:26, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1538:9, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1713:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1718:33, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1718:48, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1721:40, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2511:13, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2533:45, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2545:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2560:45, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2570:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2585:45, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2604:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2610:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2619:43, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2761:15, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2848:8, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2877:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2918:47, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2936:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2937:17, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2939:15, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2955:60, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3276:43, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3577:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3607:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6817:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6844:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6888:8, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6889:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6906:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6907:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6937:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7130:8, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7193:17, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7944:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7947:1, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7957:1, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8056:1, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8138:1]
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:83:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:173:15, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:241:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:307:38, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:331:28, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:331:73, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:394:11, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:406:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:410:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:418:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:443:16, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:443:65, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:584:36, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:842:1, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:845:15, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:896:9, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:900:1, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:970:19, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:973:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:973:37, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:981:11, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:982:13, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1078:7, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1260:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1274:24, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1286:22, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1290:21, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1304:14, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1380:23, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1439:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1440:19, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1442:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1443:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1447:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1447:52, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1491:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1533:26, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1538:9, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1713:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1718:33, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1718:48, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1721:40, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2511:13, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2533:45, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2545:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2560:45, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2570:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2585:45, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2604:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2610:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2619:43, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2761:15, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2848:8, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2877:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2918:47, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2936:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2937:17, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2939:15, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2955:60, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3276:43, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3577:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3607:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6817:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6844:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6888:8, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6889:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6906:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6907:4, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6937:2, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6955:3, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7130:8, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7193:17, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7944:10, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7947:1, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7957:1, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8056:1, benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:8138:1]
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:322:11: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:323:12: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:326:21: [maybe] The variable copy has values with different types
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:331:18: [maybe] The variable copy has values with different types
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:331:49: [maybe] The variable copy has values with different types
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:331:88: [maybe] The variable copy has values with different types
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:344:17: [maybe] The variable copy has values with different types
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:345:23: [maybe] The variable copy has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:401:25: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:434:10: [maybe] The variable obj has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:436:4: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:436:16: [maybe] Converting primitive string to object
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:436:35: [maybe] The variable obj has values with different types
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:443:9: [maybe] The variable obj has values with different types
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:443:28: [maybe] The variable obj has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:605:11: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:611:11: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:900:13: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:900:13: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:900:13: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:901:42: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:901:42: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:901:42: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:912:15: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:912:15: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:912:15: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:945:5: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:972:20: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:972:48: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:973:10: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:980:10: [maybe] The variable stack has values with different types
@@ -1480,59 +1360,62 @@ benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1533:40: [maybe] Reading abse
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1556:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1556:40: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1718:33: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1718:48: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1718:48: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1718:48: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1721:11: [maybe] The variable noData has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1721:21: [maybe] The variable noData has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:1721:73: [maybe] The variable noData has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2560:45: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2610:3: [maybe] Converting object to string
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2619:2: [maybe] Converting object to string
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2619:43: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2610:3: [maybe] Converting object to primitive
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2619:2: [maybe] Converting object to primitive
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2619:43: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2619:43: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2844:11: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2848:26: [maybe] Converting undefined to string
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2852:8: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2852:8: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2852:8: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2858:8: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2858:8: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2858:8: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2884:12: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2884:12: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2884:12: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2936:10: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:2937:17: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3084:9: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3084:9: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3084:9: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3089:10: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3089:10: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3089:10: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3102:10: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3102:10: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3102:10: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3256:14: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3276:26: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3551:17: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3647:14: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3647:14: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3647:14: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3695:12: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3707:15: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3716:68: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3731:24: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3731:24: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3731:24: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3748:29: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:3795:10: [maybe] The variable pass has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:4382:7: [maybe] The variable assertHrefNotNormalized has values with different types
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:4415:2: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5436:13: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5436:13: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:5436:13: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6274:7: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6274:7: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6274:7: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6280:3: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6280:3: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6280:3: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6284:12: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6285:12: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7112:27: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:6955:3: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7097:13: [maybe] Converting object to primitive
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7112:27: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7112:27: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7126:16: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7126:16: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7126:16: [maybe] Converting primitive string to object
-benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7275:14: [maybe] Converting object to string
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7196:6: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7275:14: [maybe] Converting object to primitive
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7275:14: [maybe] Converting primitive string to object
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7328:12: [maybe] Converting undefined to string
 benchmarks/tajs/src/jquery/libraries/jquery-1.8.js:7328:33: [maybe] Reading absent property (computed name)

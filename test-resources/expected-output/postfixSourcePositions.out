@@ -1,6 +1,6 @@
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js)
+    node 0: constant[undefined,v1] (TestFlowgraphBuilder.postfixSourcePositions.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -23,64 +23,64 @@ fg2: <main> function()
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: read-variable['b',v8,-] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:1:5)
-    node 10: +[v8,v8] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:1:5)
-    node 11: constant[1.0,v9] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:1:5)
-    node 12: +[v8,v9,v10] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:1:5)
-    node 13: write-variable[v10,'b'] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:1:5)
-    node 14: write-variable[v8,'a'] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:1:1)
-    node 15: read-variable['f',v12,v11] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:2:1)
+    node 9: read-variable['b',v8,-] (TestFlowgraphBuilder.postfixSourcePositions.js:1:5)
+    node 10: +[v8,v8] (TestFlowgraphBuilder.postfixSourcePositions.js:1:5)
+    node 11: constant[1.0,v9] (TestFlowgraphBuilder.postfixSourcePositions.js:1:5)
+    node 12: +[v8,v9,v10] (TestFlowgraphBuilder.postfixSourcePositions.js:1:5)
+    node 13: write-variable[v10,'b'] (TestFlowgraphBuilder.postfixSourcePositions.js:1:5)
+    node 14: write-variable[v8,'a'] (TestFlowgraphBuilder.postfixSourcePositions.js:1:1)
+    node 15: read-variable['f',v12,v11] (TestFlowgraphBuilder.postfixSourcePositions.js:2:1)
     ->[block 8]
   block 8:
-    node 16: call[v11,v12,-] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:2:1)
+    node 16: call[v11,v12,-] (TestFlowgraphBuilder.postfixSourcePositions.js:2:1)
     ->[block 9]
   block 9:
-    node 17: read-variable['c',v14,-] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:3:1)
-    node 18: read-variable['e',v13,-] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:3:7)
-    node 19: +[v13,v13] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:3:7)
-    node 20: constant[1.0,v15] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:3:7)
-    node 21: +[v13,v15,v16] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:3:7)
-    node 22: write-variable[v16,'e'] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:3:7)
-    node 23: write-property[v14,'d',v13] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:3:1)
-    node 24: read-variable['f',v18,v17] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:4:1)
+    node 17: read-variable['c',v14,-] (TestFlowgraphBuilder.postfixSourcePositions.js:3:1)
+    node 18: read-variable['e',v13,-] (TestFlowgraphBuilder.postfixSourcePositions.js:3:7)
+    node 19: +[v13,v13] (TestFlowgraphBuilder.postfixSourcePositions.js:3:7)
+    node 20: constant[1.0,v15] (TestFlowgraphBuilder.postfixSourcePositions.js:3:7)
+    node 21: +[v13,v15,v16] (TestFlowgraphBuilder.postfixSourcePositions.js:3:7)
+    node 22: write-variable[v16,'e'] (TestFlowgraphBuilder.postfixSourcePositions.js:3:7)
+    node 23: write-property[v14,'d',v13] (TestFlowgraphBuilder.postfixSourcePositions.js:3:1)
+    node 24: read-variable['f',v18,v17] (TestFlowgraphBuilder.postfixSourcePositions.js:4:1)
     ->[block 10]
   block 10:
-    node 25: call[v17,v18,-] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:4:1)
+    node 25: call[v17,v18,-] (TestFlowgraphBuilder.postfixSourcePositions.js:4:1)
     ->[block 11]
   block 11:
-    node 26: read-variable['f',v19,-] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:5:1)
-    node 27: read-variable['g',v20,-] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:5:6)
-    node 28: +[v20,v20] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:5:6)
-    node 29: constant[1.0,v21] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:5:6)
-    node 30: +[v20,v21,v22] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:5:6)
-    node 31: write-variable[v22,'g'] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:5:6)
-    node 32: +[v19,v20,v23] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:5:1)
-    node 33: write-variable[v23,'f'] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:5:1)
-    node 34: read-variable['f',v25,v24] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:6:1)
+    node 26: read-variable['f',v19,-] (TestFlowgraphBuilder.postfixSourcePositions.js:5:1)
+    node 27: read-variable['g',v20,-] (TestFlowgraphBuilder.postfixSourcePositions.js:5:6)
+    node 28: +[v20,v20] (TestFlowgraphBuilder.postfixSourcePositions.js:5:6)
+    node 29: constant[1.0,v21] (TestFlowgraphBuilder.postfixSourcePositions.js:5:6)
+    node 30: +[v20,v21,v22] (TestFlowgraphBuilder.postfixSourcePositions.js:5:6)
+    node 31: write-variable[v22,'g'] (TestFlowgraphBuilder.postfixSourcePositions.js:5:6)
+    node 32: +[v19,v20,v23] (TestFlowgraphBuilder.postfixSourcePositions.js:5:1)
+    node 33: write-variable[v23,'f'] (TestFlowgraphBuilder.postfixSourcePositions.js:5:1)
+    node 34: read-variable['f',v25,v24] (TestFlowgraphBuilder.postfixSourcePositions.js:6:1)
     ->[block 12]
   block 12:
-    node 35: call[v24,v25,-] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:6:1)
+    node 35: call[v24,v25,-] (TestFlowgraphBuilder.postfixSourcePositions.js:6:1)
     ->[block 13]
   block 13:
-    node 36: read-variable['h',v26,-] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:7:1)
-    node 37: read-property[v26,'i',v27] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:7:1)
-    node 38: read-variable['j',v28,-] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:7:8)
-    node 39: +[v28,v28] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:7:8)
-    node 40: constant[1.0,v29] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:7:8)
-    node 41: +[v28,v29,v30] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:7:8)
-    node 42: write-variable[v30,'j'] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:7:8)
-    node 43: +[v27,v28,v31] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:7:1)
-    node 44: write-property[v26,'i',v31] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:7:1)
+    node 36: read-variable['h',v26,-] (TestFlowgraphBuilder.postfixSourcePositions.js:7:1)
+    node 37: read-property[v26,'i',v27] (TestFlowgraphBuilder.postfixSourcePositions.js:7:1)
+    node 38: read-variable['j',v28,-] (TestFlowgraphBuilder.postfixSourcePositions.js:7:8)
+    node 39: +[v28,v28] (TestFlowgraphBuilder.postfixSourcePositions.js:7:8)
+    node 40: constant[1.0,v29] (TestFlowgraphBuilder.postfixSourcePositions.js:7:8)
+    node 41: +[v28,v29,v30] (TestFlowgraphBuilder.postfixSourcePositions.js:7:8)
+    node 42: write-variable[v30,'j'] (TestFlowgraphBuilder.postfixSourcePositions.js:7:8)
+    node 43: +[v27,v28,v31] (TestFlowgraphBuilder.postfixSourcePositions.js:7:1)
+    node 44: write-property[v26,'i',v31] (TestFlowgraphBuilder.postfixSourcePositions.js:7:1)
     ->[block 14]
   block 14: [exit-ordinary]
-    node 45: return[v1] (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js)
+    node 45: return[v1] (TestFlowgraphBuilder.postfixSourcePositions.js)
     ->[]
   block 15: [exit-exceptional]
-    node 46: exceptional-return (out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js)
+    node 46: exceptional-return (TestFlowgraphBuilder.postfixSourcePositions.js)
     ->[]
 
-out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js: [definite] Ordinary program exit is unreachable
-out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:1:5: [definite] ReferenceError, reading absent variable b
-out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:1:5: [definite] Unreachable code
-out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestFlowgraphBuilder.postfixSourcePositions.js:1:5]
+TestFlowgraphBuilder.postfixSourcePositions.js: [definite] Ordinary program exit is unreachable
+TestFlowgraphBuilder.postfixSourcePositions.js:1:5: [definite] ReferenceError, reading absent variable b
+TestFlowgraphBuilder.postfixSourcePositions.js:1:5: [definite] Unreachable code
+TestFlowgraphBuilder.postfixSourcePositions.js: [maybe] Uncaught exception, constructed at [TestFlowgraphBuilder.postfixSourcePositions.js:1:5]
 Soundness testing succeeded for 1 checks (with 0 expected failures)

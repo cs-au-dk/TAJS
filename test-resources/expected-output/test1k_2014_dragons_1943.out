@@ -167,15 +167,15 @@ test/1k2014dragons/1943.js:12:49: [maybe] The variable e has values with differe
 test/1k2014dragons/1943.js:13:13: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1943.js:13:13: [maybe] Converting primitive number to object
 test/1k2014dragons/1943.js:13:13: [maybe] The variable p has values with different types
-test/1k2014dragons/1943.js:13:34: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:13:34: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1943.js:13:34: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1943.js:13:58: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1943.js:13:58: [maybe] Converting primitive number to object
 test/1k2014dragons/1943.js:13:58: [maybe] The variable p has values with different types
-test/1k2014dragons/1943.js:13:79: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1943.js:13:79: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1943.js:14:2: [maybe] Conversion from string to number yields NaN
-test/1k2014dragons/1943.js:14:2: [maybe] Converting object to number
+test/1k2014dragons/1943.js:13:79: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:14:2: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:14:2: [maybe] Converting object to primitive
 test/1k2014dragons/1943.js:14:2: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1943.js:14:4: [maybe] Converting primitive number to object
 test/1k2014dragons/1943.js:14:4: [maybe] The variable p has values with different types
@@ -215,9 +215,9 @@ test/1k2014dragons/1943.js:26:28: [maybe] Converting primitive number to object
 test/1k2014dragons/1943.js:26:28: [maybe] The variable p has values with different types
 test/1k2014dragons/1943.js:41:61: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1943.js:41:76: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1943.js:41:82: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1943.js:41:82: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1943.js:41:82: [maybe] Converting object to number
+test/1k2014dragons/1943.js:41:82: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:41:82: [maybe] Converting object to primitive
 test/1k2014dragons/1943.js:48:3: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1943.js:53:5: [maybe] The variable o has values with different types
 test/1k2014dragons/1943.js:60:8: [maybe] The variable l has values with different types
@@ -306,22 +306,22 @@ test/1k2014dragons/1943.js:69:119: [maybe] Converting primitive number to object
 test/1k2014dragons/1943.js:69:119: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1943.js:70:11: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1943.js:75:7: [maybe] The variable v has values with different types
-test/1k2014dragons/1943.js:75:27: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1943.js:75:27: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1943.js:75:55: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:75:27: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:75:55: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1943.js:75:55: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1943.js:78:6: [maybe] The variable q has values with different types
 test/1k2014dragons/1943.js:79:8: [maybe] The variable q has values with different types
 test/1k2014dragons/1943.js:84:5: [maybe] The variable v has values with different types
 test/1k2014dragons/1943.js:85:10: [maybe] The variable v has values with different types
 test/1k2014dragons/1943.js:86:7: [maybe] The variable v has values with different types
-test/1k2014dragons/1943.js:96:17: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1943.js:96:17: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1943.js:96:45: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:96:17: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1943.js:96:45: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1943.js:97:17: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:96:45: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1943.js:97:17: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1943.js:97:46: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1943.js:97:17: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1943.js:97:46: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1943.js:97:46: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1943.js:105:5: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1943.js:105:25: [maybe] Conversion to number yields NaN

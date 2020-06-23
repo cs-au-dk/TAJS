@@ -1,5 +1,5 @@
 test-resources/src/micro/test120.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test120.js:5:3: [maybe] Conversion to number yields NaN
 test-resources/src/micro/test120.js:5:8: [maybe] Reading absent property (computed name)
-test-resources/src/micro/test120.js:14:1: [info] Abstract value: UInt|NaN
+test-resources/src/micro/test120.js:14:1: [info] Abstract value: UInt|NaN[partitions: [{PROP(node=33,prop=a)=UInt|NaN, PROP(node=33,prop=b)=UInt|NaN, PROP(node=33,prop=c)=UInt|NaN, PROP(node=33,prop=d)=UInt|NaN}]]
 Soundness testing succeeded for 29 checks (with 0 expected failures)

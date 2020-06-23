@@ -1,5 +1,5 @@
-out/temp-sources/TestMicro.symbol5.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.symbol5.js:2:23: [maybe] Reading absent property (computed name)
-out/temp-sources/TestMicro.symbol5.js:3:20: [maybe] Reading absent property (computed name)
-out/temp-sources/TestMicro.symbol5.js:2:1: [info] Abstract value: "undefined"
+TestMicro.symbol5.js: [definite] Exceptional program exit is unreachable
+TestMicro.symbol5.js:2:23: [maybe] Reading absent property (computed name)
+TestMicro.symbol5.js:3:20: [maybe] Reading absent property (computed name)
+TestMicro.symbol5.js:2:1: [info] Abstract value: "undefined"
 Soundness testing succeeded for 10 checks (with 0 expected failures)

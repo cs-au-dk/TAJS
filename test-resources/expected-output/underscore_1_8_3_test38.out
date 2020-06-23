@@ -366,6 +366,6 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:41:11: [maybe] Read
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:153:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/underscore/test-suite/chaining/test38.html:15:17: [maybe] Converting object to number
+benchmarks/tajs/src/underscore/test-suite/chaining/test38.html:15:17: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1492:28: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 3639 checks (with 0 expected failures)

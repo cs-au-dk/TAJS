@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package dk.brics.tajs.monitoring.soundness.testing;
 
 import dk.au.cs.casa.jer.LogParser;
 import dk.au.cs.casa.jer.entries.IEntry;
+import dk.au.cs.casa.jer.entries.ModuleExportsEntry;
 import dk.brics.tajs.analysis.KnownUnsoundnesses;
 import dk.brics.tajs.analysis.Solver;
 import dk.brics.tajs.flowgraph.AbstractNode;
@@ -45,7 +46,6 @@ import java.util.Set;
 import static dk.brics.tajs.util.Collections.addToMapSet;
 import static dk.brics.tajs.util.Collections.newMap;
 import static dk.brics.tajs.util.Collections.newSet;
-import static dk.brics.tajs.util.Collections.singleton;
 
 /**
  * Tests the soundness of a static analysis result by comparing it with results from a dynamic analysis.
@@ -118,6 +118,7 @@ public class SoundnessTester {
 
     private Set<IEntry> getEntries(LogParser logParser) {
         return logParser.getEntries().stream()
+                .filter(e -> !(e instanceof ModuleExportsEntry))
                 .filter(e -> !(e.getSourceLocation().getColumnNumber() == -1))
                 .filter(e -> !(e.getSourceLocation().getFileName().matches(".*js-url-\\d+.js"))) // https://github.com/cs-au-dk/jalangilogger/issues/6
                 .filter(e -> !(e.getSourceLocation().getFileName().contains("node_modules")))

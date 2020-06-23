@@ -35,6 +35,7 @@ test-resources/src/1k2013spring/1462.js:150:17: [maybe] Reading absent property 
 test-resources/src/1k2013spring/1462.js:169:21: [maybe] Reading absent property G of host object
 test-resources/src/1k2013spring/1462.js:198:11: [maybe] Reading absent property t
 test-resources/src/1k2013spring/1462.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1462.js:47:9, test-resources/src/1k2013spring/1462.js:65:1, test-resources/src/1k2013spring/1462.js:98:58, test-resources/src/1k2013spring/1462.js:150:7, test-resources/src/1k2013spring/1462.js:150:17, test-resources/src/1k2013spring/1462.js:154:9, test-resources/src/1k2013spring/1462.js:157:25, test-resources/src/1k2013spring/1462.js:165:33, test-resources/src/1k2013spring/1462.js:169:11, test-resources/src/1k2013spring/1462.js:173:31, test-resources/src/1k2013spring/1462.js:181:79, test-resources/src/1k2013spring/1462.js:193:18, test-resources/src/1k2013spring/1462.js:205:23, test-resources/src/1k2013spring/1462.js:207:32, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1462.js:39:10: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1462.js:157:25: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1462.js:198:11: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1462.js:205:23: [maybe] Reading absent property (computed name)

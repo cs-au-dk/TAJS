@@ -1,5 +1,5 @@
 test-resources/src/v8tests/unicode-string-to-number.js: [definite] Exceptional program exit is unreachable
-test-resources/src/v8tests/unicode-string-to-number.js:31:18: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/unicode-string-to-number.js:38:21: [maybe] Conversion from string to number yields NaN
-test-resources/src/v8tests/unicode-string-to-number.js:45:18: [maybe] Conversion from string to number yields NaN
+test-resources/src/v8tests/unicode-string-to-number.js:31:18: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/unicode-string-to-number.js:38:21: [maybe] Conversion to number yields NaN
+test-resources/src/v8tests/unicode-string-to-number.js:45:18: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 125 checks (with 0 expected failures)

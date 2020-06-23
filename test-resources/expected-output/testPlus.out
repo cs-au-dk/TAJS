@@ -1,3 +1,3 @@
-out/temp-sources/TestMicro.testPlus.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.testPlus.js:1:1: [info] Abstract value: 15.0|(IdentStr|OtherIdentPartsStr){"5bar","foo10","foobar"}
+TestMicro.testPlus.js: [definite] Exceptional program exit is unreachable
+TestMicro.testPlus.js:1:1: [info] Abstract value: 15.0|(IdentStr|OtherIdentPartsStr){"5bar","foo10","foobar"}
 Soundness testing succeeded for 4 checks (with 0 expected failures)

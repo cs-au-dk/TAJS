@@ -83,10 +83,13 @@ test-resources/src/1k2012love/1019.js:19:9: [maybe] Reading absent property (com
 test-resources/src/1k2012love/1019.js:20:8: [maybe] The variable L has values with different types
 test-resources/src/1k2012love/1019.js:22:8: [maybe] The variable L has values with different types
 test-resources/src/1k2012love/1019.js:23:8: [maybe] The variable L has values with different types
+test-resources/src/1k2012love/1019.js:26:8: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1019.js:30:9: [maybe] The variable s has values with different types
 test-resources/src/1k2012love/1019.js:32:22: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1019.js:32:38: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1019.js:32:54: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1019.js:42:15: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1019.js:42:15: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1019.js:42:15: [maybe] The variable s has values with different types
 test-resources/src/1k2012love/1019.js:58:2: [maybe] The variable L has values with different types
 Soundness testing succeeded for 175 checks (with 0 expected failures)

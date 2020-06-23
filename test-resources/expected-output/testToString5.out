@@ -1,3 +1,4 @@
 test-resources/src/micro/toString5.js: [definite] Exceptional program exit is unreachable
+test-resources/src/micro/toString5.js:5:9: [maybe] Converting object to primitive
 test-resources/src/micro/toString5.js:7:1: [info] Abstract value: 2.0
 Soundness testing succeeded for 11 checks (with 0 expected failures)

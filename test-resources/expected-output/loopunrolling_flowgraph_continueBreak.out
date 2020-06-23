@@ -1,6 +1,6 @@
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
+    node 0: constant[undefined,v1] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -23,59 +23,59 @@
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: constant["PRE",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:1)
+    node 9: constant["PRE",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:1)
     ->[block 8]
   block 8:
-    node 10: constant["INIT",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:12)
+    node 10: constant["INIT",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:12)
     ->[block 9]
   block 9:
-    node 11: constant["COND",v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
-    node 12: begin-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:34)
+    node 11: constant["COND",v8] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
+    node 12: begin-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:34)
     ->[block 10] ~>[block 17]
   block 10:
-    node 13: if[v8](true-block:11,false-block:18) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
+    node 13: if[v8](true-block:11,false-block:18) (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
     ->[block 11,block 18] ~>[block 17]
   block 11:
-    node 14: constant["BODY0",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:36)
-    node 15: constant["CONTINUE",v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:48)
-    node 16: if[v9](true-block:12,false-block:13) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:45)
+    node 14: constant["BODY0",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:36)
+    node 15: constant["CONTINUE",v9] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:48)
+    node 16: if[v9](true-block:12,false-block:13) (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:45)
     ->[block 12,block 13] ~>[block 17]
   block 12:
-    node 17: nop(continue <DEFAULT>) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:60)
+    node 17: nop(continue <DEFAULT>) (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:60)
     ->[block 16] ~>[block 17]
   block 13:
-    node 18: constant["BODY1",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:71)
-    node 19: constant["BREAK",v10] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:83)
-    node 20: if[v10](true-block:14,false-block:15) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:80)
+    node 18: constant["BODY1",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:71)
+    node 19: constant["BREAK",v10] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:83)
+    node 20: if[v10](true-block:14,false-block:15) (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:80)
     ->[block 14,block 15] ~>[block 17]
   block 14:
-    node 21: nop(break <DEFAULT>) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:92)
+    node 21: nop(break <DEFAULT>) (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:92)
     ->[block 18] ~>[block 17]
   block 15:
-    node 22: constant["BODY2",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:101)
+    node 22: constant["BODY2",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:101)
     ->[block 16] ~>[block 17]
   block 16:
-    node 23: constant["INC",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:28)
+    node 23: constant["INC",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:28)
     ->[block 9] ~>[block 17]
   block 17:
-    node 24: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
+    node 24: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
     ->[block 21]
   block 18:
-    node 25: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
+    node 25: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
     ->[block 19]
   block 19:
-    node 26: constant["POST",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:111)
+    node 26: constant["POST",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:111)
     ->[block 20]
   block 20: [exit-ordinary]
-    node 27: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
+    node 27: return[v1] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
     ->[]
   block 21: [exit-exceptional]
-    node 28: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
+    node 28: exceptional-return (TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
     ->[]
 
 <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
+    node 0: constant[undefined,v1] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -98,58 +98,58 @@
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: constant["PRE",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:1)
+    node 9: constant["PRE",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:1)
     ->[block 8]
   block 8:
-    node 10: constant["INIT",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:12)
+    node 10: constant["INIT",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:12)
     ->[block 9]
   block 9:
-    node 11: constant["COND",v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
-    node 12: begin-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:34)
+    node 11: constant["COND",v8] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
+    node 12: begin-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:34)
     ->[block 10] ~>[block 17]
   block 10:
-    node 13: if[v8](true-block:11,false-block:18) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
+    node 13: if[v8](true-block:11,false-block:18) (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
     ->[block 11,block 18] ~>[block 17]
   block 11:
-    node 14: constant["BODY0",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:36)
-    node 15: constant["CONTINUE",v9] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:48)
-    node 16: if[v9](true-block:12,false-block:13) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:45)
+    node 14: constant["BODY0",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:36)
+    node 15: constant["CONTINUE",v9] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:48)
+    node 16: if[v9](true-block:12,false-block:13) (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:45)
     ->[block 12,block 13] ~>[block 17]
   block 12:
-    node 17: nop(continue <DEFAULT>) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:60)
+    node 17: nop(continue <DEFAULT>) (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:60)
     ->[block 16] ~>[block 17]
   block 13:
-    node 18: constant["BODY1",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:71)
-    node 19: constant["BREAK",v10] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:83)
-    node 20: if[v10](true-block:14,false-block:15) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:80)
+    node 18: constant["BODY1",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:71)
+    node 19: constant["BREAK",v10] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:83)
+    node 20: if[v10](true-block:14,false-block:15) (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:80)
     ->[block 14,block 15] ~>[block 17]
   block 14:
-    node 21: nop(break <DEFAULT>) (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:92)
+    node 21: nop(break <DEFAULT>) (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:92)
     ->[block 18] ~>[block 17]
   block 15:
-    node 22: constant["BODY2",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:101)
+    node 22: constant["BODY2",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:101)
     ->[block 16] ~>[block 17]
   block 16:
-    node 23: constant["INC",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:28)
+    node 23: constant["INC",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:28)
     ->[block 9] ~>[block 17]
   block 17:
-    node 24: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
+    node 24: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
     ->[block 21]
   block 18:
-    node 25: end-loop[v8] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
+    node 25: end-loop[v8] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20)
     ->[block 19]
   block 19:
-    node 26: constant["POST",-] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:111)
+    node 26: constant["POST",-] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:111)
     ->[block 20]
   block 20: [exit-ordinary]
-    node 27: return[v1] (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
+    node 27: return[v1] (TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
     ->[]
   block 21: [exit-exceptional]
-    node 28: exceptional-return (out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
+    node 28: exceptional-return (TestUnrolling.loopunrolling_flowgraph_continueBreak.js)
     ->[]
 
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js: [definite] Ordinary program exit is unreachable
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20: [definite] The conditional expression is always true
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:45: [definite] The conditional expression is always true
-out/temp-sources/TestUnrolling.loopunrolling_flowgraph_continueBreak.js: [definite] Exceptional program exit is unreachable
+TestUnrolling.loopunrolling_flowgraph_continueBreak.js: [definite] Ordinary program exit is unreachable
+TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:20: [definite] The conditional expression is always true
+TestUnrolling.loopunrolling_flowgraph_continueBreak.js:1:45: [definite] The conditional expression is always true
+TestUnrolling.loopunrolling_flowgraph_continueBreak.js: [definite] Exceptional program exit is unreachable
 Soundness testing succeeded for 0 checks (with 0 expected failures)

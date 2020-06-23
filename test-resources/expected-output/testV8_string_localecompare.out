@@ -1,12 +1,12 @@
 test-resources/src/v8tests/string-localecompare.js: [definite] Exceptional program exit is unreachable
-test-resources/src/v8tests/string-localecompare.js:34:12: [maybe] Converting object to string
+test-resources/src/v8tests/string-localecompare.js:34:12: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-localecompare.js:34:12: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-localecompare.js:35:12: [maybe] Converting object to string
+test-resources/src/v8tests/string-localecompare.js:35:12: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-localecompare.js:35:12: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-localecompare.js:36:12: [maybe] Converting object to string
+test-resources/src/v8tests/string-localecompare.js:36:12: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-localecompare.js:36:12: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-localecompare.js:39:12: [maybe] Converting object to string
+test-resources/src/v8tests/string-localecompare.js:39:12: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-localecompare.js:39:12: [maybe] Converting primitive string to object
-test-resources/src/v8tests/string-localecompare.js:40:12: [maybe] Converting object to string
+test-resources/src/v8tests/string-localecompare.js:40:12: [maybe] Converting object to primitive
 test-resources/src/v8tests/string-localecompare.js:40:12: [maybe] Converting primitive string to object
 Soundness testing succeeded for 51 checks (with 0 expected failures)

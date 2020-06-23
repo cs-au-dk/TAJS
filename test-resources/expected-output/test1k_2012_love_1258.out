@@ -24,7 +24,7 @@ test-resources/src/1k2012love/1258.js:45:6: [maybe] Reading absent property whic
 test-resources/src/1k2012love/1258.js:63:5: [maybe] Reading absent property C of host object
 test-resources/src/1k2012love/1258.js:66:5: [maybe] Reading absent property F of host object
 test-resources/src/1k2012love/1258.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1258.js:2:29, test-resources/src/1k2012love/1258.js:3:3, test-resources/src/1k2012love/1258.js:11:5, test-resources/src/1k2012love/1258.js:12:5, test-resources/src/1k2012love/1258.js:31:5, test-resources/src/1k2012love/1258.js:35:5, test-resources/src/1k2012love/1258.js:57:6, test-resources/src/1k2012love/1258.js:57:25, test-resources/src/1k2012love/1258.js:57:27, test-resources/src/1k2012love/1258.js:59:32, test-resources/src/1k2012love/1258.js:60:19, test-resources/src/1k2012love/1258.js:63:5, test-resources/src/1k2012love/1258.js:63:11, test-resources/src/1k2012love/1258.js:65:5, test-resources/src/1k2012love/1258.js:65:8, test-resources/src/1k2012love/1258.js:66:5, test-resources/src/1k2012love/1258.js:68:4, test-resources/src/1k2012love/shim.js:9:5]
-test-resources/src/1k2012love/1258.js:2:29: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2012love/1258.js:2:29: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1258.js:2:29: [maybe] The variable innerHeight has values with different types
 test-resources/src/1k2012love/1258.js:57:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1258.js:58:7: [maybe] Reading absent property (computed name)

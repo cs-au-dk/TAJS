@@ -1,5 +1,4 @@
-test-resources/src/micro/testForIn4.js:8:3: [definite] Dead assignment, property bar is never read
-test-resources/src/micro/testForIn4.js:8:3: [definite] Dead assignment, property foo is never read
+test-resources/src/micro/testForIn4.js:8:3: [definite] Dead assignment, property is never read
 test-resources/src/micro/testForIn4.js: [definite] Exceptional program exit is unreachable
-test-resources/src/micro/testForIn4.js:10:1: [info] Abstract object: {bar:"whatever"|absent,foo:7.0|absent,[[Prototype]]=[@Object.prototype[native]]}
+test-resources/src/micro/testForIn4.js:10:1: [info] Abstract object: {bar:7.0|"whatever"|absent,foo:7.0|"whatever"|absent,[[Prototype]]=[@Object.prototype[native]]}
 Soundness testing succeeded for 24 checks (with 0 expected failures)

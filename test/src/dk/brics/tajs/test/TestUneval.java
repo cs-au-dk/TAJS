@@ -193,10 +193,10 @@ public class TestUneval {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.class /* Imprecise eval */)
+    @Test//(expected = AnalysisLimitationException.class /* Imprecise eval */)
     public void uneval_26() throws Exception {
         Options.get().enableIncludeDom();
-        Options.get().enableNoStringSets(); // TODO
+        //Options.get().enableNoStringSets(); // TODO
         Misc.run("test-resources/src/uneval/uneval26.html");
         Misc.checkSystemOutput();
     }
@@ -571,6 +571,7 @@ public class TestUneval {
 
     @Test
     public void bildde2() { // uneval paper: 1 eval call site, fails
+        Options.get().enableForInSpecialization();
         Misc.run("benchmarks/tajs/src/unevalizer/bild.de-slice/index-2.html");
         Misc.checkSystemOutput();
     }
@@ -638,6 +639,7 @@ public class TestUneval {
 
     @Test
     public void onetpl2() { // uneval paper: 1 eval call site, fails
+        Options.get().enableForInSpecialization();
         Misc.run("benchmarks/tajs/src/unevalizer/onet.pl-slice/index-2.html");
         Misc.checkSystemOutput();
     }
@@ -684,7 +686,7 @@ public class TestUneval {
         Misc.checkSystemOutput();
     }
 
-    @Test(expected = AnalysisLimitationException.AnalysisPrecisionLimitationException.class)
+    @Test
     public void washingtonpostcom() { // uneval paper: 1 eval call site, fails
         Misc.run("benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html");
         Misc.checkSystemOutput();

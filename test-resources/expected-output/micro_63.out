@@ -1,5 +1,4 @@
 test-resources/src/micro/test63.js: [definite] Exceptional program exit is unreachable
-test-resources/src/micro/test63.js:7:2: [info] Abstract value: "gb"
-test-resources/src/micro/test63.js:7:2: [info] Abstract value: "gh"
+test-resources/src/micro/test63.js:7:2: [info] Abstract value: (PrefixStr[g]){"gb","gh"}
 test-resources/src/micro/test63.js:11:1: [info] Abstract value: Undef|(PrefixStr[g]){"gb","gh"}
 Soundness testing succeeded for 11 checks (with 0 expected failures)

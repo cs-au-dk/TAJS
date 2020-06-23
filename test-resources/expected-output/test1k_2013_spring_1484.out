@@ -18,7 +18,7 @@ test-resources/src/1k2013spring/1484.js:66:3: [maybe] TypeError, accessing prope
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1484.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1484.js:11:2, test-resources/src/1k2013spring/1484.js:17:2, test-resources/src/1k2013spring/1484.js:22:2, test-resources/src/1k2013spring/1484.js:29:14, test-resources/src/1k2013spring/1484.js:29:22, test-resources/src/1k2013spring/1484.js:33:14, test-resources/src/1k2013spring/1484.js:33:22, test-resources/src/1k2013spring/1484.js:38:6, test-resources/src/1k2013spring/1484.js:40:4, test-resources/src/1k2013spring/1484.js:40:18, test-resources/src/1k2013spring/1484.js:42:3, test-resources/src/1k2013spring/1484.js:46:35, test-resources/src/1k2013spring/1484.js:47:14, test-resources/src/1k2013spring/1484.js:59:7, test-resources/src/1k2013spring/1484.js:66:3, test-resources/src/1k2013spring/shim.js:9:5]
 test-resources/src/1k2013spring/1484.js:26:3: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1484.js:27:6: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1484.js:27:6: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1484.js:27:11: [maybe] The variable q has values with different types
 test-resources/src/1k2013spring/1484.js:29:14: [maybe] Converting boolean to string
 test-resources/src/1k2013spring/1484.js:29:14: [maybe] Reading absent property (computed name)
@@ -27,7 +27,7 @@ test-resources/src/1k2013spring/1484.js:29:22: [maybe] Reading absent property (
 test-resources/src/1k2013spring/1484.js:33:22: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1484.js:38:6: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1484.js:40:18: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1484.js:46:14: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1484.js:46:14: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1484.js:46:35: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1484.js:47:3: [maybe] Converting undefined to string
 test-resources/src/1k2013spring/1484.js:47:14: [maybe] Reading absent property (computed name)

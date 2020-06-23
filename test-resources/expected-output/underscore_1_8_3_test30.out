@@ -386,7 +386,7 @@ benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:500:27: [maybe] Rea
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:990:30: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/libraries/underscore-1.8.3.js:1220:14: [maybe] Converting primitive string to object
-benchmarks/tajs/src/underscore/test-suite/chaining/test30.html:19:36: [maybe] Converting object to string
+benchmarks/tajs/src/underscore/test-suite/chaining/test30.html:19:36: [maybe] Converting object to primitive
 benchmarks/tajs/src/underscore/test-suite/chaining/test30.html:19:36: [maybe] Converting primitive string to object
 benchmarks/tajs/src/underscore/test-suite/chaining/test30.html:22:19: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/underscore/test-suite/chaining/test30.html:23:9: [maybe] Reading absent property (computed name)

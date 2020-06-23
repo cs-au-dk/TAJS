@@ -728,7 +728,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:293:38: [maybe] The variabl
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:295:11: [maybe] The variable value has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:295:19: [maybe] The variable other has values with different types
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:714:7: [maybe] Converting primitive string to object
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:909:61: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:909:61: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1942:34: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1970:19: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2057:19: [maybe] Reading absent property (computed name)

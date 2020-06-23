@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -475,6 +475,8 @@ public class InitialStateBuilder implements IInitialStateBuilder<State, Context,
         pv.writePropertyWithAttributes(lNumber, "EPSILON", Value.makeAnyNumOther().setAttributes(true, true, true));
         pv.writePropertyWithAttributes(lNumber, "POSITIVE_INFINITY", Value.makeNum(Double.POSITIVE_INFINITY).setAttributes(true, true, true));
         pv.writePropertyWithAttributes(lNumber, "NEGATIVE_INFINITY", Value.makeNum(Double.NEGATIVE_INFINITY).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(lNumber, "MAX_SAFE_INTEGER", Value.makeNum(Math.pow(2, 53) - 1).setAttributes(true, true, true));
+        pv.writePropertyWithAttributes(lNumber, "MIN_SAFE_INTEGER", Value.makeNum(-(Math.pow(2, 53) - 1)).setAttributes(true, true, true));
         createPrimitiveFunction(lNumber, lFunProto, ECMAScriptObjects.NUMBER_ISFINITE, "isFinite", 1, c);
 
         // 15.7.4 properties of the Number prototype object

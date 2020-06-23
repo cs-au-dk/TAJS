@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -152,8 +152,8 @@ public class TAJSEnvironmentConfig {
         return Paths.get(getRequiredProperty("babel"));
     }
 
-    public Path getJSDelta() {
-        return Paths.get(getRequiredProperty("jsdelta"));
+    public Path getJava() {
+        return Paths.get(getRequiredProperty("java"));
     }
 
     private String getRequiredProperty(String name) {

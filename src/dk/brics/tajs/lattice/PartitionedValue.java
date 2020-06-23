@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -194,6 +194,8 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
      * If v2 is a PartitionedValue then v1 must also be a PartitionedValue.
      */
     private static void joinMutable(Value v1, Value v2) {
+        if (v1.locked)
+            throw new AnalysisException("Attempt to mutate locked object");
         if (v1 instanceof PartitionedValue) {
             if (v2 instanceof PartitionedValue) {
                 Set<AbstractNode> pns = newSet(((PartitionedValue)v1).partitions.keySet());
@@ -256,7 +258,10 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
                     return Value.makeNone();
                 }
             }
-            return ignorePartitions();
+            Value res = ignorePartitions();
+            if (mutable)
+                res = new Value(res);
+            return res;
         }
         Value res = partitionsForNode.get(q);
         if (res == null) {
@@ -267,7 +272,8 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
             } else {
                 res = Value.makeNone();
             }
-        }
+        } else if (mutable)
+            res = new Value(res);
         return res;
     }
 
@@ -326,7 +332,7 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
     private PartitionedValue applyFunction(Value v, BiFunction<Value, Value, Value> func) {
         if (v instanceof PartitionedValue) {
             // v is also a PartitionedValue, so for each partition in this value, look up the corresponding partition value in v
-            return make(func.apply(new Value(this), v), applyForEachPartition((e, n) -> func.apply(e.getValue(), ((PartitionedValue) v).getPartitionValue(n, e.getKey(), false))));
+            return make(func.apply(new Value(this), v), applyForEachPartition((e, n) -> func.apply(e.getValue(), ((PartitionedValue) v).getPartition(n, e.getKey()))));
         } else {
             return make(func.apply(new Value(this), v), applyForEachPartition((e, n) -> func.apply(e.getValue(), v)));
         }
@@ -338,6 +344,11 @@ public final class PartitionedValue extends Value implements Undef, Null, Bool, 
     @Override
     public PartitionedValue applyFunction(Function<Value, Value> func) {
         return make(func.apply(new Value(this)), applyForEachPartition((e, n) -> func.apply(e.getValue())));
+    }
+
+    @Override
+    public PartitionedValue applyFunctionThatCanCreateObjects(Function<Value, Value> func) {
+        return make(applyForEachPartition((e, n) -> func.apply(e.getValue())));
     }
 
     /**

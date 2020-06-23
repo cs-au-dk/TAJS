@@ -697,11 +697,11 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10725:32: [definite] Unreac
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10766:12: [definite] Unreachable function
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:8569:22: [maybe] Reading absent property length
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:714:7: [maybe] Converting primitive string to object
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:909:61: [maybe] Converting object to string
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1167:47: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:909:61: [maybe] Converting object to primitive
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1167:47: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1167:47: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1180:36: [maybe] Converting object to string
-benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1195:9: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1180:36: [maybe] Converting object to primitive
+benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1195:9: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1970:19: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2057:19: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2058:24: [maybe] Reading absent property (computed name)
@@ -711,7 +711,7 @@ benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10081:26: [maybe] Reading a
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10082:20: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:10539:14: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/lodash/test-suite/3.0.0/lodash_test_86.html: [maybe] Uncaught exception, constructed at [HOST(es6-collections.js):122:65]
-benchmarks/tajs/src/lodash/test-suite/3.0.0/lodash_test_86.html:6:16: [maybe] Converting object to string
+benchmarks/tajs/src/lodash/test-suite/3.0.0/lodash_test_86.html:6:16: [maybe] Converting object to primitive
 benchmarks/tajs/src/lodash/test-suite/3.0.0/lodash_test_86.html:6:16: [maybe] Converting primitive string to object
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:1971:22: [info] Reading from unknown property that may cause loss of precision
 benchmarks/tajs/src/lodash/libraries/lodash-3.0.0.js:2058:24: [info] Reading from unknown property that may cause loss of precision

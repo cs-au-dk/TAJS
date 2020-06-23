@@ -6,6 +6,7 @@ test-resources/src/1k2012love/1041.js:13:10: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1041.js:14:11: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1041.js:15:11: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1041.js:16:11: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1041.js:17:18: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1041.js:18:11: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1041.js:23:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1041.js:26:3: [maybe] Conversion to number yields NaN

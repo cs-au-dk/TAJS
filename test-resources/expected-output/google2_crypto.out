@@ -235,23 +235,23 @@ test-resources/src/google2/crypto.js:107:13: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:107:13: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:109:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:109:31: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:158:6: [maybe] Converting object to string
+test-resources/src/google2/crypto.js:158:6: [maybe] Converting object to primitive
 test-resources/src/google2/crypto.js:158:6: [maybe] Converting primitive string to object
-test-resources/src/google2/crypto.js:160:6: [maybe] Converting object to string
+test-resources/src/google2/crypto.js:160:6: [maybe] Converting object to primitive
 test-resources/src/google2/crypto.js:160:6: [maybe] Converting primitive string to object
-test-resources/src/google2/crypto.js:162:6: [maybe] Converting object to string
+test-resources/src/google2/crypto.js:162:6: [maybe] Converting object to primitive
 test-resources/src/google2/crypto.js:162:6: [maybe] Converting primitive string to object
-test-resources/src/google2/crypto.js:165:31: [maybe] Converting object to string
+test-resources/src/google2/crypto.js:165:31: [maybe] Converting object to primitive
 test-resources/src/google2/crypto.js:165:31: [maybe] Converting primitive string to object
 test-resources/src/google2/crypto.js:167:11: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:167:17: [maybe] Converting object to string
+test-resources/src/google2/crypto.js:167:17: [maybe] Converting object to primitive
 test-resources/src/google2/crypto.js:167:17: [maybe] Converting primitive string to object
 test-resources/src/google2/crypto.js:176:15: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:176:51: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:207:11: [maybe] Converting primitive string to object
 test-resources/src/google2/crypto.js:209:20: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:209:20: [maybe] Reading absent property (computed name)
-test-resources/src/google2/crypto.js:211:10: [maybe] Converting object to string
+test-resources/src/google2/crypto.js:211:10: [maybe] Converting object to primitive
 test-resources/src/google2/crypto.js:211:10: [maybe] Converting primitive string to object
 test-resources/src/google2/crypto.js:218:7: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:218:7: [maybe] Reading absent property (computed name)
@@ -262,9 +262,11 @@ test-resources/src/google2/crypto.js:226:17: [maybe] Reading absent property (co
 test-resources/src/google2/crypto.js:228:16: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:228:16: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:237:11: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:238:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:238:23: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:238:34: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:238:50: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:244:6: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:253:18: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:254:6: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:255:26: [maybe] Conversion to number yields NaN
@@ -275,6 +277,7 @@ test-resources/src/google2/crypto.js:259:14: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:259:14: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:262:14: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:262:14: [maybe] Reading absent property (computed name)
+test-resources/src/google2/crypto.js:276:28: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:283:11: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:286:7: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:288:9: [maybe] Conversion to number yields NaN
@@ -293,6 +296,7 @@ test-resources/src/google2/crypto.js:315:42: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:315:49: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:316:11: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:317:9: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:325:18: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:325:30: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:325:43: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:325:50: [maybe] Reading absent property (computed name)
@@ -304,8 +308,10 @@ test-resources/src/google2/crypto.js:339:24: [maybe] Reading absent property (co
 test-resources/src/google2/crypto.js:340:10: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:340:10: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:344:9: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:355:6: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:359:16: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:359:16: [maybe] Reading absent property (computed name)
+test-resources/src/google2/crypto.js:360:21: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:361:5: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:361:5: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:361:25: [maybe] Conversion to number yields NaN
@@ -321,16 +327,20 @@ test-resources/src/google2/crypto.js:374:25: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:376:10: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:376:10: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:376:24: [maybe] Reading absent property (computed name)
+test-resources/src/google2/crypto.js:380:6: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:381:5: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:382:11: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:383:7: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:383:12: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:387:5: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:390:5: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:391:11: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:392:7: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:392:12: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:396:5: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:414:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:415:9: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:416:14: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:416:36: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:416:52: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:428:17: [maybe] Conversion to number yields NaN
@@ -346,20 +356,25 @@ test-resources/src/google2/crypto.js:433:7: [maybe] Conversion to number yields 
 test-resources/src/google2/crypto.js:433:7: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:433:15: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:434:15: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:437:6: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:437:15: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:437:15: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:437:23: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:437:40: [maybe] Reading absent property (computed name)
+test-resources/src/google2/crypto.js:446:6: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:448:6: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:456:25: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:456:34: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:462:12: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:462:20: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:464:12: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:464:28: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:464:34: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:464:34: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:464:42: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:466:20: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:471:13: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:476:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:476:27: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:479:15: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:479:23: [maybe] Conversion to number yields NaN
@@ -369,7 +384,11 @@ test-resources/src/google2/crypto.js:479:65: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:479:65: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:480:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:480:9: [maybe] Reading absent property (computed name)
+test-resources/src/google2/crypto.js:483:13: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:483:13: [maybe] Reading absent property (computed name)
+test-resources/src/google2/crypto.js:493:6: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:500:6: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:507:6: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:534:11: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:535:7: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:536:11: [maybe] Conversion to number yields NaN
@@ -377,6 +396,8 @@ test-resources/src/google2/crypto.js:537:14: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:538:14: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:539:16: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:542:13: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:562:6: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:577:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:578:13: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:581:13: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:581:13: [maybe] Reading absent property (computed name)
@@ -384,6 +405,7 @@ test-resources/src/google2/crypto.js:582:41: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:582:41: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:585:5: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:585:5: [maybe] Reading absent property (computed name)
+test-resources/src/google2/crypto.js:587:11: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:587:11: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:587:34: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:587:34: [maybe] Reading absent property (computed name)
@@ -405,20 +427,26 @@ test-resources/src/google2/crypto.js:931:25: [maybe] Conversion to number yields
 test-resources/src/google2/crypto.js:933:10: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:933:10: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:933:24: [maybe] Reading absent property (computed name)
+test-resources/src/google2/crypto.js:937:6: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:938:5: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:939:11: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:940:7: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:940:12: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:944:5: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:947:5: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:948:11: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:949:7: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:949:12: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:953:5: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:995:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:995:33: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:996:3: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:996:3: [maybe] Reading absent property (computed name)
+test-resources/src/google2/crypto.js:997:9: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:997:9: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:998:5: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:998:5: [maybe] Reading absent property (computed name)
+test-resources/src/google2/crypto.js:999:8: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:999:34: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1000:5: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1000:7: [maybe] Reading absent property (computed name)
@@ -429,9 +457,13 @@ test-resources/src/google2/crypto.js:1029:11: [maybe] Conversion to number yield
 test-resources/src/google2/crypto.js:1029:50: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1039:17: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1042:20: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:1042:33: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1043:13: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1043:39: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1043:56: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:1059:6: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:1059:17: [maybe] Conversion to number yields NaN
+test-resources/src/google2/crypto.js:1069:6: [maybe] Conversion to number yields NaN
 test-resources/src/google2/crypto.js:1114:18: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1114:25: [maybe] Reading absent property (computed name)
 test-resources/src/google2/crypto.js:1120:13: [maybe] Reading absent property (computed name)
@@ -468,7 +500,7 @@ test-resources/src/google2/crypto.js:1395:3: [maybe] Reading absent property (co
 test-resources/src/google2/crypto.js:1448:25: [maybe] The variable str has values with different types
 test-resources/src/google2/crypto.js:1470:10: [maybe] Converting primitive string to object
 test-resources/src/google2/crypto.js:1475:11: [maybe] Converting primitive string to object
-test-resources/src/google2/crypto.js:1476:36: [maybe] Converting object to string
+test-resources/src/google2/crypto.js:1476:36: [maybe] Converting object to primitive
 test-resources/src/google2/crypto.js:1476:36: [maybe] Converting primitive string to object
 test-resources/src/google2/crypto.js:1504:32: [maybe] Converting primitive string to object
 test-resources/src/google2/crypto.js:1504:48: [maybe] Converting primitive string to object

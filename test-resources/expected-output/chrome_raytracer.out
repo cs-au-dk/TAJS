@@ -543,6 +543,7 @@ test-resources/src/chromeexperiments/raytracer.html:153:29: [maybe] Conversion t
 test-resources/src/chromeexperiments/raytracer.html:153:50: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:154:4: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:155:4: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:170:39: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:172:8: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:172:22: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:172:36: [maybe] Conversion to number yields NaN
@@ -571,6 +572,7 @@ test-resources/src/chromeexperiments/raytracer.html:214:9: [maybe] Conversion to
 test-resources/src/chromeexperiments/raytracer.html:214:15: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:215:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:215:15: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:223:39: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:225:8: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:225:20: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:225:32: [maybe] Conversion to number yields NaN
@@ -598,6 +600,7 @@ test-resources/src/chromeexperiments/raytracer.html:306:15: [maybe] Conversion t
 test-resources/src/chromeexperiments/raytracer.html:306:24: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:307:23: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:310:14: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:323:16: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:325:10: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:325:34: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:325:58: [maybe] Conversion to number yields NaN
@@ -620,6 +623,7 @@ test-resources/src/chromeexperiments/raytracer.html:367:32: [maybe] Conversion t
 test-resources/src/chromeexperiments/raytracer.html:368:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:368:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:368:32: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:374:16: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:375:10: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:375:32: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:375:54: [maybe] Conversion to number yields NaN
@@ -670,6 +674,7 @@ test-resources/src/chromeexperiments/raytracer.html:550:36: [maybe] Conversion t
 test-resources/src/chromeexperiments/raytracer.html:552:10: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:553:10: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:554:10: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:555:8: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:561:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:562:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:563:9: [maybe] Conversion to number yields NaN
@@ -683,6 +688,7 @@ test-resources/src/chromeexperiments/raytracer.html:573:85: [maybe] Conversion t
 test-resources/src/chromeexperiments/raytracer.html:576:8: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:577:8: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:578:8: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:579:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:588:11: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:594:14: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:595:13: [maybe] Conversion to number yields NaN
@@ -698,25 +704,20 @@ test-resources/src/chromeexperiments/raytracer.html:608:35: [maybe] Conversion t
 test-resources/src/chromeexperiments/raytracer.html:608:49: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:614:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:614:10: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:638:8: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:638:8: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:638:9: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:638:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:638:48: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:639:8: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:639:8: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:639:9: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:639:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:639:48: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:640:7: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:640:7: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:640:7: [maybe] The variable fu has values with different types
-test-resources/src/chromeexperiments/raytracer.html:640:13: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:640:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:640:13: [maybe] The variable fu has values with different types
-test-resources/src/chromeexperiments/raytracer.html:640:24: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:640:24: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:640:24: [maybe] The variable fv has values with different types
-test-resources/src/chromeexperiments/raytracer.html:640:30: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:640:30: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:640:30: [maybe] The variable fv has values with different types
-test-resources/src/chromeexperiments/raytracer.html:642:21: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:642:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:643:5: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:643:5: [maybe] Reading absent property (computed name)
@@ -724,9 +725,7 @@ test-resources/src/chromeexperiments/raytracer.html:643:15: [maybe] Conversion t
 test-resources/src/chromeexperiments/raytracer.html:643:15: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:643:28: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:643:28: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/raytracer.html:645:5: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:645:5: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:645:25: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:645:25: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:646:6: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:646:6: [maybe] Reading absent property (computed name)
@@ -734,9 +733,7 @@ test-resources/src/chromeexperiments/raytracer.html:646:17: [maybe] Conversion t
 test-resources/src/chromeexperiments/raytracer.html:646:17: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:646:30: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:646:30: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/raytracer.html:648:5: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:648:5: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:648:25: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:648:25: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:649:6: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:649:6: [maybe] Reading absent property (computed name)
@@ -744,9 +741,7 @@ test-resources/src/chromeexperiments/raytracer.html:649:17: [maybe] Conversion t
 test-resources/src/chromeexperiments/raytracer.html:649:17: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:649:30: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:649:30: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/raytracer.html:651:5: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:651:5: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:651:25: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:651:25: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:652:6: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:652:6: [maybe] Reading absent property (computed name)
@@ -757,32 +752,36 @@ test-resources/src/chromeexperiments/raytracer.html:652:30: [maybe] Reading abse
 test-resources/src/chromeexperiments/raytracer.html:654:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:655:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:656:13: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:678:8: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:678:8: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:679:8: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:679:8: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:680:8: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:680:8: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:681:17: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:681:31: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:682:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:682:12: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:682:22: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:682:22: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:682:34: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:682:34: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/raytracer.html:684:17: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:684:31: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:685:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:685:13: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:685:24: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:685:24: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:685:37: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:685:37: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/raytracer.html:686:11: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:686:11: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:687:17: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:687:31: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:688:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:688:13: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:688:24: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:688:24: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:688:37: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:688:37: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/raytracer.html:690:17: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:690:31: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:691:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:691:13: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:691:24: [maybe] Conversion to number yields NaN
@@ -802,11 +801,9 @@ test-resources/src/chromeexperiments/raytracer.html:769:5: [maybe] Converting un
 test-resources/src/chromeexperiments/raytracer.html:769:34: [maybe] The variable w has values with different types
 test-resources/src/chromeexperiments/raytracer.html:770:5: [maybe] Converting undefined to string
 test-resources/src/chromeexperiments/raytracer.html:770:35: [maybe] The variable h has values with different types
-test-resources/src/chromeexperiments/raytracer.html:776:23: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:776:23: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:776:46: [maybe] The variable w has values with different types
 test-resources/src/chromeexperiments/raytracer.html:776:48: [maybe] The variable h has values with different types
-test-resources/src/chromeexperiments/raytracer.html:777:33: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:777:33: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:777:33: [maybe] The variable w has values with different types
 test-resources/src/chromeexperiments/raytracer.html:777:35: [maybe] The variable h has values with different types
@@ -816,16 +813,13 @@ test-resources/src/chromeexperiments/raytracer.html:778:34: [maybe] Conversion t
 test-resources/src/chromeexperiments/raytracer.html:778:34: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:778:55: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:778:55: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/raytracer.html:782:21: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:782:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:782:21: [maybe] The variable w has values with different types
 test-resources/src/chromeexperiments/raytracer.html:782:23: [maybe] The variable h has values with different types
 test-resources/src/chromeexperiments/raytracer.html:784:11: [maybe] The variable w has values with different types
 test-resources/src/chromeexperiments/raytracer.html:784:22: [maybe] The variable h has values with different types
-test-resources/src/chromeexperiments/raytracer.html:785:12: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:785:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:785:12: [maybe] The variable w has values with different types
-test-resources/src/chromeexperiments/raytracer.html:785:27: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:785:27: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:785:27: [maybe] The variable h has values with different types
 test-resources/src/chromeexperiments/raytracer.html:788:10: [maybe] Converting undefined to string
@@ -858,29 +852,25 @@ test-resources/src/chromeexperiments/raytracer.html:938:41: [maybe] Converting u
 test-resources/src/chromeexperiments/raytracer.html:939:41: [maybe] Converting undefined to string
 test-resources/src/chromeexperiments/raytracer.html:945:7: [maybe] The variable timer has values with different types
 test-resources/src/chromeexperiments/raytracer.html:958:9: [maybe] The variable ctx has values with different types
-test-resources/src/chromeexperiments/raytracer.html:965:8: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:965:8: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:965:8: [maybe] The variable wid has values with different types
-test-resources/src/chromeexperiments/raytracer.html:966:8: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:966:8: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:966:8: [maybe] The variable hei has values with different types
-test-resources/src/chromeexperiments/raytracer.html:969:8: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:969:8: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:969:13: [maybe] The variable hei has values with different types
 test-resources/src/chromeexperiments/raytracer.html:969:17: [maybe] The variable wid has values with different types
-test-resources/src/chromeexperiments/raytracer.html:971:9: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:971:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:971:12: [maybe] The variable wid has values with different types
-test-resources/src/chromeexperiments/raytracer.html:972:9: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:972:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:972:12: [maybe] The variable hei has values with different types
-test-resources/src/chromeexperiments/raytracer.html:978:72: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:978:72: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:978:84: [maybe] The variable hei has values with different types
 test-resources/src/chromeexperiments/raytracer.html:981:4: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/raytracer.html:981:4: [maybe] The variable ctx has values with different types
 test-resources/src/chromeexperiments/raytracer.html:981:21: [maybe] The variable imgdata has values with different types
+test-resources/src/chromeexperiments/raytracer.html:987:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:987:19: [maybe] The variable hei has values with different types
+test-resources/src/chromeexperiments/raytracer.html:988:15: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:988:17: [maybe] The variable wid has values with different types
 test-resources/src/chromeexperiments/raytracer.html:989:6: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/raytracer.html:989:6: [maybe] The variable ctx has values with different types
@@ -891,6 +881,7 @@ test-resources/src/chromeexperiments/raytracer.html:989:49: [maybe] Reading abse
 test-resources/src/chromeexperiments/raytracer.html:990:6: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/raytracer.html:990:6: [maybe] The variable ctx has values with different types
 test-resources/src/chromeexperiments/raytracer.html:1004:27: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/raytracer.html:1007:7: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1009:4: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:1009:23: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1010:12: [maybe] Conversion to number yields NaN
@@ -903,10 +894,12 @@ test-resources/src/chromeexperiments/raytracer.html:1027:11: [maybe] Conversion 
 test-resources/src/chromeexperiments/raytracer.html:1027:19: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1027:27: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1029:10: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/raytracer.html:1030:7: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1030:18: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:1033:20: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:1043:11: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:1044:5: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/raytracer.html:1047:7: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1052:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1052:9: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:1053:9: [maybe] Conversion to number yields NaN
@@ -940,12 +933,15 @@ test-resources/src/chromeexperiments/raytracer.html:1079:10: [maybe] Conversion 
 test-resources/src/chromeexperiments/raytracer.html:1079:11: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1079:23: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:1091:33: [maybe] Reading absent property (computed name)
+test-resources/src/chromeexperiments/raytracer.html:1092:7: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1093:8: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:1093:11: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1093:30: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1094:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1094:22: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1094:35: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:1097:7: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:1101:8: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1101:18: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:1101:36: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:1101:53: [maybe] Reading absent property (computed name)
@@ -953,6 +949,7 @@ test-resources/src/chromeexperiments/raytracer.html:1102:11: [maybe] Conversion 
 test-resources/src/chromeexperiments/raytracer.html:1103:11: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1104:11: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1109:4: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:1109:11: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1109:21: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:1109:39: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/raytracer.html:1109:59: [maybe] Reading absent property (computed name)
@@ -968,31 +965,32 @@ test-resources/src/chromeexperiments/raytracer.html:1116:38: [maybe] Conversion 
 test-resources/src/chromeexperiments/raytracer.html:1117:14: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1117:26: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1117:38: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:1121:8: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1159:16: [maybe] The variable imgdata has values with different types
-test-resources/src/chromeexperiments/raytracer.html:1160:4: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1160:4: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1160:4: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/raytracer.html:1160:4: [maybe] The variable ctx has values with different types
 test-resources/src/chromeexperiments/raytracer.html:1160:22: [maybe] The variable wid has values with different types
 test-resources/src/chromeexperiments/raytracer.html:1160:26: [maybe] The variable hei has values with different types
-test-resources/src/chromeexperiments/raytracer.html:1161:14: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1161:14: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1161:14: [maybe] Converting primitive boolean to object
 test-resources/src/chromeexperiments/raytracer.html:1161:14: [maybe] The variable ctx has values with different types
 test-resources/src/chromeexperiments/raytracer.html:1161:35: [maybe] The variable wid has values with different types
 test-resources/src/chromeexperiments/raytracer.html:1161:39: [maybe] The variable hei has values with different types
-test-resources/src/chromeexperiments/raytracer.html:1177:12: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1177:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1177:20: [maybe] The variable wid has values with different types
 test-resources/src/chromeexperiments/raytracer.html:1177:29: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:1177:41: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1178:12: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:1178:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1179:20: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1180:20: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/raytracer.html:1196:12: [maybe] Conversion from string to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1196:12: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1196:20: [maybe] The variable wid has values with different types
 test-resources/src/chromeexperiments/raytracer.html:1196:29: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:1196:41: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1197:12: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:1197:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1199:16: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1199:40: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1203:17: [maybe] Conversion to number yields NaN
@@ -1001,6 +999,7 @@ test-resources/src/chromeexperiments/raytracer.html:1205:17: [maybe] Conversion 
 test-resources/src/chromeexperiments/raytracer.html:1205:41: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1207:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1207:41: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/raytracer.html:1222:7: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/raytracer.html:1222:15: [maybe] The variable hei has values with different types
 test-resources/src/chromeexperiments/raytracer.html:1225:8: [maybe] The variable updatetimer has values with different types
 test-resources/src/chromeexperiments/raytracer.html:1229:8: [maybe] The variable ctx has values with different types

@@ -52,34 +52,34 @@ test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
-test/1k2014dragons/1911.js:2:7: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1911.js:2:7: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1911.js:4:54: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1911.js:2:7: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:4:54: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1911.js:6:35: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1911.js:4:54: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1911.js:6:35: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:6:35: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:6:45: [maybe] The variable W has values with different types
-test/1k2014dragons/1911.js:6:49: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1911.js:6:49: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:6:54: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:6:54: [maybe] The variable W has values with different types
 test/1k2014dragons/1911.js:12:58: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1911.js:12:69: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1911.js:12:69: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:12:69: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1911.js:12:69: [maybe] Converting object to number
+test/1k2014dragons/1911.js:12:69: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1911.js:12:69: [maybe] Converting object to primitive
 test/1k2014dragons/1911.js:12:69: [maybe] Converting primitive number to object
 test/1k2014dragons/1911.js:12:69: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1911.js:12:121: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1911.js:13:7: [maybe] The variable e has values with different types
-test/1k2014dragons/1911.js:14:48: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1911.js:14:48: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1911.js:14:53: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1911.js:14:48: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1911.js:14:53: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:14:53: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:14:54: [maybe] The variable W has values with different types
-test/1k2014dragons/1911.js:14:62: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1911.js:14:62: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:14:62: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:14:63: [maybe] The variable W has values with different types
-test/1k2014dragons/1911.js:14:65: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1911.js:14:65: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:14:65: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:14:65: [maybe] The variable W has values with different types
 test/1k2014dragons/1911.js:14:69: [maybe] The variable W has values with different types
@@ -90,7 +90,7 @@ test/1k2014dragons/1911.js:15:52: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:16:12: [maybe] The variable q has values with different types
 test/1k2014dragons/1911.js:16:15: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:16:15: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1911.js:16:27: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1911.js:16:27: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:16:27: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:16:31: [maybe] The variable H has values with different types
 test/1k2014dragons/1911.js:16:39: [maybe] Conversion to number yields NaN
@@ -101,7 +101,7 @@ test/1k2014dragons/1911.js:16:61: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:16:63: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1911.js:16:93: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:16:93: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1911.js:16:105: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1911.js:16:105: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:16:105: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1911.js:16:109: [maybe] The variable H has values with different types
 test/1k2014dragons/1911.js:16:117: [maybe] Conversion to number yields NaN

@@ -55,9 +55,9 @@ test/1k2014dragons/1787.js:42:2: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1787.js:48:11: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1787.js:49:11: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1787.js:87:3: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1787.js:92:9: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1787.js:92:9: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1787.js:93:10: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1787.js:92:9: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1787.js:93:10: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1787.js:93:10: [maybe] Conversion to number yields NaN
 test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
 test/1k2014dragons/shims.js,test/1k2014dragons/1787.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1787.js:5:5, test/1k2014dragons/1787.js:7:7, test/1k2014dragons/1787.js:10:1, test/1k2014dragons/1787.js:87:3, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

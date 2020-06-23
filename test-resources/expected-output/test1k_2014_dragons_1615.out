@@ -39,17 +39,17 @@ test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
 test/1k2014dragons/1615.js:35:49: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1615.js:36:3: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1615.js:36:3: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1615.js:36:3: [maybe] Converting object to number
+test/1k2014dragons/1615.js:36:3: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1615.js:36:3: [maybe] Converting object to primitive
 test/1k2014dragons/1615.js:36:16: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1615.js:36:26: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1615.js:37:3: [maybe] Conversion from string to number yields NaN
 test/1k2014dragons/1615.js:37:3: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1615.js:37:3: [maybe] Converting object to number
+test/1k2014dragons/1615.js:37:3: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1615.js:37:3: [maybe] Converting object to primitive
 test/1k2014dragons/1615.js:37:16: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1615.js:37:26: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1615.js:64:6: [maybe] Converting primitive string to object
-test/1k2014dragons/1615.js:74:6: [maybe] Converting object to number
+test/1k2014dragons/1615.js:74:6: [maybe] Converting object to primitive
 test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
 test/1k2014dragons/shims.js,test/1k2014dragons/1615.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,12 @@ package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.flowgraph.Function;
 import dk.brics.tajs.util.Canonicalizer;
+import dk.brics.tajs.util.Collectors;
 import dk.brics.tajs.util.DeepImmutable;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static dk.brics.tajs.util.Collections.newSet;
 import static dk.brics.tajs.util.Collections.singleton;
@@ -96,7 +96,7 @@ public class FunctionPartitions implements DeepImmutable {
             outerFunctions.add(fun);
             fun = fun.getOuterFunction();
         }
-        Set<PartitionToken.FunctionPartitionToken> partitions = this.partitions.stream().filter(q -> outerFunctions.contains(q.getFunction())).collect(Collectors.toSet());
+        Set<PartitionToken.FunctionPartitionToken> partitions = this.partitions.stream().filter(q -> outerFunctions.contains(q.getNode().getBlock().getFunction())).collect(Collectors.toSet());
         if (partitions.isEmpty())
             return null;
         return FunctionPartitions.makeAndCanonicalize(partitions);

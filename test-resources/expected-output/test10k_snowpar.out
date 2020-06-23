@@ -73,44 +73,42 @@ test-resources/src/10k/snowpar.html:31:67: [maybe] The variable draw_graph has v
 test-resources/src/10k/snowpar.html:32:69: [maybe] The variable draw_olines has values with different types
 test-resources/src/10k/snowpar.html:54:15: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:58:18: [maybe] Conversion to number yields NaN
+test-resources/src/10k/snowpar.html:58:27: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:58:31: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:58:31: [maybe] Converting undefined to string
 test-resources/src/10k/snowpar.html:59:22: [maybe] Conversion to number yields NaN
+test-resources/src/10k/snowpar.html:59:31: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:59:35: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:59:35: [maybe] Converting undefined to string
 test-resources/src/10k/snowpar.html:107:5: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:110:5: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:117:19: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:118:19: [maybe] Conversion to number yields NaN
-test-resources/src/10k/snowpar.html:123:29: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/snowpar.html:123:29: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:123:29: [maybe] The variable max has values with different types
-test-resources/src/10k/snowpar.html:134:53: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/snowpar.html:134:53: [maybe] Conversion to number yields NaN
-test-resources/src/10k/snowpar.html:135:53: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/snowpar.html:135:53: [maybe] Conversion to number yields NaN
-test-resources/src/10k/snowpar.html:138:56: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/snowpar.html:138:56: [maybe] Conversion to number yields NaN
-test-resources/src/10k/snowpar.html:139:56: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/snowpar.html:139:56: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:144:15: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:148:18: [maybe] Conversion to number yields NaN
+test-resources/src/10k/snowpar.html:148:27: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:148:31: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:148:31: [maybe] Converting undefined to string
 test-resources/src/10k/snowpar.html:149:22: [maybe] Conversion to number yields NaN
+test-resources/src/10k/snowpar.html:149:31: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:149:35: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:149:35: [maybe] Converting undefined to string
 test-resources/src/10k/snowpar.html:176:16: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:177:16: [maybe] Conversion to number yields NaN
-test-resources/src/10k/snowpar.html:183:16: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/snowpar.html:183:16: [maybe] Conversion to number yields NaN
-test-resources/src/10k/snowpar.html:184:16: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/snowpar.html:184:16: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:205:22: [maybe] The variable draw_snow has values with different types
 test-resources/src/10k/snowpar.html:209:24: [maybe] The variable draw_points has values with different types
 test-resources/src/10k/snowpar.html:213:23: [maybe] The variable draw_rects has values with different types
 test-resources/src/10k/snowpar.html:217:23: [maybe] The variable draw_graph has values with different types
 test-resources/src/10k/snowpar.html:221:24: [maybe] The variable draw_olines has values with different types
+test-resources/src/10k/snowpar.html:236:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:237:30: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:237:40: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:238:28: [maybe] Reading absent property (computed name)
@@ -118,6 +116,7 @@ test-resources/src/10k/snowpar.html:238:38: [maybe] Reading absent property (com
 test-resources/src/10k/snowpar.html:238:48: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:238:59: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:239:61: [maybe] Conversion to number yields NaN
+test-resources/src/10k/snowpar.html:241:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:245:26: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:245:37: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:251:23: [maybe] Conversion to number yields NaN
@@ -126,31 +125,37 @@ test-resources/src/10k/snowpar.html:252:23: [maybe] Conversion to number yields 
 test-resources/src/10k/snowpar.html:252:31: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:259:9: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:259:9: [maybe] Reading absent property (computed name)
+test-resources/src/10k/snowpar.html:259:22: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:259:30: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:260:9: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:260:9: [maybe] Reading absent property (computed name)
+test-resources/src/10k/snowpar.html:260:22: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:260:30: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:263:9: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:263:9: [maybe] Reading absent property (computed name)
+test-resources/src/10k/snowpar.html:263:22: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:263:30: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:264:9: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:264:9: [maybe] Reading absent property (computed name)
+test-resources/src/10k/snowpar.html:264:22: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:264:30: [maybe] Reading absent property (computed name)
+test-resources/src/10k/snowpar.html:270:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:271:16: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:271:26: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:276:15: [maybe] Conversion to number yields NaN
-test-resources/src/10k/snowpar.html:279:30: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/snowpar.html:279:26: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:279:30: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:279:53: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:281:9: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:281:20: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:281:36: [maybe] Reading absent property (computed name)
-test-resources/src/10k/snowpar.html:283:34: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/snowpar.html:283:30: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:283:34: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:283:58: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:284:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:284:24: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:284:40: [maybe] Reading absent property (computed name)
+test-resources/src/10k/snowpar.html:294:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:295:18: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:295:28: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:295:38: [maybe] Reading absent property (computed name)
@@ -165,17 +170,18 @@ test-resources/src/10k/snowpar.html:300:35: [maybe] Reading absent property (com
 test-resources/src/10k/snowpar.html:301:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:301:24: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:301:34: [maybe] Reading absent property (computed name)
+test-resources/src/10k/snowpar.html:310:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:310:51: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:310:51: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:310:65: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:310:65: [maybe] Reading absent property (computed name)
+test-resources/src/10k/snowpar.html:314:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:314:53: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:314:53: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:314:76: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:314:76: [maybe] Reading absent property (computed name)
 test-resources/src/10k/snowpar.html:314:99: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:314:115: [maybe] Conversion to number yields NaN
-test-resources/src/10k/snowpar.html:318:5: [maybe] Conversion from string to number yields NaN
 test-resources/src/10k/snowpar.html:318:5: [maybe] Conversion to number yields NaN
 test-resources/src/10k/snowpar.html:321:9: [maybe] The variable draw_snow has values with different types
 test-resources/src/10k/snowpar.html:322:9: [maybe] The variable draw_graph has values with different types

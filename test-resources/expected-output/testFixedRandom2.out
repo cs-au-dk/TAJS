@@ -1,14 +1,14 @@
-out/temp-sources/TestMicro.testFixedRandom2.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.testFixedRandom2.js:2:24: [maybe] Converting object to number
-out/temp-sources/TestMicro.testFixedRandom2.js:4:24: [maybe] Converting primitive string to object
-out/temp-sources/TestMicro.testFixedRandom2.js:5:24: [maybe] Converting primitive string to object
-out/temp-sources/TestMicro.testFixedRandom2.js:1:1: [info] Abstract value: "foo1543012345799"
-out/temp-sources/TestMicro.testFixedRandom2.js:2:1: [info] Abstract value: "foo-1543012345876"
-out/temp-sources/TestMicro.testFixedRandom2.js:3:1: [info] Abstract value: "foo0.7315948597820918"
-out/temp-sources/TestMicro.testFixedRandom2.js:4:1: [info] Abstract value: "foo07314156962376819"
-out/temp-sources/TestMicro.testFixedRandom2.js:5:1: [info] Abstract value: "foo110007270262043007995"
-out/temp-sources/TestMicro.testFixedRandom2.js:1:25: [unsound] Assuming Date.now returns fixed value
-out/temp-sources/TestMicro.testFixedRandom2.js:2:26: [unsound] Assuming Date.now returns fixed value
-out/temp-sources/TestMicro.testFixedRandom2.js:3:24: [unsound] Assuming Math.random returns fixed value
-out/temp-sources/TestMicro.testFixedRandom2.js:4:25: [unsound] Assuming Math.random returns fixed value
-out/temp-sources/TestMicro.testFixedRandom2.js:5:36: [unsound] Assuming Math.random returns fixed value
+TestMicro.testFixedRandom2.js: [definite] Exceptional program exit is unreachable
+TestMicro.testFixedRandom2.js:2:24: [maybe] Converting object to primitive
+TestMicro.testFixedRandom2.js:4:24: [maybe] Converting primitive string to object
+TestMicro.testFixedRandom2.js:5:24: [maybe] Converting primitive string to object
+TestMicro.testFixedRandom2.js:1:1: [info] Abstract value: "foo1543012345799"
+TestMicro.testFixedRandom2.js:2:1: [info] Abstract value: "foo-1543012345876"
+TestMicro.testFixedRandom2.js:3:1: [info] Abstract value: "foo0.7315948597820918"
+TestMicro.testFixedRandom2.js:4:1: [info] Abstract value: "foo07314156962376819"
+TestMicro.testFixedRandom2.js:5:1: [info] Abstract value: "foo110007270262043007995"
+TestMicro.testFixedRandom2.js:1:25: [unsound] Assuming Date.now returns fixed value
+TestMicro.testFixedRandom2.js:2:26: [unsound] Assuming Date.now returns fixed value
+TestMicro.testFixedRandom2.js:3:24: [unsound] Assuming Math.random returns fixed value
+TestMicro.testFixedRandom2.js:4:25: [unsound] Assuming Math.random returns fixed value
+TestMicro.testFixedRandom2.js:5:36: [unsound] Assuming Math.random returns fixed value

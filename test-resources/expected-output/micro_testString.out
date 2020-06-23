@@ -3,26 +3,26 @@ test-resources/src/micro/testString.js: [definite] Exceptional program exit is u
 test-resources/src/micro/testString.js:4:9: [maybe] Converting boolean to string
 test-resources/src/micro/testString.js:10:16: [maybe] Converting primitive string to object
 test-resources/src/micro/testString.js:13:9: [maybe] Converting boolean to string
-test-resources/src/micro/testString.js:21:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:30:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:31:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:33:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:34:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:37:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:40:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:42:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:45:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:46:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:47:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:49:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:51:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:52:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:53:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:55:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:58:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:59:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:60:16: [maybe] Converting object to string
-test-resources/src/micro/testString.js:61:16: [maybe] Converting object to string
+test-resources/src/micro/testString.js:21:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:30:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:31:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:33:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:34:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:37:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:40:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:42:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:45:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:46:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:47:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:49:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:51:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:52:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:53:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:55:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:58:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:59:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:60:16: [maybe] Converting object to primitive
+test-resources/src/micro/testString.js:61:16: [maybe] Converting object to primitive
 test-resources/src/micro/testString.js:61:16: [maybe] Converting undefined to string
 test-resources/src/micro/testString.js:7:1: [info] Abstract value: ""
 test-resources/src/micro/testString.js:8:1: [info] Abstract value: "true"

@@ -47,6 +47,8 @@ test-resources/src/sunspider/3d-cube.js:24:12: [maybe] Reading absent property (
 test-resources/src/sunspider/3d-cube.js:25:12: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-cube.js:26:21: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-cube.js:27:21: [maybe] Conversion to number yields NaN
+test-resources/src/sunspider/3d-cube.js:37:7: [maybe] Conversion to number yields NaN
+test-resources/src/sunspider/3d-cube.js:39:7: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-cube.js:65:7: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-cube.js:66:7: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-cube.js:68:5: [maybe] Conversion to number yields NaN
@@ -109,11 +111,17 @@ test-resources/src/sunspider/3d-cube.js:122:48: [maybe] Reading absent property 
 test-resources/src/sunspider/3d-cube.js:122:65: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-cube.js:122:65: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-cube.js:195:48: [maybe] Reading absent property (computed name)
+test-resources/src/sunspider/3d-cube.js:196:7: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-cube.js:196:7: [maybe] Reading absent property (computed name)
+test-resources/src/sunspider/3d-cube.js:202:7: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-cube.js:202:7: [maybe] Reading absent property (computed name)
+test-resources/src/sunspider/3d-cube.js:208:7: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-cube.js:208:7: [maybe] Reading absent property (computed name)
+test-resources/src/sunspider/3d-cube.js:214:7: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-cube.js:214:7: [maybe] Reading absent property (computed name)
+test-resources/src/sunspider/3d-cube.js:220:7: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-cube.js:220:7: [maybe] Reading absent property (computed name)
+test-resources/src/sunspider/3d-cube.js:226:7: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/3d-cube.js:226:7: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-cube.js:239:10: [maybe] Converting primitive string to object
 test-resources/src/sunspider/3d-cube.js:240:25: [maybe] Conversion to number yields NaN
@@ -135,6 +143,6 @@ test-resources/src/sunspider/3d-cube.js:309:106: [maybe] Reading absent property
 test-resources/src/sunspider/3d-cube.js:309:108: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-cube.js:323:5: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/3d-cube.js:323:29: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/3d-cube.js:344:26: [maybe] Converting object to number
+test-resources/src/sunspider/3d-cube.js:344:26: [maybe] Converting object to primitive
 test-resources/src/sunspider/3d-cube.js:346:1: [info] Abstract value: Num
 Soundness testing succeeded for 3391 checks (with 0 expected failures)

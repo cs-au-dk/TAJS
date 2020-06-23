@@ -13,8 +13,6 @@ test-resources/src/1k2013spring/1417.js:69:18: [maybe] TypeError, accessing prop
 test-resources/src/1k2013spring/1417.js:70:13: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1417.js:72:27: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1417.js:73:32: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1417.js:73:59: [maybe] TypeError, accessing property of null/undefined
-test-resources/src/1k2013spring/1417.js:73:67: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1417.js:75:33: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1417.js:147:2: [maybe] ReferenceError, reading absent variable c
 test-resources/src/1k2013spring/1417.js:150:7: [maybe] ReferenceError, reading absent variable a
@@ -26,11 +24,10 @@ test-resources/src/1k2013spring/1417.js:73:32: [maybe] Reading absent property r
 test-resources/src/1k2013spring/1417.js:73:59: [maybe] Reading absent property parte
 test-resources/src/1k2013spring/1417.js:73:67: [maybe] Reading absent property mov
 test-resources/src/1k2013spring/1417.js:75:33: [maybe] Reading absent property hijos
-test-resources/src/1k2013spring/1417.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1417.js:40:14, test-resources/src/1k2013spring/1417.js:42:14, test-resources/src/1k2013spring/1417.js:44:14, test-resources/src/1k2013spring/1417.js:46:14, test-resources/src/1k2013spring/1417.js:48:14, test-resources/src/1k2013spring/1417.js:50:14, test-resources/src/1k2013spring/1417.js:52:14, test-resources/src/1k2013spring/1417.js:54:14, test-resources/src/1k2013spring/1417.js:69:18, test-resources/src/1k2013spring/1417.js:70:13, test-resources/src/1k2013spring/1417.js:72:27, test-resources/src/1k2013spring/1417.js:73:32, test-resources/src/1k2013spring/1417.js:73:59, test-resources/src/1k2013spring/1417.js:73:67, test-resources/src/1k2013spring/1417.js:75:33, test-resources/src/1k2013spring/1417.js:79:3, test-resources/src/1k2013spring/1417.js:147:2, test-resources/src/1k2013spring/1417.js:150:7, test-resources/src/1k2013spring/1417.js:150:10, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1417.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1417.js:40:14, test-resources/src/1k2013spring/1417.js:42:14, test-resources/src/1k2013spring/1417.js:44:14, test-resources/src/1k2013spring/1417.js:46:14, test-resources/src/1k2013spring/1417.js:48:14, test-resources/src/1k2013spring/1417.js:50:14, test-resources/src/1k2013spring/1417.js:52:14, test-resources/src/1k2013spring/1417.js:54:14, test-resources/src/1k2013spring/1417.js:69:18, test-resources/src/1k2013spring/1417.js:70:13, test-resources/src/1k2013spring/1417.js:72:27, test-resources/src/1k2013spring/1417.js:73:32, test-resources/src/1k2013spring/1417.js:75:33, test-resources/src/1k2013spring/1417.js:79:3, test-resources/src/1k2013spring/1417.js:147:2, test-resources/src/1k2013spring/1417.js:150:7, test-resources/src/1k2013spring/1417.js:150:10, test-resources/src/1k2013spring/shim.js:9:5]
 test-resources/src/1k2013spring/1417.js:27:4: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1417.js:27:4: [maybe] The variable num has values with different types
 test-resources/src/1k2013spring/1417.js:29:8: [maybe] The variable num has values with different types
-test-resources/src/1k2013spring/1417.js:37:12: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1417.js:37:12: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1417.js:70:13: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1417.js:72:10: [maybe] Conversion to number yields NaN

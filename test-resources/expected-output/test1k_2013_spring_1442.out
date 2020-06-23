@@ -68,9 +68,9 @@ test-resources/src/1k2013spring/1442.js:124:23: [maybe] Reading absent property 
 test-resources/src/1k2013spring/1442.js:128:40: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1442.js:128:40: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1442.js:128:45: [maybe] Reading absent property (computed name)
+test-resources/src/1k2013spring/1442.js:131:31: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1442.js:132:4: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1442.js:132:18: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1442.js:134:4: [maybe] Conversion from string to number yields NaN
 test-resources/src/1k2013spring/1442.js:134:4: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1442.js:137:3: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1442.js:137:12: [maybe] Reading absent property (computed name)

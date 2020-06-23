@@ -32,8 +32,6 @@ public class TestTypeScriptDeclarations {
 //        Options.get().enableBlendedAnalysis();
 //        Options.get().enableIgnoreUnreached();
 
-        Options.get().enablePropNamePartitioning();
-
         Options.get().enableNodeJS();
         Options.get().enableTypeFiltering();
     }

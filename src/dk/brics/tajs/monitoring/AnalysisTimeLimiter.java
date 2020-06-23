@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,8 +36,6 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
 
     private final int nodeTransferLimit;
 
-    private final boolean crash;
-
     private long maxNanoTime = -1;
 
     private int nodeTransfers = 0;
@@ -45,16 +43,14 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
     /**
      * @param secondsTimeLimit  the number of second the analysis is allowed to run, or -1 if no limit
      * @param nodeTransferLimit the number of node transfers the analysis is allowed to run, or -1 if no limit
-     * @param crashImmediately true if an exception should be thrown when the analysis exceed the time limit
      */
-    public AnalysisTimeLimiter(int secondsTimeLimit, int nodeTransferLimit, boolean crashImmediately) {
+    public AnalysisTimeLimiter(int secondsTimeLimit, int nodeTransferLimit) {
         this.secondsTimeLimit = secondsTimeLimit;
         this.nodeTransferLimit = nodeTransferLimit;
-        this.crash = crashImmediately;
     }
 
     public AnalysisTimeLimiter(int secondsTimeLimit) {
-        this(secondsTimeLimit, -1, false);
+        this(secondsTimeLimit, -1);
     }
 
     @Override
@@ -69,22 +65,12 @@ public class AnalysisTimeLimiter extends DefaultAnalysisMonitoring {
                 long allowed = secondsTimeLimit * nanoFactor;
                 long milliFactor = 1000;
                 long nanoMilliFactor = nanoFactor / milliFactor;
-                String msg = String.format("Analysis exceeded time limit. Used: %dms. Allowed: %dms.", used / nanoMilliFactor, allowed / nanoMilliFactor);
-                if (crash)
-                    throw new AnalysisLimitationException.AnalysisTimeException(msg);
-                else
-                    log.info(msg);
-                return false;
+                throw new AnalysisLimitationException.AnalysisTimeException(String.format("Analysis exceeded time limit %dms)", allowed / nanoMilliFactor));
             }
         }
         if (nodeTransferLimit != -1) {
             if (nodeTransfers > nodeTransferLimit) {
-                String msg = "Analysis exceeded node transfer limit " + nodeTransferLimit;
-                if (crash)
-                    throw new AnalysisLimitationException.AnalysisTimeException(msg);
-                else
-                    log.info(msg);
-                return false;
+                throw new AnalysisLimitationException.AnalysisTimeException("Analysis exceeded node transfer limit " + nodeTransferLimit);
             }
         }
         return true;

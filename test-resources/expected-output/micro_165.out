@@ -5,6 +5,5 @@ test-resources/src/micro/test165.js:5:22: [maybe] TypeError, accessing property 
 test-resources/src/micro/test165.js: [maybe] Uncaught exception, constructed at [test-resources/src/micro/test165.js:5:22]
 test-resources/src/micro/test165.js:10:8: [maybe] Reading absent property (computed name)
 test-resources/src/micro/test165.js:11:8: [maybe] Reading absent property (computed name)
-test-resources/src/micro/test165.js:7:5: [info] Abstract value: [@aaaBBB#fun2, @aaaAAA#fun1]
-test-resources/src/micro/test165.js:7:20: [info] Reading from unknown property that may cause loss of precision
+test-resources/src/micro/test165.js:7:5: [info] Abstract value: [@aaaBBB#fun2, @aaaAAA#fun1][partitions: [{PROP(node=42,prop=aaaAAA)=[@aaaAAA#fun1], PROP(node=42,prop=aaaBBB)=[@aaaBBB#fun2]}]]
 Soundness testing succeeded for 25 checks (with 0 expected failures)

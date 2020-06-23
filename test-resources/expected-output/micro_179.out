@@ -1,16 +1,11 @@
 test-resources/src/micro/test179.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/test179.js:3:1: [maybe] Converting primitive string to object
 test-resources/src/micro/test179.js:5:17: [maybe] Converting primitive string to object
+test-resources/src/micro/test179.js:5:17: [maybe] Reading absent property (computed name)
 test-resources/src/micro/test179.js:7:9: [maybe] Converting primitive string to object
-test-resources/src/micro/test179.js:4:2: [info] Abstract value: "0"
-test-resources/src/micro/test179.js:4:2: [info] Abstract value: "1"
-test-resources/src/micro/test179.js:4:2: [info] Abstract value: "2"
-test-resources/src/micro/test179.js:4:2: [info] Abstract value: "3"
-test-resources/src/micro/test179.js:4:2: [info] Abstract value: "4"
-test-resources/src/micro/test179.js:5:2: [info] Abstract value: "e"
-test-resources/src/micro/test179.js:5:2: [info] Abstract value: "h"
-test-resources/src/micro/test179.js:5:2: [info] Abstract value: "l"
-test-resources/src/micro/test179.js:5:2: [info] Abstract value: "o"
-test-resources/src/micro/test179.js:9:1: [info] Abstract object: {length:UInt,[[DefaultNumeric]]=UIntStr|absent,[[Prototype]]=[@Array.prototype[native]]}
-test-resources/src/micro/test179.js:10:1: [info] Abstract object: {length:UInt,[[DefaultNumeric]]=IdentStr|absent,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/test179.js:7:9: [maybe] Reading absent property (computed name)
+test-resources/src/micro/test179.js:4:2: [info] Abstract value: (UIntStr){"0","1","2","3","4"}
+test-resources/src/micro/test179.js:5:2: [info] Abstract value: Undef|(IdentStr){"e","h","l","o"}
+test-resources/src/micro/test179.js:9:1: [info] Abstract object: {length:UInt,[[DefaultNumeric]]=(UIntStr){"0","1","2","3","4"}|absent,[[Prototype]]=[@Array.prototype[native]]}
+test-resources/src/micro/test179.js:10:1: [info] Abstract object: {length:UInt,[[DefaultNumeric]]=Undef|(IdentStr){"e","h","l","o"}|absent[partitions: [{TYPE(node=42,type=String)=Undef|(IdentStr){"e","h","l","o"}|absent, TYPE(node=42,type=Undef)=Undef|(IdentStr){"e","h","l","o"}|absent}]],[[Prototype]]=[@Array.prototype[native]]}
 Soundness testing succeeded for 74 checks (with 0 expected failures)

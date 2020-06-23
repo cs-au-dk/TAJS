@@ -160,16 +160,16 @@ test/1k2014dragons/1971.js:149:26: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1971.js:150:7: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1971.js:194:5: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1971.js:236:4: [maybe] The variable t has values with different types
-test/1k2014dragons/1971.js:238:14: [maybe] Conversion from string to number yields NaN
-test/1k2014dragons/1971.js:238:14: [maybe] Converting object to number
+test/1k2014dragons/1971.js:238:14: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:238:14: [maybe] Converting object to primitive
 test/1k2014dragons/1971.js:238:18: [maybe] The variable t has values with different types
-test/1k2014dragons/1971.js:239:17: [maybe] Conversion from string to number yields NaN
-test/1k2014dragons/1971.js:239:17: [maybe] Converting object to number
+test/1k2014dragons/1971.js:239:17: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:239:17: [maybe] Converting object to primitive
 test/1k2014dragons/1971.js:239:18: [maybe] The variable t has values with different types
-test/1k2014dragons/1971.js:239:22: [maybe] Conversion from string to number yields NaN
-test/1k2014dragons/1971.js:239:22: [maybe] Conversion from string to number yields NaN
-test/1k2014dragons/1971.js:239:22: [maybe] Converting object to number
-test/1k2014dragons/1971.js:239:22: [maybe] Converting object to number
+test/1k2014dragons/1971.js:239:22: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:239:22: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1971.js:239:22: [maybe] Converting object to primitive
+test/1k2014dragons/1971.js:239:22: [maybe] Converting object to primitive
 test/1k2014dragons/1971.js:239:28: [maybe] The variable t has values with different types
 test/1k2014dragons/1971.js:239:32: [maybe] The variable t has values with different types
 test/1k2014dragons/1971.js:242:13: [maybe] Reading absent property (computed name)

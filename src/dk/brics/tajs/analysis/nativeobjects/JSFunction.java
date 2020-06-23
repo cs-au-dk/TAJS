@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -159,9 +159,7 @@ public class JSFunction {
 
                 // group the array-like arguments by their lengths. This will reduce the number of calls with an unknown number of arguments.
                 Map<Value, List<ObjectLabel>> lengths = argarray.getObjectLabels().stream().collect(Collectors.groupingBy(l -> getLengthAsArrayIndex(l, c)));
-                if (lengths.containsKey(Value.makeNone())) {
-                    return Value.makeNone(); // waiting for coercion to finish (of the length property)
-                }
+                lengths.remove(Value.makeNone()); // skip objects with none length
                 // special case: null and undefined count as an empty array
                 boolean maybeEmpty = argarray.isNullOrUndef();
                 if (maybeEmpty) {

@@ -1,20 +1,20 @@
 test-resources/src/v8tests/negate.js: [definite] Exceptional program exit is unreachable
-test-resources/src/v8tests/negate.js:32:14: [maybe] Converting object to number
+test-resources/src/v8tests/negate.js:32:14: [maybe] Converting object to primitive
 test-resources/src/v8tests/negate.js:32:14: [maybe] The variable a has values with different types
 test-resources/src/v8tests/negate.js:32:18: [maybe] The variable b has values with different types
-test-resources/src/v8tests/negate.js:33:23: [maybe] Converting object to number
+test-resources/src/v8tests/negate.js:33:23: [maybe] Converting object to primitive
 test-resources/src/v8tests/negate.js:33:23: [maybe] The variable a has values with different types
-test-resources/src/v8tests/negate.js:33:27: [maybe] Converting object to number
+test-resources/src/v8tests/negate.js:33:27: [maybe] Converting object to primitive
 test-resources/src/v8tests/negate.js:33:28: [maybe] The variable b has values with different types
-test-resources/src/v8tests/negate.js:34:23: [maybe] Converting object to number
+test-resources/src/v8tests/negate.js:34:23: [maybe] Converting object to primitive
 test-resources/src/v8tests/negate.js:34:24: [maybe] The variable a has values with different types
 test-resources/src/v8tests/negate.js:34:28: [maybe] The variable b has values with different types
-test-resources/src/v8tests/negate.js:35:22: [maybe] Converting object to number
+test-resources/src/v8tests/negate.js:35:22: [maybe] Converting object to primitive
 test-resources/src/v8tests/negate.js:35:23: [maybe] The variable a has values with different types
-test-resources/src/v8tests/negate.js:35:27: [maybe] Converting object to number
+test-resources/src/v8tests/negate.js:35:27: [maybe] Converting object to primitive
 test-resources/src/v8tests/negate.js:35:28: [maybe] The variable b has values with different types
-test-resources/src/v8tests/negate.js:55:12: [maybe] Converting object to number
-test-resources/src/v8tests/negate.js:57:21: [maybe] Converting object to number
-test-resources/src/v8tests/negate.js:59:20: [maybe] Converting object to number
-test-resources/src/v8tests/negate.js:59:25: [maybe] Converting object to number
+test-resources/src/v8tests/negate.js:55:12: [maybe] Converting object to primitive
+test-resources/src/v8tests/negate.js:57:21: [maybe] Converting object to primitive
+test-resources/src/v8tests/negate.js:59:20: [maybe] Converting object to primitive
+test-resources/src/v8tests/negate.js:59:25: [maybe] Converting object to primitive
 Soundness testing succeeded for 154 checks (with 0 expected failures)

@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -179,10 +179,22 @@ public class Partitioning {
         Set<String> pkeyPropertyStrings = pkeyProperties.stream().filter(pkey -> pkey instanceof PKey.StringPKey).map(pkey -> pkey.toValue().getStr()).collect(Collectors.toSet());
         Consumer<Property> addPartitionTokenForProperty = p -> partitions.add(PartitionToken.PropertyNamePartitionToken.make(partitionNode, p));
         if (propertyval.isMaybeAllKnownStr())
-            pkeyProperties.addAll(propertyval.getAllKnownStr().stream().map(StringPKey::make).collect(java.util.stream.Collectors.toSet()));
+            pkeyProperties.addAll(propertyval.getAllKnownStr().stream().map(StringPKey::make).collect(Collectors.toSet()));
         pkeyProperties.forEach(p -> addPartitionTokenForProperty.accept(Property.makeOrdinaryProperty(p))); // adds partition tokens for ordinary properties
         if (partitions.isEmpty()) {
             return null;
+        }
+        if (propertyval.isMaybeUndef()) {
+            addPartitionTokenForProperty.accept(Property.makeOrdinaryProperty(PKey.make(Value.makeStr("undefined"))));
+            pkeyPropertyStrings.add("undefined");
+        }
+        if (propertyval.isMaybeNull()) {
+            addPartitionTokenForProperty.accept(Property.makeOrdinaryProperty(PKey.make(Value.makeStr("null"))));
+            pkeyPropertyStrings.add("null");
+        }
+        if (propertyval.isMaybeNaN()) {
+            addPartitionTokenForProperty.accept(Property.makeOrdinaryProperty(PKey.make(Value.makeStr("NaN"))));
+            pkeyPropertyStrings.add("NaN");
         }
         Value other = propertystr.restrictToNotStrings(pkeyPropertyStrings); // values of propertystr that are not covered already
         if (other.isMaybeStrSomeNumeric())
@@ -320,7 +332,7 @@ public class Partitioning {
      * Returns true if the base value or property name value as well as the value to be written are partitioned values and their partitions have non-disjoint partitioning nodes.
      */
     static boolean usePartitionedWriteProperty(Value base, Value propName, Value valueToWrite) {
-        if (!Options.get().isPropNamePartitioning() || (!(base instanceof PartitionedValue) && !(propName instanceof PartitionedValue)) || !(valueToWrite instanceof PartitionedValue))
+        if (Options.get().isNoPropNamePartitioning() || (!(base instanceof PartitionedValue) && !(propName instanceof PartitionedValue)) || !(valueToWrite instanceof PartitionedValue))
             return false;
         return (propName instanceof PartitionedValue ? ((PartitionedValue) propName) : ((PartitionedValue) base)).getPartitionNodes().stream().anyMatch(pn -> ((PartitionedValue) valueToWrite).getPartitionNodes().contains(pn));
     }
@@ -343,9 +355,9 @@ public class Partitioning {
             }
             if (!partitionedTarget.isNone() && !partitionedValueToWrite.isNone())
                 if (propName instanceof PartitionedValue)
-                    pt.add(() -> pv.writeProperty(objlabels, partitionedTarget, partitionedValueToWrite, true, n.isDecl()));
+                    pt.add(() -> pv.writeProperty(objlabels, partitionedTarget, partitionedValueToWrite, false, n.isDecl()));
                 else
-                    pt.add(() -> pv.writeProperty(partitionedTarget.getObjectLabels(), propName, partitionedValueToWrite, true, n.isDecl()));
+                    pt.add(() -> pv.writeProperty(partitionedTarget.getObjectLabels(), propName, partitionedValueToWrite, false, n.isDecl()));
         }
         if (REPORT_USAGE) { // TODO: move to monitoring?
             if (!log.isDebugEnabled() && log.isInfoEnabled())
@@ -377,7 +389,7 @@ public class Partitioning {
      * use this partition.
      */
     static Value getInstantiatedFunctions(ObjectLabel fn, Function fun, DeclareFunctionNode n, Solver.SolverInterface c) {
-        if (Options.get().isFreeVariablePartitioning() && n.isExpression()) {
+        if (!Options.get().isNoFreeVariablePartitioning() && n.isExpression()) {
             FunctionPartitions inheritingFunctionPartitions = c.getState().getContext().getFunctionPartitions() == null ? null : c.getState().getContext().getFunctionPartitions().filterByFunction(fn);
             Set<String> freeVariableNames = c.getFlowGraph().getSyntacticInformation().getClosureVariableNamesTransitively(fun);
             // read partitioned values for the free variables
@@ -393,7 +405,7 @@ public class Partitioning {
                 java.util.function.Function<PartitionToken, PartitionToken.FunctionPartitionToken> transformToken = q -> {
                     if (q instanceof PartitionToken.FunctionPartitionToken)
                         return (PartitionToken.FunctionPartitionToken) q;
-                    PartitionToken.FunctionPartitionToken transformed = PartitionToken.FunctionPartitionToken.make(n, c.getState().getContext(), n.getBlock().getFunction(), q);
+                    PartitionToken.FunctionPartitionToken transformed = PartitionToken.FunctionPartitionToken.make(n, c.getState().getContext(), q);
                     partitionedValuesForVarNames.forEach((k, v) -> {
                         Value newPartitionValue = v.getPartition(q.getNode(), q);
                         if (v.getPartitionTokens(n).contains(transformed)) {
@@ -433,7 +445,7 @@ public class Partitioning {
                             .filter(p -> p.getSecond().getFunctionPartitions() == null && !(p.getSecond() instanceof PartitionedValue) && p.getSecond().getObjectLabels() != null && p.getSecond().getObjectLabels().stream().anyMatch(obj -> obj.getKind() == ObjectLabel.Kind.FUNCTION))
                             .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
             if (!unpartitionedFreeVariables.isEmpty()) {
-                PartitionToken.FunctionPartitionToken q = PartitionToken.FunctionPartitionToken.make(n, c.getState().getContext(), n.getBlock().getFunction(), null);
+                PartitionToken.FunctionPartitionToken q = PartitionToken.FunctionPartitionToken.makeAnyToken(n, c.getState().getContext());
                 unpartitionedFreeVariables.forEach((key, value) -> c.getAnalysis().getPropVarOperations().writePropertyWithAttributes(c.getState().getExecutionContext().getVariableObject(),
                         StringPKey.make(key),
                         PartitionedValue.make(n, mapOf(q, value))));
@@ -473,7 +485,7 @@ public class Partitioning {
      * Applies type partitioning for the given call node.
      */
     public static void applyTypePartitioning(CallNode n, Solver.SolverInterface c) {
-        if (Options.get().isTypePartitioningEnabled() && n.getNumberOfArgs() == 1 && !n.isConstructorCall()) {
+        if (!Options.get().isNoTypePartitioningEnabled() && n.getNumberOfArgs() == 1 && !n.isConstructorCall()) {
             // Apply type partitioning, when calling a function with one argument
             Value typePartitionedArg = typePartition(n, UnknownValueResolver.getRealValue(c.getState().readRegister(n.getArgRegister(0)), c.getState()), c.getState());
             if (typePartitionedArg instanceof PartitionedValue) {
@@ -511,7 +523,7 @@ public class Partitioning {
             typePartitions.put(PartitionToken.TypePartitionToken.make(n, PartitionToken.TypePartitionToken.Type.NULL), onlyNullPart);
 
         Value finalValue = value;
-        value.getObjectLabels().stream().collect(java.util.stream.Collectors.groupingBy(ObjectLabel::getKind)).values()
+        value.getObjectLabels().stream().collect(Collectors.groupingBy(ObjectLabel::getKind)).values()
                 .forEach(objLabels -> typePartitions.put(PartitionToken.TypePartitionToken.make(n, PartitionToken.TypePartitionToken.Type.getObjectType(objLabels.iterator().next().getKind())), finalValue.restrictToObject(objLabels)));
 
         return PartitionedValue.make(n, typePartitions);
@@ -574,7 +586,7 @@ public class Partitioning {
             PartitionedValue partitionRegVal = (PartitionedValue) regVal;
 
             Map<Boolean, List<PartitionToken>> isPartitionsDead = partitionRegVal.getPartitionTokens().entrySet().stream().flatMap(
-                    e -> e.getValue().stream()).collect(java.util.stream.Collectors.groupingBy(q ->
+                    e -> e.getValue().stream()).collect(Collectors.groupingBy(q ->
                     trueBranch ?
                             partitionRegVal.getPartition(q.getNode(), q).restrictToTruthy().isNone() :
                             partitionRegVal.getPartition(q.getNode(), q).restrictToFalsy().isNone()

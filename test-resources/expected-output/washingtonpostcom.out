@@ -1,0 +1,19 @@
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:23:17: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:44:16: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:52:24: [definite] The conditional expression is always true
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:59:2: [definite] The conditional expression is always false
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:9:5: [definite] Dead assignment, property AudioStory is never read
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:10:5: [definite] Dead assignment, property BlogStory is never read
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:11:5: [definite] Dead assignment, property front is never read
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:12:5: [definite] Dead assignment, property GraphicStory is never read
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:13:5: [definite] Dead assignment, property MediaGallery is never read
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:14:5: [definite] Dead assignment, property PanoStory is never read
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:15:5: [definite] Dead assignment, property UGCPhotoStory is never read
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:16:5: [definite] Dead assignment, property VideoStory is never read
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html: [definite] Exceptional program exit is unreachable
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:58:15: [definite] The variable new_fn is never used
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:60:26: [definite] Unreachable function
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:50:16: [maybe] Reading absent property check
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:52:17: [maybe] Converting undefined to string
+benchmarks/tajs/src/unevalizer/washingtonpost.com-slice/index.html:59:12: [maybe] Reading absent property (computed name)
+Soundness testing succeeded for 140 checks (with 0 expected failures)

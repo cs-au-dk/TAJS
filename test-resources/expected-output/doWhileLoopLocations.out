@@ -1,6 +1,6 @@
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js)
+    node 0: constant[undefined,v1] (TestFlowgraphBuilder.doWhileLoopLocations.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -23,35 +23,35 @@ fg2: <main> function()
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: constant["PRE",-] (out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js:1:1)
+    node 9: constant["PRE",-] (TestFlowgraphBuilder.doWhileLoopLocations.js:1:1)
     ->[block 8]
   block 8:
-    node 10: constant["IN",-] (out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js:3:4)
+    node 10: constant["IN",-] (TestFlowgraphBuilder.doWhileLoopLocations.js:3:4)
     ->[block 9] ~>[block 11]
   block 9:
-    node 11: constant["COND",v8] (out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js:4:10)
-    node 12: begin-loop[v8] (out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js:2:4)
+    node 11: constant["COND",v8] (TestFlowgraphBuilder.doWhileLoopLocations.js:4:10)
+    node 12: begin-loop[v8] (TestFlowgraphBuilder.doWhileLoopLocations.js:2:4)
     ->[block 10] ~>[block 11]
   block 10:
-    node 13: if[v8](true-block:8,false-block:12) (out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js:4:10)
+    node 13: if[v8](true-block:8,false-block:12) (TestFlowgraphBuilder.doWhileLoopLocations.js:4:10)
     ->[block 8,block 12] ~>[block 11]
   block 11:
-    node 14: end-loop[v8] (out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js:4:10)
+    node 14: end-loop[v8] (TestFlowgraphBuilder.doWhileLoopLocations.js:4:10)
     ->[block 15]
   block 12:
-    node 15: end-loop[v8] (out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js:4:10)
+    node 15: end-loop[v8] (TestFlowgraphBuilder.doWhileLoopLocations.js:4:10)
     ->[block 13]
   block 13:
-    node 16: constant["POST",-] (out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js:5:1)
+    node 16: constant["POST",-] (TestFlowgraphBuilder.doWhileLoopLocations.js:5:1)
     ->[block 14]
   block 14: [exit-ordinary]
-    node 17: return[v1] (out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js)
+    node 17: return[v1] (TestFlowgraphBuilder.doWhileLoopLocations.js)
     ->[]
   block 15: [exit-exceptional]
-    node 18: exceptional-return (out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js)
+    node 18: exceptional-return (TestFlowgraphBuilder.doWhileLoopLocations.js)
     ->[]
 
-out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js: [definite] Ordinary program exit is unreachable
-out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js:4:10: [definite] The conditional expression is always true
-out/temp-sources/TestFlowgraphBuilder.doWhileLoopLocations.js: [definite] Exceptional program exit is unreachable
+TestFlowgraphBuilder.doWhileLoopLocations.js: [definite] Ordinary program exit is unreachable
+TestFlowgraphBuilder.doWhileLoopLocations.js:4:10: [definite] The conditional expression is always true
+TestFlowgraphBuilder.doWhileLoopLocations.js: [definite] Exceptional program exit is unreachable
 Soundness testing succeeded for 0 checks (with 0 expected failures)

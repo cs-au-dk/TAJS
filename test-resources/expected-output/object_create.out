@@ -1,7 +1,7 @@
-out/temp-sources/TestMicro.object_create.js:2:11: [definite] Too few parameters to native function
-out/temp-sources/TestMicro.object_create.js:2:6: [definite] The variable o1 is never used
-out/temp-sources/TestMicro.object_create.js:2:6: [definite] Unreachable code
-out/temp-sources/TestMicro.object_create.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestMicro.object_create.js:2:11]
-out/temp-sources/TestMicro.object_create.js:7:2: [info] Abstract object: {[[Prototype]]=Null}
-out/temp-sources/TestMicro.object_create.js:11:2: [info] Abstract object: {[[Prototype]]=[@Array[native]]}
+TestMicro.object_create.js:2:11: [definite] Too few parameters to native function
+TestMicro.object_create.js:2:6: [definite] The variable o1 is never used
+TestMicro.object_create.js:2:6: [definite] Unreachable code
+TestMicro.object_create.js: [maybe] Uncaught exception, constructed at [TestMicro.object_create.js:2:11]
+TestMicro.object_create.js:7:2: [info] Abstract object: {[[Prototype]]=Null}
+TestMicro.object_create.js:11:2: [info] Abstract object: {[[Prototype]]=[@Array[native]]}
 Soundness testing succeeded for 23 checks (with 0 expected failures)

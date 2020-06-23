@@ -9,6 +9,6 @@ test-resources/src/sunspider/math-spectral-norm.js:47:17: [maybe] Reading absent
 test-resources/src/sunspider/math-spectral-norm.js:48:12: [maybe] Conversion to number yields NaN
 test-resources/src/sunspider/math-spectral-norm.js:48:12: [maybe] Reading absent property (computed name)
 test-resources/src/sunspider/math-spectral-norm.js:48:17: [maybe] Reading absent property (computed name)
-test-resources/src/sunspider/math-spectral-norm.js:58:26: [maybe] Converting object to number
+test-resources/src/sunspider/math-spectral-norm.js:58:26: [maybe] Converting object to primitive
 test-resources/src/sunspider/math-spectral-norm.js:60:1: [info] Abstract value: Num
 Soundness testing succeeded for 1888 checks (with 0 expected failures)

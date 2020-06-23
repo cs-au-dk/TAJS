@@ -1,6 +1,6 @@
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js)
+    node 0: constant[undefined,v1] (TestFlowgraphBuilder.postfixCoercionResult.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -23,22 +23,22 @@ fg2: <main> function()
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: read-variable['a',v8,-] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
-    node 10: +[v8,v8] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
-    node 11: constant[1.0,v9] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
-    node 12: +[v8,v9,v10] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
-    node 13: write-variable[v10,'a'] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
-    node 14: write-variable[v8,'x'] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:1)
+    node 9: read-variable['a',v8,-] (TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 10: +[v8,v8] (TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 11: constant[1.0,v9] (TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 12: +[v8,v9,v10] (TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 13: write-variable[v10,'a'] (TestFlowgraphBuilder.postfixCoercionResult.js:1:5)
+    node 14: write-variable[v8,'x'] (TestFlowgraphBuilder.postfixCoercionResult.js:1:1)
     ->[block 8]
   block 8: [exit-ordinary]
-    node 15: return[v1] (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js)
+    node 15: return[v1] (TestFlowgraphBuilder.postfixCoercionResult.js)
     ->[]
   block 9: [exit-exceptional]
-    node 16: exceptional-return (out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js)
+    node 16: exceptional-return (TestFlowgraphBuilder.postfixCoercionResult.js)
     ->[]
 
-out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js: [definite] Ordinary program exit is unreachable
-out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5: [definite] ReferenceError, reading absent variable a
-out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5: [definite] Unreachable code
-out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestFlowgraphBuilder.postfixCoercionResult.js:1:5]
+TestFlowgraphBuilder.postfixCoercionResult.js: [definite] Ordinary program exit is unreachable
+TestFlowgraphBuilder.postfixCoercionResult.js:1:5: [definite] ReferenceError, reading absent variable a
+TestFlowgraphBuilder.postfixCoercionResult.js:1:5: [definite] Unreachable code
+TestFlowgraphBuilder.postfixCoercionResult.js: [maybe] Uncaught exception, constructed at [TestFlowgraphBuilder.postfixCoercionResult.js:1:5]
 Soundness testing succeeded for 1 checks (with 0 expected failures)

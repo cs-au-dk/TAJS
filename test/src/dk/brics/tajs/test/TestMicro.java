@@ -2036,6 +2036,7 @@ public class TestMicro {
         Options.get().enableContextSensitiveHeap();
         Options.get().enableParameterSensitivity();
         Options.get().enableLoopUnrolling(1);
+        Options.get().setAnalysisTransferLimit(2500);
         Misc.run("test-resources/src/micro/absent-present.js");
     }
 
@@ -4263,8 +4264,13 @@ public class TestMicro {
 
     @Test
     public void unexpectedPendingFlowBug() {
-        Options.get().enablePropNamePartitioning();
-        Options.get().enableTypePartitioning();
         Misc.run("test-resources/src/micro/unexpectedPendingFlowBug.js");
+    }
+
+    @Test
+    public void testLogicalOr() {
+        Misc.runSource("var x = 0x80000000;",
+                "var y = x | 0;");
+        Misc.checkSystemOutput();
     }
 }

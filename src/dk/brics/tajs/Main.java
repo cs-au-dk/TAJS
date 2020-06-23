@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -309,8 +309,7 @@ public class Main {
         // Analysis timeout monitor
         int timeLimit = Options.get().getAnalysisTimeLimit();
         int transferLimit = Options.get().getAnalysisTransferLimit();
-        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, transferLimit,
-                !Options.get().isInspectorEnabled() && Options.get().isTestEnabled() && !Options.get().isAnalysisLimitationWarnOnly());
+        AnalysisTimeLimiter timeLimiter = new AnalysisTimeLimiter(timeLimit, transferLimit);
         extraMonitors.add(timeLimiter);
 
         // Analysis result measuring monitors
@@ -376,7 +375,9 @@ public class Main {
 
         enterPhase(AnalysisPhase.ANALYSIS, monitoring);
         try {
-            analysis.getSolver().solve();
+            boolean completed = analysis.getSolver().solve();
+            if (!completed && Options.get().isTestEnabled() && !Options.get().isInspectorEnabled() && !Options.get().isAnalysisLimitationWarnOnly())
+                return; // skip scan phase if not reached fixpoint, unless in test mode (unless inspector enabled or warn-only)
         } finally {
             leavePhase(AnalysisPhase.ANALYSIS, monitoring);
         }
@@ -402,7 +403,7 @@ public class Main {
             Path outdir = Paths.get("out").resolve("flowgraphs");
             Files.createDirectories(outdir);
             // dump the flowgraph to file
-            String fileName = end ? "final" : "initial" + ".dot";
+            String fileName = (end ? "final" : "initial") + ".dot";
             try (PrintWriter pw = new PrintWriter(new FileWriter(outdir.resolve(fileName).toFile()))) {
                 g.toDot(pw);
             } catch (IOException e) {
@@ -426,7 +427,7 @@ public class Main {
     private static void showHeader() {
         if (!Options.get().isQuietEnabled()) {
             log.info("TAJS - Type Analyzer for JavaScript\n" +
-                "Copyright 2009-2019 Aarhus University\n");
+                "Copyright 2009-2020 Aarhus University\n");
         }
     }
 

@@ -66,8 +66,10 @@ test-resources/src/1k2013spring/1525.js:44:3: [maybe] Conversion to number yield
 test-resources/src/1k2013spring/1525.js:45:12: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1525.js:45:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1525.js:47:3: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1525.js:57:13: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1525.js:57:19: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1525.js:57:28: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1525.js:59:12: [maybe] Converting object to string
+test-resources/src/1k2013spring/1525.js:59:12: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1525.js:59:12: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1525.js:59:23: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1525.js:62:28: [maybe] Conversion to number yields NaN

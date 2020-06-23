@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 package dk.brics.tajs.lattice;
 
 import dk.brics.tajs.flowgraph.AbstractNode;
+import dk.brics.tajs.util.Collectors;
 
 import java.util.Collection;
 import java.util.Map;
@@ -81,9 +82,9 @@ public class PartitioningInfo {
             newMap(object.getProperties()).forEach((key, val) -> {
                 if (val instanceof PartitionedValue && !val.isPolymorphicOrUnknown()) {
                     AtomicBoolean killedPartitions = new AtomicBoolean(false);
-                    Map<AbstractNode, Map<PartitionToken, Value>> newVal = ((PartitionedValue) val).getPartitionTokens().entrySet().stream().collect(java.util.stream.Collectors.toMap(
+                    Map<AbstractNode, Map<PartitionToken, Value>> newVal = ((PartitionedValue) val).getPartitionTokens().entrySet().stream().collect(Collectors.toMap(
                             Map.Entry::getKey,
-                            e -> e.getValue().stream().collect(java.util.stream.Collectors.toMap(q -> q, q -> {
+                            e -> e.getValue().stream().collect(Collectors.toMap(q -> q, q -> {
                                         if (partitions.contains(q)) {
                                             killedPartitions.set(true);
                                             return Value.makeNone();

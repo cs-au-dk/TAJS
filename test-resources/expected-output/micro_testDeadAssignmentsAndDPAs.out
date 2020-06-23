@@ -18,9 +18,4 @@ test-resources/src/micro/testDeadAssignmentsAndDPAs.js:45:1: [maybe] Reading abs
 test-resources/src/micro/testDeadAssignmentsAndDPAs.js:52:1: [maybe] Reading absent property (computed name)
 test-resources/src/micro/testDeadAssignmentsAndDPAs.js:53:1: [maybe] Reading absent property (computed name)
 test-resources/src/micro/testDeadAssignmentsAndDPAs.js:57:1: [maybe] Reading absent property (computed name)
-test-resources/src/micro/testDeadAssignmentsAndDPAs.js:28:1: [info] Writing to unknown property that may cause loss of precision
-test-resources/src/micro/testDeadAssignmentsAndDPAs.js:32:1: [info] Writing to unknown property that may cause loss of precision
-test-resources/src/micro/testDeadAssignmentsAndDPAs.js:38:1: [info] Writing to unknown property that may cause loss of precision
-test-resources/src/micro/testDeadAssignmentsAndDPAs.js:20:1: [info] Reading from unknown property that may cause loss of precision
-test-resources/src/micro/testDeadAssignmentsAndDPAs.js:40:1: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 76 checks (with 0 expected failures)

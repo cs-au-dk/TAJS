@@ -4,9 +4,14 @@ test-resources/src/1k2013spring/1478.js:36:17: [maybe] TypeError, accessing prop
 test-resources/src/1k2013spring/1478.js:74:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/shim.js:9:5: [maybe] TypeError, accessing property of null/undefined
 test-resources/src/1k2013spring/1478.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1478.js:21:5, test-resources/src/1k2013spring/1478.js:36:17, test-resources/src/1k2013spring/1478.js:74:5, test-resources/src/1k2013spring/shim.js:9:5]
+test-resources/src/1k2013spring/1478.js:22:17: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1478.js:23:21: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1478.js:24:17: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1478.js:24:21: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1478.js:38:16: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1478.js:39:21: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1478.js:46:48: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1478.js:46:74: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1478.js:47:29: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1478.js:47:35: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1478.js:55:17: [maybe] Reading absent property (computed name)

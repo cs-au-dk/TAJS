@@ -54,6 +54,8 @@ test-resources/src/10k/last_man_standing.html:40:50: [maybe] Reading absent prop
 test-resources/src/10k/last_man_standing.html:42:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/last_man_standing.html:43:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/last_man_standing.html:44:13: [maybe] Reading absent property (computed name)
+test-resources/src/10k/last_man_standing.html:68:45: [maybe] Conversion to number yields NaN
+test-resources/src/10k/last_man_standing.html:68:73: [maybe] Conversion to number yields NaN
 test-resources/src/10k/last_man_standing.html:85:28: [maybe] Conversion to number yields NaN
 test-resources/src/10k/last_man_standing.html:85:42: [maybe] Conversion to number yields NaN
 test-resources/src/10k/last_man_standing.html:109:13: [maybe] Conversion to number yields NaN

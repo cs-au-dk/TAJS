@@ -45,7 +45,7 @@ test-resources/src/1k2013spring/1542.js:57:33: [maybe] Reading absent property (
 test-resources/src/1k2013spring/1542.js:57:44: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1542.js:57:44: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1542.js:57:45: [maybe] Converting boolean to string
-test-resources/src/1k2013spring/1542.js:57:45: [maybe] Converting null to string
+test-resources/src/1k2013spring/1542.js:57:45: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1542.js:57:45: [maybe] Converting undefined to string
 test-resources/src/1k2013spring/1542.js:57:48: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1542.js:57:58: [maybe] Reading absent property (computed name)

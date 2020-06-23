@@ -19,7 +19,9 @@ test-resources/src/1k2012love/shim.js:9:5: [maybe] TypeError, accessing property
 test-resources/src/1k2012love/1015.js:58:1: [maybe] Reading absent property clear of host object
 test-resources/src/1k2012love/1015.js:94:3: [maybe] Reading absent property clear of host object
 test-resources/src/1k2012love/1015.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1015.js:38:20, test-resources/src/1k2012love/1015.js:54:5, test-resources/src/1k2012love/1015.js:58:1, test-resources/src/1k2012love/1015.js:67:5, test-resources/src/1k2012love/1015.js:68:3, test-resources/src/1k2012love/1015.js:71:8, test-resources/src/1k2012love/1015.js:94:3, test-resources/src/1k2012love/1015.js:98:3, test-resources/src/1k2012love/1015.js:98:10, test-resources/src/1k2012love/1015.js:99:12, test-resources/src/1k2012love/1015.js:100:9, test-resources/src/1k2012love/1015.js:102:46, test-resources/src/1k2012love/1015.js:107:10, test-resources/src/1k2012love/1015.js:108:12, test-resources/src/1k2012love/1015.js:109:9, test-resources/src/1k2012love/1015.js:110:46, test-resources/src/1k2012love/shim.js:9:5]
+test-resources/src/1k2012love/1015.js:54:5: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1015.js:54:5: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1015.js:67:5: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1015.js:67:5: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1015.js:90:11: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1015.js:91:3: [maybe] Conversion to number yields NaN

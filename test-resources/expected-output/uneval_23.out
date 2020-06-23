@@ -26,7 +26,7 @@ TAJS-dynamic-code(test-resources/src/uneval/uneval23.html:68:16):1:24: [maybe] R
 TAJS-dynamic-code(test-resources/src/uneval/uneval23.html:68:16):1:54: [maybe] Reading absent property left of host object
 test-resources/src/uneval/uneval23.html: [maybe] Uncaught exception, constructed at [test-resources/src/uneval/uneval23.html:7:28, test-resources/src/uneval/uneval23.html:91:50, TAJS-dynamic-code(test-resources/src/uneval/uneval23.html:56:23):1:1, TAJS-dynamic-code(test-resources/src/uneval/uneval23.html:68:16):1:24, TAJS-dynamic-code(test-resources/src/uneval/uneval23.html:68:16):1:54, TAJS-dynamic-code(test-resources/src/uneval/uneval23.html:85:16):1:1]
 test-resources/src/uneval/uneval23.html:62:37: [maybe] Conversion to number yields NaN
-TAJS-dynamic-code(test-resources/src/uneval/uneval23.html:68:16):1:24: [maybe] Converting object to string
+TAJS-dynamic-code(test-resources/src/uneval/uneval23.html:68:16):1:24: [maybe] Converting object to primitive
 TAJS-dynamic-code(test-resources/src/uneval/uneval23.html:68:16):1:24: [maybe] Converting primitive string to object
 TAJS-dynamic-code(test-resources/src/uneval/uneval23.html:68:16):1:54: [maybe] Converting primitive string to object
 Soundness testing succeeded for 23 checks (with 0 expected failures)

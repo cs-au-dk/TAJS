@@ -38,21 +38,21 @@ test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
-test/1k2014dragons/1873.js:51:32: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1873.js:51:32: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1873.js:51:32: [maybe] The variable width has values with different types
-test/1k2014dragons/1873.js:53:36: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1873.js:53:36: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1873.js:53:36: [maybe] The variable height has values with different types
-test/1k2014dragons/1873.js:58:9: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1873.js:58:9: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1873.js:58:24: [maybe] The variable width has values with different types
 test/1k2014dragons/1873.js:58:31: [maybe] The variable height has values with different types
-test/1k2014dragons/1873.js:65:32: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1873.js:65:32: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1873.js:65:32: [maybe] The variable width has values with different types
-test/1k2014dragons/1873.js:65:45: [maybe] Conversion from string to number yields NaN
-test/1k2014dragons/1873.js:65:45: [maybe] Converting object to number
-test/1k2014dragons/1873.js:65:68: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1873.js:65:45: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1873.js:65:45: [maybe] Converting object to primitive
+test/1k2014dragons/1873.js:65:68: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1873.js:65:68: [maybe] The variable height has values with different types
 test/1k2014dragons/1873.js:65:82: [maybe] Conversion to number yields NaN
-test/1k2014dragons/1873.js:65:100: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1873.js:65:100: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1873.js:70:9: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1873.js:73:17: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1873.js:73:42: [maybe] Conversion to number yields NaN

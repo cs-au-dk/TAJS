@@ -34,7 +34,7 @@ test-resources/src/1k2013spring/1450.js:157:2: [maybe] Conversion to number yiel
 test-resources/src/1k2013spring/1450.js:158:2: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1450.js:160:11: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1450.js:161:2: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1450.js:166:31: [maybe] Converting object to number
+test-resources/src/1k2013spring/1450.js:166:31: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1450.js:171:58: [maybe] Conversion to number yields NaN
 Could not create value log file: main file is known to be unsupported (limitation of the jalangilogger project)
 Log of soundness facts is not available for test-resources/src/1k2013spring/1450.js, skipping soundness checking

@@ -241,16 +241,16 @@ test-resources/src/google/cryptobench.js:127:13: [maybe] Conversion to number yi
 test-resources/src/google/cryptobench.js:127:13: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:129:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:129:31: [maybe] Reading absent property (computed name)
-test-resources/src/google/cryptobench.js:187:6: [maybe] Converting object to string
+test-resources/src/google/cryptobench.js:187:6: [maybe] Converting object to primitive
 test-resources/src/google/cryptobench.js:187:6: [maybe] Converting primitive string to object
-test-resources/src/google/cryptobench.js:189:6: [maybe] Converting object to string
+test-resources/src/google/cryptobench.js:189:6: [maybe] Converting object to primitive
 test-resources/src/google/cryptobench.js:189:6: [maybe] Converting primitive string to object
-test-resources/src/google/cryptobench.js:191:6: [maybe] Converting object to string
+test-resources/src/google/cryptobench.js:191:6: [maybe] Converting object to primitive
 test-resources/src/google/cryptobench.js:191:6: [maybe] Converting primitive string to object
-test-resources/src/google/cryptobench.js:194:31: [maybe] Converting object to string
+test-resources/src/google/cryptobench.js:194:31: [maybe] Converting object to primitive
 test-resources/src/google/cryptobench.js:194:31: [maybe] Converting primitive string to object
 test-resources/src/google/cryptobench.js:196:11: [maybe] Reading absent property (computed name)
-test-resources/src/google/cryptobench.js:196:17: [maybe] Converting object to string
+test-resources/src/google/cryptobench.js:196:17: [maybe] Converting object to primitive
 test-resources/src/google/cryptobench.js:196:17: [maybe] Converting primitive string to object
 test-resources/src/google/cryptobench.js:205:15: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:205:51: [maybe] Reading absent property (computed name)
@@ -258,7 +258,7 @@ test-resources/src/google/cryptobench.js:217:35: [maybe] Conversion to number yi
 test-resources/src/google/cryptobench.js:237:11: [maybe] Converting primitive string to object
 test-resources/src/google/cryptobench.js:239:20: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:239:20: [maybe] Reading absent property (computed name)
-test-resources/src/google/cryptobench.js:241:10: [maybe] Converting object to string
+test-resources/src/google/cryptobench.js:241:10: [maybe] Converting object to primitive
 test-resources/src/google/cryptobench.js:241:10: [maybe] Converting primitive string to object
 test-resources/src/google/cryptobench.js:248:7: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:248:7: [maybe] Reading absent property (computed name)
@@ -269,9 +269,11 @@ test-resources/src/google/cryptobench.js:256:17: [maybe] Reading absent property
 test-resources/src/google/cryptobench.js:258:16: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:258:16: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:267:11: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:268:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:268:23: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:268:34: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:268:50: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:274:6: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:283:18: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:284:6: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:285:26: [maybe] Conversion to number yields NaN
@@ -282,6 +284,7 @@ test-resources/src/google/cryptobench.js:289:14: [maybe] Conversion to number yi
 test-resources/src/google/cryptobench.js:289:14: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:292:14: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:292:14: [maybe] Reading absent property (computed name)
+test-resources/src/google/cryptobench.js:306:28: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:313:11: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:316:7: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:318:9: [maybe] Conversion to number yields NaN
@@ -300,6 +303,7 @@ test-resources/src/google/cryptobench.js:345:42: [maybe] Conversion to number yi
 test-resources/src/google/cryptobench.js:345:49: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:346:11: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:347:9: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:355:18: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:355:30: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:355:43: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:355:50: [maybe] Reading absent property (computed name)
@@ -311,8 +315,10 @@ test-resources/src/google/cryptobench.js:369:24: [maybe] Reading absent property
 test-resources/src/google/cryptobench.js:370:10: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:370:10: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:374:9: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:385:6: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:389:16: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:389:16: [maybe] Reading absent property (computed name)
+test-resources/src/google/cryptobench.js:390:21: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:391:5: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:391:5: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:391:25: [maybe] Conversion to number yields NaN
@@ -328,16 +334,20 @@ test-resources/src/google/cryptobench.js:404:25: [maybe] Conversion to number yi
 test-resources/src/google/cryptobench.js:406:10: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:406:10: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:406:24: [maybe] Reading absent property (computed name)
+test-resources/src/google/cryptobench.js:410:6: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:411:5: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:412:11: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:413:7: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:413:12: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:417:5: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:420:5: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:421:11: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:422:7: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:422:12: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:426:5: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:444:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:445:9: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:446:14: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:446:36: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:446:52: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:458:17: [maybe] Conversion to number yields NaN
@@ -353,20 +363,25 @@ test-resources/src/google/cryptobench.js:463:7: [maybe] Conversion to number yie
 test-resources/src/google/cryptobench.js:463:7: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:463:15: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:464:15: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:467:6: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:467:15: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:467:15: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:467:23: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:467:40: [maybe] Reading absent property (computed name)
+test-resources/src/google/cryptobench.js:476:6: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:478:6: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:486:25: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:486:34: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:492:12: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:492:20: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:494:12: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:494:28: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:494:34: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:494:34: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:494:42: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:496:20: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:501:13: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:506:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:506:27: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:509:15: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:509:23: [maybe] Conversion to number yields NaN
@@ -376,7 +391,11 @@ test-resources/src/google/cryptobench.js:509:65: [maybe] Conversion to number yi
 test-resources/src/google/cryptobench.js:509:65: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:510:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:510:9: [maybe] Reading absent property (computed name)
+test-resources/src/google/cryptobench.js:513:13: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:513:13: [maybe] Reading absent property (computed name)
+test-resources/src/google/cryptobench.js:523:6: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:530:6: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:537:6: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:564:11: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:565:7: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:566:11: [maybe] Conversion to number yields NaN
@@ -384,6 +403,8 @@ test-resources/src/google/cryptobench.js:567:14: [maybe] Conversion to number yi
 test-resources/src/google/cryptobench.js:568:14: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:569:16: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:572:13: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:592:6: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:607:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:608:13: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:611:13: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:611:13: [maybe] Reading absent property (computed name)
@@ -391,6 +412,7 @@ test-resources/src/google/cryptobench.js:612:41: [maybe] Conversion to number yi
 test-resources/src/google/cryptobench.js:612:41: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:615:5: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:615:5: [maybe] Reading absent property (computed name)
+test-resources/src/google/cryptobench.js:617:11: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:617:11: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:617:34: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:617:34: [maybe] Reading absent property (computed name)
@@ -412,20 +434,26 @@ test-resources/src/google/cryptobench.js:961:25: [maybe] Conversion to number yi
 test-resources/src/google/cryptobench.js:963:10: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:963:10: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:963:24: [maybe] Reading absent property (computed name)
+test-resources/src/google/cryptobench.js:967:6: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:968:5: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:969:11: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:970:7: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:970:12: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:974:5: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:977:5: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:978:11: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:979:7: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:979:12: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:983:5: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:1025:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1025:33: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1026:3: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1026:3: [maybe] Reading absent property (computed name)
+test-resources/src/google/cryptobench.js:1027:9: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1027:9: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:1028:5: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1028:5: [maybe] Reading absent property (computed name)
+test-resources/src/google/cryptobench.js:1029:8: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1029:34: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1030:5: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1030:7: [maybe] Reading absent property (computed name)
@@ -436,9 +464,13 @@ test-resources/src/google/cryptobench.js:1059:11: [maybe] Conversion to number y
 test-resources/src/google/cryptobench.js:1059:50: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:1069:17: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1072:20: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:1072:33: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1073:13: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1073:39: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:1073:56: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:1089:6: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:1089:17: [maybe] Conversion to number yields NaN
+test-resources/src/google/cryptobench.js:1099:6: [maybe] Conversion to number yields NaN
 test-resources/src/google/cryptobench.js:1144:18: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:1144:25: [maybe] Reading absent property (computed name)
 test-resources/src/google/cryptobench.js:1150:13: [maybe] Reading absent property (computed name)
@@ -475,7 +507,7 @@ test-resources/src/google/cryptobench.js:1425:3: [maybe] Reading absent property
 test-resources/src/google/cryptobench.js:1476:25: [maybe] The variable str has values with different types
 test-resources/src/google/cryptobench.js:1498:10: [maybe] Converting primitive string to object
 test-resources/src/google/cryptobench.js:1503:11: [maybe] Converting primitive string to object
-test-resources/src/google/cryptobench.js:1504:36: [maybe] Converting object to string
+test-resources/src/google/cryptobench.js:1504:36: [maybe] Converting object to primitive
 test-resources/src/google/cryptobench.js:1504:36: [maybe] Converting primitive string to object
 test-resources/src/google/cryptobench.js:1532:32: [maybe] Converting primitive string to object
 test-resources/src/google/cryptobench.js:1532:48: [maybe] Converting primitive string to object
@@ -488,11 +520,11 @@ test-resources/src/google/cryptobench.js:1582:32: [maybe] Reading absent propert
 test-resources/src/google/cryptobench.js:1599:32: [maybe] Converting primitive string to object
 test-resources/src/google/cryptobench.js:1599:48: [maybe] Converting primitive string to object
 test-resources/src/google/cryptobench.js:1664:23: [maybe] The variable ctext has values with different types
-test-resources/src/google/cryptobench.js:1714:33: [maybe] Converting object to number
+test-resources/src/google/cryptobench.js:1714:33: [maybe] Converting object to primitive
 test-resources/src/google/cryptobench.js:1715:10: [maybe] The variable result has values with different types
 test-resources/src/google/cryptobench.js:1722:16: [maybe] The variable text has values with different types
 test-resources/src/google/cryptobench.js:1723:52: [maybe] The variable text has values with different types
-test-resources/src/google/cryptobench.js:1725:33: [maybe] Converting object to number
+test-resources/src/google/cryptobench.js:1725:33: [maybe] Converting object to primitive
 test-resources/src/google/cryptobench.js:1726:10: [maybe] The variable result has values with different types
 test-resources/src/google/cryptobench.js:1733:27: [maybe] The variable encrypted has values with different types
 test-resources/src/google/cryptobench.js:1735:7: [maybe] The variable decrypted has values with different types

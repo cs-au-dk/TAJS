@@ -1,19 +1,19 @@
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:4:16: [definite] Unreachable function
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:5:17: [definite] Unreachable function
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:12:20: [definite] Unreachable function
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:13:21: [definite] Unreachable function
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:3:1: [maybe] TypeError, accessing property of null/undefined
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:3:1]
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:2:46: [info] Abstract value: "window.addEventListener('click', ...)"
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:3:47: [info] Abstract value: "element.addEventListener('click', ...)"
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:6:48: [info] Abstract value: "window.addEventListener('onclick', ...)"
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:7:49: [info] Abstract value: "element.addEventListener('onclick', ...)"
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:8:30: [info] Abstract value: "window.onclick = ..."
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:9:31: [info] Abstract value: "element.onclick = ..."
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:10:50: [info] Abstract value: "window.addEventListener('mousedown', ...)"
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:11:51: [info] Abstract value: "element.addEventListener('mousedown', ...)"
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:14:52: [info] Abstract value: "window.addEventListener('onmousedown', ...)"
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:15:53: [info] Abstract value: "element.addEventListener('onmousedown', ...)"
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:16:34: [info] Abstract value: "window.onmousedown = ..."
-out/temp-sources/TestMicro.eventListenerRegistrationVariants.js:17:35: [info] Abstract value: "element.onmousedown = ..."
+TestMicro.eventListenerRegistrationVariants.js:4:16: [definite] Unreachable function
+TestMicro.eventListenerRegistrationVariants.js:5:17: [definite] Unreachable function
+TestMicro.eventListenerRegistrationVariants.js:12:20: [definite] Unreachable function
+TestMicro.eventListenerRegistrationVariants.js:13:21: [definite] Unreachable function
+TestMicro.eventListenerRegistrationVariants.js:3:1: [maybe] TypeError, accessing property of null/undefined
+TestMicro.eventListenerRegistrationVariants.js: [maybe] Uncaught exception, constructed at [TestMicro.eventListenerRegistrationVariants.js:3:1]
+TestMicro.eventListenerRegistrationVariants.js:2:46: [info] Abstract value: "window.addEventListener('click', ...)"
+TestMicro.eventListenerRegistrationVariants.js:3:47: [info] Abstract value: "element.addEventListener('click', ...)"
+TestMicro.eventListenerRegistrationVariants.js:6:48: [info] Abstract value: "window.addEventListener('onclick', ...)"
+TestMicro.eventListenerRegistrationVariants.js:7:49: [info] Abstract value: "element.addEventListener('onclick', ...)"
+TestMicro.eventListenerRegistrationVariants.js:8:30: [info] Abstract value: "window.onclick = ..."
+TestMicro.eventListenerRegistrationVariants.js:9:31: [info] Abstract value: "element.onclick = ..."
+TestMicro.eventListenerRegistrationVariants.js:10:50: [info] Abstract value: "window.addEventListener('mousedown', ...)"
+TestMicro.eventListenerRegistrationVariants.js:11:51: [info] Abstract value: "element.addEventListener('mousedown', ...)"
+TestMicro.eventListenerRegistrationVariants.js:14:52: [info] Abstract value: "window.addEventListener('onmousedown', ...)"
+TestMicro.eventListenerRegistrationVariants.js:15:53: [info] Abstract value: "element.addEventListener('onmousedown', ...)"
+TestMicro.eventListenerRegistrationVariants.js:16:34: [info] Abstract value: "window.onmousedown = ..."
+TestMicro.eventListenerRegistrationVariants.js:17:35: [info] Abstract value: "element.onmousedown = ..."
 Soundness testing succeeded for 75 checks (with 0 expected failures)

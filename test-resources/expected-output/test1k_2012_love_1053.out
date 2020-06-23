@@ -19,6 +19,7 @@ test-resources/src/1k2012love/1053.js:38:12: [maybe] Conversion to number yields
 test-resources/src/1k2012love/1053.js:46:3: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1053.js:50:19: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1053.js:58:34: [maybe] Conversion to number yields NaN
+test-resources/src/1k2012love/1053.js:59:9: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1053.js:70:16: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1053.js:82:3: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1053.js:98:31: [maybe] Conversion to number yields NaN

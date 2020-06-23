@@ -1,7 +1,7 @@
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js)
-    node 1: function-decl[function f(),-] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)
+    node 0: constant[undefined,v1] (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js)
+    node 1: function-decl[function f(),-] (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)
     ->[block 1]
   block 1:
     node 2: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -24,25 +24,25 @@ fg2: <main> function()
     node 9: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7: [exit-ordinary]
-    node 10: return[v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js)
+    node 10: return[v1] (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js)
     ->[]
   block 8: [exit-exceptional]
-    node 11: exceptional-return (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js)
+    node 11: exceptional-return (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js)
     ->[]
 function f()
   block 9: [entry]
-    node 12: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)
+    node 12: constant[undefined,v1] (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)
     ->[block 10]
   block 10:
-    node 13: constant["BODY",-] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:14)
+    node 13: constant["BODY",-] (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:14)
     ->[block 11]
   block 11: [exit-ordinary]
-    node 14: return[v1] (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)
+    node 14: return[v1] (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)
     ->[]
   block 12: [exit-exceptional]
-    node 15: exceptional-return (out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)
+    node 15: exceptional-return (TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1)
     ->[]
 
-out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1: [definite] Unreachable function f
+TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js: [definite] Exceptional program exit is unreachable
+TestFlowgraphBuilder.flowgraphbuilder_hostFunctionSources2.js:1:1: [definite] Unreachable function f
 Soundness testing succeeded for 2 checks (with 0 expected failures)

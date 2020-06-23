@@ -168,6 +168,7 @@ public class TestV8 { // TODO: check expected output for TestV8
 
     @Test
     public void testV8_class_of_builtins() throws Exception {
+        Options.get().enableForInSpecialization();
         Misc.run("test-resources/src/v8tests/prologue.js", "test-resources/src/v8tests/class-of-builtins.js");
         Misc.checkSystemOutput();
     }

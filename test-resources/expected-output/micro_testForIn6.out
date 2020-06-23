@@ -1,5 +1,4 @@
-test-resources/src/micro/testForIn6.js:8:2: [definite] Dead assignment, property bar is never read
-test-resources/src/micro/testForIn6.js:8:2: [definite] Dead assignment, property foo is never read
+test-resources/src/micro/testForIn6.js:8:2: [definite] Dead assignment, property is never read
 test-resources/src/micro/testForIn6.js: [definite] Exceptional program exit is unreachable
 test-resources/src/micro/testForIn6.js:12:1: [info] Abstract value: [@Object#node19]
 test-resources/src/micro/testForIn6.js:13:1: [info] Abstract value: UInt

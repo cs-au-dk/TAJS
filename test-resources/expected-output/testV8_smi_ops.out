@@ -1,14 +1,18 @@
 test-resources/src/v8tests/smi-ops.js: [definite] Exceptional program exit is unreachable
+test-resources/src/v8tests/smi-ops.js:41:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/smi-ops.js:41:10: [maybe] The variable x has values with different types
+test-resources/src/v8tests/smi-ops.js:45:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/smi-ops.js:45:10: [maybe] The variable x has values with different types
+test-resources/src/v8tests/smi-ops.js:49:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/smi-ops.js:49:14: [maybe] The variable x has values with different types
+test-resources/src/v8tests/smi-ops.js:53:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/smi-ops.js:53:16: [maybe] The variable x has values with different types
-test-resources/src/v8tests/smi-ops.js:74:10: [maybe] Converting object to number
+test-resources/src/v8tests/smi-ops.js:74:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/smi-ops.js:74:10: [maybe] The variable x has values with different types
-test-resources/src/v8tests/smi-ops.js:78:10: [maybe] Converting object to number
+test-resources/src/v8tests/smi-ops.js:78:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/smi-ops.js:78:10: [maybe] The variable x has values with different types
-test-resources/src/v8tests/smi-ops.js:82:10: [maybe] Converting object to number
+test-resources/src/v8tests/smi-ops.js:82:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/smi-ops.js:82:14: [maybe] The variable x has values with different types
-test-resources/src/v8tests/smi-ops.js:86:10: [maybe] Converting object to number
+test-resources/src/v8tests/smi-ops.js:86:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/smi-ops.js:86:16: [maybe] The variable x has values with different types
 Soundness testing succeeded for 391 checks (with 0 expected failures)

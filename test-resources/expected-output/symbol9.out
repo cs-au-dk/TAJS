@@ -1,5 +1,5 @@
-out/temp-sources/TestMicro.symbol9.js:22:17: [definite] ReferenceError, reading absent variable Exception
-out/temp-sources/TestMicro.symbol9.js:8:3: [definite] The conditional expression is always false
-out/temp-sources/TestMicro.symbol9.js:22:27: [definite] Unreachable code
-out/temp-sources/TestMicro.symbol9.js: [maybe] Uncaught exception, constructed at [out/temp-sources/TestMicro.symbol9.js:22:17]
+TestMicro.symbol9.js:22:17: [definite] ReferenceError, reading absent variable Exception
+TestMicro.symbol9.js:8:3: [definite] The conditional expression is always false
+TestMicro.symbol9.js:22:27: [definite] Unreachable code
+TestMicro.symbol9.js: [maybe] Uncaught exception, constructed at [TestMicro.symbol9.js:22:17]
 Soundness testing succeeded for 55 checks (with 0 expected failures)

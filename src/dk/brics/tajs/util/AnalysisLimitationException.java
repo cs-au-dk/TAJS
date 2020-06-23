@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,8 @@ package dk.brics.tajs.util;
 /**
  * Exception for analysis limitations.
  * <p>
- * Unlike {@link AnalysisException} this exception does not indicate a bug but critical lack of precision or missing modelling of a native function.
+ * Unlike {@link AnalysisException} this exception does not indicate a bug but a known limitation, such as,
+ * timeout, critical lack of precision, or missing modelling of a native function.
  */
 public class AnalysisLimitationException extends RuntimeException { // TODO: use this exception in more places
 

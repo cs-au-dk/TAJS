@@ -120,20 +120,20 @@ test-resources/src/10k/10k_world.html:55:69: [maybe] Conversion to number yields
 test-resources/src/10k/10k_world.html:61:27: [maybe] The variable a has values with different types
 test-resources/src/10k/10k_world.html:64:20: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:67:26: [maybe] Conversion to number yields NaN
-test-resources/src/10k/10k_world.html:88:330: [maybe] Converting object to string
+test-resources/src/10k/10k_world.html:88:330: [maybe] Converting object to primitive
 test-resources/src/10k/10k_world.html:88:330: [maybe] Converting primitive string to object
-test-resources/src/10k/10k_world.html:89:21: [maybe] Converting object to string
+test-resources/src/10k/10k_world.html:89:21: [maybe] Converting object to primitive
 test-resources/src/10k/10k_world.html:89:21: [maybe] Converting primitive string to object
 test-resources/src/10k/10k_world.html:90:21: [maybe] Converting primitive string to object
 test-resources/src/10k/10k_world.html:90:46: [maybe] Reading absent property (computed name)
 test-resources/src/10k/10k_world.html:90:64: [maybe] Reading absent property (computed name)
-test-resources/src/10k/10k_world.html:91:21: [maybe] Converting object to string
+test-resources/src/10k/10k_world.html:91:21: [maybe] Converting object to primitive
 test-resources/src/10k/10k_world.html:91:21: [maybe] Converting primitive string to object
-test-resources/src/10k/10k_world.html:93:20: [maybe] Converting object to string
+test-resources/src/10k/10k_world.html:93:20: [maybe] Converting object to primitive
 test-resources/src/10k/10k_world.html:93:20: [maybe] Converting primitive string to object
-test-resources/src/10k/10k_world.html:93:48: [maybe] Converting object to string
+test-resources/src/10k/10k_world.html:93:48: [maybe] Converting object to primitive
 test-resources/src/10k/10k_world.html:93:48: [maybe] Converting primitive string to object
-test-resources/src/10k/10k_world.html:106:24: [maybe] Converting object to string
+test-resources/src/10k/10k_world.html:106:24: [maybe] Converting object to primitive
 test-resources/src/10k/10k_world.html:106:24: [maybe] Reading absent property (computed name)
 test-resources/src/10k/10k_world.html:106:26: [maybe] The variable f has values with different types
 test-resources/src/10k/10k_world.html:109:47: [maybe] Reading absent property (computed name)
@@ -150,7 +150,8 @@ test-resources/src/10k/10k_world.html:146:46: [maybe] Reading absent property (c
 test-resources/src/10k/10k_world.html:146:54: [maybe] Reading absent property (computed name)
 test-resources/src/10k/10k_world.html:174:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:179:32: [maybe] Conversion to number yields NaN
-test-resources/src/10k/10k_world.html:179:72: [maybe] Conversion from string to number yields NaN
+test-resources/src/10k/10k_world.html:179:72: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:179:72: [maybe] Converting object to primitive
 test-resources/src/10k/10k_world.html:179:72: [maybe] Converting primitive number to object
 test-resources/src/10k/10k_world.html:179:72: [maybe] Reading absent property (computed name)
 test-resources/src/10k/10k_world.html:179:72: [maybe] The variable b has values with different types
@@ -163,63 +164,95 @@ test-resources/src/10k/10k_world.html:202:19: [maybe] Converting primitive numbe
 test-resources/src/10k/10k_world.html:202:19: [maybe] Reading absent property (computed name)
 test-resources/src/10k/10k_world.html:202:19: [maybe] The variable b has values with different types
 test-resources/src/10k/10k_world.html:213:39: [maybe] The variable c has values with different types
+test-resources/src/10k/10k_world.html:217:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:218:25: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:218:35: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:218:41: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:219:33: [maybe] Converting undefined to string
 test-resources/src/10k/10k_world.html:220:46: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:226:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:228:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:228:26: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:229:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:229:31: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:230:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:231:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:233:33: [maybe] Converting undefined to string
 test-resources/src/10k/10k_world.html:234:25: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:236:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:236:31: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:237:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:237:33: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:237:38: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:238:25: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:239:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:239:39: [maybe] Converting undefined to string
 test-resources/src/10k/10k_world.html:240:27: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:240:32: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:241:25: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:245:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:245:29: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:245:38: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:245:48: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:251:37: [maybe] Converting undefined to string
 test-resources/src/10k/10k_world.html:253:40: [maybe] Converting undefined to string
 test-resources/src/10k/10k_world.html:256:24: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:257:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:258:29: [maybe] Converting undefined to string
+test-resources/src/10k/10k_world.html:266:61: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:266:61: [maybe] Reading absent property (computed name)
+test-resources/src/10k/10k_world.html:299:24: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:311:35: [maybe] Converting undefined to string
 test-resources/src/10k/10k_world.html:312:17: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:312:22: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:313:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:314:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:314:26: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:315:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:315:21: [maybe] Reading absent property (computed name)
 test-resources/src/10k/10k_world.html:317:21: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:317:26: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:318:25: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:331:53: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:333:17: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:334:17: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:346:21: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:346:31: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:347:25: [maybe] Converting primitive number to object
 test-resources/src/10k/10k_world.html:348:25: [maybe] Converting primitive number to object
 test-resources/src/10k/10k_world.html:357:28: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:357:115: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:359:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:360:52: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:360:74: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:362:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:362:33: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:365:35: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:365:56: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:366:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:366:33: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:373:37: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:373:55: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:379:40: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:382:25: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:382:37: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:383:25: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:383:37: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:389:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:389:29: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:389:43: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:389:47: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:389:61: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:389:65: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:389:79: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:389:83: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:392:68: [maybe] Converting undefined to string
 test-resources/src/10k/10k_world.html:393:25: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:393:30: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:394:29: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:394:37: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:394:42: [maybe] Conversion to number yields NaN
+test-resources/src/10k/10k_world.html:395:29: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:395:35: [maybe] Conversion to number yields NaN
 test-resources/src/10k/10k_world.html:431:23: [maybe] Converting undefined to string
 test-resources/src/10k/10k_world.html:90:46: [info] Reading from unknown property that may cause loss of precision

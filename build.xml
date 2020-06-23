@@ -3,7 +3,7 @@
 <project name="TAJS" default="all" basedir=".">
 
     <property name="project" value="tajs" />
-    <property name="version" value="0.24" />
+    <property name="version" value="0.25" />
 
     <property name="optimize" value="on" />
     <property name="debug" value="off" />
@@ -45,9 +45,9 @@
         <os family="windows"/>
     </condition>
 
-    <target name="all" depends="clean,install-javascript-modules,jar-all,tajs-functions,doc" />
+    <target name="all" depends="clean,install-javascript-modules,jar-all,tajs-functions,doc" description="Rebuild everything" />
 
-    <target name="compile">
+    <target name="compile" description="Compile all Java code">
         <!--
         <property name="cp" refid="classpath"/>
         <echo message="Classpath is ${cp}"/>
@@ -66,7 +66,7 @@
         </copy>
     </target>
 
-    <target name="install-javascript-modules">
+    <target name="install-javascript-modules" description="Install JavaScript modules in extras and test-resources">
         <exec executable="node" dir="extras/jsdelta">
             <arg line="install"/>
         </exec>
@@ -84,18 +84,18 @@
         </exec>
     </target>
 
-    <target name="tajs-functions" depends="compile">
+    <target name="tajs-functions" depends="compile" description="Generate TAJS-functions.md">
         <java classname="dk.brics.tajs.analysis.nativeobjects.TAJSFunctionEvaluator" fork="true" failonerror="true" maxmemory="2048m" output="TAJS-functions.md">
             <classpath refid="classpath.run" />
         </java>
     </target>
 
-    <target name="jar" depends="clean,compile">
+    <target name="jar" depends="clean,compile" description="Rebuild tajs.jar">
         <mkdir dir="dist" />
         <jar jarfile="dist/${project}.jar" basedir="antbuild" includes="**"/>
     </target>
 
-    <target name="jar-all" depends="jar">
+    <target name="jar-all" depends="jar" description="Rebuild tajs.jar and tajs-all.jar">
         <jar jarfile="dist/${project}-all.jar">
             <zipgroupfileset dir="lib" includes="*.jar"/>
             <zipgroupfileset dir="extras/jalangilogger/build/libs" includes="*.jar"/>
@@ -108,14 +108,25 @@
         </jar>
     </target>
 
-    <target name="clean">
-        <delete dir="antbuild"/>
+    <target name="clean" description="Clean generated files">
+        <delete dir="antbuild" />
         <delete dir="doc" />
         <delete dir="flowgraphs" />
         <delete dir="dist" />
     </target>
 
-    <target name="doc" depends="jar">
+    <target name="clean-all" depends="clean" description="Clean generated files and installed JavaScript modules">
+        <delete dir="extras/babel/node_modules" />
+        <delete file="extras/babel/package-lock.json" />
+        <delete dir="extras/jalangilogger/javascript/node_modules" />
+        <delete file="extras/jalangilogger/javascript/package-lock.json" />
+        <delete dir="extras/jsdelta/node_modules" />
+        <delete file="extras/jsdelta/package-lock.json" />
+        <delete dir="extras/ts-spec-reader/node_modules" />
+        <delete file="extras/ts-spec-reader/package-lock.json" />
+    </target>
+
+    <target name="doc" depends="jar" description="Generate javadoc">
         <mkdir dir="doc" />
         <javadoc overview="src/overview.html" Package="true" sourcepath="src" destdir="doc" nodeprecated="true" author="true" notree="true" nohelp="true" windowtitle="TAJS" additionalparam="-Xdoclint:-html,-missing">
             <doctitle>
@@ -128,7 +139,7 @@
         </javadoc>
     </target>
 
-    <target name="zip" depends="all">
+    <target name="zip" depends="all" description="Rebuild everything and generate tajs-N.N.zip">
         <fail message="option 'debug' should be disabled before making zip">
             <condition>
                 <istrue value="${debug}" />
@@ -160,7 +171,7 @@
         <delete dir="${dir}" />
     </target>
 
-    <target name="compile-test" depends="compile">
+    <target name="compile-test" depends="compile" description="Compile test files">
         <javac srcdir="test/src" includes="**" destdir="antbuild" optimize="${optimize}" debug="${debug}"
                includeantruntime="false">
             <classpath refid="classpath.test"/>
@@ -169,15 +180,15 @@
         </javac>
     </target>
 
-    <target name="test-fast" depends="compile-test">
+    <target name="test-fast" depends="compile-test" description="Run fast tests">
         <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" failureproperty="test.failed" maxmemory="2048m">
             <classpath refid="classpath.test" />
             <test name="dk.brics.tajs.test.RunFast"/>
-        </junit>    
+        </junit>
         <fail message="tests failed" if="test.failed"/>
     </target>
 
-    <target name="test-medium" depends="compile-test">
+    <target name="test-medium" depends="compile-test" description="Run medium tests">
         <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" failureproperty="test.failed" maxmemory="2048m">
             <classpath refid="classpath.test" />
             <test name="dk.brics.tajs.test.RunMedium"/>
@@ -185,7 +196,7 @@
         <fail message="tests failed" if="test.failed"/>
     </target>
 
-    <target name="test-slow" depends="compile-test">
+    <target name="test-slow" depends="compile-test" description="Run slow tests">
         <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" failureproperty="test.failed" maxmemory="2048m">
             <classpath refid="classpath.test" />
             <test name="dk.brics.tajs.test.RunSlow"/>
@@ -193,7 +204,7 @@
         <fail message="tests failed" if="test.failed"/>
     </target>
 
-    <target name="test-all" depends="compile-test">
+    <target name="test-all" depends="compile-test" description="Run all tests">
         <junit fork="true" printsummary="yes" showoutput="yes" haltonfailure="no" haltonerror="no" failureproperty="test.failed" maxmemory="2048m">
             <classpath refid="classpath.test" />
             <test name="dk.brics.tajs.test.RunAll" />
@@ -201,35 +212,77 @@
         <fail message="tests failed" if="test.failed"/>
     </target>
 
-    <target name="test-stats-standard" depends="compile-test">
-        <java classname="dk.brics.tajs.test.Stats$Standard" fork="true" failonerror="true" maxmemory="2048m">
+    <target name="test-stats-standard" depends="compile-test" description="Run StatsStandard">
+        <java classname="dk.brics.tajs.test.stats.StatsStandard" fork="true" failonerror="true" maxmemory="2048m">
             <classpath refid="classpath.test" />
             <sysproperty key="statsquiet" value="${statsquiet}"/>
         </java>
     </target>
 
-    <target name="test-stats-extra" depends="compile-test">
-        <java classname="dk.brics.tajs.test.Stats$Extra" fork="true" failonerror="true" maxmemory="2048m">
+    <target name="test-stats-extra" depends="compile-test" description="Run StatsExtra">
+        <java classname="dk.brics.tajs.test.stats.StatsExtra" fork="true" failonerror="true" maxmemory="2048m">
             <classpath refid="classpath.test" />
             <sysproperty key="statsquiet" value="${statsquiet}"/>
         </java>
     </target>
 
-    <target name="test-stats-libs" depends="compile-test">
-        <java classname="dk.brics.tajs.test.Stats$Libs" fork="true" failonerror="true" maxmemory="8192m">
+    <target name="test-stats-libs" depends="compile-test" description="Run StatsLibs">
+        <java classname="dk.brics.tajs.test.stats.StatsLibs" fork="true" failonerror="true" maxmemory="8192m">
             <classpath refid="classpath.test" />
             <sysproperty key="statsquiet" value="${statsquiet}"/>
         </java>
     </target>
 
-    <target name="test-stats-jquery" depends="compile-test">
-        <java classname="dk.brics.tajs.test.Stats$JQuery" fork="true" failonerror="true" maxmemory="8192m">
+    <target name="test-stats-jquery" depends="compile-test" description="Run StatsJQuery">
+        <java classname="dk.brics.tajs.test.stats.StatsJQuery" fork="true" failonerror="true" maxmemory="8192m">
             <classpath refid="classpath.test" />
             <sysproperty key="statsquiet" value="${statsquiet}"/>
         </java>
     </target>
 
-    <target name="publish" depends="all">
+    <target name="test-stats-value-partitioning-underscore" depends="compile-test" description="Run StatsValuePartitioning.Underscore">
+        <java classname="dk.brics.tajs.test.stats.StatsValuePartitioning$Underscore" fork="true" failonerror="true" maxmemory="8192m">
+            <classpath refid="classpath.test" />
+            <sysproperty key="statsquiet" value="${statsquiet}"/>
+        </java>
+    </target>
+
+    <target name="test-stats-value-partitioning-lodash3" depends="compile-test" description="Run StatsValuePartitioning.Lodash3">
+        <java classname="dk.brics.tajs.test.stats.StatsValuePartitioning$Lodash3" fork="true" failonerror="true" maxmemory="8192m">
+            <classpath refid="classpath.test" />
+            <sysproperty key="statsquiet" value="${statsquiet}"/>
+        </java>
+    </target>
+
+    <target name="test-stats-value-partitioning-lodash4" depends="compile-test" description="Run StatsValuePartitioning.Lodash4">
+        <java classname="dk.brics.tajs.test.stats.StatsValuePartitioning$Lodash4" fork="true" failonerror="true" maxmemory="8192m">
+            <classpath refid="classpath.test" />
+            <sysproperty key="statsquiet" value="${statsquiet}"/>
+        </java>
+    </target>
+
+    <target name="test-stats-value-partitioning-prototype" depends="compile-test" description="Run StatsValuePartitioning.Prototype">
+        <java classname="dk.brics.tajs.test.stats.StatsValuePartitioning$Prototype" fork="true" failonerror="true" maxmemory="8192m">
+            <classpath refid="classpath.test" />
+            <sysproperty key="statsquiet" value="${statsquiet}"/>
+        </java>
+    </target>
+
+    <target name="test-stats-value-partitioning-scriptaculous" depends="compile-test" description="Run StatsValuePartitioning.Scriptaculous">
+        <java classname="dk.brics.tajs.test.stats.StatsValuePartitioning$Scriptaculous" fork="true" failonerror="true" maxmemory="8192m">
+            <classpath refid="classpath.test" />
+            <sysproperty key="statsquiet" value="${statsquiet}"/>
+        </java>
+    </target>
+
+    <target name="test-stats-value-partitioning-jquery" depends="compile-test" description="Run StatsValuePartitioning.JQuery">
+        <java classname="dk.brics.tajs.test.stats.StatsValuePartitioning$JQuery" fork="true" failonerror="true" maxmemory="8192m">
+            <classpath refid="classpath.test" />
+            <sysproperty key="statsquiet" value="${statsquiet}"/>
+        </java>
+    </target>
+
+    <target name="publish" depends="all" description="Rebuild everything and publish to public directory">
         <fail message="property 'public' should be set in tajs.properties">
             <condition>
                 <not>
@@ -260,7 +313,7 @@
         <chmod dir="${public}" perm="go+x" includes="${doc}/**,${doc},${dist}/**,${dist}" type="dir" />
     </target>
 
-    <target name="dotview">
+    <target name="dotview" description="View dot file (use with -Ddotfile=&lt;path&gt;)">
         <fail message="parameter 'dotfile' missing">
             <condition>
                 <not>
@@ -294,25 +347,25 @@
         </exec>
     </target>
 
-    <target name="view-callgraph">
+    <target name="view-callgraph" description="View call graph (out/callgraph.dot)">
         <antcall target="dotview">
             <param name="dotfile" value="out/callgraph.dot" />
         </antcall>
     </target>
 
-    <target name="view-state">
+    <target name="view-state" description="View abstract state (out/state.dot)">
         <antcall target="dotview">
             <param name="dotfile" value="out/state.dot" />
         </antcall>
     </target>
 
-    <target name="view-flowgraph">
+    <target name="view-flowgraph" description="View flow graph (out/flowgraphs/final.dot)">
         <antcall target="dotview">
             <param name="dotfile" value="out/flowgraphs/final.dot" />
         </antcall>
     </target>
 
-    <target name="dotfiles">
+    <target name="dotfiles" description="Convert dot files to PNG (use with -Ddotdir=&lt;path&gt;)">
         <fail message="parameter 'dotdir' missing">
             <condition>
                 <not>
@@ -339,13 +392,13 @@
         </exec>
     </target>
 
-    <target name="dot-flowgraphs">
+    <target name="dot-flowgraphs" description="Convert flow graphs (out/flowgraphs) to PNG">
         <antcall target="dotfiles">
             <param name="dotdir" value="out/flowgraphs" />
         </antcall>
     </target>
 
-    <target name="dot-newflows">
+    <target name="dot-newflows" description="Convert new-flows (out/newflows) to PNG" >
         <antcall target="dotfiles">
             <param name="dotdir" value="out/newflows" />
         </antcall>

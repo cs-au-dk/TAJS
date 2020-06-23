@@ -59,17 +59,17 @@ test-resources/src/1k2013spring/1415.js:90:12: [maybe] Reading absent property y
 test-resources/src/1k2013spring/1415.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1415.js:15:30, test-resources/src/1k2013spring/1415.js:15:36, test-resources/src/1k2013spring/1415.js:20:7, test-resources/src/1k2013spring/1415.js:20:20, test-resources/src/1k2013spring/1415.js:23:15, test-resources/src/1k2013spring/1415.js:23:28, test-resources/src/1k2013spring/1415.js:33:9, test-resources/src/1k2013spring/1415.js:37:6, test-resources/src/1k2013spring/1415.js:38:22, test-resources/src/1k2013spring/1415.js:40:14, test-resources/src/1k2013spring/1415.js:40:16, test-resources/src/1k2013spring/1415.js:40:24, test-resources/src/1k2013spring/1415.js:45:10, test-resources/src/1k2013spring/1415.js:49:8, test-resources/src/1k2013spring/1415.js:56:2, test-resources/src/1k2013spring/1415.js:56:36, test-resources/src/1k2013spring/1415.js:56:38, test-resources/src/1k2013spring/1415.js:57:27, test-resources/src/1k2013spring/1415.js:57:41, test-resources/src/1k2013spring/1415.js:57:62, test-resources/src/1k2013spring/1415.js:57:70, test-resources/src/1k2013spring/1415.js:57:77, test-resources/src/1k2013spring/1415.js:57:79, test-resources/src/1k2013spring/1415.js:60:27, test-resources/src/1k2013spring/1415.js:62:18, test-resources/src/1k2013spring/1415.js:63:8, test-resources/src/1k2013spring/1415.js:63:16, test-resources/src/1k2013spring/1415.js:64:17, test-resources/src/1k2013spring/1415.js:64:25, test-resources/src/1k2013spring/1415.js:64:32, test-resources/src/1k2013spring/1415.js:64:34, test-resources/src/1k2013spring/1415.js:69:14, test-resources/src/1k2013spring/1415.js:69:45, test-resources/src/1k2013spring/1415.js:69:57, test-resources/src/1k2013spring/1415.js:69:66, test-resources/src/1k2013spring/1415.js:69:68, test-resources/src/1k2013spring/1415.js:70:32, test-resources/src/1k2013spring/1415.js:70:36, test-resources/src/1k2013spring/1415.js:70:48, test-resources/src/1k2013spring/1415.js:70:57, test-resources/src/1k2013spring/1415.js:70:59, test-resources/src/1k2013spring/1415.js:79:6, test-resources/src/1k2013spring/1415.js:79:10, test-resources/src/1k2013spring/1415.js:85:11, test-resources/src/1k2013spring/1415.js:85:19, test-resources/src/1k2013spring/1415.js:86:5, test-resources/src/1k2013spring/1415.js:101:12, test-resources/src/1k2013spring/shim.js:9:5]
 test-resources/src/1k2013spring/1415.js:30:13: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1415.js:31:13: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1415.js:34:7: [maybe] Converting object to string
+test-resources/src/1k2013spring/1415.js:34:7: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1415.js:34:7: [maybe] Converting primitive string to object
-test-resources/src/1k2013spring/1415.js:34:28: [maybe] Converting object to string
+test-resources/src/1k2013spring/1415.js:34:28: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1415.js:34:28: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1415.js:36:30: [maybe] The variable tc has values with different types
 test-resources/src/1k2013spring/1415.js:41:7: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1415.js:41:7: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1415.js:49:4: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1415.js:50:6: [maybe] Converting object to string
+test-resources/src/1k2013spring/1415.js:50:6: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1415.js:50:6: [maybe] Converting primitive string to object
-test-resources/src/1k2013spring/1415.js:50:27: [maybe] Converting object to string
+test-resources/src/1k2013spring/1415.js:50:27: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1415.js:50:27: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1415.js:60:27: [maybe] Converting primitive string to object
 test-resources/src/1k2013spring/1415.js:61:6: [maybe] Converting primitive string to object
@@ -84,8 +84,8 @@ test-resources/src/1k2013spring/1415.js:86:5: [maybe] Converting primitive strin
 test-resources/src/1k2013spring/1415.js:86:5: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1415.js:89:12: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1415.js:90:12: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1415.js:93:27: [maybe] Converting object to string
+test-resources/src/1k2013spring/1415.js:93:27: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1415.js:93:27: [maybe] Converting primitive string to object
-test-resources/src/1k2013spring/1415.js:93:48: [maybe] Converting object to string
+test-resources/src/1k2013spring/1415.js:93:48: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1415.js:93:48: [maybe] Converting primitive string to object
 Soundness testing succeeded for 398 checks (with 0 expected failures)

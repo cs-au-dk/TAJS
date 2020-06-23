@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2019 Aarhus University
+ * Copyright 2009-2020 Aarhus University
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -199,7 +199,7 @@ public class BasicContextSensitivityStrategy implements IContextSensitivityStrat
         }
         // extend specialRegs with the given (register,value)
         Map<Integer, Value> specialRegs = null;
-        if (!Options.get().isForInSpecializationDisabled()) {
+        if (Options.get().isForInSpecializationEnabled()) {
             specialRegs = (currentContext.getSpecialRegisters() != null) ? newMap(currentContext.getSpecialRegisters()) : Collections.newMap();
             specialRegs.put(reg, v);
         }

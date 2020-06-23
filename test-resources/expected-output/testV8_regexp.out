@@ -1,19 +1,19 @@
 test-resources/src/v8tests/regexp.js: [definite] Exceptional program exit is unreachable
-test-resources/src/v8tests/regexp.js:29:31: [maybe] Converting object to string
+test-resources/src/v8tests/regexp.js:29:31: [maybe] Converting object to primitive
 test-resources/src/v8tests/regexp.js:29:31: [maybe] Converting primitive string to object
-test-resources/src/v8tests/regexp.js:40:14: [maybe] Converting object to string
+test-resources/src/v8tests/regexp.js:40:14: [maybe] Converting object to primitive
 test-resources/src/v8tests/regexp.js:40:14: [maybe] Converting primitive string to object
-test-resources/src/v8tests/regexp.js:41:14: [maybe] Converting object to string
+test-resources/src/v8tests/regexp.js:41:14: [maybe] Converting object to primitive
 test-resources/src/v8tests/regexp.js:41:14: [maybe] Converting primitive string to object
-test-resources/src/v8tests/regexp.js:46:14: [maybe] Converting object to string
+test-resources/src/v8tests/regexp.js:46:14: [maybe] Converting object to primitive
 test-resources/src/v8tests/regexp.js:46:14: [maybe] Converting primitive string to object
-test-resources/src/v8tests/regexp.js:56:10: [maybe] Converting object to string
+test-resources/src/v8tests/regexp.js:56:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/regexp.js:56:10: [maybe] Converting primitive string to object
-test-resources/src/v8tests/regexp.js:66:10: [maybe] Converting object to string
+test-resources/src/v8tests/regexp.js:66:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/regexp.js:66:10: [maybe] Converting primitive string to object
-test-resources/src/v8tests/regexp.js:77:10: [maybe] Converting object to string
+test-resources/src/v8tests/regexp.js:77:10: [maybe] Converting object to primitive
 test-resources/src/v8tests/regexp.js:77:10: [maybe] Converting primitive string to object
-test-resources/src/v8tests/regexp.js:201:17: [maybe] Converting object to string
+test-resources/src/v8tests/regexp.js:201:17: [maybe] Converting object to primitive
 test-resources/src/v8tests/regexp.js:201:17: [maybe] Converting primitive string to object
 test-resources/src/v8tests/regexp.js:202:42: [maybe] Converting primitive string to object
 test-resources/src/v8tests/regexp.js:206:21: [maybe] Converting primitive string to object

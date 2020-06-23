@@ -82,17 +82,17 @@ test/1k2014dragons/1822.js:131:21: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1822.js:131:21: [maybe] Converting primitive number to object
 test/1k2014dragons/1822.js:131:21: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1822.js:131:21: [maybe] The variable o has values with different types
-test/1k2014dragons/1822.js:135:17: [maybe] Converting object to string
+test/1k2014dragons/1822.js:135:17: [maybe] Converting object to primitive
 test/1k2014dragons/1822.js:135:17: [maybe] Converting primitive number to object
 test/1k2014dragons/1822.js:135:17: [maybe] Converting primitive string to object
 test/1k2014dragons/1822.js:135:17: [maybe] Reading absent property (computed name)
 test/1k2014dragons/1822.js:135:17: [maybe] The variable o has values with different types
-test/1k2014dragons/1822.js:141:44: [maybe] Conversion from string to number yields NaN
+test/1k2014dragons/1822.js:141:44: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1822.js:141:44: [maybe] The variable g has values with different types
 test/1k2014dragons/1822.js:141:61: [maybe] The variable o has values with different types
 test/1k2014dragons/1822.js:146:27: [maybe] The variable o has values with different types
-test/1k2014dragons/1822.js:146:34: [maybe] Conversion from string to number yields NaN
-test/1k2014dragons/1822.js:146:34: [maybe] Converting object to number
+test/1k2014dragons/1822.js:146:34: [maybe] Conversion to number yields NaN
+test/1k2014dragons/1822.js:146:34: [maybe] Converting object to primitive
 test/1k2014dragons/1822.js:146:34: [maybe] The variable o has values with different types
 test/1k2014dragons/shims.js:9:9: [maybe] Reading absent property (computed name)
 test/1k2014dragons/shims.js,test/1k2014dragons/1822.js: [maybe] Uncaught exception, constructed at [test/1k2014dragons/1822.js:72:17, test/1k2014dragons/1822.js:97:13, test/1k2014dragons/1822.js:122:31, test/1k2014dragons/1822.js:125:31, test/1k2014dragons/1822.js:130:28, test/1k2014dragons/1822.js:131:28, test/1k2014dragons/1822.js:134:25, test/1k2014dragons/1822.js:134:29, test/1k2014dragons/1822.js:135:17, test/1k2014dragons/1822.js:137:28, test/1k2014dragons/1822.js:137:37, test/1k2014dragons/1822.js:137:45, test/1k2014dragons/1822.js:137:62, test/1k2014dragons/1822.js:137:67, test/1k2014dragons/1822.js:137:70, test/1k2014dragons/shims.js:31:1, test/1k2014dragons/shims.js:34:1, test/1k2014dragons/shims.js:35:1, test/1k2014dragons/shims.js:37:9, test/1k2014dragons/shims.js:42:18, test/1k2014dragons/shims.js:42:46, test/1k2014dragons/shims.js:55:9]

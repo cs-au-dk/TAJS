@@ -1,12 +1,28 @@
 test-resources/src/micro/toString2.js: [definite] Exceptional program exit is unreachable
-test-resources/src/micro/toString2.js:9:10: [maybe] Converting object to number
-test-resources/src/micro/toString2.js:12:10: [maybe] Converting object to number
-test-resources/src/micro/toString2.js:15:10: [maybe] Converting object to number
-test-resources/src/micro/toString2.js:18:10: [maybe] Converting object to number
-test-resources/src/micro/toString2.js:21:10: [maybe] Converting object to number
-test-resources/src/micro/toString2.js:24:10: [maybe] Converting object to number
-test-resources/src/micro/toString2.js:27:10: [maybe] Converting object to number
-test-resources/src/micro/toString2.js:30:10: [maybe] Converting object to number
+test-resources/src/micro/toString2.js:8:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:9:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:11:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:12:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:14:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:15:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:17:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:18:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:20:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:21:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:23:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:24:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:26:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:27:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:29:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:30:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:34:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:35:10: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:37:11: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:38:11: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:40:11: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:41:11: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:46:11: [maybe] Converting object to primitive
+test-resources/src/micro/toString2.js:47:11: [maybe] Converting object to primitive
 test-resources/src/micro/toString2.js:65:13: [maybe] The variable p9 has values with different types
-test-resources/src/micro/toString2.js:76:1: [maybe] Converting object to string
+test-resources/src/micro/toString2.js:76:1: [maybe] Converting object to primitive
 Soundness testing succeeded for 142 checks (with 0 expected failures)

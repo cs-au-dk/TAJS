@@ -6,5 +6,5 @@ test-resources/src/micro/test174.js:3:1: [info] Abstract value: false
 test-resources/src/micro/test174.js:4:1: [info] Abstract value: true
 test-resources/src/micro/test174.js:5:1: [info] Abstract value: false
 test-resources/src/micro/test174.js:6:1: [info] Abstract value: false
-test-resources/src/micro/test174.js:11:1: [info] Abstract value: Bool
+test-resources/src/micro/test174.js:11:1: [info] Abstract value: Bool[partitions: [{TYPE(node=59,type=Number)=false, TYPE(node=59,type=OBJ_Array)=true}]]
 Soundness testing succeeded for 57 checks (with 0 expected failures)

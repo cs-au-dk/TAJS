@@ -25,18 +25,18 @@ test-resources/src/1k2012love/1218.js:47:7: [maybe] Reading absent property s of
 test-resources/src/1k2012love/1218.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2012love/1218.js:21:4, test-resources/src/1k2012love/1218.js:22:2, test-resources/src/1k2012love/1218.js:22:14, test-resources/src/1k2012love/1218.js:23:2, test-resources/src/1k2012love/1218.js:24:15, test-resources/src/1k2012love/1218.js:26:20, test-resources/src/1k2012love/1218.js:26:88, test-resources/src/1k2012love/1218.js:26:95, test-resources/src/1k2012love/1218.js:38:2, test-resources/src/1k2012love/1218.js:38:11, test-resources/src/1k2012love/1218.js:46:2, test-resources/src/1k2012love/1218.js:47:7, test-resources/src/1k2012love/shim.js:9:5]
 test-resources/src/1k2012love/1218.js:21:4: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1218.js:22:14: [maybe] Converting undefined to string
-test-resources/src/1k2012love/1218.js:23:2: [maybe] Converting object to string
+test-resources/src/1k2012love/1218.js:23:2: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1218.js:23:2: [maybe] Converting primitive string to object
-test-resources/src/1k2012love/1218.js:24:15: [maybe] Converting object to string
+test-resources/src/1k2012love/1218.js:24:15: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1218.js:24:15: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1218.js:26:3: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1218.js:26:16: [maybe] Converting undefined to string
 test-resources/src/1k2012love/1218.js:26:95: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1218.js:38:2: [maybe] Converting undefined to string
-test-resources/src/1k2012love/1218.js:38:11: [maybe] Converting object to string
+test-resources/src/1k2012love/1218.js:38:11: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1218.js:38:11: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1218.js:40:17: [maybe] Conversion to number yields NaN
-test-resources/src/1k2012love/1218.js:47:7: [maybe] Converting object to string
+test-resources/src/1k2012love/1218.js:47:7: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1218.js:47:7: [maybe] Converting primitive string to object
 test-resources/src/1k2012love/1218.js:7:2: [info] 'this' refers to a summary abstract object, which may cause loss of precision
 Soundness testing succeeded for 129 checks (with 4 expected failures)

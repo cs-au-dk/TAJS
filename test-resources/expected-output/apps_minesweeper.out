@@ -40,18 +40,21 @@ benchmarks/tajs/src/apps/minesweeper/minesweeper.html:477:12: [maybe] Reading ab
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:506:13: [maybe] Reading absent property target of host object
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:509:13: [maybe] Reading absent property which of host object
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html: [maybe] Uncaught exception, constructed at [benchmarks/tajs/src/apps/minesweeper/minesweeper.html:186:26, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:188:27, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:232:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:237:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:256:7, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:263:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:269:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:273:14, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:322:9, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:341:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:347:14, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:368:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:376:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:389:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:389:56, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:390:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:420:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:421:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:424:13, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:452:5, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:458:11, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:464:20, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:467:18, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:470:23, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:473:23, benchmarks/tajs/src/apps/minesweeper/minesweeper.html:477:12]
-benchmarks/tajs/src/apps/minesweeper/minesweeper.html:257:3: [maybe] Converting object to string
+benchmarks/tajs/src/apps/minesweeper/minesweeper.html:257:3: [maybe] Converting object to primitive
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:257:3: [maybe] Converting primitive string to object
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:257:18: [maybe] Converting primitive string to object
-benchmarks/tajs/src/apps/minesweeper/minesweeper.html:257:43: [maybe] Converting object to string
+benchmarks/tajs/src/apps/minesweeper/minesweeper.html:257:43: [maybe] Converting object to primitive
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:257:43: [maybe] Converting primitive string to object
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:257:58: [maybe] Converting primitive string to object
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:322:9: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:341:5: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/minesweeper/minesweeper.html:347:11: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/apps/minesweeper/minesweeper.html:347:11: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:347:14: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:389:56: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:390:5: [maybe] Reading absent property (computed name)
+benchmarks/tajs/src/apps/minesweeper/minesweeper.html:394:18: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/apps/minesweeper/minesweeper.html:395:18: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/apps/minesweeper/minesweeper.html:396:9: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:397:27: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:397:36: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:398:17: [maybe] Conversion to number yields NaN
@@ -59,6 +62,7 @@ benchmarks/tajs/src/apps/minesweeper/minesweeper.html:399:28: [maybe] Conversion
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:399:37: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:401:30: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:402:31: [maybe] Conversion to number yields NaN
+benchmarks/tajs/src/apps/minesweeper/minesweeper.html:403:9: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:404:27: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:404:36: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:405:17: [maybe] Conversion to number yields NaN
@@ -66,9 +70,9 @@ benchmarks/tajs/src/apps/minesweeper/minesweeper.html:406:28: [maybe] Conversion
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:406:37: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:421:5: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:424:13: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/minesweeper/minesweeper.html:464:13: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/apps/minesweeper/minesweeper.html:464:13: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:464:20: [maybe] Reading absent property (computed name)
-benchmarks/tajs/src/apps/minesweeper/minesweeper.html:467:13: [maybe] Conversion from string to number yields NaN
+benchmarks/tajs/src/apps/minesweeper/minesweeper.html:467:13: [maybe] Conversion to number yields NaN
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:467:18: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:470:23: [maybe] Reading absent property (computed name)
 benchmarks/tajs/src/apps/minesweeper/minesweeper.html:473:23: [maybe] Reading absent property (computed name)

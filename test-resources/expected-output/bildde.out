@@ -187,6 +187,4 @@ benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:54: [maybe] Reading ab
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:5):1:11: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:5):1:19: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:5):1:52: [maybe] Reading absent property (computed name)
-TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:5):1:44: [info] Writing to unknown property that may cause loss of precision
-TAJS-dynamic-code(benchmarks/tajs/src/unevalizer/bild.de-slice/index.html:6:5):1:11: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 504 checks (with 0 expected failures)

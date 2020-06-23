@@ -461,27 +461,27 @@ test-resources/src/google2/raytrace.js:125:24: [maybe] The variable c1 has value
 test-resources/src/google2/raytrace.js:126:23: [maybe] Conversion to number yields NaN
 test-resources/src/google2/raytrace.js:126:23: [maybe] Converting primitive number to object
 test-resources/src/google2/raytrace.js:126:23: [maybe] The variable c1 has values with different types
-test-resources/src/google2/raytrace.js:134:22: [maybe] Conversion from string to number yields NaN
 test-resources/src/google2/raytrace.js:134:22: [maybe] Conversion to number yields NaN
-test-resources/src/google2/raytrace.js:134:22: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:134:22: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:134:22: [maybe] Converting object to primitive
 test-resources/src/google2/raytrace.js:134:22: [maybe] Converting primitive number to object
 test-resources/src/google2/raytrace.js:134:22: [maybe] The variable c1 has values with different types
 test-resources/src/google2/raytrace.js:134:31: [maybe] The variable f has values with different types
-test-resources/src/google2/raytrace.js:135:24: [maybe] Conversion from string to number yields NaN
 test-resources/src/google2/raytrace.js:135:24: [maybe] Conversion to number yields NaN
-test-resources/src/google2/raytrace.js:135:24: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:135:24: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:135:24: [maybe] Converting object to primitive
 test-resources/src/google2/raytrace.js:135:24: [maybe] Converting primitive number to object
 test-resources/src/google2/raytrace.js:135:24: [maybe] The variable c1 has values with different types
 test-resources/src/google2/raytrace.js:135:35: [maybe] The variable f has values with different types
-test-resources/src/google2/raytrace.js:136:23: [maybe] Conversion from string to number yields NaN
 test-resources/src/google2/raytrace.js:136:23: [maybe] Conversion to number yields NaN
-test-resources/src/google2/raytrace.js:136:23: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:136:23: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:136:23: [maybe] Converting object to primitive
 test-resources/src/google2/raytrace.js:136:23: [maybe] Converting primitive number to object
 test-resources/src/google2/raytrace.js:136:23: [maybe] The variable c1 has values with different types
 test-resources/src/google2/raytrace.js:136:33: [maybe] The variable f has values with different types
-test-resources/src/google2/raytrace.js:165:71: [maybe] Conversion from string to number yields NaN
 test-resources/src/google2/raytrace.js:165:71: [maybe] Conversion to number yields NaN
-test-resources/src/google2/raytrace.js:165:71: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:165:71: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:165:71: [maybe] Converting object to primitive
 test-resources/src/google2/raytrace.js:165:75: [maybe] The variable w has values with different types
 test-resources/src/google2/raytrace.js:166:67: [maybe] The variable c2 has values with different types
 test-resources/src/google2/raytrace.js:166:71: [maybe] The variable w has values with different types
@@ -530,21 +530,21 @@ test-resources/src/google2/raytrace.js:255:28: [maybe] Converting undefined to s
 test-resources/src/google2/raytrace.js:256:42: [maybe] Conversion to number yields NaN
 test-resources/src/google2/raytrace.js:256:53: [maybe] Conversion to number yields NaN
 test-resources/src/google2/raytrace.js:256:64: [maybe] Conversion to number yields NaN
-test-resources/src/google2/raytrace.js:264:42: [maybe] Conversion from string to number yields NaN
 test-resources/src/google2/raytrace.js:264:42: [maybe] Conversion to number yields NaN
-test-resources/src/google2/raytrace.js:264:42: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:264:42: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:264:42: [maybe] Converting object to primitive
 test-resources/src/google2/raytrace.js:264:42: [maybe] Converting primitive number to object
 test-resources/src/google2/raytrace.js:264:42: [maybe] The variable v has values with different types
 test-resources/src/google2/raytrace.js:264:48: [maybe] The variable w has values with different types
-test-resources/src/google2/raytrace.js:264:51: [maybe] Conversion from string to number yields NaN
 test-resources/src/google2/raytrace.js:264:51: [maybe] Conversion to number yields NaN
-test-resources/src/google2/raytrace.js:264:51: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:264:51: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:264:51: [maybe] Converting object to primitive
 test-resources/src/google2/raytrace.js:264:51: [maybe] Converting primitive number to object
 test-resources/src/google2/raytrace.js:264:51: [maybe] The variable v has values with different types
 test-resources/src/google2/raytrace.js:264:57: [maybe] The variable w has values with different types
-test-resources/src/google2/raytrace.js:264:60: [maybe] Conversion from string to number yields NaN
 test-resources/src/google2/raytrace.js:264:60: [maybe] Conversion to number yields NaN
-test-resources/src/google2/raytrace.js:264:60: [maybe] Converting object to number
+test-resources/src/google2/raytrace.js:264:60: [maybe] Conversion to number yields NaN
+test-resources/src/google2/raytrace.js:264:60: [maybe] Converting object to primitive
 test-resources/src/google2/raytrace.js:264:60: [maybe] Converting primitive number to object
 test-resources/src/google2/raytrace.js:264:60: [maybe] The variable v has values with different types
 test-resources/src/google2/raytrace.js:264:66: [maybe] The variable w has values with different types
@@ -581,7 +581,7 @@ test-resources/src/google2/raytrace.js:681:25: [maybe] Reading absent property (
 test-resources/src/google2/raytrace.js:708:38: [maybe] Conversion to number yields NaN
 test-resources/src/google2/raytrace.js:711:25: [maybe] Reading absent property (computed name)
 test-resources/src/google2/raytrace.js:771:37: [maybe] Conversion to number yields NaN
-test-resources/src/google2/raytrace.js:877:21: [maybe] Converting object to string
+test-resources/src/google2/raytrace.js:877:21: [maybe] Converting object to primitive
 test-resources/src/google2/raytrace.js:877:21: [maybe] Converting primitive string to object
 test-resources/src/google2/raytrace.js:152:9: [info] 'this' refers to multiple abstract objects, which may cause loss of precision
 test-resources/src/google2/raytrace.js:152:21: [info] 'this' refers to multiple abstract objects, which may cause loss of precision

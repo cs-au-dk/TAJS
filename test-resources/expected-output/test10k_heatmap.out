@@ -44,6 +44,7 @@ test-resources/src/10k/heatmap.html:103:49: [maybe] Conversion to number yields 
 test-resources/src/10k/heatmap.html:104:28: [maybe] Reading absent property (computed name)
 test-resources/src/10k/heatmap.html:105:30: [maybe] Reading absent property (computed name)
 test-resources/src/10k/heatmap.html:106:30: [maybe] Reading absent property (computed name)
+test-resources/src/10k/heatmap.html:107:30: [maybe] Conversion to number yields NaN
 test-resources/src/10k/heatmap.html:107:50: [maybe] Conversion to number yields NaN
 test-resources/src/10k/heatmap.html:146:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/heatmap.html:155:20: [maybe] Conversion to number yields NaN

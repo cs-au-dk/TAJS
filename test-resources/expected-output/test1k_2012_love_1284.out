@@ -64,6 +64,7 @@ test-resources/src/1k2012love/1284.js:101:19: [maybe] Reading absent property (c
 test-resources/src/1k2012love/1284.js:101:24: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1284.js:106:42: [maybe] Conversion to number yields NaN
 test-resources/src/1k2012love/1284.js:106:46: [maybe] Reading absent property (computed name)
+test-resources/src/1k2012love/1284.js:110:31: [maybe] Converting object to primitive
 test-resources/src/1k2012love/1284.js:112:22: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1284.js:113:22: [maybe] Reading absent property (computed name)
 test-resources/src/1k2012love/1284.js:114:22: [maybe] Reading absent property (computed name)

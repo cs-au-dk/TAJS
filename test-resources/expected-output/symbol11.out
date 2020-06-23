@@ -1,5 +1,5 @@
-out/temp-sources/TestMicro.symbol11.js:2:1: [definite] Dead assignment, property is never read
-out/temp-sources/TestMicro.symbol11.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.symbol11.js:3:23: [definite] Reading absent property (computed name)
-out/temp-sources/TestMicro.symbol11.js:3:1: [info] Abstract value: true
+TestMicro.symbol11.js:2:1: [definite] Dead assignment, property is never read
+TestMicro.symbol11.js: [definite] Exceptional program exit is unreachable
+TestMicro.symbol11.js:3:23: [definite] Reading absent property (computed name)
+TestMicro.symbol11.js:3:1: [info] Abstract value: true
 Soundness testing succeeded for 13 checks (with 0 expected failures)

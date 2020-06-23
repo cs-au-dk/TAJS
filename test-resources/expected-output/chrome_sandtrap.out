@@ -518,30 +518,34 @@ test-resources/src/chromeexperiments/sandtrap.html:112:13: [maybe] The variable 
 test-resources/src/chromeexperiments/sandtrap.html:135:21: [maybe] The variable mouseClicked has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:136:26: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:139:31: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:181:13: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:183:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:187:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:199:28: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/sandtrap.html:202:16: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:202:16: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:362:15: [maybe] Converting undefined to string
+test-resources/src/chromeexperiments/sandtrap.html:362:116: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:382:24: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:419:6: [maybe] The variable mapResolution has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:426:10: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:427:31: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:427:31: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:427:32: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:428:9: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:428:9: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:428:10: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:429:24: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:429:24: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:429:25: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:434:17: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:434:17: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:434:18: [maybe] The variable c has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:475:13: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:475:13: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:475:13: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:475:13: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:475:62: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:476:38: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/sandtrap.html:476:53: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:476:53: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:484:27: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:489:148: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:490:14: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/sandtrap.html:496:21: [maybe] Converting object to string
+test-resources/src/chromeexperiments/sandtrap.html:496:21: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:496:21: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:498:17: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:499:38: [maybe] Reading absent property (computed name)
@@ -557,6 +561,7 @@ test-resources/src/chromeexperiments/sandtrap.html:509:47: [maybe] Converting pr
 test-resources/src/chromeexperiments/sandtrap.html:509:47: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:509:86: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:510:26: [maybe] The variable i has values with different types
+test-resources/src/chromeexperiments/sandtrap.html:514:25: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:514:25: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:514:25: [maybe] The variable i has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:514:39: [maybe] Converting primitive string to object
@@ -565,6 +570,7 @@ test-resources/src/chromeexperiments/sandtrap.html:514:51: [maybe] Converting pr
 test-resources/src/chromeexperiments/sandtrap.html:514:51: [maybe] The variable i has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:514:65: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:514:65: [maybe] The variable i has values with different types
+test-resources/src/chromeexperiments/sandtrap.html:515:25: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:515:25: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:515:25: [maybe] The variable i has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:515:40: [maybe] Converting primitive string to object
@@ -575,7 +581,7 @@ test-resources/src/chromeexperiments/sandtrap.html:515:67: [maybe] Converting pr
 test-resources/src/chromeexperiments/sandtrap.html:515:67: [maybe] The variable i has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:516:21: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:516:36: [maybe] The variable i has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:520:37: [maybe] Converting object to string
+test-resources/src/chromeexperiments/sandtrap.html:520:37: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:520:37: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:520:37: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:521:26: [maybe] Reading absent property (computed name)
@@ -757,7 +763,7 @@ test-resources/src/chromeexperiments/sandtrap.html:600:113: [maybe] Conversion t
 test-resources/src/chromeexperiments/sandtrap.html:600:136: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:608:33: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:609:33: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/sandtrap.html:625:29: [maybe] Conversion from string to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:625:29: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:654:15: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:655:15: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:658:35: [maybe] Conversion to number yields NaN
@@ -766,19 +772,24 @@ test-resources/src/chromeexperiments/sandtrap.html:689:31: [maybe] Conversion to
 test-resources/src/chromeexperiments/sandtrap.html:705:9: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:712:21: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:713:18: [maybe] The variable d has values with different types
+test-resources/src/chromeexperiments/sandtrap.html:713:23: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:713:23: [maybe] The variable d has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:714:17: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:715:17: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:733:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:734:22: [maybe] The variable d has values with different types
+test-resources/src/chromeexperiments/sandtrap.html:734:27: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:734:27: [maybe] The variable d has values with different types
+test-resources/src/chromeexperiments/sandtrap.html:737:28: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:737:28: [maybe] The variable d has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:738:30: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:748:29: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:749:25: [maybe] The variable k has values with different types
+test-resources/src/chromeexperiments/sandtrap.html:749:30: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:749:30: [maybe] The variable k has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:754:29: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:756:26: [maybe] The variable k has values with different types
+test-resources/src/chromeexperiments/sandtrap.html:756:31: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:756:31: [maybe] The variable k has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:784:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:785:24: [maybe] Conversion to number yields NaN
@@ -786,9 +797,10 @@ test-resources/src/chromeexperiments/sandtrap.html:785:66: [maybe] Conversion to
 test-resources/src/chromeexperiments/sandtrap.html:790:25: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:800:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:801:26: [maybe] The variable j has values with different types
+test-resources/src/chromeexperiments/sandtrap.html:801:31: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:801:31: [maybe] The variable j has values with different types
-test-resources/src/chromeexperiments/sandtrap.html:841:21: [maybe] Conversion from string to number yields NaN
-test-resources/src/chromeexperiments/sandtrap.html:841:21: [maybe] Converting object to string
+test-resources/src/chromeexperiments/sandtrap.html:841:21: [maybe] Conversion to number yields NaN
+test-resources/src/chromeexperiments/sandtrap.html:841:21: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:841:21: [maybe] The variable h has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:842:161: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:843:161: [maybe] Reading absent property (computed name)
@@ -818,12 +830,14 @@ test-resources/src/chromeexperiments/sandtrap.html:859:86: [maybe] Reading absen
 test-resources/src/chromeexperiments/sandtrap.html:860:86: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:876:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:877:26: [maybe] The variable d has values with different types
+test-resources/src/chromeexperiments/sandtrap.html:877:31: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:877:31: [maybe] The variable d has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:898:25: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:899:26: [maybe] The variable d has values with different types
+test-resources/src/chromeexperiments/sandtrap.html:899:31: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:899:31: [maybe] The variable d has values with different types
 test-resources/src/chromeexperiments/sandtrap.html:935:25: [maybe] Reading absent property (computed name)
-test-resources/src/chromeexperiments/sandtrap.html:952:21: [maybe] Converting object to string
+test-resources/src/chromeexperiments/sandtrap.html:952:21: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:952:21: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:984:21: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:985:21: [maybe] Conversion to number yields NaN
@@ -840,7 +854,7 @@ test-resources/src/chromeexperiments/sandtrap.html:1004:23: [maybe] Conversion t
 test-resources/src/chromeexperiments/sandtrap.html:1004:89: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:1006:31: [maybe] Conversion to number yields NaN
 test-resources/src/chromeexperiments/sandtrap.html:1006:88: [maybe] Conversion to number yields NaN
-test-resources/src/chromeexperiments/sandtrap.html:1010:17: [maybe] Converting object to string
+test-resources/src/chromeexperiments/sandtrap.html:1010:17: [maybe] Converting object to primitive
 test-resources/src/chromeexperiments/sandtrap.html:1010:17: [maybe] Converting primitive string to object
 test-resources/src/chromeexperiments/sandtrap.html:1030:9: [maybe] Reading absent property (computed name)
 test-resources/src/chromeexperiments/sandtrap.html:1056:13: [maybe] Conversion to number yields NaN

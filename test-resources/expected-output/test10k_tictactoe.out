@@ -77,21 +77,25 @@ test-resources/src/10k/tictactoe.html:97:9: [maybe] Reading absent property (com
 test-resources/src/10k/tictactoe.html:98:9: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:161:43: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:161:53: [maybe] Reading absent property (computed name)
+test-resources/src/10k/tictactoe.html:182:61: [maybe] Conversion to number yields NaN
 test-resources/src/10k/tictactoe.html:182:75: [maybe] Conversion to number yields NaN
 test-resources/src/10k/tictactoe.html:182:83: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:183:9: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:186:29: [maybe] Conversion to number yields NaN
 test-resources/src/10k/tictactoe.html:187:20: [maybe] Reading absent property (computed name)
+test-resources/src/10k/tictactoe.html:190:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/tictactoe.html:190:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:190:20: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:191:29: [maybe] Conversion to number yields NaN
 test-resources/src/10k/tictactoe.html:192:20: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:194:9: [maybe] Reading absent property (computed name)
+test-resources/src/10k/tictactoe.html:201:61: [maybe] Conversion to number yields NaN
 test-resources/src/10k/tictactoe.html:201:75: [maybe] Conversion to number yields NaN
 test-resources/src/10k/tictactoe.html:201:83: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:202:9: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:205:29: [maybe] Conversion to number yields NaN
 test-resources/src/10k/tictactoe.html:206:20: [maybe] Reading absent property (computed name)
+test-resources/src/10k/tictactoe.html:209:13: [maybe] Conversion to number yields NaN
 test-resources/src/10k/tictactoe.html:209:13: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:209:20: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:210:29: [maybe] Conversion to number yields NaN
@@ -136,4 +140,8 @@ test-resources/src/10k/tictactoe.html:238:41: [maybe] Reading absent property (c
 test-resources/src/10k/tictactoe.html:247:15: [maybe] Reading absent property (computed name)
 test-resources/src/10k/tictactoe.html:252:14: [maybe] Conversion to number yields NaN
 test-resources/src/10k/tictactoe.html:253:15: [maybe] Conversion to number yields NaN
+test-resources/src/10k/tictactoe.html:263:17: [maybe] Conversion to number yields NaN
+test-resources/src/10k/tictactoe.html:263:27: [maybe] Conversion to number yields NaN
+test-resources/src/10k/tictactoe.html:263:38: [maybe] Conversion to number yields NaN
+test-resources/src/10k/tictactoe.html:263:48: [maybe] Conversion to number yields NaN
 Soundness testing succeeded for 810 checks (with 0 expected failures)

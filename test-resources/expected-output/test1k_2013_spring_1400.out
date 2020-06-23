@@ -35,87 +35,90 @@ test-resources/src/1k2013spring/1400.js:164:7: [maybe] Reading absent property m
 test-resources/src/1k2013spring/1400.js:165:9: [maybe] Reading absent property p
 test-resources/src/1k2013spring/1400.js:171:23: [maybe] Reading absent property c of host object
 test-resources/src/1k2013spring/1400.js: [maybe] Uncaught exception, constructed at [test-resources/src/1k2013spring/1400.js:14:9, test-resources/src/1k2013spring/1400.js:15:26, test-resources/src/1k2013spring/1400.js:23:11, test-resources/src/1k2013spring/1400.js:27:25, test-resources/src/1k2013spring/1400.js:28:21, test-resources/src/1k2013spring/1400.js:41:18, test-resources/src/1k2013spring/1400.js:47:15, test-resources/src/1k2013spring/1400.js:48:15, test-resources/src/1k2013spring/1400.js:52:24, test-resources/src/1k2013spring/1400.js:80:5, test-resources/src/1k2013spring/1400.js:104:15, test-resources/src/1k2013spring/1400.js:116:11, test-resources/src/1k2013spring/1400.js:121:16, test-resources/src/1k2013spring/1400.js:121:23, test-resources/src/1k2013spring/1400.js:128:16, test-resources/src/1k2013spring/1400.js:128:23, test-resources/src/1k2013spring/1400.js:134:16, test-resources/src/1k2013spring/1400.js:134:23, test-resources/src/1k2013spring/1400.js:161:6, test-resources/src/1k2013spring/1400.js:163:20, test-resources/src/1k2013spring/1400.js:164:7, test-resources/src/1k2013spring/1400.js:165:7, test-resources/src/1k2013spring/1400.js:171:9, test-resources/src/1k2013spring/1400.js:171:23, test-resources/src/1k2013spring/1400.js:171:25, test-resources/src/1k2013spring/shim.js:9:5]
-test-resources/src/1k2013spring/1400.js:14:9: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:17:12: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:14:9: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:17:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1400.js:17:12: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:17:12: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:21:12: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2013spring/1400.js:21:12: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:21:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1400.js:21:12: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:21:12: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:27:12: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2013spring/1400.js:27:12: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:27:12: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1400.js:27:12: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:27:12: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1400.js:27:25: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:28:14: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:28:14: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:28:14: [maybe] Converting primitive string to object
-test-resources/src/1k2013spring/1400.js:35:18: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:28:30: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:35:18: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1400.js:35:18: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:35:18: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:38:18: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:38:18: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1400.js:38:18: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:38:18: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:38:30: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2013spring/1400.js:38:30: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:38:30: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1400.js:38:30: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:38:30: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:39:24: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:39:24: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:39:24: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:41:18: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:41:18: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:41:18: [maybe] Converting primitive number to object
 test-resources/src/1k2013spring/1400.js:41:18: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:41:20: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:41:20: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:41:20: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:44:18: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:44:18: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:44:18: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1400.js:47:15: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1400.js:47:15: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:48:15: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1400.js:47:15: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:48:15: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1400.js:48:15: [maybe] Converting object to number
-test-resources/src/1k2013spring/1400.js:48:15: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:52:24: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:54:22: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:48:15: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:52:24: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:54:22: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:54:22: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1400.js:57:28: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:80:5: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:86:3: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:86:18: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:86:34: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:86:50: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:89:3: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:89:25: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:89:47: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:89:70: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:95:10: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:80:5: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:86:3: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:86:18: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:86:34: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:86:50: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:89:3: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:89:25: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:89:47: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:89:70: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:95:10: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:95:10: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:104:15: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:104:25: [maybe] Conversion from string to number yields NaN
+test-resources/src/1k2013spring/1400.js:104:15: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:104:25: [maybe] Conversion to number yields NaN
-test-resources/src/1k2013spring/1400.js:104:25: [maybe] Converting object to number
-test-resources/src/1k2013spring/1400.js:104:25: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:104:25: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:104:25: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:116:11: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:118:14: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:116:11: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:118:14: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:118:14: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:118:47: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2013spring/1400.js:118:47: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:118:47: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1400.js:118:47: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:118:47: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:118:78: [maybe] Conversion from string to number yields NaN
-test-resources/src/1k2013spring/1400.js:118:78: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:118:78: [maybe] Conversion to number yields NaN
+test-resources/src/1k2013spring/1400.js:118:78: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:118:78: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:121:16: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:121:16: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:121:16: [maybe] Converting primitive string to object
-test-resources/src/1k2013spring/1400.js:127:14: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:121:32: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:127:14: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:127:14: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:128:16: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:128:16: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:128:16: [maybe] Converting primitive string to object
-test-resources/src/1k2013spring/1400.js:133:14: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:128:32: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:133:14: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:133:14: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:134:16: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:134:16: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:134:16: [maybe] Converting primitive string to object
+test-resources/src/1k2013spring/1400.js:134:32: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:148:7: [maybe] Conversion to number yields NaN
 test-resources/src/1k2013spring/1400.js:163:20: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:165:7: [maybe] Converting object to string
-test-resources/src/1k2013spring/1400.js:171:23: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:165:7: [maybe] Converting object to primitive
+test-resources/src/1k2013spring/1400.js:171:23: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:171:23: [maybe] Converting primitive number to object
 test-resources/src/1k2013spring/1400.js:171:23: [maybe] Reading absent property (computed name)
-test-resources/src/1k2013spring/1400.js:171:25: [maybe] Converting object to string
+test-resources/src/1k2013spring/1400.js:171:25: [maybe] Converting object to primitive
 test-resources/src/1k2013spring/1400.js:171:25: [maybe] Reading absent property (computed name)
 test-resources/src/1k2013spring/1400.js:14:9: [info] Writing to unknown property that may cause loss of precision
 test-resources/src/1k2013spring/1400.js:47:15: [info] Writing to unknown property that may cause loss of precision

@@ -186,6 +186,4 @@ test-resources/src/uneval/uneval21.html:6:54: [maybe] Reading absent property (c
 TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:11: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:19: [maybe] Reading absent property (computed name)
 TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:52: [maybe] Reading absent property (computed name)
-TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:44: [info] Writing to unknown property that may cause loss of precision
-TAJS-dynamic-code(test-resources/src/uneval/uneval21.html:6:5):1:11: [info] Reading from unknown property that may cause loss of precision
 Soundness testing succeeded for 458 checks (with 0 expected failures)

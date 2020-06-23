@@ -1,5 +1,5 @@
-out/temp-sources/TestMicro.widen1.js: [definite] Exceptional program exit is unreachable
-out/temp-sources/TestMicro.widen1.js:2:8: [maybe] Converting primitive string to object
-out/temp-sources/TestMicro.widen1.js:3:3: [info] Abstract value: PrefixStr[foo]
-out/temp-sources/TestMicro.widen1.js:6:1: [info] Abstract value: PrefixStr[foo]
+TestMicro.widen1.js: [definite] Exceptional program exit is unreachable
+TestMicro.widen1.js:2:8: [maybe] Converting primitive string to object
+TestMicro.widen1.js:3:3: [info] Abstract value: PrefixStr[foo]
+TestMicro.widen1.js:6:1: [info] Abstract value: PrefixStr[foo]
 Soundness testing succeeded for 24 checks (with 0 expected failures)

@@ -33,11 +33,11 @@ test/1k2014dragons/shims.js:37:9: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:18: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:42:46: [maybe] Reading absent property getContext
 test/1k2014dragons/shims.js:55:9: [maybe] Reading absent property body
-test/1k2014dragons/1969.js:22:5: [maybe] Converting object to string
+test/1k2014dragons/1969.js:22:5: [maybe] Converting object to primitive
 test/1k2014dragons/1969.js:22:5: [maybe] Converting primitive string to object
 test/1k2014dragons/1969.js:24:13: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1969.js:24:13: [maybe] Reading absent property (computed name)
-test/1k2014dragons/1969.js:27:5: [maybe] Converting object to string
+test/1k2014dragons/1969.js:27:5: [maybe] Converting object to primitive
 test/1k2014dragons/1969.js:27:5: [maybe] Converting primitive string to object
 test/1k2014dragons/1969.js:29:15: [maybe] Conversion to number yields NaN
 test/1k2014dragons/1969.js:29:15: [maybe] Reading absent property (computed name)

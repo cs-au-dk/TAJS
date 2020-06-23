@@ -1,6 +1,6 @@
 fg2: <main> function()
   block 0: [entry]
-    node 0: constant[undefined,v1] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js)
+    node 0: constant[undefined,v1] (TestFlowgraphBuilder.doWhileContinue_issue195.js)
     ->[block 1]
   block 1:
     node 1: constant["tajs-host-env:string-replace-model.js",v2] (host-environment-sources-loader)
@@ -23,51 +23,51 @@ fg2: <main> function()
     node 8: call[-,v7,-] (host-environment-sources-loader)
     ->[block 7]
   block 7:
-    node 9: constant["PRE",-] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:1:1)
+    node 9: constant["PRE",-] (TestFlowgraphBuilder.doWhileContinue_issue195.js:1:1)
     ->[block 8]
   block 8:
-    node 10: constant["BODY1",-] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:3:4)
-    node 11: constant["BODY-COND1",v9] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:4:7)
-    node 12: if[v9](true-block:9,false-block:10) (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:4:4)
+    node 10: constant["BODY1",-] (TestFlowgraphBuilder.doWhileContinue_issue195.js:3:4)
+    node 11: constant["BODY-COND1",v9] (TestFlowgraphBuilder.doWhileContinue_issue195.js:4:7)
+    node 12: if[v9](true-block:9,false-block:10) (TestFlowgraphBuilder.doWhileContinue_issue195.js:4:4)
     ->[block 9,block 10] ~>[block 15]
   block 9:
-    node 13: nop(continue <DEFAULT>) (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:4:21)
+    node 13: nop(continue <DEFAULT>) (TestFlowgraphBuilder.doWhileContinue_issue195.js:4:21)
     ->[block 13] ~>[block 15]
   block 10:
-    node 14: constant["BODY-COND2",v10] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:5:7)
-    node 15: if[v10](true-block:11,false-block:12) (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:5:4)
+    node 14: constant["BODY-COND2",v10] (TestFlowgraphBuilder.doWhileContinue_issue195.js:5:7)
+    node 15: if[v10](true-block:11,false-block:12) (TestFlowgraphBuilder.doWhileContinue_issue195.js:5:4)
     ->[block 11,block 12] ~>[block 15]
   block 11:
-    node 16: nop(break <DEFAULT>) (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:5:21)
+    node 16: nop(break <DEFAULT>) (TestFlowgraphBuilder.doWhileContinue_issue195.js:5:21)
     ->[block 16] ~>[block 15]
   block 12:
-    node 17: constant["BODY2",-] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:6:4)
+    node 17: constant["BODY2",-] (TestFlowgraphBuilder.doWhileContinue_issue195.js:6:4)
     ->[block 13] ~>[block 15]
   block 13:
-    node 18: constant["COND",v8] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:7:10)
-    node 19: begin-loop[v8] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:2:4)
+    node 18: constant["COND",v8] (TestFlowgraphBuilder.doWhileContinue_issue195.js:7:10)
+    node 19: begin-loop[v8] (TestFlowgraphBuilder.doWhileContinue_issue195.js:2:4)
     ->[block 14] ~>[block 15]
   block 14:
-    node 20: if[v8](true-block:8,false-block:16) (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:7:10)
+    node 20: if[v8](true-block:8,false-block:16) (TestFlowgraphBuilder.doWhileContinue_issue195.js:7:10)
     ->[block 8,block 16] ~>[block 15]
   block 15:
-    node 21: end-loop[v8] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:7:10)
+    node 21: end-loop[v8] (TestFlowgraphBuilder.doWhileContinue_issue195.js:7:10)
     ->[block 19]
   block 16:
-    node 22: end-loop[v8] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:7:10)
+    node 22: end-loop[v8] (TestFlowgraphBuilder.doWhileContinue_issue195.js:7:10)
     ->[block 17]
   block 17:
-    node 23: constant["POST",-] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:8:1)
+    node 23: constant["POST",-] (TestFlowgraphBuilder.doWhileContinue_issue195.js:8:1)
     ->[block 18]
   block 18: [exit-ordinary]
-    node 24: return[v1] (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js)
+    node 24: return[v1] (TestFlowgraphBuilder.doWhileContinue_issue195.js)
     ->[]
   block 19: [exit-exceptional]
-    node 25: exceptional-return (out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js)
+    node 25: exceptional-return (TestFlowgraphBuilder.doWhileContinue_issue195.js)
     ->[]
 
-out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js: [definite] Ordinary program exit is unreachable
-out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:4:4: [definite] The conditional expression is always true
-out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js:7:10: [definite] The conditional expression is always true
-out/temp-sources/TestFlowgraphBuilder.doWhileContinue_issue195.js: [definite] Exceptional program exit is unreachable
+TestFlowgraphBuilder.doWhileContinue_issue195.js: [definite] Ordinary program exit is unreachable
+TestFlowgraphBuilder.doWhileContinue_issue195.js:4:4: [definite] The conditional expression is always true
+TestFlowgraphBuilder.doWhileContinue_issue195.js:7:10: [definite] The conditional expression is always true
+TestFlowgraphBuilder.doWhileContinue_issue195.js: [definite] Exceptional program exit is unreachable
 Soundness testing succeeded for 0 checks (with 0 expected failures)
