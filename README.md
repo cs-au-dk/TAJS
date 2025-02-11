@@ -1,3 +1,6 @@
+### This project is no longer maintained. If you are looking for a JavaScript program analyzer, see <a href="https://github.com/cs-au-dk/jelly">https://github.com/cs-au-dk/jelly</a>.
+-----
+
 # TAJS - Type Analyzer for JavaScript
 
 Copyright 2009-2020 Aarhus University
